@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataplex.outputs.DataProductAccessGroupDefaultIamRoleConfig;
 import com.pulumi.gcp.dataplex.outputs.DataProductAccessGroupPrincipal;
 import java.lang.String;
 import java.util.Objects;
@@ -13,6 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataProductAccessGroup {
+    /**
+     * @return Configuration for the default IAM role associated with the access group.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DataProductAccessGroupDefaultIamRoleConfig defaultIamRoleConfig;
     /**
      * @return Description of the access group.
      * 
@@ -41,6 +48,14 @@ public final class DataProductAccessGroup {
     private DataProductAccessGroupPrincipal principal;
 
     private DataProductAccessGroup() {}
+    /**
+     * @return Configuration for the default IAM role associated with the access group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DataProductAccessGroupDefaultIamRoleConfig> defaultIamRoleConfig() {
+        return Optional.ofNullable(this.defaultIamRoleConfig);
+    }
     /**
      * @return Description of the access group.
      * 
@@ -87,6 +102,7 @@ public final class DataProductAccessGroup {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DataProductAccessGroupDefaultIamRoleConfig defaultIamRoleConfig;
         private @Nullable String description;
         private String displayName;
         private String groupId;
@@ -95,6 +111,7 @@ public final class DataProductAccessGroup {
         public Builder() {}
         public Builder(DataProductAccessGroup defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.defaultIamRoleConfig = defaults.defaultIamRoleConfig;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
     	      this.groupId = defaults.groupId;
@@ -102,6 +119,12 @@ public final class DataProductAccessGroup {
     	      this.principal = defaults.principal;
         }
 
+        @CustomType.Setter
+        public Builder defaultIamRoleConfig(@Nullable DataProductAccessGroupDefaultIamRoleConfig defaultIamRoleConfig) {
+
+            this.defaultIamRoleConfig = defaultIamRoleConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -142,6 +165,7 @@ public final class DataProductAccessGroup {
         }
         public DataProductAccessGroup build() {
             final var _resultValue = new DataProductAccessGroup();
+            _resultValue.defaultIamRoleConfig = defaultIamRoleConfig;
             _resultValue.description = description;
             _resultValue.displayName = displayName;
             _resultValue.groupId = groupId;

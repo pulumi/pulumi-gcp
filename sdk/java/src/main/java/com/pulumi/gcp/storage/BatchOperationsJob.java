@@ -12,6 +12,7 @@ import com.pulumi.gcp.storage.BatchOperationsJobArgs;
 import com.pulumi.gcp.storage.inputs.BatchOperationsJobState;
 import com.pulumi.gcp.storage.outputs.BatchOperationsJobBucketList;
 import com.pulumi.gcp.storage.outputs.BatchOperationsJobDeleteObject;
+import com.pulumi.gcp.storage.outputs.BatchOperationsJobLoggingConfig;
 import com.pulumi.gcp.storage.outputs.BatchOperationsJobPutMetadata;
 import com.pulumi.gcp.storage.outputs.BatchOperationsJobPutObjectHold;
 import com.pulumi.gcp.storage.outputs.BatchOperationsJobRewriteObject;
@@ -101,6 +102,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListBucketsArgs;
  * import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListBucketsPrefixListArgs;
  * import com.pulumi.gcp.storage.inputs.BatchOperationsJobPutMetadataArgs;
+ * import com.pulumi.gcp.storage.inputs.BatchOperationsJobLoggingConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -123,6 +125,7 @@ import javax.annotation.Nullable;
  *         var tf_job = new BatchOperationsJob("tf-job", BatchOperationsJobArgs.builder()
  *             .jobId("tf-job")
  *             .description("A sample job description")
+ *             .dryRun(true)
  *             .bucketList(BatchOperationsJobBucketListArgs.builder()
  *                 .buckets(BatchOperationsJobBucketListBucketsArgs.builder()
  *                     .bucket(bucket.name())
@@ -133,6 +136,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .putMetadata(BatchOperationsJobPutMetadataArgs.builder()
  *                 .customMetadata(Map.of("key", "value"))
+ *                 .build())
+ *             .loggingConfig(BatchOperationsJobLoggingConfigArgs.builder()
+ *                 .logActions("TRANSFORM")
+ *                 .logActionStates(                
+ *                     "SUCCEEDED",
+ *                     "FAILED")
  *                 .build())
  *             .deleteProtection(false)
  *             .build());
@@ -274,6 +283,20 @@ public class BatchOperationsJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dryRun;
+
+    /**
+     * @return If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+     * 
+     */
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
+    }
+    /**
      * The ID of the job.
      * 
      */
@@ -286,6 +309,22 @@ public class BatchOperationsJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> jobId() {
         return Codegen.optional(this.jobId);
+    }
+    /**
+     * Logging configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="loggingConfig", refs={BatchOperationsJobLoggingConfig.class}, tree="[0]")
+    private Output</* @Nullable */ BatchOperationsJobLoggingConfig> loggingConfig;
+
+    /**
+     * @return Logging configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BatchOperationsJobLoggingConfig>> loggingConfig() {
+        return Codegen.optional(this.loggingConfig);
     }
     /**
      * The ID of the project in which the resource belongs.

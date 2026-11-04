@@ -21,6 +21,16 @@ __all__ = [
     'RegionalSecretIamBindingConditionArgsDict',
     'RegionalSecretIamMemberConditionArgs',
     'RegionalSecretIamMemberConditionArgsDict',
+    'RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs',
+    'RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgsDict',
+    'RegionalSecretManagedRotationRotationArgs',
+    'RegionalSecretManagedRotationRotationArgsDict',
+    'RegionalSecretManagedRotationRotationManagedRotationStatusArgs',
+    'RegionalSecretManagedRotationRotationManagedRotationStatusArgsDict',
+    'RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs',
+    'RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgsDict',
+    'RegionalSecretPolicyMemberArgs',
+    'RegionalSecretPolicyMemberArgsDict',
     'RegionalSecretRotationArgs',
     'RegionalSecretRotationArgsDict',
     'RegionalSecretTopicArgs',
@@ -233,6 +243,323 @@ class RegionalSecretIamMemberConditionArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgsDict(TypedDict):
+    instance_id: pulumi.Input[_builtins.str]
+    """
+    The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    The username of the Cloud SQL database user.
+    """
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The initial password to set for the database user. If not provided, a random password will be generated.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    password_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    The initial password to set for the database user. If not provided, a random password will be generated.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `password` or `password_wo` can only be set.
+    """
+    password_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
+
+@pulumi.input_type
+class RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs:
+    def __init__(__self__, *,
+                 instance_id: pulumi.Input[_builtins.str],
+                 username: pulumi.Input[_builtins.str],
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] instance_id: The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+        :param pulumi.Input[_builtins.str] username: The username of the Cloud SQL database user.
+        :param pulumi.Input[_builtins.str] password: The initial password to set for the database user. If not provided, a random password will be generated.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The initial password to set for the database user. If not provided, a random password will be generated.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[_builtins.str]:
+        """
+        The username of the Cloud SQL database user.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The initial password to set for the database user. If not provided, a random password will be generated.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The initial password to set for the database user. If not provided, a random password will be generated.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `password` or `password_wo` can only be set.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo_version", value)
+
+
+class RegionalSecretManagedRotationRotationArgsDict(TypedDict):
+    managed_rotation_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusArgsDict']]]]]
+    """
+    (Output)
+    The current status of the managed rotation.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class RegionalSecretManagedRotationRotationArgs:
+    def __init__(__self__, *,
+                 managed_rotation_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusArgs']]] managed_rotation_statuses: (Output)
+               The current status of the managed rotation.
+               Structure is documented below.
+        """
+        if managed_rotation_statuses is not None:
+            pulumi.set(__self__, "managed_rotation_statuses", managed_rotation_statuses)
+
+    @_builtins.property
+    @pulumi.getter(name="managedRotationStatuses")
+    def managed_rotation_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusArgs']]]]:
+        """
+        (Output)
+        The current status of the managed rotation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_rotation_statuses")
+
+    @managed_rotation_statuses.setter
+    def managed_rotation_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusArgs']]]]):
+        pulumi.set(self, "managed_rotation_statuses", value)
+
+
+class RegionalSecretManagedRotationRotationManagedRotationStatusArgsDict(TypedDict):
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgsDict']]]]]
+    """
+    (Output)
+    Customer-facing issues that occurred during an asynchronous managed rotation, for example
+    permission errors.
+    Structure is documented below.
+    """
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+    """
+
+@pulumi.input_type
+class RegionalSecretManagedRotationRotationManagedRotationStatusArgs:
+    def __init__(__self__, *,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs']]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs']]] errors: (Output)
+               Customer-facing issues that occurred during an asynchronous managed rotation, for example
+               permission errors.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs']]]]:
+        """
+        (Output)
+        Customer-facing issues that occurred during an asynchronous managed rotation, for example
+        permission errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+class RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of `google.rpc.Code`.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message.
+    """
+
+@pulumi.input_type
+class RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of `google.rpc.Code`.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of `google.rpc.Code`.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class RegionalSecretPolicyMemberArgsDict(TypedDict):
+    iam_policy_uid_principal: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+    If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+    new resource. Format:
+    `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+    """
+
+@pulumi.input_type
+class RegionalSecretPolicyMemberArgs:
+    def __init__(__self__, *,
+                 iam_policy_uid_principal: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] iam_policy_uid_principal: (Output)
+               IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+               If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+               new resource. Format:
+               `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+        """
+        if iam_policy_uid_principal is not None:
+            pulumi.set(__self__, "iam_policy_uid_principal", iam_policy_uid_principal)
+
+    @_builtins.property
+    @pulumi.getter(name="iamPolicyUidPrincipal")
+    def iam_policy_uid_principal(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+        If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+        new resource. Format:
+        `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+        """
+        return pulumi.get(self, "iam_policy_uid_principal")
+
+    @iam_policy_uid_principal.setter
+    def iam_policy_uid_principal(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "iam_policy_uid_principal", value)
 
 
 class RegionalSecretRotationArgsDict(TypedDict):

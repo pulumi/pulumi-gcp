@@ -67,6 +67,7 @@ export interface GetRegionalSecretResult {
     readonly labels: {[key: string]: string};
     readonly location: string;
     readonly name: string;
+    readonly policyMembers: outputs.secretmanager.GetRegionalSecretPolicyMember[];
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly rotations: outputs.secretmanager.GetRegionalSecretRotation[];

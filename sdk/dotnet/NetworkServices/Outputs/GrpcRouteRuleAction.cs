@@ -24,6 +24,10 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly Outputs.GrpcRouteRuleActionFaultInjectionPolicy? FaultInjectionPolicy;
         /// <summary>
+        /// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        /// </summary>
+        public readonly string? IdleTimeout;
+        /// <summary>
         /// Specifies the retry policy associated with this route.
         /// Structure is documented below.
         /// </summary>
@@ -39,12 +43,15 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             Outputs.GrpcRouteRuleActionFaultInjectionPolicy? faultInjectionPolicy,
 
+            string? idleTimeout,
+
             Outputs.GrpcRouteRuleActionRetryPolicy? retryPolicy,
 
             string? timeout)
         {
             Destinations = destinations;
             FaultInjectionPolicy = faultInjectionPolicy;
+            IdleTimeout = idleTimeout;
             RetryPolicy = retryPolicy;
             Timeout = timeout;
         }

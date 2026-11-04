@@ -18,11 +18,19 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.HttpRouteRuleActionRequestMirrorPolicyDestination? Destination;
+        /// <summary>
+        /// The percentage of requests to get mirrored to the desired destination.
+        /// </summary>
+        public readonly double? MirrorPercent;
 
         [OutputConstructor]
-        private HttpRouteRuleActionRequestMirrorPolicy(Outputs.HttpRouteRuleActionRequestMirrorPolicyDestination? destination)
+        private HttpRouteRuleActionRequestMirrorPolicy(
+            Outputs.HttpRouteRuleActionRequestMirrorPolicyDestination? destination,
+
+            double? mirrorPercent)
         {
             Destination = destination;
+            MirrorPercent = mirrorPercent;
         }
     }
 }

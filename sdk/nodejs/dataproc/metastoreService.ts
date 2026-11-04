@@ -114,6 +114,7 @@ import * as utilities from "../utilities";
  *     serviceId: "metastore-srv",
  *     location: "us-central1",
  *     tier: "DEVELOPER",
+ *     deletionPolicy: "FORCE",
  *     hiveMetastoreConfig: {
  *         version: "3.1.2",
  *     },
@@ -382,12 +383,18 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     declare public readonly databaseType: pulumi.Output<string | undefined>;
     /**
-     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+     * the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+     * service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+     *
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to "DELETE", deleting the resource is allowed.
+     * When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+     * subnetworks will be deleted asynchronously by the API.
+     *
+     * Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -621,12 +628,18 @@ export interface MetastoreServiceState {
      */
     databaseType?: pulumi.Input<string | undefined>;
     /**
-     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+     * the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+     * service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+     *
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to "DELETE", deleting the resource is allowed.
+     * When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+     * subnetworks will be deleted asynchronously by the API.
+     *
+     * Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -770,12 +783,18 @@ export interface MetastoreServiceArgs {
      */
     databaseType?: pulumi.Input<string | undefined>;
     /**
-     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * The deletion policy for the Dataproc Metastore service. Setting `FORCE` will also delete
+     * the PSC forwarding rules and reserved internal addresses created by the Dataproc Metastore
+     * service agent in consumer subnetworks when the service is deleted. Defaults to `DELETE`.
+     *
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to "DELETE", deleting the resource is allowed.
+     * When set to "DELETE", the resource is deleted directly. PSC endpoints in consumer
+     * subnetworks will be deleted asynchronously by the API.
+     *
+     * Possible values: `DELETE`, `FORCE`, `PREVENT`, `ABANDON`.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

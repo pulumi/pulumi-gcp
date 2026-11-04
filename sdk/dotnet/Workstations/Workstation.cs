@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Workstations
     ///     {
     ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
+    ///         Region = "us-east4",
     ///         Network = @default.Name,
     ///     });
     /// 
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Workstations
     ///         WorkstationClusterId = "workstation-cluster",
     ///         Network = @default.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east4",
     ///         Labels = 
     ///         {
     ///             { "label", "key" },
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Workstations
     ///     {
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
-    ///         Location = "us-central1",
+    ///         Location = "us-east4",
     ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
     ///         {
     ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Workstations
     ///         WorkstationId = "work-station",
     ///         WorkstationConfigId = defaultWorkstationConfig.WorkstationConfigId,
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
-    ///         Location = "us-central1",
+    ///         Location = "us-east4",
     ///         Labels = 
     ///         {
     ///             { "label", "key" },
@@ -98,6 +98,10 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Regional Endpoint Policies
+    /// 
+    /// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
     /// 
     /// ## Import
     /// 

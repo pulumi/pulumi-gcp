@@ -167,6 +167,10 @@ namespace Pulumi.Gcp.DataLoss
     ///                     },
     ///                 },
     ///             },
+    ///             TransformationErrorHandling = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs
+    ///             {
+    ///                 ThrowError = null,
+    ///             },
     ///         },
     ///     });
     /// 

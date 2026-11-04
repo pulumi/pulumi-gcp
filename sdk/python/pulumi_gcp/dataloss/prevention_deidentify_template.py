@@ -442,6 +442,9 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                         },
                     ],
                 },
+                "transformation_error_handling": {
+                    "throw_error": {},
+                },
             })
         ```
 
@@ -630,6 +633,9 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                             },
                         },
                     ],
+                },
+                "transformation_error_handling": {
+                    "throw_error": {},
                 },
             })
         ```

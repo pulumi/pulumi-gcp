@@ -12,6 +12,7 @@ import com.pulumi.gcp.discoveryengine.AssistantArgs;
 import com.pulumi.gcp.discoveryengine.inputs.AssistantState;
 import com.pulumi.gcp.discoveryengine.outputs.AssistantCustomerPolicy;
 import com.pulumi.gcp.discoveryengine.outputs.AssistantGenerationConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -168,6 +169,36 @@ public class Assistant extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AssistantCustomerPolicy>> customerPolicy() {
         return Codegen.optional(this.customerPolicy);
+    }
+    /**
+     * This field controls the default web grounding toggle for end users if
+     * `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+     * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+     * By default, this field is set to false. If `webGroundingType` is
+     * `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+     * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+     * grounding enabled by default on UI. If true, grounding toggle will be
+     * disabled by default on UI. End users can still enable web grounding in
+     * the UI if web grounding is enabled.
+     * 
+     */
+    @Export(name="defaultWebGroundingToggleOff", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> defaultWebGroundingToggleOff;
+
+    /**
+     * @return This field controls the default web grounding toggle for end users if
+     * `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+     * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+     * By default, this field is set to false. If `webGroundingType` is
+     * `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+     * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+     * grounding enabled by default on UI. If true, grounding toggle will be
+     * disabled by default on UI. End users can still enable web grounding in
+     * the UI if web grounding is enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> defaultWebGroundingToggleOff() {
+        return Codegen.optional(this.defaultWebGroundingToggleOff);
     }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

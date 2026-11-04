@@ -158,6 +158,296 @@ func (o GoogleApiSourceLoggingConfigPtrOutput) LogSeverity() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type GoogleApiSourceOrganizationSubscription struct {
+	// Enable org level subscription.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GoogleApiSourceOrganizationSubscriptionInput is an input type that accepts GoogleApiSourceOrganizationSubscriptionArgs and GoogleApiSourceOrganizationSubscriptionOutput values.
+// You can construct a concrete instance of `GoogleApiSourceOrganizationSubscriptionInput` via:
+//
+//	GoogleApiSourceOrganizationSubscriptionArgs{...}
+type GoogleApiSourceOrganizationSubscriptionInput interface {
+	pulumi.Input
+
+	ToGoogleApiSourceOrganizationSubscriptionOutput() GoogleApiSourceOrganizationSubscriptionOutput
+	ToGoogleApiSourceOrganizationSubscriptionOutputWithContext(context.Context) GoogleApiSourceOrganizationSubscriptionOutput
+}
+
+type GoogleApiSourceOrganizationSubscriptionArgs struct {
+	// Enable org level subscription.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GoogleApiSourceOrganizationSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleApiSourceOrganizationSubscription)(nil)).Elem()
+}
+
+func (i GoogleApiSourceOrganizationSubscriptionArgs) ToGoogleApiSourceOrganizationSubscriptionOutput() GoogleApiSourceOrganizationSubscriptionOutput {
+	return i.ToGoogleApiSourceOrganizationSubscriptionOutputWithContext(context.Background())
+}
+
+func (i GoogleApiSourceOrganizationSubscriptionArgs) ToGoogleApiSourceOrganizationSubscriptionOutputWithContext(ctx context.Context) GoogleApiSourceOrganizationSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceOrganizationSubscriptionOutput)
+}
+
+func (i GoogleApiSourceOrganizationSubscriptionArgs) ToGoogleApiSourceOrganizationSubscriptionPtrOutput() GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return i.ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleApiSourceOrganizationSubscriptionArgs) ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(ctx context.Context) GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceOrganizationSubscriptionOutput).ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(ctx)
+}
+
+// GoogleApiSourceOrganizationSubscriptionPtrInput is an input type that accepts GoogleApiSourceOrganizationSubscriptionArgs, GoogleApiSourceOrganizationSubscriptionPtr and GoogleApiSourceOrganizationSubscriptionPtrOutput values.
+// You can construct a concrete instance of `GoogleApiSourceOrganizationSubscriptionPtrInput` via:
+//
+//	        GoogleApiSourceOrganizationSubscriptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleApiSourceOrganizationSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleApiSourceOrganizationSubscriptionPtrOutput() GoogleApiSourceOrganizationSubscriptionPtrOutput
+	ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(context.Context) GoogleApiSourceOrganizationSubscriptionPtrOutput
+}
+
+type googleApiSourceOrganizationSubscriptionPtrType GoogleApiSourceOrganizationSubscriptionArgs
+
+func GoogleApiSourceOrganizationSubscriptionPtr(v *GoogleApiSourceOrganizationSubscriptionArgs) GoogleApiSourceOrganizationSubscriptionPtrInput {
+	return (*googleApiSourceOrganizationSubscriptionPtrType)(v)
+}
+
+func (*googleApiSourceOrganizationSubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleApiSourceOrganizationSubscription)(nil)).Elem()
+}
+
+func (i *googleApiSourceOrganizationSubscriptionPtrType) ToGoogleApiSourceOrganizationSubscriptionPtrOutput() GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return i.ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleApiSourceOrganizationSubscriptionPtrType) ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(ctx context.Context) GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceOrganizationSubscriptionPtrOutput)
+}
+
+type GoogleApiSourceOrganizationSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (GoogleApiSourceOrganizationSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleApiSourceOrganizationSubscription)(nil)).Elem()
+}
+
+func (o GoogleApiSourceOrganizationSubscriptionOutput) ToGoogleApiSourceOrganizationSubscriptionOutput() GoogleApiSourceOrganizationSubscriptionOutput {
+	return o
+}
+
+func (o GoogleApiSourceOrganizationSubscriptionOutput) ToGoogleApiSourceOrganizationSubscriptionOutputWithContext(ctx context.Context) GoogleApiSourceOrganizationSubscriptionOutput {
+	return o
+}
+
+func (o GoogleApiSourceOrganizationSubscriptionOutput) ToGoogleApiSourceOrganizationSubscriptionPtrOutput() GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return o.ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleApiSourceOrganizationSubscriptionOutput) ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(ctx context.Context) GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleApiSourceOrganizationSubscription) *GoogleApiSourceOrganizationSubscription {
+		return &v
+	}).(GoogleApiSourceOrganizationSubscriptionPtrOutput)
+}
+
+// Enable org level subscription.
+func (o GoogleApiSourceOrganizationSubscriptionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleApiSourceOrganizationSubscription) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GoogleApiSourceOrganizationSubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleApiSourceOrganizationSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleApiSourceOrganizationSubscription)(nil)).Elem()
+}
+
+func (o GoogleApiSourceOrganizationSubscriptionPtrOutput) ToGoogleApiSourceOrganizationSubscriptionPtrOutput() GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return o
+}
+
+func (o GoogleApiSourceOrganizationSubscriptionPtrOutput) ToGoogleApiSourceOrganizationSubscriptionPtrOutputWithContext(ctx context.Context) GoogleApiSourceOrganizationSubscriptionPtrOutput {
+	return o
+}
+
+func (o GoogleApiSourceOrganizationSubscriptionPtrOutput) Elem() GoogleApiSourceOrganizationSubscriptionOutput {
+	return o.ApplyT(func(v *GoogleApiSourceOrganizationSubscription) GoogleApiSourceOrganizationSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleApiSourceOrganizationSubscription
+		return ret
+	}).(GoogleApiSourceOrganizationSubscriptionOutput)
+}
+
+// Enable org level subscription.
+func (o GoogleApiSourceOrganizationSubscriptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleApiSourceOrganizationSubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleApiSourceProjectSubscriptions struct {
+	// A list of projects to receive events from.
+	// All the projects must be in the same org. The listed projects should have
+	// the format project/{identifier} where identifier can be either the
+	// project id for project number. A single list may contain both formats. At
+	// most 100 projects can be listed.
+	Lists []string `pulumi:"lists"`
+}
+
+// GoogleApiSourceProjectSubscriptionsInput is an input type that accepts GoogleApiSourceProjectSubscriptionsArgs and GoogleApiSourceProjectSubscriptionsOutput values.
+// You can construct a concrete instance of `GoogleApiSourceProjectSubscriptionsInput` via:
+//
+//	GoogleApiSourceProjectSubscriptionsArgs{...}
+type GoogleApiSourceProjectSubscriptionsInput interface {
+	pulumi.Input
+
+	ToGoogleApiSourceProjectSubscriptionsOutput() GoogleApiSourceProjectSubscriptionsOutput
+	ToGoogleApiSourceProjectSubscriptionsOutputWithContext(context.Context) GoogleApiSourceProjectSubscriptionsOutput
+}
+
+type GoogleApiSourceProjectSubscriptionsArgs struct {
+	// A list of projects to receive events from.
+	// All the projects must be in the same org. The listed projects should have
+	// the format project/{identifier} where identifier can be either the
+	// project id for project number. A single list may contain both formats. At
+	// most 100 projects can be listed.
+	Lists pulumi.StringArrayInput `pulumi:"lists"`
+}
+
+func (GoogleApiSourceProjectSubscriptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleApiSourceProjectSubscriptions)(nil)).Elem()
+}
+
+func (i GoogleApiSourceProjectSubscriptionsArgs) ToGoogleApiSourceProjectSubscriptionsOutput() GoogleApiSourceProjectSubscriptionsOutput {
+	return i.ToGoogleApiSourceProjectSubscriptionsOutputWithContext(context.Background())
+}
+
+func (i GoogleApiSourceProjectSubscriptionsArgs) ToGoogleApiSourceProjectSubscriptionsOutputWithContext(ctx context.Context) GoogleApiSourceProjectSubscriptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceProjectSubscriptionsOutput)
+}
+
+func (i GoogleApiSourceProjectSubscriptionsArgs) ToGoogleApiSourceProjectSubscriptionsPtrOutput() GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return i.ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleApiSourceProjectSubscriptionsArgs) ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(ctx context.Context) GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceProjectSubscriptionsOutput).ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(ctx)
+}
+
+// GoogleApiSourceProjectSubscriptionsPtrInput is an input type that accepts GoogleApiSourceProjectSubscriptionsArgs, GoogleApiSourceProjectSubscriptionsPtr and GoogleApiSourceProjectSubscriptionsPtrOutput values.
+// You can construct a concrete instance of `GoogleApiSourceProjectSubscriptionsPtrInput` via:
+//
+//	        GoogleApiSourceProjectSubscriptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleApiSourceProjectSubscriptionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleApiSourceProjectSubscriptionsPtrOutput() GoogleApiSourceProjectSubscriptionsPtrOutput
+	ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(context.Context) GoogleApiSourceProjectSubscriptionsPtrOutput
+}
+
+type googleApiSourceProjectSubscriptionsPtrType GoogleApiSourceProjectSubscriptionsArgs
+
+func GoogleApiSourceProjectSubscriptionsPtr(v *GoogleApiSourceProjectSubscriptionsArgs) GoogleApiSourceProjectSubscriptionsPtrInput {
+	return (*googleApiSourceProjectSubscriptionsPtrType)(v)
+}
+
+func (*googleApiSourceProjectSubscriptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleApiSourceProjectSubscriptions)(nil)).Elem()
+}
+
+func (i *googleApiSourceProjectSubscriptionsPtrType) ToGoogleApiSourceProjectSubscriptionsPtrOutput() GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return i.ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleApiSourceProjectSubscriptionsPtrType) ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(ctx context.Context) GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleApiSourceProjectSubscriptionsPtrOutput)
+}
+
+type GoogleApiSourceProjectSubscriptionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleApiSourceProjectSubscriptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleApiSourceProjectSubscriptions)(nil)).Elem()
+}
+
+func (o GoogleApiSourceProjectSubscriptionsOutput) ToGoogleApiSourceProjectSubscriptionsOutput() GoogleApiSourceProjectSubscriptionsOutput {
+	return o
+}
+
+func (o GoogleApiSourceProjectSubscriptionsOutput) ToGoogleApiSourceProjectSubscriptionsOutputWithContext(ctx context.Context) GoogleApiSourceProjectSubscriptionsOutput {
+	return o
+}
+
+func (o GoogleApiSourceProjectSubscriptionsOutput) ToGoogleApiSourceProjectSubscriptionsPtrOutput() GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return o.ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleApiSourceProjectSubscriptionsOutput) ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(ctx context.Context) GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleApiSourceProjectSubscriptions) *GoogleApiSourceProjectSubscriptions {
+		return &v
+	}).(GoogleApiSourceProjectSubscriptionsPtrOutput)
+}
+
+// A list of projects to receive events from.
+// All the projects must be in the same org. The listed projects should have
+// the format project/{identifier} where identifier can be either the
+// project id for project number. A single list may contain both formats. At
+// most 100 projects can be listed.
+func (o GoogleApiSourceProjectSubscriptionsOutput) Lists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleApiSourceProjectSubscriptions) []string { return v.Lists }).(pulumi.StringArrayOutput)
+}
+
+type GoogleApiSourceProjectSubscriptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleApiSourceProjectSubscriptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleApiSourceProjectSubscriptions)(nil)).Elem()
+}
+
+func (o GoogleApiSourceProjectSubscriptionsPtrOutput) ToGoogleApiSourceProjectSubscriptionsPtrOutput() GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return o
+}
+
+func (o GoogleApiSourceProjectSubscriptionsPtrOutput) ToGoogleApiSourceProjectSubscriptionsPtrOutputWithContext(ctx context.Context) GoogleApiSourceProjectSubscriptionsPtrOutput {
+	return o
+}
+
+func (o GoogleApiSourceProjectSubscriptionsPtrOutput) Elem() GoogleApiSourceProjectSubscriptionsOutput {
+	return o.ApplyT(func(v *GoogleApiSourceProjectSubscriptions) GoogleApiSourceProjectSubscriptions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleApiSourceProjectSubscriptions
+		return ret
+	}).(GoogleApiSourceProjectSubscriptionsOutput)
+}
+
+// A list of projects to receive events from.
+// All the projects must be in the same org. The listed projects should have
+// the format project/{identifier} where identifier can be either the
+// project id for project number. A single list may contain both formats. At
+// most 100 projects can be listed.
+func (o GoogleApiSourceProjectSubscriptionsPtrOutput) Lists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleApiSourceProjectSubscriptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Lists
+	}).(pulumi.StringArrayOutput)
+}
+
 type MessageBusLoggingConfig struct {
 	// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
 	// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -5831,6 +6121,10 @@ func (o TriggerTransportPubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceLoggingConfigInput)(nil)).Elem(), GoogleApiSourceLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceLoggingConfigPtrInput)(nil)).Elem(), GoogleApiSourceLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceOrganizationSubscriptionInput)(nil)).Elem(), GoogleApiSourceOrganizationSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceOrganizationSubscriptionPtrInput)(nil)).Elem(), GoogleApiSourceOrganizationSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceProjectSubscriptionsInput)(nil)).Elem(), GoogleApiSourceProjectSubscriptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleApiSourceProjectSubscriptionsPtrInput)(nil)).Elem(), GoogleApiSourceProjectSubscriptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageBusLoggingConfigInput)(nil)).Elem(), MessageBusLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageBusLoggingConfigPtrInput)(nil)).Elem(), MessageBusLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationInput)(nil)).Elem(), PipelineDestinationArgs{})
@@ -5893,6 +6187,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubPtrInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
 	pulumi.RegisterOutputType(GoogleApiSourceLoggingConfigOutput{})
 	pulumi.RegisterOutputType(GoogleApiSourceLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleApiSourceOrganizationSubscriptionOutput{})
+	pulumi.RegisterOutputType(GoogleApiSourceOrganizationSubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleApiSourceProjectSubscriptionsOutput{})
+	pulumi.RegisterOutputType(GoogleApiSourceProjectSubscriptionsPtrOutput{})
 	pulumi.RegisterOutputType(MessageBusLoggingConfigOutput{})
 	pulumi.RegisterOutputType(MessageBusLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(PipelineDestinationOutput{})

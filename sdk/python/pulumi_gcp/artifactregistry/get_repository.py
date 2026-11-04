@@ -27,7 +27,7 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, deletion_policy=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, pulumi_labels=None, registry_uri=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None, vulnerability_scanning_configs=None):
+    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, deletion_policy=None, description=None, disallow_unspecified_mode=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, platform_logs_configs=None, project=None, pulumi_labels=None, registry_uri=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None, vulnerability_scanning_configs=None):
         if cleanup_policies and not isinstance(cleanup_policies, list):
             raise TypeError("Expected argument 'cleanup_policies' to be a list")
         pulumi.set(__self__, "cleanup_policies", cleanup_policies)
@@ -43,6 +43,9 @@ class GetRepositoryResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if disallow_unspecified_mode and not isinstance(disallow_unspecified_mode, bool):
+            raise TypeError("Expected argument 'disallow_unspecified_mode' to be a bool")
+        pulumi.set(__self__, "disallow_unspecified_mode", disallow_unspecified_mode)
         if docker_configs and not isinstance(docker_configs, list):
             raise TypeError("Expected argument 'docker_configs' to be a list")
         pulumi.set(__self__, "docker_configs", docker_configs)
@@ -73,6 +76,9 @@ class GetRepositoryResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if platform_logs_configs and not isinstance(platform_logs_configs, list):
+            raise TypeError("Expected argument 'platform_logs_configs' to be a list")
+        pulumi.set(__self__, "platform_logs_configs", platform_logs_configs)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -122,6 +128,11 @@ class GetRepositoryResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="disallowUnspecifiedMode")
+    def disallow_unspecified_mode(self) -> _builtins.bool:
+        return pulumi.get(self, "disallow_unspecified_mode")
 
     @_builtins.property
     @pulumi.getter(name="dockerConfigs")
@@ -177,6 +188,11 @@ class GetRepositoryResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="platformLogsConfigs")
+    def platform_logs_configs(self) -> Sequence['outputs.GetRepositoryPlatformLogsConfigResult']:
+        return pulumi.get(self, "platform_logs_configs")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
@@ -228,6 +244,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             create_time=self.create_time,
             deletion_policy=self.deletion_policy,
             description=self.description,
+            disallow_unspecified_mode=self.disallow_unspecified_mode,
             docker_configs=self.docker_configs,
             effective_labels=self.effective_labels,
             format=self.format,
@@ -238,6 +255,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             maven_configs=self.maven_configs,
             mode=self.mode,
             name=self.name,
+            platform_logs_configs=self.platform_logs_configs,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             registry_uri=self.registry_uri,
@@ -288,6 +306,7 @@ def get_repository(location: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
+        disallow_unspecified_mode=pulumi.get(__ret__, 'disallow_unspecified_mode'),
         docker_configs=pulumi.get(__ret__, 'docker_configs'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         format=pulumi.get(__ret__, 'format'),
@@ -298,6 +317,7 @@ def get_repository(location: Optional[_builtins.str] = None,
         maven_configs=pulumi.get(__ret__, 'maven_configs'),
         mode=pulumi.get(__ret__, 'mode'),
         name=pulumi.get(__ret__, 'name'),
+        platform_logs_configs=pulumi.get(__ret__, 'platform_logs_configs'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         registry_uri=pulumi.get(__ret__, 'registry_uri'),
@@ -345,6 +365,7 @@ def get_repository_output(location: pulumi.Input[Optional[_builtins.str]] = None
         create_time=pulumi.get(__response__, 'create_time'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
+        disallow_unspecified_mode=pulumi.get(__response__, 'disallow_unspecified_mode'),
         docker_configs=pulumi.get(__response__, 'docker_configs'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         format=pulumi.get(__response__, 'format'),
@@ -355,6 +376,7 @@ def get_repository_output(location: pulumi.Input[Optional[_builtins.str]] = None
         maven_configs=pulumi.get(__response__, 'maven_configs'),
         mode=pulumi.get(__response__, 'mode'),
         name=pulumi.get(__response__, 'name'),
+        platform_logs_configs=pulumi.get(__response__, 'platform_logs_configs'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         registry_uri=pulumi.get(__response__, 'registry_uri'),

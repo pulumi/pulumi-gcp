@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:managedkafka/acl:Acl":
 		r = &Acl{}
+	case "gcp:managedkafka/aclBinding:AclBinding":
+		r = &AclBinding{}
 	case "gcp:managedkafka/cluster:Cluster":
 		r = &Cluster{}
 	case "gcp:managedkafka/connectCluster:ConnectCluster":
@@ -47,6 +49,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"managedkafka/acl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"managedkafka/aclBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

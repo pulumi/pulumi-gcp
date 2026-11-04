@@ -319,6 +319,17 @@ export class Dataset extends pulumi.CustomResource {
      */
     declare public readonly defaultPartitionExpirationMs: pulumi.Output<number | undefined>;
     /**
+     * Defines the default rounding mode specification of new tables created
+     * within this dataset. During table creation, if this field is specified,
+     * the table within this dataset will inherit the default rounding mode of
+     * the dataset. Setting the default rounding mode on a table overrides this
+     * specification. Existing tables in the dataset are unaffected. If columns
+     * are defined during that table creation, they will immediately inherit the
+     * table's default rounding mode, unless otherwise specified.
+     * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+     */
+    declare public readonly defaultRoundingMode: pulumi.Output<string | undefined>;
+    /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
      * Once this property is set, all newly-created tables in the dataset
@@ -457,6 +468,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultCollation"] = state?.defaultCollation;
             resourceInputs["defaultEncryptionConfiguration"] = state?.defaultEncryptionConfiguration;
             resourceInputs["defaultPartitionExpirationMs"] = state?.defaultPartitionExpirationMs;
+            resourceInputs["defaultRoundingMode"] = state?.defaultRoundingMode;
             resourceInputs["defaultTableExpirationMs"] = state?.defaultTableExpirationMs;
             resourceInputs["deleteContentsOnDestroy"] = state?.deleteContentsOnDestroy;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -486,6 +498,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultCollation"] = args?.defaultCollation;
             resourceInputs["defaultEncryptionConfiguration"] = args?.defaultEncryptionConfiguration;
             resourceInputs["defaultPartitionExpirationMs"] = args?.defaultPartitionExpirationMs;
+            resourceInputs["defaultRoundingMode"] = args?.defaultRoundingMode;
             resourceInputs["defaultTableExpirationMs"] = args?.defaultTableExpirationMs;
             resourceInputs["deleteContentsOnDestroy"] = args?.deleteContentsOnDestroy;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
@@ -569,6 +582,17 @@ export interface DatasetState {
      * over the default partition expiration time indicated by this property.
      */
     defaultPartitionExpirationMs?: pulumi.Input<number | undefined>;
+    /**
+     * Defines the default rounding mode specification of new tables created
+     * within this dataset. During table creation, if this field is specified,
+     * the table within this dataset will inherit the default rounding mode of
+     * the dataset. Setting the default rounding mode on a table overrides this
+     * specification. Existing tables in the dataset are unaffected. If columns
+     * are defined during that table creation, they will immediately inherit the
+     * table's default rounding mode, unless otherwise specified.
+     * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+     */
+    defaultRoundingMode?: pulumi.Input<string | undefined>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
@@ -740,6 +764,17 @@ export interface DatasetArgs {
      * over the default partition expiration time indicated by this property.
      */
     defaultPartitionExpirationMs?: pulumi.Input<number | undefined>;
+    /**
+     * Defines the default rounding mode specification of new tables created
+     * within this dataset. During table creation, if this field is specified,
+     * the table within this dataset will inherit the default rounding mode of
+     * the dataset. Setting the default rounding mode on a table overrides this
+     * specification. Existing tables in the dataset are unaffected. If columns
+     * are defined during that table creation, they will immediately inherit the
+     * table's default rounding mode, unless otherwise specified.
+     * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+     */
+    defaultRoundingMode?: pulumi.Input<string | undefined>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).

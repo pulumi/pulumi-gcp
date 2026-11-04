@@ -530,6 +530,18 @@ class CaPool(pulumi.CustomResource):
                         "title": "My title",
                     },
                 },
+                "passthrough_extensions": {
+                    "known_extensions": [
+                        "EXTENDED_KEY_USAGE",
+                        "BASE_KEY_USAGE",
+                    ],
+                    "additional_extensions": [{
+                        "object_id_paths": [
+                            1,
+                            5,
+                        ],
+                    }],
+                },
                 "baseline_values": {
                     "aia_ocsp_servers": ["example.com"],
                     "additional_extensions": [{
@@ -758,6 +770,18 @@ class CaPool(pulumi.CustomResource):
                         "expression": "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
                         "title": "My title",
                     },
+                },
+                "passthrough_extensions": {
+                    "known_extensions": [
+                        "EXTENDED_KEY_USAGE",
+                        "BASE_KEY_USAGE",
+                    ],
+                    "additional_extensions": [{
+                        "object_id_paths": [
+                            1,
+                            5,
+                        ],
+                    }],
                 },
                 "baseline_values": {
                     "aia_ocsp_servers": ["example.com"],

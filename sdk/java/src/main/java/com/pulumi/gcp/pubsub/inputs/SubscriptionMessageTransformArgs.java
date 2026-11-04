@@ -6,6 +6,7 @@ package com.pulumi.gcp.pubsub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformAiInferenceArgs;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformCompressionArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformJavascriptUdfArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -36,6 +37,25 @@ public final class SubscriptionMessageTransformArgs extends com.pulumi.resources
      */
     public Optional<Output<SubscriptionMessageTransformAiInferenceArgs>> aiInference() {
         return Optional.ofNullable(this.aiInference);
+    }
+
+    /**
+     * Compression/Decompression. Configuration for compressing/decompressing
+     * message data using a user-specified compression algorithm.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="compression")
+    private @Nullable Output<SubscriptionMessageTransformCompressionArgs> compression;
+
+    /**
+     * @return Compression/Decompression. Configuration for compressing/decompressing
+     * message data using a user-specified compression algorithm.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SubscriptionMessageTransformCompressionArgs>> compression() {
+        return Optional.ofNullable(this.compression);
     }
 
     /**
@@ -78,6 +98,7 @@ public final class SubscriptionMessageTransformArgs extends com.pulumi.resources
 
     private SubscriptionMessageTransformArgs(SubscriptionMessageTransformArgs $) {
         this.aiInference = $.aiInference;
+        this.compression = $.compression;
         this.disabled = $.disabled;
         this.javascriptUdf = $.javascriptUdf;
     }
@@ -125,6 +146,31 @@ public final class SubscriptionMessageTransformArgs extends com.pulumi.resources
          */
         public Builder aiInference(SubscriptionMessageTransformAiInferenceArgs aiInference) {
             return aiInference(Output.of(aiInference));
+        }
+
+        /**
+         * @param compression Compression/Decompression. Configuration for compressing/decompressing
+         * message data using a user-specified compression algorithm.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compression(@Nullable Output<SubscriptionMessageTransformCompressionArgs> compression) {
+            $.compression = compression;
+            return this;
+        }
+
+        /**
+         * @param compression Compression/Decompression. Configuration for compressing/decompressing
+         * message data using a user-specified compression algorithm.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compression(SubscriptionMessageTransformCompressionArgs compression) {
+            return compression(Output.of(compression));
         }
 
         /**

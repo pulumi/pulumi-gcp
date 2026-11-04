@@ -180,6 +180,7 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string Location;
         public readonly string Name;
         public readonly string Network;
+        public readonly string OdbDnsZone;
         public readonly string OdbNetwork;
         public readonly string OdbSubnet;
         public readonly string? Project;
@@ -224,6 +225,8 @@ namespace Pulumi.Gcp.OracleDatabase
 
             string network,
 
+            string odbDnsZone,
+
             string odbNetwork,
 
             string odbSubnet,
@@ -252,6 +255,7 @@ namespace Pulumi.Gcp.OracleDatabase
             Location = location;
             Name = name;
             Network = network;
+            OdbDnsZone = odbDnsZone;
             OdbNetwork = odbNetwork;
             OdbSubnet = odbSubnet;
             Project = project;

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.firestore.IndexArgs;
 import com.pulumi.gcp.firestore.inputs.IndexState;
 import com.pulumi.gcp.firestore.outputs.IndexField;
+import com.pulumi.gcp.firestore.outputs.IndexSearchIndexOptions;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -633,6 +634,76 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Firestore Index Search Index Options
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexSearchIndexOptionsArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigTextSpecArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigTextSpecIndexSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("search-index-options-db")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var my_index = new Index("my-index", IndexArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("atestcollection")
+ *             .apiScope("MONGODB_COMPATIBLE_API")
+ *             .queryScope("COLLECTION_GROUP")
+ *             .multikey(true)
+ *             .searchIndexOptions(IndexSearchIndexOptionsArgs.builder()
+ *                 .textLanguage("es")
+ *                 .textLanguageOverrideFieldPath("lang")
+ *                 .build())
+ *             .fields(IndexFieldArgs.builder()
+ *                 .fieldPath("description")
+ *                 .searchConfig(IndexFieldSearchConfigArgs.builder()
+ *                     .textSpec(IndexFieldSearchConfigTextSpecArgs.builder()
+ *                         .indexSpecs(IndexFieldSearchConfigTextSpecIndexSpecArgs.builder()
+ *                             .indexType("TOKENIZED")
+ *                             .matchType("MATCH_GLOBALLY")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Firestore Index Suppress Geojson Indexing
  * 
  * <pre>
@@ -946,6 +1017,22 @@ public class Index extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> queryScope() {
         return Codegen.optional(this.queryScope);
+    }
+    /**
+     * Optional. Options to configure the search index.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="searchIndexOptions", refs={IndexSearchIndexOptions.class}, tree="[0]")
+    private Output<IndexSearchIndexOptions> searchIndexOptions;
+
+    /**
+     * @return Optional. Options to configure the search index.
+     * Structure is documented below.
+     * 
+     */
+    public Output<IndexSearchIndexOptions> searchIndexOptions() {
+        return this.searchIndexOptions;
     }
     /**
      * Whether to skip waiting for the index to be created.

@@ -24,6 +24,7 @@ __all__ = [
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
     'RepositoryMavenConfig',
+    'RepositoryPlatformLogsConfig',
     'RepositoryRemoteRepositoryConfig',
     'RepositoryRemoteRepositoryConfigAptRepository',
     'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository',
@@ -56,6 +57,7 @@ __all__ = [
     'GetRepositoryCleanupPolicyMostRecentVersionResult',
     'GetRepositoryDockerConfigResult',
     'GetRepositoryMavenConfigResult',
+    'GetRepositoryPlatformLogsConfigResult',
     'GetRepositoryRemoteRepositoryConfigResult',
     'GetRepositoryRemoteRepositoryConfigAptRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult',
@@ -521,6 +523,62 @@ class RepositoryMavenConfig(dict):
         Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
         """
         return pulumi.get(self, "version_policy")
+
+
+@pulumi.output_type
+class RepositoryPlatformLogsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loggingState":
+            suggest = "logging_state"
+        elif key == "severityLevel":
+            suggest = "severity_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryPlatformLogsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryPlatformLogsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryPlatformLogsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 logging_state: Optional[_builtins.str] = None,
+                 severity_level: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str logging_state: The state of the platform logs: enabled or disabled.
+               Possible values are: `ENABLED`, `DISABLED`.
+        :param _builtins.str severity_level: The severity level for the logs. Logs will be generated if their
+               severity level is >= than the value of the severity level mentioned here.
+               Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        if logging_state is not None:
+            pulumi.set(__self__, "logging_state", logging_state)
+        if severity_level is not None:
+            pulumi.set(__self__, "severity_level", severity_level)
+
+    @_builtins.property
+    @pulumi.getter(name="loggingState")
+    def logging_state(self) -> Optional[_builtins.str]:
+        """
+        The state of the platform logs: enabled or disabled.
+        Possible values are: `ENABLED`, `DISABLED`.
+        """
+        return pulumi.get(self, "logging_state")
+
+    @_builtins.property
+    @pulumi.getter(name="severityLevel")
+    def severity_level(self) -> Optional[_builtins.str]:
+        """
+        The severity level for the logs. Logs will be generated if their
+        severity level is >= than the value of the severity level mentioned here.
+        Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+        """
+        return pulumi.get(self, "severity_level")
 
 
 @pulumi.output_type
@@ -2180,6 +2238,37 @@ class GetRepositoryMavenConfigResult(dict):
         Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
         """
         return pulumi.get(self, "version_policy")
+
+
+@pulumi.output_type
+class GetRepositoryPlatformLogsConfigResult(dict):
+    def __init__(__self__, *,
+                 logging_state: _builtins.str,
+                 severity_level: _builtins.str):
+        """
+        :param _builtins.str logging_state: The state of the platform logs: enabled or disabled. Possible values: ["ENABLED", "DISABLED"]
+        :param _builtins.str severity_level: The severity level for the logs. Logs will be generated if their
+               severity level is >= than the value of the severity level mentioned here. Possible values: ["DEBUG", "INFO", "NOTICE", "WARNING", "ERROR", "CRITICAL", "ALERT", "EMERGENCY"]
+        """
+        pulumi.set(__self__, "logging_state", logging_state)
+        pulumi.set(__self__, "severity_level", severity_level)
+
+    @_builtins.property
+    @pulumi.getter(name="loggingState")
+    def logging_state(self) -> _builtins.str:
+        """
+        The state of the platform logs: enabled or disabled. Possible values: ["ENABLED", "DISABLED"]
+        """
+        return pulumi.get(self, "logging_state")
+
+    @_builtins.property
+    @pulumi.getter(name="severityLevel")
+    def severity_level(self) -> _builtins.str:
+        """
+        The severity level for the logs. Logs will be generated if their
+        severity level is >= than the value of the severity level mentioned here. Possible values: ["DEBUG", "INFO", "NOTICE", "WARNING", "ERROR", "CRITICAL", "ALERT", "EMERGENCY"]
+        """
+        return pulumi.get(self, "severity_level")
 
 
 @pulumi.output_type

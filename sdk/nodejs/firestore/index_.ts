@@ -364,6 +364,46 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Firestore Index Search Index Options
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "search-index-options-db",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     apiScope: "MONGODB_COMPATIBLE_API",
+ *     queryScope: "COLLECTION_GROUP",
+ *     multikey: true,
+ *     searchIndexOptions: {
+ *         textLanguage: "es",
+ *         textLanguageOverrideFieldPath: "lang",
+ *     },
+ *     fields: [{
+ *         fieldPath: "description",
+ *         searchConfig: {
+ *             textSpec: {
+ *                 indexSpecs: [{
+ *                     indexType: "TOKENIZED",
+ *                     matchType: "MATCH_GLOBALLY",
+ *                 }],
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ### Firestore Index Suppress Geojson Indexing
  *
  * ```typescript
@@ -529,6 +569,11 @@ export class Index extends pulumi.CustomResource {
      */
     declare public readonly queryScope: pulumi.Output<string | undefined>;
     /**
+     * Optional. Options to configure the search index.
+     * Structure is documented below.
+     */
+    declare public readonly searchIndexOptions: pulumi.Output<outputs.firestore.IndexSearchIndexOptions>;
+    /**
      * Whether to skip waiting for the index to be created.
      */
     declare public readonly skipWait: pulumi.Output<boolean | undefined>;
@@ -560,6 +605,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["queryScope"] = state?.queryScope;
+            resourceInputs["searchIndexOptions"] = state?.searchIndexOptions;
             resourceInputs["skipWait"] = state?.skipWait;
             resourceInputs["unique"] = state?.unique;
         } else {
@@ -579,6 +625,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["multikey"] = args?.multikey;
             resourceInputs["project"] = args?.project;
             resourceInputs["queryScope"] = args?.queryScope;
+            resourceInputs["searchIndexOptions"] = args?.searchIndexOptions;
             resourceInputs["skipWait"] = args?.skipWait;
             resourceInputs["unique"] = args?.unique;
             resourceInputs["name"] = undefined /*out*/;
@@ -652,6 +699,11 @@ export interface IndexState {
      */
     queryScope?: pulumi.Input<string | undefined>;
     /**
+     * Optional. Options to configure the search index.
+     * Structure is documented below.
+     */
+    searchIndexOptions?: pulumi.Input<inputs.firestore.IndexSearchIndexOptions | undefined>;
+    /**
      * Whether to skip waiting for the index to be created.
      */
     skipWait?: pulumi.Input<boolean | undefined>;
@@ -719,6 +771,11 @@ export interface IndexArgs {
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     queryScope?: pulumi.Input<string | undefined>;
+    /**
+     * Optional. Options to configure the search index.
+     * Structure is documented below.
+     */
+    searchIndexOptions?: pulumi.Input<inputs.firestore.IndexSearchIndexOptions | undefined>;
     /**
      * Whether to skip waiting for the index to be created.
      */

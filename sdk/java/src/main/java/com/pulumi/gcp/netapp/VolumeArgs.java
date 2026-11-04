@@ -424,6 +424,23 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Snap_reserve specifies percentage of volume storage reserved for
+     * snapshot storage. Default is 0 percent.
+     * 
+     */
+    @Import(name="snapReserve")
+    private @Nullable Output<Double> snapReserve;
+
+    /**
+     * @return Optional. Snap_reserve specifies percentage of volume storage reserved for
+     * snapshot storage. Default is 0 percent.
+     * 
+     */
+    public Optional<Output<Double>> snapReserve() {
+        return Optional.ofNullable(this.snapReserve);
+    }
+
+    /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume&#39;s snapshots. Will enable &#34;Previous Versions&#34; support for SMB.
      * 
      */
@@ -544,6 +561,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.securityStyle = $.securityStyle;
         this.shareName = $.shareName;
         this.smbSettings = $.smbSettings;
+        this.snapReserve = $.snapReserve;
         this.snapshotDirectory = $.snapshotDirectory;
         this.snapshotPolicy = $.snapshotPolicy;
         this.storagePool = $.storagePool;
@@ -1139,6 +1157,29 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder smbSettings(String... smbSettings) {
             return smbSettings(List.of(smbSettings));
+        }
+
+        /**
+         * @param snapReserve Optional. Snap_reserve specifies percentage of volume storage reserved for
+         * snapshot storage. Default is 0 percent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapReserve(@Nullable Output<Double> snapReserve) {
+            $.snapReserve = snapReserve;
+            return this;
+        }
+
+        /**
+         * @param snapReserve Optional. Snap_reserve specifies percentage of volume storage reserved for
+         * snapshot storage. Default is 0 percent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapReserve(Double snapReserve) {
+            return snapReserve(Output.of(snapReserve));
         }
 
         /**

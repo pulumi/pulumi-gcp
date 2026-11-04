@@ -84,6 +84,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+     * 
+     */
+    @Import(name="databaseCenterIntegration")
+    private @Nullable Output<String> databaseCenterIntegration;
+
+    /**
+     * @return The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> databaseCenterIntegration() {
+        return Optional.ofNullable(this.databaseCenterIntegration);
+    }
+
+    /**
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
      * `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -556,6 +571,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.backupdrBackup = $.backupdrBackup;
         this.blueGreenDeployment = $.blueGreenDeployment;
         this.clone = $.clone;
+        this.databaseCenterIntegration = $.databaseCenterIntegration;
         this.databaseVersion = $.databaseVersion;
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
@@ -674,6 +690,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder clone_(DatabaseInstanceCloneArgs clone) {
             return clone_(Output.of(clone));
+        }
+
+        /**
+         * @param databaseCenterIntegration The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseCenterIntegration(@Nullable Output<String> databaseCenterIntegration) {
+            $.databaseCenterIntegration = databaseCenterIntegration;
+            return this;
+        }
+
+        /**
+         * @param databaseCenterIntegration The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseCenterIntegration(String databaseCenterIntegration) {
+            return databaseCenterIntegration(Output.of(databaseCenterIntegration));
         }
 
         /**

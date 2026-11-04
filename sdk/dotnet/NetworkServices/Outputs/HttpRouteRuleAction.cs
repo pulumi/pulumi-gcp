@@ -24,10 +24,20 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.HttpRouteRuleActionDestination> Destinations;
         /// <summary>
+        /// Static HTTP Response object to be returned regardless of the request.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.HttpRouteRuleActionDirectResponse? DirectResponse;
+        /// <summary>
         /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.HttpRouteRuleActionFaultInjectionPolicy? FaultInjectionPolicy;
+        /// <summary>
+        /// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        public readonly string? IdleTimeout;
         /// <summary>
         /// If set, the request is directed as configured by this field.
         /// Structure is documented below.
@@ -69,7 +79,11 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             ImmutableArray<Outputs.HttpRouteRuleActionDestination> destinations,
 
+            Outputs.HttpRouteRuleActionDirectResponse? directResponse,
+
             Outputs.HttpRouteRuleActionFaultInjectionPolicy? faultInjectionPolicy,
+
+            string? idleTimeout,
 
             Outputs.HttpRouteRuleActionRedirect? redirect,
 
@@ -87,7 +101,9 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         {
             CorsPolicy = corsPolicy;
             Destinations = destinations;
+            DirectResponse = directResponse;
             FaultInjectionPolicy = faultInjectionPolicy;
+            IdleTimeout = idleTimeout;
             Redirect = redirect;
             RequestHeaderModifier = requestHeaderModifier;
             RequestMirrorPolicy = requestMirrorPolicy;

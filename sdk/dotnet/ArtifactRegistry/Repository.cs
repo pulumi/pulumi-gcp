@@ -997,6 +997,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// If this is true, an unspecified repo type will be treated as error rather
+        /// than defaulting to standard.
+        /// </summary>
+        [Output("disallowUnspecifiedMode")]
+        public Output<bool?> DisallowUnspecifiedMode { get; private set; } = null!;
+
+        /// <summary>
         /// Docker repository config contains repository level configuration for the repositories of docker type.
         /// Structure is documented below.
         /// </summary>
@@ -1074,6 +1081,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for platform logs.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("platformLogsConfig")]
+        public Output<Outputs.RepositoryPlatformLogsConfig?> PlatformLogsConfig { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -1221,6 +1235,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If this is true, an unspecified repo type will be treated as error rather
+        /// than defaulting to standard.
+        /// </summary>
+        [Input("disallowUnspecifiedMode")]
+        public Input<bool>? DisallowUnspecifiedMode { get; set; }
+
+        /// <summary>
         /// Docker repository config contains repository level configuration for the repositories of docker type.
         /// Structure is documented below.
         /// </summary>
@@ -1291,6 +1312,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// Configuration for platform logs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("platformLogsConfig")]
+        public Input<Inputs.RepositoryPlatformLogsConfigArgs>? PlatformLogsConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -1380,6 +1408,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// If this is true, an unspecified repo type will be treated as error rather
+        /// than defaulting to standard.
+        /// </summary>
+        [Input("disallowUnspecifiedMode")]
+        public Input<bool>? DisallowUnspecifiedMode { get; set; }
 
         /// <summary>
         /// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -1475,6 +1510,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configuration for platform logs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("platformLogsConfig")]
+        public Input<Inputs.RepositoryPlatformLogsConfigGetArgs>? PlatformLogsConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

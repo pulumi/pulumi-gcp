@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.discoveryengine.inputs.AssistantCustomerPolicyArgs;
 import com.pulumi.gcp.discoveryengine.inputs.AssistantGenerationConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,6 +64,37 @@ public final class AssistantArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<AssistantCustomerPolicyArgs>> customerPolicy() {
         return Optional.ofNullable(this.customerPolicy);
+    }
+
+    /**
+     * This field controls the default web grounding toggle for end users if
+     * `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+     * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+     * By default, this field is set to false. If `webGroundingType` is
+     * `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+     * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+     * grounding enabled by default on UI. If true, grounding toggle will be
+     * disabled by default on UI. End users can still enable web grounding in
+     * the UI if web grounding is enabled.
+     * 
+     */
+    @Import(name="defaultWebGroundingToggleOff")
+    private @Nullable Output<Boolean> defaultWebGroundingToggleOff;
+
+    /**
+     * @return This field controls the default web grounding toggle for end users if
+     * `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+     * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+     * By default, this field is set to false. If `webGroundingType` is
+     * `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+     * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+     * grounding enabled by default on UI. If true, grounding toggle will be
+     * disabled by default on UI. End users can still enable web grounding in
+     * the UI if web grounding is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> defaultWebGroundingToggleOff() {
+        return Optional.ofNullable(this.defaultWebGroundingToggleOff);
     }
 
     /**
@@ -213,6 +245,7 @@ public final class AssistantArgs extends com.pulumi.resources.ResourceArgs {
         this.assistantId = $.assistantId;
         this.collectionId = $.collectionId;
         this.customerPolicy = $.customerPolicy;
+        this.defaultWebGroundingToggleOff = $.defaultWebGroundingToggleOff;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -304,6 +337,43 @@ public final class AssistantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customerPolicy(AssistantCustomerPolicyArgs customerPolicy) {
             return customerPolicy(Output.of(customerPolicy));
+        }
+
+        /**
+         * @param defaultWebGroundingToggleOff This field controls the default web grounding toggle for end users if
+         * `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+         * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+         * By default, this field is set to false. If `webGroundingType` is
+         * `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+         * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+         * grounding enabled by default on UI. If true, grounding toggle will be
+         * disabled by default on UI. End users can still enable web grounding in
+         * the UI if web grounding is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultWebGroundingToggleOff(@Nullable Output<Boolean> defaultWebGroundingToggleOff) {
+            $.defaultWebGroundingToggleOff = defaultWebGroundingToggleOff;
+            return this;
+        }
+
+        /**
+         * @param defaultWebGroundingToggleOff This field controls the default web grounding toggle for end users if
+         * `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+         * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+         * By default, this field is set to false. If `webGroundingType` is
+         * `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+         * `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+         * grounding enabled by default on UI. If true, grounding toggle will be
+         * disabled by default on UI. End users can still enable web grounding in
+         * the UI if web grounding is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultWebGroundingToggleOff(Boolean defaultWebGroundingToggleOff) {
+            return defaultWebGroundingToggleOff(Output.of(defaultWebGroundingToggleOff));
         }
 
         /**

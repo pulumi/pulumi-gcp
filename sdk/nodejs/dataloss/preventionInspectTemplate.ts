@@ -144,18 +144,38 @@ import * as utilities from "../utilities";
  *     description: "My description",
  *     displayName: "display_name",
  *     inspectConfig: {
- *         customInfoTypes: [{
- *             infoType: {
- *                 name: "MY_CUSTOM_TYPE",
+ *         customInfoTypes: [
+ *             {
+ *                 infoType: {
+ *                     name: "MY_CUSTOM_TYPE",
+ *                 },
+ *                 likelihood: "UNLIKELY",
+ *                 regex: {
+ *                     pattern: "test*",
+ *                 },
  *             },
- *             likelihood: "UNLIKELY",
- *             regex: {
- *                 pattern: "test*",
+ *             {
+ *                 infoType: {
+ *                     name: "MY_METADATA_KV_TYPE",
+ *                 },
+ *                 likelihood: "POSSIBLE",
+ *                 metadataKeyValueExpression: {
+ *                     keyRegex: "key.*",
+ *                     valueRegex: "val.*",
+ *                 },
  *             },
- *         }],
- *         infoTypes: [{
- *             name: "EMAIL_ADDRESS",
- *         }],
+ *         ],
+ *         infoTypes: [
+ *             {
+ *                 name: "EMAIL_ADDRESS",
+ *             },
+ *             {
+ *                 name: "OBJECT_TYPE/PERSON",
+ *             },
+ *             {
+ *                 name: "OBJECT_TYPE/PERSON/PASSPORT",
+ *             },
+ *         ],
  *         minLikelihood: "UNLIKELY",
  *         ruleSets: [
  *             {
@@ -168,6 +188,28 @@ import * as utilities from "../utilities";
  *                             pattern: ".+@example.com",
  *                         },
  *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
+ *                     },
+ *                 }],
+ *             },
+ *             {
+ *                 infoTypes: [{
+ *                     name: "OBJECT_TYPE/PERSON",
+ *                 }],
+ *                 rules: [{
+ *                     exclusionRule: {
+ *                         matchingType: "MATCHING_TYPE_RULE_SPECIFIC",
+ *                         excludeByImageFindings: {
+ *                             infoTypes: [{
+ *                                 name: "OBJECT_TYPE/PERSON/PASSPORT",
+ *                                 version: "latest",
+ *                                 sensitivityScore: {
+ *                                     score: "SENSITIVITY_LOW",
+ *                                 },
+ *                             }],
+ *                             imageContainmentType: {
+ *                                 fullyInside: {},
+ *                             },
+ *                         },
  *                     },
  *                 }],
  *             },

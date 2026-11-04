@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.networkservices.outputs.HttpRouteRuleActionRequestMirrorPolicyDestination;
+import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,11 @@ public final class HttpRouteRuleActionRequestMirrorPolicy {
      * 
      */
     private @Nullable HttpRouteRuleActionRequestMirrorPolicyDestination destination;
+    /**
+     * @return The percentage of requests to get mirrored to the desired destination.
+     * 
+     */
+    private @Nullable Double mirrorPercent;
 
     private HttpRouteRuleActionRequestMirrorPolicy() {}
     /**
@@ -26,6 +32,13 @@ public final class HttpRouteRuleActionRequestMirrorPolicy {
      */
     public Optional<HttpRouteRuleActionRequestMirrorPolicyDestination> destination() {
         return Optional.ofNullable(this.destination);
+    }
+    /**
+     * @return The percentage of requests to get mirrored to the desired destination.
+     * 
+     */
+    public Optional<Double> mirrorPercent() {
+        return Optional.ofNullable(this.mirrorPercent);
     }
 
     public static Builder builder() {
@@ -38,10 +51,12 @@ public final class HttpRouteRuleActionRequestMirrorPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable HttpRouteRuleActionRequestMirrorPolicyDestination destination;
+        private @Nullable Double mirrorPercent;
         public Builder() {}
         public Builder(HttpRouteRuleActionRequestMirrorPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
+    	      this.mirrorPercent = defaults.mirrorPercent;
         }
 
         @CustomType.Setter
@@ -50,9 +65,16 @@ public final class HttpRouteRuleActionRequestMirrorPolicy {
             this.destination = destination;
             return this;
         }
+        @CustomType.Setter
+        public Builder mirrorPercent(@Nullable Double mirrorPercent) {
+
+            this.mirrorPercent = mirrorPercent;
+            return this;
+        }
         public HttpRouteRuleActionRequestMirrorPolicy build() {
             final var _resultValue = new HttpRouteRuleActionRequestMirrorPolicy();
             _resultValue.destination = destination;
+            _resultValue.mirrorPercent = mirrorPercent;
             return _resultValue;
         }
     }

@@ -25,6 +25,7 @@ class DatabaseInstanceArgs:
                  backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
                  blue_green_deployment: pulumi.Input[Optional['DatabaseInstanceBlueGreenDeploymentArgs']] = None,
                  clone: pulumi.Input[Optional['DatabaseInstanceCloneArgs']] = None,
+                 database_center_integration: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_confidential_mode: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -70,6 +71,7 @@ class DatabaseInstanceArgs:
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
+        :param pulumi.Input[_builtins.str] database_center_integration: The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -140,6 +142,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "blue_green_deployment", blue_green_deployment)
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
+        if database_center_integration is not None:
+            pulumi.set(__self__, "database_center_integration", database_center_integration)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
@@ -250,6 +254,18 @@ class DatabaseInstanceArgs:
     @clone.setter
     def clone(self, value: pulumi.Input[Optional['DatabaseInstanceCloneArgs']]):
         pulumi.set(self, "clone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseCenterIntegration")
+    def database_center_integration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+        """
+        return pulumi.get(self, "database_center_integration")
+
+    @database_center_integration.setter
+    def database_center_integration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "database_center_integration", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -586,6 +602,7 @@ class _DatabaseInstanceState:
                  blue_green_deployment: pulumi.Input[Optional['DatabaseInstanceBlueGreenDeploymentArgs']] = None,
                  clone: pulumi.Input[Optional['DatabaseInstanceCloneArgs']] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_center_integration: pulumi.Input[Optional[_builtins.str]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -636,6 +653,7 @@ class _DatabaseInstanceState:
                configuration is detailed below.
         :param pulumi.Input[_builtins.str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
+        :param pulumi.Input[_builtins.str] database_center_integration: The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -727,6 +745,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "clone", clone)
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if database_center_integration is not None:
+            pulumi.set(__self__, "database_center_integration", database_center_integration)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
         if deletion_policy is not None:
@@ -864,6 +884,18 @@ class _DatabaseInstanceState:
     @connection_name.setter
     def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseCenterIntegration")
+    def database_center_integration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+        """
+        return pulumi.get(self, "database_center_integration")
+
+    @database_center_integration.setter
+    def database_center_integration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "database_center_integration", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseVersion")
@@ -1336,6 +1368,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
                  blue_green_deployment: pulumi.Input[Optional[Union['DatabaseInstanceBlueGreenDeploymentArgs', 'DatabaseInstanceBlueGreenDeploymentArgsDict', 'outputs.DatabaseInstanceBlueGreenDeployment']]] = None,
                  clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']]] = None,
+                 database_center_integration: pulumi.Input[Optional[_builtins.str]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1481,10 +1514,10 @@ class DatabaseInstance(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "psc_configs": [{
-                        "psc_enabled": True,
-                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
-                    }],
+                    "psc_config": {
+                        "pscEnabled": True,
+                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                    },
                     "ipv4_enabled": False,
                 },
                 "backup_configuration": {
@@ -1507,14 +1540,14 @@ class DatabaseInstance(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "psc_configs": [{
-                        "psc_enabled": True,
-                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
-                        "psc_auto_connections": [{
-                            "consumer_network": "network-name",
-                            "consumer_service_project_id": "project-id",
+                    "psc_config": {
+                        "pscEnabled": True,
+                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                        "pscAutoConnections": [{
+                            "consumerNetwork": "network-name",
+                            "consumerServiceProjectId": "project-id",
                         }],
-                    }],
+                    },
                     "ipv4_enabled": False,
                 },
                 "backup_configuration": {
@@ -1537,11 +1570,11 @@ class DatabaseInstance(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "psc_configs": [{
-                        "psc_enabled": True,
-                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
-                        "network_attachment_uri": "network-attachment-uri",
-                    }],
+                    "psc_config": {
+                        "pscEnabled": True,
+                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                        "networkAttachmentUri": "network-attachment-uri",
+                    },
                     "ipv4_enabled": False,
                 },
                 "backup_configuration": {
@@ -1729,6 +1762,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
+        :param pulumi.Input[_builtins.str] database_center_integration: The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -1926,10 +1960,10 @@ class DatabaseInstance(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "psc_configs": [{
-                        "psc_enabled": True,
-                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
-                    }],
+                    "psc_config": {
+                        "pscEnabled": True,
+                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                    },
                     "ipv4_enabled": False,
                 },
                 "backup_configuration": {
@@ -1952,14 +1986,14 @@ class DatabaseInstance(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "psc_configs": [{
-                        "psc_enabled": True,
-                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
-                        "psc_auto_connections": [{
-                            "consumer_network": "network-name",
-                            "consumer_service_project_id": "project-id",
+                    "psc_config": {
+                        "pscEnabled": True,
+                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                        "pscAutoConnections": [{
+                            "consumerNetwork": "network-name",
+                            "consumerServiceProjectId": "project-id",
                         }],
-                    }],
+                    },
                     "ipv4_enabled": False,
                 },
                 "backup_configuration": {
@@ -1982,11 +2016,11 @@ class DatabaseInstance(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "ip_configuration": {
-                    "psc_configs": [{
-                        "psc_enabled": True,
-                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
-                        "network_attachment_uri": "network-attachment-uri",
-                    }],
+                    "psc_config": {
+                        "pscEnabled": True,
+                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                        "networkAttachmentUri": "network-attachment-uri",
+                    },
                     "ipv4_enabled": False,
                 },
                 "backup_configuration": {
@@ -2181,6 +2215,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
                  blue_green_deployment: pulumi.Input[Optional[Union['DatabaseInstanceBlueGreenDeploymentArgs', 'DatabaseInstanceBlueGreenDeploymentArgsDict', 'outputs.DatabaseInstanceBlueGreenDeployment']]] = None,
                  clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']]] = None,
+                 database_center_integration: pulumi.Input[Optional[_builtins.str]] = None,
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2218,6 +2253,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["backupdr_backup"] = backupdr_backup
             __props__.__dict__["blue_green_deployment"] = blue_green_deployment
             __props__.__dict__["clone"] = clone
+            __props__.__dict__["database_center_integration"] = database_center_integration
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
             __props__.__dict__["database_version"] = database_version
@@ -2274,6 +2310,7 @@ class DatabaseInstance(pulumi.CustomResource):
             blue_green_deployment: pulumi.Input[Optional[Union['DatabaseInstanceBlueGreenDeploymentArgs', 'DatabaseInstanceBlueGreenDeploymentArgsDict', 'outputs.DatabaseInstanceBlueGreenDeployment']]] = None,
             clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']]] = None,
             connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_center_integration: pulumi.Input[Optional[_builtins.str]] = None,
             database_version: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2328,6 +2365,7 @@ class DatabaseInstance(pulumi.CustomResource):
                configuration is detailed below.
         :param pulumi.Input[_builtins.str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
+        :param pulumi.Input[_builtins.str] database_center_integration: The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
         :param pulumi.Input[_builtins.str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -2418,6 +2456,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["blue_green_deployment"] = blue_green_deployment
         __props__.__dict__["clone"] = clone
         __props__.__dict__["connection_name"] = connection_name
+        __props__.__dict__["database_center_integration"] = database_center_integration
         __props__.__dict__["database_version"] = database_version
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
@@ -2501,6 +2540,14 @@ class DatabaseInstance(pulumi.CustomResource):
         connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
         """
         return pulumi.get(self, "connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseCenterIntegration")
+    def database_center_integration(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+        """
+        return pulumi.get(self, "database_center_integration")
 
     @_builtins.property
     @pulumi.getter(name="databaseVersion")

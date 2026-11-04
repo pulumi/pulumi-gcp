@@ -30,6 +30,20 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         [Input("column")]
         public Input<string>? Column { get; set; }
 
+        [Input("debugQueries")]
+        private InputList<Inputs.DatascanDataQualitySpecRuleDebugQueryArgs>? _debugQueries;
+
+        /// <summary>
+        /// Specifies the debug queries for this rule.
+        /// Currently, only one query is supported, but this may be expanded in the future.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.DatascanDataQualitySpecRuleDebugQueryArgs> DebugQueries
+        {
+            get => _debugQueries ?? (_debugQueries = new InputList<Inputs.DatascanDataQualitySpecRuleDebugQueryArgs>());
+            set => _debugQueries = value;
+        }
+
         /// <summary>
         /// Description of the rule.
         /// The maximum length is 1,024 characters.

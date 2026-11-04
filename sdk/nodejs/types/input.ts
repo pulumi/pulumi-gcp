@@ -7772,6 +7772,20 @@ export namespace artifactregistry {
         versionPolicy?: pulumi.Input<string | undefined>;
     }
 
+    export interface RepositoryPlatformLogsConfig {
+        /**
+         * The state of the platform logs: enabled or disabled.
+         * Possible values are: `ENABLED`, `DISABLED`.
+         */
+        loggingState?: pulumi.Input<string | undefined>;
+        /**
+         * The severity level for the logs. Logs will be generated if their
+         * severity level is >= than the value of the severity level mentioned here.
+         * Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
+         */
+        severityLevel?: pulumi.Input<string | undefined>;
+    }
+
     export interface RepositoryRemoteRepositoryConfig {
         /**
          * Specific settings for an Apt remote repository.
@@ -10031,7 +10045,10 @@ export namespace biglake {
          */
         required: pulumi.Input<boolean>;
         /**
-         * The type of the field.
+         * The type of the field. Primitive types are plain names such as `long`. List, map and
+         * struct types are JSON objects as defined by the
+         * [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+         * typically written with `jsonencode`.
          */
         type: pulumi.Input<string>;
     }
@@ -10516,6 +10533,8 @@ export namespace bigquery {
          * scheduled at or after the end time. The end time can be changed at any
          * moment. The time when a data transfer can be triggered manually is not
          * limited by this option.
+         *
+         * <a name="nestedScheduleOptionsV2"></a>The `scheduleOptionsV2` block supports:
          */
         endTime?: pulumi.Input<string | undefined>;
         /**
@@ -10526,6 +10545,23 @@ export namespace bigquery {
          * limited by this option.
          */
         startTime?: pulumi.Input<string | undefined>;
+    }
+
+    export interface DataTransferConfigScheduleOptionsV2 {
+        /**
+         * Event-driven transfer schedule options. If set, the transfer will be
+         * scheduled upon events arriving.
+         */
+        eventDrivenSchedule: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptionsV2EventDrivenSchedule>;
+    }
+
+    export interface DataTransferConfigScheduleOptionsV2EventDrivenSchedule {
+        /**
+         * Pub/Sub subscription name used to receive events. Only the
+         * Google Cloud Storage data source supports this option. Format:
+         * projects/{project}/subscriptions/{subscription}.
+         */
+        pubsubSubscription: pulumi.Input<string>;
     }
 
     export interface DataTransferConfigSensitiveParams {
@@ -14388,6 +14424,16 @@ export namespace certificateauthority {
          * expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
          */
         maximumLifetime?: pulumi.Input<string | undefined>;
+        /**
+         * Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+         * If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+         * will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don't
+         * appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+         * add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+         * set in this CaPool's baseline_values.
+         * Structure is documented below.
+         */
+        passthroughExtensions?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyPassthroughExtensions | undefined>;
     }
 
     export interface CaPoolIssuancePolicyAllowedIssuanceModes {
@@ -14713,6 +14759,27 @@ export namespace certificateauthority {
          * Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
          */
         title?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CaPoolIssuancePolicyPassthroughExtensions {
+        /**
+         * A set of ObjectIds identifying custom X.509 extensions.
+         * Will be combined with knownExtensions to determine the full set of X.509 extensions.
+         * Structure is documented below.
+         */
+        additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension>[] | undefined>;
+        /**
+         * A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+         * Acceptable values are: `BASE_KEY_USAGE`, `EXTENDED_KEY_USAGE`, `CA_OPTIONS`, `POLICY_IDS`, `AIA_OCSP_SERVERS`, `NAME_CONSTRAINTS`.
+         */
+        knownExtensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface CaPoolPublishingOptions {
@@ -52366,12 +52433,30 @@ export namespace compute {
 
     export interface RegionNetworkEndpointGroupPscData {
         /**
+         * (Output)
+         * Address allocated from given subnetwork for PSC. This IP address acts
+         * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+         */
+        consumerPscAddress?: pulumi.Input<string | undefined>;
+        /**
          * The PSC producer port to use when consumer PSC NEG connects to a producer. If
          * this flag isn't specified for a PSC NEG with endpoint type
          * private-service-connect, then PSC NEG will be connected to a first port in the
          * available PSC producer port range.
          */
         producerPort?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The PSC connection id of the PSC Network Endpoint Group Consumer.
+         */
+        pscConnectionId?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The connection status of the PSC Network Endpoint Group Consumer.
+         * Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+         * `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+         */
+        pscConnectionStatus?: pulumi.Input<string | undefined>;
     }
 
     export interface RegionNetworkEndpointGroupServerlessDeployment {
@@ -71921,6 +72006,11 @@ export namespace dataloss {
          * Structure is documented below.
          */
         recordTransformations?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations | undefined>;
+        /**
+         * Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+         * Structure is documented below.
+         */
+        transformationErrorHandling?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling | undefined>;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
@@ -75137,6 +75227,23 @@ export namespace dataloss {
         seconds?: pulumi.Input<number | undefined>;
     }
 
+    export interface PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling {
+        /**
+         * Ignore errors
+         */
+        leaveUntransformed?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformed | undefined>;
+        /**
+         * Throw an error
+         */
+        throwError?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowError | undefined>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformed {
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowError {
+    }
+
     export interface PreventionDiscoveryConfigAction {
         /**
          * Export data profiles into a provided location
@@ -76189,6 +76296,11 @@ export namespace dataloss {
          */
         likelihood?: pulumi.Input<string | undefined>;
         /**
+         * Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+         * Structure is documented below.
+         */
+        metadataKeyValueExpression?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression | undefined>;
+        /**
          * Regular expression which defines the rule.
          * Structure is documented below.
          */
@@ -76262,6 +76374,17 @@ export namespace dataloss {
         score: pulumi.Input<string>;
     }
 
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression {
+        /**
+         * The regular expression for the key.
+         */
+        keyRegex: pulumi.Input<string>;
+        /**
+         * The regular expression for the value.
+         */
+        valueRegex: pulumi.Input<string>;
+    }
+
     export interface PreventionInspectTemplateInspectConfigCustomInfoTypeRegex {
         /**
          * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
@@ -76295,12 +76418,11 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Name of the information type.
          */
         name: pulumi.Input<string>;
         /**
-         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Optional custom sensitivity for this InfoType.
          * Structure is documented below.
          */
         sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore | undefined>;
@@ -76414,12 +76536,11 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigRuleSetInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Name of the information type.
          */
         name: pulumi.Input<string>;
         /**
-         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Optional custom sensitivity for this InfoType.
          * Structure is documented below.
          */
         sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore | undefined>;
@@ -76463,13 +76584,18 @@ export namespace dataloss {
          */
         excludeByHotword?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword | undefined>;
         /**
+         * The rule to exclude image findings based on spatial relationships with other image findings.
+         * Structure is documented below.
+         */
+        excludeByImageFindings?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings | undefined>;
+        /**
          * Set of infoTypes for which findings would affect this rule.
          * Structure is documented below.
          */
         excludeInfoTypes?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes | undefined>;
         /**
          * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
          */
         matchingType: pulumi.Input<string>;
         /**
@@ -76548,6 +76674,67 @@ export namespace dataloss {
         windowBefore?: pulumi.Input<number | undefined>;
     }
 
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings {
+        /**
+         * Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+         * Structure is documented below.
+         */
+        imageContainmentType?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType | undefined>;
+        /**
+         * A list of image-supported infoTypes to be used as context for the exclusion rule.
+         * Structure is documented below.
+         */
+        infoTypes: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType>[]>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType {
+        /**
+         * Defines a condition where one bounding box encloses another.
+         */
+        encloses?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEncloses | undefined>;
+        /**
+         * Defines a condition where one bounding box is fully inside another.
+         */
+        fullyInside?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInside | undefined>;
+        /**
+         * Defines a condition for overlapping bounding boxes.
+         */
+        overlaps?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlaps | undefined>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEncloses {
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInside {
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlaps {
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType {
+        /**
+         * Name of the information type.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Optional custom sensitivity for this InfoType.
+         * Structure is documented below.
+         */
+        sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore | undefined>;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: pulumi.Input<string>;
+    }
+
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
         /**
          * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
@@ -76558,12 +76745,11 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * Name of the information type.
          */
         name: pulumi.Input<string>;
         /**
-         * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Optional custom sensitivity for this InfoType.
          * Structure is documented below.
          */
         sensitivityScore?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore | undefined>;
@@ -77995,6 +78181,11 @@ export namespace dataplex {
 
     export interface DataProductAccessGroup {
         /**
+         * Configuration for the default IAM role associated with the access group.
+         * Structure is documented below.
+         */
+        defaultIamRoleConfig?: pulumi.Input<inputs.dataplex.DataProductAccessGroupDefaultIamRoleConfig | undefined>;
+        /**
          * Description of the access group.
          */
         description?: pulumi.Input<string | undefined>;
@@ -78015,6 +78206,14 @@ export namespace dataplex {
          * Structure is documented below.
          */
         principal: pulumi.Input<inputs.dataplex.DataProductAccessGroupPrincipal>;
+    }
+
+    export interface DataProductAccessGroupDefaultIamRoleConfig {
+        /**
+         * Default IAM role associated with the access group, such as
+         * `roles/bigquery.dataViewer`.
+         */
+        role: pulumi.Input<string>;
     }
 
     export interface DataProductAccessGroupPrincipal {
@@ -78157,6 +78356,11 @@ export namespace dataplex {
          */
         catalogPublishingEnabled?: pulumi.Input<boolean | undefined>;
         /**
+         * Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+         * Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+         */
+        generationScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
          * The SQL dialect to use in the generated SQL queries.
          * If not specified, the default dialect is Google SQL.
          * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
@@ -78181,6 +78385,11 @@ export namespace dataplex {
          * Structure is documented below.
          */
         includeFields?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpecIncludeFields | undefined>;
+        /**
+         * The execution mode for the profile scan.
+         * Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+         */
+        mode?: pulumi.Input<string | undefined>;
         /**
          * Actions to take upon job completion.
          * Structure is documented below.
@@ -78339,6 +78548,12 @@ export namespace dataplex {
          */
         column?: pulumi.Input<string | undefined>;
         /**
+         * Specifies the debug queries for this rule.
+         * Currently, only one query is supported, but this may be expanded in the future.
+         * Structure is documented below.
+         */
+        debugQueries?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanDataQualitySpecRuleDebugQuery>[] | undefined>;
+        /**
          * Description of the rule.
          * The maximum length is 1,024 characters.
          */
@@ -78415,6 +78630,18 @@ export namespace dataplex {
          * Row-level rule which evaluates whether each column value is unique.
          */
         uniquenessExpectation?: pulumi.Input<inputs.dataplex.DatascanDataQualitySpecRuleUniquenessExpectation | undefined>;
+    }
+
+    export interface DatascanDataQualitySpecRuleDebugQuery {
+        /**
+         * Specifies the description of the debug query.
+         * The maximum length is 1,024 characters.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * Specifies the SQL statement to be executed.
+         */
+        sqlStatement: pulumi.Input<string>;
     }
 
     export interface DatascanDataQualitySpecRuleNonNullExpectation {
@@ -82649,7 +82876,7 @@ export namespace dataproc {
          */
         endpointConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigEndpointConfig | undefined>;
         /**
-         * The shared Compute Engine config settings for all instances in a cluster.
+         * The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
          */
         gceClusterConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig | undefined>;
         /**
@@ -82669,6 +82896,10 @@ export namespace dataproc {
          */
         masterConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfig | undefined>;
         /**
+         * The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+         */
+        masterFlexibleConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig | undefined>;
+        /**
          * Metastore configuration.
          */
         metastoreConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig | undefined>;
@@ -82676,6 +82907,10 @@ export namespace dataproc {
          * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          */
         secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig | undefined>;
+        /**
+         * The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+         */
+        secondaryWorkerFlexibleConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig | undefined>;
         /**
          * Security settings for the cluster.
          */
@@ -82694,10 +82929,14 @@ export namespace dataproc {
         tempBucket?: pulumi.Input<string | undefined>;
         /**
          * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+         */
+        workerConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig | undefined>;
+        /**
+         * The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
          *
          * ***
          */
-        workerConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig | undefined>;
+        workerFlexibleConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig | undefined>;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
@@ -82734,6 +82973,10 @@ export namespace dataproc {
          * The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
          */
         metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * Multi-zone configuration for cluster instances. Structure is documented below.
+         */
+        multiZoneConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig | undefined>;
         /**
          * The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
          */
@@ -82774,6 +83017,13 @@ export namespace dataproc {
          * The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
          */
         zone?: pulumi.Input<string | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig {
+        /**
+         * Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+         */
+        targetShape?: pulumi.Input<string | undefined>;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
@@ -83085,6 +83335,25 @@ export namespace dataproc {
         instanceTemplateName?: pulumi.Input<string | undefined>;
     }
 
+    export interface WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig {
+        /**
+         * Size of the boot disk in GB for each instance in the instance group.
+         */
+        bootDiskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The core count for each instance in the instance group.
+         */
+        coreCount?: pulumi.Input<number | undefined>;
+        /**
+         * The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+         */
+        hardwareClass?: pulumi.Input<string | undefined>;
+        /**
+         * Number of instances in the instance group.
+         */
+        numInstances?: pulumi.Input<number | undefined>;
+    }
+
     export interface WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
         /**
          * Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
@@ -83329,6 +83598,25 @@ export namespace dataproc {
          * Output only. The name of the Instance Template used for the Managed Instance Group.
          */
         instanceTemplateName?: pulumi.Input<string | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig {
+        /**
+         * Size of the boot disk in GB for each instance in the instance group.
+         */
+        bootDiskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The core count for each instance in the instance group.
+         */
+        coreCount?: pulumi.Input<number | undefined>;
+        /**
+         * The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+         */
+        hardwareClass?: pulumi.Input<string | undefined>;
+        /**
+         * Number of instances in the instance group.
+         */
+        numInstances?: pulumi.Input<number | undefined>;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
@@ -83652,6 +83940,25 @@ export namespace dataproc {
          * Output only. The name of the Instance Template used for the Managed Instance Group.
          */
         instanceTemplateName?: pulumi.Input<string | undefined>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig {
+        /**
+         * Size of the boot disk in GB for each instance in the instance group.
+         */
+        bootDiskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The core count for each instance in the instance group.
+         */
+        coreCount?: pulumi.Input<number | undefined>;
+        /**
+         * The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+         */
+        hardwareClass?: pulumi.Input<string | undefined>;
+        /**
+         * Number of instances in the instance group.
+         */
+        numInstances?: pulumi.Input<number | undefined>;
     }
 }
 
@@ -94788,6 +95095,24 @@ export namespace eventarc {
         logSeverity?: pulumi.Input<string | undefined>;
     }
 
+    export interface GoogleApiSourceOrganizationSubscription {
+        /**
+         * Enable org level subscription.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
+    export interface GoogleApiSourceProjectSubscriptions {
+        /**
+         * A list of projects to receive events from.
+         * All the projects must be in the same org. The listed projects should have
+         * the format project/{identifier} where identifier can be either the
+         * project id for project number. A single list may contain both formats. At
+         * most 100 projects can be listed.
+         */
+        lists: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface MessageBusLoggingConfig {
         /**
          * Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
@@ -97130,6 +97455,18 @@ export namespace firestore {
     }
 
     export interface IndexFieldVectorConfigFlat {
+    }
+
+    export interface IndexSearchIndexOptions {
+        /**
+         * Optional. The language code used to parse all text fields included in the search index,
+         * for example, "en", "es", "jp".
+         */
+        textLanguage?: pulumi.Input<string | undefined>;
+        /**
+         * Optional. The path to the field that records the text language override of each document.
+         */
+        textLanguageOverrideFieldPath?: pulumi.Input<string | undefined>;
     }
 
     export interface UserCredsResourceIdentity {
@@ -107525,6 +107862,18 @@ export namespace integrationconnectors {
          */
         status?: pulumi.Input<string | undefined>;
     }
+
+    export interface ConnectionTrafficShapingConfig {
+        /**
+         * Specifies the duration over which the API call quota limits are calculated.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Maximum number of api calls allowed.
+         */
+        quotaLimit: pulumi.Input<string>;
+    }
 }
 
 export namespace kms {
@@ -111872,6 +112221,12 @@ export namespace modelarmor {
 
     export interface TemplateFilterConfig {
         /**
+         * Settings for customizing filter rules. Note: This field is not supported in
+         * FloorSetting and Streaming Sanitization APIs.
+         * Structure is documented below.
+         */
+        filterRuleSettings?: pulumi.Input<inputs.modelarmor.TemplateFilterConfigFilterRuleSettings | undefined>;
+        /**
          * Malicious URI filter settings.
          * Structure is documented below.
          */
@@ -111891,6 +112246,83 @@ export namespace modelarmor {
          * Structure is documented below.
          */
         sdpSettings?: pulumi.Input<inputs.modelarmor.TemplateFilterConfigSdpSettings | undefined>;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettings {
+        /**
+         * List of rule sets to be applied to filters.
+         * Structure is documented below.
+         */
+        ruleSets?: pulumi.Input<pulumi.Input<inputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSet>[] | undefined>;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSet {
+        /**
+         * List of filters this rule set is applied to.
+         * Possible values:
+         * PROMPT_INJECTION_AND_JAILBREAK
+         * RESPONSIBLE_AI
+         */
+        filterTypes: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Set of rules to be applied to filterTypes.
+         * Structure is documented below.
+         */
+        rules: pulumi.Input<pulumi.Input<inputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRule>[]>;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRule {
+        /**
+         * The rule that specifies conditions when filter detections are excluded from
+         * results.
+         * Structure is documented below.
+         */
+        exclusionRule?: pulumi.Input<inputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule | undefined>;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: pulumi.Input<inputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary | undefined>;
+        /**
+         * Specifies the scope of the input that should be matched against the
+         * exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+         * Possible values:
+         * MATCHING_SCOPE_FULL_MATCH
+         * MATCHING_SCOPE_PARTIAL_MATCH
+         */
+        matchingScope?: pulumi.Input<string | undefined>;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: pulumi.Input<inputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex | undefined>;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary {
+        /**
+         * Message defining a list of words or phrases.
+         * Structure is documented below.
+         */
+        wordList?: pulumi.Input<inputs.modelarmor.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList | undefined>;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at
+         * least one phrase and every phrase must contain at least two characters that
+         * are letters or digits.
+         */
+        words: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex {
+        /**
+         * The regular expression pattern.
+         */
+        pattern: pulumi.Input<string>;
     }
 
     export interface TemplateFilterConfigMaliciousUriFilterSettings {
@@ -112016,6 +112448,14 @@ export namespace modelarmor {
          * end user if the prompt trips Model Armor filters.
          */
         customPromptSafetyErrorMessage?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates whether the template is subject to data residency compliance. If
+         * true (default for new templates), the template is subject to data residency
+         * compliance. If false, the template bypasses data residency compliance
+         * checks. If unset, the value is determined by the API; templates created
+         * before data residency enforcement may report false.
+         */
+        dataResidencyCompliant?: pulumi.Input<boolean | undefined>;
         /**
          * Possible values:
          * INSPECT_ONLY
@@ -116913,9 +117353,16 @@ export namespace networksecurity {
         /**
          * When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
          * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
          */
         clientValidationMode?: pulumi.Input<string | undefined>;
+        /**
+         * List of validation relaxations to apply when validating client certificates.
+         * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+         * and must be empty for all other clientValidationMode values.
+         * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+         */
+        clientValidationRelaxations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
          * If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
@@ -118032,6 +118479,10 @@ export namespace networkservices {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.networkservices.GrpcRouteRuleActionFaultInjectionPolicy | undefined>;
         /**
+         * Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+         */
+        idleTimeout?: pulumi.Input<string | undefined>;
+        /**
          * Specifies the retry policy associated with this route.
          * Structure is documented below.
          */
@@ -118143,6 +118594,12 @@ export namespace networkservices {
          * Required. Name of the service to match against.
          */
         grpcService: pulumi.Input<string>;
+        /**
+         * Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+         * Default value is `EXACT`.
+         * Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+         */
+        type?: pulumi.Input<string | undefined>;
     }
 
     export interface HttpRouteRule {
@@ -118172,10 +118629,20 @@ export namespace networkservices {
          */
         destinations?: pulumi.Input<pulumi.Input<inputs.networkservices.HttpRouteRuleActionDestination>[] | undefined>;
         /**
+         * Static HTTP Response object to be returned regardless of the request.
+         * Structure is documented below.
+         */
+        directResponse?: pulumi.Input<inputs.networkservices.HttpRouteRuleActionDirectResponse | undefined>;
+        /**
          * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
          * Structure is documented below.
          */
         faultInjectionPolicy?: pulumi.Input<inputs.networkservices.HttpRouteRuleActionFaultInjectionPolicy | undefined>;
+        /**
+         * Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        idleTimeout?: pulumi.Input<string | undefined>;
         /**
          * If set, the request is directed as configured by this field.
          * Structure is documented below.
@@ -118259,6 +118726,21 @@ export namespace networkservices {
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
          */
         weight?: pulumi.Input<number | undefined>;
+    }
+
+    export interface HttpRouteRuleActionDirectResponse {
+        /**
+         * Response body as base64 encoded bytes. Maximum body size is 4096B.
+         */
+        bytesBody?: pulumi.Input<string | undefined>;
+        /**
+         * Status to return as part of HTTP Response. Must be a positive integer.
+         */
+        status: pulumi.Input<number>;
+        /**
+         * Response body as a string. Maximum body length is 1024 characters.
+         */
+        stringBody?: pulumi.Input<string | undefined>;
     }
 
     export interface HttpRouteRuleActionFaultInjectionPolicy {
@@ -118348,6 +118830,10 @@ export namespace networkservices {
          * Structure is documented below.
          */
         destination?: pulumi.Input<inputs.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestination | undefined>;
+        /**
+         * The percentage of requests to get mirrored to the desired destination.
+         */
+        mirrorPercent?: pulumi.Input<number | undefined>;
     }
 
     export interface HttpRouteRuleActionRequestMirrorPolicyDestination {
@@ -130282,6 +130768,12 @@ export namespace pubsub {
          */
         aiInference?: pulumi.Input<inputs.pubsub.SubscriptionMessageTransformAiInference | undefined>;
         /**
+         * Compression/Decompression. Configuration for compressing/decompressing
+         * message data using a user-specified compression algorithm.
+         * Structure is documented below.
+         */
+        compression?: pulumi.Input<inputs.pubsub.SubscriptionMessageTransformCompression | undefined>;
+        /**
          * Controls whether or not to use this transform. If not set or `false`,
          * the transform will be applied to messages. Default: `true`.
          */
@@ -130321,6 +130813,19 @@ export namespace pubsub {
          * message to form the inference request.
          */
         parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface SubscriptionMessageTransformCompression {
+        /**
+         * Specifies the compression algorithm to use.
+         * Possible values include `ZLIB`.
+         */
+        compressionAlgorithm: pulumi.Input<string>;
+        /**
+         * Specifies whether to compress or decompress the message.
+         * Possible values are: `COMPRESS`, `DECOMPRESS`.
+         */
+        compressionMode: pulumi.Input<string>;
     }
 
     export interface SubscriptionMessageTransformJavascriptUdf {
@@ -130690,6 +131195,12 @@ export namespace pubsub {
          */
         aiInference?: pulumi.Input<inputs.pubsub.TopicMessageTransformAiInference | undefined>;
         /**
+         * Configuration for compressing/decompressing message data using a
+         * user-specified compression algorithm.
+         * Structure is documented below.
+         */
+        compression?: pulumi.Input<inputs.pubsub.TopicMessageTransformCompression | undefined>;
+        /**
          * Controls whether or not to use this transform. If not set or `false`,
          * the transform will be applied to messages. Default: `true`.
          */
@@ -130729,6 +131240,20 @@ export namespace pubsub {
          * message to form the inference request.
          */
         parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface TopicMessageTransformCompression {
+        /**
+         * Specifies the compression algorithm to use.
+         * Possible values include `ZLIB`.
+         * See [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm) for allowed values.
+         */
+        compressionAlgorithm: pulumi.Input<string>;
+        /**
+         * Specifies whether to compress or decompress the message.
+         * Possible values are: `COMPRESS`, `DECOMPRESS`.
+         */
+        compressionMode: pulumi.Input<string>;
     }
 
     export interface TopicMessageTransformJavascriptUdf {
@@ -132225,6 +132750,83 @@ export namespace secretmanager {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: pulumi.Input<string>;
+    }
+
+    export interface RegionalSecretManagedRotationCloudSqlSingleUserCredentials {
+        /**
+         * The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+         */
+        instanceId: pulumi.Input<string>;
+        /**
+         * The initial password to set for the database user. If not provided, a random password will be generated.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The initial password to set for the database user. If not provided, a random password will be generated.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `password` or `passwordWo` can only be set.
+         */
+        passwordWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        passwordWoVersion?: pulumi.Input<string | undefined>;
+        /**
+         * The username of the Cloud SQL database user.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface RegionalSecretManagedRotationRotation {
+        /**
+         * (Output)
+         * The current status of the managed rotation.
+         * Structure is documented below.
+         */
+        managedRotationStatuses?: pulumi.Input<pulumi.Input<inputs.secretmanager.RegionalSecretManagedRotationRotationManagedRotationStatus>[] | undefined>;
+    }
+
+    export interface RegionalSecretManagedRotationRotationManagedRotationStatus {
+        /**
+         * (Output)
+         * Customer-facing issues that occurred during an asynchronous managed rotation, for example
+         * permission errors.
+         * Structure is documented below.
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.secretmanager.RegionalSecretManagedRotationRotationManagedRotationStatusError>[] | undefined>;
+        /**
+         * (Output)
+         * Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+         */
+        state?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RegionalSecretManagedRotationRotationManagedRotationStatusError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of `google.rpc.Code`.
+         */
+        code?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RegionalSecretPolicyMember {
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+         */
+        iamPolicyUidPrincipal?: pulumi.Input<string | undefined>;
     }
 
     export interface RegionalSecretRotation {
@@ -135290,6 +135892,21 @@ export namespace storage {
          * enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
          */
         permanentObjectDeletionEnabled: pulumi.Input<boolean>;
+    }
+
+    export interface BatchOperationsJobLoggingConfig {
+        /**
+         * States in which Action are logged.If empty, no logs are generated.
+         * Possible values include `SUCCEEDED`, `FAILED`.
+         * See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+         */
+        logActionStates: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies the actions to be logged.
+         * Possible values include `TRANSFORM`.
+         * See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+         */
+        logActions: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface BatchOperationsJobPutMetadata {
@@ -138855,6 +139472,17 @@ export namespace vertex {
          */
         autoscalingMetricSpecs?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>[] | undefined>;
         /**
+         * (Optional, Beta)
+         * Number of initial replicas being deployed on when scaling the workload up
+         * from zero or when creating the workload in case minReplicaCount = 0.
+         * When minReplicaCount > 0 (meaning that the scale-to-zero feature is not
+         * enabled), initialReplicaCount should not be set. When minReplicaCount
+         * = 0 (meaning that the scale-to-zero feature is enabled),
+         * initialReplicaCount should be larger than zero, but no greater than
+         * max_replica_count.
+         */
+        initialReplicaCount?: pulumi.Input<number | undefined>;
+        /**
          * Specification of a single machine.
          * Structure is documented below.
          */
@@ -138875,7 +139503,8 @@ export namespace vertex {
         maxReplicaCount?: pulumi.Input<number | undefined>;
         /**
          * The minimum number of machine replicas that will be always deployed on.
-         * This value must be greater than or equal to 1.
+         * This value must be greater than or equal to 1. To enable scale-to-zero
+         * (in beta), set this value to 0 and also set `initialReplicaCount`.
          * If traffic increases, it may dynamically be deployed onto more replicas,
          * and as traffic decreases, some of these extra replicas may be freed.
          */
@@ -138889,6 +139518,12 @@ export namespace vertex {
          * requiredReplicaCount will be min_replica_count.
          */
         requiredReplicaCount?: pulumi.Input<number | undefined>;
+        /**
+         * (Optional, Beta)
+         * Specification for scale-to-zero feature.
+         * Structure is documented below.
+         */
+        scaleToZeroSpec?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec | undefined>;
         /**
          * If true, schedule the deployment workload on [spot
          * VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
@@ -138990,6 +139625,22 @@ export namespace vertex {
          * full resource name of the reservation or reservation block.
          */
         values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec {
+        /**
+         * (Optional, Beta)
+         * Duration of no traffic before scaling to zero. [MinValue=300] (5
+         * minutes) [MaxValue=28800] (8 hours)
+         */
+        idleScaledownPeriod?: pulumi.Input<string | undefined>;
+        /**
+         * (Optional, Beta)
+         * Minimum duration that a deployment will be scaled up before traffic is
+         * evaluated for potential scale-down. [MinValue=300] (5 minutes)
+         * [MaxValue=28800] (8 hours)
+         */
+        minScaleupPeriod?: pulumi.Input<string | undefined>;
     }
 
     export interface AiEndpointWithModelGardenDeploymentEndpointConfig {
@@ -140656,7 +141307,9 @@ export namespace vertex {
          */
         flexStartMaxDuration?: pulumi.Input<string | undefined>;
         /**
-         * The unique ID referring to this node pool.
+         * The unique ID referring to this node pool. Cannot be modified in
+         * place on an existing node pool; changing `id` updates the list of
+         * node pools by adding/removing pools (validated server-side).
          */
         id: pulumi.Input<string>;
         /**
@@ -140784,9 +141437,52 @@ export namespace vertex {
 
     export interface AiModelDevelopmentClusterOrchestratorSpec {
         /**
+         * The GKE orchestrator related spec of the cluster.
+         */
+        kubernetesSpec?: pulumi.Input<inputs.vertex.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec | undefined>;
+        /**
          * The Slurm orchestrator related spec of the cluster.
          */
         slurmSpec?: pulumi.Input<inputs.vertex.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec | undefined>;
+    }
+
+    export interface AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec {
+        /**
+         * The Kubernetes version of the GKE control plane.
+         * Accepted formats are minor version (for example, '"1.30"'), patch version
+         * (for example, '"1.30.5"'), full GKE release version (for example,
+         * '"1.30.5-gke.1014001"'), or '"-"' to use the service default version.
+         * Upgrades can advance at most one minor version at a time; downgrades are
+         * rejected.
+         */
+        controlPlaneVersion?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to enable IP alias.
+         */
+        enableIpAlias?: pulumi.Input<boolean | undefined>;
+        /**
+         * IDs of the NodePools to be included in this GKE cluster. These IDs must
+         * correspond to NodePools defined in the 'node_pools' field.
+         */
+        nodePoolIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The Kubernetes versions for specific node pools, keyed by node pool ID.
+         * When specified, all node pool IDs in the cluster must be included.
+         * Accepted formats are minor version (for example, '"1.30"'), patch version
+         * (for example, '"1.30.5"'), full GKE release version (for example,
+         * '"1.30.5-gke.1014001"'), or '"-"' to align with the control plane version.
+         * Node pools cannot be newer than the control plane or more than 2 minor
+         * versions behind it; upgrades can advance at most one minor version at a
+         * time and downgrades are rejected.
+         */
+        nodePoolVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * Whether the GKE cluster's control plane endpoint is publicly accessible.
+         * If true, the cluster is created with a public access endpoint (i.e. the
+         * private cluster configuration is disabled). If false or unset, the cluster
+         * is created with only private control plane access by default.
+         */
+        publicAccessEndpointEnabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
@@ -143285,6 +143981,365 @@ export namespace vertex {
          * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
          */
         kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface AiTrainingPipelineEncryptionSpec {
+        /**
+         * The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface AiTrainingPipelineError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiTrainingPipelineInputDataConfig {
+        /**
+         * Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema.
+         */
+        annotationSchemaUri?: pulumi.Input<string | undefined>;
+        /**
+         * Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset.
+         */
+        annotationsFilter?: pulumi.Input<string | undefined>;
+        /**
+         * The BigQuery location where the training data is to be written to.
+         * Structure is documented below.
+         */
+        bigqueryDestination?: pulumi.Input<inputs.vertex.AiTrainingPipelineInputDataConfigBigqueryDestination | undefined>;
+        /**
+         * The ID of the Dataset in the same Project and Location which data will be used to train the Model.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * Assigns input data to training, validation, and test sets based on the given filters.
+         * Structure is documented below.
+         */
+        filterSplit?: pulumi.Input<inputs.vertex.AiTrainingPipelineInputDataConfigFilterSplit | undefined>;
+        /**
+         * The instructions how the input data should be split between the training, validation and test sets.
+         * Structure is documented below.
+         */
+        fractionSplit?: pulumi.Input<inputs.vertex.AiTrainingPipelineInputDataConfigFractionSplit | undefined>;
+        /**
+         * The Cloud Storage location where the training data is to be written to.
+         * Structure is documented below.
+         */
+        gcsDestination?: pulumi.Input<inputs.vertex.AiTrainingPipelineInputDataConfigGcsDestination | undefined>;
+        /**
+         * Whether to persist the ML use assignment to data item system labels.
+         */
+        persistMlUseAssignment?: pulumi.Input<boolean | undefined>;
+        /**
+         * Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
+         * Structure is documented below.
+         */
+        predefinedSplit?: pulumi.Input<inputs.vertex.AiTrainingPipelineInputDataConfigPredefinedSplit | undefined>;
+        /**
+         * Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery under the Dataset specified by datasetId used for filtering Annotations for training.
+         */
+        savedQueryId?: pulumi.Input<string | undefined>;
+        /**
+         * Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column is mirrored within each split. Supported only for tabular Datasets.
+         * Structure is documented below.
+         */
+        stratifiedSplit?: pulumi.Input<inputs.vertex.AiTrainingPipelineInputDataConfigStratifiedSplit | undefined>;
+        /**
+         * Assigns input data to training, validation, and test sets based on provided timestamps. Supported only for tabular Datasets.
+         * Structure is documented below.
+         */
+        timestampSplit?: pulumi.Input<inputs.vertex.AiTrainingPipelineInputDataConfigTimestampSplit | undefined>;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigBigqueryDestination {
+        /**
+         * The BigQuery table to which the output is to be written.
+         */
+        outputUri: pulumi.Input<string>;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigFilterSplit {
+        /**
+         * A filter on DataItems of the Dataset for test set.
+         */
+        testFilter: pulumi.Input<string>;
+        /**
+         * A filter on DataItems of the Dataset for training set.
+         */
+        trainingFilter: pulumi.Input<string>;
+        /**
+         * A filter on DataItems of the Dataset for validation set.
+         */
+        validationFilter: pulumi.Input<string>;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigFractionSplit {
+        /**
+         * The fraction of the input data that is to be used to evaluate the Model.
+         */
+        testFraction?: pulumi.Input<number | undefined>;
+        /**
+         * The fraction of the input data that is to be used to train the Model.
+         */
+        trainingFraction?: pulumi.Input<number | undefined>;
+        /**
+         * The fraction of the input data that is to be used to validate the Model.
+         */
+        validationFraction?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigGcsDestination {
+        /**
+         * The Cloud Storage URI prefix to write to.
+         */
+        outputUriPrefix: pulumi.Input<string>;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigPredefinedSplit {
+        /**
+         * The key is a name of one of the Dataset's data columns.
+         */
+        key: pulumi.Input<string>;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigStratifiedSplit {
+        /**
+         * The key is a name of one of the Dataset's data columns.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The fraction of the input data that is to be used to evaluate the Model.
+         */
+        testFraction?: pulumi.Input<number | undefined>;
+        /**
+         * The fraction of the input data that is to be used to train the Model.
+         */
+        trainingFraction?: pulumi.Input<number | undefined>;
+        /**
+         * The fraction of the input data that is to be used to validate the Model.
+         */
+        validationFraction?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AiTrainingPipelineInputDataConfigTimestampSplit {
+        /**
+         * The key is a name of one of the Dataset's data columns.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The fraction of the input data that is to be used to evaluate the Model.
+         */
+        testFraction?: pulumi.Input<number | undefined>;
+        /**
+         * The fraction of the input data that is to be used to train the Model.
+         */
+        trainingFraction?: pulumi.Input<number | undefined>;
+        /**
+         * The fraction of the input data that is to be used to validate the Model.
+         */
+        validationFraction?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AiTrainingPipelineModelToUpload {
+        /**
+         * The path to the directory containing the Model artifact and any of its supporting files.
+         */
+        artifactUri?: pulumi.Input<string | undefined>;
+        /**
+         * The specification of the container that is to be used when deploying this Model.
+         * Structure is documented below.
+         */
+        containerSpec?: pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadContainerSpec | undefined>;
+        /**
+         * The description of the Model.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * The user-defined name of the Model.
+         */
+        displayName: pulumi.Input<string>;
+        /**
+         * Customer-managed encryption key spec for a Model.
+         * Structure is documented below.
+         */
+        encryptionSpec?: pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadEncryptionSpec | undefined>;
+        /**
+         * Specification of Model explanation.
+         * Structure is documented below.
+         */
+        explanationSpec?: pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadExplanationSpec | undefined>;
+        /**
+         * The labels with user-defined metadata to organize your Models.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * (Output)
+         * The resource name of the Model.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * User provided version aliases so that a model version can be referenced using alias.
+         */
+        versionAliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The description of this version.
+         */
+        versionDescription?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpec {
+        /**
+         * Specifies the arguments to the command when the container starts.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Specifies the command that runs when the container starts.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Deployment timeout. Limit for deployment timeout is 2 hours.
+         */
+        deploymentTimeout?: pulumi.Input<string | undefined>;
+        /**
+         * List of environment variables to be set in the container.
+         * Structure is documented below.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadContainerSpecEnv>[] | undefined>;
+        /**
+         * List of ports to expose from the container for gRPC.
+         * Structure is documented below.
+         */
+        grpcPorts?: pulumi.Input<pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadContainerSpecGrpcPort>[] | undefined>;
+        /**
+         * Specification for Kubernetes readiness probe.
+         * Structure is documented below.
+         */
+        healthProbe?: pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadContainerSpecHealthProbe | undefined>;
+        /**
+         * HTTP path on the container to send health checks to.
+         */
+        healthRoute?: pulumi.Input<string | undefined>;
+        /**
+         * URI of the Docker image to be used as the custom container for serving predictions.
+         */
+        imageUri: pulumi.Input<string>;
+        /**
+         * List of ports that are exposed by the container's process.
+         * Structure is documented below.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadContainerSpecPort>[] | undefined>;
+        /**
+         * HTTP path on the container to send prediction requests to.
+         */
+        predictRoute?: pulumi.Input<string | undefined>;
+        /**
+         * The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+         */
+        sharedMemorySizeMb?: pulumi.Input<string | undefined>;
+        /**
+         * Specification for Kubernetes startup probe.
+         * Structure is documented below.
+         */
+        startupProbe?: pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadContainerSpecStartupProbe | undefined>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecEnv {
+        /**
+         * The name of the environment variable.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The value of the environment variable.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecGrpcPort {
+        /**
+         * The number of the port on the container.
+         */
+        containerPort: pulumi.Input<number>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecHealthProbe {
+        /**
+         * ExecAction specifies a command to execute.
+         * Structure is documented below.
+         */
+        exec?: pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec | undefined>;
+        /**
+         * How often (in seconds) to perform the probe.
+         */
+        periodSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * Number of seconds after which the probe times out.
+         */
+        timeoutSeconds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec {
+        /**
+         * Command is the command line to execute inside the container.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecPort {
+        /**
+         * The number of the port on the container.
+         */
+        containerPort: pulumi.Input<number>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecStartupProbe {
+        /**
+         * ExecAction specifies a command to execute.
+         * Structure is documented below.
+         */
+        exec?: pulumi.Input<inputs.vertex.AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec | undefined>;
+        /**
+         * How often (in seconds) to perform the probe.
+         */
+        periodSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * Number of seconds after which the probe times out.
+         */
+        timeoutSeconds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec {
+        /**
+         * Command is the command line to execute inside the container.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadEncryptionSpec {
+        /**
+         * The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface AiTrainingPipelineModelToUploadExplanationSpec {
+        /**
+         * Metadata describing the Model's input and output for explanation. This field uses JSON data as a string.
+         */
+        metadata?: pulumi.Input<string | undefined>;
+        /**
+         * Parameters that configure explaining of the Model's predictions. This field uses JSON data as a string.
+         */
+        parameters?: pulumi.Input<string | undefined>;
     }
 
 }

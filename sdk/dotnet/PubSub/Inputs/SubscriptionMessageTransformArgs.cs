@@ -22,6 +22,14 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<Inputs.SubscriptionMessageTransformAiInferenceArgs>? AiInference { get; set; }
 
         /// <summary>
+        /// Compression/Decompression. Configuration for compressing/decompressing
+        /// message data using a user-specified compression algorithm.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("compression")]
+        public Input<Inputs.SubscriptionMessageTransformCompressionArgs>? Compression { get; set; }
+
+        /// <summary>
         /// Controls whether or not to use this transform. If not set or `False`,
         /// the transform will be applied to messages. Default: `True`.
         /// </summary>

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigEmailPreferencesArgs;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigScheduleOptionsArgs;
+import com.pulumi.gcp.bigquery.inputs.DataTransferConfigScheduleOptionsV2Args;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigSensitiveParamsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -310,6 +311,31 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Options customizing the type of data transfer schedule.
+     * Only the event-driven schedule is exposed here; time-based and manual
+     * schedules are configured through the `schedule` and `scheduleOptions`
+     * fields instead. This field cannot be used together with `schedule` or
+     * `scheduleOptions`.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scheduleOptionsV2")
+    private @Nullable Output<DataTransferConfigScheduleOptionsV2Args> scheduleOptionsV2;
+
+    /**
+     * @return Options customizing the type of data transfer schedule.
+     * Only the event-driven schedule is exposed here; time-based and manual
+     * schedules are configured through the `schedule` and `scheduleOptions`
+     * fields instead. This field cannot be used together with `schedule` or
+     * `scheduleOptions`.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataTransferConfigScheduleOptionsV2Args>> scheduleOptionsV2() {
+        return Optional.ofNullable(this.scheduleOptionsV2);
+    }
+
+    /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
      * sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -373,6 +399,7 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
         this.project = $.project;
         this.schedule = $.schedule;
         this.scheduleOptions = $.scheduleOptions;
+        this.scheduleOptionsV2 = $.scheduleOptionsV2;
         this.sensitiveParams = $.sensitiveParams;
         this.serviceAccountName = $.serviceAccountName;
     }
@@ -770,6 +797,37 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
          */
         public Builder scheduleOptions(DataTransferConfigScheduleOptionsArgs scheduleOptions) {
             return scheduleOptions(Output.of(scheduleOptions));
+        }
+
+        /**
+         * @param scheduleOptionsV2 Options customizing the type of data transfer schedule.
+         * Only the event-driven schedule is exposed here; time-based and manual
+         * schedules are configured through the `schedule` and `scheduleOptions`
+         * fields instead. This field cannot be used together with `schedule` or
+         * `scheduleOptions`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduleOptionsV2(@Nullable Output<DataTransferConfigScheduleOptionsV2Args> scheduleOptionsV2) {
+            $.scheduleOptionsV2 = scheduleOptionsV2;
+            return this;
+        }
+
+        /**
+         * @param scheduleOptionsV2 Options customizing the type of data transfer schedule.
+         * Only the event-driven schedule is exposed here; time-based and manual
+         * schedules are configured through the `schedule` and `scheduleOptions`
+         * fields instead. This field cannot be used together with `schedule` or
+         * `scheduleOptions`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduleOptionsV2(DataTransferConfigScheduleOptionsV2Args scheduleOptionsV2) {
+            return scheduleOptionsV2(Output.of(scheduleOptionsV2));
         }
 
         /**

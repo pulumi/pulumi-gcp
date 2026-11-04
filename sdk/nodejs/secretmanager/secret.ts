@@ -250,6 +250,11 @@ export class Secret extends pulumi.CustomResource {
     /**
      * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn't belong to any of the above types.
      */
     declare public readonly secretType: pulumi.Output<string | undefined>;
     /**
@@ -454,6 +459,11 @@ export interface SecretState {
     /**
      * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn't belong to any of the above types.
      */
     secretType?: pulumi.Input<string | undefined>;
     /**
@@ -571,6 +581,11 @@ export interface SecretArgs {
     /**
      * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn't belong to any of the above types.
      */
     secretType?: pulumi.Input<string | undefined>;
     /**

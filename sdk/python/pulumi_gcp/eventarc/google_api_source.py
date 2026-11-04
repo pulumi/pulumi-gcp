@@ -30,7 +30,9 @@ class GoogleApiSourceArgs:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  logging_config: pulumi.Input[Optional['GoogleApiSourceLoggingConfigArgs']] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 organization_subscription: pulumi.Input[Optional['GoogleApiSourceOrganizationSubscriptionArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_subscriptions: pulumi.Input[Optional['GoogleApiSourceProjectSubscriptionsArgs']] = None):
         """
         The set of arguments for constructing a GoogleApiSource resource.
 
@@ -60,8 +62,14 @@ class GoogleApiSourceArgs:
         :param pulumi.Input['GoogleApiSourceLoggingConfigArgs'] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
                resources.
                Structure is documented below.
+        :param pulumi.Input['GoogleApiSourceOrganizationSubscriptionArgs'] organization_subscription: Config to enable subscribing to events from all projects in the
+               GoogleApiSource's org.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['GoogleApiSourceProjectSubscriptionsArgs'] project_subscriptions: Config to enable subscribing to all events from a list of projects.
+               All the projects must be in the same org as the GoogleApiSource.
+               Structure is documented below.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "google_api_source_id", google_api_source_id)
@@ -78,8 +86,12 @@ class GoogleApiSourceArgs:
             pulumi.set(__self__, "labels", labels)
         if logging_config is not None:
             pulumi.set(__self__, "logging_config", logging_config)
+        if organization_subscription is not None:
+            pulumi.set(__self__, "organization_subscription", organization_subscription)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if project_subscriptions is not None:
+            pulumi.set(__self__, "project_subscriptions", project_subscriptions)
 
     @_builtins.property
     @pulumi.getter
@@ -207,6 +219,20 @@ class GoogleApiSourceArgs:
         pulumi.set(self, "logging_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="organizationSubscription")
+    def organization_subscription(self) -> pulumi.Input[Optional['GoogleApiSourceOrganizationSubscriptionArgs']]:
+        """
+        Config to enable subscribing to events from all projects in the
+        GoogleApiSource's org.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "organization_subscription")
+
+    @organization_subscription.setter
+    def organization_subscription(self, value: pulumi.Input[Optional['GoogleApiSourceOrganizationSubscriptionArgs']]):
+        pulumi.set(self, "organization_subscription", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -218,6 +244,20 @@ class GoogleApiSourceArgs:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectSubscriptions")
+    def project_subscriptions(self) -> pulumi.Input[Optional['GoogleApiSourceProjectSubscriptionsArgs']]:
+        """
+        Config to enable subscribing to all events from a list of projects.
+        All the projects must be in the same org as the GoogleApiSource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "project_subscriptions")
+
+    @project_subscriptions.setter
+    def project_subscriptions(self, value: pulumi.Input[Optional['GoogleApiSourceProjectSubscriptionsArgs']]):
+        pulumi.set(self, "project_subscriptions", value)
 
 
 @pulumi.input_type
@@ -237,7 +277,9 @@ class _GoogleApiSourceState:
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_config: pulumi.Input[Optional['GoogleApiSourceLoggingConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_subscription: pulumi.Input[Optional['GoogleApiSourceOrganizationSubscriptionArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_subscriptions: pulumi.Input[Optional['GoogleApiSourceProjectSubscriptionsArgs']] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
@@ -278,8 +320,14 @@ class _GoogleApiSourceState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Resource name of the form
                projects/{project}/locations/{location}/googleApiSources/{google_api_source}
+        :param pulumi.Input['GoogleApiSourceOrganizationSubscriptionArgs'] organization_subscription: Config to enable subscribing to events from all projects in the
+               GoogleApiSource's org.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['GoogleApiSourceProjectSubscriptionsArgs'] project_subscriptions: Config to enable subscribing to all events from a list of projects.
+               All the projects must be in the same org as the GoogleApiSource.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the channel. The value is a UUID4
@@ -314,8 +362,12 @@ class _GoogleApiSourceState:
             pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if organization_subscription is not None:
+            pulumi.set(__self__, "organization_subscription", organization_subscription)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if project_subscriptions is not None:
+            pulumi.set(__self__, "project_subscriptions", project_subscriptions)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if uid is not None:
@@ -512,6 +564,20 @@ class _GoogleApiSourceState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="organizationSubscription")
+    def organization_subscription(self) -> pulumi.Input[Optional['GoogleApiSourceOrganizationSubscriptionArgs']]:
+        """
+        Config to enable subscribing to events from all projects in the
+        GoogleApiSource's org.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "organization_subscription")
+
+    @organization_subscription.setter
+    def organization_subscription(self, value: pulumi.Input[Optional['GoogleApiSourceOrganizationSubscriptionArgs']]):
+        pulumi.set(self, "organization_subscription", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -523,6 +589,20 @@ class _GoogleApiSourceState:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectSubscriptions")
+    def project_subscriptions(self) -> pulumi.Input[Optional['GoogleApiSourceProjectSubscriptionsArgs']]:
+        """
+        Config to enable subscribing to all events from a list of projects.
+        All the projects must be in the same org as the GoogleApiSource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "project_subscriptions")
+
+    @project_subscriptions.setter
+    def project_subscriptions(self, value: pulumi.Input[Optional['GoogleApiSourceProjectSubscriptionsArgs']]):
+        pulumi.set(self, "project_subscriptions", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
@@ -578,7 +658,9 @@ class GoogleApiSource(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']]] = None,
+                 organization_subscription: pulumi.Input[Optional[Union['GoogleApiSourceOrganizationSubscriptionArgs', 'GoogleApiSourceOrganizationSubscriptionArgsDict', 'outputs.GoogleApiSourceOrganizationSubscription']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_subscriptions: pulumi.Input[Optional[Union['GoogleApiSourceProjectSubscriptionsArgs', 'GoogleApiSourceProjectSubscriptionsArgsDict', 'outputs.GoogleApiSourceProjectSubscriptions']]] = None,
                  __props__=None):
         """
         The Eventarc GoogleApiSource resource
@@ -662,8 +744,14 @@ class GoogleApiSource(pulumi.CustomResource):
         :param pulumi.Input[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']] logging_config: The configuration for Platform Telemetry logging for Eventarc Advanced
                resources.
                Structure is documented below.
+        :param pulumi.Input[Union['GoogleApiSourceOrganizationSubscriptionArgs', 'GoogleApiSourceOrganizationSubscriptionArgsDict', 'outputs.GoogleApiSourceOrganizationSubscription']] organization_subscription: Config to enable subscribing to events from all projects in the
+               GoogleApiSource's org.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['GoogleApiSourceProjectSubscriptionsArgs', 'GoogleApiSourceProjectSubscriptionsArgsDict', 'outputs.GoogleApiSourceProjectSubscriptions']] project_subscriptions: Config to enable subscribing to all events from a list of projects.
+               All the projects must be in the same org as the GoogleApiSource.
+               Structure is documented below.
         """
         ...
     @overload
@@ -749,7 +837,9 @@ class GoogleApiSource(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']]] = None,
+                 organization_subscription: pulumi.Input[Optional[Union['GoogleApiSourceOrganizationSubscriptionArgs', 'GoogleApiSourceOrganizationSubscriptionArgsDict', 'outputs.GoogleApiSourceOrganizationSubscription']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_subscriptions: pulumi.Input[Optional[Union['GoogleApiSourceProjectSubscriptionsArgs', 'GoogleApiSourceProjectSubscriptionsArgsDict', 'outputs.GoogleApiSourceProjectSubscriptions']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -774,7 +864,9 @@ class GoogleApiSource(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["logging_config"] = logging_config
+            __props__.__dict__["organization_subscription"] = organization_subscription
             __props__.__dict__["project"] = project
+            __props__.__dict__["project_subscriptions"] = project_subscriptions
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
@@ -809,7 +901,9 @@ class GoogleApiSource(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             logging_config: pulumi.Input[Optional[Union['GoogleApiSourceLoggingConfigArgs', 'GoogleApiSourceLoggingConfigArgsDict', 'outputs.GoogleApiSourceLoggingConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_subscription: pulumi.Input[Optional[Union['GoogleApiSourceOrganizationSubscriptionArgs', 'GoogleApiSourceOrganizationSubscriptionArgsDict', 'outputs.GoogleApiSourceOrganizationSubscription']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_subscriptions: pulumi.Input[Optional[Union['GoogleApiSourceProjectSubscriptionsArgs', 'GoogleApiSourceProjectSubscriptionsArgsDict', 'outputs.GoogleApiSourceProjectSubscriptions']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'GoogleApiSource':
@@ -854,8 +948,14 @@ class GoogleApiSource(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Resource name of the form
                projects/{project}/locations/{location}/googleApiSources/{google_api_source}
+        :param pulumi.Input[Union['GoogleApiSourceOrganizationSubscriptionArgs', 'GoogleApiSourceOrganizationSubscriptionArgsDict', 'outputs.GoogleApiSourceOrganizationSubscription']] organization_subscription: Config to enable subscribing to events from all projects in the
+               GoogleApiSource's org.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['GoogleApiSourceProjectSubscriptionsArgs', 'GoogleApiSourceProjectSubscriptionsArgsDict', 'outputs.GoogleApiSourceProjectSubscriptions']] project_subscriptions: Config to enable subscribing to all events from a list of projects.
+               All the projects must be in the same org as the GoogleApiSource.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] uid: Server assigned unique identifier for the channel. The value is a UUID4
@@ -880,7 +980,9 @@ class GoogleApiSource(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["logging_config"] = logging_config
         __props__.__dict__["name"] = name
+        __props__.__dict__["organization_subscription"] = organization_subscription
         __props__.__dict__["project"] = project
+        __props__.__dict__["project_subscriptions"] = project_subscriptions
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
@@ -1019,6 +1121,16 @@ class GoogleApiSource(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="organizationSubscription")
+    def organization_subscription(self) -> pulumi.Output[Optional['outputs.GoogleApiSourceOrganizationSubscription']]:
+        """
+        Config to enable subscribing to events from all projects in the
+        GoogleApiSource's org.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "organization_subscription")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1026,6 +1138,16 @@ class GoogleApiSource(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="projectSubscriptions")
+    def project_subscriptions(self) -> pulumi.Output[Optional['outputs.GoogleApiSourceProjectSubscriptions']]:
+        """
+        Config to enable subscribing to all events from a list of projects.
+        All the projects must be in the same org as the GoogleApiSource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "project_subscriptions")
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")

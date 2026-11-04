@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.eventarc.inputs.GoogleApiSourceLoggingConfigArgs;
+import com.pulumi.gcp.eventarc.inputs.GoogleApiSourceOrganizationSubscriptionArgs;
+import com.pulumi.gcp.eventarc.inputs.GoogleApiSourceProjectSubscriptionsArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -188,6 +190,25 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Config to enable subscribing to events from all projects in the
+     * GoogleApiSource&#39;s org.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="organizationSubscription")
+    private @Nullable Output<GoogleApiSourceOrganizationSubscriptionArgs> organizationSubscription;
+
+    /**
+     * @return Config to enable subscribing to events from all projects in the
+     * GoogleApiSource&#39;s org.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GoogleApiSourceOrganizationSubscriptionArgs>> organizationSubscription() {
+        return Optional.ofNullable(this.organizationSubscription);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -204,6 +225,25 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Config to enable subscribing to all events from a list of projects.
+     * All the projects must be in the same org as the GoogleApiSource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="projectSubscriptions")
+    private @Nullable Output<GoogleApiSourceProjectSubscriptionsArgs> projectSubscriptions;
+
+    /**
+     * @return Config to enable subscribing to all events from a list of projects.
+     * All the projects must be in the same org as the GoogleApiSource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GoogleApiSourceProjectSubscriptionsArgs>> projectSubscriptions() {
+        return Optional.ofNullable(this.projectSubscriptions);
+    }
+
     private GoogleApiSourceArgs() {}
 
     private GoogleApiSourceArgs(GoogleApiSourceArgs $) {
@@ -216,7 +256,9 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
         this.labels = $.labels;
         this.location = $.location;
         this.loggingConfig = $.loggingConfig;
+        this.organizationSubscription = $.organizationSubscription;
         this.project = $.project;
+        this.projectSubscriptions = $.projectSubscriptions;
     }
 
     public static Builder builder() {
@@ -461,6 +503,31 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param organizationSubscription Config to enable subscribing to events from all projects in the
+         * GoogleApiSource&#39;s org.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationSubscription(@Nullable Output<GoogleApiSourceOrganizationSubscriptionArgs> organizationSubscription) {
+            $.organizationSubscription = organizationSubscription;
+            return this;
+        }
+
+        /**
+         * @param organizationSubscription Config to enable subscribing to events from all projects in the
+         * GoogleApiSource&#39;s org.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationSubscription(GoogleApiSourceOrganizationSubscriptionArgs organizationSubscription) {
+            return organizationSubscription(Output.of(organizationSubscription));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -481,6 +548,31 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param projectSubscriptions Config to enable subscribing to all events from a list of projects.
+         * All the projects must be in the same org as the GoogleApiSource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectSubscriptions(@Nullable Output<GoogleApiSourceProjectSubscriptionsArgs> projectSubscriptions) {
+            $.projectSubscriptions = projectSubscriptions;
+            return this;
+        }
+
+        /**
+         * @param projectSubscriptions Config to enable subscribing to all events from a list of projects.
+         * All the projects must be in the same org as the GoogleApiSource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectSubscriptions(GoogleApiSourceProjectSubscriptionsArgs projectSubscriptions) {
+            return projectSubscriptions(Output.of(projectSubscriptions));
         }
 
         public GoogleApiSourceArgs build() {

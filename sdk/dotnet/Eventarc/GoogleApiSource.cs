@@ -201,11 +201,27 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Config to enable subscribing to events from all projects in the
+        /// GoogleApiSource's org.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("organizationSubscription")]
+        public Output<Outputs.GoogleApiSourceOrganizationSubscription?> OrganizationSubscription { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Config to enable subscribing to all events from a list of projects.
+        /// All the projects must be in the same org as the GoogleApiSource.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("projectSubscriptions")]
+        public Output<Outputs.GoogleApiSourceProjectSubscriptions?> ProjectSubscriptions { get; private set; } = null!;
 
         /// <summary>
         /// The combination of labels configured directly on the resource
@@ -362,11 +378,27 @@ namespace Pulumi.Gcp.Eventarc
         public Input<Inputs.GoogleApiSourceLoggingConfigArgs>? LoggingConfig { get; set; }
 
         /// <summary>
+        /// Config to enable subscribing to events from all projects in the
+        /// GoogleApiSource's org.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("organizationSubscription")]
+        public Input<Inputs.GoogleApiSourceOrganizationSubscriptionArgs>? OrganizationSubscription { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Config to enable subscribing to all events from a list of projects.
+        /// All the projects must be in the same org as the GoogleApiSource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("projectSubscriptions")]
+        public Input<Inputs.GoogleApiSourceProjectSubscriptionsArgs>? ProjectSubscriptions { get; set; }
 
         public GoogleApiSourceArgs()
         {
@@ -509,11 +541,27 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Config to enable subscribing to events from all projects in the
+        /// GoogleApiSource's org.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("organizationSubscription")]
+        public Input<Inputs.GoogleApiSourceOrganizationSubscriptionGetArgs>? OrganizationSubscription { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Config to enable subscribing to all events from a list of projects.
+        /// All the projects must be in the same org as the GoogleApiSource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("projectSubscriptions")]
+        public Input<Inputs.GoogleApiSourceProjectSubscriptionsGetArgs>? ProjectSubscriptions { get; set; }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;

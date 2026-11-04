@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  * const tf_job = new gcp.storage.BatchOperationsJob("tf-job", {
  *     jobId: "tf-job",
  *     description: "A sample job description",
+ *     dryRun: true,
  *     bucketList: {
  *         buckets: {
  *             bucket: bucket.name,
@@ -69,6 +70,13 @@ import * as utilities from "../utilities";
  *         customMetadata: {
  *             key: "value",
  *         },
+ *     },
+ *     loggingConfig: {
+ *         logActions: ["TRANSFORM"],
+ *         logActionStates: [
+ *             "SUCCEEDED",
+ *             "FAILED",
+ *         ],
  *     },
  *     deleteProtection: false,
  * });
@@ -154,9 +162,18 @@ export class BatchOperationsJob extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+     */
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the job.
      */
     declare public readonly jobId: pulumi.Output<string | undefined>;
+    /**
+     * Logging configuration.
+     * Structure is documented below.
+     */
+    declare public readonly loggingConfig: pulumi.Output<outputs.storage.BatchOperationsJobLoggingConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -210,7 +227,9 @@ export class BatchOperationsJob extends pulumi.CustomResource {
             resourceInputs["deleteProtection"] = state?.deleteProtection;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["loggingConfig"] = state?.loggingConfig;
             resourceInputs["project"] = state?.project;
             resourceInputs["putMetadata"] = state?.putMetadata;
             resourceInputs["putObjectHold"] = state?.putObjectHold;
@@ -225,7 +244,9 @@ export class BatchOperationsJob extends pulumi.CustomResource {
             resourceInputs["deleteProtection"] = args?.deleteProtection;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["jobId"] = args?.jobId;
+            resourceInputs["loggingConfig"] = args?.loggingConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["putMetadata"] = args?.putMetadata;
             resourceInputs["putObjectHold"] = args?.putObjectHold;
@@ -281,9 +302,18 @@ export interface BatchOperationsJobState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+     */
+    dryRun?: pulumi.Input<boolean | undefined>;
+    /**
      * The ID of the job.
      */
     jobId?: pulumi.Input<string | undefined>;
+    /**
+     * Logging configuration.
+     * Structure is documented below.
+     */
+    loggingConfig?: pulumi.Input<inputs.storage.BatchOperationsJobLoggingConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -350,9 +380,18 @@ export interface BatchOperationsJobArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+     */
+    dryRun?: pulumi.Input<boolean | undefined>;
+    /**
      * The ID of the job.
      */
     jobId?: pulumi.Input<string | undefined>;
+    /**
+     * Logging configuration.
+     * Structure is documented below.
+     */
+    loggingConfig?: pulumi.Input<inputs.storage.BatchOperationsJobLoggingConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

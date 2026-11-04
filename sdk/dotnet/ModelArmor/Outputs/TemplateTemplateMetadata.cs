@@ -34,6 +34,14 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
         /// </summary>
         public readonly string? CustomPromptSafetyErrorMessage;
         /// <summary>
+        /// Indicates whether the template is subject to data residency compliance. If
+        /// true (default for new templates), the template is subject to data residency
+        /// compliance. If false, the template bypasses data residency compliance
+        /// checks. If unset, the value is determined by the API; templates created
+        /// before data residency enforcement may report false.
+        /// </summary>
+        public readonly bool? DataResidencyCompliant;
+        /// <summary>
         /// Possible values:
         /// INSPECT_ONLY
         /// INSPECT_AND_BLOCK
@@ -83,6 +91,8 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
 
             string? customPromptSafetyErrorMessage,
 
+            bool? dataResidencyCompliant,
+
             string? enforcementType,
 
             Outputs.TemplateTemplateMetadataFilterVersionSelector? filterVersionSelector,
@@ -101,6 +111,7 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
             CustomLlmResponseSafetyErrorMessage = customLlmResponseSafetyErrorMessage;
             CustomPromptSafetyErrorCode = customPromptSafetyErrorCode;
             CustomPromptSafetyErrorMessage = customPromptSafetyErrorMessage;
+            DataResidencyCompliant = dataResidencyCompliant;
             EnforcementType = enforcementType;
             FilterVersionSelector = filterVersionSelector;
             IgnorePartialInvocationFailures = ignorePartialInvocationFailures;

@@ -23,10 +23,18 @@ public final class ServerTlsPolicyMtlsPolicy {
     /**
      * @return When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
      * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-     * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+     * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
      * 
      */
     private @Nullable String clientValidationMode;
+    /**
+     * @return List of validation relaxations to apply when validating client certificates.
+     * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+     * and must be empty for all other clientValidationMode values.
+     * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+     * 
+     */
+    private @Nullable List<String> clientValidationRelaxations;
     /**
      * @return Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
      * If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
@@ -48,11 +56,21 @@ public final class ServerTlsPolicyMtlsPolicy {
     /**
      * @return When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
      * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-     * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+     * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
      * 
      */
     public Optional<String> clientValidationMode() {
         return Optional.ofNullable(this.clientValidationMode);
+    }
+    /**
+     * @return List of validation relaxations to apply when validating client certificates.
+     * Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+     * and must be empty for all other clientValidationMode values.
+     * Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+     * 
+     */
+    public List<String> clientValidationRelaxations() {
+        return this.clientValidationRelaxations == null ? List.of() : this.clientValidationRelaxations;
     }
     /**
      * @return Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
@@ -75,12 +93,14 @@ public final class ServerTlsPolicyMtlsPolicy {
     public static final class Builder {
         private @Nullable List<ServerTlsPolicyMtlsPolicyClientValidationCa> clientValidationCas;
         private @Nullable String clientValidationMode;
+        private @Nullable List<String> clientValidationRelaxations;
         private @Nullable String clientValidationTrustConfig;
         public Builder() {}
         public Builder(ServerTlsPolicyMtlsPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientValidationCas = defaults.clientValidationCas;
     	      this.clientValidationMode = defaults.clientValidationMode;
+    	      this.clientValidationRelaxations = defaults.clientValidationRelaxations;
     	      this.clientValidationTrustConfig = defaults.clientValidationTrustConfig;
         }
 
@@ -100,6 +120,15 @@ public final class ServerTlsPolicyMtlsPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder clientValidationRelaxations(@Nullable List<String> clientValidationRelaxations) {
+
+            this.clientValidationRelaxations = clientValidationRelaxations;
+            return this;
+        }
+        public Builder clientValidationRelaxations(String... clientValidationRelaxations) {
+            return clientValidationRelaxations(List.of(clientValidationRelaxations));
+        }
+        @CustomType.Setter
         public Builder clientValidationTrustConfig(@Nullable String clientValidationTrustConfig) {
 
             this.clientValidationTrustConfig = clientValidationTrustConfig;
@@ -109,6 +138,7 @@ public final class ServerTlsPolicyMtlsPolicy {
             final var _resultValue = new ServerTlsPolicyMtlsPolicy();
             _resultValue.clientValidationCas = clientValidationCas;
             _resultValue.clientValidationMode = clientValidationMode;
+            _resultValue.clientValidationRelaxations = clientValidationRelaxations;
             _resultValue.clientValidationTrustConfig = clientValidationTrustConfig;
             return _resultValue;
         }

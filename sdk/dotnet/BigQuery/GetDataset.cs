@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.BigQuery
         public readonly string DefaultCollation;
         public readonly ImmutableArray<Outputs.GetDatasetDefaultEncryptionConfigurationResult> DefaultEncryptionConfigurations;
         public readonly int DefaultPartitionExpirationMs;
+        public readonly string DefaultRoundingMode;
         public readonly int DefaultTableExpirationMs;
         public readonly bool DeleteContentsOnDestroy;
         public readonly string DeletionPolicy;
@@ -183,6 +184,8 @@ namespace Pulumi.Gcp.BigQuery
             ImmutableArray<Outputs.GetDatasetDefaultEncryptionConfigurationResult> defaultEncryptionConfigurations,
 
             int defaultPartitionExpirationMs,
+
+            string defaultRoundingMode,
 
             int defaultTableExpirationMs,
 
@@ -230,6 +233,7 @@ namespace Pulumi.Gcp.BigQuery
             DefaultCollation = defaultCollation;
             DefaultEncryptionConfigurations = defaultEncryptionConfigurations;
             DefaultPartitionExpirationMs = defaultPartitionExpirationMs;
+            DefaultRoundingMode = defaultRoundingMode;
             DefaultTableExpirationMs = defaultTableExpirationMs;
             DeleteContentsOnDestroy = deleteContentsOnDestroy;
             DeletionPolicy = deletionPolicy;

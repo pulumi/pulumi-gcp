@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs;
+import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -70,6 +71,35 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
     }
 
     /**
+     * (Optional, Beta)
+     * Number of initial replicas being deployed on when scaling the workload up
+     * from zero or when creating the workload in case minReplicaCount = 0.
+     * When minReplicaCount &gt; 0 (meaning that the scale-to-zero feature is not
+     * enabled), initialReplicaCount should not be set. When minReplicaCount
+     * = 0 (meaning that the scale-to-zero feature is enabled),
+     * initialReplicaCount should be larger than zero, but no greater than
+     * max_replica_count.
+     * 
+     */
+    @Import(name="initialReplicaCount")
+    private @Nullable Output<Integer> initialReplicaCount;
+
+    /**
+     * @return (Optional, Beta)
+     * Number of initial replicas being deployed on when scaling the workload up
+     * from zero or when creating the workload in case minReplicaCount = 0.
+     * When minReplicaCount &gt; 0 (meaning that the scale-to-zero feature is not
+     * enabled), initialReplicaCount should not be set. When minReplicaCount
+     * = 0 (meaning that the scale-to-zero feature is enabled),
+     * initialReplicaCount should be larger than zero, but no greater than
+     * max_replica_count.
+     * 
+     */
+    public Optional<Output<Integer>> initialReplicaCount() {
+        return Optional.ofNullable(this.initialReplicaCount);
+    }
+
+    /**
      * Specification of a single machine.
      * Structure is documented below.
      * 
@@ -123,7 +153,8 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
 
     /**
      * The minimum number of machine replicas that will be always deployed on.
-     * This value must be greater than or equal to 1.
+     * This value must be greater than or equal to 1. To enable scale-to-zero
+     * (in beta), set this value to 0 and also set `initialReplicaCount`.
      * If traffic increases, it may dynamically be deployed onto more replicas,
      * and as traffic decreases, some of these extra replicas may be freed.
      * 
@@ -133,7 +164,8 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
 
     /**
      * @return The minimum number of machine replicas that will be always deployed on.
-     * This value must be greater than or equal to 1.
+     * This value must be greater than or equal to 1. To enable scale-to-zero
+     * (in beta), set this value to 0 and also set `initialReplicaCount`.
      * If traffic increases, it may dynamically be deployed onto more replicas,
      * and as traffic decreases, some of these extra replicas may be freed.
      * 
@@ -168,6 +200,25 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
     }
 
     /**
+     * (Optional, Beta)
+     * Specification for scale-to-zero feature.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scaleToZeroSpec")
+    private @Nullable Output<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs> scaleToZeroSpec;
+
+    /**
+     * @return (Optional, Beta)
+     * Specification for scale-to-zero feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs>> scaleToZeroSpec() {
+        return Optional.ofNullable(this.scaleToZeroSpec);
+    }
+
+    /**
      * If true, schedule the deployment workload on [spot
      * VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
      * 
@@ -188,10 +239,12 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
 
     private AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs $) {
         this.autoscalingMetricSpecs = $.autoscalingMetricSpecs;
+        this.initialReplicaCount = $.initialReplicaCount;
         this.machineSpec = $.machineSpec;
         this.maxReplicaCount = $.maxReplicaCount;
         this.minReplicaCount = $.minReplicaCount;
         this.requiredReplicaCount = $.requiredReplicaCount;
+        this.scaleToZeroSpec = $.scaleToZeroSpec;
         this.spot = $.spot;
     }
 
@@ -296,6 +349,41 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
         }
 
         /**
+         * @param initialReplicaCount (Optional, Beta)
+         * Number of initial replicas being deployed on when scaling the workload up
+         * from zero or when creating the workload in case minReplicaCount = 0.
+         * When minReplicaCount &gt; 0 (meaning that the scale-to-zero feature is not
+         * enabled), initialReplicaCount should not be set. When minReplicaCount
+         * = 0 (meaning that the scale-to-zero feature is enabled),
+         * initialReplicaCount should be larger than zero, but no greater than
+         * max_replica_count.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialReplicaCount(@Nullable Output<Integer> initialReplicaCount) {
+            $.initialReplicaCount = initialReplicaCount;
+            return this;
+        }
+
+        /**
+         * @param initialReplicaCount (Optional, Beta)
+         * Number of initial replicas being deployed on when scaling the workload up
+         * from zero or when creating the workload in case minReplicaCount = 0.
+         * When minReplicaCount &gt; 0 (meaning that the scale-to-zero feature is not
+         * enabled), initialReplicaCount should not be set. When minReplicaCount
+         * = 0 (meaning that the scale-to-zero feature is enabled),
+         * initialReplicaCount should be larger than zero, but no greater than
+         * max_replica_count.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialReplicaCount(Integer initialReplicaCount) {
+            return initialReplicaCount(Output.of(initialReplicaCount));
+        }
+
+        /**
          * @param machineSpec Specification of a single machine.
          * Structure is documented below.
          * 
@@ -361,7 +449,8 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
 
         /**
          * @param minReplicaCount The minimum number of machine replicas that will be always deployed on.
-         * This value must be greater than or equal to 1.
+         * This value must be greater than or equal to 1. To enable scale-to-zero
+         * (in beta), set this value to 0 and also set `initialReplicaCount`.
          * If traffic increases, it may dynamically be deployed onto more replicas,
          * and as traffic decreases, some of these extra replicas may be freed.
          * 
@@ -375,7 +464,8 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
 
         /**
          * @param minReplicaCount The minimum number of machine replicas that will be always deployed on.
-         * This value must be greater than or equal to 1.
+         * This value must be greater than or equal to 1. To enable scale-to-zero
+         * (in beta), set this value to 0 and also set `initialReplicaCount`.
          * If traffic increases, it may dynamically be deployed onto more replicas,
          * and as traffic decreases, some of these extra replicas may be freed.
          * 
@@ -415,6 +505,31 @@ public final class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResou
          */
         public Builder requiredReplicaCount(Integer requiredReplicaCount) {
             return requiredReplicaCount(Output.of(requiredReplicaCount));
+        }
+
+        /**
+         * @param scaleToZeroSpec (Optional, Beta)
+         * Specification for scale-to-zero feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleToZeroSpec(@Nullable Output<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs> scaleToZeroSpec) {
+            $.scaleToZeroSpec = scaleToZeroSpec;
+            return this;
+        }
+
+        /**
+         * @param scaleToZeroSpec (Optional, Beta)
+         * Specification for scale-to-zero feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleToZeroSpec(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs scaleToZeroSpec) {
+            return scaleToZeroSpec(Output.of(scaleToZeroSpec));
         }
 
         /**

@@ -129,6 +129,25 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     Title = "My title",
     ///                 },
     ///             },
+    ///             PassthroughExtensions = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyPassthroughExtensionsArgs
+    ///             {
+    ///                 KnownExtensions = new[]
+    ///                 {
+    ///                     "EXTENDED_KEY_USAGE",
+    ///                     "BASE_KEY_USAGE",
+    ///                 },
+    ///                 AdditionalExtensions = new[]
+    ///                 {
+    ///                     new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs
+    ///                     {
+    ///                         ObjectIdPaths = new[]
+    ///                         {
+    ///                             1,
+    ///                             5,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
     ///             BaselineValues = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesArgs
     ///             {
     ///                 AiaOcspServers = new[]

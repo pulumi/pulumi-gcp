@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Vertex
     ///     {
     ///         Name = "mdc-subnet",
     ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
+    ///         Region = "us-east4",
     ///         Network = net.Id,
     ///         PrivateIpGoogleAccess = true,
     ///     });
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Vertex
     ///     var home = new Gcp.Filestore.Instance("home", new()
     ///     {
     ///         Name = "mdc-home",
-    ///         Location = "us-central1-b",
+    ///         Location = "us-east4-b",
     ///         Tier = "BASIC_HDD",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Vertex
     ///     var data = new Gcp.Filestore.Instance("data", new()
     ///     {
     ///         Name = "mdc-data",
-    ///         Location = "us-central1-b",
+    ///         Location = "us-east4-b",
     ///         Tier = "BASIC_HDD",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Vertex
     ///     var res = new Gcp.Compute.Reservation("res", new()
     ///     {
     ///         Name = "mdc-res",
-    ///         Zone = "us-central1-b",
+    ///         Zone = "us-east4-b",
     ///         SpecificReservationRequired = true,
     ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
     ///         {
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var @default = new Gcp.Vertex.AiModelDevelopmentCluster("default", new()
     ///     {
-    ///         Region = "us-central1",
+    ///         Region = "us-east4",
     ///         ModelDevelopmentClusterId = "tftest",
     ///         DisplayName = "tftest",
     ///         DeletionPolicy = "DELETE",
@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.Vertex
     ///             new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNodePoolArgs
     ///             {
     ///                 Id = "compute",
-    ///                 Zone = "us-central1-b",
+    ///                 Zone = "us-east4-b",
     ///                 ProvisioningModel = "ON_DEMAND",
     ///                 NodeImage = "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
     ///                 StartupScript = @"#!/bin/bash
@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.Vertex
     ///             new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNodePoolArgs
     ///             {
     ///                 Id = "flexpool",
-    ///                 Zone = "us-central1-b",
+    ///                 Zone = "us-east4-b",
     ///                 ProvisioningModel = "FLEX_START",
     ///                 FlexStartMaxDuration = "3600s",
     ///                 NodeImage = "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
@@ -302,7 +302,7 @@ namespace Pulumi.Gcp.Vertex
     ///             new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNodePoolArgs
     ///             {
     ///                 Id = "login",
-    ///                 Zone = "us-central1-b",
+    ///                 Zone = "us-east4-b",
     ///                 ProvisioningModel = "ON_DEMAND",
     ///                 NodeImage = "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
     ///                 StartupScript = @"#!/bin/bash
@@ -334,7 +334,7 @@ namespace Pulumi.Gcp.Vertex
     ///             new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNodePoolArgs
     ///             {
     ///                 Id = "respool",
-    ///                 Zone = "us-central1-b",
+    ///                 Zone = "us-east4-b",
     ///                 ProvisioningModel = "RESERVATION",
     ///                 NodeImage = "projects/clusterdirector-public-images/global/images/family/common-ubuntu-2204-amd64-nvidia-580-slurm-2505-v20251113",
     ///                 StartupScript = @"#!/bin/bash
@@ -369,6 +369,131 @@ namespace Pulumi.Gcp.Vertex
     ///                 {
     ///                     MinNodeCount = 0,
     ///                     MaxNodeCount = 1,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @internal,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Vertex Ai Model Development Cluster Gke
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Gcp.Compute.Network("net", new()
+    ///     {
+    ///         Name = "mdc-gke-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Name = "mdc-gke-subnet",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-east1",
+    ///         Network = net.Id,
+    ///         PrivateIpGoogleAccess = true,
+    ///     });
+    /// 
+    ///     var @internal = new Gcp.Compute.Firewall("internal", new()
+    ///     {
+    ///         Name = "mdc-gke-fw",
+    ///         Network = net.Name,
+    ///         Direction = "INGRESS",
+    ///         SourceRanges = new[]
+    ///         {
+    ///             "10.0.0.0/24",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "0-65535",
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "udp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "0-65535",
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Vertex.AiModelDevelopmentCluster("default", new()
+    ///     {
+    ///         Region = "us-east1",
+    ///         ModelDevelopmentClusterId = "tftest-gke",
+    ///         DisplayName = "tftest-gke",
+    ///         DeletionPolicy = "DELETE",
+    ///         Labels = 
+    ///         {
+    ///             { "env", "dev" },
+    ///         },
+    ///         Network = new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNetworkArgs
+    ///         {
+    ///             Network = net.Id,
+    ///             Subnetwork = subnet.Id,
+    ///         },
+    ///         OrchestratorSpec = new Gcp.Vertex.Inputs.AiModelDevelopmentClusterOrchestratorSpecArgs
+    ///         {
+    ///             KubernetesSpec = new Gcp.Vertex.Inputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs
+    ///             {
+    ///                 NodePoolIds = new[]
+    ///                 {
+    ///                     "cpu1",
+    ///                 },
+    ///                 EnableIpAlias = true,
+    ///                 PublicAccessEndpointEnabled = true,
+    ///                 ControlPlaneVersion = "-",
+    ///                 NodePoolVersions = 
+    ///                 {
+    ///                     { "cpu1", "-" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         NodePools = new[]
+    ///         {
+    ///             new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNodePoolArgs
+    ///             {
+    ///                 Id = "cpu1",
+    ///                 Zone = "us-east1-b",
+    ///                 ProvisioningModel = "ON_DEMAND",
+    ///                 BootDisk = new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNodePoolBootDiskArgs
+    ///                 {
+    ///                     BootDiskSizeGb = 100,
+    ///                     BootDiskType = "pd-standard",
+    ///                 },
+    ///                 MachineSpec = new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNodePoolMachineSpecArgs
+    ///                 {
+    ///                     MachineType = "n2-standard-4",
+    ///                 },
+    ///                 ScalingSpec = new Gcp.Vertex.Inputs.AiModelDevelopmentClusterNodePoolScalingSpecArgs
+    ///                 {
+    ///                     MinNodeCount = 1,
+    ///                     MaxNodeCount = 2,
     ///                 },
     ///             },
     ///         },
@@ -474,9 +599,14 @@ namespace Pulumi.Gcp.Vertex
     /// &lt;a name="NestedOrchestratorSpec"&gt;&lt;/a&gt;The `OrchestratorSpec` block supports:
     /// 
     /// * `SlurmSpec` -
-    ///   (Optional)
-    ///   The Slurm orchestrator related spec of the cluster.
-    ///   Structure is documented below.
+    /// (Optional)
+    /// The Slurm orchestrator related spec of the cluster.
+    /// Structure is documented below.
+    /// 
+    /// * `KubernetesSpec` -
+    /// (Optional)
+    /// The GKE orchestrator related spec of the cluster.
+    /// Structure is documented below.
     /// 
     /// &lt;a name="NestedOrchestratorSpecSlurmSpec"&gt;&lt;/a&gt;The `SlurmSpec` block supports:
     /// 
@@ -585,6 +715,44 @@ namespace Pulumi.Gcp.Vertex
     /// * `NodePoolIds` -
     /// (Required)
     /// Node pools for the slurm partition
+    /// 
+    /// &lt;a name="NestedOrchestratorSpecKubernetesSpec"&gt;&lt;/a&gt;The `KubernetesSpec` block supports:
+    /// 
+    /// * `NodePoolIds` -
+    /// (Optional)
+    /// IDs of the NodePools to be included in this GKE cluster. These IDs must
+    /// correspond to NodePools defined in the `NodePools` field.
+    /// 
+    /// * `EnableIpAlias` -
+    /// (Optional)
+    /// Whether to enable IP alias.
+    /// 
+    /// * `PublicAccessEndpointEnabled` -
+    /// (Optional)
+    /// Whether the GKE cluster's control plane endpoint is publicly accessible.
+    /// If true, the cluster is created with a public access endpoint (i.e. the
+    /// private cluster configuration is disabled). If false or unset, the cluster
+    /// is created with only private control plane access by default.
+    /// 
+    /// * `ControlPlaneVersion` -
+    /// (Optional)
+    /// The Kubernetes version of the GKE control plane.
+    /// Accepted formats are minor version (for example, `"1.30"`), patch version
+    /// (for example, `"1.30.5"`), full GKE release version (for example,
+    /// `"1.30.5-gke.1014001"`), or `"-"` to use the service default version.
+    /// Upgrades can advance at most one minor version at a time; downgrades are
+    /// rejected.
+    /// 
+    /// * `NodePoolVersions` -
+    /// (Optional)
+    /// The Kubernetes versions for specific node pools, keyed by node pool ID.
+    /// When specified, all node pool IDs in the cluster must be included.
+    /// Accepted formats are minor version (for example, `"1.30"`), patch version
+    /// (for example, `"1.30.5"`), full GKE release version (for example,
+    /// `"1.30.5-gke.1014001"`), or `"-"` to align with the control plane version.
+    /// Node pools cannot be newer than the control plane or more than 2 minor
+    /// versions behind it; upgrades can advance at most one minor version at a
+    /// time and downgrades are rejected.
     /// 
     /// &lt;a name="NestedLustreExportConfig"&gt;&lt;/a&gt;The `LustreExportConfig` block supports:
     /// 
@@ -764,7 +932,10 @@ namespace Pulumi.Gcp.Vertex
         public Output<Outputs.AiModelDevelopmentClusterNetwork> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The spec of the pools of different resources.
+        /// The spec of the pools of different resources. Node pools can be added,
+        /// removed, or reordered in place; changing some fields on an existing node
+        /// pool may require replacing the node pool (validated server-side by the
+        /// API).
         /// Structure is documented below.
         /// </summary>
         [Output("nodePools")]
@@ -946,7 +1117,10 @@ namespace Pulumi.Gcp.Vertex
         private InputList<Inputs.AiModelDevelopmentClusterNodePoolArgs>? _nodePools;
 
         /// <summary>
-        /// The spec of the pools of different resources.
+        /// The spec of the pools of different resources. Node pools can be added,
+        /// removed, or reordered in place; changing some fields on an existing node
+        /// pool may require replacing the node pool (validated server-side by the
+        /// API).
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiModelDevelopmentClusterNodePoolArgs> NodePools
@@ -1117,7 +1291,10 @@ namespace Pulumi.Gcp.Vertex
         private InputList<Inputs.AiModelDevelopmentClusterNodePoolGetArgs>? _nodePools;
 
         /// <summary>
-        /// The spec of the pools of different resources.
+        /// The spec of the pools of different resources. Node pools can be added,
+        /// removed, or reordered in place; changing some fields on an existing node
+        /// pool may require replacing the node pool (validated server-side by the
+        /// API).
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiModelDevelopmentClusterNodePoolGetArgs> NodePools

@@ -195,6 +195,7 @@ import * as utilities from "../utilities";
  *     minTlsVersion: "TLS_1_0",
  *     trustConfig: defaultTrustConfig.id,
  *     tlsFeatureProfile: "PROFILE_CUSTOM",
+ *     certificateIssuanceMode: "LOCAL_INTERMEDIATE_CA_SIGNING",
  *     customTlsFeatures: [
  *         "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
  *         "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
@@ -269,6 +270,11 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
      */
     declare public readonly caPool: pulumi.Output<string>;
     /**
+     * The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     */
+    declare public readonly certificateIssuanceMode: pulumi.Output<string | undefined>;
+    /**
      * The timestamp when the resource was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -341,6 +347,7 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TlsInspectionPolicyState | undefined;
             resourceInputs["caPool"] = state?.caPool;
+            resourceInputs["certificateIssuanceMode"] = state?.certificateIssuanceMode;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customTlsFeatures"] = state?.customTlsFeatures;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -359,6 +366,7 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'caPool'");
             }
             resourceInputs["caPool"] = args?.caPool;
+            resourceInputs["certificateIssuanceMode"] = args?.certificateIssuanceMode;
             resourceInputs["customTlsFeatures"] = args?.customTlsFeatures;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
@@ -385,6 +393,11 @@ export interface TlsInspectionPolicyState {
      * A CA pool resource used to issue interception certificates.
      */
     caPool?: pulumi.Input<string | undefined>;
+    /**
+     * The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     */
+    certificateIssuanceMode?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
@@ -453,6 +466,11 @@ export interface TlsInspectionPolicyArgs {
      * A CA pool resource used to issue interception certificates.
      */
     caPool: pulumi.Input<string>;
+    /**
+     * The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     */
+    certificateIssuanceMode?: pulumi.Input<string | undefined>;
     /**
      * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      */

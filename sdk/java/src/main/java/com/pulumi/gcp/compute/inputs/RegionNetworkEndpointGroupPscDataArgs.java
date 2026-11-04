@@ -16,6 +16,25 @@ public final class RegionNetworkEndpointGroupPscDataArgs extends com.pulumi.reso
     public static final RegionNetworkEndpointGroupPscDataArgs Empty = new RegionNetworkEndpointGroupPscDataArgs();
 
     /**
+     * (Output)
+     * Address allocated from given subnetwork for PSC. This IP address acts
+     * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+     * 
+     */
+    @Import(name="consumerPscAddress")
+    private @Nullable Output<String> consumerPscAddress;
+
+    /**
+     * @return (Output)
+     * Address allocated from given subnetwork for PSC. This IP address acts
+     * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+     * 
+     */
+    public Optional<Output<String>> consumerPscAddress() {
+        return Optional.ofNullable(this.consumerPscAddress);
+    }
+
+    /**
      * The PSC producer port to use when consumer PSC NEG connects to a producer. If
      * this flag isn&#39;t specified for a PSC NEG with endpoint type
      * private-service-connect, then PSC NEG will be connected to a first port in the
@@ -36,10 +55,51 @@ public final class RegionNetworkEndpointGroupPscDataArgs extends com.pulumi.reso
         return Optional.ofNullable(this.producerPort);
     }
 
+    /**
+     * (Output)
+     * The PSC connection id of the PSC Network Endpoint Group Consumer.
+     * 
+     */
+    @Import(name="pscConnectionId")
+    private @Nullable Output<String> pscConnectionId;
+
+    /**
+     * @return (Output)
+     * The PSC connection id of the PSC Network Endpoint Group Consumer.
+     * 
+     */
+    public Optional<Output<String>> pscConnectionId() {
+        return Optional.ofNullable(this.pscConnectionId);
+    }
+
+    /**
+     * (Output)
+     * The connection status of the PSC Network Endpoint Group Consumer.
+     * Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+     * `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+     * 
+     */
+    @Import(name="pscConnectionStatus")
+    private @Nullable Output<String> pscConnectionStatus;
+
+    /**
+     * @return (Output)
+     * The connection status of the PSC Network Endpoint Group Consumer.
+     * Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+     * `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+     * 
+     */
+    public Optional<Output<String>> pscConnectionStatus() {
+        return Optional.ofNullable(this.pscConnectionStatus);
+    }
+
     private RegionNetworkEndpointGroupPscDataArgs() {}
 
     private RegionNetworkEndpointGroupPscDataArgs(RegionNetworkEndpointGroupPscDataArgs $) {
+        this.consumerPscAddress = $.consumerPscAddress;
         this.producerPort = $.producerPort;
+        this.pscConnectionId = $.pscConnectionId;
+        this.pscConnectionStatus = $.pscConnectionStatus;
     }
 
     public static Builder builder() {
@@ -58,6 +118,31 @@ public final class RegionNetworkEndpointGroupPscDataArgs extends com.pulumi.reso
 
         public Builder(RegionNetworkEndpointGroupPscDataArgs defaults) {
             $ = new RegionNetworkEndpointGroupPscDataArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param consumerPscAddress (Output)
+         * Address allocated from given subnetwork for PSC. This IP address acts
+         * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerPscAddress(@Nullable Output<String> consumerPscAddress) {
+            $.consumerPscAddress = consumerPscAddress;
+            return this;
+        }
+
+        /**
+         * @param consumerPscAddress (Output)
+         * Address allocated from given subnetwork for PSC. This IP address acts
+         * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerPscAddress(String consumerPscAddress) {
+            return consumerPscAddress(Output.of(consumerPscAddress));
         }
 
         /**
@@ -85,6 +170,56 @@ public final class RegionNetworkEndpointGroupPscDataArgs extends com.pulumi.reso
          */
         public Builder producerPort(String producerPort) {
             return producerPort(Output.of(producerPort));
+        }
+
+        /**
+         * @param pscConnectionId (Output)
+         * The PSC connection id of the PSC Network Endpoint Group Consumer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionId(@Nullable Output<String> pscConnectionId) {
+            $.pscConnectionId = pscConnectionId;
+            return this;
+        }
+
+        /**
+         * @param pscConnectionId (Output)
+         * The PSC connection id of the PSC Network Endpoint Group Consumer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionId(String pscConnectionId) {
+            return pscConnectionId(Output.of(pscConnectionId));
+        }
+
+        /**
+         * @param pscConnectionStatus (Output)
+         * The connection status of the PSC Network Endpoint Group Consumer.
+         * Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+         * `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionStatus(@Nullable Output<String> pscConnectionStatus) {
+            $.pscConnectionStatus = pscConnectionStatus;
+            return this;
+        }
+
+        /**
+         * @param pscConnectionStatus (Output)
+         * The connection status of the PSC Network Endpoint Group Consumer.
+         * Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+         * `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionStatus(String pscConnectionStatus) {
+            return pscConnectionStatus(Output.of(pscConnectionStatus));
         }
 
         public RegionNetworkEndpointGroupPscDataArgs build() {

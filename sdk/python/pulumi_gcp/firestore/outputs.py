@@ -31,6 +31,7 @@ __all__ = [
     'IndexFieldSearchConfigTextSpecIndexSpec',
     'IndexFieldVectorConfig',
     'IndexFieldVectorConfigFlat',
+    'IndexSearchIndexOptions',
     'UserCredsResourceIdentity',
 ]
 
@@ -651,6 +652,58 @@ class IndexFieldVectorConfig(dict):
 class IndexFieldVectorConfigFlat(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class IndexSearchIndexOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "textLanguage":
+            suggest = "text_language"
+        elif key == "textLanguageOverrideFieldPath":
+            suggest = "text_language_override_field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexSearchIndexOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexSearchIndexOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexSearchIndexOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 text_language: Optional[_builtins.str] = None,
+                 text_language_override_field_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str text_language: Optional. The language code used to parse all text fields included in the search index,
+               for example, "en", "es", "jp".
+        :param _builtins.str text_language_override_field_path: Optional. The path to the field that records the text language override of each document.
+        """
+        if text_language is not None:
+            pulumi.set(__self__, "text_language", text_language)
+        if text_language_override_field_path is not None:
+            pulumi.set(__self__, "text_language_override_field_path", text_language_override_field_path)
+
+    @_builtins.property
+    @pulumi.getter(name="textLanguage")
+    def text_language(self) -> Optional[_builtins.str]:
+        """
+        Optional. The language code used to parse all text fields included in the search index,
+        for example, "en", "es", "jp".
+        """
+        return pulumi.get(self, "text_language")
+
+    @_builtins.property
+    @pulumi.getter(name="textLanguageOverrideFieldPath")
+    def text_language_override_field_path(self) -> Optional[_builtins.str]:
+        """
+        Optional. The path to the field that records the text language override of each document.
+        """
+        return pulumi.get(self, "text_language_override_field_path")
 
 
 @pulumi.output_type

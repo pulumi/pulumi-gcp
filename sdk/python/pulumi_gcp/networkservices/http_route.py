@@ -643,6 +643,7 @@ class HttpRoute(pulumi.CustomResource):
                             "service_name": "new",
                             "weight": 1,
                         },
+                        "mirror_percent": float(50),
                     },
                     "cors_policy": {
                         "allow_origins": ["example"],
@@ -682,6 +683,7 @@ class HttpRoute(pulumi.CustomResource):
                         },
                         "removes": ["removearg"],
                     },
+                    "idle_timeout": "1s",
                 },
             }])
         ```
@@ -939,6 +941,7 @@ class HttpRoute(pulumi.CustomResource):
                             "service_name": "new",
                             "weight": 1,
                         },
+                        "mirror_percent": float(50),
                     },
                     "cors_policy": {
                         "allow_origins": ["example"],
@@ -978,6 +981,7 @@ class HttpRoute(pulumi.CustomResource):
                         },
                         "removes": ["removearg"],
                     },
+                    "idle_timeout": "1s",
                 },
             }])
         ```

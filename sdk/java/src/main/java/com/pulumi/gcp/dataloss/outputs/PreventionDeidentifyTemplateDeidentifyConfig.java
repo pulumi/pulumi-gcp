@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformations;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
      * 
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations recordTransformations;
+    /**
+     * @return Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling transformationErrorHandling;
 
     private PreventionDeidentifyTemplateDeidentifyConfig() {}
     /**
@@ -57,6 +64,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
     public Optional<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations> recordTransformations() {
         return Optional.ofNullable(this.recordTransformations);
     }
+    /**
+     * @return Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling> transformationErrorHandling() {
+        return Optional.ofNullable(this.transformationErrorHandling);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -70,12 +85,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformations imageTransformations;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations recordTransformations;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling transformationErrorHandling;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageTransformations = defaults.imageTransformations;
     	      this.infoTypeTransformations = defaults.infoTypeTransformations;
     	      this.recordTransformations = defaults.recordTransformations;
+    	      this.transformationErrorHandling = defaults.transformationErrorHandling;
         }
 
         @CustomType.Setter
@@ -96,11 +113,18 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
             this.recordTransformations = recordTransformations;
             return this;
         }
+        @CustomType.Setter
+        public Builder transformationErrorHandling(@Nullable PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling transformationErrorHandling) {
+
+            this.transformationErrorHandling = transformationErrorHandling;
+            return this;
+        }
         public PreventionDeidentifyTemplateDeidentifyConfig build() {
             final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfig();
             _resultValue.imageTransformations = imageTransformations;
             _resultValue.infoTypeTransformations = infoTypeTransformations;
             _resultValue.recordTransformations = recordTransformations;
+            _resultValue.transformationErrorHandling = transformationErrorHandling;
             return _resultValue;
         }
     }

@@ -31,6 +31,7 @@ __all__ = [
     'DataAssetAccessGroupConfig',
     'DataProductAccessApprovalConfig',
     'DataProductAccessGroup',
+    'DataProductAccessGroupDefaultIamRoleConfig',
     'DataProductAccessGroupPrincipal',
     'DataProductDataAssetAccessGroupConfig',
     'DataProductIamBindingCondition',
@@ -56,6 +57,7 @@ __all__ = [
     'DatascanDataQualitySpecPostScanActionsNotificationReportRecipients',
     'DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger',
     'DatascanDataQualitySpecRule',
+    'DatascanDataQualitySpecRuleDebugQuery',
     'DatascanDataQualitySpecRuleNonNullExpectation',
     'DatascanDataQualitySpecRuleRangeExpectation',
     'DatascanDataQualitySpecRuleRegexExpectation',
@@ -917,6 +919,8 @@ class DataProductAccessGroup(dict):
             suggest = "display_name"
         elif key == "groupId":
             suggest = "group_id"
+        elif key == "defaultIamRoleConfig":
+            suggest = "default_iam_role_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DataProductAccessGroup. Access the value via the '{suggest}' property getter instead.")
@@ -934,6 +938,7 @@ class DataProductAccessGroup(dict):
                  group_id: _builtins.str,
                  id: _builtins.str,
                  principal: 'outputs.DataProductAccessGroupPrincipal',
+                 default_iam_role_config: Optional['outputs.DataProductAccessGroupDefaultIamRoleConfig'] = None,
                  description: Optional[_builtins.str] = None):
         """
         :param _builtins.str display_name: User friendly display name.
@@ -941,12 +946,16 @@ class DataProductAccessGroup(dict):
         :param _builtins.str id: The identifier for this object. Format specified above.
         :param 'DataProductAccessGroupPrincipalArgs' principal: The principal entity.
                Structure is documented below.
+        :param 'DataProductAccessGroupDefaultIamRoleConfigArgs' default_iam_role_config: Configuration for the default IAM role associated with the access group.
+               Structure is documented below.
         :param _builtins.str description: Description of the access group.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "principal", principal)
+        if default_iam_role_config is not None:
+            pulumi.set(__self__, "default_iam_role_config", default_iam_role_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
 
@@ -984,12 +993,41 @@ class DataProductAccessGroup(dict):
         return pulumi.get(self, "principal")
 
     @_builtins.property
+    @pulumi.getter(name="defaultIamRoleConfig")
+    def default_iam_role_config(self) -> Optional['outputs.DataProductAccessGroupDefaultIamRoleConfig']:
+        """
+        Configuration for the default IAM role associated with the access group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_iam_role_config")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
         Description of the access group.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class DataProductAccessGroupDefaultIamRoleConfig(dict):
+    def __init__(__self__, *,
+                 role: _builtins.str):
+        """
+        :param _builtins.str role: Default IAM role associated with the access group, such as
+               `roles/bigquery.dataViewer`.
+        """
+        pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        Default IAM role associated with the access group, such as
+        `roles/bigquery.dataViewer`.
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type
@@ -1529,6 +1567,8 @@ class DatascanDataDocumentationSpec(dict):
         suggest = None
         if key == "catalogPublishingEnabled":
             suggest = "catalog_publishing_enabled"
+        elif key == "generationScopes":
+            suggest = "generation_scopes"
         elif key == "sqlDialect":
             suggest = "sql_dialect"
 
@@ -1545,15 +1585,20 @@ class DatascanDataDocumentationSpec(dict):
 
     def __init__(__self__, *,
                  catalog_publishing_enabled: Optional[_builtins.bool] = None,
+                 generation_scopes: Optional[Sequence[_builtins.str]] = None,
                  sql_dialect: Optional[_builtins.str] = None):
         """
         :param _builtins.bool catalog_publishing_enabled: If set, the latest DataScan job result will be published to Knowledge Catalog.
+        :param Sequence[_builtins.str] generation_scopes: Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+               Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
         :param _builtins.str sql_dialect: The SQL dialect to use in the generated SQL queries.
                If not specified, the default dialect is Google SQL.
                Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
         """
         if catalog_publishing_enabled is not None:
             pulumi.set(__self__, "catalog_publishing_enabled", catalog_publishing_enabled)
+        if generation_scopes is not None:
+            pulumi.set(__self__, "generation_scopes", generation_scopes)
         if sql_dialect is not None:
             pulumi.set(__self__, "sql_dialect", sql_dialect)
 
@@ -1564,6 +1609,15 @@ class DatascanDataDocumentationSpec(dict):
         If set, the latest DataScan job result will be published to Knowledge Catalog.
         """
         return pulumi.get(self, "catalog_publishing_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="generationScopes")
+    def generation_scopes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+        Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+        """
+        return pulumi.get(self, "generation_scopes")
 
     @_builtins.property
     @pulumi.getter(name="sqlDialect")
@@ -1609,6 +1663,7 @@ class DatascanDataProfileSpec(dict):
                  catalog_publishing_enabled: Optional[_builtins.bool] = None,
                  exclude_fields: Optional['outputs.DatascanDataProfileSpecExcludeFields'] = None,
                  include_fields: Optional['outputs.DatascanDataProfileSpecIncludeFields'] = None,
+                 mode: Optional[_builtins.str] = None,
                  post_scan_actions: Optional['outputs.DatascanDataProfileSpecPostScanActions'] = None,
                  row_filter: Optional[_builtins.str] = None,
                  sampling_percent: Optional[_builtins.float] = None):
@@ -1620,6 +1675,8 @@ class DatascanDataProfileSpec(dict):
         :param 'DatascanDataProfileSpecIncludeFieldsArgs' include_fields: The fields to include in data profile.
                If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
                Structure is documented below.
+        :param _builtins.str mode: The execution mode for the profile scan.
+               Possible values are: `STANDARD`, `LIGHTWEIGHT`.
         :param 'DatascanDataProfileSpecPostScanActionsArgs' post_scan_actions: Actions to take upon job completion.
                Structure is documented below.
         :param _builtins.str row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
@@ -1633,6 +1690,8 @@ class DatascanDataProfileSpec(dict):
             pulumi.set(__self__, "exclude_fields", exclude_fields)
         if include_fields is not None:
             pulumi.set(__self__, "include_fields", include_fields)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if post_scan_actions is not None:
             pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
@@ -1667,6 +1726,15 @@ class DatascanDataProfileSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "include_fields")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        The execution mode for the profile scan.
+        Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+        """
+        return pulumi.get(self, "mode")
 
     @_builtins.property
     @pulumi.getter(name="postScanActions")
@@ -2219,7 +2287,9 @@ class DatascanDataQualitySpecRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ignoreNull":
+        if key == "debugQueries":
+            suggest = "debug_queries"
+        elif key == "ignoreNull":
             suggest = "ignore_null"
         elif key == "nonNullExpectation":
             suggest = "non_null_expectation"
@@ -2257,6 +2327,7 @@ class DatascanDataQualitySpecRule(dict):
                  dimension: _builtins.str,
                  attributes: Optional[Mapping[str, _builtins.str]] = None,
                  column: Optional[_builtins.str] = None,
+                 debug_queries: Optional[Sequence['outputs.DatascanDataQualitySpecRuleDebugQuery']] = None,
                  description: Optional[_builtins.str] = None,
                  ignore_null: Optional[_builtins.bool] = None,
                  name: Optional[_builtins.str] = None,
@@ -2276,6 +2347,9 @@ class DatascanDataQualitySpecRule(dict):
         :param _builtins.str dimension: The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
         :param Mapping[str, _builtins.str] attributes: Map of attribute name and value linked to the rule.
         :param _builtins.str column: The unnested column which this rule is evaluated against.
+        :param Sequence['DatascanDataQualitySpecRuleDebugQueryArgs'] debug_queries: Specifies the debug queries for this rule.
+               Currently, only one query is supported, but this may be expanded in the future.
+               Structure is documented below.
         :param _builtins.str description: Description of the rule.
                The maximum length is 1,024 characters.
         :param _builtins.bool ignore_null: Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
@@ -2310,6 +2384,8 @@ class DatascanDataQualitySpecRule(dict):
             pulumi.set(__self__, "attributes", attributes)
         if column is not None:
             pulumi.set(__self__, "column", column)
+        if debug_queries is not None:
+            pulumi.set(__self__, "debug_queries", debug_queries)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ignore_null is not None:
@@ -2364,6 +2440,16 @@ class DatascanDataQualitySpecRule(dict):
         The unnested column which this rule is evaluated against.
         """
         return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter(name="debugQueries")
+    def debug_queries(self) -> Optional[Sequence['outputs.DatascanDataQualitySpecRuleDebugQuery']]:
+        """
+        Specifies the debug queries for this rule.
+        Currently, only one query is supported, but this may be expanded in the future.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "debug_queries")
 
     @_builtins.property
     @pulumi.getter
@@ -2497,6 +2583,55 @@ class DatascanDataQualitySpecRule(dict):
         Row-level rule which evaluates whether each column value is unique.
         """
         return pulumi.get(self, "uniqueness_expectation")
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecRuleDebugQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sqlStatement":
+            suggest = "sql_statement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataQualitySpecRuleDebugQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataQualitySpecRuleDebugQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataQualitySpecRuleDebugQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sql_statement: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str sql_statement: Specifies the SQL statement to be executed.
+        :param _builtins.str description: Specifies the description of the debug query.
+               The maximum length is 1,024 characters.
+        """
+        pulumi.set(__self__, "sql_statement", sql_statement)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlStatement")
+    def sql_statement(self) -> _builtins.str:
+        """
+        Specifies the SQL statement to be executed.
+        """
+        return pulumi.get(self, "sql_statement")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Specifies the description of the debug query.
+        The maximum length is 1,024 characters.
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

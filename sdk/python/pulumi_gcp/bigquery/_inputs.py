@@ -75,6 +75,10 @@ __all__ = [
     'DataTransferConfigEncryptionConfigurationArgsDict',
     'DataTransferConfigScheduleOptionsArgs',
     'DataTransferConfigScheduleOptionsArgsDict',
+    'DataTransferConfigScheduleOptionsV2Args',
+    'DataTransferConfigScheduleOptionsV2ArgsDict',
+    'DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs',
+    'DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgsDict',
     'DataTransferConfigSensitiveParamsArgs',
     'DataTransferConfigSensitiveParamsArgsDict',
     'DataTransferDataSourceEnrollmentParameterArgs',
@@ -1947,6 +1951,8 @@ class DataTransferConfigScheduleOptionsArgsDict(TypedDict):
     scheduled at or after the end time. The end time can be changed at any
     moment. The time when a data transfer can be triggered manually is not
     limited by this option.
+
+    <a name="nested_schedule_options_v2"></a>The `schedule_options_v2` block supports:
     """
     start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1973,6 +1979,8 @@ class DataTransferConfigScheduleOptionsArgs:
                scheduled at or after the end time. The end time can be changed at any
                moment. The time when a data transfer can be triggered manually is not
                limited by this option.
+               
+               <a name="nested_schedule_options_v2"></a>The `schedule_options_v2` block supports:
         :param pulumi.Input[_builtins.str] start_time: Specifies time to start scheduling transfer runs. The first run will be
                scheduled at or after the start time according to a recurrence pattern
                defined in the schedule string. The start time can be changed at any
@@ -2010,6 +2018,8 @@ class DataTransferConfigScheduleOptionsArgs:
         scheduled at or after the end time. The end time can be changed at any
         moment. The time when a data transfer can be triggered manually is not
         limited by this option.
+
+        <a name="nested_schedule_options_v2"></a>The `schedule_options_v2` block supports:
         """
         return pulumi.get(self, "end_time")
 
@@ -2032,6 +2042,71 @@ class DataTransferConfigScheduleOptionsArgs:
     @start_time.setter
     def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
+
+
+class DataTransferConfigScheduleOptionsV2ArgsDict(TypedDict):
+    event_driven_schedule: pulumi.Input['DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgsDict']
+    """
+    Event-driven transfer schedule options. If set, the transfer will be
+    scheduled upon events arriving.
+    """
+
+@pulumi.input_type
+class DataTransferConfigScheduleOptionsV2Args:
+    def __init__(__self__, *,
+                 event_driven_schedule: pulumi.Input['DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs']):
+        """
+        :param pulumi.Input['DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs'] event_driven_schedule: Event-driven transfer schedule options. If set, the transfer will be
+               scheduled upon events arriving.
+        """
+        pulumi.set(__self__, "event_driven_schedule", event_driven_schedule)
+
+    @_builtins.property
+    @pulumi.getter(name="eventDrivenSchedule")
+    def event_driven_schedule(self) -> pulumi.Input['DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs']:
+        """
+        Event-driven transfer schedule options. If set, the transfer will be
+        scheduled upon events arriving.
+        """
+        return pulumi.get(self, "event_driven_schedule")
+
+    @event_driven_schedule.setter
+    def event_driven_schedule(self, value: pulumi.Input['DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs']):
+        pulumi.set(self, "event_driven_schedule", value)
+
+
+class DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgsDict(TypedDict):
+    pubsub_subscription: pulumi.Input[_builtins.str]
+    """
+    Pub/Sub subscription name used to receive events. Only the
+    Google Cloud Storage data source supports this option. Format:
+    projects/{project}/subscriptions/{subscription}.
+    """
+
+@pulumi.input_type
+class DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs:
+    def __init__(__self__, *,
+                 pubsub_subscription: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] pubsub_subscription: Pub/Sub subscription name used to receive events. Only the
+               Google Cloud Storage data source supports this option. Format:
+               projects/{project}/subscriptions/{subscription}.
+        """
+        pulumi.set(__self__, "pubsub_subscription", pubsub_subscription)
+
+    @_builtins.property
+    @pulumi.getter(name="pubsubSubscription")
+    def pubsub_subscription(self) -> pulumi.Input[_builtins.str]:
+        """
+        Pub/Sub subscription name used to receive events. Only the
+        Google Cloud Storage data source supports this option. Format:
+        projects/{project}/subscriptions/{subscription}.
+        """
+        return pulumi.get(self, "pubsub_subscription")
+
+    @pubsub_subscription.setter
+    def pubsub_subscription(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pubsub_subscription", value)
 
 
 class DataTransferConfigSensitiveParamsArgsDict(TypedDict):

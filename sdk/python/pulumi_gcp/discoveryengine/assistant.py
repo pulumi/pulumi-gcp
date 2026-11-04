@@ -27,6 +27,7 @@ class AssistantArgs:
                  engine_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  customer_policy: pulumi.Input[Optional['AssistantCustomerPolicyArgs']] = None,
+                 default_web_grounding_toggle_off: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  generation_config: pulumi.Input[Optional['AssistantGenerationConfigArgs']] = None,
@@ -44,6 +45,15 @@ class AssistantArgs:
                only be one of "global", "us" and "eu".
         :param pulumi.Input['AssistantCustomerPolicyArgs'] customer_policy: Customer policy for the assistant.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] default_web_grounding_toggle_off: This field controls the default web grounding toggle for end users if
+               `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+               `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+               By default, this field is set to false. If `web_grounding_type` is
+               `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+               `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+               grounding enabled by default on UI. If true, grounding toggle will be
+               disabled by default on UI. End users can still enable web grounding in
+               the UI if web grounding is enabled.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -66,6 +76,8 @@ class AssistantArgs:
         pulumi.set(__self__, "location", location)
         if customer_policy is not None:
             pulumi.set(__self__, "customer_policy", customer_policy)
+        if default_web_grounding_toggle_off is not None:
+            pulumi.set(__self__, "default_web_grounding_toggle_off", default_web_grounding_toggle_off)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -153,6 +165,26 @@ class AssistantArgs:
         pulumi.set(self, "customer_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="defaultWebGroundingToggleOff")
+    def default_web_grounding_toggle_off(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        This field controls the default web grounding toggle for end users if
+        `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+        By default, this field is set to false. If `web_grounding_type` is
+        `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+        grounding enabled by default on UI. If true, grounding toggle will be
+        disabled by default on UI. End users can still enable web grounding in
+        the UI if web grounding is enabled.
+        """
+        return pulumi.get(self, "default_web_grounding_toggle_off")
+
+    @default_web_grounding_toggle_off.setter
+    def default_web_grounding_toggle_off(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "default_web_grounding_toggle_off", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -228,6 +260,7 @@ class _AssistantState:
                  assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_policy: pulumi.Input[Optional['AssistantCustomerPolicyArgs']] = None,
+                 default_web_grounding_toggle_off: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -244,6 +277,15 @@ class _AssistantState:
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
         :param pulumi.Input['AssistantCustomerPolicyArgs'] customer_policy: Customer policy for the assistant.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] default_web_grounding_toggle_off: This field controls the default web grounding toggle for end users if
+               `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+               `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+               By default, this field is set to false. If `web_grounding_type` is
+               `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+               `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+               grounding enabled by default on UI. If true, grounding toggle will be
+               disabled by default on UI. End users can still enable web grounding in
+               the UI if web grounding is enabled.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -274,6 +316,8 @@ class _AssistantState:
             pulumi.set(__self__, "collection_id", collection_id)
         if customer_policy is not None:
             pulumi.set(__self__, "customer_policy", customer_policy)
+        if default_web_grounding_toggle_off is not None:
+            pulumi.set(__self__, "default_web_grounding_toggle_off", default_web_grounding_toggle_off)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -329,6 +373,26 @@ class _AssistantState:
     @customer_policy.setter
     def customer_policy(self, value: pulumi.Input[Optional['AssistantCustomerPolicyArgs']]):
         pulumi.set(self, "customer_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultWebGroundingToggleOff")
+    def default_web_grounding_toggle_off(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        This field controls the default web grounding toggle for end users if
+        `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+        By default, this field is set to false. If `web_grounding_type` is
+        `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+        grounding enabled by default on UI. If true, grounding toggle will be
+        disabled by default on UI. End users can still enable web grounding in
+        the UI if web grounding is enabled.
+        """
+        return pulumi.get(self, "default_web_grounding_toggle_off")
+
+    @default_web_grounding_toggle_off.setter
+    def default_web_grounding_toggle_off(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "default_web_grounding_toggle_off", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -462,6 +526,7 @@ class Assistant(pulumi.CustomResource):
                  assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']]] = None,
+                 default_web_grounding_toggle_off: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -547,6 +612,15 @@ class Assistant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
         :param pulumi.Input[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']] customer_policy: Customer policy for the assistant.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] default_web_grounding_toggle_off: This field controls the default web grounding toggle for end users if
+               `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+               `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+               By default, this field is set to false. If `web_grounding_type` is
+               `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+               `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+               grounding enabled by default on UI. If true, grounding toggle will be
+               disabled by default on UI. End users can still enable web grounding in
+               the UI if web grounding is enabled.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -661,6 +735,7 @@ class Assistant(pulumi.CustomResource):
                  assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']]] = None,
+                 default_web_grounding_toggle_off: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -685,6 +760,7 @@ class Assistant(pulumi.CustomResource):
                 raise TypeError("Missing required property 'collection_id'")
             __props__.__dict__["collection_id"] = collection_id
             __props__.__dict__["customer_policy"] = customer_policy
+            __props__.__dict__["default_web_grounding_toggle_off"] = default_web_grounding_toggle_off
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -713,6 +789,7 @@ class Assistant(pulumi.CustomResource):
             assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
             collection_id: pulumi.Input[Optional[_builtins.str]] = None,
             customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']]] = None,
+            default_web_grounding_toggle_off: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -733,6 +810,15 @@ class Assistant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] collection_id: The unique id of the collection.
         :param pulumi.Input[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']] customer_policy: Customer policy for the assistant.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] default_web_grounding_toggle_off: This field controls the default web grounding toggle for end users if
+               `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+               `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+               By default, this field is set to false. If `web_grounding_type` is
+               `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+               `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+               grounding enabled by default on UI. If true, grounding toggle will be
+               disabled by default on UI. End users can still enable web grounding in
+               the UI if web grounding is enabled.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -764,6 +850,7 @@ class Assistant(pulumi.CustomResource):
         __props__.__dict__["assistant_id"] = assistant_id
         __props__.__dict__["collection_id"] = collection_id
         __props__.__dict__["customer_policy"] = customer_policy
+        __props__.__dict__["default_web_grounding_toggle_off"] = default_web_grounding_toggle_off
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -799,6 +886,22 @@ class Assistant(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "customer_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultWebGroundingToggleOff")
+    def default_web_grounding_toggle_off(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        This field controls the default web grounding toggle for end users if
+        `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+        By default, this field is set to false. If `web_grounding_type` is
+        `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+        grounding enabled by default on UI. If true, grounding toggle will be
+        disabled by default on UI. End users can still enable web grounding in
+        the UI if web grounding is enabled.
+        """
+        return pulumi.get(self, "default_web_grounding_toggle_off")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")

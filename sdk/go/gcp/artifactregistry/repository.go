@@ -1110,6 +1110,9 @@ type Repository struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// If this is true, an unspecified repo type will be treated as error rather
+	// than defaulting to standard.
+	DisallowUnspecifiedMode pulumi.BoolPtrOutput `pulumi:"disallowUnspecifiedMode"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig RepositoryDockerConfigPtrOutput `pulumi:"dockerConfig"`
@@ -1153,6 +1156,9 @@ type Repository struct {
 	// The name of the repository, for example:
 	// "repo1"
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration for platform logs.
+	// Structure is documented below.
+	PlatformLogsConfig RepositoryPlatformLogsConfigPtrOutput `pulumi:"platformLogsConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -1238,6 +1244,9 @@ type repositoryState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
+	// If this is true, an unspecified repo type will be treated as error rather
+	// than defaulting to standard.
+	DisallowUnspecifiedMode *bool `pulumi:"disallowUnspecifiedMode"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig *RepositoryDockerConfig `pulumi:"dockerConfig"`
@@ -1281,6 +1290,9 @@ type repositoryState struct {
 	// The name of the repository, for example:
 	// "repo1"
 	Name *string `pulumi:"name"`
+	// Configuration for platform logs.
+	// Structure is documented below.
+	PlatformLogsConfig *RepositoryPlatformLogsConfig `pulumi:"platformLogsConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -1326,6 +1338,9 @@ type RepositoryState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
+	// If this is true, an unspecified repo type will be treated as error rather
+	// than defaulting to standard.
+	DisallowUnspecifiedMode pulumi.BoolPtrInput
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig RepositoryDockerConfigPtrInput
@@ -1369,6 +1384,9 @@ type RepositoryState struct {
 	// The name of the repository, for example:
 	// "repo1"
 	Name pulumi.StringPtrInput
+	// Configuration for platform logs.
+	// Structure is documented below.
+	PlatformLogsConfig RepositoryPlatformLogsConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -1416,6 +1434,9 @@ type repositoryArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
+	// If this is true, an unspecified repo type will be treated as error rather
+	// than defaulting to standard.
+	DisallowUnspecifiedMode *bool `pulumi:"disallowUnspecifiedMode"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig *RepositoryDockerConfig `pulumi:"dockerConfig"`
@@ -1454,6 +1475,9 @@ type repositoryArgs struct {
 	// Default value is `STANDARD_REPOSITORY`.
 	// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
 	Mode *string `pulumi:"mode"`
+	// Configuration for platform logs.
+	// Structure is documented below.
+	PlatformLogsConfig *RepositoryPlatformLogsConfig `pulumi:"platformLogsConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -1491,6 +1515,9 @@ type RepositoryArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
+	// If this is true, an unspecified repo type will be treated as error rather
+	// than defaulting to standard.
+	DisallowUnspecifiedMode pulumi.BoolPtrInput
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	// Structure is documented below.
 	DockerConfig RepositoryDockerConfigPtrInput
@@ -1529,6 +1556,9 @@ type RepositoryArgs struct {
 	// Default value is `STANDARD_REPOSITORY`.
 	// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
 	Mode pulumi.StringPtrInput
+	// Configuration for platform logs.
+	// Structure is documented below.
+	PlatformLogsConfig RepositoryPlatformLogsConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -1668,6 +1698,12 @@ func (o RepositoryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// If this is true, an unspecified repo type will be treated as error rather
+// than defaulting to standard.
+func (o RepositoryOutput) DisallowUnspecifiedMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.BoolPtrOutput { return v.DisallowUnspecifiedMode }).(pulumi.BoolPtrOutput)
+}
+
 // Docker repository config contains repository level configuration for the repositories of docker type.
 // Structure is documented below.
 func (o RepositoryOutput) DockerConfig() RepositoryDockerConfigPtrOutput {
@@ -1736,6 +1772,12 @@ func (o RepositoryOutput) Mode() pulumi.StringPtrOutput {
 // "repo1"
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for platform logs.
+// Structure is documented below.
+func (o RepositoryOutput) PlatformLogsConfig() RepositoryPlatformLogsConfigPtrOutput {
+	return o.ApplyT(func(v *Repository) RepositoryPlatformLogsConfigPtrOutput { return v.PlatformLogsConfig }).(RepositoryPlatformLogsConfigPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

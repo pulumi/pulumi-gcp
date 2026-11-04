@@ -30,6 +30,11 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly Outputs.DatascanDataProfileSpecIncludeFields? IncludeFields;
         /// <summary>
+        /// The execution mode for the profile scan.
+        /// Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+        /// </summary>
+        public readonly string? Mode;
+        /// <summary>
         /// Actions to take upon job completion.
         /// Structure is documented below.
         /// </summary>
@@ -53,6 +58,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
             Outputs.DatascanDataProfileSpecIncludeFields? includeFields,
 
+            string? mode,
+
             Outputs.DatascanDataProfileSpecPostScanActions? postScanActions,
 
             string? rowFilter,
@@ -62,6 +69,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
             CatalogPublishingEnabled = catalogPublishingEnabled;
             ExcludeFields = excludeFields;
             IncludeFields = includeFields;
+            Mode = mode;
             PostScanActions = postScanActions;
             RowFilter = rowFilter;
             SamplingPercent = samplingPercent;

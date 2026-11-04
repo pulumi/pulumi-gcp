@@ -12,6 +12,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionNetworkEndpointGroupPscData {
     /**
+     * @return (Output)
+     * Address allocated from given subnetwork for PSC. This IP address acts
+     * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+     * 
+     */
+    private @Nullable String consumerPscAddress;
+    /**
      * @return The PSC producer port to use when consumer PSC NEG connects to a producer. If
      * this flag isn&#39;t specified for a PSC NEG with endpoint type
      * private-service-connect, then PSC NEG will be connected to a first port in the
@@ -19,8 +26,31 @@ public final class RegionNetworkEndpointGroupPscData {
      * 
      */
     private @Nullable String producerPort;
+    /**
+     * @return (Output)
+     * The PSC connection id of the PSC Network Endpoint Group Consumer.
+     * 
+     */
+    private @Nullable String pscConnectionId;
+    /**
+     * @return (Output)
+     * The connection status of the PSC Network Endpoint Group Consumer.
+     * Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+     * `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+     * 
+     */
+    private @Nullable String pscConnectionStatus;
 
     private RegionNetworkEndpointGroupPscData() {}
+    /**
+     * @return (Output)
+     * Address allocated from given subnetwork for PSC. This IP address acts
+     * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+     * 
+     */
+    public Optional<String> consumerPscAddress() {
+        return Optional.ofNullable(this.consumerPscAddress);
+    }
     /**
      * @return The PSC producer port to use when consumer PSC NEG connects to a producer. If
      * this flag isn&#39;t specified for a PSC NEG with endpoint type
@@ -30,6 +60,24 @@ public final class RegionNetworkEndpointGroupPscData {
      */
     public Optional<String> producerPort() {
         return Optional.ofNullable(this.producerPort);
+    }
+    /**
+     * @return (Output)
+     * The PSC connection id of the PSC Network Endpoint Group Consumer.
+     * 
+     */
+    public Optional<String> pscConnectionId() {
+        return Optional.ofNullable(this.pscConnectionId);
+    }
+    /**
+     * @return (Output)
+     * The connection status of the PSC Network Endpoint Group Consumer.
+     * Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+     * `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+     * 
+     */
+    public Optional<String> pscConnectionStatus() {
+        return Optional.ofNullable(this.pscConnectionStatus);
     }
 
     public static Builder builder() {
@@ -41,22 +89,49 @@ public final class RegionNetworkEndpointGroupPscData {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String consumerPscAddress;
         private @Nullable String producerPort;
+        private @Nullable String pscConnectionId;
+        private @Nullable String pscConnectionStatus;
         public Builder() {}
         public Builder(RegionNetworkEndpointGroupPscData defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.consumerPscAddress = defaults.consumerPscAddress;
     	      this.producerPort = defaults.producerPort;
+    	      this.pscConnectionId = defaults.pscConnectionId;
+    	      this.pscConnectionStatus = defaults.pscConnectionStatus;
         }
 
+        @CustomType.Setter
+        public Builder consumerPscAddress(@Nullable String consumerPscAddress) {
+
+            this.consumerPscAddress = consumerPscAddress;
+            return this;
+        }
         @CustomType.Setter
         public Builder producerPort(@Nullable String producerPort) {
 
             this.producerPort = producerPort;
             return this;
         }
+        @CustomType.Setter
+        public Builder pscConnectionId(@Nullable String pscConnectionId) {
+
+            this.pscConnectionId = pscConnectionId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pscConnectionStatus(@Nullable String pscConnectionStatus) {
+
+            this.pscConnectionStatus = pscConnectionStatus;
+            return this;
+        }
         public RegionNetworkEndpointGroupPscData build() {
             final var _resultValue = new RegionNetworkEndpointGroupPscData();
+            _resultValue.consumerPscAddress = consumerPscAddress;
             _resultValue.producerPort = producerPort;
+            _resultValue.pscConnectionId = pscConnectionId;
+            _resultValue.pscConnectionStatus = pscConnectionStatus;
             return _resultValue;
         }
     }

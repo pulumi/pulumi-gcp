@@ -194,10 +194,26 @@ import (
 //								Pattern: pulumi.String("test*"),
 //							},
 //						},
+//						&dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{
+//							InfoType: &dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs{
+//								Name: pulumi.String("MY_METADATA_KV_TYPE"),
+//							},
+//							Likelihood: pulumi.String("POSSIBLE"),
+//							MetadataKeyValueExpression: &dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs{
+//								KeyRegex:   pulumi.String("key.*"),
+//								ValueRegex: pulumi.String("val.*"),
+//							},
+//						},
 //					},
 //					InfoTypes: dataloss.PreventionInspectTemplateInspectConfigInfoTypeArray{
 //						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
 //							Name: pulumi.String("EMAIL_ADDRESS"),
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("OBJECT_TYPE/PERSON"),
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("OBJECT_TYPE/PERSON/PASSPORT"),
 //						},
 //					},
 //					MinLikelihood: pulumi.String("UNLIKELY"),
@@ -215,6 +231,34 @@ import (
 //											Pattern: pulumi.String(".+@example.com"),
 //										},
 //										MatchingType: pulumi.String("MATCHING_TYPE_FULL_MATCH"),
+//									},
+//								},
+//							},
+//						},
+//						&dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs{
+//							InfoTypes: dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArray{
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{
+//									Name: pulumi.String("OBJECT_TYPE/PERSON"),
+//								},
+//							},
+//							Rules: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArray{
+//								&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs{
+//									ExclusionRule: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{
+//										MatchingType: pulumi.String("MATCHING_TYPE_RULE_SPECIFIC"),
+//										ExcludeByImageFindings: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs{
+//											InfoTypes: dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArray{
+//												&dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs{
+//													Name:    pulumi.String("OBJECT_TYPE/PERSON/PASSPORT"),
+//													Version: pulumi.String("latest"),
+//													SensitivityScore: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs{
+//														Score: pulumi.String("SENSITIVITY_LOW"),
+//													},
+//												},
+//											},
+//											ImageContainmentType: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs{
+//												FullyInside: &dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs{},
+//											},
+//										},
 //									},
 //								},
 //							},

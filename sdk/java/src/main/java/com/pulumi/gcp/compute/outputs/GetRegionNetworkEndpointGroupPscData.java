@@ -11,6 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionNetworkEndpointGroupPscData {
     /**
+     * @return Address allocated from given subnetwork for PSC. This IP address acts
+     * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+     * 
+     */
+    private String consumerPscAddress;
+    /**
      * @return The PSC producer port to use when consumer PSC NEG connects to a producer. If
      * this flag isn&#39;t specified for a PSC NEG with endpoint type
      * private-service-connect, then PSC NEG will be connected to a first port in the
@@ -18,8 +24,28 @@ public final class GetRegionNetworkEndpointGroupPscData {
      * 
      */
     private String producerPort;
+    /**
+     * @return The PSC connection id of the PSC Network Endpoint Group Consumer.
+     * 
+     */
+    private String pscConnectionId;
+    /**
+     * @return The connection status of the PSC Network Endpoint Group Consumer.
+     * Possible values: &#39;STATUS_UNSPECIFIED&#39;, &#39;PENDING&#39;, &#39;ACCEPTED&#39;,
+     * &#39;REJECTED&#39;, &#39;CLOSED&#39;, &#39;NEEDS_ATTENTION&#39;
+     * 
+     */
+    private String pscConnectionStatus;
 
     private GetRegionNetworkEndpointGroupPscData() {}
+    /**
+     * @return Address allocated from given subnetwork for PSC. This IP address acts
+     * as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+     * 
+     */
+    public String consumerPscAddress() {
+        return this.consumerPscAddress;
+    }
     /**
      * @return The PSC producer port to use when consumer PSC NEG connects to a producer. If
      * this flag isn&#39;t specified for a PSC NEG with endpoint type
@@ -29,6 +55,22 @@ public final class GetRegionNetworkEndpointGroupPscData {
      */
     public String producerPort() {
         return this.producerPort;
+    }
+    /**
+     * @return The PSC connection id of the PSC Network Endpoint Group Consumer.
+     * 
+     */
+    public String pscConnectionId() {
+        return this.pscConnectionId;
+    }
+    /**
+     * @return The connection status of the PSC Network Endpoint Group Consumer.
+     * Possible values: &#39;STATUS_UNSPECIFIED&#39;, &#39;PENDING&#39;, &#39;ACCEPTED&#39;,
+     * &#39;REJECTED&#39;, &#39;CLOSED&#39;, &#39;NEEDS_ATTENTION&#39;
+     * 
+     */
+    public String pscConnectionStatus() {
+        return this.pscConnectionStatus;
     }
 
     public static Builder builder() {
@@ -40,13 +82,27 @@ public final class GetRegionNetworkEndpointGroupPscData {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String consumerPscAddress;
         private String producerPort;
+        private String pscConnectionId;
+        private String pscConnectionStatus;
         public Builder() {}
         public Builder(GetRegionNetworkEndpointGroupPscData defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.consumerPscAddress = defaults.consumerPscAddress;
     	      this.producerPort = defaults.producerPort;
+    	      this.pscConnectionId = defaults.pscConnectionId;
+    	      this.pscConnectionStatus = defaults.pscConnectionStatus;
         }
 
+        @CustomType.Setter
+        public Builder consumerPscAddress(String consumerPscAddress) {
+            if (consumerPscAddress == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupPscData", "consumerPscAddress");
+            }
+            this.consumerPscAddress = consumerPscAddress;
+            return this;
+        }
         @CustomType.Setter
         public Builder producerPort(String producerPort) {
             if (producerPort == null) {
@@ -55,9 +111,28 @@ public final class GetRegionNetworkEndpointGroupPscData {
             this.producerPort = producerPort;
             return this;
         }
+        @CustomType.Setter
+        public Builder pscConnectionId(String pscConnectionId) {
+            if (pscConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupPscData", "pscConnectionId");
+            }
+            this.pscConnectionId = pscConnectionId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pscConnectionStatus(String pscConnectionStatus) {
+            if (pscConnectionStatus == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupPscData", "pscConnectionStatus");
+            }
+            this.pscConnectionStatus = pscConnectionStatus;
+            return this;
+        }
         public GetRegionNetworkEndpointGroupPscData build() {
             final var _resultValue = new GetRegionNetworkEndpointGroupPscData();
+            _resultValue.consumerPscAddress = consumerPscAddress;
             _resultValue.producerPort = producerPort;
+            _resultValue.pscConnectionId = pscConnectionId;
+            _resultValue.pscConnectionStatus = pscConnectionStatus;
             return _resultValue;
         }
     }

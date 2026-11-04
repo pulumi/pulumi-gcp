@@ -128,6 +128,20 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<Outputs.AssistantCustomerPolicy?> CustomerPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// This field controls the default web grounding toggle for end users if
+        /// `WebGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+        /// By default, this field is set to false. If `WebGroundingType` is
+        /// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+        /// grounding enabled by default on UI. If true, grounding toggle will be
+        /// disabled by default on UI. End users can still enable web grounding in
+        /// the UI if web grounding is enabled.
+        /// </summary>
+        [Output("defaultWebGroundingToggleOff")]
+        public Output<bool?> DefaultWebGroundingToggleOff { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -261,6 +275,20 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<Inputs.AssistantCustomerPolicyArgs>? CustomerPolicy { get; set; }
 
         /// <summary>
+        /// This field controls the default web grounding toggle for end users if
+        /// `WebGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+        /// By default, this field is set to false. If `WebGroundingType` is
+        /// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+        /// grounding enabled by default on UI. If true, grounding toggle will be
+        /// disabled by default on UI. End users can still enable web grounding in
+        /// the UI if web grounding is enabled.
+        /// </summary>
+        [Input("defaultWebGroundingToggleOff")]
+        public Input<bool>? DefaultWebGroundingToggleOff { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -345,6 +373,20 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("customerPolicy")]
         public Input<Inputs.AssistantCustomerPolicyGetArgs>? CustomerPolicy { get; set; }
+
+        /// <summary>
+        /// This field controls the default web grounding toggle for end users if
+        /// `WebGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+        /// By default, this field is set to false. If `WebGroundingType` is
+        /// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+        /// grounding enabled by default on UI. If true, grounding toggle will be
+        /// disabled by default on UI. End users can still enable web grounding in
+        /// the UI if web grounding is enabled.
+        /// </summary>
+        [Input("defaultWebGroundingToggleOff")]
+        public Input<bool>? DefaultWebGroundingToggleOff { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -56,6 +56,8 @@ __all__ = [
     'CaPoolIssuancePolicyBaselineValuesPolicyId',
     'CaPoolIssuancePolicyIdentityConstraints',
     'CaPoolIssuancePolicyIdentityConstraintsCelExpression',
+    'CaPoolIssuancePolicyPassthroughExtensions',
+    'CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension',
     'CaPoolPublishingOptions',
     'CertificateCertificateDescription',
     'CertificateCertificateDescriptionAuthorityKeyId',
@@ -1781,6 +1783,8 @@ class CaPoolIssuancePolicy(dict):
             suggest = "identity_constraints"
         elif key == "maximumLifetime":
             suggest = "maximum_lifetime"
+        elif key == "passthroughExtensions":
+            suggest = "passthrough_extensions"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CaPoolIssuancePolicy. Access the value via the '{suggest}' property getter instead.")
@@ -1800,7 +1804,8 @@ class CaPoolIssuancePolicy(dict):
                  backdate_duration: Optional[_builtins.str] = None,
                  baseline_values: Optional['outputs.CaPoolIssuancePolicyBaselineValues'] = None,
                  identity_constraints: Optional['outputs.CaPoolIssuancePolicyIdentityConstraints'] = None,
-                 maximum_lifetime: Optional[_builtins.str] = None):
+                 maximum_lifetime: Optional[_builtins.str] = None,
+                 passthrough_extensions: Optional['outputs.CaPoolIssuancePolicyPassthroughExtensions'] = None):
         """
         :param _builtins.bool allow_requester_specified_not_before_time: If set to true, allows requesters to specify the requested_not_before_time
                field when creating a Certificate. Certificates requested with this
@@ -1826,6 +1831,13 @@ class CaPoolIssuancePolicy(dict):
                Structure is documented below.
         :param _builtins.str maximum_lifetime: The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
                expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
+        :param 'CaPoolIssuancePolicyPassthroughExtensionsArgs' passthrough_extensions: Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+               If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+               will be dropped. If a certificate request uses a CertificateTemplate with predefined_values that don't
+               appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+               add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+               set in this CaPool's baseline_values.
+               Structure is documented below.
         """
         if allow_requester_specified_not_before_time is not None:
             pulumi.set(__self__, "allow_requester_specified_not_before_time", allow_requester_specified_not_before_time)
@@ -1841,6 +1853,8 @@ class CaPoolIssuancePolicy(dict):
             pulumi.set(__self__, "identity_constraints", identity_constraints)
         if maximum_lifetime is not None:
             pulumi.set(__self__, "maximum_lifetime", maximum_lifetime)
+        if passthrough_extensions is not None:
+            pulumi.set(__self__, "passthrough_extensions", passthrough_extensions)
 
     @_builtins.property
     @pulumi.getter(name="allowRequesterSpecifiedNotBeforeTime")
@@ -1914,6 +1928,20 @@ class CaPoolIssuancePolicy(dict):
         expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
         """
         return pulumi.get(self, "maximum_lifetime")
+
+    @_builtins.property
+    @pulumi.getter(name="passthroughExtensions")
+    def passthrough_extensions(self) -> Optional['outputs.CaPoolIssuancePolicyPassthroughExtensions']:
+        """
+        Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+        If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+        will be dropped. If a certificate request uses a CertificateTemplate with predefined_values that don't
+        appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+        add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+        set in this CaPool's baseline_values.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "passthrough_extensions")
 
 
 @pulumi.output_type
@@ -3114,6 +3142,97 @@ class CaPoolIssuancePolicyIdentityConstraintsCelExpression(dict):
         Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class CaPoolIssuancePolicyPassthroughExtensions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalExtensions":
+            suggest = "additional_extensions"
+        elif key == "knownExtensions":
+            suggest = "known_extensions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CaPoolIssuancePolicyPassthroughExtensions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CaPoolIssuancePolicyPassthroughExtensions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CaPoolIssuancePolicyPassthroughExtensions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_extensions: Optional[Sequence['outputs.CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension']] = None,
+                 known_extensions: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence['CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs'] additional_extensions: A set of ObjectIds identifying custom X.509 extensions.
+               Will be combined with known_extensions to determine the full set of X.509 extensions.
+               Structure is documented below.
+        :param Sequence[_builtins.str] known_extensions: A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+               Acceptable values are: `BASE_KEY_USAGE`, `EXTENDED_KEY_USAGE`, `CA_OPTIONS`, `POLICY_IDS`, `AIA_OCSP_SERVERS`, `NAME_CONSTRAINTS`.
+        """
+        if additional_extensions is not None:
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
+        if known_extensions is not None:
+            pulumi.set(__self__, "known_extensions", known_extensions)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalExtensions")
+    def additional_extensions(self) -> Optional[Sequence['outputs.CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension']]:
+        """
+        A set of ObjectIds identifying custom X.509 extensions.
+        Will be combined with known_extensions to determine the full set of X.509 extensions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_extensions")
+
+    @_builtins.property
+    @pulumi.getter(name="knownExtensions")
+    def known_extensions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+        Acceptable values are: `BASE_KEY_USAGE`, `EXTENDED_KEY_USAGE`, `CA_OPTIONS`, `POLICY_IDS`, `AIA_OCSP_SERVERS`, `NAME_CONSTRAINTS`.
+        """
+        return pulumi.get(self, "known_extensions")
+
+
+@pulumi.output_type
+class CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdPaths":
+            suggest = "object_id_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_id_paths: Sequence[_builtins.int]):
+        """
+        :param Sequence[_builtins.int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @_builtins.property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Sequence[_builtins.int]:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
+        return pulumi.get(self, "object_id_paths")
 
 
 @pulumi.output_type

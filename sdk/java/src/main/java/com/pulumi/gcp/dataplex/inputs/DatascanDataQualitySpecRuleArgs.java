@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleDebugQueryArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleNonNullExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRangeExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRegexExpectationArgs;
@@ -19,6 +20,7 @@ import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleUniquenessExpec
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -57,6 +59,25 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
      */
     public Optional<Output<String>> column() {
         return Optional.ofNullable(this.column);
+    }
+
+    /**
+     * Specifies the debug queries for this rule.
+     * Currently, only one query is supported, but this may be expanded in the future.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="debugQueries")
+    private @Nullable Output<List<DatascanDataQualitySpecRuleDebugQueryArgs>> debugQueries;
+
+    /**
+     * @return Specifies the debug queries for this rule.
+     * Currently, only one query is supported, but this may be expanded in the future.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<DatascanDataQualitySpecRuleDebugQueryArgs>>> debugQueries() {
+        return Optional.ofNullable(this.debugQueries);
     }
 
     /**
@@ -330,6 +351,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     private DatascanDataQualitySpecRuleArgs(DatascanDataQualitySpecRuleArgs $) {
         this.attributes = $.attributes;
         this.column = $.column;
+        this.debugQueries = $.debugQueries;
         this.description = $.description;
         this.dimension = $.dimension;
         this.ignoreNull = $.ignoreNull;
@@ -406,6 +428,43 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
          */
         public Builder column(String column) {
             return column(Output.of(column));
+        }
+
+        /**
+         * @param debugQueries Specifies the debug queries for this rule.
+         * Currently, only one query is supported, but this may be expanded in the future.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder debugQueries(@Nullable Output<List<DatascanDataQualitySpecRuleDebugQueryArgs>> debugQueries) {
+            $.debugQueries = debugQueries;
+            return this;
+        }
+
+        /**
+         * @param debugQueries Specifies the debug queries for this rule.
+         * Currently, only one query is supported, but this may be expanded in the future.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder debugQueries(List<DatascanDataQualitySpecRuleDebugQueryArgs> debugQueries) {
+            return debugQueries(Output.of(debugQueries));
+        }
+
+        /**
+         * @param debugQueries Specifies the debug queries for this rule.
+         * Currently, only one query is supported, but this may be expanded in the future.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder debugQueries(DatascanDataQualitySpecRuleDebugQueryArgs... debugQueries) {
+            return debugQueries(List.of(debugQueries));
         }
 
         /**

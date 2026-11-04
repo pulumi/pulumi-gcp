@@ -28,6 +28,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordGetArgs>? ExcludeByHotword { get; set; }
 
         /// <summary>
+        /// The rule to exclude image findings based on spatial relationships with other image findings.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("excludeByImageFindings")]
+        public Input<Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsGetArgs>? ExcludeByImageFindings { get; set; }
+
+        /// <summary>
         /// Set of infoTypes for which findings would affect this rule.
         /// Structure is documented below.
         /// </summary>
@@ -36,7 +43,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-        /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+        /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
         /// </summary>
         [Input("matchingType", required: true)]
         public Input<string> MatchingType { get; set; } = null!;

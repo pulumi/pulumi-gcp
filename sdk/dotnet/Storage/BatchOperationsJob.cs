@@ -84,6 +84,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         JobId = "tf-job",
     ///         Description = "A sample job description",
+    ///         DryRun = true,
     ///         BucketList = new Gcp.Storage.Inputs.BatchOperationsJobBucketListArgs
     ///         {
     ///             Buckets = new Gcp.Storage.Inputs.BatchOperationsJobBucketListBucketsArgs
@@ -103,6 +104,18 @@ namespace Pulumi.Gcp.Storage
     ///             CustomMetadata = 
     ///             {
     ///                 { "key", "value" },
+    ///             },
+    ///         },
+    ///         LoggingConfig = new Gcp.Storage.Inputs.BatchOperationsJobLoggingConfigArgs
+    ///         {
+    ///             LogActions = new[]
+    ///             {
+    ///                 "TRANSFORM",
+    ///             },
+    ///             LogActionStates = new[]
+    ///             {
+    ///                 "SUCCEEDED",
+    ///                 "FAILED",
     ///             },
     ///         },
     ///         DeleteProtection = false,
@@ -180,10 +193,23 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the job.
         /// </summary>
         [Output("jobId")]
         public Output<string?> JobId { get; private set; } = null!;
+
+        /// <summary>
+        /// Logging configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("loggingConfig")]
+        public Output<Outputs.BatchOperationsJobLoggingConfig?> LoggingConfig { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -315,10 +341,23 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
         /// The ID of the job.
         /// </summary>
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
+
+        /// <summary>
+        /// Logging configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.BatchOperationsJobLoggingConfigArgs>? LoggingConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -406,10 +445,23 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
         /// The ID of the job.
         /// </summary>
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
+
+        /// <summary>
+        /// Logging configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.BatchOperationsJobLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

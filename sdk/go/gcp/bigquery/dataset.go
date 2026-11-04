@@ -421,6 +421,15 @@ type Dataset struct {
 	// creating or updating a partitioned table, that value takes precedence
 	// over the default partition expiration time indicated by this property.
 	DefaultPartitionExpirationMs pulumi.IntPtrOutput `pulumi:"defaultPartitionExpirationMs"`
+	// Defines the default rounding mode specification of new tables created
+	// within this dataset. During table creation, if this field is specified,
+	// the table within this dataset will inherit the default rounding mode of
+	// the dataset. Setting the default rounding mode on a table overrides this
+	// specification. Existing tables in the dataset are unaffected. If columns
+	// are defined during that table creation, they will immediately inherit the
+	// table's default rounding mode, unless otherwise specified.
+	// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+	DefaultRoundingMode pulumi.StringPtrOutput `pulumi:"defaultRoundingMode"`
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
 	// Once this property is set, all newly-created tables in the dataset
@@ -581,6 +590,15 @@ type datasetState struct {
 	// creating or updating a partitioned table, that value takes precedence
 	// over the default partition expiration time indicated by this property.
 	DefaultPartitionExpirationMs *int `pulumi:"defaultPartitionExpirationMs"`
+	// Defines the default rounding mode specification of new tables created
+	// within this dataset. During table creation, if this field is specified,
+	// the table within this dataset will inherit the default rounding mode of
+	// the dataset. Setting the default rounding mode on a table overrides this
+	// specification. Existing tables in the dataset are unaffected. If columns
+	// are defined during that table creation, they will immediately inherit the
+	// table's default rounding mode, unless otherwise specified.
+	// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+	DefaultRoundingMode *string `pulumi:"defaultRoundingMode"`
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
 	// Once this property is set, all newly-created tables in the dataset
@@ -704,6 +722,15 @@ type DatasetState struct {
 	// creating or updating a partitioned table, that value takes precedence
 	// over the default partition expiration time indicated by this property.
 	DefaultPartitionExpirationMs pulumi.IntPtrInput
+	// Defines the default rounding mode specification of new tables created
+	// within this dataset. During table creation, if this field is specified,
+	// the table within this dataset will inherit the default rounding mode of
+	// the dataset. Setting the default rounding mode on a table overrides this
+	// specification. Existing tables in the dataset are unaffected. If columns
+	// are defined during that table creation, they will immediately inherit the
+	// table's default rounding mode, unless otherwise specified.
+	// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+	DefaultRoundingMode pulumi.StringPtrInput
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
 	// Once this property is set, all newly-created tables in the dataset
@@ -828,6 +855,15 @@ type datasetArgs struct {
 	// creating or updating a partitioned table, that value takes precedence
 	// over the default partition expiration time indicated by this property.
 	DefaultPartitionExpirationMs *int `pulumi:"defaultPartitionExpirationMs"`
+	// Defines the default rounding mode specification of new tables created
+	// within this dataset. During table creation, if this field is specified,
+	// the table within this dataset will inherit the default rounding mode of
+	// the dataset. Setting the default rounding mode on a table overrides this
+	// specification. Existing tables in the dataset are unaffected. If columns
+	// are defined during that table creation, they will immediately inherit the
+	// table's default rounding mode, unless otherwise specified.
+	// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+	DefaultRoundingMode *string `pulumi:"defaultRoundingMode"`
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
 	// Once this property is set, all newly-created tables in the dataset
@@ -937,6 +973,15 @@ type DatasetArgs struct {
 	// creating or updating a partitioned table, that value takes precedence
 	// over the default partition expiration time indicated by this property.
 	DefaultPartitionExpirationMs pulumi.IntPtrInput
+	// Defines the default rounding mode specification of new tables created
+	// within this dataset. During table creation, if this field is specified,
+	// the table within this dataset will inherit the default rounding mode of
+	// the dataset. Setting the default rounding mode on a table overrides this
+	// specification. Existing tables in the dataset are unaffected. If columns
+	// are defined during that table creation, they will immediately inherit the
+	// table's default rounding mode, unless otherwise specified.
+	// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+	DefaultRoundingMode pulumi.StringPtrInput
 	// The default lifetime of all tables in the dataset, in milliseconds.
 	// The minimum value is 3600000 milliseconds (one hour).
 	// Once this property is set, all newly-created tables in the dataset
@@ -1152,6 +1197,18 @@ func (o DatasetOutput) DefaultEncryptionConfiguration() DatasetDefaultEncryption
 // over the default partition expiration time indicated by this property.
 func (o DatasetOutput) DefaultPartitionExpirationMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.IntPtrOutput { return v.DefaultPartitionExpirationMs }).(pulumi.IntPtrOutput)
+}
+
+// Defines the default rounding mode specification of new tables created
+// within this dataset. During table creation, if this field is specified,
+// the table within this dataset will inherit the default rounding mode of
+// the dataset. Setting the default rounding mode on a table overrides this
+// specification. Existing tables in the dataset are unaffected. If columns
+// are defined during that table creation, they will immediately inherit the
+// table's default rounding mode, unless otherwise specified.
+// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+func (o DatasetOutput) DefaultRoundingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringPtrOutput { return v.DefaultRoundingMode }).(pulumi.StringPtrOutput)
 }
 
 // The default lifetime of all tables in the dataset, in milliseconds.

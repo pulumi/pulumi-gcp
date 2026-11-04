@@ -141,6 +141,8 @@ __all__ = [
     'HttpRouteRuleActionCorsPolicyArgsDict',
     'HttpRouteRuleActionDestinationArgs',
     'HttpRouteRuleActionDestinationArgsDict',
+    'HttpRouteRuleActionDirectResponseArgs',
+    'HttpRouteRuleActionDirectResponseArgsDict',
     'HttpRouteRuleActionFaultInjectionPolicyArgs',
     'HttpRouteRuleActionFaultInjectionPolicyArgsDict',
     'HttpRouteRuleActionFaultInjectionPolicyAbortArgs',
@@ -4455,6 +4457,10 @@ class GrpcRouteRuleActionArgsDict(TypedDict):
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
     Structure is documented below.
     """
+    idle_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+    """
     retry_policy: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionRetryPolicyArgsDict']]]
     """
     Specifies the retry policy associated with this route.
@@ -4470,6 +4476,7 @@ class GrpcRouteRuleActionArgs:
     def __init__(__self__, *,
                  destinations: pulumi.Input[Optional[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgs']]]] = None,
                  fault_injection_policy: pulumi.Input[Optional['GrpcRouteRuleActionFaultInjectionPolicyArgs']] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  retry_policy: pulumi.Input[Optional['GrpcRouteRuleActionRetryPolicyArgs']] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -4477,6 +4484,7 @@ class GrpcRouteRuleActionArgs:
                Structure is documented below.
         :param pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] idle_timeout: Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
         :param pulumi.Input['GrpcRouteRuleActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] timeout: Specifies the timeout for selected route.
@@ -4485,6 +4493,8 @@ class GrpcRouteRuleActionArgs:
             pulumi.set(__self__, "destinations", destinations)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
         if timeout is not None:
@@ -4515,6 +4525,18 @@ class GrpcRouteRuleActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: pulumi.Input[Optional['GrpcRouteRuleActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="retryPolicy")
@@ -4937,22 +4959,34 @@ class GrpcRouteRuleMatchMethodArgsDict(TypedDict):
     """
     Specifies that matches are case sensitive. The default value is true.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+    Default value is `EXACT`.
+    Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+    """
 
 @pulumi.input_type
 class GrpcRouteRuleMatchMethodArgs:
     def __init__(__self__, *,
                  grpc_method: pulumi.Input[_builtins.str],
                  grpc_service: pulumi.Input[_builtins.str],
-                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None):
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] grpc_method: Required. Name of the method to match against.
         :param pulumi.Input[_builtins.str] grpc_service: Required. Name of the service to match against.
         :param pulumi.Input[_builtins.bool] case_sensitive: Specifies that matches are case sensitive. The default value is true.
+        :param pulumi.Input[_builtins.str] type: Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+               Default value is `EXACT`.
+               Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
         """
         pulumi.set(__self__, "grpc_method", grpc_method)
         pulumi.set(__self__, "grpc_service", grpc_service)
         if case_sensitive is not None:
             pulumi.set(__self__, "case_sensitive", case_sensitive)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="grpcMethod")
@@ -4989,6 +5023,20 @@ class GrpcRouteRuleMatchMethodArgs:
     @case_sensitive.setter
     def case_sensitive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "case_sensitive", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+        Default value is `EXACT`.
+        Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class HttpRouteRuleArgsDict(TypedDict):
@@ -5063,10 +5111,20 @@ class HttpRouteRuleActionArgsDict(TypedDict):
     The destination to which traffic should be forwarded.
     Structure is documented below.
     """
+    direct_response: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionDirectResponseArgsDict']]]
+    """
+    Static HTTP Response object to be returned regardless of the request.
+    Structure is documented below.
+    """
     fault_injection_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyArgsDict']]]
     """
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
     Structure is documented below.
+    """
+    idle_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
     redirect: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRedirectArgsDict']]]
     """
@@ -5108,7 +5166,9 @@ class HttpRouteRuleActionArgs:
     def __init__(__self__, *,
                  cors_policy: pulumi.Input[Optional['HttpRouteRuleActionCorsPolicyArgs']] = None,
                  destinations: pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgs']]]] = None,
+                 direct_response: pulumi.Input[Optional['HttpRouteRuleActionDirectResponseArgs']] = None,
                  fault_injection_policy: pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyArgs']] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  redirect: pulumi.Input[Optional['HttpRouteRuleActionRedirectArgs']] = None,
                  request_header_modifier: pulumi.Input[Optional['HttpRouteRuleActionRequestHeaderModifierArgs']] = None,
                  request_mirror_policy: pulumi.Input[Optional['HttpRouteRuleActionRequestMirrorPolicyArgs']] = None,
@@ -5121,8 +5181,12 @@ class HttpRouteRuleActionArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgs']]] destinations: The destination to which traffic should be forwarded.
                Structure is documented below.
+        :param pulumi.Input['HttpRouteRuleActionDirectResponseArgs'] direct_response: Static HTTP Response object to be returned regardless of the request.
+               Structure is documented below.
         :param pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] idle_timeout: Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input['HttpRouteRuleActionRedirectArgs'] redirect: If set, the request is directed as configured by this field.
                Structure is documented below.
         :param pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArgs'] request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
@@ -5141,8 +5205,12 @@ class HttpRouteRuleActionArgs:
             pulumi.set(__self__, "cors_policy", cors_policy)
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
+        if direct_response is not None:
+            pulumi.set(__self__, "direct_response", direct_response)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if redirect is not None:
             pulumi.set(__self__, "redirect", redirect)
         if request_header_modifier is not None:
@@ -5185,6 +5253,19 @@ class HttpRouteRuleActionArgs:
         pulumi.set(self, "destinations", value)
 
     @_builtins.property
+    @pulumi.getter(name="directResponse")
+    def direct_response(self) -> pulumi.Input[Optional['HttpRouteRuleActionDirectResponseArgs']]:
+        """
+        Static HTTP Response object to be returned regardless of the request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "direct_response")
+
+    @direct_response.setter
+    def direct_response(self, value: pulumi.Input[Optional['HttpRouteRuleActionDirectResponseArgs']]):
+        pulumi.set(self, "direct_response", value)
+
+    @_builtins.property
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyArgs']]:
         """
@@ -5196,6 +5277,19 @@ class HttpRouteRuleActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5513,6 +5607,74 @@ class HttpRouteRuleActionDestinationArgs:
     @weight.setter
     def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
+
+
+class HttpRouteRuleActionDirectResponseArgsDict(TypedDict):
+    status: pulumi.Input[_builtins.int]
+    """
+    Status to return as part of HTTP Response. Must be a positive integer.
+    """
+    bytes_body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Response body as base64 encoded bytes. Maximum body size is 4096B.
+    """
+    string_body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Response body as a string. Maximum body length is 1024 characters.
+    """
+
+@pulumi.input_type
+class HttpRouteRuleActionDirectResponseArgs:
+    def __init__(__self__, *,
+                 status: pulumi.Input[_builtins.int],
+                 bytes_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_body: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] status: Status to return as part of HTTP Response. Must be a positive integer.
+        :param pulumi.Input[_builtins.str] bytes_body: Response body as base64 encoded bytes. Maximum body size is 4096B.
+        :param pulumi.Input[_builtins.str] string_body: Response body as a string. Maximum body length is 1024 characters.
+        """
+        pulumi.set(__self__, "status", status)
+        if bytes_body is not None:
+            pulumi.set(__self__, "bytes_body", bytes_body)
+        if string_body is not None:
+            pulumi.set(__self__, "string_body", string_body)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[_builtins.int]:
+        """
+        Status to return as part of HTTP Response. Must be a positive integer.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bytesBody")
+    def bytes_body(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Response body as base64 encoded bytes. Maximum body size is 4096B.
+        """
+        return pulumi.get(self, "bytes_body")
+
+    @bytes_body.setter
+    def bytes_body(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bytes_body", value)
+
+    @_builtins.property
+    @pulumi.getter(name="stringBody")
+    def string_body(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Response body as a string. Maximum body length is 1024 characters.
+        """
+        return pulumi.get(self, "string_body")
+
+    @string_body.setter
+    def string_body(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "string_body", value)
 
 
 class HttpRouteRuleActionFaultInjectionPolicyArgsDict(TypedDict):
@@ -5892,17 +6054,25 @@ class HttpRouteRuleActionRequestMirrorPolicyArgsDict(TypedDict):
     The destination the requests will be mirrored to.
     Structure is documented below.
     """
+    mirror_percent: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    The percentage of requests to get mirrored to the desired destination.
+    """
 
 @pulumi.input_type
 class HttpRouteRuleActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 destination: pulumi.Input[Optional['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs']] = None):
+                 destination: pulumi.Input[Optional['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs']] = None,
+                 mirror_percent: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs'] destination: The destination the requests will be mirrored to.
                Structure is documented below.
+        :param pulumi.Input[_builtins.float] mirror_percent: The percentage of requests to get mirrored to the desired destination.
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @_builtins.property
     @pulumi.getter
@@ -5916,6 +6086,18 @@ class HttpRouteRuleActionRequestMirrorPolicyArgs:
     @destination.setter
     def destination(self, value: pulumi.Input[Optional['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs']]):
         pulumi.set(self, "destination", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        The percentage of requests to get mirrored to the desired destination.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 class HttpRouteRuleActionRequestMirrorPolicyDestinationArgsDict(TypedDict):

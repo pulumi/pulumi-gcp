@@ -19063,6 +19063,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                  location: _builtins.str,
                  name: _builtins.str,
                  network: _builtins.str,
+                 odb_dns_zone: _builtins.str,
                  odb_network: _builtins.str,
                  odb_subnet: _builtins.str,
                  project: _builtins.str,
@@ -19109,6 +19110,9 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
         :param _builtins.str network: The name of the VPC network.
                Format: projects/{project}/global/networks/{network}
+        :param _builtins.str odb_dns_zone: The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
         :param _builtins.str odb_network: The name of the OdbNetwork associated with the VM Cluster.
                Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -19140,6 +19144,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "odb_dns_zone", odb_dns_zone)
         pulumi.set(__self__, "odb_network", odb_network)
         pulumi.set(__self__, "odb_subnet", odb_subnet)
         pulumi.set(__self__, "project", project)
@@ -19304,6 +19309,16 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         Format: projects/{project}/global/networks/{network}
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="odbDnsZone")
+    def odb_dns_zone(self) -> _builtins.str:
+        """
+        The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+        Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+        """
+        return pulumi.get(self, "odb_dns_zone")
 
     @_builtins.property
     @pulumi.getter(name="odbNetwork")

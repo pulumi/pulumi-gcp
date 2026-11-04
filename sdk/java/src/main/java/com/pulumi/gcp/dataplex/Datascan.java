@@ -161,6 +161,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .catalogPublishingEnabled(true)
+ *                 .mode("STANDARD")
  *                 .build())
  *             .project("my-project-name")
  *             .build(), CustomResourceOptions.builder()
@@ -307,6 +308,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleNonNullExpectationArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleDebugQueryArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRangeExpectationArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRegexExpectationArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleSetExpectationArgs;
@@ -367,6 +369,10 @@ import javax.annotation.Nullable;
  *                         .threshold(0.99)
  *                         .attributes(Map.of("priority", "high"))
  *                         .nonNullExpectation(DatascanDataQualitySpecRuleNonNullExpectationArgs.builder()
+ *                             .build())
+ *                         .debugQueries(DatascanDataQualitySpecRuleDebugQueryArgs.builder()
+ *                             .description("test debug query description")
+ *                             .sqlStatement("select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where address is null")
  *                             .build())
  *                         .build(),
  *                     DatascanDataQualitySpecRuleArgs.builder()
@@ -860,6 +866,7 @@ import javax.annotation.Nullable;
  *             .dataDocumentationSpec(DatascanDataDocumentationSpecArgs.builder()
  *                 .catalogPublishingEnabled(true)
  *                 .sqlDialect("GOOGLE_SQL")
+ *                 .generationScopes("ALL")
  *                 .build())
  *             .project("my-project-name")
  *             .build());

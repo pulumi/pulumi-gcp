@@ -145,11 +145,8 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -157,10 +154,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			invokeFile, err := std.File(ctx, &std.FileArgs{
 //				Input: "test-fixtures/ca_cert.pem",
 //			}, nil)
@@ -204,10 +197,88 @@ import (
 //				Location:    pulumi.String("global"),
 //				AllowOpen:   pulumi.Bool(false),
 //				MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
-//					ClientValidationMode: pulumi.String("REJECT_INVALID"),
-//					ClientValidationTrustConfig: defaultTrustConfig.Name.ApplyT(func(name string) (string, error) {
-//						return fmt.Sprintf("projects/%v/locations/global/trustConfigs/%v", project.Number, name), nil
-//					}).(pulumi.StringOutput),
+//					ClientValidationMode:        pulumi.String("REJECT_INVALID"),
+//					ClientValidationTrustConfig: defaultTrustConfig.ID(),
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Network Security Server Tls Policy Mtls Validation Relaxations
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/ca_cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/ca_cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultTrustConfig, err := certificatemanager.NewTrustConfig(ctx, "default", &certificatemanager.TrustConfigArgs{
+//				Name:        pulumi.String("my-trust-config"),
+//				Description: pulumi.String("sample trust config description"),
+//				Location:    pulumi.String("global"),
+//				TrustStores: certificatemanager.TrustConfigTrustStoreArray{
+//					&certificatemanager.TrustConfigTrustStoreArgs{
+//						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
+//							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
+//								PemCertificate: pulumi.String(invokeFile.Result),
+//							},
+//						},
+//						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
+//							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
+//								PemCertificate: pulumi.String(invokeFile1.Result),
+//							},
+//						},
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Name:        pulumi.String("my-server-tls-policy"),
+//				Description: pulumi.String("ServerTlsPolicy with mTLS validation relaxations"),
+//				Location:    pulumi.String("global"),
+//				AllowOpen:   pulumi.Bool(false),
+//				MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
+//					ClientValidationMode: pulumi.String("ALLOW_VALIDATION_RELAXATIONS"),
+//					ClientValidationRelaxations: pulumi.StringArray{
+//						pulumi.String("ALLOW_MISSING_EKU"),
+//						pulumi.String("ALLOW_SHA1_HASHING"),
+//						pulumi.String("ALLOW_EXPIRED_LEAF_CERTIFICATE"),
+//					},
+//					ClientValidationTrustConfig: defaultTrustConfig.ID(),
 //				},
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

@@ -26,6 +26,7 @@ class DatasetArgs:
                  default_collation: pulumi.Input[Optional[_builtins.str]] = None,
                  default_encryption_configuration: pulumi.Input[Optional['DatasetDefaultEncryptionConfigurationArgs']] = None,
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_rounding_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -74,6 +75,14 @@ class DatasetArgs:
                table. If you provide an explicit `timePartitioning.expirationMs` when
                creating or updating a partitioned table, that value takes precedence
                over the default partition expiration time indicated by this property.
+        :param pulumi.Input[_builtins.str] default_rounding_mode: Defines the default rounding mode specification of new tables created
+               within this dataset. During table creation, if this field is specified,
+               the table within this dataset will inherit the default rounding mode of
+               the dataset. Setting the default rounding mode on a table overrides this
+               specification. Existing tables in the dataset are unaffected. If columns
+               are defined during that table creation, they will immediately inherit the
+               table's default rounding mode, unless otherwise specified.
+               Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
         :param pulumi.Input[_builtins.int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
                Once this property is set, all newly-created tables in the dataset
@@ -139,6 +148,8 @@ class DatasetArgs:
             pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
         if default_partition_expiration_ms is not None:
             pulumi.set(__self__, "default_partition_expiration_ms", default_partition_expiration_ms)
+        if default_rounding_mode is not None:
+            pulumi.set(__self__, "default_rounding_mode", default_rounding_mode)
         if default_table_expiration_ms is not None:
             pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
         if delete_contents_on_destroy is not None:
@@ -253,6 +264,25 @@ class DatasetArgs:
     @default_partition_expiration_ms.setter
     def default_partition_expiration_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_partition_expiration_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines the default rounding mode specification of new tables created
+        within this dataset. During table creation, if this field is specified,
+        the table within this dataset will inherit the default rounding mode of
+        the dataset. Setting the default rounding mode on a table overrides this
+        specification. Existing tables in the dataset are unaffected. If columns
+        are defined during that table creation, they will immediately inherit the
+        table's default rounding mode, unless otherwise specified.
+        Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+        """
+        return pulumi.get(self, "default_rounding_mode")
+
+    @default_rounding_mode.setter
+    def default_rounding_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default_rounding_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTableExpirationMs")
@@ -473,6 +503,7 @@ class _DatasetState:
                  default_collation: pulumi.Input[Optional[_builtins.str]] = None,
                  default_encryption_configuration: pulumi.Input[Optional['DatasetDefaultEncryptionConfigurationArgs']] = None,
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_rounding_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -528,6 +559,14 @@ class _DatasetState:
                table. If you provide an explicit `timePartitioning.expirationMs` when
                creating or updating a partitioned table, that value takes precedence
                over the default partition expiration time indicated by this property.
+        :param pulumi.Input[_builtins.str] default_rounding_mode: Defines the default rounding mode specification of new tables created
+               within this dataset. During table creation, if this field is specified,
+               the table within this dataset will inherit the default rounding mode of
+               the dataset. Setting the default rounding mode on a table overrides this
+               specification. Existing tables in the dataset are unaffected. If columns
+               are defined during that table creation, they will immediately inherit the
+               table's default rounding mode, unless otherwise specified.
+               Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
         :param pulumi.Input[_builtins.int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
                Once this property is set, all newly-created tables in the dataset
@@ -603,6 +642,8 @@ class _DatasetState:
             pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
         if default_partition_expiration_ms is not None:
             pulumi.set(__self__, "default_partition_expiration_ms", default_partition_expiration_ms)
+        if default_rounding_mode is not None:
+            pulumi.set(__self__, "default_rounding_mode", default_rounding_mode)
         if default_table_expiration_ms is not None:
             pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
         if delete_contents_on_destroy is not None:
@@ -740,6 +781,25 @@ class _DatasetState:
     @default_partition_expiration_ms.setter
     def default_partition_expiration_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_partition_expiration_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines the default rounding mode specification of new tables created
+        within this dataset. During table creation, if this field is specified,
+        the table within this dataset will inherit the default rounding mode of
+        the dataset. Setting the default rounding mode on a table overrides this
+        specification. Existing tables in the dataset are unaffected. If columns
+        are defined during that table creation, they will immediately inherit the
+        table's default rounding mode, unless otherwise specified.
+        Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+        """
+        return pulumi.get(self, "default_rounding_mode")
+
+    @default_rounding_mode.setter
+    def default_rounding_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default_rounding_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTableExpirationMs")
@@ -1024,6 +1084,7 @@ class Dataset(pulumi.CustomResource):
                  default_collation: pulumi.Input[Optional[_builtins.str]] = None,
                  default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']]] = None,
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_rounding_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1296,6 +1357,14 @@ class Dataset(pulumi.CustomResource):
                table. If you provide an explicit `timePartitioning.expirationMs` when
                creating or updating a partitioned table, that value takes precedence
                over the default partition expiration time indicated by this property.
+        :param pulumi.Input[_builtins.str] default_rounding_mode: Defines the default rounding mode specification of new tables created
+               within this dataset. During table creation, if this field is specified,
+               the table within this dataset will inherit the default rounding mode of
+               the dataset. Setting the default rounding mode on a table overrides this
+               specification. Existing tables in the dataset are unaffected. If columns
+               are defined during that table creation, they will immediately inherit the
+               table's default rounding mode, unless otherwise specified.
+               Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
         :param pulumi.Input[_builtins.int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
                Once this property is set, all newly-created tables in the dataset
@@ -1602,6 +1671,7 @@ class Dataset(pulumi.CustomResource):
                  default_collation: pulumi.Input[Optional[_builtins.str]] = None,
                  default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']]] = None,
                  default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_rounding_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1632,6 +1702,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["default_collation"] = default_collation
             __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
             __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
+            __props__.__dict__["default_rounding_mode"] = default_rounding_mode
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
             __props__.__dict__["delete_contents_on_destroy"] = delete_contents_on_destroy
             __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1670,6 +1741,7 @@ class Dataset(pulumi.CustomResource):
             default_collation: pulumi.Input[Optional[_builtins.str]] = None,
             default_encryption_configuration: pulumi.Input[Optional[Union['DatasetDefaultEncryptionConfigurationArgs', 'DatasetDefaultEncryptionConfigurationArgsDict', 'outputs.DatasetDefaultEncryptionConfiguration']]] = None,
             default_partition_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            default_rounding_mode: pulumi.Input[Optional[_builtins.str]] = None,
             default_table_expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
             delete_contents_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1729,6 +1801,14 @@ class Dataset(pulumi.CustomResource):
                table. If you provide an explicit `timePartitioning.expirationMs` when
                creating or updating a partitioned table, that value takes precedence
                over the default partition expiration time indicated by this property.
+        :param pulumi.Input[_builtins.str] default_rounding_mode: Defines the default rounding mode specification of new tables created
+               within this dataset. During table creation, if this field is specified,
+               the table within this dataset will inherit the default rounding mode of
+               the dataset. Setting the default rounding mode on a table overrides this
+               specification. Existing tables in the dataset are unaffected. If columns
+               are defined during that table creation, they will immediately inherit the
+               table's default rounding mode, unless otherwise specified.
+               Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
         :param pulumi.Input[_builtins.int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
                Once this property is set, all newly-created tables in the dataset
@@ -1802,6 +1882,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["default_collation"] = default_collation
         __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
         __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
+        __props__.__dict__["default_rounding_mode"] = default_rounding_mode
         __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
         __props__.__dict__["delete_contents_on_destroy"] = delete_contents_on_destroy
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1897,6 +1978,21 @@ class Dataset(pulumi.CustomResource):
         over the default partition expiration time indicated by this property.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Defines the default rounding mode specification of new tables created
+        within this dataset. During table creation, if this field is specified,
+        the table within this dataset will inherit the default rounding mode of
+        the dataset. Setting the default rounding mode on a table overrides this
+        specification. Existing tables in the dataset are unaffected. If columns
+        are defined during that table creation, they will immediately inherit the
+        table's default rounding mode, unless otherwise specified.
+        Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+        """
+        return pulumi.get(self, "default_rounding_mode")
 
     @_builtins.property
     @pulumi.getter(name="defaultTableExpirationMs")

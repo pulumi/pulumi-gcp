@@ -30,7 +30,10 @@ namespace Pulumi.Gcp.BigLake.Outputs
         /// </summary>
         public readonly bool Required;
         /// <summary>
-        /// The type of the field.
+        /// The type of the field. Primitive types are plain names such as `Long`. List, map and
+        /// struct types are JSON objects as defined by the
+        /// [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+        /// typically written with `Jsonencode`.
         /// </summary>
         public readonly string Type;
 

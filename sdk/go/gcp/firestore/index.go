@@ -556,6 +556,68 @@ import (
 //
 // ```
 //
+// ### Firestore Index Search Index Options
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("search-index-options-db"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition:       pulumi.String("ENTERPRISE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_DISABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("atestcollection"),
+//				ApiScope:   pulumi.String("MONGODB_COMPATIBLE_API"),
+//				QueryScope: pulumi.String("COLLECTION_GROUP"),
+//				Multikey:   pulumi.Bool(true),
+//				SearchIndexOptions: &firestore.IndexSearchIndexOptionsArgs{
+//					TextLanguage:                  pulumi.String("es"),
+//					TextLanguageOverrideFieldPath: pulumi.String("lang"),
+//				},
+//				Fields: firestore.IndexFieldArray{
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("description"),
+//						SearchConfig: &firestore.IndexFieldSearchConfigArgs{
+//							TextSpec: &firestore.IndexFieldSearchConfigTextSpecArgs{
+//								IndexSpecs: firestore.IndexFieldSearchConfigTextSpecIndexSpecArray{
+//									&firestore.IndexFieldSearchConfigTextSpecIndexSpecArgs{
+//										IndexType: pulumi.String("TOKENIZED"),
+//										MatchType: pulumi.String("MATCH_GLOBALLY"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Firestore Index Suppress Geojson Indexing
 //
 // ```go
@@ -714,6 +776,9 @@ type Index struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrOutput `pulumi:"queryScope"`
+	// Optional. Options to configure the search index.
+	// Structure is documented below.
+	SearchIndexOptions IndexSearchIndexOptionsOutput `pulumi:"searchIndexOptions"`
 	// Whether to skip waiting for the index to be created.
 	SkipWait pulumi.BoolPtrOutput `pulumi:"skipWait"`
 	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
@@ -795,6 +860,9 @@ type indexState struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope *string `pulumi:"queryScope"`
+	// Optional. Options to configure the search index.
+	// Structure is documented below.
+	SearchIndexOptions *IndexSearchIndexOptions `pulumi:"searchIndexOptions"`
 	// Whether to skip waiting for the index to be created.
 	SkipWait *bool `pulumi:"skipWait"`
 	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
@@ -841,6 +909,9 @@ type IndexState struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrInput
+	// Optional. Options to configure the search index.
+	// Structure is documented below.
+	SearchIndexOptions IndexSearchIndexOptionsPtrInput
 	// Whether to skip waiting for the index to be created.
 	SkipWait pulumi.BoolPtrInput
 	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
@@ -888,6 +959,9 @@ type indexArgs struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope *string `pulumi:"queryScope"`
+	// Optional. Options to configure the search index.
+	// Structure is documented below.
+	SearchIndexOptions *IndexSearchIndexOptions `pulumi:"searchIndexOptions"`
 	// Whether to skip waiting for the index to be created.
 	SkipWait *bool `pulumi:"skipWait"`
 	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
@@ -932,6 +1006,9 @@ type IndexArgs struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrInput
+	// Optional. Options to configure the search index.
+	// Structure is documented below.
+	SearchIndexOptions IndexSearchIndexOptionsPtrInput
 	// Whether to skip waiting for the index to be created.
 	SkipWait pulumi.BoolPtrInput
 	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
@@ -1092,6 +1169,12 @@ func (o IndexOutput) Project() pulumi.StringOutput {
 // Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 func (o IndexOutput) QueryScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringPtrOutput { return v.QueryScope }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Options to configure the search index.
+// Structure is documented below.
+func (o IndexOutput) SearchIndexOptions() IndexSearchIndexOptionsOutput {
+	return o.ApplyT(func(v *Index) IndexSearchIndexOptionsOutput { return v.SearchIndexOptions }).(IndexSearchIndexOptionsOutput)
 }
 
 // Whether to skip waiting for the index to be created.

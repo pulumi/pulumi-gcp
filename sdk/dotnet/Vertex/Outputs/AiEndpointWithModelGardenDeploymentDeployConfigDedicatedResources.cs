@@ -35,6 +35,17 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec> AutoscalingMetricSpecs;
         /// <summary>
+        /// (Optional, Beta)
+        /// Number of initial replicas being deployed on when scaling the workload up
+        /// from zero or when creating the workload in case MinReplicaCount = 0.
+        /// When MinReplicaCount &gt; 0 (meaning that the scale-to-zero feature is not
+        /// enabled), InitialReplicaCount should not be set. When MinReplicaCount
+        /// = 0 (meaning that the scale-to-zero feature is enabled),
+        /// InitialReplicaCount should be larger than zero, but no greater than
+        /// max_replica_count.
+        /// </summary>
+        public readonly int? InitialReplicaCount;
+        /// <summary>
         /// Specification of a single machine.
         /// Structure is documented below.
         /// </summary>
@@ -55,7 +66,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
         public readonly int? MaxReplicaCount;
         /// <summary>
         /// The minimum number of machine replicas that will be always deployed on.
-        /// This value must be greater than or equal to 1.
+        /// This value must be greater than or equal to 1. To enable scale-to-zero
+        /// (in beta), set this value to 0 and also set `InitialReplicaCount`.
         /// If traffic increases, it may dynamically be deployed onto more replicas,
         /// and as traffic decreases, some of these extra replicas may be freed.
         /// </summary>
@@ -70,6 +82,12 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly int? RequiredReplicaCount;
         /// <summary>
+        /// (Optional, Beta)
+        /// Specification for scale-to-zero feature.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec? ScaleToZeroSpec;
+        /// <summary>
         /// If true, schedule the deployment workload on [spot
         /// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
         /// </summary>
@@ -79,6 +97,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
         private AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(
             ImmutableArray<Outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec> autoscalingMetricSpecs,
 
+            int? initialReplicaCount,
+
             Outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec machineSpec,
 
             int? maxReplicaCount,
@@ -87,13 +107,17 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             int? requiredReplicaCount,
 
+            Outputs.AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec? scaleToZeroSpec,
+
             bool? spot)
         {
             AutoscalingMetricSpecs = autoscalingMetricSpecs;
+            InitialReplicaCount = initialReplicaCount;
             MachineSpec = machineSpec;
             MaxReplicaCount = maxReplicaCount;
             MinReplicaCount = minReplicaCount;
             RequiredReplicaCount = requiredReplicaCount;
+            ScaleToZeroSpec = scaleToZeroSpec;
             Spot = spot;
         }
     }

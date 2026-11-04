@@ -183,6 +183,7 @@ import * as utilities from "../utilities";
  *                     serviceName: "new",
  *                     weight: 1,
  *                 },
+ *                 mirrorPercent: 50,
  *             },
  *             corsPolicy: {
  *                 allowOrigins: ["example"],
@@ -222,6 +223,7 @@ import * as utilities from "../utilities";
  *                 },
  *                 removes: ["removearg"],
  *             },
+ *             idleTimeout: "1s",
  *         },
  *     }],
  * });

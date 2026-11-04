@@ -44,6 +44,7 @@ class VolumeArgs:
                  security_style: pulumi.Input[Optional[_builtins.str]] = None,
                  share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  smb_settings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snap_reserve: pulumi.Input[Optional[_builtins.float]] = None,
                  snapshot_directory: pulumi.Input[Optional[_builtins.bool]] = None,
                  snapshot_policy: pulumi.Input[Optional['VolumeSnapshotPolicyArgs']] = None,
                  throughput_mibps: pulumi.Input[Optional[_builtins.float]] = None,
@@ -107,6 +108,8 @@ class VolumeArgs:
         :param pulumi.Input[_builtins.str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
+        :param pulumi.Input[_builtins.float] snap_reserve: Optional. Snap_reserve specifies percentage of volume storage reserved for
+               snapshot storage. Default is 0 percent.
         :param pulumi.Input[_builtins.bool] snapshot_directory: If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
         :param pulumi.Input['VolumeSnapshotPolicyArgs'] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
@@ -158,6 +161,8 @@ class VolumeArgs:
             pulumi.set(__self__, "share_name", share_name)
         if smb_settings is not None:
             pulumi.set(__self__, "smb_settings", smb_settings)
+        if snap_reserve is not None:
+            pulumi.set(__self__, "snap_reserve", snap_reserve)
         if snapshot_directory is not None:
             pulumi.set(__self__, "snapshot_directory", snapshot_directory)
         if snapshot_policy is not None:
@@ -478,6 +483,19 @@ class VolumeArgs:
         pulumi.set(self, "smb_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="snapReserve")
+    def snap_reserve(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Optional. Snap_reserve specifies percentage of volume storage reserved for
+        snapshot storage. Default is 0 percent.
+        """
+        return pulumi.get(self, "snap_reserve")
+
+    @snap_reserve.setter
+    def snap_reserve(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "snap_reserve", value)
+
+    @_builtins.property
     @pulumi.getter(name="snapshotDirectory")
     def snapshot_directory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -581,6 +599,7 @@ class _VolumeState:
                  service_level: pulumi.Input[Optional[_builtins.str]] = None,
                  share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  smb_settings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snap_reserve: pulumi.Input[Optional[_builtins.float]] = None,
                  snapshot_directory: pulumi.Input[Optional[_builtins.bool]] = None,
                  snapshot_policy: pulumi.Input[Optional['VolumeSnapshotPolicyArgs']] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,6 +684,8 @@ class _VolumeState:
         :param pulumi.Input[_builtins.str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
+        :param pulumi.Input[_builtins.float] snap_reserve: Optional. Snap_reserve specifies percentage of volume storage reserved for
+               snapshot storage. Default is 0 percent.
         :param pulumi.Input[_builtins.bool] snapshot_directory: If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
         :param pulumi.Input['VolumeSnapshotPolicyArgs'] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
@@ -753,6 +774,8 @@ class _VolumeState:
             pulumi.set(__self__, "share_name", share_name)
         if smb_settings is not None:
             pulumi.set(__self__, "smb_settings", smb_settings)
+        if snap_reserve is not None:
+            pulumi.set(__self__, "snap_reserve", snap_reserve)
         if snapshot_directory is not None:
             pulumi.set(__self__, "snapshot_directory", snapshot_directory)
         if snapshot_policy is not None:
@@ -1253,6 +1276,19 @@ class _VolumeState:
         pulumi.set(self, "smb_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="snapReserve")
+    def snap_reserve(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Optional. Snap_reserve specifies percentage of volume storage reserved for
+        snapshot storage. Default is 0 percent.
+        """
+        return pulumi.get(self, "snap_reserve")
+
+    @snap_reserve.setter
+    def snap_reserve(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "snap_reserve", value)
+
+    @_builtins.property
     @pulumi.getter(name="snapshotDirectory")
     def snapshot_directory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1404,6 +1440,7 @@ class Volume(pulumi.CustomResource):
                  security_style: pulumi.Input[Optional[_builtins.str]] = None,
                  share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  smb_settings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snap_reserve: pulumi.Input[Optional[_builtins.float]] = None,
                  snapshot_directory: pulumi.Input[Optional[_builtins.bool]] = None,
                  snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']]] = None,
                  storage_pool: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1523,6 +1560,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
+        :param pulumi.Input[_builtins.float] snap_reserve: Optional. Snap_reserve specifies percentage of volume storage reserved for
+               snapshot storage. Default is 0 percent.
         :param pulumi.Input[_builtins.bool] snapshot_directory: If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
         :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
@@ -1632,6 +1671,7 @@ class Volume(pulumi.CustomResource):
                  security_style: pulumi.Input[Optional[_builtins.str]] = None,
                  share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  smb_settings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snap_reserve: pulumi.Input[Optional[_builtins.float]] = None,
                  snapshot_directory: pulumi.Input[Optional[_builtins.bool]] = None,
                  snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']]] = None,
                  storage_pool: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1675,6 +1715,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["security_style"] = security_style
             __props__.__dict__["share_name"] = share_name
             __props__.__dict__["smb_settings"] = smb_settings
+            __props__.__dict__["snap_reserve"] = snap_reserve
             __props__.__dict__["snapshot_directory"] = snapshot_directory
             __props__.__dict__["snapshot_policy"] = snapshot_policy
             if storage_pool is None and not opts.urn:
@@ -1751,6 +1792,7 @@ class Volume(pulumi.CustomResource):
             service_level: pulumi.Input[Optional[_builtins.str]] = None,
             share_name: pulumi.Input[Optional[_builtins.str]] = None,
             smb_settings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            snap_reserve: pulumi.Input[Optional[_builtins.float]] = None,
             snapshot_directory: pulumi.Input[Optional[_builtins.bool]] = None,
             snapshot_policy: pulumi.Input[Optional[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1839,6 +1881,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
+        :param pulumi.Input[_builtins.float] snap_reserve: Optional. Snap_reserve specifies percentage of volume storage reserved for
+               snapshot storage. Default is 0 percent.
         :param pulumi.Input[_builtins.bool] snapshot_directory: If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
         :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict', 'outputs.VolumeSnapshotPolicy']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
@@ -1894,6 +1938,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["service_level"] = service_level
         __props__.__dict__["share_name"] = share_name
         __props__.__dict__["smb_settings"] = smb_settings
+        __props__.__dict__["snap_reserve"] = snap_reserve
         __props__.__dict__["snapshot_directory"] = snapshot_directory
         __props__.__dict__["snapshot_policy"] = snapshot_policy
         __props__.__dict__["state"] = state
@@ -2235,6 +2280,15 @@ class Volume(pulumi.CustomResource):
         Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
         """
         return pulumi.get(self, "smb_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="snapReserve")
+    def snap_reserve(self) -> pulumi.Output[Optional[_builtins.float]]:
+        """
+        Optional. Snap_reserve specifies percentage of volume storage reserved for
+        snapshot storage. Default is 0 percent.
+        """
+        return pulumi.get(self, "snap_reserve")
 
     @_builtins.property
     @pulumi.getter(name="snapshotDirectory")

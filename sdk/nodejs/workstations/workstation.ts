@@ -28,14 +28,14 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-east4",
  *     network: _default.name,
  * });
  * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "us-east4",
  *     labels: {
  *         label: "key",
  *     },
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
+ *     location: "us-east4",
  *     host: {
  *         gceInstance: {
  *             machineType: "e2-standard-4",
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     workstationId: "work-station",
  *     workstationConfigId: defaultWorkstationConfig.workstationConfigId,
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
+ *     location: "us-east4",
  *     labels: {
  *         label: "key",
  *     },
@@ -71,6 +71,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Regional Endpoint Policies
+ *
+ * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
  *
  * ## Import
  *

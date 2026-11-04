@@ -229,12 +229,10 @@ import (
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
 //					Tier: pulumi.String("db-f1-micro"),
 //					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
-//						PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
-//							&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
-//								PscEnabled: pulumi.Bool(true),
-//								AllowedConsumerProjects: pulumi.StringArray{
-//									pulumi.String("allowed-consumer-project-name"),
-//								},
+//						PscConfig: map[string]interface{}{
+//							"pscEnabled": true,
+//							"allowedConsumerProjects": []string{
+//								"allowed-consumer-project-name",
 //							},
 //						},
 //						Ipv4Enabled: pulumi.Bool(false),
@@ -275,17 +273,15 @@ import (
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
 //					Tier: pulumi.String("db-f1-micro"),
 //					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
-//						PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
-//							&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
-//								PscEnabled: pulumi.Bool(true),
-//								AllowedConsumerProjects: pulumi.StringArray{
-//									pulumi.String("allowed-consumer-project-name"),
-//								},
-//								PscAutoConnections: sql.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray{
-//									&sql.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs{
-//										ConsumerNetwork:          pulumi.String("network-name"),
-//										ConsumerServiceProjectId: pulumi.String("project-id"),
-//									},
+//						PscConfig: map[string]interface{}{
+//							"pscEnabled": true,
+//							"allowedConsumerProjects": []string{
+//								"allowed-consumer-project-name",
+//							},
+//							"pscAutoConnections": []map[string]string{
+//								{
+//									"consumerNetwork":          "network-name",
+//									"consumerServiceProjectId": "project-id",
 //								},
 //							},
 //						},
@@ -327,14 +323,12 @@ import (
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
 //					Tier: pulumi.String("db-f1-micro"),
 //					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
-//						PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
-//							&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
-//								PscEnabled: pulumi.Bool(true),
-//								AllowedConsumerProjects: pulumi.StringArray{
-//									pulumi.String("allowed-consumer-project-name"),
-//								},
-//								NetworkAttachmentUri: pulumi.String("network-attachment-uri"),
+//						PscConfig: map[string]interface{}{
+//							"pscEnabled": true,
+//							"allowedConsumerProjects": []string{
+//								"allowed-consumer-project-name",
 //							},
+//							"networkAttachmentUri": "network-attachment-uri",
 //						},
 //						Ipv4Enabled: pulumi.Bool(false),
 //					},
@@ -603,6 +597,8 @@ type DatabaseInstance struct {
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
+	// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+	DatabaseCenterIntegration pulumi.StringPtrOutput `pulumi:"databaseCenterIntegration"`
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -786,6 +782,8 @@ type databaseInstanceState struct {
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName *string `pulumi:"connectionName"`
+	// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+	DatabaseCenterIntegration *string `pulumi:"databaseCenterIntegration"`
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -921,6 +919,8 @@ type DatabaseInstanceState struct {
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName pulumi.StringPtrInput
+	// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+	DatabaseCenterIntegration pulumi.StringPtrInput
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -1055,6 +1055,8 @@ type databaseInstanceArgs struct {
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
+	// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+	DatabaseCenterIntegration *string `pulumi:"databaseCenterIntegration"`
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -1167,6 +1169,8 @@ type DatabaseInstanceArgs struct {
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrInput
+	// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+	DatabaseCenterIntegration pulumi.StringPtrInput
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -1382,6 +1386,11 @@ func (o DatabaseInstanceOutput) Clone() DatabaseInstanceClonePtrOutput {
 // connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 func (o DatabaseInstanceOutput) ConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+func (o DatabaseInstanceOutput) DatabaseCenterIntegration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.DatabaseCenterIntegration }).(pulumi.StringPtrOutput)
 }
 
 // The MySQL, PostgreSQL or

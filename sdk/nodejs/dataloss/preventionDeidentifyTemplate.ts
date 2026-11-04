@@ -113,6 +113,9 @@ import * as utilities from "../utilities";
  *                 },
  *             ],
  *         },
+ *         transformationErrorHandling: {
+ *             throwError: {},
+ *         },
  *     },
  * });
  * ```

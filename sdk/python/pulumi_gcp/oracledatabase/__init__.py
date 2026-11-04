@@ -27,11 +27,13 @@ from .get_goldengate_connection_types import *
 from .get_goldengate_deployment_environments import *
 from .get_goldengate_deployment_types import *
 from .get_goldengate_deployment_versions import *
+from .get_odb_dns_zone import *
 from .get_odb_network import *
 from .get_odb_subnet import *
 from .goldengate_connection import *
 from .goldengate_connection_assignment import *
 from .goldengate_deployment import *
+from .odb_dns_zone import *
 from .odb_network import *
 from .odb_subnet import *
 from ._inputs import *

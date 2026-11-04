@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiModelDevelopmentClusterOrchestratorSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The GKE orchestrator related spec of the cluster.
+        /// </summary>
+        [Input("kubernetesSpec")]
+        public Input<Inputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs>? KubernetesSpec { get; set; }
+
+        /// <summary>
         /// The Slurm orchestrator related spec of the cluster.
         /// </summary>
         [Input("slurmSpec")]

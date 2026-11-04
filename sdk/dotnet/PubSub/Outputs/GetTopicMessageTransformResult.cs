@@ -20,6 +20,11 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTopicMessageTransformAiInferenceResult> AiInferences;
         /// <summary>
+        /// Configuration for compressing/decompressing message data using a
+        /// user-specified compression algorithm.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTopicMessageTransformCompressionResult> Compressions;
+        /// <summary>
         /// Controls whether or not to use this transform. If not set or 'false',
         /// the transform will be applied to messages. Default: 'true'.
         /// </summary>
@@ -34,11 +39,14 @@ namespace Pulumi.Gcp.PubSub.Outputs
         private GetTopicMessageTransformResult(
             ImmutableArray<Outputs.GetTopicMessageTransformAiInferenceResult> aiInferences,
 
+            ImmutableArray<Outputs.GetTopicMessageTransformCompressionResult> compressions,
+
             bool disabled,
 
             ImmutableArray<Outputs.GetTopicMessageTransformJavascriptUdfResult> javascriptUdfs)
         {
             AiInferences = aiInferences;
+            Compressions = compressions;
             Disabled = disabled;
             JavascriptUdfs = javascriptUdfs;
         }

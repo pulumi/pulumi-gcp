@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword;
+import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex;
 import java.lang.String;
@@ -30,6 +31,12 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
      */
     private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword excludeByHotword;
     /**
+     * @return The rule to exclude image findings based on spatial relationships with other image findings.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings excludeByImageFindings;
+    /**
      * @return Set of infoTypes for which findings would affect this rule.
      * Structure is documented below.
      * 
@@ -37,7 +44,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes;
     /**
      * @return How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-     * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+     * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
      * 
      */
     private String matchingType;
@@ -67,6 +74,14 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
         return Optional.ofNullable(this.excludeByHotword);
     }
     /**
+     * @return The rule to exclude image findings based on spatial relationships with other image findings.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings> excludeByImageFindings() {
+        return Optional.ofNullable(this.excludeByImageFindings);
+    }
+    /**
      * @return Set of infoTypes for which findings would affect this rule.
      * Structure is documented below.
      * 
@@ -76,7 +91,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     }
     /**
      * @return How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-     * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+     * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
      * 
      */
     public String matchingType() {
@@ -102,6 +117,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     public static final class Builder {
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword excludeByHotword;
+        private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings excludeByImageFindings;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes;
         private String matchingType;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex regex;
@@ -110,6 +126,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     	      Objects.requireNonNull(defaults);
     	      this.dictionary = defaults.dictionary;
     	      this.excludeByHotword = defaults.excludeByHotword;
+    	      this.excludeByImageFindings = defaults.excludeByImageFindings;
     	      this.excludeInfoTypes = defaults.excludeInfoTypes;
     	      this.matchingType = defaults.matchingType;
     	      this.regex = defaults.regex;
@@ -125,6 +142,12 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
         public Builder excludeByHotword(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword excludeByHotword) {
 
             this.excludeByHotword = excludeByHotword;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder excludeByImageFindings(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings excludeByImageFindings) {
+
+            this.excludeByImageFindings = excludeByImageFindings;
             return this;
         }
         @CustomType.Setter
@@ -151,6 +174,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule();
             _resultValue.dictionary = dictionary;
             _resultValue.excludeByHotword = excludeByHotword;
+            _resultValue.excludeByImageFindings = excludeByImageFindings;
             _resultValue.excludeInfoTypes = excludeInfoTypes;
             _resultValue.matchingType = matchingType;
             _resultValue.regex = regex;

@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly string? Column;
         /// <summary>
+        /// Specifies the debug queries for this rule.
+        /// Currently, only one query is supported, but this may be expanded in the future.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DatascanDataQualitySpecRuleDebugQuery> DebugQueries;
+        /// <summary>
         /// Description of the rule.
         /// The maximum length is 1,024 characters.
         /// </summary>
@@ -105,6 +111,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
             string? column,
 
+            ImmutableArray<Outputs.DatascanDataQualitySpecRuleDebugQuery> debugQueries,
+
             string? description,
 
             string dimension,
@@ -139,6 +147,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         {
             Attributes = attributes;
             Column = column;
+            DebugQueries = debugQueries;
             Description = description;
             Dimension = dimension;
             IgnoreNull = ignoreNull;

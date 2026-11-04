@@ -34,6 +34,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string ConnectionName;
         /// <summary>
+        /// The Database Center integration control.
+        /// </summary>
+        public readonly string DatabaseCenterIntegration;
+        /// <summary>
         /// To filter out the Cloud SQL instances which are of the specified database version.
         /// </summary>
         public readonly string DatabaseVersion;
@@ -180,6 +184,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string connectionName,
 
+            string databaseCenterIntegration,
+
             string databaseVersion,
 
             string deletionPolicy,
@@ -255,6 +261,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             BlueGreenDeployments = blueGreenDeployments;
             Clones = clones;
             ConnectionName = connectionName;
+            DatabaseCenterIntegration = databaseCenterIntegration;
             DatabaseVersion = databaseVersion;
             DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;

@@ -177,10 +177,10 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *         ipConfiguration: {
- *             pscConfigs: [{
+ *             pscConfig: {
  *                 pscEnabled: true,
  *                 allowedConsumerProjects: ["allowed-consumer-project-name"],
- *             }],
+ *             },
  *             ipv4Enabled: false,
  *         },
  *         backupConfiguration: {
@@ -204,14 +204,14 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *         ipConfiguration: {
- *             pscConfigs: [{
+ *             pscConfig: {
  *                 pscEnabled: true,
  *                 allowedConsumerProjects: ["allowed-consumer-project-name"],
  *                 pscAutoConnections: [{
  *                     consumerNetwork: "network-name",
  *                     consumerServiceProjectId: "project-id",
  *                 }],
- *             }],
+ *             },
  *             ipv4Enabled: false,
  *         },
  *         backupConfiguration: {
@@ -235,11 +235,11 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *         ipConfiguration: {
- *             pscConfigs: [{
+ *             pscConfig: {
  *                 pscEnabled: true,
  *                 allowedConsumerProjects: ["allowed-consumer-project-name"],
  *                 networkAttachmentUri: "network-attachment-uri",
- *             }],
+ *             },
  *             ipv4Enabled: false,
  *         },
  *         backupConfiguration: {
@@ -476,6 +476,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly connectionName: pulumi.Output<string>;
     /**
+     * The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+     */
+    declare public readonly databaseCenterIntegration: pulumi.Output<string | undefined>;
+    /**
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
      * `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -675,6 +679,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["blueGreenDeployment"] = state?.blueGreenDeployment;
             resourceInputs["clone"] = state?.clone;
             resourceInputs["connectionName"] = state?.connectionName;
+            resourceInputs["databaseCenterIntegration"] = state?.databaseCenterIntegration;
             resourceInputs["databaseVersion"] = state?.databaseVersion;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
@@ -718,6 +723,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["backupdrBackup"] = args?.backupdrBackup;
             resourceInputs["blueGreenDeployment"] = args?.blueGreenDeployment;
             resourceInputs["clone"] = args?.clone;
+            resourceInputs["databaseCenterIntegration"] = args?.databaseCenterIntegration;
             resourceInputs["databaseVersion"] = args?.databaseVersion;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
@@ -794,6 +800,10 @@ export interface DatabaseInstanceState {
      * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
      */
     connectionName?: pulumi.Input<string | undefined>;
+    /**
+     * The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+     */
+    databaseCenterIntegration?: pulumi.Input<string | undefined>;
     /**
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
@@ -999,6 +1009,10 @@ export interface DatabaseInstanceArgs {
      * configuration is detailed below.
      */
     clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone | undefined>;
+    /**
+     * The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+     */
+    databaseCenterIntegration?: pulumi.Input<string | undefined>;
     /**
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,

@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     public sealed class DataProductAccessGroup
     {
         /// <summary>
+        /// Configuration for the default IAM role associated with the access group.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DataProductAccessGroupDefaultIamRoleConfig? DefaultIamRoleConfig;
+        /// <summary>
         /// Description of the access group.
         /// </summary>
         public readonly string? Description;
@@ -37,6 +42,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
         [OutputConstructor]
         private DataProductAccessGroup(
+            Outputs.DataProductAccessGroupDefaultIamRoleConfig? defaultIamRoleConfig,
+
             string? description,
 
             string displayName,
@@ -47,6 +54,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
             Outputs.DataProductAccessGroupPrincipal principal)
         {
+            DefaultIamRoleConfig = defaultIamRoleConfig;
             Description = description;
             DisplayName = displayName;
             GroupId = groupId;

@@ -38,14 +38,14 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-west4",
  *     network: _default.name,
  * });
  * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "us-west4",
  *     labels: {
  *         label: "key",
  *     },
@@ -53,15 +53,19 @@ import * as utilities from "../utilities";
  *         "label-one": "value-one",
  *     },
  * });
+ * const defaultAccount = new gcp.serviceaccount.Account("default", {
+ *     accountId: "my-account",
+ *     displayName: "Service Account",
+ * });
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
+ *     location: "us-west4",
  *     idleTimeout: "600s",
  *     runningTimeout: "21600s",
  *     replicaZones: [
- *         "us-central1-a",
- *         "us-central1-b",
+ *         "us-west4-a",
+ *         "us-west4-b",
  *     ],
  *     annotations: {
  *         "label-one": "value-one",
@@ -74,11 +78,22 @@ import * as utilities from "../utilities";
  *         gceInstance: {
  *             machineType: "e2-standard-4",
  *             bootDiskSizeGb: 35,
+ *             poolSize: 0,
+ *             serviceAccount: defaultAccount.email,
+ *             serviceAccountScopes: ["https://www.googleapis.com/auth/cloud-platform"],
  *             disablePublicIpAddresses: true,
  *             disableSsh: false,
  *             vmTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
  *                 [tagKey1Id]: tagValue1Id,
  *             }),
+ *             shieldedInstanceConfig: {
+ *                 enableSecureBoot: false,
+ *                 enableVtpm: false,
+ *                 enableIntegrityMonitoring: false,
+ *             },
+ *             confidentialInstanceConfig: {
+ *                 enableConfidentialCompute: false,
+ *             },
  *         },
  *     },
  * });
@@ -90,100 +105,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {
- *     name: "workstation-cluster",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: _default.name,
- * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster",
- *     network: _default.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
- *     workstationConfigId: "workstation-config",
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     host: {
- *         gceInstance: {
- *             machineType: "n1-standard-4",
- *             bootDiskSizeGb: 35,
- *             disablePublicIpAddresses: true,
- *             enableNestedVirtualization: true,
- *         },
- *     },
- *     container: {
- *         image: "intellij",
- *         env: {
- *             NAME: "FOO",
- *             BABE: "bar",
- *         },
- *     },
- * });
- * ```
- *
- * ### Workstation Config Hyperdisk
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.Network("default", {
- *     name: "workstation-cluster",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: _default.name,
- * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster",
- *     network: _default.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- * });
- * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
- *     workstationConfigId: "workstation-config",
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     host: {
- *         gceInstance: {
- *             machineType: "c3-standard-22",
- *         },
- *     },
- *     persistentDirectories: [{
- *         mountPath: "/home",
- *         gceHd: {
- *             sizeGb: 200,
- *             reclaimPolicy: "DELETE",
- *             archiveTimeout: "3600s",
- *         },
- *     }],
- * });
- * ```
- *
- * ### Workstation Config Hyperdisk Source Snapshot
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
  * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
- *     parent: "organizations/0123456789",
+ *     parent: "organizations/123456789",
  *     shortName: "keyname",
  * });
  * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
@@ -197,72 +120,14 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: _default.name,
- * });
- * const mySourceDisk = new gcp.compute.Disk("my_source_disk", {
- *     name: "workstation-config-source-disk",
- *     size: 10,
- *     type: "pd-ssd",
- *     zone: "us-central1-a",
- * });
- * const mySourceSnapshot = new gcp.compute.Snapshot("my_source_snapshot", {
- *     name: "workstation-config-source-snapshot",
- *     sourceDisk: mySourceDisk.name,
- *     zone: "us-central1-a",
- * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster",
- *     network: _default.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- * });
- * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
- *     workstationConfigId: "workstation-config",
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     host: {
- *         gceInstance: {
- *             machineType: "c3-standard-22",
- *             bootDiskSizeGb: 35,
- *             disablePublicIpAddresses: true,
- *             vmTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
- *                 [tagKey1Id]: tagValue1Id,
- *             }),
- *         },
- *     },
- *     persistentDirectories: [{
- *         mountPath: "/home",
- *         gceHd: {
- *             sourceSnapshot: mySourceSnapshot.id,
- *             reclaimPolicy: "DELETE",
- *             archiveTimeout: "3600s",
- *         },
- *     }],
- * });
- * ```
- *
- * ### Workstation Config Persistent Directories
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.Network("default", {
- *     name: "workstation-cluster",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-west4",
  *     network: _default.name,
  * });
  * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "us-west4",
  *     labels: {
  *         label: "key",
  *     },
@@ -270,39 +135,71 @@ import * as utilities from "../utilities";
  *         "label-one": "value-one",
  *     },
  * });
+ * const defaultAccount = new gcp.serviceaccount.Account("default", {
+ *     accountId: "my-account",
+ *     displayName: "Service Account",
+ * });
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
+ *     location: "us-west4",
+ *     displayName: "Display Name N",
+ *     idleTimeout: "1200s",
+ *     runningTimeout: "43200s",
+ *     replicaZones: [
+ *         "us-west4-a",
+ *         "us-west4-b",
+ *     ],
+ *     disableTcpConnections: true,
+ *     maxUsableWorkstations: 2,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     readinessChecks: [{
+ *         path: "/",
+ *         port: 80,
+ *     }],
+ *     allowedPorts: [{
+ *         first: 80,
+ *         last: 80,
+ *     }],
  *     host: {
  *         gceInstance: {
- *             machineType: "e2-standard-4",
+ *             machineType: "n1-standard-4",
  *             bootDiskSizeGb: 35,
  *             disablePublicIpAddresses: true,
- *             shieldedInstanceConfig: {
- *                 enableSecureBoot: true,
- *                 enableVtpm: true,
+ *             enableNestedVirtualization: true,
+ *             instanceMetadata: {
+ *                 "startup-key": "startup-value",
+ *                 "custom-field": "custom-value",
  *             },
  *         },
  *     },
- *     persistentDirectories: [{
- *         mountPath: "/home",
- *         gcePd: {
- *             sizeGb: 200,
- *             fsType: "ext4",
- *             diskType: "pd-standard",
- *             reclaimPolicy: "DELETE",
+ *     container: {
+ *         image: "us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:latest",
+ *         workingDir: "/test",
+ *         env: {
+ *             NAME: "FOO",
+ *             BABE: "bar",
  *         },
- *     }],
+ *     },
  * });
  * ```
  *
- * ### Workstation Config Source Snapshot
+ * ### Workstation Config Allowed Ports
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ * });
+ * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
+ *     parent: tagKey1.id,
+ *     shortName: "valuename",
+ * });
  * const _default = new gcp.compute.Network("default", {
  *     name: "workstation-cluster",
  *     autoCreateSubnetworks: false,
@@ -310,37 +207,80 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-west4",
  *     network: _default.name,
- * });
- * const mySourceDisk = new gcp.compute.Disk("my_source_disk", {
- *     name: "workstation-config",
- *     size: 10,
- *     type: "pd-ssd",
- *     zone: "us-central1-a",
- * });
- * const mySourceSnapshot = new gcp.compute.Snapshot("my_source_snapshot", {
- *     name: "workstation-config",
- *     sourceDisk: mySourceDisk.name,
- *     zone: "us-central1-a",
  * });
  * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "us-west4",
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * const defaultAccount = new gcp.serviceaccount.Account("default", {
+ *     accountId: "my-account",
+ *     displayName: "Service Account",
  * });
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: defaultWorkstationCluster.location,
- *     persistentDirectories: [{
- *         mountPath: "/home",
- *         gcePd: {
- *             sourceSnapshot: mySourceSnapshot.id,
- *             reclaimPolicy: "DELETE",
- *         },
+ *     location: "us-west4",
+ *     displayName: "Display Name N2",
+ *     idleTimeout: "600s",
+ *     runningTimeout: "21600s",
+ *     replicaZones: [
+ *         "us-west4-a",
+ *         "us-west4-b",
+ *     ],
+ *     disableTcpConnections: false,
+ *     maxUsableWorkstations: 1,
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     readinessChecks: [{
+ *         path: "/healthz",
+ *         port: 8080,
  *     }],
+ *     allowedPorts: [
+ *         {
+ *             first: 80,
+ *             last: 80,
+ *         },
+ *         {
+ *             first: 22,
+ *             last: 22,
+ *         },
+ *         {
+ *             first: 1024,
+ *             last: 65535,
+ *         },
+ *     ],
+ *     container: {
+ *         image: "us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:latest",
+ *     },
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "e2-standard-4",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             disableSsh: false,
+ *             vmTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
+ *                 [tagKey1Id]: tagValue1Id,
+ *             }),
+ *             instanceMetadata: {
+ *                 "startup-key": "startup-value-changed",
+ *                 "second-key": "second-value",
+ *             },
+ *         },
+ *     },
  * });
  * ```
  *
@@ -350,6 +290,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ * });
+ * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
+ *     parent: tagKey1.id,
+ *     shortName: "valuename",
+ * });
  * const _default = new gcp.compute.Network("default", {
  *     name: "workstation-cluster",
  *     autoCreateSubnetworks: false,
@@ -357,14 +305,14 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-west4",
  *     network: _default.name,
  * });
  * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "us-west4",
  *     labels: {
  *         label: "key",
  *     },
@@ -372,65 +320,35 @@ import * as utilities from "../utilities";
  *         "label-one": "value-one",
  *     },
  * });
+ * const defaultAccount = new gcp.serviceaccount.Account("default", {
+ *     accountId: "my-account",
+ *     displayName: "Service Account",
+ * });
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
+ *     location: "us-west4",
+ *     enableAuditAgent: true,
  *     host: {
  *         gceInstance: {
- *             machineType: "e2-standard-4",
+ *             machineType: "n2d-standard-2",
  *             bootDiskSizeGb: 35,
- *             disablePublicIpAddresses: true,
+ *             poolSize: 1,
+ *             serviceAccount: defaultAccount.email,
+ *             serviceAccountScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *             disablePublicIpAddresses: false,
+ *             tags: [
+ *                 "foo",
+ *                 "bar",
+ *             ],
  *             shieldedInstanceConfig: {
  *                 enableSecureBoot: true,
  *                 enableVtpm: true,
+ *                 enableIntegrityMonitoring: true,
  *             },
- *         },
- *     },
- * });
- * ```
- *
- * ### Workstation Config Accelerators
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.Network("default", {
- *     name: "workstation-cluster",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: _default.name,
- * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster",
- *     network: _default.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
- *     workstationConfigId: "workstation-config",
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     host: {
- *         gceInstance: {
- *             machineType: "n1-standard-2",
- *             bootDiskSizeGb: 35,
- *             disablePublicIpAddresses: true,
- *             accelerators: [{
- *                 type: "nvidia-tesla-t4",
- *                 count: 1,
- *             }],
+ *             confidentialInstanceConfig: {
+ *                 enableConfidentialCompute: true,
+ *             },
  *         },
  *     },
  * });
@@ -449,14 +367,14 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "europe-west4",
  *     network: _default.name,
  * });
  * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     labels: {
  *         label: "key",
  *     },
@@ -467,7 +385,7 @@ import * as utilities from "../utilities";
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     host: {
  *         gceInstance: {
  *             machineType: "e2-standard-4",
@@ -495,6 +413,355 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Workstation Config Accelerators
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "europe-west4",
+ *     network: _default.name,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "europe-west4",
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "europe-west4",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "n1-standard-2",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             accelerators: [{
+ *                 type: "nvidia-tesla-t4",
+ *                 count: 1,
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Workstation Config Persistent Directories
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-west4",
+ *     network: _default.name,
+ * });
+ * const mySourceDisk = new gcp.compute.Disk("my_source_disk", {
+ *     name: "workstation-config",
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-west4-a",
+ * });
+ * const mySourceSnapshot = new gcp.compute.Snapshot("my_source_snapshot", {
+ *     name: "workstation-config",
+ *     sourceDisk: mySourceDisk.name,
+ *     zone: "us-west4-a",
+ * });
+ * const mySourceImage = new gcp.compute.Image("my_source_image", {
+ *     name: "workstation-config",
+ *     sourceDisk: mySourceDisk.selfLink,
+ *     storageLocations: ["us-west4"],
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-west4",
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-west4",
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gcePd: {
+ *             sourceSnapshot: mySourceSnapshot.id,
+ *             reclaimPolicy: "DELETE",
+ *         },
+ *     }],
+ * });
+ * const persistent = new gcp.workstations.WorkstationConfig("persistent", {
+ *     workstationConfigId: "workstation-config-pd",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-west4",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "e2-standard-4",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             shieldedInstanceConfig: {
+ *                 enableSecureBoot: true,
+ *                 enableVtpm: true,
+ *             },
+ *         },
+ *     },
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gcePd: {
+ *             sizeGb: 200,
+ *             fsType: "ext4",
+ *             diskType: "pd-standard",
+ *             reclaimPolicy: "DELETE",
+ *         },
+ *     }],
+ * });
+ * const ephemeralSnapshot = new gcp.workstations.WorkstationConfig("ephemeral_snapshot", {
+ *     workstationConfigId: "workstation-config-eph-snap",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-west4",
+ *     ephemeralDirectories: [{
+ *         mountPath: "/cache",
+ *         gcePd: {
+ *             sourceSnapshot: mySourceSnapshot.id,
+ *             readOnly: true,
+ *         },
+ *     }],
+ * });
+ * const ephemeralImage = new gcp.workstations.WorkstationConfig("ephemeral_image", {
+ *     workstationConfigId: "workstation-config-eph-img",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-west4",
+ *     ephemeralDirectories: [{
+ *         mountPath: "/cache",
+ *         gcePd: {
+ *             diskType: "pd-standard",
+ *             sourceImage: mySourceImage.id,
+ *         },
+ *     }],
+ * });
+ * ```
+ *
+ * ### Workstation Config Source Snapshot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-west4",
+ *     network: _default.name,
+ * });
+ * const mySourceDisk = new gcp.compute.Disk("my_source_disk", {
+ *     name: "workstation-config",
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-west4-a",
+ * });
+ * const mySourceSnapshot = new gcp.compute.Snapshot("my_source_snapshot", {
+ *     name: "workstation-config",
+ *     sourceDisk: mySourceDisk.name,
+ *     zone: "us-west4-a",
+ * });
+ * const mySourceSnapshot2 = new gcp.compute.Snapshot("my_source_snapshot2", {
+ *     name: "workstation-config-2",
+ *     sourceDisk: mySourceDisk.name,
+ *     zone: "us-west4-a",
+ * });
+ * const mySourceImage = new gcp.compute.Image("my_source_image", {
+ *     name: "workstation-config",
+ *     sourceDisk: mySourceDisk.selfLink,
+ *     storageLocations: ["us-west4"],
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-west4",
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-west4",
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gcePd: {
+ *             sourceSnapshot: mySourceSnapshot2.id,
+ *             reclaimPolicy: "RETAIN",
+ *         },
+ *     }],
+ * });
+ * const persistent = new gcp.workstations.WorkstationConfig("persistent", {
+ *     workstationConfigId: "workstation-config-pd",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-west4",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "e2-standard-4",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             shieldedInstanceConfig: {
+ *                 enableSecureBoot: true,
+ *                 enableVtpm: true,
+ *             },
+ *         },
+ *     },
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gcePd: {
+ *             sizeGb: 200,
+ *             fsType: "ext4",
+ *             diskType: "pd-standard",
+ *             reclaimPolicy: "DELETE",
+ *         },
+ *     }],
+ * });
+ * const ephemeralSnapshot = new gcp.workstations.WorkstationConfig("ephemeral_snapshot", {
+ *     workstationConfigId: "workstation-config-eph-snap",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-west4",
+ *     ephemeralDirectories: [{
+ *         mountPath: "/cache",
+ *         gcePd: {
+ *             sourceSnapshot: mySourceSnapshot.id,
+ *             readOnly: true,
+ *         },
+ *     }],
+ * });
+ * const ephemeralImage = new gcp.workstations.WorkstationConfig("ephemeral_image", {
+ *     workstationConfigId: "workstation-config-eph-img",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-west4",
+ *     ephemeralDirectories: [{
+ *         mountPath: "/cache",
+ *         gcePd: {
+ *             diskType: "pd-standard",
+ *             sourceImage: mySourceImage.id,
+ *         },
+ *     }],
+ * });
+ * ```
+ *
+ * ### Workstation Config Hyperdisk
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
+ *     parent: "organizations/0123456789",
+ *     shortName: "keyname",
+ * });
+ * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
+ *     parent: tagKey1.id,
+ *     shortName: "valuename",
+ * });
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-east5",
+ *     network: _default.name,
+ * });
+ * const mySourceDisk = new gcp.compute.Disk("my_source_disk", {
+ *     name: "workstation-config-source-disk",
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-east5-a",
+ * });
+ * const mySourceSnapshot = new gcp.compute.Snapshot("my_source_snapshot", {
+ *     name: "workstation-config-source-snapshot",
+ *     sourceDisk: mySourceDisk.name,
+ *     zone: "us-east5-a",
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-east5",
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-east5",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "c3-standard-22",
+ *         },
+ *     },
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gceHd: {
+ *             sizeGb: 200,
+ *             reclaimPolicy: "DELETE",
+ *             archiveTimeout: "3600s",
+ *         },
+ *     }],
+ * });
+ * const sourceSnapshot = new gcp.workstations.WorkstationConfig("source_snapshot", {
+ *     workstationConfigId: "workstation-config-hd-snap",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-east5",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "c3-standard-22",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             vmTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
+ *                 [tagKey1Id]: tagValue1Id,
+ *             }),
+ *         },
+ *     },
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gceHd: {
+ *             sourceSnapshot: mySourceSnapshot.id,
+ *             reclaimPolicy: "DELETE",
+ *             archiveTimeout: "3600s",
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ### Workstation Config Encryption Key
  *
  * ```typescript
@@ -508,14 +775,14 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-east5",
  *     network: _default.name,
  * });
  * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "us-east5",
  *     labels: {
  *         label: "key",
  *     },
@@ -525,7 +792,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultKeyRing = new gcp.kms.KeyRing("default", {
  *     name: "workstation-cluster",
- *     location: "us-central1",
+ *     location: "us-east5",
  * });
  * const defaultCryptoKey = new gcp.kms.CryptoKey("default", {
  *     name: "workstation-cluster",
@@ -538,7 +805,7 @@ import * as utilities from "../utilities";
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
+ *     location: "us-east5",
  *     host: {
  *         gceInstance: {
  *             machineType: "e2-standard-4",
@@ -557,62 +824,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Workstation Config Allowed Ports
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.Network("default", {
- *     name: "workstation-cluster",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: _default.name,
- * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster",
- *     network: _default.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
- *     workstationConfigId: "workstation-config",
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     host: {
- *         gceInstance: {
- *             machineType: "e2-standard-4",
- *             bootDiskSizeGb: 35,
- *             disablePublicIpAddresses: true,
- *         },
- *     },
- *     allowedPorts: [
- *         {
- *             first: 80,
- *             last: 80,
- *         },
- *         {
- *             first: 22,
- *             last: 22,
- *         },
- *         {
- *             first: 1024,
- *             last: 65535,
- *         },
- *     ],
- * });
- * ```
- *
  * ### Workstation Config Idle Action
  *
  * ```typescript
@@ -626,19 +837,19 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-west4",
  *     network: _default.name,
  * });
  * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: _default.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "us-west4",
  * });
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
+ *     location: "us-west4",
  *     idleTimeout: "600s",
  *     idleAction: "SUSPEND",
  *     host: {
@@ -650,6 +861,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Regional Endpoint Policies
+ *
+ * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
  *
  * ## Import
  *

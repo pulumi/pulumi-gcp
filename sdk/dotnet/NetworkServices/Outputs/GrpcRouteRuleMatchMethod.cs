@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// Required. Name of the service to match against.
         /// </summary>
         public readonly string GrpcService;
+        /// <summary>
+        /// Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+        /// Default value is `EXACT`.
+        /// Possible values are: `EXACT`, `REGULAR_EXPRESSION`.
+        /// </summary>
+        public readonly string? Type;
 
         [OutputConstructor]
         private GrpcRouteRuleMatchMethod(
@@ -32,11 +38,14 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             string grpcMethod,
 
-            string grpcService)
+            string grpcService,
+
+            string? type)
         {
             CaseSensitive = caseSensitive;
             GrpcMethod = grpcMethod;
             GrpcService = grpcService;
+            Type = type;
         }
     }
 }

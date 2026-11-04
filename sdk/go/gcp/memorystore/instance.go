@@ -49,7 +49,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-east4"),
+//				Region:      pulumi.String("northamerica-south1"),
 //				Network:     producerNet.ID(),
 //			})
 //			if err != nil {
@@ -57,7 +57,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-east4"),
+//				Location:     pulumi.String("northamerica-south1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID(),
@@ -83,7 +83,7 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location:                  pulumi.String("us-east4"),
+//				Location:                  pulumi.String("northamerica-south1"),
 //				NodeType:                  pulumi.String("SHARED_CORE_NANO"),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
 //				MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
@@ -138,7 +138,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-east4"),
+//				Region:      pulumi.String("northamerica-south1"),
 //				Network:     producerNet.ID(),
 //			})
 //			if err != nil {
@@ -146,7 +146,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-east4"),
+//				Location:     pulumi.String("northamerica-south1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID(),
@@ -172,7 +172,7 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location:              pulumi.String("us-east4"),
+//				Location:              pulumi.String("northamerica-south1"),
 //				ReplicaCount:          pulumi.Int(1),
 //				NodeType:              pulumi.String("SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_DISABLED"),
@@ -183,7 +183,7 @@ import (
 //				},
 //				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
-//					Zone: pulumi.String("us-east4-a"),
+//					Zone: pulumi.String("northamerica-south1-a"),
 //				},
 //				MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
 //					WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -250,7 +250,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-east4"),
+//				Region:      pulumi.String("northamerica-south1"),
 //				Network:     producerNet.ID(),
 //			})
 //			if err != nil {
@@ -258,7 +258,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-east4"),
+//				Location:     pulumi.String("northamerica-south1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID(),
@@ -284,7 +284,7 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location: pulumi.String("us-east4"),
+//				Location: pulumi.String("northamerica-south1"),
 //				NodeType: pulumi.String("SHARED_CORE_NANO"),
 //				PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
 //					Mode: pulumi.String("AOF"),
@@ -332,7 +332,7 @@ import (
 //			primaryProducerSubnet, err := compute.NewSubnetwork(ctx, "primary_producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet-primary-instance"),
 //				IpCidrRange: pulumi.String("10.0.1.0/29"),
-//				Region:      pulumi.String("asia-east1"),
+//				Region:      pulumi.String("northamerica-south1"),
 //				Network:     primaryProducerNet.ID(),
 //			})
 //			if err != nil {
@@ -340,7 +340,7 @@ import (
 //			}
 //			primaryPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "primary_policy", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy-primary-instance"),
-//				Location:     pulumi.String("asia-east1"),
+//				Location:     pulumi.String("northamerica-south1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      primaryProducerNet.ID(),
@@ -367,7 +367,7 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location:              pulumi.String("asia-east1"),
+//				Location:              pulumi.String("northamerica-south1"),
 //				ReplicaCount:          pulumi.Int(1),
 //				NodeType:              pulumi.String("SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_DISABLED"),
@@ -377,7 +377,7 @@ import (
 //				},
 //				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
-//					Zone: pulumi.String("asia-east1-c"),
+//					Zone: pulumi.String("northamerica-south1-a"),
 //				},
 //				DeletionProtectionEnabled: pulumi.Bool(true),
 //				PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
@@ -502,7 +502,7 @@ import (
 //			}
 //			_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Name:     pulumi.String("ca-pool"),
-//				Location: pulumi.String("us-east4"),
+//				Location: pulumi.String("northamerica-south1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
@@ -519,7 +519,7 @@ import (
 //			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("ca-auth"),
-//				Location:               pulumi.String("us-east4"),
+//				Location:               pulumi.String("northamerica-south1"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -562,7 +562,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("ca-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-east4"),
+//				Region:      pulumi.String("northamerica-south1"),
 //				Network:     producerNet.ID(),
 //			})
 //			if err != nil {
@@ -570,7 +570,7 @@ import (
 //			}
 //			defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("ca-policy"),
-//				Location:     pulumi.String("us-east4"),
+//				Location:     pulumi.String("northamerica-south1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Network:      producerNet.ID(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
@@ -585,7 +585,7 @@ import (
 //			_, err = memorystore.NewInstance(ctx, "test-instance", &memorystore.InstanceArgs{
 //				InstanceId: pulumi.String("ca-instance"),
 //				ShardCount: pulumi.Int(1),
-//				Location:   pulumi.String("us-east4"),
+//				Location:   pulumi.String("northamerica-south1"),
 //				NodeType:   pulumi.String("SHARED_CORE_NANO"),
 //				DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 //					&memorystore.InstanceDesiredAutoCreatedEndpointArgs{

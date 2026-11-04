@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .build())
@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  * 
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .clusterId("alloydb-primary-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())

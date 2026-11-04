@@ -408,6 +408,19 @@ namespace Pulumi.Gcp.BigQuery
         public Output<int?> DefaultPartitionExpirationMs { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the default rounding mode specification of new tables created
+        /// within this dataset. During table creation, if this field is specified,
+        /// the table within this dataset will inherit the default rounding mode of
+        /// the dataset. Setting the default rounding mode on a table overrides this
+        /// specification. Existing tables in the dataset are unaffected. If columns
+        /// are defined during that table creation, they will immediately inherit the
+        /// table's default rounding mode, unless otherwise specified.
+        /// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+        /// </summary>
+        [Output("defaultRoundingMode")]
+        public Output<string?> DefaultRoundingMode { get; private set; } = null!;
+
+        /// <summary>
         /// The default lifetime of all tables in the dataset, in milliseconds.
         /// The minimum value is 3600000 milliseconds (one hour).
         /// Once this property is set, all newly-created tables in the dataset
@@ -678,6 +691,19 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? DefaultPartitionExpirationMs { get; set; }
 
         /// <summary>
+        /// Defines the default rounding mode specification of new tables created
+        /// within this dataset. During table creation, if this field is specified,
+        /// the table within this dataset will inherit the default rounding mode of
+        /// the dataset. Setting the default rounding mode on a table overrides this
+        /// specification. Existing tables in the dataset are unaffected. If columns
+        /// are defined during that table creation, they will immediately inherit the
+        /// table's default rounding mode, unless otherwise specified.
+        /// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+        /// </summary>
+        [Input("defaultRoundingMode")]
+        public Input<string>? DefaultRoundingMode { get; set; }
+
+        /// <summary>
         /// The default lifetime of all tables in the dataset, in milliseconds.
         /// The minimum value is 3600000 milliseconds (one hour).
         /// Once this property is set, all newly-created tables in the dataset
@@ -890,6 +916,19 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("defaultPartitionExpirationMs")]
         public Input<int>? DefaultPartitionExpirationMs { get; set; }
+
+        /// <summary>
+        /// Defines the default rounding mode specification of new tables created
+        /// within this dataset. During table creation, if this field is specified,
+        /// the table within this dataset will inherit the default rounding mode of
+        /// the dataset. Setting the default rounding mode on a table overrides this
+        /// specification. Existing tables in the dataset are unaffected. If columns
+        /// are defined during that table creation, they will immediately inherit the
+        /// table's default rounding mode, unless otherwise specified.
+        /// Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+        /// </summary>
+        [Input("defaultRoundingMode")]
+        public Input<string>? DefaultRoundingMode { get; set; }
 
         /// <summary>
         /// The default lifetime of all tables in the dataset, in milliseconds.

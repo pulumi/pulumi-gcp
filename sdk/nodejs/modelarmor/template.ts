@@ -54,6 +54,37 @@ import * as utilities from "../utilities";
  *         maliciousUriFilterSettings: {
  *             filterEnforcement: "ENABLED",
  *         },
+ *         filterRuleSettings: {
+ *             ruleSets: [{
+ *                 filterTypes: [
+ *                     "PROMPT_INJECTION_AND_JAILBREAK",
+ *                     "RESPONSIBLE_AI",
+ *                 ],
+ *                 rules: [
+ *                     {
+ *                         exclusionRule: {
+ *                             matchingScope: "MATCHING_SCOPE_PARTIAL_MATCH",
+ *                             dictionary: {
+ *                                 wordList: {
+ *                                     words: [
+ *                                         "allowphrase1",
+ *                                         "allowphrase2",
+ *                                     ],
+ *                                 },
+ *                             },
+ *                         },
+ *                     },
+ *                     {
+ *                         exclusionRule: {
+ *                             matchingScope: "MATCHING_SCOPE_FULL_MATCH",
+ *                             regex: {
+ *                                 pattern: "^safe_pattern_[0-9]+$",
+ *                             },
+ *                         },
+ *                     },
+ *                 ],
+ *             }],
+ *         },
  *     },
  *     templateMetadata: {
  *         multiLanguageDetection: {
@@ -99,6 +130,7 @@ import * as utilities from "../utilities";
  *         filterVersionSelector: {
  *             alias: "FILTER_VERSION_ALIAS_LATEST",
  *         },
+ *         dataResidencyCompliant: true,
  *     },
  * });
  * ```
@@ -122,7 +154,7 @@ import * as utilities from "../utilities";
  *     },
  *     templateMetadata: {
  *         filterVersionSelector: {
- *             version: "v1",
+ *             version: "v3",
  *         },
  *     },
  * });

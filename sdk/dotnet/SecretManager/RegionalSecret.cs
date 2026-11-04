@@ -230,6 +230,26 @@ namespace Pulumi.Gcp.SecretManager
     /// });
     /// ```
     /// 
+    /// ### Regional Secret Cloud Sql Db Credentials
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var regional_secret_cloud_sql_db_credentials = new Gcp.SecretManager.RegionalSecret("regional-secret-cloud-sql-db-credentials", new()
+    ///     {
+    ///         SecretId = "tf-reg-secret",
+    ///         Location = "us-central1",
+    ///         SecretType = "CLOUD_SQL_DB_CREDENTIALS",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RegionalSecret can be imported using any of these accepted formats:
@@ -350,6 +370,14 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// An object containing a unique resource identity tied to the regional secret. This identity can be
+        /// granted the permissions required by features such as managed rotation.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("policyMembers")]
+        public Output<ImmutableArray<Outputs.RegionalSecretPolicyMember>> PolicyMembers { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -366,7 +394,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// The rotation time and period for a regional secret. At `NextRotationTime`, Secret Manager
         /// will send a Pub/Sub notification to the topics configured on the Secret. `Topics` must be
-        /// set to configure rotation.
+        /// set to configure rotation, unless `SecretType` is `CLOUD_SQL_DB_CREDENTIALS`.
         /// Structure is documented below.
         /// </summary>
         [Output("rotation")]
@@ -381,6 +409,15 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        /// Supported values are:
+        /// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+        /// credentials. Managed rotation can be enabled on these secrets using the
+        /// `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+        /// be added manually to secrets of this type.
+        /// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        /// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        /// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        /// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         /// </summary>
         [Output("secretType")]
         public Output<string?> SecretType { get; private set; } = null!;
@@ -578,7 +615,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// The rotation time and period for a regional secret. At `NextRotationTime`, Secret Manager
         /// will send a Pub/Sub notification to the topics configured on the Secret. `Topics` must be
-        /// set to configure rotation.
+        /// set to configure rotation, unless `SecretType` is `CLOUD_SQL_DB_CREDENTIALS`.
         /// Structure is documented below.
         /// </summary>
         [Input("rotation")]
@@ -593,6 +630,15 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        /// Supported values are:
+        /// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+        /// credentials. Managed rotation can be enabled on these secrets using the
+        /// `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+        /// be added manually to secrets of this type.
+        /// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        /// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        /// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        /// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }
@@ -796,6 +842,20 @@ namespace Pulumi.Gcp.SecretManager
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("policyMembers")]
+        private InputList<Inputs.RegionalSecretPolicyMemberGetArgs>? _policyMembers;
+
+        /// <summary>
+        /// An object containing a unique resource identity tied to the regional secret. This identity can be
+        /// granted the permissions required by features such as managed rotation.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionalSecretPolicyMemberGetArgs> PolicyMembers
+        {
+            get => _policyMembers ?? (_policyMembers = new InputList<Inputs.RegionalSecretPolicyMemberGetArgs>());
+            set => _policyMembers = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -823,7 +883,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// The rotation time and period for a regional secret. At `NextRotationTime`, Secret Manager
         /// will send a Pub/Sub notification to the topics configured on the Secret. `Topics` must be
-        /// set to configure rotation.
+        /// set to configure rotation, unless `SecretType` is `CLOUD_SQL_DB_CREDENTIALS`.
         /// Structure is documented below.
         /// </summary>
         [Input("rotation")]
@@ -838,6 +898,15 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        /// Supported values are:
+        /// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+        /// credentials. Managed rotation can be enabled on these secrets using the
+        /// `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+        /// be added manually to secrets of this type.
+        /// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        /// * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        /// * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        /// * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }

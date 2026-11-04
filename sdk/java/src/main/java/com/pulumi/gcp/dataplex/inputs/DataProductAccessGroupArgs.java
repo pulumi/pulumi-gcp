@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupDefaultIamRoleConfigArgs;
 import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupPrincipalArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +17,23 @@ import javax.annotation.Nullable;
 public final class DataProductAccessGroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DataProductAccessGroupArgs Empty = new DataProductAccessGroupArgs();
+
+    /**
+     * Configuration for the default IAM role associated with the access group.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="defaultIamRoleConfig")
+    private @Nullable Output<DataProductAccessGroupDefaultIamRoleConfigArgs> defaultIamRoleConfig;
+
+    /**
+     * @return Configuration for the default IAM role associated with the access group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataProductAccessGroupDefaultIamRoleConfigArgs>> defaultIamRoleConfig() {
+        return Optional.ofNullable(this.defaultIamRoleConfig);
+    }
 
     /**
      * Description of the access group.
@@ -97,6 +115,7 @@ public final class DataProductAccessGroupArgs extends com.pulumi.resources.Resou
     private DataProductAccessGroupArgs() {}
 
     private DataProductAccessGroupArgs(DataProductAccessGroupArgs $) {
+        this.defaultIamRoleConfig = $.defaultIamRoleConfig;
         this.description = $.description;
         this.displayName = $.displayName;
         this.groupId = $.groupId;
@@ -120,6 +139,29 @@ public final class DataProductAccessGroupArgs extends com.pulumi.resources.Resou
 
         public Builder(DataProductAccessGroupArgs defaults) {
             $ = new DataProductAccessGroupArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param defaultIamRoleConfig Configuration for the default IAM role associated with the access group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultIamRoleConfig(@Nullable Output<DataProductAccessGroupDefaultIamRoleConfigArgs> defaultIamRoleConfig) {
+            $.defaultIamRoleConfig = defaultIamRoleConfig;
+            return this;
+        }
+
+        /**
+         * @param defaultIamRoleConfig Configuration for the default IAM role associated with the access group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultIamRoleConfig(DataProductAccessGroupDefaultIamRoleConfigArgs defaultIamRoleConfig) {
+            return defaultIamRoleConfig(Output.of(defaultIamRoleConfig));
         }
 
         /**

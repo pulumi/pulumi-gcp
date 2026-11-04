@@ -12,11 +12,14 @@ import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterCo
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigInitializationAction;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfig;
+import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig;
+import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfig;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig;
+import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +44,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigEndpointConfig endpointConfig;
     /**
-     * @return The shared Compute Engine config settings for all instances in a cluster.
+     * @return The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig gceClusterConfig;
@@ -66,6 +69,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfig masterConfig;
     /**
+     * @return The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+     * 
+     */
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig masterFlexibleConfig;
+    /**
      * @return Metastore configuration.
      * 
      */
@@ -75,6 +83,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig;
+    /**
+     * @return The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+     * 
+     */
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig secondaryWorkerFlexibleConfig;
     /**
      * @return Security settings for the cluster.
      * 
@@ -98,10 +111,15 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     /**
      * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
+     */
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig;
+    /**
+     * @return The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+     * 
      * ***
      * 
      */
-    private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig workerFlexibleConfig;
 
     private WorkflowTemplatePlacementManagedClusterConfig() {}
     /**
@@ -126,7 +144,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         return Optional.ofNullable(this.endpointConfig);
     }
     /**
-     * @return The shared Compute Engine config settings for all instances in a cluster.
+     * @return The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig> gceClusterConfig() {
@@ -161,6 +179,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         return Optional.ofNullable(this.masterConfig);
     }
     /**
+     * @return The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+     * 
+     */
+    public Optional<WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig> masterFlexibleConfig() {
+        return Optional.ofNullable(this.masterFlexibleConfig);
+    }
+    /**
      * @return Metastore configuration.
      * 
      */
@@ -173,6 +198,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig> secondaryWorkerConfig() {
         return Optional.ofNullable(this.secondaryWorkerConfig);
+    }
+    /**
+     * @return The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+     * 
+     */
+    public Optional<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig> secondaryWorkerFlexibleConfig() {
+        return Optional.ofNullable(this.secondaryWorkerFlexibleConfig);
     }
     /**
      * @return Security settings for the cluster.
@@ -205,11 +237,18 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     /**
      * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
-     * ***
-     * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigWorkerConfig> workerConfig() {
         return Optional.ofNullable(this.workerConfig);
+    }
+    /**
+     * @return The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    public Optional<WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig> workerFlexibleConfig() {
+        return Optional.ofNullable(this.workerFlexibleConfig);
     }
 
     public static Builder builder() {
@@ -229,13 +268,16 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction> initializationActions;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig lifecycleConfig;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfig masterConfig;
+        private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig masterFlexibleConfig;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig metastoreConfig;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig;
+        private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig secondaryWorkerFlexibleConfig;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfig securityConfig;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig softwareConfig;
         private @Nullable String stagingBucket;
         private @Nullable String tempBucket;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig;
+        private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig workerFlexibleConfig;
         public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -247,13 +289,16 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     	      this.initializationActions = defaults.initializationActions;
     	      this.lifecycleConfig = defaults.lifecycleConfig;
     	      this.masterConfig = defaults.masterConfig;
+    	      this.masterFlexibleConfig = defaults.masterFlexibleConfig;
     	      this.metastoreConfig = defaults.metastoreConfig;
     	      this.secondaryWorkerConfig = defaults.secondaryWorkerConfig;
+    	      this.secondaryWorkerFlexibleConfig = defaults.secondaryWorkerFlexibleConfig;
     	      this.securityConfig = defaults.securityConfig;
     	      this.softwareConfig = defaults.softwareConfig;
     	      this.stagingBucket = defaults.stagingBucket;
     	      this.tempBucket = defaults.tempBucket;
     	      this.workerConfig = defaults.workerConfig;
+    	      this.workerFlexibleConfig = defaults.workerFlexibleConfig;
         }
 
         @CustomType.Setter
@@ -308,6 +353,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder masterFlexibleConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig masterFlexibleConfig) {
+
+            this.masterFlexibleConfig = masterFlexibleConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metastoreConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig metastoreConfig) {
 
             this.metastoreConfig = metastoreConfig;
@@ -317,6 +368,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         public Builder secondaryWorkerConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig) {
 
             this.secondaryWorkerConfig = secondaryWorkerConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secondaryWorkerFlexibleConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig secondaryWorkerFlexibleConfig) {
+
+            this.secondaryWorkerFlexibleConfig = secondaryWorkerFlexibleConfig;
             return this;
         }
         @CustomType.Setter
@@ -349,6 +406,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
             this.workerConfig = workerConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder workerFlexibleConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig workerFlexibleConfig) {
+
+            this.workerFlexibleConfig = workerFlexibleConfig;
+            return this;
+        }
         public WorkflowTemplatePlacementManagedClusterConfig build() {
             final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfig();
             _resultValue.autoscalingConfig = autoscalingConfig;
@@ -359,13 +422,16 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
             _resultValue.initializationActions = initializationActions;
             _resultValue.lifecycleConfig = lifecycleConfig;
             _resultValue.masterConfig = masterConfig;
+            _resultValue.masterFlexibleConfig = masterFlexibleConfig;
             _resultValue.metastoreConfig = metastoreConfig;
             _resultValue.secondaryWorkerConfig = secondaryWorkerConfig;
+            _resultValue.secondaryWorkerFlexibleConfig = secondaryWorkerFlexibleConfig;
             _resultValue.securityConfig = securityConfig;
             _resultValue.softwareConfig = softwareConfig;
             _resultValue.stagingBucket = stagingBucket;
             _resultValue.tempBucket = tempBucket;
             _resultValue.workerConfig = workerConfig;
+            _resultValue.workerFlexibleConfig = workerFlexibleConfig;
             return _resultValue;
         }
     }

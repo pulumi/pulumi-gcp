@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionCorsPolicyArgs;
 import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionDestinationArgs;
+import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionDirectResponseArgs;
 import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionFaultInjectionPolicyArgs;
 import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRedirectArgs;
 import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleActionRequestHeaderModifierArgs;
@@ -60,6 +61,23 @@ public final class HttpRouteRuleActionArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Static HTTP Response object to be returned regardless of the request.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="directResponse")
+    private @Nullable Output<HttpRouteRuleActionDirectResponseArgs> directResponse;
+
+    /**
+     * @return Static HTTP Response object to be returned regardless of the request.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<HttpRouteRuleActionDirectResponseArgs>> directResponse() {
+        return Optional.ofNullable(this.directResponse);
+    }
+
+    /**
      * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
      * Structure is documented below.
      * 
@@ -74,6 +92,23 @@ public final class HttpRouteRuleActionArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<HttpRouteRuleActionFaultInjectionPolicyArgs>> faultInjectionPolicy() {
         return Optional.ofNullable(this.faultInjectionPolicy);
+    }
+
+    /**
+     * Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    @Import(name="idleTimeout")
+    private @Nullable Output<String> idleTimeout;
+
+    /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Optional<Output<String>> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
     }
 
     /**
@@ -198,7 +233,9 @@ public final class HttpRouteRuleActionArgs extends com.pulumi.resources.Resource
     private HttpRouteRuleActionArgs(HttpRouteRuleActionArgs $) {
         this.corsPolicy = $.corsPolicy;
         this.destinations = $.destinations;
+        this.directResponse = $.directResponse;
         this.faultInjectionPolicy = $.faultInjectionPolicy;
+        this.idleTimeout = $.idleTimeout;
         this.redirect = $.redirect;
         this.requestHeaderModifier = $.requestHeaderModifier;
         this.requestMirrorPolicy = $.requestMirrorPolicy;
@@ -284,6 +321,29 @@ public final class HttpRouteRuleActionArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param directResponse Static HTTP Response object to be returned regardless of the request.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directResponse(@Nullable Output<HttpRouteRuleActionDirectResponseArgs> directResponse) {
+            $.directResponse = directResponse;
+            return this;
+        }
+
+        /**
+         * @param directResponse Static HTTP Response object to be returned regardless of the request.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directResponse(HttpRouteRuleActionDirectResponseArgs directResponse) {
+            return directResponse(Output.of(directResponse));
+        }
+
+        /**
          * @param faultInjectionPolicy The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
          * Structure is documented below.
          * 
@@ -304,6 +364,29 @@ public final class HttpRouteRuleActionArgs extends com.pulumi.resources.Resource
          */
         public Builder faultInjectionPolicy(HttpRouteRuleActionFaultInjectionPolicyArgs faultInjectionPolicy) {
             return faultInjectionPolicy(Output.of(faultInjectionPolicy));
+        }
+
+        /**
+         * @param idleTimeout Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(@Nullable Output<String> idleTimeout) {
+            $.idleTimeout = idleTimeout;
+            return this;
+        }
+
+        /**
+         * @param idleTimeout Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(String idleTimeout) {
+            return idleTimeout(Output.of(idleTimeout));
         }
 
         /**

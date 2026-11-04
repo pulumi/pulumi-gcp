@@ -264,13 +264,14 @@ import (
 //				return err
 //			}
 //			_, err = networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
-//				Name:               pulumi.String("my-tls-inspection-policy"),
-//				Location:           pulumi.String("us-central1"),
-//				CaPool:             _default.ID(),
-//				ExcludePublicCaSet: pulumi.Bool(false),
-//				MinTlsVersion:      pulumi.String("TLS_1_0"),
-//				TrustConfig:        defaultTrustConfig.ID(),
-//				TlsFeatureProfile:  pulumi.String("PROFILE_CUSTOM"),
+//				Name:                    pulumi.String("my-tls-inspection-policy"),
+//				Location:                pulumi.String("us-central1"),
+//				CaPool:                  _default.ID(),
+//				ExcludePublicCaSet:      pulumi.Bool(false),
+//				MinTlsVersion:           pulumi.String("TLS_1_0"),
+//				TrustConfig:             defaultTrustConfig.ID(),
+//				TlsFeatureProfile:       pulumi.String("PROFILE_CUSTOM"),
+//				CertificateIssuanceMode: pulumi.String("LOCAL_INTERMEDIATE_CA_SIGNING"),
 //				CustomTlsFeatures: pulumi.StringArray{
 //					pulumi.String("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA"),
 //					pulumi.String("TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"),
@@ -321,6 +322,9 @@ type TlsInspectionPolicy struct {
 
 	// A CA pool resource used to issue interception certificates.
 	CaPool pulumi.StringOutput `pulumi:"caPool"`
+	// The mode used to issue certificates (local CA signing vs direct leaf).
+	// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+	CertificateIssuanceMode pulumi.StringPtrOutput `pulumi:"certificateIssuanceMode"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
@@ -392,6 +396,9 @@ func GetTlsInspectionPolicy(ctx *pulumi.Context,
 type tlsInspectionPolicyState struct {
 	// A CA pool resource used to issue interception certificates.
 	CaPool *string `pulumi:"caPool"`
+	// The mode used to issue certificates (local CA signing vs direct leaf).
+	// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+	CertificateIssuanceMode *string `pulumi:"certificateIssuanceMode"`
 	// The timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
@@ -431,6 +438,9 @@ type tlsInspectionPolicyState struct {
 type TlsInspectionPolicyState struct {
 	// A CA pool resource used to issue interception certificates.
 	CaPool pulumi.StringPtrInput
+	// The mode used to issue certificates (local CA signing vs direct leaf).
+	// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+	CertificateIssuanceMode pulumi.StringPtrInput
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
 	// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
@@ -474,6 +484,9 @@ func (TlsInspectionPolicyState) ElementType() reflect.Type {
 type tlsInspectionPolicyArgs struct {
 	// A CA pool resource used to issue interception certificates.
 	CaPool string `pulumi:"caPool"`
+	// The mode used to issue certificates (local CA signing vs direct leaf).
+	// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+	CertificateIssuanceMode *string `pulumi:"certificateIssuanceMode"`
 	// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
 	CustomTlsFeatures []string `pulumi:"customTlsFeatures"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -510,6 +523,9 @@ type tlsInspectionPolicyArgs struct {
 type TlsInspectionPolicyArgs struct {
 	// A CA pool resource used to issue interception certificates.
 	CaPool pulumi.StringInput
+	// The mode used to issue certificates (local CA signing vs direct leaf).
+	// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+	CertificateIssuanceMode pulumi.StringPtrInput
 	// List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
 	CustomTlsFeatures pulumi.StringArrayInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -632,6 +648,12 @@ func (o TlsInspectionPolicyOutput) ToTlsInspectionPolicyOutputWithContext(ctx co
 // A CA pool resource used to issue interception certificates.
 func (o TlsInspectionPolicyOutput) CaPool() pulumi.StringOutput {
 	return o.ApplyT(func(v *TlsInspectionPolicy) pulumi.StringOutput { return v.CaPool }).(pulumi.StringOutput)
+}
+
+// The mode used to issue certificates (local CA signing vs direct leaf).
+// Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+func (o TlsInspectionPolicyOutput) CertificateIssuanceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TlsInspectionPolicy) pulumi.StringPtrOutput { return v.CertificateIssuanceMode }).(pulumi.StringPtrOutput)
 }
 
 // The timestamp when the resource was created.

@@ -66,14 +66,15 @@ type LookupRepositoryArgs struct {
 
 // A collection of values returned by getRepository.
 type LookupRepositoryResult struct {
-	CleanupPolicies     []GetRepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
-	CleanupPolicyDryRun bool                         `pulumi:"cleanupPolicyDryRun"`
-	CreateTime          string                       `pulumi:"createTime"`
-	DeletionPolicy      string                       `pulumi:"deletionPolicy"`
-	Description         string                       `pulumi:"description"`
-	DockerConfigs       []GetRepositoryDockerConfig  `pulumi:"dockerConfigs"`
-	EffectiveLabels     map[string]string            `pulumi:"effectiveLabels"`
-	Format              string                       `pulumi:"format"`
+	CleanupPolicies         []GetRepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
+	CleanupPolicyDryRun     bool                         `pulumi:"cleanupPolicyDryRun"`
+	CreateTime              string                       `pulumi:"createTime"`
+	DeletionPolicy          string                       `pulumi:"deletionPolicy"`
+	Description             string                       `pulumi:"description"`
+	DisallowUnspecifiedMode bool                         `pulumi:"disallowUnspecifiedMode"`
+	DockerConfigs           []GetRepositoryDockerConfig  `pulumi:"dockerConfigs"`
+	EffectiveLabels         map[string]string            `pulumi:"effectiveLabels"`
+	Format                  string                       `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                           string                                     `pulumi:"id"`
 	KmsKeyName                   string                                     `pulumi:"kmsKeyName"`
@@ -82,6 +83,7 @@ type LookupRepositoryResult struct {
 	MavenConfigs                 []GetRepositoryMavenConfig                 `pulumi:"mavenConfigs"`
 	Mode                         string                                     `pulumi:"mode"`
 	Name                         string                                     `pulumi:"name"`
+	PlatformLogsConfigs          []GetRepositoryPlatformLogsConfig          `pulumi:"platformLogsConfigs"`
 	Project                      *string                                    `pulumi:"project"`
 	PulumiLabels                 map[string]string                          `pulumi:"pulumiLabels"`
 	RegistryUri                  string                                     `pulumi:"registryUri"`
@@ -149,6 +151,10 @@ func (o LookupRepositoryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o LookupRepositoryResultOutput) DisallowUnspecifiedMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) bool { return v.DisallowUnspecifiedMode }).(pulumi.BoolOutput)
+}
+
 func (o LookupRepositoryResultOutput) DockerConfigs() GetRepositoryDockerConfigArrayOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryDockerConfig { return v.DockerConfigs }).(GetRepositoryDockerConfigArrayOutput)
 }
@@ -188,6 +194,10 @@ func (o LookupRepositoryResultOutput) Mode() pulumi.StringOutput {
 
 func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRepositoryResultOutput) PlatformLogsConfigs() GetRepositoryPlatformLogsConfigArrayOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryPlatformLogsConfig { return v.PlatformLogsConfigs }).(GetRepositoryPlatformLogsConfigArrayOutput)
 }
 
 func (o LookupRepositoryResultOutput) Project() pulumi.StringPtrOutput {

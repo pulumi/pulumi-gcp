@@ -20,6 +20,7 @@ __all__ = ['TlsInspectionPolicyArgs', 'TlsInspectionPolicy']
 class TlsInspectionPolicyArgs:
     def __init__(__self__, *,
                  ca_pool: pulumi.Input[_builtins.str],
+                 certificate_issuance_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_tls_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,6 +35,8 @@ class TlsInspectionPolicyArgs:
         The set of arguments for constructing a TlsInspectionPolicy resource.
 
         :param pulumi.Input[_builtins.str] ca_pool: A CA pool resource used to issue interception certificates.
+        :param pulumi.Input[_builtins.str] certificate_issuance_mode: The mode used to issue certificates (local CA signing vs direct leaf).
+               Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_tls_features: List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -56,6 +59,8 @@ class TlsInspectionPolicyArgs:
         :param pulumi.Input[_builtins.str] trust_config: A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \\"projects/{project}/locations/{location}/trustConfigs/{trust_config}\\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
         """
         pulumi.set(__self__, "ca_pool", ca_pool)
+        if certificate_issuance_mode is not None:
+            pulumi.set(__self__, "certificate_issuance_mode", certificate_issuance_mode)
         if custom_tls_features is not None:
             pulumi.set(__self__, "custom_tls_features", custom_tls_features)
         if deletion_policy is not None:
@@ -88,6 +93,19 @@ class TlsInspectionPolicyArgs:
     @ca_pool.setter
     def ca_pool(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "ca_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateIssuanceMode")
+    def certificate_issuance_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mode used to issue certificates (local CA signing vs direct leaf).
+        Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+        """
+        return pulumi.get(self, "certificate_issuance_mode")
+
+    @certificate_issuance_mode.setter
+    def certificate_issuance_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "certificate_issuance_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="customTlsFeatures")
@@ -224,6 +242,7 @@ class TlsInspectionPolicyArgs:
 class _TlsInspectionPolicyState:
     def __init__(__self__, *,
                  ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_issuance_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_tls_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -240,6 +259,8 @@ class _TlsInspectionPolicyState:
         Input properties used for looking up and filtering TlsInspectionPolicy resources.
 
         :param pulumi.Input[_builtins.str] ca_pool: A CA pool resource used to issue interception certificates.
+        :param pulumi.Input[_builtins.str] certificate_issuance_mode: The mode used to issue certificates (local CA signing vs direct leaf).
+               Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_tls_features: List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -265,6 +286,8 @@ class _TlsInspectionPolicyState:
         """
         if ca_pool is not None:
             pulumi.set(__self__, "ca_pool", ca_pool)
+        if certificate_issuance_mode is not None:
+            pulumi.set(__self__, "certificate_issuance_mode", certificate_issuance_mode)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if custom_tls_features is not None:
@@ -301,6 +324,19 @@ class _TlsInspectionPolicyState:
     @ca_pool.setter
     def ca_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateIssuanceMode")
+    def certificate_issuance_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mode used to issue certificates (local CA signing vs direct leaf).
+        Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+        """
+        return pulumi.get(self, "certificate_issuance_mode")
+
+    @certificate_issuance_mode.setter
+    def certificate_issuance_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "certificate_issuance_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -464,6 +500,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_issuance_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_tls_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -653,6 +690,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             min_tls_version="TLS_1_0",
             trust_config=default_trust_config.id,
             tls_feature_profile="PROFILE_CUSTOM",
+            certificate_issuance_mode="LOCAL_INTERMEDIATE_CA_SIGNING",
             custom_tls_features=[
                 "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
                 "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
@@ -696,6 +734,8 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ca_pool: A CA pool resource used to issue interception certificates.
+        :param pulumi.Input[_builtins.str] certificate_issuance_mode: The mode used to issue certificates (local CA signing vs direct leaf).
+               Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_tls_features: List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -901,6 +941,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             min_tls_version="TLS_1_0",
             trust_config=default_trust_config.id,
             tls_feature_profile="PROFILE_CUSTOM",
+            certificate_issuance_mode="LOCAL_INTERMEDIATE_CA_SIGNING",
             custom_tls_features=[
                 "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
                 "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
@@ -957,6 +998,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_issuance_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_tls_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -979,6 +1021,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             if ca_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'ca_pool'")
             __props__.__dict__["ca_pool"] = ca_pool
+            __props__.__dict__["certificate_issuance_mode"] = certificate_issuance_mode
             __props__.__dict__["custom_tls_features"] = custom_tls_features
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
@@ -1002,6 +1045,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_issuance_mode: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_tls_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1022,6 +1066,8 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ca_pool: A CA pool resource used to issue interception certificates.
+        :param pulumi.Input[_builtins.str] certificate_issuance_mode: The mode used to issue certificates (local CA signing vs direct leaf).
+               Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_tls_features: List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1050,6 +1096,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         __props__ = _TlsInspectionPolicyState.__new__(_TlsInspectionPolicyState)
 
         __props__.__dict__["ca_pool"] = ca_pool
+        __props__.__dict__["certificate_issuance_mode"] = certificate_issuance_mode
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_tls_features"] = custom_tls_features
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1071,6 +1118,15 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         A CA pool resource used to issue interception certificates.
         """
         return pulumi.get(self, "ca_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateIssuanceMode")
+    def certificate_issuance_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The mode used to issue certificates (local CA signing vs direct leaf).
+        Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+        """
+        return pulumi.get(self, "certificate_issuance_mode")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

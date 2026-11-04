@@ -27,7 +27,7 @@ class GetRegionalSecretResult:
     """
     A collection of values returned by getRegionalSecret.
     """
-    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryptions=None, deletion_policy=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, rotations=None, secret_id=None, secret_type=None, tags=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
+    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryptions=None, deletion_policy=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, location=None, name=None, policy_members=None, project=None, pulumi_labels=None, rotations=None, secret_id=None, secret_type=None, tags=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -64,6 +64,9 @@ class GetRegionalSecretResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if policy_members and not isinstance(policy_members, list):
+            raise TypeError("Expected argument 'policy_members' to be a list")
+        pulumi.set(__self__, "policy_members", policy_members)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -159,6 +162,11 @@ class GetRegionalSecretResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="policyMembers")
+    def policy_members(self) -> Sequence['outputs.GetRegionalSecretPolicyMemberResult']:
+        return pulumi.get(self, "policy_members")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
@@ -227,6 +235,7 @@ class AwaitableGetRegionalSecretResult(GetRegionalSecretResult):
             labels=self.labels,
             location=self.location,
             name=self.name,
+            policy_members=self.policy_members,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             rotations=self.rotations,
@@ -281,6 +290,7 @@ def get_regional_secret(location: Optional[_builtins.str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
+        policy_members=pulumi.get(__ret__, 'policy_members'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         rotations=pulumi.get(__ret__, 'rotations'),
@@ -332,6 +342,7 @@ def get_regional_secret_output(location: pulumi.Input[Optional[_builtins.str]] =
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
+        policy_members=pulumi.get(__response__, 'policy_members'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         rotations=pulumi.get(__response__, 'rotations'),

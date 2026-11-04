@@ -168,6 +168,72 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Oracledatabase Cloud Vmcluster Odbdnszone
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructure;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.CloudVmCluster;
+ * import com.pulumi.gcp.oracledatabase.CloudVmClusterArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.CloudVmClusterPropertiesArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var cloudExadataInfrastructures = new CloudExadataInfrastructure("cloudExadataInfrastructures", CloudExadataInfrastructureArgs.builder()
+ *             .cloudExadataInfrastructureId("my-exadata")
+ *             .displayName("my-exadata displayname")
+ *             .location("europe-west2")
+ *             .project("my-project")
+ *             .properties(CloudExadataInfrastructurePropertiesArgs.builder()
+ *                 .shape("Exadata.X9M")
+ *                 .computeCount(2)
+ *                 .storageCount(3)
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *         var myVmcluster = new CloudVmCluster("myVmcluster", CloudVmClusterArgs.builder()
+ *             .cloudVmClusterId("my-instance")
+ *             .displayName("my-instance displayname")
+ *             .location("europe-west2")
+ *             .project("my-project")
+ *             .exadataInfrastructure(cloudExadataInfrastructures.id())
+ *             .odbNetwork("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork")
+ *             .odbSubnet("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet")
+ *             .backupOdbSubnet("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet")
+ *             .odbDnsZone("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbDnsZones/my-odbdnszone")
+ *             .properties(CloudVmClusterPropertiesArgs.builder()
+ *                 .licenseType("LICENSE_INCLUDED")
+ *                 .sshPublicKeys("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody}{@literal @}{@code google.com")
+ *                 .cpuCoreCount(4)
+ *                 .giVersion("19.0.0.0")
+ *                 .hostnamePrefix("hostname1")
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ### Oracledatabase Cloud Vmcluster Full
  * 
  * <pre>
@@ -691,6 +757,24 @@ public class CloudVmCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> network() {
         return Codegen.optional(this.network);
+    }
+    /**
+     * The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     * 
+     */
+    @Export(name="odbDnsZone", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> odbDnsZone;
+
+    /**
+     * @return The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     * 
+     */
+    public Output<Optional<String>> odbDnsZone() {
+        return Codegen.optional(this.odbDnsZone);
     }
     /**
      * The name of the OdbNetwork associated with the VM Cluster.

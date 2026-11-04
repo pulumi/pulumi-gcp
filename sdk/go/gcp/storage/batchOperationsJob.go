@@ -92,6 +92,7 @@ import (
 //			_, err = storage.NewBatchOperationsJob(ctx, "tf-job", &storage.BatchOperationsJobArgs{
 //				JobId:       pulumi.String("tf-job"),
 //				Description: pulumi.String("A sample job description"),
+//				DryRun:      pulumi.Bool(true),
 //				BucketList: &storage.BatchOperationsJobBucketListArgs{
 //					Buckets: &storage.BatchOperationsJobBucketListBucketsArgs{
 //						Bucket: bucket.Name,
@@ -105,6 +106,15 @@ import (
 //				PutMetadata: &storage.BatchOperationsJobPutMetadataArgs{
 //					CustomMetadata: pulumi.StringMap{
 //						"key": pulumi.String("value"),
+//					},
+//				},
+//				LoggingConfig: &storage.BatchOperationsJobLoggingConfigArgs{
+//					LogActions: pulumi.StringArray{
+//						pulumi.String("TRANSFORM"),
+//					},
+//					LogActionStates: pulumi.StringArray{
+//						pulumi.String("SUCCEEDED"),
+//						pulumi.String("FAILED"),
 //					},
 //				},
 //				DeleteProtection: pulumi.Bool(false),
@@ -157,8 +167,13 @@ type BatchOperationsJob struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the job.
 	JobId pulumi.StringPtrOutput `pulumi:"jobId"`
+	// Logging configuration.
+	// Structure is documented below.
+	LoggingConfig BatchOperationsJobLoggingConfigPtrOutput `pulumi:"loggingConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -230,8 +245,13 @@ type batchOperationsJobState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description *string `pulumi:"description"`
+	// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the job.
 	JobId *string `pulumi:"jobId"`
+	// Logging configuration.
+	// Structure is documented below.
+	LoggingConfig *BatchOperationsJobLoggingConfig `pulumi:"loggingConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -274,8 +294,13 @@ type BatchOperationsJobState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description pulumi.StringPtrInput
+	// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+	DryRun pulumi.BoolPtrInput
 	// The ID of the job.
 	JobId pulumi.StringPtrInput
+	// Logging configuration.
+	// Structure is documented below.
+	LoggingConfig BatchOperationsJobLoggingConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -318,8 +343,13 @@ type batchOperationsJobArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description *string `pulumi:"description"`
+	// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the job.
 	JobId *string `pulumi:"jobId"`
+	// Logging configuration.
+	// Structure is documented below.
+	LoggingConfig *BatchOperationsJobLoggingConfig `pulumi:"loggingConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -353,8 +383,13 @@ type BatchOperationsJobArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description pulumi.StringPtrInput
+	// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+	DryRun pulumi.BoolPtrInput
 	// The ID of the job.
 	JobId pulumi.StringPtrInput
+	// Logging configuration.
+	// Structure is documented below.
+	LoggingConfig BatchOperationsJobLoggingConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -498,9 +533,20 @@ func (o BatchOperationsJobOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BatchOperationsJob) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// If true, the job runs in dry run mode, returning the total object count and, if the object configuration is a prefix list, the bytes found from source. No transformations are performed.
+func (o BatchOperationsJobOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJob) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
 // The ID of the job.
 func (o BatchOperationsJobOutput) JobId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BatchOperationsJob) pulumi.StringPtrOutput { return v.JobId }).(pulumi.StringPtrOutput)
+}
+
+// Logging configuration.
+// Structure is documented below.
+func (o BatchOperationsJobOutput) LoggingConfig() BatchOperationsJobLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJob) BatchOperationsJobLoggingConfigPtrOutput { return v.LoggingConfig }).(BatchOperationsJobLoggingConfigPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

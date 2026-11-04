@@ -213,7 +213,7 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
      * will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-     * set to configure rotation.
+     * set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
      * Structure is documented below.
      * 
      */
@@ -223,7 +223,7 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
      * will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-     * set to configure rotation.
+     * set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
      * Structure is documented below.
      * 
      */
@@ -249,6 +249,15 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+     *   credentials. Managed rotation can be enabled on these secrets using the
+     *   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+     *   be added manually to secrets of this type.
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     @Import(name="secretType")
@@ -257,6 +266,15 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+     *   credentials. Managed rotation can be enabled on these secrets using the
+     *   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+     *   be added manually to secrets of this type.
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     public Optional<Output<String>> secretType() {
@@ -646,7 +664,7 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param rotation The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
          * will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-         * set to configure rotation.
+         * set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
          * Structure is documented below.
          * 
          * @return builder
@@ -660,7 +678,7 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param rotation The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
          * will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
-         * set to configure rotation.
+         * set to configure rotation, unless `secretType` is `CLOUD_SQL_DB_CREDENTIALS`.
          * Structure is documented below.
          * 
          * @return builder
@@ -694,6 +712,15 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param secretType This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
          * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+         * Supported values are:
+         * * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+         *   credentials. Managed rotation can be enabled on these secrets using the
+         *   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+         *   be added manually to secrets of this type.
+         * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+         * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+         * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+         * * `OTHER`: Secrets whose type doesn&#39;t belong to any of the above types.
          * 
          * @return builder
          * 
@@ -706,6 +733,15 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param secretType This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
          * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+         * Supported values are:
+         * * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
+         *   credentials. Managed rotation can be enabled on these secrets using the
+         *   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+         *   be added manually to secrets of this type.
+         * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+         * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+         * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+         * * `OTHER`: Secrets whose type doesn&#39;t belong to any of the above types.
          * 
          * @return builder
          * 

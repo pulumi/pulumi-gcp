@@ -230,12 +230,33 @@ namespace Pulumi.Gcp.DataLoss
     ///                         Pattern = "test*",
     ///                     },
     ///                 },
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs
+    ///                 {
+    ///                     InfoType = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs
+    ///                     {
+    ///                         Name = "MY_METADATA_KV_TYPE",
+    ///                     },
+    ///                     Likelihood = "POSSIBLE",
+    ///                     MetadataKeyValueExpression = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs
+    ///                     {
+    ///                         KeyRegex = "key.*",
+    ///                         ValueRegex = "val.*",
+    ///                     },
+    ///                 },
     ///             },
     ///             InfoTypes = new[]
     ///             {
     ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
     ///                 {
     ///                     Name = "EMAIL_ADDRESS",
+    ///                 },
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
+    ///                 {
+    ///                     Name = "OBJECT_TYPE/PERSON",
+    ///                 },
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
+    ///                 {
+    ///                     Name = "OBJECT_TYPE/PERSON/PASSPORT",
     ///                 },
     ///             },
     ///             MinLikelihood = "UNLIKELY",
@@ -261,6 +282,45 @@ namespace Pulumi.Gcp.DataLoss
     ///                                     Pattern = ".+@example.com",
     ///                                 },
     ///                                 MatchingType = "MATCHING_TYPE_FULL_MATCH",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetArgs
+    ///                 {
+    ///                     InfoTypes = new[]
+    ///                     {
+    ///                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs
+    ///                         {
+    ///                             Name = "OBJECT_TYPE/PERSON",
+    ///                         },
+    ///                     },
+    ///                     Rules = new[]
+    ///                     {
+    ///                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs
+    ///                         {
+    ///                             ExclusionRule = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs
+    ///                             {
+    ///                                 MatchingType = "MATCHING_TYPE_RULE_SPECIFIC",
+    ///                                 ExcludeByImageFindings = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs
+    ///                                 {
+    ///                                     InfoTypes = new[]
+    ///                                     {
+    ///                                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs
+    ///                                         {
+    ///                                             Name = "OBJECT_TYPE/PERSON/PASSPORT",
+    ///                                             Version = "latest",
+    ///                                             SensitivityScore = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs
+    ///                                             {
+    ///                                                 Score = "SENSITIVITY_LOW",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                     ImageContainmentType = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs
+    ///                                     {
+    ///                                         FullyInside = null,
+    ///                                     },
+    ///                                 },
     ///                             },
     ///                         },
     ///                     },

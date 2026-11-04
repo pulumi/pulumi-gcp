@@ -72,6 +72,10 @@ type AiCacheConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+	// The cache config is a project-level setting, so this only selects which regional endpoint
+	// requests are sent to. If not specified, the provider-level region is used.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 }
 
 // NewAiCacheConfig registers a new resource with the given unique name, arguments, and options.
@@ -114,6 +118,10 @@ type aiCacheConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+	// The cache config is a project-level setting, so this only selects which regional endpoint
+	// requests are sent to. If not specified, the provider-level region is used.
+	Region *string `pulumi:"region"`
 }
 
 type AiCacheConfigState struct {
@@ -124,6 +132,10 @@ type AiCacheConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+	// The cache config is a project-level setting, so this only selects which regional endpoint
+	// requests are sent to. If not specified, the provider-level region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (AiCacheConfigState) ElementType() reflect.Type {
@@ -136,6 +148,10 @@ type aiCacheConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+	// The cache config is a project-level setting, so this only selects which regional endpoint
+	// requests are sent to. If not specified, the provider-level region is used.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a AiCacheConfig resource.
@@ -145,6 +161,10 @@ type AiCacheConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+	// The cache config is a project-level setting, so this only selects which regional endpoint
+	// requests are sent to. If not specified, the provider-level region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (AiCacheConfigArgs) ElementType() reflect.Type {
@@ -248,6 +268,13 @@ func (o AiCacheConfigOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AiCacheConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiCacheConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+// The cache config is a project-level setting, so this only selects which regional endpoint
+// requests are sent to. If not specified, the provider-level region is used.
+func (o AiCacheConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCacheConfig) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 type AiCacheConfigArrayOutput struct{ *pulumi.OutputState }

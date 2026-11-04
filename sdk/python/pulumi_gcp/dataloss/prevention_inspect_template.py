@@ -478,18 +478,38 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             description="My description",
             display_name="display_name",
             inspect_config={
-                "custom_info_types": [{
-                    "info_type": {
-                        "name": "MY_CUSTOM_TYPE",
+                "custom_info_types": [
+                    {
+                        "info_type": {
+                            "name": "MY_CUSTOM_TYPE",
+                        },
+                        "likelihood": "UNLIKELY",
+                        "regex": {
+                            "pattern": "test*",
+                        },
                     },
-                    "likelihood": "UNLIKELY",
-                    "regex": {
-                        "pattern": "test*",
+                    {
+                        "info_type": {
+                            "name": "MY_METADATA_KV_TYPE",
+                        },
+                        "likelihood": "POSSIBLE",
+                        "metadata_key_value_expression": {
+                            "key_regex": "key.*",
+                            "value_regex": "val.*",
+                        },
                     },
-                }],
-                "info_types": [{
-                    "name": "EMAIL_ADDRESS",
-                }],
+                ],
+                "info_types": [
+                    {
+                        "name": "EMAIL_ADDRESS",
+                    },
+                    {
+                        "name": "OBJECT_TYPE/PERSON",
+                    },
+                    {
+                        "name": "OBJECT_TYPE/PERSON/PASSPORT",
+                    },
+                ],
                 "min_likelihood": "UNLIKELY",
                 "rule_sets": [
                     {
@@ -502,6 +522,28 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                                     "pattern": ".+@example.com",
                                 },
                                 "matching_type": "MATCHING_TYPE_FULL_MATCH",
+                            },
+                        }],
+                    },
+                    {
+                        "info_types": [{
+                            "name": "OBJECT_TYPE/PERSON",
+                        }],
+                        "rules": [{
+                            "exclusion_rule": {
+                                "matching_type": "MATCHING_TYPE_RULE_SPECIFIC",
+                                "exclude_by_image_findings": {
+                                    "info_types": [{
+                                        "name": "OBJECT_TYPE/PERSON/PASSPORT",
+                                        "version": "latest",
+                                        "sensitivity_score": {
+                                            "score": "SENSITIVITY_LOW",
+                                        },
+                                    }],
+                                    "image_containment_type": {
+                                        "fully_inside": {},
+                                    },
+                                },
                             },
                         }],
                     },
@@ -802,18 +844,38 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             description="My description",
             display_name="display_name",
             inspect_config={
-                "custom_info_types": [{
-                    "info_type": {
-                        "name": "MY_CUSTOM_TYPE",
+                "custom_info_types": [
+                    {
+                        "info_type": {
+                            "name": "MY_CUSTOM_TYPE",
+                        },
+                        "likelihood": "UNLIKELY",
+                        "regex": {
+                            "pattern": "test*",
+                        },
                     },
-                    "likelihood": "UNLIKELY",
-                    "regex": {
-                        "pattern": "test*",
+                    {
+                        "info_type": {
+                            "name": "MY_METADATA_KV_TYPE",
+                        },
+                        "likelihood": "POSSIBLE",
+                        "metadata_key_value_expression": {
+                            "key_regex": "key.*",
+                            "value_regex": "val.*",
+                        },
                     },
-                }],
-                "info_types": [{
-                    "name": "EMAIL_ADDRESS",
-                }],
+                ],
+                "info_types": [
+                    {
+                        "name": "EMAIL_ADDRESS",
+                    },
+                    {
+                        "name": "OBJECT_TYPE/PERSON",
+                    },
+                    {
+                        "name": "OBJECT_TYPE/PERSON/PASSPORT",
+                    },
+                ],
                 "min_likelihood": "UNLIKELY",
                 "rule_sets": [
                     {
@@ -826,6 +888,28 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                                     "pattern": ".+@example.com",
                                 },
                                 "matching_type": "MATCHING_TYPE_FULL_MATCH",
+                            },
+                        }],
+                    },
+                    {
+                        "info_types": [{
+                            "name": "OBJECT_TYPE/PERSON",
+                        }],
+                        "rules": [{
+                            "exclusion_rule": {
+                                "matching_type": "MATCHING_TYPE_RULE_SPECIFIC",
+                                "exclude_by_image_findings": {
+                                    "info_types": [{
+                                        "name": "OBJECT_TYPE/PERSON/PASSPORT",
+                                        "version": "latest",
+                                        "sensitivity_score": {
+                                            "score": "SENSITIVITY_LOW",
+                                        },
+                                    }],
+                                    "image_containment_type": {
+                                        "fully_inside": {},
+                                    },
+                                },
                             },
                         }],
                     },

@@ -826,6 +826,12 @@ class Topic(pulumi.CustomResource):
                         "code": "...",
                     },
                 },
+                {
+                    "compression": {
+                        "compression_algorithm": "ZLIB",
+                        "compression_mode": "COMPRESS",
+                    },
+                },
             ])
         ```
 
@@ -870,7 +876,7 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             message_transforms=[{
                 "ai_inference": {
-                    "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    "endpoint": "projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash",
                     "unstructured_inference": {
                         "parameters": {
                             "max_tokens": "25000",
@@ -1203,6 +1209,12 @@ class Topic(pulumi.CustomResource):
                         "code": "...",
                     },
                 },
+                {
+                    "compression": {
+                        "compression_algorithm": "ZLIB",
+                        "compression_mode": "COMPRESS",
+                    },
+                },
             ])
         ```
 
@@ -1247,7 +1259,7 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             message_transforms=[{
                 "ai_inference": {
-                    "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    "endpoint": "projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash",
                     "unstructured_inference": {
                         "parameters": {
                             "max_tokens": "25000",

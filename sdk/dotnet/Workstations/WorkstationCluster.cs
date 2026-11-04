@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Workstations
     ///     {
     ///         Name = "workstation-cluster",
     ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
+    ///         Region = "us-west4",
     ///         Network = defaultNetwork.Name,
     ///     });
     /// 
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Workstations
     ///         WorkstationClusterId = "workstation-cluster",
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-west4",
     ///         Labels = 
     ///         {
     ///             { "label", "key" },
@@ -75,108 +75,6 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "workstation-cluster-private",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-    ///     {
-    ///         Name = "workstation-cluster-private",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-    ///     {
-    ///         WorkstationClusterId = "workstation-cluster-private",
-    ///         Network = defaultNetwork.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
-    ///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
-    ///         {
-    ///             EnablePrivateEndpoint = true,
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "label", "key" },
-    ///         },
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Workstation Cluster Custom Domain
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "workstation-cluster-custom-domain",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-    ///     {
-    ///         Name = "workstation-cluster-custom-domain",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-    ///     {
-    ///         WorkstationClusterId = "workstation-cluster-custom-domain",
-    ///         Network = defaultNetwork.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
-    ///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
-    ///         {
-    ///             EnablePrivateEndpoint = true,
-    ///         },
-    ///         DomainConfig = new Gcp.Workstations.Inputs.WorkstationClusterDomainConfigArgs
-    ///         {
-    ///             Domain = "workstations.example.com",
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "label", "key" },
-    ///         },
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Workstation Cluster Tags
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
@@ -193,24 +91,43 @@ namespace Pulumi.Gcp.Workstations
     /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         Name = "workstation-cluster-tags",
+    ///         Name = "workstation-cluster-private",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
-    ///         Name = "workstation-cluster-tags",
+    ///         Name = "workstation-cluster-private",
     ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
+    ///         Region = "europe-west4",
     ///         Network = defaultNetwork.Name,
     ///     });
     /// 
     ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
     ///     {
-    ///         WorkstationClusterId = "workstation-cluster-tags",
+    ///         WorkstationClusterId = "workstation-cluster-private",
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
+    ///         Location = "europe-west4",
+    ///         DisplayName = "cluster-display-name",
+    ///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
+    ///         {
+    ///             EnablePrivateEndpoint = true,
+    ///         },
+    ///         DomainConfig = new Gcp.Workstations.Inputs.WorkstationClusterDomainConfigArgs
+    ///         {
+    ///             Domain = "workstations.example.com",
+    ///         },
+    ///         WorkstationAuthorizationUrl = "https://console.cloud.google.com/workstations/auth",
+    ///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
+    ///         Labels = 
+    ///         {
+    ///             { "label", "key" },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
     ///         Tags = Output.Tuple(project, tagKey.ShortName, tagValue.ShortName).Apply(values =&gt;
     ///         {
     ///             var project = values.Item1;
@@ -226,44 +143,9 @@ namespace Pulumi.Gcp.Workstations
     /// });
     /// ```
     /// 
-    /// ### Workstation Cluster Custom Urls
+    /// ## Regional Endpoint Policies
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "workstations-network",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-    ///     {
-    ///         Name = "workstations-network",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-    ///     {
-    ///         WorkstationClusterId = "custom-urls-cluster",
-    ///         Network = defaultNetwork.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
-    ///         WorkstationAuthorizationUrl = "https://console.cloud.google.com/workstations/auth",
-    ///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
+    /// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
     /// 
     /// ## Import
     /// 

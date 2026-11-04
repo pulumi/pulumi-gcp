@@ -21,6 +21,7 @@ __all__ = [
     'BatchOperationsJobBucketListBucketsManifest',
     'BatchOperationsJobBucketListBucketsPrefixList',
     'BatchOperationsJobDeleteObject',
+    'BatchOperationsJobLoggingConfig',
     'BatchOperationsJobPutMetadata',
     'BatchOperationsJobPutObjectHold',
     'BatchOperationsJobRewriteObject',
@@ -483,6 +484,62 @@ class BatchOperationsJobDeleteObject(dict):
         enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
         """
         return pulumi.get(self, "permanent_object_deletion_enabled")
+
+
+@pulumi.output_type
+class BatchOperationsJobLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logActionStates":
+            suggest = "log_action_states"
+        elif key == "logActions":
+            suggest = "log_actions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchOperationsJobLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchOperationsJobLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchOperationsJobLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_action_states: Sequence[_builtins.str],
+                 log_actions: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] log_action_states: States in which Action are logged.If empty, no logs are generated.
+               Possible values include `SUCCEEDED`, `FAILED`.
+               See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+        :param Sequence[_builtins.str] log_actions: Specifies the actions to be logged.
+               Possible values include `TRANSFORM`.
+               See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+        """
+        pulumi.set(__self__, "log_action_states", log_action_states)
+        pulumi.set(__self__, "log_actions", log_actions)
+
+    @_builtins.property
+    @pulumi.getter(name="logActionStates")
+    def log_action_states(self) -> Sequence[_builtins.str]:
+        """
+        States in which Action are logged.If empty, no logs are generated.
+        Possible values include `SUCCEEDED`, `FAILED`.
+        See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+        """
+        return pulumi.get(self, "log_action_states")
+
+    @_builtins.property
+    @pulumi.getter(name="logActions")
+    def log_actions(self) -> Sequence[_builtins.str]:
+        """
+        Specifies the actions to be logged.
+        Possible values include `TRANSFORM`.
+        See [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig) for allowed values.
+        """
+        return pulumi.get(self, "log_actions")
 
 
 @pulumi.output_type

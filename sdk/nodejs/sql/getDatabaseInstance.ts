@@ -51,6 +51,7 @@ export interface GetDatabaseInstanceResult {
     readonly blueGreenDeployments: outputs.sql.GetDatabaseInstanceBlueGreenDeployment[];
     readonly clones: outputs.sql.GetDatabaseInstanceClone[];
     readonly connectionName: string;
+    readonly databaseCenterIntegration: string;
     readonly databaseVersion: string;
     readonly deletionPolicy: string;
     readonly deletionProtection: boolean;

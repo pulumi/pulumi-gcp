@@ -506,6 +506,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformArgs;
  * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformJavascriptUdfArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformCompressionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -550,6 +551,12 @@ import javax.annotation.Nullable;
  *                     .javascriptUdf(TopicMessageTransformJavascriptUdfArgs.builder()
  *                         .functionName("someSMTWeDisabled")
  *                         .code("...")
+ *                         .build())
+ *                     .build(),
+ *                 TopicMessageTransformArgs.builder()
+ *                     .compression(TopicMessageTransformCompressionArgs.builder()
+ *                         .compressionAlgorithm("ZLIB")
+ *                         .compressionMode("COMPRESS")
  *                         .build())
  *                     .build())
  *             .build());
@@ -674,7 +681,7 @@ import javax.annotation.Nullable;
  *             .name("example-topic")
  *             .messageTransforms(TopicMessageTransformArgs.builder()
  *                 .aiInference(TopicMessageTransformAiInferenceArgs.builder()
- *                     .endpoint("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash")
+ *                     .endpoint("projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash")
  *                     .unstructuredInference(TopicMessageTransformAiInferenceUnstructuredInferenceArgs.builder()
  *                         .parameters(Map.of("max_tokens", "25000"))
  *                         .build())

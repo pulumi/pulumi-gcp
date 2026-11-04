@@ -52072,6 +52072,12 @@ class RegionNetworkEndpointGroupCloudRunArgs:
 
 
 class RegionNetworkEndpointGroupPscDataArgsDict(TypedDict):
+    consumer_psc_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Address allocated from given subnetwork for PSC. This IP address acts
+    as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+    """
     producer_port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The PSC producer port to use when consumer PSC NEG connects to a producer. If
@@ -52079,19 +52085,63 @@ class RegionNetworkEndpointGroupPscDataArgsDict(TypedDict):
     private-service-connect, then PSC NEG will be connected to a first port in the
     available PSC producer port range.
     """
+    psc_connection_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The PSC connection id of the PSC Network Endpoint Group Consumer.
+    """
+    psc_connection_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The connection status of the PSC Network Endpoint Group Consumer.
+    Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+    `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+    """
 
 @pulumi.input_type
 class RegionNetworkEndpointGroupPscDataArgs:
     def __init__(__self__, *,
-                 producer_port: pulumi.Input[Optional[_builtins.str]] = None):
+                 consumer_psc_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 producer_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] consumer_psc_address: (Output)
+               Address allocated from given subnetwork for PSC. This IP address acts
+               as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
         :param pulumi.Input[_builtins.str] producer_port: The PSC producer port to use when consumer PSC NEG connects to a producer. If
                this flag isn't specified for a PSC NEG with endpoint type
                private-service-connect, then PSC NEG will be connected to a first port in the
                available PSC producer port range.
+        :param pulumi.Input[_builtins.str] psc_connection_id: (Output)
+               The PSC connection id of the PSC Network Endpoint Group Consumer.
+        :param pulumi.Input[_builtins.str] psc_connection_status: (Output)
+               The connection status of the PSC Network Endpoint Group Consumer.
+               Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+               `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
         """
+        if consumer_psc_address is not None:
+            pulumi.set(__self__, "consumer_psc_address", consumer_psc_address)
         if producer_port is not None:
             pulumi.set(__self__, "producer_port", producer_port)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if psc_connection_status is not None:
+            pulumi.set(__self__, "psc_connection_status", psc_connection_status)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerPscAddress")
+    def consumer_psc_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Address allocated from given subnetwork for PSC. This IP address acts
+        as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+        """
+        return pulumi.get(self, "consumer_psc_address")
+
+    @consumer_psc_address.setter
+    def consumer_psc_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "consumer_psc_address", value)
 
     @_builtins.property
     @pulumi.getter(name="producerPort")
@@ -52107,6 +52157,34 @@ class RegionNetworkEndpointGroupPscDataArgs:
     @producer_port.setter
     def producer_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "producer_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The PSC connection id of the PSC Network Endpoint Group Consumer.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "psc_connection_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The connection status of the PSC Network Endpoint Group Consumer.
+        Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+        `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+        """
+        return pulumi.get(self, "psc_connection_status")
+
+    @psc_connection_status.setter
+    def psc_connection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "psc_connection_status", value)
 
 
 class RegionNetworkEndpointGroupServerlessDeploymentArgsDict(TypedDict):

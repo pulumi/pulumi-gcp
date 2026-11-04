@@ -119,6 +119,16 @@ type Assistant struct {
 	// Customer policy for the assistant.
 	// Structure is documented below.
 	CustomerPolicy AssistantCustomerPolicyPtrOutput `pulumi:"customerPolicy"`
+	// This field controls the default web grounding toggle for end users if
+	// `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+	// By default, this field is set to false. If `webGroundingType` is
+	// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+	// grounding enabled by default on UI. If true, grounding toggle will be
+	// disabled by default on UI. End users can still enable web grounding in
+	// the UI if web grounding is enabled.
+	DefaultWebGroundingToggleOff pulumi.BoolPtrOutput `pulumi:"defaultWebGroundingToggleOff"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -205,6 +215,16 @@ type assistantState struct {
 	// Customer policy for the assistant.
 	// Structure is documented below.
 	CustomerPolicy *AssistantCustomerPolicy `pulumi:"customerPolicy"`
+	// This field controls the default web grounding toggle for end users if
+	// `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+	// By default, this field is set to false. If `webGroundingType` is
+	// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+	// grounding enabled by default on UI. If true, grounding toggle will be
+	// disabled by default on UI. End users can still enable web grounding in
+	// the UI if web grounding is enabled.
+	DefaultWebGroundingToggleOff *bool `pulumi:"defaultWebGroundingToggleOff"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -247,6 +267,16 @@ type AssistantState struct {
 	// Customer policy for the assistant.
 	// Structure is documented below.
 	CustomerPolicy AssistantCustomerPolicyPtrInput
+	// This field controls the default web grounding toggle for end users if
+	// `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+	// By default, this field is set to false. If `webGroundingType` is
+	// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+	// grounding enabled by default on UI. If true, grounding toggle will be
+	// disabled by default on UI. End users can still enable web grounding in
+	// the UI if web grounding is enabled.
+	DefaultWebGroundingToggleOff pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -293,6 +323,16 @@ type assistantArgs struct {
 	// Customer policy for the assistant.
 	// Structure is documented below.
 	CustomerPolicy *AssistantCustomerPolicy `pulumi:"customerPolicy"`
+	// This field controls the default web grounding toggle for end users if
+	// `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+	// By default, this field is set to false. If `webGroundingType` is
+	// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+	// grounding enabled by default on UI. If true, grounding toggle will be
+	// disabled by default on UI. End users can still enable web grounding in
+	// the UI if web grounding is enabled.
+	DefaultWebGroundingToggleOff *bool `pulumi:"defaultWebGroundingToggleOff"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -331,6 +371,16 @@ type AssistantArgs struct {
 	// Customer policy for the assistant.
 	// Structure is documented below.
 	CustomerPolicy AssistantCustomerPolicyPtrInput
+	// This field controls the default web grounding toggle for end users if
+	// `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+	// By default, this field is set to false. If `webGroundingType` is
+	// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+	// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+	// grounding enabled by default on UI. If true, grounding toggle will be
+	// disabled by default on UI. End users can still enable web grounding in
+	// the UI if web grounding is enabled.
+	DefaultWebGroundingToggleOff pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -461,6 +511,19 @@ func (o AssistantOutput) CollectionId() pulumi.StringOutput {
 // Structure is documented below.
 func (o AssistantOutput) CustomerPolicy() AssistantCustomerPolicyPtrOutput {
 	return o.ApplyT(func(v *Assistant) AssistantCustomerPolicyPtrOutput { return v.CustomerPolicy }).(AssistantCustomerPolicyPtrOutput)
+}
+
+// This field controls the default web grounding toggle for end users if
+// `webGroundingType` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`.
+// By default, this field is set to false. If `webGroundingType` is
+// `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web
+// grounding enabled by default on UI. If true, grounding toggle will be
+// disabled by default on UI. End users can still enable web grounding in
+// the UI if web grounding is enabled.
+func (o AssistantOutput) DefaultWebGroundingToggleOff() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Assistant) pulumi.BoolPtrOutput { return v.DefaultWebGroundingToggleOff }).(pulumi.BoolPtrOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

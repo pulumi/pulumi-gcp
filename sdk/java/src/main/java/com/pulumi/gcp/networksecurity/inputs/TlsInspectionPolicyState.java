@@ -33,6 +33,23 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     * 
+     */
+    @Import(name="certificateIssuanceMode")
+    private @Nullable Output<String> certificateIssuanceMode;
+
+    /**
+     * @return The mode used to issue certificates (local CA signing vs direct leaf).
+     * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+     * 
+     */
+    public Optional<Output<String>> certificateIssuanceMode() {
+        return Optional.ofNullable(this.certificateIssuanceMode);
+    }
+
+    /**
      * The timestamp when the resource was created.
      * 
      */
@@ -236,6 +253,7 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
 
     private TlsInspectionPolicyState(TlsInspectionPolicyState $) {
         this.caPool = $.caPool;
+        this.certificateIssuanceMode = $.certificateIssuanceMode;
         this.createTime = $.createTime;
         this.customTlsFeatures = $.customTlsFeatures;
         this.deletionPolicy = $.deletionPolicy;
@@ -287,6 +305,29 @@ public final class TlsInspectionPolicyState extends com.pulumi.resources.Resourc
          */
         public Builder caPool(String caPool) {
             return caPool(Output.of(caPool));
+        }
+
+        /**
+         * @param certificateIssuanceMode The mode used to issue certificates (local CA signing vs direct leaf).
+         * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateIssuanceMode(@Nullable Output<String> certificateIssuanceMode) {
+            $.certificateIssuanceMode = certificateIssuanceMode;
+            return this;
+        }
+
+        /**
+         * @param certificateIssuanceMode The mode used to issue certificates (local CA signing vs direct leaf).
+         * Possible values are: `DIRECT_LEAF_PROVISIONING`, `LOCAL_INTERMEDIATE_CA_SIGNING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateIssuanceMode(String certificateIssuanceMode) {
+            return certificateIssuanceMode(Output.of(certificateIssuanceMode));
         }
 
         /**

@@ -16195,8 +16195,13 @@ type ServerTlsPolicyMtlsPolicy struct {
 	ClientValidationCas []ServerTlsPolicyMtlsPolicyClientValidationCa `pulumi:"clientValidationCas"`
 	// When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
 	// Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-	// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+	// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
 	ClientValidationMode *string `pulumi:"clientValidationMode"`
+	// List of validation relaxations to apply when validating client certificates.
+	// Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+	// and must be empty for all other clientValidationMode values.
+	// Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+	ClientValidationRelaxations []string `pulumi:"clientValidationRelaxations"`
 	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
 	// If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
 	// Allowed only if the policy is to be used with external HTTPS load balancers.
@@ -16221,8 +16226,13 @@ type ServerTlsPolicyMtlsPolicyArgs struct {
 	ClientValidationCas ServerTlsPolicyMtlsPolicyClientValidationCaArrayInput `pulumi:"clientValidationCas"`
 	// When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
 	// Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-	// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+	// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
 	ClientValidationMode pulumi.StringPtrInput `pulumi:"clientValidationMode"`
+	// List of validation relaxations to apply when validating client certificates.
+	// Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+	// and must be empty for all other clientValidationMode values.
+	// Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+	ClientValidationRelaxations pulumi.StringArrayInput `pulumi:"clientValidationRelaxations"`
 	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
 	// If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
 	// Allowed only if the policy is to be used with external HTTPS load balancers.
@@ -16317,9 +16327,17 @@ func (o ServerTlsPolicyMtlsPolicyOutput) ClientValidationCas() ServerTlsPolicyMt
 
 // When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
 // Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
 func (o ServerTlsPolicyMtlsPolicyOutput) ClientValidationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicy) *string { return v.ClientValidationMode }).(pulumi.StringPtrOutput)
+}
+
+// List of validation relaxations to apply when validating client certificates.
+// Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+// and must be empty for all other clientValidationMode values.
+// Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+func (o ServerTlsPolicyMtlsPolicyOutput) ClientValidationRelaxations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicy) []string { return v.ClientValidationRelaxations }).(pulumi.StringArrayOutput)
 }
 
 // Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
@@ -16367,7 +16385,7 @@ func (o ServerTlsPolicyMtlsPolicyPtrOutput) ClientValidationCas() ServerTlsPolic
 
 // When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
 // Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
-// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`, `ALLOW_VALIDATION_RELAXATIONS`.
 func (o ServerTlsPolicyMtlsPolicyPtrOutput) ClientValidationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicy) *string {
 		if v == nil {
@@ -16375,6 +16393,19 @@ func (o ServerTlsPolicyMtlsPolicyPtrOutput) ClientValidationMode() pulumi.String
 		}
 		return v.ClientValidationMode
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of validation relaxations to apply when validating client certificates.
+// Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+// and must be empty for all other clientValidationMode values.
+// Each value may be one of: `ALLOW_MISSING_EKU`, `ALLOW_SHA1_HASHING`, `ALLOW_EXPIRED_LEAF_CERTIFICATE`.
+func (o ServerTlsPolicyMtlsPolicyPtrOutput) ClientValidationRelaxations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientValidationRelaxations
+	}).(pulumi.StringArrayOutput)
 }
 
 // Reference to the TrustConfig from certificatemanager.googleapis.com namespace.

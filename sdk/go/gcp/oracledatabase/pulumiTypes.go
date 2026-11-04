@@ -36269,6 +36269,10 @@ type GetCloudVmClustersCloudVmCluster struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network string `pulumi:"network"`
+	// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+	OdbDnsZone string `pulumi:"odbDnsZone"`
 	// The name of the OdbNetwork associated with the VM Cluster.
 	// Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -36358,6 +36362,10 @@ type GetCloudVmClustersCloudVmClusterArgs struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringInput `pulumi:"network"`
+	// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+	OdbDnsZone pulumi.StringInput `pulumi:"odbDnsZone"`
 	// The name of the OdbNetwork associated with the VM Cluster.
 	// Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -36537,6 +36545,13 @@ func (o GetCloudVmClustersCloudVmClusterOutput) Name() pulumi.StringOutput {
 // Format: projects/{project}/global/networks/{network}
 func (o GetCloudVmClustersCloudVmClusterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+// Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+func (o GetCloudVmClustersCloudVmClusterOutput) OdbDnsZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.OdbDnsZone }).(pulumi.StringOutput)
 }
 
 // The name of the OdbNetwork associated with the VM Cluster.

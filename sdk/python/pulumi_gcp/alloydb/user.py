@@ -404,7 +404,7 @@ class User(pulumi.CustomResource):
 
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default_google_compute_network["id"],
             },
@@ -447,7 +447,7 @@ class User(pulumi.CustomResource):
         default_network = gcp.compute.Network("default", name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default_network.id,
             },
@@ -551,7 +551,7 @@ class User(pulumi.CustomResource):
 
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default_google_compute_network["id"],
             },
@@ -594,7 +594,7 @@ class User(pulumi.CustomResource):
         default_network = gcp.compute.Network("default", name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
-            location="us-central1",
+            location="us-east1",
             network_config={
                 "network": default_network.id,
             },

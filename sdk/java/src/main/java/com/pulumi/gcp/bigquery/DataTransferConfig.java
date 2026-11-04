@@ -13,6 +13,7 @@ import com.pulumi.gcp.bigquery.inputs.DataTransferConfigState;
 import com.pulumi.gcp.bigquery.outputs.DataTransferConfigEmailPreferences;
 import com.pulumi.gcp.bigquery.outputs.DataTransferConfigEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.DataTransferConfigScheduleOptions;
+import com.pulumi.gcp.bigquery.outputs.DataTransferConfigScheduleOptionsV2;
 import com.pulumi.gcp.bigquery.outputs.DataTransferConfigSensitiveParams;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -51,79 +52,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
- * import com.pulumi.gcp.bigquery.DataTransferConfig;
- * import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .build());
- * 
- *         var permissions = new IAMMember("permissions", IAMMemberArgs.builder()
- *             .project(project.projectId())
- *             .role("roles/iam.serviceAccountTokenCreator")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.number()))
- *             .build());
- * 
- *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
- *             .datasetId("my_dataset")
- *             .friendlyName("foo")
- *             .description("bar")
- *             .location("asia-northeast1")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(permissions)
- *                 .build());
- * 
- *         var queryConfig = new DataTransferConfig("queryConfig", DataTransferConfigArgs.builder()
- *             .displayName("my-query")
- *             .location("asia-northeast1")
- *             .dataSourceId("scheduled_query")
- *             .schedule("first sunday of quarter 00:00")
- *             .destinationDatasetId(myDataset.datasetId())
- *             .params(Map.ofEntries(
- *                 Map.entry("destination_table_name_template", "my_table"),
- *                 Map.entry("write_disposition", "WRITE_APPEND"),
- *                 Map.entry("query", "SELECT name FROM tabl WHERE x = 'y'")
- *             ))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(permissions)
- *                 .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * 
- * ### Bigquerydatatransfer Config Cmek
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
- * import com.pulumi.gcp.bigquery.Dataset;
- * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.kms.KeyRing;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.bigquery.DataTransferConfig;
  * import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
  * import com.pulumi.gcp.bigquery.inputs.DataTransferConfigEncryptionConfigurationArgs;
@@ -151,7 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
- *             .datasetId("example_dataset")
+ *             .datasetId("my_dataset")
  *             .friendlyName("foo")
  *             .description("bar")
  *             .location("asia-northeast1")
@@ -161,7 +95,7 @@ import javax.annotation.Nullable;
  * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("example-keyring")
- *             .location("us")
+ *             .location("asia-northeast1")
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
@@ -169,8 +103,14 @@ import javax.annotation.Nullable;
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         var queryConfigCmek = new DataTransferConfig("queryConfigCmek", DataTransferConfigArgs.builder()
- *             .displayName("display-name")
+ *         var bigqueryEncrypter = new CryptoKeyIAMMember("bigqueryEncrypter", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:bq-%s}{@literal @}{@code bigquery-encryption.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var queryConfig = new DataTransferConfig("queryConfig", DataTransferConfigArgs.builder()
+ *             .displayName("my-query")
  *             .location("asia-northeast1")
  *             .dataSourceId("scheduled_query")
  *             .schedule("first sunday of quarter 00:00")
@@ -184,7 +124,9 @@ import javax.annotation.Nullable;
  *                 .kmsKeyName(cryptoKey.id())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(permissions)
+ *                 .dependsOn(                
+ *                     permissions,
+ *                     bigqueryEncrypter)
  *                 .build());
  * 
  *     }}{@code
@@ -192,7 +134,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Bigquerydatatransfer Config Salesforce
+ * ### Bigquerydatatransfer Config Schedule Options V2
  * 
  * <pre>
  * {@code
@@ -201,12 +143,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
  * import com.pulumi.gcp.bigquery.DataTransferConfig;
  * import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DataTransferConfigScheduleOptionsV2Args;
+ * import com.pulumi.gcp.bigquery.inputs.DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -220,26 +170,51 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *         var eventDriven = new Topic("eventDriven", TopicArgs.builder()
+ *             .name("my-topic")
  *             .build());
  * 
- *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
+ *         var eventDrivenSubscription = new Subscription("eventDrivenSubscription", SubscriptionArgs.builder()
+ *             .name("my-subscription")
+ *             .topic(eventDriven.id())
+ *             .build());
+ * 
+ *         var eventDrivenBucket = new Bucket("eventDrivenBucket", BucketArgs.builder()
+ *             .name("my-bucket")
+ *             .location("US")
+ *             .uniformBucketLevelAccess(true)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var eventDrivenDataset = new Dataset("eventDrivenDataset", DatasetArgs.builder()
  *             .datasetId("my_dataset")
- *             .description("My dataset")
- *             .location("asia-northeast1")
+ *             .friendlyName("foo")
+ *             .description("bar")
+ *             .location("US")
  *             .build());
  * 
- *         var salesforceConfig = new DataTransferConfig("salesforceConfig", DataTransferConfigArgs.builder()
- *             .displayName("my-salesforce-config")
- *             .location("asia-northeast1")
- *             .dataSourceId("salesforce")
- *             .schedule("first sunday of quarter 00:00")
- *             .destinationDatasetId(myDataset.datasetId())
+ *         var eventDrivenTable = new Table("eventDrivenTable", TableArgs.builder()
+ *             .deletionProtection(false)
+ *             .datasetId(eventDrivenDataset.datasetId())
+ *             .tableId("my_table")
+ *             .schema("[{\"name\":\"name\",\"type\":\"STRING\"}]")
+ *             .build());
+ * 
+ *         var eventDrivenConfig = new DataTransferConfig("eventDrivenConfig", DataTransferConfigArgs.builder()
+ *             .displayName("my-event-driven-config")
+ *             .location(eventDrivenDataset.location())
+ *             .dataSourceId("google_cloud_storage")
+ *             .destinationDatasetId(eventDrivenDataset.datasetId())
+ *             .scheduleOptionsV2(DataTransferConfigScheduleOptionsV2Args.builder()
+ *                 .eventDrivenSchedule(DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs.builder()
+ *                     .pubsubSubscription(eventDrivenSubscription.id())
+ *                     .build())
+ *                 .build())
  *             .params(Map.ofEntries(
- *                 Map.entry("connector.authentication.oauth.clientId", "client-id"),
- *                 Map.entry("connector.authentication.oauth.clientSecret", "client-secret"),
- *                 Map.entry("connector.authentication.oauth.myDomain", "MyDomainName"),
- *                 Map.entry("assets", "[\"asset-a\",\"asset-b\"]")
+ *                 Map.entry("data_path_template", eventDrivenBucket.url().applyValue(_url -> String.format("%s/*.json", _url))),
+ *                 Map.entry("destination_table_name_template", eventDrivenTable.tableId()),
+ *                 Map.entry("file_format", "JSON"),
+ *                 Map.entry("write_disposition", "APPEND")
  *             ))
  *             .build());
  * 
@@ -538,6 +513,30 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DataTransferConfigScheduleOptions>> scheduleOptions() {
         return Codegen.optional(this.scheduleOptions);
+    }
+    /**
+     * Options customizing the type of data transfer schedule.
+     * Only the event-driven schedule is exposed here; time-based and manual
+     * schedules are configured through the `schedule` and `scheduleOptions`
+     * fields instead. This field cannot be used together with `schedule` or
+     * `scheduleOptions`.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="scheduleOptionsV2", refs={DataTransferConfigScheduleOptionsV2.class}, tree="[0]")
+    private Output</* @Nullable */ DataTransferConfigScheduleOptionsV2> scheduleOptionsV2;
+
+    /**
+     * @return Options customizing the type of data transfer schedule.
+     * Only the event-driven schedule is exposed here; time-based and manual
+     * schedules are configured through the `schedule` and `scheduleOptions`
+     * fields instead. This field cannot be used together with `schedule` or
+     * `scheduleOptions`.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DataTransferConfigScheduleOptionsV2>> scheduleOptionsV2() {
+        return Codegen.optional(this.scheduleOptionsV2);
     }
     /**
      * Different parameters are configured primarily using the the `params` field on this

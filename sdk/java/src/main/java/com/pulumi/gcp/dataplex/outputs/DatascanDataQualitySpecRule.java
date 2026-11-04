@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleDebugQuery;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleNonNullExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleRangeExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleRegexExpectation;
@@ -18,6 +19,7 @@ import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleUniquenessExpe
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,6 +37,13 @@ public final class DatascanDataQualitySpecRule {
      * 
      */
     private @Nullable String column;
+    /**
+     * @return Specifies the debug queries for this rule.
+     * Currently, only one query is supported, but this may be expanded in the future.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<DatascanDataQualitySpecRuleDebugQuery> debugQueries;
     /**
      * @return Description of the rule.
      * The maximum length is 1,024 characters.
@@ -143,6 +152,15 @@ public final class DatascanDataQualitySpecRule {
      */
     public Optional<String> column() {
         return Optional.ofNullable(this.column);
+    }
+    /**
+     * @return Specifies the debug queries for this rule.
+     * Currently, only one query is supported, but this may be expanded in the future.
+     * Structure is documented below.
+     * 
+     */
+    public List<DatascanDataQualitySpecRuleDebugQuery> debugQueries() {
+        return this.debugQueries == null ? List.of() : this.debugQueries;
     }
     /**
      * @return Description of the rule.
@@ -281,6 +299,7 @@ public final class DatascanDataQualitySpecRule {
     public static final class Builder {
         private @Nullable Map<String,String> attributes;
         private @Nullable String column;
+        private @Nullable List<DatascanDataQualitySpecRuleDebugQuery> debugQueries;
         private @Nullable String description;
         private String dimension;
         private @Nullable Boolean ignoreNull;
@@ -302,6 +321,7 @@ public final class DatascanDataQualitySpecRule {
     	      Objects.requireNonNull(defaults);
     	      this.attributes = defaults.attributes;
     	      this.column = defaults.column;
+    	      this.debugQueries = defaults.debugQueries;
     	      this.description = defaults.description;
     	      this.dimension = defaults.dimension;
     	      this.ignoreNull = defaults.ignoreNull;
@@ -331,6 +351,15 @@ public final class DatascanDataQualitySpecRule {
 
             this.column = column;
             return this;
+        }
+        @CustomType.Setter
+        public Builder debugQueries(@Nullable List<DatascanDataQualitySpecRuleDebugQuery> debugQueries) {
+
+            this.debugQueries = debugQueries;
+            return this;
+        }
+        public Builder debugQueries(DatascanDataQualitySpecRuleDebugQuery... debugQueries) {
+            return debugQueries(List.of(debugQueries));
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
@@ -434,6 +463,7 @@ public final class DatascanDataQualitySpecRule {
             final var _resultValue = new DatascanDataQualitySpecRule();
             _resultValue.attributes = attributes;
             _resultValue.column = column;
+            _resultValue.debugQueries = debugQueries;
             _resultValue.description = description;
             _resultValue.dimension = dimension;
             _resultValue.ignoreNull = ignoreNull;

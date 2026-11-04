@@ -39,16 +39,19 @@ type LookupBackupPlanResult struct {
 	DeletionPolicy                      string                                           `pulumi:"deletionPolicy"`
 	Description                         string                                           `pulumi:"description"`
 	DiskBackupPlanProperties            []GetBackupPlanDiskBackupPlanProperty            `pulumi:"diskBackupPlanProperties"`
+	EffectiveLabels                     map[string]string                                `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                             string   `pulumi:"id"`
-	Location                       string   `pulumi:"location"`
-	LogRetentionDays               int      `pulumi:"logRetentionDays"`
-	MaxCustomOnDemandRetentionDays int      `pulumi:"maxCustomOnDemandRetentionDays"`
-	Name                           string   `pulumi:"name"`
-	Project                        *string  `pulumi:"project"`
-	ResourceType                   string   `pulumi:"resourceType"`
-	SupportedResourceTypes         []string `pulumi:"supportedResourceTypes"`
-	UpdateTime                     string   `pulumi:"updateTime"`
+	Id                             string            `pulumi:"id"`
+	Labels                         map[string]string `pulumi:"labels"`
+	Location                       string            `pulumi:"location"`
+	LogRetentionDays               int               `pulumi:"logRetentionDays"`
+	MaxCustomOnDemandRetentionDays int               `pulumi:"maxCustomOnDemandRetentionDays"`
+	Name                           string            `pulumi:"name"`
+	Project                        *string           `pulumi:"project"`
+	PulumiLabels                   map[string]string `pulumi:"pulumiLabels"`
+	ResourceType                   string            `pulumi:"resourceType"`
+	SupportedResourceTypes         []string          `pulumi:"supportedResourceTypes"`
+	UpdateTime                     string            `pulumi:"updateTime"`
 }
 
 func LookupBackupPlanOutput(ctx *pulumi.Context, args LookupBackupPlanOutputArgs, opts ...pulumi.InvokeOption) LookupBackupPlanResultOutput {
@@ -122,9 +125,17 @@ func (o LookupBackupPlanResultOutput) DiskBackupPlanProperties() GetBackupPlanDi
 	}).(GetBackupPlanDiskBackupPlanPropertyArrayOutput)
 }
 
+func (o LookupBackupPlanResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupBackupPlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupBackupPlanResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupBackupPlanResultOutput) Location() pulumi.StringOutput {
@@ -145,6 +156,10 @@ func (o LookupBackupPlanResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupBackupPlanResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupBackupPlanResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupBackupPlanResultOutput) ResourceType() pulumi.StringOutput {

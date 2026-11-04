@@ -518,21 +518,19 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
  * const project = gcp.organizations.getProject({});
- * const tagKey = new gcp.tags.TagKey("tag_key", {
- *     parent: project.then(project => project.id),
+ * const tagKey = project.then(project => gcp.tags.getTagKey({
+ *     parent: project.id,
  *     shortName: "tag_key",
- * }, {
- *     dependsOn: [example],
- * });
- * const tagValue = new gcp.tags.TagValue("tag_value", {
+ * }));
+ * const tagValue = tagKey.then(tagKey => gcp.tags.getTagValue({
  *     parent: tagKey.id,
  *     shortName: "tag_value",
- * });
+ * }));
  * const exampleSubscription = new gcp.pubsub.Subscription("example", {
  *     name: "example-subscription",
  *     topic: example.id,
- *     tags: pulumi.all([tagKey.namespacedName, tagValue.shortName]).apply(([namespacedName, shortName]) => {
- *         [namespacedName]: shortName,
+ *     tags: Promise.all([tagKey, tagValue]).then(([tagKey, tagValue]) => {
+ *         [tagKey.namespacedName]: tagValue.shortName,
  *     }),
  * });
  * ```
@@ -562,7 +560,7 @@ import * as utilities from "../utilities";
  *     topic: example.id,
  *     messageTransforms: [{
  *         aiInference: {
- *             endpoint: "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+ *             endpoint: "projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash",
  *             unstructuredInference: {
  *                 parameters: {
  *                     max_tokens: "25000",

@@ -519,6 +519,11 @@ public class Secret extends com.pulumi.resources.CustomResource {
     /**
      * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     @Export(name="secretType", refs={String.class}, tree="[0]")
@@ -527,6 +532,11 @@ public class Secret extends com.pulumi.resources.CustomResource {
     /**
      * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
      * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * Supported values are:
+     * * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+     * * `ACCESS_KEY`: Secrets where the payload contains an access key.
+     * * `CERTIFICATE`: Secrets where the payload contains a certificate.
+     * * `OTHER`: Secrets whose type doesn&#39;t belong to any of the above types.
      * 
      */
     public Output<Optional<String>> secretType() {

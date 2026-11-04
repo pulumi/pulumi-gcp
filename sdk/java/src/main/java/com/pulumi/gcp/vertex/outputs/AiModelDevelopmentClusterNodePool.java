@@ -57,7 +57,9 @@ public final class AiModelDevelopmentClusterNodePool {
      */
     private @Nullable String flexStartMaxDuration;
     /**
-     * @return The unique ID referring to this node pool.
+     * @return The unique ID referring to this node pool. Cannot be modified in
+     * place on an existing node pool; changing `id` updates the list of
+     * node pools by adding/removing pools (validated server-side).
      * 
      */
     private String id;
@@ -174,7 +176,9 @@ public final class AiModelDevelopmentClusterNodePool {
         return Optional.ofNullable(this.flexStartMaxDuration);
     }
     /**
-     * @return The unique ID referring to this node pool.
+     * @return The unique ID referring to this node pool. Cannot be modified in
+     * place on an existing node pool; changing `id` updates the list of
+     * node pools by adding/removing pools (validated server-side).
      * 
      */
     public String id() {

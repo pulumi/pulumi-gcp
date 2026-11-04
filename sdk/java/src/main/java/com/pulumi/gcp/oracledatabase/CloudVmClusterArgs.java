@@ -234,6 +234,25 @@ public final class CloudVmClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     * 
+     */
+    @Import(name="odbDnsZone")
+    private @Nullable Output<String> odbDnsZone;
+
+    /**
+     * @return The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     * 
+     */
+    public Optional<Output<String>> odbDnsZone() {
+        return Optional.ofNullable(this.odbDnsZone);
+    }
+
+    /**
      * The name of the OdbNetwork associated with the VM Cluster.
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -324,6 +343,7 @@ public final class CloudVmClusterArgs extends com.pulumi.resources.ResourceArgs 
         this.labels = $.labels;
         this.location = $.location;
         this.network = $.network;
+        this.odbDnsZone = $.odbDnsZone;
         this.odbNetwork = $.odbNetwork;
         this.odbSubnet = $.odbSubnet;
         this.project = $.project;
@@ -632,6 +652,31 @@ public final class CloudVmClusterArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param odbDnsZone The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbDnsZone(@Nullable Output<String> odbDnsZone) {
+            $.odbDnsZone = odbDnsZone;
+            return this;
+        }
+
+        /**
+         * @param odbDnsZone The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbDnsZone(String odbDnsZone) {
+            return odbDnsZone(Output.of(odbDnsZone));
         }
 
         /**

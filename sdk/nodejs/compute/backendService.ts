@@ -949,7 +949,7 @@ export class BackendService extends pulumi.CustomResource {
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * URL to networkservices.ServiceLbPolicy resource.
-     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
      */
     declare public readonly serviceLbPolicy: pulumi.Output<string | undefined>;
     /**
@@ -1389,7 +1389,7 @@ export interface BackendServiceState {
     selfLink?: pulumi.Input<string | undefined>;
     /**
      * URL to networkservices.ServiceLbPolicy resource.
-     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
      */
     serviceLbPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -1706,7 +1706,7 @@ export interface BackendServiceArgs {
     securitySettings?: pulumi.Input<inputs.compute.BackendServiceSecuritySettings | undefined>;
     /**
      * URL to networkservices.ServiceLbPolicy resource.
-     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
      */
     serviceLbPolicy?: pulumi.Input<string | undefined>;
     /**

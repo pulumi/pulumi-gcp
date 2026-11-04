@@ -85,6 +85,11 @@ class SecretArgs:
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+               * `ACCESS_KEY`: Secrets where the payload contains an access key.
+               * `CERTIFICATE`: Secrets where the payload contains a certificate.
+               * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -285,6 +290,11 @@ class SecretArgs:
         """
         This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        Supported values are:
+        * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         """
         return pulumi.get(self, "secret_type")
 
@@ -447,6 +457,11 @@ class _SecretState:
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+               * `ACCESS_KEY`: Secrets where the payload contains an access key.
+               * `CERTIFICATE`: Secrets where the payload contains a certificate.
+               * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -720,6 +735,11 @@ class _SecretState:
         """
         This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        Supported values are:
+        * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         """
         return pulumi.get(self, "secret_type")
 
@@ -988,6 +1008,11 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+               * `ACCESS_KEY`: Secrets where the payload contains an access key.
+               * `CERTIFICATE`: Secrets where the payload contains a certificate.
+               * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1283,6 +1308,11 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+               * `ACCESS_KEY`: Secrets where the payload contains an access key.
+               * `CERTIFICATE`: Secrets where the payload contains a certificate.
+               * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1485,6 +1515,11 @@ class Secret(pulumi.CustomResource):
         """
         This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        Supported values are:
+        * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
+        * `ACCESS_KEY`: Secrets where the payload contains an access key.
+        * `CERTIFICATE`: Secrets where the payload contains a certificate.
+        * `OTHER`: Secrets whose type doesn't belong to any of the above types.
         """
         return pulumi.get(self, "secret_type")
 

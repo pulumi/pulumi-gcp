@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultGoogleComputeNetwork.get("id"))
  *                 .build())
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .build())

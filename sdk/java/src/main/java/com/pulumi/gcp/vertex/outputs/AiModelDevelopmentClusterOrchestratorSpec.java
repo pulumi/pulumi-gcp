@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec;
 import com.pulumi.gcp.vertex.outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiModelDevelopmentClusterOrchestratorSpec {
     /**
+     * @return The GKE orchestrator related spec of the cluster.
+     * 
+     */
+    private @Nullable AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec kubernetesSpec;
+    /**
      * @return The Slurm orchestrator related spec of the cluster.
      * 
      */
     private @Nullable AiModelDevelopmentClusterOrchestratorSpecSlurmSpec slurmSpec;
 
     private AiModelDevelopmentClusterOrchestratorSpec() {}
+    /**
+     * @return The GKE orchestrator related spec of the cluster.
+     * 
+     */
+    public Optional<AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec> kubernetesSpec() {
+        return Optional.ofNullable(this.kubernetesSpec);
+    }
     /**
      * @return The Slurm orchestrator related spec of the cluster.
      * 
@@ -35,13 +48,21 @@ public final class AiModelDevelopmentClusterOrchestratorSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec kubernetesSpec;
         private @Nullable AiModelDevelopmentClusterOrchestratorSpecSlurmSpec slurmSpec;
         public Builder() {}
         public Builder(AiModelDevelopmentClusterOrchestratorSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.kubernetesSpec = defaults.kubernetesSpec;
     	      this.slurmSpec = defaults.slurmSpec;
         }
 
+        @CustomType.Setter
+        public Builder kubernetesSpec(@Nullable AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec kubernetesSpec) {
+
+            this.kubernetesSpec = kubernetesSpec;
+            return this;
+        }
         @CustomType.Setter
         public Builder slurmSpec(@Nullable AiModelDevelopmentClusterOrchestratorSpecSlurmSpec slurmSpec) {
 
@@ -50,6 +71,7 @@ public final class AiModelDevelopmentClusterOrchestratorSpec {
         }
         public AiModelDevelopmentClusterOrchestratorSpec build() {
             final var _resultValue = new AiModelDevelopmentClusterOrchestratorSpec();
+            _resultValue.kubernetesSpec = kubernetesSpec;
             _resultValue.slurmSpec = slurmSpec;
             return _resultValue;
         }

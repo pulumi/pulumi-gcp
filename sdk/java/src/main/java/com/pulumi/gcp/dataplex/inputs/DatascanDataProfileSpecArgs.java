@@ -74,6 +74,23 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * The execution mode for the profile scan.
+     * Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return The execution mode for the profile scan.
+     * Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
      * Actions to take upon job completion.
      * Structure is documented below.
      * 
@@ -130,6 +147,7 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
         this.catalogPublishingEnabled = $.catalogPublishingEnabled;
         this.excludeFields = $.excludeFields;
         this.includeFields = $.includeFields;
+        this.mode = $.mode;
         this.postScanActions = $.postScanActions;
         this.rowFilter = $.rowFilter;
         this.samplingPercent = $.samplingPercent;
@@ -222,6 +240,29 @@ public final class DatascanDataProfileSpecArgs extends com.pulumi.resources.Reso
          */
         public Builder includeFields(DatascanDataProfileSpecIncludeFieldsArgs includeFields) {
             return includeFields(Output.of(includeFields));
+        }
+
+        /**
+         * @param mode The execution mode for the profile scan.
+         * Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode The execution mode for the profile scan.
+         * Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

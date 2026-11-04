@@ -27,7 +27,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, blue_green_deployments=None, clones=None, connection_name=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_confidential_mode=None, encryption_key_name=None, enforce_new_sql_network_architecture=None, final_backup_description=None, first_ip_address=None, id=None, include_replicas_for_major_version_upgrade=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None, switch_transaction_logs_to_cloud_storage_enabled=None):
+    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, blue_green_deployments=None, clones=None, connection_name=None, database_center_integration=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_confidential_mode=None, encryption_key_name=None, enforce_new_sql_network_architecture=None, final_backup_description=None, first_ip_address=None, id=None, include_replicas_for_major_version_upgrade=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None, switch_transaction_logs_to_cloud_storage_enabled=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -43,6 +43,9 @@ class GetDatabaseInstanceResult:
         if connection_name and not isinstance(connection_name, str):
             raise TypeError("Expected argument 'connection_name' to be a str")
         pulumi.set(__self__, "connection_name", connection_name)
+        if database_center_integration and not isinstance(database_center_integration, str):
+            raise TypeError("Expected argument 'database_center_integration' to be a str")
+        pulumi.set(__self__, "database_center_integration", database_center_integration)
         if database_version and not isinstance(database_version, str):
             raise TypeError("Expected argument 'database_version' to be a str")
         pulumi.set(__self__, "database_version", database_version)
@@ -176,6 +179,11 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="connectionName")
     def connection_name(self) -> _builtins.str:
         return pulumi.get(self, "connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseCenterIntegration")
+    def database_center_integration(self) -> _builtins.str:
+        return pulumi.get(self, "database_center_integration")
 
     @_builtins.property
     @pulumi.getter(name="databaseVersion")
@@ -372,6 +380,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             blue_green_deployments=self.blue_green_deployments,
             clones=self.clones,
             connection_name=self.connection_name,
+            database_center_integration=self.database_center_integration,
             database_version=self.database_version,
             deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
@@ -441,6 +450,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         blue_green_deployments=pulumi.get(__ret__, 'blue_green_deployments'),
         clones=pulumi.get(__ret__, 'clones'),
         connection_name=pulumi.get(__ret__, 'connection_name'),
+        database_center_integration=pulumi.get(__ret__, 'database_center_integration'),
         database_version=pulumi.get(__ret__, 'database_version'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
@@ -507,6 +517,7 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
         blue_green_deployments=pulumi.get(__response__, 'blue_green_deployments'),
         clones=pulumi.get(__response__, 'clones'),
         connection_name=pulumi.get(__response__, 'connection_name'),
+        database_center_integration=pulumi.get(__response__, 'database_center_integration'),
         database_version=pulumi.get(__response__, 'database_version'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),

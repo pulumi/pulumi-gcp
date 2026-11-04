@@ -13,6 +13,7 @@ import com.pulumi.gcp.artifactregistry.inputs.RepositoryState;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryCleanupPolicy;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryMavenConfig;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryPlatformLogsConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryVirtualRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryVulnerabilityScanningConfig;
@@ -1380,6 +1381,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * If this is true, an unspecified repo type will be treated as error rather
+     * than defaulting to standard.
+     * 
+     */
+    @Export(name="disallowUnspecifiedMode", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disallowUnspecifiedMode;
+
+    /**
+     * @return If this is true, an unspecified repo type will be treated as error rather
+     * than defaulting to standard.
+     * 
+     */
+    public Output<Optional<Boolean>> disallowUnspecifiedMode() {
+        return Codegen.optional(this.disallowUnspecifiedMode);
+    }
+    /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      * Structure is documented below.
      * 
@@ -1554,6 +1571,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configuration for platform logs.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="platformLogsConfig", refs={RepositoryPlatformLogsConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RepositoryPlatformLogsConfig> platformLogsConfig;
+
+    /**
+     * @return Configuration for platform logs.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RepositoryPlatformLogsConfig>> platformLogsConfig() {
+        return Codegen.optional(this.platformLogsConfig);
     }
     /**
      * The ID of the project in which the resource belongs.

@@ -109,6 +109,10 @@ namespace Pulumi.Gcp.DataPlex
     ///                 {
     ///                     GoogleGroup = "tf-test-analysts-_62793@example.com",
     ///                 },
+    ///                 DefaultIamRoleConfig = new Gcp.DataPlex.Inputs.DataProductAccessGroupDefaultIamRoleConfigArgs
+    ///                 {
+    ///                     Role = "roles/bigquery.dataViewer",
+    ///                 },
     ///             },
     ///             new Gcp.DataPlex.Inputs.DataProductAccessGroupArgs
     ///             {

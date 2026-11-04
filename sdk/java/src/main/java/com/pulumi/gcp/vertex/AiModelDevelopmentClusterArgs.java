@@ -162,7 +162,10 @@ public final class AiModelDevelopmentClusterArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The spec of the pools of different resources.
+     * The spec of the pools of different resources. Node pools can be added,
+     * removed, or reordered in place; changing some fields on an existing node
+     * pool may require replacing the node pool (validated server-side by the
+     * API).
      * Structure is documented below.
      * 
      */
@@ -170,7 +173,10 @@ public final class AiModelDevelopmentClusterArgs extends com.pulumi.resources.Re
     private Output<List<AiModelDevelopmentClusterNodePoolArgs>> nodePools;
 
     /**
-     * @return The spec of the pools of different resources.
+     * @return The spec of the pools of different resources. Node pools can be added,
+     * removed, or reordered in place; changing some fields on an existing node
+     * pool may require replacing the node pool (validated server-side by the
+     * API).
      * Structure is documented below.
      * 
      */
@@ -453,7 +459,10 @@ public final class AiModelDevelopmentClusterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodePools The spec of the pools of different resources.
+         * @param nodePools The spec of the pools of different resources. Node pools can be added,
+         * removed, or reordered in place; changing some fields on an existing node
+         * pool may require replacing the node pool (validated server-side by the
+         * API).
          * Structure is documented below.
          * 
          * @return builder
@@ -465,7 +474,10 @@ public final class AiModelDevelopmentClusterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodePools The spec of the pools of different resources.
+         * @param nodePools The spec of the pools of different resources. Node pools can be added,
+         * removed, or reordered in place; changing some fields on an existing node
+         * pool may require replacing the node pool (validated server-side by the
+         * API).
          * Structure is documented below.
          * 
          * @return builder
@@ -476,7 +488,10 @@ public final class AiModelDevelopmentClusterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodePools The spec of the pools of different resources.
+         * @param nodePools The spec of the pools of different resources. Node pools can be added,
+         * removed, or reordered in place; changing some fields on an existing node
+         * pool may require replacing the node pool (validated server-side by the
+         * API).
          * Structure is documented below.
          * 
          * @return builder

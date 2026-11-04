@@ -30,6 +30,7 @@ class IndexArgs:
                  multikey: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_index_options: pulumi.Input[Optional['IndexSearchIndexOptionsArgs']] = None,
                  skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  unique: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -62,6 +63,8 @@ class IndexArgs:
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input['IndexSearchIndexOptionsArgs'] search_index_options: Optional. Options to configure the search index.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created.
         :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
@@ -81,6 +84,8 @@ class IndexArgs:
             pulumi.set(__self__, "project", project)
         if query_scope is not None:
             pulumi.set(__self__, "query_scope", query_scope)
+        if search_index_options is not None:
+            pulumi.set(__self__, "search_index_options", search_index_options)
         if skip_wait is not None:
             pulumi.set(__self__, "skip_wait", skip_wait)
         if unique is not None:
@@ -213,6 +218,19 @@ class IndexArgs:
         pulumi.set(self, "query_scope", value)
 
     @_builtins.property
+    @pulumi.getter(name="searchIndexOptions")
+    def search_index_options(self) -> pulumi.Input[Optional['IndexSearchIndexOptionsArgs']]:
+        """
+        Optional. Options to configure the search index.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "search_index_options")
+
+    @search_index_options.setter
+    def search_index_options(self, value: pulumi.Input[Optional['IndexSearchIndexOptionsArgs']]):
+        pulumi.set(self, "search_index_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="skipWait")
     def skip_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -250,6 +268,7 @@ class _IndexState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_index_options: pulumi.Input[Optional['IndexSearchIndexOptionsArgs']] = None,
                  skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  unique: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -284,6 +303,8 @@ class _IndexState:
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input['IndexSearchIndexOptionsArgs'] search_index_options: Optional. Options to configure the search index.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created.
         :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
@@ -307,6 +328,8 @@ class _IndexState:
             pulumi.set(__self__, "project", project)
         if query_scope is not None:
             pulumi.set(__self__, "query_scope", query_scope)
+        if search_index_options is not None:
+            pulumi.set(__self__, "search_index_options", search_index_options)
         if skip_wait is not None:
             pulumi.set(__self__, "skip_wait", skip_wait)
         if unique is not None:
@@ -452,6 +475,19 @@ class _IndexState:
         pulumi.set(self, "query_scope", value)
 
     @_builtins.property
+    @pulumi.getter(name="searchIndexOptions")
+    def search_index_options(self) -> pulumi.Input[Optional['IndexSearchIndexOptionsArgs']]:
+        """
+        Optional. Options to configure the search index.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "search_index_options")
+
+    @search_index_options.setter
+    def search_index_options(self, value: pulumi.Input[Optional['IndexSearchIndexOptionsArgs']]):
+        pulumi.set(self, "search_index_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="skipWait")
     def skip_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -491,6 +527,7 @@ class Index(pulumi.CustomResource):
                  multikey: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_index_options: pulumi.Input[Optional[Union['IndexSearchIndexOptionsArgs', 'IndexSearchIndexOptionsArgsDict', 'outputs.IndexSearchIndexOptions']]] = None,
                  skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  unique: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -832,6 +869,44 @@ class Index(pulumi.CustomResource):
             }])
         ```
 
+        ### Firestore Index Search Index Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="search-index-options-db",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            api_scope="MONGODB_COMPATIBLE_API",
+            query_scope="COLLECTION_GROUP",
+            multikey=True,
+            search_index_options={
+                "text_language": "es",
+                "text_language_override_field_path": "lang",
+            },
+            fields=[{
+                "field_path": "description",
+                "search_config": {
+                    "text_spec": {
+                        "index_specs": [{
+                            "index_type": "TOKENIZED",
+                            "match_type": "MATCH_GLOBALLY",
+                        }],
+                    },
+                },
+            }])
+        ```
+
         ### Firestore Index Suppress Geojson Indexing
 
         ```python
@@ -935,6 +1010,8 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[Union['IndexSearchIndexOptionsArgs', 'IndexSearchIndexOptionsArgsDict', 'outputs.IndexSearchIndexOptions']] search_index_options: Optional. Options to configure the search index.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created.
         :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
@@ -1282,6 +1359,44 @@ class Index(pulumi.CustomResource):
             }])
         ```
 
+        ### Firestore Index Search Index Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="search-index-options-db",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            api_scope="MONGODB_COMPATIBLE_API",
+            query_scope="COLLECTION_GROUP",
+            multikey=True,
+            search_index_options={
+                "text_language": "es",
+                "text_language_override_field_path": "lang",
+            },
+            fields=[{
+                "field_path": "description",
+                "search_config": {
+                    "text_spec": {
+                        "index_specs": [{
+                            "index_type": "TOKENIZED",
+                            "match_type": "MATCH_GLOBALLY",
+                        }],
+                    },
+                },
+            }])
+        ```
+
         ### Firestore Index Suppress Geojson Indexing
 
         ```python
@@ -1380,6 +1495,7 @@ class Index(pulumi.CustomResource):
                  multikey: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_index_options: pulumi.Input[Optional[Union['IndexSearchIndexOptionsArgs', 'IndexSearchIndexOptionsArgsDict', 'outputs.IndexSearchIndexOptions']]] = None,
                  skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  unique: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1404,6 +1520,7 @@ class Index(pulumi.CustomResource):
             __props__.__dict__["multikey"] = multikey
             __props__.__dict__["project"] = project
             __props__.__dict__["query_scope"] = query_scope
+            __props__.__dict__["search_index_options"] = search_index_options
             __props__.__dict__["skip_wait"] = skip_wait
             __props__.__dict__["unique"] = unique
             __props__.__dict__["name"] = None
@@ -1427,6 +1544,7 @@ class Index(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            search_index_options: pulumi.Input[Optional[Union['IndexSearchIndexOptionsArgs', 'IndexSearchIndexOptionsArgsDict', 'outputs.IndexSearchIndexOptions']]] = None,
             skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
             unique: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Index':
         """
@@ -1465,6 +1583,8 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[Union['IndexSearchIndexOptionsArgs', 'IndexSearchIndexOptionsArgsDict', 'outputs.IndexSearchIndexOptions']] search_index_options: Optional. Options to configure the search index.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created.
         :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
@@ -1482,6 +1602,7 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["query_scope"] = query_scope
+        __props__.__dict__["search_index_options"] = search_index_options
         __props__.__dict__["skip_wait"] = skip_wait
         __props__.__dict__["unique"] = unique
         return Index(resource_name, opts=opts, __props__=__props__)
@@ -1584,6 +1705,15 @@ class Index(pulumi.CustomResource):
         Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="searchIndexOptions")
+    def search_index_options(self) -> pulumi.Output['outputs.IndexSearchIndexOptions']:
+        """
+        Optional. Options to configure the search index.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "search_index_options")
 
     @_builtins.property
     @pulumi.getter(name="skipWait")

@@ -82,6 +82,12 @@ export class AiCacheConfig extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+     * The cache config is a project-level setting, so this only selects which regional endpoint
+     * requests are sent to. If not specified, the provider-level region is used.
+     */
+    declare public readonly region: pulumi.Output<string | undefined>;
 
     /**
      * Create a AiCacheConfig resource with the given unique name, arguments, and options.
@@ -99,6 +105,7 @@ export class AiCacheConfig extends pulumi.CustomResource {
             resourceInputs["disableCache"] = state?.disableCache;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as AiCacheConfigArgs | undefined;
             if (args?.disableCache === undefined && !opts.urn) {
@@ -106,6 +113,7 @@ export class AiCacheConfig extends pulumi.CustomResource {
             }
             resourceInputs["disableCache"] = args?.disableCache;
             resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,6 +138,12 @@ export interface AiCacheConfigState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+     * The cache config is a project-level setting, so this only selects which regional endpoint
+     * requests are sent to. If not specified, the provider-level region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,4 +159,10 @@ export interface AiCacheConfigArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The region of the Vertex AI API endpoint used to manage the cache config, e.g. `us-central1`.
+     * The cache config is a project-level setting, so this only selects which regional endpoint
+     * requests are sent to. If not specified, the provider-level region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.DataPlex.Inputs
     public sealed class DataProductAccessGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for the default IAM role associated with the access group.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("defaultIamRoleConfig")]
+        public Input<Inputs.DataProductAccessGroupDefaultIamRoleConfigGetArgs>? DefaultIamRoleConfig { get; set; }
+
+        /// <summary>
         /// Description of the access group.
         /// </summary>
         [Input("description")]

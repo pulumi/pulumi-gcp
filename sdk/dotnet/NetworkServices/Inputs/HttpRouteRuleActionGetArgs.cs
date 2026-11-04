@@ -33,11 +33,25 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         }
 
         /// <summary>
+        /// Static HTTP Response object to be returned regardless of the request.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("directResponse")]
+        public Input<Inputs.HttpRouteRuleActionDirectResponseGetArgs>? DirectResponse { get; set; }
+
+        /// <summary>
         /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
         /// Structure is documented below.
         /// </summary>
         [Input("faultInjectionPolicy")]
         public Input<Inputs.HttpRouteRuleActionFaultInjectionPolicyGetArgs>? FaultInjectionPolicy { get; set; }
+
+        /// <summary>
+        /// Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Input("idleTimeout")]
+        public Input<string>? IdleTimeout { get; set; }
 
         /// <summary>
         /// If set, the request is directed as configured by this field.

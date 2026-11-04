@@ -1558,23 +1558,16 @@ class Subscription(pulumi.CustomResource):
 
         example = gcp.pubsub.Topic("example", name="example-topic")
         project = gcp.organizations.get_project()
-        tag_key = gcp.tags.TagKey("tag_key",
-            parent=project.id,
-            short_name="tag_key",
-            opts = pulumi.ResourceOptions(depends_on=[example]))
-        tag_value = gcp.tags.TagValue("tag_value",
-            parent=tag_key.id,
+        tag_key = gcp.tags.get_tag_key(parent=project.id,
+            short_name="tag_key")
+        tag_value = gcp.tags.get_tag_value(parent=tag_key.id,
             short_name="tag_value")
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example.id,
-            tags=pulumi.Output.all(
-                namespaced_name=tag_key.namespaced_name,
-                short_name=tag_value.short_name
-        ).apply(lambda resolved_outputs: {
-                resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
+            tags={
+                tag_key.namespaced_name: tag_value.short_name,
             })
-        )
         ```
 
         ### Pubsub Subscription Ai Inference
@@ -1599,7 +1592,7 @@ class Subscription(pulumi.CustomResource):
             topic=example.id,
             message_transforms=[{
                 "ai_inference": {
-                    "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    "endpoint": "projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash",
                     "unstructured_inference": {
                         "parameters": {
                             "max_tokens": "25000",
@@ -2230,23 +2223,16 @@ class Subscription(pulumi.CustomResource):
 
         example = gcp.pubsub.Topic("example", name="example-topic")
         project = gcp.organizations.get_project()
-        tag_key = gcp.tags.TagKey("tag_key",
-            parent=project.id,
-            short_name="tag_key",
-            opts = pulumi.ResourceOptions(depends_on=[example]))
-        tag_value = gcp.tags.TagValue("tag_value",
-            parent=tag_key.id,
+        tag_key = gcp.tags.get_tag_key(parent=project.id,
+            short_name="tag_key")
+        tag_value = gcp.tags.get_tag_value(parent=tag_key.id,
             short_name="tag_value")
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example.id,
-            tags=pulumi.Output.all(
-                namespaced_name=tag_key.namespaced_name,
-                short_name=tag_value.short_name
-        ).apply(lambda resolved_outputs: {
-                resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
+            tags={
+                tag_key.namespaced_name: tag_value.short_name,
             })
-        )
         ```
 
         ### Pubsub Subscription Ai Inference
@@ -2271,7 +2257,7 @@ class Subscription(pulumi.CustomResource):
             topic=example.id,
             message_transforms=[{
                 "ai_inference": {
-                    "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    "endpoint": "projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash",
                     "unstructured_inference": {
                         "parameters": {
                             "max_tokens": "25000",

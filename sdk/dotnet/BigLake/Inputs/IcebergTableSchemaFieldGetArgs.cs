@@ -37,7 +37,10 @@ namespace Pulumi.Gcp.BigLake.Inputs
         public Input<bool> Required { get; set; } = null!;
 
         /// <summary>
-        /// The type of the field.
+        /// The type of the field. Primitive types are plain names such as `Long`. List, map and
+        /// struct types are JSON objects as defined by the
+        /// [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+        /// typically written with `Jsonencode`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

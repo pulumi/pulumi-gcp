@@ -36,6 +36,12 @@ public final class DatascanDataProfileSpec {
      */
     private @Nullable DatascanDataProfileSpecIncludeFields includeFields;
     /**
+     * @return The execution mode for the profile scan.
+     * Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+     * 
+     */
+    private @Nullable String mode;
+    /**
      * @return Actions to take upon job completion.
      * Structure is documented below.
      * 
@@ -81,6 +87,14 @@ public final class DatascanDataProfileSpec {
         return Optional.ofNullable(this.includeFields);
     }
     /**
+     * @return The execution mode for the profile scan.
+     * Possible values are: `STANDARD`, `LIGHTWEIGHT`.
+     * 
+     */
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+    /**
      * @return Actions to take upon job completion.
      * Structure is documented below.
      * 
@@ -117,6 +131,7 @@ public final class DatascanDataProfileSpec {
         private @Nullable Boolean catalogPublishingEnabled;
         private @Nullable DatascanDataProfileSpecExcludeFields excludeFields;
         private @Nullable DatascanDataProfileSpecIncludeFields includeFields;
+        private @Nullable String mode;
         private @Nullable DatascanDataProfileSpecPostScanActions postScanActions;
         private @Nullable String rowFilter;
         private @Nullable Double samplingPercent;
@@ -126,6 +141,7 @@ public final class DatascanDataProfileSpec {
     	      this.catalogPublishingEnabled = defaults.catalogPublishingEnabled;
     	      this.excludeFields = defaults.excludeFields;
     	      this.includeFields = defaults.includeFields;
+    	      this.mode = defaults.mode;
     	      this.postScanActions = defaults.postScanActions;
     	      this.rowFilter = defaults.rowFilter;
     	      this.samplingPercent = defaults.samplingPercent;
@@ -147,6 +163,12 @@ public final class DatascanDataProfileSpec {
         public Builder includeFields(@Nullable DatascanDataProfileSpecIncludeFields includeFields) {
 
             this.includeFields = includeFields;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mode(@Nullable String mode) {
+
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
@@ -172,6 +194,7 @@ public final class DatascanDataProfileSpec {
             _resultValue.catalogPublishingEnabled = catalogPublishingEnabled;
             _resultValue.excludeFields = excludeFields;
             _resultValue.includeFields = includeFields;
+            _resultValue.mode = mode;
             _resultValue.postScanActions = postScanActions;
             _resultValue.rowFilter = rowFilter;
             _resultValue.samplingPercent = samplingPercent;

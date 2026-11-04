@@ -134,6 +134,9 @@ import (
 //							},
 //						},
 //					},
+//					TransformationErrorHandling: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs{
+//						ThrowError: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowErrorArgs{},
+//					},
 //				},
 //			})
 //			if err != nil {

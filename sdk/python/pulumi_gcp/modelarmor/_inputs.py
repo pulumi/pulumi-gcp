@@ -41,6 +41,20 @@ __all__ = [
     'FloorsettingGoogleMcpServerFloorSettingArgsDict',
     'TemplateFilterConfigArgs',
     'TemplateFilterConfigArgsDict',
+    'TemplateFilterConfigFilterRuleSettingsArgs',
+    'TemplateFilterConfigFilterRuleSettingsArgsDict',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetArgs',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetArgsDict',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgsDict',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgsDict',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgsDict',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgsDict',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgsDict',
     'TemplateFilterConfigMaliciousUriFilterSettingsArgs',
     'TemplateFilterConfigMaliciousUriFilterSettingsArgsDict',
     'TemplateFilterConfigPiAndJailbreakFilterSettingsArgs',
@@ -767,6 +781,12 @@ class FloorsettingGoogleMcpServerFloorSettingArgs:
 
 
 class TemplateFilterConfigArgsDict(TypedDict):
+    filter_rule_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsArgsDict']]]
+    """
+    Settings for customizing filter rules. Note: This field is not supported in
+    FloorSetting and Streaming Sanitization APIs.
+    Structure is documented below.
+    """
     malicious_uri_filter_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigMaliciousUriFilterSettingsArgsDict']]]
     """
     Malicious URI filter settings.
@@ -791,11 +811,15 @@ class TemplateFilterConfigArgsDict(TypedDict):
 @pulumi.input_type
 class TemplateFilterConfigArgs:
     def __init__(__self__, *,
+                 filter_rule_settings: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsArgs']] = None,
                  malicious_uri_filter_settings: pulumi.Input[Optional['TemplateFilterConfigMaliciousUriFilterSettingsArgs']] = None,
                  pi_and_jailbreak_filter_settings: pulumi.Input[Optional['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']] = None,
                  rai_settings: pulumi.Input[Optional['TemplateFilterConfigRaiSettingsArgs']] = None,
                  sdp_settings: pulumi.Input[Optional['TemplateFilterConfigSdpSettingsArgs']] = None):
         """
+        :param pulumi.Input['TemplateFilterConfigFilterRuleSettingsArgs'] filter_rule_settings: Settings for customizing filter rules. Note: This field is not supported in
+               FloorSetting and Streaming Sanitization APIs.
+               Structure is documented below.
         :param pulumi.Input['TemplateFilterConfigMaliciousUriFilterSettingsArgs'] malicious_uri_filter_settings: Malicious URI filter settings.
                Structure is documented below.
         :param pulumi.Input['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs'] pi_and_jailbreak_filter_settings: Prompt injection and Jailbreak Filter settings.
@@ -805,6 +829,8 @@ class TemplateFilterConfigArgs:
         :param pulumi.Input['TemplateFilterConfigSdpSettingsArgs'] sdp_settings: Sensitive Data Protection settings.
                Structure is documented below.
         """
+        if filter_rule_settings is not None:
+            pulumi.set(__self__, "filter_rule_settings", filter_rule_settings)
         if malicious_uri_filter_settings is not None:
             pulumi.set(__self__, "malicious_uri_filter_settings", malicious_uri_filter_settings)
         if pi_and_jailbreak_filter_settings is not None:
@@ -813,6 +839,20 @@ class TemplateFilterConfigArgs:
             pulumi.set(__self__, "rai_settings", rai_settings)
         if sdp_settings is not None:
             pulumi.set(__self__, "sdp_settings", sdp_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="filterRuleSettings")
+    def filter_rule_settings(self) -> pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsArgs']]:
+        """
+        Settings for customizing filter rules. Note: This field is not supported in
+        FloorSetting and Streaming Sanitization APIs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter_rule_settings")
+
+    @filter_rule_settings.setter
+    def filter_rule_settings(self, value: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsArgs']]):
+        pulumi.set(self, "filter_rule_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="maliciousUriFilterSettings")
@@ -865,6 +905,313 @@ class TemplateFilterConfigArgs:
     @sdp_settings.setter
     def sdp_settings(self, value: pulumi.Input[Optional['TemplateFilterConfigSdpSettingsArgs']]):
         pulumi.set(self, "sdp_settings", value)
+
+
+class TemplateFilterConfigFilterRuleSettingsArgsDict(TypedDict):
+    rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetArgsDict']]]]]
+    """
+    List of rule sets to be applied to filters.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class TemplateFilterConfigFilterRuleSettingsArgs:
+    def __init__(__self__, *,
+                 rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetArgs']]] rule_sets: List of rule sets to be applied to filters.
+               Structure is documented below.
+        """
+        if rule_sets is not None:
+            pulumi.set(__self__, "rule_sets", rule_sets)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleSets")
+    def rule_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetArgs']]]]:
+        """
+        List of rule sets to be applied to filters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rule_sets")
+
+    @rule_sets.setter
+    def rule_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetArgs']]]]):
+        pulumi.set(self, "rule_sets", value)
+
+
+class TemplateFilterConfigFilterRuleSettingsRuleSetArgsDict(TypedDict):
+    filter_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of filters this rule set is applied to.
+    Possible values:
+    PROMPT_INJECTION_AND_JAILBREAK
+    RESPONSIBLE_AI
+    """
+    rules: pulumi.Input[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgsDict']]]
+    """
+    Set of rules to be applied to filterTypes.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetArgs:
+    def __init__(__self__, *,
+                 filter_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 rules: pulumi.Input[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filter_types: List of filters this rule set is applied to.
+               Possible values:
+               PROMPT_INJECTION_AND_JAILBREAK
+               RESPONSIBLE_AI
+        :param pulumi.Input[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs']]] rules: Set of rules to be applied to filterTypes.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "filter_types", filter_types)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="filterTypes")
+    def filter_types(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of filters this rule set is applied to.
+        Possible values:
+        PROMPT_INJECTION_AND_JAILBREAK
+        RESPONSIBLE_AI
+        """
+        return pulumi.get(self, "filter_types")
+
+    @filter_types.setter
+    def filter_types(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "filter_types", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs']]]:
+        """
+        Set of rules to be applied to filterTypes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgsDict(TypedDict):
+    exclusion_rule: NotRequired[pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgsDict']]]
+    """
+    The rule that specifies conditions when filter detections are excluded from
+    results.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs:
+    def __init__(__self__, *,
+                 exclusion_rule: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs']] = None):
+        """
+        :param pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs'] exclusion_rule: The rule that specifies conditions when filter detections are excluded from
+               results.
+               Structure is documented below.
+        """
+        if exclusion_rule is not None:
+            pulumi.set(__self__, "exclusion_rule", exclusion_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="exclusionRule")
+    def exclusion_rule(self) -> pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs']]:
+        """
+        The rule that specifies conditions when filter detections are excluded from
+        results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclusion_rule")
+
+    @exclusion_rule.setter
+    def exclusion_rule(self, value: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs']]):
+        pulumi.set(self, "exclusion_rule", value)
+
+
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgsDict(TypedDict):
+    dictionary: NotRequired[pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgsDict']]]
+    """
+    Dictionary which defines the rule.
+    Structure is documented below.
+    """
+    matching_scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the scope of the input that should be matched against the
+    exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+    Possible values:
+    MATCHING_SCOPE_FULL_MATCH
+    MATCHING_SCOPE_PARTIAL_MATCH
+    """
+    regex: NotRequired[pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgsDict']]]
+    """
+    Regular expression which defines the rule.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs:
+    def __init__(__self__, *,
+                 dictionary: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs']] = None,
+                 matching_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 regex: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs']] = None):
+        """
+        :param pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs'] dictionary: Dictionary which defines the rule.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] matching_scope: Specifies the scope of the input that should be matched against the
+               exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+               Possible values:
+               MATCHING_SCOPE_FULL_MATCH
+               MATCHING_SCOPE_PARTIAL_MATCH
+        :param pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs'] regex: Regular expression which defines the rule.
+               Structure is documented below.
+        """
+        if dictionary is not None:
+            pulumi.set(__self__, "dictionary", dictionary)
+        if matching_scope is not None:
+            pulumi.set(__self__, "matching_scope", matching_scope)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @_builtins.property
+    @pulumi.getter
+    def dictionary(self) -> pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs']]:
+        """
+        Dictionary which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dictionary")
+
+    @dictionary.setter
+    def dictionary(self, value: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs']]):
+        pulumi.set(self, "dictionary", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchingScope")
+    def matching_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the scope of the input that should be matched against the
+        exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+        Possible values:
+        MATCHING_SCOPE_FULL_MATCH
+        MATCHING_SCOPE_PARTIAL_MATCH
+        """
+        return pulumi.get(self, "matching_scope")
+
+    @matching_scope.setter
+    def matching_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "matching_scope", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def regex(self) -> pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs']]:
+        """
+        Regular expression which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs']]):
+        pulumi.set(self, "regex", value)
+
+
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgsDict(TypedDict):
+    word_list: NotRequired[pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgsDict']]]
+    """
+    Message defining a list of words or phrases.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs:
+    def __init__(__self__, *,
+                 word_list: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs']] = None):
+        """
+        :param pulumi.Input['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs'] word_list: Message defining a list of words or phrases.
+               Structure is documented below.
+        """
+        if word_list is not None:
+            pulumi.set(__self__, "word_list", word_list)
+
+    @_builtins.property
+    @pulumi.getter(name="wordList")
+    def word_list(self) -> pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs']]:
+        """
+        Message defining a list of words or phrases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "word_list")
+
+    @word_list.setter
+    def word_list(self, value: pulumi.Input[Optional['TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs']]):
+        pulumi.set(self, "word_list", value)
+
+
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at
+    least one phrase and every phrase must contain at least two characters that
+    are letters or digits.
+    """
+
+@pulumi.input_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs:
+    def __init__(__self__, *,
+                 words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] words: Words or phrases defining the dictionary. The dictionary must contain at
+               least one phrase and every phrase must contain at least two characters that
+               are letters or digits.
+        """
+        pulumi.set(__self__, "words", words)
+
+    @_builtins.property
+    @pulumi.getter
+    def words(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Words or phrases defining the dictionary. The dictionary must contain at
+        least one phrase and every phrase must contain at least two characters that
+        are letters or digits.
+        """
+        return pulumi.get(self, "words")
+
+    @words.setter
+    def words(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "words", value)
+
+
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    The regular expression pattern.
+    """
+
+@pulumi.input_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] pattern: The regular expression pattern.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        The regular expression pattern.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
 
 
 class TemplateFilterConfigMaliciousUriFilterSettingsArgsDict(TypedDict):
@@ -1280,6 +1627,14 @@ class TemplateTemplateMetadataArgsDict(TypedDict):
     Indicates the custom error message set by the user to be returned to the
     end user if the prompt trips Model Armor filters.
     """
+    data_residency_compliant: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether the template is subject to data residency compliance. If
+    true (default for new templates), the template is subject to data residency
+    compliance. If false, the template bypasses data residency compliance
+    checks. If unset, the value is determined by the API; templates created
+    before data residency enforcement may report false.
+    """
     enforcement_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
@@ -1327,6 +1682,7 @@ class TemplateTemplateMetadataArgs:
                  custom_llm_response_safety_error_message: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_prompt_safety_error_code: pulumi.Input[Optional[_builtins.int]] = None,
                  custom_prompt_safety_error_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_residency_compliant: pulumi.Input[Optional[_builtins.bool]] = None,
                  enforcement_type: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_version_selector: pulumi.Input[Optional['TemplateTemplateMetadataFilterVersionSelectorArgs']] = None,
                  ignore_partial_invocation_failures: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1343,6 +1699,11 @@ class TemplateTemplateMetadataArgs:
                user by the service extension if the prompt trips Model Armor filters.
         :param pulumi.Input[_builtins.str] custom_prompt_safety_error_message: Indicates the custom error message set by the user to be returned to the
                end user if the prompt trips Model Armor filters.
+        :param pulumi.Input[_builtins.bool] data_residency_compliant: Indicates whether the template is subject to data residency compliance. If
+               true (default for new templates), the template is subject to data residency
+               compliance. If false, the template bypasses data residency compliance
+               checks. If unset, the value is determined by the API; templates created
+               before data residency enforcement may report false.
         :param pulumi.Input[_builtins.str] enforcement_type: Possible values:
                INSPECT_ONLY
                INSPECT_AND_BLOCK
@@ -1370,6 +1731,8 @@ class TemplateTemplateMetadataArgs:
             pulumi.set(__self__, "custom_prompt_safety_error_code", custom_prompt_safety_error_code)
         if custom_prompt_safety_error_message is not None:
             pulumi.set(__self__, "custom_prompt_safety_error_message", custom_prompt_safety_error_message)
+        if data_residency_compliant is not None:
+            pulumi.set(__self__, "data_residency_compliant", data_residency_compliant)
         if enforcement_type is not None:
             pulumi.set(__self__, "enforcement_type", enforcement_type)
         if filter_version_selector is not None:
@@ -1436,6 +1799,22 @@ class TemplateTemplateMetadataArgs:
     @custom_prompt_safety_error_message.setter
     def custom_prompt_safety_error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_prompt_safety_error_message", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataResidencyCompliant")
+    def data_residency_compliant(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether the template is subject to data residency compliance. If
+        true (default for new templates), the template is subject to data residency
+        compliance. If false, the template bypasses data residency compliance
+        checks. If unset, the value is determined by the API; templates created
+        before data residency enforcement may report false.
+        """
+        return pulumi.get(self, "data_residency_compliant")
+
+    @data_residency_compliant.setter
+    def data_residency_compliant(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "data_residency_compliant", value)
 
     @_builtins.property
     @pulumi.getter(name="enforcementType")

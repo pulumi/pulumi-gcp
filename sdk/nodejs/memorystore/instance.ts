@@ -30,12 +30,12 @@ import * as utilities from "../utilities";
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east4",
+ *     region: "northamerica-south1",
  *     network: producerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore",
  *     description: "my basic service connection policy",
  *     network: producerNet.id,
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     nodeType: "SHARED_CORE_NANO",
  *     deletionProtectionEnabled: false,
  *     maintenancePolicy: {
@@ -83,12 +83,12 @@ import * as utilities from "../utilities";
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east4",
+ *     region: "northamerica-south1",
  *     network: producerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore",
  *     description: "my basic service connection policy",
  *     network: producerNet.id,
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     replicaCount: 1,
  *     nodeType: "SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_DISABLED",
@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  *     },
  *     zoneDistributionConfig: {
  *         mode: "SINGLE_ZONE",
- *         zone: "us-east4-a",
+ *         zone: "northamerica-south1-a",
  *     },
  *     maintenancePolicy: {
  *         weeklyMaintenanceWindows: [{
@@ -159,12 +159,12 @@ import * as utilities from "../utilities";
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "my-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east4",
+ *     region: "northamerica-south1",
  *     network: producerNet.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "my-policy",
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore",
  *     description: "my basic service connection policy",
  *     network: producerNet.id,
@@ -180,7 +180,7 @@ import * as utilities from "../utilities";
  *         network: producerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     nodeType: "SHARED_CORE_NANO",
  *     persistenceConfig: {
  *         mode: "AOF",
@@ -207,12 +207,12 @@ import * as utilities from "../utilities";
  * const primaryProducerSubnet = new gcp.compute.Subnetwork("primary_producer_subnet", {
  *     name: "my-subnet-primary-instance",
  *     ipCidrRange: "10.0.1.0/29",
- *     region: "asia-east1",
+ *     region: "northamerica-south1",
  *     network: primaryProducerNet.id,
  * });
  * const primaryPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("primary_policy", {
  *     name: "my-policy-primary-instance",
- *     location: "asia-east1",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore",
  *     description: "my basic service connection policy",
  *     network: primaryProducerNet.id,
@@ -229,7 +229,7 @@ import * as utilities from "../utilities";
  *         network: primaryProducerNet.id,
  *         projectId: project.then(project => project.projectId),
  *     }],
- *     location: "asia-east1",
+ *     location: "northamerica-south1",
  *     replicaCount: 1,
  *     nodeType: "SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_DISABLED",
@@ -239,7 +239,7 @@ import * as utilities from "../utilities";
  *     },
  *     zoneDistributionConfig: {
  *         mode: "SINGLE_ZONE",
- *         zone: "asia-east1-c",
+ *         zone: "northamerica-south1-a",
  *     },
  *     deletionProtectionEnabled: true,
  *     persistenceConfig: {
@@ -326,7 +326,7 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const _default = new gcp.certificateauthority.CaPool("default", {
  *     name: "ca-pool",
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     tier: "ENTERPRISE",
  * });
  * const memorystoreP4saRequester = new gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester", {
@@ -337,7 +337,7 @@ import * as utilities from "../utilities";
  * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
  *     pool: _default.name,
  *     certificateAuthorityId: "ca-auth",
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -374,12 +374,12 @@ import * as utilities from "../utilities";
  * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
  *     name: "ca-subnet",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-east4",
+ *     region: "northamerica-south1",
  *     network: producerNet.id,
  * });
  * const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "ca-policy",
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     serviceClass: "gcp-memorystore",
  *     network: producerNet.id,
  *     pscConfig: {
@@ -389,7 +389,7 @@ import * as utilities from "../utilities";
  * const test_instance = new gcp.memorystore.Instance("test-instance", {
  *     instanceId: "ca-instance",
  *     shardCount: 1,
- *     location: "us-east4",
+ *     location: "northamerica-south1",
  *     nodeType: "SHARED_CORE_NANO",
  *     desiredAutoCreatedEndpoints: [{
  *         network: producerNet.id,

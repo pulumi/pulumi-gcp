@@ -6,6 +6,7 @@ package com.pulumi.gcp.pubsub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetTopicMessageTransformAiInference;
+import com.pulumi.gcp.pubsub.outputs.GetTopicMessageTransformCompression;
 import com.pulumi.gcp.pubsub.outputs.GetTopicMessageTransformJavascriptUdf;
 import java.lang.Boolean;
 import java.util.List;
@@ -20,6 +21,12 @@ public final class GetTopicMessageTransform {
      * 
      */
     private List<GetTopicMessageTransformAiInference> aiInferences;
+    /**
+     * @return Configuration for compressing/decompressing message data using a
+     * user-specified compression algorithm.
+     * 
+     */
+    private List<GetTopicMessageTransformCompression> compressions;
     /**
      * @return Controls whether or not to use this transform. If not set or &#39;false&#39;,
      * the transform will be applied to messages. Default: &#39;true&#39;.
@@ -42,6 +49,14 @@ public final class GetTopicMessageTransform {
      */
     public List<GetTopicMessageTransformAiInference> aiInferences() {
         return this.aiInferences;
+    }
+    /**
+     * @return Configuration for compressing/decompressing message data using a
+     * user-specified compression algorithm.
+     * 
+     */
+    public List<GetTopicMessageTransformCompression> compressions() {
+        return this.compressions;
     }
     /**
      * @return Controls whether or not to use this transform. If not set or &#39;false&#39;,
@@ -70,12 +85,14 @@ public final class GetTopicMessageTransform {
     @CustomType.Builder
     public static final class Builder {
         private List<GetTopicMessageTransformAiInference> aiInferences;
+        private List<GetTopicMessageTransformCompression> compressions;
         private Boolean disabled;
         private List<GetTopicMessageTransformJavascriptUdf> javascriptUdfs;
         public Builder() {}
         public Builder(GetTopicMessageTransform defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aiInferences = defaults.aiInferences;
+    	      this.compressions = defaults.compressions;
     	      this.disabled = defaults.disabled;
     	      this.javascriptUdfs = defaults.javascriptUdfs;
         }
@@ -90,6 +107,17 @@ public final class GetTopicMessageTransform {
         }
         public Builder aiInferences(GetTopicMessageTransformAiInference... aiInferences) {
             return aiInferences(List.of(aiInferences));
+        }
+        @CustomType.Setter
+        public Builder compressions(List<GetTopicMessageTransformCompression> compressions) {
+            if (compressions == null) {
+              throw new MissingRequiredPropertyException("GetTopicMessageTransform", "compressions");
+            }
+            this.compressions = compressions;
+            return this;
+        }
+        public Builder compressions(GetTopicMessageTransformCompression... compressions) {
+            return compressions(List.of(compressions));
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
@@ -113,6 +141,7 @@ public final class GetTopicMessageTransform {
         public GetTopicMessageTransform build() {
             final var _resultValue = new GetTopicMessageTransform();
             _resultValue.aiInferences = aiInferences;
+            _resultValue.compressions = compressions;
             _resultValue.disabled = disabled;
             _resultValue.javascriptUdfs = javascriptUdfs;
             return _resultValue;

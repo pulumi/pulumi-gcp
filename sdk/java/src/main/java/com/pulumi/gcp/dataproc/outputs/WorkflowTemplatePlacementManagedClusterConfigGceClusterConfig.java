@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig;
@@ -27,6 +28,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      * 
      */
     private @Nullable Map<String,String> metadata;
+    /**
+     * @return Multi-zone configuration for cluster instances. Structure is documented below.
+     * 
+     */
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig multiZoneConfig;
     /**
      * @return The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the &#34;default&#34; network of the project is used, if it exists. Cannot be a &#34;Custom Subnet Network&#34; (see /regions/global/default`*`default`
      * 
@@ -92,6 +98,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     public Map<String,String> metadata() {
         return this.metadata == null ? Map.of() : this.metadata;
+    }
+    /**
+     * @return Multi-zone configuration for cluster instances. Structure is documented below.
+     * 
+     */
+    public Optional<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig> multiZoneConfig() {
+        return Optional.ofNullable(this.multiZoneConfig);
     }
     /**
      * @return The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the &#34;default&#34; network of the project is used, if it exists. Cannot be a &#34;Custom Subnet Network&#34; (see /regions/global/default`*`default`
@@ -175,6 +188,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     public static final class Builder {
         private @Nullable Boolean internalIpOnly;
         private @Nullable Map<String,String> metadata;
+        private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig multiZoneConfig;
         private @Nullable String network;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity;
         private @Nullable String privateIpv6GoogleAccess;
@@ -190,6 +204,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     	      Objects.requireNonNull(defaults);
     	      this.internalIpOnly = defaults.internalIpOnly;
     	      this.metadata = defaults.metadata;
+    	      this.multiZoneConfig = defaults.multiZoneConfig;
     	      this.network = defaults.network;
     	      this.nodeGroupAffinity = defaults.nodeGroupAffinity;
     	      this.privateIpv6GoogleAccess = defaults.privateIpv6GoogleAccess;
@@ -212,6 +227,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         public Builder metadata(@Nullable Map<String,String> metadata) {
 
             this.metadata = metadata;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder multiZoneConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig multiZoneConfig) {
+
+            this.multiZoneConfig = multiZoneConfig;
             return this;
         }
         @CustomType.Setter
@@ -284,6 +305,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
             final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig();
             _resultValue.internalIpOnly = internalIpOnly;
             _resultValue.metadata = metadata;
+            _resultValue.multiZoneConfig = multiZoneConfig;
             _resultValue.network = network;
             _resultValue.nodeGroupAffinity = nodeGroupAffinity;
             _resultValue.privateIpv6GoogleAccess = privateIpv6GoogleAccess;

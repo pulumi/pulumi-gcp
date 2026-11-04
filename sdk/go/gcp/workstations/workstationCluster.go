@@ -48,7 +48,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("workstation-cluster"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west4"),
 //				Network:     defaultNetwork.Name,
 //			})
 //			if err != nil {
@@ -58,7 +58,7 @@ import (
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
 //				Network:              defaultNetwork.ID(),
 //				Subnetwork:           defaultSubnetwork.ID(),
-//				Location:             pulumi.String("us-central1"),
+//				Location:             pulumi.String("us-west4"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
 //				},
@@ -81,181 +81,9 @@ import (
 //
 // ### Workstation Cluster Private
 //
-// ```go
-// package main
+// ## Regional Endpoint Policies
 //
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("workstation-cluster-private"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("workstation-cluster-private"),
-//				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-//				WorkstationClusterId: pulumi.String("workstation-cluster-private"),
-//				Network:              defaultNetwork.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
-//				Location:             pulumi.String("us-central1"),
-//				PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
-//					EnablePrivateEndpoint: pulumi.Bool(true),
-//				},
-//				Labels: pulumi.StringMap{
-//					"label": pulumi.String("key"),
-//				},
-//				Annotations: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Workstation Cluster Custom Domain
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("workstation-cluster-custom-domain"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("workstation-cluster-custom-domain"),
-//				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-//				WorkstationClusterId: pulumi.String("workstation-cluster-custom-domain"),
-//				Network:              defaultNetwork.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
-//				Location:             pulumi.String("us-central1"),
-//				PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
-//					EnablePrivateEndpoint: pulumi.Bool(true),
-//				},
-//				DomainConfig: &workstations.WorkstationClusterDomainConfigArgs{
-//					Domain: pulumi.String("workstations.example.com"),
-//				},
-//				Labels: pulumi.StringMap{
-//					"label": pulumi.String("key"),
-//				},
-//				Annotations: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Workstation Cluster Tags
-//
-// ### Workstation Cluster Custom Urls
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("workstations-network"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("workstations-network"),
-//				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-//				WorkstationClusterId:        pulumi.String("custom-urls-cluster"),
-//				Network:                     defaultNetwork.ID(),
-//				Subnetwork:                  defaultSubnetwork.ID(),
-//				Location:                    pulumi.String("us-central1"),
-//				WorkstationAuthorizationUrl: pulumi.String("https://console.cloud.google.com/workstations/auth"),
-//				WorkstationLaunchUrl:        pulumi.String("https://console.cloud.google.com/workstations/launch"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 //
 // ## Import
 //

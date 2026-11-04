@@ -121,6 +121,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 },
     ///             },
     ///             CatalogPublishingEnabled = true,
+    ///             Mode = "STANDARD",
     ///         },
     ///         Project = "my-project-name",
     ///     }, new CustomResourceOptions
@@ -286,6 +287,14 @@ namespace Pulumi.Gcp.DataPlex
     ///                         { "priority", "high" },
     ///                     },
     ///                     NonNullExpectation = null,
+    ///                     DebugQueries = new[]
+    ///                     {
+    ///                         new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleDebugQueryArgs
+    ///                         {
+    ///                             Description = "test debug query description",
+    ///                             SqlStatement = "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where address is null",
+    ///                         },
+    ///                     },
     ///                 },
     ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
     ///                 {
@@ -718,6 +727,10 @@ namespace Pulumi.Gcp.DataPlex
     ///         {
     ///             CatalogPublishingEnabled = true,
     ///             SqlDialect = "GOOGLE_SQL",
+    ///             GenerationScopes = new[]
+    ///             {
+    ///                 "ALL",
+    ///             },
     ///         },
     ///         Project = "my-project-name",
     ///     });

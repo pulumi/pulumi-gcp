@@ -408,11 +408,23 @@ namespace Pulumi.Gcp.IntegrationConnectors
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+        /// </summary>
+        [Output("asyncOperationsEnabled")]
+        public Output<bool?> AsyncOperationsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// authConfig for the connection.
         /// Structure is documented below.
         /// </summary>
         [Output("authConfig")]
         public Output<Outputs.ConnectionAuthConfig?> AuthConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+        /// </summary>
+        [Output("authOverrideEnabled")]
+        public Output<bool?> AuthOverrideEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Config Variables for the connection.
@@ -600,6 +612,13 @@ namespace Pulumi.Gcp.IntegrationConnectors
         public Output<bool?> Suspended { get; private set; } = null!;
 
         /// <summary>
+        /// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("trafficShapingConfigs")]
+        public Output<ImmutableArray<Outputs.ConnectionTrafficShapingConfig>> TrafficShapingConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// Time the Namespace was updated in UTC.
         /// </summary>
         [Output("updateTime")]
@@ -657,11 +676,23 @@ namespace Pulumi.Gcp.IntegrationConnectors
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+        /// </summary>
+        [Input("asyncOperationsEnabled")]
+        public Input<bool>? AsyncOperationsEnabled { get; set; }
+
+        /// <summary>
         /// authConfig for the connection.
         /// Structure is documented below.
         /// </summary>
         [Input("authConfig")]
         public Input<Inputs.ConnectionAuthConfigArgs>? AuthConfig { get; set; }
+
+        /// <summary>
+        /// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+        /// </summary>
+        [Input("authOverrideEnabled")]
+        public Input<bool>? AuthOverrideEnabled { get; set; }
 
         [Input("configVariables")]
         private InputList<Inputs.ConnectionConfigVariableArgs>? _configVariables;
@@ -800,6 +831,19 @@ namespace Pulumi.Gcp.IntegrationConnectors
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
 
+        [Input("trafficShapingConfigs")]
+        private InputList<Inputs.ConnectionTrafficShapingConfigArgs>? _trafficShapingConfigs;
+
+        /// <summary>
+        /// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ConnectionTrafficShapingConfigArgs> TrafficShapingConfigs
+        {
+            get => _trafficShapingConfigs ?? (_trafficShapingConfigs = new InputList<Inputs.ConnectionTrafficShapingConfigArgs>());
+            set => _trafficShapingConfigs = value;
+        }
+
         public ConnectionArgs()
         {
         }
@@ -809,11 +853,23 @@ namespace Pulumi.Gcp.IntegrationConnectors
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+        /// </summary>
+        [Input("asyncOperationsEnabled")]
+        public Input<bool>? AsyncOperationsEnabled { get; set; }
+
+        /// <summary>
         /// authConfig for the connection.
         /// Structure is documented below.
         /// </summary>
         [Input("authConfig")]
         public Input<Inputs.ConnectionAuthConfigGetArgs>? AuthConfig { get; set; }
+
+        /// <summary>
+        /// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+        /// </summary>
+        [Input("authOverrideEnabled")]
+        public Input<bool>? AuthOverrideEnabled { get; set; }
 
         [Input("configVariables")]
         private InputList<Inputs.ConnectionConfigVariableGetArgs>? _configVariables;
@@ -1055,6 +1111,19 @@ namespace Pulumi.Gcp.IntegrationConnectors
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
+
+        [Input("trafficShapingConfigs")]
+        private InputList<Inputs.ConnectionTrafficShapingConfigGetArgs>? _trafficShapingConfigs;
+
+        /// <summary>
+        /// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ConnectionTrafficShapingConfigGetArgs> TrafficShapingConfigs
+        {
+            get => _trafficShapingConfigs ?? (_trafficShapingConfigs = new InputList<Inputs.ConnectionTrafficShapingConfigGetArgs>());
+            set => _trafficShapingConfigs = value;
+        }
 
         /// <summary>
         /// Time the Namespace was updated in UTC.

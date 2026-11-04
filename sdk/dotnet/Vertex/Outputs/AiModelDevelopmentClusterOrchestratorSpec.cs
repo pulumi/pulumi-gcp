@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiModelDevelopmentClusterOrchestratorSpec
     {
         /// <summary>
+        /// The GKE orchestrator related spec of the cluster.
+        /// </summary>
+        public readonly Outputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec? KubernetesSpec;
+        /// <summary>
         /// The Slurm orchestrator related spec of the cluster.
         /// </summary>
         public readonly Outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec? SlurmSpec;
 
         [OutputConstructor]
-        private AiModelDevelopmentClusterOrchestratorSpec(Outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec? slurmSpec)
+        private AiModelDevelopmentClusterOrchestratorSpec(
+            Outputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec? kubernetesSpec,
+
+            Outputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpec? slurmSpec)
         {
+            KubernetesSpec = kubernetesSpec;
             SlurmSpec = slurmSpec;
         }
     }

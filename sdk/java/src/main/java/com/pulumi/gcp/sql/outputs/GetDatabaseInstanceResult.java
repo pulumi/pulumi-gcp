@@ -30,6 +30,7 @@ public final class GetDatabaseInstanceResult {
     private List<GetDatabaseInstanceBlueGreenDeployment> blueGreenDeployments;
     private List<GetDatabaseInstanceClone> clones;
     private String connectionName;
+    private String databaseCenterIntegration;
     private String databaseVersion;
     private String deletionPolicy;
     private Boolean deletionProtection;
@@ -86,6 +87,9 @@ public final class GetDatabaseInstanceResult {
     }
     public String connectionName() {
         return this.connectionName;
+    }
+    public String databaseCenterIntegration() {
+        return this.databaseCenterIntegration;
     }
     public String databaseVersion() {
         return this.databaseVersion;
@@ -214,6 +218,7 @@ public final class GetDatabaseInstanceResult {
         private List<GetDatabaseInstanceBlueGreenDeployment> blueGreenDeployments;
         private List<GetDatabaseInstanceClone> clones;
         private String connectionName;
+        private String databaseCenterIntegration;
         private String databaseVersion;
         private String deletionPolicy;
         private Boolean deletionProtection;
@@ -258,6 +263,7 @@ public final class GetDatabaseInstanceResult {
     	      this.blueGreenDeployments = defaults.blueGreenDeployments;
     	      this.clones = defaults.clones;
     	      this.connectionName = defaults.connectionName;
+    	      this.databaseCenterIntegration = defaults.databaseCenterIntegration;
     	      this.databaseVersion = defaults.databaseVersion;
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
@@ -343,6 +349,14 @@ public final class GetDatabaseInstanceResult {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "connectionName");
             }
             this.connectionName = connectionName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder databaseCenterIntegration(String databaseCenterIntegration) {
+            if (databaseCenterIntegration == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "databaseCenterIntegration");
+            }
+            this.databaseCenterIntegration = databaseCenterIntegration;
             return this;
         }
         @CustomType.Setter
@@ -665,6 +679,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.blueGreenDeployments = blueGreenDeployments;
             _resultValue.clones = clones;
             _resultValue.connectionName = connectionName;
+            _resultValue.databaseCenterIntegration = databaseCenterIntegration;
             _resultValue.databaseVersion = databaseVersion;
             _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;

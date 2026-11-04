@@ -270,6 +270,12 @@ import * as utilities from "../utilities";
  *                 code: "...",
  *             },
  *         },
+ *         {
+ *             compression: {
+ *                 compressionAlgorithm: "ZLIB",
+ *                 compressionMode: "COMPRESS",
+ *             },
+ *         },
  *     ],
  * });
  * ```
@@ -322,7 +328,7 @@ import * as utilities from "../utilities";
  *     name: "example-topic",
  *     messageTransforms: [{
  *         aiInference: {
- *             endpoint: "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+ *             endpoint: "projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash",
  *             unstructuredInference: {
  *                 parameters: {
  *                     max_tokens: "25000",

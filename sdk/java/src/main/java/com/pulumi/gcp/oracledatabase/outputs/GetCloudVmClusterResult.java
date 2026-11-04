@@ -39,6 +39,7 @@ public final class GetCloudVmClusterResult {
     private String location;
     private String name;
     private String network;
+    private String odbDnsZone;
     private String odbNetwork;
     private String odbSubnet;
     private @Nullable String project;
@@ -104,6 +105,9 @@ public final class GetCloudVmClusterResult {
     public String network() {
         return this.network;
     }
+    public String odbDnsZone() {
+        return this.odbDnsZone;
+    }
     public String odbNetwork() {
         return this.odbNetwork;
     }
@@ -147,6 +151,7 @@ public final class GetCloudVmClusterResult {
         private String location;
         private String name;
         private String network;
+        private String odbDnsZone;
         private String odbNetwork;
         private String odbSubnet;
         private @Nullable String project;
@@ -173,6 +178,7 @@ public final class GetCloudVmClusterResult {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.odbDnsZone = defaults.odbDnsZone;
     	      this.odbNetwork = defaults.odbNetwork;
     	      this.odbSubnet = defaults.odbSubnet;
     	      this.project = defaults.project;
@@ -328,6 +334,14 @@ public final class GetCloudVmClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder odbDnsZone(String odbDnsZone) {
+            if (odbDnsZone == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClusterResult", "odbDnsZone");
+            }
+            this.odbDnsZone = odbDnsZone;
+            return this;
+        }
+        @CustomType.Setter
         public Builder odbNetwork(String odbNetwork) {
             if (odbNetwork == null) {
               throw new MissingRequiredPropertyException("GetCloudVmClusterResult", "odbNetwork");
@@ -388,6 +402,7 @@ public final class GetCloudVmClusterResult {
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.odbDnsZone = odbDnsZone;
             _resultValue.odbNetwork = odbNetwork;
             _resultValue.odbSubnet = odbSubnet;
             _resultValue.project = project;

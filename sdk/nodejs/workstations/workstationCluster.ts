@@ -30,14 +30,14 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "workstation-cluster",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "us-west4",
  *     network: defaultNetwork.name,
  * });
  * const _default = new gcp.workstations.WorkstationCluster("default", {
  *     workstationClusterId: "workstation-cluster",
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "us-west4",
  *     labels: {
  *         label: "key",
  *     },
@@ -54,77 +54,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "workstation-cluster-private",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster-private",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.name,
- * });
- * const _default = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster-private",
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     privateClusterConfig: {
- *         enablePrivateEndpoint: true,
- *     },
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const project = gcp.organizations.getProject({});
- * ```
- *
- * ### Workstation Cluster Custom Domain
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "workstation-cluster-custom-domain",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster-custom-domain",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.name,
- * });
- * const _default = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster-custom-domain",
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     privateClusterConfig: {
- *         enablePrivateEndpoint: true,
- *     },
- *     domainConfig: {
- *         domain: "workstations.example.com",
- *     },
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const project = gcp.organizations.getProject({});
- * ```
- *
- * ### Workstation Cluster Tags
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
  * const project = gcp.organizations.getProject({});
  * const tagKey = new gcp.tags.TagKey("tag_key", {
  *     parent: project.then(project => `projects/${project.number}`),
@@ -135,52 +64,44 @@ import * as utilities from "../utilities";
  *     shortName: "valuename",
  * });
  * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "workstation-cluster-tags",
+ *     name: "workstation-cluster-private",
  *     autoCreateSubnetworks: false,
  * });
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster-tags",
+ *     name: "workstation-cluster-private",
  *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
+ *     region: "europe-west4",
  *     network: defaultNetwork.name,
  * });
  * const _default = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster-tags",
+ *     workstationClusterId: "workstation-cluster-private",
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
+ *     location: "europe-west4",
+ *     displayName: "cluster-display-name",
+ *     privateClusterConfig: {
+ *         enablePrivateEndpoint: true,
+ *     },
+ *     domainConfig: {
+ *         domain: "workstations.example.com",
+ *     },
+ *     workstationAuthorizationUrl: "https://console.cloud.google.com/workstations/auth",
+ *     workstationLaunchUrl: "https://console.cloud.google.com/workstations/launch",
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
  *     tags: pulumi.all([project, tagKey.shortName, tagValue.shortName]).apply(([project, tagKeyShortName, tagValueShortName]) => {
  *         [`${project.projectId}/${tagKeyShortName}`]: tagValueShortName,
  *     }),
  * });
  * ```
  *
- * ### Workstation Cluster Custom Urls
+ * ## Regional Endpoint Policies
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "workstations-network",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstations-network",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.name,
- * });
- * const _default = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "custom-urls-cluster",
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     workstationAuthorizationUrl: "https://console.cloud.google.com/workstations/auth",
- *     workstationLaunchUrl: "https://console.cloud.google.com/workstations/launch",
- * });
- * const project = gcp.organizations.getProject({});
- * ```
+ * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
  *
  * ## Import
  *

@@ -275,6 +275,11 @@ export type AiTensorboardRun = import("./aiTensorboardRun").AiTensorboardRun;
 export const AiTensorboardRun: typeof import("./aiTensorboardRun").AiTensorboardRun = null as any;
 utilities.lazyLoad(exports, ["AiTensorboardRun"], () => require("./aiTensorboardRun"));
 
+export { AiTrainingPipelineArgs, AiTrainingPipelineState } from "./aiTrainingPipeline";
+export type AiTrainingPipeline = import("./aiTrainingPipeline").AiTrainingPipeline;
+export const AiTrainingPipeline: typeof import("./aiTrainingPipeline").AiTrainingPipeline = null as any;
+utilities.lazyLoad(exports, ["AiTrainingPipeline"], () => require("./aiTrainingPipeline"));
+
 export { GetAiEndpointIamPolicyArgs, GetAiEndpointIamPolicyResult, GetAiEndpointIamPolicyOutputArgs } from "./getAiEndpointIamPolicy";
 export const getAiEndpointIamPolicy: typeof import("./getAiEndpointIamPolicy").getAiEndpointIamPolicy = null as any;
 export const getAiEndpointIamPolicyOutput: typeof import("./getAiEndpointIamPolicy").getAiEndpointIamPolicyOutput = null as any;
@@ -433,6 +438,8 @@ const _module = {
                 return new AiTensorboardExperiment(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboardRun:AiTensorboardRun":
                 return new AiTensorboardRun(name, <any>undefined, { urn })
+            case "gcp:vertex/aiTrainingPipeline:AiTrainingPipeline":
+                return new AiTrainingPipeline(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -492,3 +499,4 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiSemanticGovernancePolicyE
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboardExperiment", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboardRun", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiTrainingPipeline", _module)

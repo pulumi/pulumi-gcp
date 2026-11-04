@@ -653,6 +653,9 @@ class DataProduct(pulumi.CustomResource):
                     "principal": {
                         "google_group": "tf-test-analysts-_62793@example.com",
                     },
+                    "default_iam_role_config": {
+                        "role": "roles/bigquery.dataViewer",
+                    },
                 },
                 {
                     "id": "scientist",
@@ -780,6 +783,9 @@ class DataProduct(pulumi.CustomResource):
                     "description": "In-place update verified",
                     "principal": {
                         "google_group": "tf-test-analysts-_62793@example.com",
+                    },
+                    "default_iam_role_config": {
+                        "role": "roles/bigquery.dataViewer",
                     },
                 },
                 {

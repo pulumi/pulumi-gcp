@@ -136,8 +136,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
     ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
     ///     {
     ///         Name = "my-trust-config",
@@ -184,12 +182,81 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
     ///         {
     ///             ClientValidationMode = "REJECT_INVALID",
-    ///             ClientValidationTrustConfig = Output.Tuple(project, defaultTrustConfig.Name).Apply(values =&gt;
+    ///             ClientValidationTrustConfig = defaultTrustConfig.Id,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Network Security Server Tls Policy Mtls Validation Relaxations
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
+    ///     {
+    ///         Name = "my-trust-config",
+    ///         Description = "sample trust config description",
+    ///         Location = "global",
+    ///         TrustStores = new[]
+    ///         {
+    ///             new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreArgs
     ///             {
-    ///                 var project = values.Item1;
-    ///                 var name = values.Item2;
-    ///                 return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/trustConfigs/{name}";
-    ///             }),
+    ///                 TrustAnchors = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///                 IntermediateCas = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/ca_cert.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
+    ///     {
+    ///         Name = "my-server-tls-policy",
+    ///         Description = "ServerTlsPolicy with mTLS validation relaxations",
+    ///         Location = "global",
+    ///         AllowOpen = false,
+    ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
+    ///         {
+    ///             ClientValidationMode = "ALLOW_VALIDATION_RELAXATIONS",
+    ///             ClientValidationRelaxations = new[]
+    ///             {
+    ///                 "ALLOW_MISSING_EKU",
+    ///                 "ALLOW_SHA1_HASHING",
+    ///                 "ALLOW_EXPIRED_LEAF_CERTIFICATE",
+    ///             },
+    ///             ClientValidationTrustConfig = defaultTrustConfig.Id,
     ///         },
     ///         Labels = 
     ///         {

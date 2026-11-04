@@ -110,6 +110,11 @@ export const getGoldengateDeploymentVersions: typeof import("./getGoldengateDepl
 export const getGoldengateDeploymentVersionsOutput: typeof import("./getGoldengateDeploymentVersions").getGoldengateDeploymentVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getGoldengateDeploymentVersions","getGoldengateDeploymentVersionsOutput"], () => require("./getGoldengateDeploymentVersions"));
 
+export { GetOdbDnsZoneArgs, GetOdbDnsZoneResult, GetOdbDnsZoneOutputArgs } from "./getOdbDnsZone";
+export const getOdbDnsZone: typeof import("./getOdbDnsZone").getOdbDnsZone = null as any;
+export const getOdbDnsZoneOutput: typeof import("./getOdbDnsZone").getOdbDnsZoneOutput = null as any;
+utilities.lazyLoad(exports, ["getOdbDnsZone","getOdbDnsZoneOutput"], () => require("./getOdbDnsZone"));
+
 export { GetOdbNetworkArgs, GetOdbNetworkResult, GetOdbNetworkOutputArgs } from "./getOdbNetwork";
 export const getOdbNetwork: typeof import("./getOdbNetwork").getOdbNetwork = null as any;
 export const getOdbNetworkOutput: typeof import("./getOdbNetwork").getOdbNetworkOutput = null as any;
@@ -134,6 +139,11 @@ export { GoldengateDeploymentArgs, GoldengateDeploymentState } from "./goldengat
 export type GoldengateDeployment = import("./goldengateDeployment").GoldengateDeployment;
 export const GoldengateDeployment: typeof import("./goldengateDeployment").GoldengateDeployment = null as any;
 utilities.lazyLoad(exports, ["GoldengateDeployment"], () => require("./goldengateDeployment"));
+
+export { OdbDnsZoneArgs, OdbDnsZoneState } from "./odbDnsZone";
+export type OdbDnsZone = import("./odbDnsZone").OdbDnsZone;
+export const OdbDnsZone: typeof import("./odbDnsZone").OdbDnsZone = null as any;
+utilities.lazyLoad(exports, ["OdbDnsZone"], () => require("./odbDnsZone"));
 
 export { OdbNetworkArgs, OdbNetworkState } from "./odbNetwork";
 export type OdbNetwork = import("./odbNetwork").OdbNetwork;
@@ -170,6 +180,8 @@ const _module = {
                 return new GoldengateConnectionAssignment(name, <any>undefined, { urn })
             case "gcp:oracledatabase/goldengateDeployment:GoldengateDeployment":
                 return new GoldengateDeployment(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/odbDnsZone:OdbDnsZone":
+                return new OdbDnsZone(name, <any>undefined, { urn })
             case "gcp:oracledatabase/odbNetwork:OdbNetwork":
                 return new OdbNetwork(name, <any>undefined, { urn })
             case "gcp:oracledatabase/odbSubnet:OdbSubnet":
@@ -189,5 +201,6 @@ pulumi.runtime.registerResourceModule("gcp", "oracledatabase/exascaleDbStorageVa
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/goldengateConnection", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/goldengateConnectionAssignment", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/goldengateDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbDnsZone", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbNetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbSubnet", _module)

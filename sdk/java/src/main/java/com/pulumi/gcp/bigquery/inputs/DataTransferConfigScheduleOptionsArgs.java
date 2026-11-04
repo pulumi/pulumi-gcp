@@ -45,6 +45,8 @@ public final class DataTransferConfigScheduleOptionsArgs extends com.pulumi.reso
      * moment. The time when a data transfer can be triggered manually is not
      * limited by this option.
      * 
+     * &lt;a name=&#34;nestedScheduleOptionsV2&#34;&gt;&lt;/a&gt;The `scheduleOptionsV2` block supports:
+     * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
@@ -54,6 +56,8 @@ public final class DataTransferConfigScheduleOptionsArgs extends com.pulumi.reso
      * scheduled at or after the end time. The end time can be changed at any
      * moment. The time when a data transfer can be triggered manually is not
      * limited by this option.
+     * 
+     * &lt;a name=&#34;nestedScheduleOptionsV2&#34;&gt;&lt;/a&gt;The `scheduleOptionsV2` block supports:
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -144,6 +148,8 @@ public final class DataTransferConfigScheduleOptionsArgs extends com.pulumi.reso
          * moment. The time when a data transfer can be triggered manually is not
          * limited by this option.
          * 
+         * &lt;a name=&#34;nestedScheduleOptionsV2&#34;&gt;&lt;/a&gt;The `scheduleOptionsV2` block supports:
+         * 
          * @return builder
          * 
          */
@@ -157,6 +163,8 @@ public final class DataTransferConfigScheduleOptionsArgs extends com.pulumi.reso
          * scheduled at or after the end time. The end time can be changed at any
          * moment. The time when a data transfer can be triggered manually is not
          * limited by this option.
+         * 
+         * &lt;a name=&#34;nestedScheduleOptionsV2&#34;&gt;&lt;/a&gt;The `scheduleOptionsV2` block supports:
          * 
          * @return builder
          * 

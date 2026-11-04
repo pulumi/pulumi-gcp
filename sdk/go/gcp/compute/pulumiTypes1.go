@@ -4991,11 +4991,23 @@ func (o RegionNetworkEndpointGroupCloudRunPtrOutput) UrlMask() pulumi.StringPtrO
 }
 
 type RegionNetworkEndpointGroupPscData struct {
+	// (Output)
+	// Address allocated from given subnetwork for PSC. This IP address acts
+	// as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+	ConsumerPscAddress *string `pulumi:"consumerPscAddress"`
 	// The PSC producer port to use when consumer PSC NEG connects to a producer. If
 	// this flag isn't specified for a PSC NEG with endpoint type
 	// private-service-connect, then PSC NEG will be connected to a first port in the
 	// available PSC producer port range.
 	ProducerPort *string `pulumi:"producerPort"`
+	// (Output)
+	// The PSC connection id of the PSC Network Endpoint Group Consumer.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// (Output)
+	// The connection status of the PSC Network Endpoint Group Consumer.
+	// Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+	// `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 }
 
 // RegionNetworkEndpointGroupPscDataInput is an input type that accepts RegionNetworkEndpointGroupPscDataArgs and RegionNetworkEndpointGroupPscDataOutput values.
@@ -5010,11 +5022,23 @@ type RegionNetworkEndpointGroupPscDataInput interface {
 }
 
 type RegionNetworkEndpointGroupPscDataArgs struct {
+	// (Output)
+	// Address allocated from given subnetwork for PSC. This IP address acts
+	// as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+	ConsumerPscAddress pulumi.StringPtrInput `pulumi:"consumerPscAddress"`
 	// The PSC producer port to use when consumer PSC NEG connects to a producer. If
 	// this flag isn't specified for a PSC NEG with endpoint type
 	// private-service-connect, then PSC NEG will be connected to a first port in the
 	// available PSC producer port range.
 	ProducerPort pulumi.StringPtrInput `pulumi:"producerPort"`
+	// (Output)
+	// The PSC connection id of the PSC Network Endpoint Group Consumer.
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+	// (Output)
+	// The connection status of the PSC Network Endpoint Group Consumer.
+	// Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+	// `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+	PscConnectionStatus pulumi.StringPtrInput `pulumi:"pscConnectionStatus"`
 }
 
 func (RegionNetworkEndpointGroupPscDataArgs) ElementType() reflect.Type {
@@ -5094,12 +5118,33 @@ func (o RegionNetworkEndpointGroupPscDataOutput) ToRegionNetworkEndpointGroupPsc
 	}).(RegionNetworkEndpointGroupPscDataPtrOutput)
 }
 
+// (Output)
+// Address allocated from given subnetwork for PSC. This IP address acts
+// as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+func (o RegionNetworkEndpointGroupPscDataOutput) ConsumerPscAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupPscData) *string { return v.ConsumerPscAddress }).(pulumi.StringPtrOutput)
+}
+
 // The PSC producer port to use when consumer PSC NEG connects to a producer. If
 // this flag isn't specified for a PSC NEG with endpoint type
 // private-service-connect, then PSC NEG will be connected to a first port in the
 // available PSC producer port range.
 func (o RegionNetworkEndpointGroupPscDataOutput) ProducerPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionNetworkEndpointGroupPscData) *string { return v.ProducerPort }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The PSC connection id of the PSC Network Endpoint Group Consumer.
+func (o RegionNetworkEndpointGroupPscDataOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupPscData) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The connection status of the PSC Network Endpoint Group Consumer.
+// Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+// `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+func (o RegionNetworkEndpointGroupPscDataOutput) PscConnectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroupPscData) *string { return v.PscConnectionStatus }).(pulumi.StringPtrOutput)
 }
 
 type RegionNetworkEndpointGroupPscDataPtrOutput struct{ *pulumi.OutputState }
@@ -5126,6 +5171,18 @@ func (o RegionNetworkEndpointGroupPscDataPtrOutput) Elem() RegionNetworkEndpoint
 	}).(RegionNetworkEndpointGroupPscDataOutput)
 }
 
+// (Output)
+// Address allocated from given subnetwork for PSC. This IP address acts
+// as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+func (o RegionNetworkEndpointGroupPscDataPtrOutput) ConsumerPscAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupPscData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerPscAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 // The PSC producer port to use when consumer PSC NEG connects to a producer. If
 // this flag isn't specified for a PSC NEG with endpoint type
 // private-service-connect, then PSC NEG will be connected to a first port in the
@@ -5136,6 +5193,30 @@ func (o RegionNetworkEndpointGroupPscDataPtrOutput) ProducerPort() pulumi.String
 			return nil
 		}
 		return v.ProducerPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The PSC connection id of the PSC Network Endpoint Group Consumer.
+func (o RegionNetworkEndpointGroupPscDataPtrOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupPscData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The connection status of the PSC Network Endpoint Group Consumer.
+// Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`,
+// `REJECTED`, `CLOSED`, `NEEDS_ATTENTION`
+func (o RegionNetworkEndpointGroupPscDataPtrOutput) PscConnectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupPscData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscConnectionStatus
 	}).(pulumi.StringPtrOutput)
 }
 

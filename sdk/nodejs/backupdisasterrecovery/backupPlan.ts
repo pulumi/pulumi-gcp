@@ -241,6 +241,17 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     declare public readonly diskBackupPlanProperties: pulumi.Output<outputs.backupdisasterrecovery.BackupPlanDiskBackupPlanProperties | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * This collection of key/value pairs allows for custom labels to be supplied by the user.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The location for the backup plan
      */
     declare public readonly location: pulumi.Output<string>;
@@ -261,6 +272,11 @@ export class BackupPlan extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     */
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
      * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
@@ -297,11 +313,14 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["diskBackupPlanProperties"] = state?.diskBackupPlanProperties;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["logRetentionDays"] = state?.logRetentionDays;
             resourceInputs["maxCustomOnDemandRetentionDays"] = state?.maxCustomOnDemandRetentionDays;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["supportedResourceTypes"] = state?.supportedResourceTypes;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -326,6 +345,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["diskBackupPlanProperties"] = args?.diskBackupPlanProperties;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["logRetentionDays"] = args?.logRetentionDays;
             resourceInputs["maxCustomOnDemandRetentionDays"] = args?.maxCustomOnDemandRetentionDays;
@@ -333,11 +353,15 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["backupVaultServiceAccount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["supportedResourceTypes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(BackupPlan.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -391,6 +415,17 @@ export interface BackupPlanState {
      */
     diskBackupPlanProperties?: pulumi.Input<inputs.backupdisasterrecovery.BackupPlanDiskBackupPlanProperties | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * This collection of key/value pairs allows for custom labels to be supplied by the user.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The location for the backup plan
      */
     location?: pulumi.Input<string | undefined>;
@@ -411,6 +446,11 @@ export interface BackupPlanState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
      * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
@@ -466,6 +506,13 @@ export interface BackupPlanArgs {
      * Structure is documented below.
      */
     diskBackupPlanProperties?: pulumi.Input<inputs.backupdisasterrecovery.BackupPlanDiskBackupPlanProperties | undefined>;
+    /**
+     * This collection of key/value pairs allows for custom labels to be supplied by the user.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the backup plan
      */

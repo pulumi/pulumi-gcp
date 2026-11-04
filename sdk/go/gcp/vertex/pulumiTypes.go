@@ -5674,6 +5674,15 @@ type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources struct {
 	// autoscaling_metric_specs.target to `80`.
 	// Structure is documented below.
 	AutoscalingMetricSpecs []AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec `pulumi:"autoscalingMetricSpecs"`
+	// (Optional, Beta)
+	// Number of initial replicas being deployed on when scaling the workload up
+	// from zero or when creating the workload in case minReplicaCount = 0.
+	// When minReplicaCount > 0 (meaning that the scale-to-zero feature is not
+	// enabled), initialReplicaCount should not be set. When minReplicaCount
+	// = 0 (meaning that the scale-to-zero feature is enabled),
+	// initialReplicaCount should be larger than zero, but no greater than
+	// max_replica_count.
+	InitialReplicaCount *int `pulumi:"initialReplicaCount"`
 	// Specification of a single machine.
 	// Structure is documented below.
 	MachineSpec AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec `pulumi:"machineSpec"`
@@ -5690,7 +5699,8 @@ type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources struct {
 	// number of GPUs per replica in the selected machine type).
 	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
 	// The minimum number of machine replicas that will be always deployed on.
-	// This value must be greater than or equal to 1.
+	// This value must be greater than or equal to 1. To enable scale-to-zero
+	// (in beta), set this value to 0 and also set `initialReplicaCount`.
 	// If traffic increases, it may dynamically be deployed onto more replicas,
 	// and as traffic decreases, some of these extra replicas may be freed.
 	MinReplicaCount int `pulumi:"minReplicaCount"`
@@ -5701,6 +5711,10 @@ type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources struct {
 	// the replicas will be retried. If not set, the default
 	// requiredReplicaCount will be min_replica_count.
 	RequiredReplicaCount *int `pulumi:"requiredReplicaCount"`
+	// (Optional, Beta)
+	// Specification for scale-to-zero feature.
+	// Structure is documented below.
+	ScaleToZeroSpec *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec `pulumi:"scaleToZeroSpec"`
 	// If true, schedule the deployment workload on [spot
 	// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
 	Spot *bool `pulumi:"spot"`
@@ -5737,6 +5751,15 @@ type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs struc
 	// autoscaling_metric_specs.target to `80`.
 	// Structure is documented below.
 	AutoscalingMetricSpecs AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayInput `pulumi:"autoscalingMetricSpecs"`
+	// (Optional, Beta)
+	// Number of initial replicas being deployed on when scaling the workload up
+	// from zero or when creating the workload in case minReplicaCount = 0.
+	// When minReplicaCount > 0 (meaning that the scale-to-zero feature is not
+	// enabled), initialReplicaCount should not be set. When minReplicaCount
+	// = 0 (meaning that the scale-to-zero feature is enabled),
+	// initialReplicaCount should be larger than zero, but no greater than
+	// max_replica_count.
+	InitialReplicaCount pulumi.IntPtrInput `pulumi:"initialReplicaCount"`
 	// Specification of a single machine.
 	// Structure is documented below.
 	MachineSpec AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecInput `pulumi:"machineSpec"`
@@ -5753,7 +5776,8 @@ type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs struc
 	// number of GPUs per replica in the selected machine type).
 	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
 	// The minimum number of machine replicas that will be always deployed on.
-	// This value must be greater than or equal to 1.
+	// This value must be greater than or equal to 1. To enable scale-to-zero
+	// (in beta), set this value to 0 and also set `initialReplicaCount`.
 	// If traffic increases, it may dynamically be deployed onto more replicas,
 	// and as traffic decreases, some of these extra replicas may be freed.
 	MinReplicaCount pulumi.IntInput `pulumi:"minReplicaCount"`
@@ -5764,6 +5788,10 @@ type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs struc
 	// the replicas will be retried. If not set, the default
 	// requiredReplicaCount will be min_replica_count.
 	RequiredReplicaCount pulumi.IntPtrInput `pulumi:"requiredReplicaCount"`
+	// (Optional, Beta)
+	// Specification for scale-to-zero feature.
+	// Structure is documented below.
+	ScaleToZeroSpec AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrInput `pulumi:"scaleToZeroSpec"`
 	// If true, schedule the deployment workload on [spot
 	// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
@@ -5870,6 +5898,20 @@ func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput)
 	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput)
 }
 
+// (Optional, Beta)
+// Number of initial replicas being deployed on when scaling the workload up
+// from zero or when creating the workload in case minReplicaCount = 0.
+// When minReplicaCount > 0 (meaning that the scale-to-zero feature is not
+// enabled), initialReplicaCount should not be set. When minReplicaCount
+// = 0 (meaning that the scale-to-zero feature is enabled),
+// initialReplicaCount should be larger than zero, but no greater than
+// max_replica_count.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) InitialReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *int {
+		return v.InitialReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // Specification of a single machine.
 // Structure is documented below.
 func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) MachineSpec() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput {
@@ -5896,7 +5938,8 @@ func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput)
 }
 
 // The minimum number of machine replicas that will be always deployed on.
-// This value must be greater than or equal to 1.
+// This value must be greater than or equal to 1. To enable scale-to-zero
+// (in beta), set this value to 0 and also set `initialReplicaCount`.
 // If traffic increases, it may dynamically be deployed onto more replicas,
 // and as traffic decreases, some of these extra replicas may be freed.
 func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) MinReplicaCount() pulumi.IntOutput {
@@ -5915,6 +5958,15 @@ func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput)
 	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *int {
 		return v.RequiredReplicaCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional, Beta)
+// Specification for scale-to-zero feature.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) ScaleToZeroSpec() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec {
+		return v.ScaleToZeroSpec
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput)
 }
 
 // If true, schedule the deployment workload on [spot
@@ -5974,6 +6026,23 @@ func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutp
 	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput)
 }
 
+// (Optional, Beta)
+// Number of initial replicas being deployed on when scaling the workload up
+// from zero or when creating the workload in case minReplicaCount = 0.
+// When minReplicaCount > 0 (meaning that the scale-to-zero feature is not
+// enabled), initialReplicaCount should not be set. When minReplicaCount
+// = 0 (meaning that the scale-to-zero feature is enabled),
+// initialReplicaCount should be larger than zero, but no greater than
+// max_replica_count.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) InitialReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // Specification of a single machine.
 // Structure is documented below.
 func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) MachineSpec() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
@@ -6006,7 +6075,8 @@ func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutp
 }
 
 // The minimum number of machine replicas that will be always deployed on.
-// This value must be greater than or equal to 1.
+// This value must be greater than or equal to 1. To enable scale-to-zero
+// (in beta), set this value to 0 and also set `initialReplicaCount`.
 // If traffic increases, it may dynamically be deployed onto more replicas,
 // and as traffic decreases, some of these extra replicas may be freed.
 func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) MinReplicaCount() pulumi.IntPtrOutput {
@@ -6031,6 +6101,18 @@ func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutp
 		}
 		return v.RequiredReplicaCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional, Beta)
+// Specification for scale-to-zero feature.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) ScaleToZeroSpec() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec {
+		if v == nil {
+			return nil
+		}
+		return v.ScaleToZeroSpec
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput)
 }
 
 // If true, schedule the deployment workload on [spot
@@ -6742,6 +6824,186 @@ func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachine
 		}
 		return v.Values
 	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec struct {
+	// (Optional, Beta)
+	// Duration of no traffic before scaling to zero. [MinValue=300] (5
+	// minutes) [MaxValue=28800] (8 hours)
+	IdleScaledownPeriod *string `pulumi:"idleScaledownPeriod"`
+	// (Optional, Beta)
+	// Minimum duration that a deployment will be scaled up before traffic is
+	// evaluated for potential scale-down. [MinValue=300] (5 minutes)
+	// [MaxValue=28800] (8 hours)
+	MinScaleupPeriod *string `pulumi:"minScaleupPeriod"`
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs{...}
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs struct {
+	// (Optional, Beta)
+	// Duration of no traffic before scaling to zero. [MinValue=300] (5
+	// minutes) [MaxValue=28800] (8 hours)
+	IdleScaledownPeriod pulumi.StringPtrInput `pulumi:"idleScaledownPeriod"`
+	// (Optional, Beta)
+	// Minimum duration that a deployment will be scaled up before traffic is
+	// evaluated for potential scale-down. [MinValue=300] (5 minutes)
+	// [MaxValue=28800] (8 hours)
+	MinScaleupPeriod pulumi.StringPtrInput `pulumi:"minScaleupPeriod"`
+}
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput).ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs, AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtr and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrType AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs
+
+func AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtr(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput)
+}
+
+// (Optional, Beta)
+// Duration of no traffic before scaling to zero. [MinValue=300] (5
+// minutes) [MaxValue=28800] (8 hours)
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput) IdleScaledownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec) *string {
+		return v.IdleScaledownPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Minimum duration that a deployment will be scaled up before traffic is
+// evaluated for potential scale-down. [MinValue=300] (5 minutes)
+// [MaxValue=28800] (8 hours)
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput) MinScaleupPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec) *string {
+		return v.MinScaleupPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput) Elem() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput)
+}
+
+// (Optional, Beta)
+// Duration of no traffic before scaling to zero. [MinValue=300] (5
+// minutes) [MaxValue=28800] (8 hours)
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput) IdleScaledownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleScaledownPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Minimum duration that a deployment will be scaled up before traffic is
+// evaluated for potential scale-down. [MinValue=300] (5 minutes)
+// [MaxValue=28800] (8 hours)
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput) MinScaleupPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinScaleupPeriod
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiEndpointWithModelGardenDeploymentEndpointConfig struct {
@@ -22754,7 +23016,9 @@ type AiModelDevelopmentClusterNodePool struct {
 	// This field is only applicable when `provisioningModel` is set to
 	// `FLEX_START`.
 	FlexStartMaxDuration *string `pulumi:"flexStartMaxDuration"`
-	// The unique ID referring to this node pool.
+	// The unique ID referring to this node pool. Cannot be modified in
+	// place on an existing node pool; changing `id` updates the list of
+	// node pools by adding/removing pools (validated server-side).
 	Id string `pulumi:"id"`
 	// The labels with user-defined metadata to organize the node pool. These
 	// labels are applied to the underlying compute resources (for example, the
@@ -22831,7 +23095,9 @@ type AiModelDevelopmentClusterNodePoolArgs struct {
 	// This field is only applicable when `provisioningModel` is set to
 	// `FLEX_START`.
 	FlexStartMaxDuration pulumi.StringPtrInput `pulumi:"flexStartMaxDuration"`
-	// The unique ID referring to this node pool.
+	// The unique ID referring to this node pool. Cannot be modified in
+	// place on an existing node pool; changing `id` updates the list of
+	// node pools by adding/removing pools (validated server-side).
 	Id pulumi.StringInput `pulumi:"id"`
 	// The labels with user-defined metadata to organize the node pool. These
 	// labels are applied to the underlying compute resources (for example, the
@@ -22964,7 +23230,9 @@ func (o AiModelDevelopmentClusterNodePoolOutput) FlexStartMaxDuration() pulumi.S
 	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) *string { return v.FlexStartMaxDuration }).(pulumi.StringPtrOutput)
 }
 
-// The unique ID referring to this node pool.
+// The unique ID referring to this node pool. Cannot be modified in
+// place on an existing node pool; changing `id` updates the list of
+// node pools by adding/removing pools (validated server-side).
 func (o AiModelDevelopmentClusterNodePoolOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AiModelDevelopmentClusterNodePool) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -23669,6 +23937,8 @@ func (o AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput) MinNodeCount() pu
 }
 
 type AiModelDevelopmentClusterOrchestratorSpec struct {
+	// The GKE orchestrator related spec of the cluster.
+	KubernetesSpec *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec `pulumi:"kubernetesSpec"`
 	// The Slurm orchestrator related spec of the cluster.
 	SlurmSpec *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec `pulumi:"slurmSpec"`
 }
@@ -23685,6 +23955,8 @@ type AiModelDevelopmentClusterOrchestratorSpecInput interface {
 }
 
 type AiModelDevelopmentClusterOrchestratorSpecArgs struct {
+	// The GKE orchestrator related spec of the cluster.
+	KubernetesSpec AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrInput `pulumi:"kubernetesSpec"`
 	// The Slurm orchestrator related spec of the cluster.
 	SlurmSpec AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput `pulumi:"slurmSpec"`
 }
@@ -23766,6 +24038,13 @@ func (o AiModelDevelopmentClusterOrchestratorSpecOutput) ToAiModelDevelopmentClu
 	}).(AiModelDevelopmentClusterOrchestratorSpecPtrOutput)
 }
 
+// The GKE orchestrator related spec of the cluster.
+func (o AiModelDevelopmentClusterOrchestratorSpecOutput) KubernetesSpec() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec {
+		return v.KubernetesSpec
+	}).(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput)
+}
+
 // The Slurm orchestrator related spec of the cluster.
 func (o AiModelDevelopmentClusterOrchestratorSpecOutput) SlurmSpec() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
 	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
@@ -23797,6 +24076,16 @@ func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) Elem() AiModelDevelo
 	}).(AiModelDevelopmentClusterOrchestratorSpecOutput)
 }
 
+// The GKE orchestrator related spec of the cluster.
+func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) KubernetesSpec() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesSpec
+	}).(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput)
+}
+
 // The Slurm orchestrator related spec of the cluster.
 func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) SlurmSpec() AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput {
 	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpec) *AiModelDevelopmentClusterOrchestratorSpecSlurmSpec {
@@ -23805,6 +24094,287 @@ func (o AiModelDevelopmentClusterOrchestratorSpecPtrOutput) SlurmSpec() AiModelD
 		}
 		return v.SlurmSpec
 	}).(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec struct {
+	// The Kubernetes version of the GKE control plane.
+	// Accepted formats are minor version (for example, '"1.30"'), patch version
+	// (for example, '"1.30.5"'), full GKE release version (for example,
+	// '"1.30.5-gke.1014001"'), or '"-"' to use the service default version.
+	// Upgrades can advance at most one minor version at a time; downgrades are
+	// rejected.
+	ControlPlaneVersion *string `pulumi:"controlPlaneVersion"`
+	// Whether to enable IP alias.
+	EnableIpAlias *bool `pulumi:"enableIpAlias"`
+	// IDs of the NodePools to be included in this GKE cluster. These IDs must
+	// correspond to NodePools defined in the 'node_pools' field.
+	NodePoolIds []string `pulumi:"nodePoolIds"`
+	// The Kubernetes versions for specific node pools, keyed by node pool ID.
+	// When specified, all node pool IDs in the cluster must be included.
+	// Accepted formats are minor version (for example, '"1.30"'), patch version
+	// (for example, '"1.30.5"'), full GKE release version (for example,
+	// '"1.30.5-gke.1014001"'), or '"-"' to align with the control plane version.
+	// Node pools cannot be newer than the control plane or more than 2 minor
+	// versions behind it; upgrades can advance at most one minor version at a
+	// time and downgrades are rejected.
+	NodePoolVersions map[string]string `pulumi:"nodePoolVersions"`
+	// Whether the GKE cluster's control plane endpoint is publicly accessible.
+	// If true, the cluster is created with a public access endpoint (i.e. the
+	// private cluster configuration is disabled). If false or unset, the cluster
+	// is created with only private control plane access by default.
+	PublicAccessEndpointEnabled *bool `pulumi:"publicAccessEndpointEnabled"`
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs and AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecInput` via:
+//
+//	AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs{...}
+type AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs struct {
+	// The Kubernetes version of the GKE control plane.
+	// Accepted formats are minor version (for example, '"1.30"'), patch version
+	// (for example, '"1.30.5"'), full GKE release version (for example,
+	// '"1.30.5-gke.1014001"'), or '"-"' to use the service default version.
+	// Upgrades can advance at most one minor version at a time; downgrades are
+	// rejected.
+	ControlPlaneVersion pulumi.StringPtrInput `pulumi:"controlPlaneVersion"`
+	// Whether to enable IP alias.
+	EnableIpAlias pulumi.BoolPtrInput `pulumi:"enableIpAlias"`
+	// IDs of the NodePools to be included in this GKE cluster. These IDs must
+	// correspond to NodePools defined in the 'node_pools' field.
+	NodePoolIds pulumi.StringArrayInput `pulumi:"nodePoolIds"`
+	// The Kubernetes versions for specific node pools, keyed by node pool ID.
+	// When specified, all node pool IDs in the cluster must be included.
+	// Accepted formats are minor version (for example, '"1.30"'), patch version
+	// (for example, '"1.30.5"'), full GKE release version (for example,
+	// '"1.30.5-gke.1014001"'), or '"-"' to align with the control plane version.
+	// Node pools cannot be newer than the control plane or more than 2 minor
+	// versions behind it; upgrades can advance at most one minor version at a
+	// time and downgrades are rejected.
+	NodePoolVersions pulumi.StringMapInput `pulumi:"nodePoolVersions"`
+	// Whether the GKE cluster's control plane endpoint is publicly accessible.
+	// If true, the cluster is created with a public access endpoint (i.e. the
+	// private cluster configuration is disabled). If false or unset, the cluster
+	// is created with only private control plane access by default.
+	PublicAccessEndpointEnabled pulumi.BoolPtrInput `pulumi:"publicAccessEndpointEnabled"`
+}
+
+func (AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec)(nil)).Elem()
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput)
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput).ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(ctx)
+}
+
+// AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrInput is an input type that accepts AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs, AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtr and AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput values.
+// You can construct a concrete instance of `AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrInput` via:
+//
+//	        AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput
+	ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(context.Context) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput
+}
+
+type aiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrType AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs
+
+func AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtr(v *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrInput {
+	return (*aiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrType)(v)
+}
+
+func (*aiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec)(nil)).Elem()
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return i.ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrType) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return o.ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec {
+		return &v
+	}).(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput)
+}
+
+// The Kubernetes version of the GKE control plane.
+// Accepted formats are minor version (for example, '"1.30"'), patch version
+// (for example, '"1.30.5"'), full GKE release version (for example,
+// '"1.30.5-gke.1014001"'), or '"-"' to use the service default version.
+// Upgrades can advance at most one minor version at a time; downgrades are
+// rejected.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) ControlPlaneVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) *string { return v.ControlPlaneVersion }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable IP alias.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) EnableIpAlias() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) *bool { return v.EnableIpAlias }).(pulumi.BoolPtrOutput)
+}
+
+// IDs of the NodePools to be included in this GKE cluster. These IDs must
+// correspond to NodePools defined in the 'node_pools' field.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) NodePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) []string { return v.NodePoolIds }).(pulumi.StringArrayOutput)
+}
+
+// The Kubernetes versions for specific node pools, keyed by node pool ID.
+// When specified, all node pool IDs in the cluster must be included.
+// Accepted formats are minor version (for example, '"1.30"'), patch version
+// (for example, '"1.30.5"'), full GKE release version (for example,
+// '"1.30.5-gke.1014001"'), or '"-"' to align with the control plane version.
+// Node pools cannot be newer than the control plane or more than 2 minor
+// versions behind it; upgrades can advance at most one minor version at a
+// time and downgrades are rejected.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) NodePoolVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) map[string]string {
+		return v.NodePoolVersions
+	}).(pulumi.StringMapOutput)
+}
+
+// Whether the GKE cluster's control plane endpoint is publicly accessible.
+// If true, the cluster is created with a public access endpoint (i.e. the
+// private cluster configuration is disabled). If false or unset, the cluster
+// is created with only private control plane access by default.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput) PublicAccessEndpointEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) *bool {
+		return v.PublicAccessEndpointEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec)(nil)).Elem()
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) ToAiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutputWithContext(ctx context.Context) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput {
+	return o
+}
+
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) Elem() AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec
+		return ret
+	}).(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput)
+}
+
+// The Kubernetes version of the GKE control plane.
+// Accepted formats are minor version (for example, '"1.30"'), patch version
+// (for example, '"1.30.5"'), full GKE release version (for example,
+// '"1.30.5-gke.1014001"'), or '"-"' to use the service default version.
+// Upgrades can advance at most one minor version at a time; downgrades are
+// rejected.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) ControlPlaneVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable IP alias.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) EnableIpAlias() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIpAlias
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IDs of the NodePools to be included in this GKE cluster. These IDs must
+// correspond to NodePools defined in the 'node_pools' field.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) NodePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Kubernetes versions for specific node pools, keyed by node pool ID.
+// When specified, all node pool IDs in the cluster must be included.
+// Accepted formats are minor version (for example, '"1.30"'), patch version
+// (for example, '"1.30.5"'), full GKE release version (for example,
+// '"1.30.5-gke.1014001"'), or '"-"' to align with the control plane version.
+// Node pools cannot be newer than the control plane or more than 2 minor
+// versions behind it; upgrades can advance at most one minor version at a
+// time and downgrades are rejected.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) NodePoolVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolVersions
+	}).(pulumi.StringMapOutput)
+}
+
+// Whether the GKE cluster's control plane endpoint is publicly accessible.
+// If true, the cluster is created with a public access endpoint (i.e. the
+// private cluster configuration is disabled). If false or unset, the cluster
+// is created with only private control plane access by default.
+func (o AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput) PublicAccessEndpointEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentClusterOrchestratorSpecKubernetesSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PublicAccessEndpointEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AiModelDevelopmentClusterOrchestratorSpecSlurmSpec struct {
@@ -48022,6 +48592,3727 @@ func (o AiTensorboardEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiTrainingPipelineEncryptionSpec struct {
+	// The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiTrainingPipelineEncryptionSpecInput is an input type that accepts AiTrainingPipelineEncryptionSpecArgs and AiTrainingPipelineEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineEncryptionSpecInput` via:
+//
+//	AiTrainingPipelineEncryptionSpecArgs{...}
+type AiTrainingPipelineEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineEncryptionSpecOutput() AiTrainingPipelineEncryptionSpecOutput
+	ToAiTrainingPipelineEncryptionSpecOutputWithContext(context.Context) AiTrainingPipelineEncryptionSpecOutput
+}
+
+type AiTrainingPipelineEncryptionSpecArgs struct {
+	// The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiTrainingPipelineEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineEncryptionSpecArgs) ToAiTrainingPipelineEncryptionSpecOutput() AiTrainingPipelineEncryptionSpecOutput {
+	return i.ToAiTrainingPipelineEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineEncryptionSpecArgs) ToAiTrainingPipelineEncryptionSpecOutputWithContext(ctx context.Context) AiTrainingPipelineEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineEncryptionSpecOutput)
+}
+
+func (i AiTrainingPipelineEncryptionSpecArgs) ToAiTrainingPipelineEncryptionSpecPtrOutput() AiTrainingPipelineEncryptionSpecPtrOutput {
+	return i.ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineEncryptionSpecArgs) ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineEncryptionSpecOutput).ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineEncryptionSpecPtrInput is an input type that accepts AiTrainingPipelineEncryptionSpecArgs, AiTrainingPipelineEncryptionSpecPtr and AiTrainingPipelineEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineEncryptionSpecPtrInput` via:
+//
+//	        AiTrainingPipelineEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineEncryptionSpecPtrOutput() AiTrainingPipelineEncryptionSpecPtrOutput
+	ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(context.Context) AiTrainingPipelineEncryptionSpecPtrOutput
+}
+
+type aiTrainingPipelineEncryptionSpecPtrType AiTrainingPipelineEncryptionSpecArgs
+
+func AiTrainingPipelineEncryptionSpecPtr(v *AiTrainingPipelineEncryptionSpecArgs) AiTrainingPipelineEncryptionSpecPtrInput {
+	return (*aiTrainingPipelineEncryptionSpecPtrType)(v)
+}
+
+func (*aiTrainingPipelineEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineEncryptionSpecPtrType) ToAiTrainingPipelineEncryptionSpecPtrOutput() AiTrainingPipelineEncryptionSpecPtrOutput {
+	return i.ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineEncryptionSpecPtrType) ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineEncryptionSpecPtrOutput)
+}
+
+type AiTrainingPipelineEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineEncryptionSpecOutput) ToAiTrainingPipelineEncryptionSpecOutput() AiTrainingPipelineEncryptionSpecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineEncryptionSpecOutput) ToAiTrainingPipelineEncryptionSpecOutputWithContext(ctx context.Context) AiTrainingPipelineEncryptionSpecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineEncryptionSpecOutput) ToAiTrainingPipelineEncryptionSpecPtrOutput() AiTrainingPipelineEncryptionSpecPtrOutput {
+	return o.ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineEncryptionSpecOutput) ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineEncryptionSpec) *AiTrainingPipelineEncryptionSpec {
+		return &v
+	}).(AiTrainingPipelineEncryptionSpecPtrOutput)
+}
+
+// The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+func (o AiTrainingPipelineEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiTrainingPipelineEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineEncryptionSpecPtrOutput) ToAiTrainingPipelineEncryptionSpecPtrOutput() AiTrainingPipelineEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineEncryptionSpecPtrOutput) ToAiTrainingPipelineEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineEncryptionSpecPtrOutput) Elem() AiTrainingPipelineEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineEncryptionSpec) AiTrainingPipelineEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineEncryptionSpec
+		return ret
+	}).(AiTrainingPipelineEncryptionSpecOutput)
+}
+
+// The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+func (o AiTrainingPipelineEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// AiTrainingPipelineErrorInput is an input type that accepts AiTrainingPipelineErrorArgs and AiTrainingPipelineErrorOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineErrorInput` via:
+//
+//	AiTrainingPipelineErrorArgs{...}
+type AiTrainingPipelineErrorInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineErrorOutput() AiTrainingPipelineErrorOutput
+	ToAiTrainingPipelineErrorOutputWithContext(context.Context) AiTrainingPipelineErrorOutput
+}
+
+type AiTrainingPipelineErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiTrainingPipelineErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineError)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineErrorArgs) ToAiTrainingPipelineErrorOutput() AiTrainingPipelineErrorOutput {
+	return i.ToAiTrainingPipelineErrorOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineErrorArgs) ToAiTrainingPipelineErrorOutputWithContext(ctx context.Context) AiTrainingPipelineErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineErrorOutput)
+}
+
+// AiTrainingPipelineErrorArrayInput is an input type that accepts AiTrainingPipelineErrorArray and AiTrainingPipelineErrorArrayOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineErrorArrayInput` via:
+//
+//	AiTrainingPipelineErrorArray{ AiTrainingPipelineErrorArgs{...} }
+type AiTrainingPipelineErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineErrorArrayOutput() AiTrainingPipelineErrorArrayOutput
+	ToAiTrainingPipelineErrorArrayOutputWithContext(context.Context) AiTrainingPipelineErrorArrayOutput
+}
+
+type AiTrainingPipelineErrorArray []AiTrainingPipelineErrorInput
+
+func (AiTrainingPipelineErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiTrainingPipelineError)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineErrorArray) ToAiTrainingPipelineErrorArrayOutput() AiTrainingPipelineErrorArrayOutput {
+	return i.ToAiTrainingPipelineErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineErrorArray) ToAiTrainingPipelineErrorArrayOutputWithContext(ctx context.Context) AiTrainingPipelineErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineErrorArrayOutput)
+}
+
+type AiTrainingPipelineErrorOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineError)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineErrorOutput) ToAiTrainingPipelineErrorOutput() AiTrainingPipelineErrorOutput {
+	return o
+}
+
+func (o AiTrainingPipelineErrorOutput) ToAiTrainingPipelineErrorOutputWithContext(ctx context.Context) AiTrainingPipelineErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiTrainingPipelineErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message.
+func (o AiTrainingPipelineErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiTrainingPipelineError)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineErrorArrayOutput) ToAiTrainingPipelineErrorArrayOutput() AiTrainingPipelineErrorArrayOutput {
+	return o
+}
+
+func (o AiTrainingPipelineErrorArrayOutput) ToAiTrainingPipelineErrorArrayOutputWithContext(ctx context.Context) AiTrainingPipelineErrorArrayOutput {
+	return o
+}
+
+func (o AiTrainingPipelineErrorArrayOutput) Index(i pulumi.IntInput) AiTrainingPipelineErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiTrainingPipelineError {
+		return vs[0].([]AiTrainingPipelineError)[vs[1].(int)]
+	}).(AiTrainingPipelineErrorOutput)
+}
+
+type AiTrainingPipelineInputDataConfig struct {
+	// Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema.
+	AnnotationSchemaUri *string `pulumi:"annotationSchemaUri"`
+	// Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset.
+	AnnotationsFilter *string `pulumi:"annotationsFilter"`
+	// The BigQuery location where the training data is to be written to.
+	// Structure is documented below.
+	BigqueryDestination *AiTrainingPipelineInputDataConfigBigqueryDestination `pulumi:"bigqueryDestination"`
+	// The ID of the Dataset in the same Project and Location which data will be used to train the Model.
+	DatasetId string `pulumi:"datasetId"`
+	// Assigns input data to training, validation, and test sets based on the given filters.
+	// Structure is documented below.
+	FilterSplit *AiTrainingPipelineInputDataConfigFilterSplit `pulumi:"filterSplit"`
+	// The instructions how the input data should be split between the training, validation and test sets.
+	// Structure is documented below.
+	FractionSplit *AiTrainingPipelineInputDataConfigFractionSplit `pulumi:"fractionSplit"`
+	// The Cloud Storage location where the training data is to be written to.
+	// Structure is documented below.
+	GcsDestination *AiTrainingPipelineInputDataConfigGcsDestination `pulumi:"gcsDestination"`
+	// Whether to persist the ML use assignment to data item system labels.
+	PersistMlUseAssignment *bool `pulumi:"persistMlUseAssignment"`
+	// Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
+	// Structure is documented below.
+	PredefinedSplit *AiTrainingPipelineInputDataConfigPredefinedSplit `pulumi:"predefinedSplit"`
+	// Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery under the Dataset specified by datasetId used for filtering Annotations for training.
+	SavedQueryId *string `pulumi:"savedQueryId"`
+	// Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column is mirrored within each split. Supported only for tabular Datasets.
+	// Structure is documented below.
+	StratifiedSplit *AiTrainingPipelineInputDataConfigStratifiedSplit `pulumi:"stratifiedSplit"`
+	// Assigns input data to training, validation, and test sets based on provided timestamps. Supported only for tabular Datasets.
+	// Structure is documented below.
+	TimestampSplit *AiTrainingPipelineInputDataConfigTimestampSplit `pulumi:"timestampSplit"`
+}
+
+// AiTrainingPipelineInputDataConfigInput is an input type that accepts AiTrainingPipelineInputDataConfigArgs and AiTrainingPipelineInputDataConfigOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigInput` via:
+//
+//	AiTrainingPipelineInputDataConfigArgs{...}
+type AiTrainingPipelineInputDataConfigInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigOutput() AiTrainingPipelineInputDataConfigOutput
+	ToAiTrainingPipelineInputDataConfigOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigOutput
+}
+
+type AiTrainingPipelineInputDataConfigArgs struct {
+	// Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema.
+	AnnotationSchemaUri pulumi.StringPtrInput `pulumi:"annotationSchemaUri"`
+	// Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset.
+	AnnotationsFilter pulumi.StringPtrInput `pulumi:"annotationsFilter"`
+	// The BigQuery location where the training data is to be written to.
+	// Structure is documented below.
+	BigqueryDestination AiTrainingPipelineInputDataConfigBigqueryDestinationPtrInput `pulumi:"bigqueryDestination"`
+	// The ID of the Dataset in the same Project and Location which data will be used to train the Model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// Assigns input data to training, validation, and test sets based on the given filters.
+	// Structure is documented below.
+	FilterSplit AiTrainingPipelineInputDataConfigFilterSplitPtrInput `pulumi:"filterSplit"`
+	// The instructions how the input data should be split between the training, validation and test sets.
+	// Structure is documented below.
+	FractionSplit AiTrainingPipelineInputDataConfigFractionSplitPtrInput `pulumi:"fractionSplit"`
+	// The Cloud Storage location where the training data is to be written to.
+	// Structure is documented below.
+	GcsDestination AiTrainingPipelineInputDataConfigGcsDestinationPtrInput `pulumi:"gcsDestination"`
+	// Whether to persist the ML use assignment to data item system labels.
+	PersistMlUseAssignment pulumi.BoolPtrInput `pulumi:"persistMlUseAssignment"`
+	// Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
+	// Structure is documented below.
+	PredefinedSplit AiTrainingPipelineInputDataConfigPredefinedSplitPtrInput `pulumi:"predefinedSplit"`
+	// Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery under the Dataset specified by datasetId used for filtering Annotations for training.
+	SavedQueryId pulumi.StringPtrInput `pulumi:"savedQueryId"`
+	// Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column is mirrored within each split. Supported only for tabular Datasets.
+	// Structure is documented below.
+	StratifiedSplit AiTrainingPipelineInputDataConfigStratifiedSplitPtrInput `pulumi:"stratifiedSplit"`
+	// Assigns input data to training, validation, and test sets based on provided timestamps. Supported only for tabular Datasets.
+	// Structure is documented below.
+	TimestampSplit AiTrainingPipelineInputDataConfigTimestampSplitPtrInput `pulumi:"timestampSplit"`
+}
+
+func (AiTrainingPipelineInputDataConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfig)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineInputDataConfigArgs) ToAiTrainingPipelineInputDataConfigOutput() AiTrainingPipelineInputDataConfigOutput {
+	return i.ToAiTrainingPipelineInputDataConfigOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigArgs) ToAiTrainingPipelineInputDataConfigOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigOutput)
+}
+
+func (i AiTrainingPipelineInputDataConfigArgs) ToAiTrainingPipelineInputDataConfigPtrOutput() AiTrainingPipelineInputDataConfigPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigArgs) ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigOutput).ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineInputDataConfigPtrInput is an input type that accepts AiTrainingPipelineInputDataConfigArgs, AiTrainingPipelineInputDataConfigPtr and AiTrainingPipelineInputDataConfigPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigPtrInput` via:
+//
+//	        AiTrainingPipelineInputDataConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineInputDataConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigPtrOutput() AiTrainingPipelineInputDataConfigPtrOutput
+	ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigPtrOutput
+}
+
+type aiTrainingPipelineInputDataConfigPtrType AiTrainingPipelineInputDataConfigArgs
+
+func AiTrainingPipelineInputDataConfigPtr(v *AiTrainingPipelineInputDataConfigArgs) AiTrainingPipelineInputDataConfigPtrInput {
+	return (*aiTrainingPipelineInputDataConfigPtrType)(v)
+}
+
+func (*aiTrainingPipelineInputDataConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfig)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineInputDataConfigPtrType) ToAiTrainingPipelineInputDataConfigPtrOutput() AiTrainingPipelineInputDataConfigPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineInputDataConfigPtrType) ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfig)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigOutput) ToAiTrainingPipelineInputDataConfigOutput() AiTrainingPipelineInputDataConfigOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigOutput) ToAiTrainingPipelineInputDataConfigOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigOutput) ToAiTrainingPipelineInputDataConfigPtrOutput() AiTrainingPipelineInputDataConfigPtrOutput {
+	return o.ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineInputDataConfigOutput) ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfig {
+		return &v
+	}).(AiTrainingPipelineInputDataConfigPtrOutput)
+}
+
+// Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema.
+func (o AiTrainingPipelineInputDataConfigOutput) AnnotationSchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *string { return v.AnnotationSchemaUri }).(pulumi.StringPtrOutput)
+}
+
+// Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset.
+func (o AiTrainingPipelineInputDataConfigOutput) AnnotationsFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *string { return v.AnnotationsFilter }).(pulumi.StringPtrOutput)
+}
+
+// The BigQuery location where the training data is to be written to.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigOutput) BigqueryDestination() AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigBigqueryDestination {
+		return v.BigqueryDestination
+	}).(AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput)
+}
+
+// The ID of the Dataset in the same Project and Location which data will be used to train the Model.
+func (o AiTrainingPipelineInputDataConfigOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// Assigns input data to training, validation, and test sets based on the given filters.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigOutput) FilterSplit() AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigFilterSplit {
+		return v.FilterSplit
+	}).(AiTrainingPipelineInputDataConfigFilterSplitPtrOutput)
+}
+
+// The instructions how the input data should be split between the training, validation and test sets.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigOutput) FractionSplit() AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigFractionSplit {
+		return v.FractionSplit
+	}).(AiTrainingPipelineInputDataConfigFractionSplitPtrOutput)
+}
+
+// The Cloud Storage location where the training data is to be written to.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigOutput) GcsDestination() AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigGcsDestination {
+		return v.GcsDestination
+	}).(AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput)
+}
+
+// Whether to persist the ML use assignment to data item system labels.
+func (o AiTrainingPipelineInputDataConfigOutput) PersistMlUseAssignment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *bool { return v.PersistMlUseAssignment }).(pulumi.BoolPtrOutput)
+}
+
+// Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigOutput) PredefinedSplit() AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigPredefinedSplit {
+		return v.PredefinedSplit
+	}).(AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput)
+}
+
+// Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery under the Dataset specified by datasetId used for filtering Annotations for training.
+func (o AiTrainingPipelineInputDataConfigOutput) SavedQueryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *string { return v.SavedQueryId }).(pulumi.StringPtrOutput)
+}
+
+// Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column is mirrored within each split. Supported only for tabular Datasets.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigOutput) StratifiedSplit() AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigStratifiedSplit {
+		return v.StratifiedSplit
+	}).(AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput)
+}
+
+// Assigns input data to training, validation, and test sets based on provided timestamps. Supported only for tabular Datasets.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigOutput) TimestampSplit() AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigTimestampSplit {
+		return v.TimestampSplit
+	}).(AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfig)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigPtrOutput) ToAiTrainingPipelineInputDataConfigPtrOutput() AiTrainingPipelineInputDataConfigPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigPtrOutput) ToAiTrainingPipelineInputDataConfigPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigPtrOutput) Elem() AiTrainingPipelineInputDataConfigOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) AiTrainingPipelineInputDataConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineInputDataConfig
+		return ret
+	}).(AiTrainingPipelineInputDataConfigOutput)
+}
+
+// Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) AnnotationSchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnnotationSchemaUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Applicable only to Datasets that have DataItems and Annotations. A filter on Annotations of the Dataset.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) AnnotationsFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnnotationsFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The BigQuery location where the training data is to be written to.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) BigqueryDestination() AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigBigqueryDestination {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryDestination
+	}).(AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput)
+}
+
+// The ID of the Dataset in the same Project and Location which data will be used to train the Model.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Assigns input data to training, validation, and test sets based on the given filters.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) FilterSplit() AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigFilterSplit {
+		if v == nil {
+			return nil
+		}
+		return v.FilterSplit
+	}).(AiTrainingPipelineInputDataConfigFilterSplitPtrOutput)
+}
+
+// The instructions how the input data should be split between the training, validation and test sets.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) FractionSplit() AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigFractionSplit {
+		if v == nil {
+			return nil
+		}
+		return v.FractionSplit
+	}).(AiTrainingPipelineInputDataConfigFractionSplitPtrOutput)
+}
+
+// The Cloud Storage location where the training data is to be written to.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) GcsDestination() AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigGcsDestination {
+		if v == nil {
+			return nil
+		}
+		return v.GcsDestination
+	}).(AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput)
+}
+
+// Whether to persist the ML use assignment to data item system labels.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) PersistMlUseAssignment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PersistMlUseAssignment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) PredefinedSplit() AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigPredefinedSplit {
+		if v == nil {
+			return nil
+		}
+		return v.PredefinedSplit
+	}).(AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput)
+}
+
+// Only applicable to Datasets that have SavedQueries. The ID of a SavedQuery under the Dataset specified by datasetId used for filtering Annotations for training.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) SavedQueryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SavedQueryId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column is mirrored within each split. Supported only for tabular Datasets.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) StratifiedSplit() AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigStratifiedSplit {
+		if v == nil {
+			return nil
+		}
+		return v.StratifiedSplit
+	}).(AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput)
+}
+
+// Assigns input data to training, validation, and test sets based on provided timestamps. Supported only for tabular Datasets.
+// Structure is documented below.
+func (o AiTrainingPipelineInputDataConfigPtrOutput) TimestampSplit() AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfig) *AiTrainingPipelineInputDataConfigTimestampSplit {
+		if v == nil {
+			return nil
+		}
+		return v.TimestampSplit
+	}).(AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigBigqueryDestination struct {
+	// The BigQuery table to which the output is to be written.
+	OutputUri string `pulumi:"outputUri"`
+}
+
+// AiTrainingPipelineInputDataConfigBigqueryDestinationInput is an input type that accepts AiTrainingPipelineInputDataConfigBigqueryDestinationArgs and AiTrainingPipelineInputDataConfigBigqueryDestinationOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigBigqueryDestinationInput` via:
+//
+//	AiTrainingPipelineInputDataConfigBigqueryDestinationArgs{...}
+type AiTrainingPipelineInputDataConfigBigqueryDestinationInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigBigqueryDestinationOutput() AiTrainingPipelineInputDataConfigBigqueryDestinationOutput
+	ToAiTrainingPipelineInputDataConfigBigqueryDestinationOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigBigqueryDestinationOutput
+}
+
+type AiTrainingPipelineInputDataConfigBigqueryDestinationArgs struct {
+	// The BigQuery table to which the output is to be written.
+	OutputUri pulumi.StringInput `pulumi:"outputUri"`
+}
+
+func (AiTrainingPipelineInputDataConfigBigqueryDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineInputDataConfigBigqueryDestinationArgs) ToAiTrainingPipelineInputDataConfigBigqueryDestinationOutput() AiTrainingPipelineInputDataConfigBigqueryDestinationOutput {
+	return i.ToAiTrainingPipelineInputDataConfigBigqueryDestinationOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigBigqueryDestinationArgs) ToAiTrainingPipelineInputDataConfigBigqueryDestinationOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigBigqueryDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigBigqueryDestinationOutput)
+}
+
+func (i AiTrainingPipelineInputDataConfigBigqueryDestinationArgs) ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput() AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigBigqueryDestinationArgs) ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigBigqueryDestinationOutput).ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineInputDataConfigBigqueryDestinationPtrInput is an input type that accepts AiTrainingPipelineInputDataConfigBigqueryDestinationArgs, AiTrainingPipelineInputDataConfigBigqueryDestinationPtr and AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigBigqueryDestinationPtrInput` via:
+//
+//	        AiTrainingPipelineInputDataConfigBigqueryDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineInputDataConfigBigqueryDestinationPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput() AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput
+	ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput
+}
+
+type aiTrainingPipelineInputDataConfigBigqueryDestinationPtrType AiTrainingPipelineInputDataConfigBigqueryDestinationArgs
+
+func AiTrainingPipelineInputDataConfigBigqueryDestinationPtr(v *AiTrainingPipelineInputDataConfigBigqueryDestinationArgs) AiTrainingPipelineInputDataConfigBigqueryDestinationPtrInput {
+	return (*aiTrainingPipelineInputDataConfigBigqueryDestinationPtrType)(v)
+}
+
+func (*aiTrainingPipelineInputDataConfigBigqueryDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineInputDataConfigBigqueryDestinationPtrType) ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput() AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineInputDataConfigBigqueryDestinationPtrType) ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigBigqueryDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationOutput) ToAiTrainingPipelineInputDataConfigBigqueryDestinationOutput() AiTrainingPipelineInputDataConfigBigqueryDestinationOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationOutput) ToAiTrainingPipelineInputDataConfigBigqueryDestinationOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigBigqueryDestinationOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationOutput) ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput() AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return o.ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationOutput) ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineInputDataConfigBigqueryDestination) *AiTrainingPipelineInputDataConfigBigqueryDestination {
+		return &v
+	}).(AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput)
+}
+
+// The BigQuery table to which the output is to be written.
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationOutput) OutputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigBigqueryDestination) string { return v.OutputUri }).(pulumi.StringOutput)
+}
+
+type AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput) ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput() AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput) ToAiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput) Elem() AiTrainingPipelineInputDataConfigBigqueryDestinationOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigBigqueryDestination) AiTrainingPipelineInputDataConfigBigqueryDestination {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineInputDataConfigBigqueryDestination
+		return ret
+	}).(AiTrainingPipelineInputDataConfigBigqueryDestinationOutput)
+}
+
+// The BigQuery table to which the output is to be written.
+func (o AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput) OutputUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigBigqueryDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OutputUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigFilterSplit struct {
+	// A filter on DataItems of the Dataset for test set.
+	TestFilter string `pulumi:"testFilter"`
+	// A filter on DataItems of the Dataset for training set.
+	TrainingFilter string `pulumi:"trainingFilter"`
+	// A filter on DataItems of the Dataset for validation set.
+	ValidationFilter string `pulumi:"validationFilter"`
+}
+
+// AiTrainingPipelineInputDataConfigFilterSplitInput is an input type that accepts AiTrainingPipelineInputDataConfigFilterSplitArgs and AiTrainingPipelineInputDataConfigFilterSplitOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigFilterSplitInput` via:
+//
+//	AiTrainingPipelineInputDataConfigFilterSplitArgs{...}
+type AiTrainingPipelineInputDataConfigFilterSplitInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigFilterSplitOutput() AiTrainingPipelineInputDataConfigFilterSplitOutput
+	ToAiTrainingPipelineInputDataConfigFilterSplitOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigFilterSplitOutput
+}
+
+type AiTrainingPipelineInputDataConfigFilterSplitArgs struct {
+	// A filter on DataItems of the Dataset for test set.
+	TestFilter pulumi.StringInput `pulumi:"testFilter"`
+	// A filter on DataItems of the Dataset for training set.
+	TrainingFilter pulumi.StringInput `pulumi:"trainingFilter"`
+	// A filter on DataItems of the Dataset for validation set.
+	ValidationFilter pulumi.StringInput `pulumi:"validationFilter"`
+}
+
+func (AiTrainingPipelineInputDataConfigFilterSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigFilterSplit)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineInputDataConfigFilterSplitArgs) ToAiTrainingPipelineInputDataConfigFilterSplitOutput() AiTrainingPipelineInputDataConfigFilterSplitOutput {
+	return i.ToAiTrainingPipelineInputDataConfigFilterSplitOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigFilterSplitArgs) ToAiTrainingPipelineInputDataConfigFilterSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFilterSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigFilterSplitOutput)
+}
+
+func (i AiTrainingPipelineInputDataConfigFilterSplitArgs) ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutput() AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigFilterSplitArgs) ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigFilterSplitOutput).ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineInputDataConfigFilterSplitPtrInput is an input type that accepts AiTrainingPipelineInputDataConfigFilterSplitArgs, AiTrainingPipelineInputDataConfigFilterSplitPtr and AiTrainingPipelineInputDataConfigFilterSplitPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigFilterSplitPtrInput` via:
+//
+//	        AiTrainingPipelineInputDataConfigFilterSplitArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineInputDataConfigFilterSplitPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutput() AiTrainingPipelineInputDataConfigFilterSplitPtrOutput
+	ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigFilterSplitPtrOutput
+}
+
+type aiTrainingPipelineInputDataConfigFilterSplitPtrType AiTrainingPipelineInputDataConfigFilterSplitArgs
+
+func AiTrainingPipelineInputDataConfigFilterSplitPtr(v *AiTrainingPipelineInputDataConfigFilterSplitArgs) AiTrainingPipelineInputDataConfigFilterSplitPtrInput {
+	return (*aiTrainingPipelineInputDataConfigFilterSplitPtrType)(v)
+}
+
+func (*aiTrainingPipelineInputDataConfigFilterSplitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigFilterSplit)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineInputDataConfigFilterSplitPtrType) ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutput() AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineInputDataConfigFilterSplitPtrType) ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigFilterSplitPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigFilterSplitOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigFilterSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigFilterSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigFilterSplitOutput) ToAiTrainingPipelineInputDataConfigFilterSplitOutput() AiTrainingPipelineInputDataConfigFilterSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigFilterSplitOutput) ToAiTrainingPipelineInputDataConfigFilterSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFilterSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigFilterSplitOutput) ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutput() AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return o.ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineInputDataConfigFilterSplitOutput) ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineInputDataConfigFilterSplit) *AiTrainingPipelineInputDataConfigFilterSplit {
+		return &v
+	}).(AiTrainingPipelineInputDataConfigFilterSplitPtrOutput)
+}
+
+// A filter on DataItems of the Dataset for test set.
+func (o AiTrainingPipelineInputDataConfigFilterSplitOutput) TestFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigFilterSplit) string { return v.TestFilter }).(pulumi.StringOutput)
+}
+
+// A filter on DataItems of the Dataset for training set.
+func (o AiTrainingPipelineInputDataConfigFilterSplitOutput) TrainingFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigFilterSplit) string { return v.TrainingFilter }).(pulumi.StringOutput)
+}
+
+// A filter on DataItems of the Dataset for validation set.
+func (o AiTrainingPipelineInputDataConfigFilterSplitOutput) ValidationFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigFilterSplit) string { return v.ValidationFilter }).(pulumi.StringOutput)
+}
+
+type AiTrainingPipelineInputDataConfigFilterSplitPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigFilterSplitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigFilterSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigFilterSplitPtrOutput) ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutput() AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigFilterSplitPtrOutput) ToAiTrainingPipelineInputDataConfigFilterSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFilterSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigFilterSplitPtrOutput) Elem() AiTrainingPipelineInputDataConfigFilterSplitOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigFilterSplit) AiTrainingPipelineInputDataConfigFilterSplit {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineInputDataConfigFilterSplit
+		return ret
+	}).(AiTrainingPipelineInputDataConfigFilterSplitOutput)
+}
+
+// A filter on DataItems of the Dataset for test set.
+func (o AiTrainingPipelineInputDataConfigFilterSplitPtrOutput) TestFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigFilterSplit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TestFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter on DataItems of the Dataset for training set.
+func (o AiTrainingPipelineInputDataConfigFilterSplitPtrOutput) TrainingFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigFilterSplit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TrainingFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter on DataItems of the Dataset for validation set.
+func (o AiTrainingPipelineInputDataConfigFilterSplitPtrOutput) ValidationFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigFilterSplit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ValidationFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigFractionSplit struct {
+	// The fraction of the input data that is to be used to evaluate the Model.
+	TestFraction *float64 `pulumi:"testFraction"`
+	// The fraction of the input data that is to be used to train the Model.
+	TrainingFraction *float64 `pulumi:"trainingFraction"`
+	// The fraction of the input data that is to be used to validate the Model.
+	ValidationFraction *float64 `pulumi:"validationFraction"`
+}
+
+// AiTrainingPipelineInputDataConfigFractionSplitInput is an input type that accepts AiTrainingPipelineInputDataConfigFractionSplitArgs and AiTrainingPipelineInputDataConfigFractionSplitOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigFractionSplitInput` via:
+//
+//	AiTrainingPipelineInputDataConfigFractionSplitArgs{...}
+type AiTrainingPipelineInputDataConfigFractionSplitInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigFractionSplitOutput() AiTrainingPipelineInputDataConfigFractionSplitOutput
+	ToAiTrainingPipelineInputDataConfigFractionSplitOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigFractionSplitOutput
+}
+
+type AiTrainingPipelineInputDataConfigFractionSplitArgs struct {
+	// The fraction of the input data that is to be used to evaluate the Model.
+	TestFraction pulumi.Float64PtrInput `pulumi:"testFraction"`
+	// The fraction of the input data that is to be used to train the Model.
+	TrainingFraction pulumi.Float64PtrInput `pulumi:"trainingFraction"`
+	// The fraction of the input data that is to be used to validate the Model.
+	ValidationFraction pulumi.Float64PtrInput `pulumi:"validationFraction"`
+}
+
+func (AiTrainingPipelineInputDataConfigFractionSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigFractionSplit)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineInputDataConfigFractionSplitArgs) ToAiTrainingPipelineInputDataConfigFractionSplitOutput() AiTrainingPipelineInputDataConfigFractionSplitOutput {
+	return i.ToAiTrainingPipelineInputDataConfigFractionSplitOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigFractionSplitArgs) ToAiTrainingPipelineInputDataConfigFractionSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFractionSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigFractionSplitOutput)
+}
+
+func (i AiTrainingPipelineInputDataConfigFractionSplitArgs) ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutput() AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigFractionSplitArgs) ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigFractionSplitOutput).ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineInputDataConfigFractionSplitPtrInput is an input type that accepts AiTrainingPipelineInputDataConfigFractionSplitArgs, AiTrainingPipelineInputDataConfigFractionSplitPtr and AiTrainingPipelineInputDataConfigFractionSplitPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigFractionSplitPtrInput` via:
+//
+//	        AiTrainingPipelineInputDataConfigFractionSplitArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineInputDataConfigFractionSplitPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutput() AiTrainingPipelineInputDataConfigFractionSplitPtrOutput
+	ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigFractionSplitPtrOutput
+}
+
+type aiTrainingPipelineInputDataConfigFractionSplitPtrType AiTrainingPipelineInputDataConfigFractionSplitArgs
+
+func AiTrainingPipelineInputDataConfigFractionSplitPtr(v *AiTrainingPipelineInputDataConfigFractionSplitArgs) AiTrainingPipelineInputDataConfigFractionSplitPtrInput {
+	return (*aiTrainingPipelineInputDataConfigFractionSplitPtrType)(v)
+}
+
+func (*aiTrainingPipelineInputDataConfigFractionSplitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigFractionSplit)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineInputDataConfigFractionSplitPtrType) ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutput() AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineInputDataConfigFractionSplitPtrType) ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigFractionSplitPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigFractionSplitOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigFractionSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigFractionSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigFractionSplitOutput) ToAiTrainingPipelineInputDataConfigFractionSplitOutput() AiTrainingPipelineInputDataConfigFractionSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigFractionSplitOutput) ToAiTrainingPipelineInputDataConfigFractionSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFractionSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigFractionSplitOutput) ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutput() AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return o.ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineInputDataConfigFractionSplitOutput) ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineInputDataConfigFractionSplit) *AiTrainingPipelineInputDataConfigFractionSplit {
+		return &v
+	}).(AiTrainingPipelineInputDataConfigFractionSplitPtrOutput)
+}
+
+// The fraction of the input data that is to be used to evaluate the Model.
+func (o AiTrainingPipelineInputDataConfigFractionSplitOutput) TestFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigFractionSplit) *float64 { return v.TestFraction }).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to train the Model.
+func (o AiTrainingPipelineInputDataConfigFractionSplitOutput) TrainingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigFractionSplit) *float64 { return v.TrainingFraction }).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to validate the Model.
+func (o AiTrainingPipelineInputDataConfigFractionSplitOutput) ValidationFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigFractionSplit) *float64 { return v.ValidationFraction }).(pulumi.Float64PtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigFractionSplitPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigFractionSplitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigFractionSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigFractionSplitPtrOutput) ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutput() AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigFractionSplitPtrOutput) ToAiTrainingPipelineInputDataConfigFractionSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigFractionSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigFractionSplitPtrOutput) Elem() AiTrainingPipelineInputDataConfigFractionSplitOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigFractionSplit) AiTrainingPipelineInputDataConfigFractionSplit {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineInputDataConfigFractionSplit
+		return ret
+	}).(AiTrainingPipelineInputDataConfigFractionSplitOutput)
+}
+
+// The fraction of the input data that is to be used to evaluate the Model.
+func (o AiTrainingPipelineInputDataConfigFractionSplitPtrOutput) TestFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigFractionSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TestFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to train the Model.
+func (o AiTrainingPipelineInputDataConfigFractionSplitPtrOutput) TrainingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigFractionSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to validate the Model.
+func (o AiTrainingPipelineInputDataConfigFractionSplitPtrOutput) ValidationFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigFractionSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ValidationFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigGcsDestination struct {
+	// The Cloud Storage URI prefix to write to.
+	OutputUriPrefix string `pulumi:"outputUriPrefix"`
+}
+
+// AiTrainingPipelineInputDataConfigGcsDestinationInput is an input type that accepts AiTrainingPipelineInputDataConfigGcsDestinationArgs and AiTrainingPipelineInputDataConfigGcsDestinationOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigGcsDestinationInput` via:
+//
+//	AiTrainingPipelineInputDataConfigGcsDestinationArgs{...}
+type AiTrainingPipelineInputDataConfigGcsDestinationInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigGcsDestinationOutput() AiTrainingPipelineInputDataConfigGcsDestinationOutput
+	ToAiTrainingPipelineInputDataConfigGcsDestinationOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigGcsDestinationOutput
+}
+
+type AiTrainingPipelineInputDataConfigGcsDestinationArgs struct {
+	// The Cloud Storage URI prefix to write to.
+	OutputUriPrefix pulumi.StringInput `pulumi:"outputUriPrefix"`
+}
+
+func (AiTrainingPipelineInputDataConfigGcsDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigGcsDestination)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineInputDataConfigGcsDestinationArgs) ToAiTrainingPipelineInputDataConfigGcsDestinationOutput() AiTrainingPipelineInputDataConfigGcsDestinationOutput {
+	return i.ToAiTrainingPipelineInputDataConfigGcsDestinationOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigGcsDestinationArgs) ToAiTrainingPipelineInputDataConfigGcsDestinationOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigGcsDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigGcsDestinationOutput)
+}
+
+func (i AiTrainingPipelineInputDataConfigGcsDestinationArgs) ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutput() AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigGcsDestinationArgs) ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigGcsDestinationOutput).ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineInputDataConfigGcsDestinationPtrInput is an input type that accepts AiTrainingPipelineInputDataConfigGcsDestinationArgs, AiTrainingPipelineInputDataConfigGcsDestinationPtr and AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigGcsDestinationPtrInput` via:
+//
+//	        AiTrainingPipelineInputDataConfigGcsDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineInputDataConfigGcsDestinationPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutput() AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput
+	ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput
+}
+
+type aiTrainingPipelineInputDataConfigGcsDestinationPtrType AiTrainingPipelineInputDataConfigGcsDestinationArgs
+
+func AiTrainingPipelineInputDataConfigGcsDestinationPtr(v *AiTrainingPipelineInputDataConfigGcsDestinationArgs) AiTrainingPipelineInputDataConfigGcsDestinationPtrInput {
+	return (*aiTrainingPipelineInputDataConfigGcsDestinationPtrType)(v)
+}
+
+func (*aiTrainingPipelineInputDataConfigGcsDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigGcsDestination)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineInputDataConfigGcsDestinationPtrType) ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutput() AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineInputDataConfigGcsDestinationPtrType) ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigGcsDestinationOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigGcsDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigGcsDestination)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigGcsDestinationOutput) ToAiTrainingPipelineInputDataConfigGcsDestinationOutput() AiTrainingPipelineInputDataConfigGcsDestinationOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigGcsDestinationOutput) ToAiTrainingPipelineInputDataConfigGcsDestinationOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigGcsDestinationOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigGcsDestinationOutput) ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutput() AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return o.ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineInputDataConfigGcsDestinationOutput) ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineInputDataConfigGcsDestination) *AiTrainingPipelineInputDataConfigGcsDestination {
+		return &v
+	}).(AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput)
+}
+
+// The Cloud Storage URI prefix to write to.
+func (o AiTrainingPipelineInputDataConfigGcsDestinationOutput) OutputUriPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigGcsDestination) string { return v.OutputUriPrefix }).(pulumi.StringOutput)
+}
+
+type AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigGcsDestination)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput) ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutput() AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput) ToAiTrainingPipelineInputDataConfigGcsDestinationPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput) Elem() AiTrainingPipelineInputDataConfigGcsDestinationOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigGcsDestination) AiTrainingPipelineInputDataConfigGcsDestination {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineInputDataConfigGcsDestination
+		return ret
+	}).(AiTrainingPipelineInputDataConfigGcsDestinationOutput)
+}
+
+// The Cloud Storage URI prefix to write to.
+func (o AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput) OutputUriPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigGcsDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OutputUriPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigPredefinedSplit struct {
+	// The key is a name of one of the Dataset's data columns.
+	Key string `pulumi:"key"`
+}
+
+// AiTrainingPipelineInputDataConfigPredefinedSplitInput is an input type that accepts AiTrainingPipelineInputDataConfigPredefinedSplitArgs and AiTrainingPipelineInputDataConfigPredefinedSplitOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigPredefinedSplitInput` via:
+//
+//	AiTrainingPipelineInputDataConfigPredefinedSplitArgs{...}
+type AiTrainingPipelineInputDataConfigPredefinedSplitInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigPredefinedSplitOutput() AiTrainingPipelineInputDataConfigPredefinedSplitOutput
+	ToAiTrainingPipelineInputDataConfigPredefinedSplitOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigPredefinedSplitOutput
+}
+
+type AiTrainingPipelineInputDataConfigPredefinedSplitArgs struct {
+	// The key is a name of one of the Dataset's data columns.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (AiTrainingPipelineInputDataConfigPredefinedSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigPredefinedSplit)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineInputDataConfigPredefinedSplitArgs) ToAiTrainingPipelineInputDataConfigPredefinedSplitOutput() AiTrainingPipelineInputDataConfigPredefinedSplitOutput {
+	return i.ToAiTrainingPipelineInputDataConfigPredefinedSplitOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigPredefinedSplitArgs) ToAiTrainingPipelineInputDataConfigPredefinedSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPredefinedSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigPredefinedSplitOutput)
+}
+
+func (i AiTrainingPipelineInputDataConfigPredefinedSplitArgs) ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput() AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigPredefinedSplitArgs) ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigPredefinedSplitOutput).ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineInputDataConfigPredefinedSplitPtrInput is an input type that accepts AiTrainingPipelineInputDataConfigPredefinedSplitArgs, AiTrainingPipelineInputDataConfigPredefinedSplitPtr and AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigPredefinedSplitPtrInput` via:
+//
+//	        AiTrainingPipelineInputDataConfigPredefinedSplitArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineInputDataConfigPredefinedSplitPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput() AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput
+	ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput
+}
+
+type aiTrainingPipelineInputDataConfigPredefinedSplitPtrType AiTrainingPipelineInputDataConfigPredefinedSplitArgs
+
+func AiTrainingPipelineInputDataConfigPredefinedSplitPtr(v *AiTrainingPipelineInputDataConfigPredefinedSplitArgs) AiTrainingPipelineInputDataConfigPredefinedSplitPtrInput {
+	return (*aiTrainingPipelineInputDataConfigPredefinedSplitPtrType)(v)
+}
+
+func (*aiTrainingPipelineInputDataConfigPredefinedSplitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigPredefinedSplit)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineInputDataConfigPredefinedSplitPtrType) ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput() AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineInputDataConfigPredefinedSplitPtrType) ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigPredefinedSplitOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigPredefinedSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigPredefinedSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitOutput) ToAiTrainingPipelineInputDataConfigPredefinedSplitOutput() AiTrainingPipelineInputDataConfigPredefinedSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitOutput) ToAiTrainingPipelineInputDataConfigPredefinedSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPredefinedSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitOutput) ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput() AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return o.ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitOutput) ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineInputDataConfigPredefinedSplit) *AiTrainingPipelineInputDataConfigPredefinedSplit {
+		return &v
+	}).(AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput)
+}
+
+// The key is a name of one of the Dataset's data columns.
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigPredefinedSplit) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigPredefinedSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput) ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput() AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput) ToAiTrainingPipelineInputDataConfigPredefinedSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput) Elem() AiTrainingPipelineInputDataConfigPredefinedSplitOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigPredefinedSplit) AiTrainingPipelineInputDataConfigPredefinedSplit {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineInputDataConfigPredefinedSplit
+		return ret
+	}).(AiTrainingPipelineInputDataConfigPredefinedSplitOutput)
+}
+
+// The key is a name of one of the Dataset's data columns.
+func (o AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigPredefinedSplit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigStratifiedSplit struct {
+	// The key is a name of one of the Dataset's data columns.
+	Key string `pulumi:"key"`
+	// The fraction of the input data that is to be used to evaluate the Model.
+	TestFraction *float64 `pulumi:"testFraction"`
+	// The fraction of the input data that is to be used to train the Model.
+	TrainingFraction *float64 `pulumi:"trainingFraction"`
+	// The fraction of the input data that is to be used to validate the Model.
+	ValidationFraction *float64 `pulumi:"validationFraction"`
+}
+
+// AiTrainingPipelineInputDataConfigStratifiedSplitInput is an input type that accepts AiTrainingPipelineInputDataConfigStratifiedSplitArgs and AiTrainingPipelineInputDataConfigStratifiedSplitOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigStratifiedSplitInput` via:
+//
+//	AiTrainingPipelineInputDataConfigStratifiedSplitArgs{...}
+type AiTrainingPipelineInputDataConfigStratifiedSplitInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigStratifiedSplitOutput() AiTrainingPipelineInputDataConfigStratifiedSplitOutput
+	ToAiTrainingPipelineInputDataConfigStratifiedSplitOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigStratifiedSplitOutput
+}
+
+type AiTrainingPipelineInputDataConfigStratifiedSplitArgs struct {
+	// The key is a name of one of the Dataset's data columns.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The fraction of the input data that is to be used to evaluate the Model.
+	TestFraction pulumi.Float64PtrInput `pulumi:"testFraction"`
+	// The fraction of the input data that is to be used to train the Model.
+	TrainingFraction pulumi.Float64PtrInput `pulumi:"trainingFraction"`
+	// The fraction of the input data that is to be used to validate the Model.
+	ValidationFraction pulumi.Float64PtrInput `pulumi:"validationFraction"`
+}
+
+func (AiTrainingPipelineInputDataConfigStratifiedSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigStratifiedSplit)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineInputDataConfigStratifiedSplitArgs) ToAiTrainingPipelineInputDataConfigStratifiedSplitOutput() AiTrainingPipelineInputDataConfigStratifiedSplitOutput {
+	return i.ToAiTrainingPipelineInputDataConfigStratifiedSplitOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigStratifiedSplitArgs) ToAiTrainingPipelineInputDataConfigStratifiedSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigStratifiedSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigStratifiedSplitOutput)
+}
+
+func (i AiTrainingPipelineInputDataConfigStratifiedSplitArgs) ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput() AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigStratifiedSplitArgs) ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigStratifiedSplitOutput).ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineInputDataConfigStratifiedSplitPtrInput is an input type that accepts AiTrainingPipelineInputDataConfigStratifiedSplitArgs, AiTrainingPipelineInputDataConfigStratifiedSplitPtr and AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigStratifiedSplitPtrInput` via:
+//
+//	        AiTrainingPipelineInputDataConfigStratifiedSplitArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineInputDataConfigStratifiedSplitPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput() AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput
+	ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput
+}
+
+type aiTrainingPipelineInputDataConfigStratifiedSplitPtrType AiTrainingPipelineInputDataConfigStratifiedSplitArgs
+
+func AiTrainingPipelineInputDataConfigStratifiedSplitPtr(v *AiTrainingPipelineInputDataConfigStratifiedSplitArgs) AiTrainingPipelineInputDataConfigStratifiedSplitPtrInput {
+	return (*aiTrainingPipelineInputDataConfigStratifiedSplitPtrType)(v)
+}
+
+func (*aiTrainingPipelineInputDataConfigStratifiedSplitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigStratifiedSplit)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineInputDataConfigStratifiedSplitPtrType) ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput() AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineInputDataConfigStratifiedSplitPtrType) ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigStratifiedSplitOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigStratifiedSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigStratifiedSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitOutput) ToAiTrainingPipelineInputDataConfigStratifiedSplitOutput() AiTrainingPipelineInputDataConfigStratifiedSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitOutput) ToAiTrainingPipelineInputDataConfigStratifiedSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigStratifiedSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitOutput) ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput() AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return o.ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitOutput) ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineInputDataConfigStratifiedSplit) *AiTrainingPipelineInputDataConfigStratifiedSplit {
+		return &v
+	}).(AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput)
+}
+
+// The key is a name of one of the Dataset's data columns.
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigStratifiedSplit) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The fraction of the input data that is to be used to evaluate the Model.
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitOutput) TestFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigStratifiedSplit) *float64 { return v.TestFraction }).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to train the Model.
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitOutput) TrainingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigStratifiedSplit) *float64 { return v.TrainingFraction }).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to validate the Model.
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitOutput) ValidationFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigStratifiedSplit) *float64 { return v.ValidationFraction }).(pulumi.Float64PtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigStratifiedSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput) ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput() AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput) ToAiTrainingPipelineInputDataConfigStratifiedSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput) Elem() AiTrainingPipelineInputDataConfigStratifiedSplitOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigStratifiedSplit) AiTrainingPipelineInputDataConfigStratifiedSplit {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineInputDataConfigStratifiedSplit
+		return ret
+	}).(AiTrainingPipelineInputDataConfigStratifiedSplitOutput)
+}
+
+// The key is a name of one of the Dataset's data columns.
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigStratifiedSplit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fraction of the input data that is to be used to evaluate the Model.
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput) TestFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigStratifiedSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TestFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to train the Model.
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput) TrainingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigStratifiedSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to validate the Model.
+func (o AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput) ValidationFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigStratifiedSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ValidationFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigTimestampSplit struct {
+	// The key is a name of one of the Dataset's data columns.
+	Key string `pulumi:"key"`
+	// The fraction of the input data that is to be used to evaluate the Model.
+	TestFraction *float64 `pulumi:"testFraction"`
+	// The fraction of the input data that is to be used to train the Model.
+	TrainingFraction *float64 `pulumi:"trainingFraction"`
+	// The fraction of the input data that is to be used to validate the Model.
+	ValidationFraction *float64 `pulumi:"validationFraction"`
+}
+
+// AiTrainingPipelineInputDataConfigTimestampSplitInput is an input type that accepts AiTrainingPipelineInputDataConfigTimestampSplitArgs and AiTrainingPipelineInputDataConfigTimestampSplitOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigTimestampSplitInput` via:
+//
+//	AiTrainingPipelineInputDataConfigTimestampSplitArgs{...}
+type AiTrainingPipelineInputDataConfigTimestampSplitInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigTimestampSplitOutput() AiTrainingPipelineInputDataConfigTimestampSplitOutput
+	ToAiTrainingPipelineInputDataConfigTimestampSplitOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigTimestampSplitOutput
+}
+
+type AiTrainingPipelineInputDataConfigTimestampSplitArgs struct {
+	// The key is a name of one of the Dataset's data columns.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The fraction of the input data that is to be used to evaluate the Model.
+	TestFraction pulumi.Float64PtrInput `pulumi:"testFraction"`
+	// The fraction of the input data that is to be used to train the Model.
+	TrainingFraction pulumi.Float64PtrInput `pulumi:"trainingFraction"`
+	// The fraction of the input data that is to be used to validate the Model.
+	ValidationFraction pulumi.Float64PtrInput `pulumi:"validationFraction"`
+}
+
+func (AiTrainingPipelineInputDataConfigTimestampSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigTimestampSplit)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineInputDataConfigTimestampSplitArgs) ToAiTrainingPipelineInputDataConfigTimestampSplitOutput() AiTrainingPipelineInputDataConfigTimestampSplitOutput {
+	return i.ToAiTrainingPipelineInputDataConfigTimestampSplitOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigTimestampSplitArgs) ToAiTrainingPipelineInputDataConfigTimestampSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigTimestampSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigTimestampSplitOutput)
+}
+
+func (i AiTrainingPipelineInputDataConfigTimestampSplitArgs) ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutput() AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineInputDataConfigTimestampSplitArgs) ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigTimestampSplitOutput).ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineInputDataConfigTimestampSplitPtrInput is an input type that accepts AiTrainingPipelineInputDataConfigTimestampSplitArgs, AiTrainingPipelineInputDataConfigTimestampSplitPtr and AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineInputDataConfigTimestampSplitPtrInput` via:
+//
+//	        AiTrainingPipelineInputDataConfigTimestampSplitArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineInputDataConfigTimestampSplitPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutput() AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput
+	ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(context.Context) AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput
+}
+
+type aiTrainingPipelineInputDataConfigTimestampSplitPtrType AiTrainingPipelineInputDataConfigTimestampSplitArgs
+
+func AiTrainingPipelineInputDataConfigTimestampSplitPtr(v *AiTrainingPipelineInputDataConfigTimestampSplitArgs) AiTrainingPipelineInputDataConfigTimestampSplitPtrInput {
+	return (*aiTrainingPipelineInputDataConfigTimestampSplitPtrType)(v)
+}
+
+func (*aiTrainingPipelineInputDataConfigTimestampSplitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigTimestampSplit)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineInputDataConfigTimestampSplitPtrType) ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutput() AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return i.ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineInputDataConfigTimestampSplitPtrType) ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigTimestampSplitOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigTimestampSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineInputDataConfigTimestampSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigTimestampSplitOutput) ToAiTrainingPipelineInputDataConfigTimestampSplitOutput() AiTrainingPipelineInputDataConfigTimestampSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigTimestampSplitOutput) ToAiTrainingPipelineInputDataConfigTimestampSplitOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigTimestampSplitOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigTimestampSplitOutput) ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutput() AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return o.ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineInputDataConfigTimestampSplitOutput) ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineInputDataConfigTimestampSplit) *AiTrainingPipelineInputDataConfigTimestampSplit {
+		return &v
+	}).(AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput)
+}
+
+// The key is a name of one of the Dataset's data columns.
+func (o AiTrainingPipelineInputDataConfigTimestampSplitOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigTimestampSplit) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The fraction of the input data that is to be used to evaluate the Model.
+func (o AiTrainingPipelineInputDataConfigTimestampSplitOutput) TestFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigTimestampSplit) *float64 { return v.TestFraction }).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to train the Model.
+func (o AiTrainingPipelineInputDataConfigTimestampSplitOutput) TrainingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigTimestampSplit) *float64 { return v.TrainingFraction }).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to validate the Model.
+func (o AiTrainingPipelineInputDataConfigTimestampSplitOutput) ValidationFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineInputDataConfigTimestampSplit) *float64 { return v.ValidationFraction }).(pulumi.Float64PtrOutput)
+}
+
+type AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineInputDataConfigTimestampSplit)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput) ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutput() AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput) ToAiTrainingPipelineInputDataConfigTimestampSplitPtrOutputWithContext(ctx context.Context) AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput) Elem() AiTrainingPipelineInputDataConfigTimestampSplitOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigTimestampSplit) AiTrainingPipelineInputDataConfigTimestampSplit {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineInputDataConfigTimestampSplit
+		return ret
+	}).(AiTrainingPipelineInputDataConfigTimestampSplitOutput)
+}
+
+// The key is a name of one of the Dataset's data columns.
+func (o AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigTimestampSplit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fraction of the input data that is to be used to evaluate the Model.
+func (o AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput) TestFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigTimestampSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TestFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to train the Model.
+func (o AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput) TrainingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigTimestampSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The fraction of the input data that is to be used to validate the Model.
+func (o AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput) ValidationFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineInputDataConfigTimestampSplit) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ValidationFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiTrainingPipelineModelToUpload struct {
+	// The path to the directory containing the Model artifact and any of its supporting files.
+	ArtifactUri *string `pulumi:"artifactUri"`
+	// The specification of the container that is to be used when deploying this Model.
+	// Structure is documented below.
+	ContainerSpec *AiTrainingPipelineModelToUploadContainerSpec `pulumi:"containerSpec"`
+	// The description of the Model.
+	Description *string `pulumi:"description"`
+	// The user-defined name of the Model.
+	DisplayName string `pulumi:"displayName"`
+	// Customer-managed encryption key spec for a Model.
+	// Structure is documented below.
+	EncryptionSpec *AiTrainingPipelineModelToUploadEncryptionSpec `pulumi:"encryptionSpec"`
+	// Specification of Model explanation.
+	// Structure is documented below.
+	ExplanationSpec *AiTrainingPipelineModelToUploadExplanationSpec `pulumi:"explanationSpec"`
+	// The labels with user-defined metadata to organize your Models.
+	Labels map[string]string `pulumi:"labels"`
+	// (Output)
+	// The resource name of the Model.
+	Name *string `pulumi:"name"`
+	// User provided version aliases so that a model version can be referenced using alias.
+	VersionAliases []string `pulumi:"versionAliases"`
+	// The description of this version.
+	VersionDescription *string `pulumi:"versionDescription"`
+}
+
+// AiTrainingPipelineModelToUploadInput is an input type that accepts AiTrainingPipelineModelToUploadArgs and AiTrainingPipelineModelToUploadOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadInput` via:
+//
+//	AiTrainingPipelineModelToUploadArgs{...}
+type AiTrainingPipelineModelToUploadInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadOutput() AiTrainingPipelineModelToUploadOutput
+	ToAiTrainingPipelineModelToUploadOutputWithContext(context.Context) AiTrainingPipelineModelToUploadOutput
+}
+
+type AiTrainingPipelineModelToUploadArgs struct {
+	// The path to the directory containing the Model artifact and any of its supporting files.
+	ArtifactUri pulumi.StringPtrInput `pulumi:"artifactUri"`
+	// The specification of the container that is to be used when deploying this Model.
+	// Structure is documented below.
+	ContainerSpec AiTrainingPipelineModelToUploadContainerSpecPtrInput `pulumi:"containerSpec"`
+	// The description of the Model.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The user-defined name of the Model.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Customer-managed encryption key spec for a Model.
+	// Structure is documented below.
+	EncryptionSpec AiTrainingPipelineModelToUploadEncryptionSpecPtrInput `pulumi:"encryptionSpec"`
+	// Specification of Model explanation.
+	// Structure is documented below.
+	ExplanationSpec AiTrainingPipelineModelToUploadExplanationSpecPtrInput `pulumi:"explanationSpec"`
+	// The labels with user-defined metadata to organize your Models.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// (Output)
+	// The resource name of the Model.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// User provided version aliases so that a model version can be referenced using alias.
+	VersionAliases pulumi.StringArrayInput `pulumi:"versionAliases"`
+	// The description of this version.
+	VersionDescription pulumi.StringPtrInput `pulumi:"versionDescription"`
+}
+
+func (AiTrainingPipelineModelToUploadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUpload)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadArgs) ToAiTrainingPipelineModelToUploadOutput() AiTrainingPipelineModelToUploadOutput {
+	return i.ToAiTrainingPipelineModelToUploadOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadArgs) ToAiTrainingPipelineModelToUploadOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadOutput)
+}
+
+func (i AiTrainingPipelineModelToUploadArgs) ToAiTrainingPipelineModelToUploadPtrOutput() AiTrainingPipelineModelToUploadPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadArgs) ToAiTrainingPipelineModelToUploadPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadOutput).ToAiTrainingPipelineModelToUploadPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineModelToUploadPtrInput is an input type that accepts AiTrainingPipelineModelToUploadArgs, AiTrainingPipelineModelToUploadPtr and AiTrainingPipelineModelToUploadPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadPtrInput` via:
+//
+//	        AiTrainingPipelineModelToUploadArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineModelToUploadPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadPtrOutput() AiTrainingPipelineModelToUploadPtrOutput
+	ToAiTrainingPipelineModelToUploadPtrOutputWithContext(context.Context) AiTrainingPipelineModelToUploadPtrOutput
+}
+
+type aiTrainingPipelineModelToUploadPtrType AiTrainingPipelineModelToUploadArgs
+
+func AiTrainingPipelineModelToUploadPtr(v *AiTrainingPipelineModelToUploadArgs) AiTrainingPipelineModelToUploadPtrInput {
+	return (*aiTrainingPipelineModelToUploadPtrType)(v)
+}
+
+func (*aiTrainingPipelineModelToUploadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUpload)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineModelToUploadPtrType) ToAiTrainingPipelineModelToUploadPtrOutput() AiTrainingPipelineModelToUploadPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineModelToUploadPtrType) ToAiTrainingPipelineModelToUploadPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUpload)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadOutput) ToAiTrainingPipelineModelToUploadOutput() AiTrainingPipelineModelToUploadOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadOutput) ToAiTrainingPipelineModelToUploadOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadOutput) ToAiTrainingPipelineModelToUploadPtrOutput() AiTrainingPipelineModelToUploadPtrOutput {
+	return o.ToAiTrainingPipelineModelToUploadPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineModelToUploadOutput) ToAiTrainingPipelineModelToUploadPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineModelToUpload) *AiTrainingPipelineModelToUpload {
+		return &v
+	}).(AiTrainingPipelineModelToUploadPtrOutput)
+}
+
+// The path to the directory containing the Model artifact and any of its supporting files.
+func (o AiTrainingPipelineModelToUploadOutput) ArtifactUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) *string { return v.ArtifactUri }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the container that is to be used when deploying this Model.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadOutput) ContainerSpec() AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) *AiTrainingPipelineModelToUploadContainerSpec {
+		return v.ContainerSpec
+	}).(AiTrainingPipelineModelToUploadContainerSpecPtrOutput)
+}
+
+// The description of the Model.
+func (o AiTrainingPipelineModelToUploadOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The user-defined name of the Model.
+func (o AiTrainingPipelineModelToUploadOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Customer-managed encryption key spec for a Model.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadOutput) EncryptionSpec() AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) *AiTrainingPipelineModelToUploadEncryptionSpec {
+		return v.EncryptionSpec
+	}).(AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput)
+}
+
+// Specification of Model explanation.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadOutput) ExplanationSpec() AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) *AiTrainingPipelineModelToUploadExplanationSpec {
+		return v.ExplanationSpec
+	}).(AiTrainingPipelineModelToUploadExplanationSpecPtrOutput)
+}
+
+// The labels with user-defined metadata to organize your Models.
+func (o AiTrainingPipelineModelToUploadOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The resource name of the Model.
+func (o AiTrainingPipelineModelToUploadOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// User provided version aliases so that a model version can be referenced using alias.
+func (o AiTrainingPipelineModelToUploadOutput) VersionAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) []string { return v.VersionAliases }).(pulumi.StringArrayOutput)
+}
+
+// The description of this version.
+func (o AiTrainingPipelineModelToUploadOutput) VersionDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUpload) *string { return v.VersionDescription }).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUpload)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadPtrOutput) ToAiTrainingPipelineModelToUploadPtrOutput() AiTrainingPipelineModelToUploadPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadPtrOutput) ToAiTrainingPipelineModelToUploadPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadPtrOutput) Elem() AiTrainingPipelineModelToUploadOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) AiTrainingPipelineModelToUpload {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineModelToUpload
+		return ret
+	}).(AiTrainingPipelineModelToUploadOutput)
+}
+
+// The path to the directory containing the Model artifact and any of its supporting files.
+func (o AiTrainingPipelineModelToUploadPtrOutput) ArtifactUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the container that is to be used when deploying this Model.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadPtrOutput) ContainerSpec() AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) *AiTrainingPipelineModelToUploadContainerSpec {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerSpec
+	}).(AiTrainingPipelineModelToUploadContainerSpecPtrOutput)
+}
+
+// The description of the Model.
+func (o AiTrainingPipelineModelToUploadPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user-defined name of the Model.
+func (o AiTrainingPipelineModelToUploadPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-managed encryption key spec for a Model.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadPtrOutput) EncryptionSpec() AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) *AiTrainingPipelineModelToUploadEncryptionSpec {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionSpec
+	}).(AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput)
+}
+
+// Specification of Model explanation.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadPtrOutput) ExplanationSpec() AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) *AiTrainingPipelineModelToUploadExplanationSpec {
+		if v == nil {
+			return nil
+		}
+		return v.ExplanationSpec
+	}).(AiTrainingPipelineModelToUploadExplanationSpecPtrOutput)
+}
+
+// The labels with user-defined metadata to organize your Models.
+func (o AiTrainingPipelineModelToUploadPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The resource name of the Model.
+func (o AiTrainingPipelineModelToUploadPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// User provided version aliases so that a model version can be referenced using alias.
+func (o AiTrainingPipelineModelToUploadPtrOutput) VersionAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VersionAliases
+	}).(pulumi.StringArrayOutput)
+}
+
+// The description of this version.
+func (o AiTrainingPipelineModelToUploadPtrOutput) VersionDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUpload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VersionDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpec struct {
+	// Specifies the arguments to the command when the container starts.
+	Args []string `pulumi:"args"`
+	// Specifies the command that runs when the container starts.
+	Commands []string `pulumi:"commands"`
+	// Deployment timeout. Limit for deployment timeout is 2 hours.
+	DeploymentTimeout *string `pulumi:"deploymentTimeout"`
+	// List of environment variables to be set in the container.
+	// Structure is documented below.
+	Envs []AiTrainingPipelineModelToUploadContainerSpecEnv `pulumi:"envs"`
+	// List of ports to expose from the container for gRPC.
+	// Structure is documented below.
+	GrpcPorts []AiTrainingPipelineModelToUploadContainerSpecGrpcPort `pulumi:"grpcPorts"`
+	// Specification for Kubernetes readiness probe.
+	// Structure is documented below.
+	HealthProbe *AiTrainingPipelineModelToUploadContainerSpecHealthProbe `pulumi:"healthProbe"`
+	// HTTP path on the container to send health checks to.
+	HealthRoute *string `pulumi:"healthRoute"`
+	// URI of the Docker image to be used as the custom container for serving predictions.
+	ImageUri string `pulumi:"imageUri"`
+	// List of ports that are exposed by the container's process.
+	// Structure is documented below.
+	Ports []AiTrainingPipelineModelToUploadContainerSpecPort `pulumi:"ports"`
+	// HTTP path on the container to send prediction requests to.
+	PredictRoute *string `pulumi:"predictRoute"`
+	// The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+	SharedMemorySizeMb *string `pulumi:"sharedMemorySizeMb"`
+	// Specification for Kubernetes startup probe.
+	// Structure is documented below.
+	StartupProbe *AiTrainingPipelineModelToUploadContainerSpecStartupProbe `pulumi:"startupProbe"`
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecArgs and AiTrainingPipelineModelToUploadContainerSpecOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecArgs{...}
+type AiTrainingPipelineModelToUploadContainerSpecInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecOutput() AiTrainingPipelineModelToUploadContainerSpecOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecArgs struct {
+	// Specifies the arguments to the command when the container starts.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Specifies the command that runs when the container starts.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Deployment timeout. Limit for deployment timeout is 2 hours.
+	DeploymentTimeout pulumi.StringPtrInput `pulumi:"deploymentTimeout"`
+	// List of environment variables to be set in the container.
+	// Structure is documented below.
+	Envs AiTrainingPipelineModelToUploadContainerSpecEnvArrayInput `pulumi:"envs"`
+	// List of ports to expose from the container for gRPC.
+	// Structure is documented below.
+	GrpcPorts AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayInput `pulumi:"grpcPorts"`
+	// Specification for Kubernetes readiness probe.
+	// Structure is documented below.
+	HealthProbe AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrInput `pulumi:"healthProbe"`
+	// HTTP path on the container to send health checks to.
+	HealthRoute pulumi.StringPtrInput `pulumi:"healthRoute"`
+	// URI of the Docker image to be used as the custom container for serving predictions.
+	ImageUri pulumi.StringInput `pulumi:"imageUri"`
+	// List of ports that are exposed by the container's process.
+	// Structure is documented below.
+	Ports AiTrainingPipelineModelToUploadContainerSpecPortArrayInput `pulumi:"ports"`
+	// HTTP path on the container to send prediction requests to.
+	PredictRoute pulumi.StringPtrInput `pulumi:"predictRoute"`
+	// The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+	SharedMemorySizeMb pulumi.StringPtrInput `pulumi:"sharedMemorySizeMb"`
+	// Specification for Kubernetes startup probe.
+	// Structure is documented below.
+	StartupProbe AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrInput `pulumi:"startupProbe"`
+}
+
+func (AiTrainingPipelineModelToUploadContainerSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpec)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecArgs) ToAiTrainingPipelineModelToUploadContainerSpecOutput() AiTrainingPipelineModelToUploadContainerSpecOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecArgs) ToAiTrainingPipelineModelToUploadContainerSpecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecOutput)
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecArgs) ToAiTrainingPipelineModelToUploadContainerSpecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecArgs) ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecOutput).ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecPtrInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecArgs, AiTrainingPipelineModelToUploadContainerSpecPtr and AiTrainingPipelineModelToUploadContainerSpecPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecPtrInput` via:
+//
+//	        AiTrainingPipelineModelToUploadContainerSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineModelToUploadContainerSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecPtrOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecPtrOutput
+}
+
+type aiTrainingPipelineModelToUploadContainerSpecPtrType AiTrainingPipelineModelToUploadContainerSpecArgs
+
+func AiTrainingPipelineModelToUploadContainerSpecPtr(v *AiTrainingPipelineModelToUploadContainerSpecArgs) AiTrainingPipelineModelToUploadContainerSpecPtrInput {
+	return (*aiTrainingPipelineModelToUploadContainerSpecPtrType)(v)
+}
+
+func (*aiTrainingPipelineModelToUploadContainerSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpec)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecPtrType) ToAiTrainingPipelineModelToUploadContainerSpecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecPtrType) ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) ToAiTrainingPipelineModelToUploadContainerSpecOutput() AiTrainingPipelineModelToUploadContainerSpecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) ToAiTrainingPipelineModelToUploadContainerSpecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) ToAiTrainingPipelineModelToUploadContainerSpecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return o.ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineModelToUploadContainerSpec) *AiTrainingPipelineModelToUploadContainerSpec {
+		return &v
+	}).(AiTrainingPipelineModelToUploadContainerSpecPtrOutput)
+}
+
+// Specifies the arguments to the command when the container starts.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the command that runs when the container starts.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Deployment timeout. Limit for deployment timeout is 2 hours.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) DeploymentTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) *string { return v.DeploymentTimeout }).(pulumi.StringPtrOutput)
+}
+
+// List of environment variables to be set in the container.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) Envs() AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) []AiTrainingPipelineModelToUploadContainerSpecEnv {
+		return v.Envs
+	}).(AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput)
+}
+
+// List of ports to expose from the container for gRPC.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) GrpcPorts() AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) []AiTrainingPipelineModelToUploadContainerSpecGrpcPort {
+		return v.GrpcPorts
+	}).(AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput)
+}
+
+// Specification for Kubernetes readiness probe.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) HealthProbe() AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) *AiTrainingPipelineModelToUploadContainerSpecHealthProbe {
+		return v.HealthProbe
+	}).(AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput)
+}
+
+// HTTP path on the container to send health checks to.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) HealthRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) *string { return v.HealthRoute }).(pulumi.StringPtrOutput)
+}
+
+// URI of the Docker image to be used as the custom container for serving predictions.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) ImageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) string { return v.ImageUri }).(pulumi.StringOutput)
+}
+
+// List of ports that are exposed by the container's process.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) Ports() AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) []AiTrainingPipelineModelToUploadContainerSpecPort {
+		return v.Ports
+	}).(AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput)
+}
+
+// HTTP path on the container to send prediction requests to.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) PredictRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) *string { return v.PredictRoute }).(pulumi.StringPtrOutput)
+}
+
+// The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) SharedMemorySizeMb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) *string { return v.SharedMemorySizeMb }).(pulumi.StringPtrOutput)
+}
+
+// Specification for Kubernetes startup probe.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecOutput) StartupProbe() AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpec) *AiTrainingPipelineModelToUploadContainerSpecStartupProbe {
+		return v.StartupProbe
+	}).(AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) Elem() AiTrainingPipelineModelToUploadContainerSpecOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) AiTrainingPipelineModelToUploadContainerSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineModelToUploadContainerSpec
+		return ret
+	}).(AiTrainingPipelineModelToUploadContainerSpecOutput)
+}
+
+// Specifies the arguments to the command when the container starts.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the command that runs when the container starts.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deployment timeout. Limit for deployment timeout is 2 hours.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) DeploymentTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of environment variables to be set in the container.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) Envs() AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) []AiTrainingPipelineModelToUploadContainerSpecEnv {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput)
+}
+
+// List of ports to expose from the container for gRPC.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) GrpcPorts() AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) []AiTrainingPipelineModelToUploadContainerSpecGrpcPort {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcPorts
+	}).(AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput)
+}
+
+// Specification for Kubernetes readiness probe.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) HealthProbe() AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) *AiTrainingPipelineModelToUploadContainerSpecHealthProbe {
+		if v == nil {
+			return nil
+		}
+		return v.HealthProbe
+	}).(AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput)
+}
+
+// HTTP path on the container to send health checks to.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) HealthRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthRoute
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of the Docker image to be used as the custom container for serving predictions.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of ports that are exposed by the container's process.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) Ports() AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) []AiTrainingPipelineModelToUploadContainerSpecPort {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput)
+}
+
+// HTTP path on the container to send prediction requests to.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) PredictRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredictRoute
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) SharedMemorySizeMb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharedMemorySizeMb
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification for Kubernetes startup probe.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecPtrOutput) StartupProbe() AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpec) *AiTrainingPipelineModelToUploadContainerSpecStartupProbe {
+		if v == nil {
+			return nil
+		}
+		return v.StartupProbe
+	}).(AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecEnv struct {
+	// The name of the environment variable.
+	Name string `pulumi:"name"`
+	// The value of the environment variable.
+	Value string `pulumi:"value"`
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecEnvInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecEnvArgs and AiTrainingPipelineModelToUploadContainerSpecEnvOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecEnvInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecEnvArgs{...}
+type AiTrainingPipelineModelToUploadContainerSpecEnvInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecEnvOutput() AiTrainingPipelineModelToUploadContainerSpecEnvOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecEnvOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecEnvOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecEnvArgs struct {
+	// The name of the environment variable.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the environment variable.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AiTrainingPipelineModelToUploadContainerSpecEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecEnv)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecEnvArgs) ToAiTrainingPipelineModelToUploadContainerSpecEnvOutput() AiTrainingPipelineModelToUploadContainerSpecEnvOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecEnvOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecEnvArgs) ToAiTrainingPipelineModelToUploadContainerSpecEnvOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecEnvOutput)
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecEnvArrayInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecEnvArray and AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecEnvArrayInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecEnvArray{ AiTrainingPipelineModelToUploadContainerSpecEnvArgs{...} }
+type AiTrainingPipelineModelToUploadContainerSpecEnvArrayInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput() AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecEnvArrayOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecEnvArray []AiTrainingPipelineModelToUploadContainerSpecEnvInput
+
+func (AiTrainingPipelineModelToUploadContainerSpecEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiTrainingPipelineModelToUploadContainerSpecEnv)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecEnvArray) ToAiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput() AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecEnvArray) ToAiTrainingPipelineModelToUploadContainerSpecEnvArrayOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecEnvOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecEnv)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecEnvOutput) ToAiTrainingPipelineModelToUploadContainerSpecEnvOutput() AiTrainingPipelineModelToUploadContainerSpecEnvOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecEnvOutput) ToAiTrainingPipelineModelToUploadContainerSpecEnvOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o AiTrainingPipelineModelToUploadContainerSpecEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o AiTrainingPipelineModelToUploadContainerSpecEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiTrainingPipelineModelToUploadContainerSpecEnv)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput) ToAiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput() AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput) ToAiTrainingPipelineModelToUploadContainerSpecEnvArrayOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput) Index(i pulumi.IntInput) AiTrainingPipelineModelToUploadContainerSpecEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiTrainingPipelineModelToUploadContainerSpecEnv {
+		return vs[0].([]AiTrainingPipelineModelToUploadContainerSpecEnv)[vs[1].(int)]
+	}).(AiTrainingPipelineModelToUploadContainerSpecEnvOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecGrpcPort struct {
+	// The number of the port on the container.
+	ContainerPort int `pulumi:"containerPort"`
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecGrpcPortInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs and AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecGrpcPortInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs{...}
+type AiTrainingPipelineModelToUploadContainerSpecGrpcPortInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput() AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs struct {
+	// The number of the port on the container.
+	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+}
+
+func (AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecGrpcPort)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs) ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput() AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs) ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput)
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecGrpcPortArray and AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecGrpcPortArray{ AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs{...} }
+type AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput() AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecGrpcPortArray []AiTrainingPipelineModelToUploadContainerSpecGrpcPortInput
+
+func (AiTrainingPipelineModelToUploadContainerSpecGrpcPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiTrainingPipelineModelToUploadContainerSpecGrpcPort)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecGrpcPortArray) ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput() AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecGrpcPortArray) ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecGrpcPort)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput) ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput() AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput) ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput {
+	return o
+}
+
+// The number of the port on the container.
+func (o AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecGrpcPort) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiTrainingPipelineModelToUploadContainerSpecGrpcPort)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput) ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput() AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput) ToAiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput) Index(i pulumi.IntInput) AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiTrainingPipelineModelToUploadContainerSpecGrpcPort {
+		return vs[0].([]AiTrainingPipelineModelToUploadContainerSpecGrpcPort)[vs[1].(int)]
+	}).(AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbe struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec *AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec `pulumi:"exec"`
+	// How often (in seconds) to perform the probe.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Number of seconds after which the probe times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecHealthProbeInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs and AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecHealthProbeInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs{...}
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrInput `pulumi:"exec"`
+	// How often (in seconds) to perform the probe.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Number of seconds after which the probe times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecHealthProbe)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput)
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput).ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs, AiTrainingPipelineModelToUploadContainerSpecHealthProbePtr and AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrInput` via:
+//
+//	        AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput
+}
+
+type aiTrainingPipelineModelToUploadContainerSpecHealthProbePtrType AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs
+
+func AiTrainingPipelineModelToUploadContainerSpecHealthProbePtr(v *AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs) AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrInput {
+	return (*aiTrainingPipelineModelToUploadContainerSpecHealthProbePtrType)(v)
+}
+
+func (*aiTrainingPipelineModelToUploadContainerSpecHealthProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpecHealthProbe)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecHealthProbePtrType) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecHealthProbePtrType) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecHealthProbe)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return o.ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineModelToUploadContainerSpecHealthProbe) *AiTrainingPipelineModelToUploadContainerSpecHealthProbe {
+		return &v
+	}).(AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput) Exec() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecHealthProbe) *AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec {
+		return v.Exec
+	}).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecHealthProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecHealthProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpecHealthProbe)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput) Elem() AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecHealthProbe) AiTrainingPipelineModelToUploadContainerSpecHealthProbe {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineModelToUploadContainerSpecHealthProbe
+		return ret
+	}).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput) Exec() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecHealthProbe) *AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecHealthProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecHealthProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec struct {
+	// Command is the command line to execute inside the container.
+	Commands []string `pulumi:"commands"`
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs and AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs{...}
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs struct {
+	// Command is the command line to execute inside the container.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput)
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput).ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs, AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtr and AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrInput` via:
+//
+//	        AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput
+}
+
+type aiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrType AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs
+
+func AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtr(v *AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrInput {
+	return (*aiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrType)(v)
+}
+
+func (*aiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrType) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrType) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return o.ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec) *AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec {
+		return &v
+	}).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container.
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput) Elem() AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec) AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec
+		return ret
+	}).(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput)
+}
+
+// Command is the command line to execute inside the container.
+func (o AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecHealthProbeExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecPort struct {
+	// The number of the port on the container.
+	ContainerPort int `pulumi:"containerPort"`
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecPortInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecPortArgs and AiTrainingPipelineModelToUploadContainerSpecPortOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecPortInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecPortArgs{...}
+type AiTrainingPipelineModelToUploadContainerSpecPortInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecPortOutput() AiTrainingPipelineModelToUploadContainerSpecPortOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecPortOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecPortOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecPortArgs struct {
+	// The number of the port on the container.
+	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+}
+
+func (AiTrainingPipelineModelToUploadContainerSpecPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecPort)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecPortArgs) ToAiTrainingPipelineModelToUploadContainerSpecPortOutput() AiTrainingPipelineModelToUploadContainerSpecPortOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecPortOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecPortArgs) ToAiTrainingPipelineModelToUploadContainerSpecPortOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecPortOutput)
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecPortArrayInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecPortArray and AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecPortArrayInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecPortArray{ AiTrainingPipelineModelToUploadContainerSpecPortArgs{...} }
+type AiTrainingPipelineModelToUploadContainerSpecPortArrayInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecPortArrayOutput() AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecPortArrayOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecPortArray []AiTrainingPipelineModelToUploadContainerSpecPortInput
+
+func (AiTrainingPipelineModelToUploadContainerSpecPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiTrainingPipelineModelToUploadContainerSpecPort)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecPortArray) ToAiTrainingPipelineModelToUploadContainerSpecPortArrayOutput() AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecPortArrayOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecPortArray) ToAiTrainingPipelineModelToUploadContainerSpecPortArrayOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecPortOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecPort)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecPortOutput) ToAiTrainingPipelineModelToUploadContainerSpecPortOutput() AiTrainingPipelineModelToUploadContainerSpecPortOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecPortOutput) ToAiTrainingPipelineModelToUploadContainerSpecPortOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecPortOutput {
+	return o
+}
+
+// The number of the port on the container.
+func (o AiTrainingPipelineModelToUploadContainerSpecPortOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecPort) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiTrainingPipelineModelToUploadContainerSpecPort)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput) ToAiTrainingPipelineModelToUploadContainerSpecPortArrayOutput() AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput) ToAiTrainingPipelineModelToUploadContainerSpecPortArrayOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput) Index(i pulumi.IntInput) AiTrainingPipelineModelToUploadContainerSpecPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiTrainingPipelineModelToUploadContainerSpecPort {
+		return vs[0].([]AiTrainingPipelineModelToUploadContainerSpecPort)[vs[1].(int)]
+	}).(AiTrainingPipelineModelToUploadContainerSpecPortOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbe struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec *AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec `pulumi:"exec"`
+	// How often (in seconds) to perform the probe.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Number of seconds after which the probe times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecStartupProbeInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs and AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecStartupProbeInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs{...}
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrInput `pulumi:"exec"`
+	// How often (in seconds) to perform the probe.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Number of seconds after which the probe times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecStartupProbe)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput)
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput).ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs, AiTrainingPipelineModelToUploadContainerSpecStartupProbePtr and AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrInput` via:
+//
+//	        AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput
+}
+
+type aiTrainingPipelineModelToUploadContainerSpecStartupProbePtrType AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs
+
+func AiTrainingPipelineModelToUploadContainerSpecStartupProbePtr(v *AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs) AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrInput {
+	return (*aiTrainingPipelineModelToUploadContainerSpecStartupProbePtrType)(v)
+}
+
+func (*aiTrainingPipelineModelToUploadContainerSpecStartupProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpecStartupProbe)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecStartupProbePtrType) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecStartupProbePtrType) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecStartupProbe)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return o.ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineModelToUploadContainerSpecStartupProbe) *AiTrainingPipelineModelToUploadContainerSpecStartupProbe {
+		return &v
+	}).(AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput) Exec() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecStartupProbe) *AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec {
+		return v.Exec
+	}).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecStartupProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecStartupProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpecStartupProbe)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput) Elem() AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecStartupProbe) AiTrainingPipelineModelToUploadContainerSpecStartupProbe {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineModelToUploadContainerSpecStartupProbe
+		return ret
+	}).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput) Exec() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecStartupProbe) *AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec struct {
+	// Command is the command line to execute inside the container.
+	Commands []string `pulumi:"commands"`
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs and AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecInput` via:
+//
+//	AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs{...}
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs struct {
+	// Command is the command line to execute inside the container.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput)
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput).ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrInput is an input type that accepts AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs, AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtr and AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrInput` via:
+//
+//	        AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput
+	ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput
+}
+
+type aiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrType AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs
+
+func AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtr(v *AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrInput {
+	return (*aiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrType)(v)
+}
+
+func (*aiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrType) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrType) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return o.ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec) *AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec {
+		return &v
+	}).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container.
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+type AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput) ToAiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput) Elem() AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec) AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec
+		return ret
+	}).(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput)
+}
+
+// Command is the command line to execute inside the container.
+func (o AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadContainerSpecStartupProbeExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiTrainingPipelineModelToUploadEncryptionSpec struct {
+	// The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiTrainingPipelineModelToUploadEncryptionSpecInput is an input type that accepts AiTrainingPipelineModelToUploadEncryptionSpecArgs and AiTrainingPipelineModelToUploadEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadEncryptionSpecInput` via:
+//
+//	AiTrainingPipelineModelToUploadEncryptionSpecArgs{...}
+type AiTrainingPipelineModelToUploadEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadEncryptionSpecOutput() AiTrainingPipelineModelToUploadEncryptionSpecOutput
+	ToAiTrainingPipelineModelToUploadEncryptionSpecOutputWithContext(context.Context) AiTrainingPipelineModelToUploadEncryptionSpecOutput
+}
+
+type AiTrainingPipelineModelToUploadEncryptionSpecArgs struct {
+	// The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiTrainingPipelineModelToUploadEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadEncryptionSpecArgs) ToAiTrainingPipelineModelToUploadEncryptionSpecOutput() AiTrainingPipelineModelToUploadEncryptionSpecOutput {
+	return i.ToAiTrainingPipelineModelToUploadEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadEncryptionSpecArgs) ToAiTrainingPipelineModelToUploadEncryptionSpecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadEncryptionSpecOutput)
+}
+
+func (i AiTrainingPipelineModelToUploadEncryptionSpecArgs) ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutput() AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadEncryptionSpecArgs) ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadEncryptionSpecOutput).ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineModelToUploadEncryptionSpecPtrInput is an input type that accepts AiTrainingPipelineModelToUploadEncryptionSpecArgs, AiTrainingPipelineModelToUploadEncryptionSpecPtr and AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadEncryptionSpecPtrInput` via:
+//
+//	        AiTrainingPipelineModelToUploadEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineModelToUploadEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutput() AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput
+	ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(context.Context) AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput
+}
+
+type aiTrainingPipelineModelToUploadEncryptionSpecPtrType AiTrainingPipelineModelToUploadEncryptionSpecArgs
+
+func AiTrainingPipelineModelToUploadEncryptionSpecPtr(v *AiTrainingPipelineModelToUploadEncryptionSpecArgs) AiTrainingPipelineModelToUploadEncryptionSpecPtrInput {
+	return (*aiTrainingPipelineModelToUploadEncryptionSpecPtrType)(v)
+}
+
+func (*aiTrainingPipelineModelToUploadEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineModelToUploadEncryptionSpecPtrType) ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutput() AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineModelToUploadEncryptionSpecPtrType) ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadEncryptionSpecOutput) ToAiTrainingPipelineModelToUploadEncryptionSpecOutput() AiTrainingPipelineModelToUploadEncryptionSpecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadEncryptionSpecOutput) ToAiTrainingPipelineModelToUploadEncryptionSpecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadEncryptionSpecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadEncryptionSpecOutput) ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutput() AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return o.ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineModelToUploadEncryptionSpecOutput) ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineModelToUploadEncryptionSpec) *AiTrainingPipelineModelToUploadEncryptionSpec {
+		return &v
+	}).(AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput)
+}
+
+// The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+func (o AiTrainingPipelineModelToUploadEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput) ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutput() AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput) ToAiTrainingPipelineModelToUploadEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput) Elem() AiTrainingPipelineModelToUploadEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadEncryptionSpec) AiTrainingPipelineModelToUploadEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineModelToUploadEncryptionSpec
+		return ret
+	}).(AiTrainingPipelineModelToUploadEncryptionSpecOutput)
+}
+
+// The Cloud KMS resource identifier of the customer-managed encryption key used to protect the training pipeline.
+func (o AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadExplanationSpec struct {
+	// Metadata describing the Model's input and output for explanation. This field uses JSON data as a string.
+	Metadata *string `pulumi:"metadata"`
+	// Parameters that configure explaining of the Model's predictions. This field uses JSON data as a string.
+	Parameters *string `pulumi:"parameters"`
+}
+
+// AiTrainingPipelineModelToUploadExplanationSpecInput is an input type that accepts AiTrainingPipelineModelToUploadExplanationSpecArgs and AiTrainingPipelineModelToUploadExplanationSpecOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadExplanationSpecInput` via:
+//
+//	AiTrainingPipelineModelToUploadExplanationSpecArgs{...}
+type AiTrainingPipelineModelToUploadExplanationSpecInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadExplanationSpecOutput() AiTrainingPipelineModelToUploadExplanationSpecOutput
+	ToAiTrainingPipelineModelToUploadExplanationSpecOutputWithContext(context.Context) AiTrainingPipelineModelToUploadExplanationSpecOutput
+}
+
+type AiTrainingPipelineModelToUploadExplanationSpecArgs struct {
+	// Metadata describing the Model's input and output for explanation. This field uses JSON data as a string.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	// Parameters that configure explaining of the Model's predictions. This field uses JSON data as a string.
+	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
+}
+
+func (AiTrainingPipelineModelToUploadExplanationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadExplanationSpec)(nil)).Elem()
+}
+
+func (i AiTrainingPipelineModelToUploadExplanationSpecArgs) ToAiTrainingPipelineModelToUploadExplanationSpecOutput() AiTrainingPipelineModelToUploadExplanationSpecOutput {
+	return i.ToAiTrainingPipelineModelToUploadExplanationSpecOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadExplanationSpecArgs) ToAiTrainingPipelineModelToUploadExplanationSpecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadExplanationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadExplanationSpecOutput)
+}
+
+func (i AiTrainingPipelineModelToUploadExplanationSpecArgs) ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutput() AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiTrainingPipelineModelToUploadExplanationSpecArgs) ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadExplanationSpecOutput).ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(ctx)
+}
+
+// AiTrainingPipelineModelToUploadExplanationSpecPtrInput is an input type that accepts AiTrainingPipelineModelToUploadExplanationSpecArgs, AiTrainingPipelineModelToUploadExplanationSpecPtr and AiTrainingPipelineModelToUploadExplanationSpecPtrOutput values.
+// You can construct a concrete instance of `AiTrainingPipelineModelToUploadExplanationSpecPtrInput` via:
+//
+//	        AiTrainingPipelineModelToUploadExplanationSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTrainingPipelineModelToUploadExplanationSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutput() AiTrainingPipelineModelToUploadExplanationSpecPtrOutput
+	ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(context.Context) AiTrainingPipelineModelToUploadExplanationSpecPtrOutput
+}
+
+type aiTrainingPipelineModelToUploadExplanationSpecPtrType AiTrainingPipelineModelToUploadExplanationSpecArgs
+
+func AiTrainingPipelineModelToUploadExplanationSpecPtr(v *AiTrainingPipelineModelToUploadExplanationSpecArgs) AiTrainingPipelineModelToUploadExplanationSpecPtrInput {
+	return (*aiTrainingPipelineModelToUploadExplanationSpecPtrType)(v)
+}
+
+func (*aiTrainingPipelineModelToUploadExplanationSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadExplanationSpec)(nil)).Elem()
+}
+
+func (i *aiTrainingPipelineModelToUploadExplanationSpecPtrType) ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutput() AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return i.ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTrainingPipelineModelToUploadExplanationSpecPtrType) ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTrainingPipelineModelToUploadExplanationSpecPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadExplanationSpecOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadExplanationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTrainingPipelineModelToUploadExplanationSpec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadExplanationSpecOutput) ToAiTrainingPipelineModelToUploadExplanationSpecOutput() AiTrainingPipelineModelToUploadExplanationSpecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadExplanationSpecOutput) ToAiTrainingPipelineModelToUploadExplanationSpecOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadExplanationSpecOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadExplanationSpecOutput) ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutput() AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return o.ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiTrainingPipelineModelToUploadExplanationSpecOutput) ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTrainingPipelineModelToUploadExplanationSpec) *AiTrainingPipelineModelToUploadExplanationSpec {
+		return &v
+	}).(AiTrainingPipelineModelToUploadExplanationSpecPtrOutput)
+}
+
+// Metadata describing the Model's input and output for explanation. This field uses JSON data as a string.
+func (o AiTrainingPipelineModelToUploadExplanationSpecOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadExplanationSpec) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// Parameters that configure explaining of the Model's predictions. This field uses JSON data as a string.
+func (o AiTrainingPipelineModelToUploadExplanationSpecOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiTrainingPipelineModelToUploadExplanationSpec) *string { return v.Parameters }).(pulumi.StringPtrOutput)
+}
+
+type AiTrainingPipelineModelToUploadExplanationSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTrainingPipelineModelToUploadExplanationSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTrainingPipelineModelToUploadExplanationSpec)(nil)).Elem()
+}
+
+func (o AiTrainingPipelineModelToUploadExplanationSpecPtrOutput) ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutput() AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadExplanationSpecPtrOutput) ToAiTrainingPipelineModelToUploadExplanationSpecPtrOutputWithContext(ctx context.Context) AiTrainingPipelineModelToUploadExplanationSpecPtrOutput {
+	return o
+}
+
+func (o AiTrainingPipelineModelToUploadExplanationSpecPtrOutput) Elem() AiTrainingPipelineModelToUploadExplanationSpecOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadExplanationSpec) AiTrainingPipelineModelToUploadExplanationSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiTrainingPipelineModelToUploadExplanationSpec
+		return ret
+	}).(AiTrainingPipelineModelToUploadExplanationSpecOutput)
+}
+
+// Metadata describing the Model's input and output for explanation. This field uses JSON data as a string.
+func (o AiTrainingPipelineModelToUploadExplanationSpecPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadExplanationSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters that configure explaining of the Model's predictions. This field uses JSON data as a string.
+func (o AiTrainingPipelineModelToUploadExplanationSpecPtrOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTrainingPipelineModelToUploadExplanationSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAiIndexDeployedIndex struct {
 	// The ID of the DeployedIndex in the above IndexEndpoint.
 	DeployedIndexId string `pulumi:"deployedIndexId"`
@@ -49054,6 +53345,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs{})
@@ -49243,6 +53536,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterNodePoolScalingSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterNodePoolScalingSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetInput)(nil)).Elem(), AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetArgs{})
@@ -49542,6 +53837,48 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSemanticGovernancePolicyMcpToolsPtrInput)(nil)).Elem(), AiSemanticGovernancePolicyMcpToolsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecPtrInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineEncryptionSpecInput)(nil)).Elem(), AiTrainingPipelineEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineEncryptionSpecPtrInput)(nil)).Elem(), AiTrainingPipelineEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineErrorInput)(nil)).Elem(), AiTrainingPipelineErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineErrorArrayInput)(nil)).Elem(), AiTrainingPipelineErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigPtrInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigBigqueryDestinationInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigBigqueryDestinationPtrInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigFilterSplitInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigFilterSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigFilterSplitPtrInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigFilterSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigFractionSplitInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigFractionSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigFractionSplitPtrInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigFractionSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigGcsDestinationInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigGcsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigGcsDestinationPtrInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigGcsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigPredefinedSplitInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigPredefinedSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigPredefinedSplitPtrInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigPredefinedSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigStratifiedSplitInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigStratifiedSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigStratifiedSplitPtrInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigStratifiedSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigTimestampSplitInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigTimestampSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineInputDataConfigTimestampSplitPtrInput)(nil)).Elem(), AiTrainingPipelineInputDataConfigTimestampSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadInput)(nil)).Elem(), AiTrainingPipelineModelToUploadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadPtrInput)(nil)).Elem(), AiTrainingPipelineModelToUploadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecPtrInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecEnvInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecEnvArrayInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecGrpcPortInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecGrpcPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecGrpcPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecHealthProbeInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecHealthProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecPortInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecPortArrayInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecStartupProbeInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrInput)(nil)).Elem(), AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadEncryptionSpecInput)(nil)).Elem(), AiTrainingPipelineModelToUploadEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadEncryptionSpecPtrInput)(nil)).Elem(), AiTrainingPipelineModelToUploadEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadExplanationSpecInput)(nil)).Elem(), AiTrainingPipelineModelToUploadExplanationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTrainingPipelineModelToUploadExplanationSpecPtrInput)(nil)).Elem(), AiTrainingPipelineModelToUploadExplanationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexInput)(nil)).Elem(), GetAiIndexDeployedIndexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexArrayInput)(nil)).Elem(), GetAiIndexDeployedIndexArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexEncryptionSpecInput)(nil)).Elem(), GetAiIndexEncryptionSpecArgs{})
@@ -49636,6 +53973,8 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesScaleToZeroSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput{})
@@ -49825,6 +54164,8 @@ func init() {
 	pulumi.RegisterOutputType(AiModelDevelopmentClusterNodePoolScalingSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecOutput{})
 	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecOutput{})
+	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecOutput{})
 	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiModelDevelopmentClusterOrchestratorSpecSlurmSpecNodeSetOutput{})
@@ -50124,6 +54465,48 @@ func init() {
 	pulumi.RegisterOutputType(AiSemanticGovernancePolicyMcpToolsPtrOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineErrorOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigBigqueryDestinationOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigBigqueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigFilterSplitOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigFilterSplitPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigFractionSplitOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigFractionSplitPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigGcsDestinationOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigGcsDestinationPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigPredefinedSplitOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigPredefinedSplitPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigStratifiedSplitOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigStratifiedSplitPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigTimestampSplitOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineInputDataConfigTimestampSplitPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecEnvOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecEnvArrayOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecGrpcPortOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecGrpcPortArrayOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecHealthProbeOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecHealthProbePtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecHealthProbeExecPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecPortOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecPortArrayOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecStartupProbeOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecStartupProbePtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadContainerSpecStartupProbeExecPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadExplanationSpecOutput{})
+	pulumi.RegisterOutputType(AiTrainingPipelineModelToUploadExplanationSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetAiIndexDeployedIndexOutput{})
 	pulumi.RegisterOutputType(GetAiIndexDeployedIndexArrayOutput{})
 	pulumi.RegisterOutputType(GetAiIndexEncryptionSpecOutput{})

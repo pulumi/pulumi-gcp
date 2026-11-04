@@ -17,6 +17,10 @@ from .. import _utilities
 __all__ = [
     'GoogleApiSourceLoggingConfigArgs',
     'GoogleApiSourceLoggingConfigArgsDict',
+    'GoogleApiSourceOrganizationSubscriptionArgs',
+    'GoogleApiSourceOrganizationSubscriptionArgsDict',
+    'GoogleApiSourceProjectSubscriptionsArgs',
+    'GoogleApiSourceProjectSubscriptionsArgsDict',
     'MessageBusLoggingConfigArgs',
     'MessageBusLoggingConfigArgsDict',
     'PipelineDestinationArgs',
@@ -112,6 +116,74 @@ class GoogleApiSourceLoggingConfigArgs:
     @log_severity.setter
     def log_severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_severity", value)
+
+
+class GoogleApiSourceOrganizationSubscriptionArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enable org level subscription.
+    """
+
+@pulumi.input_type
+class GoogleApiSourceOrganizationSubscriptionArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable org level subscription.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Enable org level subscription.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+class GoogleApiSourceProjectSubscriptionsArgsDict(TypedDict):
+    lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of projects to receive events from.
+    All the projects must be in the same org. The listed projects should have
+    the format project/{identifier} where identifier can be either the
+    project id for project number. A single list may contain both formats. At
+    most 100 projects can be listed.
+    """
+
+@pulumi.input_type
+class GoogleApiSourceProjectSubscriptionsArgs:
+    def __init__(__self__, *,
+                 lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] lists: A list of projects to receive events from.
+               All the projects must be in the same org. The listed projects should have
+               the format project/{identifier} where identifier can be either the
+               project id for project number. A single list may contain both formats. At
+               most 100 projects can be listed.
+        """
+        pulumi.set(__self__, "lists", lists)
+
+    @_builtins.property
+    @pulumi.getter
+    def lists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        A list of projects to receive events from.
+        All the projects must be in the same org. The listed projects should have
+        the format project/{identifier} where identifier can be either the
+        project id for project number. A single list may contain both formats. At
+        most 100 projects can be listed.
+        """
+        return pulumi.get(self, "lists")
+
+    @lists.setter
+    def lists(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "lists", value)
 
 
 class MessageBusLoggingConfigArgsDict(TypedDict):

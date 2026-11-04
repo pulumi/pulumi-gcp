@@ -557,6 +557,7 @@ class GrpcRoute(pulumi.CustomResource):
                             "grpc_service": "foo",
                             "grpc_method": "bar",
                             "case_sensitive": True,
+                            "type": "EXACT",
                         },
                     },
                 ],
@@ -575,6 +576,7 @@ class GrpcRoute(pulumi.CustomResource):
                         "retry_conditions": ["cancelled"],
                         "num_retries": 1,
                     },
+                    "idle_timeout": "30s",
                 },
             }])
         ```
@@ -751,6 +753,7 @@ class GrpcRoute(pulumi.CustomResource):
                             "grpc_service": "foo",
                             "grpc_method": "bar",
                             "case_sensitive": True,
+                            "type": "EXACT",
                         },
                     },
                 ],
@@ -769,6 +772,7 @@ class GrpcRoute(pulumi.CustomResource):
                         "retry_conditions": ["cancelled"],
                         "num_retries": 1,
                     },
+                    "idle_timeout": "30s",
                 },
             }])
         ```

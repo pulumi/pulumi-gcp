@@ -124,6 +124,13 @@ public final class GetCloudVmClustersCloudVmCluster {
      */
     private String network;
     /**
+     * @return The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     * 
+     */
+    private String odbDnsZone;
+    /**
      * @return The name of the OdbNetwork associated with the VM Cluster.
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -301,6 +308,15 @@ public final class GetCloudVmClustersCloudVmCluster {
         return this.network;
     }
     /**
+     * @return The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+     * 
+     */
+    public String odbDnsZone() {
+        return this.odbDnsZone;
+    }
+    /**
      * @return The name of the OdbNetwork associated with the VM Cluster.
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -370,6 +386,7 @@ public final class GetCloudVmClustersCloudVmCluster {
         private String location;
         private String name;
         private String network;
+        private String odbDnsZone;
         private String odbNetwork;
         private String odbSubnet;
         private String project;
@@ -395,6 +412,7 @@ public final class GetCloudVmClustersCloudVmCluster {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.odbDnsZone = defaults.odbDnsZone;
     	      this.odbNetwork = defaults.odbNetwork;
     	      this.odbSubnet = defaults.odbSubnet;
     	      this.project = defaults.project;
@@ -542,6 +560,14 @@ public final class GetCloudVmClustersCloudVmCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder odbDnsZone(String odbDnsZone) {
+            if (odbDnsZone == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "odbDnsZone");
+            }
+            this.odbDnsZone = odbDnsZone;
+            return this;
+        }
+        @CustomType.Setter
         public Builder odbNetwork(String odbNetwork) {
             if (odbNetwork == null) {
               throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "odbNetwork");
@@ -603,6 +629,7 @@ public final class GetCloudVmClustersCloudVmCluster {
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.odbDnsZone = odbDnsZone;
             _resultValue.odbNetwork = odbNetwork;
             _resultValue.odbSubnet = odbSubnet;
             _resultValue.project = project;

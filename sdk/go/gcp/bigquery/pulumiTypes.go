@@ -4850,6 +4850,8 @@ type DataTransferConfigScheduleOptions struct {
 	// scheduled at or after the end time. The end time can be changed at any
 	// moment. The time when a data transfer can be triggered manually is not
 	// limited by this option.
+	//
+	// <a name="nestedScheduleOptionsV2"></a>The `scheduleOptionsV2` block supports:
 	EndTime *string `pulumi:"endTime"`
 	// Specifies time to start scheduling transfer runs. The first run will be
 	// scheduled at or after the start time according to a recurrence pattern
@@ -4881,6 +4883,8 @@ type DataTransferConfigScheduleOptionsArgs struct {
 	// scheduled at or after the end time. The end time can be changed at any
 	// moment. The time when a data transfer can be triggered manually is not
 	// limited by this option.
+	//
+	// <a name="nestedScheduleOptionsV2"></a>The `scheduleOptionsV2` block supports:
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Specifies time to start scheduling transfer runs. The first run will be
 	// scheduled at or after the start time according to a recurrence pattern
@@ -4980,6 +4984,8 @@ func (o DataTransferConfigScheduleOptionsOutput) DisableAutoScheduling() pulumi.
 // scheduled at or after the end time. The end time can be changed at any
 // moment. The time when a data transfer can be triggered manually is not
 // limited by this option.
+//
+// <a name="nestedScheduleOptionsV2"></a>The `scheduleOptionsV2` block supports:
 func (o DataTransferConfigScheduleOptionsOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataTransferConfigScheduleOptions) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
@@ -5035,6 +5041,8 @@ func (o DataTransferConfigScheduleOptionsPtrOutput) DisableAutoScheduling() pulu
 // scheduled at or after the end time. The end time can be changed at any
 // moment. The time when a data transfer can be triggered manually is not
 // limited by this option.
+//
+// <a name="nestedScheduleOptionsV2"></a>The `scheduleOptionsV2` block supports:
 func (o DataTransferConfigScheduleOptionsPtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfigScheduleOptions) *string {
 		if v == nil {
@@ -5055,6 +5063,294 @@ func (o DataTransferConfigScheduleOptionsPtrOutput) StartTime() pulumi.StringPtr
 			return nil
 		}
 		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataTransferConfigScheduleOptionsV2 struct {
+	// Event-driven transfer schedule options. If set, the transfer will be
+	// scheduled upon events arriving.
+	EventDrivenSchedule DataTransferConfigScheduleOptionsV2EventDrivenSchedule `pulumi:"eventDrivenSchedule"`
+}
+
+// DataTransferConfigScheduleOptionsV2Input is an input type that accepts DataTransferConfigScheduleOptionsV2Args and DataTransferConfigScheduleOptionsV2Output values.
+// You can construct a concrete instance of `DataTransferConfigScheduleOptionsV2Input` via:
+//
+//	DataTransferConfigScheduleOptionsV2Args{...}
+type DataTransferConfigScheduleOptionsV2Input interface {
+	pulumi.Input
+
+	ToDataTransferConfigScheduleOptionsV2Output() DataTransferConfigScheduleOptionsV2Output
+	ToDataTransferConfigScheduleOptionsV2OutputWithContext(context.Context) DataTransferConfigScheduleOptionsV2Output
+}
+
+type DataTransferConfigScheduleOptionsV2Args struct {
+	// Event-driven transfer schedule options. If set, the transfer will be
+	// scheduled upon events arriving.
+	EventDrivenSchedule DataTransferConfigScheduleOptionsV2EventDrivenScheduleInput `pulumi:"eventDrivenSchedule"`
+}
+
+func (DataTransferConfigScheduleOptionsV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigScheduleOptionsV2)(nil)).Elem()
+}
+
+func (i DataTransferConfigScheduleOptionsV2Args) ToDataTransferConfigScheduleOptionsV2Output() DataTransferConfigScheduleOptionsV2Output {
+	return i.ToDataTransferConfigScheduleOptionsV2OutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigScheduleOptionsV2Args) ToDataTransferConfigScheduleOptionsV2OutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsV2Output)
+}
+
+func (i DataTransferConfigScheduleOptionsV2Args) ToDataTransferConfigScheduleOptionsV2PtrOutput() DataTransferConfigScheduleOptionsV2PtrOutput {
+	return i.ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigScheduleOptionsV2Args) ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsV2Output).ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(ctx)
+}
+
+// DataTransferConfigScheduleOptionsV2PtrInput is an input type that accepts DataTransferConfigScheduleOptionsV2Args, DataTransferConfigScheduleOptionsV2Ptr and DataTransferConfigScheduleOptionsV2PtrOutput values.
+// You can construct a concrete instance of `DataTransferConfigScheduleOptionsV2PtrInput` via:
+//
+//	        DataTransferConfigScheduleOptionsV2Args{...}
+//
+//	or:
+//
+//	        nil
+type DataTransferConfigScheduleOptionsV2PtrInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigScheduleOptionsV2PtrOutput() DataTransferConfigScheduleOptionsV2PtrOutput
+	ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(context.Context) DataTransferConfigScheduleOptionsV2PtrOutput
+}
+
+type dataTransferConfigScheduleOptionsV2PtrType DataTransferConfigScheduleOptionsV2Args
+
+func DataTransferConfigScheduleOptionsV2Ptr(v *DataTransferConfigScheduleOptionsV2Args) DataTransferConfigScheduleOptionsV2PtrInput {
+	return (*dataTransferConfigScheduleOptionsV2PtrType)(v)
+}
+
+func (*dataTransferConfigScheduleOptionsV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigScheduleOptionsV2)(nil)).Elem()
+}
+
+func (i *dataTransferConfigScheduleOptionsV2PtrType) ToDataTransferConfigScheduleOptionsV2PtrOutput() DataTransferConfigScheduleOptionsV2PtrOutput {
+	return i.ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(context.Background())
+}
+
+func (i *dataTransferConfigScheduleOptionsV2PtrType) ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsV2PtrOutput)
+}
+
+type DataTransferConfigScheduleOptionsV2Output struct{ *pulumi.OutputState }
+
+func (DataTransferConfigScheduleOptionsV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigScheduleOptionsV2)(nil)).Elem()
+}
+
+func (o DataTransferConfigScheduleOptionsV2Output) ToDataTransferConfigScheduleOptionsV2Output() DataTransferConfigScheduleOptionsV2Output {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsV2Output) ToDataTransferConfigScheduleOptionsV2OutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2Output {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsV2Output) ToDataTransferConfigScheduleOptionsV2PtrOutput() DataTransferConfigScheduleOptionsV2PtrOutput {
+	return o.ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(context.Background())
+}
+
+func (o DataTransferConfigScheduleOptionsV2Output) ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTransferConfigScheduleOptionsV2) *DataTransferConfigScheduleOptionsV2 {
+		return &v
+	}).(DataTransferConfigScheduleOptionsV2PtrOutput)
+}
+
+// Event-driven transfer schedule options. If set, the transfer will be
+// scheduled upon events arriving.
+func (o DataTransferConfigScheduleOptionsV2Output) EventDrivenSchedule() DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput {
+	return o.ApplyT(func(v DataTransferConfigScheduleOptionsV2) DataTransferConfigScheduleOptionsV2EventDrivenSchedule {
+		return v.EventDrivenSchedule
+	}).(DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput)
+}
+
+type DataTransferConfigScheduleOptionsV2PtrOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigScheduleOptionsV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigScheduleOptionsV2)(nil)).Elem()
+}
+
+func (o DataTransferConfigScheduleOptionsV2PtrOutput) ToDataTransferConfigScheduleOptionsV2PtrOutput() DataTransferConfigScheduleOptionsV2PtrOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsV2PtrOutput) ToDataTransferConfigScheduleOptionsV2PtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2PtrOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsV2PtrOutput) Elem() DataTransferConfigScheduleOptionsV2Output {
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptionsV2) DataTransferConfigScheduleOptionsV2 {
+		if v != nil {
+			return *v
+		}
+		var ret DataTransferConfigScheduleOptionsV2
+		return ret
+	}).(DataTransferConfigScheduleOptionsV2Output)
+}
+
+// Event-driven transfer schedule options. If set, the transfer will be
+// scheduled upon events arriving.
+func (o DataTransferConfigScheduleOptionsV2PtrOutput) EventDrivenSchedule() DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptionsV2) *DataTransferConfigScheduleOptionsV2EventDrivenSchedule {
+		if v == nil {
+			return nil
+		}
+		return &v.EventDrivenSchedule
+	}).(DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput)
+}
+
+type DataTransferConfigScheduleOptionsV2EventDrivenSchedule struct {
+	// Pub/Sub subscription name used to receive events. Only the
+	// Google Cloud Storage data source supports this option. Format:
+	// projects/{project}/subscriptions/{subscription}.
+	PubsubSubscription string `pulumi:"pubsubSubscription"`
+}
+
+// DataTransferConfigScheduleOptionsV2EventDrivenScheduleInput is an input type that accepts DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs and DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput values.
+// You can construct a concrete instance of `DataTransferConfigScheduleOptionsV2EventDrivenScheduleInput` via:
+//
+//	DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs{...}
+type DataTransferConfigScheduleOptionsV2EventDrivenScheduleInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput() DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput
+	ToDataTransferConfigScheduleOptionsV2EventDrivenScheduleOutputWithContext(context.Context) DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput
+}
+
+type DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs struct {
+	// Pub/Sub subscription name used to receive events. Only the
+	// Google Cloud Storage data source supports this option. Format:
+	// projects/{project}/subscriptions/{subscription}.
+	PubsubSubscription pulumi.StringInput `pulumi:"pubsubSubscription"`
+}
+
+func (DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigScheduleOptionsV2EventDrivenSchedule)(nil)).Elem()
+}
+
+func (i DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs) ToDataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput() DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput {
+	return i.ToDataTransferConfigScheduleOptionsV2EventDrivenScheduleOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs) ToDataTransferConfigScheduleOptionsV2EventDrivenScheduleOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput)
+}
+
+func (i DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs) ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput() DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return i.ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs) ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput).ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(ctx)
+}
+
+// DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrInput is an input type that accepts DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs, DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtr and DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput values.
+// You can construct a concrete instance of `DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrInput` via:
+//
+//	        DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput() DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput
+	ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(context.Context) DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput
+}
+
+type dataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrType DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs
+
+func DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtr(v *DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs) DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrInput {
+	return (*dataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrType)(v)
+}
+
+func (*dataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigScheduleOptionsV2EventDrivenSchedule)(nil)).Elem()
+}
+
+func (i *dataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrType) ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput() DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return i.ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *dataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrType) ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput)
+}
+
+type DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigScheduleOptionsV2EventDrivenSchedule)(nil)).Elem()
+}
+
+func (o DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput) ToDataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput() DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput) ToDataTransferConfigScheduleOptionsV2EventDrivenScheduleOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput) ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput() DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return o.ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput) ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTransferConfigScheduleOptionsV2EventDrivenSchedule) *DataTransferConfigScheduleOptionsV2EventDrivenSchedule {
+		return &v
+	}).(DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput)
+}
+
+// Pub/Sub subscription name used to receive events. Only the
+// Google Cloud Storage data source supports this option. Format:
+// projects/{project}/subscriptions/{subscription}.
+func (o DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput) PubsubSubscription() pulumi.StringOutput {
+	return o.ApplyT(func(v DataTransferConfigScheduleOptionsV2EventDrivenSchedule) string { return v.PubsubSubscription }).(pulumi.StringOutput)
+}
+
+type DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigScheduleOptionsV2EventDrivenSchedule)(nil)).Elem()
+}
+
+func (o DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput) ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput() DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput) ToDataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutputWithContext(ctx context.Context) DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput {
+	return o
+}
+
+func (o DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput) Elem() DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput {
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptionsV2EventDrivenSchedule) DataTransferConfigScheduleOptionsV2EventDrivenSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret DataTransferConfigScheduleOptionsV2EventDrivenSchedule
+		return ret
+	}).(DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput)
+}
+
+// Pub/Sub subscription name used to receive events. Only the
+// Google Cloud Storage data source supports this option. Format:
+// projects/{project}/subscriptions/{subscription}.
+func (o DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput) PubsubSubscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigScheduleOptionsV2EventDrivenSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PubsubSubscription
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26121,6 +26417,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEncryptionConfigurationPtrInput)(nil)).Elem(), DataTransferConfigEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsPtrInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsV2Input)(nil)).Elem(), DataTransferConfigScheduleOptionsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsV2PtrInput)(nil)).Elem(), DataTransferConfigScheduleOptionsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsV2EventDrivenScheduleInput)(nil)).Elem(), DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrInput)(nil)).Elem(), DataTransferConfigScheduleOptionsV2EventDrivenScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsPtrInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferDataSourceEnrollmentParameterInput)(nil)).Elem(), DataTransferDataSourceEnrollmentParameterArgs{})
@@ -26423,6 +26723,10 @@ func init() {
 	pulumi.RegisterOutputType(DataTransferConfigEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsV2Output{})
+	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsV2PtrOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsV2EventDrivenScheduleOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsV2EventDrivenSchedulePtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferDataSourceEnrollmentParameterOutput{})

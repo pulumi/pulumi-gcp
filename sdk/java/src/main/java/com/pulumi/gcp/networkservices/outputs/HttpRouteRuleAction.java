@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkservices.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.networkservices.outputs.HttpRouteRuleActionCorsPolicy;
 import com.pulumi.gcp.networkservices.outputs.HttpRouteRuleActionDestination;
+import com.pulumi.gcp.networkservices.outputs.HttpRouteRuleActionDirectResponse;
 import com.pulumi.gcp.networkservices.outputs.HttpRouteRuleActionFaultInjectionPolicy;
 import com.pulumi.gcp.networkservices.outputs.HttpRouteRuleActionRedirect;
 import com.pulumi.gcp.networkservices.outputs.HttpRouteRuleActionRequestHeaderModifier;
@@ -34,11 +35,23 @@ public final class HttpRouteRuleAction {
      */
     private @Nullable List<HttpRouteRuleActionDestination> destinations;
     /**
+     * @return Static HTTP Response object to be returned regardless of the request.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable HttpRouteRuleActionDirectResponse directResponse;
+    /**
      * @return The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
      * Structure is documented below.
      * 
      */
     private @Nullable HttpRouteRuleActionFaultInjectionPolicy faultInjectionPolicy;
+    /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    private @Nullable String idleTimeout;
     /**
      * @return If set, the request is directed as configured by this field.
      * Structure is documented below.
@@ -99,12 +112,28 @@ public final class HttpRouteRuleAction {
         return this.destinations == null ? List.of() : this.destinations;
     }
     /**
+     * @return Static HTTP Response object to be returned regardless of the request.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<HttpRouteRuleActionDirectResponse> directResponse() {
+        return Optional.ofNullable(this.directResponse);
+    }
+    /**
      * @return The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
      * Structure is documented below.
      * 
      */
     public Optional<HttpRouteRuleActionFaultInjectionPolicy> faultInjectionPolicy() {
         return Optional.ofNullable(this.faultInjectionPolicy);
+    }
+    /**
+     * @return Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Optional<String> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
     }
     /**
      * @return If set, the request is directed as configured by this field.
@@ -173,7 +202,9 @@ public final class HttpRouteRuleAction {
     public static final class Builder {
         private @Nullable HttpRouteRuleActionCorsPolicy corsPolicy;
         private @Nullable List<HttpRouteRuleActionDestination> destinations;
+        private @Nullable HttpRouteRuleActionDirectResponse directResponse;
         private @Nullable HttpRouteRuleActionFaultInjectionPolicy faultInjectionPolicy;
+        private @Nullable String idleTimeout;
         private @Nullable HttpRouteRuleActionRedirect redirect;
         private @Nullable HttpRouteRuleActionRequestHeaderModifier requestHeaderModifier;
         private @Nullable HttpRouteRuleActionRequestMirrorPolicy requestMirrorPolicy;
@@ -186,7 +217,9 @@ public final class HttpRouteRuleAction {
     	      Objects.requireNonNull(defaults);
     	      this.corsPolicy = defaults.corsPolicy;
     	      this.destinations = defaults.destinations;
+    	      this.directResponse = defaults.directResponse;
     	      this.faultInjectionPolicy = defaults.faultInjectionPolicy;
+    	      this.idleTimeout = defaults.idleTimeout;
     	      this.redirect = defaults.redirect;
     	      this.requestHeaderModifier = defaults.requestHeaderModifier;
     	      this.requestMirrorPolicy = defaults.requestMirrorPolicy;
@@ -212,9 +245,21 @@ public final class HttpRouteRuleAction {
             return destinations(List.of(destinations));
         }
         @CustomType.Setter
+        public Builder directResponse(@Nullable HttpRouteRuleActionDirectResponse directResponse) {
+
+            this.directResponse = directResponse;
+            return this;
+        }
+        @CustomType.Setter
         public Builder faultInjectionPolicy(@Nullable HttpRouteRuleActionFaultInjectionPolicy faultInjectionPolicy) {
 
             this.faultInjectionPolicy = faultInjectionPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder idleTimeout(@Nullable String idleTimeout) {
+
+            this.idleTimeout = idleTimeout;
             return this;
         }
         @CustomType.Setter
@@ -263,7 +308,9 @@ public final class HttpRouteRuleAction {
             final var _resultValue = new HttpRouteRuleAction();
             _resultValue.corsPolicy = corsPolicy;
             _resultValue.destinations = destinations;
+            _resultValue.directResponse = directResponse;
             _resultValue.faultInjectionPolicy = faultInjectionPolicy;
+            _resultValue.idleTimeout = idleTimeout;
             _resultValue.redirect = redirect;
             _resultValue.requestHeaderModifier = requestHeaderModifier;
             _resultValue.requestMirrorPolicy = requestMirrorPolicy;

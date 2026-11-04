@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
+        /// Multi-zone configuration for cluster instances. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig? MultiZoneConfig;
+        /// <summary>
         /// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `NetworkUri` nor `SubnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `Default`
         /// </summary>
         public readonly string? Network;
@@ -68,6 +72,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             ImmutableDictionary<string, string>? metadata,
 
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig? multiZoneConfig,
+
             string? network,
 
             Outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity? nodeGroupAffinity,
@@ -90,6 +96,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         {
             InternalIpOnly = internalIpOnly;
             Metadata = metadata;
+            MultiZoneConfig = multiZoneConfig;
             Network = network;
             NodeGroupAffinity = nodeGroupAffinity;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;

@@ -60,6 +60,7 @@ from .ai_semantic_governance_policy_engine import *
 from .ai_tensorboard import *
 from .ai_tensorboard_experiment import *
 from .ai_tensorboard_run import *
+from .ai_training_pipeline import *
 from .get_ai_endpoint_iam_policy import *
 from .get_ai_feature_group_iam_policy import *
 from .get_ai_feature_online_store_featureview_iam_policy import *

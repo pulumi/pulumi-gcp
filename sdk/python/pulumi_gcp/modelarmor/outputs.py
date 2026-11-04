@@ -29,6 +29,13 @@ __all__ = [
     'FloorsettingFloorSettingMetadataMultiLanguageDetection',
     'FloorsettingGoogleMcpServerFloorSetting',
     'TemplateFilterConfig',
+    'TemplateFilterConfigFilterRuleSettings',
+    'TemplateFilterConfigFilterRuleSettingsRuleSet',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRule',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList',
+    'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex',
     'TemplateFilterConfigMaliciousUriFilterSettings',
     'TemplateFilterConfigPiAndJailbreakFilterSettings',
     'TemplateFilterConfigRaiSettings',
@@ -721,7 +728,9 @@ class TemplateFilterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maliciousUriFilterSettings":
+        if key == "filterRuleSettings":
+            suggest = "filter_rule_settings"
+        elif key == "maliciousUriFilterSettings":
             suggest = "malicious_uri_filter_settings"
         elif key == "piAndJailbreakFilterSettings":
             suggest = "pi_and_jailbreak_filter_settings"
@@ -742,11 +751,15 @@ class TemplateFilterConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 filter_rule_settings: Optional['outputs.TemplateFilterConfigFilterRuleSettings'] = None,
                  malicious_uri_filter_settings: Optional['outputs.TemplateFilterConfigMaliciousUriFilterSettings'] = None,
                  pi_and_jailbreak_filter_settings: Optional['outputs.TemplateFilterConfigPiAndJailbreakFilterSettings'] = None,
                  rai_settings: Optional['outputs.TemplateFilterConfigRaiSettings'] = None,
                  sdp_settings: Optional['outputs.TemplateFilterConfigSdpSettings'] = None):
         """
+        :param 'TemplateFilterConfigFilterRuleSettingsArgs' filter_rule_settings: Settings for customizing filter rules. Note: This field is not supported in
+               FloorSetting and Streaming Sanitization APIs.
+               Structure is documented below.
         :param 'TemplateFilterConfigMaliciousUriFilterSettingsArgs' malicious_uri_filter_settings: Malicious URI filter settings.
                Structure is documented below.
         :param 'TemplateFilterConfigPiAndJailbreakFilterSettingsArgs' pi_and_jailbreak_filter_settings: Prompt injection and Jailbreak Filter settings.
@@ -756,6 +769,8 @@ class TemplateFilterConfig(dict):
         :param 'TemplateFilterConfigSdpSettingsArgs' sdp_settings: Sensitive Data Protection settings.
                Structure is documented below.
         """
+        if filter_rule_settings is not None:
+            pulumi.set(__self__, "filter_rule_settings", filter_rule_settings)
         if malicious_uri_filter_settings is not None:
             pulumi.set(__self__, "malicious_uri_filter_settings", malicious_uri_filter_settings)
         if pi_and_jailbreak_filter_settings is not None:
@@ -764,6 +779,16 @@ class TemplateFilterConfig(dict):
             pulumi.set(__self__, "rai_settings", rai_settings)
         if sdp_settings is not None:
             pulumi.set(__self__, "sdp_settings", sdp_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="filterRuleSettings")
+    def filter_rule_settings(self) -> Optional['outputs.TemplateFilterConfigFilterRuleSettings']:
+        """
+        Settings for customizing filter rules. Note: This field is not supported in
+        FloorSetting and Streaming Sanitization APIs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter_rule_settings")
 
     @_builtins.property
     @pulumi.getter(name="maliciousUriFilterSettings")
@@ -800,6 +825,288 @@ class TemplateFilterConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "sdp_settings")
+
+
+@pulumi.output_type
+class TemplateFilterConfigFilterRuleSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleSets":
+            suggest = "rule_sets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateFilterConfigFilterRuleSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateFilterConfigFilterRuleSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateFilterConfigFilterRuleSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_sets: Optional[Sequence['outputs.TemplateFilterConfigFilterRuleSettingsRuleSet']] = None):
+        """
+        :param Sequence['TemplateFilterConfigFilterRuleSettingsRuleSetArgs'] rule_sets: List of rule sets to be applied to filters.
+               Structure is documented below.
+        """
+        if rule_sets is not None:
+            pulumi.set(__self__, "rule_sets", rule_sets)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleSets")
+    def rule_sets(self) -> Optional[Sequence['outputs.TemplateFilterConfigFilterRuleSettingsRuleSet']]:
+        """
+        List of rule sets to be applied to filters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rule_sets")
+
+
+@pulumi.output_type
+class TemplateFilterConfigFilterRuleSettingsRuleSet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterTypes":
+            suggest = "filter_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateFilterConfigFilterRuleSettingsRuleSet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateFilterConfigFilterRuleSettingsRuleSet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateFilterConfigFilterRuleSettingsRuleSet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_types: Sequence[_builtins.str],
+                 rules: Sequence['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRule']):
+        """
+        :param Sequence[_builtins.str] filter_types: List of filters this rule set is applied to.
+               Possible values:
+               PROMPT_INJECTION_AND_JAILBREAK
+               RESPONSIBLE_AI
+        :param Sequence['TemplateFilterConfigFilterRuleSettingsRuleSetRuleArgs'] rules: Set of rules to be applied to filterTypes.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "filter_types", filter_types)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="filterTypes")
+    def filter_types(self) -> Sequence[_builtins.str]:
+        """
+        List of filters this rule set is applied to.
+        Possible values:
+        PROMPT_INJECTION_AND_JAILBREAK
+        RESPONSIBLE_AI
+        """
+        return pulumi.get(self, "filter_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRule']:
+        """
+        Set of rules to be applied to filterTypes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusionRule":
+            suggest = "exclusion_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateFilterConfigFilterRuleSettingsRuleSetRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateFilterConfigFilterRuleSettingsRuleSetRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateFilterConfigFilterRuleSettingsRuleSetRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclusion_rule: Optional['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule'] = None):
+        """
+        :param 'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleArgs' exclusion_rule: The rule that specifies conditions when filter detections are excluded from
+               results.
+               Structure is documented below.
+        """
+        if exclusion_rule is not None:
+            pulumi.set(__self__, "exclusion_rule", exclusion_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="exclusionRule")
+    def exclusion_rule(self) -> Optional['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule']:
+        """
+        The rule that specifies conditions when filter detections are excluded from
+        results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclusion_rule")
+
+
+@pulumi.output_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchingScope":
+            suggest = "matching_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dictionary: Optional['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary'] = None,
+                 matching_scope: Optional[_builtins.str] = None,
+                 regex: Optional['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex'] = None):
+        """
+        :param 'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryArgs' dictionary: Dictionary which defines the rule.
+               Structure is documented below.
+        :param _builtins.str matching_scope: Specifies the scope of the input that should be matched against the
+               exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+               Possible values:
+               MATCHING_SCOPE_FULL_MATCH
+               MATCHING_SCOPE_PARTIAL_MATCH
+        :param 'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegexArgs' regex: Regular expression which defines the rule.
+               Structure is documented below.
+        """
+        if dictionary is not None:
+            pulumi.set(__self__, "dictionary", dictionary)
+        if matching_scope is not None:
+            pulumi.set(__self__, "matching_scope", matching_scope)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @_builtins.property
+    @pulumi.getter
+    def dictionary(self) -> Optional['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary']:
+        """
+        Dictionary which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dictionary")
+
+    @_builtins.property
+    @pulumi.getter(name="matchingScope")
+    def matching_scope(self) -> Optional[_builtins.str]:
+        """
+        Specifies the scope of the input that should be matched against the
+        exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+        Possible values:
+        MATCHING_SCOPE_FULL_MATCH
+        MATCHING_SCOPE_PARTIAL_MATCH
+        """
+        return pulumi.get(self, "matching_scope")
+
+    @_builtins.property
+    @pulumi.getter
+    def regex(self) -> Optional['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex']:
+        """
+        Regular expression which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "wordList":
+            suggest = "word_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionary.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 word_list: Optional['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList'] = None):
+        """
+        :param 'TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordListArgs' word_list: Message defining a list of words or phrases.
+               Structure is documented below.
+        """
+        if word_list is not None:
+            pulumi.set(__self__, "word_list", word_list)
+
+    @_builtins.property
+    @pulumi.getter(name="wordList")
+    def word_list(self) -> Optional['outputs.TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList']:
+        """
+        Message defining a list of words or phrases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "word_list")
+
+
+@pulumi.output_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleDictionaryWordList(dict):
+    def __init__(__self__, *,
+                 words: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] words: Words or phrases defining the dictionary. The dictionary must contain at
+               least one phrase and every phrase must contain at least two characters that
+               are letters or digits.
+        """
+        pulumi.set(__self__, "words", words)
+
+    @_builtins.property
+    @pulumi.getter
+    def words(self) -> Sequence[_builtins.str]:
+        """
+        Words or phrases defining the dictionary. The dictionary must contain at
+        least one phrase and every phrase must contain at least two characters that
+        are letters or digits.
+        """
+        return pulumi.get(self, "words")
+
+
+@pulumi.output_type
+class TemplateFilterConfigFilterRuleSettingsRuleSetRuleExclusionRuleRegex(dict):
+    def __init__(__self__, *,
+                 pattern: _builtins.str):
+        """
+        :param _builtins.str pattern: The regular expression pattern.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> _builtins.str:
+        """
+        The regular expression pattern.
+        """
+        return pulumi.get(self, "pattern")
 
 
 @pulumi.output_type
@@ -1195,6 +1502,8 @@ class TemplateTemplateMetadata(dict):
             suggest = "custom_prompt_safety_error_code"
         elif key == "customPromptSafetyErrorMessage":
             suggest = "custom_prompt_safety_error_message"
+        elif key == "dataResidencyCompliant":
+            suggest = "data_residency_compliant"
         elif key == "enforcementType":
             suggest = "enforcement_type"
         elif key == "filterVersionSelector":
@@ -1224,6 +1533,7 @@ class TemplateTemplateMetadata(dict):
                  custom_llm_response_safety_error_message: Optional[_builtins.str] = None,
                  custom_prompt_safety_error_code: Optional[_builtins.int] = None,
                  custom_prompt_safety_error_message: Optional[_builtins.str] = None,
+                 data_residency_compliant: Optional[_builtins.bool] = None,
                  enforcement_type: Optional[_builtins.str] = None,
                  filter_version_selector: Optional['outputs.TemplateTemplateMetadataFilterVersionSelector'] = None,
                  ignore_partial_invocation_failures: Optional[_builtins.bool] = None,
@@ -1240,6 +1550,11 @@ class TemplateTemplateMetadata(dict):
                user by the service extension if the prompt trips Model Armor filters.
         :param _builtins.str custom_prompt_safety_error_message: Indicates the custom error message set by the user to be returned to the
                end user if the prompt trips Model Armor filters.
+        :param _builtins.bool data_residency_compliant: Indicates whether the template is subject to data residency compliance. If
+               true (default for new templates), the template is subject to data residency
+               compliance. If false, the template bypasses data residency compliance
+               checks. If unset, the value is determined by the API; templates created
+               before data residency enforcement may report false.
         :param _builtins.str enforcement_type: Possible values:
                INSPECT_ONLY
                INSPECT_AND_BLOCK
@@ -1267,6 +1582,8 @@ class TemplateTemplateMetadata(dict):
             pulumi.set(__self__, "custom_prompt_safety_error_code", custom_prompt_safety_error_code)
         if custom_prompt_safety_error_message is not None:
             pulumi.set(__self__, "custom_prompt_safety_error_message", custom_prompt_safety_error_message)
+        if data_residency_compliant is not None:
+            pulumi.set(__self__, "data_residency_compliant", data_residency_compliant)
         if enforcement_type is not None:
             pulumi.set(__self__, "enforcement_type", enforcement_type)
         if filter_version_selector is not None:
@@ -1317,6 +1634,18 @@ class TemplateTemplateMetadata(dict):
         end user if the prompt trips Model Armor filters.
         """
         return pulumi.get(self, "custom_prompt_safety_error_message")
+
+    @_builtins.property
+    @pulumi.getter(name="dataResidencyCompliant")
+    def data_residency_compliant(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the template is subject to data residency compliance. If
+        true (default for new templates), the template is subject to data residency
+        compliance. If false, the template bypasses data residency compliance
+        checks. If unset, the value is determined by the API; templates created
+        before data residency enforcement may report false.
+        """
+        return pulumi.get(self, "data_residency_compliant")
 
     @_builtins.property
     @pulumi.getter(name="enforcementType")

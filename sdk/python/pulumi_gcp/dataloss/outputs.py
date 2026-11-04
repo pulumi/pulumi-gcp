@@ -296,6 +296,9 @@ __all__ = [
     'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue',
     'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue',
     'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling',
+    'PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformed',
+    'PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowError',
     'PreventionDiscoveryConfigAction',
     'PreventionDiscoveryConfigActionExportData',
     'PreventionDiscoveryConfigActionExportDataProfileTable',
@@ -385,6 +388,7 @@ __all__ = [
     'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScore',
+    'PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeRegex',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType',
@@ -408,6 +412,13 @@ __all__ = [
     'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword',
     'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex',
     'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity',
+    'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings',
+    'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType',
+    'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEncloses',
+    'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInside',
+    'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlaps',
+    'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType',
+    'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore',
     'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes',
     'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType',
     'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore',
@@ -4305,6 +4316,8 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
             suggest = "info_type_transformations"
         elif key == "recordTransformations":
             suggest = "record_transformations"
+        elif key == "transformationErrorHandling":
+            suggest = "transformation_error_handling"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfig. Access the value via the '{suggest}' property getter instead.")
@@ -4320,13 +4333,16 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
     def __init__(__self__, *,
                  image_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformations'] = None,
                  info_type_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations'] = None,
-                 record_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations'] = None):
+                 record_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations'] = None,
+                 transformation_error_handling: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling'] = None):
         """
         :param 'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs' image_transformations: Treat the dataset as an image and redact.
                Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs' info_type_transformations: Treat the dataset as free-form text and apply the same free text transformation everywhere
                Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs' record_transformations: Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+               Structure is documented below.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs' transformation_error_handling: Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
                Structure is documented below.
         """
         if image_transformations is not None:
@@ -4335,6 +4351,8 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
             pulumi.set(__self__, "info_type_transformations", info_type_transformations)
         if record_transformations is not None:
             pulumi.set(__self__, "record_transformations", record_transformations)
+        if transformation_error_handling is not None:
+            pulumi.set(__self__, "transformation_error_handling", transformation_error_handling)
 
     @_builtins.property
     @pulumi.getter(name="imageTransformations")
@@ -4362,6 +4380,15 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "record_transformations")
+
+    @_builtins.property
+    @pulumi.getter(name="transformationErrorHandling")
+    def transformation_error_handling(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling']:
+        """
+        Mode for handling transformation errors. If left unspecified, the default mode is TransformationErrorHandling.ThrowError.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transformation_error_handling")
 
 
 @pulumi.output_type
@@ -15070,6 +15097,68 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 @pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "leaveUntransformed":
+            suggest = "leave_untransformed"
+        elif key == "throwError":
+            suggest = "throw_error"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 leave_untransformed: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformed'] = None,
+                 throw_error: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowError'] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformedArgs' leave_untransformed: Ignore errors
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowErrorArgs' throw_error: Throw an error
+        """
+        if leave_untransformed is not None:
+            pulumi.set(__self__, "leave_untransformed", leave_untransformed)
+        if throw_error is not None:
+            pulumi.set(__self__, "throw_error", throw_error)
+
+    @_builtins.property
+    @pulumi.getter(name="leaveUntransformed")
+    def leave_untransformed(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformed']:
+        """
+        Ignore errors
+        """
+        return pulumi.get(self, "leave_untransformed")
+
+    @_builtins.property
+    @pulumi.getter(name="throwError")
+    def throw_error(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowError']:
+        """
+        Throw an error
+        """
+        return pulumi.get(self, "throw_error")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingLeaveUntransformed(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowError(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class PreventionDiscoveryConfigAction(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18878,6 +18967,8 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
             suggest = "info_type"
         elif key == "exclusionType":
             suggest = "exclusion_type"
+        elif key == "metadataKeyValueExpression":
+            suggest = "metadata_key_value_expression"
         elif key == "sensitivityScore":
             suggest = "sensitivity_score"
         elif key == "storedType":
@@ -18901,6 +18992,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
                  dictionary: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary'] = None,
                  exclusion_type: Optional[_builtins.str] = None,
                  likelihood: Optional[_builtins.str] = None,
+                 metadata_key_value_expression: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression'] = None,
                  regex: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex'] = None,
                  sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore'] = None,
                  stored_type: Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType'] = None,
@@ -18919,6 +19011,8 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
                specified by the rule.
                Default value is `VERY_LIKELY`.
                Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs' metadata_key_value_expression: Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+               Structure is documented below.
         :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs' regex: Regular expression which defines the rule.
                Structure is documented below.
         :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
@@ -18934,6 +19028,8 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
             pulumi.set(__self__, "exclusion_type", exclusion_type)
         if likelihood is not None:
             pulumi.set(__self__, "likelihood", likelihood)
+        if metadata_key_value_expression is not None:
+            pulumi.set(__self__, "metadata_key_value_expression", metadata_key_value_expression)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
         if sensitivity_score is not None:
@@ -18983,6 +19079,15 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
         Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         """
         return pulumi.get(self, "likelihood")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataKeyValueExpression")
+    def metadata_key_value_expression(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression']:
+        """
+        Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata_key_value_expression")
 
     @_builtins.property
     @pulumi.getter
@@ -19196,6 +19301,54 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivitySco
 
 
 @pulumi.output_type
+class PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyRegex":
+            suggest = "key_regex"
+        elif key == "valueRegex":
+            suggest = "value_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigCustomInfoTypeMetadataKeyValueExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_regex: _builtins.str,
+                 value_regex: _builtins.str):
+        """
+        :param _builtins.str key_regex: The regular expression for the key.
+        :param _builtins.str value_regex: The regular expression for the value.
+        """
+        pulumi.set(__self__, "key_regex", key_regex)
+        pulumi.set(__self__, "value_regex", value_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="keyRegex")
+    def key_regex(self) -> _builtins.str:
+        """
+        The regular expression for the key.
+        """
+        return pulumi.get(self, "key_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="valueRegex")
+    def value_regex(self) -> _builtins.str:
+        """
+        The regular expression for the value.
+        """
+        return pulumi.get(self, "value_regex")
+
+
+@pulumi.output_type
 class PreventionInspectTemplateInspectConfigCustomInfoTypeRegex(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -19314,9 +19467,8 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
                  sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore'] = None,
                  version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param _builtins.str name: Name of the information type.
+        :param 'PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType.
                Structure is documented below.
         :param _builtins.str version: Version name for this InfoType.
         """
@@ -19330,8 +19482,7 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        Name of the information type.
         """
         return pulumi.get(self, "name")
 
@@ -19339,7 +19490,7 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
     @pulumi.getter(name="sensitivityScore")
     def sensitivity_score(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore']:
         """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        Optional custom sensitivity for this InfoType.
         Structure is documented below.
         """
         return pulumi.get(self, "sensitivity_score")
@@ -19736,9 +19887,8 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
                  sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore'] = None,
                  version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param _builtins.str name: Name of the information type.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType.
                Structure is documented below.
         :param _builtins.str version: Version name for this InfoType.
         """
@@ -19752,8 +19902,7 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        Name of the information type.
         """
         return pulumi.get(self, "name")
 
@@ -19761,7 +19910,7 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
     @pulumi.getter(name="sensitivityScore")
     def sensitivity_score(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore']:
         """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        Optional custom sensitivity for this InfoType.
         Structure is documented below.
         """
         return pulumi.get(self, "sensitivity_score")
@@ -19858,6 +20007,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
             suggest = "matching_type"
         elif key == "excludeByHotword":
             suggest = "exclude_by_hotword"
+        elif key == "excludeByImageFindings":
+            suggest = "exclude_by_image_findings"
         elif key == "excludeInfoTypes":
             suggest = "exclude_info_types"
 
@@ -19876,15 +20027,18 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
                  matching_type: _builtins.str,
                  dictionary: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary'] = None,
                  exclude_by_hotword: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword'] = None,
+                 exclude_by_image_findings: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings'] = None,
                  exclude_info_types: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes'] = None,
                  regex: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex'] = None):
         """
         :param _builtins.str matching_type: How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-               Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+               Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
         :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs' dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs' exclude_by_hotword: Drop if the hotword rule is contained in the proximate context.
                For tabular data, the context includes the column name.
+               Structure is documented below.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs' exclude_by_image_findings: The rule to exclude image findings based on spatial relationships with other image findings.
                Structure is documented below.
         :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs' exclude_info_types: Set of infoTypes for which findings would affect this rule.
                Structure is documented below.
@@ -19896,6 +20050,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
             pulumi.set(__self__, "dictionary", dictionary)
         if exclude_by_hotword is not None:
             pulumi.set(__self__, "exclude_by_hotword", exclude_by_hotword)
+        if exclude_by_image_findings is not None:
+            pulumi.set(__self__, "exclude_by_image_findings", exclude_by_image_findings)
         if exclude_info_types is not None:
             pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         if regex is not None:
@@ -19906,7 +20062,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
     def matching_type(self) -> _builtins.str:
         """
         How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-        Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+        Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
         """
         return pulumi.get(self, "matching_type")
 
@@ -19928,6 +20084,15 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "exclude_by_hotword")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeByImageFindings")
+    def exclude_by_image_findings(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings']:
+        """
+        The rule to exclude image findings based on spatial relationships with other image findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_by_image_findings")
 
     @_builtins.property
     @pulumi.getter(name="excludeInfoTypes")
@@ -20200,6 +20365,218 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
 
 
 @pulumi.output_type
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypes":
+            suggest = "info_types"
+        elif key == "imageContainmentType":
+            suggest = "image_containment_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType'],
+                 image_containment_type: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType'] = None):
+        """
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs'] info_types: A list of image-supported infoTypes to be used as context for the exclusion rule.
+               Structure is documented below.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs' image_containment_type: Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "info_types", info_types)
+        if image_containment_type is not None:
+            pulumi.set(__self__, "image_containment_type", image_containment_type)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType']:
+        """
+        A list of image-supported infoTypes to be used as context for the exclusion rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    @_builtins.property
+    @pulumi.getter(name="imageContainmentType")
+    def image_containment_type(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType']:
+        """
+        Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_containment_type")
+
+
+@pulumi.output_type
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullyInside":
+            suggest = "fully_inside"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encloses: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEncloses'] = None,
+                 fully_inside: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInside'] = None,
+                 overlaps: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlaps'] = None):
+        """
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgs' encloses: Defines a condition where one bounding box encloses another.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs' fully_inside: Defines a condition where one bounding box is fully inside another.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgs' overlaps: Defines a condition for overlapping bounding boxes.
+        """
+        if encloses is not None:
+            pulumi.set(__self__, "encloses", encloses)
+        if fully_inside is not None:
+            pulumi.set(__self__, "fully_inside", fully_inside)
+        if overlaps is not None:
+            pulumi.set(__self__, "overlaps", overlaps)
+
+    @_builtins.property
+    @pulumi.getter
+    def encloses(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEncloses']:
+        """
+        Defines a condition where one bounding box encloses another.
+        """
+        return pulumi.get(self, "encloses")
+
+    @_builtins.property
+    @pulumi.getter(name="fullyInside")
+    def fully_inside(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInside']:
+        """
+        Defines a condition where one bounding box is fully inside another.
+        """
+        return pulumi.get(self, "fully_inside")
+
+    @_builtins.property
+    @pulumi.getter
+    def overlaps(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlaps']:
+        """
+        Defines a condition for overlapping bounding boxes.
+        """
+        return pulumi.get(self, "overlaps")
+
+
+@pulumi.output_type
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEncloses(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInside(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlaps(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sensitivityScore":
+            suggest = "sensitivity_score"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore'] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Name of the information type.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType.
+               Structure is documented below.
+        :param _builtins.str version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the information type.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore']:
+        """
+        Optional custom sensitivity for this InfoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore(dict):
+    def __init__(__self__, *,
+                 score: _builtins.str):
+        """
+        :param _builtins.str score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> _builtins.str:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+
+@pulumi.output_type
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -20260,9 +20637,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
                  sensitivity_score: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore'] = None,
                  version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
-        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        :param _builtins.str name: Name of the information type.
+        :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs' sensitivity_score: Optional custom sensitivity for this InfoType.
                Structure is documented below.
         :param _builtins.str version: Version name for this InfoType.
         """
@@ -20276,8 +20652,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        Name of the information type.
         """
         return pulumi.get(self, "name")
 
@@ -20285,7 +20660,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     @pulumi.getter(name="sensitivityScore")
     def sensitivity_score(self) -> Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore']:
         """
-        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        Optional custom sensitivity for this InfoType.
         Structure is documented below.
         """
         return pulumi.get(self, "sensitivity_score")

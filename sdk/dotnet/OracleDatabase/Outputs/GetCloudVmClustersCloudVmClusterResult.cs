@@ -105,6 +105,12 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+        /// </summary>
+        public readonly string OdbDnsZone;
+        /// <summary>
         /// The name of the OdbNetwork associated with the VM Cluster.
         /// Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
@@ -169,6 +175,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string network,
 
+            string odbDnsZone,
+
             string odbNetwork,
 
             string odbSubnet,
@@ -196,6 +204,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             Location = location;
             Name = name;
             Network = network;
+            OdbDnsZone = odbDnsZone;
             OdbNetwork = odbNetwork;
             OdbSubnet = odbSubnet;
             Project = project;

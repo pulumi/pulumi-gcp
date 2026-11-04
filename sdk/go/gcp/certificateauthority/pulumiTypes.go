@@ -4205,6 +4205,14 @@ type CaPoolIssuancePolicy struct {
 	// The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
 	// expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
 	MaximumLifetime *string `pulumi:"maximumLifetime"`
+	// Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+	// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+	// will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don't
+	// appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+	// add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+	// set in this CaPool's baseline_values.
+	// Structure is documented below.
+	PassthroughExtensions *CaPoolIssuancePolicyPassthroughExtensions `pulumi:"passthroughExtensions"`
 }
 
 // CaPoolIssuancePolicyInput is an input type that accepts CaPoolIssuancePolicyArgs and CaPoolIssuancePolicyOutput values.
@@ -4250,6 +4258,14 @@ type CaPoolIssuancePolicyArgs struct {
 	// The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
 	// expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
 	MaximumLifetime pulumi.StringPtrInput `pulumi:"maximumLifetime"`
+	// Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+	// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+	// will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don't
+	// appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+	// add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+	// set in this CaPool's baseline_values.
+	// Structure is documented below.
+	PassthroughExtensions CaPoolIssuancePolicyPassthroughExtensionsPtrInput `pulumi:"passthroughExtensions"`
 }
 
 func (CaPoolIssuancePolicyArgs) ElementType() reflect.Type {
@@ -4381,6 +4397,19 @@ func (o CaPoolIssuancePolicyOutput) MaximumLifetime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaPoolIssuancePolicy) *string { return v.MaximumLifetime }).(pulumi.StringPtrOutput)
 }
 
+// Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+// will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don't
+// appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+// add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+// set in this CaPool's baseline_values.
+// Structure is documented below.
+func (o CaPoolIssuancePolicyOutput) PassthroughExtensions() CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicy) *CaPoolIssuancePolicyPassthroughExtensions {
+		return v.PassthroughExtensions
+	}).(CaPoolIssuancePolicyPassthroughExtensionsPtrOutput)
+}
+
 type CaPoolIssuancePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIssuancePolicyPtrOutput) ElementType() reflect.Type {
@@ -4490,6 +4519,22 @@ func (o CaPoolIssuancePolicyPtrOutput) MaximumLifetime() pulumi.StringPtrOutput 
 		}
 		return v.MaximumLifetime
 	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+// If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions
+// will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don't
+// appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+// add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions
+// set in this CaPool's baseline_values.
+// Structure is documented below.
+func (o CaPoolIssuancePolicyPtrOutput) PassthroughExtensions() CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicy) *CaPoolIssuancePolicyPassthroughExtensions {
+		if v == nil {
+			return nil
+		}
+		return v.PassthroughExtensions
+	}).(CaPoolIssuancePolicyPassthroughExtensionsPtrOutput)
 }
 
 type CaPoolIssuancePolicyAllowedIssuanceModes struct {
@@ -7402,6 +7447,273 @@ func (o CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput) Title() p
 		}
 		return v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+type CaPoolIssuancePolicyPassthroughExtensions struct {
+	// A set of ObjectIds identifying custom X.509 extensions.
+	// Will be combined with knownExtensions to determine the full set of X.509 extensions.
+	// Structure is documented below.
+	AdditionalExtensions []CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension `pulumi:"additionalExtensions"`
+	// A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+	// Acceptable values are: `BASE_KEY_USAGE`, `EXTENDED_KEY_USAGE`, `CA_OPTIONS`, `POLICY_IDS`, `AIA_OCSP_SERVERS`, `NAME_CONSTRAINTS`.
+	KnownExtensions []string `pulumi:"knownExtensions"`
+}
+
+// CaPoolIssuancePolicyPassthroughExtensionsInput is an input type that accepts CaPoolIssuancePolicyPassthroughExtensionsArgs and CaPoolIssuancePolicyPassthroughExtensionsOutput values.
+// You can construct a concrete instance of `CaPoolIssuancePolicyPassthroughExtensionsInput` via:
+//
+//	CaPoolIssuancePolicyPassthroughExtensionsArgs{...}
+type CaPoolIssuancePolicyPassthroughExtensionsInput interface {
+	pulumi.Input
+
+	ToCaPoolIssuancePolicyPassthroughExtensionsOutput() CaPoolIssuancePolicyPassthroughExtensionsOutput
+	ToCaPoolIssuancePolicyPassthroughExtensionsOutputWithContext(context.Context) CaPoolIssuancePolicyPassthroughExtensionsOutput
+}
+
+type CaPoolIssuancePolicyPassthroughExtensionsArgs struct {
+	// A set of ObjectIds identifying custom X.509 extensions.
+	// Will be combined with knownExtensions to determine the full set of X.509 extensions.
+	// Structure is documented below.
+	AdditionalExtensions CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
+	// A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+	// Acceptable values are: `BASE_KEY_USAGE`, `EXTENDED_KEY_USAGE`, `CA_OPTIONS`, `POLICY_IDS`, `AIA_OCSP_SERVERS`, `NAME_CONSTRAINTS`.
+	KnownExtensions pulumi.StringArrayInput `pulumi:"knownExtensions"`
+}
+
+func (CaPoolIssuancePolicyPassthroughExtensionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaPoolIssuancePolicyPassthroughExtensions)(nil)).Elem()
+}
+
+func (i CaPoolIssuancePolicyPassthroughExtensionsArgs) ToCaPoolIssuancePolicyPassthroughExtensionsOutput() CaPoolIssuancePolicyPassthroughExtensionsOutput {
+	return i.ToCaPoolIssuancePolicyPassthroughExtensionsOutputWithContext(context.Background())
+}
+
+func (i CaPoolIssuancePolicyPassthroughExtensionsArgs) ToCaPoolIssuancePolicyPassthroughExtensionsOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIssuancePolicyPassthroughExtensionsOutput)
+}
+
+func (i CaPoolIssuancePolicyPassthroughExtensionsArgs) ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutput() CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return i.ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(context.Background())
+}
+
+func (i CaPoolIssuancePolicyPassthroughExtensionsArgs) ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIssuancePolicyPassthroughExtensionsOutput).ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(ctx)
+}
+
+// CaPoolIssuancePolicyPassthroughExtensionsPtrInput is an input type that accepts CaPoolIssuancePolicyPassthroughExtensionsArgs, CaPoolIssuancePolicyPassthroughExtensionsPtr and CaPoolIssuancePolicyPassthroughExtensionsPtrOutput values.
+// You can construct a concrete instance of `CaPoolIssuancePolicyPassthroughExtensionsPtrInput` via:
+//
+//	        CaPoolIssuancePolicyPassthroughExtensionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CaPoolIssuancePolicyPassthroughExtensionsPtrInput interface {
+	pulumi.Input
+
+	ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutput() CaPoolIssuancePolicyPassthroughExtensionsPtrOutput
+	ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(context.Context) CaPoolIssuancePolicyPassthroughExtensionsPtrOutput
+}
+
+type caPoolIssuancePolicyPassthroughExtensionsPtrType CaPoolIssuancePolicyPassthroughExtensionsArgs
+
+func CaPoolIssuancePolicyPassthroughExtensionsPtr(v *CaPoolIssuancePolicyPassthroughExtensionsArgs) CaPoolIssuancePolicyPassthroughExtensionsPtrInput {
+	return (*caPoolIssuancePolicyPassthroughExtensionsPtrType)(v)
+}
+
+func (*caPoolIssuancePolicyPassthroughExtensionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaPoolIssuancePolicyPassthroughExtensions)(nil)).Elem()
+}
+
+func (i *caPoolIssuancePolicyPassthroughExtensionsPtrType) ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutput() CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return i.ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(context.Background())
+}
+
+func (i *caPoolIssuancePolicyPassthroughExtensionsPtrType) ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIssuancePolicyPassthroughExtensionsPtrOutput)
+}
+
+type CaPoolIssuancePolicyPassthroughExtensionsOutput struct{ *pulumi.OutputState }
+
+func (CaPoolIssuancePolicyPassthroughExtensionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaPoolIssuancePolicyPassthroughExtensions)(nil)).Elem()
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsOutput) ToCaPoolIssuancePolicyPassthroughExtensionsOutput() CaPoolIssuancePolicyPassthroughExtensionsOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsOutput) ToCaPoolIssuancePolicyPassthroughExtensionsOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsOutput) ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutput() CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return o.ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(context.Background())
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsOutput) ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyPassthroughExtensions) *CaPoolIssuancePolicyPassthroughExtensions {
+		return &v
+	}).(CaPoolIssuancePolicyPassthroughExtensionsPtrOutput)
+}
+
+// A set of ObjectIds identifying custom X.509 extensions.
+// Will be combined with knownExtensions to determine the full set of X.509 extensions.
+// Structure is documented below.
+func (o CaPoolIssuancePolicyPassthroughExtensionsOutput) AdditionalExtensions() CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyPassthroughExtensions) []CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension {
+		return v.AdditionalExtensions
+	}).(CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput)
+}
+
+// A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+// Acceptable values are: `BASE_KEY_USAGE`, `EXTENDED_KEY_USAGE`, `CA_OPTIONS`, `POLICY_IDS`, `AIA_OCSP_SERVERS`, `NAME_CONSTRAINTS`.
+func (o CaPoolIssuancePolicyPassthroughExtensionsOutput) KnownExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyPassthroughExtensions) []string { return v.KnownExtensions }).(pulumi.StringArrayOutput)
+}
+
+type CaPoolIssuancePolicyPassthroughExtensionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CaPoolIssuancePolicyPassthroughExtensionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaPoolIssuancePolicyPassthroughExtensions)(nil)).Elem()
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsPtrOutput) ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutput() CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsPtrOutput) ToCaPoolIssuancePolicyPassthroughExtensionsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsPtrOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsPtrOutput) Elem() CaPoolIssuancePolicyPassthroughExtensionsOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyPassthroughExtensions) CaPoolIssuancePolicyPassthroughExtensions {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyPassthroughExtensions
+		return ret
+	}).(CaPoolIssuancePolicyPassthroughExtensionsOutput)
+}
+
+// A set of ObjectIds identifying custom X.509 extensions.
+// Will be combined with knownExtensions to determine the full set of X.509 extensions.
+// Structure is documented below.
+func (o CaPoolIssuancePolicyPassthroughExtensionsPtrOutput) AdditionalExtensions() CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyPassthroughExtensions) []CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalExtensions
+	}).(CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput)
+}
+
+// A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
+// Acceptable values are: `BASE_KEY_USAGE`, `EXTENDED_KEY_USAGE`, `CA_OPTIONS`, `POLICY_IDS`, `AIA_OCSP_SERVERS`, `NAME_CONSTRAINTS`.
+func (o CaPoolIssuancePolicyPassthroughExtensionsPtrOutput) KnownExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyPassthroughExtensions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.KnownExtensions
+	}).(pulumi.StringArrayOutput)
+}
+
+type CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionInput is an input type that accepts CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs and CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput values.
+// You can construct a concrete instance of `CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionInput` via:
+//
+//	CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs{...}
+type CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionInput interface {
+	pulumi.Input
+
+	ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput() CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput
+	ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutputWithContext(context.Context) CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput
+}
+
+type CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension)(nil)).Elem()
+}
+
+func (i CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs) ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput() CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput {
+	return i.ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutputWithContext(context.Background())
+}
+
+func (i CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs) ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput)
+}
+
+// CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayInput is an input type that accepts CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArray and CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput values.
+// You can construct a concrete instance of `CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayInput` via:
+//
+//	CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArray{ CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs{...} }
+type CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayInput interface {
+	pulumi.Input
+
+	ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput() CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput
+	ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutputWithContext(context.Context) CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput
+}
+
+type CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArray []CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionInput
+
+func (CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension)(nil)).Elem()
+}
+
+func (i CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArray) ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput() CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput {
+	return i.ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArray) ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput)
+}
+
+type CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput struct{ *pulumi.OutputState }
+
+func (CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension)(nil)).Elem()
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput) ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput() CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput) ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput {
+	return o
+}
+
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+func (o CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
+}
+
+type CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension)(nil)).Elem()
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput) ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput() CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput) ToCaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutputWithContext(ctx context.Context) CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput) Index(i pulumi.IntInput) CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension {
+		return vs[0].([]CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtension)[vs[1].(int)]
+	}).(CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput)
 }
 
 type CaPoolPublishingOptions struct {
@@ -19160,6 +19472,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyIdentityConstraintsPtrInput)(nil)).Elem(), CaPoolIssuancePolicyIdentityConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyIdentityConstraintsCelExpressionInput)(nil)).Elem(), CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrInput)(nil)).Elem(), CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyPassthroughExtensionsInput)(nil)).Elem(), CaPoolIssuancePolicyPassthroughExtensionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyPassthroughExtensionsPtrInput)(nil)).Elem(), CaPoolIssuancePolicyPassthroughExtensionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionInput)(nil)).Elem(), CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayInput)(nil)).Elem(), CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolPublishingOptionsInput)(nil)).Elem(), CaPoolPublishingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolPublishingOptionsPtrInput)(nil)).Elem(), CaPoolPublishingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionInput)(nil)).Elem(), CertificateCertificateDescriptionArgs{})
@@ -19384,6 +19700,10 @@ func init() {
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyIdentityConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyIdentityConstraintsCelExpressionOutput{})
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput{})
+	pulumi.RegisterOutputType(CaPoolIssuancePolicyPassthroughExtensionsOutput{})
+	pulumi.RegisterOutputType(CaPoolIssuancePolicyPassthroughExtensionsPtrOutput{})
+	pulumi.RegisterOutputType(CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionOutput{})
+	pulumi.RegisterOutputType(CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArrayOutput{})
 	pulumi.RegisterOutputType(CaPoolPublishingOptionsOutput{})
 	pulumi.RegisterOutputType(CaPoolPublishingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionOutput{})

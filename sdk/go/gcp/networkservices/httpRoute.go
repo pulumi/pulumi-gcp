@@ -259,6 +259,7 @@ import (
 //									ServiceName: pulumi.String("new"),
 //									Weight:      pulumi.Int(1),
 //								},
+//								MirrorPercent: pulumi.Float64(50),
 //							},
 //							CorsPolicy: &networkservices.HttpRouteRuleActionCorsPolicyArgs{
 //								AllowOrigins: pulumi.StringArray{
@@ -304,6 +305,7 @@ import (
 //									pulumi.String("removearg"),
 //								},
 //							},
+//							IdleTimeout: pulumi.String("1s"),
 //						},
 //					},
 //				},

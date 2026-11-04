@@ -8,6 +8,7 @@ import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyAllowedIs
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyAllowedKeyType;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValues;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyIdentityConstraints;
+import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyPassthroughExtensions;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -69,6 +70,17 @@ public final class CaPoolIssuancePolicy {
      * 
      */
     private @Nullable String maximumLifetime;
+    /**
+     * @return Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions
+     * will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don&#39;t
+     * appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+     * add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions
+     * set in this CaPool&#39;s baseline_values.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable CaPoolIssuancePolicyPassthroughExtensions passthroughExtensions;
 
     private CaPoolIssuancePolicy() {}
     /**
@@ -137,6 +149,19 @@ public final class CaPoolIssuancePolicy {
     public Optional<String> maximumLifetime() {
         return Optional.ofNullable(this.maximumLifetime);
     }
+    /**
+     * @return Describes the set of X.509 extensions that may appear in a Certificate issued through this CaPool.
+     * If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions
+     * will be dropped. If a certificate request uses a CertificateTemplate with predefinedValues that don&#39;t
+     * appear here, the certificate issuance request will fail. If this is omitted, then this CaPool will not
+     * add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions
+     * set in this CaPool&#39;s baseline_values.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<CaPoolIssuancePolicyPassthroughExtensions> passthroughExtensions() {
+        return Optional.ofNullable(this.passthroughExtensions);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -154,6 +179,7 @@ public final class CaPoolIssuancePolicy {
         private @Nullable CaPoolIssuancePolicyBaselineValues baselineValues;
         private @Nullable CaPoolIssuancePolicyIdentityConstraints identityConstraints;
         private @Nullable String maximumLifetime;
+        private @Nullable CaPoolIssuancePolicyPassthroughExtensions passthroughExtensions;
         public Builder() {}
         public Builder(CaPoolIssuancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -164,6 +190,7 @@ public final class CaPoolIssuancePolicy {
     	      this.baselineValues = defaults.baselineValues;
     	      this.identityConstraints = defaults.identityConstraints;
     	      this.maximumLifetime = defaults.maximumLifetime;
+    	      this.passthroughExtensions = defaults.passthroughExtensions;
         }
 
         @CustomType.Setter
@@ -211,6 +238,12 @@ public final class CaPoolIssuancePolicy {
             this.maximumLifetime = maximumLifetime;
             return this;
         }
+        @CustomType.Setter
+        public Builder passthroughExtensions(@Nullable CaPoolIssuancePolicyPassthroughExtensions passthroughExtensions) {
+
+            this.passthroughExtensions = passthroughExtensions;
+            return this;
+        }
         public CaPoolIssuancePolicy build() {
             final var _resultValue = new CaPoolIssuancePolicy();
             _resultValue.allowRequesterSpecifiedNotBeforeTime = allowRequesterSpecifiedNotBeforeTime;
@@ -220,6 +253,7 @@ public final class CaPoolIssuancePolicy {
             _resultValue.baselineValues = baselineValues;
             _resultValue.identityConstraints = identityConstraints;
             _resultValue.maximumLifetime = maximumLifetime;
+            _resultValue.passthroughExtensions = passthroughExtensions;
             return _resultValue;
         }
     }

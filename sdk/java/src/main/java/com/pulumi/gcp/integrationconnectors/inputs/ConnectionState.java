@@ -16,6 +16,7 @@ import com.pulumi.gcp.integrationconnectors.inputs.ConnectionLogConfigArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionNodeConfigArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionStatusArgs;
+import com.pulumi.gcp.integrationconnectors.inputs.ConnectionTrafficShapingConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -28,6 +29,21 @@ import javax.annotation.Nullable;
 public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionState Empty = new ConnectionState();
+
+    /**
+     * Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+     * 
+     */
+    @Import(name="asyncOperationsEnabled")
+    private @Nullable Output<Boolean> asyncOperationsEnabled;
+
+    /**
+     * @return Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+     * 
+     */
+    public Optional<Output<Boolean>> asyncOperationsEnabled() {
+        return Optional.ofNullable(this.asyncOperationsEnabled);
+    }
 
     /**
      * authConfig for the connection.
@@ -44,6 +60,21 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ConnectionAuthConfigArgs>> authConfig() {
         return Optional.ofNullable(this.authConfig);
+    }
+
+    /**
+     * Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+     * 
+     */
+    @Import(name="authOverrideEnabled")
+    private @Nullable Output<Boolean> authOverrideEnabled;
+
+    /**
+     * @return Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+     * 
+     */
+    public Optional<Output<Boolean>> authOverrideEnabled() {
+        return Optional.ofNullable(this.authOverrideEnabled);
     }
 
     /**
@@ -498,6 +529,23 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="trafficShapingConfigs")
+    private @Nullable Output<List<ConnectionTrafficShapingConfigArgs>> trafficShapingConfigs;
+
+    /**
+     * @return Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ConnectionTrafficShapingConfigArgs>>> trafficShapingConfigs() {
+        return Optional.ofNullable(this.trafficShapingConfigs);
+    }
+
+    /**
      * Time the Namespace was updated in UTC.
      * 
      */
@@ -515,7 +563,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     private ConnectionState() {}
 
     private ConnectionState(ConnectionState $) {
+        this.asyncOperationsEnabled = $.asyncOperationsEnabled;
         this.authConfig = $.authConfig;
+        this.authOverrideEnabled = $.authOverrideEnabled;
         this.configVariables = $.configVariables;
         this.connectionRevision = $.connectionRevision;
         this.connectorVersion = $.connectorVersion;
@@ -543,6 +593,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.statuses = $.statuses;
         this.subscriptionType = $.subscriptionType;
         this.suspended = $.suspended;
+        this.trafficShapingConfigs = $.trafficShapingConfigs;
         this.updateTime = $.updateTime;
     }
 
@@ -562,6 +613,27 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ConnectionState defaults) {
             $ = new ConnectionState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param asyncOperationsEnabled Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncOperationsEnabled(@Nullable Output<Boolean> asyncOperationsEnabled) {
+            $.asyncOperationsEnabled = asyncOperationsEnabled;
+            return this;
+        }
+
+        /**
+         * @param asyncOperationsEnabled Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncOperationsEnabled(Boolean asyncOperationsEnabled) {
+            return asyncOperationsEnabled(Output.of(asyncOperationsEnabled));
         }
 
         /**
@@ -585,6 +657,27 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authConfig(ConnectionAuthConfigArgs authConfig) {
             return authConfig(Output.of(authConfig));
+        }
+
+        /**
+         * @param authOverrideEnabled Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authOverrideEnabled(@Nullable Output<Boolean> authOverrideEnabled) {
+            $.authOverrideEnabled = authOverrideEnabled;
+            return this;
+        }
+
+        /**
+         * @param authOverrideEnabled Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authOverrideEnabled(Boolean authOverrideEnabled) {
+            return authOverrideEnabled(Output.of(authOverrideEnabled));
         }
 
         /**
@@ -1254,6 +1347,40 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder suspended(Boolean suspended) {
             return suspended(Output.of(suspended));
+        }
+
+        /**
+         * @param trafficShapingConfigs Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficShapingConfigs(@Nullable Output<List<ConnectionTrafficShapingConfigArgs>> trafficShapingConfigs) {
+            $.trafficShapingConfigs = trafficShapingConfigs;
+            return this;
+        }
+
+        /**
+         * @param trafficShapingConfigs Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficShapingConfigs(List<ConnectionTrafficShapingConfigArgs> trafficShapingConfigs) {
+            return trafficShapingConfigs(Output.of(trafficShapingConfigs));
+        }
+
+        /**
+         * @param trafficShapingConfigs Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficShapingConfigs(ConnectionTrafficShapingConfigArgs... trafficShapingConfigs) {
+            return trafficShapingConfigs(List.of(trafficShapingConfigs));
         }
 
         /**

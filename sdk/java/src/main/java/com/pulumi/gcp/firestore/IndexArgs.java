@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+import com.pulumi.gcp.firestore.inputs.IndexSearchIndexOptionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -191,6 +192,23 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Options to configure the search index.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="searchIndexOptions")
+    private @Nullable Output<IndexSearchIndexOptionsArgs> searchIndexOptions;
+
+    /**
+     * @return Optional. Options to configure the search index.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<IndexSearchIndexOptionsArgs>> searchIndexOptions() {
+        return Optional.ofNullable(this.searchIndexOptions);
+    }
+
+    /**
      * Whether to skip waiting for the index to be created.
      * 
      */
@@ -232,6 +250,7 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         this.multikey = $.multikey;
         this.project = $.project;
         this.queryScope = $.queryScope;
+        this.searchIndexOptions = $.searchIndexOptions;
         this.skipWait = $.skipWait;
         this.unique = $.unique;
     }
@@ -494,6 +513,29 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder queryScope(String queryScope) {
             return queryScope(Output.of(queryScope));
+        }
+
+        /**
+         * @param searchIndexOptions Optional. Options to configure the search index.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder searchIndexOptions(@Nullable Output<IndexSearchIndexOptionsArgs> searchIndexOptions) {
+            $.searchIndexOptions = searchIndexOptions;
+            return this;
+        }
+
+        /**
+         * @param searchIndexOptions Optional. Options to configure the search index.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder searchIndexOptions(IndexSearchIndexOptionsArgs searchIndexOptions) {
+            return searchIndexOptions(Output.of(searchIndexOptions));
         }
 
         /**

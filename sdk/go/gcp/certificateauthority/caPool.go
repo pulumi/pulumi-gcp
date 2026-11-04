@@ -132,6 +132,20 @@ import (
 //							Title:      pulumi.String("My title"),
 //						},
 //					},
+//					PassthroughExtensions: &certificateauthority.CaPoolIssuancePolicyPassthroughExtensionsArgs{
+//						KnownExtensions: pulumi.StringArray{
+//							pulumi.String("EXTENDED_KEY_USAGE"),
+//							pulumi.String("BASE_KEY_USAGE"),
+//						},
+//						AdditionalExtensions: certificateauthority.CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArray{
+//							&certificateauthority.CaPoolIssuancePolicyPassthroughExtensionsAdditionalExtensionArgs{
+//								ObjectIdPaths: pulumi.IntArray{
+//									pulumi.Int(1),
+//									pulumi.Int(5),
+//								},
+//							},
+//						},
+//					},
 //					BaselineValues: &certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs{
 //						AiaOcspServers: pulumi.StringArray{
 //							pulumi.String("example.com"),

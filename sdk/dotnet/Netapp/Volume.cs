@@ -342,6 +342,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<ImmutableArray<string>> SmbSettings { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Snap_reserve specifies percentage of volume storage reserved for
+        /// snapshot storage. Default is 0 percent.
+        /// </summary>
+        [Output("snapReserve")]
+        public Output<double?> SnapReserve { get; private set; } = null!;
+
+        /// <summary>
         /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
         /// </summary>
         [Output("snapshotDirectory")]
@@ -648,6 +655,13 @@ namespace Pulumi.Gcp.Netapp
             get => _smbSettings ?? (_smbSettings = new InputList<string>());
             set => _smbSettings = value;
         }
+
+        /// <summary>
+        /// Optional. Snap_reserve specifies percentage of volume storage reserved for
+        /// snapshot storage. Default is 0 percent.
+        /// </summary>
+        [Input("snapReserve")]
+        public Input<double>? SnapReserve { get; set; }
 
         /// <summary>
         /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
@@ -1007,6 +1021,13 @@ namespace Pulumi.Gcp.Netapp
             get => _smbSettings ?? (_smbSettings = new InputList<string>());
             set => _smbSettings = value;
         }
+
+        /// <summary>
+        /// Optional. Snap_reserve specifies percentage of volume storage reserved for
+        /// snapshot storage. Default is 0 percent.
+        /// </summary>
+        [Input("snapReserve")]
+        public Input<double>? SnapReserve { get; set; }
 
         /// <summary>
         /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.

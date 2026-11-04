@@ -13,11 +13,14 @@ import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterCon
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,14 +78,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     }
 
     /**
-     * The shared Compute Engine config settings for all instances in a cluster.
+     * The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
      * 
      */
     @Import(name="gceClusterConfig")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs> gceClusterConfig;
 
     /**
-     * @return The shared Compute Engine config settings for all instances in a cluster.
+     * @return The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs>> gceClusterConfig() {
@@ -150,6 +153,21 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     }
 
     /**
+     * The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+     * 
+     */
+    @Import(name="masterFlexibleConfig")
+    private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs> masterFlexibleConfig;
+
+    /**
+     * @return The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs>> masterFlexibleConfig() {
+        return Optional.ofNullable(this.masterFlexibleConfig);
+    }
+
+    /**
      * Metastore configuration.
      * 
      */
@@ -177,6 +195,21 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs>> secondaryWorkerConfig() {
         return Optional.ofNullable(this.secondaryWorkerConfig);
+    }
+
+    /**
+     * The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+     * 
+     */
+    @Import(name="secondaryWorkerFlexibleConfig")
+    private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs> secondaryWorkerFlexibleConfig;
+
+    /**
+     * @return The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs>> secondaryWorkerFlexibleConfig() {
+        return Optional.ofNullable(this.secondaryWorkerFlexibleConfig);
     }
 
     /**
@@ -242,8 +275,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     /**
      * The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="workerConfig")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs> workerConfig;
@@ -251,11 +282,28 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     /**
      * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
-     * ***
-     * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs>> workerConfig() {
         return Optional.ofNullable(this.workerConfig);
+    }
+
+    /**
+     * The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="workerFlexibleConfig")
+    private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs> workerFlexibleConfig;
+
+    /**
+     * @return The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs>> workerFlexibleConfig() {
+        return Optional.ofNullable(this.workerFlexibleConfig);
     }
 
     private WorkflowTemplatePlacementManagedClusterConfigArgs() {}
@@ -269,13 +317,16 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         this.initializationActions = $.initializationActions;
         this.lifecycleConfig = $.lifecycleConfig;
         this.masterConfig = $.masterConfig;
+        this.masterFlexibleConfig = $.masterFlexibleConfig;
         this.metastoreConfig = $.metastoreConfig;
         this.secondaryWorkerConfig = $.secondaryWorkerConfig;
+        this.secondaryWorkerFlexibleConfig = $.secondaryWorkerFlexibleConfig;
         this.securityConfig = $.securityConfig;
         this.softwareConfig = $.softwareConfig;
         this.stagingBucket = $.stagingBucket;
         this.tempBucket = $.tempBucket;
         this.workerConfig = $.workerConfig;
+        this.workerFlexibleConfig = $.workerFlexibleConfig;
     }
 
     public static Builder builder() {
@@ -360,7 +411,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
-         * @param gceClusterConfig The shared Compute Engine config settings for all instances in a cluster.
+         * @param gceClusterConfig The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -371,7 +422,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
-         * @param gceClusterConfig The shared Compute Engine config settings for all instances in a cluster.
+         * @param gceClusterConfig The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -475,6 +526,27 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         }
 
         /**
+         * @param masterFlexibleConfig The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterFlexibleConfig(@Nullable Output<WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs> masterFlexibleConfig) {
+            $.masterFlexibleConfig = masterFlexibleConfig;
+            return this;
+        }
+
+        /**
+         * @param masterFlexibleConfig The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterFlexibleConfig(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs masterFlexibleConfig) {
+            return masterFlexibleConfig(Output.of(masterFlexibleConfig));
+        }
+
+        /**
          * @param metastoreConfig Metastore configuration.
          * 
          * @return builder
@@ -514,6 +586,27 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
          */
         public Builder secondaryWorkerConfig(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs secondaryWorkerConfig) {
             return secondaryWorkerConfig(Output.of(secondaryWorkerConfig));
+        }
+
+        /**
+         * @param secondaryWorkerFlexibleConfig The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryWorkerFlexibleConfig(@Nullable Output<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs> secondaryWorkerFlexibleConfig) {
+            $.secondaryWorkerFlexibleConfig = secondaryWorkerFlexibleConfig;
+            return this;
+        }
+
+        /**
+         * @param secondaryWorkerFlexibleConfig The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryWorkerFlexibleConfig(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs secondaryWorkerFlexibleConfig) {
+            return secondaryWorkerFlexibleConfig(Output.of(secondaryWorkerFlexibleConfig));
         }
 
         /**
@@ -603,8 +696,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         /**
          * @param workerConfig The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -616,13 +707,36 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         /**
          * @param workerConfig The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder workerConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs workerConfig) {
             return workerConfig(Output.of(workerConfig));
+        }
+
+        /**
+         * @param workerFlexibleConfig The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerFlexibleConfig(@Nullable Output<WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs> workerFlexibleConfig) {
+            $.workerFlexibleConfig = workerFlexibleConfig;
+            return this;
+        }
+
+        /**
+         * @param workerFlexibleConfig The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerFlexibleConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs workerFlexibleConfig) {
+            return workerFlexibleConfig(Output.of(workerFlexibleConfig));
         }
 
         public WorkflowTemplatePlacementManagedClusterConfigArgs build() {

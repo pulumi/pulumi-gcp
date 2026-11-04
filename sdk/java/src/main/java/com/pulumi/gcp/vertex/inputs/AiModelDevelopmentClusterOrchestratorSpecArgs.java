@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiModelDevelopmentClusterOrchestratorSpecSlurmSpecArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class AiModelDevelopmentClusterOrchestratorSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiModelDevelopmentClusterOrchestratorSpecArgs Empty = new AiModelDevelopmentClusterOrchestratorSpecArgs();
+
+    /**
+     * The GKE orchestrator related spec of the cluster.
+     * 
+     */
+    @Import(name="kubernetesSpec")
+    private @Nullable Output<AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs> kubernetesSpec;
+
+    /**
+     * @return The GKE orchestrator related spec of the cluster.
+     * 
+     */
+    public Optional<Output<AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs>> kubernetesSpec() {
+        return Optional.ofNullable(this.kubernetesSpec);
+    }
 
     /**
      * The Slurm orchestrator related spec of the cluster.
@@ -33,6 +49,7 @@ public final class AiModelDevelopmentClusterOrchestratorSpecArgs extends com.pul
     private AiModelDevelopmentClusterOrchestratorSpecArgs() {}
 
     private AiModelDevelopmentClusterOrchestratorSpecArgs(AiModelDevelopmentClusterOrchestratorSpecArgs $) {
+        this.kubernetesSpec = $.kubernetesSpec;
         this.slurmSpec = $.slurmSpec;
     }
 
@@ -52,6 +69,27 @@ public final class AiModelDevelopmentClusterOrchestratorSpecArgs extends com.pul
 
         public Builder(AiModelDevelopmentClusterOrchestratorSpecArgs defaults) {
             $ = new AiModelDevelopmentClusterOrchestratorSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param kubernetesSpec The GKE orchestrator related spec of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubernetesSpec(@Nullable Output<AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs> kubernetesSpec) {
+            $.kubernetesSpec = kubernetesSpec;
+            return this;
+        }
+
+        /**
+         * @param kubernetesSpec The GKE orchestrator related spec of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubernetesSpec(AiModelDevelopmentClusterOrchestratorSpecKubernetesSpecArgs kubernetesSpec) {
+            return kubernetesSpec(Output.of(kubernetesSpec));
         }
 
         /**

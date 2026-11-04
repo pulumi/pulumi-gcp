@@ -94,6 +94,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DataProductAccessApprovalConfigArgs;
  * import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupArgs;
  * import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupPrincipalArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DataProductAccessGroupDefaultIamRoleConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -131,6 +132,9 @@ import javax.annotation.Nullable;
  *                     .description("In-place update verified")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
  *                         .googleGroup("tf-test-analysts-_62793}{@literal @}{@code example.com")
+ *                         .build())
+ *                     .defaultIamRoleConfig(DataProductAccessGroupDefaultIamRoleConfigArgs.builder()
+ *                         .role("roles/bigquery.dataViewer")
  *                         .build())
  *                     .build(),
  *                 DataProductAccessGroupArgs.builder()

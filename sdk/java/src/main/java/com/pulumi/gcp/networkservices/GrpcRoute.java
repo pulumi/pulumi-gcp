@@ -136,6 +136,7 @@ import javax.annotation.Nullable;
  *                             .grpcService("foo")
  *                             .grpcMethod("bar")
  *                             .caseSensitive(true)
+ *                             .type("EXACT")
  *                             .build())
  *                         .build())
  *                 .action(GrpcRouteRuleActionArgs.builder()
@@ -153,6 +154,7 @@ import javax.annotation.Nullable;
  *                         .retryConditions("cancelled")
  *                         .numRetries(1)
  *                         .build())
+ *                     .idleTimeout("30s")
  *                     .build())
  *                 .build())
  *             .build());

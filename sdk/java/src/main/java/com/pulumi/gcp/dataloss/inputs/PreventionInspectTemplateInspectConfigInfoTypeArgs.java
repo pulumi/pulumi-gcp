@@ -18,16 +18,14 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
     public static final PreventionInspectTemplateInspectConfigInfoTypeArgs Empty = new PreventionInspectTemplateInspectConfigInfoTypeArgs();
 
     /**
-     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * Name of the information type.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * @return Name of the information type.
      * 
      */
     public Output<String> name() {
@@ -35,7 +33,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
     }
 
     /**
-     * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Optional custom sensitivity for this InfoType.
      * Structure is documented below.
      * 
      */
@@ -43,7 +41,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
     private @Nullable Output<PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs> sensitivityScore;
 
     /**
-     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * @return Optional custom sensitivity for this InfoType.
      * Structure is documented below.
      * 
      */
@@ -93,8 +91,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         }
 
         /**
-         * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * @param name Name of the information type.
          * 
          * @return builder
          * 
@@ -105,8 +102,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         }
 
         /**
-         * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * @param name Name of the information type.
          * 
          * @return builder
          * 
@@ -116,7 +112,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         }
 
         /**
-         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * @param sensitivityScore Optional custom sensitivity for this InfoType.
          * Structure is documented below.
          * 
          * @return builder
@@ -128,7 +124,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         }
 
         /**
-         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * @param sensitivityScore Optional custom sensitivity for this InfoType.
          * Structure is documented below.
          * 
          * @return builder

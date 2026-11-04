@@ -361,9 +361,13 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+	AsyncOperationsEnabled pulumi.BoolPtrOutput `pulumi:"asyncOperationsEnabled"`
 	// authConfig for the connection.
 	// Structure is documented below.
 	AuthConfig ConnectionAuthConfigPtrOutput `pulumi:"authConfig"`
+	// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+	AuthOverrideEnabled pulumi.BoolPtrOutput `pulumi:"authOverrideEnabled"`
 	// Config Variables for the connection.
 	// Structure is documented below.
 	ConfigVariables ConnectionConfigVariableArrayOutput `pulumi:"configVariables"`
@@ -441,6 +445,9 @@ type Connection struct {
 	SubscriptionType pulumi.StringOutput `pulumi:"subscriptionType"`
 	// Suspended indicates if a user has suspended a connection or not.
 	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
+	// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+	// Structure is documented below.
+	TrafficShapingConfigs ConnectionTrafficShapingConfigArrayOutput `pulumi:"trafficShapingConfigs"`
 	// Time the Namespace was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -486,9 +493,13 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
+	// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+	AsyncOperationsEnabled *bool `pulumi:"asyncOperationsEnabled"`
 	// authConfig for the connection.
 	// Structure is documented below.
 	AuthConfig *ConnectionAuthConfig `pulumi:"authConfig"`
+	// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+	AuthOverrideEnabled *bool `pulumi:"authOverrideEnabled"`
 	// Config Variables for the connection.
 	// Structure is documented below.
 	ConfigVariables []ConnectionConfigVariable `pulumi:"configVariables"`
@@ -566,14 +577,21 @@ type connectionState struct {
 	SubscriptionType *string `pulumi:"subscriptionType"`
 	// Suspended indicates if a user has suspended a connection or not.
 	Suspended *bool `pulumi:"suspended"`
+	// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+	// Structure is documented below.
+	TrafficShapingConfigs []ConnectionTrafficShapingConfig `pulumi:"trafficShapingConfigs"`
 	// Time the Namespace was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ConnectionState struct {
+	// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+	AsyncOperationsEnabled pulumi.BoolPtrInput
 	// authConfig for the connection.
 	// Structure is documented below.
 	AuthConfig ConnectionAuthConfigPtrInput
+	// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+	AuthOverrideEnabled pulumi.BoolPtrInput
 	// Config Variables for the connection.
 	// Structure is documented below.
 	ConfigVariables ConnectionConfigVariableArrayInput
@@ -651,6 +669,9 @@ type ConnectionState struct {
 	SubscriptionType pulumi.StringPtrInput
 	// Suspended indicates if a user has suspended a connection or not.
 	Suspended pulumi.BoolPtrInput
+	// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+	// Structure is documented below.
+	TrafficShapingConfigs ConnectionTrafficShapingConfigArrayInput
 	// Time the Namespace was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -660,9 +681,13 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
+	// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+	AsyncOperationsEnabled *bool `pulumi:"asyncOperationsEnabled"`
 	// authConfig for the connection.
 	// Structure is documented below.
 	AuthConfig *ConnectionAuthConfig `pulumi:"authConfig"`
+	// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+	AuthOverrideEnabled *bool `pulumi:"authOverrideEnabled"`
 	// Config Variables for the connection.
 	// Structure is documented below.
 	ConfigVariables []ConnectionConfigVariable `pulumi:"configVariables"`
@@ -714,13 +739,20 @@ type connectionArgs struct {
 	SslConfig *ConnectionSslConfig `pulumi:"sslConfig"`
 	// Suspended indicates if a user has suspended a connection or not.
 	Suspended *bool `pulumi:"suspended"`
+	// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+	// Structure is documented below.
+	TrafficShapingConfigs []ConnectionTrafficShapingConfig `pulumi:"trafficShapingConfigs"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
+	// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+	AsyncOperationsEnabled pulumi.BoolPtrInput
 	// authConfig for the connection.
 	// Structure is documented below.
 	AuthConfig ConnectionAuthConfigPtrInput
+	// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+	AuthOverrideEnabled pulumi.BoolPtrInput
 	// Config Variables for the connection.
 	// Structure is documented below.
 	ConfigVariables ConnectionConfigVariableArrayInput
@@ -772,6 +804,9 @@ type ConnectionArgs struct {
 	SslConfig ConnectionSslConfigPtrInput
 	// Suspended indicates if a user has suspended a connection or not.
 	Suspended pulumi.BoolPtrInput
+	// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+	// Structure is documented below.
+	TrafficShapingConfigs ConnectionTrafficShapingConfigArrayInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {
@@ -861,10 +896,20 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// Async operations enabled for the connection. If Async Operations is enabled, Connection allows the customers to initiate async long running operations using the actions API.
+func (o ConnectionOutput) AsyncOperationsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.AsyncOperationsEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // authConfig for the connection.
 // Structure is documented below.
 func (o ConnectionOutput) AuthConfig() ConnectionAuthConfigPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionAuthConfigPtrOutput { return v.AuthConfig }).(ConnectionAuthConfigPtrOutput)
+}
+
+// Auth override enabled for the connection. If Auth Override is enabled, Connection allows the backend service auth to be overridden in the entities/actions API.
+func (o ConnectionOutput) AuthOverrideEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.AuthOverrideEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Config Variables for the connection.
@@ -1026,6 +1071,12 @@ func (o ConnectionOutput) SubscriptionType() pulumi.StringOutput {
 // Suspended indicates if a user has suspended a connection or not.
 func (o ConnectionOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
+}
+
+// Traffic shaping configuration for the connection. Client specifies the throttling configuration for Connector API calls.
+// Structure is documented below.
+func (o ConnectionOutput) TrafficShapingConfigs() ConnectionTrafficShapingConfigArrayOutput {
+	return o.ApplyT(func(v *Connection) ConnectionTrafficShapingConfigArrayOutput { return v.TrafficShapingConfigs }).(ConnectionTrafficShapingConfigArrayOutput)
 }
 
 // Time the Namespace was updated in UTC.

@@ -18,6 +18,19 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         [Input("catalogPublishingEnabled")]
         public Input<bool>? CatalogPublishingEnabled { get; set; }
 
+        [Input("generationScopes")]
+        private InputList<string>? _generationScopes;
+
+        /// <summary>
+        /// Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated.
+        /// Each value may be one of: `ALL`, `TABLE_AND_COLUMN_DESCRIPTIONS`, `SQL_QUERIES`, `BUSINESS_GLOSSARY_TERM_ASSOCIATIONS`.
+        /// </summary>
+        public InputList<string> GenerationScopes
+        {
+            get => _generationScopes ?? (_generationScopes = new InputList<string>());
+            set => _generationScopes = value;
+        }
+
         /// <summary>
         /// The SQL dialect to use in the generated SQL queries.
         /// If not specified, the default dialect is Google SQL.

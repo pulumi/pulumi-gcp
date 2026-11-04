@@ -109,14 +109,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			gpuReservation, err := compute.NewReservation(ctx, "gpu_reservation", &compute.ReservationArgs{
 //				Name: pulumi.String("wbi-reservation"),
-//				Zone: pulumi.String("us-east1-b"),
+//				Zone: pulumi.String("us-central1-b"),
 //				SpecificReservation: &compute.ReservationSpecificReservationArgs{
 //					Count: pulumi.Int(1),
 //					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-//						MachineType: pulumi.String("g2-standard-4"),
+//						MachineType: pulumi.String("n1-standard-1"),
 //						GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
 //							&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
-//								AcceleratorType:  pulumi.String("nvidia-l4"),
+//								AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
 //								AcceleratorCount: pulumi.Int(1),
 //							},
 //						},
@@ -129,12 +129,12 @@ import (
 //			}
 //			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
-//				Location: pulumi.String("us-east1-b"),
+//				Location: pulumi.String("us-central1-b"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
-//					MachineType: pulumi.String("g2-standard-4"),
+//					MachineType: pulumi.String("n1-standard-1"),
 //					AcceleratorConfigs: workbench.InstanceGceSetupAcceleratorConfigArray{
 //						&workbench.InstanceGceSetupAcceleratorConfigArgs{
-//							Type:      pulumi.String("NVIDIA_L4"),
+//							Type:      pulumi.String("NVIDIA_TESLA_T4"),
 //							CoreCount: pulumi.String("1"),
 //						},
 //					},

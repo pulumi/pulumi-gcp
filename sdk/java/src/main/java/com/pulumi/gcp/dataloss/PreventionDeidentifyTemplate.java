@@ -52,6 +52,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs;
  * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowErrorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -151,6 +153,10 @@ import javax.annotation.Nullable;
  *                                     .build())
  *                                 .build())
  *                             .build())
+ *                     .build())
+ *                 .transformationErrorHandling(PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingArgs.builder()
+ *                     .throwError(PreventionDeidentifyTemplateDeidentifyConfigTransformationErrorHandlingThrowErrorArgs.builder()
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .build());

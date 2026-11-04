@@ -1054,13 +1054,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.tags.TagKey;
- * import com.pulumi.gcp.tags.TagKeyArgs;
- * import com.pulumi.gcp.tags.TagValue;
- * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.tags.TagsFunctions;
+ * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
+ * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -1081,14 +1079,12 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
- *         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
+ *         final var tagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
  *             .parent(project.id())
  *             .shortName("tag_key")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(example)
- *                 .build());
+ *             .build());
  * 
- *         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
+ *         final var tagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
  *             .parent(tagKey.id())
  *             .shortName("tag_value")
  *             .build());
@@ -1096,11 +1092,7 @@ import javax.annotation.Nullable;
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.id())
- *             .tags(Output.tuple(tagKey.namespacedName(), tagValue.shortName()).applyValue(values -> {
- *                 var namespacedName = values.t1;
- *                 var shortName = values.t2;
- *                 return Map.of(namespacedName, shortName);
- *             }))
+ *             .tags(Map.of(tagKey.namespacedName(), tagValue.shortName()))
  *             .build());
  * 
  *     }
@@ -1170,7 +1162,7 @@ import javax.annotation.Nullable;
  *             .topic(example.id())
  *             .messageTransforms(SubscriptionMessageTransformArgs.builder()
  *                 .aiInference(SubscriptionMessageTransformAiInferenceArgs.builder()
- *                     .endpoint("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash")
+ *                     .endpoint("projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash")
  *                     .unstructuredInference(SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs.builder()
  *                         .parameters(Map.of("max_tokens", "25000"))
  *                         .build())

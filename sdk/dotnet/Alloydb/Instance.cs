@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Alloydb
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("default", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
     ///         {
     ///             Network = defaultNetwork.Id,
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Alloydb
     ///     var primary = new Gcp.Alloydb.Cluster("primary", new()
     ///     {
     ///         ClusterId = "alloydb-primary-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
     ///         {
     ///             Network = @default.Id,

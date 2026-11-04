@@ -805,7 +805,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
     /**
      * URL to networkservices.ServiceLbPolicy resource.
-     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
      * The service lb policy must be regional and in the same region as the backend service.
      * 
      */
@@ -814,7 +814,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
     /**
      * @return URL to networkservices.ServiceLbPolicy resource.
-     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
      * The service lb policy must be regional and in the same region as the backend service.
      * 
      */
@@ -1974,7 +1974,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
         /**
          * @param serviceLbPolicy URL to networkservices.ServiceLbPolicy resource.
-         * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+         * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
          * The service lb policy must be regional and in the same region as the backend service.
          * 
          * @return builder
@@ -1987,7 +1987,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
         /**
          * @param serviceLbPolicy URL to networkservices.ServiceLbPolicy resource.
-         * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+         * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
          * The service lb policy must be regional and in the same region as the backend service.
          * 
          * @return builder

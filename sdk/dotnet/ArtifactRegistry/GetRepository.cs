@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string CreateTime;
         public readonly string DeletionPolicy;
         public readonly string Description;
+        public readonly bool DisallowUnspecifiedMode;
         public readonly ImmutableArray<Outputs.GetRepositoryDockerConfigResult> DockerConfigs;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Format;
@@ -174,6 +175,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly ImmutableArray<Outputs.GetRepositoryMavenConfigResult> MavenConfigs;
         public readonly string Mode;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetRepositoryPlatformLogsConfigResult> PlatformLogsConfigs;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string RegistryUri;
@@ -195,6 +197,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
             string description,
 
+            bool disallowUnspecifiedMode,
+
             ImmutableArray<Outputs.GetRepositoryDockerConfigResult> dockerConfigs,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -214,6 +218,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
             string mode,
 
             string name,
+
+            ImmutableArray<Outputs.GetRepositoryPlatformLogsConfigResult> platformLogsConfigs,
 
             string? project,
 
@@ -236,6 +242,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             CreateTime = createTime;
             DeletionPolicy = deletionPolicy;
             Description = description;
+            DisallowUnspecifiedMode = disallowUnspecifiedMode;
             DockerConfigs = dockerConfigs;
             EffectiveLabels = effectiveLabels;
             Format = format;
@@ -246,6 +253,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             MavenConfigs = mavenConfigs;
             Mode = mode;
             Name = name;
+            PlatformLogsConfigs = platformLogsConfigs;
             Project = project;
             PulumiLabels = pulumiLabels;
             RegistryUri = registryUri;

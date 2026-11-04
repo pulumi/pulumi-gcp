@@ -73,6 +73,9 @@ import * as utilities from "../utilities";
  *             principal: {
  *                 googleGroup: "tf-test-analysts-_62793@example.com",
  *             },
+ *             defaultIamRoleConfig: {
+ *                 role: "roles/bigquery.dataViewer",
+ *             },
  *         },
  *         {
  *             id: "scientist",

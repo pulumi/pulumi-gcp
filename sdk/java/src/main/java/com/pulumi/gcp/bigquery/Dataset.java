@@ -553,6 +553,34 @@ public class Dataset extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultPartitionExpirationMs);
     }
     /**
+     * Defines the default rounding mode specification of new tables created
+     * within this dataset. During table creation, if this field is specified,
+     * the table within this dataset will inherit the default rounding mode of
+     * the dataset. Setting the default rounding mode on a table overrides this
+     * specification. Existing tables in the dataset are unaffected. If columns
+     * are defined during that table creation, they will immediately inherit the
+     * table&#39;s default rounding mode, unless otherwise specified.
+     * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+     * 
+     */
+    @Export(name="defaultRoundingMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> defaultRoundingMode;
+
+    /**
+     * @return Defines the default rounding mode specification of new tables created
+     * within this dataset. During table creation, if this field is specified,
+     * the table within this dataset will inherit the default rounding mode of
+     * the dataset. Setting the default rounding mode on a table overrides this
+     * specification. Existing tables in the dataset are unaffected. If columns
+     * are defined during that table creation, they will immediately inherit the
+     * table&#39;s default rounding mode, unless otherwise specified.
+     * Possible values are: `ROUND_HALF_AWAY_FROM_ZERO`, `ROUND_HALF_EVEN`.
+     * 
+     */
+    public Output<Optional<String>> defaultRoundingMode() {
+        return Codegen.optional(this.defaultRoundingMode);
+    }
+    /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
      * Once this property is set, all newly-created tables in the dataset

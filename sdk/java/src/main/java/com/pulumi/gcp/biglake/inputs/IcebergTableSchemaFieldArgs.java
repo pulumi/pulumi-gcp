@@ -79,14 +79,20 @@ public final class IcebergTableSchemaFieldArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The type of the field.
+     * The type of the field. Primitive types are plain names such as `long`. List, map and
+     * struct types are JSON objects as defined by the
+     * [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+     * typically written with `jsonencode`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the field.
+     * @return The type of the field. Primitive types are plain names such as `long`. List, map and
+     * struct types are JSON objects as defined by the
+     * [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+     * typically written with `jsonencode`.
      * 
      */
     public Output<String> type() {
@@ -206,7 +212,10 @@ public final class IcebergTableSchemaFieldArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type The type of the field.
+         * @param type The type of the field. Primitive types are plain names such as `long`. List, map and
+         * struct types are JSON objects as defined by the
+         * [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+         * typically written with `jsonencode`.
          * 
          * @return builder
          * 
@@ -217,7 +226,10 @@ public final class IcebergTableSchemaFieldArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type The type of the field.
+         * @param type The type of the field. Primitive types are plain names such as `long`. List, map and
+         * struct types are JSON objects as defined by the
+         * [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+         * typically written with `jsonencode`.
          * 
          * @return builder
          * 

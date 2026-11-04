@@ -27,7 +27,7 @@ class GetBackupPlanResult:
     """
     A collection of values returned by getBackupPlan.
     """
-    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, compute_instance_backup_plan_properties=None, create_time=None, deletion_policy=None, description=None, disk_backup_plan_properties=None, id=None, location=None, log_retention_days=None, max_custom_on_demand_retention_days=None, name=None, project=None, resource_type=None, supported_resource_types=None, update_time=None):
+    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, compute_instance_backup_plan_properties=None, create_time=None, deletion_policy=None, description=None, disk_backup_plan_properties=None, effective_labels=None, id=None, labels=None, location=None, log_retention_days=None, max_custom_on_demand_retention_days=None, name=None, project=None, pulumi_labels=None, resource_type=None, supported_resource_types=None, update_time=None):
         if backup_plan_id and not isinstance(backup_plan_id, str):
             raise TypeError("Expected argument 'backup_plan_id' to be a str")
         pulumi.set(__self__, "backup_plan_id", backup_plan_id)
@@ -55,9 +55,15 @@ class GetBackupPlanResult:
         if disk_backup_plan_properties and not isinstance(disk_backup_plan_properties, list):
             raise TypeError("Expected argument 'disk_backup_plan_properties' to be a list")
         pulumi.set(__self__, "disk_backup_plan_properties", disk_backup_plan_properties)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
@@ -73,6 +79,9 @@ class GetBackupPlanResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if resource_type and not isinstance(resource_type, str):
             raise TypeError("Expected argument 'resource_type' to be a str")
         pulumi.set(__self__, "resource_type", resource_type)
@@ -129,12 +138,22 @@ class GetBackupPlanResult:
         return pulumi.get(self, "disk_backup_plan_properties")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
@@ -160,6 +179,11 @@ class GetBackupPlanResult:
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
@@ -192,12 +216,15 @@ class AwaitableGetBackupPlanResult(GetBackupPlanResult):
             deletion_policy=self.deletion_policy,
             description=self.description,
             disk_backup_plan_properties=self.disk_backup_plan_properties,
+            effective_labels=self.effective_labels,
             id=self.id,
+            labels=self.labels,
             location=self.location,
             log_retention_days=self.log_retention_days,
             max_custom_on_demand_retention_days=self.max_custom_on_demand_retention_days,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             resource_type=self.resource_type,
             supported_resource_types=self.supported_resource_types,
             update_time=self.update_time)
@@ -227,12 +254,15 @@ def get_backup_plan(backup_plan_id: Optional[_builtins.str] = None,
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disk_backup_plan_properties=pulumi.get(__ret__, 'disk_backup_plan_properties'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
         log_retention_days=pulumi.get(__ret__, 'log_retention_days'),
         max_custom_on_demand_retention_days=pulumi.get(__ret__, 'max_custom_on_demand_retention_days'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         resource_type=pulumi.get(__ret__, 'resource_type'),
         supported_resource_types=pulumi.get(__ret__, 'supported_resource_types'),
         update_time=pulumi.get(__ret__, 'update_time'))
@@ -259,12 +289,15 @@ def get_backup_plan_output(backup_plan_id: pulumi.Input[Optional[_builtins.str]]
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disk_backup_plan_properties=pulumi.get(__response__, 'disk_backup_plan_properties'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
         id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
         log_retention_days=pulumi.get(__response__, 'log_retention_days'),
         max_custom_on_demand_retention_days=pulumi.get(__response__, 'max_custom_on_demand_retention_days'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         resource_type=pulumi.get(__response__, 'resource_type'),
         supported_resource_types=pulumi.get(__response__, 'supported_resource_types'),
         update_time=pulumi.get(__response__, 'update_time')))

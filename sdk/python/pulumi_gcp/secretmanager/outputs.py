@@ -19,6 +19,11 @@ __all__ = [
     'RegionalSecretCustomerManagedEncryption',
     'RegionalSecretIamBindingCondition',
     'RegionalSecretIamMemberCondition',
+    'RegionalSecretManagedRotationCloudSqlSingleUserCredentials',
+    'RegionalSecretManagedRotationRotation',
+    'RegionalSecretManagedRotationRotationManagedRotationStatus',
+    'RegionalSecretManagedRotationRotationManagedRotationStatusError',
+    'RegionalSecretPolicyMember',
     'RegionalSecretRotation',
     'RegionalSecretTopic',
     'RegionalSecretVersionCustomerManagedEncryption',
@@ -33,11 +38,13 @@ __all__ = [
     'SecretRotation',
     'SecretTopic',
     'GetRegionalSecretCustomerManagedEncryptionResult',
+    'GetRegionalSecretPolicyMemberResult',
     'GetRegionalSecretRotationResult',
     'GetRegionalSecretTopicResult',
     'GetRegionalSecretVersionCustomerManagedEncryptionResult',
     'GetRegionalSecretsSecretResult',
     'GetRegionalSecretsSecretCustomerManagedEncryptionResult',
+    'GetRegionalSecretsSecretPolicyMemberResult',
     'GetRegionalSecretsSecretRotationResult',
     'GetRegionalSecretsSecretTopicResult',
     'GetSecretReplicationResult',
@@ -190,6 +197,262 @@ class RegionalSecretIamMemberCondition(dict):
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RegionalSecretManagedRotationCloudSqlSingleUserCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+        elif key == "passwordWo":
+            suggest = "password_wo"
+        elif key == "passwordWoVersion":
+            suggest = "password_wo_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionalSecretManagedRotationCloudSqlSingleUserCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionalSecretManagedRotationCloudSqlSingleUserCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionalSecretManagedRotationCloudSqlSingleUserCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_id: _builtins.str,
+                 username: _builtins.str,
+                 password: Optional[_builtins.str] = None,
+                 password_wo: Optional[_builtins.str] = None,
+                 password_wo_version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str instance_id: The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+        :param _builtins.str username: The username of the Cloud SQL database user.
+        :param _builtins.str password: The initial password to set for the database user. If not provided, a random password will be generated.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The initial password to set for the database user. If not provided, a random password will be generated.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
+        :param _builtins.str password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        The name of the Cloud SQL instance. The instance must be in the same project as the regional secret.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        The username of the Cloud SQL database user.
+        """
+        return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        The initial password to set for the database user. If not provided, a random password will be generated.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The initial password to set for the database user. If not provided, a random password will be generated.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `password` or `password_wo` can only be set.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
+
+
+@pulumi.output_type
+class RegionalSecretManagedRotationRotation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managedRotationStatuses":
+            suggest = "managed_rotation_statuses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionalSecretManagedRotationRotation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionalSecretManagedRotationRotation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionalSecretManagedRotationRotation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 managed_rotation_statuses: Optional[Sequence['outputs.RegionalSecretManagedRotationRotationManagedRotationStatus']] = None):
+        """
+        :param Sequence['RegionalSecretManagedRotationRotationManagedRotationStatusArgs'] managed_rotation_statuses: (Output)
+               The current status of the managed rotation.
+               Structure is documented below.
+        """
+        if managed_rotation_statuses is not None:
+            pulumi.set(__self__, "managed_rotation_statuses", managed_rotation_statuses)
+
+    @_builtins.property
+    @pulumi.getter(name="managedRotationStatuses")
+    def managed_rotation_statuses(self) -> Optional[Sequence['outputs.RegionalSecretManagedRotationRotationManagedRotationStatus']]:
+        """
+        (Output)
+        The current status of the managed rotation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_rotation_statuses")
+
+
+@pulumi.output_type
+class RegionalSecretManagedRotationRotationManagedRotationStatus(dict):
+    def __init__(__self__, *,
+                 errors: Optional[Sequence['outputs.RegionalSecretManagedRotationRotationManagedRotationStatusError']] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param Sequence['RegionalSecretManagedRotationRotationManagedRotationStatusErrorArgs'] errors: (Output)
+               Customer-facing issues that occurred during an asynchronous managed rotation, for example
+               permission errors.
+               Structure is documented below.
+        :param _builtins.str state: (Output)
+               Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.RegionalSecretManagedRotationRotationManagedRotationStatusError']]:
+        """
+        (Output)
+        Customer-facing issues that occurred during an asynchronous managed rotation, for example
+        permission errors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Indicates whether the managed rotation is `ACTIVE` or `INACTIVE`.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class RegionalSecretManagedRotationRotationManagedRotationStatusError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of `google.rpc.Code`.
+        :param _builtins.str message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of `google.rpc.Code`.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class RegionalSecretPolicyMember(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iamPolicyUidPrincipal":
+            suggest = "iam_policy_uid_principal"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionalSecretPolicyMember. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionalSecretPolicyMember.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionalSecretPolicyMember.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iam_policy_uid_principal: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str iam_policy_uid_principal: (Output)
+               IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+               If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+               new resource. Format:
+               `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+        """
+        if iam_policy_uid_principal is not None:
+            pulumi.set(__self__, "iam_policy_uid_principal", iam_policy_uid_principal)
+
+    @_builtins.property
+    @pulumi.getter(name="iamPolicyUidPrincipal")
+    def iam_policy_uid_principal(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+        If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+        new resource. Format:
+        `principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}`
+        """
+        return pulumi.get(self, "iam_policy_uid_principal")
 
 
 @pulumi.output_type
@@ -736,6 +999,30 @@ class GetRegionalSecretCustomerManagedEncryptionResult(dict):
 
 
 @pulumi.output_type
+class GetRegionalSecretPolicyMemberResult(dict):
+    def __init__(__self__, *,
+                 iam_policy_uid_principal: _builtins.str):
+        """
+        :param _builtins.str iam_policy_uid_principal: IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+               If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+               new resource. Format:
+               'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+        """
+        pulumi.set(__self__, "iam_policy_uid_principal", iam_policy_uid_principal)
+
+    @_builtins.property
+    @pulumi.getter(name="iamPolicyUidPrincipal")
+    def iam_policy_uid_principal(self) -> _builtins.str:
+        """
+        IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+        If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+        new resource. Format:
+        'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+        """
+        return pulumi.get(self, "iam_policy_uid_principal")
+
+
+@pulumi.output_type
 class GetRegionalSecretRotationResult(dict):
     def __init__(__self__, *,
                  next_rotation_time: _builtins.str,
@@ -828,6 +1115,7 @@ class GetRegionalSecretsSecretResult(dict):
                  labels: Mapping[str, _builtins.str],
                  location: _builtins.str,
                  name: _builtins.str,
+                 policy_members: Sequence['outputs.GetRegionalSecretsSecretPolicyMemberResult'],
                  project: _builtins.str,
                  pulumi_labels: Mapping[str, _builtins.str],
                  rotations: Sequence['outputs.GetRegionalSecretsSecretRotationResult'],
@@ -858,6 +1146,8 @@ class GetRegionalSecretsSecretResult(dict):
         :param Mapping[str, _builtins.str] labels: The labels assigned to this regional secret.
         :param _builtins.str location: The location of the regional secret.
         :param _builtins.str name: The resource name of the Pub/Sub topic that will be published to.
+        :param Sequence['GetRegionalSecretsSecretPolicyMemberArgs'] policy_members: An object containing a unique resource identity tied to the regional secret. This identity can be
+               granted the permissions required by features such as managed rotation.
         :param _builtins.str project: The ID of the project.
         :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
@@ -866,6 +1156,15 @@ class GetRegionalSecretsSecretResult(dict):
         :param _builtins.str secret_id: The unique name of the resource.
         :param _builtins.str secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * 'CLOUD_SQL_DB_CREDENTIALS': Secrets used for managed rotation of Cloud SQL single-user
+                 credentials. Managed rotation can be enabled on these secrets using the
+                 'google_secret_manager_regional_secret_managed_rotation' resource. Secret versions cannot
+                 be added manually to secrets of this type.
+               * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+               * 'ACCESS_KEY': Secrets where the payload contains an access key.
+               * 'CERTIFICATE': Secrets where the payload contains a certificate.
+               * 'OTHER': Secrets whose type doesn't belong to any of the above types.
         :param Mapping[str, _builtins.str] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -887,6 +1186,7 @@ class GetRegionalSecretsSecretResult(dict):
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "policy_members", policy_members)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         pulumi.set(__self__, "rotations", rotations)
@@ -995,6 +1295,15 @@ class GetRegionalSecretsSecretResult(dict):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="policyMembers")
+    def policy_members(self) -> Sequence['outputs.GetRegionalSecretsSecretPolicyMemberResult']:
+        """
+        An object containing a unique resource identity tied to the regional secret. This identity can be
+        granted the permissions required by features such as managed rotation.
+        """
+        return pulumi.get(self, "policy_members")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
@@ -1034,6 +1343,15 @@ class GetRegionalSecretsSecretResult(dict):
         """
         This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        Supported values are:
+        * 'CLOUD_SQL_DB_CREDENTIALS': Secrets used for managed rotation of Cloud SQL single-user
+          credentials. Managed rotation can be enabled on these secrets using the
+          'google_secret_manager_regional_secret_managed_rotation' resource. Secret versions cannot
+          be added manually to secrets of this type.
+        * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+        * 'ACCESS_KEY': Secrets where the payload contains an access key.
+        * 'CERTIFICATE': Secrets where the payload contains a certificate.
+        * 'OTHER': Secrets whose type doesn't belong to any of the above types.
         """
         return pulumi.get(self, "secret_type")
 
@@ -1098,6 +1416,30 @@ class GetRegionalSecretsSecretCustomerManagedEncryptionResult(dict):
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetRegionalSecretsSecretPolicyMemberResult(dict):
+    def __init__(__self__, *,
+                 iam_policy_uid_principal: _builtins.str):
+        """
+        :param _builtins.str iam_policy_uid_principal: IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+               If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+               new resource. Format:
+               'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+        """
+        pulumi.set(__self__, "iam_policy_uid_principal", iam_policy_uid_principal)
+
+    @_builtins.property
+    @pulumi.getter(name="iamPolicyUidPrincipal")
+    def iam_policy_uid_principal(self) -> _builtins.str:
+        """
+        IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+        If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+        new resource. Format:
+        'principal://secretmanager.googleapis.com/projects/{{project_number}}/uid/locations/{{location}}/secrets/{{secret_id}}-{{uid}}'
+        """
+        return pulumi.get(self, "iam_policy_uid_principal")
 
 
 @pulumi.output_type
@@ -1384,6 +1726,11 @@ class GetSecretsSecretResult(dict):
         :param _builtins.str secret_id: This must be unique within the project.
         :param _builtins.str secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
                For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+               Supported values are:
+               * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+               * 'ACCESS_KEY': Secrets where the payload contains an access key.
+               * 'CERTIFICATE': Secrets where the payload contains a certificate.
+               * 'OTHER': Secrets whose type doesn't belong to any of the above types.
         :param Mapping[str, _builtins.str] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1544,6 +1891,11 @@ class GetSecretsSecretResult(dict):
         """
         This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
         For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        Supported values are:
+        * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+        * 'ACCESS_KEY': Secrets where the payload contains an access key.
+        * 'CERTIFICATE': Secrets where the payload contains a certificate.
+        * 'OTHER': Secrets whose type doesn't belong to any of the above types.
         """
         return pulumi.get(self, "secret_type")
 

@@ -266,7 +266,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
- * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -287,10 +286,10 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
- *                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
- *                         .pscEnabled(true)
- *                         .allowedConsumerProjects("allowed-consumer-project-name")
- *                         .build())
+ *                     .pscConfig(Map.ofEntries(
+ *                         Map.entry("pscEnabled", true),
+ *                         Map.entry("allowedConsumerProjects", Arrays.asList("allowed-consumer-project-name"))
+ *                     ))
  *                     .ipv4Enabled(false)
  *                     .build())
  *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
@@ -319,8 +318,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
- * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
- * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -341,14 +338,14 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
- *                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
- *                         .pscEnabled(true)
- *                         .allowedConsumerProjects("allowed-consumer-project-name")
- *                         .pscAutoConnections(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs.builder()
- *                             .consumerNetwork("network-name")
- *                             .consumerServiceProjectId("project-id")
- *                             .build())
- *                         .build())
+ *                     .pscConfig(Map.ofEntries(
+ *                         Map.entry("pscEnabled", true),
+ *                         Map.entry("allowedConsumerProjects", Arrays.asList("allowed-consumer-project-name")),
+ *                         Map.entry("pscAutoConnections", Arrays.asList(Map.ofEntries(
+ *                             Map.entry("consumerNetwork", "network-name"),
+ *                             Map.entry("consumerServiceProjectId", "project-id")
+ *                         )))
+ *                     ))
  *                     .ipv4Enabled(false)
  *                     .build())
  *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
@@ -377,7 +374,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
- * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -398,11 +394,11 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
- *                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
- *                         .pscEnabled(true)
- *                         .allowedConsumerProjects("allowed-consumer-project-name")
- *                         .networkAttachmentUri("network-attachment-uri")
- *                         .build())
+ *                     .pscConfig(Map.ofEntries(
+ *                         Map.entry("pscEnabled", true),
+ *                         Map.entry("allowedConsumerProjects", Arrays.asList("allowed-consumer-project-name")),
+ *                         Map.entry("networkAttachmentUri", "network-attachment-uri")
+ *                     ))
  *                     .ipv4Enabled(false)
  *                     .build())
  *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
@@ -772,6 +768,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> connectionName() {
         return this.connectionName;
+    }
+    /**
+     * The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+     * 
+     */
+    @Export(name="databaseCenterIntegration", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> databaseCenterIntegration;
+
+    /**
+     * @return The Database Center integration control. Supported values include `ENABLED` and `DISABLED`.
+     * 
+     */
+    public Output<Optional<String>> databaseCenterIntegration() {
+        return Codegen.optional(this.databaseCenterIntegration);
     }
     /**
      * The MySQL, PostgreSQL or

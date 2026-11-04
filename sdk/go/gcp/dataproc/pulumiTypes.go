@@ -32296,7 +32296,7 @@ type WorkflowTemplatePlacementManagedClusterConfig struct {
 	EncryptionConfig *WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig `pulumi:"encryptionConfig"`
 	// Port/endpoint configuration for this cluster
 	EndpointConfig *WorkflowTemplatePlacementManagedClusterConfigEndpointConfig `pulumi:"endpointConfig"`
-	// The shared Compute Engine config settings for all instances in a cluster.
+	// The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
 	GceClusterConfig *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig `pulumi:"gceClusterConfig"`
 	// The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
 	GkeClusterConfig *WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig `pulumi:"gkeClusterConfig"`
@@ -32306,10 +32306,14 @@ type WorkflowTemplatePlacementManagedClusterConfig struct {
 	LifecycleConfig *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig `pulumi:"lifecycleConfig"`
 	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	MasterConfig *WorkflowTemplatePlacementManagedClusterConfigMasterConfig `pulumi:"masterConfig"`
+	// The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+	MasterFlexibleConfig *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig `pulumi:"masterFlexibleConfig"`
 	// Metastore configuration.
 	MetastoreConfig *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig `pulumi:"metastoreConfig"`
 	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	SecondaryWorkerConfig *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig `pulumi:"secondaryWorkerConfig"`
+	// The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+	SecondaryWorkerFlexibleConfig *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig `pulumi:"secondaryWorkerFlexibleConfig"`
 	// Security settings for the cluster.
 	SecurityConfig *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig `pulumi:"securityConfig"`
 	// The config settings for software inside the cluster.
@@ -32319,9 +32323,11 @@ type WorkflowTemplatePlacementManagedClusterConfig struct {
 	// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
 	TempBucket *string `pulumi:"tempBucket"`
 	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+	WorkerConfig *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig `pulumi:"workerConfig"`
+	// The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
 	//
 	// ***
-	WorkerConfig *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig `pulumi:"workerConfig"`
+	WorkerFlexibleConfig *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig `pulumi:"workerFlexibleConfig"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigArgs and WorkflowTemplatePlacementManagedClusterConfigOutput values.
@@ -32342,7 +32348,7 @@ type WorkflowTemplatePlacementManagedClusterConfigArgs struct {
 	EncryptionConfig WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Port/endpoint configuration for this cluster
 	EndpointConfig WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrInput `pulumi:"endpointConfig"`
-	// The shared Compute Engine config settings for all instances in a cluster.
+	// The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
 	GceClusterConfig WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrInput `pulumi:"gceClusterConfig"`
 	// The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
 	GkeClusterConfig WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrInput `pulumi:"gkeClusterConfig"`
@@ -32352,10 +32358,14 @@ type WorkflowTemplatePlacementManagedClusterConfigArgs struct {
 	LifecycleConfig WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrInput `pulumi:"lifecycleConfig"`
 	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	MasterConfig WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrInput `pulumi:"masterConfig"`
+	// The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+	MasterFlexibleConfig WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrInput `pulumi:"masterFlexibleConfig"`
 	// Metastore configuration.
 	MetastoreConfig WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrInput `pulumi:"metastoreConfig"`
 	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	SecondaryWorkerConfig WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrInput `pulumi:"secondaryWorkerConfig"`
+	// The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+	SecondaryWorkerFlexibleConfig WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrInput `pulumi:"secondaryWorkerFlexibleConfig"`
 	// Security settings for the cluster.
 	SecurityConfig WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput `pulumi:"securityConfig"`
 	// The config settings for software inside the cluster.
@@ -32365,9 +32375,11 @@ type WorkflowTemplatePlacementManagedClusterConfigArgs struct {
 	// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
 	TempBucket pulumi.StringPtrInput `pulumi:"tempBucket"`
 	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
+	WorkerConfig WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrInput `pulumi:"workerConfig"`
+	// The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
 	//
 	// ***
-	WorkerConfig WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrInput `pulumi:"workerConfig"`
+	WorkerFlexibleConfig WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrInput `pulumi:"workerFlexibleConfig"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigArgs) ElementType() reflect.Type {
@@ -32468,7 +32480,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) EndpointConfig() Wo
 	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
 }
 
-// The shared Compute Engine config settings for all instances in a cluster.
+// The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigOutput) GceClusterConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
 		return v.GceClusterConfig
@@ -32503,6 +32515,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) MasterConfig() Work
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
 }
 
+// The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) MasterFlexibleConfig() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig {
+		return v.MasterFlexibleConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput)
+}
+
 // Metastore configuration.
 func (o WorkflowTemplatePlacementManagedClusterConfigOutput) MetastoreConfig() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
@@ -32515,6 +32534,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) SecondaryWorkerConf
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
 		return v.SecondaryWorkerConfig
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
+}
+
+// The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) SecondaryWorkerFlexibleConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig {
+		return v.SecondaryWorkerFlexibleConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
 }
 
 // Security settings for the cluster.
@@ -32542,12 +32568,19 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) TempBucket() pulumi
 }
 
 // The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
-//
-// ***
 func (o WorkflowTemplatePlacementManagedClusterConfigOutput) WorkerConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
 		return v.WorkerConfig
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
+}
+
+// The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+//
+// ***
+func (o WorkflowTemplatePlacementManagedClusterConfigOutput) WorkerFlexibleConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig {
+		return v.WorkerFlexibleConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigPtrOutput struct{ *pulumi.OutputState }
@@ -32604,7 +32637,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) EndpointConfig()
 	}).(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput)
 }
 
-// The shared Compute Engine config settings for all instances in a cluster.
+// The shared Compute Engine config settings for all instances in a cluster. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) GceClusterConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
 		if v == nil {
@@ -32654,6 +32687,16 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) MasterConfig() W
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
 }
 
+// The Compute Engine flexible config settings for the master instance in a cluster. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) MasterFlexibleConfig() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MasterFlexibleConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput)
+}
+
 // Metastore configuration.
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) MetastoreConfig() WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
@@ -32672,6 +32715,16 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) SecondaryWorkerC
 		}
 		return v.SecondaryWorkerConfig
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
+}
+
+// The Compute Engine flexible config settings for additional worker instances in a cluster. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) SecondaryWorkerFlexibleConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryWorkerFlexibleConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
 }
 
 // Security settings for the cluster.
@@ -32715,8 +32768,6 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) TempBucket() pul
 }
 
 // The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
-//
-// ***
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) WorkerConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig {
 		if v == nil {
@@ -32724,6 +32775,18 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) WorkerConfig() W
 		}
 		return v.WorkerConfig
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
+}
+
+// The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
+//
+// ***
+func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) WorkerFlexibleConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerFlexibleConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig struct {
@@ -33167,6 +33230,8 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig struct {
 	InternalIpOnly *bool `pulumi:"internalIpOnly"`
 	// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
 	Metadata map[string]string `pulumi:"metadata"`
+	// Multi-zone configuration for cluster instances. Structure is documented below.
+	MultiZoneConfig *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig `pulumi:"multiZoneConfig"`
 	// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
 	Network *string `pulumi:"network"`
 	// Node Group Affinity for sole-tenant clusters.
@@ -33205,6 +33270,8 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs struct {
 	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
 	// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://docs.cloud.google.com/compute/docs/metadata/overview)).
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Multi-zone configuration for cluster instances. Structure is documented below.
+	MultiZoneConfig WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrInput `pulumi:"multiZoneConfig"`
 	// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Node Group Affinity for sole-tenant clusters.
@@ -33316,6 +33383,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Met
 	}).(pulumi.StringMapOutput)
 }
 
+// Multi-zone configuration for cluster instances. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) MultiZoneConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig {
+		return v.MultiZoneConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput)
+}
+
 // The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
@@ -33420,6 +33494,16 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 	}).(pulumi.StringMapOutput)
 }
 
+// Multi-zone configuration for cluster instances. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) MultiZoneConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MultiZoneConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput)
+}
+
 // The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string {
@@ -33517,6 +33601,145 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 			return nil
 		}
 		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig struct {
+	// Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+	TargetShape *string `pulumi:"targetShape"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs struct {
+	// Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+	TargetShape pulumi.StringPtrInput `pulumi:"targetShape"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs, WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtr and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrType WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput)
+}
+
+// Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput) TargetShape() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig) *string {
+		return v.TargetShape
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput)
+}
+
+// Specifies the target shape of the cluster. Possible values: `TARGET_SHAPE_UNSPECIFIED`, `ANY`.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) TargetShape() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetShape
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -36425,6 +36648,204 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupCon
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput)
 }
 
+type WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig struct {
+	// Size of the boot disk in GB for each instance in the instance group.
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// The core count for each instance in the instance group.
+	CoreCount *int `pulumi:"coreCount"`
+	// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+	HardwareClass *string `pulumi:"hardwareClass"`
+	// Number of instances in the instance group.
+	NumInstances *int `pulumi:"numInstances"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs struct {
+	// Size of the boot disk in GB for each instance in the instance group.
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// The core count for each instance in the instance group.
+	CoreCount pulumi.IntPtrInput `pulumi:"coreCount"`
+	// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+	HardwareClass pulumi.StringPtrInput `pulumi:"hardwareClass"`
+	// Number of instances in the instance group.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs, WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtr and WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrType WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput)
+}
+
+// Size of the boot disk in GB for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The core count for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *int { return v.CoreCount }).(pulumi.IntPtrOutput)
+}
+
+// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *string {
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of instances in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput)
+}
+
+// Size of the boot disk in GB for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The core count for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of instances in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
 type WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig struct {
 	// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
 	DataprocMetastoreService string `pulumi:"dataprocMetastoreService"`
@@ -38554,6 +38975,208 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManage
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
 		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig)[vs[1].(int)]
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig struct {
+	// Size of the boot disk in GB for each instance in the instance group.
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// The core count for each instance in the instance group.
+	CoreCount *int `pulumi:"coreCount"`
+	// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+	HardwareClass *string `pulumi:"hardwareClass"`
+	// Number of instances in the instance group.
+	NumInstances *int `pulumi:"numInstances"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs struct {
+	// Size of the boot disk in GB for each instance in the instance group.
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// The core count for each instance in the instance group.
+	CoreCount pulumi.IntPtrInput `pulumi:"coreCount"`
+	// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+	HardwareClass pulumi.StringPtrInput `pulumi:"hardwareClass"`
+	// Number of instances in the instance group.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs, WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtr and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrType WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
+}
+
+// Size of the boot disk in GB for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The core count for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		return v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *string {
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of instances in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput)
+}
+
+// Size of the boot disk in GB for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The core count for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of instances in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecurityConfig struct {
@@ -41164,6 +41787,204 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupCon
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput)
 }
 
+type WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig struct {
+	// Size of the boot disk in GB for each instance in the instance group.
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// The core count for each instance in the instance group.
+	CoreCount *int `pulumi:"coreCount"`
+	// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+	HardwareClass *string `pulumi:"hardwareClass"`
+	// Number of instances in the instance group.
+	NumInstances *int `pulumi:"numInstances"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs struct {
+	// Size of the boot disk in GB for each instance in the instance group.
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// The core count for each instance in the instance group.
+	CoreCount pulumi.IntPtrInput `pulumi:"coreCount"`
+	// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+	HardwareClass pulumi.StringPtrInput `pulumi:"hardwareClass"`
+	// Number of instances in the instance group.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs, WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtr and WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrType WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput)
+}
+
+// Size of the boot disk in GB for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The core count for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *int { return v.CoreCount }).(pulumi.IntPtrOutput)
+}
+
+// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *string {
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of instances in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput)
+}
+
+// Size of the boot disk in GB for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The core count for each instance in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The hardware class of instances in the instance group. Possible values: `HARDWARE_CLASS_UNSPECIFIED`, `STANDARD`, `PERFORMANCE`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput) HardwareClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HardwareClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of instances in the instance group.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetMetastoreServiceEncryptionConfig struct {
 	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
 	// Use the following format: 'projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)'
@@ -43204,6 +44025,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs{})
@@ -43238,6 +44061,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs{})
@@ -43262,6 +44087,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs{})
@@ -43288,6 +44115,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceEncryptionConfigInput)(nil)).Elem(), GetMetastoreServiceEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceEncryptionConfigArrayInput)(nil)).Elem(), GetMetastoreServiceEncryptionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigArgs{})
@@ -43678,6 +44507,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigEndpointConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigMultiZoneConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput{})
@@ -43712,6 +44543,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterFlexibleConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput{})
@@ -43736,6 +44569,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerFlexibleConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigOutput{})
@@ -43762,6 +44597,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigOutput{})

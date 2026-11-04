@@ -388,6 +388,14 @@ namespace Pulumi.Gcp.PubSub
     ///                     Code = "...",
     ///                 },
     ///             },
+    ///             new Gcp.PubSub.Inputs.TopicMessageTransformArgs
+    ///             {
+    ///                 Compression = new Gcp.PubSub.Inputs.TopicMessageTransformCompressionArgs
+    ///                 {
+    ///                     CompressionAlgorithm = "ZLIB",
+    ///                     CompressionMode = "COMPRESS",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -482,7 +490,7 @@ namespace Pulumi.Gcp.PubSub
     ///             {
     ///                 AiInference = new Gcp.PubSub.Inputs.TopicMessageTransformAiInferenceArgs
     ///                 {
-    ///                     Endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+    ///                     Endpoint = "projects/my-project-name/locations/global/publishers/google/models/gemini-3.5-flash",
     ///                     UnstructuredInference = new Gcp.PubSub.Inputs.TopicMessageTransformAiInferenceUnstructuredInferenceArgs
     ///                     {
     ///                         Parameters = 
