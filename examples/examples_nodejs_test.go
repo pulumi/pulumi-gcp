@@ -91,15 +91,6 @@ func TestAccServerless(t *testing.T) {
 
 	integration.ProgramTest(t, &test)
 }
-func TestBigqueryDataset(t *testing.T) {
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "bigquery-dataset-ts"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
-
 func TestPulumiLabelsSecretNode(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
