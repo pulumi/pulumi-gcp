@@ -115,7 +115,7 @@ jobs:
         uses: pulumi/verify-provider-release@52165c3d89dbd49691b82c056f377f37e6c21012 # v1.3.2
         with:
           runtime: nodejs
-          directory: examples/bucket
+          directory: release-verification/nodejs
           provider: gcp
           providerVersion: ${{ inputs.providerVersion }}
         env:
@@ -124,7 +124,7 @@ jobs:
         uses: pulumi/verify-provider-release@52165c3d89dbd49691b82c056f377f37e6c21012 # v1.3.2
         with:
           runtime: python
-          directory: examples/bucket-py
+          directory: release-verification/python
           provider: gcp
           providerVersion: ${{ inputs.providerVersion }}
           packageVersion: ${{ inputs.pythonVersion || inputs.providerVersion }}
@@ -134,7 +134,7 @@ jobs:
         uses: pulumi/verify-provider-release@52165c3d89dbd49691b82c056f377f37e6c21012 # v1.3.2
         with:
           runtime: dotnet
-          directory: examples/serverless-cs
+          directory: release-verification/dotnet
           provider: gcp
           providerVersion: ${{ inputs.providerVersion }}
         env:
@@ -144,7 +144,7 @@ jobs:
         if: inputs.skipGoSdk == false
         with:
           runtime: go
-          directory: examples/bucket-go
+          directory: release-verification/go
           provider: gcp
           providerVersion: ${{ inputs.providerVersion }}
         env:

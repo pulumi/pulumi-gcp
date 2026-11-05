@@ -31,15 +31,6 @@ func TestAccDatasourcePy(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
-func TestAccBucketPy(t *testing.T) {
-	test := getPythonBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "bucket-py"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
-
 func TestAccMinimalPy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
@@ -88,5 +79,4 @@ func TestRegress1036(t *testing.T) {
 		})
 
 	integration.ProgramTest(t, &test)
-
 }

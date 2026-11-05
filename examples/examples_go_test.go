@@ -23,15 +23,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestAccBucketGo(t *testing.T) {
-	test := getGoBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "bucket-go"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
-
 func TestPulumiLabelsSecretGo(t *testing.T) {
 	test := getGoBaseOptions(t).
 		With(integration.ProgramTestOptions{

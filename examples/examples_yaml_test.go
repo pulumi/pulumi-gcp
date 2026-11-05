@@ -22,6 +22,22 @@ func TestHttpHealthCheck(t *testing.T) {
 	})
 }
 
+func TestAccAppServiceYAML(t *testing.T) {
+	test := getBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "serverless-yaml"),
+			ExtraRuntimeValidation: validateAPITest(func(body string) {
+				assert.Equal(t, body, "Hello World!")
+			}),
+
+			// TODO[pulumi/pulumi-gcp#1487] Non-empty diff when refreshing programs using overlay callbacks.
+			// Carried over from TestAccAppServiceCs.
+			SkipRefresh: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestPulumiLabelsSecretYAML(t *testing.T) {
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "yaml"),
