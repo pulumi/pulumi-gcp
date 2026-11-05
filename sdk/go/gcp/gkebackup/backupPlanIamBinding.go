@@ -427,6 +427,12 @@ func (BackupPlanIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPlanIamBindingState)(nil)).Elem()
 }
 
+// BackupPlanIamBindingExists checks whether an existing BackupPlanIamBinding resource with the given ID exists.
+func BackupPlanIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPlanIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkebackup/backupPlanIamBinding:BackupPlanIamBinding", id, state, "", opts...)
+}
+
 type backupPlanIamBindingArgs struct {
 	Condition *BackupPlanIamBindingCondition `pulumi:"condition"`
 	// The region of the Backup Plan.

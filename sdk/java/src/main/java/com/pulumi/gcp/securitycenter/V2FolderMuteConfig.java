@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new Folder("folder", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder-name")
@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  *             .folder(folder.folderId())
  *             .location("global")
  *             .description("My custom Cloud Security Command Center Finding Folder mute Configuration")
- *             .filter("severity = \"HIGH\"")
+ *             .filter("severity = }&#92;{@code "HIGH}&#92;{@code "")
  *             .type("STATIC")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

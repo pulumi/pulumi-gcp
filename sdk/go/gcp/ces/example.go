@@ -478,6 +478,12 @@ func (ExampleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*exampleState)(nil)).Elem()
 }
 
+// ExampleExists checks whether an existing Example resource with the given ID exists.
+func ExampleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExampleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/example:Example", id, state, "", opts...)
+}
+
 type exampleArgs struct {
 	// Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	App string `pulumi:"app"`

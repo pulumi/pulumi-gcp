@@ -303,6 +303,12 @@ func (Hl7StoreIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreIamMemberState)(nil)).Elem()
 }
 
+// Hl7StoreIamMemberExists checks whether an existing Hl7StoreIamMember resource with the given ID exists.
+func Hl7StoreIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Hl7StoreIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember", id, state, "", opts...)
+}
+
 type hl7StoreIamMemberArgs struct {
 	Condition *Hl7StoreIamMemberCondition `pulumi:"condition"`
 	// The HL7v2 store ID, in the form

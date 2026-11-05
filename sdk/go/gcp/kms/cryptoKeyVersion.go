@@ -210,6 +210,12 @@ func (CryptoKeyVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cryptoKeyVersionState)(nil)).Elem()
 }
 
+// CryptoKeyVersionExists checks whether an existing CryptoKeyVersion resource with the given ID exists.
+func CryptoKeyVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CryptoKeyVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/cryptoKeyVersion:CryptoKeyVersion", id, state, "", opts...)
+}
+
 type cryptoKeyVersionArgs struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`

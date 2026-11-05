@@ -60,11 +60,10 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
      * specified. `requirePartitionFilter` is deprecated and will be removed in
      * a future major release. Use the top level field with the same name instead.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
+     * @deprecated This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
+    @Deprecated
     @Import(name="requirePartitionFilter")
     private @Nullable Output<Boolean> requirePartitionFilter;
 
@@ -74,11 +73,10 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
      * specified. `requirePartitionFilter` is deprecated and will be removed in
      * a future major release. Use the top level field with the same name instead.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
+     * @deprecated This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
+    @Deprecated
     public Optional<Output<Boolean>> requirePartitionFilter() {
         return Optional.ofNullable(this.requirePartitionFilter);
     }
@@ -183,11 +181,10 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
+         * @deprecated This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
+        @Deprecated
         public Builder requirePartitionFilter(@Nullable Output<Boolean> requirePartitionFilter) {
             $.requirePartitionFilter = requirePartitionFilter;
             return this;
@@ -201,11 +198,10 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
+         * @deprecated This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
+        @Deprecated
         public Builder requirePartitionFilter(Boolean requirePartitionFilter) {
             return requirePartitionFilter(Output.of(requirePartitionFilter));
         }

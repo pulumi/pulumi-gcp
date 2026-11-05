@@ -19,7 +19,7 @@ public final class ClusterMaintenancePolicy {
     /**
      * @return Time window specified for daily maintenance operations.
      * Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;HH:MM”,
-     * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
+     * where HH : &#92;[00-23&#92;] and MM : &#92;[00-59&#92;] GMT. For example:
      * 
      * Examples:
      * 
@@ -59,7 +59,7 @@ public final class ClusterMaintenancePolicy {
     /**
      * @return Time window specified for daily maintenance operations.
      * Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;HH:MM”,
-     * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
+     * where HH : &#92;[00-23&#92;] and MM : &#92;[00-59&#92;] GMT. For example:
      * 
      * Examples:
      * 

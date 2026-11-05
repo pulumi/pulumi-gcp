@@ -258,6 +258,12 @@ func (PeeringState) ElementType() reflect.Type {
 	return reflect.TypeOf((*peeringState)(nil)).Elem()
 }
 
+// PeeringExists checks whether an existing Peering resource with the given ID exists.
+func PeeringExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PeeringState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:activedirectory/peering:Peering", id, state, "", opts...)
+}
+
 type peeringArgs struct {
 	// The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
 	AuthorizedNetwork string `pulumi:"authorizedNetwork"`

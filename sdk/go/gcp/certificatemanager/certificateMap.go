@@ -219,6 +219,12 @@ func (CertificateMapResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateMapResourceState)(nil)).Elem()
 }
 
+// CertificateMapResourceExists checks whether an existing CertificateMapResource resource with the given ID exists.
+func CertificateMapResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertificateMapResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificatemanager/certificateMap:CertificateMap", id, state, "", opts...)
+}
+
 type certificateMapResourceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

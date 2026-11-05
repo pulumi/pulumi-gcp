@@ -318,6 +318,12 @@ func (RegionPerInstanceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionPerInstanceConfigState)(nil)).Elem()
 }
 
+// RegionPerInstanceConfigExists checks whether an existing RegionPerInstanceConfig resource with the given ID exists.
+func RegionPerInstanceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionPerInstanceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", id, state, "", opts...)
+}
+
 type regionPerInstanceConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

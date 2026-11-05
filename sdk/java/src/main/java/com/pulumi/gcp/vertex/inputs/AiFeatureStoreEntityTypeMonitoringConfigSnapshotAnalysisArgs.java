@@ -39,11 +39,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
      * 
      * &gt; **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
      * 
-     * @deprecated
-     * `monitoringInterval` is deprecated and will be removed in a future release.
+     * @deprecated `monitoringInterval` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* `monitoringInterval` is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="monitoringInterval")
     private @Nullable Output<String> monitoringInterval;
 
@@ -54,11 +53,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
      * 
      * &gt; **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
      * 
-     * @deprecated
-     * `monitoringInterval` is deprecated and will be removed in a future release.
+     * @deprecated `monitoringInterval` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* `monitoringInterval` is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<Output<String>> monitoringInterval() {
         return Optional.ofNullable(this.monitoringInterval);
     }
@@ -152,11 +150,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * `monitoringInterval` is deprecated and will be removed in a future release.
+         * @deprecated `monitoringInterval` is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* `monitoringInterval` is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder monitoringInterval(@Nullable Output<String> monitoringInterval) {
             $.monitoringInterval = monitoringInterval;
             return this;
@@ -171,11 +168,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * `monitoringInterval` is deprecated and will be removed in a future release.
+         * @deprecated `monitoringInterval` is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* `monitoringInterval` is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder monitoringInterval(String monitoringInterval) {
             return monitoringInterval(Output.of(monitoringInterval));
         }

@@ -157,7 +157,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Maximum number of source tag values allowed is 256.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedRuleMatchLayer4Config"&gt;&lt;/a&gt;The `Layer4Config` block supports:
         /// </summary>
         public InputList<Inputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagGetArgs> SrcSecureTags

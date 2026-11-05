@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Get information about a Cloud Storage Control ProjectIntelligenceConfig.
         /// 
-        /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -40,8 +38,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Get information about a Cloud Storage Control ProjectIntelligenceConfig.
         /// 
-        /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -65,8 +61,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Get information about a Cloud Storage Control ProjectIntelligenceConfig.
-        /// 
-        /// 
         /// 
         /// ## Example Usage
         /// 

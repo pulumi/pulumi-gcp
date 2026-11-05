@@ -405,6 +405,12 @@ func (SnapshotIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotIamBindingState)(nil)).Elem()
 }
 
+// SnapshotIamBindingExists checks whether an existing SnapshotIamBinding resource with the given ID exists.
+func SnapshotIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnapshotIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/snapshotIamBinding:SnapshotIamBinding", id, state, "", opts...)
+}
+
 type snapshotIamBindingArgs struct {
 	Condition *SnapshotIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

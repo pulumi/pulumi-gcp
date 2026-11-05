@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Storage
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -45,7 +44,6 @@ namespace Pulumi.Gcp.Storage
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -72,7 +70,6 @@ namespace Pulumi.Gcp.Storage
         /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#buckets)
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
-        /// 
         /// 
         /// ## Example Usage
         /// 

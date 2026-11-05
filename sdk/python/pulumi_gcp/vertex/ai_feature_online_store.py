@@ -950,6 +950,46 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AiFeatureOnlineStore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict', 'outputs.AiFeatureOnlineStoreBigtable']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict', 'outputs.AiFeatureOnlineStoreDedicatedServingEndpoint']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict', 'outputs.AiFeatureOnlineStoreEmbeddingManagement']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict', 'outputs.AiFeatureOnlineStoreEncryptionSpec']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigtable"] = bigtable
+        __props__["createTime"] = create_time
+        __props__["dedicatedServingEndpoint"] = dedicated_serving_endpoint
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["embeddingManagement"] = embedding_management
+        __props__["encryptionSpec"] = encryption_spec
+        __props__["etag"] = etag
+        __props__["forceDestroy"] = force_destroy
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["optimized"] = optimized
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bigtable(self) -> pulumi.Output[Optional['outputs.AiFeatureOnlineStoreBigtable']]:

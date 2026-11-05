@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// A package managed by APT.
         /// - install: `apt-get update &amp;&amp; apt-get -y install [name]`
         /// - remove: `apt-get -y remove [name]`
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("apt")]
         public Input<Inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs>? Apt { get; set; }
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// A package managed by GooGet.
         /// - install: `googet -noconfirm install package`
         /// - remove: `googet -noconfirm remove package`
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("googet")]
         public Input<Inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs>? Googet { get; set; }
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// A package managed by YUM.
         /// - install: `yum -y install package`
         /// - remove: `yum -y remove package`
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("yum")]
         public Input<Inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs>? Yum { get; set; }
@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// A package managed by Zypper.
         /// - install: `zypper -y install package`
         /// - remove: `zypper -y rm package`
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("zypper")]
         public Input<Inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs>? Zypper { get; set; }

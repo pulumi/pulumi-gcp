@@ -925,6 +925,50 @@ class Registration(pulumi.CustomResource):
         __props__.__dict__["yearly_price"] = yearly_price
         return Registration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict', 'outputs.RegistrationContactSettings']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict', 'outputs.RegistrationDnsSettings']]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            issues: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict', 'outputs.RegistrationManagementSettings']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            register_failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_privacies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict', 'outputs.RegistrationYearlyPrice']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contactNotices"] = contact_notices
+        __props__["contactSettings"] = contact_settings
+        __props__["createTime"] = create_time
+        __props__["dnsSettings"] = dns_settings
+        __props__["domainName"] = domain_name
+        __props__["domainNotices"] = domain_notices
+        __props__["effectiveLabels"] = effective_labels
+        __props__["expireTime"] = expire_time
+        __props__["issues"] = issues
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["managementSettings"] = management_settings
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["registerFailureReason"] = register_failure_reason
+        __props__["state"] = state
+        __props__["supportedPrivacies"] = supported_privacies
+        __props__["yearlyPrice"] = yearly_price
+        return pulumi.runtime.exists_resource(None, 'gcp:clouddomains/registration:Registration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contactNotices")
     def contact_notices(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

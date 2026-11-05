@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Compute
         /// The default network tier to be configured for the project.
         /// This field can take the following values: `PREMIUM` or `STANDARD`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("networkTier")]
         public Output<string> NetworkTier { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Gcp.Compute
         /// The default network tier to be configured for the project.
         /// This field can take the following values: `PREMIUM` or `STANDARD`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("networkTier", required: true)]
         public Input<string> NetworkTier { get; set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.Compute
         /// The default network tier to be configured for the project.
         /// This field can take the following values: `PREMIUM` or `STANDARD`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }

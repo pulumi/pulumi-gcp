@@ -222,6 +222,12 @@ func (KmsconfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kmsconfigState)(nil)).Elem()
 }
 
+// KmsconfigExists checks whether an existing Kmsconfig resource with the given ID exists.
+func KmsconfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KmsconfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:netapp/kmsconfig:Kmsconfig", id, state, "", opts...)
+}
+
 type kmsconfigArgs struct {
 	// Resource name of the KMS key to use. Only regional keys are supported. Format: `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{key}}`.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`

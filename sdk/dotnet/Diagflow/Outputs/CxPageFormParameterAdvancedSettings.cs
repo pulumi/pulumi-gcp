@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// * Flow level
         /// * Page level
         /// * Parameter level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.CxPageFormParameterAdvancedSettingsDtmfSettings? DtmfSettings;
 

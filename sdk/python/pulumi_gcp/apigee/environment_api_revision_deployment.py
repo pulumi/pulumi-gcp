@@ -590,6 +590,34 @@ class EnvironmentApiRevisionDeployment(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return EnvironmentApiRevisionDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            basepaths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            override: pulumi.Input[Optional[_builtins.bool]] = None,
+            revision: pulumi.Input[Optional[_builtins.int]] = None,
+            sequenced_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["basepaths"] = basepaths
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deployStartTime"] = deploy_start_time
+        __props__["environment"] = environment
+        __props__["orgId"] = org_id
+        __props__["override"] = override
+        __props__["revision"] = revision
+        __props__["sequencedRollout"] = sequenced_rollout
+        __props__["serviceAccount"] = service_account
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[_builtins.str]:

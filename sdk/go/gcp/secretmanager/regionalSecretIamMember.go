@@ -676,6 +676,12 @@ func (RegionalSecretIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalSecretIamMemberState)(nil)).Elem()
 }
 
+// RegionalSecretIamMemberExists checks whether an existing RegionalSecretIamMember resource with the given ID exists.
+func RegionalSecretIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalSecretIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:secretmanager/regionalSecretIamMember:RegionalSecretIamMember", id, state, "", opts...)
+}
+
 type regionalSecretIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

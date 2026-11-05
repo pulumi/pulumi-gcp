@@ -1016,6 +1016,12 @@ func (PreventionJobTriggerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionJobTriggerState)(nil)).Elem()
 }
 
+// PreventionJobTriggerExists checks whether an existing PreventionJobTrigger resource with the given ID exists.
+func PreventionJobTriggerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreventionJobTriggerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger", id, state, "", opts...)
+}
+
 type preventionJobTriggerArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

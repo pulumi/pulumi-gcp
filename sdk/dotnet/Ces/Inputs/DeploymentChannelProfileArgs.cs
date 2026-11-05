@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// Whether to disable user barge-in control in the conversation.
         /// - **true**: User interruptions are disabled while the agent is speaking.
         /// - **false**: The agent retains automatic control over when the user can
-        /// interrupt.
+        ///   interrupt.
         /// </summary>
         [Input("disableBargeInControl")]
         public Input<bool>? DisableBargeInControl { get; set; }

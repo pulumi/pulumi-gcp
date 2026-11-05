@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Workstations
         /// <summary>
         /// Retrieves the current IAM policy data for workstation
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,7 +42,6 @@ namespace Pulumi.Gcp.Workstations
         /// <summary>
         /// Retrieves the current IAM policy data for workstation
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -71,7 +69,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// Retrieves the current IAM policy data for workstation
-        /// 
         /// 
         /// ## Example Usage
         /// 

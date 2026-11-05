@@ -183,6 +183,12 @@ func (NotificationServiceAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationServiceAccountState)(nil)).Elem()
 }
 
+// NotificationServiceAccountExists checks whether an existing NotificationServiceAccount resource with the given ID exists.
+func NotificationServiceAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotificationServiceAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/notificationServiceAccount:NotificationServiceAccount", id, state, "", opts...)
+}
+
 type notificationServiceAccountArgs struct {
 	// The organization ID for which the service account should be generated. Exactly one of `organization` or `project` must be specified.
 	Organization *string `pulumi:"organization"`

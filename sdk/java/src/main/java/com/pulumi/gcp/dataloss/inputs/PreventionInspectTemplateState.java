@@ -146,7 +146,7 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
 
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+. The maximum length is
      * 100 characters. Can be empty to allow the system to generate one.
      * 
      */
@@ -155,7 +155,7 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
 
     /**
      * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+. The maximum length is
      * 100 characters. Can be empty to allow the system to generate one.
      * 
      */
@@ -365,7 +365,7 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
 
         /**
          * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+         * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+. The maximum length is
          * 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder
@@ -378,7 +378,7 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
 
         /**
          * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+         * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+. The maximum length is
          * 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder

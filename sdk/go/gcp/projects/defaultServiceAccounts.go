@@ -168,6 +168,12 @@ func (DefaultServiceAccountsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultServiceAccountsState)(nil)).Elem()
 }
 
+// DefaultServiceAccountsExists checks whether an existing DefaultServiceAccounts resource with the given ID exists.
+func DefaultServiceAccountsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefaultServiceAccountsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts", id, state, "", opts...)
+}
+
 type defaultServiceAccountsArgs struct {
 	// The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
 	Action string `pulumi:"action"`

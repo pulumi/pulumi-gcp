@@ -190,14 +190,14 @@ public final class RegionalEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.rep.googleapis.com\&#34;.
+     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: &#92;&#34;cloudkms.us-central1.rep.googleapis.com&#92;&#34;.
      * 
      */
     @Import(name="targetGoogleApi", required=true)
     private Output<String> targetGoogleApi;
 
     /**
-     * @return The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.rep.googleapis.com\&#34;.
+     * @return The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: &#92;&#34;cloudkms.us-central1.rep.googleapis.com&#92;&#34;.
      * 
      */
     public Output<String> targetGoogleApi() {
@@ -471,7 +471,7 @@ public final class RegionalEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param targetGoogleApi The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.rep.googleapis.com\&#34;.
+         * @param targetGoogleApi The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: &#92;&#34;cloudkms.us-central1.rep.googleapis.com&#92;&#34;.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class RegionalEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param targetGoogleApi The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.rep.googleapis.com\&#34;.
+         * @param targetGoogleApi The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: &#92;&#34;cloudkms.us-central1.rep.googleapis.com&#92;&#34;.
          * 
          * @return builder
          * 

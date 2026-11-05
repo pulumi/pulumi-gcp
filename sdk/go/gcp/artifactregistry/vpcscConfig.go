@@ -150,6 +150,12 @@ func (VpcscConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcscConfigState)(nil)).Elem()
 }
 
+// VpcscConfigExists checks whether an existing VpcscConfig resource with the given ID exists.
+func VpcscConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcscConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:artifactregistry/vpcscConfig:VpcscConfig", id, state, "", opts...)
+}
+
 type vpcscConfigArgs struct {
 	// The name of the location this config is located in.
 	Location *string `pulumi:"location"`

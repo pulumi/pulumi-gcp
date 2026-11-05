@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.BigLake
         /// * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
         /// * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
         /// * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
+        ///   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         /// </summary>
         [Output("catalogType")]
         public Output<string> CatalogType { get; private set; } = null!;
@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.BigLake
         /// * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
         /// * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
         /// * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
+        ///   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         /// </summary>
         [Input("catalogType", required: true)]
         public Input<string> CatalogType { get; set; } = null!;
@@ -501,7 +501,7 @@ namespace Pulumi.Gcp.BigLake
         /// * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
         /// * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
         /// * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
+        ///   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         /// </summary>
         [Input("catalogType")]
         public Input<string>? CatalogType { get; set; }

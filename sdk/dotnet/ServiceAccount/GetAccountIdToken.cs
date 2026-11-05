@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ### ServiceAccount JSON Credential File.
         ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -30,15 +30,15 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
-        ///     {
-        ///         TargetAudience = "https://foo.bar/",
-        ///     });
+        ///   var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///   {
+        ///       TargetAudience = "https://foo.bar/",
+        ///   });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
-        ///     };
+        ///   return new Dictionary&lt;string, object?&gt;
+        ///   {
+        ///       ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///   };
         /// });
         /// ```
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   Note: to use the following, you must grant `TargetServiceAccount` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -56,30 +56,30 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
-        ///     {
-        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
-        ///         Delegates = new() { },
-        ///         Scopes = new[]
-        ///         {
-        ///             "userinfo-email",
-        ///             "cloud-platform",
-        ///         },
-        ///         Lifetime = "300s",
-        ///     });
+        ///   var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///   {
+        ///       TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///       Delegates = new() { },
+        ///       Scopes = new[]
+        ///       {
+        ///           "userinfo-email",
+        ///           "cloud-platform",
+        ///       },
+        ///       Lifetime = "300s",
+        ///   });
         /// 
-        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
-        ///     {
-        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
-        ///         Delegates = new() { },
-        ///         IncludeEmail = true,
-        ///         TargetAudience = "https://foo.bar/",
-        ///     });
+        ///   var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///   {
+        ///       TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///       Delegates = new() { },
+        ///       IncludeEmail = true,
+        ///       TargetAudience = "https://foo.bar/",
+        ///   });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
-        ///     };
+        ///   return new Dictionary&lt;string, object?&gt;
+        ///   {
+        ///       ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///   };
         /// });
         /// ```
         /// </summary>
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ### ServiceAccount JSON Credential File.
         ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -105,15 +105,15 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
-        ///     {
-        ///         TargetAudience = "https://foo.bar/",
-        ///     });
+        ///   var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///   {
+        ///       TargetAudience = "https://foo.bar/",
+        ///   });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
-        ///     };
+        ///   return new Dictionary&lt;string, object?&gt;
+        ///   {
+        ///       ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///   };
         /// });
         /// ```
         /// 
@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   Note: to use the following, you must grant `TargetServiceAccount` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -131,30 +131,30 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
-        ///     {
-        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
-        ///         Delegates = new() { },
-        ///         Scopes = new[]
-        ///         {
-        ///             "userinfo-email",
-        ///             "cloud-platform",
-        ///         },
-        ///         Lifetime = "300s",
-        ///     });
+        ///   var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///   {
+        ///       TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///       Delegates = new() { },
+        ///       Scopes = new[]
+        ///       {
+        ///           "userinfo-email",
+        ///           "cloud-platform",
+        ///       },
+        ///       Lifetime = "300s",
+        ///   });
         /// 
-        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
-        ///     {
-        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
-        ///         Delegates = new() { },
-        ///         IncludeEmail = true,
-        ///         TargetAudience = "https://foo.bar/",
-        ///     });
+        ///   var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///   {
+        ///       TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///       Delegates = new() { },
+        ///       IncludeEmail = true,
+        ///       TargetAudience = "https://foo.bar/",
+        ///   });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
-        ///     };
+        ///   return new Dictionary&lt;string, object?&gt;
+        ///   {
+        ///       ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///   };
         /// });
         /// ```
         /// </summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ### ServiceAccount JSON Credential File.
         ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -180,15 +180,15 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
-        ///     {
-        ///         TargetAudience = "https://foo.bar/",
-        ///     });
+        ///   var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///   {
+        ///       TargetAudience = "https://foo.bar/",
+        ///   });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
-        ///     };
+        ///   return new Dictionary&lt;string, object?&gt;
+        ///   {
+        ///       ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///   };
         /// });
         /// ```
         /// 
@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   Note: to use the following, you must grant `TargetServiceAccount` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -206,30 +206,30 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
-        ///     {
-        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
-        ///         Delegates = new() { },
-        ///         Scopes = new[]
-        ///         {
-        ///             "userinfo-email",
-        ///             "cloud-platform",
-        ///         },
-        ///         Lifetime = "300s",
-        ///     });
+        ///   var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///   {
+        ///       TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///       Delegates = new() { },
+        ///       Scopes = new[]
+        ///       {
+        ///           "userinfo-email",
+        ///           "cloud-platform",
+        ///       },
+        ///       Lifetime = "300s",
+        ///   });
         /// 
-        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
-        ///     {
-        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
-        ///         Delegates = new() { },
-        ///         IncludeEmail = true,
-        ///         TargetAudience = "https://foo.bar/",
-        ///     });
+        ///   var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///   {
+        ///       TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///       Delegates = new() { },
+        ///       IncludeEmail = true,
+        ///       TargetAudience = "https://foo.bar/",
+        ///   });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
-        ///     };
+        ///   return new Dictionary&lt;string, object?&gt;
+        ///   {
+        ///       ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///   };
         /// });
         /// ```
         /// </summary>

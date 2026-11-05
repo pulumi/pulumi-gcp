@@ -374,6 +374,12 @@ func (WorkstationClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workstationClusterState)(nil)).Elem()
 }
 
+// WorkstationClusterExists checks whether an existing WorkstationCluster resource with the given ID exists.
+func WorkstationClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkstationClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workstations/workstationCluster:WorkstationCluster", id, state, "", opts...)
+}
+
 type workstationClusterArgs struct {
 	// Client-specified annotations. This is distinct from labels.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

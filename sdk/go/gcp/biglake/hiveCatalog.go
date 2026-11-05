@@ -255,6 +255,12 @@ func (HiveCatalogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveCatalogState)(nil)).Elem()
 }
 
+// HiveCatalogExists checks whether an existing HiveCatalog resource with the given ID exists.
+func HiveCatalogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveCatalogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveCatalog:HiveCatalog", id, state, "", opts...)
+}
+
 type hiveCatalogArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

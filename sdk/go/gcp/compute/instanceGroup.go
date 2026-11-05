@@ -258,6 +258,12 @@ func (InstanceGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGroupState)(nil)).Elem()
 }
 
+// InstanceGroupExists checks whether an existing InstanceGroup resource with the given ID exists.
+func InstanceGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceGroup:InstanceGroup", id, state, "", opts...)
+}
+
 type instanceGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

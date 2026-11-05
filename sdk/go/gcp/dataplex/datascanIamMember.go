@@ -430,6 +430,12 @@ func (DatascanIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datascanIamMemberState)(nil)).Elem()
 }
 
+// DatascanIamMemberExists checks whether an existing DatascanIamMember resource with the given ID exists.
+func DatascanIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatascanIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/datascanIamMember:DatascanIamMember", id, state, "", opts...)
+}
+
 type datascanIamMemberArgs struct {
 	Condition *DatascanIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

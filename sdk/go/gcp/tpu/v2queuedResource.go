@@ -242,6 +242,12 @@ func (V2QueuedResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2queuedResourceState)(nil)).Elem()
 }
 
+// V2QueuedResourceExists checks whether an existing V2QueuedResource resource with the given ID exists.
+func V2QueuedResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2QueuedResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:tpu/v2QueuedResource:V2QueuedResource", id, state, "", opts...)
+}
+
 type v2queuedResourceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

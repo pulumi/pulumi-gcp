@@ -32,11 +32,11 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// * At least one variable must be specified in the pathTemplateMatch field
         /// * You can omit variables from the rewritten URL
         /// * The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.
-        /// For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
-        /// /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
-        /// rewritten as /content/{format}/{country}/{suffix}.
-        /// At least one non-empty routeRules[].matchRules[].path_template_match is required.
-        /// Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
+        ///   For example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix
+        ///   /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be
+        ///   rewritten as /content/{format}/{country}/{suffix}.
+        ///   At least one non-empty routeRules[].matchRules[].path_template_match is required.
+        ///   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
         /// </summary>
         [Input("pathTemplateRewrite")]
         public Input<string>? PathTemplateRewrite { get; set; }

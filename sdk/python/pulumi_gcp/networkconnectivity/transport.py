@@ -1079,6 +1079,58 @@ class Transport(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return Transport(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            auto_accept: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            generated_activation_key: pulumi.Input[Optional[_builtins.str]] = None,
+            hub: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mtu_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provided_activation_key: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_routing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminEnabled"] = admin_enabled
+        __props__["advertisedRoutes"] = advertised_routes
+        __props__["autoAccept"] = auto_accept
+        __props__["bandwidth"] = bandwidth
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["generatedActivationKey"] = generated_activation_key
+        __props__["hub"] = hub
+        __props__["labels"] = labels
+        __props__["mtuLimit"] = mtu_limit
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["peeringNetwork"] = peering_network
+        __props__["project"] = project
+        __props__["providedActivationKey"] = provided_activation_key
+        __props__["pscRoutingEnabled"] = psc_routing_enabled
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["remoteAccountId"] = remote_account_id
+        __props__["remoteProfile"] = remote_profile
+        __props__["stackType"] = stack_type
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:networkconnectivity/transport:Transport', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
     def admin_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

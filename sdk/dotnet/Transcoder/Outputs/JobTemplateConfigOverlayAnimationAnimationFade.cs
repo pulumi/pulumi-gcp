@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Transcoder.Outputs
         /// * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
         /// * `FADE_IN`: Fade the overlay object into view.
         /// * `FADE_OUT`: Fade the overlay object out of view.
-        /// Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+        ///   Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
         /// </summary>
         public readonly string FadeType;
         /// <summary>

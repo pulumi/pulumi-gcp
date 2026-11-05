@@ -332,6 +332,12 @@ func (RegionCompositeHealthCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionCompositeHealthCheckState)(nil)).Elem()
 }
 
+// RegionCompositeHealthCheckExists checks whether an existing RegionCompositeHealthCheck resource with the given ID exists.
+func RegionCompositeHealthCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionCompositeHealthCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck", id, state, "", opts...)
+}
+
 type regionCompositeHealthCheckArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

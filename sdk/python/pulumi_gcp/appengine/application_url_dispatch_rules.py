@@ -398,6 +398,18 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ApplicationUrlDispatchRules(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict', 'outputs.ApplicationUrlDispatchRulesDispatchRule']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dispatchRules"] = dispatch_rules
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

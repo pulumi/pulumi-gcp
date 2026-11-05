@@ -427,6 +427,12 @@ func (PipelineIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineIamBindingState)(nil)).Elem()
 }
 
+// PipelineIamBindingExists checks whether an existing PipelineIamBinding resource with the given ID exists.
+func PipelineIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:eventarc/pipelineIamBinding:PipelineIamBinding", id, state, "", opts...)
+}
+
 type pipelineIamBindingArgs struct {
 	Condition *PipelineIamBindingCondition `pulumi:"condition"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Used to find the parent resource to bind the IAM policy to. If not specified,

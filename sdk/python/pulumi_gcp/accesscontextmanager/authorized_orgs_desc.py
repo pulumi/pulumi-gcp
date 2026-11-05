@@ -696,6 +696,30 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AuthorizedOrgsDesc(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            asset_type: pulumi.Input[Optional[_builtins.str]] = None,
+            authorization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+            authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            orgs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assetType"] = asset_type
+        __props__["authorizationDirection"] = authorization_direction
+        __props__["authorizationType"] = authorization_type
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["name"] = name
+        __props__["orgs"] = orgs
+        __props__["parent"] = parent
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assetType")
     def asset_type(self) -> pulumi.Output[Optional[_builtins.str]]:

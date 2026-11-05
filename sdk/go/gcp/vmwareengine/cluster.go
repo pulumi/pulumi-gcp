@@ -715,6 +715,12 @@ func (ClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterState)(nil)).Elem()
 }
 
+// ClusterExists checks whether an existing Cluster resource with the given ID exists.
+func ClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vmwareengine/cluster:Cluster", id, state, "", opts...)
+}
+
 type clusterArgs struct {
 	// Configuration of the autoscaling applied to this cluster
 	// Structure is documented below.

@@ -710,6 +710,30 @@ class AclBinding(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return AclBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            operation: pulumi.Input[Optional[_builtins.str]] = None,
+            permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+            principal: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclId"] = acl_id
+        __props__["cluster"] = cluster
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["host"] = host
+        __props__["location"] = location
+        __props__["operation"] = operation
+        __props__["permissionType"] = permission_type
+        __props__["principal"] = principal
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:managedkafka/aclBinding:AclBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[_builtins.str]:

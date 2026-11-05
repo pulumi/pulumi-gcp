@@ -287,7 +287,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// A writeable location on GCS for the Dataflow job to dump its temporary data.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("tempGcsLocation")]
         public Output<string> TempGcsLocation { get; private set; } = null!;
@@ -499,7 +499,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// A writeable location on GCS for the Dataflow job to dump its temporary data.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("tempGcsLocation", required: true)]
         public Input<string> TempGcsLocation { get; set; } = null!;
@@ -712,7 +712,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// A writeable location on GCS for the Dataflow job to dump its temporary data.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("tempGcsLocation")]
         public Input<string>? TempGcsLocation { get; set; }

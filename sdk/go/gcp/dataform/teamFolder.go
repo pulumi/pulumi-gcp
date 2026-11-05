@@ -172,6 +172,12 @@ func (TeamFolderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*teamFolderState)(nil)).Elem()
 }
 
+// TeamFolderExists checks whether an existing TeamFolder resource with the given ID exists.
+func TeamFolderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TeamFolderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataform/teamFolder:TeamFolder", id, state, "", opts...)
+}
+
 type teamFolderArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

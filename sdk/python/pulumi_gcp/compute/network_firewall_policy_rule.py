@@ -1550,6 +1550,52 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         __props__.__dict__["tls_inspect"] = tls_inspect
         return NetworkFirewallPolicyRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            match: pulumi.Input[Optional[Union['NetworkFirewallPolicyRuleMatchArgs', 'NetworkFirewallPolicyRuleMatchArgsDict', 'outputs.NetworkFirewallPolicyRuleMatch']]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
+            security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
+            target_forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyRuleTargetSecureTagArgs', 'NetworkFirewallPolicyRuleTargetSecureTagArgsDict', 'outputs.NetworkFirewallPolicyRuleTargetSecureTag']]]]] = None,
+            target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["direction"] = direction
+        __props__["disabled"] = disabled
+        __props__["enableLogging"] = enable_logging
+        __props__["firewallPolicy"] = firewall_policy
+        __props__["kind"] = kind
+        __props__["match"] = match
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["ruleName"] = rule_name
+        __props__["ruleTupleCount"] = rule_tuple_count
+        __props__["securityProfileGroup"] = security_profile_group
+        __props__["targetForwardingRules"] = target_forwarding_rules
+        __props__["targetSecureTags"] = target_secure_tags
+        __props__["targetServiceAccounts"] = target_service_accounts
+        __props__["targetType"] = target_type
+        __props__["tlsInspect"] = tls_inspect
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

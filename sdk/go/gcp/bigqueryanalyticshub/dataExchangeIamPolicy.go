@@ -382,6 +382,12 @@ func (DataExchangeIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataExchangeIamPolicyState)(nil)).Elem()
 }
 
+// DataExchangeIamPolicyExists checks whether an existing DataExchangeIamPolicy resource with the given ID exists.
+func DataExchangeIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataExchangeIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy", id, state, "", opts...)
+}
+
 type dataExchangeIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DataExchangeId string `pulumi:"dataExchangeId"`

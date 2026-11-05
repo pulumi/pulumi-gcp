@@ -364,6 +364,12 @@ func (GoogleApiSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*googleApiSourceState)(nil)).Elem()
 }
 
+// GoogleApiSourceExists checks whether an existing GoogleApiSource resource with the given ID exists.
+func GoogleApiSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GoogleApiSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:eventarc/googleApiSource:GoogleApiSource", id, state, "", opts...)
+}
+
 type googleApiSourceArgs struct {
 	// Resource annotations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

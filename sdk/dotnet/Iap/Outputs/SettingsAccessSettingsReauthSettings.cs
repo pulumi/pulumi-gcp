@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Iap.Outputs
         /// * `LOGIN`: Prompts the user to log in again.
         /// * `SECURE_KEY`: User must use their secure key 2nd factor device.
         /// * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
-        /// Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+        ///   Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
         /// </summary>
         public readonly string Method;
         /// <summary>
@@ -32,9 +32,9 @@ namespace Pulumi.Gcp.Iap.Outputs
         /// Policies are merged from higher in the hierarchy to lower in the hierarchy.
         /// The possible values are:
         /// * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
-        /// Effective policy may only be the same or stricter.
+        ///   Effective policy may only be the same or stricter.
         /// * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
-        /// Possible values are: `MINIMUM`, `DEFAULT`.
+        ///   Possible values are: `MINIMUM`, `DEFAULT`.
         /// </summary>
         public readonly string PolicyType;
 

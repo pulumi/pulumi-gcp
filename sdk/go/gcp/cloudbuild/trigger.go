@@ -1507,6 +1507,12 @@ func (TriggerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerState)(nil)).Elem()
 }
 
+// TriggerExists checks whether an existing Trigger resource with the given ID exists.
+func TriggerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TriggerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudbuild/trigger:Trigger", id, state, "", opts...)
+}
+
 type triggerArgs struct {
 	// Configuration for manual approval to start a build invocation of this BuildTrigger.
 	// Builds created by this trigger will require approval before they execute.

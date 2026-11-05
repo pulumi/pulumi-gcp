@@ -366,6 +366,12 @@ func (ClusterIAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterIAMMemberState)(nil)).Elem()
 }
 
+// ClusterIAMMemberExists checks whether an existing ClusterIAMMember resource with the given ID exists.
+func ClusterIAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterIAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/clusterIAMMember:ClusterIAMMember", id, state, "", opts...)
+}
+
 type clusterIAMMemberArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//

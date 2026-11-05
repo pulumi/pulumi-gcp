@@ -705,6 +705,38 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PrincipalAccessBoundaryPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            details: pulumi.Input[Optional[Union['PrincipalAccessBoundaryPolicyDetailsArgs', 'PrincipalAccessBoundaryPolicyDetailsArgsDict', 'outputs.PrincipalAccessBoundaryPolicyDetails']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_access_boundary_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["details"] = details
+        __props__["displayName"] = display_name
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["principalAccessBoundaryPolicyId"] = principal_access_boundary_policy_id
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

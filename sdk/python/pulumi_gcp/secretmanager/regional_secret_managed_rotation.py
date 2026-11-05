@@ -538,6 +538,22 @@ class RegionalSecretManagedRotation(pulumi.CustomResource):
         __props__.__dict__["secret_id"] = secret_id
         return RegionalSecretManagedRotation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_sql_single_user_credentials: pulumi.Input[Optional[Union['RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgs', 'RegionalSecretManagedRotationCloudSqlSingleUserCredentialsArgsDict', 'outputs.RegionalSecretManagedRotationCloudSqlSingleUserCredentials']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalSecretManagedRotationRotationArgs', 'RegionalSecretManagedRotationRotationArgsDict', 'outputs.RegionalSecretManagedRotationRotation']]]]] = None,
+            secret_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudSqlSingleUserCredentials"] = cloud_sql_single_user_credentials
+        __props__["location"] = location
+        __props__["project"] = project
+        __props__["rotations"] = rotations
+        __props__["secretId"] = secret_id
+        return pulumi.runtime.exists_resource(None, 'gcp:secretmanager/regionalSecretManagedRotation:RegionalSecretManagedRotation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudSqlSingleUserCredentials")
     def cloud_sql_single_user_credentials(self) -> pulumi.Output['outputs.RegionalSecretManagedRotationCloudSqlSingleUserCredentials']:

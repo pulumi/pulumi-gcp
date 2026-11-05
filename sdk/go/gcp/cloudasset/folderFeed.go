@@ -295,6 +295,12 @@ func (FolderFeedState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderFeedState)(nil)).Elem()
 }
 
+// FolderFeedExists checks whether an existing FolderFeed resource with the given ID exists.
+func FolderFeedExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderFeedState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudasset/folderFeed:FolderFeed", id, state, "", opts...)
+}
+
 type folderFeedArgs struct {
 	// A list of the full names of the assets to receive updates. You must specify either or both of
 	// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are

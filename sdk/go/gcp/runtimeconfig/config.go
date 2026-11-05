@@ -161,6 +161,12 @@ func (ConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configState)(nil)).Elem()
 }
 
+// ConfigExists checks whether an existing Config resource with the given ID exists.
+func ConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:runtimeconfig/config:Config", id, state, "", opts...)
+}
+
 type configArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

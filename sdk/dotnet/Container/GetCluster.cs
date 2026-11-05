@@ -219,7 +219,7 @@ namespace Pulumi.Gcp.Container
         /// the resource documentation
         /// for details.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("skipNodePoolRefresh")]
         public bool? SkipNodePoolRefresh { get; set; }
@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.Container
         /// the resource documentation
         /// for details.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("skipNodePoolRefresh")]
         public Input<bool>? SkipNodePoolRefresh { get; set; }

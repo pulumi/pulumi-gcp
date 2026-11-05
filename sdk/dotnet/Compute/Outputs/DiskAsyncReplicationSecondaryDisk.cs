@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Output-only. Status of replication on the secondary disk.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string? State;
 

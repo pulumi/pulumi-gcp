@@ -282,6 +282,12 @@ func (WorkloadIdentityPoolNamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workloadIdentityPoolNamespaceState)(nil)).Elem()
 }
 
+// WorkloadIdentityPoolNamespaceExists checks whether an existing WorkloadIdentityPoolNamespace resource with the given ID exists.
+func WorkloadIdentityPoolNamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkloadIdentityPoolNamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace", id, state, "", opts...)
+}
+
 type workloadIdentityPoolNamespaceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

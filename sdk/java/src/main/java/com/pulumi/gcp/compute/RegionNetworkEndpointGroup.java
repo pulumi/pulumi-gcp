@@ -200,12 +200,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var appengineNegBucket = new Bucket("appengineNegBucket", BucketArgs.builder()
  *             .name("appengine-neg")
  *             .location("US")
@@ -231,11 +231,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .deployment(FlexibleAppVersionDeploymentArgs.builder()
  *                 .zip(FlexibleAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(appengineNegBucket.name(), appengineNegBucketObject.name()).applyValue(values -> {
+ *                     .sourceUrl(Output.tuple(appengineNegBucket.name(), appengineNegBucketObject.name()).applyValue(values -> }{{@code
  *                         var appengineNegBucketName = values.t1;
  *                         var appengineNegBucketObjectName = values.t2;
  *                         return String.format("https://storage.googleapis.com/%s/%s", appengineNegBucketName,appengineNegBucketObjectName);
- *                     }))
+ *                     }}{@code ))
  *                     .build())
  *                 .build())
  *             .livenessCheck(FlexibleAppVersionLivenessCheckArgs.builder()
@@ -246,13 +246,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .envVariables(Map.of("port", "8080"))
  *             .handlers(FlexibleAppVersionHandlerArgs.builder()
- *                 .urlRegex(".*\\/my-path\\/*")
+ *                 .urlRegex(".*}&#92;&#92;{@code /my-path}&#92;&#92;{@code /*")
  *                 .securityLevel("SECURE_ALWAYS")
  *                 .login("LOGIN_REQUIRED")
  *                 .authFailAction("AUTH_FAIL_ACTION_REDIRECT")
  *                 .staticFiles(FlexibleAppVersionHandlerStaticFilesArgs.builder()
  *                     .path("my-other-path")
- *                     .uploadPathRegex(".*\\/my-path\\/*")
+ *                     .uploadPathRegex(".*}&#92;&#92;{@code /my-path}&#92;&#92;{@code /*")
  *                     .build())
  *                 .build())
  *             .automaticScaling(FlexibleAppVersionAutomaticScalingArgs.builder()
@@ -275,8 +275,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

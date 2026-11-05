@@ -356,6 +356,12 @@ func (CryptoKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cryptoKeyState)(nil)).Elem()
 }
 
+// CryptoKeyExists checks whether an existing CryptoKey resource with the given ID exists.
+func CryptoKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CryptoKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/cryptoKey:CryptoKey", id, state, "", opts...)
+}
+
 type cryptoKeyArgs struct {
 	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.

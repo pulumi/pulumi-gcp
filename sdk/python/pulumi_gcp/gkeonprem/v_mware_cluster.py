@@ -2013,6 +2013,84 @@ class VMwareCluster(pulumi.CustomResource):
         __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
         return VMwareCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            anti_affinity_groups: pulumi.Input[Optional[Union['VMwareClusterAntiAffinityGroupsArgs', 'VMwareClusterAntiAffinityGroupsArgsDict', 'outputs.VMwareClusterAntiAffinityGroups']]] = None,
+            authorization: pulumi.Input[Optional[Union['VMwareClusterAuthorizationArgs', 'VMwareClusterAuthorizationArgsDict', 'outputs.VMwareClusterAuthorization']]] = None,
+            auto_repair_config: pulumi.Input[Optional[Union['VMwareClusterAutoRepairConfigArgs', 'VMwareClusterAutoRepairConfigArgsDict', 'outputs.VMwareClusterAutoRepairConfig']]] = None,
+            control_plane_node: pulumi.Input[Optional[Union['VMwareClusterControlPlaneNodeArgs', 'VMwareClusterControlPlaneNodeArgsDict', 'outputs.VMwareClusterControlPlaneNode']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataplane_v2: pulumi.Input[Optional[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict', 'outputs.VMwareClusterDataplaneV2']]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_bundled_ingress: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_advanced_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_control_plane_v2: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            fleets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterFleetArgs', 'VMwareClusterFleetArgsDict', 'outputs.VMwareClusterFleet']]]]] = None,
+            load_balancer: pulumi.Input[Optional[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict', 'outputs.VMwareClusterLoadBalancer']]] = None,
+            local_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict', 'outputs.VMwareClusterNetworkConfig']]] = None,
+            on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_validations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterStatusArgs', 'VMwareClusterStatusArgsDict', 'outputs.VMwareClusterStatus']]]]] = None,
+            storage: pulumi.Input[Optional[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict', 'outputs.VMwareClusterStorage']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_policy: pulumi.Input[Optional[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict', 'outputs.VMwareClusterUpgradePolicy']]] = None,
+            validation_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareClusterValidationCheckArgs', 'VMwareClusterValidationCheckArgsDict', 'outputs.VMwareClusterValidationCheck']]]]] = None,
+            vcenter: pulumi.Input[Optional[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict', 'outputs.VMwareClusterVcenter']]] = None,
+            vm_tracking_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminClusterMembership"] = admin_cluster_membership
+        __props__["annotations"] = annotations
+        __props__["antiAffinityGroups"] = anti_affinity_groups
+        __props__["authorization"] = authorization
+        __props__["autoRepairConfig"] = auto_repair_config
+        __props__["controlPlaneNode"] = control_plane_node
+        __props__["createTime"] = create_time
+        __props__["dataplaneV2"] = dataplane_v2
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disableBundledIngress"] = disable_bundled_ingress
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["enableAdvancedCluster"] = enable_advanced_cluster
+        __props__["enableControlPlaneV2"] = enable_control_plane_v2
+        __props__["endpoint"] = endpoint
+        __props__["etag"] = etag
+        __props__["fleets"] = fleets
+        __props__["loadBalancer"] = load_balancer
+        __props__["localName"] = local_name
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["networkConfig"] = network_config
+        __props__["onPremVersion"] = on_prem_version
+        __props__["project"] = project
+        __props__["reconciling"] = reconciling
+        __props__["skipValidations"] = skip_validations
+        __props__["state"] = state
+        __props__["statuses"] = statuses
+        __props__["storage"] = storage
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["upgradePolicy"] = upgrade_policy
+        __props__["validationChecks"] = validation_checks
+        __props__["vcenter"] = vcenter
+        __props__["vmTrackingEnabled"] = vm_tracking_enabled
+        return pulumi.runtime.exists_resource(None, 'gcp:gkeonprem/vMwareCluster:VMwareCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminClusterMembership")
     def admin_cluster_membership(self) -> pulumi.Output[_builtins.str]:

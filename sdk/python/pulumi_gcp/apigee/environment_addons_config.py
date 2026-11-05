@@ -231,6 +231,16 @@ class EnvironmentAddonsConfig(pulumi.CustomResource):
         __props__.__dict__["env_id"] = env_id
         return EnvironmentAddonsConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            analytics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["analyticsEnabled"] = analytics_enabled
+        __props__["envId"] = env_id
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="analyticsEnabled")
     def analytics_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

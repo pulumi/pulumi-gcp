@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Kms
         /// and
         /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -49,7 +48,6 @@ namespace Pulumi.Gcp.Kms
         /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
         /// and
         /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -81,7 +79,6 @@ namespace Pulumi.Gcp.Kms
         /// and
         /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -112,7 +109,7 @@ namespace Pulumi.Gcp.Kms
         /// The Google Cloud Platform location for the KeyHandle.
         /// A full list of valid locations can be found by running `gcloud kms locations list`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -143,7 +140,7 @@ namespace Pulumi.Gcp.Kms
         /// The Google Cloud Platform location for the KeyHandle.
         /// A full list of valid locations can be found by running `gcloud kms locations list`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

@@ -448,6 +448,12 @@ func (TaskIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*taskIamBindingState)(nil)).Elem()
 }
 
+// TaskIamBindingExists checks whether an existing TaskIamBinding resource with the given ID exists.
+func TaskIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TaskIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/taskIamBinding:TaskIamBinding", id, state, "", opts...)
+}
+
 type taskIamBindingArgs struct {
 	Condition *TaskIamBindingCondition `pulumi:"condition"`
 	// The lake in which the task will be created in.

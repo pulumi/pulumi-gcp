@@ -312,6 +312,12 @@ func (PerInstanceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*perInstanceConfigState)(nil)).Elem()
 }
 
+// PerInstanceConfigExists checks whether an existing PerInstanceConfig resource with the given ID exists.
+func PerInstanceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PerInstanceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/perInstanceConfig:PerInstanceConfig", id, state, "", opts...)
+}
+
 type perInstanceConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

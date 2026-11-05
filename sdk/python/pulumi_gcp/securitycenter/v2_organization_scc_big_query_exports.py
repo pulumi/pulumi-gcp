@@ -832,6 +832,38 @@ class V2OrganizationSccBigQueryExports(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return V2OrganizationSccBigQueryExports(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            most_recent_editor: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            principal: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigQueryExportId"] = big_query_export_id
+        __props__["createTime"] = create_time
+        __props__["dataset"] = dataset
+        __props__["deletionNotificationsEnabled"] = deletion_notifications_enabled
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["filter"] = filter
+        __props__["location"] = location
+        __props__["mostRecentEditor"] = most_recent_editor
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["principal"] = principal
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigQueryExportId")
     def big_query_export_id(self) -> pulumi.Output[_builtins.str]:

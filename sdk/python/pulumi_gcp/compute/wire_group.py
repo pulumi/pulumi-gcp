@@ -756,6 +756,36 @@ class WireGroup(pulumi.CustomResource):
         __props__.__dict__["wires"] = wires
         return WireGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_site_network: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict', 'outputs.WireGroupEndpoint']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            topologies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupTopologyArgs', 'WireGroupTopologyArgsDict', 'outputs.WireGroupTopology']]]]] = None,
+            wire_group_properties: pulumi.Input[Optional[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict', 'outputs.WireGroupWireGroupProperties']]] = None,
+            wire_properties: pulumi.Input[Optional[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict', 'outputs.WireGroupWireProperties']]] = None,
+            wires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupWireArgs', 'WireGroupWireArgsDict', 'outputs.WireGroupWire']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminEnabled"] = admin_enabled
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["crossSiteNetwork"] = cross_site_network
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["endpoints"] = endpoints
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["topologies"] = topologies
+        __props__["wireGroupProperties"] = wire_group_properties
+        __props__["wireProperties"] = wire_properties
+        __props__["wires"] = wires
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/wireGroup:WireGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
     def admin_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

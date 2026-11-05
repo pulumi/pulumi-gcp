@@ -186,9 +186,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// (Optional, Beta)
         /// This field specifies how long a connection should be kept alive for:
         /// - LONG: Most of the requests are expected to take more than multiple
-        /// seconds to finish.
+        ///   seconds to finish.
         /// - SHORT: Most requests are expected to finish with a sub-second latency.
-        /// Possible values are: `LONG`, `SHORT`.
+        ///   Possible values are: `LONG`, `SHORT`.
         /// </summary>
         [Input("trafficDuration")]
         public Input<string>? TrafficDuration { get; set; }

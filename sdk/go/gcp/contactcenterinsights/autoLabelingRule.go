@@ -205,6 +205,12 @@ func (AutoLabelingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoLabelingRuleState)(nil)).Elem()
 }
 
+// AutoLabelingRuleExists checks whether an existing AutoLabelingRule resource with the given ID exists.
+func AutoLabelingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutoLabelingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule", id, state, "", opts...)
+}
+
 type autoLabelingRuleArgs struct {
 	// Whether the rule is active.
 	Active *bool `pulumi:"active"`

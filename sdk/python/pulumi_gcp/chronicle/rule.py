@@ -1104,6 +1104,58 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Rule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_run_frequencies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            author: pulumi.Input[Optional[_builtins.str]] = None,
+            compilation_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleCompilationDiagnosticArgs', 'RuleCompilationDiagnosticArgsDict', 'outputs.RuleCompilationDiagnostic']]]]] = None,
+            compilation_state: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            near_real_time_live_rule_eligible: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            severities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleSeverityArgs', 'RuleSeverityArgsDict', 'outputs.RuleSeverity']]]]] = None,
+            text: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedRunFrequencies"] = allowed_run_frequencies
+        __props__["author"] = author
+        __props__["compilationDiagnostics"] = compilation_diagnostics
+        __props__["compilationState"] = compilation_state
+        __props__["createTime"] = create_time
+        __props__["dataTables"] = data_tables
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["etag"] = etag
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["nearRealTimeLiveRuleEligible"] = near_real_time_live_rule_eligible
+        __props__["project"] = project
+        __props__["referenceLists"] = reference_lists
+        __props__["revisionCreateTime"] = revision_create_time
+        __props__["revisionId"] = revision_id
+        __props__["ruleId"] = rule_id
+        __props__["scope"] = scope
+        __props__["severities"] = severities
+        __props__["text"] = text
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/rule:Rule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedRunFrequencies")
     def allowed_run_frequencies(self) -> pulumi.Output[Sequence[_builtins.str]]:

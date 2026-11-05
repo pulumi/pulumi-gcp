@@ -265,12 +265,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var project = "my-project-name";
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -283,8 +283,8 @@ import javax.annotation.Nullable;
  *             .name("geojson-data.jsonl")
  *             .bucket(bucket.name())
  *             .content("""
- * {\"type\":\"Feature\",\"properties\":{\"continent\":\"Europe\",\"region\":\"Scandinavia\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}
- * {\"type\":\"Feature\",\"properties\":{\"continent\":\"Africa\",\"region\":\"West Africa\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}
+ * }{&#92;{@code "type}&#92;{@code ":}&#92;{@code "Feature}&#92;{@code ",}&#92;{@code "properties}&#92;{@code ":}{&#92;{@code "continent}&#92;{@code ":}&#92;{@code "Europe}&#92;{@code ",}&#92;{@code "region}&#92;{@code ":}&#92;{@code "Scandinavia}&#92;{@code "}}{@code ,}&#92;{@code "geometry}&#92;{@code ":}{&#92;{@code "type}&#92;{@code ":}&#92;{@code "Polygon}&#92;{@code ",}&#92;{@code "coordinates}&#92;{@code ":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}}{@code
+ * }{&#92;{@code "type}&#92;{@code ":}&#92;{@code "Feature}&#92;{@code ",}&#92;{@code "properties}&#92;{@code ":}{&#92;{@code "continent}&#92;{@code ":}&#92;{@code "Africa}&#92;{@code ",}&#92;{@code "region}&#92;{@code ":}&#92;{@code "West Africa}&#92;{@code "}}{@code ,}&#92;{@code "geometry}&#92;{@code ":}{&#92;{@code "type}&#92;{@code ":}&#92;{@code "Polygon}&#92;{@code ",}&#92;{@code "coordinates}&#92;{@code ":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}}{@code
  *             """)
  *             .build());
  * 
@@ -305,11 +305,11 @@ import javax.annotation.Nullable;
  *             .jobId("job_load")
  *             .labels(Map.of("my_job", "load"))
  *             .load(JobLoadArgs.builder()
- *                 .sourceUris(Output.tuple(object.bucket(), object.name()).applyValue(values -> {
+ *                 .sourceUris(Output.tuple(object.bucket(), object.name()).applyValue(values -> }{{@code
  *                     var bucket = values.t1;
  *                     var name = values.t2;
  *                     return String.format("gs://%s/%s", bucket,name);
- *                 }))
+ *                 }}{@code ))
  *                 .destinationTable(JobLoadDestinationTableArgs.builder()
  *                     .projectId(foo.project())
  *                     .datasetId(foo.datasetId())
@@ -324,8 +324,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(object)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -481,19 +481,19 @@ import javax.annotation.Nullable;
  *                 .schema("""
  * [
  *   }{{@code
- *     \"name\": \"name\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code ,
  *   }{{@code
- *     \"name\": \"post_abbr\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "post_abbr}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code ,
  *   }{{@code
- *     \"name\": \"date\",
- *     \"type\": \"DATE\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "date}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "DATE}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code
  * ]
  *                 """)
@@ -525,19 +525,19 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *   }{{@code
- *     \"name\": \"name\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code ,
  *   }{{@code
- *     \"name\": \"post_abbr\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "post_abbr}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code ,
  *   }{{@code
- *     \"name\": \"date\",
- *     \"type\": \"DATE\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "date}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "DATE}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code
  * ]
  *             """)
@@ -606,12 +606,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var source_oneDataset = new Dataset("source-oneDataset", DatasetArgs.builder()
  *             .datasetId("job_extract_dataset")
  *             .friendlyName("test")
@@ -625,21 +625,21 @@ import javax.annotation.Nullable;
  *             .tableId("job_extract_table")
  *             .schema("""
  * [
- *   {
- *     \"name\": \"name\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
- *   },
- *   {
- *     \"name\": \"post_abbr\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
- *   },
- *   {
- *     \"name\": \"date\",
- *     \"type\": \"DATE\",
- *     \"mode\": \"NULLABLE\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *   }}{@code ,
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "post_abbr}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *   }}{@code ,
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "date}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "DATE}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .build());
@@ -664,8 +664,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

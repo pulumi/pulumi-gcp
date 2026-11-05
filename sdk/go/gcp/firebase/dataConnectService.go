@@ -358,6 +358,12 @@ func (DataConnectServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataConnectServiceState)(nil)).Elem()
 }
 
+// DataConnectServiceExists checks whether an existing DataConnectService resource with the given ID exists.
+func DataConnectServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataConnectServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/dataConnectService:DataConnectService", id, state, "", opts...)
+}
+
 type dataConnectServiceArgs struct {
 	// Optional. Stores small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

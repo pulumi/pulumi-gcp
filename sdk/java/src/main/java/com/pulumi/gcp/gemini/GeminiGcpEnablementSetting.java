@@ -124,11 +124,10 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
      * 
      * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
-     * @deprecated
-     * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+     * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      */
-    @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
+    @Deprecated
     @Export(name="disableWebGrounding", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableWebGrounding;
 

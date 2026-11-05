@@ -917,6 +917,12 @@ func (MigrationJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*migrationJobState)(nil)).Elem()
 }
 
+// MigrationJobExists checks whether an existing MigrationJob resource with the given ID exists.
+func MigrationJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MigrationJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:databasemigrationservice/migrationJob:MigrationJob", id, state, "", opts...)
+}
+
 type migrationJobArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

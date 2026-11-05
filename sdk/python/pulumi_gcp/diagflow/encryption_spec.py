@@ -377,6 +377,18 @@ class EncryptionSpec(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return EncryptionSpec(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            encryption_spec: pulumi.Input[Optional[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict', 'outputs.EncryptionSpecEncryptionSpec']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["encryptionSpec"] = encryption_spec
+        __props__["location"] = location
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/encryptionSpec:EncryptionSpec', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> pulumi.Output['outputs.EncryptionSpecEncryptionSpec']:

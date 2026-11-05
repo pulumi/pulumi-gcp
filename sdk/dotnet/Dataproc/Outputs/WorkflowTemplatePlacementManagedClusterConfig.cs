@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The Compute Engine flexible config settings for worker instances in a cluster. Structure is documented below.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerFlexibleConfig? WorkerFlexibleConfig;
 

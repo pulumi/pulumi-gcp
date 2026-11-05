@@ -278,6 +278,12 @@ func (DataTransferDataSourceEnrollmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataTransferDataSourceEnrollmentState)(nil)).Elem()
 }
 
+// DataTransferDataSourceEnrollmentExists checks whether an existing DataTransferDataSourceEnrollment resource with the given ID exists.
+func DataTransferDataSourceEnrollmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataTransferDataSourceEnrollmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/dataTransferDataSourceEnrollment:DataTransferDataSourceEnrollment", id, state, "", opts...)
+}
+
 type dataTransferDataSourceEnrollmentArgs struct {
 	// The ID of the data source to enroll. For Google Cloud Carbon Footprint exports this is
 	// `61cede5a-0000-2440-ad42-883d24f8f7b8`. Call `projects.dataSources.list` to see the data

@@ -176,6 +176,12 @@ func (ProjectSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectSettingsState)(nil)).Elem()
 }
 
+// ProjectSettingsExists checks whether an existing ProjectSettings resource with the given ID exists.
+func ProjectSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:observability/projectSettings:ProjectSettings", id, state, "", opts...)
+}
+
 type projectSettingsArgs struct {
 	// The default storage location for new resources, e.g. buckets. Only valid for global location.
 	DefaultStorageLocation *string `pulumi:"defaultStorageLocation"`

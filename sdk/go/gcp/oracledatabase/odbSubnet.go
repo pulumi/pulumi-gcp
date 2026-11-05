@@ -281,6 +281,12 @@ func (OdbSubnetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*odbSubnetState)(nil)).Elem()
 }
 
+// OdbSubnetExists checks whether an existing OdbSubnet resource with the given ID exists.
+func OdbSubnetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OdbSubnetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/odbSubnet:OdbSubnet", id, state, "", opts...)
+}
+
 type odbSubnetArgs struct {
 	// The CIDR range of the subnet.
 	CidrRange string `pulumi:"cidrRange"`

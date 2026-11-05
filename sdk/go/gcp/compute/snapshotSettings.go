@@ -137,6 +137,12 @@ func (SnapshotSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotSettingsState)(nil)).Elem()
 }
 
+// SnapshotSettingsExists checks whether an existing SnapshotSettings resource with the given ID exists.
+func SnapshotSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnapshotSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/snapshotSettings:SnapshotSettings", id, state, "", opts...)
+}
+
 type snapshotSettingsArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

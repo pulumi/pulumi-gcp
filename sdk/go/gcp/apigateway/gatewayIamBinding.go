@@ -436,6 +436,12 @@ func (GatewayIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayIamBindingState)(nil)).Elem()
 }
 
+// GatewayIamBindingExists checks whether an existing GatewayIamBinding resource with the given ID exists.
+func GatewayIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigateway/gatewayIamBinding:GatewayIamBinding", id, state, "", opts...)
+}
+
 type gatewayIamBindingArgs struct {
 	Condition *GatewayIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

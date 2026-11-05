@@ -332,6 +332,12 @@ func (AppCheckServiceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCheckServiceConfigState)(nil)).Elem()
 }
 
+// AppCheckServiceConfigExists checks whether an existing AppCheckServiceConfig resource with the given ID exists.
+func AppCheckServiceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppCheckServiceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig", id, state, "", opts...)
+}
+
 type appCheckServiceConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

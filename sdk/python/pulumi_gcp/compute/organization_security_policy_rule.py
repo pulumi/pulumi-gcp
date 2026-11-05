@@ -1244,6 +1244,40 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         __props__.__dict__["target_service_accounts"] = target_service_accounts
         return OrganizationSecurityPolicyRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict', 'outputs.OrganizationSecurityPolicyRuleHeaderAction']]] = None,
+            match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict', 'outputs.OrganizationSecurityPolicyRuleMatch']]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.OrganizationSecurityPolicyRulePreconfiguredWafConfig']]] = None,
+            preview: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.OrganizationSecurityPolicyRuleRedirectOptions']]] = None,
+            target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["direction"] = direction
+        __props__["enableLogging"] = enable_logging
+        __props__["headerAction"] = header_action
+        __props__["match"] = match
+        __props__["policyId"] = policy_id
+        __props__["preconfiguredWafConfig"] = preconfigured_waf_config
+        __props__["preview"] = preview
+        __props__["priority"] = priority
+        __props__["redirectOptions"] = redirect_options
+        __props__["targetResources"] = target_resources
+        __props__["targetServiceAccounts"] = target_service_accounts
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

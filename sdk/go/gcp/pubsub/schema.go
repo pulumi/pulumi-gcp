@@ -251,6 +251,12 @@ func (SchemaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*schemaState)(nil)).Elem()
 }
 
+// SchemaExists checks whether an existing Schema resource with the given ID exists.
+func SchemaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SchemaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/schema:Schema", id, state, "", opts...)
+}
+
 type schemaArgs struct {
 	// The definition of the schema.
 	// This should contain a string representing the full definition of the schema

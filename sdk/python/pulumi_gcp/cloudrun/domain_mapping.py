@@ -523,6 +523,26 @@ class DomainMapping(pulumi.CustomResource):
         __props__.__dict__["statuses"] = statuses
         return DomainMapping(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict', 'outputs.DomainMappingMetadata']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict', 'outputs.DomainMappingSpec']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainMappingStatusArgs', 'DomainMappingStatusArgsDict', 'outputs.DomainMappingStatus']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["spec"] = spec
+        __props__["statuses"] = statuses
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudrun/domainMapping:DomainMapping', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string Key;
         /// <summary>
         /// , The value of the label to assign to disks.
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string Value;
 

@@ -523,6 +523,24 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkIfServiceHasUsageOnDestroy"] = check_if_service_has_usage_on_destroy
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disableDependentServices"] = disable_dependent_services
+        __props__["disableOnDestroy"] = disable_on_destroy
+        __props__["project"] = project
+        __props__["service"] = service
+        return pulumi.runtime.exists_resource(None, 'gcp:projects/service:Service', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="checkIfServiceHasUsageOnDestroy")
     def check_if_service_has_usage_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:

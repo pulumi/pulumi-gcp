@@ -1132,6 +1132,36 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         __props__.__dict__["workload_identity_pool_id"] = workload_identity_pool_id
         return WorkloadIdentityPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict', 'outputs.WorkloadIdentityPoolAttestationRule']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            inline_certificate_issuance_config: pulumi.Input[Optional[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict', 'outputs.WorkloadIdentityPoolInlineCertificateIssuanceConfig']]] = None,
+            inline_trust_config: pulumi.Input[Optional[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict', 'outputs.WorkloadIdentityPoolInlineTrustConfig']]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attestationRules"] = attestation_rules
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["inlineCertificateIssuanceConfig"] = inline_certificate_issuance_config
+        __props__["inlineTrustConfig"] = inline_trust_config
+        __props__["mode"] = mode
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["workloadIdentityPoolId"] = workload_identity_pool_id
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workloadIdentityPool:WorkloadIdentityPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attestationRules")
     def attestation_rules(self) -> pulumi.Output[Optional[Sequence['outputs.WorkloadIdentityPoolAttestationRule']]]:

@@ -793,6 +793,26 @@ class ConnectionIamBinding(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return ConnectionIamBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['ConnectionIamBindingConditionArgs', 'ConnectionIamBindingConditionArgsDict', 'outputs.ConnectionIamBindingCondition']]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["connectionId"] = connection_id
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["members"] = members
+        __props__["project"] = project
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/connectionIamBinding:ConnectionIamBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.ConnectionIamBindingCondition']]:

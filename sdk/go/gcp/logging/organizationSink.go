@@ -255,6 +255,12 @@ func (OrganizationSinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSinkState)(nil)).Elem()
 }
 
+// OrganizationSinkExists checks whether an existing OrganizationSink resource with the given ID exists.
+func OrganizationSinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationSinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/organizationSink:OrganizationSink", id, state, "", opts...)
+}
+
 type organizationSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`

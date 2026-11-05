@@ -212,6 +212,12 @@ func (TagKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagKeyState)(nil)).Elem()
 }
 
+// TagKeyExists checks whether an existing TagKey resource with the given ID exists.
+func TagKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:tags/tagKey:TagKey", id, state, "", opts...)
+}
+
 type tagKeyArgs struct {
 	// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
 	AllowedValuesRegex *string `pulumi:"allowedValuesRegex"`

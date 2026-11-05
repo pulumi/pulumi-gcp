@@ -181,6 +181,12 @@ func (TunnelDestGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelDestGroupState)(nil)).Elem()
 }
 
+// TunnelDestGroupExists checks whether an existing TunnelDestGroup resource with the given ID exists.
+func TunnelDestGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelDestGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/tunnelDestGroup:TunnelDestGroup", id, state, "", opts...)
+}
+
 type tunnelDestGroupArgs struct {
 	// List of CIDRs that this group applies to.
 	Cidrs []string `pulumi:"cidrs"`

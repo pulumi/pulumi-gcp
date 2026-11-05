@@ -445,6 +445,24 @@ class HostProjectRegistration(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return HostProjectRegistration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_project: pulumi.Input[Optional[_builtins.str]] = None,
+            host_project_registration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["gcpProject"] = gcp_project
+        __props__["hostProjectRegistrationId"] = host_project_registration_id
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:apihub/hostProjectRegistration:HostProjectRegistration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

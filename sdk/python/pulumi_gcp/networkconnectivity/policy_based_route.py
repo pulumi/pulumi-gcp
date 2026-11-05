@@ -934,6 +934,48 @@ class PolicyBasedRoute(pulumi.CustomResource):
         __props__.__dict__["warnings"] = warnings
         return PolicyBasedRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            filter: pulumi.Input[Optional[Union['PolicyBasedRouteFilterArgs', 'PolicyBasedRouteFilterArgsDict', 'outputs.PolicyBasedRouteFilter']]] = None,
+            interconnect_attachment: pulumi.Input[Optional[Union['PolicyBasedRouteInterconnectAttachmentArgs', 'PolicyBasedRouteInterconnectAttachmentArgsDict', 'outputs.PolicyBasedRouteInterconnectAttachment']]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_ilb_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_other_routes: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine: pulumi.Input[Optional[Union['PolicyBasedRouteVirtualMachineArgs', 'PolicyBasedRouteVirtualMachineArgsDict', 'outputs.PolicyBasedRouteVirtualMachine']]] = None,
+            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyBasedRouteWarningArgs', 'PolicyBasedRouteWarningArgsDict', 'outputs.PolicyBasedRouteWarning']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["filter"] = filter
+        __props__["interconnectAttachment"] = interconnect_attachment
+        __props__["kind"] = kind
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["nextHopIlbIp"] = next_hop_ilb_ip
+        __props__["nextHopOtherRoutes"] = next_hop_other_routes
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["updateTime"] = update_time
+        __props__["virtualMachine"] = virtual_machine
+        __props__["warnings"] = warnings
+        return pulumi.runtime.exists_resource(None, 'gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

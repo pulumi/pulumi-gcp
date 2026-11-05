@@ -16,8 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
         /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly int AcceleratorCount;
         /// <summary>

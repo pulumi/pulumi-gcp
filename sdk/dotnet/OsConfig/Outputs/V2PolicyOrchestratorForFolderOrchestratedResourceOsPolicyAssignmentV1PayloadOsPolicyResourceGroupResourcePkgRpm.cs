@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// Whether dependencies should also be installed.
         /// - install when false: `rpm --upgrade --replacepkgs package.rpm`
         /// - install when true: `yum -y install package.rpm` or
-        /// `zypper -y install package.rpm`
+        ///   `zypper -y install package.rpm`
         /// </summary>
         public readonly bool? PullDeps;
         /// <summary>

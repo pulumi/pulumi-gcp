@@ -187,6 +187,12 @@ func (TenantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantState)(nil)).Elem()
 }
 
+// TenantExists checks whether an existing Tenant resource with the given ID exists.
+func TenantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TenantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:identityplatform/tenant:Tenant", id, state, "", opts...)
+}
+
 type tenantArgs struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup *bool `pulumi:"allowPasswordSignup"`

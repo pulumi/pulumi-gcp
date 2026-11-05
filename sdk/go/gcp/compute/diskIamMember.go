@@ -424,6 +424,12 @@ func (DiskIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskIamMemberState)(nil)).Elem()
 }
 
+// DiskIamMemberExists checks whether an existing DiskIamMember resource with the given ID exists.
+func DiskIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/diskIamMember:DiskIamMember", id, state, "", opts...)
+}
+
 type diskIamMemberArgs struct {
 	Condition *DiskIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

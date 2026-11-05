@@ -247,6 +247,12 @@ func (VolumeSnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeSnapshotState)(nil)).Elem()
 }
 
+// VolumeSnapshotExists checks whether an existing VolumeSnapshot resource with the given ID exists.
+func VolumeSnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeSnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:netapp/volumeSnapshot:VolumeSnapshot", id, state, "", opts...)
+}
+
 type volumeSnapshotArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

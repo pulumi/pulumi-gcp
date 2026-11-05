@@ -385,6 +385,12 @@ func (MulticastGroupProducerActivationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multicastGroupProducerActivationState)(nil)).Elem()
 }
 
+// MulticastGroupProducerActivationExists checks whether an existing MulticastGroupProducerActivation resource with the given ID exists.
+func MulticastGroupProducerActivationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MulticastGroupProducerActivationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation", id, state, "", opts...)
+}
+
 type multicastGroupProducerActivationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

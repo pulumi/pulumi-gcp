@@ -502,6 +502,12 @@ func (V2VmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2vmState)(nil)).Elem()
 }
 
+// V2VmExists checks whether an existing V2Vm resource with the given ID exists.
+func V2VmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2VmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:tpu/v2Vm:V2Vm", id, state, "", opts...)
+}
+
 type v2vmArgs struct {
 	// The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
 	// as `acceleratorType`. If neither is specified, `acceleratorType` defaults to 'v2-8'.

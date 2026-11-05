@@ -673,6 +673,30 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alternative_name_server_config: pulumi.Input[Optional[Union['PolicyAlternativeNameServerConfigArgs', 'PolicyAlternativeNameServerConfigArgsDict', 'outputs.PolicyAlternativeNameServerConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns64_config: pulumi.Input[Optional[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict', 'outputs.PolicyDns64Config']]] = None,
+            enable_inbound_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyNetworkArgs', 'PolicyNetworkArgsDict', 'outputs.PolicyNetwork']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alternativeNameServerConfig"] = alternative_name_server_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["dns64Config"] = dns64_config
+        __props__["enableInboundForwarding"] = enable_inbound_forwarding
+        __props__["enableLogging"] = enable_logging
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:dns/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alternativeNameServerConfig")
     def alternative_name_server_config(self) -> pulumi.Output[Optional['outputs.PolicyAlternativeNameServerConfig']]:

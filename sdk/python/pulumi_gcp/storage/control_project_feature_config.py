@@ -635,6 +635,32 @@ class ControlProjectFeatureConfig(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ControlProjectFeatureConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_annotate_config: pulumi.Input[Optional[Union['ControlProjectFeatureConfigAutoAnnotateConfigArgs', 'ControlProjectFeatureConfigAutoAnnotateConfigArgsDict', 'outputs.ControlProjectFeatureConfigAutoAnnotateConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[Union['ControlProjectFeatureConfigFilterArgs', 'ControlProjectFeatureConfigFilterArgsDict', 'outputs.ControlProjectFeatureConfigFilter']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoAnnotateConfig"] = auto_annotate_config
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["featureConfigId"] = feature_config_id
+        __props__["filter"] = filter
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/controlProjectFeatureConfig:ControlProjectFeatureConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoAnnotateConfig")
     def auto_annotate_config(self) -> pulumi.Output['outputs.ControlProjectFeatureConfigAutoAnnotateConfig']:

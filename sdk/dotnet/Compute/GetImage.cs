@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Compute
         /// filter must return exactly one image unless you use `MostRecent`.
         /// Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.Gcp.Compute
         /// filter must return exactly one image unless you use `MostRecent`.
         /// Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

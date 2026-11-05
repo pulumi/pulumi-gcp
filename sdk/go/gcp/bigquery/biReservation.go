@@ -177,6 +177,12 @@ func (BiReservationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*biReservationState)(nil)).Elem()
 }
 
+// BiReservationExists checks whether an existing BiReservation resource with the given ID exists.
+func BiReservationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BiReservationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/biReservation:BiReservation", id, state, "", opts...)
+}
+
 type biReservationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -408,6 +408,12 @@ func (TopicIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicIAMBindingState)(nil)).Elem()
 }
 
+// TopicIAMBindingExists checks whether an existing TopicIAMBinding resource with the given ID exists.
+func TopicIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TopicIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/topicIAMBinding:TopicIAMBinding", id, state, "", opts...)
+}
+
 type topicIAMBindingArgs struct {
 	Condition *TopicIAMBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

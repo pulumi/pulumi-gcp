@@ -105,11 +105,10 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
      * 
      * &gt; **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     @Import(name="servingState")
     private @Nullable Output<String> servingState;
 
@@ -122,11 +121,10 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
      * 
      * &gt; **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     public Optional<Output<String>> servingState() {
         return Optional.ofNullable(this.servingState);
     }
@@ -315,11 +313,10 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+        @Deprecated
         public Builder servingState(@Nullable Output<String> servingState) {
             $.servingState = servingState;
             return this;
@@ -336,11 +333,10 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+        @Deprecated
         public Builder servingState(String servingState) {
             return servingState(Output.of(servingState));
         }

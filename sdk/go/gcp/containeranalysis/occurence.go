@@ -311,6 +311,12 @@ func (OccurenceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*occurenceState)(nil)).Elem()
 }
 
+// OccurenceExists checks whether an existing Occurence resource with the given ID exists.
+func OccurenceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OccurenceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:containeranalysis/occurence:Occurence", id, state, "", opts...)
+}
+
 type occurenceArgs struct {
 	// Occurrence that represents a single "attestation". The authenticity
 	// of an attestation can be verified using the attached signature.

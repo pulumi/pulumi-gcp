@@ -800,6 +800,44 @@ class FirewallEndpoint(pulumi.CustomResource):
         __props__.__dict__["wildfire_settings"] = wildfire_settings
         return FirewallEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associated_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint_settings: pulumi.Input[Optional[Union['FirewallEndpointEndpointSettingsArgs', 'FirewallEndpointEndpointSettingsArgsDict', 'outputs.FirewallEndpointEndpointSettings']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            wildfire_settings: pulumi.Input[Optional[Union['FirewallEndpointWildfireSettingsArgs', 'FirewallEndpointWildfireSettingsArgsDict', 'outputs.FirewallEndpointWildfireSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associatedNetworks"] = associated_networks
+        __props__["billingProjectId"] = billing_project_id
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["endpointSettings"] = endpoint_settings
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["selfLink"] = self_link
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        __props__["wildfireSettings"] = wildfire_settings
+        return pulumi.runtime.exists_resource(None, 'gcp:networksecurity/firewallEndpoint:FirewallEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associatedNetworks")
     def associated_networks(self) -> pulumi.Output[Sequence[_builtins.str]]:

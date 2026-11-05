@@ -1070,6 +1070,48 @@ class ExadbVmCluster(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         return ExadbVmCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+            exadb_vm_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExadbVmClusterIdentityConnectorArgs', 'ExadbVmClusterIdentityConnectorArgsDict', 'outputs.ExadbVmClusterIdentityConnector']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            odb_network: pulumi.Input[Optional[_builtins.str]] = None,
+            odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Union['ExadbVmClusterPropertiesArgs', 'ExadbVmClusterPropertiesArgsDict', 'outputs.ExadbVmClusterProperties']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupOdbSubnet"] = backup_odb_subnet
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["entitlementId"] = entitlement_id
+        __props__["exadbVmClusterId"] = exadb_vm_cluster_id
+        __props__["gcpOracleZone"] = gcp_oracle_zone
+        __props__["identityConnectors"] = identity_connectors
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["odbNetwork"] = odb_network
+        __props__["odbSubnet"] = odb_subnet
+        __props__["project"] = project
+        __props__["properties"] = properties
+        __props__["pulumiLabels"] = pulumi_labels
+        return pulumi.runtime.exists_resource(None, 'gcp:oracledatabase/exadbVmCluster:ExadbVmCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupOdbSubnet")
     def backup_odb_subnet(self) -> pulumi.Output[_builtins.str]:

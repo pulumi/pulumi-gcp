@@ -229,6 +229,12 @@ func (DenyPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*denyPolicyState)(nil)).Elem()
 }
 
+// DenyPolicyExists checks whether an existing DenyPolicy resource with the given ID exists.
+func DenyPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DenyPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/denyPolicy:DenyPolicy", id, state, "", opts...)
+}
+
 type denyPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -643,6 +643,12 @@ func (TlsRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tlsRouteState)(nil)).Elem()
 }
 
+// TlsRouteExists checks whether an existing TlsRoute resource with the given ID exists.
+func TlsRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TlsRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/tlsRoute:TlsRoute", id, state, "", opts...)
+}
+
 type tlsRouteArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

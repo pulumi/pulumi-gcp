@@ -552,6 +552,26 @@ class ResponsePolicyRule(pulumi.CustomResource):
         __props__.__dict__["rule_name"] = rule_name
         return ResponsePolicyRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            local_data: pulumi.Input[Optional[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict', 'outputs.ResponsePolicyRuleLocalData']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            response_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["behavior"] = behavior
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dnsName"] = dns_name
+        __props__["localData"] = local_data
+        __props__["project"] = project
+        __props__["responsePolicy"] = response_policy
+        __props__["ruleName"] = rule_name
+        return pulumi.runtime.exists_resource(None, 'gcp:dns/responsePolicyRule:ResponsePolicyRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def behavior(self) -> pulumi.Output[Optional[_builtins.str]]:

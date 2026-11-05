@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
         /// if you are trying to use accelerators in a given zone.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("acceleratorCount", required: true)]
         public Input<int> AcceleratorCount { get; set; } = null!;

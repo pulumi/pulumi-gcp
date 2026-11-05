@@ -203,6 +203,12 @@ func (ManagedFolderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedFolderState)(nil)).Elem()
 }
 
+// ManagedFolderExists checks whether an existing ManagedFolder resource with the given ID exists.
+func ManagedFolderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedFolderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/managedFolder:ManagedFolder", id, state, "", opts...)
+}
+
 type managedFolderArgs struct {
 	// The name of the bucket that contains the managed folder.
 	Bucket string `pulumi:"bucket"`

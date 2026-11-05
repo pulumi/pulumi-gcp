@@ -836,6 +836,42 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["subnet"] = subnet
         return Connector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connected_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            max_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+            min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            min_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict', 'outputs.ConnectorSubnet']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectedProjects"] = connected_projects
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["ipCidrRange"] = ip_cidr_range
+        __props__["machineType"] = machine_type
+        __props__["maxInstances"] = max_instances
+        __props__["maxThroughput"] = max_throughput
+        __props__["minInstances"] = min_instances
+        __props__["minThroughput"] = min_throughput
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["state"] = state
+        __props__["subnet"] = subnet
+        return pulumi.runtime.exists_resource(None, 'gcp:vpcaccess/connector:Connector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectedProjects")
     def connected_projects(self) -> pulumi.Output[Sequence[_builtins.str]]:

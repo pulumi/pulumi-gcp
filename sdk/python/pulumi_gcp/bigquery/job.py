@@ -1463,6 +1463,42 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["user_email"] = user_email
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict', 'outputs.JobCopy']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict', 'outputs.JobExtract']]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            job_type: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict', 'outputs.JobLoad']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict', 'outputs.JobQuery']]] = None,
+            reservation: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]]]] = None,
+            user_email: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["copy"] = copy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["extract"] = extract
+        __props__["jobId"] = job_id
+        __props__["jobTimeoutMs"] = job_timeout_ms
+        __props__["jobType"] = job_type
+        __props__["labels"] = labels
+        __props__["load"] = load
+        __props__["location"] = location
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["query"] = query
+        __props__["reservation"] = reservation
+        __props__["statuses"] = statuses
+        __props__["userEmail"] = user_email
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/job:Job', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def copy(self) -> pulumi.Output[Optional['outputs.JobCopy']]:

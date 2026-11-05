@@ -803,6 +803,36 @@ class DataProductDataAsset(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return DataProductDataAsset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataProductDataAssetAccessGroupConfigArgs', 'DataProductDataAssetAccessGroupConfigArgsDict', 'outputs.DataProductDataAssetAccessGroupConfig']]]]] = None,
+            data_asset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessGroupConfigs"] = access_group_configs
+        __props__["dataAssetId"] = data_asset_id
+        __props__["dataProductId"] = data_product_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["resource"] = resource
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'gcp:dataplex/dataProductDataAsset:DataProductDataAsset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessGroupConfigs")
     def access_group_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DataProductDataAssetAccessGroupConfig']]]:

@@ -629,6 +629,34 @@ class ImportDataFile(pulumi.CustomResource):
         __props__.__dict__["upload_file_infos"] = upload_file_infos
         return ImportDataFile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            import_data_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            import_job: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            upload_file_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImportDataFileUploadFileInfoArgs', 'ImportDataFileUploadFileInfoArgsDict', 'outputs.ImportDataFileUploadFileInfo']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["format"] = format
+        __props__["importDataFileId"] = import_data_file_id
+        __props__["importJob"] = import_job
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["uploadFileInfos"] = upload_file_infos
+        return pulumi.runtime.exists_resource(None, 'gcp:migrationcenter/importDataFile:ImportDataFile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

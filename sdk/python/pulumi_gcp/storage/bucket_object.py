@@ -1295,6 +1295,68 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["temporary_hold"] = temporary_hold
         return BucketObject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            content_language: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict', 'outputs.BucketObjectContexts']]] = None,
+            crc32c: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict', 'outputs.BucketObjectCustomerEncryption']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_empty_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+            generation: pulumi.Input[Optional[_builtins.int]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            md5hexhash: pulumi.Input[Optional[_builtins.str]] = None,
+            media_link: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_name: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict', 'outputs.BucketObjectRetention']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
+            source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            temporary_hold: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["cacheControl"] = cache_control
+        __props__["content"] = content
+        __props__["contentDisposition"] = content_disposition
+        __props__["contentEncoding"] = content_encoding
+        __props__["contentLanguage"] = content_language
+        __props__["contentType"] = content_type
+        __props__["contexts"] = contexts
+        __props__["crc32c"] = crc32c
+        __props__["customerEncryption"] = customer_encryption
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["detectMd5hash"] = detect_md5hash
+        __props__["eventBasedHold"] = event_based_hold
+        __props__["forceEmptyContentType"] = force_empty_content_type
+        __props__["generation"] = generation
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["md5hash"] = md5hash
+        __props__["md5hexhash"] = md5hexhash
+        __props__["mediaLink"] = media_link
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["outputName"] = output_name
+        __props__["retention"] = retention
+        __props__["selfLink"] = self_link
+        __props__["source"] = source
+        __props__["sourceMd5hash"] = source_md5hash
+        __props__["storageClass"] = storage_class
+        __props__["temporaryHold"] = temporary_hold
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/bucketObject:BucketObject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

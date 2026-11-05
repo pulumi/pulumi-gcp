@@ -1074,6 +1074,38 @@ class ConnectivityTest(pulumi.CustomResource):
         __props__.__dict__["source"] = source
         return ConnectivityTest(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict', 'outputs.ConnectivityTestDestination']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            round_trip: pulumi.Input[Optional[_builtins.bool]] = None,
+            source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict', 'outputs.ConnectivityTestSource']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bypassFirewallChecks"] = bypass_firewall_checks
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["destination"] = destination
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["protocol"] = protocol
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["relatedProjects"] = related_projects
+        __props__["roundTrip"] = round_trip
+        __props__["source"] = source
+        return pulumi.runtime.exists_resource(None, 'gcp:networkmanagement/connectivityTest:ConnectivityTest', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bypassFirewallChecks")
     def bypass_firewall_checks(self) -> pulumi.Output[Optional[_builtins.bool]]:

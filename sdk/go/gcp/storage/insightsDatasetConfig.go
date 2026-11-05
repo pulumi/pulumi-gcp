@@ -398,6 +398,12 @@ func (InsightsDatasetConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*insightsDatasetConfigState)(nil)).Elem()
 }
 
+// InsightsDatasetConfigExists checks whether an existing InsightsDatasetConfig resource with the given ID exists.
+func InsightsDatasetConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InsightsDatasetConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/insightsDatasetConfig:InsightsDatasetConfig", id, state, "", opts...)
+}
+
 type insightsDatasetConfigArgs struct {
 	// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
 	ActivityDataRetentionPeriodDays *int `pulumi:"activityDataRetentionPeriodDays"`

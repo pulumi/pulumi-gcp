@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
         /// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedSpConfigSpCertificates"&gt;&lt;/a&gt;The `SpCertificates` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.TenantInboundSamlConfigSpConfigSpCertificate> SpCertificates;

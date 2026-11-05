@@ -751,6 +751,34 @@ class RegionResizeRequest(pulumi.CustomResource):
         __props__.__dict__["statuses"] = statuses
         return RegionResizeRequest(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_run_duration: pulumi.Input[Optional[Union['RegionResizeRequestRequestedRunDurationArgs', 'RegionResizeRequestRequestedRunDurationArgsDict', 'outputs.RegionResizeRequestRequestedRunDuration']]] = None,
+            resize_by: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionResizeRequestStatusArgs', 'RegionResizeRequestStatusArgsDict', 'outputs.RegionResizeRequestStatus']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["instanceGroupManager"] = instance_group_manager
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["requestedRunDuration"] = requested_run_duration
+        __props__["resizeBy"] = resize_by
+        __props__["state"] = state
+        __props__["statuses"] = statuses
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionResizeRequest:RegionResizeRequest', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[_builtins.str]:

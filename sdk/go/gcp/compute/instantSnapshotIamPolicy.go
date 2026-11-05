@@ -616,6 +616,12 @@ func (InstantSnapshotIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instantSnapshotIamPolicyState)(nil)).Elem()
 }
 
+// InstantSnapshotIamPolicyExists checks whether an existing InstantSnapshotIamPolicy resource with the given ID exists.
+func InstantSnapshotIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstantSnapshotIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instantSnapshotIamPolicy:InstantSnapshotIamPolicy", id, state, "", opts...)
+}
+
 type instantSnapshotIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

@@ -280,7 +280,7 @@ namespace Pulumi.Gcp.CloudScheduler
         /// * For HTTP targets, between 15 seconds and 30 minutes.
         /// * For App Engine HTTP targets, between 15 seconds and 24 hours.
         /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        ///   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Output("attemptDeadline")]
         public Output<string?> AttemptDeadline { get; private set; } = null!;
@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.CloudScheduler
         /// * For HTTP targets, between 15 seconds and 30 minutes.
         /// * For App Engine HTTP targets, between 15 seconds and 24 hours.
         /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        ///   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Input("attemptDeadline")]
         public Input<string>? AttemptDeadline { get; set; }
@@ -550,7 +550,7 @@ namespace Pulumi.Gcp.CloudScheduler
         /// * For HTTP targets, between 15 seconds and 30 minutes.
         /// * For App Engine HTTP targets, between 15 seconds and 24 hours.
         /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        ///   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Input("attemptDeadline")]
         public Input<string>? AttemptDeadline { get; set; }

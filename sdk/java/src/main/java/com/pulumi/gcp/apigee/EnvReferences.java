@@ -95,14 +95,14 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
         return this.envId;
     }
     /**
-     * Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+     * Required. The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+     * @return Required. The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
      * 
      */
     public Output<String> name() {

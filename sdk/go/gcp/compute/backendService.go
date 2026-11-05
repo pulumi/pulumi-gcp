@@ -1788,6 +1788,12 @@ func (BackendServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendServiceState)(nil)).Elem()
 }
 
+// BackendServiceExists checks whether an existing BackendService resource with the given ID exists.
+func BackendServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackendServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/backendService:BackendService", id, state, "", opts...)
+}
+
 type backendServiceArgs struct {
 	// Lifetime of cookies in seconds if sessionAffinity is
 	// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts

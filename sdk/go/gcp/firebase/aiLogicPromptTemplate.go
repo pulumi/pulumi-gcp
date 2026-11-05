@@ -317,6 +317,12 @@ func (AiLogicPromptTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiLogicPromptTemplateState)(nil)).Elem()
 }
 
+// AiLogicPromptTemplateExists checks whether an existing AiLogicPromptTemplate resource with the given ID exists.
+func AiLogicPromptTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiLogicPromptTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate", id, state, "", opts...)
+}
+
 type aiLogicPromptTemplateArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

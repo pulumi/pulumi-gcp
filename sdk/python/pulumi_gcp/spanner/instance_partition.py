@@ -753,6 +753,32 @@ class InstancePartition(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return InstancePartition(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaling_config: pulumi.Input[Optional[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict', 'outputs.InstancePartitionAutoscalingConfig']]] = None,
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            processing_units: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoscalingConfig"] = autoscaling_config
+        __props__["config"] = config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["instance"] = instance
+        __props__["name"] = name
+        __props__["nodeCount"] = node_count
+        __props__["processingUnits"] = processing_units
+        __props__["project"] = project
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:spanner/instancePartition:InstancePartition', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> pulumi.Output[Optional['outputs.InstancePartitionAutoscalingConfig']]:

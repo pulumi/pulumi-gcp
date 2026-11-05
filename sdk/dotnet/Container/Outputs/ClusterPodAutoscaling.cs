@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Acceptable values are:
         /// * `"NONE"`: Customers explicitly opt-out of HPA profiles.
         /// * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
-        /// See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+        ///   See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
         /// </summary>
         public readonly string HpaProfile;
 

@@ -149,6 +149,12 @@ func (ServicePerimeterDryRunIngressPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePerimeterDryRunIngressPolicyState)(nil)).Elem()
 }
 
+// ServicePerimeterDryRunIngressPolicyExists checks whether an existing ServicePerimeterDryRunIngressPolicy resource with the given ID exists.
+func ServicePerimeterDryRunIngressPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePerimeterDryRunIngressPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/servicePerimeterDryRunIngressPolicy:ServicePerimeterDryRunIngressPolicy", id, state, "", opts...)
+}
+
 type servicePerimeterDryRunIngressPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -24,11 +24,10 @@ public final class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigA
      * 
      * &gt; **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
      * 
-     * @deprecated
-     * `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+     * @deprecated `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
      * 
      */
-    @Deprecated /* `domain` is deprecated and will be removed in a future major release. Use `domains` instead. */
+    @Deprecated
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
@@ -39,11 +38,10 @@ public final class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigA
      * 
      * &gt; **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
      * 
-     * @deprecated
-     * `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+     * @deprecated `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
      * 
      */
-    @Deprecated /* `domain` is deprecated and will be removed in a future major release. Use `domains` instead. */
+    @Deprecated
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -121,11 +119,10 @@ public final class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigA
          * 
          * @return builder
          * 
-         * @deprecated
-         * `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+         * @deprecated `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
          * 
          */
-        @Deprecated /* `domain` is deprecated and will be removed in a future major release. Use `domains` instead. */
+        @Deprecated
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
@@ -140,11 +137,10 @@ public final class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigA
          * 
          * @return builder
          * 
-         * @deprecated
-         * `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+         * @deprecated `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
          * 
          */
-        @Deprecated /* `domain` is deprecated and will be removed in a future major release. Use `domains` instead. */
+        @Deprecated
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

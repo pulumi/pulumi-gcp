@@ -225,6 +225,12 @@ func (AccessLevelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessLevelState)(nil)).Elem()
 }
 
+// AccessLevelExists checks whether an existing AccessLevel resource with the given ID exists.
+func AccessLevelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessLevelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/accessLevel:AccessLevel", id, state, "", opts...)
+}
+
 type accessLevelArgs struct {
 	// A set of predefined conditions for the access level and a combining function.
 	// Structure is documented below.

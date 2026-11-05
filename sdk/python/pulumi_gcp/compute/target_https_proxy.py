@@ -1619,6 +1619,48 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["url_map"] = url_map
         return TargetHttpsProxy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_bind: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxy_id: pulumi.Input[Optional[_builtins.int]] = None,
+            quic_override: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_early_data: pulumi.Input[Optional[_builtins.str]] = None,
+            url_map: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateManagerCertificates"] = certificate_manager_certificates
+        __props__["certificateMap"] = certificate_map
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["fingerprint"] = fingerprint
+        __props__["httpKeepAliveTimeoutSec"] = http_keep_alive_timeout_sec
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["proxyBind"] = proxy_bind
+        __props__["proxyId"] = proxy_id
+        __props__["quicOverride"] = quic_override
+        __props__["selfLink"] = self_link
+        __props__["serverTlsPolicy"] = server_tls_policy
+        __props__["sslCertificates"] = ssl_certificates
+        __props__["sslPolicy"] = ssl_policy
+        __props__["tlsEarlyData"] = tls_early_data
+        __props__["urlMap"] = url_map
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/targetHttpsProxy:TargetHttpsProxy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateManagerCertificates")
     def certificate_manager_certificates(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

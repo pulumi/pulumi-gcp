@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Soak time after each batch gets drained.
         /// 
-        /// 																			A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        ///                                                                             A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// </summary>
         public readonly string BatchSoakDuration;
 

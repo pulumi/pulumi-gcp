@@ -1908,6 +1908,12 @@ func (RegionBackendServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionBackendServiceState)(nil)).Elem()
 }
 
+// RegionBackendServiceExists checks whether an existing RegionBackendService resource with the given ID exists.
+func RegionBackendServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionBackendServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionBackendService:RegionBackendService", id, state, "", opts...)
+}
+
 type regionBackendServiceArgs struct {
 	// Lifetime of cookies in seconds if sessionAffinity is
 	// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts

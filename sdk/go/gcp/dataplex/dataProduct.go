@@ -371,6 +371,12 @@ func (DataProductState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataProductState)(nil)).Elem()
 }
 
+// DataProductExists checks whether an existing DataProduct resource with the given ID exists.
+func DataProductExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataProductState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/dataProduct:DataProduct", id, state, "", opts...)
+}
+
 type dataProductArgs struct {
 	// Configuration for access approval for the data product.
 	// Structure is documented below.

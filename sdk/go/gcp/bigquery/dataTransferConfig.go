@@ -509,6 +509,12 @@ func (DataTransferConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataTransferConfigState)(nil)).Elem()
 }
 
+// DataTransferConfigExists checks whether an existing DataTransferConfig resource with the given ID exists.
+func DataTransferConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataTransferConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/dataTransferConfig:DataTransferConfig", id, state, "", opts...)
+}
+
 type dataTransferConfigArgs struct {
 	// The number of days to look back to automatically refresh the data.
 	// For example, if dataRefreshWindowDays = 10, then every day BigQuery

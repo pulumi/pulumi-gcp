@@ -90,38 +90,38 @@ import javax.annotation.Nullable;
  *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                     .input("""
  *     }{{@code
- *       \"cells\": [
+ *       }&#92;{@code "cells}&#92;{@code ": [
  *         }{{@code
- *           \"cell_type\": \"code\",
- *           \"execution_count\": null,
- *           \"metadata\": }{}{@code ,
- *           \"outputs\": [],
- *           \"source\": [
- *             \"print(\\\"Hello, World!\\\")\"
+ *           }&#92;{@code "cell_type}&#92;{@code ": }&#92;{@code "code}&#92;{@code ",
+ *           }&#92;{@code "execution_count}&#92;{@code ": null,
+ *           }&#92;{@code "metadata}&#92;{@code ": }{}{@code ,
+ *           }&#92;{@code "outputs}&#92;{@code ": [],
+ *           }&#92;{@code "source}&#92;{@code ": [
+ *             }&#92;{@code "print(}&#92;&#92;&#92;{@code "Hello, World!}&#92;&#92;&#92;{@code ")}&#92;{@code "
  *           ]
  *         }}{@code
  *       ],
- *       \"metadata\": }{{@code
- *         \"kernelspec\": }{{@code
- *           \"display_name\": \"Python 3\",
- *           \"language\": \"python\",
- *           \"name\": \"python3\"
+ *       }&#92;{@code "metadata}&#92;{@code ": }{{@code
+ *         }&#92;{@code "kernelspec}&#92;{@code ": }{{@code
+ *           }&#92;{@code "display_name}&#92;{@code ": }&#92;{@code "Python 3}&#92;{@code ",
+ *           }&#92;{@code "language}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python3}&#92;{@code "
  *         }}{@code ,
- *         \"language_info\": }{{@code
- *           \"codemirror_mode\": }{{@code
- *             \"name\": \"ipython\",
- *             \"version\": 3
+ *         }&#92;{@code "language_info}&#92;{@code ": }{{@code
+ *           }&#92;{@code "codemirror_mode}&#92;{@code ": }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "ipython}&#92;{@code ",
+ *             }&#92;{@code "version}&#92;{@code ": 3
  *           }}{@code ,
- *           \"file_extension\": \".py\",
- *           \"mimetype\": \"text/x-python\",
- *           \"name\": \"python\",
- *           \"nbconvert_exporter\": \"python\",
- *           \"pygments_lexer\": \"ipython3\",
- *           \"version\": \"3.8.5\"
+ *           }&#92;{@code "file_extension}&#92;{@code ": }&#92;{@code ".py}&#92;{@code ",
+ *           }&#92;{@code "mimetype}&#92;{@code ": }&#92;{@code "text/x-python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "nbconvert_exporter}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "pygments_lexer}&#92;{@code ": }&#92;{@code "ipython3}&#92;{@code ",
+ *           }&#92;{@code "version}&#92;{@code ": }&#92;{@code "3.8.5}&#92;{@code "
  *         }}{@code
  *       }}{@code ,
- *       \"nbformat\": 4,
- *       \"nbformat_minor\": 4
+ *       }&#92;{@code "nbformat}&#92;{@code ": 4,
+ *       }&#92;{@code "nbformat_minor}&#92;{@code ": 4
  *     }}{@code
  *                     """)
  *                     .build()).result())
@@ -210,38 +210,38 @@ import javax.annotation.Nullable;
  *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                     .input("""
  *     }{{@code
- *       \"cells\": [
+ *       }&#92;{@code "cells}&#92;{@code ": [
  *         }{{@code
- *           \"cell_type\": \"code\",
- *           \"execution_count\": null,
- *           \"metadata\": }{}{@code ,
- *           \"outputs\": [],
- *           \"source\": [
- *             \"print(\\\"Hello, World!\\\")\"
+ *           }&#92;{@code "cell_type}&#92;{@code ": }&#92;{@code "code}&#92;{@code ",
+ *           }&#92;{@code "execution_count}&#92;{@code ": null,
+ *           }&#92;{@code "metadata}&#92;{@code ": }{}{@code ,
+ *           }&#92;{@code "outputs}&#92;{@code ": [],
+ *           }&#92;{@code "source}&#92;{@code ": [
+ *             }&#92;{@code "print(}&#92;&#92;&#92;{@code "Hello, World!}&#92;&#92;&#92;{@code ")}&#92;{@code "
  *           ]
  *         }}{@code
  *       ],
- *       \"metadata\": }{{@code
- *         \"kernelspec\": }{{@code
- *           \"display_name\": \"Python 3\",
- *           \"language\": \"python\",
- *           \"name\": \"python3\"
+ *       }&#92;{@code "metadata}&#92;{@code ": }{{@code
+ *         }&#92;{@code "kernelspec}&#92;{@code ": }{{@code
+ *           }&#92;{@code "display_name}&#92;{@code ": }&#92;{@code "Python 3}&#92;{@code ",
+ *           }&#92;{@code "language}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python3}&#92;{@code "
  *         }}{@code ,
- *         \"language_info\": }{{@code
- *           \"codemirror_mode\": }{{@code
- *             \"name\": \"ipython\",
- *             \"version\": 3
+ *         }&#92;{@code "language_info}&#92;{@code ": }{{@code
+ *           }&#92;{@code "codemirror_mode}&#92;{@code ": }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "ipython}&#92;{@code ",
+ *             }&#92;{@code "version}&#92;{@code ": 3
  *           }}{@code ,
- *           \"file_extension\": \".py\",
- *           \"mimetype\": \"text/x-python\",
- *           \"name\": \"python\",
- *           \"nbconvert_exporter\": \"python\",
- *           \"pygments_lexer\": \"ipython3\",
- *           \"version\": \"3.8.5\"
+ *           }&#92;{@code "file_extension}&#92;{@code ": }&#92;{@code ".py}&#92;{@code ",
+ *           }&#92;{@code "mimetype}&#92;{@code ": }&#92;{@code "text/x-python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "nbconvert_exporter}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "pygments_lexer}&#92;{@code ": }&#92;{@code "ipython3}&#92;{@code ",
+ *           }&#92;{@code "version}&#92;{@code ": }&#92;{@code "3.8.5}&#92;{@code "
  *         }}{@code
  *       }}{@code ,
- *       \"nbformat\": 4,
- *       \"nbformat_minor\": 4
+ *       }&#92;{@code "nbformat}&#92;{@code ": 4,
+ *       }&#92;{@code "nbformat_minor}&#92;{@code ": 4
  *     }}{@code
  *                     """)
  *                     .build()).result())
@@ -327,38 +327,38 @@ import javax.annotation.Nullable;
  *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                     .input("""
  *     }{{@code
- *       \"cells\": [
+ *       }&#92;{@code "cells}&#92;{@code ": [
  *         }{{@code
- *           \"cell_type\": \"code\",
- *           \"execution_count\": null,
- *           \"metadata\": }{}{@code ,
- *           \"outputs\": [],
- *           \"source\": [
- *             \"print(\\\"Hello, World!\\\")\"
+ *           }&#92;{@code "cell_type}&#92;{@code ": }&#92;{@code "code}&#92;{@code ",
+ *           }&#92;{@code "execution_count}&#92;{@code ": null,
+ *           }&#92;{@code "metadata}&#92;{@code ": }{}{@code ,
+ *           }&#92;{@code "outputs}&#92;{@code ": [],
+ *           }&#92;{@code "source}&#92;{@code ": [
+ *             }&#92;{@code "print(}&#92;&#92;&#92;{@code "Hello, World!}&#92;&#92;&#92;{@code ")}&#92;{@code "
  *           ]
  *         }}{@code
  *       ],
- *       \"metadata\": }{{@code
- *         \"kernelspec\": }{{@code
- *           \"display_name\": \"Python 3\",
- *           \"language\": \"python\",
- *           \"name\": \"python3\"
+ *       }&#92;{@code "metadata}&#92;{@code ": }{{@code
+ *         }&#92;{@code "kernelspec}&#92;{@code ": }{{@code
+ *           }&#92;{@code "display_name}&#92;{@code ": }&#92;{@code "Python 3}&#92;{@code ",
+ *           }&#92;{@code "language}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python3}&#92;{@code "
  *         }}{@code ,
- *         \"language_info\": }{{@code
- *           \"codemirror_mode\": }{{@code
- *             \"name\": \"ipython\",
- *             \"version\": 3
+ *         }&#92;{@code "language_info}&#92;{@code ": }{{@code
+ *           }&#92;{@code "codemirror_mode}&#92;{@code ": }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "ipython}&#92;{@code ",
+ *             }&#92;{@code "version}&#92;{@code ": 3
  *           }}{@code ,
- *           \"file_extension\": \".py\",
- *           \"mimetype\": \"text/x-python\",
- *           \"name\": \"python\",
- *           \"nbconvert_exporter\": \"python\",
- *           \"pygments_lexer\": \"ipython3\",
- *           \"version\": \"3.8.5\"
+ *           }&#92;{@code "file_extension}&#92;{@code ": }&#92;{@code ".py}&#92;{@code ",
+ *           }&#92;{@code "mimetype}&#92;{@code ": }&#92;{@code "text/x-python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "nbconvert_exporter}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "pygments_lexer}&#92;{@code ": }&#92;{@code "ipython3}&#92;{@code ",
+ *           }&#92;{@code "version}&#92;{@code ": }&#92;{@code "3.8.5}&#92;{@code "
  *         }}{@code
  *       }}{@code ,
- *       \"nbformat\": 4,
- *       \"nbformat_minor\": 4
+ *       }&#92;{@code "nbformat}&#92;{@code ": 4,
+ *       }&#92;{@code "nbformat_minor}&#92;{@code ": 4
  *     }}{@code
  *                     """)
  *                     .build()).result())
@@ -439,38 +439,38 @@ import javax.annotation.Nullable;
  *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                     .input("""
  *     }{{@code
- *       \"cells\": [
+ *       }&#92;{@code "cells}&#92;{@code ": [
  *         }{{@code
- *           \"cell_type\": \"code\",
- *           \"execution_count\": null,
- *           \"metadata\": }{}{@code ,
- *           \"outputs\": [],
- *           \"source\": [
- *             \"print(\\\"Hello, World!\\\")\"
+ *           }&#92;{@code "cell_type}&#92;{@code ": }&#92;{@code "code}&#92;{@code ",
+ *           }&#92;{@code "execution_count}&#92;{@code ": null,
+ *           }&#92;{@code "metadata}&#92;{@code ": }{}{@code ,
+ *           }&#92;{@code "outputs}&#92;{@code ": [],
+ *           }&#92;{@code "source}&#92;{@code ": [
+ *             }&#92;{@code "print(}&#92;&#92;&#92;{@code "Hello, World!}&#92;&#92;&#92;{@code ")}&#92;{@code "
  *           ]
  *         }}{@code
  *       ],
- *       \"metadata\": }{{@code
- *         \"kernelspec\": }{{@code
- *           \"display_name\": \"Python 3\",
- *           \"language\": \"python\",
- *           \"name\": \"python3\"
+ *       }&#92;{@code "metadata}&#92;{@code ": }{{@code
+ *         }&#92;{@code "kernelspec}&#92;{@code ": }{{@code
+ *           }&#92;{@code "display_name}&#92;{@code ": }&#92;{@code "Python 3}&#92;{@code ",
+ *           }&#92;{@code "language}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python3}&#92;{@code "
  *         }}{@code ,
- *         \"language_info\": }{{@code
- *           \"codemirror_mode\": }{{@code
- *             \"name\": \"ipython\",
- *             \"version\": 3
+ *         }&#92;{@code "language_info}&#92;{@code ": }{{@code
+ *           }&#92;{@code "codemirror_mode}&#92;{@code ": }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "ipython}&#92;{@code ",
+ *             }&#92;{@code "version}&#92;{@code ": 3
  *           }}{@code ,
- *           \"file_extension\": \".py\",
- *           \"mimetype\": \"text/x-python\",
- *           \"name\": \"python\",
- *           \"nbconvert_exporter\": \"python\",
- *           \"pygments_lexer\": \"ipython3\",
- *           \"version\": \"3.8.5\"
+ *           }&#92;{@code "file_extension}&#92;{@code ": }&#92;{@code ".py}&#92;{@code ",
+ *           }&#92;{@code "mimetype}&#92;{@code ": }&#92;{@code "text/x-python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "nbconvert_exporter}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "pygments_lexer}&#92;{@code ": }&#92;{@code "ipython3}&#92;{@code ",
+ *           }&#92;{@code "version}&#92;{@code ": }&#92;{@code "3.8.5}&#92;{@code "
  *         }}{@code
  *       }}{@code ,
- *       \"nbformat\": 4,
- *       \"nbformat_minor\": 4
+ *       }&#92;{@code "nbformat}&#92;{@code ": 4,
+ *       }&#92;{@code "nbformat_minor}&#92;{@code ": 4
  *     }}{@code
  *                     """)
  *                     .build()).result())
@@ -550,38 +550,38 @@ import javax.annotation.Nullable;
  *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                     .input("""
  *     }{{@code
- *       \"cells\": [
+ *       }&#92;{@code "cells}&#92;{@code ": [
  *         }{{@code
- *           \"cell_type\": \"code\",
- *           \"execution_count\": null,
- *           \"metadata\": }{}{@code ,
- *           \"outputs\": [],
- *           \"source\": [
- *             \"print(\\\"Hello, World!\\\")\"
+ *           }&#92;{@code "cell_type}&#92;{@code ": }&#92;{@code "code}&#92;{@code ",
+ *           }&#92;{@code "execution_count}&#92;{@code ": null,
+ *           }&#92;{@code "metadata}&#92;{@code ": }{}{@code ,
+ *           }&#92;{@code "outputs}&#92;{@code ": [],
+ *           }&#92;{@code "source}&#92;{@code ": [
+ *             }&#92;{@code "print(}&#92;&#92;&#92;{@code "Hello, World!}&#92;&#92;&#92;{@code ")}&#92;{@code "
  *           ]
  *         }}{@code
  *       ],
- *       \"metadata\": }{{@code
- *         \"kernelspec\": }{{@code
- *           \"display_name\": \"Python 3\",
- *           \"language\": \"python\",
- *           \"name\": \"python3\"
+ *       }&#92;{@code "metadata}&#92;{@code ": }{{@code
+ *         }&#92;{@code "kernelspec}&#92;{@code ": }{{@code
+ *           }&#92;{@code "display_name}&#92;{@code ": }&#92;{@code "Python 3}&#92;{@code ",
+ *           }&#92;{@code "language}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python3}&#92;{@code "
  *         }}{@code ,
- *         \"language_info\": }{{@code
- *           \"codemirror_mode\": }{{@code
- *             \"name\": \"ipython\",
- *             \"version\": 3
+ *         }&#92;{@code "language_info}&#92;{@code ": }{{@code
+ *           }&#92;{@code "codemirror_mode}&#92;{@code ": }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "ipython}&#92;{@code ",
+ *             }&#92;{@code "version}&#92;{@code ": 3
  *           }}{@code ,
- *           \"file_extension\": \".py\",
- *           \"mimetype\": \"text/x-python\",
- *           \"name\": \"python\",
- *           \"nbconvert_exporter\": \"python\",
- *           \"pygments_lexer\": \"ipython3\",
- *           \"version\": \"3.8.5\"
+ *           }&#92;{@code "file_extension}&#92;{@code ": }&#92;{@code ".py}&#92;{@code ",
+ *           }&#92;{@code "mimetype}&#92;{@code ": }&#92;{@code "text/x-python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "nbconvert_exporter}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "pygments_lexer}&#92;{@code ": }&#92;{@code "ipython3}&#92;{@code ",
+ *           }&#92;{@code "version}&#92;{@code ": }&#92;{@code "3.8.5}&#92;{@code "
  *         }}{@code
  *       }}{@code ,
- *       \"nbformat\": 4,
- *       \"nbformat_minor\": 4
+ *       }&#92;{@code "nbformat}&#92;{@code ": 4,
+ *       }&#92;{@code "nbformat_minor}&#92;{@code ": 4
  *     }}{@code
  *                     """)
  *                     .build()).result())
@@ -661,38 +661,38 @@ import javax.annotation.Nullable;
  *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                     .input("""
  *     }{{@code
- *       \"cells\": [
+ *       }&#92;{@code "cells}&#92;{@code ": [
  *         }{{@code
- *           \"cell_type\": \"code\",
- *           \"execution_count\": null,
- *           \"metadata\": }{}{@code ,
- *           \"outputs\": [],
- *           \"source\": [
- *             \"print(\\\"Hello, World!\\\")\"
+ *           }&#92;{@code "cell_type}&#92;{@code ": }&#92;{@code "code}&#92;{@code ",
+ *           }&#92;{@code "execution_count}&#92;{@code ": null,
+ *           }&#92;{@code "metadata}&#92;{@code ": }{}{@code ,
+ *           }&#92;{@code "outputs}&#92;{@code ": [],
+ *           }&#92;{@code "source}&#92;{@code ": [
+ *             }&#92;{@code "print(}&#92;&#92;&#92;{@code "Hello, World!}&#92;&#92;&#92;{@code ")}&#92;{@code "
  *           ]
  *         }}{@code
  *       ],
- *       \"metadata\": }{{@code
- *         \"kernelspec\": }{{@code
- *           \"display_name\": \"Python 3\",
- *           \"language\": \"python\",
- *           \"name\": \"python3\"
+ *       }&#92;{@code "metadata}&#92;{@code ": }{{@code
+ *         }&#92;{@code "kernelspec}&#92;{@code ": }{{@code
+ *           }&#92;{@code "display_name}&#92;{@code ": }&#92;{@code "Python 3}&#92;{@code ",
+ *           }&#92;{@code "language}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python3}&#92;{@code "
  *         }}{@code ,
- *         \"language_info\": }{{@code
- *           \"codemirror_mode\": }{{@code
- *             \"name\": \"ipython\",
- *             \"version\": 3
+ *         }&#92;{@code "language_info}&#92;{@code ": }{{@code
+ *           }&#92;{@code "codemirror_mode}&#92;{@code ": }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "ipython}&#92;{@code ",
+ *             }&#92;{@code "version}&#92;{@code ": 3
  *           }}{@code ,
- *           \"file_extension\": \".py\",
- *           \"mimetype\": \"text/x-python\",
- *           \"name\": \"python\",
- *           \"nbconvert_exporter\": \"python\",
- *           \"pygments_lexer\": \"ipython3\",
- *           \"version\": \"3.8.5\"
+ *           }&#92;{@code "file_extension}&#92;{@code ": }&#92;{@code ".py}&#92;{@code ",
+ *           }&#92;{@code "mimetype}&#92;{@code ": }&#92;{@code "text/x-python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "nbconvert_exporter}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "pygments_lexer}&#92;{@code ": }&#92;{@code "ipython3}&#92;{@code ",
+ *           }&#92;{@code "version}&#92;{@code ": }&#92;{@code "3.8.5}&#92;{@code "
  *         }}{@code
  *       }}{@code ,
- *       \"nbformat\": 4,
- *       \"nbformat_minor\": 4
+ *       }&#92;{@code "nbformat}&#92;{@code ": 4,
+ *       }&#92;{@code "nbformat_minor}&#92;{@code ": 4
  *     }}{@code
  *                     """)
  *                     .build()).result())
@@ -781,38 +781,38 @@ import javax.annotation.Nullable;
  *             .bucket(outputBucket.name())
  *             .content("""
  *     }{{@code
- *       \"cells\": [
+ *       }&#92;{@code "cells}&#92;{@code ": [
  *         }{{@code
- *           \"cell_type\": \"code\",
- *           \"execution_count\": null,
- *           \"metadata\": }{}{@code ,
- *           \"outputs\": [],
- *           \"source\": [
- *             \"print(\\\"Hello, World!\\\")\"
+ *           }&#92;{@code "cell_type}&#92;{@code ": }&#92;{@code "code}&#92;{@code ",
+ *           }&#92;{@code "execution_count}&#92;{@code ": null,
+ *           }&#92;{@code "metadata}&#92;{@code ": }{}{@code ,
+ *           }&#92;{@code "outputs}&#92;{@code ": [],
+ *           }&#92;{@code "source}&#92;{@code ": [
+ *             }&#92;{@code "print(}&#92;&#92;&#92;{@code "Hello, World!}&#92;&#92;&#92;{@code ")}&#92;{@code "
  *           ]
  *         }}{@code
  *       ],
- *       \"metadata\": }{{@code
- *         \"kernelspec\": }{{@code
- *           \"display_name\": \"Python 3\",
- *           \"language\": \"python\",
- *           \"name\": \"python3\"
+ *       }&#92;{@code "metadata}&#92;{@code ": }{{@code
+ *         }&#92;{@code "kernelspec}&#92;{@code ": }{{@code
+ *           }&#92;{@code "display_name}&#92;{@code ": }&#92;{@code "Python 3}&#92;{@code ",
+ *           }&#92;{@code "language}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python3}&#92;{@code "
  *         }}{@code ,
- *         \"language_info\": }{{@code
- *           \"codemirror_mode\": }{{@code
- *             \"name\": \"ipython\",
- *             \"version\": 3
+ *         }&#92;{@code "language_info}&#92;{@code ": }{{@code
+ *           }&#92;{@code "codemirror_mode}&#92;{@code ": }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "ipython}&#92;{@code ",
+ *             }&#92;{@code "version}&#92;{@code ": 3
  *           }}{@code ,
- *           \"file_extension\": \".py\",
- *           \"mimetype\": \"text/x-python\",
- *           \"name\": \"python\",
- *           \"nbconvert_exporter\": \"python\",
- *           \"pygments_lexer\": \"ipython3\",
- *           \"version\": \"3.8.5\"
+ *           }&#92;{@code "file_extension}&#92;{@code ": }&#92;{@code ".py}&#92;{@code ",
+ *           }&#92;{@code "mimetype}&#92;{@code ": }&#92;{@code "text/x-python}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "nbconvert_exporter}&#92;{@code ": }&#92;{@code "python}&#92;{@code ",
+ *           }&#92;{@code "pygments_lexer}&#92;{@code ": }&#92;{@code "ipython3}&#92;{@code ",
+ *           }&#92;{@code "version}&#92;{@code ": }&#92;{@code "3.8.5}&#92;{@code "
  *         }}{@code
  *       }}{@code ,
- *       \"nbformat\": 4,
- *       \"nbformat_minor\": 4
+ *       }&#92;{@code "nbformat}&#92;{@code ": 4,
+ *       }&#92;{@code "nbformat_minor}&#92;{@code ": 4
  *     }}{@code
  *             """)
  *             .build());

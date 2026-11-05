@@ -424,6 +424,12 @@ func (RoutineIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routineIamBindingState)(nil)).Elem()
 }
 
+// RoutineIamBindingExists checks whether an existing RoutineIamBinding resource with the given ID exists.
+func RoutineIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutineIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/routineIamBinding:RoutineIamBinding", id, state, "", opts...)
+}
+
 type routineIamBindingArgs struct {
 	Condition *RoutineIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

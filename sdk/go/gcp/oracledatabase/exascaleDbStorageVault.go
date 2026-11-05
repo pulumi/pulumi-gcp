@@ -391,6 +391,12 @@ func (ExascaleDbStorageVaultState) ElementType() reflect.Type {
 	return reflect.TypeOf((*exascaleDbStorageVaultState)(nil)).Elem()
 }
 
+// ExascaleDbStorageVaultExists checks whether an existing ExascaleDbStorageVault resource with the given ID exists.
+func ExascaleDbStorageVaultExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExascaleDbStorageVaultState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault", id, state, "", opts...)
+}
+
 type exascaleDbStorageVaultArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

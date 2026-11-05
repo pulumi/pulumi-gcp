@@ -305,6 +305,12 @@ func (TargetSSLProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetSSLProxyState)(nil)).Elem()
 }
 
+// TargetSSLProxyExists checks whether an existing TargetSSLProxy resource with the given ID exists.
+func TargetSSLProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetSSLProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/targetSSLProxy:TargetSSLProxy", id, state, "", opts...)
+}
+
 type targetSSLProxyArgs struct {
 	// A reference to the BackendService resource.
 	BackendService string `pulumi:"backendService"`

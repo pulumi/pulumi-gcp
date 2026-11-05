@@ -22,14 +22,14 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// * PUBLIC_WEB: A data store that contains public web content.
         /// * UNSTRUCTURED: A data store that contains unstructured private data.
         /// * STRUCTURED: A data store that contains structured data (for example FAQ).
-        /// Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+        ///   Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
         /// </summary>
         public readonly string? DataStoreType;
         /// <summary>
         /// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
         /// * DOCUMENTS: Documents are processed as documents.
         /// * CHUNKS: Documents are converted to chunks.
-        /// Possible values are: `DOCUMENTS`, `CHUNKS`.
+        ///   Possible values are: `DOCUMENTS`, `CHUNKS`.
         /// </summary>
         public readonly string? DocumentProcessingMode;
 

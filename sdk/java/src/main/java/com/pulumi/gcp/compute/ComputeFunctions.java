@@ -23223,11 +23223,10 @@ public final class ComputeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
+     * @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
      * 
      */
-    @Deprecated /* gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
+    @Deprecated
     public static Output<RouterStatusResult> routerStatus(RouterStatusArgs args) {
         return routerStatus(args, InvokeOptions.Empty);
     }
@@ -23272,11 +23271,10 @@ public final class ComputeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
+     * @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
      * 
      */
-    @Deprecated /* gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
+    @Deprecated
     public static CompletableFuture<RouterStatusResult> routerStatusPlain(RouterStatusPlainArgs args) {
         return routerStatusPlain(args, InvokeOptions.Empty);
     }
@@ -23321,11 +23319,10 @@ public final class ComputeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
+     * @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
      * 
      */
-    @Deprecated /* gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
+    @Deprecated
     public static Output<RouterStatusResult> routerStatus(RouterStatusArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/routerStatus:RouterStatus", TypeShape.of(RouterStatusResult.class), args, Utilities.withVersion(options));
     }
@@ -23370,11 +23367,10 @@ public final class ComputeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
+     * @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
      * 
      */
-    @Deprecated /* gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
+    @Deprecated
     public static Output<RouterStatusResult> routerStatus(RouterStatusArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/routerStatus:RouterStatus", TypeShape.of(RouterStatusResult.class), args, Utilities.withVersion(options));
     }
@@ -23419,11 +23415,10 @@ public final class ComputeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
+     * @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
      * 
      */
-    @Deprecated /* gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
+    @Deprecated
     public static CompletableFuture<RouterStatusResult> routerStatusPlain(RouterStatusPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/routerStatus:RouterStatus", TypeShape.of(RouterStatusResult.class), args, Utilities.withVersion(options));
     }

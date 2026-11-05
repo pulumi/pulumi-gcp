@@ -2212,6 +2212,80 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return WorkerPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict', 'outputs.WorkerPoolBinaryAuthorization']]] = None,
+            client: pulumi.Input[Optional[_builtins.str]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolConditionArgs', 'WorkerPoolConditionArgsDict', 'outputs.WorkerPoolCondition']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_split_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitStatusArgs', 'WorkerPoolInstanceSplitStatusArgsDict', 'outputs.WorkerPoolInstanceSplitStatus']]]]] = None,
+            instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict', 'outputs.WorkerPoolInstanceSplit']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_created_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_ready_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict', 'outputs.WorkerPoolScaling']]] = None,
+            template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict', 'outputs.WorkerPoolTemplate']]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolTerminalConditionArgs', 'WorkerPoolTerminalConditionArgsDict', 'outputs.WorkerPoolTerminalCondition']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["binaryAuthorization"] = binary_authorization
+        __props__["client"] = client
+        __props__["clientVersion"] = client_version
+        __props__["conditions"] = conditions
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["description"] = description
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["expireTime"] = expire_time
+        __props__["generation"] = generation
+        __props__["instanceSplitStatuses"] = instance_split_statuses
+        __props__["instanceSplits"] = instance_splits
+        __props__["labels"] = labels
+        __props__["lastModifier"] = last_modifier
+        __props__["latestCreatedRevision"] = latest_created_revision
+        __props__["latestReadyRevision"] = latest_ready_revision
+        __props__["launchStage"] = launch_stage
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["observedGeneration"] = observed_generation
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["scaling"] = scaling
+        __props__["template"] = template
+        __props__["terminalConditions"] = terminal_conditions
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudrunv2/workerPool:WorkerPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

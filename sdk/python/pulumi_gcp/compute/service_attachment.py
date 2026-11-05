@@ -2040,6 +2040,58 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["tunneling_config"] = tunneling_config
         return ServiceAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connected_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict', 'outputs.ServiceAttachmentConnectedEndpoint']]]]] = None,
+            connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict', 'outputs.ServiceAttachmentConsumerAcceptList']]]]] = None,
+            consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ips_per_endpoint: pulumi.Input[Optional[_builtins.int]] = None,
+            nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            psc_service_attachment_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict', 'outputs.ServiceAttachmentPscServiceAttachmentId']]]]] = None,
+            reconcile_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_attachment_id: pulumi.Input[Optional[_builtins.int]] = None,
+            show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+            target_service: pulumi.Input[Optional[_builtins.str]] = None,
+            tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict', 'outputs.ServiceAttachmentTunnelingConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectedEndpoints"] = connected_endpoints
+        __props__["connectionPreference"] = connection_preference
+        __props__["consumerAcceptLists"] = consumer_accept_lists
+        __props__["consumerRejectLists"] = consumer_reject_lists
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["domainNames"] = domain_names
+        __props__["enableProxyProtocol"] = enable_proxy_protocol
+        __props__["fingerprint"] = fingerprint
+        __props__["name"] = name
+        __props__["natIpsPerEndpoint"] = nat_ips_per_endpoint
+        __props__["natSubnets"] = nat_subnets
+        __props__["project"] = project
+        __props__["propagatedConnectionLimit"] = propagated_connection_limit
+        __props__["pscServiceAttachmentIds"] = psc_service_attachment_ids
+        __props__["reconcileConnections"] = reconcile_connections
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["sendPropagatedConnectionLimitIfZero"] = send_propagated_connection_limit_if_zero
+        __props__["serviceAttachmentId"] = service_attachment_id
+        __props__["showNatIps"] = show_nat_ips
+        __props__["targetService"] = target_service
+        __props__["tunnelingConfig"] = tunneling_config
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/serviceAttachment:ServiceAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectedEndpoints")
     def connected_endpoints(self) -> pulumi.Output[Sequence['outputs.ServiceAttachmentConnectedEndpoint']]:

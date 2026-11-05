@@ -199,6 +199,12 @@ func (OrganizationBucketConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationBucketConfigState)(nil)).Elem()
 }
 
+// OrganizationBucketConfigExists checks whether an existing OrganizationBucketConfig resource with the given ID exists.
+func OrganizationBucketConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationBucketConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", id, state, "", opts...)
+}
+
 type organizationBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`

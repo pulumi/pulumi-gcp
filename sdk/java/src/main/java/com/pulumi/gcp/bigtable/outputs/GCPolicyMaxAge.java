@@ -15,11 +15,10 @@ public final class GCPolicyMaxAge {
     /**
      * @return Number of days before applying GC policy.
      * 
-     * @deprecated
-     * Deprecated in favor of duration
+     * @deprecated Deprecated in favor of duration
      * 
      */
-    @Deprecated /* Deprecated in favor of duration */
+    @Deprecated
     private @Nullable Integer days;
     /**
      * @return Duration before applying GC policy (ex. &#34;8h&#34;). This is required when `days` isn&#39;t set
@@ -33,11 +32,10 @@ public final class GCPolicyMaxAge {
     /**
      * @return Number of days before applying GC policy.
      * 
-     * @deprecated
-     * Deprecated in favor of duration
+     * @deprecated Deprecated in favor of duration
      * 
      */
-    @Deprecated /* Deprecated in favor of duration */
+    @Deprecated
     public Optional<Integer> days() {
         return Optional.ofNullable(this.days);
     }

@@ -476,6 +476,12 @@ func (ApiProductState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiProductState)(nil)).Elem()
 }
 
+// ApiProductExists checks whether an existing ApiProduct resource with the given ID exists.
+func ApiProductExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiProductState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/apiProduct:ApiProduct", id, state, "", opts...)
+}
+
 type apiProductArgs struct {
 	// Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the proxy.pathsuffix variable.
 	// The proxy path suffix is defined as the URI fragment following the ProxyEndpoint base path. For example, if the apiResources element is defined to be /forecastrss and the base path defined for the API proxy is /weather, then only requests to /weather/forecastrss are permitted by the API product.

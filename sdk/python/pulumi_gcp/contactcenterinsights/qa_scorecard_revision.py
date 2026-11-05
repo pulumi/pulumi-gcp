@@ -462,6 +462,30 @@ class QaScorecardRevision(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return QaScorecardRevision(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alternate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
+            qa_scorecard_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaScorecardRevisionSnapshotArgs', 'QaScorecardRevisionSnapshotArgsDict', 'outputs.QaScorecardRevisionSnapshot']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alternateIds"] = alternate_ids
+        __props__["createTime"] = create_time
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["qaScorecard"] = qa_scorecard
+        __props__["qaScorecardRevisionId"] = qa_scorecard_revision_id
+        __props__["snapshots"] = snapshots
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:contactcenterinsights/qaScorecardRevision:QaScorecardRevision', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alternateIds")
     def alternate_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -1143,6 +1143,48 @@ class DeveloperApp(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return DeveloperApp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_family: pulumi.Input[Optional[_builtins.str]] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppAttributeArgs', 'DeveloperAppAttributeArgsDict', 'outputs.DeveloperAppAttribute']]]]] = None,
+            callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_key: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAppCredentialArgs', 'DeveloperAppCredentialArgsDict', 'outputs.DeveloperAppCredential']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            developer_email: pulumi.Input[Optional[_builtins.str]] = None,
+            developer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key_expires_in: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiProducts"] = api_products
+        __props__["appFamily"] = app_family
+        __props__["appId"] = app_id
+        __props__["attributes"] = attributes
+        __props__["callbackUrl"] = callback_url
+        __props__["consumerKey"] = consumer_key
+        __props__["consumerSecret"] = consumer_secret
+        __props__["createdAt"] = created_at
+        __props__["credentials"] = credentials
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["developerEmail"] = developer_email
+        __props__["developerId"] = developer_id
+        __props__["keyExpiresIn"] = key_expires_in
+        __props__["lastModifiedAt"] = last_modified_at
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["scopes"] = scopes
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/developerApp:DeveloperApp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiProducts")
     def api_products(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

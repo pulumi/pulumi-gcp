@@ -345,6 +345,12 @@ func (PolicyBasedRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyBasedRouteState)(nil)).Elem()
 }
 
+// PolicyBasedRouteExists checks whether an existing PolicyBasedRoute resource with the given ID exists.
+func PolicyBasedRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyBasedRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute", id, state, "", opts...)
+}
+
 type policyBasedRouteArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

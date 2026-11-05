@@ -737,6 +737,30 @@ class RowAccessPolicy(pulumi.CustomResource):
         __props__.__dict__["table_id"] = table_id
         return RowAccessPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
+            grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            table_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTime"] = creation_time
+        __props__["datasetId"] = dataset_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["filterPredicate"] = filter_predicate
+        __props__["grantees"] = grantees
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["policyId"] = policy_id
+        __props__["project"] = project
+        __props__["tableId"] = table_id
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/rowAccessPolicy:RowAccessPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[_builtins.str]:

@@ -303,6 +303,12 @@ func (DicomStoreIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreIamBindingState)(nil)).Elem()
 }
 
+// DicomStoreIamBindingExists checks whether an existing DicomStoreIamBinding resource with the given ID exists.
+func DicomStoreIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DicomStoreIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding", id, state, "", opts...)
+}
+
 type dicomStoreIamBindingArgs struct {
 	Condition *DicomStoreIamBindingCondition `pulumi:"condition"`
 	// The DICOM store ID, in the form

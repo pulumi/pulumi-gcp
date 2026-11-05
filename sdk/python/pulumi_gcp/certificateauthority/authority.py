@@ -1877,6 +1877,64 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["user_defined_access_urls"] = user_defined_access_urls
         return Authority(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthorityAccessUrlArgs', 'AuthorityAccessUrlArgsDict', 'outputs.AuthorityAccessUrl']]]]] = None,
+            certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict', 'outputs.AuthorityConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict', 'outputs.AuthorityKeySpec']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pem_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            pem_ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pool: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict', 'outputs.AuthoritySubordinateConfig']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict', 'outputs.AuthorityUserDefinedAccessUrls']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessUrls"] = access_urls
+        __props__["certificateAuthorityId"] = certificate_authority_id
+        __props__["config"] = config
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["desiredState"] = desired_state
+        __props__["effectiveLabels"] = effective_labels
+        __props__["gcsBucket"] = gcs_bucket
+        __props__["ignoreActiveCertificatesOnDeletion"] = ignore_active_certificates_on_deletion
+        __props__["keySpec"] = key_spec
+        __props__["labels"] = labels
+        __props__["lifetime"] = lifetime
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["pemCaCertificate"] = pem_ca_certificate
+        __props__["pemCaCertificates"] = pem_ca_certificates
+        __props__["pool"] = pool
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["skipGracePeriod"] = skip_grace_period
+        __props__["state"] = state
+        __props__["subordinateConfig"] = subordinate_config
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        __props__["userDefinedAccessUrls"] = user_defined_access_urls
+        return pulumi.runtime.exists_resource(None, 'gcp:certificateauthority/authority:Authority', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessUrls")
     def access_urls(self) -> pulumi.Output[Sequence['outputs.AuthorityAccessUrl']]:

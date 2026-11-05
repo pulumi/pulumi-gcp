@@ -45,11 +45,10 @@ public final class ConnectionCloudSpanner {
      * 
      * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
-     * @deprecated
-     * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+     * @deprecated `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
      */
-    @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
+    @Deprecated
     private @Nullable Boolean useServerlessAnalytics;
 
     private ConnectionCloudSpanner() {}
@@ -94,11 +93,10 @@ public final class ConnectionCloudSpanner {
      * 
      * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
-     * @deprecated
-     * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+     * @deprecated `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
      */
-    @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
+    @Deprecated
     public Optional<Boolean> useServerlessAnalytics() {
         return Optional.ofNullable(this.useServerlessAnalytics);
     }

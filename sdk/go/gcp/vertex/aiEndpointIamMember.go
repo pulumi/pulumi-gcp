@@ -86,6 +86,12 @@ func (AiEndpointIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiEndpointIamMemberState)(nil)).Elem()
 }
 
+// AiEndpointIamMemberExists checks whether an existing AiEndpointIamMember resource with the given ID exists.
+func AiEndpointIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiEndpointIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiEndpointIamMember:AiEndpointIamMember", id, state, "", opts...)
+}
+
 type aiEndpointIamMemberArgs struct {
 	Condition *AiEndpointIamMemberCondition `pulumi:"condition"`
 	Endpoint  string                        `pulumi:"endpoint"`

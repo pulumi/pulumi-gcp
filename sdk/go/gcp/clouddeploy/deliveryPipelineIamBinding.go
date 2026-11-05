@@ -83,6 +83,12 @@ func (DeliveryPipelineIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deliveryPipelineIamBindingState)(nil)).Elem()
 }
 
+// DeliveryPipelineIamBindingExists checks whether an existing DeliveryPipelineIamBinding resource with the given ID exists.
+func DeliveryPipelineIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeliveryPipelineIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding", id, state, "", opts...)
+}
+
 type deliveryPipelineIamBindingArgs struct {
 	Condition *DeliveryPipelineIamBindingCondition `pulumi:"condition"`
 	Location  *string                              `pulumi:"location"`

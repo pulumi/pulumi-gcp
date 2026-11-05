@@ -1182,6 +1182,12 @@ func (CxPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxPageState)(nil)).Elem()
 }
 
+// CxPageExists checks whether an existing CxPage resource with the given ID exists.
+func CxPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxPage:CxPage", id, state, "", opts...)
+}
+
 type cxPageArgs struct {
 	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.

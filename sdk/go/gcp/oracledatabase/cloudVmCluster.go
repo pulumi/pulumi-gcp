@@ -729,6 +729,12 @@ func (CloudVmClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudVmClusterState)(nil)).Elem()
 }
 
+// CloudVmClusterExists checks whether an existing CloudVmCluster resource with the given ID exists.
+func CloudVmClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudVmClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/cloudVmCluster:CloudVmCluster", id, state, "", opts...)
+}
+
 type cloudVmClusterArgs struct {
 	// The name of the backup OdbSubnet associated with the VM Cluster.
 	// Format:

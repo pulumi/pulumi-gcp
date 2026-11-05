@@ -551,6 +551,12 @@ func (NetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkState)(nil)).Elem()
 }
 
+// NetworkExists checks whether an existing Network resource with the given ID exists.
+func NetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/network:Network", id, state, "", opts...)
+}
+
 type networkArgs struct {
 	// When set to `true`, the network is created in "auto subnet mode" and
 	// it will create a subnet for each region automatically across the

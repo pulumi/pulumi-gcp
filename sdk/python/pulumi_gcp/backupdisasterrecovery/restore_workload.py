@@ -1205,6 +1205,42 @@ class RestoreWorkload(pulumi.CustomResource):
         __props__.__dict__["target_resources"] = target_resources
         return RestoreWorkload(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+            clear_overrides_field_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_instance_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceRestorePropertiesArgs', 'RestoreWorkloadComputeInstanceRestorePropertiesArgsDict', 'outputs.RestoreWorkloadComputeInstanceRestoreProperties']]] = None,
+            compute_instance_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadComputeInstanceTargetEnvironmentArgs', 'RestoreWorkloadComputeInstanceTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadComputeInstanceTargetEnvironment']]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_restored_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_restore_properties: pulumi.Input[Optional[Union['RestoreWorkloadDiskRestorePropertiesArgs', 'RestoreWorkloadDiskRestorePropertiesArgsDict', 'outputs.RestoreWorkloadDiskRestoreProperties']]] = None,
+            disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadDiskTargetEnvironmentArgs', 'RestoreWorkloadDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadDiskTargetEnvironment']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_disk_target_environment: pulumi.Input[Optional[Union['RestoreWorkloadRegionDiskTargetEnvironmentArgs', 'RestoreWorkloadRegionDiskTargetEnvironmentArgsDict', 'outputs.RestoreWorkloadRegionDiskTargetEnvironment']]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RestoreWorkloadTargetResourceArgs', 'RestoreWorkloadTargetResourceArgsDict', 'outputs.RestoreWorkloadTargetResource']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupId"] = backup_id
+        __props__["backupVaultId"] = backup_vault_id
+        __props__["clearOverridesFieldMask"] = clear_overrides_field_mask
+        __props__["computeInstanceRestoreProperties"] = compute_instance_restore_properties
+        __props__["computeInstanceTargetEnvironment"] = compute_instance_target_environment
+        __props__["dataSourceId"] = data_source_id
+        __props__["deleteRestoredInstance"] = delete_restored_instance
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["diskRestoreProperties"] = disk_restore_properties
+        __props__["diskTargetEnvironment"] = disk_target_environment
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["regionDiskTargetEnvironment"] = region_disk_target_environment
+        __props__["requestId"] = request_id
+        __props__["targetResources"] = target_resources
+        return pulumi.runtime.exists_resource(None, 'gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Output[_builtins.str]:

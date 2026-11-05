@@ -1808,7 +1808,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     @Export(name="portRange", refs={String.class}, tree="[0]")
@@ -1834,7 +1834,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     public Output<String> portRange() {
@@ -1858,7 +1858,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      *   they share at least one port number.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     @Export(name="ports", refs={List.class,String.class}, tree="[0,1]")
@@ -1882,7 +1882,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      *   they share at least one port number.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     public Output<Optional<List<String>>> ports() {

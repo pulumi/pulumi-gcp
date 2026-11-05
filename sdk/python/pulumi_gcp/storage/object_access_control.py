@@ -596,6 +596,32 @@ class ObjectAccessControl(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return ObjectAccessControl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            entity: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.int]] = None,
+            object: pulumi.Input[Optional[_builtins.str]] = None,
+            project_teams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict', 'outputs.ObjectAccessControlProjectTeam']]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["domain"] = domain
+        __props__["email"] = email
+        __props__["entity"] = entity
+        __props__["entityId"] = entity_id
+        __props__["generation"] = generation
+        __props__["object"] = object
+        __props__["projectTeams"] = project_teams
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/objectAccessControl:ObjectAccessControl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

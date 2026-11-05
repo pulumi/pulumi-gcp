@@ -248,6 +248,12 @@ func (AppCheckPlayIntegrityConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCheckPlayIntegrityConfigState)(nil)).Elem()
 }
 
+// AppCheckPlayIntegrityConfigExists checks whether an existing AppCheckPlayIntegrityConfig resource with the given ID exists.
+func AppCheckPlayIntegrityConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppCheckPlayIntegrityConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig", id, state, "", opts...)
+}
+
 type appCheckPlayIntegrityConfigArgs struct {
 	// The ID of an
 	// [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).

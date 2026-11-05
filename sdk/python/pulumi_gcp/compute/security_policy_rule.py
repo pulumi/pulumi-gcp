@@ -1221,6 +1221,36 @@ class SecurityPolicyRule(pulumi.CustomResource):
         __props__.__dict__["security_policy"] = security_policy
         return SecurityPolicyRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            header_action: pulumi.Input[Optional[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict', 'outputs.SecurityPolicyRuleHeaderAction']]] = None,
+            match: pulumi.Input[Optional[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict', 'outputs.SecurityPolicyRuleMatch']]] = None,
+            preconfigured_waf_config: pulumi.Input[Optional[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict', 'outputs.SecurityPolicyRulePreconfiguredWafConfig']]] = None,
+            preview: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rate_limit_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict', 'outputs.SecurityPolicyRuleRateLimitOptions']]] = None,
+            redirect_options: pulumi.Input[Optional[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict', 'outputs.SecurityPolicyRuleRedirectOptions']]] = None,
+            security_policy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["headerAction"] = header_action
+        __props__["match"] = match
+        __props__["preconfiguredWafConfig"] = preconfigured_waf_config
+        __props__["preview"] = preview
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["rateLimitOptions"] = rate_limit_options
+        __props__["redirectOptions"] = redirect_options
+        __props__["securityPolicy"] = security_policy
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/securityPolicyRule:SecurityPolicyRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

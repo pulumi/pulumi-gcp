@@ -2684,6 +2684,70 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["target"] = target
         return GlobalForwardingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
+            external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+            forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict', 'outputs.GlobalForwardingRuleMetadataFilter']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            no_automate_dns_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_directory_registrations: pulumi.Input[Optional[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict', 'outputs.GlobalForwardingRuleServiceDirectoryRegistrations']]] = None,
+            source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowPscGlobalAccess"] = allow_psc_global_access
+        __props__["baseForwardingRule"] = base_forwarding_rule
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["externalManagedBackendBucketMigrationState"] = external_managed_backend_bucket_migration_state
+        __props__["externalManagedBackendBucketMigrationTestingPercentage"] = external_managed_backend_bucket_migration_testing_percentage
+        __props__["forwardingRuleId"] = forwarding_rule_id
+        __props__["ipAddress"] = ip_address
+        __props__["ipProtocol"] = ip_protocol
+        __props__["ipVersion"] = ip_version
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["loadBalancingScheme"] = load_balancing_scheme
+        __props__["metadataFilters"] = metadata_filters
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["networkTier"] = network_tier
+        __props__["noAutomateDnsZone"] = no_automate_dns_zone
+        __props__["portRange"] = port_range
+        __props__["project"] = project
+        __props__["pscConnectionId"] = psc_connection_id
+        __props__["pscConnectionStatus"] = psc_connection_status
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["selfLink"] = self_link
+        __props__["serviceDirectoryRegistrations"] = service_directory_registrations
+        __props__["sourceIpRanges"] = source_ip_ranges
+        __props__["subnetwork"] = subnetwork
+        __props__["target"] = target
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/globalForwardingRule:GlobalForwardingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowPscGlobalAccess")
     def allow_psc_global_access(self) -> pulumi.Output[Optional[_builtins.bool]]:

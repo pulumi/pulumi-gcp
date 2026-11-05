@@ -534,6 +534,18 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return Dashboard(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dashboard_json: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dashboardJson"] = dashboard_json
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:monitoring/dashboard:Dashboard', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dashboardJson")
     def dashboard_json(self) -> pulumi.Output[_builtins.str]:

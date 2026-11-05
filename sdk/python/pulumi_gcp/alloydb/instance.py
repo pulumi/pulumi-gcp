@@ -1599,6 +1599,74 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            activation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            availability_type: pulumi.Input[Optional[_builtins.str]] = None,
+            client_connection_config: pulumi.Input[Optional[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict', 'outputs.InstanceClientConnectionConfig']]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_pool_config: pulumi.Input[Optional[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict', 'outputs.InstanceConnectionPoolConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            database_flags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gce_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            machine_config: pulumi.Input[Optional[Union['InstanceMachineConfigArgs', 'InstanceMachineConfigArgsDict', 'outputs.InstanceMachineConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict', 'outputs.InstanceNetworkConfig']]] = None,
+            observability_config: pulumi.Input[Optional[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict', 'outputs.InstanceObservabilityConfig']]] = None,
+            outbound_public_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            psc_instance_config: pulumi.Input[Optional[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict', 'outputs.InstancePscInstanceConfig']]] = None,
+            public_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            query_insights_config: pulumi.Input[Optional[Union['InstanceQueryInsightsConfigArgs', 'InstanceQueryInsightsConfigArgsDict', 'outputs.InstanceQueryInsightsConfig']]] = None,
+            read_pool_config: pulumi.Input[Optional[Union['InstanceReadPoolConfigArgs', 'InstanceReadPoolConfigArgsDict', 'outputs.InstanceReadPoolConfig']]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activationPolicy"] = activation_policy
+        __props__["annotations"] = annotations
+        __props__["availabilityType"] = availability_type
+        __props__["clientConnectionConfig"] = client_connection_config
+        __props__["cluster"] = cluster
+        __props__["connectionPoolConfig"] = connection_pool_config
+        __props__["createTime"] = create_time
+        __props__["databaseFlags"] = database_flags
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["gceZone"] = gce_zone
+        __props__["instanceId"] = instance_id
+        __props__["instanceType"] = instance_type
+        __props__["ipAddress"] = ip_address
+        __props__["labels"] = labels
+        __props__["machineConfig"] = machine_config
+        __props__["name"] = name
+        __props__["networkConfig"] = network_config
+        __props__["observabilityConfig"] = observability_config
+        __props__["outboundPublicIpAddresses"] = outbound_public_ip_addresses
+        __props__["pscInstanceConfig"] = psc_instance_config
+        __props__["publicIpAddress"] = public_ip_address
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["queryInsightsConfig"] = query_insights_config
+        __props__["readPoolConfig"] = read_pool_config
+        __props__["reconciling"] = reconciling
+        __props__["state"] = state
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:alloydb/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activationPolicy")
     def activation_policy(self) -> pulumi.Output[_builtins.str]:

@@ -326,6 +326,12 @@ func (CloudExadataInfrastructureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudExadataInfrastructureState)(nil)).Elem()
 }
 
+// CloudExadataInfrastructureExists checks whether an existing CloudExadataInfrastructure resource with the given ID exists.
+func CloudExadataInfrastructureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudExadataInfrastructureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure", id, state, "", opts...)
+}
+
 type cloudExadataInfrastructureArgs struct {
 	// The ID of the Exadata Infrastructure to create. This value is restricted
 	// to (^a-z?$) and must be a maximum of 63

@@ -442,6 +442,12 @@ func (ZoneIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneIamBindingState)(nil)).Elem()
 }
 
+// ZoneIamBindingExists checks whether an existing ZoneIamBinding resource with the given ID exists.
+func ZoneIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/zoneIamBinding:ZoneIamBinding", id, state, "", opts...)
+}
+
 type zoneIamBindingArgs struct {
 	Condition *ZoneIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

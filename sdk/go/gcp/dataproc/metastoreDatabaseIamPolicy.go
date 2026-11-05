@@ -394,6 +394,12 @@ func (MetastoreDatabaseIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreDatabaseIamPolicyState)(nil)).Elem()
 }
 
+// MetastoreDatabaseIamPolicyExists checks whether an existing MetastoreDatabaseIamPolicy resource with the given ID exists.
+func MetastoreDatabaseIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreDatabaseIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreDatabaseIamPolicy:MetastoreDatabaseIamPolicy", id, state, "", opts...)
+}
+
 type metastoreDatabaseIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Database string `pulumi:"database"`

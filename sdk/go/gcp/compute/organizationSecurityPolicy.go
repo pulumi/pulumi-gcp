@@ -235,6 +235,12 @@ func (OrganizationSecurityPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSecurityPolicyState)(nil)).Elem()
 }
 
+// OrganizationSecurityPolicyExists checks whether an existing OrganizationSecurityPolicy resource with the given ID exists.
+func OrganizationSecurityPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationSecurityPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy", id, state, "", opts...)
+}
+
 type organizationSecurityPolicyArgs struct {
 	// Additional options for this security policy.
 	// Structure is documented below.

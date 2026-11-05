@@ -175,6 +175,12 @@ func (LiteReservationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*liteReservationState)(nil)).Elem()
 }
 
+// LiteReservationExists checks whether an existing LiteReservation resource with the given ID exists.
+func LiteReservationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LiteReservationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/liteReservation:LiteReservation", id, state, "", opts...)
+}
+
 type liteReservationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

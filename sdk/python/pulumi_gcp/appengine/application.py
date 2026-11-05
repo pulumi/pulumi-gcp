@@ -679,6 +679,42 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["url_dispatch_rules"] = url_dispatch_rules
         return Application(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            code_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            default_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            default_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_settings: pulumi.Input[Optional[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict', 'outputs.ApplicationFeatureSettings']]] = None,
+            gcr_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            iap: pulumi.Input[Optional[Union['ApplicationIapArgs', 'ApplicationIapArgsDict', 'outputs.ApplicationIap']]] = None,
+            location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            serving_status: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            url_dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRuleArgs', 'ApplicationUrlDispatchRuleArgsDict', 'outputs.ApplicationUrlDispatchRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["authDomain"] = auth_domain
+        __props__["codeBucket"] = code_bucket
+        __props__["databaseType"] = database_type
+        __props__["defaultBucket"] = default_bucket
+        __props__["defaultHostname"] = default_hostname
+        __props__["featureSettings"] = feature_settings
+        __props__["gcrDomain"] = gcr_domain
+        __props__["iap"] = iap
+        __props__["locationId"] = location_id
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["servingStatus"] = serving_status
+        __props__["sslPolicy"] = ssl_policy
+        __props__["urlDispatchRules"] = url_dispatch_rules
+        return pulumi.runtime.exists_resource(None, 'gcp:appengine/application:Application', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

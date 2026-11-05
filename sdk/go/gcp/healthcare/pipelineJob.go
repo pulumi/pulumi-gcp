@@ -647,6 +647,12 @@ func (PipelineJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineJobState)(nil)).Elem()
 }
 
+// PipelineJobExists checks whether an existing PipelineJob resource with the given ID exists.
+func PipelineJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/pipelineJob:PipelineJob", id, state, "", opts...)
+}
+
 type pipelineJobArgs struct {
 	// Specifies the backfill configuration.
 	// Structure is documented below.

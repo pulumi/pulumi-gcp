@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Monitoring
         /// An Mesh Istio monitoring service is automatically created by GCP to monitor
         /// Mesh Istio services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
@@ -30,7 +29,6 @@ namespace Pulumi.Gcp.Monitoring
         /// ## Example Usage
         /// 
         /// ### Monitoring Mesh Istio Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -62,7 +60,6 @@ namespace Pulumi.Gcp.Monitoring
         /// An Mesh Istio monitoring service is automatically created by GCP to monitor
         /// Mesh Istio services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
@@ -73,7 +70,6 @@ namespace Pulumi.Gcp.Monitoring
         /// ## Example Usage
         /// 
         /// ### Monitoring Mesh Istio Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -105,7 +101,6 @@ namespace Pulumi.Gcp.Monitoring
         /// An Mesh Istio monitoring service is automatically created by GCP to monitor
         /// Mesh Istio services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
@@ -116,7 +111,6 @@ namespace Pulumi.Gcp.Monitoring
         /// ## Example Usage
         /// 
         /// ### Monitoring Mesh Istio Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -162,7 +156,7 @@ namespace Pulumi.Gcp.Monitoring
         /// The name of the Istio service underlying this service.
         /// Corresponds to the DestinationServiceName metric label in Istio metrics.
         /// 
-        /// - - -
+        /// ***
         /// 
         /// Other optional fields include:
         /// </summary>
@@ -202,7 +196,7 @@ namespace Pulumi.Gcp.Monitoring
         /// The name of the Istio service underlying this service.
         /// Corresponds to the DestinationServiceName metric label in Istio metrics.
         /// 
-        /// - - -
+        /// ***
         /// 
         /// Other optional fields include:
         /// </summary>

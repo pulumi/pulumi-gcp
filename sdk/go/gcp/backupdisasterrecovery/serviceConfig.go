@@ -121,6 +121,12 @@ func (ServiceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceConfigState)(nil)).Elem()
 }
 
+// ServiceConfigExists checks whether an existing ServiceConfig resource with the given ID exists.
+func ServiceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:backupdisasterrecovery/serviceConfig:ServiceConfig", id, state, "", opts...)
+}
+
 type serviceConfigArgs struct {
 	// The location in which the Service config is to be initialized.
 	Location string `pulumi:"location"`

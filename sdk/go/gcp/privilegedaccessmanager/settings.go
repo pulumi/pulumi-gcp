@@ -209,6 +209,12 @@ func (SettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingsState)(nil)).Elem()
 }
 
+// SettingsExists checks whether an existing Settings resource with the given ID exists.
+func SettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:privilegedaccessmanager/settings:Settings", id, state, "", opts...)
+}
+
 type settingsArgs struct {
 	// EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
 	// Structure is documented below.

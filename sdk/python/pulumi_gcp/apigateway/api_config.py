@@ -773,6 +773,42 @@ class ApiConfig(pulumi.CustomResource):
         __props__.__dict__["service_config_id"] = service_config_id
         return ApiConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            api_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            api_config_id_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gateway_config: pulumi.Input[Optional[Union['ApiConfigGatewayConfigArgs', 'ApiConfigGatewayConfigArgsDict', 'outputs.ApiConfigGatewayConfig']]] = None,
+            grpc_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiConfigGrpcServiceArgs', 'ApiConfigGrpcServiceArgsDict', 'outputs.ApiConfigGrpcService']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            managed_service_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiConfigManagedServiceConfigArgs', 'ApiConfigManagedServiceConfigArgsDict', 'outputs.ApiConfigManagedServiceConfig']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            openapi_documents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiConfigOpenapiDocumentArgs', 'ApiConfigOpenapiDocumentArgsDict', 'outputs.ApiConfigOpenapiDocument']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service_config_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["apiConfigId"] = api_config_id
+        __props__["apiConfigIdPrefix"] = api_config_id_prefix
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["gatewayConfig"] = gateway_config
+        __props__["grpcServices"] = grpc_services
+        __props__["labels"] = labels
+        __props__["managedServiceConfigs"] = managed_service_configs
+        __props__["name"] = name
+        __props__["openapiDocuments"] = openapi_documents
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["serviceConfigId"] = service_config_id
+        return pulumi.runtime.exists_resource(None, 'gcp:apigateway/apiConfig:ApiConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[_builtins.str]:

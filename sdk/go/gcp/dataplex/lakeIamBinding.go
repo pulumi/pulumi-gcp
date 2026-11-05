@@ -427,6 +427,12 @@ func (LakeIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lakeIamBindingState)(nil)).Elem()
 }
 
+// LakeIamBindingExists checks whether an existing LakeIamBinding resource with the given ID exists.
+func LakeIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LakeIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/lakeIamBinding:LakeIamBinding", id, state, "", opts...)
+}
+
 type lakeIamBindingArgs struct {
 	Condition *LakeIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

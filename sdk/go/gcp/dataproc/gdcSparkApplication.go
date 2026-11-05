@@ -619,6 +619,12 @@ func (GdcSparkApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gdcSparkApplicationState)(nil)).Elem()
 }
 
+// GdcSparkApplicationExists checks whether an existing GdcSparkApplication resource with the given ID exists.
+func GdcSparkApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GdcSparkApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/gdcSparkApplication:GdcSparkApplication", id, state, "", opts...)
+}
+
 type gdcSparkApplicationArgs struct {
 	// The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

@@ -338,6 +338,12 @@ func (RegistrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*registrationState)(nil)).Elem()
 }
 
+// RegistrationExists checks whether an existing Registration resource with the given ID exists.
+func RegistrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegistrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddomains/registration:Registration", id, state, "", opts...)
+}
+
 type registrationArgs struct {
 	// The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
 	ContactNotices []string `pulumi:"contactNotices"`

@@ -1642,6 +1642,42 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         __props__.__dict__["x509"] = x509
         return WorkloadIdentityPoolProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict', 'outputs.WorkloadIdentityPoolProviderOidc']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict', 'outputs.WorkloadIdentityPoolProviderSaml']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict', 'outputs.WorkloadIdentityPoolProviderX509']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attributeCondition"] = attribute_condition
+        __props__["attributeMapping"] = attribute_mapping
+        __props__["aws"] = aws
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["name"] = name
+        __props__["oidc"] = oidc
+        __props__["project"] = project
+        __props__["saml"] = saml
+        __props__["state"] = state
+        __props__["workloadIdentityPoolId"] = workload_identity_pool_id
+        __props__["workloadIdentityPoolProviderId"] = workload_identity_pool_provider_id
+        __props__["x509"] = x509
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attributeCondition")
     def attribute_condition(self) -> pulumi.Output[Optional[_builtins.str]]:

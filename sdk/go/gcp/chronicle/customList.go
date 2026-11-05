@@ -213,6 +213,12 @@ func (CustomListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customListState)(nil)).Elem()
 }
 
+// CustomListExists checks whether an existing CustomList resource with the given ID exists.
+func CustomListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/customList:CustomList", id, state, "", opts...)
+}
+
 type customListArgs struct {
 	// The value of the custom list.
 	// Maximum length: 1024 characters

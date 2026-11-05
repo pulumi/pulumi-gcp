@@ -430,6 +430,12 @@ func (DatascanIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datascanIamBindingState)(nil)).Elem()
 }
 
+// DatascanIamBindingExists checks whether an existing DatascanIamBinding resource with the given ID exists.
+func DatascanIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatascanIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/datascanIamBinding:DatascanIamBinding", id, state, "", opts...)
+}
+
 type datascanIamBindingArgs struct {
 	Condition *DatascanIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

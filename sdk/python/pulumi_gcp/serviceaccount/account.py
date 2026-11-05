@@ -585,6 +585,34 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["unique_id"] = unique_id
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            unique_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createIgnoreAlreadyExists"] = create_ignore_already_exists
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["email"] = email
+        __props__["member"] = member
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["uniqueId"] = unique_id
+        return pulumi.runtime.exists_resource(None, 'gcp:serviceaccount/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

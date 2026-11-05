@@ -1928,6 +1928,84 @@ class DataConnector(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return DataConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict', 'outputs.DataConnectorActionConfig']]] = None,
+            action_state: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict', 'outputs.DataConnectorBapConfig']]] = None,
+            blocking_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            collection_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            connector_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict', 'outputs.DataConnectorDestinationConfig']]]]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict', 'outputs.DataConnectorEntity']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict', 'outputs.DataConnectorError']]]]] = None,
+            incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            json_params: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_pause_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Union['DataConnectorMetadataArgs', 'DataConnectorMetadataArgsDict', 'outputs.DataConnectorMetadata']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            private_connectivity_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            realtime_state: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            static_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionConfig"] = action_config
+        __props__["actionState"] = action_state
+        __props__["autoRunDisabled"] = auto_run_disabled
+        __props__["bapConfig"] = bap_config
+        __props__["blockingReasons"] = blocking_reasons
+        __props__["collectionDisplayName"] = collection_display_name
+        __props__["collectionId"] = collection_id
+        __props__["connectorModes"] = connector_modes
+        __props__["connectorType"] = connector_type
+        __props__["createTime"] = create_time
+        __props__["dataSource"] = data_source
+        __props__["dataSourceVersion"] = data_source_version
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["destinationConfigs"] = destination_configs
+        __props__["entities"] = entities
+        __props__["errors"] = errors
+        __props__["incrementalRefreshInterval"] = incremental_refresh_interval
+        __props__["incrementalSyncDisabled"] = incremental_sync_disabled
+        __props__["jsonParams"] = json_params
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["lastSyncTime"] = last_sync_time
+        __props__["latestPauseTime"] = latest_pause_time
+        __props__["location"] = location
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["params"] = params
+        __props__["privateConnectivityProjectId"] = private_connectivity_project_id
+        __props__["project"] = project
+        __props__["realtimeState"] = realtime_state
+        __props__["refreshInterval"] = refresh_interval
+        __props__["state"] = state
+        __props__["staticIpAddresses"] = static_ip_addresses
+        __props__["staticIpEnabled"] = static_ip_enabled
+        __props__["syncMode"] = sync_mode
+        __props__["tag"] = tag
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/dataConnector:DataConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionConfig")
     def action_config(self) -> pulumi.Output[Optional['outputs.DataConnectorActionConfig']]:

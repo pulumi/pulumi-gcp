@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         /// A PublicKey describes a public key.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedConfigX509Config"&gt;&lt;/a&gt;The `X509Config` block supports:
         /// </summary>
         [Input("publicKey", required: true)]

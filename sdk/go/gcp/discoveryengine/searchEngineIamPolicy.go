@@ -400,6 +400,12 @@ func (SearchEngineIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*searchEngineIamPolicyState)(nil)).Elem()
 }
 
+// SearchEngineIamPolicyExists checks whether an existing SearchEngineIamPolicy resource with the given ID exists.
+func SearchEngineIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SearchEngineIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/searchEngineIamPolicy:SearchEngineIamPolicy", id, state, "", opts...)
+}
+
 type searchEngineIamPolicyArgs struct {
 	// The collection ID.
 	// Used to find the parent resource to bind the IAM policy to

@@ -36,7 +36,7 @@ public final class VolumeMountOptionArgs extends com.pulumi.resources.ResourceAr
      * (Output)
      * Full export path of the volume.
      * Format for NFS volumes: `&lt;export_ip&gt;:/&lt;shareName&gt;`
-     * Format for SMB volumes: `\\\\netbios_prefix-four_random_hex_letters.domain_name\\shareName`
+     * Format for SMB volumes: `&#92;&#92;&#92;&#92;netbios_prefix-four_random_hex_letters.domain_name&#92;&#92;shareName`
      * 
      */
     @Import(name="exportFull")
@@ -46,7 +46,7 @@ public final class VolumeMountOptionArgs extends com.pulumi.resources.ResourceAr
      * @return (Output)
      * Full export path of the volume.
      * Format for NFS volumes: `&lt;export_ip&gt;:/&lt;shareName&gt;`
-     * Format for SMB volumes: `\\\\netbios_prefix-four_random_hex_letters.domain_name\\shareName`
+     * Format for SMB volumes: `&#92;&#92;&#92;&#92;netbios_prefix-four_random_hex_letters.domain_name&#92;&#92;shareName`
      * 
      */
     public Optional<Output<String>> exportFull() {
@@ -159,7 +159,7 @@ public final class VolumeMountOptionArgs extends com.pulumi.resources.ResourceAr
          * @param exportFull (Output)
          * Full export path of the volume.
          * Format for NFS volumes: `&lt;export_ip&gt;:/&lt;shareName&gt;`
-         * Format for SMB volumes: `\\\\netbios_prefix-four_random_hex_letters.domain_name\\shareName`
+         * Format for SMB volumes: `&#92;&#92;&#92;&#92;netbios_prefix-four_random_hex_letters.domain_name&#92;&#92;shareName`
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class VolumeMountOptionArgs extends com.pulumi.resources.ResourceAr
          * @param exportFull (Output)
          * Full export path of the volume.
          * Format for NFS volumes: `&lt;export_ip&gt;:/&lt;shareName&gt;`
-         * Format for SMB volumes: `\\\\netbios_prefix-four_random_hex_letters.domain_name\\shareName`
+         * Format for SMB volumes: `&#92;&#92;&#92;&#92;netbios_prefix-four_random_hex_letters.domain_name&#92;&#92;shareName`
          * 
          * @return builder
          * 

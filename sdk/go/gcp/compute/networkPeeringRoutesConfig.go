@@ -323,6 +323,12 @@ func (NetworkPeeringRoutesConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPeeringRoutesConfigState)(nil)).Elem()
 }
 
+// NetworkPeeringRoutesConfigExists checks whether an existing NetworkPeeringRoutesConfig resource with the given ID exists.
+func NetworkPeeringRoutesConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkPeeringRoutesConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", id, state, "", opts...)
+}
+
 type networkPeeringRoutesConfigArgs struct {
 	// Whether to export the custom routes to the peer network.
 	ExportCustomRoutes bool `pulumi:"exportCustomRoutes"`

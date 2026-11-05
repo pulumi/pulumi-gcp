@@ -270,6 +270,12 @@ func (ControlProjectFeatureConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlProjectFeatureConfigState)(nil)).Elem()
 }
 
+// ControlProjectFeatureConfigExists checks whether an existing ControlProjectFeatureConfig resource with the given ID exists.
+func ControlProjectFeatureConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlProjectFeatureConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/controlProjectFeatureConfig:ControlProjectFeatureConfig", id, state, "", opts...)
+}
+
 type controlProjectFeatureConfigArgs struct {
 	// The configuration for the Auto Annotate feature, which uses AI models to generate
 	// annotations for objects in Cloud Storage buckets.

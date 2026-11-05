@@ -280,6 +280,12 @@ func (NoteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*noteState)(nil)).Elem()
 }
 
+// NoteExists checks whether an existing Note resource with the given ID exists.
+func NoteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NoteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:containeranalysis/note:Note", id, state, "", opts...)
+}
+
 type noteArgs struct {
 	// Note kind that represents a logical attestation "role" or "authority".
 	// For example, an organization might have one AttestationAuthority for

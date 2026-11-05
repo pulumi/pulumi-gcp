@@ -340,10 +340,10 @@ namespace Pulumi.Gcp.Compute
         /// * 10.128.0.56
         /// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         /// * regions/region/forwardingRules/forwardingRule
-        /// When the beta provider, you can also specify the IP address
-        /// of a forwarding rule from the same VPC or any peered VPC.
-        /// Note that this can only be used when the destinationRange is
-        /// a public (non-RFC 1918) IP CIDR range.
+        ///   When the beta provider, you can also specify the IP address
+        ///   of a forwarding rule from the same VPC or any peered VPC.
+        ///   Note that this can only be used when the destinationRange is
+        ///   a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Output("nextHopIlb")]
         public Output<string?> NextHopIlb { get; private set; } = null!;
@@ -582,10 +582,10 @@ namespace Pulumi.Gcp.Compute
         /// * 10.128.0.56
         /// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         /// * regions/region/forwardingRules/forwardingRule
-        /// When the beta provider, you can also specify the IP address
-        /// of a forwarding rule from the same VPC or any peered VPC.
-        /// Note that this can only be used when the destinationRange is
-        /// a public (non-RFC 1918) IP CIDR range.
+        ///   When the beta provider, you can also specify the IP address
+        ///   of a forwarding rule from the same VPC or any peered VPC.
+        ///   Note that this can only be used when the destinationRange is
+        ///   a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Input("nextHopIlb")]
         public Input<string>? NextHopIlb { get; set; }
@@ -755,10 +755,10 @@ namespace Pulumi.Gcp.Compute
         /// * 10.128.0.56
         /// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         /// * regions/region/forwardingRules/forwardingRule
-        /// When the beta provider, you can also specify the IP address
-        /// of a forwarding rule from the same VPC or any peered VPC.
-        /// Note that this can only be used when the destinationRange is
-        /// a public (non-RFC 1918) IP CIDR range.
+        ///   When the beta provider, you can also specify the IP address
+        ///   of a forwarding rule from the same VPC or any peered VPC.
+        ///   Note that this can only be used when the destinationRange is
+        ///   a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Input("nextHopIlb")]
         public Input<string>? NextHopIlb { get; set; }

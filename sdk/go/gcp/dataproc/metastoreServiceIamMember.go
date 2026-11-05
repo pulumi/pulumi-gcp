@@ -433,6 +433,12 @@ func (MetastoreServiceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreServiceIamMemberState)(nil)).Elem()
 }
 
+// MetastoreServiceIamMemberExists checks whether an existing MetastoreServiceIamMember resource with the given ID exists.
+func MetastoreServiceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreServiceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreServiceIamMember:MetastoreServiceIamMember", id, state, "", opts...)
+}
+
 type metastoreServiceIamMemberArgs struct {
 	Condition *MetastoreServiceIamMemberCondition `pulumi:"condition"`
 	// The location where the metastore service should reside.

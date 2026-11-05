@@ -418,6 +418,12 @@ func (TaxonomyIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*taxonomyIamBindingState)(nil)).Elem()
 }
 
+// TaxonomyIamBindingExists checks whether an existing TaxonomyIamBinding resource with the given ID exists.
+func TaxonomyIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TaxonomyIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding", id, state, "", opts...)
+}
+
 type taxonomyIamBindingArgs struct {
 	Condition *TaxonomyIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -457,6 +457,12 @@ func (AssetIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*assetIamMemberState)(nil)).Elem()
 }
 
+// AssetIamMemberExists checks whether an existing AssetIamMember resource with the given ID exists.
+func AssetIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AssetIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/assetIamMember:AssetIamMember", id, state, "", opts...)
+}
+
 type assetIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Asset     string                   `pulumi:"asset"`

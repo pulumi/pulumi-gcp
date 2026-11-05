@@ -249,14 +249,14 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isEnabled);
     }
     /**
-     * The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+     * The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+     * @return The resource id of this reference. Values must match the regular expression [&#92;w&#92;s-.]+.
      * 
      */
     public Output<String> name() {

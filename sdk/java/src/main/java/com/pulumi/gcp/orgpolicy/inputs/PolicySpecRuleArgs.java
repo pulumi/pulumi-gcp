@@ -80,14 +80,14 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+     * Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { &#92;&#34;allowedLocations&#92;&#34; : [&#92;&#34;us-east1&#92;&#34;, &#92;&#34;us-west1&#92;&#34;], &#92;&#34;allowAll&#92;&#34; : true }
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<String> parameters;
 
     /**
-     * @return Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+     * @return Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { &#92;&#34;allowedLocations&#92;&#34; : [&#92;&#34;us-east1&#92;&#34;, &#92;&#34;us-west1&#92;&#34;], &#92;&#34;allowAll&#92;&#34; : true }
      * 
      */
     public Optional<Output<String>> parameters() {
@@ -227,7 +227,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parameters Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+         * @param parameters Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { &#92;&#34;allowedLocations&#92;&#34; : [&#92;&#34;us-east1&#92;&#34;, &#92;&#34;us-west1&#92;&#34;], &#92;&#34;allowAll&#92;&#34; : true }
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parameters Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+         * @param parameters Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { &#92;&#34;allowedLocations&#92;&#34; : [&#92;&#34;us-east1&#92;&#34;, &#92;&#34;us-west1&#92;&#34;], &#92;&#34;allowAll&#92;&#34; : true }
          * 
          * @return builder
          * 

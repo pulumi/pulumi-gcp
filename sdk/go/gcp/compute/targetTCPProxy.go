@@ -357,6 +357,12 @@ func (TargetTCPProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetTCPProxyState)(nil)).Elem()
 }
 
+// TargetTCPProxyExists checks whether an existing TargetTCPProxy resource with the given ID exists.
+func TargetTCPProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetTCPProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/targetTCPProxy:TargetTCPProxy", id, state, "", opts...)
+}
+
 type targetTCPProxyArgs struct {
 	// A reference to the BackendService resource. This field is optional when
 	// the loadBalancingScheme is set to INTERNAL_MANAGED.

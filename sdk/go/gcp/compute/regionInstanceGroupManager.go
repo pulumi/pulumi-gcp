@@ -575,6 +575,12 @@ func (RegionInstanceGroupManagerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionInstanceGroupManagerState)(nil)).Elem()
 }
 
+// RegionInstanceGroupManagerExists checks whether an existing RegionInstanceGroupManager resource with the given ID exists.
+func RegionInstanceGroupManagerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionInstanceGroupManagerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", id, state, "", opts...)
+}
+
 type regionInstanceGroupManagerArgs struct {
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to

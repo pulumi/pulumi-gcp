@@ -43,7 +43,7 @@ public final class TableExternalDataConfigurationCsvOptions {
      * CSV file. If your data does not contain quoted sections, set the
      * property value to an empty string. If your data contains quoted newline
      * characters, you must also set the `allowQuotedNewlines` property to true.
-     * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
+     * The API-side default is `&#34;`, specified in the provider escaped as `&#92;&#34;`. Due to
      * limitations with default values, this value is required to be
      * explicitly set.
      * 
@@ -104,7 +104,7 @@ public final class TableExternalDataConfigurationCsvOptions {
      * CSV file. If your data does not contain quoted sections, set the
      * property value to an empty string. If your data contains quoted newline
      * characters, you must also set the `allowQuotedNewlines` property to true.
-     * The API-side default is `&#34;`, specified in the provider escaped as `\&#34;`. Due to
+     * The API-side default is `&#34;`, specified in the provider escaped as `&#92;&#34;`. Due to
      * limitations with default values, this value is required to be
      * explicitly set.
      * 

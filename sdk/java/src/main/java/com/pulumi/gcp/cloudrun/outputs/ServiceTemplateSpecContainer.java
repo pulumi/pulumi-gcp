@@ -45,11 +45,10 @@ public final class ServiceTemplateSpecContainer {
      * 
      * &gt; **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     private @Nullable List<ServiceTemplateSpecContainerEnvFrom> envFroms;
     /**
      * @return List of environment variables to set in the container.
@@ -121,11 +120,10 @@ public final class ServiceTemplateSpecContainer {
      * 
      * &gt; **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     private @Nullable String workingDir;
 
     private ServiceTemplateSpecContainer() {}
@@ -156,11 +154,10 @@ public final class ServiceTemplateSpecContainer {
      * 
      * &gt; **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     public List<ServiceTemplateSpecContainerEnvFrom> envFroms() {
         return this.envFroms == null ? List.of() : this.envFroms;
     }
@@ -254,11 +251,10 @@ public final class ServiceTemplateSpecContainer {
      * 
      * &gt; **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
-     * @deprecated
-     * `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * @deprecated `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
+    @Deprecated
     public Optional<String> workingDir() {
         return Optional.ofNullable(this.workingDir);
     }

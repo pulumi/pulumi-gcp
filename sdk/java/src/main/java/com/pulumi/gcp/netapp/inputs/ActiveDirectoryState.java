@@ -277,7 +277,7 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
     /**
      * NetBIOS name prefix of the server to be created.
      * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
-     * `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
+     * `&#92;&#92;NetBIOS_PREFIX-ABCD.DOMAIN_NAME&#92;SHARE_NAME`
      * 
      */
     @Import(name="netBiosPrefix")
@@ -286,7 +286,7 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
     /**
      * @return NetBIOS name prefix of the server to be created.
      * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
-     * `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
+     * `&#92;&#92;NetBIOS_PREFIX-ABCD.DOMAIN_NAME&#92;SHARE_NAME`
      * 
      */
     public Optional<Output<String>> netBiosPrefix() {
@@ -880,7 +880,7 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
         /**
          * @param netBiosPrefix NetBIOS name prefix of the server to be created.
          * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
-         * `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
+         * `&#92;&#92;NetBIOS_PREFIX-ABCD.DOMAIN_NAME&#92;SHARE_NAME`
          * 
          * @return builder
          * 
@@ -893,7 +893,7 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
         /**
          * @param netBiosPrefix NetBIOS name prefix of the server to be created.
          * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
-         * `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
+         * `&#92;&#92;NetBIOS_PREFIX-ABCD.DOMAIN_NAME&#92;SHARE_NAME`
          * 
          * @return builder
          * 

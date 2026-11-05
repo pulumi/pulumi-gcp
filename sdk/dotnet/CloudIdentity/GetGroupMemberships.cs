@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.CloudIdentity
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -55,7 +54,6 @@ namespace Pulumi.Gcp.CloudIdentity
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,7 +85,6 @@ namespace Pulumi.Gcp.CloudIdentity
         /// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
-        /// 
         /// 
         /// ## Example Usage
         /// 

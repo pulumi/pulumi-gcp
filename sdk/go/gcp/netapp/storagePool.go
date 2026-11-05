@@ -477,6 +477,12 @@ func (StoragePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storagePoolState)(nil)).Elem()
 }
 
+// StoragePoolExists checks whether an existing StoragePool resource with the given ID exists.
+func StoragePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StoragePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:netapp/storagePool:StoragePool", id, state, "", opts...)
+}
+
 type storagePoolArgs struct {
 	// Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.

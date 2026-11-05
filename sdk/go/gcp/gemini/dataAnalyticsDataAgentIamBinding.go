@@ -427,6 +427,12 @@ func (DataAnalyticsDataAgentIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataAnalyticsDataAgentIamBindingState)(nil)).Elem()
 }
 
+// DataAnalyticsDataAgentIamBindingExists checks whether an existing DataAnalyticsDataAgentIamBinding resource with the given ID exists.
+func DataAnalyticsDataAgentIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataAnalyticsDataAgentIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/dataAnalyticsDataAgentIamBinding:DataAnalyticsDataAgentIamBinding", id, state, "", opts...)
+}
+
 type dataAnalyticsDataAgentIamBindingArgs struct {
 	Condition *DataAnalyticsDataAgentIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

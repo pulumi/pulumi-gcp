@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
         /// The names should conform to RFC 9110:
         /// &gt; Field names SHOULD constrain themselves to alphanumeric characters, "-",
         /// and ".", and SHOULD begin with a letter.
-        /// &gt; Field values SHOULD contain only ASCII printable characters and tab.
+        /// Field values SHOULD contain only ASCII printable characters and tab.
         /// </summary>
         public InputMap<string> MetadataHeaders
         {

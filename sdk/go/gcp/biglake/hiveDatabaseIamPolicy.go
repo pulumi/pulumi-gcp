@@ -376,6 +376,12 @@ func (HiveDatabaseIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveDatabaseIamPolicyState)(nil)).Elem()
 }
 
+// HiveDatabaseIamPolicyExists checks whether an existing HiveDatabaseIamPolicy resource with the given ID exists.
+func HiveDatabaseIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveDatabaseIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveDatabaseIamPolicy:HiveDatabaseIamPolicy", id, state, "", opts...)
+}
+
 type hiveDatabaseIamPolicyArgs struct {
 	// Hive catalog where the database to create is located.
 	// Used to find the parent resource to bind the IAM policy to

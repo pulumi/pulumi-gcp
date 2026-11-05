@@ -511,6 +511,12 @@ func (ProjectsPolicyBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectsPolicyBindingState)(nil)).Elem()
 }
 
+// ProjectsPolicyBindingExists checks whether an existing ProjectsPolicyBinding resource with the given ID exists.
+func ProjectsPolicyBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectsPolicyBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding", id, state, "", opts...)
+}
+
 type projectsPolicyBindingArgs struct {
 	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
 	//

@@ -488,6 +488,28 @@ class AclPolicy(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return AclPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclPolicyRuleArgs', 'AclPolicyRuleArgsDict', 'outputs.AclPolicyRule']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclPolicyId"] = acl_policy_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["rules"] = rules
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:memorystore/aclPolicy:AclPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclPolicyId")
     def acl_policy_id(self) -> pulumi.Output[_builtins.str]:

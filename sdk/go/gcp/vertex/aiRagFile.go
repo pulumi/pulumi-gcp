@@ -590,6 +590,12 @@ func (AiRagFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiRagFileState)(nil)).Elem()
 }
 
+// AiRagFileExists checks whether an existing AiRagFile resource with the given ID exists.
+func AiRagFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiRagFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiRagFile:AiRagFile", id, state, "", opts...)
+}
+
 type aiRagFileArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

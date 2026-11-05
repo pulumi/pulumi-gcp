@@ -305,6 +305,12 @@ func (AccountIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamPolicyState)(nil)).Elem()
 }
 
+// AccountIamPolicyExists checks whether an existing AccountIamPolicy resource with the given ID exists.
+func AccountIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:billing/accountIamPolicy:AccountIamPolicy", id, state, "", opts...)
+}
+
 type accountIamPolicyArgs struct {
 	// The billing account id.
 	//

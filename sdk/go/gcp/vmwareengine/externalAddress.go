@@ -244,6 +244,12 @@ func (ExternalAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalAddressState)(nil)).Elem()
 }
 
+// ExternalAddressExists checks whether an existing ExternalAddress resource with the given ID exists.
+func ExternalAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExternalAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vmwareengine/externalAddress:ExternalAddress", id, state, "", opts...)
+}
+
 type externalAddressArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

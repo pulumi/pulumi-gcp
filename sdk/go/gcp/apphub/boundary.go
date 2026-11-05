@@ -165,6 +165,12 @@ func (BoundaryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*boundaryState)(nil)).Elem()
 }
 
+// BoundaryExists checks whether an existing Boundary resource with the given ID exists.
+func BoundaryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BoundaryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apphub/boundary:Boundary", id, state, "", opts...)
+}
+
 type boundaryArgs struct {
 	// Optional. The resource name of the CRM node being attached to the
 	// boundary.

@@ -1065,6 +1065,12 @@ func (SubnetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetworkState)(nil)).Elem()
 }
 
+// SubnetworkExists checks whether an existing Subnetwork resource with the given ID exists.
+func SubnetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubnetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/subnetwork:Subnetwork", id, state, "", opts...)
+}
+
 type subnetworkArgs struct {
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.

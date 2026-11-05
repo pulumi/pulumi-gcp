@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// <summary>
         /// Duration before applying GC policy (ex. "8h"). This is required when `Days` isn't set
         /// 
-        /// -----
+        /// ***
         /// </summary>
         public readonly string? Duration;
 

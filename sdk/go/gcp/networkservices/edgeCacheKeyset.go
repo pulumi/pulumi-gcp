@@ -294,6 +294,12 @@ func (EdgeCacheKeysetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeCacheKeysetState)(nil)).Elem()
 }
 
+// EdgeCacheKeysetExists checks whether an existing EdgeCacheKeyset resource with the given ID exists.
+func EdgeCacheKeysetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgeCacheKeysetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", id, state, "", opts...)
+}
+
 type edgeCacheKeysetArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

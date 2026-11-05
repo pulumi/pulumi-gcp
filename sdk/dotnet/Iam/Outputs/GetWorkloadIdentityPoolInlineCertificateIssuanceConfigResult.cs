@@ -18,11 +18,11 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// for certificate issuance, adhering to these constraints:
         /// 
         /// * **Key format:** A supported cloud region name equivalent to the location identifier in
-        /// the corresponding map entry's value.
+        ///   the corresponding map entry's value.
         /// * **Value format:** A valid CA pool resource path format like:
-        /// 'projects/{project}/locations/{location}/caPools/{ca_pool}'
+        ///   'projects/{project}/locations/{location}/caPools/{ca_pool}'
         /// * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
-        /// same region. Also the CA pool region (in value) must match the workload's region (key).
+        ///   same region. Also the CA pool region (in value) must match the workload's region (key).
         /// </summary>
         public readonly ImmutableDictionary<string, string> CaPools;
         /// <summary>

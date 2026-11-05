@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
         public readonly string? DisplayLabel;
         /// <summary>
         /// - Represents an F1 resource.
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource? F1Resource;
         /// <summary>

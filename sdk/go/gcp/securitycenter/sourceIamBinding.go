@@ -146,6 +146,12 @@ func (SourceIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceIamBindingState)(nil)).Elem()
 }
 
+// SourceIamBindingExists checks whether an existing SourceIamBinding resource with the given ID exists.
+func SourceIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SourceIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/sourceIamBinding:SourceIamBinding", id, state, "", opts...)
+}
+
 type sourceIamBindingArgs struct {
 	Condition *SourceIamBindingCondition `pulumi:"condition"`
 	Members   []string                   `pulumi:"members"`

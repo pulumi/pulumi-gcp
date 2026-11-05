@@ -122,6 +122,12 @@ func (EnvKeystoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*envKeystoreState)(nil)).Elem()
 }
 
+// EnvKeystoreExists checks whether an existing EnvKeystore resource with the given ID exists.
+func EnvKeystoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvKeystoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/envKeystore:EnvKeystore", id, state, "", opts...)
+}
+
 type envKeystoreArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -370,6 +370,12 @@ func (RolloutKindState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rolloutKindState)(nil)).Elem()
 }
 
+// RolloutKindExists checks whether an existing RolloutKind resource with the given ID exists.
+func RolloutKindExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RolloutKindState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:saasruntime/rolloutKind:RolloutKind", id, state, "", opts...)
+}
+
 type rolloutKindArgs struct {
 	// Annotations is an unstructured key-value map stored with a resource that
 	// may be set by external tools to store and retrieve arbitrary metadata.

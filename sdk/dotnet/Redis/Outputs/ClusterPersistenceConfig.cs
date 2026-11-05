@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Redis.Outputs
         /// - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
         /// - RDB: RDB based Persistence is enabled.
         /// - AOF: AOF based Persistence is enabled.
-        /// Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+        ///   Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>

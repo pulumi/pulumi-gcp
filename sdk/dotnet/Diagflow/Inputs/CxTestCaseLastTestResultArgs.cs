@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// Whether the test case passed in the agent environment.
         /// * PASSED: The test passed.
         /// * FAILED: The test did not pass.
-        /// Possible values are: `PASSED`, `FAILED`.
+        ///   Possible values are: `PASSED`, `FAILED`.
         /// </summary>
         [Input("testResult")]
         public Input<string>? TestResult { get; set; }

@@ -416,6 +416,12 @@ func (AppHostingTrafficState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appHostingTrafficState)(nil)).Elem()
 }
 
+// AppHostingTrafficExists checks whether an existing AppHostingTraffic resource with the given ID exists.
+func AppHostingTrafficExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppHostingTrafficState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appHostingTraffic:AppHostingTraffic", id, state, "", opts...)
+}
+
 type appHostingTrafficArgs struct {
 	// Id of the backend that this Traffic config applies to
 	Backend string `pulumi:"backend"`

@@ -673,6 +673,12 @@ func (AgentRegistryMcpServerIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentRegistryMcpServerIamBindingState)(nil)).Elem()
 }
 
+// AgentRegistryMcpServerIamBindingExists checks whether an existing AgentRegistryMcpServerIamBinding resource with the given ID exists.
+func AgentRegistryMcpServerIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentRegistryMcpServerIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/agentRegistryMcpServerIamBinding:AgentRegistryMcpServerIamBinding", id, state, "", opts...)
+}
+
 type agentRegistryMcpServerIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

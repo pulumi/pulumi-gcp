@@ -376,6 +376,12 @@ func (RoutineIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routineIamPolicyState)(nil)).Elem()
 }
 
+// RoutineIamPolicyExists checks whether an existing RoutineIamPolicy resource with the given ID exists.
+func RoutineIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutineIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/routineIamPolicy:RoutineIamPolicy", id, state, "", opts...)
+}
+
 type routineIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DatasetId string `pulumi:"datasetId"`

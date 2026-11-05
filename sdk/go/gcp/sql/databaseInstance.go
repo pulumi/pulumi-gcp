@@ -1042,6 +1042,12 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseInstanceState)(nil)).Elem()
 }
 
+// DatabaseInstanceExists checks whether an existing DatabaseInstance resource with the given ID exists.
+func DatabaseInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:sql/databaseInstance:DatabaseInstance", id, state, "", opts...)
+}
+
 type databaseInstanceArgs struct {
 	// The backupdrBackup needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.

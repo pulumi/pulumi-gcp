@@ -245,6 +245,12 @@ func (ServiceProjectAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceProjectAttachmentState)(nil)).Elem()
 }
 
+// ServiceProjectAttachmentExists checks whether an existing ServiceProjectAttachment resource with the given ID exists.
+func ServiceProjectAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceProjectAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", id, state, "", opts...)
+}
+
 type serviceProjectAttachmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

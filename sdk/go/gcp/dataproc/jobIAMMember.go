@@ -357,6 +357,12 @@ func (JobIAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobIAMMemberState)(nil)).Elem()
 }
 
+// JobIAMMemberExists checks whether an existing JobIAMMember resource with the given ID exists.
+func JobIAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobIAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/jobIAMMember:JobIAMMember", id, state, "", opts...)
+}
+
 type jobIAMMemberArgs struct {
 	Condition *JobIAMMemberCondition `pulumi:"condition"`
 	JobId     string                 `pulumi:"jobId"`

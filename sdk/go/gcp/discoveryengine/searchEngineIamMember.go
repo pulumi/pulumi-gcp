@@ -448,6 +448,12 @@ func (SearchEngineIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*searchEngineIamMemberState)(nil)).Elem()
 }
 
+// SearchEngineIamMemberExists checks whether an existing SearchEngineIamMember resource with the given ID exists.
+func SearchEngineIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SearchEngineIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/searchEngineIamMember:SearchEngineIamMember", id, state, "", opts...)
+}
+
 type searchEngineIamMemberArgs struct {
 	// The collection ID.
 	// Used to find the parent resource to bind the IAM policy to

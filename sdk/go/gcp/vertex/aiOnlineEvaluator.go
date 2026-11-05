@@ -477,6 +477,12 @@ func (AiOnlineEvaluatorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiOnlineEvaluatorState)(nil)).Elem()
 }
 
+// AiOnlineEvaluatorExists checks whether an existing AiOnlineEvaluator resource with the given ID exists.
+func AiOnlineEvaluatorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiOnlineEvaluatorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiOnlineEvaluator:AiOnlineEvaluator", id, state, "", opts...)
+}
+
 type aiOnlineEvaluatorArgs struct {
 	// The name of the agent that the OnlineEvaluator evaluates periodically.
 	// This value is used to filter the traces with a matching cloud.resource_id

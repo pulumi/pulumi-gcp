@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudVmClusterPropertyDiagnosticsDataCollectionOptionResult> DiagnosticsDataCollectionOptions;
         /// <summary>
-        /// The type of redundancy. 
+        /// The type of redundancy.
         ///  Possible values:
         ///  DISK_REDUNDANCY_UNSPECIFIED
         /// HIGH
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string HostnamePrefix;
         /// <summary>
-        /// License type of VM Cluster. 
+        /// License type of VM Cluster.
         ///  Possible values:
         ///  LICENSE_TYPE_UNSPECIFIED
         /// LICENSE_INCLUDED
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SshPublicKeys;
         /// <summary>
-        /// State of the cluster. 
+        /// State of the cluster.
         ///  Possible values:
         ///  STATE_UNSPECIFIED
         /// PROVISIONING

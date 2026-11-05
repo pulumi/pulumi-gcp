@@ -623,6 +623,12 @@ func (TunnelDestGroupIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelDestGroupIamPolicyState)(nil)).Elem()
 }
 
+// TunnelDestGroupIamPolicyExists checks whether an existing TunnelDestGroupIamPolicy resource with the given ID exists.
+func TunnelDestGroupIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelDestGroupIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy", id, state, "", opts...)
+}
+
 type tunnelDestGroupIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	DestGroup string `pulumi:"destGroup"`

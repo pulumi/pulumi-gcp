@@ -872,6 +872,36 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return Datapolicyv2DataPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_governance_tag: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataGovernanceTagArgs', 'Datapolicyv2DataPolicyDataGovernanceTagArgsDict', 'outputs.Datapolicyv2DataPolicyDataGovernanceTag']]] = None,
+            data_masking_policy: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict', 'outputs.Datapolicyv2DataPolicyDataMaskingPolicy']]] = None,
+            data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataGovernanceTag"] = data_governance_tag
+        __props__["dataMaskingPolicy"] = data_masking_policy
+        __props__["dataPolicyId"] = data_policy_id
+        __props__["dataPolicyType"] = data_policy_type
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["etag"] = etag
+        __props__["grantees"] = grantees
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["policyTag"] = policy_tag
+        __props__["project"] = project
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataGovernanceTag")
     def data_governance_tag(self) -> pulumi.Output[Optional['outputs.Datapolicyv2DataPolicyDataGovernanceTag']]:

@@ -563,6 +563,26 @@ class AccessLevel(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         return AccessLevel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict', 'outputs.AccessLevelBasic']]] = None,
+            custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict', 'outputs.AccessLevelCustom']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["basic"] = basic
+        __props__["custom"] = custom
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["title"] = title
+        return pulumi.runtime.exists_resource(None, 'gcp:accesscontextmanager/accessLevel:AccessLevel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def basic(self) -> pulumi.Output[Optional['outputs.AccessLevelBasic']]:

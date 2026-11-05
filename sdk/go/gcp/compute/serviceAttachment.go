@@ -1127,6 +1127,12 @@ func (ServiceAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceAttachmentState)(nil)).Elem()
 }
 
+// ServiceAttachmentExists checks whether an existing ServiceAttachment resource with the given ID exists.
+func ServiceAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/serviceAttachment:ServiceAttachment", id, state, "", opts...)
+}
+
 type serviceAttachmentArgs struct {
 	// The connection preference to use for this service attachment. Valid
 	// values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".

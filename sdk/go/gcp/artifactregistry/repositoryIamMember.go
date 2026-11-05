@@ -442,6 +442,12 @@ func (RepositoryIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryIamMemberState)(nil)).Elem()
 }
 
+// RepositoryIamMemberExists checks whether an existing RepositoryIamMember resource with the given ID exists.
+func RepositoryIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:artifactregistry/repositoryIamMember:RepositoryIamMember", id, state, "", opts...)
+}
+
 type repositoryIamMemberArgs struct {
 	Condition *RepositoryIamMemberCondition `pulumi:"condition"`
 	// The name of the repository's location. In addition to specific regions,

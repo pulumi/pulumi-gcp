@@ -177,12 +177,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var region_sec_policy_with_rules = new RegionSecurityPolicy("region-sec-policy-with-rules", RegionSecurityPolicyArgs.builder()
  *             .name("my-sec-policy-with-rules")
  *             .description("basic region security policy with multiple rules")
@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  *                     .priority(1000)
  *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
  *                         .expr(RegionSecurityPolicyRuleMatchExprArgs.builder()
- *                             .expression("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2")
+ *                             .expression("request.path.matches(}&#92;{@code "/login.html}&#92;{@code ") && token.recaptcha_session.score < 0.2")
  *                             .build())
  *                         .build())
  *                     .build(),
@@ -210,8 +210,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

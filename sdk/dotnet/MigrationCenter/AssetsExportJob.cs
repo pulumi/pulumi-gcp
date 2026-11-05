@@ -111,14 +111,14 @@ namespace Pulumi.Gcp.MigrationCenter
         /// Labels as key value pairs.
         /// Labels must meet the following constraints:
         /// * Keys and values can contain only lowercase letters, numeric characters,
-        /// underscores, and dashes.
+        ///   underscores, and dashes.
         /// * All characters must use UTF-8 encoding, and international characters are
-        /// allowed.
+        ///   allowed.
         /// * Keys must start with a lowercase letter or international character.
         /// * Each resource is limited to a maximum of 64 labels.
-        /// Both keys and values are additionally constrained to be &lt;= 128 bytes.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        ///   Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        ///   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        ///   Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -271,14 +271,14 @@ namespace Pulumi.Gcp.MigrationCenter
         /// Labels as key value pairs.
         /// Labels must meet the following constraints:
         /// * Keys and values can contain only lowercase letters, numeric characters,
-        /// underscores, and dashes.
+        ///   underscores, and dashes.
         /// * All characters must use UTF-8 encoding, and international characters are
-        /// allowed.
+        ///   allowed.
         /// * Keys must start with a lowercase letter or international character.
         /// * Each resource is limited to a maximum of 64 labels.
-        /// Both keys and values are additionally constrained to be &lt;= 128 bytes.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        ///   Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        ///   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        ///   Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -393,14 +393,14 @@ namespace Pulumi.Gcp.MigrationCenter
         /// Labels as key value pairs.
         /// Labels must meet the following constraints:
         /// * Keys and values can contain only lowercase letters, numeric characters,
-        /// underscores, and dashes.
+        ///   underscores, and dashes.
         /// * All characters must use UTF-8 encoding, and international characters are
-        /// allowed.
+        ///   allowed.
         /// * Keys must start with a lowercase letter or international character.
         /// * Each resource is limited to a maximum of 64 labels.
-        /// Both keys and values are additionally constrained to be &lt;= 128 bytes.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        ///   Both keys and values are additionally constrained to be &lt;= 128 bytes.
+        ///   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        ///   Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

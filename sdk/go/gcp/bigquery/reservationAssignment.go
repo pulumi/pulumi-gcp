@@ -230,6 +230,12 @@ func (ReservationAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservationAssignmentState)(nil)).Elem()
 }
 
+// ReservationAssignmentExists checks whether an existing ReservationAssignment resource with the given ID exists.
+func ReservationAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservationAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/reservationAssignment:ReservationAssignment", id, state, "", opts...)
+}
+
 type reservationAssignmentArgs struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee string `pulumi:"assignee"`

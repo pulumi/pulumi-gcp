@@ -511,6 +511,12 @@ func (RestoreWorkloadState) ElementType() reflect.Type {
 	return reflect.TypeOf((*restoreWorkloadState)(nil)).Elem()
 }
 
+// RestoreWorkloadExists checks whether an existing RestoreWorkload resource with the given ID exists.
+func RestoreWorkloadExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RestoreWorkloadState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload", id, state, "", opts...)
+}
+
 type restoreWorkloadArgs struct {
 	// Required. The ID of the backup to restore from.
 	BackupId string `pulumi:"backupId"`

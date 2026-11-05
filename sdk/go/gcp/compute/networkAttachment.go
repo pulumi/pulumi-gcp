@@ -359,6 +359,12 @@ func (NetworkAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAttachmentState)(nil)).Elem()
 }
 
+// NetworkAttachmentExists checks whether an existing NetworkAttachment resource with the given ID exists.
+func NetworkAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/networkAttachment:NetworkAttachment", id, state, "", opts...)
+}
+
 type networkAttachmentArgs struct {
 	// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 	// Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.

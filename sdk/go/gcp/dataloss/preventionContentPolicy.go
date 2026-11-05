@@ -785,6 +785,12 @@ func (PreventionContentPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionContentPolicyState)(nil)).Elem()
 }
 
+// PreventionContentPolicyExists checks whether an existing PreventionContentPolicy resource with the given ID exists.
+func PreventionContentPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreventionContentPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataloss/preventionContentPolicy:PreventionContentPolicy", id, state, "", opts...)
+}
+
 type preventionContentPolicyArgs struct {
 	// Action to take if the content is scanned and no rules match. Defaults to returning an ALLOW verdict if not set.
 	// Structure is documented below.

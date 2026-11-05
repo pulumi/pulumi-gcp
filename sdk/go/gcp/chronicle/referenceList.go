@@ -290,6 +290,12 @@ func (ReferenceListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*referenceListState)(nil)).Elem()
 }
 
+// ReferenceListExists checks whether an existing ReferenceList resource with the given ID exists.
+func ReferenceListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReferenceListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/referenceList:ReferenceList", id, state, "", opts...)
+}
+
 type referenceListArgs struct {
 	// Required. A user-provided description of the reference list.
 	Description string `pulumi:"description"`

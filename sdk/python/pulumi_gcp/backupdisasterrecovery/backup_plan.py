@@ -1144,6 +1144,52 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return BackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPlanBackupRuleArgs', 'BackupPlanBackupRuleArgsDict', 'outputs.BackupPlanBackupRule']]]]] = None,
+            backup_vault: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_vault_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_instance_backup_plan_properties: pulumi.Input[Optional[Union['BackupPlanComputeInstanceBackupPlanPropertiesArgs', 'BackupPlanComputeInstanceBackupPlanPropertiesArgsDict', 'outputs.BackupPlanComputeInstanceBackupPlanProperties']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_backup_plan_properties: pulumi.Input[Optional[Union['BackupPlanDiskBackupPlanPropertiesArgs', 'BackupPlanDiskBackupPlanPropertiesArgsDict', 'outputs.BackupPlanDiskBackupPlanProperties']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            log_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            max_custom_on_demand_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupPlanId"] = backup_plan_id
+        __props__["backupRules"] = backup_rules
+        __props__["backupVault"] = backup_vault
+        __props__["backupVaultServiceAccount"] = backup_vault_service_account
+        __props__["computeInstanceBackupPlanProperties"] = compute_instance_backup_plan_properties
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["diskBackupPlanProperties"] = disk_backup_plan_properties
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["logRetentionDays"] = log_retention_days
+        __props__["maxCustomOnDemandRetentionDays"] = max_custom_on_demand_retention_days
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["resourceType"] = resource_type
+        __props__["supportedResourceTypes"] = supported_resource_types
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:backupdisasterrecovery/backupPlan:BackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupPlanId")
     def backup_plan_id(self) -> pulumi.Output[_builtins.str]:

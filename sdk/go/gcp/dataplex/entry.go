@@ -655,6 +655,12 @@ func (EntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryState)(nil)).Elem()
 }
 
+// EntryExists checks whether an existing Entry resource with the given ID exists.
+func EntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/entry:Entry", id, state, "", opts...)
+}
+
 type entryArgs struct {
 	// The aspects that are attached to the entry.
 	// Structure is documented below.

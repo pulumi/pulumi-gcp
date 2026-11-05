@@ -2918,6 +2918,96 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["zone_distribution_config"] = zone_distribution_config
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            automated_backup_config: pulumi.Input[Optional[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict', 'outputs.ClusterAutomatedBackupConfig']]] = None,
+            available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_cluster_replication_config: pulumi.Input[Optional[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict', 'outputs.ClusterCrossClusterReplicationConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            discovery_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict', 'outputs.ClusterDiscoveryEndpoint']]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            gcs_source: pulumi.Input[Optional[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict', 'outputs.ClusterGcsSource']]] = None,
+            is_acl_policy_in_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']]] = None,
+            maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict', 'outputs.ClusterMaintenanceSchedule']]]]] = None,
+            maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_backup_source: pulumi.Input[Optional[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict', 'outputs.ClusterManagedBackupSource']]] = None,
+            managed_server_cas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterManagedServerCaArgs', 'ClusterManagedServerCaArgsDict', 'outputs.ClusterManagedServerCa']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            persistence_config: pulumi.Input[Optional[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict', 'outputs.ClusterPersistenceConfig']]] = None,
+            precise_size_gb: pulumi.Input[Optional[_builtins.float]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict', 'outputs.ClusterPscConfig']]]]] = None,
+            psc_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPscConnectionArgs', 'ClusterPscConnectionArgsDict', 'outputs.ClusterPscConnection']]]]] = None,
+            psc_service_attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPscServiceAttachmentArgs', 'ClusterPscServiceAttachmentArgsDict', 'outputs.ClusterPscServiceAttachment']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterStateInfoArgs', 'ClusterStateInfoArgsDict', 'outputs.ClusterStateInfo']]]]] = None,
+            transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_distribution_config: pulumi.Input[Optional[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict', 'outputs.ClusterZoneDistributionConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclPolicy"] = acl_policy
+        __props__["authorizationMode"] = authorization_mode
+        __props__["automatedBackupConfig"] = automated_backup_config
+        __props__["availableMaintenanceVersions"] = available_maintenance_versions
+        __props__["backupCollection"] = backup_collection
+        __props__["createTime"] = create_time
+        __props__["crossClusterReplicationConfig"] = cross_cluster_replication_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtectionEnabled"] = deletion_protection_enabled
+        __props__["discoveryEndpoints"] = discovery_endpoints
+        __props__["effectiveLabels"] = effective_labels
+        __props__["effectiveMaintenanceVersion"] = effective_maintenance_version
+        __props__["gcsSource"] = gcs_source
+        __props__["isAclPolicyInSync"] = is_acl_policy_in_sync
+        __props__["kmsKey"] = kms_key
+        __props__["labels"] = labels
+        __props__["maintenancePolicy"] = maintenance_policy
+        __props__["maintenanceSchedules"] = maintenance_schedules
+        __props__["maintenanceVersion"] = maintenance_version
+        __props__["managedBackupSource"] = managed_backup_source
+        __props__["managedServerCas"] = managed_server_cas
+        __props__["name"] = name
+        __props__["nodeType"] = node_type
+        __props__["persistenceConfig"] = persistence_config
+        __props__["preciseSizeGb"] = precise_size_gb
+        __props__["project"] = project
+        __props__["pscConfigs"] = psc_configs
+        __props__["pscConnections"] = psc_connections
+        __props__["pscServiceAttachments"] = psc_service_attachments
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["redisConfigs"] = redis_configs
+        __props__["region"] = region
+        __props__["replicaCount"] = replica_count
+        __props__["serverCaMode"] = server_ca_mode
+        __props__["serverCaPool"] = server_ca_pool
+        __props__["shardCount"] = shard_count
+        __props__["sizeGb"] = size_gb
+        __props__["state"] = state
+        __props__["stateInfos"] = state_infos
+        __props__["transitEncryptionMode"] = transit_encryption_mode
+        __props__["uid"] = uid
+        __props__["zoneDistributionConfig"] = zone_distribution_config
+        return pulumi.runtime.exists_resource(None, 'gcp:redis/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclPolicy")
     def acl_policy(self) -> pulumi.Output[Optional[_builtins.str]]:

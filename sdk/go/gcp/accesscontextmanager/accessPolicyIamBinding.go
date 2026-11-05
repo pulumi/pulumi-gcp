@@ -390,6 +390,12 @@ func (AccessPolicyIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPolicyIamBindingState)(nil)).Elem()
 }
 
+// AccessPolicyIamBindingExists checks whether an existing AccessPolicyIamBinding resource with the given ID exists.
+func AccessPolicyIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPolicyIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding", id, state, "", opts...)
+}
+
 type accessPolicyIamBindingArgs struct {
 	Condition *AccessPolicyIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

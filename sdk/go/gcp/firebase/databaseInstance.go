@@ -331,6 +331,12 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseInstanceState)(nil)).Elem()
 }
 
+// DatabaseInstanceExists checks whether an existing DatabaseInstance resource with the given ID exists.
+func DatabaseInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/databaseInstance:DatabaseInstance", id, state, "", opts...)
+}
+
 type databaseInstanceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

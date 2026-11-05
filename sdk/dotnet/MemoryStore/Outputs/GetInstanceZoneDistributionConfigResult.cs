@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class GetInstanceZoneDistributionConfigResult
     {
         /// <summary>
-        /// Optional. Current zone distribution mode. Defaults to MULTI_ZONE. 
+        /// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
         ///  Possible values:
         ///  MULTI_ZONE
         /// SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]

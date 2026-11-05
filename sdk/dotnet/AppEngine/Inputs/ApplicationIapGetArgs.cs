@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class ApplicationIapGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+        /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
         /// (default is false)
         /// </summary>
         [Input("enabled")]

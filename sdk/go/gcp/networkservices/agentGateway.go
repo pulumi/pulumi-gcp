@@ -484,6 +484,12 @@ func (AgentGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentGatewayState)(nil)).Elem()
 }
 
+// AgentGatewayExists checks whether an existing AgentGateway resource with the given ID exists.
+func AgentGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/agentGateway:AgentGateway", id, state, "", opts...)
+}
+
 type agentGatewayArgs struct {
 	// The resource name of the AgentConnectivityTemplate.
 	// Must be of format

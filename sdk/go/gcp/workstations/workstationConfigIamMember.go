@@ -448,6 +448,12 @@ func (WorkstationConfigIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workstationConfigIamMemberState)(nil)).Elem()
 }
 
+// WorkstationConfigIamMemberExists checks whether an existing WorkstationConfigIamMember resource with the given ID exists.
+func WorkstationConfigIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkstationConfigIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember", id, state, "", opts...)
+}
+
 type workstationConfigIamMemberArgs struct {
 	Condition *WorkstationConfigIamMemberCondition `pulumi:"condition"`
 	// The location where the workstation cluster config should reside.

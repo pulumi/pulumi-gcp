@@ -225,6 +225,12 @@ func (UserStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userStoreState)(nil)).Elem()
 }
 
+// UserStoreExists checks whether an existing UserStore resource with the given ID exists.
+func UserStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/userStore:UserStore", id, state, "", opts...)
+}
+
 type userStoreArgs struct {
 	// The resource name of the default license config assigned to users created in
 	// this user store. Format:

@@ -1026,6 +1026,42 @@ class EnterpriseKey(pulumi.CustomResource):
         __props__.__dict__["web_settings"] = web_settings
         return EnterpriseKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            android_settings: pulumi.Input[Optional[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict', 'outputs.EnterpriseKeyAndroidSettings']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            express_settings: pulumi.Input[Optional[Union['EnterpriseKeyExpressSettingsArgs', 'EnterpriseKeyExpressSettingsArgsDict', 'outputs.EnterpriseKeyExpressSettings']]] = None,
+            ios_settings: pulumi.Input[Optional[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict', 'outputs.EnterpriseKeyIosSettings']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            testing_options: pulumi.Input[Optional[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict', 'outputs.EnterpriseKeyTestingOptions']]] = None,
+            universal_settings: pulumi.Input[Optional[Union['EnterpriseKeyUniversalSettingsArgs', 'EnterpriseKeyUniversalSettingsArgsDict', 'outputs.EnterpriseKeyUniversalSettings']]] = None,
+            waf_settings: pulumi.Input[Optional[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict', 'outputs.EnterpriseKeyWafSettings']]] = None,
+            web_settings: pulumi.Input[Optional[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict', 'outputs.EnterpriseKeyWebSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["androidSettings"] = android_settings
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["expressSettings"] = express_settings
+        __props__["iosSettings"] = ios_settings
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["testingOptions"] = testing_options
+        __props__["universalSettings"] = universal_settings
+        __props__["wafSettings"] = waf_settings
+        __props__["webSettings"] = web_settings
+        return pulumi.runtime.exists_resource(None, 'gcp:recaptcha/enterpriseKey:EnterpriseKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="androidSettings")
     def android_settings(self) -> pulumi.Output[Optional['outputs.EnterpriseKeyAndroidSettings']]:

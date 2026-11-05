@@ -671,6 +671,30 @@ class OrganizationPolicy(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return OrganizationPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            boolean_policy: pulumi.Input[Optional[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict', 'outputs.OrganizationPolicyBooleanPolicy']]] = None,
+            constraint: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            list_policy: pulumi.Input[Optional[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict', 'outputs.OrganizationPolicyListPolicy']]] = None,
+            restore_policy: pulumi.Input[Optional[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict', 'outputs.OrganizationPolicyRestorePolicy']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["booleanPolicy"] = boolean_policy
+        __props__["constraint"] = constraint
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["etag"] = etag
+        __props__["folder"] = folder
+        __props__["listPolicy"] = list_policy
+        __props__["restorePolicy"] = restore_policy
+        __props__["updateTime"] = update_time
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:folder/organizationPolicy:OrganizationPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="booleanPolicy")
     def boolean_policy(self) -> pulumi.Output[Optional['outputs.OrganizationPolicyBooleanPolicy']]:

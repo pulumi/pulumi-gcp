@@ -253,6 +253,12 @@ func (AppleAppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appleAppState)(nil)).Elem()
 }
 
+// AppleAppExists checks whether an existing AppleApp resource with the given ID exists.
+func AppleAppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppleAppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appleApp:AppleApp", id, state, "", opts...)
+}
+
 type appleAppArgs struct {
 	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
 	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.

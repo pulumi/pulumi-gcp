@@ -290,11 +290,10 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
-     * @deprecated
-     * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+     * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      */
-    @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
+    @Deprecated
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
@@ -306,11 +305,10 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
-     * @deprecated
-     * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+     * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      */
-    @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
     }
@@ -981,11 +979,10 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+         * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
          * 
          */
-        @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
+        @Deprecated
         public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
             $.forceDelete = forceDelete;
             return this;
@@ -1001,11 +998,10 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+         * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
          * 
          */
-        @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
+        @Deprecated
         public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
         }

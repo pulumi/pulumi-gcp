@@ -303,6 +303,12 @@ func (DicomStoreIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreIamMemberState)(nil)).Elem()
 }
 
+// DicomStoreIamMemberExists checks whether an existing DicomStoreIamMember resource with the given ID exists.
+func DicomStoreIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DicomStoreIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember", id, state, "", opts...)
+}
+
 type dicomStoreIamMemberArgs struct {
 	Condition *DicomStoreIamMemberCondition `pulumi:"condition"`
 	// The DICOM store ID, in the form

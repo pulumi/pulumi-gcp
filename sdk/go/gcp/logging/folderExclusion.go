@@ -160,6 +160,12 @@ func (FolderExclusionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderExclusionState)(nil)).Elem()
 }
 
+// FolderExclusionExists checks whether an existing FolderExclusion resource with the given ID exists.
+func FolderExclusionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderExclusionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/folderExclusion:FolderExclusion", id, state, "", opts...)
+}
+
 type folderExclusionArgs struct {
 	// A human-readable description.
 	Description *string `pulumi:"description"`

@@ -948,6 +948,24 @@ class MachineImageIamMember(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return MachineImageIamMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['MachineImageIamMemberConditionArgs', 'MachineImageIamMemberConditionArgsDict', 'outputs.MachineImageIamMemberCondition']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_image: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["etag"] = etag
+        __props__["machineImage"] = machine_image
+        __props__["member"] = member
+        __props__["project"] = project
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/machineImageIamMember:MachineImageIamMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.MachineImageIamMemberCondition']]:

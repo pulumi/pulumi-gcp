@@ -1146,6 +1146,50 @@ class ConversationProfile(pulumi.CustomResource):
         __props__.__dict__["use_bidi_streaming"] = use_bidi_streaming
         return ConversationProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            automated_agent_config: pulumi.Input[Optional[Union['ConversationProfileAutomatedAgentConfigArgs', 'ConversationProfileAutomatedAgentConfigArgsDict', 'outputs.ConversationProfileAutomatedAgentConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            human_agent_assistant_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentAssistantConfigArgs', 'ConversationProfileHumanAgentAssistantConfigArgsDict', 'outputs.ConversationProfileHumanAgentAssistantConfig']]] = None,
+            human_agent_handoff_config: pulumi.Input[Optional[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict', 'outputs.ConversationProfileHumanAgentHandoffConfig']]] = None,
+            language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict', 'outputs.ConversationProfileLoggingConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            new_message_event_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict', 'outputs.ConversationProfileNewMessageEventNotificationConfig']]] = None,
+            new_recognition_result_notification_config: pulumi.Input[Optional[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict', 'outputs.ConversationProfileNewRecognitionResultNotificationConfig']]] = None,
+            notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict', 'outputs.ConversationProfileNotificationConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            security_settings: pulumi.Input[Optional[_builtins.str]] = None,
+            sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict', 'outputs.ConversationProfileSipConfig']]] = None,
+            stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict', 'outputs.ConversationProfileSttConfig']]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict', 'outputs.ConversationProfileTtsConfig']]] = None,
+            use_bidi_streaming: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["automatedAgentConfig"] = automated_agent_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["humanAgentAssistantConfig"] = human_agent_assistant_config
+        __props__["humanAgentHandoffConfig"] = human_agent_handoff_config
+        __props__["languageCode"] = language_code
+        __props__["location"] = location
+        __props__["loggingConfig"] = logging_config
+        __props__["name"] = name
+        __props__["newMessageEventNotificationConfig"] = new_message_event_notification_config
+        __props__["newRecognitionResultNotificationConfig"] = new_recognition_result_notification_config
+        __props__["notificationConfig"] = notification_config
+        __props__["project"] = project
+        __props__["securitySettings"] = security_settings
+        __props__["sipConfig"] = sip_config
+        __props__["sttConfig"] = stt_config
+        __props__["timeZone"] = time_zone
+        __props__["ttsConfig"] = tts_config
+        __props__["useBidiStreaming"] = use_bidi_streaming
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/conversationProfile:ConversationProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="automatedAgentConfig")
     def automated_agent_config(self) -> pulumi.Output[Optional['outputs.ConversationProfileAutomatedAgentConfig']]:

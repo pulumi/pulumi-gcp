@@ -1564,6 +1564,56 @@ class RegionalSecret(pulumi.CustomResource):
         __props__.__dict__["version_destroy_ttl"] = version_destroy_ttl
         return RegionalSecret(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_managed_encryption: pulumi.Input[Optional[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict', 'outputs.RegionalSecretCustomerManagedEncryption']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalSecretPolicyMemberArgs', 'RegionalSecretPolicyMemberArgsDict', 'outputs.RegionalSecretPolicyMember']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rotation: pulumi.Input[Optional[Union['RegionalSecretRotationArgs', 'RegionalSecretRotationArgsDict', 'outputs.RegionalSecretRotation']]] = None,
+            secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalSecretTopicArgs', 'RegionalSecretTopicArgsDict', 'outputs.RegionalSecretTopic']]]]] = None,
+            ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            version_aliases: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version_destroy_ttl: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["createTime"] = create_time
+        __props__["customerManagedEncryption"] = customer_managed_encryption
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["expireTime"] = expire_time
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["policyMembers"] = policy_members
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["rotation"] = rotation
+        __props__["secretId"] = secret_id
+        __props__["secretType"] = secret_type
+        __props__["tags"] = tags
+        __props__["topics"] = topics
+        __props__["ttl"] = ttl
+        __props__["versionAliases"] = version_aliases
+        __props__["versionDestroyTtl"] = version_destroy_ttl
+        return pulumi.runtime.exists_resource(None, 'gcp:secretmanager/regionalSecret:RegionalSecret', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

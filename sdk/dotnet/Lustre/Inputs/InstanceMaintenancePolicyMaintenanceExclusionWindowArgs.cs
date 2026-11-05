@@ -21,12 +21,12 @@ namespace Pulumi.Gcp.Lustre.Inputs
         /// * A month and day, with a zero year (for example, an anniversary).
         /// * A year on its own, with a zero month and a zero day.
         /// * A year and month, with a zero day (for example, a credit card expiration
-        /// date).
-        /// Related types:
+        ///   date).
+        ///   Related types:
         /// * google.type.TimeOfDay
         /// * google.type.DateTime
         /// * google.protobuf.Timestamp
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("endDate", required: true)]
         public Input<Inputs.InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs> EndDate { get; set; } = null!;
@@ -40,12 +40,12 @@ namespace Pulumi.Gcp.Lustre.Inputs
         /// * A month and day, with a zero year (for example, an anniversary).
         /// * A year on its own, with a zero month and a zero day.
         /// * A year and month, with a zero day (for example, a credit card expiration
-        /// date).
-        /// Related types:
+        ///   date).
+        ///   Related types:
         /// * google.type.TimeOfDay
         /// * google.type.DateTime
         /// * google.protobuf.Timestamp
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("startDate", required: true)]
         public Input<Inputs.InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs> StartDate { get; set; } = null!;

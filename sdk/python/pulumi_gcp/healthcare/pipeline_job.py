@@ -1170,6 +1170,36 @@ class PipelineJob(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return PipelineJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backfill_pipeline_job: pulumi.Input[Optional[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict', 'outputs.PipelineJobBackfillPipelineJob']]] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_lineage: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mapping_pipeline_job: pulumi.Input[Optional[Union['PipelineJobMappingPipelineJobArgs', 'PipelineJobMappingPipelineJobArgsDict', 'outputs.PipelineJobMappingPipelineJob']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciliation_pipeline_job: pulumi.Input[Optional[Union['PipelineJobReconciliationPipelineJobArgs', 'PipelineJobReconciliationPipelineJobArgsDict', 'outputs.PipelineJobReconciliationPipelineJob']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backfillPipelineJob"] = backfill_pipeline_job
+        __props__["dataset"] = dataset
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disableLineage"] = disable_lineage
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["mappingPipelineJob"] = mapping_pipeline_job
+        __props__["name"] = name
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciliationPipelineJob"] = reconciliation_pipeline_job
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:healthcare/pipelineJob:PipelineJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backfillPipelineJob")
     def backfill_pipeline_job(self) -> pulumi.Output[Optional['outputs.PipelineJobBackfillPipelineJob']]:

@@ -177,6 +177,12 @@ func (ProjectKajPolicyConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectKajPolicyConfigState)(nil)).Elem()
 }
 
+// ProjectKajPolicyConfigExists checks whether an existing ProjectKajPolicyConfig resource with the given ID exists.
+func ProjectKajPolicyConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectKajPolicyConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig", id, state, "", opts...)
+}
+
 type projectKajPolicyConfigArgs struct {
 	// The default key access justification policy used when a CryptoKey is
 	// created in this project. This is only used when a Key Access Justifications

@@ -610,6 +610,28 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["endpointId"] = endpoint_id
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["port"] = port
+        __props__["service"] = service
+        return pulumi.runtime.exists_resource(None, 'gcp:servicedirectory/endpoint:Endpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[Optional[_builtins.str]]:

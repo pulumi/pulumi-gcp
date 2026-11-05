@@ -221,8 +221,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A set of key/value label pairs assigned to the instance.
         /// 
-        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        ///                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        ///                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.Gcp.Compute
         /// template to create the instance based on. It is recommended to reference
         /// instance templates through their unique id (`SelfLinkUnique` attribute).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("sourceInstanceTemplate")]
         public Output<string> SourceInstanceTemplate { get; private set; } = null!;
@@ -556,8 +556,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A set of key/value label pairs assigned to the instance.
         /// 
-        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        ///                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        ///                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -693,7 +693,7 @@ namespace Pulumi.Gcp.Compute
         /// template to create the instance based on. It is recommended to reference
         /// instance templates through their unique id (`SelfLinkUnique` attribute).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("sourceInstanceTemplate", required: true)]
         public Input<string> SourceInstanceTemplate { get; set; } = null!;
@@ -905,8 +905,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A set of key/value label pairs assigned to the instance.
         /// 
-        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        ///                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        ///                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1070,7 +1070,7 @@ namespace Pulumi.Gcp.Compute
         /// template to create the instance based on. It is recommended to reference
         /// instance templates through their unique id (`SelfLinkUnique` attribute).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("sourceInstanceTemplate")]
         public Input<string>? SourceInstanceTemplate { get; set; }

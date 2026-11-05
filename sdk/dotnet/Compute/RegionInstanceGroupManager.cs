@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Compute
         /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
         /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
@@ -329,7 +329,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Resource policies for this managed instance group. Structure is documented below.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("resourcePolicies")]
         public Output<Outputs.RegionInstanceGroupManagerResourcePolicies?> ResourcePolicies { get; private set; } = null!;
@@ -517,7 +517,7 @@ namespace Pulumi.Gcp.Compute
         /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
         /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -615,7 +615,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Resource policies for this managed instance group. Structure is documented below.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("resourcePolicies")]
         public Input<Inputs.RegionInstanceGroupManagerResourcePoliciesArgs>? ResourcePolicies { get; set; }
@@ -795,7 +795,7 @@ namespace Pulumi.Gcp.Compute
         /// When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG waits for all instances to shut down gracefully before deletion.
         /// When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -911,7 +911,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Resource policies for this managed instance group. Structure is documented below.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("resourcePolicies")]
         public Input<Inputs.RegionInstanceGroupManagerResourcePoliciesGetArgs>? ResourcePolicies { get; set; }

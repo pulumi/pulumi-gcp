@@ -264,6 +264,12 @@ func (DomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainState)(nil)).Elem()
 }
 
+// DomainExists checks whether an existing Domain resource with the given ID exists.
+func DomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:activedirectory/domain:Domain", id, state, "", opts...)
+}
+
 type domainArgs struct {
 	// The name of delegated administrator account used to perform Active Directory operations.
 	// If not specified, setupadmin will be used.

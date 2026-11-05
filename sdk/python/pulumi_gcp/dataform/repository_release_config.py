@@ -800,6 +800,34 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return RepositoryReleaseConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict', 'outputs.RepositoryReleaseConfigCodeCompilationConfig']]] = None,
+            cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_commitish: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recent_scheduled_release_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryReleaseConfigRecentScheduledReleaseRecordArgs', 'RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict', 'outputs.RepositoryReleaseConfigRecentScheduledReleaseRecord']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["codeCompilationConfig"] = code_compilation_config
+        __props__["cronSchedule"] = cron_schedule
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disabled"] = disabled
+        __props__["gitCommitish"] = git_commitish
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["recentScheduledReleaseRecords"] = recent_scheduled_release_records
+        __props__["region"] = region
+        __props__["repository"] = repository
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="codeCompilationConfig")
     def code_compilation_config(self) -> pulumi.Output[Optional['outputs.RepositoryReleaseConfigCodeCompilationConfig']]:

@@ -1038,6 +1038,44 @@ class IcebergCatalog(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return IcebergCatalog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            biglake_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            biglake_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            default_location: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict', 'outputs.IcebergCatalogFederatedCatalogOptions']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            replicas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IcebergCatalogReplicaArgs', 'IcebergCatalogReplicaArgsDict', 'outputs.IcebergCatalogReplica']]]]] = None,
+            restricted_locations_config: pulumi.Input[Optional[Union['IcebergCatalogRestrictedLocationsConfigArgs', 'IcebergCatalogRestrictedLocationsConfigArgsDict', 'outputs.IcebergCatalogRestrictedLocationsConfig']]] = None,
+            storage_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["biglakeServiceAccount"] = biglake_service_account
+        __props__["biglakeServiceAccountId"] = biglake_service_account_id
+        __props__["catalogType"] = catalog_type
+        __props__["createTime"] = create_time
+        __props__["credentialMode"] = credential_mode
+        __props__["defaultLocation"] = default_location
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["federatedCatalogOptions"] = federated_catalog_options
+        __props__["name"] = name
+        __props__["primaryLocation"] = primary_location
+        __props__["project"] = project
+        __props__["replicas"] = replicas
+        __props__["restrictedLocationsConfig"] = restricted_locations_config
+        __props__["storageRegions"] = storage_regions
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:biglake/icebergCatalog:IcebergCatalog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="biglakeServiceAccount")
     def biglake_service_account(self) -> pulumi.Output[_builtins.str]:

@@ -501,6 +501,30 @@ class CryptoKeyVersion(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return CryptoKeyVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict', 'outputs.CryptoKeyVersionAttestation']]]]] = None,
+            crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict', 'outputs.CryptoKeyVersionExternalProtectionLevelOptions']]] = None,
+            generate_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["algorithm"] = algorithm
+        __props__["attestations"] = attestations
+        __props__["cryptoKey"] = crypto_key
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["externalProtectionLevelOptions"] = external_protection_level_options
+        __props__["generateTime"] = generate_time
+        __props__["name"] = name
+        __props__["protectionLevel"] = protection_level
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:kms/cryptoKeyVersion:CryptoKeyVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[_builtins.str]:

@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly ImmutableArray<string> OptionalComponents;
         /// <summary>

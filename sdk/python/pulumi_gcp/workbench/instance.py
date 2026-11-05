@@ -1561,6 +1561,58 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["upgrade_histories"] = upgrade_histories
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+            gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict', 'outputs.InstanceGceSetup']]] = None,
+            health_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict', 'outputs.InstanceHealthInfo']]]]] = None,
+            health_state: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_histories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict', 'outputs.InstanceUpgradeHistory']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["desiredState"] = desired_state
+        __props__["disableProxyAccess"] = disable_proxy_access
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableDeletionProtection"] = enable_deletion_protection
+        __props__["enableManagedEuc"] = enable_managed_euc
+        __props__["enableThirdPartyIdentity"] = enable_third_party_identity
+        __props__["gceSetup"] = gce_setup
+        __props__["healthInfos"] = health_infos
+        __props__["healthState"] = health_state
+        __props__["instanceId"] = instance_id
+        __props__["instanceOwners"] = instance_owners
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["proxyUri"] = proxy_uri
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        __props__["upgradeHistories"] = upgrade_histories
+        return pulumi.runtime.exists_resource(None, 'gcp:workbench/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

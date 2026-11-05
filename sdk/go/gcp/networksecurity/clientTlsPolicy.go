@@ -272,6 +272,12 @@ func (ClientTlsPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientTlsPolicyState)(nil)).Elem()
 }
 
+// ClientTlsPolicyExists checks whether an existing ClientTlsPolicy resource with the given ID exists.
+func ClientTlsPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientTlsPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy", id, state, "", opts...)
+}
+
 type clientTlsPolicyArgs struct {
 	// Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 	// Structure is documented below.

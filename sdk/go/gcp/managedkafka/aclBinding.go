@@ -276,6 +276,12 @@ func (AclBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclBindingState)(nil)).Elem()
 }
 
+// AclBindingExists checks whether an existing AclBinding resource with the given ID exists.
+func AclBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:managedkafka/aclBinding:AclBinding", id, state, "", opts...)
+}
+
 type aclBindingArgs struct {
 	// The ID of the acl this entry belongs to, which is the final component
 	// of the acl's name. The structure of `aclId` defines the Resource

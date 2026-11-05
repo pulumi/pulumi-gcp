@@ -512,6 +512,32 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return KeystoresAliasesKeyCertFile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict', 'outputs.KeystoresAliasesKeyCertFileCertsInfo']]]]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            keystore: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict', 'outputs.KeystoresAliasesKeyCertFileTimeouts']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alias"] = alias
+        __props__["cert"] = cert
+        __props__["certsInfos"] = certs_infos
+        __props__["environment"] = environment
+        __props__["key"] = key
+        __props__["keystore"] = keystore
+        __props__["orgId"] = org_id
+        __props__["password"] = password
+        __props__["timeouts"] = timeouts
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def alias(self) -> pulumi.Output[_builtins.str]:

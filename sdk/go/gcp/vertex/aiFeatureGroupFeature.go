@@ -289,6 +289,12 @@ func (AiFeatureGroupFeatureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiFeatureGroupFeatureState)(nil)).Elem()
 }
 
+// AiFeatureGroupFeatureExists checks whether an existing AiFeatureGroupFeature resource with the given ID exists.
+func AiFeatureGroupFeatureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureGroupFeatureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature", id, state, "", opts...)
+}
+
 type aiFeatureGroupFeatureArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

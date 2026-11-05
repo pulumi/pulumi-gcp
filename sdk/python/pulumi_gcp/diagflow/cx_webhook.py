@@ -1192,6 +1192,36 @@ class CxWebhook(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         return CxWebhook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            generic_web_service: pulumi.Input[Optional[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict', 'outputs.CxWebhookGenericWebService']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            security_settings: pulumi.Input[Optional[_builtins.str]] = None,
+            service_directory: pulumi.Input[Optional[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict', 'outputs.CxWebhookServiceDirectory']]] = None,
+            start_flow: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["enableSpellCorrection"] = enable_spell_correction
+        __props__["enableStackdriverLogging"] = enable_stackdriver_logging
+        __props__["genericWebService"] = generic_web_service
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["securitySettings"] = security_settings
+        __props__["serviceDirectory"] = service_directory
+        __props__["startFlow"] = start_flow
+        __props__["timeout"] = timeout
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxWebhook:CxWebhook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

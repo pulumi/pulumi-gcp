@@ -430,6 +430,26 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         return ServicePerimeterEgressPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_from: pulumi.Input[Optional[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict', 'outputs.ServicePerimeterEgressPolicyEgressFrom']]] = None,
+            egress_to: pulumi.Input[Optional[Union['ServicePerimeterEgressPolicyEgressToArgs', 'ServicePerimeterEgressPolicyEgressToArgsDict', 'outputs.ServicePerimeterEgressPolicyEgressTo']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            perimeter: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPolicyId"] = access_policy_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["egressFrom"] = egress_from
+        __props__["egressTo"] = egress_to
+        __props__["etag"] = etag
+        __props__["perimeter"] = perimeter
+        __props__["title"] = title
+        return pulumi.runtime.exists_resource(None, 'gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPolicyId")
     def access_policy_id(self) -> pulumi.Output[_builtins.str]:

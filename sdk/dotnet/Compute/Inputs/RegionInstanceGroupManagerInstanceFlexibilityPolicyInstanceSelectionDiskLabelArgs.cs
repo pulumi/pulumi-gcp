@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// , The value of the label to assign to disks.
-        /// - - -
+        /// ***
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Amazon S3 bucket conditions.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions"&gt;&lt;/a&gt;The `AmazonS3BucketConditions` block supports:
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions? AmazonS3BucketConditions;

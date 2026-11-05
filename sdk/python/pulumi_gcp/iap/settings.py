@@ -636,6 +636,20 @@ class Settings(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return Settings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict', 'outputs.SettingsAccessSettings']]] = None,
+            application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict', 'outputs.SettingsApplicationSettings']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessSettings"] = access_settings
+        __props__["applicationSettings"] = application_settings
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'gcp:iap/settings:Settings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessSettings")
     def access_settings(self) -> pulumi.Output[Optional['outputs.SettingsAccessSettings']]:

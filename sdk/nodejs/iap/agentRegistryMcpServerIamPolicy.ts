@@ -314,6 +314,17 @@ export class AgentRegistryMcpServerIamPolicy extends pulumi.CustomResource {
         return new AgentRegistryMcpServerIamPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing AgentRegistryMcpServerIamPolicy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: AgentRegistryMcpServerIamPolicyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gcp:iap/agentRegistryMcpServerIamPolicy:AgentRegistryMcpServerIamPolicy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gcp:iap/agentRegistryMcpServerIamPolicy:AgentRegistryMcpServerIamPolicy';
 

@@ -379,6 +379,12 @@ func (RuntimeTemplateIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*runtimeTemplateIamPolicyState)(nil)).Elem()
 }
 
+// RuntimeTemplateIamPolicyExists checks whether an existing RuntimeTemplateIamPolicy resource with the given ID exists.
+func RuntimeTemplateIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuntimeTemplateIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:colab/runtimeTemplateIamPolicy:RuntimeTemplateIamPolicy", id, state, "", opts...)
+}
+
 type runtimeTemplateIamPolicyArgs struct {
 	// The location for the resource: https://cloud.google.com/colab/docs/locations Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

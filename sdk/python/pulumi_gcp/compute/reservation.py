@@ -1277,6 +1277,56 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return Reservation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            block_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            commitment: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict', 'outputs.ReservationDeleteAfterDuration']]] = None,
+            delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_commitments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['ReservationParamsArgs', 'ReservationParamsArgsDict', 'outputs.ReservationParams']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict', 'outputs.ReservationReservationSharingPolicy']]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict', 'outputs.ReservationResourceStatus']]]]] = None,
+            satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict', 'outputs.ReservationShareSettings']]] = None,
+            specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict', 'outputs.ReservationSpecificReservation']]] = None,
+            specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["blockNames"] = block_names
+        __props__["commitment"] = commitment
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deleteAfterDuration"] = delete_after_duration
+        __props__["deleteAtTime"] = delete_at_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["enableEmergentMaintenance"] = enable_emergent_maintenance
+        __props__["kind"] = kind
+        __props__["linkedCommitments"] = linked_commitments
+        __props__["name"] = name
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["reservationSharingPolicy"] = reservation_sharing_policy
+        __props__["resourceStatuses"] = resource_statuses
+        __props__["satisfiesPzs"] = satisfies_pzs
+        __props__["selfLink"] = self_link
+        __props__["shareSettings"] = share_settings
+        __props__["specificReservation"] = specific_reservation
+        __props__["specificReservationRequired"] = specific_reservation_required
+        __props__["status"] = status
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/reservation:Reservation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="blockNames")
     def block_names(self) -> pulumi.Output[Sequence[_builtins.str]]:

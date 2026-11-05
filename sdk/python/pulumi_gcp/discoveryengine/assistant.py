@@ -862,6 +862,38 @@ class Assistant(pulumi.CustomResource):
         __props__.__dict__["web_grounding_type"] = web_grounding_type
         return Assistant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_policy: pulumi.Input[Optional[Union['AssistantCustomerPolicyArgs', 'AssistantCustomerPolicyArgsDict', 'outputs.AssistantCustomerPolicy']]] = None,
+            default_web_grounding_toggle_off: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+            generation_config: pulumi.Input[Optional[Union['AssistantGenerationConfigArgs', 'AssistantGenerationConfigArgsDict', 'outputs.AssistantGenerationConfig']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            web_grounding_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assistantId"] = assistant_id
+        __props__["collectionId"] = collection_id
+        __props__["customerPolicy"] = customer_policy
+        __props__["defaultWebGroundingToggleOff"] = default_web_grounding_toggle_off
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["engineId"] = engine_id
+        __props__["generationConfig"] = generation_config
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["webGroundingType"] = web_grounding_type
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/assistant:Assistant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assistantId")
     def assistant_id(self) -> pulumi.Output[_builtins.str]:

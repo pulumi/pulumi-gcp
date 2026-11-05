@@ -805,6 +805,12 @@ func (AiFeatureOnlineStoreFeatureviewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiFeatureOnlineStoreFeatureviewState)(nil)).Elem()
 }
 
+// AiFeatureOnlineStoreFeatureviewExists checks whether an existing AiFeatureOnlineStoreFeatureview resource with the given ID exists.
+func AiFeatureOnlineStoreFeatureviewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureOnlineStoreFeatureviewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview", id, state, "", opts...)
+}
+
 type aiFeatureOnlineStoreFeatureviewArgs struct {
 	// Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
 	// Structure is documented below.

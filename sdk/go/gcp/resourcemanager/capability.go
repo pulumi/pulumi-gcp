@@ -154,6 +154,12 @@ func (CapabilityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*capabilityState)(nil)).Elem()
 }
 
+// CapabilityExists checks whether an existing Capability resource with the given ID exists.
+func CapabilityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CapabilityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:resourcemanager/capability:Capability", id, state, "", opts...)
+}
+
 type capabilityArgs struct {
 	// Capability name that should be updated on the folder.
 	CapabilityName string `pulumi:"capabilityName"`

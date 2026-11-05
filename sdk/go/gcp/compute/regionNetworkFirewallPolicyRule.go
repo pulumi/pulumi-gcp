@@ -723,6 +723,12 @@ func (RegionNetworkFirewallPolicyRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionNetworkFirewallPolicyRuleState)(nil)).Elem()
 }
 
+// RegionNetworkFirewallPolicyRuleExists checks whether an existing RegionNetworkFirewallPolicyRule resource with the given ID exists.
+func RegionNetworkFirewallPolicyRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionNetworkFirewallPolicyRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule", id, state, "", opts...)
+}
+
 type regionNetworkFirewallPolicyRuleArgs struct {
 	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action string `pulumi:"action"`

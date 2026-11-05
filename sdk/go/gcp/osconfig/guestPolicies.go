@@ -445,6 +445,12 @@ func (GuestPoliciesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*guestPoliciesState)(nil)).Elem()
 }
 
+// GuestPoliciesExists checks whether an existing GuestPolicies resource with the given ID exists.
+func GuestPoliciesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GuestPoliciesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:osconfig/guestPolicies:GuestPolicies", id, state, "", opts...)
+}
+
 type guestPoliciesArgs struct {
 	// Specifies the VM instances that are assigned to this policy. This allows you to target sets
 	// or groups of VM instances by different parameters such as labels, names, OS, or zones.

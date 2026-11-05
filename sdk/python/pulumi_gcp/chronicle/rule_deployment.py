@@ -927,6 +927,42 @@ class RuleDeployment(pulumi.CustomResource):
         __props__.__dict__["schedule_customizations"] = schedule_customizations
         return RuleDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alerting: pulumi.Input[Optional[_builtins.bool]] = None,
+            archive_time: pulumi.Input[Optional[_builtins.str]] = None,
+            archived: pulumi.Input[Optional[_builtins.bool]] = None,
+            consumer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            execution_state: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            last_alert_status_change_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            producer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict', 'outputs.RuleDeploymentScheduleCustomizations']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alerting"] = alerting
+        __props__["archiveTime"] = archive_time
+        __props__["archived"] = archived
+        __props__["consumerRules"] = consumer_rules
+        __props__["enabled"] = enabled
+        __props__["executionState"] = execution_state
+        __props__["instance"] = instance
+        __props__["lastAlertStatusChangeTime"] = last_alert_status_change_time
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["producerRules"] = producer_rules
+        __props__["project"] = project
+        __props__["rule"] = rule
+        __props__["runFrequency"] = run_frequency
+        __props__["scheduleCustomizations"] = schedule_customizations
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/ruleDeployment:RuleDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def alerting(self) -> pulumi.Output[Optional[_builtins.bool]]:

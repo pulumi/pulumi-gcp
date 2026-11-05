@@ -1258,6 +1258,56 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         __props__.__dict__["vpn_tunnel"] = vpn_tunnel
         return VpcFlowLogsConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_sampling: pulumi.Input[Optional[_builtins.float]] = None,
+            interconnect_attachment: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            target_resource_state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_flow_logs_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregationInterval"] = aggregation_interval
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["filterExpr"] = filter_expr
+        __props__["flowSampling"] = flow_sampling
+        __props__["interconnectAttachment"] = interconnect_attachment
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["metadata"] = metadata
+        __props__["metadataFields"] = metadata_fields
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["state"] = state
+        __props__["subnet"] = subnet
+        __props__["targetResourceState"] = target_resource_state
+        __props__["updateTime"] = update_time
+        __props__["vpcFlowLogsConfigId"] = vpc_flow_logs_config_id
+        __props__["vpnTunnel"] = vpn_tunnel
+        return pulumi.runtime.exists_resource(None, 'gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> pulumi.Output[_builtins.str]:

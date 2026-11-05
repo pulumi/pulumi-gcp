@@ -951,6 +951,34 @@ class Queue(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return Queue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict', 'outputs.QueueAppEngineRoutingOverride']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict', 'outputs.QueueHttpTarget']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rate_limits: pulumi.Input[Optional[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict', 'outputs.QueueRateLimits']]] = None,
+            retry_config: pulumi.Input[Optional[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict', 'outputs.QueueRetryConfig']]] = None,
+            stackdriver_logging_config: pulumi.Input[Optional[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict', 'outputs.QueueStackdriverLoggingConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appEngineRoutingOverride"] = app_engine_routing_override
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["desiredState"] = desired_state
+        __props__["httpTarget"] = http_target
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["rateLimits"] = rate_limits
+        __props__["retryConfig"] = retry_config
+        __props__["stackdriverLoggingConfig"] = stackdriver_logging_config
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudtasks/queue:Queue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appEngineRoutingOverride")
     def app_engine_routing_override(self) -> pulumi.Output[Optional['outputs.QueueAppEngineRoutingOverride']]:

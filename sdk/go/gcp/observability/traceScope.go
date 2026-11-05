@@ -223,6 +223,12 @@ func (TraceScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*traceScopeState)(nil)).Elem()
 }
 
+// TraceScopeExists checks whether an existing TraceScope resource with the given ID exists.
+func TraceScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TraceScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:observability/traceScope:TraceScope", id, state, "", opts...)
+}
+
 type traceScopeArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

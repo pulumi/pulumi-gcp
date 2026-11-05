@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// This field may only be specified when versionedExpr is set to FIREWALL.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedMatchConfigLayer4Config"&gt;&lt;/a&gt;The `Layer4Config` block supports:
         /// </summary>
         public InputList<Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigGetArgs> Layer4Configs

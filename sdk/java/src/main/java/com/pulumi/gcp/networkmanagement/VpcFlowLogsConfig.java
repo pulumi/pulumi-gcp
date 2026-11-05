@@ -509,7 +509,7 @@ public class VpcFlowLogsConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. Custom metadata fields to include in the reported VPC flow
-     * logs. Can only be specified if \&#34;metadata\&#34; was set to CUSTOM_METADATA.
+     * logs. Can only be specified if &#92;&#34;metadata&#92;&#34; was set to CUSTOM_METADATA.
      * 
      */
     @Export(name="metadataFields", refs={List.class,String.class}, tree="[0,1]")
@@ -517,7 +517,7 @@ public class VpcFlowLogsConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. Custom metadata fields to include in the reported VPC flow
-     * logs. Can only be specified if \&#34;metadata\&#34; was set to CUSTOM_METADATA.
+     * logs. Can only be specified if &#92;&#34;metadata&#92;&#34; was set to CUSTOM_METADATA.
      * 
      */
     public Output<Optional<List<String>>> metadataFields() {

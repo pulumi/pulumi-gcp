@@ -204,6 +204,12 @@ func (DocumentAiWarehouseDocumentSchemaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*documentAiWarehouseDocumentSchemaState)(nil)).Elem()
 }
 
+// DocumentAiWarehouseDocumentSchemaExists checks whether an existing DocumentAiWarehouseDocumentSchema resource with the given ID exists.
+func DocumentAiWarehouseDocumentSchemaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DocumentAiWarehouseDocumentSchemaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema", id, state, "", opts...)
+}
+
 type documentAiWarehouseDocumentSchemaArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -341,6 +341,12 @@ func (SubscriptionIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionIAMBindingState)(nil)).Elem()
 }
 
+// SubscriptionIAMBindingExists checks whether an existing SubscriptionIAMBinding resource with the given ID exists.
+func SubscriptionIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubscriptionIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", id, state, "", opts...)
+}
+
 type subscriptionIAMBindingArgs struct {
 	Condition *SubscriptionIAMBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -648,6 +648,12 @@ func (SecretIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretIamBindingState)(nil)).Elem()
 }
 
+// SecretIamBindingExists checks whether an existing SecretIamBinding resource with the given ID exists.
+func SecretIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:secretmanager/secretIamBinding:SecretIamBinding", id, state, "", opts...)
+}
+
 type secretIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

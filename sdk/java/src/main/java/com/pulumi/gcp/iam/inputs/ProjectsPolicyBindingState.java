@@ -44,22 +44,22 @@ public final class ProjectsPolicyBindingState extends com.pulumi.resources.Resou
      * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
      * CEL are documented at https://github.com/google/cel-spec.
      * Example (Comparison):
-     * title: \&#34;Summary size limit\&#34;
-     * description: \&#34;Determines if a summary is less than 100 chars\&#34;
-     * expression: \&#34;document.summary.size() &lt; 100\&#34;
+     * title: &#92;&#34;Summary size limit&#92;&#34;
+     * description: &#92;&#34;Determines if a summary is less than 100 chars&#92;&#34;
+     * expression: &#92;&#34;document.summary.size() &lt; 100&#92;&#34;
      * Example
      * (Equality):
-     * title: \&#34;Requestor is owner\&#34;
-     * description: \&#34;Determines if requestor is the document owner\&#34;
-     * expression: \&#34;document.owner == request.auth.claims.email\&#34;  Example
+     * title: &#92;&#34;Requestor is owner&#92;&#34;
+     * description: &#92;&#34;Determines if requestor is the document owner&#92;&#34;
+     * expression: &#92;&#34;document.owner == request.auth.claims.email&#92;&#34;  Example
      * (Logic):
-     * title: \&#34;Public documents\&#34;
-     * description: \&#34;Determine whether the document should be publicly visible\&#34;
-     * expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;\&#34;
+     * title: &#92;&#34;Public documents&#92;&#34;
+     * description: &#92;&#34;Determine whether the document should be publicly visible&#92;&#34;
+     * expression: &#92;&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;&#92;&#34;
      * Example (Data Manipulation):
-     * title: \&#34;Notification string\&#34;
-     * description: \&#34;Create a notification string with a timestamp.\&#34;
-     * expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34;
+     * title: &#92;&#34;Notification string&#92;&#34;
+     * description: &#92;&#34;Create a notification string with a timestamp.&#92;&#34;
+     * expression: &#92;&#34;&#39;New message received at &#39; + string(document.create_time)&#92;&#34;
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
@@ -75,22 +75,22 @@ public final class ProjectsPolicyBindingState extends com.pulumi.resources.Resou
      * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
      * CEL are documented at https://github.com/google/cel-spec.
      * Example (Comparison):
-     * title: \&#34;Summary size limit\&#34;
-     * description: \&#34;Determines if a summary is less than 100 chars\&#34;
-     * expression: \&#34;document.summary.size() &lt; 100\&#34;
+     * title: &#92;&#34;Summary size limit&#92;&#34;
+     * description: &#92;&#34;Determines if a summary is less than 100 chars&#92;&#34;
+     * expression: &#92;&#34;document.summary.size() &lt; 100&#92;&#34;
      * Example
      * (Equality):
-     * title: \&#34;Requestor is owner\&#34;
-     * description: \&#34;Determines if requestor is the document owner\&#34;
-     * expression: \&#34;document.owner == request.auth.claims.email\&#34;  Example
+     * title: &#92;&#34;Requestor is owner&#92;&#34;
+     * description: &#92;&#34;Determines if requestor is the document owner&#92;&#34;
+     * expression: &#92;&#34;document.owner == request.auth.claims.email&#92;&#34;  Example
      * (Logic):
-     * title: \&#34;Public documents\&#34;
-     * description: \&#34;Determine whether the document should be publicly visible\&#34;
-     * expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;\&#34;
+     * title: &#92;&#34;Public documents&#92;&#34;
+     * description: &#92;&#34;Determine whether the document should be publicly visible&#92;&#34;
+     * expression: &#92;&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;&#92;&#34;
      * Example (Data Manipulation):
-     * title: \&#34;Notification string\&#34;
-     * description: \&#34;Create a notification string with a timestamp.\&#34;
-     * expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34;
+     * title: &#92;&#34;Notification string&#92;&#34;
+     * description: &#92;&#34;Create a notification string with a timestamp.&#92;&#34;
+     * expression: &#92;&#34;&#39;New message received at &#39; + string(document.create_time)&#92;&#34;
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
@@ -421,22 +421,22 @@ public final class ProjectsPolicyBindingState extends com.pulumi.resources.Resou
          * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
          * CEL are documented at https://github.com/google/cel-spec.
          * Example (Comparison):
-         * title: \&#34;Summary size limit\&#34;
-         * description: \&#34;Determines if a summary is less than 100 chars\&#34;
-         * expression: \&#34;document.summary.size() &lt; 100\&#34;
+         * title: &#92;&#34;Summary size limit&#92;&#34;
+         * description: &#92;&#34;Determines if a summary is less than 100 chars&#92;&#34;
+         * expression: &#92;&#34;document.summary.size() &lt; 100&#92;&#34;
          * Example
          * (Equality):
-         * title: \&#34;Requestor is owner\&#34;
-         * description: \&#34;Determines if requestor is the document owner\&#34;
-         * expression: \&#34;document.owner == request.auth.claims.email\&#34;  Example
+         * title: &#92;&#34;Requestor is owner&#92;&#34;
+         * description: &#92;&#34;Determines if requestor is the document owner&#92;&#34;
+         * expression: &#92;&#34;document.owner == request.auth.claims.email&#92;&#34;  Example
          * (Logic):
-         * title: \&#34;Public documents\&#34;
-         * description: \&#34;Determine whether the document should be publicly visible\&#34;
-         * expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;\&#34;
+         * title: &#92;&#34;Public documents&#92;&#34;
+         * description: &#92;&#34;Determine whether the document should be publicly visible&#92;&#34;
+         * expression: &#92;&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;&#92;&#34;
          * Example (Data Manipulation):
-         * title: \&#34;Notification string\&#34;
-         * description: \&#34;Create a notification string with a timestamp.\&#34;
-         * expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34;
+         * title: &#92;&#34;Notification string&#92;&#34;
+         * description: &#92;&#34;Create a notification string with a timestamp.&#92;&#34;
+         * expression: &#92;&#34;&#39;New message received at &#39; + string(document.create_time)&#92;&#34;
          * The exact variables and functions that may be referenced within an expression are
          * determined by the service that evaluates it. See the service documentation for
          * additional information.
@@ -456,22 +456,22 @@ public final class ProjectsPolicyBindingState extends com.pulumi.resources.Resou
          * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
          * CEL are documented at https://github.com/google/cel-spec.
          * Example (Comparison):
-         * title: \&#34;Summary size limit\&#34;
-         * description: \&#34;Determines if a summary is less than 100 chars\&#34;
-         * expression: \&#34;document.summary.size() &lt; 100\&#34;
+         * title: &#92;&#34;Summary size limit&#92;&#34;
+         * description: &#92;&#34;Determines if a summary is less than 100 chars&#92;&#34;
+         * expression: &#92;&#34;document.summary.size() &lt; 100&#92;&#34;
          * Example
          * (Equality):
-         * title: \&#34;Requestor is owner\&#34;
-         * description: \&#34;Determines if requestor is the document owner\&#34;
-         * expression: \&#34;document.owner == request.auth.claims.email\&#34;  Example
+         * title: &#92;&#34;Requestor is owner&#92;&#34;
+         * description: &#92;&#34;Determines if requestor is the document owner&#92;&#34;
+         * expression: &#92;&#34;document.owner == request.auth.claims.email&#92;&#34;  Example
          * (Logic):
-         * title: \&#34;Public documents\&#34;
-         * description: \&#34;Determine whether the document should be publicly visible\&#34;
-         * expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;\&#34;
+         * title: &#92;&#34;Public documents&#92;&#34;
+         * description: &#92;&#34;Determine whether the document should be publicly visible&#92;&#34;
+         * expression: &#92;&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;&#92;&#34;
          * Example (Data Manipulation):
-         * title: \&#34;Notification string\&#34;
-         * description: \&#34;Create a notification string with a timestamp.\&#34;
-         * expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34;
+         * title: &#92;&#34;Notification string&#92;&#34;
+         * description: &#92;&#34;Create a notification string with a timestamp.&#92;&#34;
+         * expression: &#92;&#34;&#39;New message received at &#39; + string(document.create_time)&#92;&#34;
          * The exact variables and functions that may be referenced within an expression are
          * determined by the service that evaluates it. See the service documentation for
          * additional information.

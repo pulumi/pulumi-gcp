@@ -476,6 +476,12 @@ func (IcebergCatalogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*icebergCatalogState)(nil)).Elem()
 }
 
+// IcebergCatalogExists checks whether an existing IcebergCatalog resource with the given ID exists.
+func IcebergCatalogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IcebergCatalogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/icebergCatalog:IcebergCatalog", id, state, "", opts...)
+}
+
 type icebergCatalogArgs struct {
 	// The catalog type of the IcebergCatalog.
 	// * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.

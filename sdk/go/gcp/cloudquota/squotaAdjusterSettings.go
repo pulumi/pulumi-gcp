@@ -176,6 +176,12 @@ func (SQuotaAdjusterSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*squotaAdjusterSettingsState)(nil)).Elem()
 }
 
+// SQuotaAdjusterSettingsExists checks whether an existing SQuotaAdjusterSettings resource with the given ID exists.
+func SQuotaAdjusterSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SQuotaAdjusterSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings", id, state, "", opts...)
+}
+
 type squotaAdjusterSettingsArgs struct {
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.

@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Monitoring
         /// and third-party messaging applications. Fields containing sensitive information
         /// like authentication tokens or contact info are only partially populated on retrieval.
         /// 
-        /// 
         /// To get more information about NotificationChannel, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
@@ -25,11 +24,9 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Notification Channel Basic
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -87,7 +84,6 @@ namespace Pulumi.Gcp.Monitoring
         /// and third-party messaging applications. Fields containing sensitive information
         /// like authentication tokens or contact info are only partially populated on retrieval.
         /// 
-        /// 
         /// To get more information about NotificationChannel, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
@@ -95,11 +91,9 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Notification Channel Basic
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -157,7 +151,6 @@ namespace Pulumi.Gcp.Monitoring
         /// and third-party messaging applications. Fields containing sensitive information
         /// like authentication tokens or contact info are only partially populated on retrieval.
         /// 
-        /// 
         /// To get more information about NotificationChannel, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
@@ -165,11 +158,9 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ### Notification Channel Basic
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -254,7 +245,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The type of the notification channel.
         /// 
-        /// - - -
+        /// ***
         /// 
         /// Other optional fields include:
         /// </summary>
@@ -310,7 +301,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The type of the notification channel.
         /// 
-        /// - - -
+        /// ***
         /// 
         /// Other optional fields include:
         /// </summary>

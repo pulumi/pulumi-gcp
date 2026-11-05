@@ -2315,6 +2315,88 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["users"] = users
         return RegionDisk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            async_primary_disk: pulumi.Input[Optional[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict', 'outputs.RegionDiskAsyncPrimaryDisk']]] = None,
+            create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption_key: pulumi.Input[Optional[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict', 'outputs.RegionDiskDiskEncryptionKey']]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
+            guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict', 'outputs.RegionDiskGuestOsFeature']]]]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            interface: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_attach_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            last_detach_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+            provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_image_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceImageEncryptionKeyArgs', 'RegionDiskSourceImageEncryptionKeyArgsDict', 'outputs.RegionDiskSourceImageEncryptionKey']]] = None,
+            source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_snapshot_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict', 'outputs.RegionDiskSourceSnapshotEncryptionKey']]] = None,
+            source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["asyncPrimaryDisk"] = async_primary_disk
+        __props__["createSnapshotBeforeDestroy"] = create_snapshot_before_destroy
+        __props__["createSnapshotBeforeDestroyPrefix"] = create_snapshot_before_destroy_prefix
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["diskEncryptionKey"] = disk_encryption_key
+        __props__["diskId"] = disk_id
+        __props__["effectiveLabels"] = effective_labels
+        __props__["eraseWindowsVssSignature"] = erase_windows_vss_signature
+        __props__["guestOsFeatures"] = guest_os_features
+        __props__["image"] = image
+        __props__["interface"] = interface
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["lastAttachTimestamp"] = last_attach_timestamp
+        __props__["lastDetachTimestamp"] = last_detach_timestamp
+        __props__["licenses"] = licenses
+        __props__["name"] = name
+        __props__["physicalBlockSizeBytes"] = physical_block_size_bytes
+        __props__["project"] = project
+        __props__["provisionedIops"] = provisioned_iops
+        __props__["provisionedThroughput"] = provisioned_throughput
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["replicaZones"] = replica_zones
+        __props__["selfLink"] = self_link
+        __props__["size"] = size
+        __props__["snapshot"] = snapshot
+        __props__["sourceDisk"] = source_disk
+        __props__["sourceDiskId"] = source_disk_id
+        __props__["sourceImageEncryptionKey"] = source_image_encryption_key
+        __props__["sourceImageId"] = source_image_id
+        __props__["sourceSnapshotEncryptionKey"] = source_snapshot_encryption_key
+        __props__["sourceSnapshotId"] = source_snapshot_id
+        __props__["type"] = type
+        __props__["users"] = users
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionDisk:RegionDisk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[_builtins.str]:

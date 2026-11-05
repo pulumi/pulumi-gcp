@@ -308,6 +308,12 @@ func (AuthorizationPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizationPolicyState)(nil)).Elem()
 }
 
+// AuthorizationPolicyExists checks whether an existing AuthorizationPolicy resource with the given ID exists.
+func AuthorizationPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthorizationPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/authorizationPolicy:AuthorizationPolicy", id, state, "", opts...)
+}
+
 type authorizationPolicyArgs struct {
 	// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
 	// Possible values are: `ALLOW`, `DENY`.

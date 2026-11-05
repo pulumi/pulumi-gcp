@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The boot disk size in GB.
         /// Changing this forces a new resource to be created.
-        /// - - -
+        /// ***
         /// </summary>
         public readonly int? BootDiskSizeGb;
         /// <summary>

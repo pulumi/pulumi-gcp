@@ -110,11 +110,10 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
-     * @deprecated
-     * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+     * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
+    @Deprecated
     @Import(name="project")
     private @Nullable Output<String> project;
 
@@ -124,11 +123,10 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
      * 
      * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
-     * @deprecated
-     * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+     * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      * 
      */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
+    @Deprecated
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -321,11 +319,10 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+         * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
          * 
          */
-        @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
+        @Deprecated
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
@@ -339,11 +336,10 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+         * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
          * 
          */
-        @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `projectId` instead. */
+        @Deprecated
         public Builder project(String project) {
             return project(Output.of(project));
         }

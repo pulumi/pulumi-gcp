@@ -466,6 +466,12 @@ func (WorkstationIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workstationIamBindingState)(nil)).Elem()
 }
 
+// WorkstationIamBindingExists checks whether an existing WorkstationIamBinding resource with the given ID exists.
+func WorkstationIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkstationIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workstations/workstationIamBinding:WorkstationIamBinding", id, state, "", opts...)
+}
+
 type workstationIamBindingArgs struct {
 	Condition *WorkstationIamBindingCondition `pulumi:"condition"`
 	// The location where the workstation parent resources reside.

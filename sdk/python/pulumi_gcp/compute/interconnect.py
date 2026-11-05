@@ -1669,6 +1669,86 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["wire_groups"] = wire_groups
         return Interconnect(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict', 'outputs.InterconnectApplicationAwareInterconnect']]] = None,
+            available_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            circuit_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict', 'outputs.InterconnectCircuitInfo']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_location: pulumi.Input[Optional[_builtins.str]] = None,
+            expected_outages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict', 'outputs.InterconnectExpectedOutage']]]]] = None,
+            google_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+            interconnect_attachments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            interconnect_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            interconnect_type: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict', 'outputs.InterconnectMacsec']]] = None,
+            macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+            operational_status: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict', 'outputs.InterconnectParams']]] = None,
+            peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_link_count: pulumi.Input[Optional[_builtins.int]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            remote_location: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            requested_link_count: pulumi.Input[Optional[_builtins.int]] = None,
+            satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            wire_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aaiEnabled"] = aai_enabled
+        __props__["adminEnabled"] = admin_enabled
+        __props__["applicationAwareInterconnect"] = application_aware_interconnect
+        __props__["availableFeatures"] = available_features
+        __props__["circuitInfos"] = circuit_infos
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["customerName"] = customer_name
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["effectiveLocation"] = effective_location
+        __props__["expectedOutages"] = expected_outages
+        __props__["googleIpAddress"] = google_ip_address
+        __props__["googleReferenceId"] = google_reference_id
+        __props__["interconnectAttachments"] = interconnect_attachments
+        __props__["interconnectGroups"] = interconnect_groups
+        __props__["interconnectType"] = interconnect_type
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["linkType"] = link_type
+        __props__["location"] = location
+        __props__["macsec"] = macsec
+        __props__["macsecEnabled"] = macsec_enabled
+        __props__["name"] = name
+        __props__["nocContactEmail"] = noc_contact_email
+        __props__["operationalStatus"] = operational_status
+        __props__["params"] = params
+        __props__["peerIpAddress"] = peer_ip_address
+        __props__["project"] = project
+        __props__["provisionedLinkCount"] = provisioned_link_count
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["remoteLocation"] = remote_location
+        __props__["requestedFeatures"] = requested_features
+        __props__["requestedLinkCount"] = requested_link_count
+        __props__["satisfiesPzs"] = satisfies_pzs
+        __props__["state"] = state
+        __props__["wireGroups"] = wire_groups
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/interconnect:Interconnect', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aaiEnabled")
     def aai_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// , The customer-supplied encryption key of the source snapshot. Structure is documented below.
-        /// - - -
+        /// ***
         /// </summary>
         [Input("sourceSnapshotEncryptionKey")]
         public Input<Inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyGetArgs>? SourceSnapshotEncryptionKey { get; set; }

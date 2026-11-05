@@ -196,6 +196,12 @@ func (ControlPlaneAccessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlPlaneAccessState)(nil)).Elem()
 }
 
+// ControlPlaneAccessExists checks whether an existing ControlPlaneAccess resource with the given ID exists.
+func ControlPlaneAccessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlPlaneAccessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/controlPlaneAccess:ControlPlaneAccess", id, state, "", opts...)
+}
+
 type controlPlaneAccessArgs struct {
 	// Array of service accounts authorized to publish analytics data to the control plane, each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com

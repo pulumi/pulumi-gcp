@@ -487,6 +487,26 @@ class TunnelDestGroup(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return TunnelDestGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            fqdns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidrs"] = cidrs
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["fqdns"] = fqdns
+        __props__["groupName"] = group_name
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'gcp:iap/tunnelDestGroup:TunnelDestGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cidrs(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

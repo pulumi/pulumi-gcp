@@ -188,6 +188,12 @@ func (BackendBucketSignedUrlKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendBucketSignedUrlKeyState)(nil)).Elem()
 }
 
+// BackendBucketSignedUrlKeyExists checks whether an existing BackendBucketSignedUrlKey resource with the given ID exists.
+func BackendBucketSignedUrlKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackendBucketSignedUrlKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey", id, state, "", opts...)
+}
+
 type backendBucketSignedUrlKeyArgs struct {
 	// The backend bucket this signed URL key belongs.
 	BackendBucket string `pulumi:"backendBucket"`

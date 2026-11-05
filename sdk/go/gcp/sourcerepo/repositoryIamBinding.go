@@ -407,6 +407,12 @@ func (RepositoryIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryIamBindingState)(nil)).Elem()
 }
 
+// RepositoryIamBindingExists checks whether an existing RepositoryIamBinding resource with the given ID exists.
+func RepositoryIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", id, state, "", opts...)
+}
+
 type repositoryIamBindingArgs struct {
 	Condition *RepositoryIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -152,6 +152,12 @@ func (AiModelGardenEnableModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiModelGardenEnableModelState)(nil)).Elem()
 }
 
+// AiModelGardenEnableModelExists checks whether an existing AiModelGardenEnableModel resource with the given ID exists.
+func AiModelGardenEnableModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiModelGardenEnableModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel", id, state, "", opts...)
+}
+
 type aiModelGardenEnableModelArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

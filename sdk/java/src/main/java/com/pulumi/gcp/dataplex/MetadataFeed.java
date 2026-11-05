@@ -101,24 +101,24 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .metadataTemplate("""
  * }{{@code
- *   \"name\": \"tf-test-template\",
- *   \"type\": \"record\",
- *   \"recordFields\": [
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "tf-test-template}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "recordFields}&#92;{@code ": [
  *     }{{@code
- *       \"name\": \"type\",
- *       \"type\": \"enum\",
- *       \"annotations\": }{{@code
- *         \"displayName\": \"Type\",
- *         \"description\": \"Specifies the type of view represented by the entry.\"
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *       }&#92;{@code "annotations}&#92;{@code ": }{{@code
+ *         }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Type}&#92;{@code ",
+ *         }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Specifies the type of view represented by the entry.}&#92;{@code "
  *       }}{@code ,
- *       \"index\": 1,
- *       \"constraints\": }{{@code
- *         \"required\": true
+ *       }&#92;{@code "index}&#92;{@code ": 1,
+ *       }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *         }&#92;{@code "required}&#92;{@code ": true
  *       }}{@code ,
- *       \"enumValues\": [
+ *       }&#92;{@code "enumValues}&#92;{@code ": [
  *         }{{@code
- *           \"name\": \"VIEW\",
- *           \"index\": 1
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "VIEW}&#92;{@code ",
+ *           }&#92;{@code "index}&#92;{@code ": 1
  *         }}{@code
  *       ]
  *     }}{@code

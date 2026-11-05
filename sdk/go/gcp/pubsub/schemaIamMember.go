@@ -408,6 +408,12 @@ func (SchemaIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*schemaIamMemberState)(nil)).Elem()
 }
 
+// SchemaIamMemberExists checks whether an existing SchemaIamMember resource with the given ID exists.
+func SchemaIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SchemaIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/schemaIamMember:SchemaIamMember", id, state, "", opts...)
+}
+
 type schemaIamMemberArgs struct {
 	Condition *SchemaIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// The maximum number of pods to schedule on a single node.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly int MaxPodsPerNode;
 

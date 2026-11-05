@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Kms
         /// });
         /// ```
         /// 
-        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt 
+        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
         /// some sensitive information:
         /// 
         /// ```bash
@@ -214,7 +214,7 @@ namespace Pulumi.Gcp.Kms
         /// });
         /// ```
         /// 
-        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt 
+        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
         /// some sensitive information:
         /// 
         /// ```bash
@@ -367,7 +367,7 @@ namespace Pulumi.Gcp.Kms
         /// });
         /// ```
         /// 
-        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt 
+        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
         /// some sensitive information:
         /// 
         /// ```bash

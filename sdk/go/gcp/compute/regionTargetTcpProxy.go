@@ -379,6 +379,12 @@ func (RegionTargetTcpProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionTargetTcpProxyState)(nil)).Elem()
 }
 
+// RegionTargetTcpProxyExists checks whether an existing RegionTargetTcpProxy resource with the given ID exists.
+func RegionTargetTcpProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionTargetTcpProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy", id, state, "", opts...)
+}
+
 type regionTargetTcpProxyArgs struct {
 	// A reference to the BackendService resource. This field is optional when
 	// the loadBalancingScheme is specified.

@@ -23,8 +23,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// You may set this, for example:
         /// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         /// * In a webhook response when you determine that you handled the customer issue.
-        /// This field is part of a union field `Message`: Only one of `Text`, `Payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        /// Structure is documented below.
+        ///   This field is part of a union field `Message`: Only one of `Text`, `Payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess? ConversationSuccess;
         /// <summary>
@@ -47,8 +47,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// You may set this, for example:
         /// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         /// * In a webhook response when you determine that the customer issue can only be handled by a human.
-        /// This field is part of a union field `Message`: Only one of `Text`, `Payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-        /// Structure is documented below.
+        ///   This field is part of a union field `Message`: Only one of `Text`, `Payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff? LiveAgentHandoff;
         /// <summary>

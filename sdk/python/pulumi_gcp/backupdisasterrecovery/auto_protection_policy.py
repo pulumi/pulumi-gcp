@@ -839,6 +839,40 @@ class AutoProtectionPolicy(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AutoProtectionPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_protection_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_plan_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoProtectionPolicyBackupPlanDetailArgs', 'AutoProtectionPolicyBackupPlanDetailArgsDict', 'outputs.AutoProtectionPolicyBackupPlanDetail']]]]] = None,
+            binding_summaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoProtectionPolicyBindingSummaryArgs', 'AutoProtectionPolicyBindingSummaryArgsDict', 'outputs.AutoProtectionPolicyBindingSummary']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            criteria: pulumi.Input[Optional[Union['AutoProtectionPolicyCriteriaArgs', 'AutoProtectionPolicyCriteriaArgsDict', 'outputs.AutoProtectionPolicyCriteria']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_evaluation_summaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoProtectionPolicyPolicyEvaluationSummaryArgs', 'AutoProtectionPolicyPolicyEvaluationSummaryArgsDict', 'outputs.AutoProtectionPolicyPolicyEvaluationSummary']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoProtectionPolicyId"] = auto_protection_policy_id
+        __props__["backupPlanDetails"] = backup_plan_details
+        __props__["bindingSummaries"] = binding_summaries
+        __props__["createTime"] = create_time
+        __props__["criteria"] = criteria
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["policyEvaluationSummaries"] = policy_evaluation_summaries
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:backupdisasterrecovery/autoProtectionPolicy:AutoProtectionPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoProtectionPolicyId")
     def auto_protection_policy_id(self) -> pulumi.Output[_builtins.str]:

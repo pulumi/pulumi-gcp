@@ -918,6 +918,38 @@ class Deployment(pulumi.CustomResource):
         __props__.__dict__["whatsapp_credentials"] = whatsapp_credentials
         return Deployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            app_version: pulumi.Input[Optional[_builtins.str]] = None,
+            channel_profile: pulumi.Input[Optional[Union['DeploymentChannelProfileArgs', 'DeploymentChannelProfileArgsDict', 'outputs.DeploymentChannelProfile']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instagram_credentials: pulumi.Input[Optional[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            whatsapp_credentials: pulumi.Input[Optional[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["app"] = app
+        __props__["appVersion"] = app_version
+        __props__["channelProfile"] = channel_profile
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["etag"] = etag
+        __props__["instagramCredentials"] = instagram_credentials
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["updateTime"] = update_time
+        __props__["whatsappCredentials"] = whatsapp_credentials
+        return pulumi.runtime.exists_resource(None, 'gcp:ces/deployment:Deployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def app(self) -> pulumi.Output[_builtins.str]:

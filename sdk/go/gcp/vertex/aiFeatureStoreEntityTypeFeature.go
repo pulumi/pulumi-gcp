@@ -307,6 +307,12 @@ func (AiFeatureStoreEntityTypeFeatureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiFeatureStoreEntityTypeFeatureState)(nil)).Elem()
 }
 
+// AiFeatureStoreEntityTypeFeatureExists checks whether an existing AiFeatureStoreEntityTypeFeature resource with the given ID exists.
+func AiFeatureStoreEntityTypeFeatureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureStoreEntityTypeFeatureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature", id, state, "", opts...)
+}
+
 type aiFeatureStoreEntityTypeFeatureArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -687,6 +687,26 @@ class AiLogicConfig(pulumi.CustomResource):
         __props__.__dict__["traffic_filter"] = traffic_filter
         return AiLogicConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            generative_language_config: pulumi.Input[Optional[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict', 'outputs.AiLogicConfigGenerativeLanguageConfig']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            telemetry_config: pulumi.Input[Optional[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict', 'outputs.AiLogicConfigTelemetryConfig']]] = None,
+            traffic_filter: pulumi.Input[Optional[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict', 'outputs.AiLogicConfigTrafficFilter']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["generativeLanguageConfig"] = generative_language_config
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["telemetryConfig"] = telemetry_config
+        __props__["trafficFilter"] = traffic_filter
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/aiLogicConfig:AiLogicConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

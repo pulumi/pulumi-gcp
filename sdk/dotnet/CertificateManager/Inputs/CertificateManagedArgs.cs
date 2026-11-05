@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         /// specified for this Managed Certificate.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedManagedProvisioningIssue"&gt;&lt;/a&gt;The `ProvisioningIssue` block contains:
         /// </summary>
         public InputList<Inputs.CertificateManagedAuthorizationAttemptInfoArgs> AuthorizationAttemptInfos

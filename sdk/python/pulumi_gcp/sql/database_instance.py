@@ -2494,6 +2494,94 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["switch_transaction_logs_to_cloud_storage_enabled"] = switch_transaction_logs_to_cloud_storage_enabled
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None,
+            blue_green_deployment: pulumi.Input[Optional[Union['DatabaseInstanceBlueGreenDeploymentArgs', 'DatabaseInstanceBlueGreenDeploymentArgsDict', 'outputs.DatabaseInstanceBlueGreenDeployment']]] = None,
+            clone: pulumi.Input[Optional[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict', 'outputs.DatabaseInstanceClone']]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_center_integration: pulumi.Input[Optional[_builtins.str]] = None,
+            database_version: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_names: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict', 'outputs.DatabaseInstanceDnsName']]]]] = None,
+            encryption_confidential_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
+            final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
+            first_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            include_replicas_for_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceIpAddressArgs', 'DatabaseInstanceIpAddressArgsDict', 'outputs.DatabaseInstanceIpAddress']]]]] = None,
+            maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            master_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            point_in_time_restore_context: pulumi.Input[Optional[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict', 'outputs.DatabaseInstancePointInTimeRestoreContext']]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_service_attachment_link: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_configuration: pulumi.Input[Optional[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict', 'outputs.DatabaseInstanceReplicaConfiguration']]] = None,
+            replica_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            replication_cluster: pulumi.Input[Optional[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict', 'outputs.DatabaseInstanceReplicationCluster']]] = None,
+            restore_backup_context: pulumi.Input[Optional[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict', 'outputs.DatabaseInstanceRestoreBackupContext']]] = None,
+            root_password: pulumi.Input[Optional[_builtins.str]] = None,
+            root_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            root_password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceServerCaCertArgs', 'DatabaseInstanceServerCaCertArgsDict', 'outputs.DatabaseInstanceServerCaCert']]]]] = None,
+            service_account_email_address: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict', 'outputs.DatabaseInstanceSettings']]] = None,
+            switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["availableMaintenanceVersions"] = available_maintenance_versions
+        __props__["backupdrBackup"] = backupdr_backup
+        __props__["blueGreenDeployment"] = blue_green_deployment
+        __props__["clone"] = clone
+        __props__["connectionName"] = connection_name
+        __props__["databaseCenterIntegration"] = database_center_integration
+        __props__["databaseVersion"] = database_version
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["dnsName"] = dns_name
+        __props__["dnsNames"] = dns_names
+        __props__["encryptionConfidentialMode"] = encryption_confidential_mode
+        __props__["encryptionKeyName"] = encryption_key_name
+        __props__["enforceNewSqlNetworkArchitecture"] = enforce_new_sql_network_architecture
+        __props__["finalBackupDescription"] = final_backup_description
+        __props__["firstIpAddress"] = first_ip_address
+        __props__["includeReplicasForMajorVersionUpgrade"] = include_replicas_for_major_version_upgrade
+        __props__["instanceType"] = instance_type
+        __props__["ipAddresses"] = ip_addresses
+        __props__["maintenanceVersion"] = maintenance_version
+        __props__["masterInstanceName"] = master_instance_name
+        __props__["name"] = name
+        __props__["nodeCount"] = node_count
+        __props__["pointInTimeRestoreContext"] = point_in_time_restore_context
+        __props__["privateIpAddress"] = private_ip_address
+        __props__["project"] = project
+        __props__["pscServiceAttachmentLink"] = psc_service_attachment_link
+        __props__["publicIpAddress"] = public_ip_address
+        __props__["region"] = region
+        __props__["replicaConfiguration"] = replica_configuration
+        __props__["replicaNames"] = replica_names
+        __props__["replicationCluster"] = replication_cluster
+        __props__["restoreBackupContext"] = restore_backup_context
+        __props__["rootPassword"] = root_password
+        __props__["rootPasswordWo"] = root_password_wo
+        __props__["rootPasswordWoVersion"] = root_password_wo_version
+        __props__["selfLink"] = self_link
+        __props__["serverCaCerts"] = server_ca_certs
+        __props__["serviceAccountEmailAddress"] = service_account_email_address
+        __props__["settings"] = settings
+        __props__["switchTransactionLogsToCloudStorageEnabled"] = switch_transaction_logs_to_cloud_storage_enabled
+        return pulumi.runtime.exists_resource(None, 'gcp:sql/databaseInstance:DatabaseInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="availableMaintenanceVersions")
     def available_maintenance_versions(self) -> pulumi.Output[Sequence[_builtins.str]]:

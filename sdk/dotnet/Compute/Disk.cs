@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.Compute
         /// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
         /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
         /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-        /// The AccessMode is only valid for Hyperdisk disk types.
+        ///   The AccessMode is only valid for Hyperdisk disk types.
         /// </summary>
         [Output("accessMode")]
         public Output<string> AccessMode { get; private set; } = null!;
@@ -678,7 +678,7 @@ namespace Pulumi.Gcp.Compute
         /// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
         /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
         /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-        /// The AccessMode is only valid for Hyperdisk disk types.
+        ///   The AccessMode is only valid for Hyperdisk disk types.
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
@@ -1017,7 +1017,7 @@ namespace Pulumi.Gcp.Compute
         /// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
         /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
         /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-        /// The AccessMode is only valid for Hyperdisk disk types.
+        ///   The AccessMode is only valid for Hyperdisk disk types.
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }

@@ -594,6 +594,12 @@ func (CertificateTemplateIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateTemplateIamPolicyState)(nil)).Elem()
 }
 
+// CertificateTemplateIamPolicyExists checks whether an existing CertificateTemplateIamPolicy resource with the given ID exists.
+func CertificateTemplateIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertificateTemplateIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy", id, state, "", opts...)
+}
+
 type certificateTemplateIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CertificateTemplate string `pulumi:"certificateTemplate"`

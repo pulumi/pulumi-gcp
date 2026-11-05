@@ -1543,6 +1543,56 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["version_retention_period"] = version_retention_period
         return Database(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_engine_integration_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cmek_config: pulumi.Input[Optional[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict', 'outputs.DatabaseCmekConfig']]] = None,
+            concurrency_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            database_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_protection_state: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            earliest_version_time: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            firestore_data_access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mongodb_compatible_data_access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            point_in_time_recovery_enablement: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            realtime_updates_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version_retention_period: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appEngineIntegrationMode"] = app_engine_integration_mode
+        __props__["cmekConfig"] = cmek_config
+        __props__["concurrencyMode"] = concurrency_mode
+        __props__["createTime"] = create_time
+        __props__["databaseEdition"] = database_edition
+        __props__["deleteProtectionState"] = delete_protection_state
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["earliestVersionTime"] = earliest_version_time
+        __props__["etag"] = etag
+        __props__["firestoreDataAccessMode"] = firestore_data_access_mode
+        __props__["keyPrefix"] = key_prefix
+        __props__["locationId"] = location_id
+        __props__["mongodbCompatibleDataAccessMode"] = mongodb_compatible_data_access_mode
+        __props__["name"] = name
+        __props__["pointInTimeRecoveryEnablement"] = point_in_time_recovery_enablement
+        __props__["project"] = project
+        __props__["realtimeUpdatesMode"] = realtime_updates_mode
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["versionRetentionPeriod"] = version_retention_period
+        return pulumi.runtime.exists_resource(None, 'gcp:firestore/database:Database', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appEngineIntegrationMode")
     def app_engine_integration_mode(self) -> pulumi.Output[_builtins.str]:

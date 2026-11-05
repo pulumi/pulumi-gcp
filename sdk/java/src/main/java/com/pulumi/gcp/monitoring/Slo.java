@@ -115,12 +115,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-request-slos")
  *             .displayName("My Custom Service")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *             .rollingPeriodDays(30)
  *             .requestBasedSli(SloRequestBasedSliArgs.builder()
  *                 .distributionCut(SloRequestBasedSliDistributionCutArgs.builder()
- *                     .distributionFilter("metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ")
+ *                     .distributionFilter("metric.type=}&#92;{@code "serviceruntime.googleapis.com/api/request_latencies}&#92;{@code " resource.type=}&#92;{@code "api}&#92;{@code "  ")
  *                     .range(SloRequestBasedSliDistributionCutRangeArgs.builder()
  *                         .max(0.5)
  *                         .build())
@@ -142,8 +142,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -170,12 +170,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-windows-slos")
  *             .displayName("My Custom Service")
@@ -191,14 +191,14 @@ import javax.annotation.Nullable;
  *                 .goodBadMetricFilter(StdFunctions.join(JoinArgs.builder()
  *                     .separator(" AND ")
  *                     .input(                    
- *                         "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\"",
- *                         "resource.type=\"uptime_url\"")
+ *                         "metric.type=}&#92;{@code "monitoring.googleapis.com/uptime_check/check_passed}&#92;{@code "",
+ *                         "resource.type=}&#92;{@code "uptime_url}&#92;{@code "")
  *                     .build()).result())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -227,12 +227,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-windows-slos")
  *             .displayName("My Custom Service")
@@ -249,8 +249,8 @@ import javax.annotation.Nullable;
  *                     .timeSeries(StdFunctions.join(JoinArgs.builder()
  *                         .separator(" AND ")
  *                         .input(                        
- *                             "metric.type=\"agent.googleapis.com/cassandra/client_request/latency/95p\"",
- *                             "resource.type=\"gce_instance\"")
+ *                             "metric.type=}&#92;{@code "agent.googleapis.com/cassandra/client_request/latency/95p}&#92;{@code "",
+ *                             "resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
  *                         .build()).result())
  *                     .range(SloWindowsBasedSliMetricMeanInRangeRangeArgs.builder()
  *                         .max(5.0)
@@ -259,8 +259,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -289,12 +289,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-windows-slos")
  *             .displayName("My Custom Service")
@@ -311,8 +311,8 @@ import javax.annotation.Nullable;
  *                     .timeSeries(StdFunctions.join(JoinArgs.builder()
  *                         .separator(" AND ")
  *                         .input(                        
- *                             "metric.type=\"monitoring.googleapis.com/uptime_check/request_latency\"",
- *                             "resource.type=\"uptime_url\"")
+ *                             "metric.type=}&#92;{@code "monitoring.googleapis.com/uptime_check/request_latency}&#92;{@code "",
+ *                             "resource.type=}&#92;{@code "uptime_url}&#92;{@code "")
  *                         .build()).result())
  *                     .range(SloWindowsBasedSliMetricSumInRangeRangeArgs.builder()
  *                         .max(5000.0)
@@ -321,8 +321,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -353,12 +353,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var customsrv = new CustomService("customsrv", CustomServiceArgs.builder()
  *             .serviceId("custom-srv-windows-slos")
  *             .displayName("My Custom Service")
@@ -378,8 +378,8 @@ import javax.annotation.Nullable;
  *                             .distributionFilter(StdFunctions.join(JoinArgs.builder()
  *                                 .separator(" AND ")
  *                                 .input(                                
- *                                     "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\"",
- *                                     "resource.type=\"consumed_api\"")
+ *                                     "metric.type=}&#92;{@code "serviceruntime.googleapis.com/api/request_latencies}&#92;{@code "",
+ *                                     "resource.type=}&#92;{@code "consumed_api}&#92;{@code "")
  *                                 .build()).result())
  *                             .range(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs.builder()
  *                                 .min(1.0)
@@ -391,8 +391,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

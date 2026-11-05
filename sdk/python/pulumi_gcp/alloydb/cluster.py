@@ -2200,6 +2200,90 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            automated_backup_policy: pulumi.Input[Optional[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict', 'outputs.ClusterAutomatedBackupPolicy']]] = None,
+            backup_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict', 'outputs.ClusterBackupSource']]]]] = None,
+            backupdr_backup_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBackupdrBackupSourceArgs', 'ClusterBackupdrBackupSourceArgsDict', 'outputs.ClusterBackupdrBackupSource']]]]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            continuous_backup_config: pulumi.Input[Optional[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict', 'outputs.ClusterContinuousBackupConfig']]] = None,
+            continuous_backup_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict', 'outputs.ClusterContinuousBackupInfo']]]]] = None,
+            database_version: pulumi.Input[Optional[_builtins.str]] = None,
+            dataplex_config: pulumi.Input[Optional[Union['ClusterDataplexConfigArgs', 'ClusterDataplexConfigArgsDict', 'outputs.ClusterDataplexConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_config: pulumi.Input[Optional[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict', 'outputs.ClusterEncryptionConfig']]] = None,
+            encryption_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterEncryptionInfoArgs', 'ClusterEncryptionInfoArgsDict', 'outputs.ClusterEncryptionInfo']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_user: pulumi.Input[Optional[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict', 'outputs.ClusterInitialUser']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_update_policy: pulumi.Input[Optional[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict', 'outputs.ClusterMaintenanceUpdatePolicy']]] = None,
+            migration_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict', 'outputs.ClusterMigrationSource']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict', 'outputs.ClusterNetworkConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_config: pulumi.Input[Optional[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict', 'outputs.ClusterPscConfig']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            restore_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict', 'outputs.ClusterRestoreBackupSource']]] = None,
+            restore_backupdr_backup_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict', 'outputs.ClusterRestoreBackupdrBackupSource']]] = None,
+            restore_backupdr_pitr_source: pulumi.Input[Optional[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict', 'outputs.ClusterRestoreBackupdrPitrSource']]] = None,
+            restore_continuous_backup_source: pulumi.Input[Optional[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict', 'outputs.ClusterRestoreContinuousBackupSource']]] = None,
+            secondary_config: pulumi.Input[Optional[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict', 'outputs.ClusterSecondaryConfig']]] = None,
+            skip_await_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+            trial_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterTrialMetadataArgs', 'ClusterTrialMetadataArgsDict', 'outputs.ClusterTrialMetadata']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["automatedBackupPolicy"] = automated_backup_policy
+        __props__["backupSources"] = backup_sources
+        __props__["backupdrBackupSources"] = backupdr_backup_sources
+        __props__["clusterId"] = cluster_id
+        __props__["clusterType"] = cluster_type
+        __props__["continuousBackupConfig"] = continuous_backup_config
+        __props__["continuousBackupInfos"] = continuous_backup_infos
+        __props__["databaseVersion"] = database_version
+        __props__["dataplexConfig"] = dataplex_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["displayName"] = display_name
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionConfig"] = encryption_config
+        __props__["encryptionInfos"] = encryption_infos
+        __props__["etag"] = etag
+        __props__["initialUser"] = initial_user
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["maintenanceUpdatePolicy"] = maintenance_update_policy
+        __props__["migrationSources"] = migration_sources
+        __props__["name"] = name
+        __props__["networkConfig"] = network_config
+        __props__["project"] = project
+        __props__["pscConfig"] = psc_config
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["restoreBackupSource"] = restore_backup_source
+        __props__["restoreBackupdrBackupSource"] = restore_backupdr_backup_source
+        __props__["restoreBackupdrPitrSource"] = restore_backupdr_pitr_source
+        __props__["restoreContinuousBackupSource"] = restore_continuous_backup_source
+        __props__["secondaryConfig"] = secondary_config
+        __props__["skipAwaitMajorVersionUpgrade"] = skip_await_major_version_upgrade
+        __props__["state"] = state
+        __props__["subscriptionType"] = subscription_type
+        __props__["trialMetadatas"] = trial_metadatas
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'gcp:alloydb/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

@@ -584,6 +584,12 @@ func (PreventionInspectTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionInspectTemplateState)(nil)).Elem()
 }
 
+// PreventionInspectTemplateExists checks whether an existing PreventionInspectTemplate resource with the given ID exists.
+func PreventionInspectTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreventionInspectTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate", id, state, "", opts...)
+}
+
 type preventionInspectTemplateArgs struct {
 	// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
 	// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.

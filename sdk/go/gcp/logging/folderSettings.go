@@ -180,6 +180,12 @@ func (FolderSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderSettingsState)(nil)).Elem()
 }
 
+// FolderSettingsExists checks whether an existing FolderSettings resource with the given ID exists.
+func FolderSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/folderSettings:FolderSettings", id, state, "", opts...)
+}
+
 type folderSettingsArgs struct {
 	// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
 	DisableDefaultSink *bool `pulumi:"disableDefaultSink"`

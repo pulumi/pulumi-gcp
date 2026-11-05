@@ -234,6 +234,12 @@ func (ProjectAutokeyConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectAutokeyConfigState)(nil)).Elem()
 }
 
+// ProjectAutokeyConfigExists checks whether an existing ProjectAutokeyConfig resource with the given ID exists.
+func ProjectAutokeyConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectAutokeyConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/projectAutokeyConfig:ProjectAutokeyConfig", id, state, "", opts...)
+}
+
 type projectAutokeyConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

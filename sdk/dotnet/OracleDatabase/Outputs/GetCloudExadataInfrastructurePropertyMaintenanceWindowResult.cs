@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         public readonly ImmutableArray<string> Months;
         /// <summary>
         /// Cloud CloudExadataInfrastructure node patching method, either "ROLLING"
-        ///  or "NONROLLING". Default value is ROLLING. 
+        ///  or "NONROLLING". Default value is ROLLING.
         ///  Possible values:
         ///  PATCHING_MODE_UNSPECIFIED
         /// ROLLING
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string PatchingMode;
         /// <summary>
-        /// The maintenance window scheduling preference. 
+        /// The maintenance window scheduling preference.
         ///  Possible values:
         ///  MAINTENANCE_WINDOW_PREFERENCE_UNSPECIFIED
         /// CUSTOM_PREFERENCE

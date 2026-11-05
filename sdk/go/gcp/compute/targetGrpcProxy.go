@@ -375,6 +375,12 @@ func (TargetGrpcProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetGrpcProxyState)(nil)).Elem()
 }
 
+// TargetGrpcProxyExists checks whether an existing TargetGrpcProxy resource with the given ID exists.
+func TargetGrpcProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetGrpcProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/targetGrpcProxy:TargetGrpcProxy", id, state, "", opts...)
+}
+
 type targetGrpcProxyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

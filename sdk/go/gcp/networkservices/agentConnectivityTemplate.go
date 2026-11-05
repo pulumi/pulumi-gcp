@@ -435,6 +435,12 @@ func (AgentConnectivityTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentConnectivityTemplateState)(nil)).Elem()
 }
 
+// AgentConnectivityTemplateExists checks whether an existing AgentConnectivityTemplate resource with the given ID exists.
+func AgentConnectivityTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentConnectivityTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/agentConnectivityTemplate:AgentConnectivityTemplate", id, state, "", opts...)
+}
+
 type agentConnectivityTemplateArgs struct {
 	// The path of the access.
 	// The path is immutable once set. Exactly one path can be set.

@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var loggingLogView = new ProjectBucketConfig("loggingLogView", ProjectBucketConfigArgs.builder()
  *             .project("my-project-name")
  *             .location("global")
@@ -62,11 +62,11 @@ import javax.annotation.Nullable;
  *             .name("my-view")
  *             .bucket(loggingLogView.id())
  *             .description("A logging view configured with Terraform")
- *             .filter("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")")
+ *             .filter("SOURCE(}&#92;{@code "projects/myproject}&#92;{@code ") AND resource.type = }&#92;{@code "gce_instance}&#92;{@code " AND LOG_ID(}&#92;{@code "stdout}&#92;{@code ")")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -180,14 +180,14 @@ public class LogView extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
+     * The resource name of the view. For example: &#92;`projects/my-project/locations/global/buckets/my-bucket/views/my-view&#92;`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
+     * @return The resource name of the view. For example: &#92;`projects/my-project/locations/global/buckets/my-bucket/views/my-view&#92;`
      * 
      */
     public Output<String> name() {

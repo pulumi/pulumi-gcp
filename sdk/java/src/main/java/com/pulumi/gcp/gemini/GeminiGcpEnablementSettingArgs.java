@@ -49,11 +49,10 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
      * 
      * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
-     * @deprecated
-     * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+     * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      */
-    @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
+    @Deprecated
     @Import(name="disableWebGrounding")
     private @Nullable Output<Boolean> disableWebGrounding;
 
@@ -63,11 +62,10 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
      * 
      * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
-     * @deprecated
-     * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+     * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      */
-    @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> disableWebGrounding() {
         return Optional.ofNullable(this.disableWebGrounding);
     }
@@ -298,11 +296,10 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+         * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
          * 
          */
-        @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
+        @Deprecated
         public Builder disableWebGrounding(@Nullable Output<Boolean> disableWebGrounding) {
             $.disableWebGrounding = disableWebGrounding;
             return this;
@@ -316,11 +313,10 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+         * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
          * 
          */
-        @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
+        @Deprecated
         public Builder disableWebGrounding(Boolean disableWebGrounding) {
             return disableWebGrounding(Output.of(disableWebGrounding));
         }

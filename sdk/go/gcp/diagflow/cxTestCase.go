@@ -375,6 +375,12 @@ func (CxTestCaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxTestCaseState)(nil)).Elem()
 }
 
+// CxTestCaseExists checks whether an existing CxTestCase resource with the given ID exists.
+func CxTestCaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxTestCaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxTestCase:CxTestCase", id, state, "", opts...)
+}
+
 type cxTestCaseArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

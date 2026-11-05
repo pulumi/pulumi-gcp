@@ -377,6 +377,12 @@ func (DbSystemState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbSystemState)(nil)).Elem()
 }
 
+// DbSystemExists checks whether an existing DbSystem resource with the given ID exists.
+func DbSystemExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbSystemState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/dbSystem:DbSystem", id, state, "", opts...)
+}
+
 type dbSystemArgs struct {
 	// The ID of the DbSystem to create. This value is
 	// restricted to (^a-z?$) and must be a maximum of

@@ -674,6 +674,12 @@ func (TunnelInstanceIAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelInstanceIAMMemberState)(nil)).Elem()
 }
 
+// TunnelInstanceIAMMemberExists checks whether an existing TunnelInstanceIAMMember resource with the given ID exists.
+func TunnelInstanceIAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelInstanceIAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember", id, state, "", opts...)
+}
+
 type tunnelInstanceIAMMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

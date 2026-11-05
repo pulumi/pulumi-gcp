@@ -861,6 +861,30 @@ class AssetIamMember(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return AssetIamMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            asset: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['AssetIamMemberConditionArgs', 'AssetIamMemberConditionArgsDict', 'outputs.AssetIamMemberCondition']]] = None,
+            dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            lake: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["asset"] = asset
+        __props__["condition"] = condition
+        __props__["dataplexZone"] = dataplex_zone
+        __props__["etag"] = etag
+        __props__["lake"] = lake
+        __props__["location"] = location
+        __props__["member"] = member
+        __props__["project"] = project
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:dataplex/assetIamMember:AssetIamMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def asset(self) -> pulumi.Output[_builtins.str]:

@@ -83,6 +83,12 @@ func (TargetIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetIamBindingState)(nil)).Elem()
 }
 
+// TargetIamBindingExists checks whether an existing TargetIamBinding resource with the given ID exists.
+func TargetIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/targetIamBinding:TargetIamBinding", id, state, "", opts...)
+}
+
 type targetIamBindingArgs struct {
 	Condition *TargetIamBindingCondition `pulumi:"condition"`
 	Location  *string                    `pulumi:"location"`

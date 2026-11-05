@@ -803,6 +803,12 @@ func (RestorePlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*restorePlanState)(nil)).Elem()
 }
 
+// RestorePlanExists checks whether an existing RestorePlan resource with the given ID exists.
+func RestorePlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RestorePlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkebackup/restorePlan:RestorePlan", id, state, "", opts...)
+}
+
 type restorePlanArgs struct {
 	// A reference to the BackupPlan from which Backups may be used
 	// as the source for Restores created via this RestorePlan.

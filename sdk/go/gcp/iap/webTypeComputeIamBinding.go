@@ -626,6 +626,12 @@ func (WebTypeComputeIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webTypeComputeIamBindingState)(nil)).Elem()
 }
 
+// WebTypeComputeIamBindingExists checks whether an existing WebTypeComputeIamBinding resource with the given ID exists.
+func WebTypeComputeIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebTypeComputeIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/webTypeComputeIamBinding:WebTypeComputeIamBinding", id, state, "", opts...)
+}
+
 type webTypeComputeIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

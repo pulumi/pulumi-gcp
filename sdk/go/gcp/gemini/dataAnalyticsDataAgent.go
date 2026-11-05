@@ -557,6 +557,12 @@ func (DataAnalyticsDataAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataAnalyticsDataAgentState)(nil)).Elem()
 }
 
+// DataAnalyticsDataAgentExists checks whether an existing DataAnalyticsDataAgent resource with the given ID exists.
+func DataAnalyticsDataAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataAnalyticsDataAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/dataAnalyticsDataAgent:DataAnalyticsDataAgent", id, state, "", opts...)
+}
+
 type dataAnalyticsDataAgentArgs struct {
 	// Required. The ID to use for the DataAgent, which becomes the final component
 	// of the resource name. The ID must start with a lowercase letter and may

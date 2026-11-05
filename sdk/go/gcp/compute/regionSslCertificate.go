@@ -280,6 +280,12 @@ func (RegionSslCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionSslCertificateState)(nil)).Elem()
 }
 
+// RegionSslCertificateExists checks whether an existing RegionSslCertificate resource with the given ID exists.
+func RegionSslCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionSslCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionSslCertificate:RegionSslCertificate", id, state, "", opts...)
+}
+
 type regionSslCertificateArgs struct {
 	// The certificate in PEM format.
 	// The certificate chain must be no greater than 5 certs long.

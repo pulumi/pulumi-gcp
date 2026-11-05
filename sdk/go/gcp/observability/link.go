@@ -165,6 +165,12 @@ func (LinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*linkState)(nil)).Elem()
 }
 
+// LinkExists checks whether an existing Link resource with the given ID exists.
+func LinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:observability/link:Link", id, state, "", opts...)
+}
+
 type linkArgs struct {
 	// The bucket of the link.
 	Bucket string `pulumi:"bucket"`

@@ -432,6 +432,12 @@ func (DataObjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataObjectState)(nil)).Elem()
 }
 
+// DataObjectExists checks whether an existing DataObject resource with the given ID exists.
+func DataObjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataObjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vectorsearch/dataObject:DataObject", id, state, "", opts...)
+}
+
 type dataObjectArgs struct {
 	// The ID of the parent Collection.
 	CollectionId string `pulumi:"collectionId"`

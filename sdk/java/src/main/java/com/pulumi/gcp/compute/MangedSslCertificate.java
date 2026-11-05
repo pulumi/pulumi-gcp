@@ -159,11 +159,10 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{name}}
  * ```
  * 
- * @deprecated
- * gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate
+ * @deprecated gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate
  * 
  */
-@Deprecated /* gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate */
+@Deprecated
 @ResourceType(type="gcp:compute/mangedSslCertificate:MangedSslCertificate")
 public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
     /**

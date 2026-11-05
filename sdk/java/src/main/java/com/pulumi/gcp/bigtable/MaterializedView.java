@@ -49,12 +49,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("bt-instance")
  *             .clusters(InstanceClusterArgs.builder()
@@ -80,15 +80,15 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .query("""
  * SELECT _key, COUNT(CF['col1']) as Count
- * FROM ` + \"`bt-table`\" + `
+ * FROM ` + }&#92;{@code "`bt-table`}&#92;{@code " + `
  * GROUP BY _key
  *             """)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(table)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

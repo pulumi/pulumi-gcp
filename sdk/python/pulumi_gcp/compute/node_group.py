@@ -967,6 +967,42 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict', 'outputs.NodeGroupAutoscalingPolicy']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_size: pulumi.Input[Optional[_builtins.int]] = None,
+            maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict', 'outputs.NodeGroupMaintenanceWindow']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_template: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            share_settings: pulumi.Input[Optional[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict', 'outputs.NodeGroupShareSettings']]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoscalingPolicy"] = autoscaling_policy
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["initialSize"] = initial_size
+        __props__["maintenanceInterval"] = maintenance_interval
+        __props__["maintenancePolicy"] = maintenance_policy
+        __props__["maintenanceWindow"] = maintenance_window
+        __props__["name"] = name
+        __props__["nodeTemplate"] = node_template
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["shareSettings"] = share_settings
+        __props__["size"] = size
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/nodeGroup:NodeGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoscalingPolicy")
     def autoscaling_policy(self) -> pulumi.Output['outputs.NodeGroupAutoscalingPolicy']:

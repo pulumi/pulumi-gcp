@@ -89,12 +89,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Service("default", ServiceArgs.builder()
  *             .location("us-central1")
  *             .serviceId("service")
@@ -106,12 +106,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .mcpServerSpec(ServiceMcpServerSpecArgs.builder()
  *                 .type("TOOL_SPEC")
- *                 .content("{\"tools\":[]}")
+ *                 .content("}{&#92;{@code "tools}&#92;{@code ":[]}}{@code ")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

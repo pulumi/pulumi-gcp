@@ -600,6 +600,12 @@ func (MachineImageIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineImageIamPolicyState)(nil)).Elem()
 }
 
+// MachineImageIamPolicyExists checks whether an existing MachineImageIamPolicy resource with the given ID exists.
+func MachineImageIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MachineImageIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/machineImageIamPolicy:MachineImageIamPolicy", id, state, "", opts...)
+}
+
 type machineImageIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	MachineImage string `pulumi:"machineImage"`

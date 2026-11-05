@@ -20,11 +20,10 @@ public final class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig 
      * 
      * &gt; **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
      * 
-     * @deprecated
-     * `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+     * @deprecated `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
      * 
      */
-    @Deprecated /* `domain` is deprecated and will be removed in a future major release. Use `domains` instead. */
+    @Deprecated
     private @Nullable String domain;
     /**
      * @return The list of domain names to peer for DNS resolution. Each entry
@@ -49,11 +48,10 @@ public final class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig 
      * 
      * &gt; **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
      * 
-     * @deprecated
-     * `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+     * @deprecated `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
      * 
      */
-    @Deprecated /* `domain` is deprecated and will be removed in a future major release. Use `domains` instead. */
+    @Deprecated
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }

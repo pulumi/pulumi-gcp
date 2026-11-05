@@ -59,7 +59,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * must be valid.
      * Label values can be templatized by using variables. The only available
      * variable names are the names of the labels in the PromQL result,
-     * although label names beginning with \_\_ (two &#34;\_&#34;) are reserved for
+     * although label names beginning with &#92;_&#92;_ (two &#34;&#92;_&#34;) are reserved for
      * internal use. &#34;labels&#34; may be empty. This field is intended to be used
      * for organizing and identifying the AlertPolicy.
      * 
@@ -138,7 +138,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * must be valid.
      * Label values can be templatized by using variables. The only available
      * variable names are the names of the labels in the PromQL result,
-     * although label names beginning with \_\_ (two &#34;\_&#34;) are reserved for
+     * although label names beginning with &#92;_&#92;_ (two &#34;&#92;_&#34;) are reserved for
      * internal use. &#34;labels&#34; may be empty. This field is intended to be used
      * for organizing and identifying the AlertPolicy.
      * 

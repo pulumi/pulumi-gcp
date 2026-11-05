@@ -1336,6 +1336,56 @@ class AutonomousDatabase(pulumi.CustomResource):
         __props__.__dict__["source_config"] = source_config
         return AutonomousDatabase(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            autonomous_database_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            disaster_recovery_supported_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            odb_network: pulumi.Input[Optional[_builtins.str]] = None,
+            odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_autonomous_databases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict', 'outputs.AutonomousDatabaseProperties']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            source_config: pulumi.Input[Optional[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict', 'outputs.AutonomousDatabaseSourceConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminPassword"] = admin_password
+        __props__["autonomousDatabaseId"] = autonomous_database_id
+        __props__["cidr"] = cidr
+        __props__["createTime"] = create_time
+        __props__["database"] = database
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["disasterRecoverySupportedLocations"] = disaster_recovery_supported_locations
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["entitlementId"] = entitlement_id
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["odbNetwork"] = odb_network
+        __props__["odbSubnet"] = odb_subnet
+        __props__["peerAutonomousDatabases"] = peer_autonomous_databases
+        __props__["project"] = project
+        __props__["properties"] = properties
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["sourceConfig"] = source_config
+        return pulumi.runtime.exists_resource(None, 'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> pulumi.Output[Optional[_builtins.str]]:

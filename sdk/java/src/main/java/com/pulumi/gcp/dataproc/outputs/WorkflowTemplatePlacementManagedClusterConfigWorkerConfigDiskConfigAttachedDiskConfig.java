@@ -21,11 +21,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
      * @return (Optional, Deprecated)
      * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
-     * @deprecated
-     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
-    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+    @Deprecated
     private @Nullable String diskType;
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -55,11 +54,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
      * @return (Optional, Deprecated)
      * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
-     * @deprecated
-     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
-    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+    @Deprecated
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }

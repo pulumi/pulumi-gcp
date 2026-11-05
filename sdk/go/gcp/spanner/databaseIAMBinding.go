@@ -623,6 +623,12 @@ func (DatabaseIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseIAMBindingState)(nil)).Elem()
 }
 
+// DatabaseIAMBindingExists checks whether an existing DatabaseIAMBinding resource with the given ID exists.
+func DatabaseIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", id, state, "", opts...)
+}
+
 type databaseIAMBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

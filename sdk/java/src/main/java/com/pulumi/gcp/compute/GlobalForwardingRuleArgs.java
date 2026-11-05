@@ -480,7 +480,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     @Import(name="portRange")
@@ -503,7 +503,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -1235,7 +1235,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
          *   cannot have overlapping `portRange`s.
-         *   {@literal @}pattern: \d+(?:-\d+)?
+         *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
          * 
          * @return builder
          * 
@@ -1262,7 +1262,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
          *   cannot have overlapping `portRange`s.
-         *   {@literal @}pattern: \d+(?:-\d+)?
+         *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
          * 
          * @return builder
          * 

@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.Chronicle.Outputs
         /// SAS Token.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// 
-        /// 
         /// &lt;a name="NestedDetailsAzureBlobStoreV2SettingsAuthenticationAzureV2WorkloadIdentityFederation"&gt;&lt;/a&gt;The `AzureV2WorkloadIdentityFederation` block supports:
         /// </summary>
         public readonly string SasToken;

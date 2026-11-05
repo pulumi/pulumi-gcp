@@ -400,6 +400,12 @@ func (WorkstationConfigIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workstationConfigIamPolicyState)(nil)).Elem()
 }
 
+// WorkstationConfigIamPolicyExists checks whether an existing WorkstationConfigIamPolicy resource with the given ID exists.
+func WorkstationConfigIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkstationConfigIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy", id, state, "", opts...)
+}
+
 type workstationConfigIamPolicyArgs struct {
 	// The location where the workstation cluster config should reside.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

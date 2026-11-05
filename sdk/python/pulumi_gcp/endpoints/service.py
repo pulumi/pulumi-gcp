@@ -525,6 +525,32 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            apis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceApiArgs', 'ServiceApiArgsDict', 'outputs.ServiceApi']]]]] = None,
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_address: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceEndpointArgs', 'ServiceEndpointArgsDict', 'outputs.ServiceEndpoint']]]]] = None,
+            grpc_config: pulumi.Input[Optional[_builtins.str]] = None,
+            openapi_config: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protoc_output_base64: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apis"] = apis
+        __props__["configId"] = config_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dnsAddress"] = dns_address
+        __props__["endpoints"] = endpoints
+        __props__["grpcConfig"] = grpc_config
+        __props__["openapiConfig"] = openapi_config
+        __props__["project"] = project
+        __props__["protocOutputBase64"] = protoc_output_base64
+        __props__["serviceName"] = service_name
+        return pulumi.runtime.exists_resource(None, 'gcp:endpoints/service:Service', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def apis(self) -> pulumi.Output[Sequence['outputs.ServiceApi']]:

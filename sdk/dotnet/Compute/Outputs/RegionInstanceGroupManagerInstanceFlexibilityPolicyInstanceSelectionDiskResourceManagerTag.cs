@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string Key;
         /// <summary>
         /// , The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string Value;
 

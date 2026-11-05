@@ -190,6 +190,12 @@ func (AppCheckRecaptchaEnterpriseConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCheckRecaptchaEnterpriseConfigState)(nil)).Elem()
 }
 
+// AppCheckRecaptchaEnterpriseConfigExists checks whether an existing AppCheckRecaptchaEnterpriseConfig resource with the given ID exists.
+func AppCheckRecaptchaEnterpriseConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppCheckRecaptchaEnterpriseConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig", id, state, "", opts...)
+}
+
 type appCheckRecaptchaEnterpriseConfigArgs struct {
 	// The ID of an
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).

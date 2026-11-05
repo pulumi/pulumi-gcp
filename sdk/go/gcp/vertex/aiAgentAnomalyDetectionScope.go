@@ -241,6 +241,12 @@ func (AiAgentAnomalyDetectionScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiAgentAnomalyDetectionScopeState)(nil)).Elem()
 }
 
+// AiAgentAnomalyDetectionScopeExists checks whether an existing AiAgentAnomalyDetectionScope resource with the given ID exists.
+func AiAgentAnomalyDetectionScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiAgentAnomalyDetectionScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope", id, state, "", opts...)
+}
+
 type aiAgentAnomalyDetectionScopeArgs struct {
 	// The ID to use for the AgentAnomalyDetectionScope, which will become the
 	// final component of the scope's resource name. This value should be 1-63

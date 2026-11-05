@@ -936,6 +936,50 @@ class Deployment(pulumi.CustomResource):
         __props__.__dict__["worker_pool"] = worker_pool
         return Deployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            artifacts_gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_existing_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            latest_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            quota_validation: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            terraform_blueprint: pulumi.Input[Optional[Union['DeploymentTerraformBlueprintArgs', 'DeploymentTerraformBlueprintArgsDict', 'outputs.DeploymentTerraformBlueprint']]] = None,
+            tf_version_constraint: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_pool: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["artifactsGcsBucket"] = artifacts_gcs_bucket
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["forceDestroy"] = force_destroy
+        __props__["importExistingResources"] = import_existing_resources
+        __props__["labels"] = labels
+        __props__["latestRevision"] = latest_revision
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["quotaValidation"] = quota_validation
+        __props__["serviceAccount"] = service_account
+        __props__["state"] = state
+        __props__["terraformBlueprint"] = terraform_blueprint
+        __props__["tfVersionConstraint"] = tf_version_constraint
+        __props__["workerPool"] = worker_pool
+        return pulumi.runtime.exists_resource(None, 'gcp:configdeployment/deployment:Deployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

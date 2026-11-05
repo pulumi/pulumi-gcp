@@ -226,6 +226,12 @@ func (ReleaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*releaseState)(nil)).Elem()
 }
 
+// ReleaseExists checks whether an existing Release resource with the given ID exists.
+func ReleaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReleaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebaserules/release:Release", id, state, "", opts...)
+}
+
 type releaseArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

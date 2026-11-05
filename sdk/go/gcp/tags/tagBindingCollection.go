@@ -110,6 +110,12 @@ func (TagBindingCollectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagBindingCollectionState)(nil)).Elem()
 }
 
+// TagBindingCollectionExists checks whether an existing TagBindingCollection resource with the given ID exists.
+func TagBindingCollectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagBindingCollectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:tags/tagBindingCollection:TagBindingCollection", id, state, "", opts...)
+}
+
 type tagBindingCollectionArgs struct {
 	// The full resource name of the resource to which the tags are bound. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	FullResourceName string `pulumi:"fullResourceName"`

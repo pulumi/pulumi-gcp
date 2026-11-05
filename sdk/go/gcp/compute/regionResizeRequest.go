@@ -297,6 +297,12 @@ func (RegionResizeRequestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionResizeRequestState)(nil)).Elem()
 }
 
+// RegionResizeRequestExists checks whether an existing RegionResizeRequest resource with the given ID exists.
+func RegionResizeRequestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionResizeRequestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionResizeRequest:RegionResizeRequest", id, state, "", opts...)
+}
+
 type regionResizeRequestArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

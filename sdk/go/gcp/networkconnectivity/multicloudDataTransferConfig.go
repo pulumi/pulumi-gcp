@@ -275,6 +275,12 @@ func (MulticloudDataTransferConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multicloudDataTransferConfigState)(nil)).Elem()
 }
 
+// MulticloudDataTransferConfigExists checks whether an existing MulticloudDataTransferConfig resource with the given ID exists.
+func MulticloudDataTransferConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MulticloudDataTransferConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig", id, state, "", opts...)
+}
+
 type multicloudDataTransferConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

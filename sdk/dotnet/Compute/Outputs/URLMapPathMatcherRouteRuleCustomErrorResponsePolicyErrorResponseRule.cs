@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
         /// - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
         /// - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
-        /// Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        ///   Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
         /// </summary>
         public readonly ImmutableArray<string> MatchResponseCodes;
         /// <summary>

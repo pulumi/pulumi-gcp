@@ -346,6 +346,12 @@ func (ConsumerQuotaOverrideState) ElementType() reflect.Type {
 	return reflect.TypeOf((*consumerQuotaOverrideState)(nil)).Elem()
 }
 
+// ConsumerQuotaOverrideExists checks whether an existing ConsumerQuotaOverride resource with the given ID exists.
+func ConsumerQuotaOverrideExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConsumerQuotaOverrideState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride", id, state, "", opts...)
+}
+
 type consumerQuotaOverrideArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

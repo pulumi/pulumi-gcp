@@ -346,6 +346,12 @@ func (MulticastDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multicastDomainState)(nil)).Elem()
 }
 
+// MulticastDomainExists checks whether an existing MulticastDomain resource with the given ID exists.
+func MulticastDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MulticastDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/multicastDomain:MulticastDomain", id, state, "", opts...)
+}
+
 type multicastDomainArgs struct {
 	// The resource name of the multicast admin VPC network.
 	// Use the following format:

@@ -100,6 +100,17 @@ export class SecurityScanConfig extends pulumi.CustomResource {
         return new SecurityScanConfig(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing SecurityScanConfig resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: SecurityScanConfigState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gcp:compute/securityScanConfig:SecurityScanConfig", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gcp:compute/securityScanConfig:SecurityScanConfig';
 

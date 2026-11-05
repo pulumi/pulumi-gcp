@@ -686,6 +686,12 @@ func (FeatureMembershipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureMembershipState)(nil)).Elem()
 }
 
+// FeatureMembershipExists checks whether an existing FeatureMembership resource with the given ID exists.
+func FeatureMembershipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureMembershipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/featureMembership:FeatureMembership", id, state, "", opts...)
+}
+
 type featureMembershipArgs struct {
 	// Config Management-specific spec. Structure is documented below.
 	Configmanagement *FeatureMembershipConfigmanagement `pulumi:"configmanagement"`

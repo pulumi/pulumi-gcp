@@ -836,6 +836,42 @@ class Entitlement(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Entitlement(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_notification_targets: pulumi.Input[Optional[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict', 'outputs.EntitlementAdditionalNotificationTargets']]] = None,
+            approval_workflow: pulumi.Input[Optional[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict', 'outputs.EntitlementApprovalWorkflow']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict', 'outputs.EntitlementEligibleUser']]]]] = None,
+            entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_request_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            privileged_access: pulumi.Input[Optional[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict', 'outputs.EntitlementPrivilegedAccess']]] = None,
+            requester_justification_config: pulumi.Input[Optional[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict', 'outputs.EntitlementRequesterJustificationConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalNotificationTargets"] = additional_notification_targets
+        __props__["approvalWorkflow"] = approval_workflow
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["eligibleUsers"] = eligible_users
+        __props__["entitlementId"] = entitlement_id
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["maxRequestDuration"] = max_request_duration
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["privilegedAccess"] = privileged_access
+        __props__["requesterJustificationConfig"] = requester_justification_config
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:privilegedaccessmanager/entitlement:entitlement', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalNotificationTargets")
     def additional_notification_targets(self) -> pulumi.Output[Optional['outputs.EntitlementAdditionalNotificationTargets']]:

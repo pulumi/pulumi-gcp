@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.ParameterManager
         public string ParameterVersionId { get; set; } = null!;
 
         /// <summary>
-        /// The project for retrieving the Parameter Version. If it's not specified, 
+        /// The project for retrieving the Parameter Version. If it's not specified,
         /// the provider project will be used.
         /// </summary>
         [Input("project")]
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.ParameterManager
         public Input<string> ParameterVersionId { get; set; } = null!;
 
         /// <summary>
-        /// The project for retrieving the Parameter Version. If it's not specified, 
+        /// The project for retrieving the Parameter Version. If it's not specified,
         /// the provider project will be used.
         /// </summary>
         [Input("project")]

@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A series of key value pairs.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A series of key value pairs.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -213,7 +213,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A series of key value pairs.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputMap<string> Metadata
         {

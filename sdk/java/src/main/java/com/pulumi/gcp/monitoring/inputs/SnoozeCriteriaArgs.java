@@ -31,7 +31,7 @@ public final class SnoozeCriteriaArgs extends com.pulumi.resources.ResourceArgs 
      * instance name of test_group, a metadata user label with a key of foo and a
      * value of bar, and a metadata system label with a key of region and a value
      * of us-central1:
-     * &#34;filter&#34;: &#34;resource.labels.instance_id=\&#34;1234567890\&#34; AND metric.labels.instance_name=\&#34;test_group\&#34; AND metadata.user_labels.foo=\&#34;bar\&#34; AND metadata.system_labels.region=\&#34;us-central1\&#34;&#34;
+     * &#34;filter&#34;: &#34;resource.labels.instance_id=&#92;&#34;1234567890&#92;&#34; AND metric.labels.instance_name=&#92;&#34;test_group&#92;&#34; AND metadata.user_labels.foo=&#92;&#34;bar&#92;&#34; AND metadata.system_labels.region=&#92;&#34;us-central1&#92;&#34;&#34;
      * 
      */
     @Import(name="filter")
@@ -52,7 +52,7 @@ public final class SnoozeCriteriaArgs extends com.pulumi.resources.ResourceArgs 
      * instance name of test_group, a metadata user label with a key of foo and a
      * value of bar, and a metadata system label with a key of region and a value
      * of us-central1:
-     * &#34;filter&#34;: &#34;resource.labels.instance_id=\&#34;1234567890\&#34; AND metric.labels.instance_name=\&#34;test_group\&#34; AND metadata.user_labels.foo=\&#34;bar\&#34; AND metadata.system_labels.region=\&#34;us-central1\&#34;&#34;
+     * &#34;filter&#34;: &#34;resource.labels.instance_id=&#92;&#34;1234567890&#92;&#34; AND metric.labels.instance_name=&#92;&#34;test_group&#92;&#34; AND metadata.user_labels.foo=&#92;&#34;bar&#92;&#34; AND metadata.system_labels.region=&#92;&#34;us-central1&#92;&#34;&#34;
      * 
      */
     public Optional<Output<String>> filter() {
@@ -122,7 +122,7 @@ public final class SnoozeCriteriaArgs extends com.pulumi.resources.ResourceArgs 
          * instance name of test_group, a metadata user label with a key of foo and a
          * value of bar, and a metadata system label with a key of region and a value
          * of us-central1:
-         * &#34;filter&#34;: &#34;resource.labels.instance_id=\&#34;1234567890\&#34; AND metric.labels.instance_name=\&#34;test_group\&#34; AND metadata.user_labels.foo=\&#34;bar\&#34; AND metadata.system_labels.region=\&#34;us-central1\&#34;&#34;
+         * &#34;filter&#34;: &#34;resource.labels.instance_id=&#92;&#34;1234567890&#92;&#34; AND metric.labels.instance_name=&#92;&#34;test_group&#92;&#34; AND metadata.user_labels.foo=&#92;&#34;bar&#92;&#34; AND metadata.system_labels.region=&#92;&#34;us-central1&#92;&#34;&#34;
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class SnoozeCriteriaArgs extends com.pulumi.resources.ResourceArgs 
          * instance name of test_group, a metadata user label with a key of foo and a
          * value of bar, and a metadata system label with a key of region and a value
          * of us-central1:
-         * &#34;filter&#34;: &#34;resource.labels.instance_id=\&#34;1234567890\&#34; AND metric.labels.instance_name=\&#34;test_group\&#34; AND metadata.user_labels.foo=\&#34;bar\&#34; AND metadata.system_labels.region=\&#34;us-central1\&#34;&#34;
+         * &#34;filter&#34;: &#34;resource.labels.instance_id=&#92;&#34;1234567890&#92;&#34; AND metric.labels.instance_name=&#92;&#34;test_group&#92;&#34; AND metadata.user_labels.foo=&#92;&#34;bar&#92;&#34; AND metadata.system_labels.region=&#92;&#34;us-central1&#92;&#34;&#34;
          * 
          * @return builder
          * 

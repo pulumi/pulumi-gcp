@@ -325,11 +325,10 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
      * 
      * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `securityPostureConfig` is deprecated and will be removed in a future major release.
+     * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
+    @Deprecated
     @Import(name="securityPostureConfig")
     private @Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig;
 
@@ -340,11 +339,10 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
      * 
      * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `securityPostureConfig` is deprecated and will be removed in a future major release.
+     * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
+    @Deprecated
     public Optional<Output<AttachedClusterSecurityPostureConfigArgs>> securityPostureConfig() {
         return Optional.ofNullable(this.securityPostureConfig);
     }
@@ -780,11 +778,10 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * `securityPostureConfig` is deprecated and will be removed in a future major release.
+         * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder securityPostureConfig(@Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig) {
             $.securityPostureConfig = securityPostureConfig;
             return this;
@@ -799,11 +796,10 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * `securityPostureConfig` is deprecated and will be removed in a future major release.
+         * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
+        @Deprecated
         public Builder securityPostureConfig(AttachedClusterSecurityPostureConfigArgs securityPostureConfig) {
             return securityPostureConfig(Output.of(securityPostureConfig));
         }

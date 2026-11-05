@@ -498,6 +498,12 @@ func (KeyRingIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyRingIAMBindingState)(nil)).Elem()
 }
 
+// KeyRingIAMBindingExists checks whether an existing KeyRingIAMBinding resource with the given ID exists.
+func KeyRingIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyRingIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding", id, state, "", opts...)
+}
+
 type keyRingIAMBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

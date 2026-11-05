@@ -1711,6 +1711,54 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["spark_options"] = spark_options
         return Routine(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arguments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoutineArgumentArgs', 'RoutineArgumentArgsDict', 'outputs.RoutineArgument']]]]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            data_governance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            definition_body: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            determinism_level: pulumi.Input[Optional[_builtins.str]] = None,
+            external_runtime_options: pulumi.Input[Optional[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict', 'outputs.RoutineExternalRuntimeOptions']]] = None,
+            imported_libraries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            python_options: pulumi.Input[Optional[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict', 'outputs.RoutinePythonOptions']]] = None,
+            remote_function_options: pulumi.Input[Optional[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict', 'outputs.RoutineRemoteFunctionOptions']]] = None,
+            return_table_type: pulumi.Input[Optional[_builtins.str]] = None,
+            return_type: pulumi.Input[Optional[_builtins.str]] = None,
+            routine_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            spark_options: pulumi.Input[Optional[Union['RoutineSparkOptionsArgs', 'RoutineSparkOptionsArgsDict', 'outputs.RoutineSparkOptions']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arguments"] = arguments
+        __props__["creationTime"] = creation_time
+        __props__["dataGovernanceType"] = data_governance_type
+        __props__["datasetId"] = dataset_id
+        __props__["definitionBody"] = definition_body
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["determinismLevel"] = determinism_level
+        __props__["externalRuntimeOptions"] = external_runtime_options
+        __props__["importedLibraries"] = imported_libraries
+        __props__["language"] = language
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["project"] = project
+        __props__["pythonOptions"] = python_options
+        __props__["remoteFunctionOptions"] = remote_function_options
+        __props__["returnTableType"] = return_table_type
+        __props__["returnType"] = return_type
+        __props__["routineId"] = routine_id
+        __props__["routineType"] = routine_type
+        __props__["securityMode"] = security_mode
+        __props__["sparkOptions"] = spark_options
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/routine:Routine', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def arguments(self) -> pulumi.Output[Optional[Sequence['outputs.RoutineArgument']]]:

@@ -245,6 +245,12 @@ func (DataTableRowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataTableRowState)(nil)).Elem()
 }
 
+// DataTableRowExists checks whether an existing DataTableRow resource with the given ID exists.
+func DataTableRowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataTableRowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/dataTableRow:DataTableRow", id, state, "", opts...)
+}
+
 type dataTableRowArgs struct {
 	// The ID of the parent DataTable.
 	DataTableId string `pulumi:"dataTableId"`

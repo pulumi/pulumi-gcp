@@ -293,6 +293,12 @@ func (SchemaVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*schemaVersionState)(nil)).Elem()
 }
 
+// SchemaVersionExists checks whether an existing SchemaVersion resource with the given ID exists.
+func SchemaVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SchemaVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:documentai/schemaVersion:SchemaVersion", id, state, "", opts...)
+}
+
 type schemaVersionArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

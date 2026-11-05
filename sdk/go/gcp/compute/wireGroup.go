@@ -303,6 +303,12 @@ func (WireGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wireGroupState)(nil)).Elem()
 }
 
+// WireGroupExists checks whether an existing WireGroup resource with the given ID exists.
+func WireGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WireGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/wireGroup:WireGroup", id, state, "", opts...)
+}
+
 type wireGroupArgs struct {
 	// Indicates whether the wire group is administratively enabled.
 	AdminEnabled *bool `pulumi:"adminEnabled"`

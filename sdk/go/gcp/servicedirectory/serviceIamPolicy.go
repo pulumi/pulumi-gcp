@@ -343,6 +343,12 @@ func (ServiceIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIamPolicyState)(nil)).Elem()
 }
 
+// ServiceIamPolicyExists checks whether an existing ServiceIamPolicy resource with the given ID exists.
+func ServiceIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:servicedirectory/serviceIamPolicy:ServiceIamPolicy", id, state, "", opts...)
+}
+
 type serviceIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

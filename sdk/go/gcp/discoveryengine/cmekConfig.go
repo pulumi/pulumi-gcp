@@ -253,6 +253,12 @@ func (CmekConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cmekConfigState)(nil)).Elem()
 }
 
+// CmekConfigExists checks whether an existing CmekConfig resource with the given ID exists.
+func CmekConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CmekConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/cmekConfig:CmekConfig", id, state, "", opts...)
+}
+
 type cmekConfigArgs struct {
 	// The unique id of the cmek config.
 	CmekConfigId string `pulumi:"cmekConfigId"`

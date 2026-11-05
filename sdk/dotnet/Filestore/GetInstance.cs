@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Filestore
     public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the location of the instance. This 
+        /// The name of the location of the instance. This
         /// can be a region for ENTERPRISE tier instances. If it is not provided,
         /// the provider region or zone is used.
         /// </summary>
@@ -116,7 +116,7 @@ namespace Pulumi.Gcp.Filestore
         /// <summary>
         /// The name of a Filestore instance.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Gcp.Filestore
     public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the location of the instance. This 
+        /// The name of the location of the instance. This
         /// can be a region for ENTERPRISE tier instances. If it is not provided,
         /// the provider region or zone is used.
         /// </summary>
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.Filestore
         /// <summary>
         /// The name of a Filestore instance.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

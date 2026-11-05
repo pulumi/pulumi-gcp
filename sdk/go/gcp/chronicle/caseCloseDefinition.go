@@ -197,6 +197,12 @@ func (CaseCloseDefinitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caseCloseDefinitionState)(nil)).Elem()
 }
 
+// CaseCloseDefinitionExists checks whether an existing CaseCloseDefinition resource with the given ID exists.
+func CaseCloseDefinitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaseCloseDefinitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/caseCloseDefinition:CaseCloseDefinition", id, state, "", opts...)
+}
+
 type caseCloseDefinitionArgs struct {
 	// Specify why the case was closed.
 	// Possible values are: `MALICIOUS`, `NOT_MALICIOUS`, `MAINTENANCE`, `INCONCLUSIVE`.

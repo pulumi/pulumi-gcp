@@ -273,6 +273,12 @@ func (WorkforcePoolProviderScimTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workforcePoolProviderScimTokenState)(nil)).Elem()
 }
 
+// WorkforcePoolProviderScimTokenExists checks whether an existing WorkforcePoolProviderScimToken resource with the given ID exists.
+func WorkforcePoolProviderScimTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkforcePoolProviderScimTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken", id, state, "", opts...)
+}
+
 type workforcePoolProviderScimTokenArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -199,6 +199,12 @@ func (AddressGroupIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressGroupIamMemberState)(nil)).Elem()
 }
 
+// AddressGroupIamMemberExists checks whether an existing AddressGroupIamMember resource with the given ID exists.
+func AddressGroupIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressGroupIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember", id, state, "", opts...)
+}
+
 type addressGroupIamMemberArgs struct {
 	Condition *AddressGroupIamMemberCondition `pulumi:"condition"`
 	// The location of the gateway security policy.

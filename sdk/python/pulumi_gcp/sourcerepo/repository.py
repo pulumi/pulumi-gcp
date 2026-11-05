@@ -497,6 +497,26 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return Repository(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict', 'outputs.RepositoryPubsubConfig']]]]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createIgnoreAlreadyExists"] = create_ignore_already_exists
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pubsubConfigs"] = pubsub_configs
+        __props__["size"] = size
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'gcp:sourcerepo/repository:Repository', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createIgnoreAlreadyExists")
     def create_ignore_already_exists(self) -> pulumi.Output[Optional[_builtins.bool]]:

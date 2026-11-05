@@ -256,6 +256,12 @@ func (MuteConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*muteConfigState)(nil)).Elem()
 }
 
+// MuteConfigExists checks whether an existing MuteConfig resource with the given ID exists.
+func MuteConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MuteConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/muteConfig:MuteConfig", id, state, "", opts...)
+}
+
 type muteConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

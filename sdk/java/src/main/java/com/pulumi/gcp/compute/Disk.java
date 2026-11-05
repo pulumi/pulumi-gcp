@@ -583,11 +583,10 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
-     * @deprecated
-     * `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+     * @deprecated `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
      */
-    @Deprecated /* `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment. */
+    @Deprecated
     @Export(name="interface", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interface_;
 

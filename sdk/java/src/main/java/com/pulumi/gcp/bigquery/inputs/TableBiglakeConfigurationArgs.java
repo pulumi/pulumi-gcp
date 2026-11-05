@@ -17,8 +17,8 @@ public final class TableBiglakeConfigurationArgs extends com.pulumi.resources.Re
     /**
      * The connection specifying the credentials to be used to
      * read and write to external storage, such as Cloud Storage. The connectionId can
-     * have the form &#34;&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;&#34; or
-     * projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;&#34;.
+     * have the form &#34;&amp;lt;project&#92;_id&amp;gt;.&amp;lt;location&#92;_id&amp;gt;.&amp;lt;connection&#92;_id&amp;gt;&#34; or
+     * projects/&amp;lt;project&#92;_id&amp;gt;/locations/&amp;lt;location&#92;_id&amp;gt;/connections/&amp;lt;connection&#92;_id&amp;gt;&#34;.
      * 
      */
     @Import(name="connectionId", required=true)
@@ -27,8 +27,8 @@ public final class TableBiglakeConfigurationArgs extends com.pulumi.resources.Re
     /**
      * @return The connection specifying the credentials to be used to
      * read and write to external storage, such as Cloud Storage. The connectionId can
-     * have the form &#34;&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;&#34; or
-     * projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;&#34;.
+     * have the form &#34;&amp;lt;project&#92;_id&amp;gt;.&amp;lt;location&#92;_id&amp;gt;.&amp;lt;connection&#92;_id&amp;gt;&#34; or
+     * projects/&amp;lt;project&#92;_id&amp;gt;/locations/&amp;lt;location&#92;_id&amp;gt;/connections/&amp;lt;connection&#92;_id&amp;gt;&#34;.
      * 
      */
     public Output<String> connectionId() {
@@ -112,8 +112,8 @@ public final class TableBiglakeConfigurationArgs extends com.pulumi.resources.Re
         /**
          * @param connectionId The connection specifying the credentials to be used to
          * read and write to external storage, such as Cloud Storage. The connectionId can
-         * have the form &#34;&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;&#34; or
-         * projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;&#34;.
+         * have the form &#34;&amp;lt;project&#92;_id&amp;gt;.&amp;lt;location&#92;_id&amp;gt;.&amp;lt;connection&#92;_id&amp;gt;&#34; or
+         * projects/&amp;lt;project&#92;_id&amp;gt;/locations/&amp;lt;location&#92;_id&amp;gt;/connections/&amp;lt;connection&#92;_id&amp;gt;&#34;.
          * 
          * @return builder
          * 
@@ -126,8 +126,8 @@ public final class TableBiglakeConfigurationArgs extends com.pulumi.resources.Re
         /**
          * @param connectionId The connection specifying the credentials to be used to
          * read and write to external storage, such as Cloud Storage. The connectionId can
-         * have the form &#34;&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;&#34; or
-         * projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;&#34;.
+         * have the form &#34;&amp;lt;project&#92;_id&amp;gt;.&amp;lt;location&#92;_id&amp;gt;.&amp;lt;connection&#92;_id&amp;gt;&#34; or
+         * projects/&amp;lt;project&#92;_id&amp;gt;/locations/&amp;lt;location&#92;_id&amp;gt;/connections/&amp;lt;connection&#92;_id&amp;gt;&#34;.
          * 
          * @return builder
          * 

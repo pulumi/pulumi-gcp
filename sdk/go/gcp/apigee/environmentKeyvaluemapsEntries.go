@@ -240,6 +240,12 @@ func (EnvironmentKeyvaluemapsEntriesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentKeyvaluemapsEntriesState)(nil)).Elem()
 }
 
+// EnvironmentKeyvaluemapsEntriesExists checks whether an existing EnvironmentKeyvaluemapsEntries resource with the given ID exists.
+func EnvironmentKeyvaluemapsEntriesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentKeyvaluemapsEntriesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries", id, state, "", opts...)
+}
+
 type environmentKeyvaluemapsEntriesArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

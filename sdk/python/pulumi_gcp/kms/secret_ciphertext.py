@@ -367,6 +367,20 @@ class SecretCiphertext(pulumi.CustomResource):
         __props__.__dict__["plaintext"] = plaintext
         return SecretCiphertext(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_authenticated_data: pulumi.Input[Optional[_builtins.str]] = None,
+            ciphertext: pulumi.Input[Optional[_builtins.str]] = None,
+            crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+            plaintext: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalAuthenticatedData"] = additional_authenticated_data
+        __props__["ciphertext"] = ciphertext
+        __props__["cryptoKey"] = crypto_key
+        __props__["plaintext"] = plaintext
+        return pulumi.runtime.exists_resource(None, 'gcp:kms/secretCiphertext:SecretCiphertext', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalAuthenticatedData")
     def additional_authenticated_data(self) -> pulumi.Output[Optional[_builtins.str]]:

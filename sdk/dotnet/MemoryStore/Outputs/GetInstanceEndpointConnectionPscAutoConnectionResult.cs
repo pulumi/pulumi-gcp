@@ -14,10 +14,10 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class GetInstanceEndpointConnectionPscAutoConnectionResult
     {
         /// <summary>
-        /// Output Only. Type of a PSC Connection. 
+        /// Output Only. Type of a PSC Connection.
         ///  Possible values:
-        ///  CONNECTION_TYPE_DISCOVERY 
-        ///  CONNECTION_TYPE_PRIMARY 
+        ///  CONNECTION_TYPE_DISCOVERY
+        ///  CONNECTION_TYPE_PRIMARY
         ///  CONNECTION_TYPE_READER
         /// </summary>
         public readonly string ConnectionType;

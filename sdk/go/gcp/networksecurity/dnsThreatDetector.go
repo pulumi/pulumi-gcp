@@ -240,6 +240,12 @@ func (DnsThreatDetectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsThreatDetectorState)(nil)).Elem()
 }
 
+// DnsThreatDetectorExists checks whether an existing DnsThreatDetector resource with the given ID exists.
+func DnsThreatDetectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsThreatDetectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/dnsThreatDetector:DnsThreatDetector", id, state, "", opts...)
+}
+
 type dnsThreatDetectorArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

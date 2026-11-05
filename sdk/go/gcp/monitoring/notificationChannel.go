@@ -304,6 +304,12 @@ func (NotificationChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationChannelState)(nil)).Elem()
 }
 
+// NotificationChannelExists checks whether an existing NotificationChannel resource with the given ID exists.
+func NotificationChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotificationChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:monitoring/notificationChannel:NotificationChannel", id, state, "", opts...)
+}
+
 type notificationChannelArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -293,6 +293,12 @@ func (PrincipalAccessBoundaryPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*principalAccessBoundaryPolicyState)(nil)).Elem()
 }
 
+// PrincipalAccessBoundaryPolicyExists checks whether an existing PrincipalAccessBoundaryPolicy resource with the given ID exists.
+func PrincipalAccessBoundaryPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrincipalAccessBoundaryPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy", id, state, "", opts...)
+}
+
 type principalAccessBoundaryPolicyArgs struct {
 	// User defined annotations. See https://google.aip.dev/148#annotations
 	// for more details such as format and size limitations

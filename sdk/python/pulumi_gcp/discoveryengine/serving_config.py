@@ -575,6 +575,34 @@ class ServingConfig(pulumi.CustomResource):
         __props__.__dict__["synonyms_control_ids"] = synonyms_control_ids
         return ServingConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            boost_control_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_control_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            promote_control_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            redirect_control_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            serving_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            synonyms_control_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["boostControlIds"] = boost_control_ids
+        __props__["collectionId"] = collection_id
+        __props__["engineId"] = engine_id
+        __props__["filterControlIds"] = filter_control_ids
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["promoteControlIds"] = promote_control_ids
+        __props__["redirectControlIds"] = redirect_control_ids
+        __props__["servingConfigId"] = serving_config_id
+        __props__["synonymsControlIds"] = synonyms_control_ids
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/servingConfig:ServingConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="boostControlIds")
     def boost_control_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

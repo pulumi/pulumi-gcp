@@ -460,6 +460,12 @@ func (SecurityGatewayApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGatewayApplicationState)(nil)).Elem()
 }
 
+// SecurityGatewayApplicationExists checks whether an existing SecurityGatewayApplication resource with the given ID exists.
+func SecurityGatewayApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGatewayApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication", id, state, "", opts...)
+}
+
 type securityGatewayApplicationArgs struct {
 	// User-settable Application resource ID.
 	// * Must start with a letter.

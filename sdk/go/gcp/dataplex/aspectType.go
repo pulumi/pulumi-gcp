@@ -441,6 +441,12 @@ func (AspectTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aspectTypeState)(nil)).Elem()
 }
 
+// AspectTypeExists checks whether an existing AspectType resource with the given ID exists.
+func AspectTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AspectTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/aspectType:AspectType", id, state, "", opts...)
+}
+
 type aspectTypeArgs struct {
 	// The aspect type id of the aspect type.
 	AspectTypeId *string `pulumi:"aspectTypeId"`

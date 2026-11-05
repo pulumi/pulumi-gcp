@@ -284,6 +284,12 @@ func (AttachedDiskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attachedDiskState)(nil)).Elem()
 }
 
+// AttachedDiskExists checks whether an existing AttachedDisk resource with the given ID exists.
+func AttachedDiskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttachedDiskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/attachedDisk:AttachedDisk", id, state, "", opts...)
+}
+
 type attachedDiskArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

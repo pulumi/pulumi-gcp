@@ -396,6 +396,12 @@ func (MulticastGroupRangeActivationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multicastGroupRangeActivationState)(nil)).Elem()
 }
 
+// MulticastGroupRangeActivationExists checks whether an existing MulticastGroupRangeActivation resource with the given ID exists.
+func MulticastGroupRangeActivationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MulticastGroupRangeActivationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation", id, state, "", opts...)
+}
+
 type multicastGroupRangeActivationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

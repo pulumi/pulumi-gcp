@@ -210,6 +210,12 @@ func (CxGenerativeSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxGenerativeSettingsState)(nil)).Elem()
 }
 
+// CxGenerativeSettingsExists checks whether an existing CxGenerativeSettings resource with the given ID exists.
+func CxGenerativeSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxGenerativeSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings", id, state, "", opts...)
+}
+
 type cxGenerativeSettingsArgs struct {
 	// Settings for Generative Fallback.
 	// Structure is documented below.

@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("tf-instance")
  *             .clusters(InstanceClusterArgs.builder()
@@ -79,18 +79,18 @@ import javax.annotation.Nullable;
  *                 TableColumnFamilyArgs.builder()
  *                     .family("family-third")
  *                     .type("""
- *         {
- * \t\t\t\t\t\"aggregateType\": {
- * \t\t\t\t\t\t\"max\": {},
- * \t\t\t\t\t\t\"inputType\": {
- * \t\t\t\t\t\t\t\"int64Type\": {
- * \t\t\t\t\t\t\t\t\"encoding\": {
- * \t\t\t\t\t\t\t\t\t\"bigEndianBytes\": {}
- * \t\t\t\t\t\t\t\t}
- * \t\t\t\t\t\t\t}
- * \t\t\t\t\t\t}
- * \t\t\t\t\t}
- * \t\t\t\t}
+ *         }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "aggregateType}&#92;{@code ": }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "max}&#92;{@code ": }{}{@code ,
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "inputType}&#92;{@code ": }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "int64Type}&#92;{@code ": }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "encoding}&#92;{@code ": }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "bigEndianBytes}&#92;{@code ": }{}{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
  *                     """)
  *                     .build())
  *             .changeStreamRetention("24h0m0s")
@@ -100,8 +100,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -257,7 +257,7 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
      * 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
-     * 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+     * 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.&#92;n
      * 
      *                     The schema must be a valid JSON encoded string representing a Type&#39;s struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
      *                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character &#34;#&#34;, it should be set to &#34;Iw==&#34;, which is the base64 encoding of the byte sequence &#34;#&#34;.
@@ -269,7 +269,7 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * @return Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
      * 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
-     * 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+     * 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.&#92;n
      * 
      *                     The schema must be a valid JSON encoded string representing a Type&#39;s struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
      *                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character &#34;#&#34;, it should be set to &#34;Iw==&#34;, which is the base64 encoding of the byte sequence &#34;#&#34;.

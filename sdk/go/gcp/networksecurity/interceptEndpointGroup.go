@@ -321,6 +321,12 @@ func (InterceptEndpointGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*interceptEndpointGroupState)(nil)).Elem()
 }
 
+// InterceptEndpointGroupExists checks whether an existing InterceptEndpointGroup resource with the given ID exists.
+func InterceptEndpointGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InterceptEndpointGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup", id, state, "", opts...)
+}
+
 type interceptEndpointGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

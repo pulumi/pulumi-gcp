@@ -1131,6 +1131,46 @@ class DataStore(pulumi.CustomResource):
         __props__.__dict__["solution_types"] = solution_types
         return DataStore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict', 'outputs.DataStoreAdvancedSiteSearchConfig']]] = None,
+            content_config: pulumi.Input[Optional[_builtins.str]] = None,
+            create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_schema_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict', 'outputs.DataStoreDocumentProcessingConfig']]] = None,
+            industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_default_schema_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+            solution_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclEnabled"] = acl_enabled
+        __props__["advancedSiteSearchConfig"] = advanced_site_search_config
+        __props__["contentConfig"] = content_config
+        __props__["createAdvancedSiteSearch"] = create_advanced_site_search
+        __props__["createTime"] = create_time
+        __props__["dataStoreId"] = data_store_id
+        __props__["defaultSchemaId"] = default_schema_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["documentProcessingConfig"] = document_processing_config
+        __props__["industryVertical"] = industry_vertical
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["skipDefaultSchemaCreation"] = skip_default_schema_creation
+        __props__["solutionTypes"] = solution_types
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/dataStore:DataStore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclEnabled")
     def acl_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

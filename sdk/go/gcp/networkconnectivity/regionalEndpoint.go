@@ -329,6 +329,12 @@ func (RegionalEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalEndpointState)(nil)).Elem()
 }
 
+// RegionalEndpointExists checks whether an existing RegionalEndpoint resource with the given ID exists.
+func RegionalEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint", id, state, "", opts...)
+}
+
 type regionalEndpointArgs struct {
 	// The access type of this regional endpoint. This field is reflected in the PSC Forwarding Rule configuration to enable global access.
 	// Possible values are: `GLOBAL`, `REGIONAL`.

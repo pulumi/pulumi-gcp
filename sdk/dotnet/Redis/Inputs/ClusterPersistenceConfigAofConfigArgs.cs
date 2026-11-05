@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Redis.Inputs
         /// - NO - Do not explicitly call fsync(). Rely on OS defaults.
         /// - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
         /// - ALWAYS - Call fsync() for earch write command.
-        /// Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+        ///   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
         /// </summary>
         [Input("appendFsync")]
         public Input<string>? AppendFsync { get; set; }

@@ -213,6 +213,12 @@ func (BulkPerInstanceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bulkPerInstanceConfigState)(nil)).Elem()
 }
 
+// BulkPerInstanceConfigExists checks whether an existing BulkPerInstanceConfig resource with the given ID exists.
+func BulkPerInstanceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BulkPerInstanceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig", id, state, "", opts...)
+}
+
 type bulkPerInstanceConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

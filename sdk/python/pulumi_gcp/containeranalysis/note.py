@@ -752,6 +752,36 @@ class Note(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Note(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict', 'outputs.NoteAttestationAuthority']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            long_description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict', 'outputs.NoteRelatedUrl']]]]] = None,
+            short_description: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attestationAuthority"] = attestation_authority
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["expirationTime"] = expiration_time
+        __props__["kind"] = kind
+        __props__["longDescription"] = long_description
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["relatedNoteNames"] = related_note_names
+        __props__["relatedUrls"] = related_urls
+        __props__["shortDescription"] = short_description
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:containeranalysis/note:Note', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attestationAuthority")
     def attestation_authority(self) -> pulumi.Output['outputs.NoteAttestationAuthority']:

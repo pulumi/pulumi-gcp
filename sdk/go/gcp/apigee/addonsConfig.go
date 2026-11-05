@@ -266,6 +266,12 @@ func (AddonsConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addonsConfigState)(nil)).Elem()
 }
 
+// AddonsConfigExists checks whether an existing AddonsConfig resource with the given ID exists.
+func AddonsConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddonsConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/addonsConfig:AddonsConfig", id, state, "", opts...)
+}
+
 type addonsConfigArgs struct {
 	// Addon configurations of the Apigee organization.
 	// Structure is documented below.

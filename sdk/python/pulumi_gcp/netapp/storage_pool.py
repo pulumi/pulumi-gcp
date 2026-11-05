@@ -1553,6 +1553,76 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return StoragePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_directory: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
+            available_throughput_mibps: pulumi.Input[Optional[_builtins.float]] = None,
+            capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            cold_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            hot_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_config: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ldap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            qos_type: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_level: pulumi.Input[Optional[_builtins.str]] = None,
+            total_iops: pulumi.Input[Optional[_builtins.str]] = None,
+            total_throughput_mibps: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_count: pulumi.Input[Optional[_builtins.int]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeDirectory"] = active_directory
+        __props__["allowAutoTiering"] = allow_auto_tiering
+        __props__["availableThroughputMibps"] = available_throughput_mibps
+        __props__["capacityGib"] = capacity_gib
+        __props__["coldTierSizeUsedGib"] = cold_tier_size_used_gib
+        __props__["customPerformanceEnabled"] = custom_performance_enabled
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableHotTierAutoResize"] = enable_hot_tier_auto_resize
+        __props__["encryptionType"] = encryption_type
+        __props__["hotTierSizeGib"] = hot_tier_size_gib
+        __props__["hotTierSizeUsedGib"] = hot_tier_size_used_gib
+        __props__["kmsConfig"] = kms_config
+        __props__["labels"] = labels
+        __props__["ldapEnabled"] = ldap_enabled
+        __props__["location"] = location
+        __props__["mode"] = mode
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["qosType"] = qos_type
+        __props__["replicaZone"] = replica_zone
+        __props__["scaleType"] = scale_type
+        __props__["serviceLevel"] = service_level
+        __props__["totalIops"] = total_iops
+        __props__["totalThroughputMibps"] = total_throughput_mibps
+        __props__["type"] = type
+        __props__["volumeCapacityGib"] = volume_capacity_gib
+        __props__["volumeCount"] = volume_count
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:netapp/storagePool:StoragePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
     def active_directory(self) -> pulumi.Output[Optional[_builtins.str]]:

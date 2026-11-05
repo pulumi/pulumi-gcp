@@ -539,11 +539,10 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
     /**
      * Output only. The current version of this workflow template.
      * 
-     * @deprecated
-     * version is not useful as a configurable field, and will be removed in the future.
+     * @deprecated version is not useful as a configurable field, and will be removed in the future.
      * 
      */
-    @Deprecated /* version is not useful as a configurable field, and will be removed in the future. */
+    @Deprecated
     @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 

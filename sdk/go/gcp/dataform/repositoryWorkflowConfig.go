@@ -432,6 +432,12 @@ func (RepositoryWorkflowConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryWorkflowConfigState)(nil)).Elem()
 }
 
+// RepositoryWorkflowConfigExists checks whether an existing RepositoryWorkflowConfig resource with the given ID exists.
+func RepositoryWorkflowConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryWorkflowConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig", id, state, "", opts...)
+}
+
 type repositoryWorkflowConfigArgs struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`

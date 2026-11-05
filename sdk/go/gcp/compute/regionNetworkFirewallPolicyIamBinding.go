@@ -424,6 +424,12 @@ func (RegionNetworkFirewallPolicyIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionNetworkFirewallPolicyIamBindingState)(nil)).Elem()
 }
 
+// RegionNetworkFirewallPolicyIamBindingExists checks whether an existing RegionNetworkFirewallPolicyIamBinding resource with the given ID exists.
+func RegionNetworkFirewallPolicyIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionNetworkFirewallPolicyIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionNetworkFirewallPolicyIamBinding:RegionNetworkFirewallPolicyIamBinding", id, state, "", opts...)
+}
+
 type regionNetworkFirewallPolicyIamBindingArgs struct {
 	Condition *RegionNetworkFirewallPolicyIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

@@ -303,6 +303,12 @@ func (GdcApplicationEnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gdcApplicationEnvironmentState)(nil)).Elem()
 }
 
+// GdcApplicationEnvironmentExists checks whether an existing GdcApplicationEnvironment resource with the given ID exists.
+func GdcApplicationEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GdcApplicationEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment", id, state, "", opts...)
+}
+
 type gdcApplicationEnvironmentArgs struct {
 	// The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

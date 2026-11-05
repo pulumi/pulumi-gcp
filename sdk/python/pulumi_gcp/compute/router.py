@@ -937,6 +937,40 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return Router(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict', 'outputs.RouterBgp']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
+            md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict', 'outputs.RouterParams']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.int]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bgp"] = bgp
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["encryptedInterconnectRouter"] = encrypted_interconnect_router
+        __props__["md5AuthenticationKeys"] = md5_authentication_keys
+        __props__["name"] = name
+        __props__["nccGateway"] = ncc_gateway
+        __props__["network"] = network
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["routerId"] = router_id
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/router:Router', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bgp(self) -> pulumi.Output[Optional['outputs.RouterBgp']]:

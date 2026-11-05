@@ -427,6 +427,12 @@ func (PipelineIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineIamMemberState)(nil)).Elem()
 }
 
+// PipelineIamMemberExists checks whether an existing PipelineIamMember resource with the given ID exists.
+func PipelineIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:eventarc/pipelineIamMember:PipelineIamMember", id, state, "", opts...)
+}
+
 type pipelineIamMemberArgs struct {
 	Condition *PipelineIamMemberCondition `pulumi:"condition"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Used to find the parent resource to bind the IAM policy to. If not specified,

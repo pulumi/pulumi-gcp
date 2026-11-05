@@ -186,6 +186,12 @@ func (ConsumersIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*consumersIamBindingState)(nil)).Elem()
 }
 
+// ConsumersIamBindingExists checks whether an existing ConsumersIamBinding resource with the given ID exists.
+func ConsumersIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConsumersIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:endpoints/consumersIamBinding:ConsumersIamBinding", id, state, "", opts...)
+}
+
 type consumersIamBindingArgs struct {
 	Condition *ConsumersIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

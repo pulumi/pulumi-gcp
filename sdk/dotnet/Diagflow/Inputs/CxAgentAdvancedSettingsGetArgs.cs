@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
         /// * Agent level
         /// * Flow level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("audioExportGcsDestination")]
         public Input<Inputs.CxAgentAdvancedSettingsAudioExportGcsDestinationGetArgs>? AudioExportGcsDestination { get; set; }
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// * Flow level
         /// * Page level
         /// * Parameter level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("dtmfSettings")]
         public Input<Inputs.CxAgentAdvancedSettingsDtmfSettingsGetArgs>? DtmfSettings { get; set; }
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// <summary>
         /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
         /// * Agent level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("loggingSettings")]
         public Input<Inputs.CxAgentAdvancedSettingsLoggingSettingsGetArgs>? LoggingSettings { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// * Flow level
         /// * Page level
         /// * Parameter level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("speechSettings")]
         public Input<Inputs.CxAgentAdvancedSettingsSpeechSettingsGetArgs>? SpeechSettings { get; set; }

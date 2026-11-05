@@ -797,6 +797,36 @@ class Deployment(pulumi.CustomResource):
         __props__.__dict__["target"] = target
         return Deployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict', 'outputs.DeploymentLabel']]]]] = None,
+            manifest: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preview: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict', 'outputs.DeploymentTarget']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createPolicy"] = create_policy
+        __props__["deletePolicy"] = delete_policy
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deploymentId"] = deployment_id
+        __props__["description"] = description
+        __props__["labels"] = labels
+        __props__["manifest"] = manifest
+        __props__["name"] = name
+        __props__["preview"] = preview
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["target"] = target
+        return pulumi.runtime.exists_resource(None, 'gcp:deploymentmanager/deployment:Deployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createPolicy")
     def create_policy(self) -> pulumi.Output[Optional[_builtins.str]]:

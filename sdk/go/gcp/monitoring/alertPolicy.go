@@ -510,6 +510,12 @@ func (AlertPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertPolicyState)(nil)).Elem()
 }
 
+// AlertPolicyExists checks whether an existing AlertPolicy resource with the given ID exists.
+func AlertPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:monitoring/alertPolicy:AlertPolicy", id, state, "", opts...)
+}
+
 type alertPolicyArgs struct {
 	// Control over how this alert policy's notification channels are notified.
 	// Structure is documented below.

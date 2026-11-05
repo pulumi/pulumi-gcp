@@ -307,6 +307,20 @@ class EgressPolicy(pulumi.CustomResource):
         __props__.__dict__["resource"] = resource
         return EgressPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPolicyId"] = access_policy_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["egressPolicyName"] = egress_policy_name
+        __props__["resource"] = resource
+        return pulumi.runtime.exists_resource(None, 'gcp:accesscontextmanager/egressPolicy:EgressPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPolicyId")
     def access_policy_id(self) -> pulumi.Output[_builtins.str]:

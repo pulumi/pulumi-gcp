@@ -1449,6 +1449,42 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["subnetwork"] = subnetwork
         return RegionNetworkEndpointGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict', 'outputs.RegionNetworkEndpointGroupAppEngine']]] = None,
+            cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict', 'outputs.RegionNetworkEndpointGroupCloudFunction']]] = None,
+            cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict', 'outputs.RegionNetworkEndpointGroupCloudRun']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_data: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict', 'outputs.RegionNetworkEndpointGroupPscData']]] = None,
+            psc_target_service: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_deployment: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict', 'outputs.RegionNetworkEndpointGroupServerlessDeployment']]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appEngine"] = app_engine
+        __props__["cloudFunction"] = cloud_function
+        __props__["cloudRun"] = cloud_run
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["networkEndpointType"] = network_endpoint_type
+        __props__["project"] = project
+        __props__["pscData"] = psc_data
+        __props__["pscTargetService"] = psc_target_service
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["serverlessDeployment"] = serverless_deployment
+        __props__["subnetwork"] = subnetwork
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appEngine")
     def app_engine(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupAppEngine']]:

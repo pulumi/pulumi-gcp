@@ -303,6 +303,12 @@ func (Hl7StoreIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreIamBindingState)(nil)).Elem()
 }
 
+// Hl7StoreIamBindingExists checks whether an existing Hl7StoreIamBinding resource with the given ID exists.
+func Hl7StoreIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Hl7StoreIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding", id, state, "", opts...)
+}
+
 type hl7StoreIamBindingArgs struct {
 	Condition *Hl7StoreIamBindingCondition `pulumi:"condition"`
 	// The HL7v2 store ID, in the form

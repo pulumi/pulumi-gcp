@@ -423,6 +423,24 @@ class SshPublicKey(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return SshPublicKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time_usec: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["expirationTimeUsec"] = expiration_time_usec
+        __props__["fingerprint"] = fingerprint
+        __props__["key"] = key
+        __props__["project"] = project
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'gcp:oslogin/sshPublicKey:SshPublicKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

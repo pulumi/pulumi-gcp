@@ -527,6 +527,12 @@ func (AccountConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountConnectorState)(nil)).Elem()
 }
 
+// AccountConnectorExists checks whether an existing AccountConnector resource with the given ID exists.
+func AccountConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:developerconnect/accountConnector:AccountConnector", id, state, "", opts...)
+}
+
 type accountConnectorArgs struct {
 	// The ID to use for the AccountConnector, which will become the final
 	// component of the AccountConnector's resource name. Its format should adhere

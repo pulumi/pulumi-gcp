@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// The id of Backup Vault resource.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("backupVaultId", required: true)]
         public string BackupVaultId { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// <summary>
         /// The id of Backup Vault resource.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("backupVaultId", required: true)]
         public Input<string> BackupVaultId { get; set; } = null!;

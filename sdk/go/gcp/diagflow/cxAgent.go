@@ -523,6 +523,12 @@ func (CxAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cxAgentState)(nil)).Elem()
 }
 
+// CxAgentExists checks whether an existing CxAgent resource with the given ID exists.
+func CxAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CxAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/cxAgent:CxAgent", id, state, "", opts...)
+}
+
 type cxAgentArgs struct {
 	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.

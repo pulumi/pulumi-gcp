@@ -169,6 +169,12 @@ func (KeystoresAliasesKeyCertFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keystoresAliasesKeyCertFileState)(nil)).Elem()
 }
 
+// KeystoresAliasesKeyCertFileExists checks whether an existing KeystoresAliasesKeyCertFile resource with the given ID exists.
+func KeystoresAliasesKeyCertFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeystoresAliasesKeyCertFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile", id, state, "", opts...)
+}
+
 type keystoresAliasesKeyCertFileArgs struct {
 	// Alias Name
 	Alias string `pulumi:"alias"`

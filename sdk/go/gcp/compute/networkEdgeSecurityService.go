@@ -206,6 +206,12 @@ func (NetworkEdgeSecurityServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkEdgeSecurityServiceState)(nil)).Elem()
 }
 
+// NetworkEdgeSecurityServiceExists checks whether an existing NetworkEdgeSecurityService resource with the given ID exists.
+func NetworkEdgeSecurityServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkEdgeSecurityServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService", id, state, "", opts...)
+}
+
 type networkEdgeSecurityServiceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

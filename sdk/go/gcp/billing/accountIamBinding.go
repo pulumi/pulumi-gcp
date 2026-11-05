@@ -338,6 +338,12 @@ func (AccountIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamBindingState)(nil)).Elem()
 }
 
+// AccountIamBindingExists checks whether an existing AccountIamBinding resource with the given ID exists.
+func AccountIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:billing/accountIamBinding:AccountIamBinding", id, state, "", opts...)
+}
+
 type accountIamBindingArgs struct {
 	// The billing account id.
 	//

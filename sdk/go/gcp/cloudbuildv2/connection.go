@@ -447,6 +447,12 @@ func (ConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionState)(nil)).Elem()
 }
 
+// ConnectionExists checks whether an existing Connection resource with the given ID exists.
+func ConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudbuildv2/connection:Connection", id, state, "", opts...)
+}
+
 type connectionArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

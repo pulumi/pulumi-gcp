@@ -163,6 +163,12 @@ func (ControlOrganizationIntelligenceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlOrganizationIntelligenceConfigState)(nil)).Elem()
 }
 
+// ControlOrganizationIntelligenceConfigExists checks whether an existing ControlOrganizationIntelligenceConfig resource with the given ID exists.
+func ControlOrganizationIntelligenceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlOrganizationIntelligenceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig", id, state, "", opts...)
+}
+
 type controlOrganizationIntelligenceConfigArgs struct {
 	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.
 	EditionConfig *string `pulumi:"editionConfig"`

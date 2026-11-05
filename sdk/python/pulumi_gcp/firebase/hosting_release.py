@@ -594,6 +594,26 @@ class HostingRelease(pulumi.CustomResource):
         __props__.__dict__["version_name"] = version_name
         return HostingRelease(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            release_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            version_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["channelId"] = channel_id
+        __props__["message"] = message
+        __props__["name"] = name
+        __props__["releaseId"] = release_id
+        __props__["siteId"] = site_id
+        __props__["type"] = type
+        __props__["versionName"] = version_name
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/hostingRelease:HostingRelease', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="channelId")
     def channel_id(self) -> pulumi.Output[Optional[_builtins.str]]:

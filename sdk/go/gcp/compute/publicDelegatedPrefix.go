@@ -456,6 +456,12 @@ func (PublicDelegatedPrefixState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicDelegatedPrefixState)(nil)).Elem()
 }
 
+// PublicDelegatedPrefixExists checks whether an existing PublicDelegatedPrefix resource with the given ID exists.
+func PublicDelegatedPrefixExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicDelegatedPrefixState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix", id, state, "", opts...)
+}
+
 type publicDelegatedPrefixArgs struct {
 	// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
 	AllocatablePrefixLength *int `pulumi:"allocatablePrefixLength"`

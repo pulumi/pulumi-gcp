@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.NetworkServices
         /// <summary>
         /// Get information about a Network Services Gateway.
         /// 
-        /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -41,8 +39,6 @@ namespace Pulumi.Gcp.NetworkServices
         /// <summary>
         /// Get information about a Network Services Gateway.
         /// 
-        /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -67,8 +63,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Get information about a Network Services Gateway.
-        /// 
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -211,6 +211,12 @@ func (InboundSamlConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*inboundSamlConfigState)(nil)).Elem()
 }
 
+// InboundSamlConfigExists checks whether an existing InboundSamlConfig resource with the given ID exists.
+func InboundSamlConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InboundSamlConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:identityplatform/inboundSamlConfig:InboundSamlConfig", id, state, "", opts...)
+}
+
 type inboundSamlConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -326,6 +326,12 @@ func (TargetSiteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetSiteState)(nil)).Elem()
 }
 
+// TargetSiteExists checks whether an existing TargetSite resource with the given ID exists.
+func TargetSiteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetSiteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/targetSite:TargetSite", id, state, "", opts...)
+}
+
 type targetSiteArgs struct {
 	// The unique id of the data store.
 	DataStoreId string `pulumi:"dataStoreId"`

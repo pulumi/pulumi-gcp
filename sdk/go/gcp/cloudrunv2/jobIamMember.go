@@ -424,6 +424,12 @@ func (JobIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobIamMemberState)(nil)).Elem()
 }
 
+// JobIamMemberExists checks whether an existing JobIamMember resource with the given ID exists.
+func JobIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudrunv2/jobIamMember:JobIamMember", id, state, "", opts...)
+}
+
 type jobIamMemberArgs struct {
 	Condition *JobIamMemberCondition `pulumi:"condition"`
 	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,

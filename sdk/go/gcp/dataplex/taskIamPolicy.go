@@ -400,6 +400,12 @@ func (TaskIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*taskIamPolicyState)(nil)).Elem()
 }
 
+// TaskIamPolicyExists checks whether an existing TaskIamPolicy resource with the given ID exists.
+func TaskIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TaskIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/taskIamPolicy:TaskIamPolicy", id, state, "", opts...)
+}
+
 type taskIamPolicyArgs struct {
 	// The lake in which the task will be created in.
 	// Used to find the parent resource to bind the IAM policy to

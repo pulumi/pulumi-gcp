@@ -524,6 +524,34 @@ class Folder(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Folder(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configured_capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            management_project: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configuredCapabilities"] = configured_capabilities
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["displayName"] = display_name
+        __props__["folderId"] = folder_id
+        __props__["lifecycleState"] = lifecycle_state
+        __props__["managementProject"] = management_project
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'gcp:organizations/folder:Folder', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configuredCapabilities")
     def configured_capabilities(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -208,6 +208,12 @@ func (ServicePerimeterDryRunResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePerimeterDryRunResourceState)(nil)).Elem()
 }
 
+// ServicePerimeterDryRunResourceExists checks whether an existing ServicePerimeterDryRunResource resource with the given ID exists.
+func ServicePerimeterDryRunResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePerimeterDryRunResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource", id, state, "", opts...)
+}
+
 type servicePerimeterDryRunResourceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

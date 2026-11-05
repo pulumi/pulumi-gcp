@@ -549,6 +549,12 @@ func (IAMPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iampolicyState)(nil)).Elem()
 }
 
+// IAMPolicyExists checks whether an existing IAMPolicy resource with the given ID exists.
+func IAMPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IAMPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:folder/iAMPolicy:IAMPolicy", id, state, "", opts...)
+}
+
 type iampolicyArgs struct {
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder string `pulumi:"folder"`

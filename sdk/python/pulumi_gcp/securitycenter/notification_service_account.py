@@ -332,6 +332,20 @@ class NotificationServiceAccount(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return NotificationServiceAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["email"] = email
+        __props__["member"] = member
+        __props__["organization"] = organization
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:securitycenter/notificationServiceAccount:NotificationServiceAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:

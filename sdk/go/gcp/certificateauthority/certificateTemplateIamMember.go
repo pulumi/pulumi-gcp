@@ -648,6 +648,12 @@ func (CertificateTemplateIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateTemplateIamMemberState)(nil)).Elem()
 }
 
+// CertificateTemplateIamMemberExists checks whether an existing CertificateTemplateIamMember resource with the given ID exists.
+func CertificateTemplateIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertificateTemplateIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember", id, state, "", opts...)
+}
+
 type certificateTemplateIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CertificateTemplate string `pulumi:"certificateTemplate"`

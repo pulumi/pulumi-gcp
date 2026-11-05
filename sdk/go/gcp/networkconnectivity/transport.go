@@ -316,6 +316,12 @@ func (TransportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transportState)(nil)).Elem()
 }
 
+// TransportExists checks whether an existing Transport resource with the given ID exists.
+func TransportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/transport:Transport", id, state, "", opts...)
+}
+
 type transportArgs struct {
 	// (Optional, Beta)
 	// Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.

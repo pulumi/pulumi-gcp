@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// Determines the behavior when the guardrail encounters an LLM error.
         /// - If true: the guardrail is bypassed.
         /// - If false (default): the guardrail triggers/blocks.
-        /// Note: If a custom policy is provided, this field is ignored in favor of
-        /// the policy's 'failOpen' configuration.
+        ///   Note: If a custom policy is provided, this field is ignored in favor of
+        ///   the policy's 'failOpen' configuration.
         /// </summary>
         [Input("failOpen")]
         public Input<bool>? FailOpen { get; set; }

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The value of grpcServiceName has the following meanings by convention:
         /// * Empty serviceName means the overall status of all services at the backend.
         /// * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
-        /// The grpcServiceName can only be ASCII.
+        ///   The grpcServiceName can only be ASCII.
         /// </summary>
         public readonly string? GrpcServiceName;
         /// <summary>
@@ -38,12 +38,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// * `USE_FIXED_PORT`: The port number in `Port` is used for health checking.
         /// * `USE_NAMED_PORT`: The `portName` is used for health checking.
         /// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
-        /// network endpoint is used for health checking. For other backends, the
-        /// port or named port specified in the Backend Service is used for health
-        /// checking.
-        /// If not specified, gRPC health check follows behavior specified in `Port` and
-        /// `portName` fields.
-        /// Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        ///   network endpoint is used for health checking. For other backends, the
+        ///   port or named port specified in the Backend Service is used for health
+        ///   checking.
+        ///   If not specified, gRPC health check follows behavior specified in `Port` and
+        ///   `portName` fields.
+        ///   Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         /// </summary>
         public readonly string? PortSpecification;
 

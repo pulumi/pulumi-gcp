@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
         /// <summary>
         /// A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         public InputList<Inputs.AuthorizedViewSubsetViewFamilySubsetGetArgs> FamilySubsets
         {

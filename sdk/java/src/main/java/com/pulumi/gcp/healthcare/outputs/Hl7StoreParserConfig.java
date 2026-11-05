@@ -24,7 +24,7 @@ public final class Hl7StoreParserConfig {
      */
     private @Nullable String schema;
     /**
-     * @return Byte(s) to be used as the segment terminator. If this is unset, &#39;\r&#39; will be used as segment terminator.
+     * @return Byte(s) to be used as the segment terminator. If this is unset, &#39;&#92;r&#39; will be used as segment terminator.
      * A base64-encoded string.
      * 
      */
@@ -54,7 +54,7 @@ public final class Hl7StoreParserConfig {
         return Optional.ofNullable(this.schema);
     }
     /**
-     * @return Byte(s) to be used as the segment terminator. If this is unset, &#39;\r&#39; will be used as segment terminator.
+     * @return Byte(s) to be used as the segment terminator. If this is unset, &#39;&#92;r&#39; will be used as segment terminator.
      * A base64-encoded string.
      * 
      */

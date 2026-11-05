@@ -136,19 +136,19 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// This field indicates whether this backend should be fully utilized before sending traffic to backends
         /// with default preference. This field cannot be set when loadBalancingScheme is set to 'EXTERNAL'. The possible values are:
         /// - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
-        /// based on RTT.
+        ///   based on RTT.
         /// - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
-        /// traffic would be assigned based on the load balancing algorithm you use. This is the default
-        /// Possible values are: `PREFERRED`, `DEFAULT`.
+        ///   traffic would be assigned based on the load balancing algorithm you use. This is the default
+        ///   Possible values are: `PREFERRED`, `DEFAULT`.
         /// </summary>
         public readonly string? Preference;
         /// <summary>
         /// (Optional, Beta)
         /// This field specifies how long a connection should be kept alive for:
         /// - LONG: Most of the requests are expected to take more than multiple
-        /// seconds to finish.
+        ///   seconds to finish.
         /// - SHORT: Most requests are expected to finish with a sub-second latency.
-        /// Possible values are: `LONG`, `SHORT`.
+        ///   Possible values are: `LONG`, `SHORT`.
         /// </summary>
         public readonly string? TrafficDuration;
 

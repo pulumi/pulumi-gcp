@@ -385,6 +385,22 @@ class StorageDefaultBucket(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return StorageDefaultBucket(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            buckets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDefaultBucketBucketArgs', 'StorageDefaultBucketBucketArgsDict', 'outputs.StorageDefaultBucketBucket']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["buckets"] = buckets
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/storageDefaultBucket:StorageDefaultBucket', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def buckets(self) -> pulumi.Output[Sequence['outputs.StorageDefaultBucketBucket']]:

@@ -310,6 +310,12 @@ func (FirewallEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallEndpointState)(nil)).Elem()
 }
 
+// FirewallEndpointExists checks whether an existing FirewallEndpoint resource with the given ID exists.
+func FirewallEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/firewallEndpoint:FirewallEndpoint", id, state, "", opts...)
+}
+
 type firewallEndpointArgs struct {
 	// Project to charge for the deployed firewall endpoint.
 	// This field is required for organization-scoped endpoints.

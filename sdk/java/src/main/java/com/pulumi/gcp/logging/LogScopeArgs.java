@@ -73,14 +73,14 @@ public final class LogScopeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
+     * The resource name of the log scope. For example: &#92;`projects/my-project/locations/global/logScopes/my-log-scope&#92;`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
+     * @return The resource name of the log scope. For example: &#92;`projects/my-project/locations/global/logScopes/my-log-scope&#92;`
      * 
      */
     public Optional<Output<String>> name() {
@@ -103,14 +103,14 @@ public final class LogScopeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
+     * Names of one or more parent resources : *  &#92;`projects/[PROJECT_ID]&#92;` May alternatively be one or more views : * &#92;`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]&#92;` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
      * 
      */
     @Import(name="resourceNames", required=true)
     private Output<List<String>> resourceNames;
 
     /**
-     * @return Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
+     * @return Names of one or more parent resources : *  &#92;`projects/[PROJECT_ID]&#92;` May alternatively be one or more views : * &#92;`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]&#92;` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
      * 
      */
     public Output<List<String>> resourceNames() {
@@ -220,7 +220,7 @@ public final class LogScopeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
+         * @param name The resource name of the log scope. For example: &#92;`projects/my-project/locations/global/logScopes/my-log-scope&#92;`
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class LogScopeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
+         * @param name The resource name of the log scope. For example: &#92;`projects/my-project/locations/global/logScopes/my-log-scope&#92;`
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class LogScopeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceNames Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
+         * @param resourceNames Names of one or more parent resources : *  &#92;`projects/[PROJECT_ID]&#92;` May alternatively be one or more views : * &#92;`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]&#92;` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class LogScopeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceNames Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
+         * @param resourceNames Names of one or more parent resources : *  &#92;`projects/[PROJECT_ID]&#92;` May alternatively be one or more views : * &#92;`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]&#92;` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class LogScopeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceNames Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
+         * @param resourceNames Names of one or more parent resources : *  &#92;`projects/[PROJECT_ID]&#92;` May alternatively be one or more views : * &#92;`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]&#92;` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
          * 
          * @return builder
          * 

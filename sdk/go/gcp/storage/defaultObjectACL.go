@@ -154,6 +154,12 @@ func (DefaultObjectACLState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultObjectACLState)(nil)).Elem()
 }
 
+// DefaultObjectACLExists checks whether an existing DefaultObjectACL resource with the given ID exists.
+func DefaultObjectACLExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefaultObjectACLState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/defaultObjectACL:DefaultObjectACL", id, state, "", opts...)
+}
+
 type defaultObjectACLArgs struct {
 	// The name of the bucket it applies to.
 	Bucket string `pulumi:"bucket"`

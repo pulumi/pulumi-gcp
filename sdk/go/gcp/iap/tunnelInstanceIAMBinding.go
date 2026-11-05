@@ -674,6 +674,12 @@ func (TunnelInstanceIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelInstanceIAMBindingState)(nil)).Elem()
 }
 
+// TunnelInstanceIAMBindingExists checks whether an existing TunnelInstanceIAMBinding resource with the given ID exists.
+func TunnelInstanceIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelInstanceIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding", id, state, "", opts...)
+}
+
 type tunnelInstanceIAMBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

@@ -543,6 +543,22 @@ class Snooze(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return Snooze(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            criteria: pulumi.Input[Optional[Union['SnoozeCriteriaArgs', 'SnoozeCriteriaArgsDict', 'outputs.SnoozeCriteria']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            interval: pulumi.Input[Optional[Union['SnoozeIntervalArgs', 'SnoozeIntervalArgsDict', 'outputs.SnoozeInterval']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["criteria"] = criteria
+        __props__["displayName"] = display_name
+        __props__["interval"] = interval
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:monitoring/snooze:Snooze', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def criteria(self) -> pulumi.Output['outputs.SnoozeCriteria']:

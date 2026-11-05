@@ -534,6 +534,12 @@ func (ClusterUserCreatedConnectionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterUserCreatedConnectionsState)(nil)).Elem()
 }
 
+// ClusterUserCreatedConnectionsExists checks whether an existing ClusterUserCreatedConnections resource with the given ID exists.
+func ClusterUserCreatedConnectionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterUserCreatedConnectionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections", id, state, "", opts...)
+}
+
 type clusterUserCreatedConnectionsArgs struct {
 	// A list of cluster endpoints
 	// Structure is documented below.

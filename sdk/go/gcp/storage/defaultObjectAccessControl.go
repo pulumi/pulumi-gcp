@@ -238,6 +238,12 @@ func (DefaultObjectAccessControlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultObjectAccessControlState)(nil)).Elem()
 }
 
+// DefaultObjectAccessControlExists checks whether an existing DefaultObjectAccessControl resource with the given ID exists.
+func DefaultObjectAccessControlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefaultObjectAccessControlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl", id, state, "", opts...)
+}
+
 type defaultObjectAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

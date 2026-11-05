@@ -848,6 +848,50 @@ class BackupVault(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return BackupVault(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_region: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_policy: pulumi.Input[Optional[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict', 'outputs.BackupVaultBackupRetentionPolicy']]] = None,
+            backup_vault_type: pulumi.Input[Optional[_builtins.str]] = None,
+            backups_crypto_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_backup_vault: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_state: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_config: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            source_backup_vault: pulumi.Input[Optional[_builtins.str]] = None,
+            source_region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupRegion"] = backup_region
+        __props__["backupRetentionPolicy"] = backup_retention_policy
+        __props__["backupVaultType"] = backup_vault_type
+        __props__["backupsCryptoKeyVersion"] = backups_crypto_key_version
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["destinationBackupVault"] = destination_backup_vault
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionState"] = encryption_state
+        __props__["kmsConfig"] = kms_config
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["sourceBackupVault"] = source_backup_vault
+        __props__["sourceRegion"] = source_region
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:netapp/backupVault:BackupVault', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupRegion")
     def backup_region(self) -> pulumi.Output[Optional[_builtins.str]]:

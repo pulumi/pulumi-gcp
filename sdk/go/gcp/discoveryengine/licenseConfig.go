@@ -230,6 +230,12 @@ func (LicenseConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*licenseConfigState)(nil)).Elem()
 }
 
+// LicenseConfigExists checks whether an existing LicenseConfig resource with the given ID exists.
+func LicenseConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LicenseConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/licenseConfig:LicenseConfig", id, state, "", opts...)
+}
+
 type licenseConfigArgs struct {
 	// Whether the license config should be auto renewed when it reaches the end date.
 	AutoRenew *bool `pulumi:"autoRenew"`

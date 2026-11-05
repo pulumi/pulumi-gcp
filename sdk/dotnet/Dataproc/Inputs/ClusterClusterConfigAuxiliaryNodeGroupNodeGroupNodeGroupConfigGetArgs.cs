@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorGetArgs>? _accelerators;
 
         /// <summary>
-        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
         /// multiple times.
         /// </summary>
         public InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorGetArgs> Accelerators

@@ -19,22 +19,20 @@ public final class GCPolicyMaxAgeArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Number of days before applying GC policy.
      * 
-     * @deprecated
-     * Deprecated in favor of duration
+     * @deprecated Deprecated in favor of duration
      * 
      */
-    @Deprecated /* Deprecated in favor of duration */
+    @Deprecated
     @Import(name="days")
     private @Nullable Output<Integer> days;
 
     /**
      * @return Number of days before applying GC policy.
      * 
-     * @deprecated
-     * Deprecated in favor of duration
+     * @deprecated Deprecated in favor of duration
      * 
      */
-    @Deprecated /* Deprecated in favor of duration */
+    @Deprecated
     public Optional<Output<Integer>> days() {
         return Optional.ofNullable(this.days);
     }
@@ -88,11 +86,10 @@ public final class GCPolicyMaxAgeArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in favor of duration
+         * @deprecated Deprecated in favor of duration
          * 
          */
-        @Deprecated /* Deprecated in favor of duration */
+        @Deprecated
         public Builder days(@Nullable Output<Integer> days) {
             $.days = days;
             return this;
@@ -103,11 +100,10 @@ public final class GCPolicyMaxAgeArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in favor of duration
+         * @deprecated Deprecated in favor of duration
          * 
          */
-        @Deprecated /* Deprecated in favor of duration */
+        @Deprecated
         public Builder days(Integer days) {
             return days(Output.of(days));
         }

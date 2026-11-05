@@ -236,6 +236,12 @@ func (EncryptionSpecState) ElementType() reflect.Type {
 	return reflect.TypeOf((*encryptionSpecState)(nil)).Elem()
 }
 
+// EncryptionSpecExists checks whether an existing EncryptionSpec resource with the given ID exists.
+func EncryptionSpecExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EncryptionSpecState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:contactcenterinsights/encryptionSpec:EncryptionSpec", id, state, "", opts...)
+}
+
 type encryptionSpecArgs struct {
 	// The name of customer-managed encryption key that is used to secure a resource and its sub-resources.
 	// If empty, the resource is secured by the default Google encryption key.

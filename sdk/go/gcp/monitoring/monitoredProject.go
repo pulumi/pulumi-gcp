@@ -158,6 +158,12 @@ func (MonitoredProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitoredProjectState)(nil)).Elem()
 }
 
+// MonitoredProjectExists checks whether an existing MonitoredProject resource with the given ID exists.
+func MonitoredProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitoredProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:monitoring/monitoredProject:MonitoredProject", id, state, "", opts...)
+}
+
 type monitoredProjectArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

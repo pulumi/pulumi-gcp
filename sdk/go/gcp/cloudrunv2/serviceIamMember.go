@@ -424,6 +424,12 @@ func (ServiceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIamMemberState)(nil)).Elem()
 }
 
+// ServiceIamMemberExists checks whether an existing ServiceIamMember resource with the given ID exists.
+func ServiceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudrunv2/serviceIamMember:ServiceIamMember", id, state, "", opts...)
+}
+
 type serviceIamMemberArgs struct {
 	Condition *ServiceIamMemberCondition `pulumi:"condition"`
 	// The location of the cloud run service Used to find the parent resource to bind the IAM policy to. If not specified,

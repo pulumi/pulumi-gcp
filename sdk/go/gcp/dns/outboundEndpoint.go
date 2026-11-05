@@ -290,6 +290,12 @@ func (OutboundEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*outboundEndpointState)(nil)).Elem()
 }
 
+// OutboundEndpointExists checks whether an existing OutboundEndpoint resource with the given ID exists.
+func OutboundEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OutboundEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dns/outboundEndpoint:OutboundEndpoint", id, state, "", opts...)
+}
+
 type outboundEndpointArgs struct {
 	// Annotations as key value pairs
 	//

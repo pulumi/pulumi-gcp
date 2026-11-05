@@ -2179,6 +2179,36 @@ class CxPage(pulumi.CustomResource):
         __props__.__dict__["transition_routes"] = transition_routes
         return CxPage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_settings: pulumi.Input[Optional[Union['CxPageAdvancedSettingsArgs', 'CxPageAdvancedSettingsArgsDict', 'outputs.CxPageAdvancedSettings']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_fulfillment: pulumi.Input[Optional[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict', 'outputs.CxPageEntryFulfillment']]] = None,
+            event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict', 'outputs.CxPageEventHandler']]]]] = None,
+            form: pulumi.Input[Optional[Union['CxPageFormArgs', 'CxPageFormArgsDict', 'outputs.CxPageForm']]] = None,
+            knowledge_connector_settings: pulumi.Input[Optional[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict', 'outputs.CxPageKnowledgeConnectorSettings']]] = None,
+            language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxPageTransitionRouteArgs', 'CxPageTransitionRouteArgsDict', 'outputs.CxPageTransitionRoute']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedSettings"] = advanced_settings
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["entryFulfillment"] = entry_fulfillment
+        __props__["eventHandlers"] = event_handlers
+        __props__["form"] = form
+        __props__["knowledgeConnectorSettings"] = knowledge_connector_settings
+        __props__["languageCode"] = language_code
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["transitionRouteGroups"] = transition_route_groups
+        __props__["transitionRoutes"] = transition_routes
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/cxPage:CxPage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedSettings")
     def advanced_settings(self) -> pulumi.Output[Optional['outputs.CxPageAdvancedSettings']]:

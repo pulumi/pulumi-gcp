@@ -430,6 +430,12 @@ func (AspectTypeIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aspectTypeIamBindingState)(nil)).Elem()
 }
 
+// AspectTypeIamBindingExists checks whether an existing AspectTypeIamBinding resource with the given ID exists.
+func AspectTypeIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AspectTypeIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding", id, state, "", opts...)
+}
+
 type aspectTypeIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	AspectTypeId string                         `pulumi:"aspectTypeId"`

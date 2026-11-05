@@ -2344,6 +2344,76 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["zero_custom_learned_route_priority"] = zero_custom_learned_route_priority
         return RouterPeer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict', 'outputs.RouterPeerAdvertisedIpRange']]]]] = None,
+            advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict', 'outputs.RouterPeerBfd']]] = None,
+            custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict', 'outputs.RouterPeerCustomLearnedIpRange']]]]] = None,
+            custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            export_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            import_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            interface: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+            is_advertised_route_priority_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_custom_learned_priority_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            management_type: pulumi.Input[Optional[_builtins.str]] = None,
+            md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict', 'outputs.RouterPeerMd5AuthenticationKey']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            router_appliance_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            zero_advertised_route_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+            zero_custom_learned_route_priority: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advertiseMode"] = advertise_mode
+        __props__["advertisedGroups"] = advertised_groups
+        __props__["advertisedIpRanges"] = advertised_ip_ranges
+        __props__["advertisedRoutePriority"] = advertised_route_priority
+        __props__["bfd"] = bfd
+        __props__["customLearnedIpRanges"] = custom_learned_ip_ranges
+        __props__["customLearnedRoutePriority"] = custom_learned_route_priority
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["enable"] = enable
+        __props__["enableIpv4"] = enable_ipv4
+        __props__["enableIpv6"] = enable_ipv6
+        __props__["exportPolicies"] = export_policies
+        __props__["importPolicies"] = import_policies
+        __props__["interface"] = interface
+        __props__["ipAddress"] = ip_address
+        __props__["ipv4NexthopAddress"] = ipv4_nexthop_address
+        __props__["ipv6NexthopAddress"] = ipv6_nexthop_address
+        __props__["isAdvertisedRoutePrioritySet"] = is_advertised_route_priority_set
+        __props__["isCustomLearnedPrioritySet"] = is_custom_learned_priority_set
+        __props__["managementType"] = management_type
+        __props__["md5AuthenticationKey"] = md5_authentication_key
+        __props__["name"] = name
+        __props__["peerAsn"] = peer_asn
+        __props__["peerIpAddress"] = peer_ip_address
+        __props__["peerIpv4NexthopAddress"] = peer_ipv4_nexthop_address
+        __props__["peerIpv6NexthopAddress"] = peer_ipv6_nexthop_address
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["router"] = router
+        __props__["routerApplianceInstance"] = router_appliance_instance
+        __props__["zeroAdvertisedRoutePriority"] = zero_advertised_route_priority
+        __props__["zeroCustomLearnedRoutePriority"] = zero_custom_learned_route_priority
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/routerPeer:RouterPeer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advertiseMode")
     def advertise_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

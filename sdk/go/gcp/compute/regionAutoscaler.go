@@ -293,6 +293,12 @@ func (RegionAutoscalerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionAutoscalerState)(nil)).Elem()
 }
 
+// RegionAutoscalerExists checks whether an existing RegionAutoscaler resource with the given ID exists.
+func RegionAutoscalerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionAutoscalerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionAutoscaler:RegionAutoscaler", id, state, "", opts...)
+}
+
 type regionAutoscalerArgs struct {
 	// The configuration parameters for the autoscaling algorithm. You can
 	// define one or more of the policies for an autoscaler: cpuUtilization,

@@ -31,11 +31,10 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
      * 
      * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
      * 
-     * @deprecated
-     * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * @deprecated `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
      * 
      */
-    @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
+    @Deprecated
     private @Nullable Integer leafNodesToSearchPercent;
 
     private AiIndexMetadataConfigAlgorithmConfigTreeAhConfig() {}
@@ -62,11 +61,10 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
      * 
      * &gt; **Warning:** `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
      * 
-     * @deprecated
-     * `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
+     * @deprecated `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead.
      * 
      */
-    @Deprecated /* `leafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `fractionLeafNodesToSearch` instead. */
+    @Deprecated
     public Optional<Integer> leafNodesToSearchPercent() {
         return Optional.ofNullable(this.leafNodesToSearchPercent);
     }

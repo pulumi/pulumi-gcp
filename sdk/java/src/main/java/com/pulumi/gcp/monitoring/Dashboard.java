@@ -42,30 +42,30 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()
  *             .dashboardJson("""
- * {
- *   \"displayName\": \"Demo Dashboard\",
- *   \"gridLayout\": {
- *     \"widgets\": [
- *       {
- *         \"blank\": {}
- *       }
+ * }{{@code
+ *   }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Demo Dashboard}&#92;{@code ",
+ *   }&#92;{@code "gridLayout}&#92;{@code ": }{{@code
+ *     }&#92;{@code "widgets}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "blank}&#92;{@code ": }{}{@code
+ *       }}{@code
  *     ]
- *   }
- * }
+ *   }}{@code
+ * }}{@code
  * 
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -87,78 +87,78 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()
  *             .dashboardJson("""
- * {
- *   \"displayName\": \"Grid Layout Example\",
- *   \"gridLayout\": {
- *     \"columns\": \"2\",
- *     \"widgets\": [
- *       {
- *         \"title\": \"Widget 1\",
- *         \"xyChart\": {
- *           \"dataSets\": [{
- *             \"timeSeriesQuery\": {
- *               \"timeSeriesFilter\": {
- *                 \"filter\": \"metric.type=\\\"agent.googleapis.com/nginx/connections/accepted_count\\\"\",
- *                 \"aggregation\": {
- *                   \"perSeriesAligner\": \"ALIGN_RATE\"
- *                 }
- *               },
- *               \"unitOverride\": \"1\"
- *             },
- *             \"plotType\": \"LINE\"
- *           }],
- *           \"timeshiftDuration\": \"0s\",
- *           \"yAxis\": {
- *             \"label\": \"y1Axis\",
- *             \"scale\": \"LINEAR\"
- *           }
- *         }
- *       },
- *       {
- *         \"text\": {
- *           \"content\": \"Widget 2\",
- *           \"format\": \"MARKDOWN\"
- *         }
- *       },
- *       {
- *         \"title\": \"Widget 3\",
- *         \"xyChart\": {
- *           \"dataSets\": [{
- *             \"timeSeriesQuery\": {
- *               \"timeSeriesFilter\": {
- *                 \"filter\": \"metric.type=\\\"agent.googleapis.com/nginx/connections/accepted_count\\\"\",
- *                 \"aggregation\": {
- *                   \"perSeriesAligner\": \"ALIGN_RATE\"
- *                 }
- *               },
- *               \"unitOverride\": \"1\"
- *             },
- *             \"plotType\": \"STACKED_BAR\"
- *           }],
- *           \"timeshiftDuration\": \"0s\",
- *           \"yAxis\": {
- *             \"label\": \"y1Axis\",
- *             \"scale\": \"LINEAR\"
- *           }
- *         }
- *       }
+ * }{{@code
+ *   }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Grid Layout Example}&#92;{@code ",
+ *   }&#92;{@code "gridLayout}&#92;{@code ": }{{@code
+ *     }&#92;{@code "columns}&#92;{@code ": }&#92;{@code "2}&#92;{@code ",
+ *     }&#92;{@code "widgets}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "title}&#92;{@code ": }&#92;{@code "Widget 1}&#92;{@code ",
+ *         }&#92;{@code "xyChart}&#92;{@code ": }{{@code
+ *           }&#92;{@code "dataSets}&#92;{@code ": [}{{@code
+ *             }&#92;{@code "timeSeriesQuery}&#92;{@code ": }{{@code
+ *               }&#92;{@code "timeSeriesFilter}&#92;{@code ": }{{@code
+ *                 }&#92;{@code "filter}&#92;{@code ": }&#92;{@code "metric.type=}&#92;&#92;&#92;{@code "agent.googleapis.com/nginx/connections/accepted_count}&#92;&#92;&#92;{@code "}&#92;{@code ",
+ *                 }&#92;{@code "aggregation}&#92;{@code ": }{{@code
+ *                   }&#92;{@code "perSeriesAligner}&#92;{@code ": }&#92;{@code "ALIGN_RATE}&#92;{@code "
+ *                 }}{@code
+ *               }}{@code ,
+ *               }&#92;{@code "unitOverride}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *             }}{@code ,
+ *             }&#92;{@code "plotType}&#92;{@code ": }&#92;{@code "LINE}&#92;{@code "
+ *           }}{@code ],
+ *           }&#92;{@code "timeshiftDuration}&#92;{@code ": }&#92;{@code "0s}&#92;{@code ",
+ *           }&#92;{@code "yAxis}&#92;{@code ": }{{@code
+ *             }&#92;{@code "label}&#92;{@code ": }&#92;{@code "y1Axis}&#92;{@code ",
+ *             }&#92;{@code "scale}&#92;{@code ": }&#92;{@code "LINEAR}&#92;{@code "
+ *           }}{@code
+ *         }}{@code
+ *       }}{@code ,
+ *       }{{@code
+ *         }&#92;{@code "text}&#92;{@code ": }{{@code
+ *           }&#92;{@code "content}&#92;{@code ": }&#92;{@code "Widget 2}&#92;{@code ",
+ *           }&#92;{@code "format}&#92;{@code ": }&#92;{@code "MARKDOWN}&#92;{@code "
+ *         }}{@code
+ *       }}{@code ,
+ *       }{{@code
+ *         }&#92;{@code "title}&#92;{@code ": }&#92;{@code "Widget 3}&#92;{@code ",
+ *         }&#92;{@code "xyChart}&#92;{@code ": }{{@code
+ *           }&#92;{@code "dataSets}&#92;{@code ": [}{{@code
+ *             }&#92;{@code "timeSeriesQuery}&#92;{@code ": }{{@code
+ *               }&#92;{@code "timeSeriesFilter}&#92;{@code ": }{{@code
+ *                 }&#92;{@code "filter}&#92;{@code ": }&#92;{@code "metric.type=}&#92;&#92;&#92;{@code "agent.googleapis.com/nginx/connections/accepted_count}&#92;&#92;&#92;{@code "}&#92;{@code ",
+ *                 }&#92;{@code "aggregation}&#92;{@code ": }{{@code
+ *                   }&#92;{@code "perSeriesAligner}&#92;{@code ": }&#92;{@code "ALIGN_RATE}&#92;{@code "
+ *                 }}{@code
+ *               }}{@code ,
+ *               }&#92;{@code "unitOverride}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *             }}{@code ,
+ *             }&#92;{@code "plotType}&#92;{@code ": }&#92;{@code "STACKED_BAR}&#92;{@code "
+ *           }}{@code ],
+ *           }&#92;{@code "timeshiftDuration}&#92;{@code ": }&#92;{@code "0s}&#92;{@code ",
+ *           }&#92;{@code "yAxis}&#92;{@code ": }{{@code
+ *             }&#92;{@code "label}&#92;{@code ": }&#92;{@code "y1Axis}&#92;{@code ",
+ *             }&#92;{@code "scale}&#92;{@code ": }&#92;{@code "LINEAR}&#92;{@code "
+ *           }}{@code
+ *         }}{@code
+ *       }}{@code
  *     ]
- *   }
- * }
+ *   }}{@code
+ * }}{@code
  * 
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

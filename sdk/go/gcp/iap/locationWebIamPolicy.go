@@ -595,6 +595,12 @@ func (LocationWebIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*locationWebIamPolicyState)(nil)).Elem()
 }
 
+// LocationWebIamPolicyExists checks whether an existing LocationWebIamPolicy resource with the given ID exists.
+func LocationWebIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LocationWebIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/locationWebIamPolicy:LocationWebIamPolicy", id, state, "", opts...)
+}
+
 type locationWebIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Location string `pulumi:"location"`

@@ -1207,15 +1207,15 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `allPorts` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
-        /// L3_DEFAULT.
+        ///   L3_DEFAULT.
         /// * It's applicable only to the following products: internal passthrough
-        /// Network Load Balancers, backend service-based external passthrough Network
-        /// Load Balancers, and internal and external protocol forwarding.
+        ///   Network Load Balancers, backend service-based external passthrough Network
+        ///   Load Balancers, and internal and external protocol forwarding.
         /// * Set this field to true to allow packets addressed to any port or packets
-        /// lacking destination port information (for example, UDP fragments after the
-        /// first fragment) to be forwarded to the backends configured with this
-        /// forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
-        /// true.
+        ///   lacking destination port information (for example, UDP fragments after the
+        ///   first fragment) to be forwarded to the backends configured with this
+        ///   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+        ///   true.
         /// </summary>
         [Output("allPorts")]
         public Output<bool?> AllPorts { get; private set; } = null!;
@@ -1295,31 +1295,31 @@ namespace Pulumi.Gcp.Compute
         /// While creating a forwarding rule, specifying an `IPAddress` is
         /// required under the following circumstances:
         /// * When the `Target` is set to `targetGrpcProxy` and
-        /// `validateForProxyless` is set to `True`, the
-        /// `IPAddress` should be set to `0.0.0.0`.
+        ///   `validateForProxyless` is set to `True`, the
+        ///   `IPAddress` should be set to `0.0.0.0`.
         /// * When the `Target` is a Private Service Connect Google APIs
-        /// bundle, you must specify an `IPAddress`.
-        /// Otherwise, you can optionally specify an IP address that references an
-        /// existing static (reserved) IP address resource. When omitted, Google Cloud
-        /// assigns an ephemeral IP address.
-        /// Use one of the following formats to specify an IP address while creating a
-        /// forwarding rule:
+        ///   bundle, you must specify an `IPAddress`.
+        ///   Otherwise, you can optionally specify an IP address that references an
+        ///   existing static (reserved) IP address resource. When omitted, Google Cloud
+        ///   assigns an ephemeral IP address.
+        ///   Use one of the following formats to specify an IP address while creating a
+        ///   forwarding rule:
         /// * IP address number, as in `100.1.2.3`
         /// * IPv6 address range, as in `2600:1234::/96`
         /// * Full resource URL, as in
-        /// `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+        ///   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
         /// * Partial URL or by name, as in:
         /// * `projects/project_id/regions/region/addresses/address-name`
         /// * `regions/region/addresses/address-name`
         /// * `global/addresses/address-name`
         /// * `address-name`
-        /// The forwarding rule's `Target` or `backendService`,
-        /// and in most cases, also the `loadBalancingScheme`, determine the
-        /// type of IP address that you can use. For detailed information, see
-        /// [IP address
-        /// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// When reading an `IPAddress`, the API always returns the IP
-        /// address number.
+        ///   The forwarding rule's `Target` or `backendService`,
+        ///   and in most cases, also the `loadBalancingScheme`, determine the
+        ///   type of IP address that you can use. For detailed information, see
+        ///   [IP address
+        ///   specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        ///   When reading an `IPAddress`, the API always returns the IP
+        ///   address number.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
@@ -1331,7 +1331,7 @@ namespace Pulumi.Gcp.Compute
         /// IPv6 NetLB forwarding rule using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-        /// Partial URL, as in:
+        ///   Partial URL, as in:
         /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// </summary>
@@ -1461,21 +1461,21 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `portRange` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
-        /// and
+        ///   and
         /// * It's applicable only to the following products: external passthrough
-        /// Network Load Balancers, internal and external proxy Network Load
-        /// Balancers, internal and external Application Load Balancers, external
-        /// protocol forwarding, and Classic VPN.
+        ///   Network Load Balancers, internal and external proxy Network Load
+        ///   Balancers, internal and external Application Load Balancers, external
+        ///   protocol forwarding, and Classic VPN.
         /// * Some products have restrictions on what ports can be used. See
-        /// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-        /// for details.
-        /// For external forwarding rules, two or more forwarding rules cannot use the
-        /// same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
-        /// `portRange`s.
-        /// For internal forwarding rules within the same VPC network, two or more
-        /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
-        /// cannot have overlapping `portRange`s.
-        /// @pattern: \d+(?:-\d+)?
+        ///   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+        ///   for details.
+        ///   For external forwarding rules, two or more forwarding rules cannot use the
+        ///   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+        ///   `portRange`s.
+        ///   For internal forwarding rules within the same VPC network, two or more
+        ///   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+        ///   cannot have overlapping `portRange`s.
+        ///   @pattern: \d+(?:-\d+)?
         /// </summary>
         [Output("portRange")]
         public Output<string> PortRange { get; private set; } = null!;
@@ -1486,19 +1486,19 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `Ports` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
-        /// and
+        ///   and
         /// * It's applicable only to the following products: internal passthrough
-        /// Network Load Balancers, backend service-based external passthrough Network
-        /// Load Balancers, and internal protocol forwarding.
+        ///   Network Load Balancers, backend service-based external passthrough Network
+        ///   Load Balancers, and internal protocol forwarding.
         /// * You can specify a list of up to five ports by number, separated by
-        /// commas. The ports can be contiguous or discontiguous.
-        /// For external forwarding rules, two or more forwarding rules cannot use the
-        /// same `[IPAddress, IPProtocol]` pair if they share at least one port
-        /// number.
-        /// For internal forwarding rules within the same VPC network, two or more
-        /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
-        /// they share at least one port number.
-        /// @pattern: \d+(?:-\d+)?
+        ///   commas. The ports can be contiguous or discontiguous.
+        ///   For external forwarding rules, two or more forwarding rules cannot use the
+        ///   same `[IPAddress, IPProtocol]` pair if they share at least one port
+        ///   number.
+        ///   For internal forwarding rules within the same VPC network, two or more
+        ///   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+        ///   they share at least one port number.
+        ///   @pattern: \d+(?:-\d+)?
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<string>> Ports { get; private set; } = null!;
@@ -1603,7 +1603,7 @@ namespace Pulumi.Gcp.Compute
         /// load balancing resource.
         /// The forwarded traffic must be of a type appropriate to the target object.
         /// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+        ///    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         /// </summary>
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
@@ -1665,15 +1665,15 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `allPorts` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
-        /// L3_DEFAULT.
+        ///   L3_DEFAULT.
         /// * It's applicable only to the following products: internal passthrough
-        /// Network Load Balancers, backend service-based external passthrough Network
-        /// Load Balancers, and internal and external protocol forwarding.
+        ///   Network Load Balancers, backend service-based external passthrough Network
+        ///   Load Balancers, and internal and external protocol forwarding.
         /// * Set this field to true to allow packets addressed to any port or packets
-        /// lacking destination port information (for example, UDP fragments after the
-        /// first fragment) to be forwarded to the backends configured with this
-        /// forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
-        /// true.
+        ///   lacking destination port information (for example, UDP fragments after the
+        ///   first fragment) to be forwarded to the backends configured with this
+        ///   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+        ///   true.
         /// </summary>
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
@@ -1729,31 +1729,31 @@ namespace Pulumi.Gcp.Compute
         /// While creating a forwarding rule, specifying an `IPAddress` is
         /// required under the following circumstances:
         /// * When the `Target` is set to `targetGrpcProxy` and
-        /// `validateForProxyless` is set to `True`, the
-        /// `IPAddress` should be set to `0.0.0.0`.
+        ///   `validateForProxyless` is set to `True`, the
+        ///   `IPAddress` should be set to `0.0.0.0`.
         /// * When the `Target` is a Private Service Connect Google APIs
-        /// bundle, you must specify an `IPAddress`.
-        /// Otherwise, you can optionally specify an IP address that references an
-        /// existing static (reserved) IP address resource. When omitted, Google Cloud
-        /// assigns an ephemeral IP address.
-        /// Use one of the following formats to specify an IP address while creating a
-        /// forwarding rule:
+        ///   bundle, you must specify an `IPAddress`.
+        ///   Otherwise, you can optionally specify an IP address that references an
+        ///   existing static (reserved) IP address resource. When omitted, Google Cloud
+        ///   assigns an ephemeral IP address.
+        ///   Use one of the following formats to specify an IP address while creating a
+        ///   forwarding rule:
         /// * IP address number, as in `100.1.2.3`
         /// * IPv6 address range, as in `2600:1234::/96`
         /// * Full resource URL, as in
-        /// `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+        ///   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
         /// * Partial URL or by name, as in:
         /// * `projects/project_id/regions/region/addresses/address-name`
         /// * `regions/region/addresses/address-name`
         /// * `global/addresses/address-name`
         /// * `address-name`
-        /// The forwarding rule's `Target` or `backendService`,
-        /// and in most cases, also the `loadBalancingScheme`, determine the
-        /// type of IP address that you can use. For detailed information, see
-        /// [IP address
-        /// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// When reading an `IPAddress`, the API always returns the IP
-        /// address number.
+        ///   The forwarding rule's `Target` or `backendService`,
+        ///   and in most cases, also the `loadBalancingScheme`, determine the
+        ///   type of IP address that you can use. For detailed information, see
+        ///   [IP address
+        ///   specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        ///   When reading an `IPAddress`, the API always returns the IP
+        ///   address number.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -1765,7 +1765,7 @@ namespace Pulumi.Gcp.Compute
         /// IPv6 NetLB forwarding rule using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-        /// Partial URL, as in:
+        ///   Partial URL, as in:
         /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// </summary>
@@ -1894,21 +1894,21 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `portRange` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
-        /// and
+        ///   and
         /// * It's applicable only to the following products: external passthrough
-        /// Network Load Balancers, internal and external proxy Network Load
-        /// Balancers, internal and external Application Load Balancers, external
-        /// protocol forwarding, and Classic VPN.
+        ///   Network Load Balancers, internal and external proxy Network Load
+        ///   Balancers, internal and external Application Load Balancers, external
+        ///   protocol forwarding, and Classic VPN.
         /// * Some products have restrictions on what ports can be used. See
-        /// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-        /// for details.
-        /// For external forwarding rules, two or more forwarding rules cannot use the
-        /// same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
-        /// `portRange`s.
-        /// For internal forwarding rules within the same VPC network, two or more
-        /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
-        /// cannot have overlapping `portRange`s.
-        /// @pattern: \d+(?:-\d+)?
+        ///   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+        ///   for details.
+        ///   For external forwarding rules, two or more forwarding rules cannot use the
+        ///   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+        ///   `portRange`s.
+        ///   For internal forwarding rules within the same VPC network, two or more
+        ///   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+        ///   cannot have overlapping `portRange`s.
+        ///   @pattern: \d+(?:-\d+)?
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
@@ -1922,19 +1922,19 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `Ports` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
-        /// and
+        ///   and
         /// * It's applicable only to the following products: internal passthrough
-        /// Network Load Balancers, backend service-based external passthrough Network
-        /// Load Balancers, and internal protocol forwarding.
+        ///   Network Load Balancers, backend service-based external passthrough Network
+        ///   Load Balancers, and internal protocol forwarding.
         /// * You can specify a list of up to five ports by number, separated by
-        /// commas. The ports can be contiguous or discontiguous.
-        /// For external forwarding rules, two or more forwarding rules cannot use the
-        /// same `[IPAddress, IPProtocol]` pair if they share at least one port
-        /// number.
-        /// For internal forwarding rules within the same VPC network, two or more
-        /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
-        /// they share at least one port number.
-        /// @pattern: \d+(?:-\d+)?
+        ///   commas. The ports can be contiguous or discontiguous.
+        ///   For external forwarding rules, two or more forwarding rules cannot use the
+        ///   same `[IPAddress, IPProtocol]` pair if they share at least one port
+        ///   number.
+        ///   For internal forwarding rules within the same VPC network, two or more
+        ///   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+        ///   they share at least one port number.
+        ///   @pattern: \d+(?:-\d+)?
         /// </summary>
         public InputList<string> Ports
         {
@@ -2016,7 +2016,7 @@ namespace Pulumi.Gcp.Compute
         /// load balancing resource.
         /// The forwarded traffic must be of a type appropriate to the target object.
         /// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+        ///    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
@@ -2035,15 +2035,15 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `allPorts` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
-        /// L3_DEFAULT.
+        ///   L3_DEFAULT.
         /// * It's applicable only to the following products: internal passthrough
-        /// Network Load Balancers, backend service-based external passthrough Network
-        /// Load Balancers, and internal and external protocol forwarding.
+        ///   Network Load Balancers, backend service-based external passthrough Network
+        ///   Load Balancers, and internal and external protocol forwarding.
         /// * Set this field to true to allow packets addressed to any port or packets
-        /// lacking destination port information (for example, UDP fragments after the
-        /// first fragment) to be forwarded to the backends configured with this
-        /// forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
-        /// true.
+        ///   lacking destination port information (for example, UDP fragments after the
+        ///   first fragment) to be forwarded to the backends configured with this
+        ///   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+        ///   true.
         /// </summary>
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
@@ -2133,31 +2133,31 @@ namespace Pulumi.Gcp.Compute
         /// While creating a forwarding rule, specifying an `IPAddress` is
         /// required under the following circumstances:
         /// * When the `Target` is set to `targetGrpcProxy` and
-        /// `validateForProxyless` is set to `True`, the
-        /// `IPAddress` should be set to `0.0.0.0`.
+        ///   `validateForProxyless` is set to `True`, the
+        ///   `IPAddress` should be set to `0.0.0.0`.
         /// * When the `Target` is a Private Service Connect Google APIs
-        /// bundle, you must specify an `IPAddress`.
-        /// Otherwise, you can optionally specify an IP address that references an
-        /// existing static (reserved) IP address resource. When omitted, Google Cloud
-        /// assigns an ephemeral IP address.
-        /// Use one of the following formats to specify an IP address while creating a
-        /// forwarding rule:
+        ///   bundle, you must specify an `IPAddress`.
+        ///   Otherwise, you can optionally specify an IP address that references an
+        ///   existing static (reserved) IP address resource. When omitted, Google Cloud
+        ///   assigns an ephemeral IP address.
+        ///   Use one of the following formats to specify an IP address while creating a
+        ///   forwarding rule:
         /// * IP address number, as in `100.1.2.3`
         /// * IPv6 address range, as in `2600:1234::/96`
         /// * Full resource URL, as in
-        /// `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+        ///   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
         /// * Partial URL or by name, as in:
         /// * `projects/project_id/regions/region/addresses/address-name`
         /// * `regions/region/addresses/address-name`
         /// * `global/addresses/address-name`
         /// * `address-name`
-        /// The forwarding rule's `Target` or `backendService`,
-        /// and in most cases, also the `loadBalancingScheme`, determine the
-        /// type of IP address that you can use. For detailed information, see
-        /// [IP address
-        /// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// When reading an `IPAddress`, the API always returns the IP
-        /// address number.
+        ///   The forwarding rule's `Target` or `backendService`,
+        ///   and in most cases, also the `loadBalancingScheme`, determine the
+        ///   type of IP address that you can use. For detailed information, see
+        ///   [IP address
+        ///   specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        ///   When reading an `IPAddress`, the API always returns the IP
+        ///   address number.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -2169,7 +2169,7 @@ namespace Pulumi.Gcp.Compute
         /// IPv6 NetLB forwarding rule using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-        /// Partial URL, as in:
+        ///   Partial URL, as in:
         /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         /// </summary>
@@ -2305,21 +2305,21 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `portRange` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
-        /// and
+        ///   and
         /// * It's applicable only to the following products: external passthrough
-        /// Network Load Balancers, internal and external proxy Network Load
-        /// Balancers, internal and external Application Load Balancers, external
-        /// protocol forwarding, and Classic VPN.
+        ///   Network Load Balancers, internal and external proxy Network Load
+        ///   Balancers, internal and external Application Load Balancers, external
+        ///   protocol forwarding, and Classic VPN.
         /// * Some products have restrictions on what ports can be used. See
-        /// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-        /// for details.
-        /// For external forwarding rules, two or more forwarding rules cannot use the
-        /// same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
-        /// `portRange`s.
-        /// For internal forwarding rules within the same VPC network, two or more
-        /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
-        /// cannot have overlapping `portRange`s.
-        /// @pattern: \d+(?:-\d+)?
+        ///   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+        ///   for details.
+        ///   For external forwarding rules, two or more forwarding rules cannot use the
+        ///   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+        ///   `portRange`s.
+        ///   For internal forwarding rules within the same VPC network, two or more
+        ///   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+        ///   cannot have overlapping `portRange`s.
+        ///   @pattern: \d+(?:-\d+)?
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
@@ -2333,19 +2333,19 @@ namespace Pulumi.Gcp.Compute
         /// to the backends configured with this forwarding rule.
         /// The `Ports` field has the following limitations:
         /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
-        /// and
+        ///   and
         /// * It's applicable only to the following products: internal passthrough
-        /// Network Load Balancers, backend service-based external passthrough Network
-        /// Load Balancers, and internal protocol forwarding.
+        ///   Network Load Balancers, backend service-based external passthrough Network
+        ///   Load Balancers, and internal protocol forwarding.
         /// * You can specify a list of up to five ports by number, separated by
-        /// commas. The ports can be contiguous or discontiguous.
-        /// For external forwarding rules, two or more forwarding rules cannot use the
-        /// same `[IPAddress, IPProtocol]` pair if they share at least one port
-        /// number.
-        /// For internal forwarding rules within the same VPC network, two or more
-        /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
-        /// they share at least one port number.
-        /// @pattern: \d+(?:-\d+)?
+        ///   commas. The ports can be contiguous or discontiguous.
+        ///   For external forwarding rules, two or more forwarding rules cannot use the
+        ///   same `[IPAddress, IPProtocol]` pair if they share at least one port
+        ///   number.
+        ///   For internal forwarding rules within the same VPC network, two or more
+        ///   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+        ///   they share at least one port number.
+        ///   @pattern: \d+(?:-\d+)?
         /// </summary>
         public InputList<string> Ports
         {
@@ -2469,7 +2469,7 @@ namespace Pulumi.Gcp.Compute
         /// load balancing resource.
         /// The forwarded traffic must be of a type appropriate to the target object.
         /// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+        ///    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

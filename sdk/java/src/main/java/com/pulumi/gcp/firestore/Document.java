@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("project-id")
  *             .name("project-id")
@@ -102,11 +102,11 @@ import javax.annotation.Nullable;
  *             .database(database.name())
  *             .collection("somenewcollection")
  *             .documentId("my-doc-id")
- *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}")
+ *             .fields("}{&#92;{@code "something}&#92;{@code ":}{&#92;{@code "mapValue}&#92;{@code ":}{&#92;{@code "fields}&#92;{@code ":}{&#92;{@code "akey}&#92;{@code ":}{&#92;{@code "stringValue}&#92;{@code ":}&#92;{@code "avalue}&#92;{@code "}}}}}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -137,12 +137,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("project-id")
  *             .name("project-id")
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             .database(database.name())
  *             .collection("somenewcollection")
  *             .documentId("my-doc-id")
- *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}")
+ *             .fields("}{&#92;{@code "something}&#92;{@code ":}{&#92;{@code "mapValue}&#92;{@code ":}{&#92;{@code "fields}&#92;{@code ":}{&#92;{@code "akey}&#92;{@code ":}{&#92;{@code "stringValue}&#92;{@code ":}&#92;{@code "avalue}&#92;{@code "}}}}}}{@code ")
  *             .build());
  * 
  *         var subDocument = new Document("subDocument", DocumentArgs.builder()
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *             .database(database.name())
  *             .collection(mydoc.path().applyValue(_path -> String.format("%s/subdocs", _path)))
  *             .documentId("bitcoinkey")
- *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}")
+ *             .fields("}{&#92;{@code "something}&#92;{@code ":}{&#92;{@code "mapValue}&#92;{@code ":}{&#92;{@code "fields}&#92;{@code ":}{&#92;{@code "ayo}&#92;{@code ":}{&#92;{@code "stringValue}&#92;{@code ":}&#92;{@code "val2}&#92;{@code "}}}}}}{@code ")
  *             .build());
  * 
  *         var subSubDocument = new Document("subSubDocument", DocumentArgs.builder()
@@ -193,11 +193,11 @@ import javax.annotation.Nullable;
  *             .database(database.name())
  *             .collection(subDocument.path().applyValue(_path -> String.format("%s/subsubdocs", _path)))
  *             .documentId("asecret")
- *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}")
+ *             .fields("}{&#92;{@code "something}&#92;{@code ":}{&#92;{@code "mapValue}&#92;{@code ":}{&#92;{@code "fields}&#92;{@code ":}{&#92;{@code "secret}&#92;{@code ":}{&#92;{@code "stringValue}&#92;{@code ":}&#92;{@code "hithere}&#92;{@code "}}}}}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

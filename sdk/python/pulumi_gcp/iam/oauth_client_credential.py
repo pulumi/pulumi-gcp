@@ -605,6 +605,30 @@ class OauthClientCredential(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return OauthClientCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_client_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauthclient: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientSecret"] = client_secret
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["oauthClientCredentialId"] = oauth_client_credential_id
+        __props__["oauthclient"] = oauthclient
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/oauthClientCredential:OauthClientCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[_builtins.str]:

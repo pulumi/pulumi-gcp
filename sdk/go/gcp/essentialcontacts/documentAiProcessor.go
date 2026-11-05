@@ -178,6 +178,12 @@ func (DocumentAiProcessorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*documentAiProcessorState)(nil)).Elem()
 }
 
+// DocumentAiProcessorExists checks whether an existing DocumentAiProcessor resource with the given ID exists.
+func DocumentAiProcessorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DocumentAiProcessorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor", id, state, "", opts...)
+}
+
 type documentAiProcessorArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

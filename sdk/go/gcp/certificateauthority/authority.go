@@ -828,6 +828,12 @@ func (AuthorityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorityState)(nil)).Elem()
 }
 
+// AuthorityExists checks whether an existing Authority resource with the given ID exists.
+func AuthorityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthorityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificateauthority/authority:Authority", id, state, "", opts...)
+}
+
 type authorityArgs struct {
 	// The user provided Resource ID for this Certificate Authority.
 	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`

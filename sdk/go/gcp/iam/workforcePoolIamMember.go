@@ -412,6 +412,12 @@ func (WorkforcePoolIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workforcePoolIamMemberState)(nil)).Elem()
 }
 
+// WorkforcePoolIamMemberExists checks whether an existing WorkforcePoolIamMember resource with the given ID exists.
+func WorkforcePoolIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkforcePoolIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember", id, state, "", opts...)
+}
+
 type workforcePoolIamMemberArgs struct {
 	Condition *WorkforcePoolIamMemberCondition `pulumi:"condition"`
 	// The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,

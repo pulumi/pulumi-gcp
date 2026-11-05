@@ -243,6 +243,12 @@ func (V2OrganizationMuteConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2organizationMuteConfigState)(nil)).Elem()
 }
 
+// V2OrganizationMuteConfigExists checks whether an existing V2OrganizationMuteConfig resource with the given ID exists.
+func V2OrganizationMuteConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2OrganizationMuteConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig", id, state, "", opts...)
+}
+
 type v2organizationMuteConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

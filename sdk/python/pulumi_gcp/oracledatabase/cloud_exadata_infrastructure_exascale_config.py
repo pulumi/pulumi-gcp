@@ -471,6 +471,24 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
         __props__.__dict__["total_vm_storage_size_gb"] = total_vm_storage_size_gb
         return CloudExadataInfrastructureExascaleConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            total_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            total_vm_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudExadataInfrastructure"] = cloud_exadata_infrastructure
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["project"] = project
+        __props__["totalStorageSizeGb"] = total_storage_size_gb
+        __props__["totalVmStorageSizeGb"] = total_vm_storage_size_gb
+        return pulumi.runtime.exists_resource(None, 'gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudExadataInfrastructure")
     def cloud_exadata_infrastructure(self) -> pulumi.Output[_builtins.str]:

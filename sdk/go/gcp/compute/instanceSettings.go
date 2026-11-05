@@ -169,6 +169,12 @@ func (InstanceSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceSettingsState)(nil)).Elem()
 }
 
+// InstanceSettingsExists checks whether an existing InstanceSettings resource with the given ID exists.
+func InstanceSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceSettings:InstanceSettings", id, state, "", opts...)
+}
+
 type instanceSettingsArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -946,6 +946,12 @@ func (HealthCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*healthCheckState)(nil)).Elem()
 }
 
+// HealthCheckExists checks whether an existing HealthCheck resource with the given ID exists.
+func HealthCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HealthCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/healthCheck:HealthCheck", id, state, "", opts...)
+}
+
 type healthCheckArgs struct {
 	// How often (in seconds) to send a health check. The default value is 5
 	// seconds.

@@ -318,6 +318,12 @@ func (ConsentStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*consentStoreState)(nil)).Elem()
 }
 
+// ConsentStoreExists checks whether an existing ConsentStore resource with the given ID exists.
+func ConsentStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConsentStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/consentStore:ConsentStore", id, state, "", opts...)
+}
+
 type consentStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'

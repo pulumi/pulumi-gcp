@@ -348,6 +348,12 @@ func (MulticastDomainActivationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multicastDomainActivationState)(nil)).Elem()
 }
 
+// MulticastDomainActivationExists checks whether an existing MulticastDomainActivation resource with the given ID exists.
+func MulticastDomainActivationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MulticastDomainActivationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/multicastDomainActivation:MulticastDomainActivation", id, state, "", opts...)
+}
+
 type multicastDomainActivationArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

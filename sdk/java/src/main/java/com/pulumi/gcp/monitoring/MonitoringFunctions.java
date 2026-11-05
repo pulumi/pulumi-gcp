@@ -1410,12 +1410,12 @@ public final class MonitoringFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName("Test Notification Channel")
      *             .build());
@@ -1427,7 +1427,7 @@ public final class MonitoringFunctions {
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
      *                     .duration("60s")
      *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -1438,8 +1438,8 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1485,12 +1485,12 @@ public final class MonitoringFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName("Test Notification Channel")
      *             .build());
@@ -1502,7 +1502,7 @@ public final class MonitoringFunctions {
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
      *                     .duration("60s")
      *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -1513,8 +1513,8 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1560,12 +1560,12 @@ public final class MonitoringFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName("Test Notification Channel")
      *             .build());
@@ -1577,7 +1577,7 @@ public final class MonitoringFunctions {
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
      *                     .duration("60s")
      *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -1588,8 +1588,8 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1635,12 +1635,12 @@ public final class MonitoringFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName("Test Notification Channel")
      *             .build());
@@ -1652,7 +1652,7 @@ public final class MonitoringFunctions {
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
      *                     .duration("60s")
      *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -1663,8 +1663,8 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1710,12 +1710,12 @@ public final class MonitoringFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName("Test Notification Channel")
      *             .build());
@@ -1727,7 +1727,7 @@ public final class MonitoringFunctions {
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
      *                     .duration("60s")
      *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -1738,8 +1738,8 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1785,12 +1785,12 @@ public final class MonitoringFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName("Test Notification Channel")
      *             .build());
@@ -1802,7 +1802,7 @@ public final class MonitoringFunctions {
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
      *                     .duration("60s")
      *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -1813,8 +1813,8 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1860,12 +1860,12 @@ public final class MonitoringFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName("Test Notification Channel")
      *             .build());
@@ -1877,7 +1877,7 @@ public final class MonitoringFunctions {
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
      *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
-     *                     .filter("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"")
+     *                     .filter("metric.type=}&#92;{@code "compute.googleapis.com/instance/disk/write_bytes_count}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "")
      *                     .duration("60s")
      *                     .comparison("COMPARISON_GT")
      *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
@@ -1888,8 +1888,8 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1933,11 +1933,10 @@ public final class MonitoringFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
+     * @deprecated gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
      * 
      */
-    @Deprecated /* gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion */
+    @Deprecated
     public static Output<GetSecretVersionResult> getSecretVersion(GetSecretVersionArgs args) {
         return getSecretVersion(args, InvokeOptions.Empty);
     }
@@ -1977,11 +1976,10 @@ public final class MonitoringFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
+     * @deprecated gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
      * 
      */
-    @Deprecated /* gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion */
+    @Deprecated
     public static CompletableFuture<GetSecretVersionResult> getSecretVersionPlain(GetSecretVersionPlainArgs args) {
         return getSecretVersionPlain(args, InvokeOptions.Empty);
     }
@@ -2021,11 +2019,10 @@ public final class MonitoringFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
+     * @deprecated gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
      * 
      */
-    @Deprecated /* gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion */
+    @Deprecated
     public static Output<GetSecretVersionResult> getSecretVersion(GetSecretVersionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:monitoring/getSecretVersion:getSecretVersion", TypeShape.of(GetSecretVersionResult.class), args, Utilities.withVersion(options));
     }
@@ -2065,11 +2062,10 @@ public final class MonitoringFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
+     * @deprecated gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
      * 
      */
-    @Deprecated /* gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion */
+    @Deprecated
     public static Output<GetSecretVersionResult> getSecretVersion(GetSecretVersionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:monitoring/getSecretVersion:getSecretVersion", TypeShape.of(GetSecretVersionResult.class), args, Utilities.withVersion(options));
     }
@@ -2109,11 +2105,10 @@ public final class MonitoringFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
+     * @deprecated gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
      * 
      */
-    @Deprecated /* gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion */
+    @Deprecated
     public static CompletableFuture<GetSecretVersionResult> getSecretVersionPlain(GetSecretVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:monitoring/getSecretVersion:getSecretVersion", TypeShape.of(GetSecretVersionResult.class), args, Utilities.withVersion(options));
     }

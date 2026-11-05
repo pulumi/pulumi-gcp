@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// allowed to take to execute its action. GCP will default to a predetermined
         /// computed value if not set (currently 300).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly int? TimeoutSec;
 

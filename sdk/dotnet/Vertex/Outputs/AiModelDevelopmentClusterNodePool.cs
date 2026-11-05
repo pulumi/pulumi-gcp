@@ -86,12 +86,12 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// - For CPU node pools: Defaults to `ON_DEMAND`.
         /// - For GPU node pools:
         /// - If
-        /// `machine_spec.reservation_affinity`
-        /// is set, it defaults to `RESERVATION`.
+        ///   `machine_spec.reservation_affinity`
+        ///   is set, it defaults to `RESERVATION`.
         /// - If
-        /// `machine_spec.reservation_affinity`
-        /// is NOT set, this is an INVALID state and the request will be rejected.
-        /// An explicit `ProvisioningModel` must be provided.
+        ///   `machine_spec.reservation_affinity`
+        ///   is NOT set, this is an INVALID state and the request will be rejected.
+        ///   An explicit `ProvisioningModel` must be provided.
         /// </summary>
         public readonly string? ProvisioningModel;
         /// <summary>

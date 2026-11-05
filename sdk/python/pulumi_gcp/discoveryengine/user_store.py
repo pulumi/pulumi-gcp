@@ -552,6 +552,26 @@ class UserStore(pulumi.CustomResource):
         __props__.__dict__["user_store_id"] = user_store_id
         return UserStore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_license_config: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_expired_license_auto_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_license_auto_register: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            user_store_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultLicenseConfig"] = default_license_config
+        __props__["enableExpiredLicenseAutoUpdate"] = enable_expired_license_auto_update
+        __props__["enableLicenseAutoRegister"] = enable_license_auto_register
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["userStoreId"] = user_store_id
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/userStore:UserStore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultLicenseConfig")
     def default_license_config(self) -> pulumi.Output[Optional[_builtins.str]]:

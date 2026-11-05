@@ -292,6 +292,12 @@ func (DataPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataPolicyState)(nil)).Elem()
 }
 
+// DataPolicyExists checks whether an existing DataPolicy resource with the given ID exists.
+func DataPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquerydatapolicy/dataPolicy:DataPolicy", id, state, "", opts...)
+}
+
 type dataPolicyArgs struct {
 	// The data masking policy that specifies the data masking rule to use.
 	// Structure is documented below.

@@ -27,11 +27,10 @@ public final class InterconnectMacsecPreSharedKeyArgs extends com.pulumi.resourc
      * 
      * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
      * 
-     * @deprecated
-     * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * @deprecated `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
      * 
      */
-    @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
+    @Deprecated
     @Import(name="failOpen")
     private @Nullable Output<Boolean> failOpen;
 
@@ -45,11 +44,10 @@ public final class InterconnectMacsecPreSharedKeyArgs extends com.pulumi.resourc
      * 
      * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
      * 
-     * @deprecated
-     * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * @deprecated `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
      * 
      */
-    @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> failOpen() {
         return Optional.ofNullable(this.failOpen);
     }
@@ -138,11 +136,10 @@ public final class InterconnectMacsecPreSharedKeyArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+         * @deprecated `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
          * 
          */
-        @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
+        @Deprecated
         public Builder failOpen(@Nullable Output<Boolean> failOpen) {
             $.failOpen = failOpen;
             return this;
@@ -160,11 +157,10 @@ public final class InterconnectMacsecPreSharedKeyArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+         * @deprecated `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
          * 
          */
-        @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
+        @Deprecated
         public Builder failOpen(Boolean failOpen) {
             return failOpen(Output.of(failOpen));
         }

@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string? DataprocCluster;
 

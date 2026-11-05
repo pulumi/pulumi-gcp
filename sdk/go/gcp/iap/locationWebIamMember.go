@@ -649,6 +649,12 @@ func (LocationWebIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*locationWebIamMemberState)(nil)).Elem()
 }
 
+// LocationWebIamMemberExists checks whether an existing LocationWebIamMember resource with the given ID exists.
+func LocationWebIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LocationWebIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/locationWebIamMember:LocationWebIamMember", id, state, "", opts...)
+}
+
 type locationWebIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

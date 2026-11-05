@@ -317,6 +317,12 @@ func (ControlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlState)(nil)).Elem()
 }
 
+// ControlExists checks whether an existing Control resource with the given ID exists.
+func ControlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/control:Control", id, state, "", opts...)
+}
+
 type controlArgs struct {
 	// Changes the returned order of results.
 	// Structure is documented below.

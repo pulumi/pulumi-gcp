@@ -1589,6 +1589,52 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return FhirStore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
+            consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict', 'outputs.FhirStoreConsentConfig']]] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_history_modifications: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]] = None,
+            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict', 'outputs.FhirStoreNotificationConfig']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict', 'outputs.FhirStoreStreamConfig']]]]] = None,
+            validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict', 'outputs.FhirStoreValidationConfig']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["complexDataTypeReferenceParsing"] = complex_data_type_reference_parsing
+        __props__["consentConfig"] = consent_config
+        __props__["dataset"] = dataset
+        __props__["defaultSearchHandlingStrict"] = default_search_handling_strict
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disableReferentialIntegrity"] = disable_referential_integrity
+        __props__["disableResourceVersioning"] = disable_resource_versioning
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableHistoryImport"] = enable_history_import
+        __props__["enableHistoryModifications"] = enable_history_modifications
+        __props__["enableUpdateCreate"] = enable_update_create
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["notificationConfig"] = notification_config
+        __props__["notificationConfigs"] = notification_configs
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["selfLink"] = self_link
+        __props__["streamConfigs"] = stream_configs
+        __props__["validationConfig"] = validation_config
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:healthcare/fhirStore:FhirStore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="complexDataTypeReferenceParsing")
     def complex_data_type_reference_parsing(self) -> pulumi.Output[_builtins.str]:

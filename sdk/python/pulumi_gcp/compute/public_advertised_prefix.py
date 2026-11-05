@@ -733,6 +733,32 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         __props__.__dict__["shared_secret"] = shared_secret
         return PublicAdvertisedPrefix(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_verification_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pdp_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["dnsVerificationIp"] = dns_verification_ip
+        __props__["ipCidrRange"] = ip_cidr_range
+        __props__["ipv6AccessType"] = ipv6_access_type
+        __props__["name"] = name
+        __props__["pdpScope"] = pdp_scope
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["sharedSecret"] = shared_secret
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

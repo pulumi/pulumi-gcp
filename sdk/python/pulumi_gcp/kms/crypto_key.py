@@ -952,6 +952,42 @@ class CryptoKey(pulumi.CustomResource):
         __props__.__dict__["version_template"] = version_template
         return CryptoKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            import_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict', 'outputs.CryptoKeyKeyAccessJustificationsPolicy']]] = None,
+            key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            primaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict', 'outputs.CryptoKeyPrimary']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            purpose: pulumi.Input[Optional[_builtins.str]] = None,
+            rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+            version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict', 'outputs.CryptoKeyVersionTemplate']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cryptoKeyBackend"] = crypto_key_backend
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["destroyScheduledDuration"] = destroy_scheduled_duration
+        __props__["effectiveLabels"] = effective_labels
+        __props__["importOnly"] = import_only
+        __props__["keyAccessJustificationsPolicy"] = key_access_justifications_policy
+        __props__["keyRing"] = key_ring
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["primaries"] = primaries
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["purpose"] = purpose
+        __props__["rotationPeriod"] = rotation_period
+        __props__["skipInitialVersionCreation"] = skip_initial_version_creation
+        __props__["versionTemplate"] = version_template
+        return pulumi.runtime.exists_resource(None, 'gcp:kms/cryptoKey:CryptoKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cryptoKeyBackend")
     def crypto_key_backend(self) -> pulumi.Output[_builtins.str]:

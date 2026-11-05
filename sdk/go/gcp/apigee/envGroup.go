@@ -197,6 +197,12 @@ func (EnvGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*envGroupState)(nil)).Elem()
 }
 
+// EnvGroupExists checks whether an existing EnvGroup resource with the given ID exists.
+func EnvGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/envGroup:EnvGroup", id, state, "", opts...)
+}
+
 type envGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

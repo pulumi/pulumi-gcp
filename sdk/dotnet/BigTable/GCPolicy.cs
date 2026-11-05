@@ -219,7 +219,7 @@ namespace Pulumi.Gcp.BigTable
         /// Setting this to `True` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
         /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Output("ignoreWarnings")]
         public Output<bool?> IgnoreWarnings { get; private set; } = null!;
@@ -337,7 +337,7 @@ namespace Pulumi.Gcp.BigTable
         /// Setting this to `True` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
         /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Input("ignoreWarnings")]
         public Input<bool>? IgnoreWarnings { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.Gcp.BigTable
         /// Setting this to `True` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
         /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
         /// 
-        /// -----
+        /// ***
         /// </summary>
         [Input("ignoreWarnings")]
         public Input<bool>? IgnoreWarnings { get; set; }

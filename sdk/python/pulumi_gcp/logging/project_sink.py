@@ -989,6 +989,36 @@ class ProjectSink(pulumi.CustomResource):
         __props__.__dict__["writer_identity"] = writer_identity
         return ProjectSink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bigquery_options: pulumi.Input[Optional[Union['ProjectSinkBigqueryOptionsArgs', 'ProjectSinkBigqueryOptionsArgsDict', 'outputs.ProjectSinkBigqueryOptions']]] = None,
+            custom_writer_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectSinkExclusionArgs', 'ProjectSinkExclusionArgsDict', 'outputs.ProjectSinkExclusion']]]]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            unique_writer_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+            writer_identity: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigqueryOptions"] = bigquery_options
+        __props__["customWriterIdentity"] = custom_writer_identity
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["destination"] = destination
+        __props__["disabled"] = disabled
+        __props__["exclusions"] = exclusions
+        __props__["filter"] = filter
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["uniqueWriterIdentity"] = unique_writer_identity
+        __props__["writerIdentity"] = writer_identity
+        return pulumi.runtime.exists_resource(None, 'gcp:logging/projectSink:ProjectSink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigqueryOptions")
     def bigquery_options(self) -> pulumi.Output['outputs.ProjectSinkBigqueryOptions']:

@@ -286,6 +286,12 @@ func (AiSemanticGovernancePolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiSemanticGovernancePolicyState)(nil)).Elem()
 }
 
+// AiSemanticGovernancePolicyExists checks whether an existing AiSemanticGovernancePolicy resource with the given ID exists.
+func AiSemanticGovernancePolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiSemanticGovernancePolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiSemanticGovernancePolicy:AiSemanticGovernancePolicy", id, state, "", opts...)
+}
+
 type aiSemanticGovernancePolicyArgs struct {
 	// The name of the agent in Agent Registry that is affected by this policy.
 	Agent string `pulumi:"agent"`

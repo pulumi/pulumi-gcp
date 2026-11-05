@@ -414,6 +414,12 @@ func (AiFeatureStoreEntityTypeIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiFeatureStoreEntityTypeIamMemberState)(nil)).Elem()
 }
 
+// AiFeatureStoreEntityTypeIamMemberExists checks whether an existing AiFeatureStoreEntityTypeIamMember resource with the given ID exists.
+func AiFeatureStoreEntityTypeIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureStoreEntityTypeIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember", id, state, "", opts...)
+}
+
 type aiFeatureStoreEntityTypeIamMemberArgs struct {
 	Condition *AiFeatureStoreEntityTypeIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

@@ -379,6 +379,12 @@ func (AuthProviderIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authProviderIamPolicyState)(nil)).Elem()
 }
 
+// AuthProviderIamPolicyExists checks whether an existing AuthProviderIamPolicy resource with the given ID exists.
+func AuthProviderIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthProviderIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:agentidentity/authProviderIamPolicy:AuthProviderIamPolicy", id, state, "", opts...)
+}
+
 type authProviderIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	AuthProviderId string `pulumi:"authProviderId"`

@@ -17,11 +17,10 @@ public final class ClusterNodeConfigSandboxConfig {
      * 
      * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
      * 
-     * @deprecated
-     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * @deprecated `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    @Deprecated
     private @Nullable String sandboxType;
     /**
      * @return Which sandbox to use for pods in the node pool.
@@ -40,11 +39,10 @@ public final class ClusterNodeConfigSandboxConfig {
      * 
      * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
      * 
-     * @deprecated
-     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * @deprecated `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    @Deprecated
     public Optional<String> sandboxType() {
         return Optional.ofNullable(this.sandboxType);
     }

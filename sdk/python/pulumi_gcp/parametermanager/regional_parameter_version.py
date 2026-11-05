@@ -727,6 +727,34 @@ class RegionalParameterVersion(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return RegionalParameterVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_crc32c: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_data: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataCrc32c"] = data_crc32c
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disabled"] = disabled
+        __props__["kmsKeyVersion"] = kms_key_version
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parameter"] = parameter
+        __props__["parameterData"] = parameter_data
+        __props__["parameterVersionId"] = parameter_version_id
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

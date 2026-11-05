@@ -14,11 +14,10 @@ public final class NodePoolNodeConfigSandboxConfig {
     /**
      * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
      * 
-     * @deprecated
-     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * @deprecated `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    @Deprecated
     private @Nullable String sandboxType;
     /**
      * @return Type of the sandbox to use for the node (e.g. &#39;GVISOR&#39;).
@@ -30,11 +29,10 @@ public final class NodePoolNodeConfigSandboxConfig {
     /**
      * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;). Deprecated in favor of type.
      * 
-     * @deprecated
-     * `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
+     * @deprecated `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.
      * 
      */
-    @Deprecated /* `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead. */
+    @Deprecated
     public Optional<String> sandboxType() {
         return Optional.ofNullable(this.sandboxType);
     }

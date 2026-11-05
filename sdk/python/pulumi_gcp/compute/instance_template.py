@@ -2186,6 +2186,86 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["workload_identity_config"] = workload_identity_config
         return InstanceTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_machine_features: pulumi.Input[Optional[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict', 'outputs.InstanceTemplateAdvancedMachineFeatures']]] = None,
+            can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_instance_config: pulumi.Input[Optional[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict', 'outputs.InstanceTemplateConfidentialInstanceConfig']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict', 'outputs.InstanceTemplateDisk']]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
+            guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict', 'outputs.InstanceTemplateGuestAccelerator']]]]] = None,
+            instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+            min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict', 'outputs.InstanceTemplateNetworkInterface']]]]] = None,
+            network_performance_config: pulumi.Input[Optional[Union['InstanceTemplateNetworkPerformanceConfigArgs', 'InstanceTemplateNetworkPerformanceConfigArgsDict', 'outputs.InstanceTemplateNetworkPerformanceConfig']]] = None,
+            numeric_id: pulumi.Input[Optional[_builtins.str]] = None,
+            partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_affinity: pulumi.Input[Optional[Union['InstanceTemplateReservationAffinityArgs', 'InstanceTemplateReservationAffinityArgsDict', 'outputs.InstanceTemplateReservationAffinity']]] = None,
+            resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling: pulumi.Input[Optional[Union['InstanceTemplateSchedulingArgs', 'InstanceTemplateSchedulingArgsDict', 'outputs.InstanceTemplateScheduling']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_unique: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict', 'outputs.InstanceTemplateServiceAccount']]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict', 'outputs.InstanceTemplateShieldedInstanceConfig']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_config: pulumi.Input[Optional[Union['InstanceTemplateWorkloadIdentityConfigArgs', 'InstanceTemplateWorkloadIdentityConfigArgsDict', 'outputs.InstanceTemplateWorkloadIdentityConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedMachineFeatures"] = advanced_machine_features
+        __props__["canIpForward"] = can_ip_forward
+        __props__["confidentialInstanceConfig"] = confidential_instance_config
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["description"] = description
+        __props__["disks"] = disks
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableDisplay"] = enable_display
+        __props__["guestAccelerators"] = guest_accelerators
+        __props__["instanceDescription"] = instance_description
+        __props__["keyRevocationActionType"] = key_revocation_action_type
+        __props__["labels"] = labels
+        __props__["machineType"] = machine_type
+        __props__["metadata"] = metadata
+        __props__["metadataFingerprint"] = metadata_fingerprint
+        __props__["metadataStartupScript"] = metadata_startup_script
+        __props__["minCpuPlatform"] = min_cpu_platform
+        __props__["name"] = name
+        __props__["namePrefix"] = name_prefix
+        __props__["networkInterfaces"] = network_interfaces
+        __props__["networkPerformanceConfig"] = network_performance_config
+        __props__["numericId"] = numeric_id
+        __props__["partnerMetadata"] = partner_metadata
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["reservationAffinity"] = reservation_affinity
+        __props__["resourceManagerTags"] = resource_manager_tags
+        __props__["resourcePolicies"] = resource_policies
+        __props__["scheduling"] = scheduling
+        __props__["selfLink"] = self_link
+        __props__["selfLinkUnique"] = self_link_unique
+        __props__["serviceAccount"] = service_account
+        __props__["shieldedInstanceConfig"] = shielded_instance_config
+        __props__["tags"] = tags
+        __props__["tagsFingerprint"] = tags_fingerprint
+        __props__["workloadIdentityConfig"] = workload_identity_config
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/instanceTemplate:InstanceTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedMachineFeatures")
     def advanced_machine_features(self) -> pulumi.Output[Optional['outputs.InstanceTemplateAdvancedMachineFeatures']]:

@@ -49,7 +49,6 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
         /// If populated, this field contains the error status reported by Cloud KMS.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedControlPlaneEncryptionKmsStatus"&gt;&lt;/a&gt;The `KmsStatus` block contains:
         /// </summary>
         public InputList<Inputs.ClusterControlPlaneEncryptionKmsStatusGetArgs> KmsStatuses

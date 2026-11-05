@@ -466,6 +466,12 @@ func (WorkstationIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workstationIamMemberState)(nil)).Elem()
 }
 
+// WorkstationIamMemberExists checks whether an existing WorkstationIamMember resource with the given ID exists.
+func WorkstationIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkstationIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workstations/workstationIamMember:WorkstationIamMember", id, state, "", opts...)
+}
+
 type workstationIamMemberArgs struct {
 	Condition *WorkstationIamMemberCondition `pulumi:"condition"`
 	// The location where the workstation parent resources reside.

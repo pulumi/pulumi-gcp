@@ -556,6 +556,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Access logging configuration enables the access logging feature at the instance.
 	// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.

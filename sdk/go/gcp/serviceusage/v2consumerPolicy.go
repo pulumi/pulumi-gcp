@@ -153,6 +153,12 @@ func (V2ConsumerPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2consumerPolicyState)(nil)).Elem()
 }
 
+// V2ConsumerPolicyExists checks whether an existing V2ConsumerPolicy resource with the given ID exists.
+func V2ConsumerPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2ConsumerPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:serviceusage/v2ConsumerPolicy:V2ConsumerPolicy", id, state, "", opts...)
+}
+
 type v2consumerPolicyArgs struct {
 	// Default value is false. This field is deprecated and has no effect.
 	//

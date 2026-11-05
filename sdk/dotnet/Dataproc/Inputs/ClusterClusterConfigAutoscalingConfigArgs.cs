@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// `projects/[projectId]/locations/[DataprocRegion]/autoscalingPolicies/[PolicyId]`
         /// Note that the policy must be in the same project and Cloud Dataproc region.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("policyUri", required: true)]
         public Input<string> PolicyUri { get; set; } = null!;

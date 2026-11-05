@@ -427,6 +427,12 @@ func (AiReasoningEngineIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiReasoningEngineIamBindingState)(nil)).Elem()
 }
 
+// AiReasoningEngineIamBindingExists checks whether an existing AiReasoningEngineIamBinding resource with the given ID exists.
+func AiReasoningEngineIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiReasoningEngineIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding", id, state, "", opts...)
+}
+
 type aiReasoningEngineIamBindingArgs struct {
 	Condition *AiReasoningEngineIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

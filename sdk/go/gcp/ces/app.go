@@ -868,6 +868,12 @@ func (AppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appState)(nil)).Elem()
 }
 
+// AppExists checks whether an existing App resource with the given ID exists.
+func AppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/app:App", id, state, "", opts...)
+}
+
 type appArgs struct {
 	// The ID to use for the app, which will become the final component of
 	// the app's resource name. If not provided, a unique ID will be

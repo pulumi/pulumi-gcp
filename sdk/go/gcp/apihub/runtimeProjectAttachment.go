@@ -262,6 +262,12 @@ func (RuntimeProjectAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*runtimeProjectAttachmentState)(nil)).Elem()
 }
 
+// RuntimeProjectAttachmentExists checks whether an existing RuntimeProjectAttachment resource with the given ID exists.
+func RuntimeProjectAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuntimeProjectAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apihub/runtimeProjectAttachment:RuntimeProjectAttachment", id, state, "", opts...)
+}
+
 type runtimeProjectAttachmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

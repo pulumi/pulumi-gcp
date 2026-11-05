@@ -203,6 +203,12 @@ func (SitemapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sitemapState)(nil)).Elem()
 }
 
+// SitemapExists checks whether an existing Sitemap resource with the given ID exists.
+func SitemapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SitemapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/sitemap:Sitemap", id, state, "", opts...)
+}
+
 type sitemapArgs struct {
 	// The unique id of the data store.
 	DataStoreId string `pulumi:"dataStoreId"`

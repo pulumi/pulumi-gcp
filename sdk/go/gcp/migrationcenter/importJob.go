@@ -283,6 +283,12 @@ func (ImportJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*importJobState)(nil)).Elem()
 }
 
+// ImportJobExists checks whether an existing ImportJob resource with the given ID exists.
+func ImportJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImportJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:migrationcenter/importJob:ImportJob", id, state, "", opts...)
+}
+
 type importJobArgs struct {
 	// Reference to a source.
 	AssetSource string `pulumi:"assetSource"`

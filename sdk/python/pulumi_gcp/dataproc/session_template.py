@@ -1030,6 +1030,42 @@ class SessionTemplate(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return SessionTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict', 'outputs.SessionTemplateEnvironmentConfig']]] = None,
+            jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict', 'outputs.SessionTemplateJupyterSession']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            runtime_config: pulumi.Input[Optional[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict', 'outputs.SessionTemplateRuntimeConfig']]] = None,
+            spark_connect_session: pulumi.Input[Optional[Union['SessionTemplateSparkConnectSessionArgs', 'SessionTemplateSparkConnectSessionArgsDict', 'outputs.SessionTemplateSparkConnectSession']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["environmentConfig"] = environment_config
+        __props__["jupyterSession"] = jupyter_session
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["runtimeConfig"] = runtime_config
+        __props__["sparkConnectSession"] = spark_connect_session
+        __props__["updateTime"] = update_time
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'gcp:dataproc/sessionTemplate:SessionTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

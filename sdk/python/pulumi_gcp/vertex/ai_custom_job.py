@@ -1124,6 +1124,46 @@ class AiCustomJob(pulumi.CustomResource):
         __props__.__dict__["web_access_uris"] = web_access_uris
         return AiCustomJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiCustomJobEncryptionSpecArgs', 'AiCustomJobEncryptionSpecArgsDict', 'outputs.AiCustomJobEncryptionSpec']]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiCustomJobErrorArgs', 'AiCustomJobErrorArgsDict', 'outputs.AiCustomJobError']]]]] = None,
+            job_spec: pulumi.Input[Optional[Union['AiCustomJobJobSpecArgs', 'AiCustomJobJobSpecArgsDict', 'outputs.AiCustomJobJobSpec']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            web_access_uris: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionSpec"] = encryption_spec
+        __props__["endTime"] = end_time
+        __props__["errors"] = errors
+        __props__["jobSpec"] = job_spec
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["startTime"] = start_time
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        __props__["webAccessUris"] = web_access_uris
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiCustomJob:AiCustomJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

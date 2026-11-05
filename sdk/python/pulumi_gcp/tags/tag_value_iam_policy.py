@@ -708,6 +708,18 @@ class TagValueIamPolicy(pulumi.CustomResource):
         __props__.__dict__["tag_value"] = tag_value
         return TagValueIamPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["etag"] = etag
+        __props__["policyData"] = policy_data
+        __props__["tagValue"] = tag_value
+        return pulumi.runtime.exists_resource(None, 'gcp:tags/tagValueIamPolicy:TagValueIamPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:

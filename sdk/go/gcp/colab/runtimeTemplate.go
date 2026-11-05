@@ -417,6 +417,12 @@ func (RuntimeTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*runtimeTemplateState)(nil)).Elem()
 }
 
+// RuntimeTemplateExists checks whether an existing RuntimeTemplate resource with the given ID exists.
+func RuntimeTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuntimeTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:colab/runtimeTemplate:RuntimeTemplate", id, state, "", opts...)
+}
+
 type runtimeTemplateArgs struct {
 	// The configuration for the data disk of the runtime.
 	// Structure is documented below.

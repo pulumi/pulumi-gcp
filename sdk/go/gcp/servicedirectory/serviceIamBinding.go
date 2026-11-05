@@ -391,6 +391,12 @@ func (ServiceIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIamBindingState)(nil)).Elem()
 }
 
+// ServiceIamBindingExists checks whether an existing ServiceIamBinding resource with the given ID exists.
+func ServiceIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:servicedirectory/serviceIamBinding:ServiceIamBinding", id, state, "", opts...)
+}
+
 type serviceIamBindingArgs struct {
 	Condition *ServiceIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

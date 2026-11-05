@@ -340,6 +340,20 @@ class ConsumersIamPolicy(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         return ConsumersIamPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            consumer_project: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["consumerProject"] = consumer_project
+        __props__["etag"] = etag
+        __props__["policyData"] = policy_data
+        __props__["serviceName"] = service_name
+        return pulumi.runtime.exists_resource(None, 'gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="consumerProject")
     def consumer_project(self) -> pulumi.Output[_builtins.str]:

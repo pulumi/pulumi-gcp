@@ -1189,6 +1189,40 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["user_defined_fields"] = user_defined_fields
         return RegionSecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict', 'outputs.RegionSecurityPolicyAdvancedOptionsConfig']]] = None,
+            ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict', 'outputs.RegionSecurityPolicyDdosProtectionConfig']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict', 'outputs.RegionSecurityPolicyRule']]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_with_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict', 'outputs.RegionSecurityPolicyUserDefinedField']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedOptionsConfig"] = advanced_options_config
+        __props__["ddosProtectionConfig"] = ddos_protection_config
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["fingerprint"] = fingerprint
+        __props__["name"] = name
+        __props__["policyId"] = policy_id
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["rules"] = rules
+        __props__["selfLink"] = self_link
+        __props__["selfLinkWithPolicyId"] = self_link_with_policy_id
+        __props__["type"] = type
+        __props__["userDefinedFields"] = user_defined_fields
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/regionSecurityPolicy:RegionSecurityPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedOptionsConfig")
     def advanced_options_config(self) -> pulumi.Output[Optional['outputs.RegionSecurityPolicyAdvancedOptionsConfig']]:

@@ -497,6 +497,12 @@ func (RegionalSecretVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionalSecretVersionState)(nil)).Elem()
 }
 
+// RegionalSecretVersionExists checks whether an existing RegionalSecretVersion resource with the given ID exists.
+func RegionalSecretVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionalSecretVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion", id, state, "", opts...)
+}
+
 type regionalSecretVersionArgs struct {
 	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be

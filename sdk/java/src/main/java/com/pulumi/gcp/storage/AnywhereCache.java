@@ -102,11 +102,10 @@ public class AnywhereCache extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      * 
-     * @deprecated
-     * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * @deprecated `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      * 
      */
-    @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
+    @Deprecated
     @Export(name="admissionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> admissionPolicy;
 

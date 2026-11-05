@@ -1169,6 +1169,12 @@ func (EvaluationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*evaluationState)(nil)).Elem()
 }
 
+// EvaluationExists checks whether an existing Evaluation resource with the given ID exists.
+func EvaluationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EvaluationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/evaluation:Evaluation", id, state, "", opts...)
+}
+
 type evaluationArgs struct {
 	// (Required)
 	App string `pulumi:"app"`

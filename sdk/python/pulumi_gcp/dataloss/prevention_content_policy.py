@@ -1617,6 +1617,40 @@ class PreventionContentPolicy(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PreventionContentPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_action: pulumi.Input[Optional[Union['PreventionContentPolicyDefaultActionArgs', 'PreventionContentPolicyDefaultActionArgsDict', 'outputs.PreventionContentPolicyDefaultAction']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionContentPolicyErrorArgs', 'PreventionContentPolicyErrorArgsDict', 'outputs.PreventionContentPolicyError']]]]] = None,
+            failed_to_scan_supported_file_type: pulumi.Input[Optional[Union['PreventionContentPolicyFailedToScanSupportedFileTypeArgs', 'PreventionContentPolicyFailedToScanSupportedFileTypeArgsDict', 'outputs.PreventionContentPolicyFailedToScanSupportedFileType']]] = None,
+            input_too_large: pulumi.Input[Optional[Union['PreventionContentPolicyInputTooLargeArgs', 'PreventionContentPolicyInputTooLargeArgsDict', 'outputs.PreventionContentPolicyInputTooLarge']]] = None,
+            inspect_config: pulumi.Input[Optional[Union['PreventionContentPolicyInspectConfigArgs', 'PreventionContentPolicyInspectConfigArgsDict', 'outputs.PreventionContentPolicyInspectConfig']]] = None,
+            logging_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionContentPolicyLoggingConfigArgs', 'PreventionContentPolicyLoggingConfigArgsDict', 'outputs.PreventionContentPolicyLoggingConfig']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionContentPolicyRuleArgs', 'PreventionContentPolicyRuleArgsDict', 'outputs.PreventionContentPolicyRule']]]]] = None,
+            unsupported_file_type: pulumi.Input[Optional[Union['PreventionContentPolicyUnsupportedFileTypeArgs', 'PreventionContentPolicyUnsupportedFileTypeArgsDict', 'outputs.PreventionContentPolicyUnsupportedFileType']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["defaultAction"] = default_action
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["errors"] = errors
+        __props__["failedToScanSupportedFileType"] = failed_to_scan_supported_file_type
+        __props__["inputTooLarge"] = input_too_large
+        __props__["inspectConfig"] = inspect_config
+        __props__["loggingConfigs"] = logging_configs
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["rules"] = rules
+        __props__["unsupportedFileType"] = unsupported_file_type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:dataloss/preventionContentPolicy:PreventionContentPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

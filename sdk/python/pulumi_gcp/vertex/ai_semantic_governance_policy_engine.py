@@ -576,6 +576,34 @@ class AiSemanticGovernancePolicyEngine(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AiSemanticGovernancePolicyEngine(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSemanticGovernancePolicyEngineGatewayConfigArgs', 'AiSemanticGovernancePolicyEngineGatewayConfigArgsDict', 'outputs.AiSemanticGovernancePolicyEngineGatewayConfig']]]]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_service_attachment: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["gatewayConfigs"] = gateway_configs
+        __props__["ipAddress"] = ip_address
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pscForwardingRule"] = psc_forwarding_rule
+        __props__["pscServiceAttachment"] = psc_service_attachment
+        __props__["region"] = region
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

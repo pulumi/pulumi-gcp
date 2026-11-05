@@ -1644,6 +1644,72 @@ class VPNTunnel(pulumi.CustomResource):
         __props__.__dict__["vpn_gateway_interface"] = vpn_gateway_interface
         return VPNTunnel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict', 'outputs.VPNTunnelCipherSuite']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detailed_status: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ike_version: pulumi.Input[Optional[_builtins.int]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict', 'outputs.VPNTunnelParams']]] = None,
+            peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
+            peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+            target_vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cipherSuite"] = cipher_suite
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["detailedStatus"] = detailed_status
+        __props__["effectiveLabels"] = effective_labels
+        __props__["ikeVersion"] = ike_version
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["localTrafficSelectors"] = local_traffic_selectors
+        __props__["name"] = name
+        __props__["params"] = params
+        __props__["peerExternalGateway"] = peer_external_gateway
+        __props__["peerExternalGatewayInterface"] = peer_external_gateway_interface
+        __props__["peerGcpGateway"] = peer_gcp_gateway
+        __props__["peerIp"] = peer_ip
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["remoteTrafficSelectors"] = remote_traffic_selectors
+        __props__["router"] = router
+        __props__["selfLink"] = self_link
+        __props__["sharedSecret"] = shared_secret
+        __props__["sharedSecretHash"] = shared_secret_hash
+        __props__["sharedSecretWo"] = shared_secret_wo
+        __props__["sharedSecretWoVersion"] = shared_secret_wo_version
+        __props__["targetVpnGateway"] = target_vpn_gateway
+        __props__["tunnelId"] = tunnel_id
+        __props__["vpnGateway"] = vpn_gateway
+        __props__["vpnGatewayInterface"] = vpn_gateway_interface
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/vPNTunnel:VPNTunnel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cipherSuite")
     def cipher_suite(self) -> pulumi.Output[Optional['outputs.VPNTunnelCipherSuite']]:

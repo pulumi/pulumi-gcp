@@ -736,6 +736,36 @@ class OrganizationSink(pulumi.CustomResource):
         __props__.__dict__["writer_identity"] = writer_identity
         return OrganizationSink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bigquery_options: pulumi.Input[Optional[Union['OrganizationSinkBigqueryOptionsArgs', 'OrganizationSinkBigqueryOptionsArgsDict', 'outputs.OrganizationSinkBigqueryOptions']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationSinkExclusionArgs', 'OrganizationSinkExclusionArgsDict', 'outputs.OrganizationSinkExclusion']]]]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            include_children: pulumi.Input[Optional[_builtins.bool]] = None,
+            intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            writer_identity: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigqueryOptions"] = bigquery_options
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["destination"] = destination
+        __props__["disabled"] = disabled
+        __props__["exclusions"] = exclusions
+        __props__["filter"] = filter
+        __props__["includeChildren"] = include_children
+        __props__["interceptChildren"] = intercept_children
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["writerIdentity"] = writer_identity
+        return pulumi.runtime.exists_resource(None, 'gcp:logging/organizationSink:OrganizationSink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigqueryOptions")
     def bigquery_options(self) -> pulumi.Output['outputs.OrganizationSinkBigqueryOptions']:

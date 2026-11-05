@@ -476,6 +476,28 @@ class HmacKey(pulumi.CustomResource):
         __props__.__dict__["updated"] = updated
         return HmacKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            time_created: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessId"] = access_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["project"] = project
+        __props__["secret"] = secret
+        __props__["serviceAccountEmail"] = service_account_email
+        __props__["state"] = state
+        __props__["timeCreated"] = time_created
+        __props__["updated"] = updated
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/hmacKey:HmacKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessId")
     def access_id(self) -> pulumi.Output[_builtins.str]:

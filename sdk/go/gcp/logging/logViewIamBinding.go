@@ -690,6 +690,12 @@ func (LogViewIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logViewIamBindingState)(nil)).Elem()
 }
 
+// LogViewIamBindingExists checks whether an existing LogViewIamBinding resource with the given ID exists.
+func LogViewIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogViewIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/logViewIamBinding:LogViewIamBinding", id, state, "", opts...)
+}
+
 type logViewIamBindingArgs struct {
 	// The bucket of the resource Used to find the parent resource to bind the IAM policy to
 	Bucket string `pulumi:"bucket"`

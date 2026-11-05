@@ -930,6 +930,40 @@ class NodeTemplate(pulumi.CustomResource):
         __props__.__dict__["server_binding"] = server_binding
         return NodeTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict', 'outputs.NodeTemplateAccelerator']]]]] = None,
+            cpu_overcommit_type: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict', 'outputs.NodeTemplateDisk']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_affinity_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_type_flexibility: pulumi.Input[Optional[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict', 'outputs.NodeTemplateNodeTypeFlexibility']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            server_binding: pulumi.Input[Optional[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict', 'outputs.NodeTemplateServerBinding']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accelerators"] = accelerators
+        __props__["cpuOvercommitType"] = cpu_overcommit_type
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disks"] = disks
+        __props__["name"] = name
+        __props__["nodeAffinityLabels"] = node_affinity_labels
+        __props__["nodeType"] = node_type
+        __props__["nodeTypeFlexibility"] = node_type_flexibility
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["serverBinding"] = server_binding
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/nodeTemplate:NodeTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accelerators(self) -> pulumi.Output[Optional[Sequence['outputs.NodeTemplateAccelerator']]]:

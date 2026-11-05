@@ -407,6 +407,12 @@ func (BackupPlanAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPlanAssociationState)(nil)).Elem()
 }
 
+// BackupPlanAssociationExists checks whether an existing BackupPlanAssociation resource with the given ID exists.
+func BackupPlanAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPlanAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation", id, state, "", opts...)
+}
+
 type backupPlanAssociationArgs struct {
 	// The BP with which resource needs to be created
 	// Note:

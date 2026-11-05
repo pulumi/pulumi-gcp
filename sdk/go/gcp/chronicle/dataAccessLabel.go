@@ -234,6 +234,12 @@ func (DataAccessLabelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataAccessLabelState)(nil)).Elem()
 }
 
+// DataAccessLabelExists checks whether an existing DataAccessLabel resource with the given ID exists.
+func DataAccessLabelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataAccessLabelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/dataAccessLabel:DataAccessLabel", id, state, "", opts...)
+}
+
 type dataAccessLabelArgs struct {
 	// Required. The ID to use for the data access label, which will become the label's
 	// display name and the final component of the label's resource name. The

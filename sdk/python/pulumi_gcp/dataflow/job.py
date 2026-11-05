@@ -1283,6 +1283,64 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            on_delete: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait_on_job_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            temp_gcs_location: pulumi.Input[Optional[_builtins.str]] = None,
+            template_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+            transform_name_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalExperiments"] = additional_experiments
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableStreamingEngine"] = enable_streaming_engine
+        __props__["ipConfiguration"] = ip_configuration
+        __props__["jobId"] = job_id
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["labels"] = labels
+        __props__["machineType"] = machine_type
+        __props__["maxWorkers"] = max_workers
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["onDelete"] = on_delete
+        __props__["parameters"] = parameters
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["region"] = region
+        __props__["serviceAccountEmail"] = service_account_email
+        __props__["skipWaitOnJobTermination"] = skip_wait_on_job_termination
+        __props__["state"] = state
+        __props__["subnetwork"] = subnetwork
+        __props__["tempGcsLocation"] = temp_gcs_location
+        __props__["templateGcsPath"] = template_gcs_path
+        __props__["transformNameMapping"] = transform_name_mapping
+        __props__["type"] = type
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:dataflow/job:Job', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalExperiments")
     def additional_experiments(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -407,6 +407,12 @@ func (ReleaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*releaseState)(nil)).Elem()
 }
 
+// ReleaseExists checks whether an existing Release resource with the given ID exists.
+func ReleaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReleaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:saasruntime/release:Release", id, state, "", opts...)
+}
+
 type releaseArgs struct {
 	// Annotations is an unstructured key-value map stored with a resource that
 	// may be set by external tools to store and retrieve arbitrary metadata.

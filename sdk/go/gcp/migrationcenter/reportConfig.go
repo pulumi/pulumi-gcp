@@ -226,6 +226,12 @@ func (ReportConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reportConfigState)(nil)).Elem()
 }
 
+// ReportConfigExists checks whether an existing ReportConfig resource with the given ID exists.
+func ReportConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReportConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:migrationcenter/reportConfig:ReportConfig", id, state, "", opts...)
+}
+
 type reportConfigArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

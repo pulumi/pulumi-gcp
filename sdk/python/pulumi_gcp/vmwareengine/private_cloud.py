@@ -979,6 +979,50 @@ class PrivateCloud(pulumi.CustomResource):
         __props__.__dict__["vcenters"] = vcenters
         return PrivateCloud(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            hcxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict', 'outputs.PrivateCloudHcx']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict', 'outputs.PrivateCloudManagementCluster']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict', 'outputs.PrivateCloudNetworkConfig']]] = None,
+            nsxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict', 'outputs.PrivateCloudNsx']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vcenters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict', 'outputs.PrivateCloudVcenter']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deleteTime"] = delete_time
+        __props__["deletionDelayHours"] = deletion_delay_hours
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["expireTime"] = expire_time
+        __props__["hcxes"] = hcxes
+        __props__["location"] = location
+        __props__["managementCluster"] = management_cluster
+        __props__["name"] = name
+        __props__["networkConfig"] = network_config
+        __props__["nsxes"] = nsxes
+        __props__["project"] = project
+        __props__["sendDeletionDelayHoursIfZero"] = send_deletion_delay_hours_if_zero
+        __props__["state"] = state
+        __props__["type"] = type
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["vcenters"] = vcenters
+        return pulumi.runtime.exists_resource(None, 'gcp:vmwareengine/privateCloud:PrivateCloud', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

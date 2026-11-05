@@ -673,6 +673,12 @@ func (WebCloudRunServiceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webCloudRunServiceIamMemberState)(nil)).Elem()
 }
 
+// WebCloudRunServiceIamMemberExists checks whether an existing WebCloudRunServiceIamMember resource with the given ID exists.
+func WebCloudRunServiceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebCloudRunServiceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/webCloudRunServiceIamMember:WebCloudRunServiceIamMember", id, state, "", opts...)
+}
+
 type webCloudRunServiceIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudRunServiceName string `pulumi:"cloudRunServiceName"`

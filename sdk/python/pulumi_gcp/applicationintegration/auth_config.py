@@ -890,6 +890,54 @@ class AuthConfig(pulumi.CustomResource):
         __props__.__dict__["visibility"] = visibility
         return AuthConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict', 'outputs.AuthConfigClientCertificate']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_email: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+            decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict', 'outputs.AuthConfigDecryptedCredential']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_credential: pulumi.Input[Optional[_builtins.str]] = None,
+            expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_modifier_email: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            override_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reason: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateId"] = certificate_id
+        __props__["clientCertificate"] = client_certificate
+        __props__["createTime"] = create_time
+        __props__["creatorEmail"] = creator_email
+        __props__["credentialType"] = credential_type
+        __props__["decryptedCredential"] = decrypted_credential
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["encryptedCredential"] = encrypted_credential
+        __props__["expiryNotificationDurations"] = expiry_notification_durations
+        __props__["lastModifierEmail"] = last_modifier_email
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["overrideValidTime"] = override_valid_time
+        __props__["project"] = project
+        __props__["reason"] = reason
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        __props__["validTime"] = valid_time
+        __props__["visibility"] = visibility
+        return pulumi.runtime.exists_resource(None, 'gcp:applicationintegration/authConfig:AuthConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Output[_builtins.str]:

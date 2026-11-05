@@ -127,6 +127,12 @@ func (EnvGroupAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*envGroupAttachmentState)(nil)).Elem()
 }
 
+// EnvGroupAttachmentExists checks whether an existing EnvGroupAttachment resource with the given ID exists.
+func EnvGroupAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvGroupAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/envGroupAttachment:EnvGroupAttachment", id, state, "", opts...)
+}
+
 type envGroupAttachmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

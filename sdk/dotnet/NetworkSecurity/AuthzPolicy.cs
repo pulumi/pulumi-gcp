@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// 2. If there are any DENY policies that match the request, the request is denied.
         /// 3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
         /// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-        /// Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+        ///    Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -292,7 +292,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// 2. If there are any DENY policies that match the request, the request is denied.
         /// 3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
         /// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-        /// Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+        ///    Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -419,7 +419,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// 2. If there are any DENY policies that match the request, the request is denied.
         /// 3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
         /// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-        /// Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+        ///    Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

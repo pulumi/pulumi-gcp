@@ -667,6 +667,12 @@ func (FirewallPolicyRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallPolicyRuleState)(nil)).Elem()
 }
 
+// FirewallPolicyRuleExists checks whether an existing FirewallPolicyRule resource with the given ID exists.
+func FirewallPolicyRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallPolicyRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/firewallPolicyRule:FirewallPolicyRule", id, state, "", opts...)
+}
+
 type firewallPolicyRuleArgs struct {
 	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action string `pulumi:"action"`

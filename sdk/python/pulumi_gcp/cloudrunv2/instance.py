@@ -2052,6 +2052,90 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["volumes"] = volumes
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            client: pulumi.Input[Optional[_builtins.str]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConditionArgs', 'InstanceConditionArgsDict', 'outputs.InstanceCondition']]]]] = None,
+            container_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceContainerStatusArgs', 'InstanceContainerStatusArgsDict', 'outputs.InstanceContainerStatus']]]]] = None,
+            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceContainerArgs', 'InstanceContainerArgsDict', 'outputs.InstanceContainer']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_key_revocation_action: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_key_shutdown_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress: pulumi.Input[Optional[_builtins.str]] = None,
+            invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            log_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTerminalConditionArgs', 'InstanceTerminalConditionArgsDict', 'outputs.InstanceTerminalCondition']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceVolumeArgs', 'InstanceVolumeArgsDict', 'outputs.InstanceVolume']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["client"] = client
+        __props__["clientVersion"] = client_version
+        __props__["conditions"] = conditions
+        __props__["containerStatuses"] = container_statuses
+        __props__["containers"] = containers
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["defaultUriDisabled"] = default_uri_disabled
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionKey"] = encryption_key
+        __props__["encryptionKeyRevocationAction"] = encryption_key_revocation_action
+        __props__["encryptionKeyShutdownDuration"] = encryption_key_shutdown_duration
+        __props__["etag"] = etag
+        __props__["expireTime"] = expire_time
+        __props__["generation"] = generation
+        __props__["ingress"] = ingress
+        __props__["invokerIamDisabled"] = invoker_iam_disabled
+        __props__["labels"] = labels
+        __props__["lastModifier"] = last_modifier
+        __props__["launchStage"] = launch_stage
+        __props__["location"] = location
+        __props__["logUri"] = log_uri
+        __props__["name"] = name
+        __props__["observedGeneration"] = observed_generation
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["restartPolicy"] = restart_policy
+        __props__["satisfiesPzs"] = satisfies_pzs
+        __props__["serviceAccount"] = service_account
+        __props__["terminalConditions"] = terminal_conditions
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["urls"] = urls
+        __props__["volumes"] = volumes
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudrunv2/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

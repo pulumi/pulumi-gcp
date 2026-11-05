@@ -199,6 +199,12 @@ func (AddressGroupIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressGroupIamBindingState)(nil)).Elem()
 }
 
+// AddressGroupIamBindingExists checks whether an existing AddressGroupIamBinding resource with the given ID exists.
+func AddressGroupIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressGroupIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/addressGroupIamBinding:AddressGroupIamBinding", id, state, "", opts...)
+}
+
 type addressGroupIamBindingArgs struct {
 	Condition *AddressGroupIamBindingCondition `pulumi:"condition"`
 	// The location of the gateway security policy.

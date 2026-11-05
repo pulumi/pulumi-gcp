@@ -311,6 +311,12 @@ func (BackupScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupScheduleState)(nil)).Elem()
 }
 
+// BackupScheduleExists checks whether an existing BackupSchedule resource with the given ID exists.
+func BackupScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:spanner/backupSchedule:BackupSchedule", id, state, "", opts...)
+}
+
 type backupScheduleArgs struct {
 	// The database to create the backup schedule on.
 	Database string `pulumi:"database"`

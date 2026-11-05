@@ -325,6 +325,12 @@ func (AuthProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authProviderState)(nil)).Elem()
 }
 
+// AuthProviderExists checks whether an existing AuthProvider resource with the given ID exists.
+func AuthProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:agentidentity/authProvider:AuthProvider", id, state, "", opts...)
+}
+
 type authProviderArgs struct {
 	// List of scopes that are allowed to be requested for this auth_provider.
 	// If this list is non-empty, only scopes within this list may be requested.

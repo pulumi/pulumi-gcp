@@ -90,12 +90,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var myProject = new Project("myProject", ProjectArgs.builder()
  *             .name("appeng-flex")
  *             .projectId("appeng-flex")
@@ -165,11 +165,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .deployment(FlexibleAppVersionDeploymentArgs.builder()
  *                 .zip(FlexibleAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> }{{@code
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
  *                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
- *                     }))
+ *                     }}{@code ))
  *                     .build())
  *                 .build())
  *             .livenessCheck(FlexibleAppVersionLivenessCheckArgs.builder()
@@ -180,13 +180,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .envVariables(Map.of("port", "8080"))
  *             .handlers(FlexibleAppVersionHandlerArgs.builder()
- *                 .urlRegex(".*\\/my-path\\/*")
+ *                 .urlRegex(".*}&#92;&#92;{@code /my-path}&#92;&#92;{@code /*")
  *                 .securityLevel("SECURE_ALWAYS")
  *                 .login("LOGIN_REQUIRED")
  *                 .authFailAction("AUTH_FAIL_ACTION_REDIRECT")
  *                 .staticFiles(FlexibleAppVersionHandlerStaticFilesArgs.builder()
  *                     .path("my-other-path")
- *                     .uploadPathRegex(".*\\/my-path\\/*")
+ *                     .uploadPathRegex(".*}&#92;&#92;{@code /my-path}&#92;&#92;{@code /*")
  *                     .build())
  *                 .build())
  *             .automaticScaling(FlexibleAppVersionAutomaticScalingArgs.builder()
@@ -199,8 +199,8 @@ import javax.annotation.Nullable;
  *             .serviceAccount(customServiceAccount.email())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -609,7 +609,7 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
     }
     /**
      * The version of the API in the given runtime environment.
-     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`&#92;
      * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      * 
      */
@@ -618,7 +618,7 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The version of the API in the given runtime environment.
-     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`&#92;
      * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      * 
      */

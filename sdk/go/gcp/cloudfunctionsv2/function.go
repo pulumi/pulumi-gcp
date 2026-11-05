@@ -278,7 +278,7 @@ import (
 //					Uri:        function.ServiceConfig.Uri(),
 //					HttpMethod: pulumi.String("POST"),
 //					OidcToken: &cloudscheduler.JobHttpTargetOidcTokenArgs{
-//						Audience: function.ServiceConfig.ApplyT(func(serviceConfig cloudfunctionsv2.FunctionServiceConfig) (string, error) {
+//						Audience: function.ServiceConfig.ApplyT(func(serviceConfig *cloudfunctionsv2.FunctionServiceConfig) (string, error) {
 //							return fmt.Sprintf("%v/", serviceConfig.Uri), nil
 //						}).(pulumi.StringOutput),
 //						ServiceAccountEmail: account.Email,
@@ -1586,6 +1586,12 @@ type FunctionState struct {
 
 func (FunctionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionState)(nil)).Elem()
+}
+
+// FunctionExists checks whether an existing Function resource with the given ID exists.
+func FunctionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FunctionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudfunctionsv2/function:Function", id, state, "", opts...)
 }
 
 type functionArgs struct {

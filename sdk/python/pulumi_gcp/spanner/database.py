@@ -842,6 +842,36 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["version_retention_period"] = version_retention_period
         return Database(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database_dialect: pulumi.Input[Optional[_builtins.str]] = None,
+            ddls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict', 'outputs.DatabaseEncryptionConfig']]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            version_retention_period: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["databaseDialect"] = database_dialect
+        __props__["ddls"] = ddls
+        __props__["defaultTimeZone"] = default_time_zone
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["enableDropProtection"] = enable_drop_protection
+        __props__["encryptionConfig"] = encryption_config
+        __props__["instance"] = instance
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["versionRetentionPeriod"] = version_retention_period
+        return pulumi.runtime.exists_resource(None, 'gcp:spanner/database:Database', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="databaseDialect")
     def database_dialect(self) -> pulumi.Output[_builtins.str]:

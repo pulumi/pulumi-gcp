@@ -736,6 +736,34 @@ class WorkforcePool(pulumi.CustomResource):
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_restrictions: pulumi.Input[Optional[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict', 'outputs.WorkforcePoolAccessRestrictions']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessRestrictions"] = access_restrictions
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parent"] = parent
+        __props__["sessionDuration"] = session_duration
+        __props__["state"] = state
+        __props__["workforcePoolId"] = workforce_pool_id
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workforcePool:WorkforcePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessRestrictions")
     def access_restrictions(self) -> pulumi.Output[Optional['outputs.WorkforcePoolAccessRestrictions']]:

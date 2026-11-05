@@ -100,19 +100,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var withAlert = new MetricDescriptor("withAlert", MetricDescriptorArgs.builder()
  *             .description("Daily sales records from all branch stores.")
  *             .displayName("metric-descriptor")
  *             .type("custom.googleapis.com/stores/daily_sales")
  *             .metricKind("GAUGE")
  *             .valueType("DOUBLE")
- *             .unit("{USD}")
+ *             .unit("}{{@code USD}}{@code ")
  *             .build());
  * 
  *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
@@ -121,15 +121,15 @@ import javax.annotation.Nullable;
  *             .conditions(AlertPolicyConditionArgs.builder()
  *                 .displayName("test condition")
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
- *                     .filter(withAlert.type().applyValue(_type -> String.format("metric.type=\"%s\" AND resource.type=\"gce_instance\"", _type)))
+ *                     .filter(withAlert.type().applyValue(_type -> String.format("metric.type=}&#92;{@code "%s}&#92;{@code " AND resource.type=}&#92;{@code "gce_instance}&#92;{@code "", _type)))
  *                     .duration("60s")
  *                     .comparison("COMPARISON_GT")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

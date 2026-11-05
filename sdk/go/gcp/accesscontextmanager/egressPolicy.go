@@ -118,6 +118,12 @@ func (EgressPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*egressPolicyState)(nil)).Elem()
 }
 
+// EgressPolicyExists checks whether an existing EgressPolicy resource with the given ID exists.
+func EgressPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EgressPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/egressPolicy:EgressPolicy", id, state, "", opts...)
+}
+
 type egressPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

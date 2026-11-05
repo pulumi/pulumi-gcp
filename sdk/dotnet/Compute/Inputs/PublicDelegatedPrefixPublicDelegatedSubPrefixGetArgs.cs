@@ -49,10 +49,10 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// The internet access type for IPv6 Public Delegated Prefixes. Inherited
         /// from parent prefix and can be one of following:
         /// * EXTERNAL: The prefix will be announced to the internet. All children
-        /// PDPs will have access type as EXTERNAL.
+        ///   PDPs will have access type as EXTERNAL.
         /// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
-        /// be used privately within Google Cloud. All children PDPs will have
-        /// access type as INTERNAL.
+        ///   be used privately within Google Cloud. All children PDPs will have
+        ///   access type as INTERNAL.
         /// </summary>
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
         /// * EXTERNAL_IPV6_SUBNETWORK_CREATION
         /// * INTERNAL_IPV6_SUBNETWORK_CREATION
-        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
+        ///   Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

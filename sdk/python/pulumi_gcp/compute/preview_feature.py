@@ -363,6 +363,20 @@ class PreviewFeature(pulumi.CustomResource):
         __props__.__dict__["rollout_operation"] = rollout_operation
         return PreviewFeature(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            activation_status: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict', 'outputs.PreviewFeatureRolloutOperation']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activationStatus"] = activation_status
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["rolloutOperation"] = rollout_operation
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/previewFeature:PreviewFeature', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activationStatus")
     def activation_status(self) -> pulumi.Output[_builtins.str]:

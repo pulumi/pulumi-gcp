@@ -1111,6 +1111,50 @@ class HostingCustomDomain(pulumi.CustomResource):
         __props__.__dict__["wait_dns_verification"] = wait_dns_verification
         return HostingCustomDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
+            certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict', 'outputs.HostingCustomDomainCert']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            host_state: pulumi.Input[Optional[_builtins.str]] = None,
+            issues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict', 'outputs.HostingCustomDomainIssue']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ownership_state: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
+            required_dns_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict', 'outputs.HostingCustomDomainRequiredDnsUpdate']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_dns_verification: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certPreference"] = cert_preference
+        __props__["certs"] = certs
+        __props__["createTime"] = create_time
+        __props__["customDomain"] = custom_domain
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["etag"] = etag
+        __props__["expireTime"] = expire_time
+        __props__["hostState"] = host_state
+        __props__["issues"] = issues
+        __props__["name"] = name
+        __props__["ownershipState"] = ownership_state
+        __props__["project"] = project
+        __props__["reconciling"] = reconciling
+        __props__["redirectTarget"] = redirect_target
+        __props__["requiredDnsUpdates"] = required_dns_updates
+        __props__["siteId"] = site_id
+        __props__["updateTime"] = update_time
+        __props__["waitDnsVerification"] = wait_dns_verification
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/hostingCustomDomain:HostingCustomDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certPreference")
     def cert_preference(self) -> pulumi.Output[_builtins.str]:

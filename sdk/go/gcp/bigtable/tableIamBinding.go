@@ -370,6 +370,12 @@ func (TableIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableIamBindingState)(nil)).Elem()
 }
 
+// TableIamBindingExists checks whether an existing TableIamBinding resource with the given ID exists.
+func TableIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TableIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/tableIamBinding:TableIamBinding", id, state, "", opts...)
+}
+
 type tableIamBindingArgs struct {
 	Condition *TableIamBindingCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance that owns the table.

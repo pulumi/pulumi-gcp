@@ -20,6 +20,17 @@ export class TargetIamMember extends pulumi.CustomResource {
         return new TargetIamMember(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing TargetIamMember resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: TargetIamMemberState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gcp:clouddeploy/targetIamMember:TargetIamMember", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gcp:clouddeploy/targetIamMember:TargetIamMember';
 

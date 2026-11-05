@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// Retrieves the current IAM policy data for hub
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// Retrieves the current IAM policy data for hub
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -65,7 +63,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Retrieves the current IAM policy data for hub
-        /// 
         /// 
         /// ## Example Usage
         /// 

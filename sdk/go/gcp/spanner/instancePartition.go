@@ -306,6 +306,12 @@ func (InstancePartitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instancePartitionState)(nil)).Elem()
 }
 
+// InstancePartitionExists checks whether an existing InstancePartition resource with the given ID exists.
+func InstancePartitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstancePartitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:spanner/instancePartition:InstancePartition", id, state, "", opts...)
+}
+
 type instancePartitionArgs struct {
 	// The autoscaling configuration. Autoscaling is enabled if this field is set.
 	// Exactly one of either node_count, processing_units, or autoscalingConfig must be

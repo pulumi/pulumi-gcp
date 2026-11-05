@@ -88,6 +88,17 @@ export class RemoteConfigRemoteConfig extends pulumi.CustomResource {
         return new RemoteConfigRemoteConfig(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RemoteConfigRemoteConfig resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RemoteConfigRemoteConfigState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig';
 

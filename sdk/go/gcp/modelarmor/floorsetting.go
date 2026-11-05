@@ -287,6 +287,12 @@ func (FloorsettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*floorsettingState)(nil)).Elem()
 }
 
+// FloorsettingExists checks whether an existing Floorsetting resource with the given ID exists.
+func FloorsettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FloorsettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:modelarmor/floorsetting:Floorsetting", id, state, "", opts...)
+}
+
 type floorsettingArgs struct {
 	// AI Platform floor setting.
 	// Structure is documented below.

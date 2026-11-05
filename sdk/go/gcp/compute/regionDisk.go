@@ -917,6 +917,12 @@ func (RegionDiskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionDiskState)(nil)).Elem()
 }
 
+// RegionDiskExists checks whether an existing RegionDisk resource with the given ID exists.
+func RegionDiskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionDiskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionDisk:RegionDisk", id, state, "", opts...)
+}
+
 type regionDiskArgs struct {
 	// The access mode of the disk.
 	// For example:

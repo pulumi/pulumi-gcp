@@ -250,6 +250,12 @@ func (PostureDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postureDeploymentState)(nil)).Elem()
 }
 
+// PostureDeploymentExists checks whether an existing PostureDeployment resource with the given ID exists.
+func PostureDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostureDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securityposture/postureDeployment:PostureDeployment", id, state, "", opts...)
+}
+
 type postureDeploymentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -20,11 +20,10 @@ public final class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfi
     /**
      * @return Defines whether the instance should have confidential compute enabled. `enableConfidentialCompute` is deprecated and will be removed in a future major release. Use `confidentialInstanceType` instead.
      * 
-     * @deprecated
-     * enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
+     * @deprecated enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
      * 
      */
-    @Deprecated /* enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead. */
+    @Deprecated
     private @Nullable Boolean enableConfidentialCompute;
 
     private ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig() {}
@@ -38,11 +37,10 @@ public final class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfi
     /**
      * @return Defines whether the instance should have confidential compute enabled. `enableConfidentialCompute` is deprecated and will be removed in a future major release. Use `confidentialInstanceType` instead.
      * 
-     * @deprecated
-     * enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
+     * @deprecated enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
      * 
      */
-    @Deprecated /* enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead. */
+    @Deprecated
     public Optional<Boolean> enableConfidentialCompute() {
         return Optional.ofNullable(this.enableConfidentialCompute);
     }

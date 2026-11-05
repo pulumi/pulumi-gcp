@@ -83,6 +83,12 @@ func (DeliveryPipelineIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deliveryPipelineIamMemberState)(nil)).Elem()
 }
 
+// DeliveryPipelineIamMemberExists checks whether an existing DeliveryPipelineIamMember resource with the given ID exists.
+func DeliveryPipelineIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeliveryPipelineIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember", id, state, "", opts...)
+}
+
 type deliveryPipelineIamMemberArgs struct {
 	Condition *DeliveryPipelineIamMemberCondition `pulumi:"condition"`
 	Location  *string                             `pulumi:"location"`

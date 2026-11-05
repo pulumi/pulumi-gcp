@@ -100,19 +100,19 @@ import javax.annotation.Nullable;
  *             .schema("""
  * [
  *   }{{@code
- *     \"name\": \"name\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code ,
  *   }{{@code
- *     \"name\": \"post_abbr\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "post_abbr}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code ,
  *   }{{@code
- *     \"name\": \"date\",
- *     \"type\": \"DATE\",
- *     \"mode\": \"NULLABLE\"
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "date}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "DATE}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code "
  *   }}{@code
  * ]
  *             """)

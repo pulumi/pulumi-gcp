@@ -680,6 +680,32 @@ class InstanceGroup(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return InstanceGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict', 'outputs.InstanceGroupNamedPort']]]]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["instances"] = instances
+        __props__["name"] = name
+        __props__["namedPorts"] = named_ports
+        __props__["network"] = network
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["size"] = size
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/instanceGroup:InstanceGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

@@ -244,6 +244,12 @@ func (LoggingSettingBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loggingSettingBindingState)(nil)).Elem()
 }
 
+// LoggingSettingBindingExists checks whether an existing LoggingSettingBinding resource with the given ID exists.
+func LoggingSettingBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoggingSettingBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/loggingSettingBinding:LoggingSettingBinding", id, state, "", opts...)
+}
+
 type loggingSettingBindingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

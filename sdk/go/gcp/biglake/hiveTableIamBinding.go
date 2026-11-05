@@ -436,6 +436,12 @@ func (HiveTableIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveTableIamBindingState)(nil)).Elem()
 }
 
+// HiveTableIamBindingExists checks whether an existing HiveTableIamBinding resource with the given ID exists.
+func HiveTableIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveTableIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveTableIamBinding:HiveTableIamBinding", id, state, "", opts...)
+}
+
 type hiveTableIamBindingArgs struct {
 	// The Hive catalog where the table is located. Used to find the parent resource to bind the IAM policy to
 	Catalog   string                        `pulumi:"catalog"`

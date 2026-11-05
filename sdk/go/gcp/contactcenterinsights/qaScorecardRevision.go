@@ -186,6 +186,12 @@ func (QaScorecardRevisionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qaScorecardRevisionState)(nil)).Elem()
 }
 
+// QaScorecardRevisionExists checks whether an existing QaScorecardRevision resource with the given ID exists.
+func QaScorecardRevisionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QaScorecardRevisionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:contactcenterinsights/qaScorecardRevision:QaScorecardRevision", id, state, "", opts...)
+}
+
 type qaScorecardRevisionArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`

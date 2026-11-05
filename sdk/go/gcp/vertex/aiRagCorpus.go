@@ -551,6 +551,12 @@ func (AiRagCorpusState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiRagCorpusState)(nil)).Elem()
 }
 
+// AiRagCorpusExists checks whether an existing AiRagCorpus resource with the given ID exists.
+func AiRagCorpusExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiRagCorpusState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiRagCorpus:AiRagCorpus", id, state, "", opts...)
+}
+
 type aiRagCorpusArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

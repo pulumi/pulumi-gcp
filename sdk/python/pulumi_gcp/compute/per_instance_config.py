@@ -801,6 +801,32 @@ class PerInstanceConfig(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return PerInstanceConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+            minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
+            most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict', 'outputs.PerInstanceConfigPreservedState']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["instanceGroupManager"] = instance_group_manager
+        __props__["minimalAction"] = minimal_action
+        __props__["mostDisruptiveAllowedAction"] = most_disruptive_allowed_action
+        __props__["name"] = name
+        __props__["preservedState"] = preserved_state
+        __props__["project"] = project
+        __props__["removeInstanceOnDestroy"] = remove_instance_on_destroy
+        __props__["removeInstanceStateOnDestroy"] = remove_instance_state_on_destroy
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/perInstanceConfig:PerInstanceConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

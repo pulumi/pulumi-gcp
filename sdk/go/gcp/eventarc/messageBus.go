@@ -317,6 +317,12 @@ func (MessageBusState) ElementType() reflect.Type {
 	return reflect.TypeOf((*messageBusState)(nil)).Elem()
 }
 
+// MessageBusExists checks whether an existing MessageBus resource with the given ID exists.
+func MessageBusExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MessageBusState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:eventarc/messageBus:MessageBus", id, state, "", opts...)
+}
+
 type messageBusArgs struct {
 	// Optional. Resource annotations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

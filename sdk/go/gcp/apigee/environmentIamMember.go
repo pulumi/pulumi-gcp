@@ -414,6 +414,12 @@ func (EnvironmentIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentIamMemberState)(nil)).Elem()
 }
 
+// EnvironmentIamMemberExists checks whether an existing EnvironmentIamMember resource with the given ID exists.
+func EnvironmentIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/environmentIamMember:EnvironmentIamMember", id, state, "", opts...)
+}
+
 type environmentIamMemberArgs struct {
 	Condition *EnvironmentIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

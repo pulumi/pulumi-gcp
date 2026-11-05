@@ -661,6 +661,12 @@ func (AiPersistentResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiPersistentResourceState)(nil)).Elem()
 }
 
+// AiPersistentResourceExists checks whether an existing AiPersistentResource resource with the given ID exists.
+func AiPersistentResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiPersistentResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiPersistentResource:AiPersistentResource", id, state, "", opts...)
+}
+
 type aiPersistentResourceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

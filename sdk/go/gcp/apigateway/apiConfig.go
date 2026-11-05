@@ -233,6 +233,12 @@ func (ApiConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiConfigState)(nil)).Elem()
 }
 
+// ApiConfigExists checks whether an existing ApiConfig resource with the given ID exists.
+func ApiConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigateway/apiConfig:ApiConfig", id, state, "", opts...)
+}
+
 type apiConfigArgs struct {
 	// The API to attach the config to.
 	Api string `pulumi:"api"`

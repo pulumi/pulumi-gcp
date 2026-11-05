@@ -430,6 +430,12 @@ func (DataProductIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataProductIamBindingState)(nil)).Elem()
 }
 
+// DataProductIamBindingExists checks whether an existing DataProductIamBinding resource with the given ID exists.
+func DataProductIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataProductIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/dataProductIamBinding:DataProductIamBinding", id, state, "", opts...)
+}
+
 type dataProductIamBindingArgs struct {
 	Condition *DataProductIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

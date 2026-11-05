@@ -234,6 +234,12 @@ func (DataCollectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataCollectorState)(nil)).Elem()
 }
 
+// DataCollectorExists checks whether an existing DataCollector resource with the given ID exists.
+func DataCollectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataCollectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/dataCollector:DataCollector", id, state, "", opts...)
+}
+
 type dataCollectorArgs struct {
 	// The ID for the data collector. Must begin with `dc_`.
 	DataCollectorId string `pulumi:"dataCollectorId"`

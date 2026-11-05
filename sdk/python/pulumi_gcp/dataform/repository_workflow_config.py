@@ -944,6 +944,34 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return RepositoryWorkflowConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict', 'outputs.RepositoryWorkflowConfigInvocationConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recent_scheduled_execution_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs', 'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict', 'outputs.RepositoryWorkflowConfigRecentScheduledExecutionRecord']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            release_config: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cronSchedule"] = cron_schedule
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disabled"] = disabled
+        __props__["invocationConfig"] = invocation_config
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["recentScheduledExecutionRecords"] = recent_scheduled_execution_records
+        __props__["region"] = region
+        __props__["releaseConfig"] = release_config
+        __props__["repository"] = repository
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> pulumi.Output[Optional[_builtins.str]]:

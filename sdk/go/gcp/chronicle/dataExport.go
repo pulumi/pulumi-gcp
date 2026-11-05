@@ -315,6 +315,12 @@ func (DataExportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataExportState)(nil)).Elem()
 }
 
+// DataExportExists checks whether an existing DataExport resource with the given ID exists.
+func DataExportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataExportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/dataExport:DataExport", id, state, "", opts...)
+}
+
 type dataExportArgs struct {
 	// Last, exclusive time from the range.
 	EndTime string `pulumi:"endTime"`

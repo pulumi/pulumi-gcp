@@ -388,6 +388,12 @@ func (IntentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*intentState)(nil)).Elem()
 }
 
+// IntentExists checks whether an existing Intent resource with the given ID exists.
+func IntentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/intent:Intent", id, state, "", opts...)
+}
+
 type intentArgs struct {
 	// The name of the action associated with the intent.
 	// Note: The action name must not contain whitespaces.

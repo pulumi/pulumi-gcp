@@ -242,6 +242,12 @@ func (DataSharingWithGoogleSettingBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataSharingWithGoogleSettingBindingState)(nil)).Elem()
 }
 
+// DataSharingWithGoogleSettingBindingExists checks whether an existing DataSharingWithGoogleSettingBinding resource with the given ID exists.
+func DataSharingWithGoogleSettingBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataSharingWithGoogleSettingBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding", id, state, "", opts...)
+}
+
 type dataSharingWithGoogleSettingBindingArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	DataSharingWithGoogleSettingId string `pulumi:"dataSharingWithGoogleSettingId"`

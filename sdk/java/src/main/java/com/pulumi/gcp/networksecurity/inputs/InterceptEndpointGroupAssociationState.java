@@ -175,11 +175,10 @@ public final class InterceptEndpointGroupAssociationState extends com.pulumi.res
      * of the association itself.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      * 
      */
-    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+    @Deprecated
     @Import(name="locationsDetails")
     private @Nullable Output<List<InterceptEndpointGroupAssociationLocationsDetailArgs>> locationsDetails;
 
@@ -190,11 +189,10 @@ public final class InterceptEndpointGroupAssociationState extends com.pulumi.res
      * of the association itself.
      * Structure is documented below.
      * 
-     * @deprecated
-     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      * 
      */
-    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+    @Deprecated
     public Optional<Output<List<InterceptEndpointGroupAssociationLocationsDetailArgs>>> locationsDetails() {
         return Optional.ofNullable(this.locationsDetails);
     }
@@ -590,11 +588,10 @@ public final class InterceptEndpointGroupAssociationState extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
          * 
          */
-        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+        @Deprecated
         public Builder locationsDetails(@Nullable Output<List<InterceptEndpointGroupAssociationLocationsDetailArgs>> locationsDetails) {
             $.locationsDetails = locationsDetails;
             return this;
@@ -609,11 +606,10 @@ public final class InterceptEndpointGroupAssociationState extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
          * 
          */
-        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+        @Deprecated
         public Builder locationsDetails(List<InterceptEndpointGroupAssociationLocationsDetailArgs> locationsDetails) {
             return locationsDetails(Output.of(locationsDetails));
         }
@@ -627,11 +623,10 @@ public final class InterceptEndpointGroupAssociationState extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+         * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
          * 
          */
-        @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
+        @Deprecated
         public Builder locationsDetails(InterceptEndpointGroupAssociationLocationsDetailArgs... locationsDetails) {
             return locationsDetails(List.of(locationsDetails));
         }

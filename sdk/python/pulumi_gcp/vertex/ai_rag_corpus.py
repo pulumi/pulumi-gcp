@@ -1022,6 +1022,36 @@ class AiRagCorpus(pulumi.CustomResource):
         __props__.__dict__["vertex_ai_search_config"] = vertex_ai_search_config
         return AiRagCorpus(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            corpus_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiRagCorpusCorpusStatusArgs', 'AiRagCorpusCorpusStatusArgsDict', 'outputs.AiRagCorpusCorpusStatus']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiRagCorpusEncryptionSpecArgs', 'AiRagCorpusEncryptionSpecArgsDict', 'outputs.AiRagCorpusEncryptionSpec']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vector_db_config: pulumi.Input[Optional[Union['AiRagCorpusVectorDbConfigArgs', 'AiRagCorpusVectorDbConfigArgsDict', 'outputs.AiRagCorpusVectorDbConfig']]] = None,
+            vertex_ai_search_config: pulumi.Input[Optional[Union['AiRagCorpusVertexAiSearchConfigArgs', 'AiRagCorpusVertexAiSearchConfigArgsDict', 'outputs.AiRagCorpusVertexAiSearchConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["corpusStatuses"] = corpus_statuses
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["encryptionSpec"] = encryption_spec
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["updateTime"] = update_time
+        __props__["vectorDbConfig"] = vector_db_config
+        __props__["vertexAiSearchConfig"] = vertex_ai_search_config
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiRagCorpus:AiRagCorpus', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="corpusStatuses")
     def corpus_statuses(self) -> pulumi.Output[Sequence['outputs.AiRagCorpusCorpusStatus']]:

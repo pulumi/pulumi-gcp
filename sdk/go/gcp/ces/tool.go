@@ -1020,6 +1020,12 @@ func (ToolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*toolState)(nil)).Elem()
 }
 
+// ToolExists checks whether an existing Tool resource with the given ID exists.
+func ToolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ToolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/tool:Tool", id, state, "", opts...)
+}
+
 type toolArgs struct {
 	// Represents a tool that allows the agent to call another agent.
 	// Structure is documented below.

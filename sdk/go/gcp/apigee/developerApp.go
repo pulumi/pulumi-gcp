@@ -493,6 +493,12 @@ func (DeveloperAppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*developerAppState)(nil)).Elem()
 }
 
+// DeveloperAppExists checks whether an existing DeveloperApp resource with the given ID exists.
+func DeveloperAppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeveloperAppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/developerApp:DeveloperApp", id, state, "", opts...)
+}
+
 type developerAppArgs struct {
 	// List of API products associated with the developer app.
 	ApiProducts []string `pulumi:"apiProducts"`

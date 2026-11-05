@@ -856,6 +856,38 @@ class BackupPlanAssociation(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return BackupPlanAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_protection_policy_binding: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rules_config_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict', 'outputs.BackupPlanAssociationRulesConfigInfo']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoProtectionPolicyBinding"] = auto_protection_policy_binding
+        __props__["backupPlan"] = backup_plan
+        __props__["backupPlanAssociationId"] = backup_plan_association_id
+        __props__["createTime"] = create_time
+        __props__["dataSource"] = data_source
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["resource"] = resource
+        __props__["resourceType"] = resource_type
+        __props__["rulesConfigInfos"] = rules_config_infos
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoProtectionPolicyBinding")
     def auto_protection_policy_binding(self) -> pulumi.Output[_builtins.str]:

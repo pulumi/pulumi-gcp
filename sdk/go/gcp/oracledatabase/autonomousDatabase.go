@@ -552,6 +552,12 @@ func (AutonomousDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autonomousDatabaseState)(nil)).Elem()
 }
 
+// AutonomousDatabaseExists checks whether an existing AutonomousDatabase resource with the given ID exists.
+func AutonomousDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutonomousDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/autonomousDatabase:AutonomousDatabase", id, state, "", opts...)
+}
+
 type autonomousDatabaseArgs struct {
 	// The password for the default ADMIN user.
 	AdminPassword *string `pulumi:"adminPassword"`

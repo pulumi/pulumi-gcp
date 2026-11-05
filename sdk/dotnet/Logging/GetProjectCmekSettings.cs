@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Logging Project Cmek Settings Basic
         /// 
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Logging Project Cmek Settings Basic
         /// 
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -86,7 +84,6 @@ namespace Pulumi.Gcp.Logging
         /// ## Example Usage
         /// 
         /// ### Logging Project Cmek Settings Basic
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

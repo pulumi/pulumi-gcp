@@ -38,7 +38,6 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         /// The time zone for the schedule cron expression. If not provided, UTC will
         /// be used.
         /// 
-        /// 
         /// &lt;a name="NestedActionsHubInstanceAction"&gt;&lt;/a&gt;The `HubInstanceAction` block contains:
         /// </summary>
         public readonly string? ScheduleTimeZone;

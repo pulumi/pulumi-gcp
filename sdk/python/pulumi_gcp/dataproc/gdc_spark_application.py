@@ -1469,6 +1469,70 @@ class GdcSparkApplication(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return GdcSparkApplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            application_environment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dependency_images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            monitoring_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationPysparkApplicationConfig']]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
+            spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkApplicationConfig']]] = None,
+            spark_application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkRApplicationConfig']]] = None,
+            spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict', 'outputs.GdcSparkApplicationSparkSqlApplicationConfig']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_message: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["applicationEnvironment"] = application_environment
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dependencyImages"] = dependency_images
+        __props__["displayName"] = display_name
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["monitoringEndpoint"] = monitoring_endpoint
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["outputUri"] = output_uri
+        __props__["project"] = project
+        __props__["properties"] = properties
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["pysparkApplicationConfig"] = pyspark_application_config
+        __props__["reconciling"] = reconciling
+        __props__["serviceinstance"] = serviceinstance
+        __props__["sparkApplicationConfig"] = spark_application_config
+        __props__["sparkApplicationId"] = spark_application_id
+        __props__["sparkRApplicationConfig"] = spark_r_application_config
+        __props__["sparkSqlApplicationConfig"] = spark_sql_application_config
+        __props__["state"] = state
+        __props__["stateMessage"] = state_message
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:dataproc/gdcSparkApplication:GdcSparkApplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

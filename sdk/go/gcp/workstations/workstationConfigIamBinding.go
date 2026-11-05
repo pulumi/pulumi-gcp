@@ -448,6 +448,12 @@ func (WorkstationConfigIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workstationConfigIamBindingState)(nil)).Elem()
 }
 
+// WorkstationConfigIamBindingExists checks whether an existing WorkstationConfigIamBinding resource with the given ID exists.
+func WorkstationConfigIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkstationConfigIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding", id, state, "", opts...)
+}
+
 type workstationConfigIamBindingArgs struct {
 	Condition *WorkstationConfigIamBindingCondition `pulumi:"condition"`
 	// The location where the workstation cluster config should reside.

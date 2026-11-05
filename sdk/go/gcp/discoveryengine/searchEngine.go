@@ -408,6 +408,12 @@ func (SearchEngineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*searchEngineState)(nil)).Elem()
 }
 
+// SearchEngineExists checks whether an existing SearchEngine resource with the given ID exists.
+func SearchEngineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SearchEngineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/searchEngine:SearchEngine", id, state, "", opts...)
+}
+
 type searchEngineArgs struct {
 	// This is the application type this engine resource represents.
 	// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.

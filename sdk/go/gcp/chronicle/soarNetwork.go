@@ -220,6 +220,12 @@ func (SoarNetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*soarNetworkState)(nil)).Elem()
 }
 
+// SoarNetworkExists checks whether an existing SoarNetwork resource with the given ID exists.
+func SoarNetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SoarNetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/soarNetwork:SoarNetwork", id, state, "", opts...)
+}
+
 type soarNetworkArgs struct {
 	// Subnet in CIDR format.
 	Address string `pulumi:"address"`

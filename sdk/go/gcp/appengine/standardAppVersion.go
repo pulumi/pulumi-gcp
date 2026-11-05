@@ -715,6 +715,12 @@ func (StandardAppVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*standardAppVersionState)(nil)).Elem()
 }
 
+// StandardAppVersionExists checks whether an existing StandardAppVersion resource with the given ID exists.
+func StandardAppVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StandardAppVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:appengine/standardAppVersion:StandardAppVersion", id, state, "", opts...)
+}
+
 type standardAppVersionArgs struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.

@@ -933,6 +933,48 @@ class OrganizationVpcFlowLogsConfig(pulumi.CustomResource):
         __props__.__dict__["vpc_flow_logs_config_id"] = vpc_flow_logs_config_id
         return OrganizationVpcFlowLogsConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_project_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_sampling: pulumi.Input[Optional[_builtins.float]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_flow_logs_config_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregationInterval"] = aggregation_interval
+        __props__["createTime"] = create_time
+        __props__["crossProjectMetadata"] = cross_project_metadata
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["filterExpr"] = filter_expr
+        __props__["flowSampling"] = flow_sampling
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["metadata"] = metadata
+        __props__["metadataFields"] = metadata_fields
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["state"] = state
+        __props__["updateTime"] = update_time
+        __props__["vpcFlowLogsConfigId"] = vpc_flow_logs_config_id
+        return pulumi.runtime.exists_resource(None, 'gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> pulumi.Output[_builtins.str]:

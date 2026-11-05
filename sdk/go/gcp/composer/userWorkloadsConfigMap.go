@@ -216,6 +216,12 @@ func (UserWorkloadsConfigMapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userWorkloadsConfigMapState)(nil)).Elem()
 }
 
+// UserWorkloadsConfigMapExists checks whether an existing UserWorkloadsConfigMap resource with the given ID exists.
+func UserWorkloadsConfigMapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserWorkloadsConfigMapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap", id, state, "", opts...)
+}
+
 type userWorkloadsConfigMapArgs struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/

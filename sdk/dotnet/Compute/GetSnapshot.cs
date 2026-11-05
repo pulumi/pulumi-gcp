@@ -133,9 +133,9 @@ namespace Pulumi.Gcp.Compute
         public string? Filter { get; set; }
 
         /// <summary>
-        /// If `Filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
+        /// If `Filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
@@ -171,9 +171,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// If `Filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
+        /// If `Filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }

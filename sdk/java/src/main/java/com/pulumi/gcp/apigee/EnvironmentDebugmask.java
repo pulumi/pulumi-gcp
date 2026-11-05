@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var debugmask = new EnvironmentDebugmask("debugmask", EnvironmentDebugmaskArgs.builder()
  *             .envId(apigeeEnv.get("id"))
- *             .requestXPaths("/request/headers/header[}{@literal @}{@code name=\"x-secret\"]")
+ *             .requestXPaths("/request/headers/header[}{@literal @}{@code name=}&#92;{@code "x-secret}&#92;{@code "]")
  *             .responseXPaths("/response/body/token")
  *             .variables("request.header.apikey")
  *             .build());
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *         var debugmask = new EnvironmentDebugmask("debugmask", EnvironmentDebugmaskArgs.builder()
  *             .envId(apigeeEnv.get("id"))
  *             .requestXPaths(            
- *                 "/request/headers/header[}{@literal @}{@code name=\"x-secret\"]",
+ *                 "/request/headers/header[}{@literal @}{@code name=}&#92;{@code "x-secret}&#92;{@code "]",
  *                 "/request/body/password")
  *             .responseXPaths("/response/body/token")
  *             .faultXPaths("/fault/faultstring")

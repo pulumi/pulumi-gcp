@@ -129,7 +129,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
 
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+.
      * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
@@ -138,7 +138,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+.
      * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
@@ -340,7 +340,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param triggerId The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-         * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+         * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+.
          * The maximum length is 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder
@@ -353,7 +353,7 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param triggerId The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-         * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+         * that is, it must match the regular expression: [a-zA-Z&#92;d-_]+.
          * The maximum length is 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder

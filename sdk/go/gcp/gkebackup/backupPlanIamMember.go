@@ -427,6 +427,12 @@ func (BackupPlanIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPlanIamMemberState)(nil)).Elem()
 }
 
+// BackupPlanIamMemberExists checks whether an existing BackupPlanIamMember resource with the given ID exists.
+func BackupPlanIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPlanIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember", id, state, "", opts...)
+}
+
 type backupPlanIamMemberArgs struct {
 	Condition *BackupPlanIamMemberCondition `pulumi:"condition"`
 	// The region of the Backup Plan.

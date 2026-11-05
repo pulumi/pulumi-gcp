@@ -530,6 +530,32 @@ class KeyRingImportJob(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return KeyRingImportJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyRingImportJobAttestationArgs', 'KeyRingImportJobAttestationArgsDict', 'outputs.KeyRingImportJobAttestation']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            import_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            import_method: pulumi.Input[Optional[_builtins.str]] = None,
+            key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+            public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyRingImportJobPublicKeyArgs', 'KeyRingImportJobPublicKeyArgsDict', 'outputs.KeyRingImportJobPublicKey']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attestations"] = attestations
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["expireTime"] = expire_time
+        __props__["importJobId"] = import_job_id
+        __props__["importMethod"] = import_method
+        __props__["keyRing"] = key_ring
+        __props__["name"] = name
+        __props__["protectionLevel"] = protection_level
+        __props__["publicKeys"] = public_keys
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:kms/keyRingImportJob:KeyRingImportJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def attestations(self) -> pulumi.Output[Sequence['outputs.KeyRingImportJobAttestation']]:

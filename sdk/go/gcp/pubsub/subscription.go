@@ -1515,6 +1515,12 @@ func (SubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionState)(nil)).Elem()
 }
 
+// SubscriptionExists checks whether an existing Subscription resource with the given ID exists.
+func SubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/subscription:Subscription", id, state, "", opts...)
+}
+
 type subscriptionArgs struct {
 	// This value is the maximum time after a subscriber receives a message
 	// before the subscriber should acknowledge the message. After message

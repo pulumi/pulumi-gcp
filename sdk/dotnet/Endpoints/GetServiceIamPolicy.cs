@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Endpoints
         /// <summary>
         /// Retrieves the current IAM policy data for service
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Endpoints
         /// <summary>
         /// Retrieves the current IAM policy data for service
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.Gcp.Endpoints
 
         /// <summary>
         /// Retrieves the current IAM policy data for service
-        /// 
         /// 
         /// ## Example Usage
         /// 

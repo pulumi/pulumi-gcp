@@ -238,6 +238,12 @@ func (OrganizationSecurityPolicyAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSecurityPolicyAssociationState)(nil)).Elem()
 }
 
+// OrganizationSecurityPolicyAssociationExists checks whether an existing OrganizationSecurityPolicyAssociation resource with the given ID exists.
+func OrganizationSecurityPolicyAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationSecurityPolicyAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation", id, state, "", opts...)
+}
+
 type organizationSecurityPolicyAssociationArgs struct {
 	// The resource that the security policy is attached to.
 	AttachmentId string `pulumi:"attachmentId"`

@@ -313,6 +313,12 @@ func (FolderCustomModuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderCustomModuleState)(nil)).Elem()
 }
 
+// FolderCustomModuleExists checks whether an existing FolderCustomModule resource with the given ID exists.
+func FolderCustomModuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderCustomModuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/folderCustomModule:FolderCustomModule", id, state, "", opts...)
+}
+
 type folderCustomModuleArgs struct {
 	// The user specified custom configuration for the module.
 	// Structure is documented below.

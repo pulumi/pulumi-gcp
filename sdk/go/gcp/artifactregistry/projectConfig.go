@@ -153,6 +153,12 @@ func (ProjectConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectConfigState)(nil)).Elem()
 }
 
+// ProjectConfigExists checks whether an existing ProjectConfig resource with the given ID exists.
+func ProjectConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:artifactregistry/projectConfig:ProjectConfig", id, state, "", opts...)
+}
+
 type projectConfigArgs struct {
 	// The name of the location this config is located in.
 	Location *string `pulumi:"location"`

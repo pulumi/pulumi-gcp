@@ -380,6 +380,12 @@ func (NodeTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeTemplateState)(nil)).Elem()
 }
 
+// NodeTemplateExists checks whether an existing NodeTemplate resource with the given ID exists.
+func NodeTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/nodeTemplate:NodeTemplate", id, state, "", opts...)
+}
+
 type nodeTemplateArgs struct {
 	// List of the type and count of accelerator cards attached to the
 	// node template

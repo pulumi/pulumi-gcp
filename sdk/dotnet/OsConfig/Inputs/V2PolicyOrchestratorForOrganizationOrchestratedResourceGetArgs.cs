@@ -22,9 +22,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
         /// * Must be unique within the project.
-        /// For DELETE action, ID must be specified explicitly during
-        /// PolicyOrchestrator creation.
-        /// 
+        ///   For DELETE action, ID must be specified explicitly during
+        ///   PolicyOrchestrator creation.
         /// 
         /// &lt;a name="NestedOrchestratedResourceOsPolicyAssignmentV1Payload"&gt;&lt;/a&gt;The `OsPolicyAssignmentV1Payload` block supports:
         /// </summary>

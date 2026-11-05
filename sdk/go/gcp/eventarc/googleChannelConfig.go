@@ -177,6 +177,12 @@ func (GoogleChannelConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*googleChannelConfigState)(nil)).Elem()
 }
 
+// GoogleChannelConfigExists checks whether an existing GoogleChannelConfig resource with the given ID exists.
+func GoogleChannelConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GoogleChannelConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:eventarc/googleChannelConfig:GoogleChannelConfig", id, state, "", opts...)
+}
+
 type googleChannelConfigArgs struct {
 	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`

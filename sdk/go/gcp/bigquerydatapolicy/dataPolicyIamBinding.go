@@ -430,6 +430,12 @@ func (DataPolicyIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataPolicyIamBindingState)(nil)).Elem()
 }
 
+// DataPolicyIamBindingExists checks whether an existing DataPolicyIamBinding resource with the given ID exists.
+func DataPolicyIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataPolicyIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquerydatapolicy/dataPolicyIamBinding:DataPolicyIamBinding", id, state, "", opts...)
+}
+
 type dataPolicyIamBindingArgs struct {
 	Condition *DataPolicyIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

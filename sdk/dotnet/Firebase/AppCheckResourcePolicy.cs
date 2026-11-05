@@ -145,7 +145,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Service specific name of the resource object to which this policy applies, in the format:
         /// * iOS OAuth clients (Google Identity for iOS):
-        /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+        ///   `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         /// </summary>
         [Output("targetResource")]
         public Output<string> TargetResource { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Service specific name of the resource object to which this policy applies, in the format:
         /// * iOS OAuth clients (Google Identity for iOS):
-        /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+        ///   `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         /// </summary>
         [Input("targetResource", required: true)]
         public Input<string> TargetResource { get; set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Service specific name of the resource object to which this policy applies, in the format:
         /// * iOS OAuth clients (Google Identity for iOS):
-        /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+        ///   `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         /// </summary>
         [Input("targetResource")]
         public Input<string>? TargetResource { get; set; }

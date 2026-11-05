@@ -195,6 +195,12 @@ func (EkmConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ekmConnectionState)(nil)).Elem()
 }
 
+// EkmConnectionExists checks whether an existing EkmConnection resource with the given ID exists.
+func EkmConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EkmConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/ekmConnection:EkmConnection", id, state, "", opts...)
+}
+
 type ekmConnectionArgs struct {
 	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
 	CryptoSpacePath *string `pulumi:"cryptoSpacePath"`

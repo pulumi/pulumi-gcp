@@ -247,6 +247,12 @@ func (WidgetConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*widgetConfigState)(nil)).Elem()
 }
 
+// WidgetConfigExists checks whether an existing WidgetConfig resource with the given ID exists.
+func WidgetConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WidgetConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/widgetConfig:WidgetConfig", id, state, "", opts...)
+}
+
 type widgetConfigArgs struct {
 	// Describes widget access settings.
 	// Structure is documented below.

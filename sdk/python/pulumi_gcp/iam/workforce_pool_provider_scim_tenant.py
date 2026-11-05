@@ -769,6 +769,40 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePoolProviderScimTenant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            base_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            claim_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            hard_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            purge_time: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_agent: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["baseUri"] = base_uri
+        __props__["claimMapping"] = claim_mapping
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["hardDelete"] = hard_delete
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["providerId"] = provider_id
+        __props__["purgeTime"] = purge_time
+        __props__["scimTenantId"] = scim_tenant_id
+        __props__["serviceAgent"] = service_agent
+        __props__["state"] = state
+        __props__["workforcePoolId"] = workforce_pool_id
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="baseUri")
     def base_uri(self) -> pulumi.Output[_builtins.str]:

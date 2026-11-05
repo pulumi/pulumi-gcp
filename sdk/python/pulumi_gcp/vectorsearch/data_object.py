@@ -967,6 +967,34 @@ class DataObject(pulumi.CustomResource):
         __props__.__dict__["vectors"] = vectors
         return DataObject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[_builtins.str]] = None,
+            data_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataObjectVectorArgs', 'DataObjectVectorArgsDict', 'outputs.DataObjectVector']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["collectionId"] = collection_id
+        __props__["createTime"] = create_time
+        __props__["data"] = data
+        __props__["dataObjectId"] = data_object_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["updateTime"] = update_time
+        __props__["vectors"] = vectors
+        return pulumi.runtime.exists_resource(None, 'gcp:vectorsearch/dataObject:DataObject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="collectionId")
     def collection_id(self) -> pulumi.Output[_builtins.str]:

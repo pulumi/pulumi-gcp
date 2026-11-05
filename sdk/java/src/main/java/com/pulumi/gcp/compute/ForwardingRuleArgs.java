@@ -536,7 +536,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     @Import(name="portRange")
@@ -562,7 +562,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -587,7 +587,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      *   they share at least one port number.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     @Import(name="ports")
@@ -611,7 +611,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      *   they share at least one port number.
-     *   {@literal @}pattern: \d+(?:-\d+)?
+     *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
      * 
      */
     public Optional<Output<List<String>>> ports() {
@@ -1457,7 +1457,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
          *   cannot have overlapping `portRange`s.
-         *   {@literal @}pattern: \d+(?:-\d+)?
+         *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
          * 
          * @return builder
          * 
@@ -1487,7 +1487,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
          *   cannot have overlapping `portRange`s.
-         *   {@literal @}pattern: \d+(?:-\d+)?
+         *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
          * 
          * @return builder
          * 
@@ -1514,7 +1514,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
          *   they share at least one port number.
-         *   {@literal @}pattern: \d+(?:-\d+)?
+         *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
          * 
          * @return builder
          * 
@@ -1542,7 +1542,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
          *   they share at least one port number.
-         *   {@literal @}pattern: \d+(?:-\d+)?
+         *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
          * 
          * @return builder
          * 
@@ -1569,7 +1569,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
          *   they share at least one port number.
-         *   {@literal @}pattern: \d+(?:-\d+)?
+         *   {@literal @}pattern: &#92;d+(?:-&#92;d+)?
          * 
          * @return builder
          * 

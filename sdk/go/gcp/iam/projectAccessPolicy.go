@@ -327,6 +327,12 @@ func (ProjectAccessPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectAccessPolicyState)(nil)).Elem()
 }
 
+// ProjectAccessPolicyExists checks whether an existing ProjectAccessPolicy resource with the given ID exists.
+func ProjectAccessPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectAccessPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/projectAccessPolicy:ProjectAccessPolicy", id, state, "", opts...)
+}
+
 type projectAccessPolicyArgs struct {
 	// The ID to use for the access policy, which
 	// will become the final component of the access policy's

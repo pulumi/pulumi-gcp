@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *                 .gcpIamAccess(EntitlementPrivilegedAccessGcpIamAccessArgs.builder()
  *                     .roleBindings(EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs.builder()
  *                         .role("roles/storage.admin")
- *                         .conditionExpression("request.time < timestamp(\"2024-04-23T18:30:00.000Z\")")
+ *                         .conditionExpression("request.time < timestamp(}&#92;{@code "2024-04-23T18:30:00.000Z}&#92;{@code ")")
  *                         .build())
  *                     .resource("//cloudresourcemanager.googleapis.com/projects/my-project-name")
  *                     .resourceType("cloudresourcemanager.googleapis.com/Project")

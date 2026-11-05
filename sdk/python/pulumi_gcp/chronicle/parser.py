@@ -1126,6 +1126,56 @@ class Parser(pulumi.CustomResource):
         __props__.__dict__["version_info"] = version_info
         return Parser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cbn: pulumi.Input[Optional[_builtins.str]] = None,
+            changelogs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParserChangelogArgs', 'ParserChangelogArgsDict', 'outputs.ParserChangelog']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParserCreatorArgs', 'ParserCreatorArgsDict', 'outputs.ParserCreator']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamic_parsing_config: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logtype: pulumi.Input[Optional[_builtins.str]] = None,
+            low_code: pulumi.Input[Optional[Union['ParserLowCodeArgs', 'ParserLowCodeArgsDict', 'outputs.ParserLowCode']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parser: pulumi.Input[Optional[_builtins.str]] = None,
+            parser_extension: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            release_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            validated_on_empty_logs: pulumi.Input[Optional[_builtins.bool]] = None,
+            validation_report: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_skipped: pulumi.Input[Optional[_builtins.bool]] = None,
+            validation_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            version_info: pulumi.Input[Optional[Union['ParserVersionInfoArgs', 'ParserVersionInfoArgsDict', 'outputs.ParserVersionInfo']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cbn"] = cbn
+        __props__["changelogs"] = changelogs
+        __props__["createTime"] = create_time
+        __props__["creators"] = creators
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["dynamicParsingConfig"] = dynamic_parsing_config
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["logtype"] = logtype
+        __props__["lowCode"] = low_code
+        __props__["name"] = name
+        __props__["parser"] = parser
+        __props__["parserExtension"] = parser_extension
+        __props__["project"] = project
+        __props__["releaseStage"] = release_stage
+        __props__["state"] = state
+        __props__["type"] = type
+        __props__["validatedOnEmptyLogs"] = validated_on_empty_logs
+        __props__["validationReport"] = validation_report
+        __props__["validationSkipped"] = validation_skipped
+        __props__["validationStage"] = validation_stage
+        __props__["versionInfo"] = version_info
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/parser:Parser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cbn(self) -> pulumi.Output[Optional[_builtins.str]]:

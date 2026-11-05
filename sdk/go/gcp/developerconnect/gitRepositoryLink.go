@@ -345,6 +345,12 @@ func (GitRepositoryLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitRepositoryLinkState)(nil)).Elem()
 }
 
+// GitRepositoryLinkExists checks whether an existing GitRepositoryLink resource with the given ID exists.
+func GitRepositoryLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitRepositoryLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:developerconnect/gitRepositoryLink:GitRepositoryLink", id, state, "", opts...)
+}
+
 type gitRepositoryLinkArgs struct {
 	// Optional. Allows clients to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

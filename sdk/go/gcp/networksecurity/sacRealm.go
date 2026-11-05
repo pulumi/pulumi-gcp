@@ -266,6 +266,12 @@ func (SacRealmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sacRealmState)(nil)).Elem()
 }
 
+// SacRealmExists checks whether an existing SacRealm resource with the given ID exists.
+func SacRealmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SacRealmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/sacRealm:SacRealm", id, state, "", opts...)
+}
+
 type sacRealmArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

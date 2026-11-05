@@ -186,6 +186,12 @@ func (FirewallPolicyAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallPolicyAssociationState)(nil)).Elem()
 }
 
+// FirewallPolicyAssociationExists checks whether an existing FirewallPolicyAssociation resource with the given ID exists.
+func FirewallPolicyAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallPolicyAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation", id, state, "", opts...)
+}
+
 type firewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget string `pulumi:"attachmentTarget"`

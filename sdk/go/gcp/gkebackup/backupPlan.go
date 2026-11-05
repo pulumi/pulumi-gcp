@@ -708,6 +708,12 @@ func (BackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPlanState)(nil)).Elem()
 }
 
+// BackupPlanExists checks whether an existing BackupPlan resource with the given ID exists.
+func BackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkebackup/backupPlan:BackupPlan", id, state, "", opts...)
+}
+
 type backupPlanArgs struct {
 	// Defines the configuration of Backups created via this BackupPlan.
 	// Structure is documented below.

@@ -1253,6 +1253,54 @@ class ApiProduct(pulumi.CustomResource):
         __props__.__dict__["space"] = space
         return ApiProduct(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            approval_type: pulumi.Input[Optional[_builtins.str]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict', 'outputs.ApiProductAttribute']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict', 'outputs.ApiProductGraphqlOperationGroup']]] = None,
+            grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict', 'outputs.ApiProductGrpcOperationGroup']]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict', 'outputs.ApiProductOperationGroup']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            quota: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_counter_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_time_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            space: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiResources"] = api_resources
+        __props__["approvalType"] = approval_type
+        __props__["attributes"] = attributes
+        __props__["createdAt"] = created_at
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["environments"] = environments
+        __props__["graphqlOperationGroup"] = graphql_operation_group
+        __props__["grpcOperationGroup"] = grpc_operation_group
+        __props__["lastModifiedAt"] = last_modified_at
+        __props__["name"] = name
+        __props__["operationGroup"] = operation_group
+        __props__["orgId"] = org_id
+        __props__["proxies"] = proxies
+        __props__["quota"] = quota
+        __props__["quotaCounterScope"] = quota_counter_scope
+        __props__["quotaInterval"] = quota_interval
+        __props__["quotaTimeUnit"] = quota_time_unit
+        __props__["scopes"] = scopes
+        __props__["space"] = space
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/apiProduct:ApiProduct', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiResources")
     def api_resources(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

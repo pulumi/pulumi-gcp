@@ -159,6 +159,12 @@ func (ServingConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servingConfigState)(nil)).Elem()
 }
 
+// ServingConfigExists checks whether an existing ServingConfig resource with the given ID exists.
+func ServingConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServingConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/servingConfig:ServingConfig", id, state, "", opts...)
+}
+
 type servingConfigArgs struct {
 	// The resource IDs of the boost controls to be applied.
 	BoostControlIds []string `pulumi:"boostControlIds"`

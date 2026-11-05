@@ -424,6 +424,12 @@ func (HiveDatabaseIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveDatabaseIamMemberState)(nil)).Elem()
 }
 
+// HiveDatabaseIamMemberExists checks whether an existing HiveDatabaseIamMember resource with the given ID exists.
+func HiveDatabaseIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveDatabaseIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveDatabaseIamMember:HiveDatabaseIamMember", id, state, "", opts...)
+}
+
 type hiveDatabaseIamMemberArgs struct {
 	// Hive catalog where the database to create is located.
 	// Used to find the parent resource to bind the IAM policy to

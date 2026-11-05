@@ -1158,6 +1158,60 @@ class AzureCluster(pulumi.CustomResource):
         __props__.__dict__["workload_identity_configs"] = workload_identity_configs
         return AzureCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            authorization: pulumi.Input[Optional[Union['AzureClusterAuthorizationArgs', 'AzureClusterAuthorizationArgsDict', 'outputs.AzureClusterAuthorization']]] = None,
+            azure_region: pulumi.Input[Optional[_builtins.str]] = None,
+            azure_services_authentication: pulumi.Input[Optional[Union['AzureClusterAzureServicesAuthenticationArgs', 'AzureClusterAzureServicesAuthenticationArgsDict', 'outputs.AzureClusterAzureServicesAuthentication']]] = None,
+            client: pulumi.Input[Optional[_builtins.str]] = None,
+            control_plane: pulumi.Input[Optional[Union['AzureClusterControlPlaneArgs', 'AzureClusterControlPlaneArgsDict', 'outputs.AzureClusterControlPlane']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            fleet: pulumi.Input[Optional[Union['AzureClusterFleetArgs', 'AzureClusterFleetArgsDict', 'outputs.AzureClusterFleet']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['AzureClusterLoggingConfigArgs', 'AzureClusterLoggingConfigArgsDict', 'outputs.AzureClusterLoggingConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networking: pulumi.Input[Optional[Union['AzureClusterNetworkingArgs', 'AzureClusterNetworkingArgsDict', 'outputs.AzureClusterNetworking']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AzureClusterWorkloadIdentityConfigArgs', 'AzureClusterWorkloadIdentityConfigArgsDict', 'outputs.AzureClusterWorkloadIdentityConfig']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["authorization"] = authorization
+        __props__["azureRegion"] = azure_region
+        __props__["azureServicesAuthentication"] = azure_services_authentication
+        __props__["client"] = client
+        __props__["controlPlane"] = control_plane
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["endpoint"] = endpoint
+        __props__["etag"] = etag
+        __props__["fleet"] = fleet
+        __props__["location"] = location
+        __props__["loggingConfig"] = logging_config
+        __props__["name"] = name
+        __props__["networking"] = networking
+        __props__["project"] = project
+        __props__["reconciling"] = reconciling
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["state"] = state
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        __props__["workloadIdentityConfigs"] = workload_identity_configs
+        return pulumi.runtime.exists_resource(None, 'gcp:container/azureCluster:AzureCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

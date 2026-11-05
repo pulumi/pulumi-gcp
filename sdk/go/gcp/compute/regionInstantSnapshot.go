@@ -312,6 +312,12 @@ func (RegionInstantSnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionInstantSnapshotState)(nil)).Elem()
 }
 
+// RegionInstantSnapshotExists checks whether an existing RegionInstantSnapshot resource with the given ID exists.
+func RegionInstantSnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionInstantSnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionInstantSnapshot:RegionInstantSnapshot", id, state, "", opts...)
+}
+
 type regionInstantSnapshotArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -242,6 +242,12 @@ func (GeminiGcpEnablementSettingBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*geminiGcpEnablementSettingBindingState)(nil)).Elem()
 }
 
+// GeminiGcpEnablementSettingBindingExists checks whether an existing GeminiGcpEnablementSettingBinding resource with the given ID exists.
+func GeminiGcpEnablementSettingBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GeminiGcpEnablementSettingBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding", id, state, "", opts...)
+}
+
 type geminiGcpEnablementSettingBindingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

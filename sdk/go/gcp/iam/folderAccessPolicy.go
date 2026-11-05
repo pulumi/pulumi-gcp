@@ -338,6 +338,12 @@ func (FolderAccessPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderAccessPolicyState)(nil)).Elem()
 }
 
+// FolderAccessPolicyExists checks whether an existing FolderAccessPolicy resource with the given ID exists.
+func FolderAccessPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderAccessPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/folderAccessPolicy:FolderAccessPolicy", id, state, "", opts...)
+}
+
 type folderAccessPolicyArgs struct {
 	// The ID to use for the access policy, which
 	// will become the final component of the access policy's

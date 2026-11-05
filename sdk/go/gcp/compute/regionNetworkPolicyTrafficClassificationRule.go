@@ -285,6 +285,12 @@ func (RegionNetworkPolicyTrafficClassificationRuleState) ElementType() reflect.T
 	return reflect.TypeOf((*regionNetworkPolicyTrafficClassificationRuleState)(nil)).Elem()
 }
 
+// RegionNetworkPolicyTrafficClassificationRuleExists checks whether an existing RegionNetworkPolicyTrafficClassificationRule resource with the given ID exists.
+func RegionNetworkPolicyTrafficClassificationRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionNetworkPolicyTrafficClassificationRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule", id, state, "", opts...)
+}
+
 type regionNetworkPolicyTrafficClassificationRuleArgs struct {
 	// The Action to perform when the client connection triggers the rule.
 	// Structure is documented below.

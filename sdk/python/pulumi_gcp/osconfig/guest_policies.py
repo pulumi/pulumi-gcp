@@ -991,6 +991,36 @@ class GuestPolicies(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return GuestPolicies(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assignment: pulumi.Input[Optional[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict', 'outputs.GuestPoliciesAssignment']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            package_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict', 'outputs.GuestPoliciesPackageRepository']]]]] = None,
+            packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict', 'outputs.GuestPoliciesPackage']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recipes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict', 'outputs.GuestPoliciesRecipe']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assignment"] = assignment
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["etag"] = etag
+        __props__["guestPolicyId"] = guest_policy_id
+        __props__["name"] = name
+        __props__["packageRepositories"] = package_repositories
+        __props__["packages"] = packages
+        __props__["project"] = project
+        __props__["recipes"] = recipes
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:osconfig/guestPolicies:GuestPolicies', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def assignment(self) -> pulumi.Output['outputs.GuestPoliciesAssignment']:

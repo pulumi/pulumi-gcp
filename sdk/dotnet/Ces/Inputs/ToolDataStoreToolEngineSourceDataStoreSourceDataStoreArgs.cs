@@ -69,7 +69,6 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// FAQ
         /// CONNECTOR
         /// 
-        /// 
         /// &lt;a name="NestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"&gt;&lt;/a&gt;The `ConnectorConfig` block contains:
         /// </summary>
         [Input("type")]

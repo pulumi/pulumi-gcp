@@ -201,6 +201,12 @@ func (OauthIdpConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oauthIdpConfigState)(nil)).Elem()
 }
 
+// OauthIdpConfigExists checks whether an existing OauthIdpConfig resource with the given ID exists.
+func OauthIdpConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OauthIdpConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", id, state, "", opts...)
+}
+
 type oauthIdpConfigArgs struct {
 	// The client id of an OAuth client.
 	ClientId string `pulumi:"clientId"`

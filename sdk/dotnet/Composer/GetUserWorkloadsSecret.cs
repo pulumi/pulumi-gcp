@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Composer
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
         /// * How-to Guides
         ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
-        ///     
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -86,7 +86,7 @@ namespace Pulumi.Gcp.Composer
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
         /// * How-to Guides
         ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
-        ///     
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.Composer
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
         /// * How-to Guides
         ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
-        ///     
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

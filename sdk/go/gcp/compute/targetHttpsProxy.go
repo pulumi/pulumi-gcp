@@ -934,6 +934,12 @@ func (TargetHttpsProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetHttpsProxyState)(nil)).Elem()
 }
 
+// TargetHttpsProxyExists checks whether an existing TargetHttpsProxy resource with the given ID exists.
+func TargetHttpsProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TargetHttpsProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/targetHttpsProxy:TargetHttpsProxy", id, state, "", opts...)
+}
+
 type targetHttpsProxyArgs struct {
 	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
 	// Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.

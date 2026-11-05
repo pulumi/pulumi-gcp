@@ -377,6 +377,24 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ControlProjectIntelligenceConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            edition_config: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_intelligence_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict', 'outputs.ControlProjectIntelligenceConfigEffectiveIntelligenceConfig']]]]] = None,
+            filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict', 'outputs.ControlProjectIntelligenceConfigFilter']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            trial_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigTrialConfigArgs', 'ControlProjectIntelligenceConfigTrialConfigArgsDict', 'outputs.ControlProjectIntelligenceConfigTrialConfig']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["editionConfig"] = edition_config
+        __props__["effectiveIntelligenceConfigs"] = effective_intelligence_configs
+        __props__["filter"] = filter
+        __props__["name"] = name
+        __props__["trialConfigs"] = trial_configs
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="editionConfig")
     def edition_config(self) -> pulumi.Output[_builtins.str]:

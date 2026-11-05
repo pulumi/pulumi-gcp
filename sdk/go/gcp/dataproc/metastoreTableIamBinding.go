@@ -457,6 +457,12 @@ func (MetastoreTableIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreTableIamBindingState)(nil)).Elem()
 }
 
+// MetastoreTableIamBindingExists checks whether an existing MetastoreTableIamBinding resource with the given ID exists.
+func MetastoreTableIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreTableIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding", id, state, "", opts...)
+}
+
 type metastoreTableIamBindingArgs struct {
 	Condition *MetastoreTableIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

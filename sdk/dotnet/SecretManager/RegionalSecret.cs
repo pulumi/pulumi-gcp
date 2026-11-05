@@ -411,9 +411,9 @@ namespace Pulumi.Gcp.SecretManager
         /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
         /// Supported values are:
         /// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
-        /// credentials. Managed rotation can be enabled on these secrets using the
-        /// `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
-        /// be added manually to secrets of this type.
+        ///   credentials. Managed rotation can be enabled on these secrets using the
+        ///   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+        ///   be added manually to secrets of this type.
         /// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
         /// * `ACCESS_KEY`: Secrets where the payload contains an access key.
         /// * `CERTIFICATE`: Secrets where the payload contains a certificate.
@@ -632,9 +632,9 @@ namespace Pulumi.Gcp.SecretManager
         /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
         /// Supported values are:
         /// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
-        /// credentials. Managed rotation can be enabled on these secrets using the
-        /// `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
-        /// be added manually to secrets of this type.
+        ///   credentials. Managed rotation can be enabled on these secrets using the
+        ///   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+        ///   be added manually to secrets of this type.
         /// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
         /// * `ACCESS_KEY`: Secrets where the payload contains an access key.
         /// * `CERTIFICATE`: Secrets where the payload contains a certificate.
@@ -900,9 +900,9 @@ namespace Pulumi.Gcp.SecretManager
         /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
         /// Supported values are:
         /// * `CLOUD_SQL_DB_CREDENTIALS`: Secrets used for managed rotation of Cloud SQL single-user
-        /// credentials. Managed rotation can be enabled on these secrets using the
-        /// `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
-        /// be added manually to secrets of this type.
+        ///   credentials. Managed rotation can be enabled on these secrets using the
+        ///   `gcp.secretmanager.RegionalSecretManagedRotation` resource. Secret versions cannot
+        ///   be added manually to secrets of this type.
         /// * `OTHER_DB_CREDENTIALS`: Secrets where the payload contains database credentials.
         /// * `ACCESS_KEY`: Secrets where the payload contains an access key.
         /// * `CERTIFICATE`: Secrets where the payload contains a certificate.

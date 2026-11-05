@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex {
     /**
-     * @return Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)\d{4}&#34; will both match the bucket gs://marketing2021
+     * @return Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)&#92;d{4}&#34; will both match the bucket gs://marketing2021
      * 
      */
     private @Nullable String bucketNameRegex;
@@ -24,7 +24,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
 
     private PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex() {}
     /**
-     * @return Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)\d{4}&#34; will both match the bucket gs://marketing2021
+     * @return Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)&#92;d{4}&#34; will both match the bucket gs://marketing2021
      * 
      */
     public Optional<String> bucketNameRegex() {

@@ -259,6 +259,12 @@ func (BigQueryExportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bigQueryExportState)(nil)).Elem()
 }
 
+// BigQueryExportExists checks whether an existing BigQueryExport resource with the given ID exists.
+func BigQueryExportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BigQueryExportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/bigQueryExport:BigQueryExport", id, state, "", opts...)
+}
+
 type bigQueryExportArgs struct {
 	// The BigQueryExportPackage entitled for the Chronicle instance.
 	// Possible values are: `BIG_QUERY_EXPORT_PACKAGE_BYOBQ`, `BIG_QUERY_EXPORT_PACKAGE_ADVANCED`.

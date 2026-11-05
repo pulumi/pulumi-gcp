@@ -163,6 +163,12 @@ func (ControlFolderIntelligenceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlFolderIntelligenceConfigState)(nil)).Elem()
 }
 
+// ControlFolderIntelligenceConfigExists checks whether an existing ControlFolderIntelligenceConfig resource with the given ID exists.
+func ControlFolderIntelligenceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlFolderIntelligenceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig", id, state, "", opts...)
+}
+
 type controlFolderIntelligenceConfigArgs struct {
 	// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
 	EditionConfig *string `pulumi:"editionConfig"`

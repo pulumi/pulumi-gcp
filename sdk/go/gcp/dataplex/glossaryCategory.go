@@ -295,6 +295,12 @@ func (GlossaryCategoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*glossaryCategoryState)(nil)).Elem()
 }
 
+// GlossaryCategoryExists checks whether an existing GlossaryCategory resource with the given ID exists.
+func GlossaryCategoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlossaryCategoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/glossaryCategory:GlossaryCategory", id, state, "", opts...)
+}
+
 type glossaryCategoryArgs struct {
 	// The category id for creation.
 	CategoryId *string `pulumi:"categoryId"`

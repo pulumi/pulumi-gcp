@@ -44,23 +44,23 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new MuteConfig("default", MuteConfigArgs.builder()
  *             .muteConfigId("my-config")
  *             .parent("organizations/123456789")
- *             .filter("category: \"OS_VULNERABILITY\"")
+ *             .filter("category: }&#92;{@code "OS_VULNERABILITY}&#92;{@code "")
  *             .description("My Mute Config")
  *             .type("DYNAMIC")
  *             .expiryTime("2215-02-03T15:01:23Z")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

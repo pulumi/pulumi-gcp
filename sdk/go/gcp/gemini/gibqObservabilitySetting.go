@@ -219,6 +219,12 @@ func (GibqObservabilitySettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gibqObservabilitySettingState)(nil)).Elem()
 }
 
+// GibqObservabilitySettingExists checks whether an existing GibqObservabilitySetting resource with the given ID exists.
+func GibqObservabilitySettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GibqObservabilitySettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/gibqObservabilitySetting:GibqObservabilitySetting", id, state, "", opts...)
+}
+
 type gibqObservabilitySettingArgs struct {
 	// Settings for Conversational Analytics, which can be used to enable observability features.
 	// Structure is documented below.

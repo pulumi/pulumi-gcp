@@ -427,6 +427,12 @@ func (AuthProviderIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authProviderIamMemberState)(nil)).Elem()
 }
 
+// AuthProviderIamMemberExists checks whether an existing AuthProviderIamMember resource with the given ID exists.
+func AuthProviderIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthProviderIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:agentidentity/authProviderIamMember:AuthProviderIamMember", id, state, "", opts...)
+}
+
 type authProviderIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	AuthProviderId string                          `pulumi:"authProviderId"`

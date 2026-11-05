@@ -441,6 +441,12 @@ func (AiFeatureOnlineStoreFeatureviewIamMemberState) ElementType() reflect.Type 
 	return reflect.TypeOf((*aiFeatureOnlineStoreFeatureviewIamMemberState)(nil)).Elem()
 }
 
+// AiFeatureOnlineStoreFeatureviewIamMemberExists checks whether an existing AiFeatureOnlineStoreFeatureviewIamMember resource with the given ID exists.
+func AiFeatureOnlineStoreFeatureviewIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureOnlineStoreFeatureviewIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureOnlineStoreFeatureviewIamMember:AiFeatureOnlineStoreFeatureviewIamMember", id, state, "", opts...)
+}
+
 type aiFeatureOnlineStoreFeatureviewIamMemberArgs struct {
 	Condition *AiFeatureOnlineStoreFeatureviewIamMemberCondition `pulumi:"condition"`
 	// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to

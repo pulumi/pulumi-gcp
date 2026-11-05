@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var vertexaiSa = new ServiceIdentity("vertexaiSa", ServiceIdentityArgs.builder()
  *             .service("aiplatform.googleapis.com")
  *             .build());
@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  *             .name("contents/data.json")
  *             .bucket(bucket.name())
  *             .content("""
- * {\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}
- * {\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}
+ * }{&#92;{@code "id}&#92;{@code ": }&#92;{@code "42}&#92;{@code ", }&#92;{@code "embedding}&#92;{@code ": [0.5, 1.0], }&#92;{@code "restricts}&#92;{@code ": [}{&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "class}&#92;{@code ", }&#92;{@code "allow}&#92;{@code ": [}&#92;{@code "cat}&#92;{@code ", }&#92;{@code "pet}&#92;{@code "]}}{@code ,}{&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "category}&#92;{@code ", }&#92;{@code "allow}&#92;{@code ": [}&#92;{@code "feline}&#92;{@code "]}}{@code ]}}{@code
+ * }{&#92;{@code "id}&#92;{@code ": }&#92;{@code "43}&#92;{@code ", }&#92;{@code "embedding}&#92;{@code ": [0.6, 1.0], }&#92;{@code "restricts}&#92;{@code ": [}{&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "class}&#92;{@code ", }&#92;{@code "allow}&#92;{@code ": [}&#92;{@code "dog}&#92;{@code ", }&#92;{@code "pet}&#92;{@code "]}}{@code ,}{&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "category}&#92;{@code ", }&#92;{@code "allow}&#92;{@code ": [}&#92;{@code "canine}&#92;{@code "]}}{@code ]}}{@code
  *             """)
  *             .build());
  * 
@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(vertexaiEncrypterdecrypter)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -153,12 +153,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("vertex-ai-index-test")
  *             .location("us-central1")
@@ -171,8 +171,8 @@ import javax.annotation.Nullable;
  *             .name("contents/data.json")
  *             .bucket(bucket.name())
  *             .content("""
- * {\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}
- * {\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}
+ * }{&#92;{@code "id}&#92;{@code ": }&#92;{@code "42}&#92;{@code ", }&#92;{@code "embedding}&#92;{@code ": [0.5, 1.0], }&#92;{@code "restricts}&#92;{@code ": [}{&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "class}&#92;{@code ", }&#92;{@code "allow}&#92;{@code ": [}&#92;{@code "cat}&#92;{@code ", }&#92;{@code "pet}&#92;{@code "]}}{@code ,}{&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "category}&#92;{@code ", }&#92;{@code "allow}&#92;{@code ": [}&#92;{@code "feline}&#92;{@code "]}}{@code ]}}{@code
+ * }{&#92;{@code "id}&#92;{@code ": }&#92;{@code "43}&#92;{@code ", }&#92;{@code "embedding}&#92;{@code ": [0.6, 1.0], }&#92;{@code "restricts}&#92;{@code ": [}{&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "class}&#92;{@code ", }&#92;{@code "allow}&#92;{@code ": [}&#92;{@code "dog}&#92;{@code ", }&#92;{@code "pet}&#92;{@code "]}}{@code ,}{&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "category}&#92;{@code ", }&#92;{@code "allow}&#92;{@code ": [}&#92;{@code "canine}&#92;{@code "]}}{@code ]}}{@code
  *             """)
  *             .build());
  * 
@@ -197,8 +197,8 @@ import javax.annotation.Nullable;
  *             .indexUpdateMethod("STREAM_UPDATE")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

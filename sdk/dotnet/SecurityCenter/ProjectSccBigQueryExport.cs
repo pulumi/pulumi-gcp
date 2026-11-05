@@ -139,13 +139,13 @@ namespace Pulumi.Gcp.SecurityCenter
         /// * = for all value types.
         /// * \&gt;, &lt;, &gt;=, &lt;= for integer values.
         /// * :, meaning substring matching, for strings.
-        /// The supported value types are:
+        ///   The supported value types are:
         /// * string literals in quotes.
         /// * integer literals without quotes.
         /// * boolean literals true and false without quotes.
-        /// See
-        /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        /// for information on how to write a filter.
+        ///   See
+        ///   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        ///   for information on how to write a filter.
         /// </summary>
         [Output("filter")]
         public Output<string?> Filter { get; private set; } = null!;
@@ -282,13 +282,13 @@ namespace Pulumi.Gcp.SecurityCenter
         /// * = for all value types.
         /// * \&gt;, &lt;, &gt;=, &lt;= for integer values.
         /// * :, meaning substring matching, for strings.
-        /// The supported value types are:
+        ///   The supported value types are:
         /// * string literals in quotes.
         /// * integer literals without quotes.
         /// * boolean literals true and false without quotes.
-        /// See
-        /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        /// for information on how to write a filter.
+        ///   See
+        ///   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        ///   for information on how to write a filter.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
@@ -366,13 +366,13 @@ namespace Pulumi.Gcp.SecurityCenter
         /// * = for all value types.
         /// * \&gt;, &lt;, &gt;=, &lt;= for integer values.
         /// * :, meaning substring matching, for strings.
-        /// The supported value types are:
+        ///   The supported value types are:
         /// * string literals in quotes.
         /// * integer literals without quotes.
         /// * boolean literals true and false without quotes.
-        /// See
-        /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        /// for information on how to write a filter.
+        ///   See
+        ///   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        ///   for information on how to write a filter.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

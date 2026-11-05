@@ -369,6 +369,12 @@ func (RuntimeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*runtimeState)(nil)).Elem()
 }
 
+// RuntimeExists checks whether an existing Runtime resource with the given ID exists.
+func RuntimeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuntimeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:colab/runtime:Runtime", id, state, "", opts...)
+}
+
 type runtimeArgs struct {
 	// Triggers an upgrade anytime the runtime is started if it is upgradable.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`

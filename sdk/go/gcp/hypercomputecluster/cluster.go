@@ -369,6 +369,12 @@ func (ClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterState)(nil)).Elem()
 }
 
+// ClusterExists checks whether an existing Cluster resource with the given ID exists.
+func ClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:hypercomputecluster/cluster:Cluster", id, state, "", opts...)
+}
+
 type clusterArgs struct {
 	// ID of the cluster to create. Must start with a lowercase letter,
 	// use only lowercase letters and numbers, and be at most 10 characters long.

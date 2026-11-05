@@ -252,6 +252,12 @@ func (CaseTagDefinitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caseTagDefinitionState)(nil)).Elem()
 }
 
+// CaseTagDefinitionExists checks whether an existing CaseTagDefinition resource with the given ID exists.
+func CaseTagDefinitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaseTagDefinitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/caseTagDefinition:CaseTagDefinition", id, state, "", opts...)
+}
+
 type caseTagDefinitionArgs struct {
 	// When checked, the tag will be assigned as the title of the case if it meets the conditions.
 	CanBeCaseTitle bool `pulumi:"canBeCaseTitle"`

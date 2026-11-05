@@ -317,6 +317,12 @@ func (RecommendationEngineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*recommendationEngineState)(nil)).Elem()
 }
 
+// RecommendationEngineExists checks whether an existing RecommendationEngine resource with the given ID exists.
+func RecommendationEngineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RecommendationEngineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/recommendationEngine:RecommendationEngine", id, state, "", opts...)
+}
+
 type recommendationEngineArgs struct {
 	// Common config spec that specifies the metadata of the engine.
 	// Structure is documented below.

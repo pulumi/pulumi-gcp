@@ -947,6 +947,44 @@ class Control(pulumi.CustomResource):
         __props__.__dict__["use_cases"] = use_cases
         return Control(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            boost_action: pulumi.Input[Optional[Union['ControlBoostActionArgs', 'ControlBoostActionArgsDict', 'outputs.ControlBoostAction']]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict', 'outputs.ControlCondition']]]]] = None,
+            control_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict', 'outputs.ControlFilterAction']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            promote_action: pulumi.Input[Optional[Union['ControlPromoteActionArgs', 'ControlPromoteActionArgsDict', 'outputs.ControlPromoteAction']]] = None,
+            redirect_action: pulumi.Input[Optional[Union['ControlRedirectActionArgs', 'ControlRedirectActionArgsDict', 'outputs.ControlRedirectAction']]] = None,
+            solution_type: pulumi.Input[Optional[_builtins.str]] = None,
+            synonyms_action: pulumi.Input[Optional[Union['ControlSynonymsActionArgs', 'ControlSynonymsActionArgsDict', 'outputs.ControlSynonymsAction']]] = None,
+            use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["boostAction"] = boost_action
+        __props__["collectionId"] = collection_id
+        __props__["conditions"] = conditions
+        __props__["controlId"] = control_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["engineId"] = engine_id
+        __props__["filterAction"] = filter_action
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["promoteAction"] = promote_action
+        __props__["redirectAction"] = redirect_action
+        __props__["solutionType"] = solution_type
+        __props__["synonymsAction"] = synonyms_action
+        __props__["useCases"] = use_cases
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/control:Control', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="boostAction")
     def boost_action(self) -> pulumi.Output[Optional['outputs.ControlBoostAction']]:

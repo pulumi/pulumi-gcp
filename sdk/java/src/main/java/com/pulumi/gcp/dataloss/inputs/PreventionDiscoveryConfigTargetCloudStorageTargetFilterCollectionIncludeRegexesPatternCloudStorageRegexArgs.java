@@ -16,14 +16,14 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
     public static final PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs Empty = new PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs();
 
     /**
-     * Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)\d{4}&#34; will both match the bucket gs://marketing2021
+     * Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)&#92;d{4}&#34; will both match the bucket gs://marketing2021
      * 
      */
     @Import(name="bucketNameRegex")
     private @Nullable Output<String> bucketNameRegex;
 
     /**
-     * @return Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)\d{4}&#34; will both match the bucket gs://marketing2021
+     * @return Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)&#92;d{4}&#34; will both match the bucket gs://marketing2021
      * 
      */
     public Optional<Output<String>> bucketNameRegex() {
@@ -71,7 +71,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
         }
 
         /**
-         * @param bucketNameRegex Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)\d{4}&#34; will both match the bucket gs://marketing2021
+         * @param bucketNameRegex Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)&#92;d{4}&#34; will both match the bucket gs://marketing2021
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
         }
 
         /**
-         * @param bucketNameRegex Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)\d{4}&#34; will both match the bucket gs://marketing2021
+         * @param bucketNameRegex Regex to test the bucket name against. If empty, all buckets match. Example: &#34;marketing2021&#34; or &#34;(marketing)&#92;d{4}&#34; will both match the bucket gs://marketing2021
          * 
          * @return builder
          * 

@@ -371,6 +371,20 @@ class UsageExportBucket(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return UsageExportBucket(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucketName"] = bucket_name
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["prefix"] = prefix
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gcp:projects/usageExportBucket:UsageExportBucket', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[_builtins.str]:

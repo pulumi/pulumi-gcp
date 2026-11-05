@@ -277,6 +277,12 @@ func (UserCredsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userCredsState)(nil)).Elem()
 }
 
+// UserCredsExists checks whether an existing UserCreds resource with the given ID exists.
+func UserCredsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserCredsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firestore/userCreds:UserCreds", id, state, "", opts...)
+}
+
 type userCredsArgs struct {
 	// The Firestore database ID.
 	Database string `pulumi:"database"`

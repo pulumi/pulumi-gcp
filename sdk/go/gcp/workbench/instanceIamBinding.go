@@ -83,6 +83,12 @@ func (InstanceIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIamBindingState)(nil)).Elem()
 }
 
+// InstanceIamBindingExists checks whether an existing InstanceIamBinding resource with the given ID exists.
+func InstanceIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:workbench/instanceIamBinding:InstanceIamBinding", id, state, "", opts...)
+}
+
 type instanceIamBindingArgs struct {
 	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	Location  *string                      `pulumi:"location"`

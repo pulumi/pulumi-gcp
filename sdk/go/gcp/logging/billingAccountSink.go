@@ -242,6 +242,12 @@ func (BillingAccountSinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*billingAccountSinkState)(nil)).Elem()
 }
 
+// BillingAccountSinkExists checks whether an existing BillingAccountSink resource with the given ID exists.
+func BillingAccountSinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BillingAccountSinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/billingAccountSink:BillingAccountSink", id, state, "", opts...)
+}
+
 type billingAccountSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *BillingAccountSinkBigqueryOptions `pulumi:"bigqueryOptions"`

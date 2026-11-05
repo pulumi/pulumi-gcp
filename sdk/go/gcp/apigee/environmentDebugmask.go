@@ -257,6 +257,12 @@ func (EnvironmentDebugmaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentDebugmaskState)(nil)).Elem()
 }
 
+// EnvironmentDebugmaskExists checks whether an existing EnvironmentDebugmask resource with the given ID exists.
+func EnvironmentDebugmaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentDebugmaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/environmentDebugmask:EnvironmentDebugmask", id, state, "", opts...)
+}
+
 type environmentDebugmaskArgs struct {
 	// The Apigee environment associated with the debug mask, in the format
 	// `organizations/{{org_name}}/environments/{{env_name}}`.

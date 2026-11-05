@@ -405,6 +405,12 @@ func (SnapshotIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotIamMemberState)(nil)).Elem()
 }
 
+// SnapshotIamMemberExists checks whether an existing SnapshotIamMember resource with the given ID exists.
+func SnapshotIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnapshotIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/snapshotIamMember:SnapshotIamMember", id, state, "", opts...)
+}
+
 type snapshotIamMemberArgs struct {
 	Condition *SnapshotIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

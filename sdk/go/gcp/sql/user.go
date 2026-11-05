@@ -496,6 +496,12 @@ func (UserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userState)(nil)).Elem()
 }
 
+// UserExists checks whether an existing User resource with the given ID exists.
+func UserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:sql/user:User", id, state, "", opts...)
+}
+
 type userArgs struct {
 	// A list of database roles to be assigned to the user.
 	// This option is only available for MySQL 8+ and PostgreSQL instances. You

@@ -19,11 +19,10 @@ public final class StandardAppVersionVpcAccess {
      * 
      * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
-     * @deprecated
-     * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * @deprecated `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
      */
-    @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
+    @Deprecated
     private @Nullable String egressSetting;
     /**
      * @return List of network interfaces for the VPC Access. Currently only a single network interface is supported.
@@ -45,11 +44,10 @@ public final class StandardAppVersionVpcAccess {
      * 
      * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
-     * @deprecated
-     * `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
+     * @deprecated `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
      * 
      */
-    @Deprecated /* `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead. */
+    @Deprecated
     public Optional<String> egressSetting() {
         return Optional.ofNullable(this.egressSetting);
     }

@@ -557,6 +557,26 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return GlobalNetworkEndpointGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_port: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultPort"] = default_port
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["networkEndpointType"] = network_endpoint_type
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultPort")
     def default_port(self) -> pulumi.Output[Optional[_builtins.int]]:

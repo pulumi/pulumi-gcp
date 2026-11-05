@@ -666,6 +666,24 @@ class MetastoreDatabaseIamPolicy(pulumi.CustomResource):
         __props__.__dict__["service_id"] = service_id
         return MetastoreDatabaseIamPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["database"] = database
+        __props__["etag"] = etag
+        __props__["location"] = location
+        __props__["policyData"] = policy_data
+        __props__["project"] = project
+        __props__["serviceId"] = service_id
+        return pulumi.runtime.exists_resource(None, 'gcp:dataproc/metastoreDatabaseIamPolicy:MetastoreDatabaseIamPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def database(self) -> pulumi.Output[_builtins.str]:

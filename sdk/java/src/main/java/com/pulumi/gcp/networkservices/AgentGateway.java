@@ -485,11 +485,10 @@ public class AgentGateway extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `protocols` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `protocols` is deprecated and will be removed in a future major release.
+     * @deprecated `protocols` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `protocols` is deprecated and will be removed in a future major release. */
+    @Deprecated
     @Export(name="protocols", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> protocols;
 

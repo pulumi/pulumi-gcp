@@ -297,6 +297,12 @@ func (NetworkEndpointListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkEndpointListState)(nil)).Elem()
 }
 
+// NetworkEndpointListExists checks whether an existing NetworkEndpointList resource with the given ID exists.
+func NetworkEndpointListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkEndpointListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/networkEndpointList:NetworkEndpointList", id, state, "", opts...)
+}
+
 type networkEndpointListArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

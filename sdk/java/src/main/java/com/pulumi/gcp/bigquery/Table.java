@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Dataset("default", DatasetArgs.builder()
  *             .datasetId("foo")
  *             .friendlyName("test")
@@ -85,18 +85,18 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("env", "default"))
  *             .schema("""
  * [
- *   {
- *     \"name\": \"permalink\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\",
- *     \"description\": \"The Permalink\"
- *   },
- *   {
- *     \"name\": \"state\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\",
- *     \"description\": \"State where the head office is located\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "permalink}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The Permalink}&#92;{@code "
+ *   }}{@code ,
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "state}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "State where the head office is located}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .build());
@@ -114,8 +114,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

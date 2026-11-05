@@ -715,6 +715,12 @@ func (FhirStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreState)(nil)).Elem()
 }
 
+// FhirStoreExists checks whether an existing FhirStore resource with the given ID exists.
+func FhirStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FhirStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/fhirStore:FhirStore", id, state, "", opts...)
+}
+
 type fhirStoreArgs struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.

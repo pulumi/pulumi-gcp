@@ -241,6 +241,12 @@ func (WorkforcePoolProviderKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workforcePoolProviderKeyState)(nil)).Elem()
 }
 
+// WorkforcePoolProviderKeyExists checks whether an existing WorkforcePoolProviderKey resource with the given ID exists.
+func WorkforcePoolProviderKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkforcePoolProviderKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey", id, state, "", opts...)
+}
+
 type workforcePoolProviderKeyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

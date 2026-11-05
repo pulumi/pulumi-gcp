@@ -150,6 +150,12 @@ func (ReservationGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservationGroupState)(nil)).Elem()
 }
 
+// ReservationGroupExists checks whether an existing ReservationGroup resource with the given ID exists.
+func ReservationGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservationGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/reservationGroup:ReservationGroup", id, state, "", opts...)
+}
+
 type reservationGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

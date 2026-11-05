@@ -117,6 +117,12 @@ func (EngineSplitTrafficState) ElementType() reflect.Type {
 	return reflect.TypeOf((*engineSplitTrafficState)(nil)).Elem()
 }
 
+// EngineSplitTrafficExists checks whether an existing EngineSplitTraffic resource with the given ID exists.
+func EngineSplitTrafficExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EngineSplitTrafficState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:appengine/engineSplitTraffic:EngineSplitTraffic", id, state, "", opts...)
+}
+
 type engineSplitTrafficArgs struct {
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic *bool `pulumi:"migrateTraffic"`

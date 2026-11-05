@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
         /// <summary>
         /// Number of version before applying the GC policy.
         /// 
-        /// -----
+        /// ***
         /// `GcRules` include 2 fields:
         /// </summary>
         [Input("number", required: true)]

@@ -200,6 +200,12 @@ func (FolderBucketConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderBucketConfigState)(nil)).Elem()
 }
 
+// FolderBucketConfigExists checks whether an existing FolderBucketConfig resource with the given ID exists.
+func FolderBucketConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderBucketConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/folderBucketConfig:FolderBucketConfig", id, state, "", opts...)
+}
+
 type folderBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`

@@ -327,6 +327,12 @@ func (MulticastDomainGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multicastDomainGroupState)(nil)).Elem()
 }
 
+// MulticastDomainGroupExists checks whether an existing MulticastDomainGroup resource with the given ID exists.
+func MulticastDomainGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MulticastDomainGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/multicastDomainGroup:MulticastDomainGroup", id, state, "", opts...)
+}
+
 type multicastDomainGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

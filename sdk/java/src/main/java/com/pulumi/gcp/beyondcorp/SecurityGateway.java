@@ -302,11 +302,10 @@ public class SecurityGateway extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `location` is deprecated and will be removed in a future major release.
+     * @deprecated `location` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `location` is deprecated and will be removed in a future major release. */
+    @Deprecated
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 

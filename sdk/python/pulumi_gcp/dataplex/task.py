@@ -1190,6 +1190,52 @@ class Task(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Task(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            execution_spec: pulumi.Input[Optional[Union['TaskExecutionSpecArgs', 'TaskExecutionSpecArgsDict', 'outputs.TaskExecutionSpec']]] = None,
+            execution_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TaskExecutionStatusArgs', 'TaskExecutionStatusArgsDict', 'outputs.TaskExecutionStatus']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lake: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook: pulumi.Input[Optional[Union['TaskNotebookArgs', 'TaskNotebookArgsDict', 'outputs.TaskNotebook']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            spark: pulumi.Input[Optional[Union['TaskSparkArgs', 'TaskSparkArgsDict', 'outputs.TaskSpark']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_spec: pulumi.Input[Optional[Union['TaskTriggerSpecArgs', 'TaskTriggerSpecArgsDict', 'outputs.TaskTriggerSpec']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["executionSpec"] = execution_spec
+        __props__["executionStatuses"] = execution_statuses
+        __props__["labels"] = labels
+        __props__["lake"] = lake
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["notebook"] = notebook
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["spark"] = spark
+        __props__["state"] = state
+        __props__["taskId"] = task_id
+        __props__["triggerSpec"] = trigger_spec
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:dataplex/task:Task', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

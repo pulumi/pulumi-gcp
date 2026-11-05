@@ -1124,6 +1124,12 @@ func (NotebookExecutionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notebookExecutionState)(nil)).Elem()
 }
 
+// NotebookExecutionExists checks whether an existing NotebookExecution resource with the given ID exists.
+func NotebookExecutionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotebookExecutionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:colab/notebookExecution:NotebookExecution", id, state, "", opts...)
+}
+
 type notebookExecutionArgs struct {
 	// Compute configuration to use for an execution job
 	// Structure is documented below.

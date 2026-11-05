@@ -1629,6 +1629,54 @@ class AwsNodePool(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return AwsNodePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict', 'outputs.AwsNodePoolAutoscaling']]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict', 'outputs.AwsNodePoolConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict', 'outputs.AwsNodePoolKubeletConfig']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict', 'outputs.AwsNodePoolManagement']]] = None,
+            max_pods_constraint: pulumi.Input[Optional[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict', 'outputs.AwsNodePoolMaxPodsConstraint']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_settings: pulumi.Input[Optional[Union['AwsNodePoolUpdateSettingsArgs', 'AwsNodePoolUpdateSettingsArgsDict', 'outputs.AwsNodePoolUpdateSettings']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["autoscaling"] = autoscaling
+        __props__["cluster"] = cluster
+        __props__["config"] = config
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["etag"] = etag
+        __props__["kubeletConfig"] = kubelet_config
+        __props__["location"] = location
+        __props__["management"] = management
+        __props__["maxPodsConstraint"] = max_pods_constraint
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["reconciling"] = reconciling
+        __props__["state"] = state
+        __props__["subnetId"] = subnet_id
+        __props__["uid"] = uid
+        __props__["updateSettings"] = update_settings
+        __props__["updateTime"] = update_time
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'gcp:container/awsNodePool:AwsNodePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

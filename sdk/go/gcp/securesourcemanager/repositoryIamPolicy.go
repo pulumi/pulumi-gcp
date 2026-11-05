@@ -382,6 +382,12 @@ func (RepositoryIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryIamPolicyState)(nil)).Elem()
 }
 
+// RepositoryIamPolicyExists checks whether an existing RepositoryIamPolicy resource with the given ID exists.
+func RepositoryIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy", id, state, "", opts...)
+}
+
 type repositoryIamPolicyArgs struct {
 	// The location for the Repository.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,

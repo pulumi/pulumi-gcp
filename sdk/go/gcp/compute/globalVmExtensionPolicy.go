@@ -371,6 +371,12 @@ func (GlobalVmExtensionPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalVmExtensionPolicyState)(nil)).Elem()
 }
 
+// GlobalVmExtensionPolicyExists checks whether an existing GlobalVmExtensionPolicy resource with the given ID exists.
+func GlobalVmExtensionPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalVmExtensionPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy", id, state, "", opts...)
+}
+
 type globalVmExtensionPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -322,6 +322,12 @@ func (TrustConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trustConfigState)(nil)).Elem()
 }
 
+// TrustConfigExists checks whether an existing TrustConfig resource with the given ID exists.
+func TrustConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrustConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:certificatemanager/trustConfig:TrustConfig", id, state, "", opts...)
+}
+
 type trustConfigArgs struct {
 	// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
 	// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.

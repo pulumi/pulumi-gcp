@@ -623,6 +623,28 @@ class EndpointAttachment(pulumi.CustomResource):
         __props__.__dict__["service_attachment"] = service_attachment
         return EndpointAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_state: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_attachment: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionState"] = connection_state
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["endpointAttachmentId"] = endpoint_attachment_id
+        __props__["host"] = host
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["serviceAttachment"] = service_attachment
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/endpointAttachment:EndpointAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionState")
     def connection_state(self) -> pulumi.Output[_builtins.str]:

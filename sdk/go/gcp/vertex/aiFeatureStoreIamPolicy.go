@@ -385,6 +385,12 @@ func (AiFeatureStoreIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiFeatureStoreIamPolicyState)(nil)).Elem()
 }
 
+// AiFeatureStoreIamPolicyExists checks whether an existing AiFeatureStoreIamPolicy resource with the given ID exists.
+func AiFeatureStoreIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureStoreIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy", id, state, "", opts...)
+}
+
 type aiFeatureStoreIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Featurestore string `pulumi:"featurestore"`

@@ -573,6 +573,12 @@ func (PatchDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*patchDeploymentState)(nil)).Elem()
 }
 
+// PatchDeploymentExists checks whether an existing PatchDeployment resource with the given ID exists.
+func PatchDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PatchDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:osconfig/patchDeployment:PatchDeployment", id, state, "", opts...)
+}
+
 type patchDeploymentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

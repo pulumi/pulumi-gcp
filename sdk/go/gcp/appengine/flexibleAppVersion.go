@@ -543,6 +543,12 @@ func (FlexibleAppVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flexibleAppVersionState)(nil)).Elem()
 }
 
+// FlexibleAppVersionExists checks whether an existing FlexibleAppVersion resource with the given ID exists.
+func FlexibleAppVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlexibleAppVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:appengine/flexibleAppVersion:FlexibleAppVersion", id, state, "", opts...)
+}
+
 type flexibleAppVersionArgs struct {
 	// Serving configuration for Google Cloud Endpoints.
 	// Structure is documented below.

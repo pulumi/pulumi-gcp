@@ -268,6 +268,12 @@ func (AiFeatureGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiFeatureGroupState)(nil)).Elem()
 }
 
+// AiFeatureGroupExists checks whether an existing AiFeatureGroup resource with the given ID exists.
+func AiFeatureGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiFeatureGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiFeatureGroup:AiFeatureGroup", id, state, "", opts...)
+}
+
 type aiFeatureGroupArgs struct {
 	// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a featureTimestamp column in the source.
 	// Structure is documented below.

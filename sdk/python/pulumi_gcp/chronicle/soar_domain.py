@@ -506,6 +506,28 @@ class SoarDomain(pulumi.CustomResource):
         __props__.__dict__["soar_domain_id"] = soar_domain_id
         return SoarDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environments_json: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            soar_domain_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["environmentsJson"] = environments_json
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["soarDomainId"] = soar_domain_id
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/soarDomain:SoarDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

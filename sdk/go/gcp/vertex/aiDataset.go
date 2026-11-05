@@ -216,6 +216,12 @@ func (AiDatasetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiDatasetState)(nil)).Elem()
 }
 
+// AiDatasetExists checks whether an existing AiDataset resource with the given ID exists.
+func AiDatasetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiDatasetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiDataset:AiDataset", id, state, "", opts...)
+}
+
 type aiDatasetArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

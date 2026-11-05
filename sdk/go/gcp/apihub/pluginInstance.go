@@ -296,6 +296,12 @@ func (PluginInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pluginInstanceState)(nil)).Elem()
 }
 
+// PluginInstanceExists checks whether an existing PluginInstance resource with the given ID exists.
+func PluginInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PluginInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apihub/pluginInstance:PluginInstance", id, state, "", opts...)
+}
+
 type pluginInstanceArgs struct {
 	// The action status for the plugin instance.
 	// Structure is documented below.

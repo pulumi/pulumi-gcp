@@ -208,6 +208,12 @@ func (OrganizationSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSettingsState)(nil)).Elem()
 }
 
+// OrganizationSettingsExists checks whether an existing OrganizationSettings resource with the given ID exists.
+func OrganizationSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:observability/organizationSettings:OrganizationSettings", id, state, "", opts...)
+}
+
 type organizationSettingsArgs struct {
 	// The default storage location for new resources, e.g. buckets. Only valid for global location.
 	DefaultStorageLocation *string `pulumi:"defaultStorageLocation"`

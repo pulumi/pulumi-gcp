@@ -269,6 +269,12 @@ func (SourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceState)(nil)).Elem()
 }
 
+// SourceExists checks whether an existing Source resource with the given ID exists.
+func SourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:migrationcenter/source:Source", id, state, "", opts...)
+}
+
 type sourceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

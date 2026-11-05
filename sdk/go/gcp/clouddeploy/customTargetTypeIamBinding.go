@@ -83,6 +83,12 @@ func (CustomTargetTypeIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customTargetTypeIamBindingState)(nil)).Elem()
 }
 
+// CustomTargetTypeIamBindingExists checks whether an existing CustomTargetTypeIamBinding resource with the given ID exists.
+func CustomTargetTypeIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomTargetTypeIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:clouddeploy/customTargetTypeIamBinding:CustomTargetTypeIamBinding", id, state, "", opts...)
+}
+
 type customTargetTypeIamBindingArgs struct {
 	Condition *CustomTargetTypeIamBindingCondition `pulumi:"condition"`
 	Location  *string                              `pulumi:"location"`

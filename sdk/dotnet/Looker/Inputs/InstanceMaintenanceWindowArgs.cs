@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Looker.Inputs
         /// - FRIDAY: Friday
         /// - SATURDAY: Saturday
         /// - SUNDAY: Sunday
-        /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        ///   Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         /// </summary>
         [Input("dayOfWeek", required: true)]
         public Input<string> DayOfWeek { get; set; } = null!;

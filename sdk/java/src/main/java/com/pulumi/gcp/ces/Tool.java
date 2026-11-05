@@ -241,12 +241,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var basic = new DataStore("basic", DataStoreArgs.builder()
  *             .location("global")
  *             .dataStoreId("tool_data_store_id")
@@ -288,7 +288,7 @@ import javax.annotation.Nullable;
  *                     .dataStores(basic.name())
  *                     .specs(ToolDataStoreToolBoostSpecSpecArgs.builder()
  *                         .conditionBoostSpecs(ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs.builder()
- *                             .condition("(lang_code: ANY(\"en\", \"fr\"))")
+ *                             .condition("(lang_code: ANY(}&#92;{@code "en}&#92;{@code ", }&#92;{@code "fr}&#92;{@code "))")
  *                             .boost(1.0)
  *                             .boostControlSpec(ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs.builder()
  *                                 .fieldName("example-field")
@@ -334,18 +334,18 @@ import javax.annotation.Nullable;
  *                 .engineSource(ToolDataStoreToolEngineSourceArgs.builder()
  *                     .engine(basicSearchEngine.name())
  *                     .dataStoreSources(ToolDataStoreToolEngineSourceDataStoreSourceArgs.builder()
- *                         .filter("example_field: ANY(\"specific_example\")")
+ *                         .filter("example_field: ANY(}&#92;{@code "specific_example}&#92;{@code ")")
  *                         .dataStore(ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs.builder()
  *                             .name(basic.name())
  *                             .build())
  *                         .build())
- *                     .filter("example_field: ANY(\"specific_example\")")
+ *                     .filter("example_field: ANY(}&#92;{@code "specific_example}&#92;{@code ")")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

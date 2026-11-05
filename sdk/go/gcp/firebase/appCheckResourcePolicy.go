@@ -282,6 +282,12 @@ func (AppCheckResourcePolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appCheckResourcePolicyState)(nil)).Elem()
 }
 
+// AppCheckResourcePolicyExists checks whether an existing AppCheckResourcePolicy resource with the given ID exists.
+func AppCheckResourcePolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppCheckResourcePolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/appCheckResourcePolicy:AppCheckResourcePolicy", id, state, "", opts...)
+}
+
 type appCheckResourcePolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -1447,6 +1447,50 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return BackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict', 'outputs.BackupPlanBackupConfig']]] = None,
+            backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict', 'outputs.BackupPlanBackupSchedule']]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protected_namespace_count: pulumi.Input[Optional[_builtins.int]] = None,
+            protected_pod_count: pulumi.Input[Optional[_builtins.int]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict', 'outputs.BackupPlanRetentionPolicy']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupConfig"] = backup_config
+        __props__["backupSchedule"] = backup_schedule
+        __props__["cluster"] = cluster
+        __props__["deactivated"] = deactivated
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["protectedNamespaceCount"] = protected_namespace_count
+        __props__["protectedPodCount"] = protected_pod_count
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["retentionPolicy"] = retention_policy
+        __props__["state"] = state
+        __props__["stateReason"] = state_reason
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'gcp:gkebackup/backupPlan:BackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> pulumi.Output[Optional['outputs.BackupPlanBackupConfig']]:

@@ -142,6 +142,12 @@ func (AiCacheConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiCacheConfigState)(nil)).Elem()
 }
 
+// AiCacheConfigExists checks whether an existing AiCacheConfig resource with the given ID exists.
+func AiCacheConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiCacheConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiCacheConfig:AiCacheConfig", id, state, "", opts...)
+}
+
 type aiCacheConfigArgs struct {
 	// If set to true, disables GenAI caching. Otherwise caching is enabled.
 	DisableCache bool `pulumi:"disableCache"`

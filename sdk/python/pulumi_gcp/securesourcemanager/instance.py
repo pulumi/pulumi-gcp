@@ -1632,6 +1632,44 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["workforce_identity_federation_config"] = workforce_identity_federation_config
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            host_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict', 'outputs.InstanceHostConfig']]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_config: pulumi.Input[Optional[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict', 'outputs.InstancePrivateConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_note: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_identity_federation_config: pulumi.Input[Optional[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict', 'outputs.InstanceWorkforceIdentityFederationConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["hostConfigs"] = host_configs
+        __props__["instanceId"] = instance_id
+        __props__["kmsKey"] = kms_key
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["privateConfig"] = private_config
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["state"] = state
+        __props__["stateNote"] = state_note
+        __props__["updateTime"] = update_time
+        __props__["workforceIdentityFederationConfig"] = workforce_identity_federation_config
+        return pulumi.runtime.exists_resource(None, 'gcp:securesourcemanager/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

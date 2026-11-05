@@ -366,6 +366,12 @@ func (ClusterIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterIAMBindingState)(nil)).Elem()
 }
 
+// ClusterIAMBindingExists checks whether an existing ClusterIAMBinding resource with the given ID exists.
+func ClusterIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/clusterIAMBinding:ClusterIAMBinding", id, state, "", opts...)
+}
+
 type clusterIAMBindingArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//

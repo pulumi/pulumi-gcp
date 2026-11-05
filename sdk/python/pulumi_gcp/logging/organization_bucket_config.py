@@ -561,6 +561,32 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         __props__.__dict__["retention_days"] = retention_days
         return OrganizationBucketConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cmek_settings: pulumi.Input[Optional[Union['OrganizationBucketConfigCmekSettingsArgs', 'OrganizationBucketConfigCmekSettingsArgsDict', 'outputs.OrganizationBucketConfigCmekSettings']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBucketConfigIndexConfigArgs', 'OrganizationBucketConfigIndexConfigArgsDict', 'outputs.OrganizationBucketConfigIndexConfig']]]]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucketId"] = bucket_id
+        __props__["cmekSettings"] = cmek_settings
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["indexConfigs"] = index_configs
+        __props__["lifecycleState"] = lifecycle_state
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["retentionDays"] = retention_days
+        return pulumi.runtime.exists_resource(None, 'gcp:logging/organizationBucketConfig:OrganizationBucketConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bucketId")
     def bucket_id(self) -> pulumi.Output[_builtins.str]:

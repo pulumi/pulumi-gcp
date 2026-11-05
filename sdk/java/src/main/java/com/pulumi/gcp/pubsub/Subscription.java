@@ -161,12 +161,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
@@ -176,14 +176,14 @@ import javax.annotation.Nullable;
  *             .topic(example.id())
  *             .labels(Map.of("foo", "bar"))
  *             .filter("""
- *     attributes.foo = \"foo\"
- *     AND attributes.bar = \"bar\"
+ *     attributes.foo = }&#92;{@code "foo}&#92;{@code "
+ *     AND attributes.bar = }&#92;{@code "bar}&#92;{@code "
  *             """)
  *             .ackDeadlineSeconds(20)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -263,12 +263,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
@@ -282,12 +282,12 @@ import javax.annotation.Nullable;
  *             .datasetId(test.datasetId())
  *             .schema("""
  * [
- *   {
- *     \"name\": \"data\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\",
- *     \"description\": \"The data\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "data}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The data}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .deletionProtection(false)
@@ -297,20 +297,20 @@ import javax.annotation.Nullable;
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> }{{@code
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
  *                     return String.format("%s.%s.%s", project,datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -341,12 +341,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
@@ -360,12 +360,12 @@ import javax.annotation.Nullable;
  *             .datasetId(test.datasetId())
  *             .schema("""
  * [
- *   {
- *     \"name\": \"data\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\",
- *     \"description\": \"The data\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "data}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The data}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .deletionProtection(false)
@@ -375,12 +375,12 @@ import javax.annotation.Nullable;
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> }{{@code
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
  *                     return String.format("%s.%s.%s", project,datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .useTableSchema(true)
  *                 .build())
  *             .build());
@@ -388,8 +388,8 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -425,12 +425,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
  *             .build());
@@ -465,12 +465,12 @@ import javax.annotation.Nullable;
  *             .datasetId(test.datasetId())
  *             .schema("""
  * [
- *   {
- *     \"name\": \"data\",
- *     \"type\": \"STRING\",
- *     \"mode\": \"NULLABLE\",
- *     \"description\": \"The data\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "data}&#92;{@code ",
+ *     }&#92;{@code "type}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *     }&#92;{@code "mode}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *     }&#92;{@code "description}&#92;{@code ": }&#92;{@code "The data}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .build());
@@ -479,12 +479,12 @@ import javax.annotation.Nullable;
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> }{{@code
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
  *                     return String.format("%s.%s.%s", project,datasetId,tableId);
- *                 }))
+ *                 }}{@code ))
  *                 .serviceAccountEmail(bqWriteServiceAccount.email())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
@@ -494,8 +494,8 @@ import javax.annotation.Nullable;
  *                     bigqueryDataEditor)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

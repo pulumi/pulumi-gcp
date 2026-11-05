@@ -1213,6 +1213,38 @@ class Slo(pulumi.CustomResource):
         __props__.__dict__["windows_based_sli"] = windows_based_sli
         return Slo(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            basic_sli: pulumi.Input[Optional[Union['SloBasicSliArgs', 'SloBasicSliArgsDict', 'outputs.SloBasicSli']]] = None,
+            calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            goal: pulumi.Input[Optional[_builtins.float]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            request_based_sli: pulumi.Input[Optional[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict', 'outputs.SloRequestBasedSli']]] = None,
+            rolling_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            slo_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            windows_based_sli: pulumi.Input[Optional[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict', 'outputs.SloWindowsBasedSli']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["basicSli"] = basic_sli
+        __props__["calendarPeriod"] = calendar_period
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["goal"] = goal
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["requestBasedSli"] = request_based_sli
+        __props__["rollingPeriodDays"] = rolling_period_days
+        __props__["service"] = service
+        __props__["sloId"] = slo_id
+        __props__["userLabels"] = user_labels
+        __props__["windowsBasedSli"] = windows_based_sli
+        return pulumi.runtime.exists_resource(None, 'gcp:monitoring/slo:Slo', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="basicSli")
     def basic_sli(self) -> pulumi.Output[Optional['outputs.SloBasicSli']]:

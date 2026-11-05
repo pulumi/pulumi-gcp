@@ -765,6 +765,36 @@ class AppGroup(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return AppGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict', 'outputs.AppGroupAttribute']]]]] = None,
+            channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            channel_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appGroupId"] = app_group_id
+        __props__["attributes"] = attributes
+        __props__["channelId"] = channel_id
+        __props__["channelUri"] = channel_uri
+        __props__["createdAt"] = created_at
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["lastModifiedAt"] = last_modified_at
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["organization"] = organization
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/appGroup:AppGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appGroupId")
     def app_group_id(self) -> pulumi.Output[_builtins.str]:

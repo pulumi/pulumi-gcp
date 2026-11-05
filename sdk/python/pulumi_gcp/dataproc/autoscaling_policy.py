@@ -600,6 +600,28 @@ class AutoscalingPolicy(pulumi.CustomResource):
         __props__.__dict__["worker_config"] = worker_config
         return AutoscalingPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            basic_algorithm: pulumi.Input[Optional[Union['AutoscalingPolicyBasicAlgorithmArgs', 'AutoscalingPolicyBasicAlgorithmArgsDict', 'outputs.AutoscalingPolicyBasicAlgorithm']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_worker_config: pulumi.Input[Optional[Union['AutoscalingPolicySecondaryWorkerConfigArgs', 'AutoscalingPolicySecondaryWorkerConfigArgsDict', 'outputs.AutoscalingPolicySecondaryWorkerConfig']]] = None,
+            worker_config: pulumi.Input[Optional[Union['AutoscalingPolicyWorkerConfigArgs', 'AutoscalingPolicyWorkerConfigArgsDict', 'outputs.AutoscalingPolicyWorkerConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["basicAlgorithm"] = basic_algorithm
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["policyId"] = policy_id
+        __props__["project"] = project
+        __props__["secondaryWorkerConfig"] = secondary_worker_config
+        __props__["workerConfig"] = worker_config
+        return pulumi.runtime.exists_resource(None, 'gcp:dataproc/autoscalingPolicy:AutoscalingPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="basicAlgorithm")
     def basic_algorithm(self) -> pulumi.Output[Optional['outputs.AutoscalingPolicyBasicAlgorithm']]:

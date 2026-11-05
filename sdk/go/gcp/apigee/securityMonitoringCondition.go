@@ -273,6 +273,12 @@ func (SecurityMonitoringConditionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityMonitoringConditionState)(nil)).Elem()
 }
 
+// SecurityMonitoringConditionExists checks whether an existing SecurityMonitoringCondition resource with the given ID exists.
+func SecurityMonitoringConditionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityMonitoringConditionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition", id, state, "", opts...)
+}
+
 type securityMonitoringConditionArgs struct {
 	// Resource ID of the security monitoring condition.
 	ConditionId string `pulumi:"conditionId"`

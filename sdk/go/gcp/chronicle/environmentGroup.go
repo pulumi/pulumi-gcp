@@ -212,6 +212,12 @@ func (EnvironmentGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentGroupState)(nil)).Elem()
 }
 
+// EnvironmentGroupExists checks whether an existing EnvironmentGroup resource with the given ID exists.
+func EnvironmentGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/environmentGroup:EnvironmentGroup", id, state, "", opts...)
+}
+
 type environmentGroupArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

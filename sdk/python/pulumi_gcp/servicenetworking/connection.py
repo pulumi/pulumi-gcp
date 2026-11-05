@@ -582,6 +582,24 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["update_on_creation_fail"] = update_on_creation_fail
         return Connection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            peering: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_peering_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            update_on_creation_fail: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["network"] = network
+        __props__["peering"] = peering
+        __props__["reservedPeeringRanges"] = reserved_peering_ranges
+        __props__["service"] = service
+        __props__["updateOnCreationFail"] = update_on_creation_fail
+        return pulumi.runtime.exists_resource(None, 'gcp:servicenetworking/connection:Connection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

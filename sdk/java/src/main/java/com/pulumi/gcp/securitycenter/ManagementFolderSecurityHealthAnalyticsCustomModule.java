@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new Folder("folder", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder-name")
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .enablementState("ENABLED")
  *             .customConfig(ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs.builder()
  *                 .predicate(ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs.builder()
- *                     .expression("resource.rotationPeriod > duration(\"2592000s\")")
+ *                     .expression("resource.rotationPeriod > duration(}&#92;{@code "2592000s}&#92;{@code ")")
  *                     .build())
  *                 .resourceSelector(ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs.builder()
  *                     .resourceTypes("cloudkms.googleapis.com/CryptoKey")
@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -114,12 +114,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var folder = new Folder("folder", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder-name")
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *             .enablementState("ENABLED")
  *             .customConfig(ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs.builder()
  *                 .predicate(ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs.builder()
- *                     .expression("resource.rotationPeriod > duration(\"2592000s\")")
+ *                     .expression("resource.rotationPeriod > duration(}&#92;{@code "2592000s}&#92;{@code ")")
  *                     .title("Purpose of the expression")
  *                     .description("description of the expression")
  *                     .location("location of the expression")
@@ -158,8 +158,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

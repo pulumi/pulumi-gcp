@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// A user provided content type header to use for the check. The invalid configurations outlined in the `ContentType` field apply to CustomContentType`, as well as the following 1. `ContentType` is `URL_ENCODED` and `CustomContentType` is set. 2. `ContentType` is `USER_PROVIDED` and `CustomContentType` is not set.
+        /// A user provided content type header to use for the check. The invalid configurations outlined in the `ContentType` field apply to CustomContentType` , as well as the following 1.  `ContentType`is`URL_ENCODED`and`CustomContentType`is set. 2.`ContentType`is`USER_PROVIDED`and`CustomContentType` is not set.
         /// </summary>
         [Input("customContentType")]
         public Input<string>? CustomContentType { get; set; }

@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Dataset("default", DatasetArgs.builder()
  *             .datasetId("my_dataset_id")
  *             .friendlyName("test")
@@ -74,11 +74,11 @@ import javax.annotation.Nullable;
  *             .dataset(default_.id())
  *             .location("global")
  *             .description("Cloud Security Command Center Findings Big Query Export Config")
- *             .filter("state=\"ACTIVE\" AND NOT mute=\"MUTED\"")
+ *             .filter("state=}&#92;{@code "ACTIVE}&#92;{@code " AND NOT mute=}&#92;{@code "MUTED}&#92;{@code "")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

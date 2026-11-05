@@ -966,6 +966,34 @@ class Hl7Store(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return Hl7Store(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_config: pulumi.Input[Optional[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict', 'outputs.Hl7StoreNotificationConfig']]] = None,
+            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['Hl7StoreNotificationConfigsArgs', 'Hl7StoreNotificationConfigsArgsDict', 'outputs.Hl7StoreNotificationConfigs']]]]] = None,
+            parser_config: pulumi.Input[Optional[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict', 'outputs.Hl7StoreParserConfig']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reject_duplicate_message: pulumi.Input[Optional[_builtins.bool]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataset"] = dataset
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["notificationConfig"] = notification_config
+        __props__["notificationConfigs"] = notification_configs
+        __props__["parserConfig"] = parser_config
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["rejectDuplicateMessage"] = reject_duplicate_message
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:healthcare/hl7Store:Hl7Store', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def dataset(self) -> pulumi.Output[_builtins.str]:

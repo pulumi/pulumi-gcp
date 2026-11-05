@@ -605,6 +605,12 @@ func (AddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressState)(nil)).Elem()
 }
 
+// AddressExists checks whether an existing Address resource with the given ID exists.
+func AddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/address:Address", id, state, "", opts...)
+}
+
 type addressArgs struct {
 	// The static external IP address represented by this resource.
 	// The IP address must be inside the specified subnetwork,

@@ -424,6 +424,12 @@ func (WorkerPoolIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerPoolIamBindingState)(nil)).Elem()
 }
 
+// WorkerPoolIamBindingExists checks whether an existing WorkerPoolIamBinding resource with the given ID exists.
+func WorkerPoolIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkerPoolIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudrunv2/workerPoolIamBinding:WorkerPoolIamBinding", id, state, "", opts...)
+}
+
 type workerPoolIamBindingArgs struct {
 	Condition *WorkerPoolIamBindingCondition `pulumi:"condition"`
 	// The location of the cloud run worker pool Used to find the parent resource to bind the IAM policy to. If not specified,

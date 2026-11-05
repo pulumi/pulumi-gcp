@@ -307,6 +307,12 @@ func (HostingReleaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostingReleaseState)(nil)).Elem()
 }
 
+// HostingReleaseExists checks whether an existing HostingRelease resource with the given ID exists.
+func HostingReleaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostingReleaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/hostingRelease:HostingRelease", id, state, "", opts...)
+}
+
 type hostingReleaseArgs struct {
 	// The ID of the channel to which the release belongs. If not provided, the release will
 	// belong to the default "live" channel

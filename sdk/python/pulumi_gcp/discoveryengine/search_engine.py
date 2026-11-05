@@ -1154,6 +1154,52 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return SearchEngine(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_type: pulumi.Input[Optional[_builtins.str]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict', 'outputs.SearchEngineCommonConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+            features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            model_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appType"] = app_type
+        __props__["collectionId"] = collection_id
+        __props__["commonConfig"] = common_config
+        __props__["createTime"] = create_time
+        __props__["dataStoreIds"] = data_store_ids
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disableAnalytics"] = disable_analytics
+        __props__["displayName"] = display_name
+        __props__["engineId"] = engine_id
+        __props__["features"] = features
+        __props__["industryVertical"] = industry_vertical
+        __props__["kmsKeyName"] = kms_key_name
+        __props__["knowledgeGraphConfig"] = knowledge_graph_config
+        __props__["location"] = location
+        __props__["modelConfigs"] = model_configs
+        __props__["name"] = name
+        __props__["procurementContactEmails"] = procurement_contact_emails
+        __props__["project"] = project
+        __props__["searchEngineConfig"] = search_engine_config
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/searchEngine:SearchEngine', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -201,6 +201,12 @@ func (TenantOauthIdpConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantOauthIdpConfigState)(nil)).Elem()
 }
 
+// TenantOauthIdpConfigExists checks whether an existing TenantOauthIdpConfig resource with the given ID exists.
+func TenantOauthIdpConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TenantOauthIdpConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig", id, state, "", opts...)
+}
+
 type tenantOauthIdpConfigArgs struct {
 	// The client id of an OAuth client.
 	ClientId string `pulumi:"clientId"`

@@ -1108,6 +1108,38 @@ class AlertPolicy(pulumi.CustomResource):
         __props__.__dict__["user_labels"] = user_labels
         return AlertPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_strategy: pulumi.Input[Optional[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict', 'outputs.AlertPolicyAlertStrategy']]] = None,
+            combiner: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict', 'outputs.AlertPolicyCondition']]]]] = None,
+            creation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyCreationRecordArgs', 'AlertPolicyCreationRecordArgsDict', 'outputs.AlertPolicyCreationRecord']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            documentation: pulumi.Input[Optional[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict', 'outputs.AlertPolicyDocumentation']]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            severity: pulumi.Input[Optional[_builtins.str]] = None,
+            user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertStrategy"] = alert_strategy
+        __props__["combiner"] = combiner
+        __props__["conditions"] = conditions
+        __props__["creationRecords"] = creation_records
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["documentation"] = documentation
+        __props__["enabled"] = enabled
+        __props__["name"] = name
+        __props__["notificationChannels"] = notification_channels
+        __props__["project"] = project
+        __props__["severity"] = severity
+        __props__["userLabels"] = user_labels
+        return pulumi.runtime.exists_resource(None, 'gcp:monitoring/alertPolicy:AlertPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertStrategy")
     def alert_strategy(self) -> pulumi.Output[Optional['outputs.AlertPolicyAlertStrategy']]:

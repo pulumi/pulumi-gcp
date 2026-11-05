@@ -955,6 +955,40 @@ class BackendBucket(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return BackendBucket(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict', 'outputs.BackendBucketCdnPolicy']]] = None,
+            compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict', 'outputs.BackendBucketParams']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucketName"] = bucket_name
+        __props__["cdnPolicy"] = cdn_policy
+        __props__["compressionMode"] = compression_mode
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["customResponseHeaders"] = custom_response_headers
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["edgeSecurityPolicy"] = edge_security_policy
+        __props__["enableCdn"] = enable_cdn
+        __props__["loadBalancingScheme"] = load_balancing_scheme
+        __props__["name"] = name
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/backendBucket:BackendBucket', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[_builtins.str]:

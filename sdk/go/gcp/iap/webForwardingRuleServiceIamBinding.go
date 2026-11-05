@@ -648,6 +648,12 @@ func (WebForwardingRuleServiceIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webForwardingRuleServiceIamBindingState)(nil)).Elem()
 }
 
+// WebForwardingRuleServiceIamBindingExists checks whether an existing WebForwardingRuleServiceIamBinding resource with the given ID exists.
+func WebForwardingRuleServiceIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebForwardingRuleServiceIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/webForwardingRuleServiceIamBinding:WebForwardingRuleServiceIamBinding", id, state, "", opts...)
+}
+
 type webForwardingRuleServiceIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

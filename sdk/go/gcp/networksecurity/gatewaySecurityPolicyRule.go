@@ -311,6 +311,12 @@ func (GatewaySecurityPolicyRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewaySecurityPolicyRuleState)(nil)).Elem()
 }
 
+// GatewaySecurityPolicyRuleExists checks whether an existing GatewaySecurityPolicyRule resource with the given ID exists.
+func GatewaySecurityPolicyRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewaySecurityPolicyRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule", id, state, "", opts...)
+}
+
 type gatewaySecurityPolicyRuleArgs struct {
 	// CEL expression for matching on L7/application level criteria.
 	ApplicationMatcher *string `pulumi:"applicationMatcher"`

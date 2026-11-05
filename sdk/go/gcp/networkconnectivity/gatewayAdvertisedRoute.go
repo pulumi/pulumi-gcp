@@ -314,6 +314,12 @@ func (GatewayAdvertisedRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayAdvertisedRouteState)(nil)).Elem()
 }
 
+// GatewayAdvertisedRouteExists checks whether an existing GatewayAdvertisedRoute resource with the given ID exists.
+func GatewayAdvertisedRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayAdvertisedRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute", id, state, "", opts...)
+}
+
 type gatewayAdvertisedRouteArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

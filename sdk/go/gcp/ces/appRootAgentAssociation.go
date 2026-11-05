@@ -203,6 +203,12 @@ func (AppRootAgentAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appRootAgentAssociationState)(nil)).Elem()
 }
 
+// AppRootAgentAssociationExists checks whether an existing AppRootAgentAssociation resource with the given ID exists.
+func AppRootAgentAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppRootAgentAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/appRootAgentAssociation:AppRootAgentAssociation", id, state, "", opts...)
+}
+
 type appRootAgentAssociationArgs struct {
 	// The ID or fully qualified resource name of the agent to associate as the
 	// root agent of the app.

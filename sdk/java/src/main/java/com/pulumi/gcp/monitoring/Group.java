@@ -47,19 +47,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var basic = new Group("basic", GroupArgs.builder()
  *             .displayName("tf-test MonitoringGroup")
- *             .filter("resource.metadata.region=\"europe-west2\"")
+ *             .filter("resource.metadata.region=}&#92;{@code "europe-west2}&#92;{@code "")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -81,25 +81,25 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var parent = new Group("parent", GroupArgs.builder()
  *             .displayName("tf-test MonitoringParentGroup")
- *             .filter("resource.metadata.region=\"europe-west2\"")
+ *             .filter("resource.metadata.region=}&#92;{@code "europe-west2}&#92;{@code "")
  *             .build());
  * 
  *         var subgroup = new Group("subgroup", GroupArgs.builder()
  *             .displayName("tf-test MonitoringSubGroup")
- *             .filter("resource.metadata.region=\"europe-west2\"")
+ *             .filter("resource.metadata.region=}&#92;{@code "europe-west2}&#92;{@code "")
  *             .parentName(parent.name())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -39,47 +39,47 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var testAspectTypeBasic = new AspectType("testAspectTypeBasic", AspectTypeArgs.builder()
  *             .aspectTypeId("aspect-type-basic")
  *             .project("my-project-name")
  *             .location("us-central1")
  *             .dataClassification("DATA_CLASSIFICATION_UNSPECIFIED")
  *             .metadataTemplate("""
- * {
- *   \"name\": \"tf-test-template\",
- *   \"type\": \"record\",
- *   \"recordFields\": [
- *     {
- *       \"name\": \"type\",
- *       \"type\": \"enum\",
- *       \"annotations\": {
- *         \"displayName\": \"Type\",
- *         \"description\": \"Specifies the type of view represented by the entry.\"
- *       },
- *       \"index\": 1,
- *       \"constraints\": {
- *         \"required\": true
- *       },
- *       \"enumValues\": [
- *         {
- *           \"name\": \"VIEW\",
- *           \"index\": 1
- *         }
+ * }{{@code
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "tf-test-template}&#92;{@code ",
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "recordFields}&#92;{@code ": [
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "type}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *       }&#92;{@code "annotations}&#92;{@code ": }{{@code
+ *         }&#92;{@code "displayName}&#92;{@code ": }&#92;{@code "Type}&#92;{@code ",
+ *         }&#92;{@code "description}&#92;{@code ": }&#92;{@code "Specifies the type of view represented by the entry.}&#92;{@code "
+ *       }}{@code ,
+ *       }&#92;{@code "index}&#92;{@code ": 1,
+ *       }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *         }&#92;{@code "required}&#92;{@code ": true
+ *       }}{@code ,
+ *       }&#92;{@code "enumValues}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "VIEW}&#92;{@code ",
+ *           }&#92;{@code "index}&#92;{@code ": 1
+ *         }}{@code
  *       ]
- *     }
+ *     }}{@code
  *   ]
- * }
+ * }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -101,12 +101,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var testAspectTypeFull = new AspectType("testAspectTypeFull", AspectTypeArgs.builder()
  *             .aspectTypeId("aspect-type-full")
  *             .project("my-project-name")
@@ -116,139 +116,139 @@ import javax.annotation.Nullable;
  *             .description("data aspect type created by Terraform")
  *             .dataClassification("METADATA_AND_DATA")
  *             .metadataTemplate("""
- * {
- *   \"type\": \"record\",
- *   \"name\": \"Schema\",
- *   \"recordFields\": [
- *     {
- *       \"name\": \"fields\",
- *       \"type\": \"array\",
- *       \"index\": 1,
- *       \"arrayItems\": {
- *         \"name\": \"field\",
- *         \"type\": \"record\",
- *         \"typeId\": \"field\",
- *         \"recordFields\": [
- *           {
- *             \"name\": \"name\",
- *             \"type\": \"string\",
- *             \"index\": 1,
- *             \"constraints\": {
- *               \"required\": true
- *             }
- *           },
- *           {
- *             \"name\": \"description\",
- *             \"type\": \"string\",
- *             \"index\": 2
- *           },
- *           {
- *             \"name\": \"dataType\",
- *             \"type\": \"string\",
- *             \"index\": 3,
- *             \"constraints\": {
- *               \"required\": true
- *             }
- *           },
- *           {
- *             \"name\": \"metadataType\",
- *             \"type\": \"enum\",
- *             \"index\": 4,
- *             \"constraints\": {
- *               \"required\": true
- *             },
- *             \"enumValues\": [
- *               {
- *                 \"name\": \"BOOLEAN\",
- *                 \"index\": 1
- *               },
- *               {
- *                 \"name\": \"NUMBER\",
- *                 \"index\": 2
- *               },
- *               {
- *                 \"name\": \"STRING\",
- *                 \"index\": 3
- *               },
- *               {
- *                 \"name\": \"BYTES\",
- *                 \"index\": 4
- *               },
- *               {
- *                 \"name\": \"DATETIME\",
- *                 \"index\": 5
- *               },
- *               {
- *                 \"name\": \"TIMESTAMP\",
- *                 \"index\": 6
- *               },
- *               {
- *                 \"name\": \"GEOSPATIAL\",
- *                 \"index\": 7
- *               },
- *               {
- *                 \"name\": \"STRUCT\",
- *                 \"index\": 8
- *               },
- *               {
- *                 \"name\": \"OTHER\",
- *                 \"index\": 100
- *               }
+ * }{{@code
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "Schema}&#92;{@code ",
+ *   }&#92;{@code "recordFields}&#92;{@code ": [
+ *     }{{@code
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "fields}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "array}&#92;{@code ",
+ *       }&#92;{@code "index}&#92;{@code ": 1,
+ *       }&#92;{@code "arrayItems}&#92;{@code ": }{{@code
+ *         }&#92;{@code "name}&#92;{@code ": }&#92;{@code "field}&#92;{@code ",
+ *         }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *         }&#92;{@code "typeId}&#92;{@code ": }&#92;{@code "field}&#92;{@code ",
+ *         }&#92;{@code "recordFields}&#92;{@code ": [
+ *           }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code ",
+ *             }&#92;{@code "index}&#92;{@code ": 1,
+ *             }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *               }&#92;{@code "required}&#92;{@code ": true
+ *             }}{@code
+ *           }}{@code ,
+ *           }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "description}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code ",
+ *             }&#92;{@code "index}&#92;{@code ": 2
+ *           }}{@code ,
+ *           }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "dataType}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code ",
+ *             }&#92;{@code "index}&#92;{@code ": 3,
+ *             }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *               }&#92;{@code "required}&#92;{@code ": true
+ *             }}{@code
+ *           }}{@code ,
+ *           }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "metadataType}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *             }&#92;{@code "index}&#92;{@code ": 4,
+ *             }&#92;{@code "constraints}&#92;{@code ": }{{@code
+ *               }&#92;{@code "required}&#92;{@code ": true
+ *             }}{@code ,
+ *             }&#92;{@code "enumValues}&#92;{@code ": [
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "BOOLEAN}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 1
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "NUMBER}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 2
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "STRING}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 3
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "BYTES}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 4
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "DATETIME}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 5
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "TIMESTAMP}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 6
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "GEOSPATIAL}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 7
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "STRUCT}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 8
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "OTHER}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 100
+ *               }}{@code
  *             ]
- *           },
- *           {
- *             \"name\": \"mode\",
- *             \"type\": \"enum\",
- *             \"index\": 5,
- *             \"enumValues\": [
- *               {
- *                 \"name\": \"NULLABLE\",
- *                 \"index\": 1
- *               },
- *               {
- *                 \"name\": \"REPEATED\",
- *                 \"index\": 2
- *               },
- *               {
- *                 \"name\": \"REQUIRED\",
- *                 \"index\": 3
- *               }
+ *           }}{@code ,
+ *           }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "mode}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "enum}&#92;{@code ",
+ *             }&#92;{@code "index}&#92;{@code ": 5,
+ *             }&#92;{@code "enumValues}&#92;{@code ": [
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "NULLABLE}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 1
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "REPEATED}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 2
+ *               }}{@code ,
+ *               }{{@code
+ *                 }&#92;{@code "name}&#92;{@code ": }&#92;{@code "REQUIRED}&#92;{@code ",
+ *                 }&#92;{@code "index}&#92;{@code ": 3
+ *               }}{@code
  *             ]
- *           },
- *           {
- *             \"name\": \"defaultValue\",
- *             \"type\": \"string\",
- *             \"index\": 6
- *           },
- *           {
- *             \"name\": \"annotations\",
- *             \"type\": \"map\",
- *             \"index\": 7,
- *             \"mapItems\": {
- *               \"name\": \"label\",
- *               \"type\": \"string\"
- *             }
- *           },
- *           {
- *             \"name\": \"fields\",
- *             \"type\": \"array\",
- *             \"index\": 20,
- *             \"arrayItems\": {
- *               \"name\": \"field\",
- *               \"type\": \"record\",
- *               \"typeRef\": \"field\"
- *             }
- *           }
+ *           }}{@code ,
+ *           }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "defaultValue}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code ",
+ *             }&#92;{@code "index}&#92;{@code ": 6
+ *           }}{@code ,
+ *           }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "annotations}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "map}&#92;{@code ",
+ *             }&#92;{@code "index}&#92;{@code ": 7,
+ *             }&#92;{@code "mapItems}&#92;{@code ": }{{@code
+ *               }&#92;{@code "name}&#92;{@code ": }&#92;{@code "label}&#92;{@code ",
+ *               }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
+ *             }}{@code
+ *           }}{@code ,
+ *           }{{@code
+ *             }&#92;{@code "name}&#92;{@code ": }&#92;{@code "fields}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "array}&#92;{@code ",
+ *             }&#92;{@code "index}&#92;{@code ": 20,
+ *             }&#92;{@code "arrayItems}&#92;{@code ": }{{@code
+ *               }&#92;{@code "name}&#92;{@code ": }&#92;{@code "field}&#92;{@code ",
+ *               }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *               }&#92;{@code "typeRef}&#92;{@code ": }&#92;{@code "field}&#92;{@code "
+ *             }}{@code
+ *           }}{@code
  *         ]
- *       }
- *     }
+ *       }}{@code
+ *     }}{@code
  *   ]
- * }
+ * }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

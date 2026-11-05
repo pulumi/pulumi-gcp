@@ -229,6 +229,12 @@ func (CodeToolsSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*codeToolsSettingState)(nil)).Elem()
 }
 
+// CodeToolsSettingExists checks whether an existing CodeToolsSetting resource with the given ID exists.
+func CodeToolsSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CodeToolsSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/codeToolsSetting:CodeToolsSetting", id, state, "", opts...)
+}
+
 type codeToolsSettingArgs struct {
 	// Id of the Code Tools Setting.
 	CodeToolsSettingId string `pulumi:"codeToolsSettingId"`

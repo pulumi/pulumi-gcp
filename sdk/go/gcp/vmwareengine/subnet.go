@@ -246,6 +246,12 @@ func (SubnetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetState)(nil)).Elem()
 }
 
+// SubnetExists checks whether an existing Subnet resource with the given ID exists.
+func SubnetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubnetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vmwareengine/subnet:Subnet", id, state, "", opts...)
+}
+
 type subnetArgs struct {
 	// The IP address range of the subnet in CIDR format.
 	IpCidrRange string `pulumi:"ipCidrRange"`

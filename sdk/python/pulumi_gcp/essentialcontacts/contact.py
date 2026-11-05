@@ -435,6 +435,24 @@ class Contact(pulumi.CustomResource):
         __props__.__dict__["parent"] = parent
         return Contact(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            language_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_category_subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["email"] = email
+        __props__["languageTag"] = language_tag
+        __props__["name"] = name
+        __props__["notificationCategorySubscriptions"] = notification_category_subscriptions
+        __props__["parent"] = parent
+        return pulumi.runtime.exists_resource(None, 'gcp:essentialcontacts/contact:Contact', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

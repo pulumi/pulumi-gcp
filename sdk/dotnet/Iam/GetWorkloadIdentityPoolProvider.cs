@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.Iam
         /// The id of the provider which is the
         /// final component of the resource name.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("workloadIdentityPoolProviderId", required: true)]
         public string WorkloadIdentityPoolProviderId { get; set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Iam
         /// The id of the provider which is the
         /// final component of the resource name.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("workloadIdentityPoolProviderId", required: true)]
         public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;

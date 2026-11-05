@@ -648,6 +648,12 @@ func (AiTrainingPipelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiTrainingPipelineState)(nil)).Elem()
 }
 
+// AiTrainingPipelineExists checks whether an existing AiTrainingPipeline resource with the given ID exists.
+func AiTrainingPipelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiTrainingPipelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiTrainingPipeline:AiTrainingPipeline", id, state, "", opts...)
+}
+
 type aiTrainingPipelineArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

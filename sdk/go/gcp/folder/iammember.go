@@ -567,6 +567,12 @@ func (IAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iammemberState)(nil)).Elem()
 }
 
+// IAMMemberExists checks whether an existing IAMMember resource with the given ID exists.
+func IAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:folder/iAMMember:IAMMember", id, state, "", opts...)
+}
+
 type iammemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

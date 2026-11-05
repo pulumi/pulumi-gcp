@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The location where the metastore service resides.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The location where the metastore service resides.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

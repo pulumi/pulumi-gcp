@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Iap.Inputs
         /// federation services.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedAccessSettingsWorkforceIdentitySettingsOauth2"&gt;&lt;/a&gt;The `Oauth2` block supports:
         /// </summary>
         [Input("oauth2")]

@@ -401,6 +401,12 @@ func (ConversationProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*conversationProfileState)(nil)).Elem()
 }
 
+// ConversationProfileExists checks whether an existing ConversationProfile resource with the given ID exists.
+func ConversationProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConversationProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/conversationProfile:ConversationProfile", id, state, "", opts...)
+}
+
 type conversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile
 	// Structure is documented below.

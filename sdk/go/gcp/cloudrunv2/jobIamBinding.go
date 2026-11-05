@@ -424,6 +424,12 @@ func (JobIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobIamBindingState)(nil)).Elem()
 }
 
+// JobIamBindingExists checks whether an existing JobIamBinding resource with the given ID exists.
+func JobIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudrunv2/jobIamBinding:JobIamBinding", id, state, "", opts...)
+}
+
 type jobIamBindingArgs struct {
 	Condition *JobIamBindingCondition `pulumi:"condition"`
 	// The location of the cloud run job Used to find the parent resource to bind the IAM policy to. If not specified,

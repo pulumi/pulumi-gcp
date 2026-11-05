@@ -954,6 +954,50 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            channel: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict', 'outputs.TriggerDestination']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict', 'outputs.TriggerMatchingCriteria']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict', 'outputs.TriggerRetryPolicy']]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict', 'outputs.TriggerTransport']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["channel"] = channel
+        __props__["conditions"] = conditions
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["destination"] = destination
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["eventDataContentType"] = event_data_content_type
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["matchingCriterias"] = matching_criterias
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["retryPolicy"] = retry_policy
+        __props__["serviceAccount"] = service_account
+        __props__["transport"] = transport
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:eventarc/trigger:Trigger', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def channel(self) -> pulumi.Output[Optional[_builtins.str]]:

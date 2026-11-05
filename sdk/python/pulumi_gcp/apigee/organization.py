@@ -1232,6 +1232,50 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["subscription_type"] = subscription_type
         return Organization(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            analytics_region: pulumi.Input[Optional[_builtins.str]] = None,
+            api_consumer_data_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            api_consumer_data_location: pulumi.Input[Optional[_builtins.str]] = None,
+            apigee_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict', 'outputs.OrganizationProperties']]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["analyticsRegion"] = analytics_region
+        __props__["apiConsumerDataEncryptionKeyName"] = api_consumer_data_encryption_key_name
+        __props__["apiConsumerDataLocation"] = api_consumer_data_location
+        __props__["apigeeProjectId"] = apigee_project_id
+        __props__["authorizedNetwork"] = authorized_network
+        __props__["billingType"] = billing_type
+        __props__["caCertificate"] = ca_certificate
+        __props__["controlPlaneEncryptionKeyName"] = control_plane_encryption_key_name
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disableVpcPeering"] = disable_vpc_peering
+        __props__["displayName"] = display_name
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["properties"] = properties
+        __props__["retention"] = retention
+        __props__["runtimeDatabaseEncryptionKeyName"] = runtime_database_encryption_key_name
+        __props__["runtimeType"] = runtime_type
+        __props__["subscriptionType"] = subscription_type
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/organization:Organization', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="analyticsRegion")
     def analytics_region(self) -> pulumi.Output[Optional[_builtins.str]]:

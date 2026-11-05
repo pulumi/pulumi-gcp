@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> RayOperatorConfigs;
         /// <summary>
-        /// . 
+        /// .
         /// The status of the slice controller addon.
         /// It is disabled by default. Set `enabled = true` to enable.
         /// </summary>

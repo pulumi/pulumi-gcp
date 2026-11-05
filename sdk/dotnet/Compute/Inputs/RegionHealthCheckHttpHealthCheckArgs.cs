@@ -40,12 +40,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// * `USE_FIXED_PORT`: The port number in `Port` is used for health checking.
         /// * `USE_NAMED_PORT`: The `portName` is used for health checking.
         /// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
-        /// network endpoint is used for health checking. For other backends, the
-        /// port or named port specified in the Backend Service is used for health
-        /// checking.
-        /// If not specified, HTTP health check follows behavior specified in `Port` and
-        /// `portName` fields.
-        /// Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        ///   network endpoint is used for health checking. For other backends, the
+        ///   port or named port specified in the Backend Service is used for health
+        ///   checking.
+        ///   If not specified, HTTP health check follows behavior specified in `Port` and
+        ///   `portName` fields.
+        ///   Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         /// </summary>
         [Input("portSpecification")]
         public Input<string>? PortSpecification { get; set; }

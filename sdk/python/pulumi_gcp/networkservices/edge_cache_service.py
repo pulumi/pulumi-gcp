@@ -1589,6 +1589,46 @@ class EdgeCacheService(pulumi.CustomResource):
         __props__.__dict__["ssl_policy"] = ssl_policy
         return EdgeCacheService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_http2: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_quic: pulumi.Input[Optional[_builtins.bool]] = None,
+            edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ipv4_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict', 'outputs.EdgeCacheServiceLogConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+            routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict', 'outputs.EdgeCacheServiceRouting']]] = None,
+            ssl_policy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disableHttp2"] = disable_http2
+        __props__["disableQuic"] = disable_quic
+        __props__["edgeSecurityPolicy"] = edge_security_policy
+        __props__["edgeSslCertificates"] = edge_ssl_certificates
+        __props__["effectiveLabels"] = effective_labels
+        __props__["ipv4Addresses"] = ipv4_addresses
+        __props__["ipv6Addresses"] = ipv6_addresses
+        __props__["labels"] = labels
+        __props__["logConfig"] = log_config
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["requireTls"] = require_tls
+        __props__["routing"] = routing
+        __props__["sslPolicy"] = ssl_policy
+        return pulumi.runtime.exists_resource(None, 'gcp:networkservices/edgeCacheService:EdgeCacheService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

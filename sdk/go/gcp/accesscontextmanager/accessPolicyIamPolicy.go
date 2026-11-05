@@ -342,6 +342,12 @@ func (AccessPolicyIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPolicyIamPolicyState)(nil)).Elem()
 }
 
+// AccessPolicyIamPolicyExists checks whether an existing AccessPolicyIamPolicy resource with the given ID exists.
+func AccessPolicyIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPolicyIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy", id, state, "", opts...)
+}
+
 type accessPolicyIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

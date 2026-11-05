@@ -162,6 +162,12 @@ func (StorageBucketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageBucketState)(nil)).Elem()
 }
 
+// StorageBucketExists checks whether an existing StorageBucket resource with the given ID exists.
+func StorageBucketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StorageBucketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/storageBucket:StorageBucket", id, state, "", opts...)
+}
+
 type storageBucketArgs struct {
 	// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
 	BucketId *string `pulumi:"bucketId"`

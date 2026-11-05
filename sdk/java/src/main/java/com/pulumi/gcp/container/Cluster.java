@@ -984,11 +984,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
      * 
-     * @deprecated
-     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
-    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
+    @Deprecated
     @Export(name="enterpriseConfig", refs={ClusterEnterpriseConfig.class}, tree="[0]")
     private Output<ClusterEnterpriseConfig> enterpriseConfig;
 
@@ -1829,11 +1828,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * pool, this should be set to `true`, alongside setting `initialNodeCount`
      * to at least `1`.
      * 
-     * @deprecated
-     * On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
+     * @deprecated On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead.
      * 
      */
-    @Deprecated /* On newer cluster versions (1.36.4-gke.1469000+) omit initialNodeCount and nodeConfig (or set initialNodeCount = 0) instead. */
+    @Deprecated
     @Export(name="removeDefaultNodePool", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> removeDefaultNodePool;
 

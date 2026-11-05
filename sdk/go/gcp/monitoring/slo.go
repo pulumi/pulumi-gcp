@@ -595,6 +595,12 @@ func (SloState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sloState)(nil)).Elem()
 }
 
+// SloExists checks whether an existing Slo resource with the given ID exists.
+func SloExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SloState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:monitoring/slo:Slo", id, state, "", opts...)
+}
+
 type sloArgs struct {
 	// Basic Service-Level Indicator (SLI) on a well-known service type.
 	// Performance will be computed on the basis of pre-defined metrics.

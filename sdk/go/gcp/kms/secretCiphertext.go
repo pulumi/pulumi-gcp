@@ -191,6 +191,12 @@ func (SecretCiphertextState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretCiphertextState)(nil)).Elem()
 }
 
+// SecretCiphertextExists checks whether an existing SecretCiphertext resource with the given ID exists.
+func SecretCiphertextExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretCiphertextState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/secretCiphertext:SecretCiphertext", id, state, "", opts...)
+}
+
 type secretCiphertextArgs struct {
 	// The additional authenticated data used for integrity checks during encryption and decryption.
 	// **Note**: This property is sensitive and will not be displayed in the plan.

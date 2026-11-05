@@ -711,6 +711,34 @@ class ResizeRequest(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return ResizeRequest(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict', 'outputs.ResizeRequestRequestedRunDuration']]] = None,
+            resize_by: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict', 'outputs.ResizeRequestStatus']]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["instanceGroupManager"] = instance_group_manager
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["requestedRunDuration"] = requested_run_duration
+        __props__["resizeBy"] = resize_by
+        __props__["state"] = state
+        __props__["statuses"] = statuses
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/resizeRequest:ResizeRequest', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[_builtins.str]:

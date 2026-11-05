@@ -463,6 +463,12 @@ func (SessionTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sessionTemplateState)(nil)).Elem()
 }
 
+// SessionTemplateExists checks whether an existing SessionTemplate resource with the given ID exists.
+func SessionTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SessionTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/sessionTemplate:SessionTemplate", id, state, "", opts...)
+}
+
 type sessionTemplateArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Transcoder.Inputs
         /// H264 codec settings
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedConfigElementaryStreamsVideoStreamH264"&gt;&lt;/a&gt;The `H264` block supports:
         /// </summary>
         [Input("h264")]

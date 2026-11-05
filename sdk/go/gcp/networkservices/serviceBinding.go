@@ -230,6 +230,12 @@ func (ServiceBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceBindingState)(nil)).Elem()
 }
 
+// ServiceBindingExists checks whether an existing ServiceBinding resource with the given ID exists.
+func ServiceBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/serviceBinding:ServiceBinding", id, state, "", opts...)
+}
+
 type serviceBindingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

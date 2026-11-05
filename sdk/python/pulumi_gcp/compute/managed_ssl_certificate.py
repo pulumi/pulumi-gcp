@@ -736,6 +736,34 @@ class ManagedSslCertificate(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return ManagedSslCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.int]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            managed: pulumi.Input[Optional[Union['ManagedSslCertificateManagedArgs', 'ManagedSslCertificateManagedArgsDict', 'outputs.ManagedSslCertificateManaged']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            subject_alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateId"] = certificate_id
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["expireTime"] = expire_time
+        __props__["managed"] = managed
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["selfLink"] = self_link
+        __props__["subjectAlternativeNames"] = subject_alternative_names
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/managedSslCertificate:ManagedSslCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Output[_builtins.int]:

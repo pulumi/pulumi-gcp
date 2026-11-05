@@ -26,12 +26,12 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly string Dimension;
         /// <summary>
-        /// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. 
+        /// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing.
         /// 											This field is only valid for the following type of rules: RangeExpectation, RegexExpectation, SetExpectation, UniquenessExpectation
         /// </summary>
         public readonly bool IgnoreNull;
         /// <summary>
-        /// A mutable name for the rule. 
+        /// A mutable name for the rule.
         /// 											The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
         /// 											The maximum length is 63 characters.
         /// 											Must start with a letter.

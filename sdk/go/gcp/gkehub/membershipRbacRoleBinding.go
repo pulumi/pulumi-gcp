@@ -278,6 +278,12 @@ func (MembershipRbacRoleBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*membershipRbacRoleBindingState)(nil)).Elem()
 }
 
+// MembershipRbacRoleBindingExists checks whether an existing MembershipRbacRoleBinding resource with the given ID exists.
+func MembershipRbacRoleBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MembershipRbacRoleBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding", id, state, "", opts...)
+}
+
 type membershipRbacRoleBindingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

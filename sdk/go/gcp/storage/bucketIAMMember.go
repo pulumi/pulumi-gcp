@@ -592,6 +592,12 @@ func (BucketIAMMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketIAMMemberState)(nil)).Elem()
 }
 
+// BucketIAMMemberExists checks whether an existing BucketIAMMember resource with the given ID exists.
+func BucketIAMMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketIAMMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/bucketIAMMember:BucketIAMMember", id, state, "", opts...)
+}
+
 type bucketIAMMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket string `pulumi:"bucket"`

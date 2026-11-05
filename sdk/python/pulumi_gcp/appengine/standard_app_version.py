@@ -1748,6 +1748,62 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__.__dict__["vpc_access_connector"] = vpc_access_connector
         return StandardAppVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_engine_apis: pulumi.Input[Optional[_builtins.bool]] = None,
+            app_engine_bundled_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            automatic_scaling: pulumi.Input[Optional[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict', 'outputs.StandardAppVersionAutomaticScaling']]] = None,
+            basic_scaling: pulumi.Input[Optional[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict', 'outputs.StandardAppVersionBasicScaling']]] = None,
+            delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment: pulumi.Input[Optional[Union['StandardAppVersionDeploymentArgs', 'StandardAppVersionDeploymentArgsDict', 'outputs.StandardAppVersionDeployment']]] = None,
+            entrypoint: pulumi.Input[Optional[Union['StandardAppVersionEntrypointArgs', 'StandardAppVersionEntrypointArgsDict', 'outputs.StandardAppVersionEntrypoint']]] = None,
+            env_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StandardAppVersionHandlerArgs', 'StandardAppVersionHandlerArgsDict', 'outputs.StandardAppVersionHandler']]]]] = None,
+            inbound_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StandardAppVersionLibraryArgs', 'StandardAppVersionLibraryArgsDict', 'outputs.StandardAppVersionLibrary']]]]] = None,
+            manual_scaling: pulumi.Input[Optional[Union['StandardAppVersionManualScalingArgs', 'StandardAppVersionManualScalingArgsDict', 'outputs.StandardAppVersionManualScaling']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            noop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            threadsafe: pulumi.Input[Optional[_builtins.bool]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_access: pulumi.Input[Optional[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']]] = None,
+            vpc_access_connector: pulumi.Input[Optional[Union['StandardAppVersionVpcAccessConnectorArgs', 'StandardAppVersionVpcAccessConnectorArgsDict', 'outputs.StandardAppVersionVpcAccessConnector']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appEngineApis"] = app_engine_apis
+        __props__["appEngineBundledServices"] = app_engine_bundled_services
+        __props__["automaticScaling"] = automatic_scaling
+        __props__["basicScaling"] = basic_scaling
+        __props__["deleteServiceOnDestroy"] = delete_service_on_destroy
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deployment"] = deployment
+        __props__["entrypoint"] = entrypoint
+        __props__["envVariables"] = env_variables
+        __props__["handlers"] = handlers
+        __props__["inboundServices"] = inbound_services
+        __props__["instanceClass"] = instance_class
+        __props__["libraries"] = libraries
+        __props__["manualScaling"] = manual_scaling
+        __props__["name"] = name
+        __props__["noopOnDestroy"] = noop_on_destroy
+        __props__["project"] = project
+        __props__["runtime"] = runtime
+        __props__["runtimeApiVersion"] = runtime_api_version
+        __props__["service"] = service
+        __props__["serviceAccount"] = service_account
+        __props__["threadsafe"] = threadsafe
+        __props__["versionId"] = version_id
+        __props__["vpcAccess"] = vpc_access
+        __props__["vpcAccessConnector"] = vpc_access_connector
+        return pulumi.runtime.exists_resource(None, 'gcp:appengine/standardAppVersion:StandardAppVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appEngineApis")
     def app_engine_apis(self) -> pulumi.Output[Optional[_builtins.bool]]:

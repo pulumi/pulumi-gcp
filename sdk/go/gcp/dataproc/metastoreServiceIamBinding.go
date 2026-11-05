@@ -433,6 +433,12 @@ func (MetastoreServiceIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metastoreServiceIamBindingState)(nil)).Elem()
 }
 
+// MetastoreServiceIamBindingExists checks whether an existing MetastoreServiceIamBinding resource with the given ID exists.
+func MetastoreServiceIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetastoreServiceIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding", id, state, "", opts...)
+}
+
 type metastoreServiceIamBindingArgs struct {
 	Condition *MetastoreServiceIamBindingCondition `pulumi:"condition"`
 	// The location where the metastore service should reside.

@@ -277,6 +277,12 @@ func (OrganizationFeedState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationFeedState)(nil)).Elem()
 }
 
+// OrganizationFeedExists checks whether an existing OrganizationFeed resource with the given ID exists.
+func OrganizationFeedExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationFeedState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudasset/organizationFeed:OrganizationFeed", id, state, "", opts...)
+}
+
 type organizationFeedArgs struct {
 	// A list of the full names of the assets to receive updates. You must specify either or both of
 	// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are

@@ -2530,6 +2530,56 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["topic"] = topic
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict', 'outputs.SubscriptionBigqueryConfig']]] = None,
+            bigtable_config: pulumi.Input[Optional[Union['SubscriptionBigtableConfigArgs', 'SubscriptionBigtableConfigArgsDict', 'outputs.SubscriptionBigtableConfig']]] = None,
+            cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict', 'outputs.SubscriptionCloudStorageConfig']]] = None,
+            dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict', 'outputs.SubscriptionDeadLetterPolicy']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
+            expiration_policy: pulumi.Input[Optional[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict', 'outputs.SubscriptionExpirationPolicy']]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict', 'outputs.SubscriptionMessageTransform']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            push_config: pulumi.Input[Optional[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict', 'outputs.SubscriptionPushConfig']]] = None,
+            retain_acked_messages: pulumi.Input[Optional[_builtins.bool]] = None,
+            retry_policy: pulumi.Input[Optional[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict', 'outputs.SubscriptionRetryPolicy']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ackDeadlineSeconds"] = ack_deadline_seconds
+        __props__["bigqueryConfig"] = bigquery_config
+        __props__["bigtableConfig"] = bigtable_config
+        __props__["cloudStorageConfig"] = cloud_storage_config
+        __props__["deadLetterPolicy"] = dead_letter_policy
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["enableExactlyOnceDelivery"] = enable_exactly_once_delivery
+        __props__["enableMessageOrdering"] = enable_message_ordering
+        __props__["expirationPolicy"] = expiration_policy
+        __props__["filter"] = filter
+        __props__["labels"] = labels
+        __props__["messageRetentionDuration"] = message_retention_duration
+        __props__["messageTransforms"] = message_transforms
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["pushConfig"] = push_config
+        __props__["retainAckedMessages"] = retain_acked_messages
+        __props__["retryPolicy"] = retry_policy
+        __props__["tags"] = tags
+        __props__["topic"] = topic
+        return pulumi.runtime.exists_resource(None, 'gcp:pubsub/subscription:Subscription', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ackDeadlineSeconds")
     def ack_deadline_seconds(self) -> pulumi.Output[_builtins.int]:

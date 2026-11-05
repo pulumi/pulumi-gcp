@@ -348,7 +348,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
     /**
      * NetBIOS name prefix of the server to be created.
      * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
-     * `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
+     * `&#92;&#92;NetBIOS_PREFIX-ABCD.DOMAIN_NAME&#92;SHARE_NAME`
      * 
      */
     @Export(name="netBiosPrefix", refs={String.class}, tree="[0]")
@@ -357,7 +357,7 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
     /**
      * @return NetBIOS name prefix of the server to be created.
      * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
-     * `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
+     * `&#92;&#92;NetBIOS_PREFIX-ABCD.DOMAIN_NAME&#92;SHARE_NAME`
      * 
      */
     public Output<String> netBiosPrefix() {

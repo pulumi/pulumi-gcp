@@ -314,6 +314,20 @@ class ServiceIdentity(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         return ServiceIdentity(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["email"] = email
+        __props__["folder"] = folder
+        __props__["member"] = member
+        __props__["service"] = service
+        return pulumi.runtime.exists_resource(None, 'gcp:folder/serviceIdentity:ServiceIdentity', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:

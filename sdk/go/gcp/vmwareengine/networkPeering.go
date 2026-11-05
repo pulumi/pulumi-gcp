@@ -336,6 +336,12 @@ func (NetworkPeeringState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPeeringState)(nil)).Elem()
 }
 
+// NetworkPeeringExists checks whether an existing NetworkPeering resource with the given ID exists.
+func NetworkPeeringExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkPeeringState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vmwareengine/networkPeering:NetworkPeering", id, state, "", opts...)
+}
+
 type networkPeeringArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

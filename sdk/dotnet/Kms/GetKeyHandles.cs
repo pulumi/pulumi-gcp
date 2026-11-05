@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Kms
         /// and
         /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -51,7 +50,6 @@ namespace Pulumi.Gcp.Kms
         /// and
         /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -82,7 +80,6 @@ namespace Pulumi.Gcp.Kms
         /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
         /// and
         /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -126,9 +123,9 @@ namespace Pulumi.Gcp.Kms
         public string? Project { get; set; }
 
         /// <summary>
-        /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+        /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("resourceTypeSelector", required: true)]
         public string ResourceTypeSelector { get; set; } = null!;
@@ -156,9 +153,9 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+        /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("resourceTypeSelector", required: true)]
         public Input<string> ResourceTypeSelector { get; set; } = null!;

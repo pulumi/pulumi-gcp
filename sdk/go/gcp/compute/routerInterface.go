@@ -242,6 +242,12 @@ func (RouterInterfaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceState)(nil)).Elem()
 }
 
+// RouterInterfaceExists checks whether an existing RouterInterface resource with the given ID exists.
+func RouterInterfaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterInterfaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/routerInterface:RouterInterface", id, state, "", opts...)
+}
+
 type routerInterfaceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

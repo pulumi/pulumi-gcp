@@ -291,6 +291,12 @@ func (AssetsExportJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*assetsExportJobState)(nil)).Elem()
 }
 
+// AssetsExportJobExists checks whether an existing AssetsExportJob resource with the given ID exists.
+func AssetsExportJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AssetsExportJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:migrationcenter/assetsExportJob:AssetsExportJob", id, state, "", opts...)
+}
+
 type assetsExportJobArgs struct {
 	// The ID to use for the asset export job.
 	AssetsExportJobId string `pulumi:"assetsExportJobId"`

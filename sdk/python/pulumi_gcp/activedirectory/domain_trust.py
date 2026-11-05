@@ -605,6 +605,30 @@ class DomainTrust(pulumi.CustomResource):
         __props__.__dict__["trust_type"] = trust_type
         return DomainTrust(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            selective_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+            target_dns_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            trust_direction: pulumi.Input[Optional[_builtins.str]] = None,
+            trust_handshake_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            trust_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["domain"] = domain
+        __props__["project"] = project
+        __props__["selectiveAuthentication"] = selective_authentication
+        __props__["targetDnsIpAddresses"] = target_dns_ip_addresses
+        __props__["targetDomainName"] = target_domain_name
+        __props__["trustDirection"] = trust_direction
+        __props__["trustHandshakeSecret"] = trust_handshake_secret
+        __props__["trustType"] = trust_type
+        return pulumi.runtime.exists_resource(None, 'gcp:activedirectory/domainTrust:DomainTrust', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

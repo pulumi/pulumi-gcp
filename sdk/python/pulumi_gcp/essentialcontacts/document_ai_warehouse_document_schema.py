@@ -504,6 +504,26 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         __props__.__dict__["property_definitions"] = property_definitions
         return DocumentAiWarehouseDocumentSchema(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            document_is_folder: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_number: pulumi.Input[Optional[_builtins.str]] = None,
+            property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict', 'outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinition']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["documentIsFolder"] = document_is_folder
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["projectNumber"] = project_number
+        __props__["propertyDefinitions"] = property_definitions
+        return pulumi.runtime.exists_resource(None, 'gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

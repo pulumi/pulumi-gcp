@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
  *                 .issuerUrl("https://oidc.issuer.url")
  *                 .jwks(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input("}{{@code \"keys\":[}{{@code \"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}}{@code ]}}{@code ")
+ *                     .input("}{&#92;{@code "keys}&#92;{@code ":[}{&#92;{@code "use}&#92;{@code ":}&#92;{@code "sig}&#92;{@code ",}&#92;{@code "kty}&#92;{@code ":}&#92;{@code "RSA}&#92;{@code ",}&#92;{@code "kid}&#92;{@code ":}&#92;{@code "testid}&#92;{@code ",}&#92;{@code "alg}&#92;{@code ":}&#92;{@code "RS256}&#92;{@code ",}&#92;{@code "n}&#92;{@code ":}&#92;{@code "somedata}&#92;{@code ",}&#92;{@code "e}&#92;{@code ":}&#92;{@code "AQAB}&#92;{@code "}}{@code ]}}{@code ")
  *                     .build()).result())
  *                 .build())
  *             .platformVersion(versions.validVersions()[0])
@@ -651,11 +651,10 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
-     * @deprecated
-     * `securityPostureConfig` is deprecated and will be removed in a future major release.
+     * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
+    @Deprecated
     @Export(name="securityPostureConfig", refs={AttachedClusterSecurityPostureConfig.class}, tree="[0]")
     private Output<AttachedClusterSecurityPostureConfig> securityPostureConfig;
 

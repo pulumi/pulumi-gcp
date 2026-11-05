@@ -1204,6 +1204,40 @@ class PatchDeployment(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return PatchDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_filter: pulumi.Input[Optional[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict', 'outputs.PatchDeploymentInstanceFilter']]] = None,
+            last_execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            one_time_schedule: pulumi.Input[Optional[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict', 'outputs.PatchDeploymentOneTimeSchedule']]] = None,
+            patch_config: pulumi.Input[Optional[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict', 'outputs.PatchDeploymentPatchConfig']]] = None,
+            patch_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recurring_schedule: pulumi.Input[Optional[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict', 'outputs.PatchDeploymentRecurringSchedule']]] = None,
+            rollout: pulumi.Input[Optional[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict', 'outputs.PatchDeploymentRollout']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["duration"] = duration
+        __props__["instanceFilter"] = instance_filter
+        __props__["lastExecuteTime"] = last_execute_time
+        __props__["name"] = name
+        __props__["oneTimeSchedule"] = one_time_schedule
+        __props__["patchConfig"] = patch_config
+        __props__["patchDeploymentId"] = patch_deployment_id
+        __props__["project"] = project
+        __props__["recurringSchedule"] = recurring_schedule
+        __props__["rollout"] = rollout
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:osconfig/patchDeployment:PatchDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

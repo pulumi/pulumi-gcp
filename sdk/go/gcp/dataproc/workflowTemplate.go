@@ -447,6 +447,12 @@ func (WorkflowTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTemplateState)(nil)).Elem()
 }
 
+// WorkflowTemplateExists checks whether an existing WorkflowTemplate resource with the given ID exists.
+func WorkflowTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataproc/workflowTemplate:WorkflowTemplate", id, state, "", opts...)
+}
+
 type workflowTemplateArgs struct {
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
 	DagTimeout *string `pulumi:"dagTimeout"`

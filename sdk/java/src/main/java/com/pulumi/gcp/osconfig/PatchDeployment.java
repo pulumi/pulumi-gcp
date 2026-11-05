@@ -310,12 +310,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()
  *             .patchDeploymentId("patch-deploy")
  *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
@@ -368,7 +368,7 @@ import javax.annotation.Nullable;
  *                         .allowedSuccessCodes(                        
  *                             0,
  *                             2)
- *                         .localPath("C:\\Users\\user\\pre-patch-script.cmd")
+ *                         .localPath("C:}&#92;&#92;{@code Users}&#92;&#92;{@code user}&#92;&#92;{@code pre-patch-script.cmd")
  *                         .build())
  *                     .build())
  *                 .postStep(PatchDeploymentPatchConfigPostStepArgs.builder()
@@ -416,8 +416,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

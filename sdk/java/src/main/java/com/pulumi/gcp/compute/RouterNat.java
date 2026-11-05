@@ -233,12 +233,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var net = new Network("net", NetworkArgs.builder()
  *             .name("my-network")
  *             .build());
@@ -291,15 +291,15 @@ import javax.annotation.Nullable;
  *             .rules(RouterNatRuleArgs.builder()
  *                 .ruleNumber(100)
  *                 .description("rule for private nat")
- *                 .match("nexthop.hub == \"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\"")
+ *                 .match("nexthop.hub == }&#92;{@code "//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub}&#92;{@code "")
  *                 .action(RouterNatRuleActionArgs.builder()
  *                     .sourceNatActiveRanges(subnet.selfLink())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

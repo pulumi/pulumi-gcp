@@ -159,6 +159,12 @@ func (ApiState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiState)(nil)).Elem()
 }
 
+// ApiExists checks whether an existing Api resource with the given ID exists.
+func ApiExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/api:Api", id, state, "", opts...)
+}
+
 type apiArgs struct {
 	// Path to the config zip bundle.
 	ConfigBundle string `pulumi:"configBundle"`

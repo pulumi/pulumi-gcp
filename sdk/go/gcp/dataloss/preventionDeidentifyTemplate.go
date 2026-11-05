@@ -356,6 +356,12 @@ func (PreventionDeidentifyTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionDeidentifyTemplateState)(nil)).Elem()
 }
 
+// PreventionDeidentifyTemplateExists checks whether an existing PreventionDeidentifyTemplate resource with the given ID exists.
+func PreventionDeidentifyTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreventionDeidentifyTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", id, state, "", opts...)
+}
+
 type preventionDeidentifyTemplateArgs struct {
 	// Configuration of the deidentify template
 	// Structure is documented below.

@@ -349,7 +349,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the primary key and foreign keys. 
+        /// Defines the primary key and foreign keys.
         /// Structure is documented below.
         /// </summary>
         [Output("tableConstraints")]
@@ -660,7 +660,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.TableSchemaForeignTypeInfoArgs>? SchemaForeignTypeInfo { get; set; }
 
         /// <summary>
-        /// Defines the primary key and foreign keys. 
+        /// Defines the primary key and foreign keys.
         /// Structure is documented below.
         /// </summary>
         [Input("tableConstraints")]
@@ -1008,7 +1008,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Defines the primary key and foreign keys. 
+        /// Defines the primary key and foreign keys.
         /// Structure is documented below.
         /// </summary>
         [Input("tableConstraints")]

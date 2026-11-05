@@ -21,7 +21,7 @@ public final class VolumeMountOption {
      * @return (Output)
      * Full export path of the volume.
      * Format for NFS volumes: `&lt;export_ip&gt;:/&lt;shareName&gt;`
-     * Format for SMB volumes: `\\\\netbios_prefix-four_random_hex_letters.domain_name\\shareName`
+     * Format for SMB volumes: `&#92;&#92;&#92;&#92;netbios_prefix-four_random_hex_letters.domain_name&#92;&#92;shareName`
      * 
      */
     private @Nullable String exportFull;
@@ -57,7 +57,7 @@ public final class VolumeMountOption {
      * @return (Output)
      * Full export path of the volume.
      * Format for NFS volumes: `&lt;export_ip&gt;:/&lt;shareName&gt;`
-     * Format for SMB volumes: `\\\\netbios_prefix-four_random_hex_letters.domain_name\\shareName`
+     * Format for SMB volumes: `&#92;&#92;&#92;&#92;netbios_prefix-four_random_hex_letters.domain_name&#92;&#92;shareName`
      * 
      */
     public Optional<String> exportFull() {

@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The name of the cluster, unique within the project and
         /// location.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string? Name;
         /// <summary>

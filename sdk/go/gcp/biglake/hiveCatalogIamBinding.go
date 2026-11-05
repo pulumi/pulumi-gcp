@@ -405,6 +405,12 @@ func (HiveCatalogIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveCatalogIamBindingState)(nil)).Elem()
 }
 
+// HiveCatalogIamBindingExists checks whether an existing HiveCatalogIamBinding resource with the given ID exists.
+func HiveCatalogIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveCatalogIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveCatalogIamBinding:HiveCatalogIamBinding", id, state, "", opts...)
+}
+
 type hiveCatalogIamBindingArgs struct {
 	Condition *HiveCatalogIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

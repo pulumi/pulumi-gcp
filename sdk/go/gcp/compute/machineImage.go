@@ -293,6 +293,12 @@ func (MachineImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineImageState)(nil)).Elem()
 }
 
+// MachineImageExists checks whether an existing MachineImage resource with the given ID exists.
+func MachineImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MachineImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/machineImage:MachineImage", id, state, "", opts...)
+}
+
 type machineImageArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

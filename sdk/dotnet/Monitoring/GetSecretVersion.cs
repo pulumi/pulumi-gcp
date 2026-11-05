@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class GetSecretVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// If set to `False`, the `SecretData` 
+        /// If set to `False`, the `SecretData`
         /// will not be fetched. Default is `True`.
         /// </summary>
         [Input("fetchSecretData")]
@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class GetSecretVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// If set to `False`, the `SecretData` 
+        /// If set to `False`, the `SecretData`
         /// will not be fetched. Default is `True`.
         /// </summary>
         [Input("fetchSecretData")]

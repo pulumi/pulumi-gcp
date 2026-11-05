@@ -718,6 +718,12 @@ func (DataConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataConnectorState)(nil)).Elem()
 }
 
+// DataConnectorExists checks whether an existing DataConnector resource with the given ID exists.
+func DataConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:discoveryengine/dataConnector:DataConnector", id, state, "", opts...)
+}
+
 type dataConnectorArgs struct {
 	// Action configuration for the data connector. Configures action
 	// capabilities for connectors that support the ACTIONS connector mode.

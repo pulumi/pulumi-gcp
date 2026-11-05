@@ -191,12 +191,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
  *             .build());
  * 
@@ -226,40 +226,40 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .metadata(Map.ofEntries(
  *                 Map.entry("gce-software-declaration", """
- * {
- *   \"softwareRecipes\": [{
- *     \"name\": \"install-gce-service-proxy-agent\",
- *     \"desired_state\": \"INSTALLED\",
- *     \"installSteps\": [{
- *       \"scriptRun\": {
- *         \"script\": \"#! /bin/bash\
- * ZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\
- * export SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\
- * sudo gsutil cp   gs://gce-service-proxy-\"$ZONE\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \"$SERVICE_PROXY_AGENT_DIRECTORY\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \"$SERVICE_PROXY_AGENT_DIRECTORY\"\
- * sudo tar -xzf \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent-0.2.tgz -C \"$SERVICE_PROXY_AGENT_DIRECTORY\"\
- * \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\"
- *       }
- *     }]
- *   }]
- * }
+ * }{{@code
+ *   }&#92;{@code "softwareRecipes}&#92;{@code ": [}{{@code
+ *     }&#92;{@code "name}&#92;{@code ": }&#92;{@code "install-gce-service-proxy-agent}&#92;{@code ",
+ *     }&#92;{@code "desired_state}&#92;{@code ": }&#92;{@code "INSTALLED}&#92;{@code ",
+ *     }&#92;{@code "installSteps}&#92;{@code ": [}{{@code
+ *       }&#92;{@code "scriptRun}&#92;{@code ": }{{@code
+ *         }&#92;{@code "script}&#92;{@code ": }&#92;{@code "#! /bin/bash}&#92;{@code
+ * ZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )}&#92;{@code
+ * export SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)}&#92;{@code
+ * sudo gsutil cp   gs://gce-service-proxy-}&#92;{@code "$ZONE}&#92;{@code "/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   }&#92;{@code "$SERVICE_PROXY_AGENT_DIRECTORY}&#92;{@code "   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     }&#92;{@code "$SERVICE_PROXY_AGENT_DIRECTORY}&#92;{@code "}&#92;{@code
+ * sudo tar -xzf }&#92;{@code "$SERVICE_PROXY_AGENT_DIRECTORY}&#92;{@code "/service-proxy-agent-0.2.tgz -C }&#92;{@code "$SERVICE_PROXY_AGENT_DIRECTORY}&#92;{@code "}&#92;{@code
+ * }&#92;{@code "$SERVICE_PROXY_AGENT_DIRECTORY}&#92;{@code "/service-proxy-agent/service-proxy-agent-bootstrap.sh}&#92;{@code "
+ *       }}{@code
+ *     }}{@code ]
+ *   }}{@code ]
+ * }}{@code
  *                 """),
  *                 Map.entry("gce-service-proxy", """
- * {
- *   \"api-version\": \"0.2\",
- *   \"proxy-spec\": {
- *     \"proxy-port\": 15001,
- *     \"network\": \"my-network\",
- *     \"tracing\": \"ON\",
- *     \"access-log\": \"/var/log/envoy/access.log\"
- *   }
- *   \"service\": {
- *     \"serving-ports\": [80, 81]
- *   },
- *  \"labels\": {
- *    \"app_name\": \"bookserver_app\",
- *    \"app_version\": \"STABLE\"
- *   }
- * }
+ * }{{@code
+ *   }&#92;{@code "api-version}&#92;{@code ": }&#92;{@code "0.2}&#92;{@code ",
+ *   }&#92;{@code "proxy-spec}&#92;{@code ": }{{@code
+ *     }&#92;{@code "proxy-port}&#92;{@code ": 15001,
+ *     }&#92;{@code "network}&#92;{@code ": }&#92;{@code "my-network}&#92;{@code ",
+ *     }&#92;{@code "tracing}&#92;{@code ": }&#92;{@code "ON}&#92;{@code ",
+ *     }&#92;{@code "access-log}&#92;{@code ": }&#92;{@code "/var/log/envoy/access.log}&#92;{@code "
+ *   }}{@code
+ *   }&#92;{@code "service}&#92;{@code ": }{{@code
+ *     }&#92;{@code "serving-ports}&#92;{@code ": [80, 81]
+ *   }}{@code ,
+ *  }&#92;{@code "labels}&#92;{@code ": }{{@code
+ *    }&#92;{@code "app_name}&#92;{@code ": }&#92;{@code "bookserver_app}&#92;{@code ",
+ *    }&#92;{@code "app_version}&#92;{@code ": }&#92;{@code "STABLE}&#92;{@code "
+ *   }}{@code
+ * }}{@code
  *                 """),
  *                 Map.entry("enable-guest-attributes", "true"),
  *                 Map.entry("enable-osconfig", "true")
@@ -271,8 +271,8 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("gce-service-proxy", "on"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -408,6 +408,12 @@ func (HubIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hubIamMemberState)(nil)).Elem()
 }
 
+// HubIamMemberExists checks whether an existing HubIamMember resource with the given ID exists.
+func HubIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HubIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/hubIamMember:HubIamMember", id, state, "", opts...)
+}
+
 type hubIamMemberArgs struct {
 	Condition *HubIamMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to

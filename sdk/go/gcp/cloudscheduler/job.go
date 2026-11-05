@@ -520,6 +520,12 @@ func (JobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobState)(nil)).Elem()
 }
 
+// JobExists checks whether an existing Job resource with the given ID exists.
+func JobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudscheduler/job:Job", id, state, "", opts...)
+}
+
 type jobArgs struct {
 	// App Engine HTTP target.
 	// If the job providers a App Engine HTTP target the cron will

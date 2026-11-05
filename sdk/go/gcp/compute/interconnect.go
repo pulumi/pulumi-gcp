@@ -588,6 +588,12 @@ func (InterconnectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*interconnectState)(nil)).Elem()
 }
 
+// InterconnectExists checks whether an existing Interconnect resource with the given ID exists.
+func InterconnectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InterconnectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/interconnect:Interconnect", id, state, "", opts...)
+}
+
 type interconnectArgs struct {
 	// (Optional, Beta)
 	// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.

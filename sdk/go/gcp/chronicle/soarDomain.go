@@ -197,6 +197,12 @@ func (SoarDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*soarDomainState)(nil)).Elem()
 }
 
+// SoarDomainExists checks whether an existing SoarDomain resource with the given ID exists.
+func SoarDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SoarDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/soarDomain:SoarDomain", id, state, "", opts...)
+}
+
 type soarDomainArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

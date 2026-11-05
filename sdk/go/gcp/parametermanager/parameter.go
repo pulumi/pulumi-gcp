@@ -390,6 +390,12 @@ func (ParameterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*parameterState)(nil)).Elem()
 }
 
+// ParameterExists checks whether an existing Parameter resource with the given ID exists.
+func ParameterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ParameterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:parametermanager/parameter:Parameter", id, state, "", opts...)
+}
+
 type parameterArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

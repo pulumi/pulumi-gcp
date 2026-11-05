@@ -460,11 +460,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      * 
-     * @deprecated
-     * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+     * @deprecated `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
+    @Deprecated
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
@@ -472,11 +471,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      * 
-     * @deprecated
-     * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+     * @deprecated `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
+    @Deprecated
     public Optional<Output<String>> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
     }
@@ -1321,11 +1319,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+         * @deprecated `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
          * 
          */
-        @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
+        @Deprecated
         public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
             $.serviceAccount = serviceAccount;
             return this;
@@ -1337,11 +1334,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+         * @deprecated `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
          * 
          */
-        @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
+        @Deprecated
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
         }

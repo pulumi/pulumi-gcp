@@ -994,6 +994,42 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["user_specified_type"] = user_specified_type
         return Entry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bigquery_date_sharded_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryBigqueryDateShardedSpecArgs', 'EntryBigqueryDateShardedSpecArgsDict', 'outputs.EntryBigqueryDateShardedSpec']]]]] = None,
+            bigquery_table_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryBigqueryTableSpecArgs', 'EntryBigqueryTableSpecArgsDict', 'outputs.EntryBigqueryTableSpec']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_group: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gcs_fileset_spec: pulumi.Input[Optional[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict', 'outputs.EntryGcsFilesetSpec']]] = None,
+            integrated_system: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_specified_system: pulumi.Input[Optional[_builtins.str]] = None,
+            user_specified_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigqueryDateShardedSpecs"] = bigquery_date_sharded_specs
+        __props__["bigqueryTableSpecs"] = bigquery_table_specs
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["entryGroup"] = entry_group
+        __props__["entryId"] = entry_id
+        __props__["gcsFilesetSpec"] = gcs_fileset_spec
+        __props__["integratedSystem"] = integrated_system
+        __props__["linkedResource"] = linked_resource
+        __props__["name"] = name
+        __props__["schema"] = schema
+        __props__["type"] = type
+        __props__["userSpecifiedSystem"] = user_specified_system
+        __props__["userSpecifiedType"] = user_specified_type
+        return pulumi.runtime.exists_resource(None, 'gcp:datacatalog/entry:Entry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigqueryDateShardedSpecs")
     def bigquery_date_sharded_specs(self) -> pulumi.Output[Sequence['outputs.EntryBigqueryDateShardedSpec']]:

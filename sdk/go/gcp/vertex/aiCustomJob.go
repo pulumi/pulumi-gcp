@@ -585,6 +585,12 @@ func (AiCustomJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiCustomJobState)(nil)).Elem()
 }
 
+// AiCustomJobExists checks whether an existing AiCustomJob resource with the given ID exists.
+func AiCustomJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiCustomJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:vertex/aiCustomJob:AiCustomJob", id, state, "", opts...)
+}
+
 type aiCustomJobArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

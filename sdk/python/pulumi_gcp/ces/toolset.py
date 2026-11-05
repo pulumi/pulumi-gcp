@@ -1928,6 +1928,46 @@ class Toolset(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Toolset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_toolset: pulumi.Input[Optional[Union['ToolsetConnectorToolsetArgs', 'ToolsetConnectorToolsetArgsDict', 'outputs.ToolsetConnectorToolset']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_type: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mcp_toolset: pulumi.Input[Optional[Union['ToolsetMcpToolsetArgs', 'ToolsetMcpToolsetArgsDict', 'outputs.ToolsetMcpToolset']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_api_toolset: pulumi.Input[Optional[Union['ToolsetOpenApiToolsetArgs', 'ToolsetOpenApiToolsetArgsDict', 'outputs.ToolsetOpenApiToolset']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_fake_config: pulumi.Input[Optional[Union['ToolsetToolFakeConfigArgs', 'ToolsetToolFakeConfigArgsDict', 'outputs.ToolsetToolFakeConfig']]] = None,
+            toolset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["app"] = app
+        __props__["connectorToolset"] = connector_toolset
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["etag"] = etag
+        __props__["executionType"] = execution_type
+        __props__["location"] = location
+        __props__["mcpToolset"] = mcp_toolset
+        __props__["name"] = name
+        __props__["openApiToolset"] = open_api_toolset
+        __props__["project"] = project
+        __props__["timeout"] = timeout
+        __props__["toolFakeConfig"] = tool_fake_config
+        __props__["toolsetId"] = toolset_id
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:ces/toolset:Toolset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def app(self) -> pulumi.Output[_builtins.str]:

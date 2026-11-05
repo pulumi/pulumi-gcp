@@ -216,6 +216,12 @@ func (FirewallRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallRuleState)(nil)).Elem()
 }
 
+// FirewallRuleExists checks whether an existing FirewallRule resource with the given ID exists.
+func FirewallRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:appengine/firewallRule:FirewallRule", id, state, "", opts...)
+}
+
 type firewallRuleArgs struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.

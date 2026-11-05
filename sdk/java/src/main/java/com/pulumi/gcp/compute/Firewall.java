@@ -315,11 +315,10 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * This field denotes whether to enable logging for a particular firewall rule.
      * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
      * 
-     * @deprecated
-     * Deprecated in favor of log_config
+     * @deprecated Deprecated in favor of log_config
      * 
      */
-    @Deprecated /* Deprecated in favor of log_config */
+    @Deprecated
     @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableLogging;
 

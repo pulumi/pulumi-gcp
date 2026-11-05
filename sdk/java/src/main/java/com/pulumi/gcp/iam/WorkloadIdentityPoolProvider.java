@@ -96,12 +96,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
@@ -112,19 +112,19 @@ import javax.annotation.Nullable;
  *             .displayName("Name of provider")
  *             .description("AWS identity pool provider for automated test")
  *             .disabled(true)
- *             .attributeCondition("attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\"")
+ *             .attributeCondition("attribute.aws_role==}&#92;{@code "arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole}&#92;{@code "")
  *             .attributeMapping(Map.ofEntries(
  *                 Map.entry("google.subject", "assertion.arn"),
  *                 Map.entry("attribute.aws_account", "assertion.account"),
- *                 Map.entry("attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"")
+ *                 Map.entry("attribute.environment", "assertion.arn.contains(}&#92;{@code ":instance-profile/Production}&#92;{@code ") ? }&#92;{@code "prod}&#92;{@code " : }&#92;{@code "test}&#92;{@code "")
  *             ))
  *             .aws(WorkloadIdentityPoolProviderAwsArgs.builder()
  *                 .accountId("999999999999")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -149,12 +149,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
@@ -166,10 +166,10 @@ import javax.annotation.Nullable;
  *             .description("GitHub Actions identity pool provider for automated test")
  *             .disabled(true)
  *             .attributeCondition("""
- *     assertion.repository_owner_id == \"123456789\" &&
- *     attribute.repository == \"gh-org/gh-repo\" &&
- *     assertion.ref == \"refs/heads/main\" &&
- *     assertion.ref_type == \"branch\"
+ *     assertion.repository_owner_id == }&#92;{@code "123456789}&#92;{@code " &&
+ *     attribute.repository == }&#92;{@code "gh-org/gh-repo}&#92;{@code " &&
+ *     assertion.ref == }&#92;{@code "refs/heads/main}&#92;{@code " &&
+ *     assertion.ref_type == }&#92;{@code "branch}&#92;{@code "
  *             """)
  *             .attributeMapping(Map.ofEntries(
  *                 Map.entry("google.subject", "assertion.sub"),
@@ -182,8 +182,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -253,12 +253,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
@@ -269,15 +269,15 @@ import javax.annotation.Nullable;
  *             .displayName("Name of provider")
  *             .description("OIDC identity pool provider for automated test")
  *             .disabled(true)
- *             .attributeCondition("\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups")
+ *             .attributeCondition("}&#92;{@code "e968c2ef-047c-498d-8d79-16ca1b61e77e}&#92;{@code " in assertion.groups")
  *             .attributeMapping(Map.ofEntries(
- *                 Map.entry("google.subject", "\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
+ *                 Map.entry("google.subject", "}&#92;{@code "azure::}&#92;{@code " + assertion.tid + }&#92;{@code "::}&#92;{@code " + assertion.sub"),
  *                 Map.entry("attribute.tid", "assertion.tid"),
  *                 Map.entry("attribute.managed_identity_name", """
- *       {
- *         \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",
- *         \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"
- *       }[assertion.oid]
+ *       }{{@code
+ *         }&#92;{@code "8bb39bdb-1cc5-4447-b7db-a19e920eb111}&#92;{@code ":}&#92;{@code "workload1}&#92;{@code ",
+ *         }&#92;{@code "55d36609-9bcf-48e0-a366-a3cf19027d2a}&#92;{@code ":}&#92;{@code "workload2}&#92;{@code "
+ *       }}{@code [assertion.oid]
  *                 """)
  *             ))
  *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
@@ -288,8 +288,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -316,12 +316,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
@@ -332,7 +332,7 @@ import javax.annotation.Nullable;
  *             .attributeMapping(Map.ofEntries(
  *                 Map.entry("google.subject", "assertion.arn"),
  *                 Map.entry("attribute.aws_account", "assertion.account"),
- *                 Map.entry("attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"")
+ *                 Map.entry("attribute.environment", "assertion.arn.contains(}&#92;{@code ":instance-profile/Production}&#92;{@code ") ? }&#92;{@code "prod}&#92;{@code " : }&#92;{@code "test}&#92;{@code "")
  *             ))
  *             .saml(WorkloadIdentityPoolProviderSamlArgs.builder()
  *                 .idpMetadataXml(StdFunctions.file(FileArgs.builder()
@@ -341,8 +341,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -369,12 +369,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
@@ -388,7 +388,7 @@ import javax.annotation.Nullable;
  *             .attributeMapping(Map.ofEntries(
  *                 Map.entry("google.subject", "assertion.arn"),
  *                 Map.entry("attribute.aws_account", "assertion.account"),
- *                 Map.entry("attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"")
+ *                 Map.entry("attribute.environment", "assertion.arn.contains(}&#92;{@code ":instance-profile/Production}&#92;{@code ") ? }&#92;{@code "prod}&#92;{@code " : }&#92;{@code "test}&#92;{@code "")
  *             ))
  *             .saml(WorkloadIdentityPoolProviderSamlArgs.builder()
  *                 .idpMetadataXml(StdFunctions.file(FileArgs.builder()
@@ -397,8 +397,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -423,12 +423,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
@@ -439,15 +439,15 @@ import javax.annotation.Nullable;
  *             .displayName("Name of provider")
  *             .description("OIDC identity pool provider for automated test")
  *             .disabled(true)
- *             .attributeCondition("\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups")
+ *             .attributeCondition("}&#92;{@code "e968c2ef-047c-498d-8d79-16ca1b61e77e}&#92;{@code " in assertion.groups")
  *             .attributeMapping(Map.ofEntries(
- *                 Map.entry("google.subject", "\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
+ *                 Map.entry("google.subject", "}&#92;{@code "azure::}&#92;{@code " + assertion.tid + }&#92;{@code "::}&#92;{@code " + assertion.sub"),
  *                 Map.entry("attribute.tid", "assertion.tid"),
  *                 Map.entry("attribute.managed_identity_name", """
- *       {
- *         \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",
- *         \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"
- *       }[assertion.oid]
+ *       }{{@code
+ *         }&#92;{@code "8bb39bdb-1cc5-4447-b7db-a19e920eb111}&#92;{@code ":}&#92;{@code "workload1}&#92;{@code ",
+ *         }&#92;{@code "55d36609-9bcf-48e0-a366-a3cf19027d2a}&#92;{@code ":}&#92;{@code "workload2}&#92;{@code "
+ *       }}{@code [assertion.oid]
  *                 """)
  *             ))
  *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
@@ -455,12 +455,12 @@ import javax.annotation.Nullable;
  *                     "https://example.com/gcp-oidc-federation",
  *                     "example.com/gcp-oidc-federation")
  *                 .issuerUri("https://sts.windows.net/azure-tenant-id")
- *                 .jwksJson("{\"keys\":[{\"kty\":\"RSA\",\"alg\":\"RS256\",\"kid\":\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\",\"use\":\"sig\",\"e\":\"AQAB\",\"n\":\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\"}]}")
+ *                 .jwksJson("}{&#92;{@code "keys}&#92;{@code ":[}{&#92;{@code "kty}&#92;{@code ":}&#92;{@code "RSA}&#92;{@code ",}&#92;{@code "alg}&#92;{@code ":}&#92;{@code "RS256}&#92;{@code ",}&#92;{@code "kid}&#92;{@code ":}&#92;{@code "sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA}&#92;{@code ",}&#92;{@code "use}&#92;{@code ":}&#92;{@code "sig}&#92;{@code ",}&#92;{@code "e}&#92;{@code ":}&#92;{@code "AQAB}&#92;{@code ",}&#92;{@code "n}&#92;{@code ":}&#92;{@code "ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw}&#92;{@code "}}{@code ]}}{@code ")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

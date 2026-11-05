@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Dataset("default", DatasetArgs.builder()
  *             .datasetId("my_dataset_id")
  *             .friendlyName("test")
@@ -73,11 +73,11 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .dataset(default_.id())
  *             .description("Cloud Security Command Center Findings Big Query Export Config")
- *             .filter("state=\"ACTIVE\" AND NOT mute=\"MUTED\"")
+ *             .filter("state=}&#92;{@code "ACTIVE}&#92;{@code " AND NOT mute=}&#92;{@code "MUTED}&#92;{@code "")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -213,7 +213,7 @@ public class ProjectSccBigQueryExport extends com.pulumi.resources.CustomResourc
      * map to those defined in the corresponding resource.
      * The supported operators are:
      * * = for all value types.
-     * * \&gt;, &lt;, &gt;=, &lt;= for integer values.
+     * * &#92;&gt;, &lt;, &gt;=, &lt;= for integer values.
      * * :, meaning substring matching, for strings.
      *   The supported value types are:
      * * string literals in quotes.
@@ -238,7 +238,7 @@ public class ProjectSccBigQueryExport extends com.pulumi.resources.CustomResourc
      * map to those defined in the corresponding resource.
      * The supported operators are:
      * * = for all value types.
-     * * \&gt;, &lt;, &gt;=, &lt;= for integer values.
+     * * &#92;&gt;, &lt;, &gt;=, &lt;= for integer values.
      * * :, meaning substring matching, for strings.
      *   The supported value types are:
      * * string literals in quotes.

@@ -492,6 +492,34 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Bucket(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cmek_settings: pulumi.Input[Optional[Union['BucketCmekSettingsArgs', 'BucketCmekSettingsArgsDict', 'outputs.BucketCmekSettings']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            purge_time: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucketId"] = bucket_id
+        __props__["cmekSettings"] = cmek_settings
+        __props__["createTime"] = create_time
+        __props__["deleteTime"] = delete_time
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["purgeTime"] = purge_time
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:observability/bucket:Bucket', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bucketId")
     def bucket_id(self) -> pulumi.Output[_builtins.str]:

@@ -1933,6 +1933,72 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return MetastoreService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            artifact_gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_config: pulumi.Input[Optional[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict', 'outputs.MetastoreServiceEncryptionConfig']]] = None,
+            endpoint_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            hive_metastore_config: pulumi.Input[Optional[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict', 'outputs.MetastoreServiceHiveMetastoreConfig']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['MetastoreServiceMaintenanceWindowArgs', 'MetastoreServiceMaintenanceWindowArgsDict', 'outputs.MetastoreServiceMaintenanceWindow']]] = None,
+            metadata_integration: pulumi.Input[Optional[Union['MetastoreServiceMetadataIntegrationArgs', 'MetastoreServiceMetadataIntegrationArgsDict', 'outputs.MetastoreServiceMetadataIntegration']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['MetastoreServiceNetworkConfigArgs', 'MetastoreServiceNetworkConfigArgsDict', 'outputs.MetastoreServiceNetworkConfig']]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            release_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_config: pulumi.Input[Optional[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict', 'outputs.MetastoreServiceScalingConfig']]] = None,
+            scheduled_backup: pulumi.Input[Optional[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict', 'outputs.MetastoreServiceScheduledBackup']]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            telemetry_config: pulumi.Input[Optional[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict', 'outputs.MetastoreServiceTelemetryConfig']]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["artifactGcsUri"] = artifact_gcs_uri
+        __props__["createTime"] = create_time
+        __props__["databaseType"] = database_type
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionConfig"] = encryption_config
+        __props__["endpointUri"] = endpoint_uri
+        __props__["hiveMetastoreConfig"] = hive_metastore_config
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["maintenanceWindow"] = maintenance_window
+        __props__["metadataIntegration"] = metadata_integration
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["networkConfig"] = network_config
+        __props__["port"] = port
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["releaseChannel"] = release_channel
+        __props__["scalingConfig"] = scaling_config
+        __props__["scheduledBackup"] = scheduled_backup
+        __props__["serviceId"] = service_id
+        __props__["state"] = state
+        __props__["stateMessage"] = state_message
+        __props__["tags"] = tags
+        __props__["telemetryConfig"] = telemetry_config
+        __props__["tier"] = tier
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:dataproc/metastoreService:MetastoreService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="artifactGcsUri")
     def artifact_gcs_uri(self) -> pulumi.Output[_builtins.str]:

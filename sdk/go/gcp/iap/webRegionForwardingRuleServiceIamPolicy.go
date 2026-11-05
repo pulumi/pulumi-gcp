@@ -619,6 +619,12 @@ func (WebRegionForwardingRuleServiceIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webRegionForwardingRuleServiceIamPolicyState)(nil)).Elem()
 }
 
+// WebRegionForwardingRuleServiceIamPolicyExists checks whether an existing WebRegionForwardingRuleServiceIamPolicy resource with the given ID exists.
+func WebRegionForwardingRuleServiceIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebRegionForwardingRuleServiceIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iap/webRegionForwardingRuleServiceIamPolicy:WebRegionForwardingRuleServiceIamPolicy", id, state, "", opts...)
+}
+
 type webRegionForwardingRuleServiceIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	ForwardingRuleRegionServiceName string `pulumi:"forwardingRuleRegionServiceName"`

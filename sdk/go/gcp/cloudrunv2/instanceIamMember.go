@@ -424,6 +424,12 @@ func (InstanceIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIamMemberState)(nil)).Elem()
 }
 
+// InstanceIamMemberExists checks whether an existing InstanceIamMember resource with the given ID exists.
+func InstanceIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudrunv2/instanceIamMember:InstanceIamMember", id, state, "", opts...)
+}
+
 type instanceIamMemberArgs struct {
 	Condition *InstanceIamMemberCondition `pulumi:"condition"`
 	// The location of the cloud run instance Used to find the parent resource to bind the IAM policy to. If not specified,

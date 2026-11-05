@@ -1576,6 +1576,48 @@ class Guardrail(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Guardrail(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict', 'outputs.GuardrailAction']]] = None,
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict', 'outputs.GuardrailCodeCallback']]] = None,
+            content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict', 'outputs.GuardrailContentFilter']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            guardrail_id: pulumi.Input[Optional[_builtins.str]] = None,
+            llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict', 'outputs.GuardrailLlmPolicy']]] = None,
+            llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict', 'outputs.GuardrailLlmPromptSecurity']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict', 'outputs.GuardrailModelSafety']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["app"] = app
+        __props__["codeCallback"] = code_callback
+        __props__["contentFilter"] = content_filter
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["enabled"] = enabled
+        __props__["etag"] = etag
+        __props__["guardrailId"] = guardrail_id
+        __props__["llmPolicy"] = llm_policy
+        __props__["llmPromptSecurity"] = llm_prompt_security
+        __props__["location"] = location
+        __props__["modelSafety"] = model_safety
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:ces/guardrail:Guardrail', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional['outputs.GuardrailAction']]:

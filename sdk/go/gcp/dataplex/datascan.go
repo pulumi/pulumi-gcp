@@ -1831,6 +1831,12 @@ func (DatascanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datascanState)(nil)).Elem()
 }
 
+// DatascanExists checks whether an existing Datascan resource with the given ID exists.
+func DatascanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatascanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/datascan:Datascan", id, state, "", opts...)
+}
+
 type datascanArgs struct {
 	// The data source for DataScan.
 	// Structure is documented below.

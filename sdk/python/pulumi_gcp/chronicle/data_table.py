@@ -981,6 +981,50 @@ class DataTable(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return DataTable(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            approximate_row_count: pulumi.Input[Optional[_builtins.int]] = None,
+            column_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataTableColumnInfoArgs', 'DataTableColumnInfoArgsDict', 'outputs.DataTableColumnInfo']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_table_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None,
+            row_time_to_live_update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_associations_count: pulumi.Input[Optional[_builtins.int]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            scope_info: pulumi.Input[Optional[Union['DataTableScopeInfoArgs', 'DataTableScopeInfoArgsDict', 'outputs.DataTableScopeInfo']]] = None,
+            update_source: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["approximateRowCount"] = approximate_row_count
+        __props__["columnInfos"] = column_infos
+        __props__["createTime"] = create_time
+        __props__["dataTableId"] = data_table_id
+        __props__["dataTableUuid"] = data_table_uuid
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["rowTimeToLive"] = row_time_to_live
+        __props__["rowTimeToLiveUpdateTime"] = row_time_to_live_update_time
+        __props__["ruleAssociationsCount"] = rule_associations_count
+        __props__["rules"] = rules
+        __props__["scopeInfo"] = scope_info
+        __props__["updateSource"] = update_source
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/dataTable:DataTable', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="approximateRowCount")
     def approximate_row_count(self) -> pulumi.Output[_builtins.int]:

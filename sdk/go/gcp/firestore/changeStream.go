@@ -294,6 +294,12 @@ func (ChangeStreamState) ElementType() reflect.Type {
 	return reflect.TypeOf((*changeStreamState)(nil)).Elem()
 }
 
+// ChangeStreamExists checks whether an existing ChangeStream resource with the given ID exists.
+func ChangeStreamExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ChangeStreamState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firestore/changeStream:ChangeStream", id, state, "", opts...)
+}
+
 type changeStreamArgs struct {
 	// Tracks changes for a specific collection group.
 	// Structure is documented below.

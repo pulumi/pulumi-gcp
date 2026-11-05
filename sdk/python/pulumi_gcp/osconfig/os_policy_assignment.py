@@ -948,6 +948,46 @@ class OsPolicyAssignment(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return OsPolicyAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            baseline: pulumi.Input[Optional[_builtins.bool]] = None,
+            deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict', 'outputs.OsPolicyAssignmentInstanceFilter']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict', 'outputs.OsPolicyAssignmentOsPolicy']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict', 'outputs.OsPolicyAssignmentRollout']]] = None,
+            rollout_state: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["baseline"] = baseline
+        __props__["deleted"] = deleted
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["etag"] = etag
+        __props__["instanceFilter"] = instance_filter
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["osPolicies"] = os_policies
+        __props__["project"] = project
+        __props__["reconciling"] = reconciling
+        __props__["revisionCreateTime"] = revision_create_time
+        __props__["revisionId"] = revision_id
+        __props__["rollout"] = rollout
+        __props__["rolloutState"] = rollout_state
+        __props__["skipAwaitRollout"] = skip_await_rollout
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'gcp:osconfig/osPolicyAssignment:OsPolicyAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def baseline(self) -> pulumi.Output[_builtins.bool]:

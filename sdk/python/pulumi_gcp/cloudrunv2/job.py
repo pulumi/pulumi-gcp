@@ -2255,6 +2255,80 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict', 'outputs.JobBinaryAuthorization']]] = None,
+            client: pulumi.Input[Optional[_builtins.str]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobConditionArgs', 'JobConditionArgsDict', 'outputs.JobCondition']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_count: pulumi.Input[Optional[_builtins.int]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            functional_type: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_created_executions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLatestCreatedExecutionArgs', 'JobLatestCreatedExecutionArgsDict', 'outputs.JobLatestCreatedExecution']]]]] = None,
+            launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+            start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict', 'outputs.JobTemplate']]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict', 'outputs.JobTerminalCondition']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["binaryAuthorization"] = binary_authorization
+        __props__["client"] = client
+        __props__["clientVersion"] = client_version
+        __props__["conditions"] = conditions
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deletionProtection"] = deletion_protection
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["executionCount"] = execution_count
+        __props__["expireTime"] = expire_time
+        __props__["functionalType"] = functional_type
+        __props__["generation"] = generation
+        __props__["labels"] = labels
+        __props__["lastModifier"] = last_modifier
+        __props__["latestCreatedExecutions"] = latest_created_executions
+        __props__["launchStage"] = launch_stage
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["observedGeneration"] = observed_generation
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["runExecutionToken"] = run_execution_token
+        __props__["startExecutionToken"] = start_execution_token
+        __props__["tags"] = tags
+        __props__["template"] = template
+        __props__["terminalConditions"] = terminal_conditions
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudrunv2/job:Job', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

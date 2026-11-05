@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly int? StandardCapacityBase;
         /// <summary>
         /// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standardCapacityBase. eg. If 15 instances are requested and standardCapacityBase is 5 and standardCapacityPercentAboveBase is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
-        /// - - -
+        /// ***
         /// </summary>
         public readonly int? StandardCapacityPercentAboveBase;
 

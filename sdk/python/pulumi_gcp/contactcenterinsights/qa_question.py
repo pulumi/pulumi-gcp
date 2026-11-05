@@ -987,6 +987,50 @@ class QaQuestion(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return QaQuestion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            abbreviation: pulumi.Input[Optional[_builtins.str]] = None,
+            answer_choices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaQuestionAnswerChoiceArgs', 'QaQuestionAnswerChoiceArgsDict', 'outputs.QaQuestionAnswerChoice']]]]] = None,
+            answer_instructions: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics: pulumi.Input[Optional[Union['QaQuestionMetricsArgs', 'QaQuestionMetricsArgsDict', 'outputs.QaQuestionMetrics']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            order: pulumi.Input[Optional[_builtins.int]] = None,
+            predefined_question_config: pulumi.Input[Optional[Union['QaQuestionPredefinedQuestionConfigArgs', 'QaQuestionPredefinedQuestionConfigArgsDict', 'outputs.QaQuestionPredefinedQuestionConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            qa_question_data_options: pulumi.Input[Optional[Union['QaQuestionQaQuestionDataOptionsArgs', 'QaQuestionQaQuestionDataOptionsArgsDict', 'outputs.QaQuestionQaQuestionDataOptions']]] = None,
+            qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
+            question_body: pulumi.Input[Optional[_builtins.str]] = None,
+            question_type: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tuning_metadata: pulumi.Input[Optional[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict', 'outputs.QaQuestionTuningMetadata']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["abbreviation"] = abbreviation
+        __props__["answerChoices"] = answer_choices
+        __props__["answerInstructions"] = answer_instructions
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["metrics"] = metrics
+        __props__["name"] = name
+        __props__["order"] = order
+        __props__["predefinedQuestionConfig"] = predefined_question_config
+        __props__["project"] = project
+        __props__["qaQuestionDataOptions"] = qa_question_data_options
+        __props__["qaScorecard"] = qa_scorecard
+        __props__["questionBody"] = question_body
+        __props__["questionType"] = question_type
+        __props__["revision"] = revision
+        __props__["tags"] = tags
+        __props__["tuningMetadata"] = tuning_metadata
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:contactcenterinsights/qaQuestion:QaQuestion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def abbreviation(self) -> pulumi.Output[Optional[_builtins.str]]:

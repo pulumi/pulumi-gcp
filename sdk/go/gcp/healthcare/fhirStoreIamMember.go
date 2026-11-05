@@ -303,6 +303,12 @@ func (FhirStoreIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreIamMemberState)(nil)).Elem()
 }
 
+// FhirStoreIamMemberExists checks whether an existing FhirStoreIamMember resource with the given ID exists.
+func FhirStoreIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FhirStoreIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember", id, state, "", opts...)
+}
+
 type fhirStoreIamMemberArgs struct {
 	Condition *FhirStoreIamMemberCondition `pulumi:"condition"`
 	// The FHIR store ID, in the form

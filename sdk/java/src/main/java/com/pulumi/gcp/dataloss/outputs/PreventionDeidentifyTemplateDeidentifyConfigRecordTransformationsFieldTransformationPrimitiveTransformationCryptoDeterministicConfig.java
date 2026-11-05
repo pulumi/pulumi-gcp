@@ -32,13 +32,13 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey cryptoKey;
     /**
      * @return The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
-     * For example, if the name of custom info type is &#39;MY\_TOKEN\_INFO\_TYPE&#39; and the surrogate is &#39;abc&#39;, the full replacement value will be: &#39;MY\_TOKEN\_INFO\_TYPE(3):abc&#39;
+     * For example, if the name of custom info type is &#39;MY&#92;_TOKEN&#92;_INFO&#92;_TYPE&#39; and the surrogate is &#39;abc&#39;, the full replacement value will be: &#39;MY&#92;_TOKEN&#92;_INFO&#92;_TYPE(3):abc&#39;
      * This annotation identifies the surrogate when inspecting content using the custom info type &#39;Surrogate&#39;. This facilitates reversal of the surrogate when it occurs in free text.
      * Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
      * In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
      * *   reverse a surrogate that does not correspond to an actual identifier
      * *   be unable to parse the surrogate and result in an error
-     *     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
+     *     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY&#92;_TOKEN&#92;_TYPE.
      *     Structure is documented below.
      * 
      */
@@ -68,13 +68,13 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
     /**
      * @return The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
-     * For example, if the name of custom info type is &#39;MY\_TOKEN\_INFO\_TYPE&#39; and the surrogate is &#39;abc&#39;, the full replacement value will be: &#39;MY\_TOKEN\_INFO\_TYPE(3):abc&#39;
+     * For example, if the name of custom info type is &#39;MY&#92;_TOKEN&#92;_INFO&#92;_TYPE&#39; and the surrogate is &#39;abc&#39;, the full replacement value will be: &#39;MY&#92;_TOKEN&#92;_INFO&#92;_TYPE(3):abc&#39;
      * This annotation identifies the surrogate when inspecting content using the custom info type &#39;Surrogate&#39;. This facilitates reversal of the surrogate when it occurs in free text.
      * Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
      * In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
      * *   reverse a surrogate that does not correspond to an actual identifier
      * *   be unable to parse the surrogate and result in an error
-     *     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
+     *     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY&#92;_TOKEN&#92;_TYPE.
      *     Structure is documented below.
      * 
      */

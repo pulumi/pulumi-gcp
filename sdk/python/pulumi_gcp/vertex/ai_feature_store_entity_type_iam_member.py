@@ -699,6 +699,24 @@ class AiFeatureStoreEntityTypeIamMember(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return AiFeatureStoreEntityTypeIamMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeIamMemberConditionArgs', 'AiFeatureStoreEntityTypeIamMemberConditionArgsDict', 'outputs.AiFeatureStoreEntityTypeIamMemberCondition']]] = None,
+            entitytype: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["entitytype"] = entitytype
+        __props__["etag"] = etag
+        __props__["featurestore"] = featurestore
+        __props__["member"] = member
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.AiFeatureStoreEntityTypeIamMemberCondition']]:

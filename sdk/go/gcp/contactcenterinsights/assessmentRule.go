@@ -198,6 +198,12 @@ func (AssessmentRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*assessmentRuleState)(nil)).Elem()
 }
 
+// AssessmentRuleExists checks whether an existing AssessmentRule resource with the given ID exists.
+func AssessmentRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AssessmentRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:contactcenterinsights/assessmentRule:AssessmentRule", id, state, "", opts...)
+}
+
 type assessmentRuleArgs struct {
 	// If true, apply this rule to conversations. Otherwise, this rule is
 	// inactive.

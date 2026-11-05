@@ -393,6 +393,12 @@ func (DataExchangeSubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataExchangeSubscriptionState)(nil)).Elem()
 }
 
+// DataExchangeSubscriptionExists checks whether an existing DataExchangeSubscription resource with the given ID exists.
+func DataExchangeSubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataExchangeSubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription", id, state, "", opts...)
+}
+
 type dataExchangeSubscriptionArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId string `pulumi:"dataExchangeId"`

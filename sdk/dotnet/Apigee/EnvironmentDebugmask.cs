@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.Apigee
         /// The Apigee environment associated with the debug mask, in the format
         /// `organizations/{{org_name}}/environments/{{env_name}}`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("envId")]
         public Output<string> EnvId { get; private set; } = null!;
@@ -236,7 +236,7 @@ namespace Pulumi.Gcp.Apigee
         /// The Apigee environment associated with the debug mask, in the format
         /// `organizations/{{org_name}}/environments/{{env_name}}`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.Gcp.Apigee
         /// The Apigee environment associated with the debug mask, in the format
         /// `organizations/{{org_name}}/environments/{{env_name}}`.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("envId")]
         public Input<string>? EnvId { get; set; }

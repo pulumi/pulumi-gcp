@@ -454,6 +454,12 @@ func (ProjectSinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectSinkState)(nil)).Elem()
 }
 
+// ProjectSinkExists checks whether an existing ProjectSink resource with the given ID exists.
+func ProjectSinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectSinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:logging/projectSink:ProjectSink", id, state, "", opts...)
+}
+
 type projectSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`

@@ -98,6 +98,17 @@ export class RuntimeProjectAttachment extends pulumi.CustomResource {
         return new RuntimeProjectAttachment(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RuntimeProjectAttachment resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RuntimeProjectAttachmentState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gcp:apihub/runtimeProjectAttachment:RuntimeProjectAttachment", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gcp:apihub/runtimeProjectAttachment:RuntimeProjectAttachment';
 

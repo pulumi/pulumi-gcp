@@ -145,14 +145,14 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
         /// The placeholders in this value are replaced as follows:
         /// * ENDPOINT: The last segment (following `endpoints/`)of the
-        /// Endpoint.name][] field of the Endpoint where this Model has been
-        /// deployed. (Vertex AI makes this value available to your container code
-        /// as the [`AIP_ENDPOINT_ID` environment
-        /// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        ///   Endpoint.name][] field of the Endpoint where this Model has been
+        ///   deployed. (Vertex AI makes this value available to your container code
+        ///   as the [`AIP_ENDPOINT_ID` environment
+        ///   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         /// * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-        /// (Vertex AI makes this value available to your container code as the
-        /// [`AIP_DEPLOYED_MODEL_ID` environment
-        /// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        ///   (Vertex AI makes this value available to your container code as the
+        ///   [`AIP_DEPLOYED_MODEL_ID` environment
+        ///   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         /// </summary>
         public readonly string? HealthRoute;
         /// <summary>
@@ -214,14 +214,14 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
         /// The placeholders in this value are replaced as follows:
         /// * ENDPOINT: The last segment (following `endpoints/`)of the
-        /// Endpoint.name][] field of the Endpoint where this Model has been
-        /// deployed. (Vertex AI makes this value available to your container code
-        /// as the [`AIP_ENDPOINT_ID` environment
-        /// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        ///   Endpoint.name][] field of the Endpoint where this Model has been
+        ///   deployed. (Vertex AI makes this value available to your container code
+        ///   as the [`AIP_ENDPOINT_ID` environment
+        ///   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         /// * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-        /// (Vertex AI makes this value available to your container code
-        /// as the [`AIP_DEPLOYED_MODEL_ID` environment
-        /// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        ///   (Vertex AI makes this value available to your container code
+        ///   as the [`AIP_DEPLOYED_MODEL_ID` environment
+        ///   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         /// </summary>
         public readonly string? PredictRoute;
         /// <summary>

@@ -330,7 +330,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The number of the serial port to read output from. Possible values are 1-4.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("port", required: true)]
         public int Port { get; set; }
@@ -366,7 +366,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The number of the serial port to read output from. Possible values are 1-4.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;

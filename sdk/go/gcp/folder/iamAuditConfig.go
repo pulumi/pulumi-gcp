@@ -537,6 +537,12 @@ func (IamAuditConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamAuditConfigState)(nil)).Elem()
 }
 
+// IamAuditConfigExists checks whether an existing IamAuditConfig resource with the given ID exists.
+func IamAuditConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IamAuditConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:folder/iamAuditConfig:IamAuditConfig", id, state, "", opts...)
+}
+
 type iamAuditConfigArgs struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`

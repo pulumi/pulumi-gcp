@@ -231,7 +231,7 @@ public final class OrganizationVpcFlowLogsConfigState extends com.pulumi.resourc
 
     /**
      * Optional. Custom metadata fields to include in the reported VPC flow
-     * logs. Can only be specified if \&#34;metadata\&#34; was set to CUSTOM_METADATA.
+     * logs. Can only be specified if &#92;&#34;metadata&#92;&#34; was set to CUSTOM_METADATA.
      * 
      */
     @Import(name="metadataFields")
@@ -239,7 +239,7 @@ public final class OrganizationVpcFlowLogsConfigState extends com.pulumi.resourc
 
     /**
      * @return Optional. Custom metadata fields to include in the reported VPC flow
-     * logs. Can only be specified if \&#34;metadata\&#34; was set to CUSTOM_METADATA.
+     * logs. Can only be specified if &#92;&#34;metadata&#92;&#34; was set to CUSTOM_METADATA.
      * 
      */
     public Optional<Output<List<String>>> metadataFields() {
@@ -662,7 +662,7 @@ public final class OrganizationVpcFlowLogsConfigState extends com.pulumi.resourc
 
         /**
          * @param metadataFields Optional. Custom metadata fields to include in the reported VPC flow
-         * logs. Can only be specified if \&#34;metadata\&#34; was set to CUSTOM_METADATA.
+         * logs. Can only be specified if &#92;&#34;metadata&#92;&#34; was set to CUSTOM_METADATA.
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class OrganizationVpcFlowLogsConfigState extends com.pulumi.resourc
 
         /**
          * @param metadataFields Optional. Custom metadata fields to include in the reported VPC flow
-         * logs. Can only be specified if \&#34;metadata\&#34; was set to CUSTOM_METADATA.
+         * logs. Can only be specified if &#92;&#34;metadata&#92;&#34; was set to CUSTOM_METADATA.
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class OrganizationVpcFlowLogsConfigState extends com.pulumi.resourc
 
         /**
          * @param metadataFields Optional. Custom metadata fields to include in the reported VPC flow
-         * logs. Can only be specified if \&#34;metadata\&#34; was set to CUSTOM_METADATA.
+         * logs. Can only be specified if &#92;&#34;metadata&#92;&#34; was set to CUSTOM_METADATA.
          * 
          * @return builder
          * 

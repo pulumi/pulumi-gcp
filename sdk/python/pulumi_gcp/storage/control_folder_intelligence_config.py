@@ -389,6 +389,24 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ControlFolderIntelligenceConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            edition_config: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_intelligence_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgsDict', 'outputs.ControlFolderIntelligenceConfigEffectiveIntelligenceConfig']]]]] = None,
+            filter: pulumi.Input[Optional[Union['ControlFolderIntelligenceConfigFilterArgs', 'ControlFolderIntelligenceConfigFilterArgsDict', 'outputs.ControlFolderIntelligenceConfigFilter']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            trial_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlFolderIntelligenceConfigTrialConfigArgs', 'ControlFolderIntelligenceConfigTrialConfigArgsDict', 'outputs.ControlFolderIntelligenceConfigTrialConfig']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["editionConfig"] = edition_config
+        __props__["effectiveIntelligenceConfigs"] = effective_intelligence_configs
+        __props__["filter"] = filter
+        __props__["name"] = name
+        __props__["trialConfigs"] = trial_configs
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="editionConfig")
     def edition_config(self) -> pulumi.Output[_builtins.str]:

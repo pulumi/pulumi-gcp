@@ -1773,6 +1773,76 @@ class FlexibleAppVersion(pulumi.CustomResource):
         __props__.__dict__["vpc_access_connector"] = vpc_access_connector
         return FlexibleAppVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_config: pulumi.Input[Optional[Union['FlexibleAppVersionApiConfigArgs', 'FlexibleAppVersionApiConfigArgsDict', 'outputs.FlexibleAppVersionApiConfig']]] = None,
+            automatic_scaling: pulumi.Input[Optional[Union['FlexibleAppVersionAutomaticScalingArgs', 'FlexibleAppVersionAutomaticScalingArgsDict', 'outputs.FlexibleAppVersionAutomaticScaling']]] = None,
+            beta_settings: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            default_expiration: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment: pulumi.Input[Optional[Union['FlexibleAppVersionDeploymentArgs', 'FlexibleAppVersionDeploymentArgsDict', 'outputs.FlexibleAppVersionDeployment']]] = None,
+            endpoints_api_service: pulumi.Input[Optional[Union['FlexibleAppVersionEndpointsApiServiceArgs', 'FlexibleAppVersionEndpointsApiServiceArgsDict', 'outputs.FlexibleAppVersionEndpointsApiService']]] = None,
+            entrypoint: pulumi.Input[Optional[Union['FlexibleAppVersionEntrypointArgs', 'FlexibleAppVersionEntrypointArgsDict', 'outputs.FlexibleAppVersionEntrypoint']]] = None,
+            env_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            flexible_runtime_settings: pulumi.Input[Optional[Union['FlexibleAppVersionFlexibleRuntimeSettingsArgs', 'FlexibleAppVersionFlexibleRuntimeSettingsArgsDict', 'outputs.FlexibleAppVersionFlexibleRuntimeSettings']]] = None,
+            handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlexibleAppVersionHandlerArgs', 'FlexibleAppVersionHandlerArgsDict', 'outputs.FlexibleAppVersionHandler']]]]] = None,
+            inbound_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            liveness_check: pulumi.Input[Optional[Union['FlexibleAppVersionLivenessCheckArgs', 'FlexibleAppVersionLivenessCheckArgsDict', 'outputs.FlexibleAppVersionLivenessCheck']]] = None,
+            manual_scaling: pulumi.Input[Optional[Union['FlexibleAppVersionManualScalingArgs', 'FlexibleAppVersionManualScalingArgsDict', 'outputs.FlexibleAppVersionManualScaling']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['FlexibleAppVersionNetworkArgs', 'FlexibleAppVersionNetworkArgsDict', 'outputs.FlexibleAppVersionNetwork']]] = None,
+            nobuild_files_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            noop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            readiness_check: pulumi.Input[Optional[Union['FlexibleAppVersionReadinessCheckArgs', 'FlexibleAppVersionReadinessCheckArgsDict', 'outputs.FlexibleAppVersionReadinessCheck']]] = None,
+            resources: pulumi.Input[Optional[Union['FlexibleAppVersionResourcesArgs', 'FlexibleAppVersionResourcesArgsDict', 'outputs.FlexibleAppVersionResources']]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_main_executable_path: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            serving_status: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_access_connector: pulumi.Input[Optional[Union['FlexibleAppVersionVpcAccessConnectorArgs', 'FlexibleAppVersionVpcAccessConnectorArgsDict', 'outputs.FlexibleAppVersionVpcAccessConnector']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiConfig"] = api_config
+        __props__["automaticScaling"] = automatic_scaling
+        __props__["betaSettings"] = beta_settings
+        __props__["defaultExpiration"] = default_expiration
+        __props__["deleteServiceOnDestroy"] = delete_service_on_destroy
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deployment"] = deployment
+        __props__["endpointsApiService"] = endpoints_api_service
+        __props__["entrypoint"] = entrypoint
+        __props__["envVariables"] = env_variables
+        __props__["flexibleRuntimeSettings"] = flexible_runtime_settings
+        __props__["handlers"] = handlers
+        __props__["inboundServices"] = inbound_services
+        __props__["instanceClass"] = instance_class
+        __props__["livenessCheck"] = liveness_check
+        __props__["manualScaling"] = manual_scaling
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["nobuildFilesRegex"] = nobuild_files_regex
+        __props__["noopOnDestroy"] = noop_on_destroy
+        __props__["project"] = project
+        __props__["readinessCheck"] = readiness_check
+        __props__["resources"] = resources
+        __props__["runtime"] = runtime
+        __props__["runtimeApiVersion"] = runtime_api_version
+        __props__["runtimeChannel"] = runtime_channel
+        __props__["runtimeMainExecutablePath"] = runtime_main_executable_path
+        __props__["service"] = service
+        __props__["serviceAccount"] = service_account
+        __props__["servingStatus"] = serving_status
+        __props__["versionId"] = version_id
+        __props__["vpcAccessConnector"] = vpc_access_connector
+        return pulumi.runtime.exists_resource(None, 'gcp:appengine/flexibleAppVersion:FlexibleAppVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiConfig")
     def api_config(self) -> pulumi.Output[Optional['outputs.FlexibleAppVersionApiConfig']]:

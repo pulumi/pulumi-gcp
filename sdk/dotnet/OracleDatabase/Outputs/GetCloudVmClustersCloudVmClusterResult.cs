@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudVmClustersCloudVmClusterIdentityConnectorResult> IdentityConnectors;
         /// <summary>
-        /// Labels or tags associated with the VM Cluster. 
+        /// Labels or tags associated with the VM Cluster.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// <summary>
         /// The location of the resource.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public readonly string Location;
         /// <summary>

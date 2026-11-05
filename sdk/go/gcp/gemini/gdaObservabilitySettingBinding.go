@@ -248,6 +248,12 @@ func (GdaObservabilitySettingBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gdaObservabilitySettingBindingState)(nil)).Elem()
 }
 
+// GdaObservabilitySettingBindingExists checks whether an existing GdaObservabilitySettingBinding resource with the given ID exists.
+func GdaObservabilitySettingBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GdaObservabilitySettingBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/gdaObservabilitySettingBinding:GdaObservabilitySettingBinding", id, state, "", opts...)
+}
+
 type gdaObservabilitySettingBindingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

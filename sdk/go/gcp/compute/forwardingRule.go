@@ -2061,6 +2061,12 @@ func (ForwardingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*forwardingRuleState)(nil)).Elem()
 }
 
+// ForwardingRuleExists checks whether an existing ForwardingRule resource with the given ID exists.
+func ForwardingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ForwardingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/forwardingRule:ForwardingRule", id, state, "", opts...)
+}
+
 type forwardingRuleArgs struct {
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded

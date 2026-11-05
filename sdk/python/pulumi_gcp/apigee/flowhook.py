@@ -453,6 +453,26 @@ class Flowhook(pulumi.CustomResource):
         __props__.__dict__["sharedflow"] = sharedflow
         return Flowhook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            continue_on_error: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_hook_point: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sharedflow: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["continueOnError"] = continue_on_error
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["environment"] = environment
+        __props__["flowHookPoint"] = flow_hook_point
+        __props__["orgId"] = org_id
+        __props__["sharedflow"] = sharedflow
+        return pulumi.runtime.exists_resource(None, 'gcp:apigee/flowhook:Flowhook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="continueOnError")
     def continue_on_error(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -483,6 +483,12 @@ func (ClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterState)(nil)).Elem()
 }
 
+// ClusterExists checks whether an existing Cluster resource with the given ID exists.
+func ClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:managedkafka/cluster:Cluster", id, state, "", opts...)
+}
+
 type clusterArgs struct {
 	// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
 	// Structure is documented below.

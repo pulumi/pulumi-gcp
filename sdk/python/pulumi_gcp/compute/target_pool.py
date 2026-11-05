@@ -753,6 +753,36 @@ class TargetPool(pulumi.CustomResource):
         __props__.__dict__["session_affinity"] = session_affinity
         return TargetPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+            health_checks: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            session_affinity: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupPool"] = backup_pool
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["failoverRatio"] = failover_ratio
+        __props__["healthChecks"] = health_checks
+        __props__["instances"] = instances
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["region"] = region
+        __props__["securityPolicy"] = security_policy
+        __props__["selfLink"] = self_link
+        __props__["sessionAffinity"] = session_affinity
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/targetPool:TargetPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupPool")
     def backup_pool(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -127,6 +127,12 @@ func (ProjectDefaultNetworkTierState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectDefaultNetworkTierState)(nil)).Elem()
 }
 
+// ProjectDefaultNetworkTierExists checks whether an existing ProjectDefaultNetworkTier resource with the given ID exists.
+func ProjectDefaultNetworkTierExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectDefaultNetworkTierState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier", id, state, "", opts...)
+}
+
 type projectDefaultNetworkTierArgs struct {
 	// The default network tier to be configured for the project.
 	// This field can take the following values: `PREMIUM` or `STANDARD`.

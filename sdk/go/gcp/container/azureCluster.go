@@ -433,6 +433,12 @@ func (AzureClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureClusterState)(nil)).Elem()
 }
 
+// AzureClusterExists checks whether an existing AzureCluster resource with the given ID exists.
+func AzureClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:container/azureCluster:AzureCluster", id, state, "", opts...)
+}
+
 type azureClusterArgs struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	//

@@ -844,6 +844,12 @@ func (CloudControlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudControlState)(nil)).Elem()
 }
 
+// CloudControlExists checks whether an existing CloudControl resource with the given ID exists.
+func CloudControlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudControlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudsecuritycompliance/cloudControl:CloudControl", id, state, "", opts...)
+}
+
 type cloudControlArgs struct {
 	// The categories of the cloud control.
 	Categories []string `pulumi:"categories"`

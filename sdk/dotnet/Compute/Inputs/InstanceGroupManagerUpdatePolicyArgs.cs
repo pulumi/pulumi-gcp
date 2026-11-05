@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set MaxUnavailableFixed or MaxUnavailablePercent to be greater than 0.
-        /// - - -
+        /// ***
         /// </summary>
         [Input("replacementMethod")]
         public Input<string>? ReplacementMethod { get; set; }

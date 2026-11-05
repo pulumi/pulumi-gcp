@@ -14,13 +14,11 @@ namespace Pulumi.Gcp.SiteVerification
         /// <summary>
         /// A verification token is used to demonstrate ownership of a website or domain.
         /// 
-        /// 
         /// To get more information about Token, see:
         /// 
         /// * [API documentation](https://developers.google.com/site-verification/v1)
         /// * How-to Guides
         ///     * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -70,13 +68,11 @@ namespace Pulumi.Gcp.SiteVerification
         /// <summary>
         /// A verification token is used to demonstrate ownership of a website or domain.
         /// 
-        /// 
         /// To get more information about Token, see:
         /// 
         /// * [API documentation](https://developers.google.com/site-verification/v1)
         /// * How-to Guides
         ///     * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -126,13 +122,11 @@ namespace Pulumi.Gcp.SiteVerification
         /// <summary>
         /// A verification token is used to demonstrate ownership of a website or domain.
         /// 
-        /// 
         /// To get more information about Token, see:
         /// 
         /// * [API documentation](https://developers.google.com/site-verification/v1)
         /// * How-to Guides
         ///     * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -202,8 +196,7 @@ namespace Pulumi.Gcp.SiteVerification
         /// this site or domain.
         /// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
         /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("verificationMethod", required: true)]
         public string VerificationMethod { get; set; } = null!;
@@ -235,8 +228,7 @@ namespace Pulumi.Gcp.SiteVerification
         /// this site or domain.
         /// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
         /// 
-        /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("verificationMethod", required: true)]
         public Input<string> VerificationMethod { get; set; } = null!;

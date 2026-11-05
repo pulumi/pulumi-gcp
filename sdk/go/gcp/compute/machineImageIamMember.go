@@ -654,6 +654,12 @@ func (MachineImageIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineImageIamMemberState)(nil)).Elem()
 }
 
+// MachineImageIamMemberExists checks whether an existing MachineImageIamMember resource with the given ID exists.
+func MachineImageIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MachineImageIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/machineImageIamMember:MachineImageIamMember", id, state, "", opts...)
+}
+
 type machineImageIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

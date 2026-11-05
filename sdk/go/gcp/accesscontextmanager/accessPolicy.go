@@ -228,6 +228,12 @@ func (AccessPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPolicyState)(nil)).Elem()
 }
 
+// AccessPolicyExists checks whether an existing AccessPolicy resource with the given ID exists.
+func AccessPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/accessPolicy:AccessPolicy", id, state, "", opts...)
+}
+
 type accessPolicyArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

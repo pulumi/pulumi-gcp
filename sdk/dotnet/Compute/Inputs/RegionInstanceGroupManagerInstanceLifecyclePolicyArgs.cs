@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// , Configuration for VM repairs in the MIG. Structure is documented below.
-        /// - - -
+        /// ***
         /// </summary>
         [Input("onRepair")]
         public Input<Inputs.RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs>? OnRepair { get; set; }

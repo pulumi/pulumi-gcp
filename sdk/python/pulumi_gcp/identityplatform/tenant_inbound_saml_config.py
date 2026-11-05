@@ -586,6 +586,28 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         __props__.__dict__["tenant"] = tenant
         return TenantInboundSamlConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            idp_config: pulumi.Input[Optional[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict', 'outputs.TenantInboundSamlConfigIdpConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sp_config: pulumi.Input[Optional[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict', 'outputs.TenantInboundSamlConfigSpConfig']]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["enabled"] = enabled
+        __props__["idpConfig"] = idp_config
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["spConfig"] = sp_config
+        __props__["tenant"] = tenant
+        return pulumi.runtime.exists_resource(None, 'gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

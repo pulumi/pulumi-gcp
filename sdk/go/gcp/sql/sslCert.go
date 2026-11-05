@@ -217,6 +217,12 @@ func (SslCertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslCertState)(nil)).Elem()
 }
 
+// SslCertExists checks whether an existing SslCert resource with the given ID exists.
+func SslCertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SslCertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:sql/sslCert:SslCert", id, state, "", opts...)
+}
+
 type sslCertArgs struct {
 	// The common name to be used in the certificate to identify the
 	// client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.

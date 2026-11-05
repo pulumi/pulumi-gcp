@@ -1200,6 +1200,60 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["workstation_launch_url"] = workstation_launch_url
         return WorkstationCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationClusterConditionArgs', 'WorkstationClusterConditionArgsDict', 'outputs.WorkstationClusterCondition']]]]] = None,
+            control_plane_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            degraded: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict', 'outputs.WorkstationClusterDomainConfig']]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            private_cluster_config: pulumi.Input[Optional[Union['WorkstationClusterPrivateClusterConfigArgs', 'WorkstationClusterPrivateClusterConfigArgsDict', 'outputs.WorkstationClusterPrivateClusterConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_authorization_url: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_launch_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["conditions"] = conditions
+        __props__["controlPlaneIp"] = control_plane_ip
+        __props__["createTime"] = create_time
+        __props__["degraded"] = degraded
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["domainConfig"] = domain_config
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["privateClusterConfig"] = private_cluster_config
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["subnetwork"] = subnetwork
+        __props__["tags"] = tags
+        __props__["uid"] = uid
+        __props__["workstationAuthorizationUrl"] = workstation_authorization_url
+        __props__["workstationClusterId"] = workstation_cluster_id
+        __props__["workstationLaunchUrl"] = workstation_launch_url
+        return pulumi.runtime.exists_resource(None, 'gcp:workstations/workstationCluster:WorkstationCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

@@ -340,6 +340,12 @@ func (AnalysisRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*analysisRuleState)(nil)).Elem()
 }
 
+// AnalysisRuleExists checks whether an existing AnalysisRule resource with the given ID exists.
+func AnalysisRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AnalysisRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:contactcenterinsights/analysisRule:AnalysisRule", id, state, "", opts...)
+}
+
 type analysisRuleArgs struct {
 	// If true, apply this rule to conversations. Otherwise, this rule is
 	// inactive and saved as a draft.

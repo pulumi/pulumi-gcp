@@ -163,6 +163,12 @@ func (SharedflowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedflowState)(nil)).Elem()
 }
 
+// SharedflowExists checks whether an existing Sharedflow resource with the given ID exists.
+func SharedflowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SharedflowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:apigee/sharedflow:Sharedflow", id, state, "", opts...)
+}
+
 type sharedflowArgs struct {
 	// Path to the config zip bundle.
 	ConfigBundle string `pulumi:"configBundle"`

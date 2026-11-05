@@ -408,6 +408,12 @@ func (SchemaIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*schemaIamBindingState)(nil)).Elem()
 }
 
+// SchemaIamBindingExists checks whether an existing SchemaIamBinding resource with the given ID exists.
+func SchemaIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SchemaIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:pubsub/schemaIamBinding:SchemaIamBinding", id, state, "", opts...)
+}
+
 type schemaIamBindingArgs struct {
 	Condition *SchemaIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

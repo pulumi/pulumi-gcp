@@ -1243,6 +1243,66 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorization: pulumi.Input[Optional[Union['ClusterAuthorizationArgs', 'ClusterAuthorizationArgsDict', 'outputs.ClusterAuthorization']]] = None,
+            cluster_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            control_plane: pulumi.Input[Optional[Union['ClusterControlPlaneArgs', 'ClusterControlPlaneArgsDict', 'outputs.ClusterControlPlane']]] = None,
+            control_plane_encryption: pulumi.Input[Optional[Union['ClusterControlPlaneEncryptionArgs', 'ClusterControlPlaneEncryptionArgsDict', 'outputs.ClusterControlPlaneEncryption']]] = None,
+            control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            external_load_balancer_ipv4_address_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict', 'outputs.ClusterFleet']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_events: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterMaintenanceEventArgs', 'ClusterMaintenanceEventArgsDict', 'outputs.ClusterMaintenanceEvent']]]]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict', 'outputs.ClusterMaintenancePolicy']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networking: pulumi.Input[Optional[Union['ClusterNetworkingArgs', 'ClusterNetworkingArgsDict', 'outputs.ClusterNetworking']]] = None,
+            node_version: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            release_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            system_addons_config: pulumi.Input[Optional[Union['ClusterSystemAddonsConfigArgs', 'ClusterSystemAddonsConfigArgsDict', 'outputs.ClusterSystemAddonsConfig']]] = None,
+            target_version: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorization"] = authorization
+        __props__["clusterCaCertificate"] = cluster_ca_certificate
+        __props__["controlPlane"] = control_plane
+        __props__["controlPlaneEncryption"] = control_plane_encryption
+        __props__["controlPlaneVersion"] = control_plane_version
+        __props__["createTime"] = create_time
+        __props__["defaultMaxPodsPerNode"] = default_max_pods_per_node
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["endpoint"] = endpoint
+        __props__["externalLoadBalancerIpv4AddressPools"] = external_load_balancer_ipv4_address_pools
+        __props__["fleet"] = fleet
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["maintenanceEvents"] = maintenance_events
+        __props__["maintenancePolicy"] = maintenance_policy
+        __props__["name"] = name
+        __props__["networking"] = networking
+        __props__["nodeVersion"] = node_version
+        __props__["port"] = port
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["releaseChannel"] = release_channel
+        __props__["status"] = status
+        __props__["systemAddonsConfig"] = system_addons_config
+        __props__["targetVersion"] = target_version
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:edgecontainer/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def authorization(self) -> pulumi.Output['outputs.ClusterAuthorization']:

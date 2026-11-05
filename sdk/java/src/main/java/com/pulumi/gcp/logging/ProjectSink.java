@@ -105,12 +105,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Our logged compute instance
  *         var my_logged_instance = new Instance("my-logged-instance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *             .name("my-instance-sink")
  *             .description("some explanation on what this is")
  *             .destination(gcs_bucket.name().applyValue(_name -> String.format("storage.googleapis.com/%s", _name)))
- *             .filter(my_logged_instance.instanceId().applyValue(_instanceId -> String.format("resource.type = gce_instance AND resource.labels.instance_id = \"%s\"", _instanceId)))
+ *             .filter(my_logged_instance.instanceId().applyValue(_instanceId -> String.format("resource.type = gce_instance AND resource.labels.instance_id = }&#92;{@code "%s}&#92;{@code "", _instanceId)))
  *             .uniqueWriterIdentity(true)
  *             .build());
  * 
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  *             .members(instance_sink.writerIdentity())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -240,12 +240,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var log_bucket = new ProjectSink("log-bucket", ProjectSinkArgs.builder()
  *             .name("my-logging-sink")
  *             .destination("logging.googleapis.com/projects/my-project/locations/global/buckets/_Default")
@@ -253,18 +253,18 @@ import javax.annotation.Nullable;
  *                 ProjectSinkExclusionArgs.builder()
  *                     .name("nsexcllusion1")
  *                     .description("Exclude logs from namespace-1 in k8s")
- *                     .filter("resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" ")
+ *                     .filter("resource.type = k8s_container resource.labels.namespace_name=}&#92;{@code "namespace-1}&#92;{@code " ")
  *                     .build(),
  *                 ProjectSinkExclusionArgs.builder()
  *                     .name("nsexcllusion2")
  *                     .description("Exclude logs from namespace-2 in k8s")
- *                     .filter("resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" ")
+ *                     .filter("resource.type = k8s_container resource.labels.namespace_name=}&#92;{@code "namespace-2}&#92;{@code " ")
  *                     .build())
  *             .uniqueWriterIdentity(true)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

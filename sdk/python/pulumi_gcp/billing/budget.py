@@ -988,6 +988,30 @@ class Budget(pulumi.CustomResource):
         __props__.__dict__["threshold_rules"] = threshold_rules
         return Budget(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_updates_rule: pulumi.Input[Optional[Union['BudgetAllUpdatesRuleArgs', 'BudgetAllUpdatesRuleArgsDict', 'outputs.BudgetAllUpdatesRule']]] = None,
+            amount: pulumi.Input[Optional[Union['BudgetAmountArgs', 'BudgetAmountArgsDict', 'outputs.BudgetAmount']]] = None,
+            billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+            budget_filter: pulumi.Input[Optional[Union['BudgetBudgetFilterArgs', 'BudgetBudgetFilterArgsDict', 'outputs.BudgetBudgetFilter']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ownership_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            threshold_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BudgetThresholdRuleArgs', 'BudgetThresholdRuleArgsDict', 'outputs.BudgetThresholdRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allUpdatesRule"] = all_updates_rule
+        __props__["amount"] = amount
+        __props__["billingAccount"] = billing_account
+        __props__["budgetFilter"] = budget_filter
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["name"] = name
+        __props__["ownershipScope"] = ownership_scope
+        __props__["thresholdRules"] = threshold_rules
+        return pulumi.runtime.exists_resource(None, 'gcp:billing/budget:Budget', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allUpdatesRule")
     def all_updates_rule(self) -> pulumi.Output[Optional['outputs.BudgetAllUpdatesRule']]:

@@ -176,6 +176,12 @@ func (IcebergNamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*icebergNamespaceState)(nil)).Elem()
 }
 
+// IcebergNamespaceExists checks whether an existing IcebergNamespace resource with the given ID exists.
+func IcebergNamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IcebergNamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/icebergNamespace:IcebergNamespace", id, state, "", opts...)
+}
+
 type icebergNamespaceArgs struct {
 	// The name of the IcebergCatalog.
 	Catalog string `pulumi:"catalog"`

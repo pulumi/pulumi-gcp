@@ -229,6 +229,12 @@ func (BucketAccessControlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketAccessControlState)(nil)).Elem()
 }
 
+// BucketAccessControlExists checks whether an existing BucketAccessControl resource with the given ID exists.
+func BucketAccessControlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketAccessControlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/bucketAccessControl:BucketAccessControl", id, state, "", opts...)
+}
+
 type bucketAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

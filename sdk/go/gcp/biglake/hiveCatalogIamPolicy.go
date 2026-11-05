@@ -357,6 +357,12 @@ func (HiveCatalogIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hiveCatalogIamPolicyState)(nil)).Elem()
 }
 
+// HiveCatalogIamPolicyExists checks whether an existing HiveCatalogIamPolicy resource with the given ID exists.
+func HiveCatalogIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HiveCatalogIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:biglake/hiveCatalogIamPolicy:HiveCatalogIamPolicy", id, state, "", opts...)
+}
+
 type hiveCatalogIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`

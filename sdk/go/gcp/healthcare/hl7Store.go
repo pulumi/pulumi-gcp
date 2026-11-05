@@ -446,6 +446,12 @@ func (Hl7StoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreState)(nil)).Elem()
 }
 
+// Hl7StoreExists checks whether an existing Hl7Store resource with the given ID exists.
+func Hl7StoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Hl7StoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:healthcare/hl7Store:Hl7Store", id, state, "", opts...)
+}
+
 type hl7StoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'

@@ -376,6 +376,12 @@ func (ConnectionIAMPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionIAMPolicyState)(nil)).Elem()
 }
 
+// ConnectionIAMPolicyExists checks whether an existing ConnectionIAMPolicy resource with the given ID exists.
+func ConnectionIAMPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionIAMPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy", id, state, "", opts...)
+}
+
 type connectionIAMPolicyArgs struct {
 	// The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

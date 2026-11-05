@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The location of the Address Group.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The location of the Address Group.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

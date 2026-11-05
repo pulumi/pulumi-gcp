@@ -257,6 +257,12 @@ func (InsightsReportConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*insightsReportConfigState)(nil)).Elem()
 }
 
+// InsightsReportConfigExists checks whether an existing InsightsReportConfig resource with the given ID exists.
+func InsightsReportConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InsightsReportConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/insightsReportConfig:InsightsReportConfig", id, state, "", opts...)
+}
+
 type insightsReportConfigArgs struct {
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.

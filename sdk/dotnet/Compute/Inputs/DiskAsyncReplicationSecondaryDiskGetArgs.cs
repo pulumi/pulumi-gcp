@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Output-only. Status of replication on the secondary disk.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

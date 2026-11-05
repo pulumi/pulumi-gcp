@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// - `run.googleapis.com/`
         /// - `compute.googleapis.com/`
         /// - `networkservices.googleapis.com/`
-        /// The format must be the full resource name of a supported resource.
+        ///   The format must be the full resource name of a supported resource.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
 

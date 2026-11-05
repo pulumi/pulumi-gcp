@@ -973,6 +973,40 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         return PublicDelegatedPrefix(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocatable_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_enhanced_ipv4_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_live_migration: pulumi.Input[Optional[_builtins.bool]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            public_delegated_sub_prefixs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs', 'PublicDelegatedPrefixPublicDelegatedSubPrefixArgsDict', 'outputs.PublicDelegatedPrefixPublicDelegatedSubPrefix']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allocatablePrefixLength"] = allocatable_prefix_length
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["enableEnhancedIpv4Allocation"] = enable_enhanced_ipv4_allocation
+        __props__["ipCidrRange"] = ip_cidr_range
+        __props__["ipv6AccessType"] = ipv6_access_type
+        __props__["isLiveMigration"] = is_live_migration
+        __props__["mode"] = mode
+        __props__["name"] = name
+        __props__["parentPrefix"] = parent_prefix
+        __props__["project"] = project
+        __props__["publicDelegatedSubPrefixs"] = public_delegated_sub_prefixs
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allocatablePrefixLength")
     def allocatable_prefix_length(self) -> pulumi.Output[_builtins.int]:

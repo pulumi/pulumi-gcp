@@ -168,9 +168,9 @@ namespace Pulumi.Gcp.Iam
         /// The current state of the managed identity.
         /// * `ACTIVE`: The managed identity is active.
         /// * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-        /// permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-        /// identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-        /// soft-deleted managed identity until it is permanently deleted.
+        ///   permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+        ///   identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+        ///   soft-deleted managed identity until it is permanently deleted.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Output("workloadIdentityPoolManagedIdentityId")]
         public Output<string> WorkloadIdentityPoolManagedIdentityId { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Output("workloadIdentityPoolNamespaceId")]
         public Output<string> WorkloadIdentityPoolNamespaceId { get; private set; } = null!;
@@ -311,7 +311,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Input("workloadIdentityPoolManagedIdentityId", required: true)]
         public Input<string> WorkloadIdentityPoolManagedIdentityId { get; set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Input("workloadIdentityPoolNamespaceId", required: true)]
         public Input<string> WorkloadIdentityPoolNamespaceId { get; set; } = null!;
@@ -392,9 +392,9 @@ namespace Pulumi.Gcp.Iam
         /// The current state of the managed identity.
         /// * `ACTIVE`: The managed identity is active.
         /// * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-        /// permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-        /// identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-        /// soft-deleted managed identity until it is permanently deleted.
+        ///   permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+        ///   identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+        ///   soft-deleted managed identity until it is permanently deleted.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -413,7 +413,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Input("workloadIdentityPoolManagedIdentityId")]
         public Input<string>? WorkloadIdentityPoolManagedIdentityId { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.Gcp.Iam
         /// * contain only lowercase alphanumeric characters or `-`
         /// * start with an alphanumeric character
         /// * end with an alphanumeric character
-        /// The prefix `gcp-` will be reserved for future uses.
+        ///   The prefix `gcp-` will be reserved for future uses.
         /// </summary>
         [Input("workloadIdentityPoolNamespaceId")]
         public Input<string>? WorkloadIdentityPoolNamespaceId { get; set; }

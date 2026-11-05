@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// Retrieves the current IAM policy data for database
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -42,7 +41,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// Retrieves the current IAM policy data for database
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,7 +67,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// Retrieves the current IAM policy data for database
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -594,6 +594,12 @@ func (DnsManagedZoneIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsManagedZoneIamPolicyState)(nil)).Elem()
 }
 
+// DnsManagedZoneIamPolicyExists checks whether an existing DnsManagedZoneIamPolicy resource with the given ID exists.
+func DnsManagedZoneIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsManagedZoneIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy", id, state, "", opts...)
+}
+
 type dnsManagedZoneIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	ManagedZone string `pulumi:"managedZone"`

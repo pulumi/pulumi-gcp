@@ -1282,6 +1282,48 @@ class DataTransferConfig(pulumi.CustomResource):
         __props__.__dict__["service_account_name"] = service_account_name
         return DataTransferConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_refresh_window_days: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            email_preferences: pulumi.Input[Optional[Union['DataTransferConfigEmailPreferencesArgs', 'DataTransferConfigEmailPreferencesArgsDict', 'outputs.DataTransferConfigEmailPreferences']]] = None,
+            encryption_configuration: pulumi.Input[Optional[Union['DataTransferConfigEncryptionConfigurationArgs', 'DataTransferConfigEncryptionConfigurationArgsDict', 'outputs.DataTransferConfigEncryptionConfiguration']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_options: pulumi.Input[Optional[Union['DataTransferConfigScheduleOptionsArgs', 'DataTransferConfigScheduleOptionsArgsDict', 'outputs.DataTransferConfigScheduleOptions']]] = None,
+            schedule_options_v2: pulumi.Input[Optional[Union['DataTransferConfigScheduleOptionsV2Args', 'DataTransferConfigScheduleOptionsV2ArgsDict', 'outputs.DataTransferConfigScheduleOptionsV2']]] = None,
+            sensitive_params: pulumi.Input[Optional[Union['DataTransferConfigSensitiveParamsArgs', 'DataTransferConfigSensitiveParamsArgsDict', 'outputs.DataTransferConfigSensitiveParams']]] = None,
+            service_account_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataRefreshWindowDays"] = data_refresh_window_days
+        __props__["dataSourceId"] = data_source_id
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["destinationDatasetId"] = destination_dataset_id
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["emailPreferences"] = email_preferences
+        __props__["encryptionConfiguration"] = encryption_configuration
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["notificationPubsubTopic"] = notification_pubsub_topic
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["schedule"] = schedule
+        __props__["scheduleOptions"] = schedule_options
+        __props__["scheduleOptionsV2"] = schedule_options_v2
+        __props__["sensitiveParams"] = sensitive_params
+        __props__["serviceAccountName"] = service_account_name
+        return pulumi.runtime.exists_resource(None, 'gcp:bigquery/dataTransferConfig:DataTransferConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataRefreshWindowDays")
     def data_refresh_window_days(self) -> pulumi.Output[Optional[_builtins.int]]:

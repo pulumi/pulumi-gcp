@@ -427,6 +427,12 @@ func (RuntimeTemplateIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*runtimeTemplateIamBindingState)(nil)).Elem()
 }
 
+// RuntimeTemplateIamBindingExists checks whether an existing RuntimeTemplateIamBinding resource with the given ID exists.
+func RuntimeTemplateIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuntimeTemplateIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:colab/runtimeTemplateIamBinding:RuntimeTemplateIamBinding", id, state, "", opts...)
+}
+
 type runtimeTemplateIamBindingArgs struct {
 	Condition *RuntimeTemplateIamBindingCondition `pulumi:"condition"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations Used to find the parent resource to bind the IAM policy to. If not specified,

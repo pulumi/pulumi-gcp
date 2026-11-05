@@ -796,6 +796,40 @@ class MetadataFeed(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return MetadataFeed(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            filters: pulumi.Input[Optional[Union['MetadataFeedFiltersArgs', 'MetadataFeedFiltersArgsDict', 'outputs.MetadataFeedFilters']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata_feed_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            scope: pulumi.Input[Optional[Union['MetadataFeedScopeArgs', 'MetadataFeedScopeArgsDict', 'outputs.MetadataFeedScope']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["filters"] = filters
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["metadataFeedId"] = metadata_feed_id
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pubsubTopic"] = pubsub_topic
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["scope"] = scope
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:dataplex/metadataFeed:MetadataFeed', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

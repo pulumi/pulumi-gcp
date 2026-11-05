@@ -227,6 +227,12 @@ func (FindingsRefinementDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*findingsRefinementDeploymentState)(nil)).Elem()
 }
 
+// FindingsRefinementDeploymentExists checks whether an existing FindingsRefinementDeployment resource with the given ID exists.
+func FindingsRefinementDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FindingsRefinementDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/findingsRefinementDeployment:FindingsRefinementDeployment", id, state, "", opts...)
+}
+
 type findingsRefinementDeploymentArgs struct {
 	// The archive state of the findings refinement deployment.
 	// Cannot be set to true unless enabled is set to false.

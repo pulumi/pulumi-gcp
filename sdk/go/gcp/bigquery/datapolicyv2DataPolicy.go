@@ -398,6 +398,12 @@ func (Datapolicyv2DataPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datapolicyv2DataPolicyState)(nil)).Elem()
 }
 
+// Datapolicyv2DataPolicyExists checks whether an existing Datapolicyv2DataPolicy resource with the given ID exists.
+func Datapolicyv2DataPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Datapolicyv2DataPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy", id, state, "", opts...)
+}
+
 type datapolicyv2DataPolicyArgs struct {
 	// Data Governance tag bound to the Data Policy.
 	// Structure is documented below.

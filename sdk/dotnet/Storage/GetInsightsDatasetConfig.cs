@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Storage
         /// and
         /// [API](https://cloud.google.com/storage/docs/insights/reference/rest/v1/projects.locations.datasetConfigs).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -47,7 +46,6 @@ namespace Pulumi.Gcp.Storage
         /// and
         /// [API](https://cloud.google.com/storage/docs/insights/reference/rest/v1/projects.locations.datasetConfigs).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -76,7 +74,6 @@ namespace Pulumi.Gcp.Storage
         /// See [the official documentation](https://cloud.google.com/storage/docs/insights/datasets)
         /// and
         /// [API](https://cloud.google.com/storage/docs/insights/reference/rest/v1/projects.locations.datasetConfigs).
-        /// 
         /// 
         /// ## Example Usage
         /// 

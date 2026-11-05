@@ -381,6 +381,12 @@ func (OsPolicyAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*osPolicyAssignmentState)(nil)).Elem()
 }
 
+// OsPolicyAssignmentExists checks whether an existing OsPolicyAssignment resource with the given ID exists.
+func OsPolicyAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OsPolicyAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:osconfig/osPolicyAssignment:OsPolicyAssignment", id, state, "", opts...)
+}
+
 type osPolicyAssignmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

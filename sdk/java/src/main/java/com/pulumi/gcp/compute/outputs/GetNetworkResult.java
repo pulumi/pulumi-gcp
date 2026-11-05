@@ -48,11 +48,10 @@ public final class GetNetworkResult {
     /**
      * @return (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
-     * @deprecated
-     * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+     * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      */
-    @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
+    @Deprecated
     private String numericId;
     private String project;
     /**
@@ -115,11 +114,10 @@ public final class GetNetworkResult {
     /**
      * @return (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
-     * @deprecated
-     * `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+     * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      * 
      */
-    @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
+    @Deprecated
     public String numericId() {
         return this.numericId;
     }

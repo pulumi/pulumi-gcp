@@ -592,6 +592,12 @@ func (BucketIAMBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketIAMBindingState)(nil)).Elem()
 }
 
+// BucketIAMBindingExists checks whether an existing BucketIAMBinding resource with the given ID exists.
+func BucketIAMBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketIAMBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:storage/bucketIAMBinding:BucketIAMBinding", id, state, "", opts...)
+}
+
 type bucketIAMBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket string `pulumi:"bucket"`

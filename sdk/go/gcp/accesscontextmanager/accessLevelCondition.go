@@ -339,6 +339,12 @@ func (AccessLevelConditionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessLevelConditionState)(nil)).Elem()
 }
 
+// AccessLevelConditionExists checks whether an existing AccessLevelCondition resource with the given ID exists.
+func AccessLevelConditionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessLevelConditionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition", id, state, "", opts...)
+}
+
 type accessLevelConditionArgs struct {
 	// The name of the Access Level to add this condition to.
 	AccessLevel string `pulumi:"accessLevel"`

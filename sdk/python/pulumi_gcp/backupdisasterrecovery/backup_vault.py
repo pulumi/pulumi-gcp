@@ -1409,6 +1409,74 @@ class BackupVault(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return BackupVault(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_restriction: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_missing: pulumi.Input[Optional[_builtins.bool]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            backup_count: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_minimum_enforced_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_inheritance: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletable: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict', 'outputs.BackupVaultEncryptionConfig']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update_access_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            total_stored_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessRestriction"] = access_restriction
+        __props__["allowMissing"] = allow_missing
+        __props__["annotations"] = annotations
+        __props__["backupCount"] = backup_count
+        __props__["backupMinimumEnforcedRetentionDuration"] = backup_minimum_enforced_retention_duration
+        __props__["backupRetentionInheritance"] = backup_retention_inheritance
+        __props__["backupVaultId"] = backup_vault_id
+        __props__["createTime"] = create_time
+        __props__["deletable"] = deletable
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["effectiveTime"] = effective_time
+        __props__["encryptionConfig"] = encryption_config
+        __props__["etag"] = etag
+        __props__["forceDelete"] = force_delete
+        __props__["forceUpdate"] = force_update
+        __props__["forceUpdateAccessRestriction"] = force_update_access_restriction
+        __props__["ignoreBackupPlanReferences"] = ignore_backup_plan_references
+        __props__["ignoreInactiveDatasources"] = ignore_inactive_datasources
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["serviceAccount"] = service_account
+        __props__["state"] = state
+        __props__["totalStoredBytes"] = total_stored_bytes
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:backupdisasterrecovery/backupVault:BackupVault', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessRestriction")
     def access_restriction(self) -> pulumi.Output[Optional[_builtins.str]]:

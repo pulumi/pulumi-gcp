@@ -35,11 +35,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInst
      * (Optional, Deprecated)
      * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
-     * @deprecated
-     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
-    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+    @Deprecated
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
@@ -47,11 +46,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInst
      * @return (Optional, Deprecated)
      * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
-     * @deprecated
-     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
-    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+    @Deprecated
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
     }
@@ -156,11 +154,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInst
          * 
          * @return builder
          * 
-         * @deprecated
-         * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          * 
          */
-        @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+        @Deprecated
         public Builder diskType(@Nullable Output<String> diskType) {
             $.diskType = diskType;
             return this;
@@ -172,11 +169,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInst
          * 
          * @return builder
          * 
-         * @deprecated
-         * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          * 
          */
-        @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
+        @Deprecated
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
         }

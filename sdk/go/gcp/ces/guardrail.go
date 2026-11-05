@@ -750,6 +750,12 @@ func (GuardrailState) ElementType() reflect.Type {
 	return reflect.TypeOf((*guardrailState)(nil)).Elem()
 }
 
+// GuardrailExists checks whether an existing Guardrail resource with the given ID exists.
+func GuardrailExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GuardrailState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/guardrail:Guardrail", id, state, "", opts...)
+}
+
 type guardrailArgs struct {
 	// Action that is taken when a certain precondition is met.
 	// Structure is documented below.

@@ -1845,6 +1845,78 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return InstanceGroupManager(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_instances_config: pulumi.Input[Optional[Union['InstanceGroupManagerAllInstancesConfigArgs', 'InstanceGroupManagerAllInstancesConfigArgsDict', 'outputs.InstanceGroupManagerAllInstancesConfig']]] = None,
+            auto_healing_policies: pulumi.Input[Optional[Union['InstanceGroupManagerAutoHealingPoliciesArgs', 'InstanceGroupManagerAutoHealingPoliciesArgsDict', 'outputs.InstanceGroupManagerAutoHealingPolicies']]] = None,
+            base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_manager_id: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_lifecycle_policy: pulumi.Input[Optional[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict', 'outputs.InstanceGroupManagerInstanceLifecyclePolicy']]] = None,
+            list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerNamedPortArgs', 'InstanceGroupManagerNamedPortArgsDict', 'outputs.InstanceGroupManagerNamedPort']]]]] = None,
+            operation: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict', 'outputs.InstanceGroupManagerParams']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_policies: pulumi.Input[Optional[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict', 'outputs.InstanceGroupManagerResourcePolicies']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_policy: pulumi.Input[Optional[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict', 'outputs.InstanceGroupManagerStandbyPolicy']]] = None,
+            stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict', 'outputs.InstanceGroupManagerStatefulDisk']]]]] = None,
+            stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.InstanceGroupManagerStatefulExternalIp']]]]] = None,
+            stateful_internal_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulInternalIpArgs', 'InstanceGroupManagerStatefulInternalIpArgsDict', 'outputs.InstanceGroupManagerStatefulInternalIp']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatusArgs', 'InstanceGroupManagerStatusArgsDict', 'outputs.InstanceGroupManagerStatus']]]]] = None,
+            target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_size: pulumi.Input[Optional[_builtins.int]] = None,
+            target_size_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerTargetSizePolicyArgs', 'InstanceGroupManagerTargetSizePolicyArgsDict', 'outputs.InstanceGroupManagerTargetSizePolicy']]]]] = None,
+            target_stopped_size: pulumi.Input[Optional[_builtins.int]] = None,
+            target_suspended_size: pulumi.Input[Optional[_builtins.int]] = None,
+            update_policy: pulumi.Input[Optional[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict', 'outputs.InstanceGroupManagerUpdatePolicy']]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerVersionArgs', 'InstanceGroupManagerVersionArgsDict', 'outputs.InstanceGroupManagerVersion']]]]] = None,
+            wait_for_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+            wait_for_instances_status: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allInstancesConfig"] = all_instances_config
+        __props__["autoHealingPolicies"] = auto_healing_policies
+        __props__["baseInstanceName"] = base_instance_name
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["fingerprint"] = fingerprint
+        __props__["instanceGroup"] = instance_group
+        __props__["instanceGroupManagerId"] = instance_group_manager_id
+        __props__["instanceLifecyclePolicy"] = instance_lifecycle_policy
+        __props__["listManagedInstancesResults"] = list_managed_instances_results
+        __props__["name"] = name
+        __props__["namedPorts"] = named_ports
+        __props__["operation"] = operation
+        __props__["params"] = params
+        __props__["project"] = project
+        __props__["resourcePolicies"] = resource_policies
+        __props__["selfLink"] = self_link
+        __props__["standbyPolicy"] = standby_policy
+        __props__["statefulDisks"] = stateful_disks
+        __props__["statefulExternalIps"] = stateful_external_ips
+        __props__["statefulInternalIps"] = stateful_internal_ips
+        __props__["statuses"] = statuses
+        __props__["targetPools"] = target_pools
+        __props__["targetSize"] = target_size
+        __props__["targetSizePolicies"] = target_size_policies
+        __props__["targetStoppedSize"] = target_stopped_size
+        __props__["targetSuspendedSize"] = target_suspended_size
+        __props__["updatePolicy"] = update_policy
+        __props__["versions"] = versions
+        __props__["waitForInstances"] = wait_for_instances
+        __props__["waitForInstancesStatus"] = wait_for_instances_status
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/instanceGroupManager:InstanceGroupManager', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerAllInstancesConfig']]:

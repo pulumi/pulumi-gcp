@@ -382,6 +382,12 @@ func (EntryGroupIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryGroupIamPolicyState)(nil)).Elem()
 }
 
+// EntryGroupIamPolicyExists checks whether an existing EntryGroupIamPolicy resource with the given ID exists.
+func EntryGroupIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntryGroupIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy", id, state, "", opts...)
+}
+
 type entryGroupIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	EntryGroupId string `pulumi:"entryGroupId"`

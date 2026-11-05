@@ -277,6 +277,12 @@ func (ProjectFeedState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectFeedState)(nil)).Elem()
 }
 
+// ProjectFeedExists checks whether an existing ProjectFeed resource with the given ID exists.
+func ProjectFeedExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectFeedState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:cloudasset/projectFeed:ProjectFeed", id, state, "", opts...)
+}
+
 type projectFeedArgs struct {
 	// A list of the full names of the assets to receive updates. You must specify either or both of
 	// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are

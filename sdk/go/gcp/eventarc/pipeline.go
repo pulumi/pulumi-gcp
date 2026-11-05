@@ -739,6 +739,12 @@ func (PipelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineState)(nil)).Elem()
 }
 
+// PipelineExists checks whether an existing Pipeline resource with the given ID exists.
+func PipelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:eventarc/pipeline:Pipeline", id, state, "", opts...)
+}
+
 type pipelineArgs struct {
 	// User-defined annotations. See https://google.aip.dev/128#annotations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.

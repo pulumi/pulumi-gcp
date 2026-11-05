@@ -271,6 +271,12 @@ func (OdbDnsZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*odbDnsZoneState)(nil)).Elem()
 }
 
+// OdbDnsZoneExists checks whether an existing OdbDnsZone resource with the given ID exists.
+func OdbDnsZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OdbDnsZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:oracledatabase/odbDnsZone:OdbDnsZone", id, state, "", opts...)
+}
+
 type odbDnsZoneArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

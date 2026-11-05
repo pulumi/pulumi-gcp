@@ -116,24 +116,24 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// Saas was failed, running, or not yet started. Both fail if `State`
         /// becomes `STATE_FAILED`.
         /// * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
-        /// their Releases, and copies the Saas, the UnitKinds and the Releases to
-        /// `Global` and to the other `Locations`. Terraform doesn't manage or
-        /// delete any of them, including when this field changes. Before
-        /// destroying or replacing the Saas (including `pulumi up -replace`
-        /// and recreating a tainted Saas), delete the imported UnitKinds and
-        /// Releases in every location: the API rejects the deletion of a Saas
-        /// that still has UnitKinds.
+        ///   their Releases, and copies the Saas, the UnitKinds and the Releases to
+        ///   `Global` and to the other `Locations`. Terraform doesn't manage or
+        ///   delete any of them, including when this field changes. Before
+        ///   destroying or replacing the Saas (including `pulumi up -replace`
+        ///   and recreating a tainted Saas), delete the imported UnitKinds and
+        ///   Releases in every location: the API rejects the deletion of a Saas
+        ///   that still has UnitKinds.
         /// * After a failed import, fix the template and change `Revision`. Any
-        /// apply that changes a failed Saas restarts the import, and the provider
-        /// waits for the restarted import to finish or fail again.
+        ///   apply that changes a failed Saas restarts the import, and the provider
+        ///   waits for the restarted import to finish or fail again.
         /// * While an import is running, the provider retries template or revision
-        /// updates and DELETE until it finishes, within the resource timeouts.
+        ///   updates and DELETE until it finishes, within the resource timeouts.
         /// * Don't create Terraform-managed UnitKinds whose
-        /// `ApplicationTemplateComponent` matches a component of this
-        /// template: the import adopts them and overwrites their fields.
+        ///   `ApplicationTemplateComponent` matches a component of this
+        ///   template: the import adopts them and overwrites their fields.
         /// * Set this field only on the source-region Saas, not on the copies in
-        /// `Global` or other `Locations`.
-        /// Structure is documented below.
+        ///   `Global` or other `Locations`.
+        ///   Structure is documented below.
         /// </summary>
         [Output("applicationTemplate")]
         public Output<Outputs.SaaSApplicationTemplate?> ApplicationTemplate { get; private set; } = null!;
@@ -355,24 +355,24 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// Saas was failed, running, or not yet started. Both fail if `State`
         /// becomes `STATE_FAILED`.
         /// * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
-        /// their Releases, and copies the Saas, the UnitKinds and the Releases to
-        /// `Global` and to the other `Locations`. Terraform doesn't manage or
-        /// delete any of them, including when this field changes. Before
-        /// destroying or replacing the Saas (including `pulumi up -replace`
-        /// and recreating a tainted Saas), delete the imported UnitKinds and
-        /// Releases in every location: the API rejects the deletion of a Saas
-        /// that still has UnitKinds.
+        ///   their Releases, and copies the Saas, the UnitKinds and the Releases to
+        ///   `Global` and to the other `Locations`. Terraform doesn't manage or
+        ///   delete any of them, including when this field changes. Before
+        ///   destroying or replacing the Saas (including `pulumi up -replace`
+        ///   and recreating a tainted Saas), delete the imported UnitKinds and
+        ///   Releases in every location: the API rejects the deletion of a Saas
+        ///   that still has UnitKinds.
         /// * After a failed import, fix the template and change `Revision`. Any
-        /// apply that changes a failed Saas restarts the import, and the provider
-        /// waits for the restarted import to finish or fail again.
+        ///   apply that changes a failed Saas restarts the import, and the provider
+        ///   waits for the restarted import to finish or fail again.
         /// * While an import is running, the provider retries template or revision
-        /// updates and DELETE until it finishes, within the resource timeouts.
+        ///   updates and DELETE until it finishes, within the resource timeouts.
         /// * Don't create Terraform-managed UnitKinds whose
-        /// `ApplicationTemplateComponent` matches a component of this
-        /// template: the import adopts them and overwrites their fields.
+        ///   `ApplicationTemplateComponent` matches a component of this
+        ///   template: the import adopts them and overwrites their fields.
         /// * Set this field only on the source-region Saas, not on the copies in
-        /// `Global` or other `Locations`.
-        /// Structure is documented below.
+        ///   `Global` or other `Locations`.
+        ///   Structure is documented below.
         /// </summary>
         [Input("applicationTemplate")]
         public Input<Inputs.SaaSApplicationTemplateArgs>? ApplicationTemplate { get; set; }
@@ -469,24 +469,24 @@ namespace Pulumi.Gcp.SaaSRuntime
         /// Saas was failed, running, or not yet started. Both fail if `State`
         /// becomes `STATE_FAILED`.
         /// * The import creates UnitKinds (named `u-&lt;rootModuleId&gt;-&lt;6 chars&gt;`) and
-        /// their Releases, and copies the Saas, the UnitKinds and the Releases to
-        /// `Global` and to the other `Locations`. Terraform doesn't manage or
-        /// delete any of them, including when this field changes. Before
-        /// destroying or replacing the Saas (including `pulumi up -replace`
-        /// and recreating a tainted Saas), delete the imported UnitKinds and
-        /// Releases in every location: the API rejects the deletion of a Saas
-        /// that still has UnitKinds.
+        ///   their Releases, and copies the Saas, the UnitKinds and the Releases to
+        ///   `Global` and to the other `Locations`. Terraform doesn't manage or
+        ///   delete any of them, including when this field changes. Before
+        ///   destroying or replacing the Saas (including `pulumi up -replace`
+        ///   and recreating a tainted Saas), delete the imported UnitKinds and
+        ///   Releases in every location: the API rejects the deletion of a Saas
+        ///   that still has UnitKinds.
         /// * After a failed import, fix the template and change `Revision`. Any
-        /// apply that changes a failed Saas restarts the import, and the provider
-        /// waits for the restarted import to finish or fail again.
+        ///   apply that changes a failed Saas restarts the import, and the provider
+        ///   waits for the restarted import to finish or fail again.
         /// * While an import is running, the provider retries template or revision
-        /// updates and DELETE until it finishes, within the resource timeouts.
+        ///   updates and DELETE until it finishes, within the resource timeouts.
         /// * Don't create Terraform-managed UnitKinds whose
-        /// `ApplicationTemplateComponent` matches a component of this
-        /// template: the import adopts them and overwrites their fields.
+        ///   `ApplicationTemplateComponent` matches a component of this
+        ///   template: the import adopts them and overwrites their fields.
         /// * Set this field only on the source-region Saas, not on the copies in
-        /// `Global` or other `Locations`.
-        /// Structure is documented below.
+        ///   `Global` or other `Locations`.
+        ///   Structure is documented below.
         /// </summary>
         [Input("applicationTemplate")]
         public Input<Inputs.SaaSApplicationTemplateGetArgs>? ApplicationTemplate { get; set; }

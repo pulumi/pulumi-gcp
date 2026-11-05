@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.DataPlex
     public static class GetDataQualityRules
     {
         /// <summary>
-        /// Retrieves the generated data quality rules for the creating a new data quality scan. 
+        /// Retrieves the generated data quality rules for the creating a new data quality scan.
         /// For more information see
         /// the [official documentation](https://cloud.google.com/dataplex/docs)
         /// and [API](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataScans/generateDataQualityRules).
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.DataPlex
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataQualityRulesResult>("gcp:dataplex/getDataQualityRules:getDataQualityRules", args ?? new GetDataQualityRulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves the generated data quality rules for the creating a new data quality scan. 
+        /// Retrieves the generated data quality rules for the creating a new data quality scan.
         /// For more information see
         /// the [official documentation](https://cloud.google.com/dataplex/docs)
         /// and [API](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataScans/generateDataQualityRules).
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.DataPlex
             => global::Pulumi.Deployment.Instance.Invoke<GetDataQualityRulesResult>("gcp:dataplex/getDataQualityRules:getDataQualityRules", args ?? new GetDataQualityRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves the generated data quality rules for the creating a new data quality scan. 
+        /// Retrieves the generated data quality rules for the creating a new data quality scan.
         /// For more information see
         /// the [official documentation](https://cloud.google.com/dataplex/docs)
         /// and [API](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataScans/generateDataQualityRules).

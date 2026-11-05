@@ -20,7 +20,7 @@ public final class KeystoresAliasesSelfSignedCertArgs extends com.pulumi.resourc
     public static final KeystoresAliasesSelfSignedCertArgs Empty = new KeystoresAliasesSelfSignedCertArgs();
 
     /**
-     * Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+     * Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
      * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
      * this parameter or the JSON body.
      * 
@@ -29,7 +29,7 @@ public final class KeystoresAliasesSelfSignedCertArgs extends com.pulumi.resourc
     private Output<String> alias;
 
     /**
-     * @return Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+     * @return Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
      * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
      * this parameter or the JSON body.
      * 
@@ -221,7 +221,7 @@ public final class KeystoresAliasesSelfSignedCertArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param alias Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+         * @param alias Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
          * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
          * this parameter or the JSON body.
          * 
@@ -234,7 +234,7 @@ public final class KeystoresAliasesSelfSignedCertArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param alias Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
+         * @param alias Alias for the key/certificate pair. Values must match the regular expression [&#92;w&#92;s-.]{1,255}.
          * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
          * this parameter or the JSON body.
          * 

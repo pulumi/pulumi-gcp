@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// , Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of AllowChangingZone is "NO".
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("allowChangingZone")]
         public Input<string>? AllowChangingZone { get; set; }

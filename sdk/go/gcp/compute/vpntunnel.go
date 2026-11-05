@@ -614,6 +614,12 @@ func (VPNTunnelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpntunnelState)(nil)).Elem()
 }
 
+// VPNTunnelExists checks whether an existing VPNTunnel resource with the given ID exists.
+func VPNTunnelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VPNTunnelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/vPNTunnel:VPNTunnel", id, state, "", opts...)
+}
+
 type vpntunnelArgs struct {
 	// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
 	// Structure is documented below.

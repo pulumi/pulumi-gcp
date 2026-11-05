@@ -364,6 +364,12 @@ func (DiscoveryClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*discoveryClientState)(nil)).Elem()
 }
 
+// DiscoveryClientExists checks whether an existing DiscoveryClient resource with the given ID exists.
+func DiscoveryClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiscoveryClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:migrationcenter/discoveryClient:DiscoveryClient", id, state, "", opts...)
+}
+
 type discoveryClientArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

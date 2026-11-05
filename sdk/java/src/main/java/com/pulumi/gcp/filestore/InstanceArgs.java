@@ -366,11 +366,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
-     * @deprecated
-     * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      */
-    @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
+    @Deprecated
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
@@ -380,11 +379,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
-     * @deprecated
-     * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      */
-    @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
+    @Deprecated
     public Optional<Output<String>> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -895,11 +893,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+         * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
          * 
          */
-        @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
+        @Deprecated
         public Builder zone(@Nullable Output<String> zone) {
             $.zone = zone;
             return this;
@@ -913,11 +910,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+         * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
          * 
          */
-        @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
+        @Deprecated
         public Builder zone(String zone) {
             return zone(Output.of(zone));
         }

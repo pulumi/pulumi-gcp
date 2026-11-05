@@ -203,6 +203,12 @@ func (MaterializedViewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*materializedViewState)(nil)).Elem()
 }
 
+// MaterializedViewExists checks whether an existing MaterializedView resource with the given ID exists.
+func MaterializedViewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MaterializedViewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/materializedView:MaterializedView", id, state, "", opts...)
+}
+
 type materializedViewArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

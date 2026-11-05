@@ -411,6 +411,12 @@ func (BackendBucketIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendBucketIamMemberState)(nil)).Elem()
 }
 
+// BackendBucketIamMemberExists checks whether an existing BackendBucketIamMember resource with the given ID exists.
+func BackendBucketIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackendBucketIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/backendBucketIamMember:BackendBucketIamMember", id, state, "", opts...)
+}
+
 type backendBucketIamMemberArgs struct {
 	Condition *BackendBucketIamMemberCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

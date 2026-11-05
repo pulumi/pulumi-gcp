@@ -218,6 +218,12 @@ func (LbTrafficExtensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lbTrafficExtensionState)(nil)).Elem()
 }
 
+// LbTrafficExtensionExists checks whether an existing LbTrafficExtension resource with the given ID exists.
+func LbTrafficExtensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LbTrafficExtensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/lbTrafficExtension:LbTrafficExtension", id, state, "", opts...)
+}
+
 type lbTrafficExtensionArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

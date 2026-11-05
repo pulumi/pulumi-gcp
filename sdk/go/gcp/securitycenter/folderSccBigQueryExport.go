@@ -322,6 +322,12 @@ func (FolderSccBigQueryExportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderSccBigQueryExportState)(nil)).Elem()
 }
 
+// FolderSccBigQueryExportExists checks whether an existing FolderSccBigQueryExport resource with the given ID exists.
+func FolderSccBigQueryExportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderSccBigQueryExportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport", id, state, "", opts...)
+}
+
 type folderSccBigQueryExportArgs struct {
 	// This must be unique within the organization.
 	BigQueryExportId string `pulumi:"bigQueryExportId"`

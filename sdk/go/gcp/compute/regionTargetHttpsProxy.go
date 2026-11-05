@@ -738,6 +738,12 @@ func (RegionTargetHttpsProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionTargetHttpsProxyState)(nil)).Elem()
 }
 
+// RegionTargetHttpsProxyExists checks whether an existing RegionTargetHttpsProxy resource with the given ID exists.
+func RegionTargetHttpsProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionTargetHttpsProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy", id, state, "", opts...)
+}
+
 type regionTargetHttpsProxyArgs struct {
 	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
 	// sslCertificates and certificateManagerCertificates can't be defined together.

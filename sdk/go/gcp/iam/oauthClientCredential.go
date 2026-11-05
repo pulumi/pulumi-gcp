@@ -251,6 +251,12 @@ func (OauthClientCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oauthClientCredentialState)(nil)).Elem()
 }
 
+// OauthClientCredentialExists checks whether an existing OauthClientCredential resource with the given ID exists.
+func OauthClientCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OauthClientCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:iam/oauthClientCredential:OauthClientCredential", id, state, "", opts...)
+}
+
 type oauthClientCredentialArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

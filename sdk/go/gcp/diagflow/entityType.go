@@ -217,6 +217,12 @@ func (EntityTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*entityTypeState)(nil)).Elem()
 }
 
+// EntityTypeExists checks whether an existing EntityType resource with the given ID exists.
+func EntityTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EntityTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/entityType:EntityType", id, state, "", opts...)
+}
+
 type entityTypeArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

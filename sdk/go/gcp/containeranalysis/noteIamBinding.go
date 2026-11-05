@@ -408,6 +408,12 @@ func (NoteIamBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*noteIamBindingState)(nil)).Elem()
 }
 
+// NoteIamBindingExists checks whether an existing NoteIamBinding resource with the given ID exists.
+func NoteIamBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NoteIamBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:containeranalysis/noteIamBinding:NoteIamBinding", id, state, "", opts...)
+}
+
 type noteIamBindingArgs struct {
 	Condition *NoteIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.

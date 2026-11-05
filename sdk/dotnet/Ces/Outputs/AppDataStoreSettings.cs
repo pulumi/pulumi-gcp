@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// The engines for the app.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedDataStoreSettingsEngines"&gt;&lt;/a&gt;The `Engines` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.AppDataStoreSettingsEngine> Engines;

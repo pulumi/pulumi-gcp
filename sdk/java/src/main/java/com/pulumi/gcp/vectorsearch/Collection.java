@@ -61,13 +61,13 @@ import javax.annotation.Nullable;
  *             ))
  *             .dataSchema("""
  * }{{@code
- *   \"type\": \"object\",
- *   \"properties\": }{{@code
- *     \"title\": }{{@code
- *       \"type\": \"string\"
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "object}&#92;{@code ",
+ *   }&#92;{@code "properties}&#92;{@code ": }{{@code
+ *     }&#92;{@code "title}&#92;{@code ": }{{@code
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
  *     }}{@code ,
- *     \"plot\": }{{@code
- *       \"type\": \"string\"
+ *     }&#92;{@code "plot}&#92;{@code ": }{{@code
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
  *     }}{@code
  *   }}{@code
  * }}{@code
@@ -160,13 +160,13 @@ import javax.annotation.Nullable;
  *             ))
  *             .dataSchema("""
  * }{{@code
- *   \"type\": \"object\",
- *   \"properties\": }{{@code
- *     \"title\": }{{@code
- *       \"type\": \"string\"
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "object}&#92;{@code ",
+ *   }&#92;{@code "properties}&#92;{@code ": }{{@code
+ *     }&#92;{@code "title}&#92;{@code ": }{{@code
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
  *     }}{@code ,
- *     \"plot\": }{{@code
- *       \"type\": \"string\"
+ *     }&#92;{@code "plot}&#92;{@code ": }{{@code
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
  *     }}{@code
  *   }}{@code
  * }}{@code

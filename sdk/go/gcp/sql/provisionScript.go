@@ -254,6 +254,12 @@ func (ProvisionScriptState) ElementType() reflect.Type {
 	return reflect.TypeOf((*provisionScriptState)(nil)).Elem()
 }
 
+// ProvisionScriptExists checks whether an existing ProvisionScript resource with the given ID exists.
+func ProvisionScriptExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProvisionScriptState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:sql/provisionScript:ProvisionScript", id, state, "", opts...)
+}
+
 type provisionScriptArgs struct {
 	// The name of the database to which Terraform connects. Changing
 	// this forces Terraform to connect to the new database and run the script. This argument is

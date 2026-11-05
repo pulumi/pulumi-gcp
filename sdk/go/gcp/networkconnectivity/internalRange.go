@@ -604,6 +604,12 @@ func (InternalRangeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*internalRangeState)(nil)).Elem()
 }
 
+// InternalRangeExists checks whether an existing InternalRange resource with the given ID exists.
+func InternalRangeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InternalRangeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkconnectivity/internalRange:InternalRange", id, state, "", opts...)
+}
+
 type internalRangeArgs struct {
 	// Options for automatically allocating a free range with a size given by prefixLength.
 	// Structure is documented below.

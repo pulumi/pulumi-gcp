@@ -1866,6 +1866,72 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["user_metadata"] = user_metadata
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict', 'outputs.InstanceAdminSettings']]] = None,
+            consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
+            controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict', 'outputs.InstanceControlledEgressConfig']]] = None,
+            controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict', 'outputs.InstanceCustomDomain']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict', 'outputs.InstanceDenyMaintenancePeriod']]] = None,
+            egress_public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict', 'outputs.InstanceEncryptionConfig']]] = None,
+            fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ingress_private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            looker_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            looker_version: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict', 'outputs.InstanceMaintenanceWindow']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict', 'outputs.InstanceOauthConfig']]] = None,
+            periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict', 'outputs.InstancePeriodicExportConfig']]] = None,
+            platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict', 'outputs.InstancePscConfig']]] = None,
+            psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict', 'outputs.InstanceUserMetadata']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminSettings"] = admin_settings
+        __props__["consumerNetwork"] = consumer_network
+        __props__["controlledEgressConfig"] = controlled_egress_config
+        __props__["controlledEgressEnabled"] = controlled_egress_enabled
+        __props__["createTime"] = create_time
+        __props__["customDomain"] = custom_domain
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["denyMaintenancePeriod"] = deny_maintenance_period
+        __props__["egressPublicIp"] = egress_public_ip
+        __props__["encryptionConfig"] = encryption_config
+        __props__["fipsEnabled"] = fips_enabled
+        __props__["geminiEnabled"] = gemini_enabled
+        __props__["ingressPrivateIp"] = ingress_private_ip
+        __props__["ingressPublicIp"] = ingress_public_ip
+        __props__["lookerUri"] = looker_uri
+        __props__["lookerVersion"] = looker_version
+        __props__["maintenanceWindow"] = maintenance_window
+        __props__["name"] = name
+        __props__["oauthConfig"] = oauth_config
+        __props__["periodicExportConfig"] = periodic_export_config
+        __props__["platformEdition"] = platform_edition
+        __props__["privateIpEnabled"] = private_ip_enabled
+        __props__["project"] = project
+        __props__["pscConfig"] = psc_config
+        __props__["pscEnabled"] = psc_enabled
+        __props__["publicIpEnabled"] = public_ip_enabled
+        __props__["region"] = region
+        __props__["reservedRange"] = reserved_range
+        __props__["updateTime"] = update_time
+        __props__["userMetadata"] = user_metadata
+        return pulumi.runtime.exists_resource(None, 'gcp:looker/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminSettings")
     def admin_settings(self) -> pulumi.Output[Optional['outputs.InstanceAdminSettings']]:

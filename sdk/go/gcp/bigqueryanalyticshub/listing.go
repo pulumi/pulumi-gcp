@@ -837,6 +837,12 @@ func (ListingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listingState)(nil)).Elem()
 }
 
+// ListingExists checks whether an existing Listing resource with the given ID exists.
+func ListingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigqueryanalyticshub/listing:Listing", id, state, "", opts...)
+}
+
 type listingArgs struct {
 	// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
 	AllowOnlyMetadataSharing *bool `pulumi:"allowOnlyMetadataSharing"`

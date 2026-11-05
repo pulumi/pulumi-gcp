@@ -385,6 +385,12 @@ func (MembershipIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*membershipIamPolicyState)(nil)).Elem()
 }
 
+// MembershipIamPolicyExists checks whether an existing MembershipIamPolicy resource with the given ID exists.
+func MembershipIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MembershipIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkehub/membershipIamPolicy:MembershipIamPolicy", id, state, "", opts...)
+}
+
 type membershipIamPolicyArgs struct {
 	// Location of the membership.
 	// The default value is `global`.

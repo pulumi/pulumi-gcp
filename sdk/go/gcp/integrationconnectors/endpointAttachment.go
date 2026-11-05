@@ -232,6 +232,12 @@ func (EndpointAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointAttachmentState)(nil)).Elem()
 }
 
+// EndpointAttachmentExists checks whether an existing EndpointAttachment resource with the given ID exists.
+func EndpointAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EndpointAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:integrationconnectors/endpointAttachment:EndpointAttachment", id, state, "", opts...)
+}
+
 type endpointAttachmentArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

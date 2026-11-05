@@ -171,6 +171,12 @@ func (SecuritySettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securitySettingsState)(nil)).Elem()
 }
 
+// SecuritySettingsExists checks whether an existing SecuritySettings resource with the given ID exists.
+func SecuritySettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecuritySettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:ces/securitySettings:SecuritySettings", id, state, "", opts...)
+}
+
 type securitySettingsArgs struct {
 	// Optional. Endpoint control related settings.
 	// Structure is documented below.

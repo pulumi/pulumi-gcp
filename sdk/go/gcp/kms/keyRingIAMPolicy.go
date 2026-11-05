@@ -456,6 +456,12 @@ func (KeyRingIAMPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyRingIAMPolicyState)(nil)).Elem()
 }
 
+// KeyRingIAMPolicyExists checks whether an existing KeyRingIAMPolicy resource with the given ID exists.
+func KeyRingIAMPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyRingIAMPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy", id, state, "", opts...)
+}
+
 type keyRingIAMPolicyArgs struct {
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or

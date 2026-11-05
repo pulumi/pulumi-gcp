@@ -645,6 +645,12 @@ func (InstanceTemplateIamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceTemplateIamMemberState)(nil)).Elem()
 }
 
+// InstanceTemplateIamMemberExists checks whether an existing InstanceTemplateIamMember resource with the given ID exists.
+func InstanceTemplateIamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceTemplateIamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember", id, state, "", opts...)
+}
+
 type instanceTemplateIamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.

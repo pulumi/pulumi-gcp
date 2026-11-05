@@ -317,6 +317,12 @@ func (WasmPluginState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wasmPluginState)(nil)).Elem()
 }
 
+// WasmPluginExists checks whether an existing WasmPlugin resource with the given ID exists.
+func WasmPluginExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WasmPluginState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networkservices/wasmPlugin:WasmPlugin", id, state, "", opts...)
+}
+
 type wasmPluginArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

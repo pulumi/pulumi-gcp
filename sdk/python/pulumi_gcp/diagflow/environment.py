@@ -649,6 +649,32 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["text_to_speech_settings"] = text_to_speech_settings
         return Environment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_version: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environmentid: pulumi.Input[Optional[_builtins.str]] = None,
+            fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict', 'outputs.EnvironmentFulfillment']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict', 'outputs.EnvironmentTextToSpeechSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentVersion"] = agent_version
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["environmentid"] = environmentid
+        __props__["fulfillment"] = fulfillment
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["state"] = state
+        __props__["textToSpeechSettings"] = text_to_speech_settings
+        return pulumi.runtime.exists_resource(None, 'gcp:diagflow/environment:Environment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentVersion")
     def agent_version(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -1135,6 +1135,48 @@ class RuntimeTemplate(pulumi.CustomResource):
         __props__.__dict__["software_config"] = software_config
         return RuntimeTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_persistent_disk_spec: pulumi.Input[Optional[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict', 'outputs.RuntimeTemplateDataPersistentDiskSpec']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict', 'outputs.RuntimeTemplateEncryptionSpec']]] = None,
+            euc_config: pulumi.Input[Optional[Union['RuntimeTemplateEucConfigArgs', 'RuntimeTemplateEucConfigArgsDict', 'outputs.RuntimeTemplateEucConfig']]] = None,
+            idle_shutdown_config: pulumi.Input[Optional[Union['RuntimeTemplateIdleShutdownConfigArgs', 'RuntimeTemplateIdleShutdownConfigArgsDict', 'outputs.RuntimeTemplateIdleShutdownConfig']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_spec: pulumi.Input[Optional[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict', 'outputs.RuntimeTemplateMachineSpec']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_spec: pulumi.Input[Optional[Union['RuntimeTemplateNetworkSpecArgs', 'RuntimeTemplateNetworkSpecArgsDict', 'outputs.RuntimeTemplateNetworkSpec']]] = None,
+            network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            shielded_vm_config: pulumi.Input[Optional[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict', 'outputs.RuntimeTemplateShieldedVmConfig']]] = None,
+            software_config: pulumi.Input[Optional[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict', 'outputs.RuntimeTemplateSoftwareConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataPersistentDiskSpec"] = data_persistent_disk_spec
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
+        __props__["encryptionSpec"] = encryption_spec
+        __props__["eucConfig"] = euc_config
+        __props__["idleShutdownConfig"] = idle_shutdown_config
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["machineSpec"] = machine_spec
+        __props__["name"] = name
+        __props__["networkSpec"] = network_spec
+        __props__["networkTags"] = network_tags
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["shieldedVmConfig"] = shielded_vm_config
+        __props__["softwareConfig"] = software_config
+        return pulumi.runtime.exists_resource(None, 'gcp:colab/runtimeTemplate:RuntimeTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataPersistentDiskSpec")
     def data_persistent_disk_spec(self) -> pulumi.Output['outputs.RuntimeTemplateDataPersistentDiskSpec']:

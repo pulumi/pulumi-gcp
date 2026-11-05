@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Apphub.Outputs
     public sealed class GetApplicationScopeResult
     {
         /// <summary>
-        /// Required. Scope Type. 
+        /// Required. Scope Type.
         ///  Possible values:
         /// REGIONAL
         /// GLOBAL Possible values: ["REGIONAL", "GLOBAL"]

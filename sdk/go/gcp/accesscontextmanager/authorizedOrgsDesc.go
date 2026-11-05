@@ -278,6 +278,12 @@ func (AuthorizedOrgsDescState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizedOrgsDescState)(nil)).Elem()
 }
 
+// AuthorizedOrgsDescExists checks whether an existing AuthorizedOrgsDesc resource with the given ID exists.
+func AuthorizedOrgsDescExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthorizedOrgsDescState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", id, state, "", opts...)
+}
+
 type authorizedOrgsDescArgs struct {
 	// The type of entities that need to use the authorization relationship during
 	// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and

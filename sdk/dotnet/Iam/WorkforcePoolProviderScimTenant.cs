@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.Iam
         /// The current state of the scim tenant.
         /// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
         /// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
-        /// deleted after approximately 30 days.
+        ///   deleted after approximately 30 days.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -421,7 +421,7 @@ namespace Pulumi.Gcp.Iam
         /// The current state of the scim tenant.
         /// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
         /// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
-        /// deleted after approximately 30 days.
+        ///   deleted after approximately 30 days.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

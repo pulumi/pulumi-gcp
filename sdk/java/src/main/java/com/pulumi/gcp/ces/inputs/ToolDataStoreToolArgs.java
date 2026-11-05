@@ -122,11 +122,10 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
      * 
      * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
      * 
-     * @deprecated
-     * `maxResults` is deprecated and will be removed in a future release.
+     * @deprecated `maxResults` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="maxResults")
     private @Nullable Output<Integer> maxResults;
 
@@ -137,11 +136,10 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
      * 
      * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
      * 
-     * @deprecated
-     * `maxResults` is deprecated and will be removed in a future release.
+     * @deprecated `maxResults` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<Output<Integer>> maxResults() {
         return Optional.ofNullable(this.maxResults);
     }
@@ -352,11 +350,10 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * `maxResults` is deprecated and will be removed in a future release.
+         * @deprecated `maxResults` is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder maxResults(@Nullable Output<Integer> maxResults) {
             $.maxResults = maxResults;
             return this;
@@ -371,11 +368,10 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * `maxResults` is deprecated and will be removed in a future release.
+         * @deprecated `maxResults` is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder maxResults(Integer maxResults) {
             return maxResults(Output.of(maxResults));
         }

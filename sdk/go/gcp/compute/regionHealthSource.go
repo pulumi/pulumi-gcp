@@ -298,6 +298,12 @@ func (RegionHealthSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionHealthSourceState)(nil)).Elem()
 }
 
+// RegionHealthSourceExists checks whether an existing RegionHealthSource resource with the given ID exists.
+func RegionHealthSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionHealthSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionHealthSource:RegionHealthSource", id, state, "", opts...)
+}
+
 type regionHealthSourceArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

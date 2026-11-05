@@ -1774,6 +1774,64 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Connection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict', 'outputs.ConnectionBitbucketCloudConfig']]] = None,
+            bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict', 'outputs.ConnectionBitbucketDataCenterConfig']]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            crypto_key_config: pulumi.Input[Optional[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict', 'outputs.ConnectionCryptoKeyConfig']]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict', 'outputs.ConnectionGithubConfig']]] = None,
+            github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict', 'outputs.ConnectionGithubEnterpriseConfig']]] = None,
+            gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict', 'outputs.ConnectionGitlabConfig']]] = None,
+            gitlab_enterprise_config: pulumi.Input[Optional[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict', 'outputs.ConnectionGitlabEnterpriseConfig']]] = None,
+            http_config: pulumi.Input[Optional[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict', 'outputs.ConnectionHttpConfig']]] = None,
+            installation_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict', 'outputs.ConnectionInstallationState']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["bitbucketCloudConfig"] = bitbucket_cloud_config
+        __props__["bitbucketDataCenterConfig"] = bitbucket_data_center_config
+        __props__["connectionId"] = connection_id
+        __props__["createTime"] = create_time
+        __props__["cryptoKeyConfig"] = crypto_key_config
+        __props__["deleteTime"] = delete_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["disabled"] = disabled
+        __props__["effectiveAnnotations"] = effective_annotations
+        __props__["effectiveLabels"] = effective_labels
+        __props__["etag"] = etag
+        __props__["githubConfig"] = github_config
+        __props__["githubEnterpriseConfig"] = github_enterprise_config
+        __props__["gitlabConfig"] = gitlab_config
+        __props__["gitlabEnterpriseConfig"] = gitlab_enterprise_config
+        __props__["httpConfig"] = http_config
+        __props__["installationStates"] = installation_states
+        __props__["labels"] = labels
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["reconciling"] = reconciling
+        __props__["uid"] = uid
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:developerconnect/connection:Connection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

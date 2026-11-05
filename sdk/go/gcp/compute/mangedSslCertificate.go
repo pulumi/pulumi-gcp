@@ -320,6 +320,12 @@ func (MangedSslCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mangedSslCertificateState)(nil)).Elem()
 }
 
+// MangedSslCertificateExists checks whether an existing MangedSslCertificate resource with the given ID exists.
+func MangedSslCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MangedSslCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/mangedSslCertificate:MangedSslCertificate", id, state, "", opts...)
+}
+
 type mangedSslCertificateArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

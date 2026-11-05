@@ -203,6 +203,12 @@ func (LogicalViewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logicalViewState)(nil)).Elem()
 }
 
+// LogicalViewExists checks whether an existing LogicalView resource with the given ID exists.
+func LogicalViewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogicalViewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/logicalView:LogicalView", id, state, "", opts...)
+}
+
 type logicalViewArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

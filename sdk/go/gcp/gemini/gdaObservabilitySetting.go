@@ -254,6 +254,12 @@ func (GdaObservabilitySettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gdaObservabilitySettingState)(nil)).Elem()
 }
 
+// GdaObservabilitySettingExists checks whether an existing GdaObservabilitySetting resource with the given ID exists.
+func GdaObservabilitySettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GdaObservabilitySettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gemini/gdaObservabilitySetting:GdaObservabilitySetting", id, state, "", opts...)
+}
+
 type gdaObservabilitySettingArgs struct {
 	// Message describing Setting for Conversational Analytics.
 	// Structure is documented below.

@@ -346,6 +346,12 @@ func (AuthzPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authzPolicyState)(nil)).Elem()
 }
 
+// AuthzPolicyExists checks whether an existing AuthzPolicy resource with the given ID exists.
+func AuthzPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthzPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/authzPolicy:AuthzPolicy", id, state, "", opts...)
+}
+
 type authzPolicyArgs struct {
 	// When the action is CUSTOM, customProvider must be specified.
 	// When the action is ALLOW, only requests matching the policy will be allowed.

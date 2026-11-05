@@ -478,6 +478,12 @@ func (HostingVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostingVersionState)(nil)).Elem()
 }
 
+// HostingVersionExists checks whether an existing HostingVersion resource with the given ID exists.
+func HostingVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostingVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/hostingVersion:HostingVersion", id, state, "", opts...)
+}
+
 type hostingVersionArgs struct {
 	// The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
 	// Structure is documented below.

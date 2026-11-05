@@ -876,6 +876,42 @@ class OauthClient(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return OauthClient(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allowed_redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allowed_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedGrantTypes"] = allowed_grant_types
+        __props__["allowedRedirectUris"] = allowed_redirect_uris
+        __props__["allowedScopes"] = allowed_scopes
+        __props__["clientId"] = client_id
+        __props__["clientType"] = client_type
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["displayName"] = display_name
+        __props__["expireTime"] = expire_time
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["oauthClientId"] = oauth_client_id
+        __props__["project"] = project
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'gcp:iam/oauthClient:OauthClient', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedGrantTypes")
     def allowed_grant_types(self) -> pulumi.Output[Sequence[_builtins.str]]:

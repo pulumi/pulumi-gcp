@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Cipher configuration for phase 2 of the IKE protocol.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="NestedCipherSuitePhase1"&gt;&lt;/a&gt;The `Phase1` block supports:
         /// </summary>
         [Input("phase2")]

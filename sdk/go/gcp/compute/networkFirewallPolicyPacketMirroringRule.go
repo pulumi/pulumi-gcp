@@ -382,6 +382,12 @@ func (NetworkFirewallPolicyPacketMirroringRuleState) ElementType() reflect.Type 
 	return reflect.TypeOf((*networkFirewallPolicyPacketMirroringRuleState)(nil)).Elem()
 }
 
+// NetworkFirewallPolicyPacketMirroringRuleExists checks whether an existing NetworkFirewallPolicyPacketMirroringRule resource with the given ID exists.
+func NetworkFirewallPolicyPacketMirroringRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkFirewallPolicyPacketMirroringRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule", id, state, "", opts...)
+}
+
 type networkFirewallPolicyPacketMirroringRuleArgs struct {
 	// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "doNotMirror", "gotoNext".
 	Action string `pulumi:"action"`

@@ -661,6 +661,28 @@ class AppCheckResourcePolicy(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AppCheckResourcePolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["enforcementMode"] = enforcement_mode
+        __props__["etag"] = etag
+        __props__["project"] = project
+        __props__["resourcePolicyId"] = resource_policy_id
+        __props__["serviceId"] = service_id
+        __props__["targetResource"] = target_resource
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:firebase/appCheckResourcePolicy:AppCheckResourcePolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

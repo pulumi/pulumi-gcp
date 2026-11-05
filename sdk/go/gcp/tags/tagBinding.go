@@ -233,6 +233,12 @@ func (TagBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagBindingState)(nil)).Elem()
 }
 
+// TagBindingExists checks whether an existing TagBinding resource with the given ID exists.
+func TagBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:tags/tagBinding:TagBinding", id, state, "", opts...)
+}
+
 type tagBindingArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

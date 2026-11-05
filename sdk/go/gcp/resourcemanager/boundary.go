@@ -328,6 +328,12 @@ func (BoundaryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*boundaryState)(nil)).Elem()
 }
 
+// BoundaryExists checks whether an existing Boundary resource with the given ID exists.
+func BoundaryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BoundaryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:resourcemanager/boundary:Boundary", id, state, "", opts...)
+}
+
 type boundaryArgs struct {
 	// The user-assigned ID for the Boundary, which becomes the final component
 	// of the Boundary's resource name. Must be unique within the parent.

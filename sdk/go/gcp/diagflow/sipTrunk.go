@@ -174,6 +174,12 @@ func (SipTrunkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sipTrunkState)(nil)).Elem()
 }
 
+// SipTrunkExists checks whether an existing SipTrunk resource with the given ID exists.
+func SipTrunkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SipTrunkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:diagflow/sipTrunk:SipTrunk", id, state, "", opts...)
+}
+
 type sipTrunkArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

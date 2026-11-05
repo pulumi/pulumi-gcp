@@ -1330,6 +1330,30 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["traffics"] = traffics
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autogenerate_revision_name: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Union['ServiceMetadataArgs', 'ServiceMetadataArgsDict', 'outputs.ServiceMetadata']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceStatusArgs', 'ServiceStatusArgsDict', 'outputs.ServiceStatus']]]]] = None,
+            template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
+            traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autogenerateRevisionName"] = autogenerate_revision_name
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["location"] = location
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["statuses"] = statuses
+        __props__["template"] = template
+        __props__["traffics"] = traffics
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudrun/service:Service', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autogenerateRevisionName")
     def autogenerate_revision_name(self) -> pulumi.Output[Optional[_builtins.bool]]:

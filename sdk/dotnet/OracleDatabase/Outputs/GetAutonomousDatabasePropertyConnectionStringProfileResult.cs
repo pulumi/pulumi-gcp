@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
     public sealed class GetAutonomousDatabasePropertyConnectionStringProfileResult
     {
         /// <summary>
-        /// The current consumer group being used by the connection. 
+        /// The current consumer group being used by the connection.
         ///  Possible values:
         ///  CONSUMER_GROUP_UNSPECIFIED
         /// HIGH
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The host name format being currently used in connection string. 
+        /// The host name format being currently used in connection string.
         ///  Possible values:
         ///  HOST_FORMAT_UNSPECIFIED
         /// FQDN
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly bool IsRegional;
         /// <summary>
-        /// The protocol being used by the connection. 
+        /// The protocol being used by the connection.
         ///  Possible values:
         ///  PROTOCOL_UNSPECIFIED
         /// TCP
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// The current session mode of the connection. 
+        /// The current session mode of the connection.
         ///  Possible values:
         ///  SESSION_MODE_UNSPECIFIED
         /// DIRECT
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string SessionMode;
         /// <summary>
-        /// The syntax of the connection string. 
+        /// The syntax of the connection string.
         ///  Possible values:
         ///  SYNTAX_FORMAT_UNSPECIFIED
         /// LONG
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string SyntaxFormat;
         /// <summary>
-        /// This field indicates the TLS authentication type of the connection. 
+        /// This field indicates the TLS authentication type of the connection.
         ///  Possible values:
         ///  TLS_AUTHENTICATION_UNSPECIFIED
         /// SERVER

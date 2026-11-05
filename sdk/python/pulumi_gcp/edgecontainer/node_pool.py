@@ -844,6 +844,44 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return NodePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict', 'outputs.NodePoolLocalDiskEncryption']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict', 'outputs.NodePoolNodeConfig']]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            node_location: pulumi.Input[Optional[_builtins.str]] = None,
+            node_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cluster"] = cluster
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
+        __props__["localDiskEncryption"] = local_disk_encryption
+        __props__["location"] = location
+        __props__["machineFilter"] = machine_filter
+        __props__["name"] = name
+        __props__["nodeConfig"] = node_config
+        __props__["nodeCount"] = node_count
+        __props__["nodeLocation"] = node_location
+        __props__["nodeVersion"] = node_version
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:edgecontainer/nodePool:NodePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cluster(self) -> pulumi.Output[_builtins.str]:

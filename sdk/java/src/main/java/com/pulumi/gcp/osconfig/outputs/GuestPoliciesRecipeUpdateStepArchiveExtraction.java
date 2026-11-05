@@ -18,7 +18,7 @@ public final class GuestPoliciesRecipeUpdateStepArchiveExtraction {
      */
     private String artifactId;
     /**
-     * @return Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+     * @return Directory to extract archive to. Defaults to / on Linux or C:&#92; on Windows.
      * 
      */
     private @Nullable String destination;
@@ -38,7 +38,7 @@ public final class GuestPoliciesRecipeUpdateStepArchiveExtraction {
         return this.artifactId;
     }
     /**
-     * @return Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+     * @return Directory to extract archive to. Defaults to / on Linux or C:&#92; on Windows.
      * 
      */
     public Optional<String> destination() {

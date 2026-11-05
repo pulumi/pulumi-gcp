@@ -298,6 +298,12 @@ func (VolumeQuotaRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeQuotaRuleState)(nil)).Elem()
 }
 
+// VolumeQuotaRuleExists checks whether an existing VolumeQuotaRule resource with the given ID exists.
+func VolumeQuotaRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeQuotaRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:netapp/volumeQuotaRule:VolumeQuotaRule", id, state, "", opts...)
+}
+
 type volumeQuotaRuleArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

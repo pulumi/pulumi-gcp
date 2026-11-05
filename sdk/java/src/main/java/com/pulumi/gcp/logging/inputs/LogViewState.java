@@ -116,14 +116,14 @@ public final class LogViewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
+     * The resource name of the view. For example: &#92;`projects/my-project/locations/global/buckets/my-bucket/views/my-view&#92;`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
+     * @return The resource name of the view. For example: &#92;`projects/my-project/locations/global/buckets/my-bucket/views/my-view&#92;`
      * 
      */
     public Optional<Output<String>> name() {
@@ -329,7 +329,7 @@ public final class LogViewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
+         * @param name The resource name of the view. For example: &#92;`projects/my-project/locations/global/buckets/my-bucket/views/my-view&#92;`
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class LogViewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
+         * @param name The resource name of the view. For example: &#92;`projects/my-project/locations/global/buckets/my-bucket/views/my-view&#92;`
          * 
          * @return builder
          * 

@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

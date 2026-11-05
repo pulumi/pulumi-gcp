@@ -427,6 +427,12 @@ func (FeedState) ElementType() reflect.Type {
 	return reflect.TypeOf((*feedState)(nil)).Elem()
 }
 
+// FeedExists checks whether an existing Feed resource with the given ID exists.
+func FeedExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeedState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:chronicle/feed:Feed", id, state, "", opts...)
+}
+
 type feedArgs struct {
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,

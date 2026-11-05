@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("example-pipeline-bucket")
  *             .location("us-central1")
@@ -96,12 +96,12 @@ import javax.annotation.Nullable;
  *                                 jsonProperty("container", jsonObject(
  *                                     jsonProperty("args", jsonArray(
  *                                         "--text", 
- *                                         "{{$.inputs.parameters['text']}}"
+ *                                         "}{{{@code $.inputs.parameters['text']}}}{@code "
  *                                     )),
  *                                     jsonProperty("command", jsonArray(
  *                                         "sh", 
  *                                         "-c", 
- *                                         "echo \"$0\""
+ *                                         "echo }&#92;{@code "$0}&#92;{@code ""
  *                                     )),
  *                                     jsonProperty("image", "python:3.11")
  *                                 ))
@@ -155,8 +155,8 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("env", "test"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -291,7 +291,7 @@ import javax.annotation.Nullable;
  *                                     jsonProperty("command", jsonArray(
  *                                         "sh", 
  *                                         "-c", 
- *                                         "echo \"$0\""
+ *                                         "echo }&#92;{@code "$0}&#92;{@code ""
  *                                     )),
  *                                     jsonProperty("image", "python:3.11")
  *                                 ))

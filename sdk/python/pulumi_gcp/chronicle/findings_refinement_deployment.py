@@ -564,6 +564,30 @@ class FindingsRefinementDeployment(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return FindingsRefinementDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            archived: pulumi.Input[Optional[_builtins.bool]] = None,
+            detection_exclusion_application: pulumi.Input[Optional[Union['FindingsRefinementDeploymentDetectionExclusionApplicationArgs', 'FindingsRefinementDeploymentDetectionExclusionApplicationArgsDict', 'outputs.FindingsRefinementDeploymentDetectionExclusionApplication']]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            findings_refinement: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["archived"] = archived
+        __props__["detectionExclusionApplication"] = detection_exclusion_application
+        __props__["enabled"] = enabled
+        __props__["findingsRefinement"] = findings_refinement
+        __props__["instance"] = instance
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'gcp:chronicle/findingsRefinementDeployment:FindingsRefinementDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def archived(self) -> pulumi.Output[Optional[_builtins.bool]]:

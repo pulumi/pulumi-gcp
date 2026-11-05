@@ -506,6 +506,12 @@ func (BareMetalNodePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bareMetalNodePoolState)(nil)).Elem()
 }
 
+// BareMetalNodePoolExists checks whether an existing BareMetalNodePool resource with the given ID exists.
+func BareMetalNodePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BareMetalNodePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", id, state, "", opts...)
+}
+
 type bareMetalNodePoolArgs struct {
 	// Annotations on the Bare Metal Node Pool.
 	// This field has the same restrictions as Kubernetes annotations.

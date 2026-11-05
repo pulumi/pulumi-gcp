@@ -924,6 +924,34 @@ class SecurityGatewayApplication(pulumi.CustomResource):
         __props__.__dict__["upstreams"] = upstreams
         return SecurityGatewayApplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict', 'outputs.SecurityGatewayApplicationEndpointMatcher']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upstreams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict', 'outputs.SecurityGatewayApplicationUpstream']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationId"] = application_id
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["displayName"] = display_name
+        __props__["endpointMatchers"] = endpoint_matchers
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["schema"] = schema
+        __props__["securityGatewayId"] = security_gateway_id
+        __props__["updateTime"] = update_time
+        __props__["upstreams"] = upstreams
+        return pulumi.runtime.exists_resource(None, 'gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.str]:

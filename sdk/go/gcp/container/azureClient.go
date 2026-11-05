@@ -190,6 +190,12 @@ func (AzureClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureClientState)(nil)).Elem()
 }
 
+// AzureClientExists checks whether an existing AzureClient resource with the given ID exists.
+func AzureClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:container/azureClient:AzureClient", id, state, "", opts...)
+}
+
 type azureClientArgs struct {
 	// The Azure Active Directory Application ID.
 	ApplicationId string `pulumi:"applicationId"`

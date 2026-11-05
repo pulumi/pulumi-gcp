@@ -3842,6 +3842,86 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["target"] = target
         return ForwardingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_service: pulumi.Input[Optional[_builtins.str]] = None,
+            base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            is_mirroring_collector: pulumi.Input[Optional[_builtins.bool]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            no_automate_dns_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            recreate_closed_psc: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_directory_registrations: pulumi.Input[Optional[Union['ForwardingRuleServiceDirectoryRegistrationsArgs', 'ForwardingRuleServiceDirectoryRegistrationsArgsDict', 'outputs.ForwardingRuleServiceDirectoryRegistrations']]] = None,
+            service_label: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allPorts"] = all_ports
+        __props__["allowGlobalAccess"] = allow_global_access
+        __props__["allowPscGlobalAccess"] = allow_psc_global_access
+        __props__["backendService"] = backend_service
+        __props__["baseForwardingRule"] = base_forwarding_rule
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["effectiveLabels"] = effective_labels
+        __props__["forwardingRuleId"] = forwarding_rule_id
+        __props__["ipAddress"] = ip_address
+        __props__["ipCollection"] = ip_collection
+        __props__["ipProtocol"] = ip_protocol
+        __props__["ipVersion"] = ip_version
+        __props__["isMirroringCollector"] = is_mirroring_collector
+        __props__["labelFingerprint"] = label_fingerprint
+        __props__["labels"] = labels
+        __props__["loadBalancingScheme"] = load_balancing_scheme
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["networkTier"] = network_tier
+        __props__["noAutomateDnsZone"] = no_automate_dns_zone
+        __props__["portRange"] = port_range
+        __props__["ports"] = ports
+        __props__["project"] = project
+        __props__["pscConnectionId"] = psc_connection_id
+        __props__["pscConnectionStatus"] = psc_connection_status
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["recreateClosedPsc"] = recreate_closed_psc
+        __props__["region"] = region
+        __props__["selfLink"] = self_link
+        __props__["serviceDirectoryRegistrations"] = service_directory_registrations
+        __props__["serviceLabel"] = service_label
+        __props__["serviceName"] = service_name
+        __props__["sourceIpRanges"] = source_ip_ranges
+        __props__["subnetwork"] = subnetwork
+        __props__["target"] = target
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/forwardingRule:ForwardingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allPorts")
     def all_ports(self) -> pulumi.Output[Optional[_builtins.bool]]:

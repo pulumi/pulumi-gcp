@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? DisableMultiNic { get; set; }
 
         /// <summary>
-        /// which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+        /// which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
         /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         /// </summary>
         [Input("enableLegacyLustrePort")]

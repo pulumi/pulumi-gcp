@@ -359,6 +359,24 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         __props__.__dict__["parent"] = parent
         return SQuotaAdjusterSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            effective_container: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_enablement: pulumi.Input[Optional[_builtins.str]] = None,
+            enablement: pulumi.Input[Optional[_builtins.str]] = None,
+            inherited: pulumi.Input[Optional[_builtins.bool]] = None,
+            inherited_from: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["effectiveContainer"] = effective_container
+        __props__["effectiveEnablement"] = effective_enablement
+        __props__["enablement"] = enablement
+        __props__["inherited"] = inherited
+        __props__["inheritedFrom"] = inherited_from
+        __props__["parent"] = parent
+        return pulumi.runtime.exists_resource(None, 'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="effectiveContainer")
     @_utilities.deprecated("""`effectiveContainer` is deprecated and will be removed in a future major release. Use `inherited_from` instead.""")

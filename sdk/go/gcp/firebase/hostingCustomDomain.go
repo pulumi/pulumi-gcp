@@ -593,6 +593,12 @@ func (HostingCustomDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostingCustomDomainState)(nil)).Elem()
 }
 
+// HostingCustomDomainExists checks whether an existing HostingCustomDomain resource with the given ID exists.
+func HostingCustomDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostingCustomDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:firebase/hostingCustomDomain:HostingCustomDomain", id, state, "", opts...)
+}
+
 type hostingCustomDomainArgs struct {
 	// A field that lets you specify which SSL certificate type Hosting creates
 	// for your domain name. Spark plan `CustomDomain`s only have access to the

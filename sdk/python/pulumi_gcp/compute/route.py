@@ -1558,6 +1558,66 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["warnings"] = warnings
         return Route(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict', 'outputs.RouteAsPath']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_range: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_hub: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_ilb: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_instance_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_med: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_network: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_peering: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict', 'outputs.RouteParams']]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            route_status: pulumi.Input[Optional[_builtins.str]] = None,
+            route_type: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict', 'outputs.RouteWarning']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["asPaths"] = as_paths
+        __props__["creationTimestamp"] = creation_timestamp
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["destRange"] = dest_range
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["nextHopGateway"] = next_hop_gateway
+        __props__["nextHopHub"] = next_hop_hub
+        __props__["nextHopIlb"] = next_hop_ilb
+        __props__["nextHopInstance"] = next_hop_instance
+        __props__["nextHopInstanceZone"] = next_hop_instance_zone
+        __props__["nextHopInterRegionCost"] = next_hop_inter_region_cost
+        __props__["nextHopIp"] = next_hop_ip
+        __props__["nextHopMed"] = next_hop_med
+        __props__["nextHopNetwork"] = next_hop_network
+        __props__["nextHopOrigin"] = next_hop_origin
+        __props__["nextHopPeering"] = next_hop_peering
+        __props__["nextHopVpnTunnel"] = next_hop_vpn_tunnel
+        __props__["params"] = params
+        __props__["priority"] = priority
+        __props__["project"] = project
+        __props__["routeStatus"] = route_status
+        __props__["routeType"] = route_type
+        __props__["selfLink"] = self_link
+        __props__["tags"] = tags
+        __props__["warnings"] = warnings
+        return pulumi.runtime.exists_resource(None, 'gcp:compute/route:Route', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="asPaths")
     def as_paths(self) -> pulumi.Output[Sequence['outputs.RouteAsPath']]:

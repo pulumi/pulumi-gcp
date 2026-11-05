@@ -664,6 +664,12 @@ func (SecurityProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityProfileState)(nil)).Elem()
 }
 
+// SecurityProfileExists checks whether an existing SecurityProfile resource with the given ID exists.
+func SecurityProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:networksecurity/securityProfile:SecurityProfile", id, state, "", opts...)
+}
+
 type securityProfileArgs struct {
 	// The configuration for defining the Intercept Endpoint Group used to
 	// intercept traffic to third-party firewall appliances.

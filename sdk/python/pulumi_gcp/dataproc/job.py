@@ -1019,6 +1019,54 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["wait_for_completion"] = wait_for_completion
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            driver_controls_files_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            driver_output_resource_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            hadoop_config: pulumi.Input[Optional[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']]] = None,
+            hive_config: pulumi.Input[Optional[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            pig_config: pulumi.Input[Optional[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']]] = None,
+            placement: pulumi.Input[Optional[Union['JobPlacementArgs', 'JobPlacementArgsDict', 'outputs.JobPlacement']]] = None,
+            presto_config: pulumi.Input[Optional[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            pyspark_config: pulumi.Input[Optional[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']]] = None,
+            reference: pulumi.Input[Optional[Union['JobReferenceArgs', 'JobReferenceArgsDict', 'outputs.JobReference']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling: pulumi.Input[Optional[Union['JobSchedulingArgs', 'JobSchedulingArgsDict', 'outputs.JobScheduling']]] = None,
+            spark_config: pulumi.Input[Optional[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']]] = None,
+            sparksql_config: pulumi.Input[Optional[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]]]] = None,
+            wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["driverControlsFilesUri"] = driver_controls_files_uri
+        __props__["driverOutputResourceUri"] = driver_output_resource_uri
+        __props__["effectiveLabels"] = effective_labels
+        __props__["forceDelete"] = force_delete
+        __props__["hadoopConfig"] = hadoop_config
+        __props__["hiveConfig"] = hive_config
+        __props__["labels"] = labels
+        __props__["pigConfig"] = pig_config
+        __props__["placement"] = placement
+        __props__["prestoConfig"] = presto_config
+        __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
+        __props__["pysparkConfig"] = pyspark_config
+        __props__["reference"] = reference
+        __props__["region"] = region
+        __props__["scheduling"] = scheduling
+        __props__["sparkConfig"] = spark_config
+        __props__["sparksqlConfig"] = sparksql_config
+        __props__["statuses"] = statuses
+        __props__["waitForCompletion"] = wait_for_completion
+        return pulumi.runtime.exists_resource(None, 'gcp:dataproc/job:Job', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

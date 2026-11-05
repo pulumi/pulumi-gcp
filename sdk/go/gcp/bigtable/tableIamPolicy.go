@@ -331,6 +331,12 @@ func (TableIamPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableIamPolicyState)(nil)).Elem()
 }
 
+// TableIamPolicyExists checks whether an existing TableIamPolicy resource with the given ID exists.
+func TableIamPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TableIamPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:bigtable/tableIamPolicy:TableIamPolicy", id, state, "", opts...)
+}
+
 type tableIamPolicyArgs struct {
 	// The name or relative resource id of the instance that owns the table.
 	InstanceName string `pulumi:"instanceName"`

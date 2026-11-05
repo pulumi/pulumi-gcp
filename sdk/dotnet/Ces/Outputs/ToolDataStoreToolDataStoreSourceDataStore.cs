@@ -54,7 +54,6 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// FAQ
         /// CONNECTOR
         /// 
-        /// 
         /// &lt;a name="NestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"&gt;&lt;/a&gt;The `ConnectorConfig` block contains:
         /// </summary>
         public readonly string? Type;

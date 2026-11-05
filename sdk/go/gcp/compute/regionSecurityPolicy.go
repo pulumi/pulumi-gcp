@@ -587,6 +587,12 @@ func (RegionSecurityPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionSecurityPolicyState)(nil)).Elem()
 }
 
+// RegionSecurityPolicyExists checks whether an existing RegionSecurityPolicy resource with the given ID exists.
+func RegionSecurityPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegionSecurityPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:compute/regionSecurityPolicy:RegionSecurityPolicy", id, state, "", opts...)
+}
+
 type regionSecurityPolicyArgs struct {
 	// Advanced Options Config of this security policy.
 	// Structure is documented below.

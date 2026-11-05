@@ -18,9 +18,9 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// If the context is not set, plaintext would be used as is for encryption. If the context is set but:
         /// 1. there is no record present when transforming a given value or
         /// 2. the field is not present when transforming a given value,
-        /// plaintext would be used as is for encryption.
-        /// Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        /// Structure is documented below.
+        ///    plaintext would be used as is for encryption.
+        ///    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+        ///    Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext? Context;
         /// <summary>
@@ -36,8 +36,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
         /// *   reverse a surrogate that does not correspond to an actual identifier
         /// *   be unable to parse the surrogate and result in an error
-        /// Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
-        /// Structure is documented below.
+        ///     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
+        ///     Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType? SurrogateInfoType;
 

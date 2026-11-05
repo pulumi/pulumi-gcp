@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
  *                     .title("expires_after_2029_12_31")
  *                     .description("Expiring at midnight of 2029-12-31")
- *                     .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                     .expression("request.time < timestamp(}&#92;{@code "2030-01-01T00:00:00Z}&#92;{@code ")")
  *                     .build())
  *                 .build())
  *             .build());
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *             .condition(DatasetIamBindingConditionArgs.builder()
  *                 .title("expires_after_2029_12_31")
  *                 .description("Expiring at midnight of 2029-12-31")
- *                 .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                 .expression("request.time < timestamp(}&#92;{@code "2030-01-01T00:00:00Z}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 
@@ -308,7 +308,7 @@ import javax.annotation.Nullable;
  *             .condition(DatasetIamMemberConditionArgs.builder()
  *                 .title("expires_after_2029_12_31")
  *                 .description("Expiring at midnight of 2029-12-31")
- *                 .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                 .expression("request.time < timestamp(}&#92;{@code "2030-01-01T00:00:00Z}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 
@@ -404,7 +404,7 @@ import javax.annotation.Nullable;
  *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
  *                     .title("expires_after_2029_12_31")
  *                     .description("Expiring at midnight of 2029-12-31")
- *                     .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                     .expression("request.time < timestamp(}&#92;{@code "2030-01-01T00:00:00Z}&#92;{@code ")")
  *                     .build())
  *                 .build())
  *             .build());
@@ -502,7 +502,7 @@ import javax.annotation.Nullable;
  *             .condition(DatasetIamBindingConditionArgs.builder()
  *                 .title("expires_after_2029_12_31")
  *                 .description("Expiring at midnight of 2029-12-31")
- *                 .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                 .expression("request.time < timestamp(}&#92;{@code "2030-01-01T00:00:00Z}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 
@@ -590,7 +590,7 @@ import javax.annotation.Nullable;
  *             .condition(DatasetIamMemberConditionArgs.builder()
  *                 .title("expires_after_2029_12_31")
  *                 .description("Expiring at midnight of 2029-12-31")
- *                 .expression("request.time < timestamp(\"2030-01-01T00:00:00Z\")")
+ *                 .expression("request.time < timestamp(}&#92;{@code "2030-01-01T00:00:00Z}&#92;{@code ")")
  *                 .build())
  *             .build());
  * 

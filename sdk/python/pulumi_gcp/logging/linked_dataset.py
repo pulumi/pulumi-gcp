@@ -614,6 +614,32 @@ class LinkedDataset(pulumi.CustomResource):
         __props__.__dict__["parent"] = parent
         return LinkedDataset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bigquery_datasets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict', 'outputs.LinkedDatasetBigqueryDataset']]]]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigqueryDatasets"] = bigquery_datasets
+        __props__["bucket"] = bucket
+        __props__["createTime"] = create_time
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["description"] = description
+        __props__["lifecycleState"] = lifecycle_state
+        __props__["linkId"] = link_id
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["parent"] = parent
+        return pulumi.runtime.exists_resource(None, 'gcp:logging/linkedDataset:LinkedDataset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigqueryDatasets")
     def bigquery_datasets(self) -> pulumi.Output[Sequence['outputs.LinkedDatasetBigqueryDataset']]:

@@ -23,11 +23,10 @@ public final class InterconnectMacsecPreSharedKey {
      * 
      * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
      * 
-     * @deprecated
-     * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * @deprecated `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
      * 
      */
-    @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
+    @Deprecated
     private @Nullable Boolean failOpen;
     /**
      * @return A name for this pre-shared key. The name must be 1-63 characters long, and
@@ -59,11 +58,10 @@ public final class InterconnectMacsecPreSharedKey {
      * 
      * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
      * 
-     * @deprecated
-     * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * @deprecated `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
      * 
      */
-    @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
+    @Deprecated
     public Optional<Boolean> failOpen() {
         return Optional.ofNullable(this.failOpen);
     }

@@ -40,7 +40,6 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         /// GOOGLE_CLOUD_STORAGE
         /// AZURE_DATA_LAKE_STORAGE
         /// 
-        /// 
         /// &lt;a name="NestedPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage"&gt;&lt;/a&gt;The `AmazonS3IcebergStorage` block supports:
         /// </summary>
         [Input("storageType", required: true)]

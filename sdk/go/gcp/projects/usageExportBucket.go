@@ -154,6 +154,12 @@ func (UsageExportBucketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*usageExportBucketState)(nil)).Elem()
 }
 
+// UsageExportBucketExists checks whether an existing UsageExportBucket resource with the given ID exists.
+func UsageExportBucketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UsageExportBucketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gcp:projects/usageExportBucket:UsageExportBucket", id, state, "", opts...)
+}
+
 type usageExportBucketArgs struct {
 	// The bucket to store reports in.
 	//

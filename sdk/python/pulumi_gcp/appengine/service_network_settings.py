@@ -363,6 +363,18 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         return ServiceNetworkSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict', 'outputs.ServiceNetworkSettingsNetworkSettings']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["networkSettings"] = network_settings
+        __props__["project"] = project
+        __props__["service"] = service
+        return pulumi.runtime.exists_resource(None, 'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="networkSettings")
     def network_settings(self) -> pulumi.Output['outputs.ServiceNetworkSettingsNetworkSettings']:

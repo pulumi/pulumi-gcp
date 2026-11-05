@@ -1034,6 +1034,34 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
         __props__.__dict__["publisher_model_name"] = publisher_model_name
         return AiEndpointWithModelGardenDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentDeployConfig']]] = None,
+            deployed_model_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployed_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentEndpointConfig']]] = None,
+            hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict', 'outputs.AiEndpointWithModelGardenDeploymentModelConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deletionPolicy"] = deletion_policy
+        __props__["deployConfig"] = deploy_config
+        __props__["deployedModelDisplayName"] = deployed_model_display_name
+        __props__["deployedModelId"] = deployed_model_id
+        __props__["endpoint"] = endpoint
+        __props__["endpointConfig"] = endpoint_config
+        __props__["huggingFaceModelId"] = hugging_face_model_id
+        __props__["location"] = location
+        __props__["modelConfig"] = model_config
+        __props__["project"] = project
+        __props__["publisherModelName"] = publisher_model_name
+        return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[_builtins.str]:

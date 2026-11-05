@@ -15,13 +15,13 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// <summary>
         /// Represents the IdP and type of claims that should be fetched.
         /// * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
-        /// using configuration provided in ExtendedAttributesOAuth2Client and 'id'
-        /// property of the 'microsoft.graph.group' object is used for claim mapping. See
-        /// https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
-        /// for more details on 'microsoft.graph.group' properties. The
-        /// group IDs obtained from Azure AD are present in 'assertion.groups' for
-        /// OIDC providers and 'assertion.attributes.groups' for SAML providers for
-        /// attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
+        ///   using configuration provided in ExtendedAttributesOAuth2Client and 'id'
+        ///   property of the 'microsoft.graph.group' object is used for claim mapping. See
+        ///   https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+        ///   for more details on 'microsoft.graph.group' properties. The
+        ///   group IDs obtained from Azure AD are present in 'assertion.groups' for
+        ///   OIDC providers and 'assertion.attributes.groups' for SAML providers for
+        ///   attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
         /// </summary>
         [Input("attributesType", required: true)]
         public Input<string> AttributesType { get; set; } = null!;
