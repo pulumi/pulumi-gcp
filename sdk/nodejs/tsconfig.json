@@ -1724,6 +1724,7 @@
         "organizations/getIamCustomRole.ts",
         "organizations/getIamCustomRoles.ts",
         "organizations/getOrganization.ts",
+        "organizations/getOrganizationIamPolicy.ts",
         "organizations/getProject.ts",
         "organizations/getS.ts",
         "organizations/iamAuditConfig.ts",
