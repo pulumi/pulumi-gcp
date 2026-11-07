@@ -562,6 +562,71 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
 }`)
 }
 
+// Upstream rejects a node pool that sets both name and name_prefix, so auto-naming must leave name unset when
+// namePrefix is given. See https://github.com/pulumi/pulumi-gcp/issues/4055.
+func TestContainerNodePoolAutoNaming(t *testing.T) {
+	check := func(t *testing.T, news, inputs string) {
+		replay.Replay(t, providerServer(t), fmt.Sprintf(`
+{
+    "method": "/pulumirpc.ResourceProvider/Check",
+    "request": {
+        "urn": "urn:pulumi:dev::dev-yaml::gcp:container/nodePool:NodePool::example",
+        "olds": {},
+        "news": %s,
+        "randomSeed": "ZgqzJVOmtvl2Ni5Y/2HRvTkquku0LpRubgZVUzBO1nc="
+    },
+    "response": {
+        "inputs": %s
+    },
+    "metadata": {
+        "kind": "resource",
+        "mode": "client",
+        "name": "gcp"
+    }
+}`, news, inputs))
+	}
+
+	t.Run("name_prefix", func(t *testing.T) {
+		check(t, `{
+            "cluster": "example-cluster",
+            "location": "europe-west2-a",
+            "namePrefix": "example-"
+        }`, `{
+            "__defaults": [],
+            "cluster": "example-cluster",
+            "location": "europe-west2-a",
+            "namePrefix": "example-"
+        }`)
+	})
+
+	t.Run("autonamed", func(t *testing.T) {
+		check(t, `{
+            "cluster": "example-cluster",
+            "location": "europe-west2-a"
+        }`, `{
+            "__defaults": [
+                "name"
+            ],
+            "cluster": "example-cluster",
+            "location": "europe-west2-a",
+            "name": "example-d662a01"
+        }`)
+	})
+
+	t.Run("explicit_name", func(t *testing.T) {
+		check(t, `{
+            "cluster": "example-cluster",
+            "location": "europe-west2-a",
+            "name": "explicit"
+        }`, `{
+            "__defaults": [],
+            "cluster": "example-cluster",
+            "location": "europe-west2-a",
+            "name": "explicit"
+        }`)
+	})
+}
+
 //nolint:lll
 func TestCheckConfigNoCredentials(t *testing.T) {
 	if !testing.Short() {
