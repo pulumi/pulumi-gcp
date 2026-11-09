@@ -1,4 +1,5 @@
 provider: gcp
+npmTrustedPublishing: true
 gcp: true
 providerDefaultBranch: main
 major-version: 10
