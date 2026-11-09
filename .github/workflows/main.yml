@@ -17,6 +17,7 @@ env:
 
 jobs:
   prerequisites:
+    if: github.repository == 'pulumi/pulumi-gcp'
     permissions:
       contents: read
       pull-requests: write
@@ -78,10 +79,12 @@ jobs:
       version: ${{ needs.prerequisites.outputs.version }}
 
   lint:
+    if: github.repository == 'pulumi/pulumi-gcp'
     name: lint
     uses: ./.github/workflows/lint.yml
     secrets: inherit
   license_check:
+    if: github.repository == 'pulumi/pulumi-gcp'
     name: License Check
     uses: ./.github/workflows/license.yml
     secrets: inherit
@@ -159,13 +162,4 @@ jobs:
 
 name: main
 on:
-  workflow_dispatch: {}
-  push:
-    branches:
-    - main
-    paths-ignore:
-    - "**.md"
-    tags-ignore:
-    - v*
-    - sdk/*
-    - "**"
+  workflow_call: {}
