@@ -196,7 +196,7 @@ jobs:
         registry-url: https://registry.npmjs.org
     - name: Publish SDKs
       if: inputs.skipJavaSdk == false
-      uses: pulumi/pulumi-package-publisher@3ec1409d3e894142b9825c7859be8e57d362762a # v0.0.23
+      uses: pulumi/pulumi-package-publisher@aed8501bbe740c32879bd38ecec6fc34e2be2c06 # v0.1.0
       with:
         sdk: all
         version: ${{ inputs.version }}
@@ -212,7 +212,7 @@ jobs:
         NUGET_PUBLISH_KEY: ${{ steps.esc-secrets.outputs.NUGET_PUBLISH_KEY }}
     - name: Publish SDKs (except Java)
       if: inputs.skipJavaSdk == true
-      uses: pulumi/pulumi-package-publisher@3ec1409d3e894142b9825c7859be8e57d362762a # v0.0.23
+      uses: pulumi/pulumi-package-publisher@aed8501bbe740c32879bd38ecec6fc34e2be2c06 # v0.1.0
       with:
         sdk: all,!java
         version: ${{ inputs.version }}
