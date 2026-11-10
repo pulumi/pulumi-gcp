@@ -33,6 +33,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/provider"
+	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 
 	"github.com/pulumi/pulumi-gcp/provider/v10/pkg/version"
 )
@@ -401,6 +402,23 @@ var noCredentialsErr string
 //go:embed errors/wrong_region.txt
 var wrongRegionErr string
 
+// escHintMessage is the text of the product hint that the Pulumi CLI may show when no credentials are found.
+const escHintMessage = "Pulumi ESC can give your stacks short-lived Google Cloud credentials through OIDC. " +
+	"To set it up, run `pulumi env setup gcp`. Learn more: " +
+	"https://www.pulumi.com/registry/packages/gcp/installation-configuration/#authenticate-with-dynamically-generated-credentials" //nolint:lll // URL
+
+// credentialsFailure turns an error from loading the provider's credentials into a check failure. When no
+// credentials are found it carries a product hint, since short-lived credentials may help. Credentials that are set
+// but can't be loaded, such as a malformed key file, are a configuration mistake and carry no hint.
+func credentialsFailure(err error) tfbridge.CheckFailureError {
+	failure := tfbridge.CheckFailureErrorElement{Reason: fmt.Sprintf(noCredentialsErr, err)}
+	if strings.Contains(err.Error(), "could not find default credentials") {
+		failure.Hint = pulumirpc.Hint_HINT_DYNAMIC_CREDENTIALS
+		failure.HintMessage = escHintMessage
+	}
+	return tfbridge.CheckFailureError{Failures: []tfbridge.CheckFailureErrorElement{failure}}
+}
+
 //go:embed errors/no_project.txt
 var noProjectErr string
 
@@ -465,7 +483,7 @@ func preConfigureCallbackWithLogger(
 		// validate the gcloud config
 		err := config.LoadAndValidate(ctx)
 		if err != nil {
-			return fmt.Errorf(noCredentialsErr, err)
+			return credentialsFailure(err)
 		}
 
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {

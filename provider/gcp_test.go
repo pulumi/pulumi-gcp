@@ -14,9 +14,11 @@ import (
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/api/option"
 
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/unstable/testutil"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
 
 func RegionListReturnHandler(regions []string) func(http.ResponseWriter, *http.Request) {
@@ -296,4 +298,46 @@ func (e *expectLogs) assertDone() {
 		return
 	}
 	assert.Fail(e.t, "un-popped logs found", "logs: %#v", e.expected)
+}
+
+// TestPreConfigureCallbackCredentialsHint checks that only missing credentials carry the ESC hint.
+func TestPreConfigureCallbackCredentialsHint(t *testing.T) {
+	tests := []struct {
+		name        string
+		credentials string
+		wantHint    pulumirpc.Hint
+	}{
+		{"no credentials", "", pulumirpc.Hint_HINT_DYNAMIC_CREDENTIALS},
+		{"malformed credentials", `{"type": `, pulumirpc.Hint_HINT_UNSPECIFIED},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// Hide any credentials on this machine, so that only the ones under test are found.
+			home := t.TempDir()
+			t.Setenv("HOME", home)
+			t.Setenv("CLOUDSDK_CONFIG", home)
+			t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+			t.Setenv("GOOGLE_OAUTH_ACCESS_TOKEN", "")
+			t.Setenv("GOOGLE_CLOUD_KEYFILE_JSON", "")
+			t.Setenv("GCLOUD_KEYFILE_JSON", "")
+			t.Setenv("GOOGLE_CREDENTIALS", tt.credentials)
+			t.Setenv("GOOGLE_PROJECT", "myproject")
+
+			var credentialsValidationRun atomic.Bool
+			ctx := testutil.InitLogging(t, context.Background(), nil)
+			err := preConfigureCallbackWithLogger(&credentialsValidationRun, nil)(ctx, nil, nil, nil)
+
+			var failure tfbridge.CheckFailureError
+			require.ErrorAs(t, err, &failure)
+			require.Len(t, failure.Failures, 1)
+			assert.Contains(t, failure.Failures[0].Reason, "failed to load application credentials.")
+			assert.NotContains(t, failure.Failures[0].Reason, "pulumi env setup")
+			assert.Equal(t, tt.wantHint, failure.Failures[0].Hint)
+			if tt.wantHint == pulumirpc.Hint_HINT_UNSPECIFIED {
+				assert.Empty(t, failure.Failures[0].HintMessage)
+			} else {
+				assert.Contains(t, failure.Failures[0].HintMessage, "`pulumi env setup gcp`")
+			}
+		})
+	}
 }
