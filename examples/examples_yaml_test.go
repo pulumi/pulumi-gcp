@@ -38,6 +38,20 @@ func TestAccAppServiceYAML(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+func TestAccDatasourceYAML(t *testing.T) {
+	test := getBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "datasource-yaml"),
+			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+				version, ok := stack.Outputs["engine_version"].(string)
+				assert.True(t, ok, "engine_version output should be a string")
+				assert.NotEmpty(t, version)
+			},
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestPulumiLabelsSecretYAML(t *testing.T) {
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "yaml"),

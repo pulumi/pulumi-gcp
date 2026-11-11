@@ -1,0 +1,12 @@
+name: datasource-yaml
+description: Invokes the gcp:container:getEngineVersions data source (in YAML!)
+runtime: yaml
+
+variables:
+  engineVersions:
+    fn::invoke:
+      function: gcp:container:getEngineVersions
+      arguments: {}
+
+outputs:
+  engine_version: ${engineVersions.latestMasterVersion}

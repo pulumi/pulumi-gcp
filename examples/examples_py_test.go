@@ -22,15 +22,6 @@ func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	return pythonBase
 }
 
-func TestAccDatasourcePy(t *testing.T) {
-	test := getPythonBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "datasource-py"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
-
 func TestAccMinimalPy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
