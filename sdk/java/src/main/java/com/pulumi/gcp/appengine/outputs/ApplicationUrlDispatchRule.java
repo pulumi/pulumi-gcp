@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationUrlDispatchRule {
+    /**
+     * @return Domain name to match against.
+     * 
+     */
     private @Nullable String domain;
+    /**
+     * @return Pathname within the host.
+     * 
+     */
     private @Nullable String path;
+    /**
+     * @return Resource ID of a service in this application that should serve the matched request.
+     * 
+     */
     private @Nullable String service;
 
     private ApplicationUrlDispatchRule() {}
+    /**
+     * @return Domain name to match against.
+     * 
+     */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
+    /**
+     * @return Pathname within the host.
+     * 
+     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
+    /**
+     * @return Resource ID of a service in this application that should serve the matched request.
+     * 
+     */
     public Optional<String> service() {
         return Optional.ofNullable(this.service);
     }

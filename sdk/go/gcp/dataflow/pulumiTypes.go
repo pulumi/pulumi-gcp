@@ -13,6 +13,162 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ConfigStoreSettingValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// ConfigStoreSettingValueInput is an input type that accepts ConfigStoreSettingValueArgs and ConfigStoreSettingValueOutput values.
+// You can construct a concrete instance of `ConfigStoreSettingValueInput` via:
+//
+//	ConfigStoreSettingValueArgs{...}
+type ConfigStoreSettingValueInput interface {
+	pulumi.Input
+
+	ToConfigStoreSettingValueOutput() ConfigStoreSettingValueOutput
+	ToConfigStoreSettingValueOutputWithContext(context.Context) ConfigStoreSettingValueOutput
+}
+
+type ConfigStoreSettingValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (ConfigStoreSettingValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigStoreSettingValue)(nil)).Elem()
+}
+
+func (i ConfigStoreSettingValueArgs) ToConfigStoreSettingValueOutput() ConfigStoreSettingValueOutput {
+	return i.ToConfigStoreSettingValueOutputWithContext(context.Background())
+}
+
+func (i ConfigStoreSettingValueArgs) ToConfigStoreSettingValueOutputWithContext(ctx context.Context) ConfigStoreSettingValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigStoreSettingValueOutput)
+}
+
+func (i ConfigStoreSettingValueArgs) ToConfigStoreSettingValuePtrOutput() ConfigStoreSettingValuePtrOutput {
+	return i.ToConfigStoreSettingValuePtrOutputWithContext(context.Background())
+}
+
+func (i ConfigStoreSettingValueArgs) ToConfigStoreSettingValuePtrOutputWithContext(ctx context.Context) ConfigStoreSettingValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigStoreSettingValueOutput).ToConfigStoreSettingValuePtrOutputWithContext(ctx)
+}
+
+// ConfigStoreSettingValuePtrInput is an input type that accepts ConfigStoreSettingValueArgs, ConfigStoreSettingValuePtr and ConfigStoreSettingValuePtrOutput values.
+// You can construct a concrete instance of `ConfigStoreSettingValuePtrInput` via:
+//
+//	        ConfigStoreSettingValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigStoreSettingValuePtrInput interface {
+	pulumi.Input
+
+	ToConfigStoreSettingValuePtrOutput() ConfigStoreSettingValuePtrOutput
+	ToConfigStoreSettingValuePtrOutputWithContext(context.Context) ConfigStoreSettingValuePtrOutput
+}
+
+type configStoreSettingValuePtrType ConfigStoreSettingValueArgs
+
+func ConfigStoreSettingValuePtr(v *ConfigStoreSettingValueArgs) ConfigStoreSettingValuePtrInput {
+	return (*configStoreSettingValuePtrType)(v)
+}
+
+func (*configStoreSettingValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigStoreSettingValue)(nil)).Elem()
+}
+
+func (i *configStoreSettingValuePtrType) ToConfigStoreSettingValuePtrOutput() ConfigStoreSettingValuePtrOutput {
+	return i.ToConfigStoreSettingValuePtrOutputWithContext(context.Background())
+}
+
+func (i *configStoreSettingValuePtrType) ToConfigStoreSettingValuePtrOutputWithContext(ctx context.Context) ConfigStoreSettingValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigStoreSettingValuePtrOutput)
+}
+
+type ConfigStoreSettingValueOutput struct{ *pulumi.OutputState }
+
+func (ConfigStoreSettingValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigStoreSettingValue)(nil)).Elem()
+}
+
+func (o ConfigStoreSettingValueOutput) ToConfigStoreSettingValueOutput() ConfigStoreSettingValueOutput {
+	return o
+}
+
+func (o ConfigStoreSettingValueOutput) ToConfigStoreSettingValueOutputWithContext(ctx context.Context) ConfigStoreSettingValueOutput {
+	return o
+}
+
+func (o ConfigStoreSettingValueOutput) ToConfigStoreSettingValuePtrOutput() ConfigStoreSettingValuePtrOutput {
+	return o.ToConfigStoreSettingValuePtrOutputWithContext(context.Background())
+}
+
+func (o ConfigStoreSettingValueOutput) ToConfigStoreSettingValuePtrOutputWithContext(ctx context.Context) ConfigStoreSettingValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigStoreSettingValue) *ConfigStoreSettingValue {
+		return &v
+	}).(ConfigStoreSettingValuePtrOutput)
+}
+
+// Represents a boolean value.
+func (o ConfigStoreSettingValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigStoreSettingValue) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+// Represents a string value.
+func (o ConfigStoreSettingValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigStoreSettingValue) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type ConfigStoreSettingValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigStoreSettingValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigStoreSettingValue)(nil)).Elem()
+}
+
+func (o ConfigStoreSettingValuePtrOutput) ToConfigStoreSettingValuePtrOutput() ConfigStoreSettingValuePtrOutput {
+	return o
+}
+
+func (o ConfigStoreSettingValuePtrOutput) ToConfigStoreSettingValuePtrOutputWithContext(ctx context.Context) ConfigStoreSettingValuePtrOutput {
+	return o
+}
+
+func (o ConfigStoreSettingValuePtrOutput) Elem() ConfigStoreSettingValueOutput {
+	return o.ApplyT(func(v *ConfigStoreSettingValue) ConfigStoreSettingValue {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigStoreSettingValue
+		return ret
+	}).(ConfigStoreSettingValueOutput)
+}
+
+// Represents a boolean value.
+func (o ConfigStoreSettingValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigStoreSettingValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a string value.
+func (o ConfigStoreSettingValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigStoreSettingValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
 type PipelineScheduleInfo struct {
 	// (Output)
 	// When the next Scheduler job is going to run.
@@ -2262,6 +2418,8 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigStoreSettingValueInput)(nil)).Elem(), ConfigStoreSettingValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigStoreSettingValuePtrInput)(nil)).Elem(), ConfigStoreSettingValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleInfoInput)(nil)).Elem(), PipelineScheduleInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleInfoPtrInput)(nil)).Elem(), PipelineScheduleInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineWorkloadInput)(nil)).Elem(), PipelineWorkloadArgs{})
@@ -2278,6 +2436,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersPtrInput)(nil)).Elem(), PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentInput)(nil)).Elem(), PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentPtrInput)(nil)).Elem(), PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs{})
+	pulumi.RegisterOutputType(ConfigStoreSettingValueOutput{})
+	pulumi.RegisterOutputType(ConfigStoreSettingValuePtrOutput{})
 	pulumi.RegisterOutputType(PipelineScheduleInfoOutput{})
 	pulumi.RegisterOutputType(PipelineScheduleInfoPtrOutput{})
 	pulumi.RegisterOutputType(PipelineWorkloadOutput{})

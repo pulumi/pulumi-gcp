@@ -144,7 +144,7 @@ export class VpcServiceControls extends pulumi.CustomResource {
     /**
      * The id of the Google Cloud project containing the consumer network.
      */
-    declare public readonly project: pulumi.Output<string | undefined>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The service that is managing peering connectivity for a service
      * producer's organization. For Google services that support this

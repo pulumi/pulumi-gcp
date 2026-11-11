@@ -321,14 +321,14 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return A reference to the region
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * The service account to run workflow invocations under.

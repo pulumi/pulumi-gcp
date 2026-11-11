@@ -660,8 +660,10 @@ type Instance struct {
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
+	// Structure is documented below.
 	DesiredAutoCreatedEndpoints InstanceDesiredAutoCreatedEndpointArrayOutput `pulumi:"desiredAutoCreatedEndpoints"`
 	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+	// Structure is documented below.
 	//
 	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayOutput `pulumi:"desiredPscAutoConnections"`
@@ -873,8 +875,10 @@ type instanceState struct {
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
+	// Structure is documented below.
 	DesiredAutoCreatedEndpoints []InstanceDesiredAutoCreatedEndpoint `pulumi:"desiredAutoCreatedEndpoints"`
 	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+	// Structure is documented below.
 	//
 	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections []InstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
@@ -1043,8 +1047,10 @@ type InstanceState struct {
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Immutable. User inputs for the auto-created endpoints connections.
+	// Structure is documented below.
 	DesiredAutoCreatedEndpoints InstanceDesiredAutoCreatedEndpointArrayInput
 	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+	// Structure is documented below.
 	//
 	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayInput
@@ -1216,8 +1222,10 @@ type instanceArgs struct {
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
+	// Structure is documented below.
 	DesiredAutoCreatedEndpoints []InstanceDesiredAutoCreatedEndpoint `pulumi:"desiredAutoCreatedEndpoints"`
 	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+	// Structure is documented below.
 	//
 	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections []InstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
@@ -1327,8 +1335,10 @@ type InstanceArgs struct {
 	// Optional. If set to true deletion of the instance will fail.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Immutable. User inputs for the auto-created endpoints connections.
+	// Structure is documented below.
 	DesiredAutoCreatedEndpoints InstanceDesiredAutoCreatedEndpointArrayInput
 	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+	// Structure is documented below.
 	//
 	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayInput
@@ -1559,11 +1569,13 @@ func (o InstanceOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 }
 
 // Immutable. User inputs for the auto-created endpoints connections.
+// Structure is documented below.
 func (o InstanceOutput) DesiredAutoCreatedEndpoints() InstanceDesiredAutoCreatedEndpointArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDesiredAutoCreatedEndpointArrayOutput { return v.DesiredAutoCreatedEndpoints }).(InstanceDesiredAutoCreatedEndpointArrayOutput)
 }
 
 // `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+// Structure is documented below.
 //
 // Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 func (o InstanceOutput) DesiredPscAutoConnections() InstanceDesiredPscAutoConnectionArrayOutput {

@@ -590,6 +590,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const defaultBackendAuthenticationConfig = new gcp.networksecurity.BackendAuthenticationConfig("default", {
+ *     name: "authentication",
+ *     wellKnownRoots: "PUBLIC_ROOTS",
+ * });
  * const _default = new gcp.compute.BackendService("default", {
  *     name: "backend-service",
  *     loadBalancingScheme: "INTERNAL_MANAGED",
@@ -599,6 +603,9 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *             proxyMode: "DIRECT_FORWARDING",
  *         },
+ *     },
+ *     tlsSettings: {
+ *         authenticationConfig: pulumi.interpolate`//networksecurity.googleapis.com/${defaultBackendAuthenticationConfig.id}`,
  *     },
  * });
  * ```

@@ -69,17 +69,15 @@ import javax.annotation.Nullable;
  *             .instanceId("storage-resize-images")
  *             .config(ExtensionsInstanceConfigArgs.builder()
  *                 .extensionRef("firebase/storage-resize-images")
- *                 .extensionVersion("0.2.10")
+ *                 .extensionVersion("0.3.6")
  *                 .params(Map.ofEntries(
  *                     Map.entry("DELETE_ORIGINAL_FILE", "false"),
  *                     Map.entry("MAKE_PUBLIC", "false"),
  *                     Map.entry("IMAGE_TYPE", "false"),
  *                     Map.entry("IS_ANIMATED", "true"),
  *                     Map.entry("FUNCTION_MEMORY", "1024"),
- *                     Map.entry("DO_BACKFILL", "false"),
  *                     Map.entry("IMG_SIZES", "200x200"),
  *                     Map.entry("IMG_BUCKET", images.name()),
- *                     Map.entry("BACKFILL_BATCH_SIZE", "3"),
  *                     Map.entry("CONTENT_FILTER_LEVEL", "OFF"),
  *                     Map.entry("REGENERATE_TOKEN", "true")
  *                 ))

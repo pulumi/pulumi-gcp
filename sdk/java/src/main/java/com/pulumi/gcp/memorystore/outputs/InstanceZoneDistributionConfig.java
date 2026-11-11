@@ -5,12 +5,19 @@ package com.pulumi.gcp.memorystore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceZoneDistributionConfig {
+    /**
+     * @return (Output)
+     * The exact list of zones where the instance currently has active VMs.
+     * 
+     */
+    private @Nullable List<String> activeZones;
     /**
      * @return Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
      * Possible values:
@@ -26,8 +33,23 @@ public final class InstanceZoneDistributionConfig {
      * 
      */
     private @Nullable String zone;
+    /**
+     * @return Specify the zones of a multi-zone instance where Memorystore
+     * instance allocates resources. This flag isn&#39;t applicable for single-zone
+     * instances.
+     * 
+     */
+    private @Nullable List<String> zones;
 
     private InstanceZoneDistributionConfig() {}
+    /**
+     * @return (Output)
+     * The exact list of zones where the instance currently has active VMs.
+     * 
+     */
+    public List<String> activeZones() {
+        return this.activeZones == null ? List.of() : this.activeZones;
+    }
     /**
      * @return Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
      * Possible values:
@@ -47,6 +69,15 @@ public final class InstanceZoneDistributionConfig {
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }
+    /**
+     * @return Specify the zones of a multi-zone instance where Memorystore
+     * instance allocates resources. This flag isn&#39;t applicable for single-zone
+     * instances.
+     * 
+     */
+    public List<String> zones() {
+        return this.zones == null ? List.of() : this.zones;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -57,15 +88,28 @@ public final class InstanceZoneDistributionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> activeZones;
         private @Nullable String mode;
         private @Nullable String zone;
+        private @Nullable List<String> zones;
         public Builder() {}
         public Builder(InstanceZoneDistributionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activeZones = defaults.activeZones;
     	      this.mode = defaults.mode;
     	      this.zone = defaults.zone;
+    	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
+        public Builder activeZones(@Nullable List<String> activeZones) {
+
+            this.activeZones = activeZones;
+            return this;
+        }
+        public Builder activeZones(String... activeZones) {
+            return activeZones(List.of(activeZones));
+        }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
 
@@ -78,10 +122,21 @@ public final class InstanceZoneDistributionConfig {
             this.zone = zone;
             return this;
         }
+        @CustomType.Setter
+        public Builder zones(@Nullable List<String> zones) {
+
+            this.zones = zones;
+            return this;
+        }
+        public Builder zones(String... zones) {
+            return zones(List.of(zones));
+        }
         public InstanceZoneDistributionConfig build() {
             final var _resultValue = new InstanceZoneDistributionConfig();
+            _resultValue.activeZones = activeZones;
             _resultValue.mode = mode;
             _resultValue.zone = zone;
+            _resultValue.zones = zones;
             return _resultValue;
         }
     }

@@ -200,6 +200,8 @@ import * as utilities from "../utilities";
  *         clientId: "sample-client-id",
  *         clientSecret: "sample-client-secret",
  *         oauthTokenUrl: "https://example.com/oauth/token",
+ *         sessionIdHeader: "X-Session-Id",
+ *         taskIdHeader: "X-Task-Id",
  *     }],
  *     resources: [
  *         {
@@ -302,6 +304,34 @@ import * as utilities from "../utilities";
  *             exportAuditTrailArtifact: true,
  *         },
  *     },
+ * });
+ * ```
+ *
+ * ### Analyst Agent Persona Mcp Headers
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+ *     project: "1111111111111",
+ *     location: "us",
+ *     analystAgentPersonaId: "mcp-headers",
+ *     displayName: "Test Analyst Persona MCP Headers",
+ *     displayDescription: "Sample analyst agent persona description",
+ *     modelDescription: "Sample model description",
+ *     role: "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+ *     mcpDataSources: [{
+ *         serverUrl: "https://mcp.example.com",
+ *         displayName: "Sample MCP Source",
+ *         description: "Sample MCP data source description",
+ *         enabled: true,
+ *         prompt: "Use this server for queries",
+ *         apiKeyName: "x-api-key",
+ *         apiKeyHeader: "x-api-key-header",
+ *         sessionIdHeader: "X-Custom-Session-Id",
+ *         taskIdHeader: "X-Custom-Task-Id",
+ *     }],
  * });
  * ```
  *
@@ -917,6 +947,18 @@ import * as utilities from "../utilities";
  * * `serverUrl` -
  * (Required)
  * The URL of the MCP server.
+ *
+ * * `sessionIdHeader` -
+ * (Optional)
+ * The HTTP header name used to pass the agent session ID in MCP server
+ * requests (defaults to `X-Session-Id` when unset). Must be a valid HTTP
+ * header field name (RFC 9110 token).
+ *
+ * * `taskIdHeader` -
+ * (Optional)
+ * The HTTP header name used to pass the agent task ID in MCP server
+ * requests (defaults to `X-Task-Id` when unset). Must be a valid HTTP
+ * header field name (RFC 9110 token).
  *
  * <a name="nestedResources"></a>The `resources` block supports:
  *

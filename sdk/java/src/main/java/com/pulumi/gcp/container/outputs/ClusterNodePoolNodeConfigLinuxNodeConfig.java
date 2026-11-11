@@ -61,11 +61,23 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
     private @Nullable Map<String,String> sysctls;
     /**
      * @return The Linux kernel transparent hugepage defrag setting.
+     * Accepted values are:
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
      * 
      */
     private @Nullable String transparentHugepageDefrag;
     /**
      * @return The Linux kernel transparent hugepage setting.
+     * Accepted values are:
+     * * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+     * * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+     * * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+     * * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
      * 
      */
     private @Nullable String transparentHugepageEnabled;
@@ -129,6 +141,13 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
     }
     /**
      * @return The Linux kernel transparent hugepage defrag setting.
+     * Accepted values are:
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+     * * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
      * 
      */
     public Optional<String> transparentHugepageDefrag() {
@@ -136,6 +155,11 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
     }
     /**
      * @return The Linux kernel transparent hugepage setting.
+     * Accepted values are:
+     * * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+     * * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+     * * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+     * * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
      * 
      */
     public Optional<String> transparentHugepageEnabled() {

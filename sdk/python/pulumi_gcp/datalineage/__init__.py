@@ -8,5 +8,6 @@ import typing
 # Export this package's modules as members:
 from .config import *
 from .get_config import *
+from .open_lineage_job import *
 from ._inputs import *
 from . import outputs

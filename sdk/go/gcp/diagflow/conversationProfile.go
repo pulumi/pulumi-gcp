@@ -63,7 +63,6 @@ import (
 //				SttConfig: &diagflow.ConversationProfileSttConfigArgs{
 //					UseGeminiAsr: pulumi.Bool(true),
 //					GeminiAsrConfig: &diagflow.ConversationProfileSttConfigGeminiAsrConfigArgs{
-//						ModelId:                  pulumi.String("gemini-3-flash-lite-asr-preview"),
 //						SilenceDurationMs:        pulumi.Int(1000),
 //						PrefixPaddingMs:          pulumi.Int(500),
 //						StartOfSpeechSensitivity: pulumi.String("START_SENSITIVITY_LOW"),

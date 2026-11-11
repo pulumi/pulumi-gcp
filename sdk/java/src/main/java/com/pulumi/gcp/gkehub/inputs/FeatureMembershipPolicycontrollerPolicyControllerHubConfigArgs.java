@@ -52,14 +52,14 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArg
     }
 
     /**
-     * Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+     * Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;). Structure is documented below.
      * 
      */
     @Import(name="deploymentConfigs")
     private @Nullable Output<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs>> deploymentConfigs;
 
     /**
-     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;). Structure is documented below.
      * 
      */
     public Optional<Output<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs>>> deploymentConfigs() {
@@ -247,7 +247,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArg
         }
 
         /**
-         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;). Structure is documented below.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArg
         }
 
         /**
-         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;). Structure is documented below.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArg
         }
 
         /**
-         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;). Structure is documented below.
          * 
          * @return builder
          * 

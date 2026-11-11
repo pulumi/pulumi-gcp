@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.ServiceNetworking
         /// The id of the Google Cloud project containing the consumer network.
         /// </summary>
         [Output("project")]
-        public Output<string?> Project { get; private set; } = null!;
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The service that is managing peering connectivity for a service

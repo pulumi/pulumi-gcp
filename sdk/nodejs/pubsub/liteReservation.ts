@@ -109,7 +109,7 @@ export class LiteReservation extends pulumi.CustomResource {
     /**
      * The region of the pubsub lite reservation.
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The reserved throughput capacity. Every unit of throughput capacity is
      * equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed

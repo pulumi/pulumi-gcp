@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.ManagedFolderArgs;
 import com.pulumi.gcp.storage.inputs.ManagedFolderState;
+import com.pulumi.gcp.storage.outputs.ManagedFolderRapidCacheConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -197,6 +198,22 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configuration options for the rapid cache of a managed folder.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="rapidCacheConfig", refs={ManagedFolderRapidCacheConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ManagedFolderRapidCacheConfig> rapidCacheConfig;
+
+    /**
+     * @return Configuration options for the rapid cache of a managed folder.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ManagedFolderRapidCacheConfig>> rapidCacheConfig() {
+        return Codegen.optional(this.rapidCacheConfig);
     }
     /**
      * The URI of the created resource.

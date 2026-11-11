@@ -14,14 +14,12 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class InstanceDesiredAutoCreatedEndpoint
     {
         /// <summary>
-        /// (Output)
-        /// Output only. The consumer network where the IP address resides, in the form of
+        /// Required. The consumer network where the IP address resides, in the form of
         /// projects/{project_id}/global/networks/{network_id}.
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// (Output)
-        /// Output only. The consumer ProjectId where the forwarding rule is created from.
+        /// Required. The consumer ProjectId where the forwarding rule is created from.
         /// </summary>
         public readonly string ProjectId;
 

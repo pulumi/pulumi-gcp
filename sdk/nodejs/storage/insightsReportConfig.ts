@@ -38,6 +38,9 @@ import * as utilities from "../utilities";
  * const config = new gcp.storage.InsightsReportConfig("config", {
  *     displayName: "Test Report Config",
  *     location: "us-central1",
+ *     labels: {
+ *         key: "value",
+ *     },
  *     frequencyOptions: {
  *         frequency: "WEEKLY",
  *         startDate: {
@@ -149,6 +152,10 @@ export class InsightsReportConfig extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
      * If set, all the inventory report details associated with this report configuration are deleted.
      */
     declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
@@ -157,6 +164,13 @@ export class InsightsReportConfig extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly frequencyOptions: pulumi.Output<outputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
+    /**
+     * Labels as key value pairs. Have a character limit of 64 per key and value.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
@@ -180,6 +194,11 @@ export class InsightsReportConfig extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     */
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a InsightsReportConfig resource with the given unique name, arguments, and options.
@@ -197,13 +216,16 @@ export class InsightsReportConfig extends pulumi.CustomResource {
             resourceInputs["csvOptions"] = state?.csvOptions;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["frequencyOptions"] = state?.frequencyOptions;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["objectMetadataReportOptions"] = state?.objectMetadataReportOptions;
             resourceInputs["parquetOptions"] = state?.parquetOptions;
             resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
         } else {
             const args = argsOrState as InsightsReportConfigArgs | undefined;
             if (args?.location === undefined && !opts.urn) {
@@ -214,13 +236,18 @@ export class InsightsReportConfig extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["frequencyOptions"] = args?.frequencyOptions;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["objectMetadataReportOptions"] = args?.objectMetadataReportOptions;
             resourceInputs["parquetOptions"] = args?.parquetOptions;
             resourceInputs["project"] = args?.project;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(InsightsReportConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -248,6 +275,10 @@ export interface InsightsReportConfigState {
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * If set, all the inventory report details associated with this report configuration are deleted.
      */
     forceDestroy?: pulumi.Input<boolean | undefined>;
@@ -256,6 +287,13 @@ export interface InsightsReportConfigState {
      * Structure is documented below.
      */
     frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
+    /**
+     * Labels as key value pairs. Have a character limit of 64 per key and value.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
@@ -279,6 +317,11 @@ export interface InsightsReportConfigState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -312,6 +355,13 @@ export interface InsightsReportConfigArgs {
      * Structure is documented below.
      */
     frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
+    /**
+     * Labels as key value pairs. Have a character limit of 64 per key and value.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.

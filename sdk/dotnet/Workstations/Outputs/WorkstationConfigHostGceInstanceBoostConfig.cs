@@ -44,6 +44,12 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// Number of instances to pool for faster workstation boosting.
         /// </summary>
         public readonly int? PoolSize;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Reservation affinity to setup a GCE instance.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinity? ReservationAffinity;
 
         [OutputConstructor]
         private WorkstationConfigHostGceInstanceBoostConfig(
@@ -59,7 +65,9 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             string? machineType,
 
-            int? poolSize)
+            int? poolSize,
+
+            Outputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinity? reservationAffinity)
         {
             Accelerators = accelerators;
             BootDiskSizeGb = bootDiskSizeGb;
@@ -68,6 +76,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
             Id = id;
             MachineType = machineType;
             PoolSize = poolSize;
+            ReservationAffinity = reservationAffinity;
         }
     }
 }

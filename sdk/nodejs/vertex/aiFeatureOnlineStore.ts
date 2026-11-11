@@ -39,29 +39,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Vertex Ai Featureonlinestore With Optimized
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
- *     name: "example_feature_online_store_optimized",
- *     labels: {
- *         foo: "bar",
- *     },
- *     region: "us-central1",
- *     optimized: {},
- *     dedicatedServingEndpoint: {
- *         privateServiceConnectConfig: {
- *             enablePrivateServiceConnect: true,
- *             projectAllowlists: [project.then(project => project.number)],
- *         },
- *     },
- * });
- * ```
- *
  * ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
  *
  * ```typescript
@@ -207,7 +184,12 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+     *
+     * > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+     *
+     * @deprecated `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
      */
     declare public readonly optimized: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreOptimized | undefined>;
     /**
@@ -355,7 +337,12 @@ export interface AiFeatureOnlineStoreState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+     *
+     * > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+     *
+     * @deprecated `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
      */
     optimized?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreOptimized | undefined>;
     /**
@@ -435,7 +422,12 @@ export interface AiFeatureOnlineStoreArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+     *
+     * > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+     *
+     * @deprecated `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
      */
     optimized?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreOptimized | undefined>;
     /**

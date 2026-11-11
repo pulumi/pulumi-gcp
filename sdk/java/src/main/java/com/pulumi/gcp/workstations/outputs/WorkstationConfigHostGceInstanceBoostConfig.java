@@ -6,6 +6,7 @@ package com.pulumi.gcp.workstations.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceBoostConfigAccelerator;
+import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinity;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -54,6 +55,13 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
      * 
      */
     private @Nullable Integer poolSize;
+    /**
+     * @return (Optional, Beta)
+     * Reservation affinity to setup a GCE instance.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable WorkstationConfigHostGceInstanceBoostConfigReservationAffinity reservationAffinity;
 
     private WorkstationConfigHostGceInstanceBoostConfig() {}
     /**
@@ -108,6 +116,15 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
     public Optional<Integer> poolSize() {
         return Optional.ofNullable(this.poolSize);
     }
+    /**
+     * @return (Optional, Beta)
+     * Reservation affinity to setup a GCE instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<WorkstationConfigHostGceInstanceBoostConfigReservationAffinity> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -125,6 +142,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
         private String id;
         private @Nullable String machineType;
         private @Nullable Integer poolSize;
+        private @Nullable WorkstationConfigHostGceInstanceBoostConfigReservationAffinity reservationAffinity;
         public Builder() {}
         public Builder(WorkstationConfigHostGceInstanceBoostConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -135,6 +153,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
     	      this.id = defaults.id;
     	      this.machineType = defaults.machineType;
     	      this.poolSize = defaults.poolSize;
+    	      this.reservationAffinity = defaults.reservationAffinity;
         }
 
         @CustomType.Setter
@@ -184,6 +203,12 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
             this.poolSize = poolSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder reservationAffinity(@Nullable WorkstationConfigHostGceInstanceBoostConfigReservationAffinity reservationAffinity) {
+
+            this.reservationAffinity = reservationAffinity;
+            return this;
+        }
         public WorkstationConfigHostGceInstanceBoostConfig build() {
             final var _resultValue = new WorkstationConfigHostGceInstanceBoostConfig();
             _resultValue.accelerators = accelerators;
@@ -193,6 +218,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
             _resultValue.id = id;
             _resultValue.machineType = machineType;
             _resultValue.poolSize = poolSize;
+            _resultValue.reservationAffinity = reservationAffinity;
             return _resultValue;
         }
     }

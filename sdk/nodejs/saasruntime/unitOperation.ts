@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  *     location: location,
  *     unitKindId: "vm-unitkind",
  *     saas: exampleSaas.id,
- *     defaultRelease: `projects/my-project-name/locations/${location}/releases/example-release`,
  * });
  * const exampleRelease = new gcp.saasruntime.Release("example_release", {
  *     location: location,

@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.PubSub
         /// The zone of the pubsub lite topic.
         /// </summary>
         [Output("zone")]
-        public Output<string?> Zone { get; private set; } = null!;
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Span of time at a resolution of a second.
-        /// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+        /// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
         /// </summary>
         [Input("seconds", required: true)]
         public Input<int> Seconds { get; set; } = null!;

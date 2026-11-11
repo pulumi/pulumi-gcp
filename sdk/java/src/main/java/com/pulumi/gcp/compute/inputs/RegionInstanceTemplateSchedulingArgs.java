@@ -59,14 +59,14 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
-     * Settings for the instance to perform a graceful shutdown.
+     * Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
      * 
      */
     @Import(name="gracefulShutdown")
     private @Nullable Output<RegionInstanceTemplateSchedulingGracefulShutdownArgs> gracefulShutdown;
 
     /**
-     * @return Settings for the instance to perform a graceful shutdown.
+     * @return Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
      * 
      */
     public Optional<Output<RegionInstanceTemplateSchedulingGracefulShutdownArgs>> gracefulShutdown() {
@@ -104,20 +104,14 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
-     * Specifies the maximum amount of time a Local Ssd Vm should wait while
-     *   recovery of the Local Ssd state is attempted. Its value should be in
-     *   between 0 and 168 hours with hour granularity and the default value being 1
-     *   hour.
+     * (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
      * 
      */
     @Import(name="localSsdRecoveryTimeouts")
     private @Nullable Output<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeouts;
 
     /**
-     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
-     *   recovery of the Local Ssd state is attempted. Its value should be in
-     *   between 0 and 168 hours with hour granularity and the default value being 1
-     *   hour.
+     * @return (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
      * 
      */
     public Optional<Output<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>>> localSsdRecoveryTimeouts() {
@@ -125,14 +119,14 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
-     * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     public Optional<Output<String>> maintenanceInterval() {
@@ -244,14 +238,14 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
-     * The duration of the notice that the instance will receive before it is preempted.
+     * Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
      * 
      */
     @Import(name="preemptionNoticeDuration")
     private @Nullable Output<RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration;
 
     /**
-     * @return The duration of the notice that the instance will receive before it is preempted.
+     * @return Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
      * 
      */
     public Optional<Output<RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs>> preemptionNoticeDuration() {
@@ -286,14 +280,14 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
-     * Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
      * 
      */
     @Import(name="skipGuestOsShutdown")
     private @Nullable Output<Boolean> skipGuestOsShutdown;
 
     /**
-     * @return Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * @return Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
      * 
      */
     public Optional<Output<Boolean>> skipGuestOsShutdown() {
@@ -402,7 +396,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param gracefulShutdown Settings for the instance to perform a graceful shutdown.
+         * @param gracefulShutdown Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
          * 
          * @return builder
          * 
@@ -413,7 +407,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param gracefulShutdown Settings for the instance to perform a graceful shutdown.
+         * @param gracefulShutdown Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
          * 
          * @return builder
          * 
@@ -465,10 +459,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localSsdRecoveryTimeouts Specifies the maximum amount of time a Local Ssd Vm should wait while
-         *   recovery of the Local Ssd state is attempted. Its value should be in
-         *   between 0 and 168 hours with hour granularity and the default value being 1
-         *   hour.
+         * @param localSsdRecoveryTimeouts (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
          * 
          * @return builder
          * 
@@ -479,10 +470,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localSsdRecoveryTimeouts Specifies the maximum amount of time a Local Ssd Vm should wait while
-         *   recovery of the Local Ssd state is attempted. Its value should be in
-         *   between 0 and 168 hours with hour granularity and the default value being 1
-         *   hour.
+         * @param localSsdRecoveryTimeouts (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
          * 
          * @return builder
          * 
@@ -492,10 +480,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localSsdRecoveryTimeouts Specifies the maximum amount of time a Local Ssd Vm should wait while
-         *   recovery of the Local Ssd state is attempted. Its value should be in
-         *   between 0 and 168 hours with hour granularity and the default value being 1
-         *   hour.
+         * @param localSsdRecoveryTimeouts (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
          * 
          * @return builder
          * 
@@ -505,7 +490,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * 
          * @return builder
          * 
@@ -516,7 +501,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * 
          * @return builder
          * 
@@ -680,7 +665,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param preemptionNoticeDuration The duration of the notice that the instance will receive before it is preempted.
+         * @param preemptionNoticeDuration Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
          * 
          * @return builder
          * 
@@ -691,7 +676,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param preemptionNoticeDuration The duration of the notice that the instance will receive before it is preempted.
+         * @param preemptionNoticeDuration Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
          * 
          * @return builder
          * 
@@ -734,7 +719,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param skipGuestOsShutdown Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+         * @param skipGuestOsShutdown Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
          * 
          * @return builder
          * 
@@ -745,7 +730,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param skipGuestOsShutdown Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+         * @param skipGuestOsShutdown Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
          * 
          * @return builder
          * 

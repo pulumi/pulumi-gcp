@@ -105,6 +105,9 @@ type ManagedFolder struct {
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration options for the rapid cache of a managed folder.
+	// Structure is documented below.
+	RapidCacheConfig ManagedFolderRapidCacheConfigPtrOutput `pulumi:"rapidCacheConfig"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The timestamp at which this managed folder was most recently updated.
@@ -165,6 +168,9 @@ type managedFolderState struct {
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
 	Name *string `pulumi:"name"`
+	// Configuration options for the rapid cache of a managed folder.
+	// Structure is documented below.
+	RapidCacheConfig *ManagedFolderRapidCacheConfig `pulumi:"rapidCacheConfig"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The timestamp at which this managed folder was most recently updated.
@@ -193,6 +199,9 @@ type ManagedFolderState struct {
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
 	Name pulumi.StringPtrInput
+	// Configuration options for the rapid cache of a managed folder.
+	// Structure is documented below.
+	RapidCacheConfig ManagedFolderRapidCacheConfigPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The timestamp at which this managed folder was most recently updated.
@@ -227,6 +236,9 @@ type managedFolderArgs struct {
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
 	Name *string `pulumi:"name"`
+	// Configuration options for the rapid cache of a managed folder.
+	// Structure is documented below.
+	RapidCacheConfig *ManagedFolderRapidCacheConfig `pulumi:"rapidCacheConfig"`
 }
 
 // The set of arguments for constructing a ManagedFolder resource.
@@ -248,6 +260,9 @@ type ManagedFolderArgs struct {
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
 	Name pulumi.StringPtrInput
+	// Configuration options for the rapid cache of a managed folder.
+	// Structure is documented below.
+	RapidCacheConfig ManagedFolderRapidCacheConfigPtrInput
 }
 
 func (ManagedFolderArgs) ElementType() reflect.Type {
@@ -374,6 +389,12 @@ func (o ManagedFolderOutput) Metageneration() pulumi.StringOutput {
 // trailing '/'. For example, `example_dir/example_dir2/`.
 func (o ManagedFolderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedFolder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration options for the rapid cache of a managed folder.
+// Structure is documented below.
+func (o ManagedFolderOutput) RapidCacheConfig() ManagedFolderRapidCacheConfigPtrOutput {
+	return o.ApplyT(func(v *ManagedFolder) ManagedFolderRapidCacheConfigPtrOutput { return v.RapidCacheConfig }).(ManagedFolderRapidCacheConfigPtrOutput)
 }
 
 // The URI of the created resource.

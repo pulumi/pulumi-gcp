@@ -15,8 +15,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
     public static final InstanceDesiredPscAutoConnectionArgs Empty = new InstanceDesiredPscAutoConnectionArgs();
 
     /**
-     * (Output)
-     * Output only. The consumer network where the IP address resides, in the form of
+     * Required. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
      * 
      */
@@ -24,8 +23,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
     private Output<String> network;
 
     /**
-     * @return (Output)
-     * Output only. The consumer network where the IP address resides, in the form of
+     * @return Required. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
      * 
      */
@@ -34,16 +32,14 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
     }
 
     /**
-     * (Output)
-     * Output only. The consumer projectId where the forwarding rule is created from.
+     * Required. The consumer projectId where the forwarding rule is created from.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return (Output)
-     * Output only. The consumer projectId where the forwarding rule is created from.
+     * @return Required. The consumer projectId where the forwarding rule is created from.
      * 
      */
     public Output<String> projectId() {
@@ -76,8 +72,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param network (Output)
-         * Output only. The consumer network where the IP address resides, in the form of
+         * @param network Required. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
          * 
          * @return builder
@@ -89,8 +84,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param network (Output)
-         * Output only. The consumer network where the IP address resides, in the form of
+         * @param network Required. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
          * 
          * @return builder
@@ -101,8 +95,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param projectId (Output)
-         * Output only. The consumer projectId where the forwarding rule is created from.
+         * @param projectId Required. The consumer projectId where the forwarding rule is created from.
          * 
          * @return builder
          * 
@@ -113,8 +106,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param projectId (Output)
-         * Output only. The consumer projectId where the forwarding rule is created from.
+         * @param projectId Required. The consumer projectId where the forwarding rule is created from.
          * 
          * @return builder
          * 

@@ -17,7 +17,6 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
     public static final InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs Empty = new InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs();
 
     /**
-     * (Optional, Beta)
      * Bandwidth percentage for a specific traffic class.
      * 
      */
@@ -25,8 +24,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
     private @Nullable Output<Integer> percentage;
 
     /**
-     * @return (Optional, Beta)
-     * Bandwidth percentage for a specific traffic class.
+     * @return Bandwidth percentage for a specific traffic class.
      * 
      */
     public Optional<Output<Integer>> percentage() {
@@ -34,7 +32,6 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
     }
 
     /**
-     * (Optional, Beta)
      * Enum representing the various traffic classes offered by AAI.
      * Default value is `TC_UNSPECIFIED`.
      * Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -44,8 +41,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
     private @Nullable Output<String> trafficClass;
 
     /**
-     * @return (Optional, Beta)
-     * Enum representing the various traffic classes offered by AAI.
+     * @return Enum representing the various traffic classes offered by AAI.
      * Default value is `TC_UNSPECIFIED`.
      * Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
      * 
@@ -80,8 +76,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
         }
 
         /**
-         * @param percentage (Optional, Beta)
-         * Bandwidth percentage for a specific traffic class.
+         * @param percentage Bandwidth percentage for a specific traffic class.
          * 
          * @return builder
          * 
@@ -92,8 +87,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
         }
 
         /**
-         * @param percentage (Optional, Beta)
-         * Bandwidth percentage for a specific traffic class.
+         * @param percentage Bandwidth percentage for a specific traffic class.
          * 
          * @return builder
          * 
@@ -103,8 +97,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
         }
 
         /**
-         * @param trafficClass (Optional, Beta)
-         * Enum representing the various traffic classes offered by AAI.
+         * @param trafficClass Enum representing the various traffic classes offered by AAI.
          * Default value is `TC_UNSPECIFIED`.
          * Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
          * 
@@ -117,8 +110,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
         }
 
         /**
-         * @param trafficClass (Optional, Beta)
-         * Enum representing the various traffic classes offered by AAI.
+         * @param trafficClass Enum representing the various traffic classes offered by AAI.
          * Default value is `TC_UNSPECIFIED`.
          * Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
          * 

@@ -911,6 +911,102 @@ import (
 //
 // ```
 //
+// ### Workstation Config Reservation Affinity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-east4"),
+//				Network:     _default.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster"),
+//				Network:              _default.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				Location:             pulumi.String("us-east4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultReservation, err := compute.NewReservation(ctx, "default", &compute.ReservationArgs{
+//				Name: pulumi.String("workstation-reservation"),
+//				Zone: pulumi.String("us-east4-a"),
+//				SpecificReservation: &compute.ReservationSpecificReservationArgs{
+//					Count: pulumi.Int(1),
+//					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
+//						MachineType: pulumi.String("e2-standard-4"),
+//					},
+//				},
+//				SpecificReservationRequired: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
+//				WorkstationConfigId:  pulumi.String("workstation-config"),
+//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
+//				Location:             pulumi.String("us-east4"),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-east4-a"),
+//					pulumi.String("us-east4-b"),
+//				},
+//				Host: &workstations.WorkstationConfigHostArgs{
+//					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
+//						MachineType:              pulumi.String("e2-standard-4"),
+//						BootDiskSizeGb:           pulumi.Int(35),
+//						DisablePublicIpAddresses: pulumi.Bool(true),
+//						ReservationAffinity: &workstations.WorkstationConfigHostGceInstanceReservationAffinityArgs{
+//							ConsumeReservationType: pulumi.String("SPECIFIC_RESERVATION"),
+//							Key:                    pulumi.String("compute.googleapis.com/reservation-name"),
+//							Values: pulumi.StringArray{
+//								defaultReservation.Name,
+//							},
+//						},
+//						BoostConfigs: workstations.WorkstationConfigHostGceInstanceBoostConfigArray{
+//							&workstations.WorkstationConfigHostGceInstanceBoostConfigArgs{
+//								Id:             pulumi.String("boost-1"),
+//								MachineType:    pulumi.String("e2-standard-4"),
+//								BootDiskSizeGb: pulumi.Int(35),
+//								ReservationAffinity: &workstations.WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs{
+//									ConsumeReservationType: pulumi.String("ANY_RESERVATION"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Regional Endpoint Policies
 //
 // This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.

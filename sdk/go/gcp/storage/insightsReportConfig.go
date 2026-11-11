@@ -61,6 +61,9 @@ import (
 //			_, err = storage.NewInsightsReportConfig(ctx, "config", &storage.InsightsReportConfigArgs{
 //				DisplayName: pulumi.String("Test Report Config"),
 //				Location:    pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
 //				FrequencyOptions: &storage.InsightsReportConfigFrequencyOptionsArgs{
 //					Frequency: pulumi.String("WEEKLY"),
 //					StartDate: &storage.InsightsReportConfigFrequencyOptionsStartDateArgs{
@@ -135,11 +138,18 @@ type InsightsReportConfig struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If set, all the inventory report details associated with this report configuration are deleted.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrOutput `pulumi:"frequencyOptions"`
+	// Labels as key value pairs. Have a character limit of 64 per key and value.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -153,6 +163,9 @@ type InsightsReportConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
 // NewInsightsReportConfig registers a new resource with the given unique name, arguments, and options.
@@ -165,6 +178,11 @@ func NewInsightsReportConfig(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InsightsReportConfig
 	err := ctx.RegisterResource("gcp:storage/insightsReportConfig:InsightsReportConfig", name, args, &resource, opts...)
@@ -200,11 +218,18 @@ type insightsReportConfigState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If set, all the inventory report details associated with this report configuration are deleted.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
+	// Labels as key value pairs. Have a character limit of 64 per key and value.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
 	Location *string `pulumi:"location"`
@@ -218,6 +243,9 @@ type insightsReportConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
 type InsightsReportConfigState struct {
@@ -233,11 +261,18 @@ type InsightsReportConfigState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// If set, all the inventory report details associated with this report configuration are deleted.
 	ForceDestroy pulumi.BoolPtrInput
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
+	// Labels as key value pairs. Have a character limit of 64 per key and value.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
 	Location pulumi.StringPtrInput
@@ -251,6 +286,9 @@ type InsightsReportConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 }
 
 func (InsightsReportConfigState) ElementType() reflect.Type {
@@ -281,6 +319,11 @@ type insightsReportConfigArgs struct {
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
+	// Labels as key value pairs. Have a character limit of 64 per key and value.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
 	Location string `pulumi:"location"`
@@ -313,6 +356,11 @@ type InsightsReportConfigArgs struct {
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
+	// Labels as key value pairs. Have a character limit of 64 per key and value.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
 	Location pulumi.StringInput
@@ -434,6 +482,11 @@ func (o InsightsReportConfigOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o InsightsReportConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // If set, all the inventory report details associated with this report configuration are deleted.
 func (o InsightsReportConfigOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
@@ -443,6 +496,14 @@ func (o InsightsReportConfigOutput) ForceDestroy() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o InsightsReportConfigOutput) FrequencyOptions() InsightsReportConfigFrequencyOptionsPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigFrequencyOptionsPtrOutput { return v.FrequencyOptions }).(InsightsReportConfigFrequencyOptionsPtrOutput)
+}
+
+// Labels as key value pairs. Have a character limit of 64 per key and value.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o InsightsReportConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
@@ -473,6 +534,13 @@ func (o InsightsReportConfigOutput) ParquetOptions() InsightsReportConfigParquet
 // If it is not provided, the provider project is used.
 func (o InsightsReportConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o InsightsReportConfigOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 type InsightsReportConfigArrayOutput struct{ *pulumi.OutputState }

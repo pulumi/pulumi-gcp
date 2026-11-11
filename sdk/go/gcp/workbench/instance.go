@@ -240,7 +240,7 @@ import (
 //			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("wbi-test-default"),
 //				Network:     myNetwork.ID(),
-//				Region:      pulumi.String("us-east1"),
+//				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //			})
 //			if err != nil {
@@ -248,7 +248,7 @@ import (
 //			}
 //			static, err := compute.NewAddress(ctx, "static", &compute.AddressArgs{
 //				Name:   pulumi.String("wbi-test-default"),
-//				Region: pulumi.String("us-east1"),
+//				Region: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -263,15 +263,15 @@ import (
 //			}
 //			gpuReservation, err := compute.NewReservation(ctx, "gpu_reservation", &compute.ReservationArgs{
 //				Name: pulumi.String("wbi-reservation"),
-//				Zone: pulumi.String("us-east1-b"),
+//				Zone: pulumi.String("us-central1-a"),
 //				SpecificReservation: &compute.ReservationSpecificReservationArgs{
 //					Count: pulumi.Int(1),
 //					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-//						MachineType:    pulumi.String("g2-standard-4"),
-//						MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
+//						MachineType:    pulumi.String("n1-standard-4"),
+//						MinCpuPlatform: pulumi.String("Intel Broadwell"),
 //						GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
 //							&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
-//								AcceleratorType:  pulumi.String("nvidia-l4"),
+//								AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
 //								AcceleratorCount: pulumi.Int(1),
 //							},
 //						},
@@ -284,7 +284,7 @@ import (
 //			}
 //			myPolicy, err := compute.NewResourcePolicy(ctx, "my_policy", &compute.ResourcePolicyArgs{
 //				Name:   pulumi.String("wbi-policy"),
-//				Region: pulumi.String("us-east1"),
+//				Region: pulumi.String("us-central1"),
 //				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
 //					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
 //						DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
@@ -299,14 +299,14 @@ import (
 //			}
 //			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:                     pulumi.String("workbench-instance"),
-//				Location:                 pulumi.String("us-east1-b"),
+//				Location:                 pulumi.String("us-central1-a"),
 //				EnableDeletionProtection: pulumi.Bool(false),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
-//					MachineType:    pulumi.String("g2-standard-4"),
-//					MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
+//					MachineType:    pulumi.String("n1-standard-4"),
+//					MinCpuPlatform: pulumi.String("Intel Broadwell"),
 //					AcceleratorConfigs: workbench.InstanceGceSetupAcceleratorConfigArray{
 //						&workbench.InstanceGceSetupAcceleratorConfigArgs{
-//							Type:      pulumi.String("NVIDIA_L4"),
+//							Type:      pulumi.String("NVIDIA_TESLA_T4"),
 //							CoreCount: pulumi.String("1"),
 //						},
 //					},

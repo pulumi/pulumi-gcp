@@ -1227,14 +1227,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network bandwidth tier configuration.
+     * Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     @Import(name="networkPerformanceConfig")
     private @Nullable Output<ClusterNetworkPerformanceConfigArgs> networkPerformanceConfig;
 
     /**
-     * @return Network bandwidth tier configuration.
+     * @return Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
@@ -3639,7 +3639,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * @param networkPerformanceConfig Network bandwidth tier configuration. Structure is documented below.
          * 
          * @return builder
          * 
@@ -3650,7 +3650,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * @param networkPerformanceConfig Network bandwidth tier configuration. Structure is documented below.
          * 
          * @return builder
          * 

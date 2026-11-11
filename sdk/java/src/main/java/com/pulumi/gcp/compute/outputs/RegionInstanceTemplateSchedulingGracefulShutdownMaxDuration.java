@@ -22,7 +22,7 @@ public final class RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
     private @Nullable Integer nanos;
     /**
      * @return Span of time at a resolution of a second.
-     * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+     * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
      * 
      */
     private Integer seconds;
@@ -40,7 +40,7 @@ public final class RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
     }
     /**
      * @return Span of time at a resolution of a second.
-     * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+     * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
      * 
      */
     public Integer seconds() {

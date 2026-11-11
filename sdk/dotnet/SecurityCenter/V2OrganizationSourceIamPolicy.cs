@@ -238,6 +238,11 @@ namespace Pulumi.Gcp.SecurityCenter
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The organization whose Cloud Security Command Center the Source
+        /// lives in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
 
@@ -300,6 +305,11 @@ namespace Pulumi.Gcp.SecurityCenter
 
     public sealed class V2OrganizationSourceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The organization whose Cloud Security Command Center the Source
+        /// lives in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
 
@@ -330,6 +340,11 @@ namespace Pulumi.Gcp.SecurityCenter
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The organization whose Cloud Security Command Center the Source
+        /// lives in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }
 

@@ -88,7 +88,6 @@ import javax.annotation.Nullable;
  *             .location(location)
  *             .unitKindId("vm-unitkind")
  *             .saas(exampleSaas.id())
- *             .defaultRelease(String.format("projects/my-project-name/locations/%s/releases/example-release", location))
  *             .build());
  * 
  *         var exampleRelease = new Release("exampleRelease", ReleaseArgs.builder()

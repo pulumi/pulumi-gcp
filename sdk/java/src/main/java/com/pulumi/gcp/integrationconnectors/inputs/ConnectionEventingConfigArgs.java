@@ -8,8 +8,11 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAdditionalVariableArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigArgs;
+import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigDeadLetterConfigArgs;
+import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigEnrichmentConfigArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigRegistrationDestinationConfigArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,6 +41,21 @@ public final class ConnectionEventingConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * List of allowed event types for the connection.
+     * 
+     */
+    @Import(name="allowedEventTypes")
+    private @Nullable Output<List<String>> allowedEventTypes;
+
+    /**
+     * @return List of allowed event types for the connection.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedEventTypes() {
+        return Optional.ofNullable(this.allowedEventTypes);
+    }
+
+    /**
      * authConfig for Eventing Configuration.
      * Structure is documented below.
      * 
@@ -55,6 +73,40 @@ public final class ConnectionEventingConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Dead letter configuration for eventing of a connection.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="deadLetterConfig")
+    private @Nullable Output<ConnectionEventingConfigDeadLetterConfigArgs> deadLetterConfig;
+
+    /**
+     * @return Dead letter configuration for eventing of a connection.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionEventingConfigDeadLetterConfigArgs>> deadLetterConfig() {
+        return Optional.ofNullable(this.deadLetterConfig);
+    }
+
+    /**
+     * Data enrichment configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="enrichmentConfig")
+    private @Nullable Output<ConnectionEventingConfigEnrichmentConfigArgs> enrichmentConfig;
+
+    /**
+     * @return Data enrichment configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionEventingConfigEnrichmentConfigArgs>> enrichmentConfig() {
+        return Optional.ofNullable(this.enrichmentConfig);
+    }
+
+    /**
      * Enrichment Enabled.
      * 
      */
@@ -67,6 +119,21 @@ public final class ConnectionEventingConfigArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<Boolean>> enrichmentEnabled() {
         return Optional.ofNullable(this.enrichmentEnabled);
+    }
+
+    /**
+     * Filter to be applied on the events to be received by the connection.
+     * 
+     */
+    @Import(name="globalEventFilter")
+    private @Nullable Output<String> globalEventFilter;
+
+    /**
+     * @return Filter to be applied on the events to be received by the connection.
+     * 
+     */
+    public Optional<Output<String>> globalEventFilter() {
+        return Optional.ofNullable(this.globalEventFilter);
     }
 
     /**
@@ -90,8 +157,12 @@ public final class ConnectionEventingConfigArgs extends com.pulumi.resources.Res
 
     private ConnectionEventingConfigArgs(ConnectionEventingConfigArgs $) {
         this.additionalVariables = $.additionalVariables;
+        this.allowedEventTypes = $.allowedEventTypes;
         this.authConfig = $.authConfig;
+        this.deadLetterConfig = $.deadLetterConfig;
+        this.enrichmentConfig = $.enrichmentConfig;
         this.enrichmentEnabled = $.enrichmentEnabled;
+        this.globalEventFilter = $.globalEventFilter;
         this.registrationDestinationConfig = $.registrationDestinationConfig;
     }
 
@@ -148,6 +219,37 @@ public final class ConnectionEventingConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param allowedEventTypes List of allowed event types for the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedEventTypes(@Nullable Output<List<String>> allowedEventTypes) {
+            $.allowedEventTypes = allowedEventTypes;
+            return this;
+        }
+
+        /**
+         * @param allowedEventTypes List of allowed event types for the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedEventTypes(List<String> allowedEventTypes) {
+            return allowedEventTypes(Output.of(allowedEventTypes));
+        }
+
+        /**
+         * @param allowedEventTypes List of allowed event types for the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedEventTypes(String... allowedEventTypes) {
+            return allowedEventTypes(List.of(allowedEventTypes));
+        }
+
+        /**
          * @param authConfig authConfig for Eventing Configuration.
          * Structure is documented below.
          * 
@@ -171,6 +273,52 @@ public final class ConnectionEventingConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param deadLetterConfig Dead letter configuration for eventing of a connection.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deadLetterConfig(@Nullable Output<ConnectionEventingConfigDeadLetterConfigArgs> deadLetterConfig) {
+            $.deadLetterConfig = deadLetterConfig;
+            return this;
+        }
+
+        /**
+         * @param deadLetterConfig Dead letter configuration for eventing of a connection.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deadLetterConfig(ConnectionEventingConfigDeadLetterConfigArgs deadLetterConfig) {
+            return deadLetterConfig(Output.of(deadLetterConfig));
+        }
+
+        /**
+         * @param enrichmentConfig Data enrichment configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enrichmentConfig(@Nullable Output<ConnectionEventingConfigEnrichmentConfigArgs> enrichmentConfig) {
+            $.enrichmentConfig = enrichmentConfig;
+            return this;
+        }
+
+        /**
+         * @param enrichmentConfig Data enrichment configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enrichmentConfig(ConnectionEventingConfigEnrichmentConfigArgs enrichmentConfig) {
+            return enrichmentConfig(Output.of(enrichmentConfig));
+        }
+
+        /**
          * @param enrichmentEnabled Enrichment Enabled.
          * 
          * @return builder
@@ -189,6 +337,27 @@ public final class ConnectionEventingConfigArgs extends com.pulumi.resources.Res
          */
         public Builder enrichmentEnabled(Boolean enrichmentEnabled) {
             return enrichmentEnabled(Output.of(enrichmentEnabled));
+        }
+
+        /**
+         * @param globalEventFilter Filter to be applied on the events to be received by the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalEventFilter(@Nullable Output<String> globalEventFilter) {
+            $.globalEventFilter = globalEventFilter;
+            return this;
+        }
+
+        /**
+         * @param globalEventFilter Filter to be applied on the events to be received by the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalEventFilter(String globalEventFilter) {
+            return globalEventFilter(Output.of(globalEventFilter));
         }
 
         /**

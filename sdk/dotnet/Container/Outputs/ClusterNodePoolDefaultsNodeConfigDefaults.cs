@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolDefaultsNodeConfigDefaults
     {
         /// <summary>
-        /// Parameters for containerd configuration.
+        /// Parameters for containerd configuration. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig? ContainerdConfig;
         /// <summary>

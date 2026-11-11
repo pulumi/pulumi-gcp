@@ -20,6 +20,18 @@ __all__ = [
     'ConfigIngestionRule',
     'ConfigIngestionRuleIntegrationSelector',
     'ConfigIngestionRuleLineageEnablement',
+    'OpenLineageJobInput',
+    'OpenLineageJobInputCatalog',
+    'OpenLineageJobInputSymlink',
+    'OpenLineageJobOutput',
+    'OpenLineageJobOutputCatalog',
+    'OpenLineageJobOutputColumnLineage',
+    'OpenLineageJobOutputColumnLineageDatasetInput',
+    'OpenLineageJobOutputColumnLineageDatasetInputTransformation',
+    'OpenLineageJobOutputColumnLineageField',
+    'OpenLineageJobOutputColumnLineageFieldInput',
+    'OpenLineageJobOutputColumnLineageFieldInputTransformation',
+    'OpenLineageJobOutputSymlink',
     'GetConfigIngestionResult',
     'GetConfigIngestionRuleResult',
     'GetConfigIngestionRuleIntegrationSelectorResult',
@@ -134,6 +146,561 @@ class ConfigIngestionRuleLineageEnablement(dict):
         Whether ingestion of lineage should be enabled.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class OpenLineageJobInput(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 catalog: Optional['outputs.OpenLineageJobInputCatalog'] = None,
+                 symlinks: Optional[Sequence['outputs.OpenLineageJobInputSymlink']] = None):
+        """
+        :param _builtins.str name: Name of the source dataset.
+        :param _builtins.str namespace: Namespace of the source dataset.
+        :param 'OpenLineageJobInputCatalogArgs' catalog: Catalog information for the dataset.
+               Structure is documented below.
+        :param Sequence['OpenLineageJobInputSymlinkArgs'] symlinks: Symlink targets for the dataset.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if symlinks is not None:
+            pulumi.set(__self__, "symlinks", symlinks)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the source dataset.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        Namespace of the source dataset.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def catalog(self) -> Optional['outputs.OpenLineageJobInputCatalog']:
+        """
+        Catalog information for the dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "catalog")
+
+    @_builtins.property
+    @pulumi.getter
+    def symlinks(self) -> Optional[Sequence['outputs.OpenLineageJobInputSymlink']]:
+        """
+        Symlink targets for the dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "symlinks")
+
+
+@pulumi.output_type
+class OpenLineageJobInputCatalog(dict):
+    def __init__(__self__, *,
+                 framework: _builtins.str,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str framework: Catalog framework.
+        :param _builtins.str name: Catalog entity name.
+        :param _builtins.str type: Catalog entity type.
+        """
+        pulumi.set(__self__, "framework", framework)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def framework(self) -> _builtins.str:
+        """
+        Catalog framework.
+        """
+        return pulumi.get(self, "framework")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Catalog entity name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Catalog entity type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OpenLineageJobInputSymlink(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str name: Name of the symlink target.
+        :param _builtins.str namespace: Namespace of the symlink target.
+        :param _builtins.str type: Type of the symlink target.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the symlink target.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        Namespace of the symlink target.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the symlink target.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OpenLineageJobOutput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnLineage":
+            suggest = "column_lineage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenLineageJobOutput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenLineageJobOutput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenLineageJobOutput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 catalog: Optional['outputs.OpenLineageJobOutputCatalog'] = None,
+                 column_lineage: Optional['outputs.OpenLineageJobOutputColumnLineage'] = None,
+                 symlinks: Optional[Sequence['outputs.OpenLineageJobOutputSymlink']] = None):
+        """
+        :param _builtins.str name: Name of the dataset.
+        :param _builtins.str namespace: Namespace of the dataset.
+        :param 'OpenLineageJobOutputCatalogArgs' catalog: Catalog information for the dataset.
+               Structure is documented below.
+        :param 'OpenLineageJobOutputColumnLineageArgs' column_lineage: Column-level lineage information for the output dataset.
+               Structure is documented below.
+        :param Sequence['OpenLineageJobOutputSymlinkArgs'] symlinks: Symlink targets for the dataset.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if column_lineage is not None:
+            pulumi.set(__self__, "column_lineage", column_lineage)
+        if symlinks is not None:
+            pulumi.set(__self__, "symlinks", symlinks)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the dataset.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        Namespace of the dataset.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def catalog(self) -> Optional['outputs.OpenLineageJobOutputCatalog']:
+        """
+        Catalog information for the dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="columnLineage")
+    def column_lineage(self) -> Optional['outputs.OpenLineageJobOutputColumnLineage']:
+        """
+        Column-level lineage information for the output dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "column_lineage")
+
+    @_builtins.property
+    @pulumi.getter
+    def symlinks(self) -> Optional[Sequence['outputs.OpenLineageJobOutputSymlink']]:
+        """
+        Symlink targets for the dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "symlinks")
+
+
+@pulumi.output_type
+class OpenLineageJobOutputCatalog(dict):
+    def __init__(__self__, *,
+                 framework: _builtins.str,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str framework: Catalog framework.
+        :param _builtins.str name: Catalog entity name.
+        :param _builtins.str type: Catalog entity type.
+        """
+        pulumi.set(__self__, "framework", framework)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def framework(self) -> _builtins.str:
+        """
+        Catalog framework.
+        """
+        return pulumi.get(self, "framework")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Catalog entity name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Catalog entity type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OpenLineageJobOutputColumnLineage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetInputs":
+            suggest = "dataset_inputs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenLineageJobOutputColumnLineage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenLineageJobOutputColumnLineage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenLineageJobOutputColumnLineage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fields: Sequence['outputs.OpenLineageJobOutputColumnLineageField'],
+                 dataset_inputs: Optional[Sequence['outputs.OpenLineageJobOutputColumnLineageDatasetInput']] = None):
+        """
+        :param Sequence['OpenLineageJobOutputColumnLineageFieldArgs'] fields: Field-level lineage mappings.
+               Structure is documented below.
+        :param Sequence['OpenLineageJobOutputColumnLineageDatasetInputArgs'] dataset_inputs: Input fields participating in output dataset lineage.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "fields", fields)
+        if dataset_inputs is not None:
+            pulumi.set(__self__, "dataset_inputs", dataset_inputs)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Sequence['outputs.OpenLineageJobOutputColumnLineageField']:
+        """
+        Field-level lineage mappings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @_builtins.property
+    @pulumi.getter(name="datasetInputs")
+    def dataset_inputs(self) -> Optional[Sequence['outputs.OpenLineageJobOutputColumnLineageDatasetInput']]:
+        """
+        Input fields participating in output dataset lineage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset_inputs")
+
+
+@pulumi.output_type
+class OpenLineageJobOutputColumnLineageDatasetInput(dict):
+    def __init__(__self__, *,
+                 field: _builtins.str,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 transformations: Optional[Sequence['outputs.OpenLineageJobOutputColumnLineageDatasetInputTransformation']] = None):
+        """
+        :param _builtins.str field: Source field name.
+        :param _builtins.str name: Name of the source dataset.
+        :param _builtins.str namespace: Namespace of the source dataset.
+        :param Sequence['OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs'] transformations: Transformations applied to fields from this input.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        if transformations is not None:
+            pulumi.set(__self__, "transformations", transformations)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> _builtins.str:
+        """
+        Source field name.
+        """
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the source dataset.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        Namespace of the source dataset.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def transformations(self) -> Optional[Sequence['outputs.OpenLineageJobOutputColumnLineageDatasetInputTransformation']]:
+        """
+        Transformations applied to fields from this input.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transformations")
+
+
+@pulumi.output_type
+class OpenLineageJobOutputColumnLineageDatasetInputTransformation(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 subtype: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Transformation type.
+        :param _builtins.str subtype: Transformation subtype.
+        """
+        pulumi.set(__self__, "type", type)
+        if subtype is not None:
+            pulumi.set(__self__, "subtype", subtype)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Transformation type.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def subtype(self) -> Optional[_builtins.str]:
+        """
+        Transformation subtype.
+        """
+        return pulumi.get(self, "subtype")
+
+
+@pulumi.output_type
+class OpenLineageJobOutputColumnLineageField(dict):
+    def __init__(__self__, *,
+                 inputs: Sequence['outputs.OpenLineageJobOutputColumnLineageFieldInput'],
+                 name: _builtins.str):
+        """
+        :param Sequence['OpenLineageJobOutputColumnLineageFieldInputArgs'] inputs: Input fields contributing to this output field.
+               Structure is documented below.
+        :param _builtins.str name: Output field name.
+        """
+        pulumi.set(__self__, "inputs", inputs)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def inputs(self) -> Sequence['outputs.OpenLineageJobOutputColumnLineageFieldInput']:
+        """
+        Input fields contributing to this output field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inputs")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Output field name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class OpenLineageJobOutputColumnLineageFieldInput(dict):
+    def __init__(__self__, *,
+                 field: _builtins.str,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 transformations: Optional[Sequence['outputs.OpenLineageJobOutputColumnLineageFieldInputTransformation']] = None):
+        """
+        :param _builtins.str field: Source field name.
+        :param _builtins.str name: Name of the source dataset.
+        :param _builtins.str namespace: Namespace of the source dataset.
+        :param Sequence['OpenLineageJobOutputColumnLineageFieldInputTransformationArgs'] transformations: Transformations applied from source to output field.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        if transformations is not None:
+            pulumi.set(__self__, "transformations", transformations)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> _builtins.str:
+        """
+        Source field name.
+        """
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the source dataset.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        Namespace of the source dataset.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def transformations(self) -> Optional[Sequence['outputs.OpenLineageJobOutputColumnLineageFieldInputTransformation']]:
+        """
+        Transformations applied from source to output field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transformations")
+
+
+@pulumi.output_type
+class OpenLineageJobOutputColumnLineageFieldInputTransformation(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 subtype: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Transformation type.
+        :param _builtins.str subtype: Transformation subtype.
+        """
+        pulumi.set(__self__, "type", type)
+        if subtype is not None:
+            pulumi.set(__self__, "subtype", subtype)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Transformation type.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def subtype(self) -> Optional[_builtins.str]:
+        """
+        Transformation subtype.
+        """
+        return pulumi.get(self, "subtype")
+
+
+@pulumi.output_type
+class OpenLineageJobOutputSymlink(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str name: Name of the symlink target.
+        :param _builtins.str namespace: Namespace of the symlink target.
+        :param _builtins.str type: Type of the symlink target.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the symlink target.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        Namespace of the symlink target.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the symlink target.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

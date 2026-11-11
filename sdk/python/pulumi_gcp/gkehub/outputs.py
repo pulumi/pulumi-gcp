@@ -2252,7 +2252,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
         """
         :param _builtins.int audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
         :param _builtins.int constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
-        :param Sequence['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs'] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation").
+        :param Sequence['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs'] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
         :param Sequence[_builtins.str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param _builtins.str install_spec: Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
         :param _builtins.bool log_denies_enabled: Logs all denies and dry run failures.
@@ -2302,7 +2302,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
     @pulumi.getter(name="deploymentConfigs")
     def deployment_configs(self) -> Optional[Sequence['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig']]:
         """
-        Map of deployment configs to deployments ("admission", "audit", "mutation").
+        Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
         """
         return pulumi.get(self, "deployment_configs")
 

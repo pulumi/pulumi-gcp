@@ -20,6 +20,121 @@ import (
 //
 // ## Example Usage
 //
+// ### Secure Source Manager Hook Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
+//				Location:       pulumi.String("asia-east1"),
+//				InstanceId:     pulumi.String("my-basic-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			repository, err := securesourcemanager.NewRepository(ctx, "repository", &securesourcemanager.RepositoryArgs{
+//				RepositoryId:   pulumi.String("my-basic-repository"),
+//				Location:       instance.Location,
+//				Instance:       instance.Name,
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securesourcemanager.NewHook(ctx, "default", &securesourcemanager.HookArgs{
+//				HookId:       pulumi.String("my-basic-hook"),
+//				RepositoryId: repository.RepositoryId,
+//				Location:     repository.Location,
+//				TargetUri:    pulumi.String("https://www.example.com"),
+//				Events: pulumi.StringArray{
+//					pulumi.String("PUSH"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Secure Source Manager Hook With Fields
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
+//				Location:       pulumi.String("asia-east1"),
+//				InstanceId:     pulumi.String("my-basic-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("my-basic-sa"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			repository, err := securesourcemanager.NewRepository(ctx, "repository", &securesourcemanager.RepositoryArgs{
+//				RepositoryId:   pulumi.String("my-basic-repository"),
+//				Instance:       instance.Name,
+//				Location:       instance.Location,
+//				ServiceAccount: sa.Email,
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securesourcemanager.NewHook(ctx, "default", &securesourcemanager.HookArgs{
+//				HookId:               pulumi.String("my-basic-hook"),
+//				Location:             repository.Location,
+//				RepositoryId:         repository.RepositoryId,
+//				TargetUri:            pulumi.String("https://www.example.com"),
+//				SensitiveQueryString: pulumi.String("auth=fake_token"),
+//				Disabled:             pulumi.Bool(false),
+//				ServiceAccountAuth:   pulumi.Bool(true),
+//				PushOption: &securesourcemanager.HookPushOptionArgs{
+//					BranchFilter: pulumi.String("main"),
+//				},
+//				Events: pulumi.StringArray{
+//					pulumi.String("PUSH"),
+//					pulumi.String("PULL_REQUEST"),
+//					pulumi.String("PULL_REQUEST_COMMENT"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Hook can be imported using any of these accepted formats:

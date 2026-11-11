@@ -14,12 +14,9 @@ import (
 
 // Config is a singleton resource used to configure the default Dataform settings for a specified location.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about Config, see:
 //
-// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations)
+// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations#Config)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dataform/docs/)
 //
@@ -35,70 +32,20 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				Name:           pulumi.String("project-1"),
-//				ProjectId:      pulumi.String("project-1"),
-//				OrgId:          pulumi.String("123456789"),
-//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
-//				DeletionPolicy: pulumi.String("DELETE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Enable Cloud Key KMS API
-//			cloudkmsApi, err := projects.NewService(ctx, "cloudkms_api", &projects.ServiceArgs{
-//				Project:          project.ProjectId,
-//				Service:          pulumi.String("cloudkms.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Enable Dataform API
-//			dataformApi, err := projects.NewService(ctx, "dataform_api", &projects.ServiceArgs{
-//				Project:          project.ProjectId,
-//				Service:          pulumi.String("dataform.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				cloudkmsApi,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			// Add a sleep to wait for IAM propagation after API enablement
-//			waitForDataformApi, err := time.NewSleep(ctx, "wait_for_dataform_api", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				dataformApi,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			// Retrieve the Dataform service identity
-//			dataformSa, err := projects.NewServiceIdentity(ctx, "dataform_sa", &projects.ServiceIdentityArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("dataform.googleapis.com"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				waitForDataformApi,
-//			}))
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Project:  project.ProjectId,
 //				Name:     pulumi.String("example-key-ring"),
-//				Location: pulumi.String("us-central1"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				waitForDataformApi,
-//			}))
+//				Location: pulumi.String("us-east1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -113,16 +60,15 @@ import (
 //			cryptoKeyBinding, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_binding", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: exampleKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      dataformSa.Member,
+//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-dataform.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Config with KMS key provided
 //			_, err = dataform.NewConfig(ctx, "config", &dataform.ConfigArgs{
-//				Region:            pulumi.String("us-central1"),
+//				Region:            pulumi.String("us-east1"),
 //				DefaultKmsKeyName: exampleKey.ID(),
-//				Project:           project.ProjectId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKeyBinding,
 //			}))
@@ -143,50 +89,16 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				Name:           pulumi.String("project-1"),
-//				ProjectId:      pulumi.String("project-1"),
-//				OrgId:          pulumi.String("123456789"),
-//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
-//				DeletionPolicy: pulumi.String("DELETE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Enable Dataform API
-//			dataformApi, err := projects.NewService(ctx, "dataform_api", &projects.ServiceArgs{
-//				Project:          project.ProjectId,
-//				Service:          pulumi.String("dataform.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Add a sleep to wait for IAM propagation after API enablement
-//			waitForDataformApi, err := time.NewSleep(ctx, "wait_for_dataform_api", &time.SleepArgs{
-//				CreateDuration: pulumi.String("30s"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				dataformApi,
-//			}))
-//			if err != nil {
-//				return err
-//			}
 //			// Config without KMS key provided
-//			_, err = dataform.NewConfig(ctx, "config", &dataform.ConfigArgs{
-//				Region:  pulumi.String("us-central1"),
-//				Project: project.ProjectId,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				waitForDataformApi,
-//			}))
+//			_, err := dataform.NewConfig(ctx, "config", &dataform.ConfigArgs{
+//				Region: pulumi.String("us-west1"),
+//			})
 //			if err != nil {
 //				return err
 //			}

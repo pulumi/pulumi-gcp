@@ -33,7 +33,7 @@ public final class RegionInstanceTemplateScheduling {
      */
     private @Nullable Integer availabilityDomain;
     /**
-     * @return Settings for the instance to perform a graceful shutdown.
+     * @return Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
      * 
      */
     private @Nullable RegionInstanceTemplateSchedulingGracefulShutdown gracefulShutdown;
@@ -48,15 +48,12 @@ public final class RegionInstanceTemplateScheduling {
      */
     private @Nullable String instanceTerminationAction;
     /**
-     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
-     *   recovery of the Local Ssd state is attempted. Its value should be in
-     *   between 0 and 168 hours with hour granularity and the default value being 1
-     *   hour.
+     * @return (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
      * 
      */
     private @Nullable List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     private @Nullable String maintenanceInterval;
@@ -98,7 +95,7 @@ public final class RegionInstanceTemplateScheduling {
      */
     private @Nullable Boolean preemptible;
     /**
-     * @return The duration of the notice that the instance will receive before it is preempted.
+     * @return Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
      * 
      */
     private @Nullable RegionInstanceTemplateSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
@@ -114,7 +111,7 @@ public final class RegionInstanceTemplateScheduling {
      */
     private @Nullable String provisioningModel;
     /**
-     * @return Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * @return Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
      * 
      */
     private @Nullable Boolean skipGuestOsShutdown;
@@ -142,7 +139,7 @@ public final class RegionInstanceTemplateScheduling {
         return Optional.ofNullable(this.availabilityDomain);
     }
     /**
-     * @return Settings for the instance to perform a graceful shutdown.
+     * @return Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
      * 
      */
     public Optional<RegionInstanceTemplateSchedulingGracefulShutdown> gracefulShutdown() {
@@ -163,17 +160,14 @@ public final class RegionInstanceTemplateScheduling {
         return Optional.ofNullable(this.instanceTerminationAction);
     }
     /**
-     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
-     *   recovery of the Local Ssd state is attempted. Its value should be in
-     *   between 0 and 168 hours with hour granularity and the default value being 1
-     *   hour.
+     * @return (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
      * 
      */
     public List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts() {
         return this.localSsdRecoveryTimeouts == null ? List.of() : this.localSsdRecoveryTimeouts;
     }
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     public Optional<String> maintenanceInterval() {
@@ -229,7 +223,7 @@ public final class RegionInstanceTemplateScheduling {
         return Optional.ofNullable(this.preemptible);
     }
     /**
-     * @return The duration of the notice that the instance will receive before it is preempted.
+     * @return Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
      * 
      */
     public Optional<RegionInstanceTemplateSchedulingPreemptionNoticeDuration> preemptionNoticeDuration() {
@@ -249,7 +243,7 @@ public final class RegionInstanceTemplateScheduling {
         return Optional.ofNullable(this.provisioningModel);
     }
     /**
-     * @return Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * @return Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
      * 
      */
     public Optional<Boolean> skipGuestOsShutdown() {

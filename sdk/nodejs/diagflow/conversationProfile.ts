@@ -43,7 +43,6 @@ import * as utilities from "../utilities";
  *     sttConfig: {
  *         useGeminiAsr: true,
  *         geminiAsrConfig: {
- *             modelId: "gemini-3-flash-lite-asr-preview",
  *             silenceDurationMs: 1000,
  *             prefixPaddingMs: 500,
  *             startOfSpeechSensitivity: "START_SENSITIVITY_LOW",

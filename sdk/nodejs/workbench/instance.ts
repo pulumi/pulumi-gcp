@@ -152,12 +152,12 @@ import * as utilities from "../utilities";
  * const mySubnetwork = new gcp.compute.Subnetwork("my_subnetwork", {
  *     name: "wbi-test-default",
  *     network: myNetwork.id,
- *     region: "us-east1",
+ *     region: "us-central1",
  *     ipCidrRange: "10.0.1.0/24",
  * });
  * const static = new gcp.compute.Address("static", {
  *     name: "wbi-test-default",
- *     region: "us-east1",
+ *     region: "us-central1",
  * });
  * const actAsPermission = new gcp.serviceaccount.IAMMember("act_as_permission", {
  *     serviceAccountId: "projects/my-project-name/serviceAccounts/my@service-account.com",
@@ -166,14 +166,14 @@ import * as utilities from "../utilities";
  * });
  * const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
  *     name: "wbi-reservation",
- *     zone: "us-east1-b",
+ *     zone: "us-central1-a",
  *     specificReservation: {
  *         count: 1,
  *         instanceProperties: {
- *             machineType: "g2-standard-4",
- *             minCpuPlatform: "Intel Cascade Lake",
+ *             machineType: "n1-standard-4",
+ *             minCpuPlatform: "Intel Broadwell",
  *             guestAccelerators: [{
- *                 acceleratorType: "nvidia-l4",
+ *                 acceleratorType: "nvidia-tesla-t4",
  *                 acceleratorCount: 1,
  *             }],
  *         },
@@ -182,7 +182,7 @@ import * as utilities from "../utilities";
  * });
  * const myPolicy = new gcp.compute.ResourcePolicy("my_policy", {
  *     name: "wbi-policy",
- *     region: "us-east1",
+ *     region: "us-central1",
  *     snapshotSchedulePolicy: {
  *         schedule: {
  *             dailySchedule: {
@@ -194,13 +194,13 @@ import * as utilities from "../utilities";
  * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-east1-b",
+ *     location: "us-central1-a",
  *     enableDeletionProtection: false,
  *     gceSetup: {
- *         machineType: "g2-standard-4",
- *         minCpuPlatform: "Intel Cascade Lake",
+ *         machineType: "n1-standard-4",
+ *         minCpuPlatform: "Intel Broadwell",
  *         acceleratorConfigs: [{
- *             type: "NVIDIA_L4",
+ *             type: "NVIDIA_TESLA_T4",
  *             coreCount: "1",
  *         }],
  *         shieldedInstanceConfig: {

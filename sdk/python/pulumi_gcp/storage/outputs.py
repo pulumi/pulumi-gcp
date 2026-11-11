@@ -102,6 +102,8 @@ __all__ = [
     'InsightsReportConfigParquetOptions',
     'ManagedFolderIamBindingCondition',
     'ManagedFolderIamMemberCondition',
+    'ManagedFolderRapidCacheConfig',
+    'ManagedFolderRapidCacheConfigPolicy',
     'ObjectAccessControlProjectTeam',
     'TransferAgentPoolBandwidthLimit',
     'TransferJobEventStream',
@@ -4385,6 +4387,83 @@ class ManagedFolderIamMemberCondition(dict):
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ManagedFolderRapidCacheConfig(dict):
+    def __init__(__self__, *,
+                 policies: Sequence['outputs.ManagedFolderRapidCacheConfigPolicy']):
+        """
+        :param Sequence['ManagedFolderRapidCacheConfigPolicyArgs'] policies: A map of rapid cache IDs to the corresponding RapidCachePolicy
+               configurations for a managed folder.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "policies", policies)
+
+    @_builtins.property
+    @pulumi.getter
+    def policies(self) -> Sequence['outputs.ManagedFolderRapidCacheConfigPolicy']:
+        """
+        A map of rapid cache IDs to the corresponding RapidCachePolicy
+        configurations for a managed folder.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policies")
+
+
+@pulumi.output_type
+class ManagedFolderRapidCacheConfigPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rapidCacheId":
+            suggest = "rapid_cache_id"
+        elif key == "ingestOnWrite":
+            suggest = "ingest_on_write"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedFolderRapidCacheConfigPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedFolderRapidCacheConfigPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedFolderRapidCacheConfigPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rapid_cache_id: _builtins.str,
+                 ingest_on_write: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str rapid_cache_id: The unique identifier of the rapid cache.
+        :param _builtins.str ingest_on_write: The ingest-on-write policy for objects in the managed folder. When
+               set to `enabled`, objects are automatically ingested into the cache
+               when they are written to the managed folder.
+               Possible values: ["enabled", "unspecified"]
+        """
+        pulumi.set(__self__, "rapid_cache_id", rapid_cache_id)
+        if ingest_on_write is not None:
+            pulumi.set(__self__, "ingest_on_write", ingest_on_write)
+
+    @_builtins.property
+    @pulumi.getter(name="rapidCacheId")
+    def rapid_cache_id(self) -> _builtins.str:
+        """
+        The unique identifier of the rapid cache.
+        """
+        return pulumi.get(self, "rapid_cache_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ingestOnWrite")
+    def ingest_on_write(self) -> Optional[_builtins.str]:
+        """
+        The ingest-on-write policy for objects in the managed folder. When
+        set to `enabled`, objects are automatically ingested into the cache
+        when they are written to the managed folder.
+        Possible values: ["enabled", "unspecified"]
+        """
+        return pulumi.get(self, "ingest_on_write")
 
 
 @pulumi.output_type

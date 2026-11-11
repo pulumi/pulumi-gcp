@@ -132,6 +132,14 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("workerPool")]
         public Input<string>? WorkerPool { get; set; }
 
+        /// <summary>
+        /// Option to specify which release or release channel to use to run this build.
+        /// Possible values are the release channels `Rapid`, `Regular`, or `Stable`, or a specific
+        /// release version such as `Legacy`.
+        /// </summary>
+        [Input("workerRelease")]
+        public Input<string>? WorkerRelease { get; set; }
+
         public TriggerBuildOptionsGetArgs()
         {
         }

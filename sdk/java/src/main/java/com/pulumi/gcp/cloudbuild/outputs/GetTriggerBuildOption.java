@@ -98,6 +98,13 @@ public final class GetTriggerBuildOption {
      * 
      */
     private String workerPool;
+    /**
+     * @return Option to specify which release or release channel to use to run this build.
+     * Possible values are the release channels &#39;rapid&#39;, &#39;regular&#39;, or &#39;stable&#39;, or a specific
+     * release version such as &#39;legacy&#39;.
+     * 
+     */
+    private String workerRelease;
 
     private GetTriggerBuildOption() {}
     /**
@@ -208,6 +215,15 @@ public final class GetTriggerBuildOption {
     public String workerPool() {
         return this.workerPool;
     }
+    /**
+     * @return Option to specify which release or release channel to use to run this build.
+     * Possible values are the release channels &#39;rapid&#39;, &#39;regular&#39;, or &#39;stable&#39;, or a specific
+     * release version such as &#39;legacy&#39;.
+     * 
+     */
+    public String workerRelease() {
+        return this.workerRelease;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -230,6 +246,7 @@ public final class GetTriggerBuildOption {
         private String substitutionOption;
         private List<GetTriggerBuildOptionVolume> volumes;
         private String workerPool;
+        private String workerRelease;
         public Builder() {}
         public Builder(GetTriggerBuildOption defaults) {
     	      Objects.requireNonNull(defaults);
@@ -245,6 +262,7 @@ public final class GetTriggerBuildOption {
     	      this.substitutionOption = defaults.substitutionOption;
     	      this.volumes = defaults.volumes;
     	      this.workerPool = defaults.workerPool;
+    	      this.workerRelease = defaults.workerRelease;
         }
 
         @CustomType.Setter
@@ -355,6 +373,14 @@ public final class GetTriggerBuildOption {
             this.workerPool = workerPool;
             return this;
         }
+        @CustomType.Setter
+        public Builder workerRelease(String workerRelease) {
+            if (workerRelease == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "workerRelease");
+            }
+            this.workerRelease = workerRelease;
+            return this;
+        }
         public GetTriggerBuildOption build() {
             final var _resultValue = new GetTriggerBuildOption();
             _resultValue.diskSizeGb = diskSizeGb;
@@ -369,6 +395,7 @@ public final class GetTriggerBuildOption {
             _resultValue.substitutionOption = substitutionOption;
             _resultValue.volumes = volumes;
             _resultValue.workerPool = workerPool;
+            _resultValue.workerRelease = workerRelease;
             return _resultValue;
         }
     }

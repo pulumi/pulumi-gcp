@@ -1489,6 +1489,12 @@ class TriggerBuildOptionsArgsDict(TypedDict):
     Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
     This field is experimental.
     """
+    worker_release: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Option to specify which release or release channel to use to run this build.
+    Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+    release version such as `legacy`.
+    """
 
 @pulumi.input_type
 class TriggerBuildOptionsArgs:
@@ -1504,7 +1510,8 @@ class TriggerBuildOptionsArgs:
                  source_provenance_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  substitution_option: pulumi.Input[Optional[_builtins.str]] = None,
                  volumes: pulumi.Input[Optional[Sequence[pulumi.Input['TriggerBuildOptionsVolumeArgs']]]] = None,
-                 worker_pool: pulumi.Input[Optional[_builtins.str]] = None):
+                 worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_release: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
                some of the space will be used by the operating system and build utilities.
@@ -1542,6 +1549,9 @@ class TriggerBuildOptionsArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] worker_pool: Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
                This field is experimental.
+        :param pulumi.Input[_builtins.str] worker_release: Option to specify which release or release channel to use to run this build.
+               Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+               release version such as `legacy`.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -1567,6 +1577,8 @@ class TriggerBuildOptionsArgs:
             pulumi.set(__self__, "volumes", volumes)
         if worker_pool is not None:
             pulumi.set(__self__, "worker_pool", worker_pool)
+        if worker_release is not None:
+            pulumi.set(__self__, "worker_release", worker_release)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -1735,6 +1747,20 @@ class TriggerBuildOptionsArgs:
     @worker_pool.setter
     def worker_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "worker_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerRelease")
+    def worker_release(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Option to specify which release or release channel to use to run this build.
+        Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+        release version such as `legacy`.
+        """
+        return pulumi.get(self, "worker_release")
+
+    @worker_release.setter
+    def worker_release(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "worker_release", value)
 
 
 class TriggerBuildOptionsVolumeArgsDict(TypedDict):

@@ -2700,6 +2700,10 @@ type TriggerBuildOptions struct {
 	// Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
 	// This field is experimental.
 	WorkerPool *string `pulumi:"workerPool"`
+	// Option to specify which release or release channel to use to run this build.
+	// Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+	// release version such as `legacy`.
+	WorkerRelease *string `pulumi:"workerRelease"`
 }
 
 // TriggerBuildOptionsInput is an input type that accepts TriggerBuildOptionsArgs and TriggerBuildOptionsOutput values.
@@ -2762,6 +2766,10 @@ type TriggerBuildOptionsArgs struct {
 	// Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
 	// This field is experimental.
 	WorkerPool pulumi.StringPtrInput `pulumi:"workerPool"`
+	// Option to specify which release or release channel to use to run this build.
+	// Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+	// release version such as `legacy`.
+	WorkerRelease pulumi.StringPtrInput `pulumi:"workerRelease"`
 }
 
 func (TriggerBuildOptionsArgs) ElementType() reflect.Type {
@@ -2923,6 +2931,13 @@ func (o TriggerBuildOptionsOutput) Volumes() TriggerBuildOptionsVolumeArrayOutpu
 // This field is experimental.
 func (o TriggerBuildOptionsOutput) WorkerPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.WorkerPool }).(pulumi.StringPtrOutput)
+}
+
+// Option to specify which release or release channel to use to run this build.
+// Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+// release version such as `legacy`.
+func (o TriggerBuildOptionsOutput) WorkerRelease() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.WorkerRelease }).(pulumi.StringPtrOutput)
 }
 
 type TriggerBuildOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -3090,6 +3105,18 @@ func (o TriggerBuildOptionsPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.WorkerPool
+	}).(pulumi.StringPtrOutput)
+}
+
+// Option to specify which release or release channel to use to run this build.
+// Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+// release version such as `legacy`.
+func (o TriggerBuildOptionsPtrOutput) WorkerRelease() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerRelease
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9640,6 +9667,10 @@ type GetTriggerBuildOption struct {
 	//
 	// This field is experimental.
 	WorkerPool string `pulumi:"workerPool"`
+	// Option to specify which release or release channel to use to run this build.
+	// Possible values are the release channels 'rapid', 'regular', or 'stable', or a specific
+	// release version such as 'legacy'.
+	WorkerRelease string `pulumi:"workerRelease"`
 }
 
 // GetTriggerBuildOptionInput is an input type that accepts GetTriggerBuildOptionArgs and GetTriggerBuildOptionOutput values.
@@ -9702,6 +9733,10 @@ type GetTriggerBuildOptionArgs struct {
 	//
 	// This field is experimental.
 	WorkerPool pulumi.StringInput `pulumi:"workerPool"`
+	// Option to specify which release or release channel to use to run this build.
+	// Possible values are the release channels 'rapid', 'regular', or 'stable', or a specific
+	// release version such as 'legacy'.
+	WorkerRelease pulumi.StringInput `pulumi:"workerRelease"`
 }
 
 func (GetTriggerBuildOptionArgs) ElementType() reflect.Type {
@@ -9837,6 +9872,13 @@ func (o GetTriggerBuildOptionOutput) Volumes() GetTriggerBuildOptionVolumeArrayO
 // This field is experimental.
 func (o GetTriggerBuildOptionOutput) WorkerPool() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerBuildOption) string { return v.WorkerPool }).(pulumi.StringOutput)
+}
+
+// Option to specify which release or release channel to use to run this build.
+// Possible values are the release channels 'rapid', 'regular', or 'stable', or a specific
+// release version such as 'legacy'.
+func (o GetTriggerBuildOptionOutput) WorkerRelease() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) string { return v.WorkerRelease }).(pulumi.StringOutput)
 }
 
 type GetTriggerBuildOptionArrayOutput struct{ *pulumi.OutputState }

@@ -976,14 +976,24 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//			defaultBackendAuthenticationConfig, err := networksecurity.NewBackendAuthenticationConfig(ctx, "default", &networksecurity.BackendAuthenticationConfigArgs{
+//				Name:           pulumi.String("authentication"),
+//				WellKnownRoots: pulumi.String("PUBLIC_ROOTS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				Protocol:            pulumi.String("HTTP2"),
@@ -992,6 +1002,11 @@ import (
 //						Enabled:   pulumi.Bool(true),
 //						ProxyMode: pulumi.String("DIRECT_FORWARDING"),
 //					},
+//				},
+//				TlsSettings: &compute.BackendServiceTlsSettingsArgs{
+//					AuthenticationConfig: defaultBackendAuthenticationConfig.ID().ApplyT(func(id pulumi.ID) (string, error) {
+//						return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
+//					}).(pulumi.StringOutput),
 //				},
 //			})
 //			if err != nil {

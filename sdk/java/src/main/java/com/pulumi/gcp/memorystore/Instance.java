@@ -823,6 +823,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Immutable. User inputs for the auto-created endpoints connections.
+     * Structure is documented below.
      * 
      */
     @Export(name="desiredAutoCreatedEndpoints", refs={List.class,InstanceDesiredAutoCreatedEndpoint.class}, tree="[0,1]")
@@ -830,6 +831,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Immutable. User inputs for the auto-created endpoints connections.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<InstanceDesiredAutoCreatedEndpoint>>> desiredAutoCreatedEndpoints() {
@@ -837,6 +839,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+     * Structure is documented below.
      * 
      * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      * 
@@ -847,6 +850,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<InstanceDesiredPscAutoConnection>>> desiredPscAutoConnections() {

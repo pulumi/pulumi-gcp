@@ -242,8 +242,11 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> EncryptedInterconnectRouter { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Keys used for MD5 authentication.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         /// </summary>
         [Output("md5AuthenticationKeys")]
         public Output<Outputs.RouterMd5AuthenticationKeys?> Md5AuthenticationKeys { get; private set; } = null!;
@@ -381,8 +384,11 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EncryptedInterconnectRouter { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Keys used for MD5 authentication.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         /// </summary>
         [Input("md5AuthenticationKeys")]
         public Input<Inputs.RouterMd5AuthenticationKeysArgs>? Md5AuthenticationKeys { get; set; }
@@ -476,8 +482,11 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EncryptedInterconnectRouter { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Keys used for MD5 authentication.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         /// </summary>
         [Input("md5AuthenticationKeys")]
         public Input<Inputs.RouterMd5AuthenticationKeysGetArgs>? Md5AuthenticationKeys { get; set; }

@@ -69,14 +69,14 @@ public final class InstanceGroupManagerStatusArgs extends com.pulumi.resources.R
     }
 
     /**
-     * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
+     * A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
      * 
      */
     @Import(name="versionTargets")
     private @Nullable Output<List<InstanceGroupManagerStatusVersionTargetArgs>> versionTargets;
 
     /**
-     * @return A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
+     * @return A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
      * 
      */
     public Optional<Output<List<InstanceGroupManagerStatusVersionTargetArgs>>> versionTargets() {
@@ -200,7 +200,7 @@ public final class InstanceGroupManagerStatusArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param versionTargets A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
+         * @param versionTargets A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class InstanceGroupManagerStatusArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param versionTargets A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
+         * @param versionTargets A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class InstanceGroupManagerStatusArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param versionTargets A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
+         * @param versionTargets A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
          * 
          * @return builder
          * 

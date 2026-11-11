@@ -58,6 +58,18 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
         /// The URL of the MCP server.
         /// </summary>
         public readonly string ServerUrl;
+        /// <summary>
+        /// The HTTP header name used to pass the agent session ID in MCP server
+        /// requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+        /// header field name (RFC 9110 token).
+        /// </summary>
+        public readonly string? SessionIdHeader;
+        /// <summary>
+        /// The HTTP header name used to pass the agent task ID in MCP server
+        /// requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+        /// header field name (RFC 9110 token).
+        /// </summary>
+        public readonly string? TaskIdHeader;
 
         [OutputConstructor]
         private AnalystAgentPersonaMcpDataSource(
@@ -81,7 +93,11 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
 
             string? prompt,
 
-            string serverUrl)
+            string serverUrl,
+
+            string? sessionIdHeader,
+
+            string? taskIdHeader)
         {
             ApiKey = apiKey;
             ApiKeyHeader = apiKeyHeader;
@@ -94,6 +110,8 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
             OauthTokenUrl = oauthTokenUrl;
             Prompt = prompt;
             ServerUrl = serverUrl;
+            SessionIdHeader = sessionIdHeader;
+            TaskIdHeader = taskIdHeader;
         }
     }
 }

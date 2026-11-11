@@ -12916,6 +12916,2581 @@ func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeT
 	}).(pulumi.IntPtrOutput)
 }
 
+type AiEvaluationItemError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// AiEvaluationItemErrorInput is an input type that accepts AiEvaluationItemErrorArgs and AiEvaluationItemErrorOutput values.
+// You can construct a concrete instance of `AiEvaluationItemErrorInput` via:
+//
+//	AiEvaluationItemErrorArgs{...}
+type AiEvaluationItemErrorInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemErrorOutput() AiEvaluationItemErrorOutput
+	ToAiEvaluationItemErrorOutputWithContext(context.Context) AiEvaluationItemErrorOutput
+}
+
+type AiEvaluationItemErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiEvaluationItemErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemError)(nil)).Elem()
+}
+
+func (i AiEvaluationItemErrorArgs) ToAiEvaluationItemErrorOutput() AiEvaluationItemErrorOutput {
+	return i.ToAiEvaluationItemErrorOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemErrorArgs) ToAiEvaluationItemErrorOutputWithContext(ctx context.Context) AiEvaluationItemErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemErrorOutput)
+}
+
+// AiEvaluationItemErrorArrayInput is an input type that accepts AiEvaluationItemErrorArray and AiEvaluationItemErrorArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemErrorArrayInput` via:
+//
+//	AiEvaluationItemErrorArray{ AiEvaluationItemErrorArgs{...} }
+type AiEvaluationItemErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemErrorArrayOutput() AiEvaluationItemErrorArrayOutput
+	ToAiEvaluationItemErrorArrayOutputWithContext(context.Context) AiEvaluationItemErrorArrayOutput
+}
+
+type AiEvaluationItemErrorArray []AiEvaluationItemErrorInput
+
+func (AiEvaluationItemErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemError)(nil)).Elem()
+}
+
+func (i AiEvaluationItemErrorArray) ToAiEvaluationItemErrorArrayOutput() AiEvaluationItemErrorArrayOutput {
+	return i.ToAiEvaluationItemErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemErrorArray) ToAiEvaluationItemErrorArrayOutputWithContext(ctx context.Context) AiEvaluationItemErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemErrorArrayOutput)
+}
+
+type AiEvaluationItemErrorOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemError)(nil)).Elem()
+}
+
+func (o AiEvaluationItemErrorOutput) ToAiEvaluationItemErrorOutput() AiEvaluationItemErrorOutput {
+	return o
+}
+
+func (o AiEvaluationItemErrorOutput) ToAiEvaluationItemErrorOutputWithContext(ctx context.Context) AiEvaluationItemErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiEvaluationItemErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message.
+func (o AiEvaluationItemErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemError)(nil)).Elem()
+}
+
+func (o AiEvaluationItemErrorArrayOutput) ToAiEvaluationItemErrorArrayOutput() AiEvaluationItemErrorArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemErrorArrayOutput) ToAiEvaluationItemErrorArrayOutputWithContext(ctx context.Context) AiEvaluationItemErrorArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemErrorArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemError {
+		return vs[0].([]AiEvaluationItemError)[vs[1].(int)]
+	}).(AiEvaluationItemErrorOutput)
+}
+
+type AiEvaluationItemEvaluationRequest struct {
+	// Responses from model under test and other baseline models for comparison.
+	// Structure is documented below.
+	CandidateResponses []AiEvaluationItemEvaluationRequestCandidateResponse `pulumi:"candidateResponses"`
+	// The ideal response or ground truth.
+	// Structure is documented below.
+	GoldenResponse *AiEvaluationItemEvaluationRequestGoldenResponse `pulumi:"goldenResponse"`
+	// The request/prompt to evaluate.
+	// Structure is documented below.
+	Prompt *AiEvaluationItemEvaluationRequestPrompt `pulumi:"prompt"`
+	// Named groups of rubrics associated with this prompt.
+	// The key is a user-defined name for the rubric group.
+	// Structure is documented below.
+	Rubrics []AiEvaluationItemEvaluationRequestRubric `pulumi:"rubrics"`
+}
+
+// AiEvaluationItemEvaluationRequestInput is an input type that accepts AiEvaluationItemEvaluationRequestArgs and AiEvaluationItemEvaluationRequestOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestInput` via:
+//
+//	AiEvaluationItemEvaluationRequestArgs{...}
+type AiEvaluationItemEvaluationRequestInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestOutput() AiEvaluationItemEvaluationRequestOutput
+	ToAiEvaluationItemEvaluationRequestOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestOutput
+}
+
+type AiEvaluationItemEvaluationRequestArgs struct {
+	// Responses from model under test and other baseline models for comparison.
+	// Structure is documented below.
+	CandidateResponses AiEvaluationItemEvaluationRequestCandidateResponseArrayInput `pulumi:"candidateResponses"`
+	// The ideal response or ground truth.
+	// Structure is documented below.
+	GoldenResponse AiEvaluationItemEvaluationRequestGoldenResponsePtrInput `pulumi:"goldenResponse"`
+	// The request/prompt to evaluate.
+	// Structure is documented below.
+	Prompt AiEvaluationItemEvaluationRequestPromptPtrInput `pulumi:"prompt"`
+	// Named groups of rubrics associated with this prompt.
+	// The key is a user-defined name for the rubric group.
+	// Structure is documented below.
+	Rubrics AiEvaluationItemEvaluationRequestRubricArrayInput `pulumi:"rubrics"`
+}
+
+func (AiEvaluationItemEvaluationRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequest)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestArgs) ToAiEvaluationItemEvaluationRequestOutput() AiEvaluationItemEvaluationRequestOutput {
+	return i.ToAiEvaluationItemEvaluationRequestOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestArgs) ToAiEvaluationItemEvaluationRequestOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestOutput)
+}
+
+func (i AiEvaluationItemEvaluationRequestArgs) ToAiEvaluationItemEvaluationRequestPtrOutput() AiEvaluationItemEvaluationRequestPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestArgs) ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestOutput).ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(ctx)
+}
+
+// AiEvaluationItemEvaluationRequestPtrInput is an input type that accepts AiEvaluationItemEvaluationRequestArgs, AiEvaluationItemEvaluationRequestPtr and AiEvaluationItemEvaluationRequestPtrOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestPtrInput` via:
+//
+//	        AiEvaluationItemEvaluationRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEvaluationItemEvaluationRequestPtrInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestPtrOutput() AiEvaluationItemEvaluationRequestPtrOutput
+	ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestPtrOutput
+}
+
+type aiEvaluationItemEvaluationRequestPtrType AiEvaluationItemEvaluationRequestArgs
+
+func AiEvaluationItemEvaluationRequestPtr(v *AiEvaluationItemEvaluationRequestArgs) AiEvaluationItemEvaluationRequestPtrInput {
+	return (*aiEvaluationItemEvaluationRequestPtrType)(v)
+}
+
+func (*aiEvaluationItemEvaluationRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequest)(nil)).Elem()
+}
+
+func (i *aiEvaluationItemEvaluationRequestPtrType) ToAiEvaluationItemEvaluationRequestPtrOutput() AiEvaluationItemEvaluationRequestPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEvaluationItemEvaluationRequestPtrType) ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequest)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestOutput) ToAiEvaluationItemEvaluationRequestOutput() AiEvaluationItemEvaluationRequestOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestOutput) ToAiEvaluationItemEvaluationRequestOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestOutput) ToAiEvaluationItemEvaluationRequestPtrOutput() AiEvaluationItemEvaluationRequestPtrOutput {
+	return o.ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(context.Background())
+}
+
+func (o AiEvaluationItemEvaluationRequestOutput) ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEvaluationItemEvaluationRequest) *AiEvaluationItemEvaluationRequest {
+		return &v
+	}).(AiEvaluationItemEvaluationRequestPtrOutput)
+}
+
+// Responses from model under test and other baseline models for comparison.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestOutput) CandidateResponses() AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequest) []AiEvaluationItemEvaluationRequestCandidateResponse {
+		return v.CandidateResponses
+	}).(AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput)
+}
+
+// The ideal response or ground truth.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestOutput) GoldenResponse() AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequest) *AiEvaluationItemEvaluationRequestGoldenResponse {
+		return v.GoldenResponse
+	}).(AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput)
+}
+
+// The request/prompt to evaluate.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestOutput) Prompt() AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequest) *AiEvaluationItemEvaluationRequestPrompt { return v.Prompt }).(AiEvaluationItemEvaluationRequestPromptPtrOutput)
+}
+
+// Named groups of rubrics associated with this prompt.
+// The key is a user-defined name for the rubric group.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestOutput) Rubrics() AiEvaluationItemEvaluationRequestRubricArrayOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequest) []AiEvaluationItemEvaluationRequestRubric { return v.Rubrics }).(AiEvaluationItemEvaluationRequestRubricArrayOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequest)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestPtrOutput) ToAiEvaluationItemEvaluationRequestPtrOutput() AiEvaluationItemEvaluationRequestPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPtrOutput) ToAiEvaluationItemEvaluationRequestPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPtrOutput) Elem() AiEvaluationItemEvaluationRequestOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequest) AiEvaluationItemEvaluationRequest {
+		if v != nil {
+			return *v
+		}
+		var ret AiEvaluationItemEvaluationRequest
+		return ret
+	}).(AiEvaluationItemEvaluationRequestOutput)
+}
+
+// Responses from model under test and other baseline models for comparison.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestPtrOutput) CandidateResponses() AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequest) []AiEvaluationItemEvaluationRequestCandidateResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CandidateResponses
+	}).(AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput)
+}
+
+// The ideal response or ground truth.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestPtrOutput) GoldenResponse() AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequest) *AiEvaluationItemEvaluationRequestGoldenResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GoldenResponse
+	}).(AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput)
+}
+
+// The request/prompt to evaluate.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestPtrOutput) Prompt() AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequest) *AiEvaluationItemEvaluationRequestPrompt {
+		if v == nil {
+			return nil
+		}
+		return v.Prompt
+	}).(AiEvaluationItemEvaluationRequestPromptPtrOutput)
+}
+
+// Named groups of rubrics associated with this prompt.
+// The key is a user-defined name for the rubric group.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestPtrOutput) Rubrics() AiEvaluationItemEvaluationRequestRubricArrayOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequest) []AiEvaluationItemEvaluationRequestRubric {
+		if v == nil {
+			return nil
+		}
+		return v.Rubrics
+	}).(AiEvaluationItemEvaluationRequestRubricArrayOutput)
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponse struct {
+	// Represents the complete execution trace of a multi-turn conversation,
+	// which can involve single or multiple agents, as a JSON string. This
+	// field is used to provide the full output of an agent's run, including
+	// all turns and events, for direct evaluation.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	AgentData *string `pulumi:"agentData"`
+	// The name of the candidate that produced the response.
+	Candidate string `pulumi:"candidate"`
+	// (Output)
+	// Error while scraping model or agent.
+	// Structure is documented below.
+	//
+	// <a name="nestedEvaluationRequestCandidateResponsesError"></a>The `error` block contains:
+	Errors []AiEvaluationItemEvaluationRequestCandidateResponseError `pulumi:"errors"`
+	// Text response.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	Text *string `pulumi:"text"`
+	// Fields and values that can be used to populate the response template, as a JSON string.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	Value *string `pulumi:"value"`
+}
+
+// AiEvaluationItemEvaluationRequestCandidateResponseInput is an input type that accepts AiEvaluationItemEvaluationRequestCandidateResponseArgs and AiEvaluationItemEvaluationRequestCandidateResponseOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestCandidateResponseInput` via:
+//
+//	AiEvaluationItemEvaluationRequestCandidateResponseArgs{...}
+type AiEvaluationItemEvaluationRequestCandidateResponseInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestCandidateResponseOutput() AiEvaluationItemEvaluationRequestCandidateResponseOutput
+	ToAiEvaluationItemEvaluationRequestCandidateResponseOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestCandidateResponseOutput
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseArgs struct {
+	// Represents the complete execution trace of a multi-turn conversation,
+	// which can involve single or multiple agents, as a JSON string. This
+	// field is used to provide the full output of an agent's run, including
+	// all turns and events, for direct evaluation.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	AgentData pulumi.StringPtrInput `pulumi:"agentData"`
+	// The name of the candidate that produced the response.
+	Candidate pulumi.StringInput `pulumi:"candidate"`
+	// (Output)
+	// Error while scraping model or agent.
+	// Structure is documented below.
+	//
+	// <a name="nestedEvaluationRequestCandidateResponsesError"></a>The `error` block contains:
+	Errors AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayInput `pulumi:"errors"`
+	// Text response.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// Fields and values that can be used to populate the response template, as a JSON string.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AiEvaluationItemEvaluationRequestCandidateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestCandidateResponse)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestCandidateResponseArgs) ToAiEvaluationItemEvaluationRequestCandidateResponseOutput() AiEvaluationItemEvaluationRequestCandidateResponseOutput {
+	return i.ToAiEvaluationItemEvaluationRequestCandidateResponseOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestCandidateResponseArgs) ToAiEvaluationItemEvaluationRequestCandidateResponseOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestCandidateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestCandidateResponseOutput)
+}
+
+// AiEvaluationItemEvaluationRequestCandidateResponseArrayInput is an input type that accepts AiEvaluationItemEvaluationRequestCandidateResponseArray and AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestCandidateResponseArrayInput` via:
+//
+//	AiEvaluationItemEvaluationRequestCandidateResponseArray{ AiEvaluationItemEvaluationRequestCandidateResponseArgs{...} }
+type AiEvaluationItemEvaluationRequestCandidateResponseArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestCandidateResponseArrayOutput() AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput
+	ToAiEvaluationItemEvaluationRequestCandidateResponseArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseArray []AiEvaluationItemEvaluationRequestCandidateResponseInput
+
+func (AiEvaluationItemEvaluationRequestCandidateResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestCandidateResponse)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestCandidateResponseArray) ToAiEvaluationItemEvaluationRequestCandidateResponseArrayOutput() AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput {
+	return i.ToAiEvaluationItemEvaluationRequestCandidateResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestCandidateResponseArray) ToAiEvaluationItemEvaluationRequestCandidateResponseArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput)
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestCandidateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestCandidateResponse)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseOutput) ToAiEvaluationItemEvaluationRequestCandidateResponseOutput() AiEvaluationItemEvaluationRequestCandidateResponseOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseOutput) ToAiEvaluationItemEvaluationRequestCandidateResponseOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestCandidateResponseOutput {
+	return o
+}
+
+// Represents the complete execution trace of a multi-turn conversation,
+// which can involve single or multiple agents, as a JSON string. This
+// field is used to provide the full output of an agent's run, including
+// all turns and events, for direct evaluation.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestCandidateResponseOutput) AgentData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestCandidateResponse) *string { return v.AgentData }).(pulumi.StringPtrOutput)
+}
+
+// The name of the candidate that produced the response.
+func (o AiEvaluationItemEvaluationRequestCandidateResponseOutput) Candidate() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestCandidateResponse) string { return v.Candidate }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Error while scraping model or agent.
+// Structure is documented below.
+//
+// <a name="nestedEvaluationRequestCandidateResponsesError"></a>The `error` block contains:
+func (o AiEvaluationItemEvaluationRequestCandidateResponseOutput) Errors() AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestCandidateResponse) []AiEvaluationItemEvaluationRequestCandidateResponseError {
+		return v.Errors
+	}).(AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput)
+}
+
+// Text response.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestCandidateResponseOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestCandidateResponse) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// Fields and values that can be used to populate the response template, as a JSON string.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestCandidateResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestCandidateResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestCandidateResponse)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput) ToAiEvaluationItemEvaluationRequestCandidateResponseArrayOutput() AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput) ToAiEvaluationItemEvaluationRequestCandidateResponseArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationRequestCandidateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationRequestCandidateResponse {
+		return vs[0].([]AiEvaluationItemEvaluationRequestCandidateResponse)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationRequestCandidateResponseOutput)
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// AiEvaluationItemEvaluationRequestCandidateResponseErrorInput is an input type that accepts AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs and AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestCandidateResponseErrorInput` via:
+//
+//	AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs{...}
+type AiEvaluationItemEvaluationRequestCandidateResponseErrorInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestCandidateResponseErrorOutput() AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput
+	ToAiEvaluationItemEvaluationRequestCandidateResponseErrorOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestCandidateResponseError)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs) ToAiEvaluationItemEvaluationRequestCandidateResponseErrorOutput() AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput {
+	return i.ToAiEvaluationItemEvaluationRequestCandidateResponseErrorOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs) ToAiEvaluationItemEvaluationRequestCandidateResponseErrorOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput)
+}
+
+// AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayInput is an input type that accepts AiEvaluationItemEvaluationRequestCandidateResponseErrorArray and AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayInput` via:
+//
+//	AiEvaluationItemEvaluationRequestCandidateResponseErrorArray{ AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs{...} }
+type AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput() AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput
+	ToAiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseErrorArray []AiEvaluationItemEvaluationRequestCandidateResponseErrorInput
+
+func (AiEvaluationItemEvaluationRequestCandidateResponseErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestCandidateResponseError)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestCandidateResponseErrorArray) ToAiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput() AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput {
+	return i.ToAiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestCandidateResponseErrorArray) ToAiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput)
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestCandidateResponseError)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput) ToAiEvaluationItemEvaluationRequestCandidateResponseErrorOutput() AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput) ToAiEvaluationItemEvaluationRequestCandidateResponseErrorOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestCandidateResponseError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message.
+func (o AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestCandidateResponseError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestCandidateResponseError)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput) ToAiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput() AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput) ToAiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationRequestCandidateResponseError {
+		return vs[0].([]AiEvaluationItemEvaluationRequestCandidateResponseError)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput)
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponse struct {
+	// Represents the complete execution trace of a multi-turn conversation,
+	// which can involve single or multiple agents, as a JSON string. This
+	// field is used to provide the full output of an agent's run, including
+	// all turns and events, for direct evaluation.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	AgentData *string `pulumi:"agentData"`
+	// The name of the candidate that produced the response.
+	Candidate string `pulumi:"candidate"`
+	// (Output)
+	// Error while scraping model or agent.
+	// Structure is documented below.
+	//
+	// <a name="nestedEvaluationRequestGoldenResponseError"></a>The `error` block contains:
+	Errors []AiEvaluationItemEvaluationRequestGoldenResponseError `pulumi:"errors"`
+	// Text response.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	Text *string `pulumi:"text"`
+	// Fields and values that can be used to populate the response template, as a JSON string.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	Value *string `pulumi:"value"`
+}
+
+// AiEvaluationItemEvaluationRequestGoldenResponseInput is an input type that accepts AiEvaluationItemEvaluationRequestGoldenResponseArgs and AiEvaluationItemEvaluationRequestGoldenResponseOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestGoldenResponseInput` via:
+//
+//	AiEvaluationItemEvaluationRequestGoldenResponseArgs{...}
+type AiEvaluationItemEvaluationRequestGoldenResponseInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestGoldenResponseOutput() AiEvaluationItemEvaluationRequestGoldenResponseOutput
+	ToAiEvaluationItemEvaluationRequestGoldenResponseOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestGoldenResponseOutput
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponseArgs struct {
+	// Represents the complete execution trace of a multi-turn conversation,
+	// which can involve single or multiple agents, as a JSON string. This
+	// field is used to provide the full output of an agent's run, including
+	// all turns and events, for direct evaluation.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	AgentData pulumi.StringPtrInput `pulumi:"agentData"`
+	// The name of the candidate that produced the response.
+	Candidate pulumi.StringInput `pulumi:"candidate"`
+	// (Output)
+	// Error while scraping model or agent.
+	// Structure is documented below.
+	//
+	// <a name="nestedEvaluationRequestGoldenResponseError"></a>The `error` block contains:
+	Errors AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayInput `pulumi:"errors"`
+	// Text response.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// Fields and values that can be used to populate the response template, as a JSON string.
+	// At most one of `text`, `value`, or `agentData` can be set.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AiEvaluationItemEvaluationRequestGoldenResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestGoldenResponse)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestGoldenResponseArgs) ToAiEvaluationItemEvaluationRequestGoldenResponseOutput() AiEvaluationItemEvaluationRequestGoldenResponseOutput {
+	return i.ToAiEvaluationItemEvaluationRequestGoldenResponseOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestGoldenResponseArgs) ToAiEvaluationItemEvaluationRequestGoldenResponseOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestGoldenResponseOutput)
+}
+
+func (i AiEvaluationItemEvaluationRequestGoldenResponseArgs) ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutput() AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestGoldenResponseArgs) ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestGoldenResponseOutput).ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(ctx)
+}
+
+// AiEvaluationItemEvaluationRequestGoldenResponsePtrInput is an input type that accepts AiEvaluationItemEvaluationRequestGoldenResponseArgs, AiEvaluationItemEvaluationRequestGoldenResponsePtr and AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestGoldenResponsePtrInput` via:
+//
+//	        AiEvaluationItemEvaluationRequestGoldenResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEvaluationItemEvaluationRequestGoldenResponsePtrInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutput() AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput
+	ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput
+}
+
+type aiEvaluationItemEvaluationRequestGoldenResponsePtrType AiEvaluationItemEvaluationRequestGoldenResponseArgs
+
+func AiEvaluationItemEvaluationRequestGoldenResponsePtr(v *AiEvaluationItemEvaluationRequestGoldenResponseArgs) AiEvaluationItemEvaluationRequestGoldenResponsePtrInput {
+	return (*aiEvaluationItemEvaluationRequestGoldenResponsePtrType)(v)
+}
+
+func (*aiEvaluationItemEvaluationRequestGoldenResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestGoldenResponse)(nil)).Elem()
+}
+
+func (i *aiEvaluationItemEvaluationRequestGoldenResponsePtrType) ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutput() AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *aiEvaluationItemEvaluationRequestGoldenResponsePtrType) ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponseOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestGoldenResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestGoldenResponse)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) ToAiEvaluationItemEvaluationRequestGoldenResponseOutput() AiEvaluationItemEvaluationRequestGoldenResponseOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) ToAiEvaluationItemEvaluationRequestGoldenResponseOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponseOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutput() AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return o.ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEvaluationItemEvaluationRequestGoldenResponse) *AiEvaluationItemEvaluationRequestGoldenResponse {
+		return &v
+	}).(AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput)
+}
+
+// Represents the complete execution trace of a multi-turn conversation,
+// which can involve single or multiple agents, as a JSON string. This
+// field is used to provide the full output of an agent's run, including
+// all turns and events, for direct evaluation.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) AgentData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestGoldenResponse) *string { return v.AgentData }).(pulumi.StringPtrOutput)
+}
+
+// The name of the candidate that produced the response.
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) Candidate() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestGoldenResponse) string { return v.Candidate }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Error while scraping model or agent.
+// Structure is documented below.
+//
+// <a name="nestedEvaluationRequestGoldenResponseError"></a>The `error` block contains:
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) Errors() AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestGoldenResponse) []AiEvaluationItemEvaluationRequestGoldenResponseError {
+		return v.Errors
+	}).(AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput)
+}
+
+// Text response.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestGoldenResponse) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// Fields and values that can be used to populate the response template, as a JSON string.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestGoldenResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestGoldenResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestGoldenResponse)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutput() AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) ToAiEvaluationItemEvaluationRequestGoldenResponsePtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) Elem() AiEvaluationItemEvaluationRequestGoldenResponseOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestGoldenResponse) AiEvaluationItemEvaluationRequestGoldenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AiEvaluationItemEvaluationRequestGoldenResponse
+		return ret
+	}).(AiEvaluationItemEvaluationRequestGoldenResponseOutput)
+}
+
+// Represents the complete execution trace of a multi-turn conversation,
+// which can involve single or multiple agents, as a JSON string. This
+// field is used to provide the full output of an agent's run, including
+// all turns and events, for direct evaluation.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) AgentData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestGoldenResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentData
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the candidate that produced the response.
+func (o AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) Candidate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestGoldenResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Candidate
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Error while scraping model or agent.
+// Structure is documented below.
+//
+// <a name="nestedEvaluationRequestGoldenResponseError"></a>The `error` block contains:
+func (o AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) Errors() AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestGoldenResponse) []AiEvaluationItemEvaluationRequestGoldenResponseError {
+		if v == nil {
+			return nil
+		}
+		return v.Errors
+	}).(AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput)
+}
+
+// Text response.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestGoldenResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fields and values that can be used to populate the response template, as a JSON string.
+// At most one of `text`, `value`, or `agentData` can be set.
+func (o AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestGoldenResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponseError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// AiEvaluationItemEvaluationRequestGoldenResponseErrorInput is an input type that accepts AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs and AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestGoldenResponseErrorInput` via:
+//
+//	AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs{...}
+type AiEvaluationItemEvaluationRequestGoldenResponseErrorInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestGoldenResponseErrorOutput() AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput
+	ToAiEvaluationItemEvaluationRequestGoldenResponseErrorOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestGoldenResponseError)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs) ToAiEvaluationItemEvaluationRequestGoldenResponseErrorOutput() AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput {
+	return i.ToAiEvaluationItemEvaluationRequestGoldenResponseErrorOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs) ToAiEvaluationItemEvaluationRequestGoldenResponseErrorOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput)
+}
+
+// AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayInput is an input type that accepts AiEvaluationItemEvaluationRequestGoldenResponseErrorArray and AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayInput` via:
+//
+//	AiEvaluationItemEvaluationRequestGoldenResponseErrorArray{ AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs{...} }
+type AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput() AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput
+	ToAiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponseErrorArray []AiEvaluationItemEvaluationRequestGoldenResponseErrorInput
+
+func (AiEvaluationItemEvaluationRequestGoldenResponseErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestGoldenResponseError)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestGoldenResponseErrorArray) ToAiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput() AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput {
+	return i.ToAiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestGoldenResponseErrorArray) ToAiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput)
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestGoldenResponseError)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput) ToAiEvaluationItemEvaluationRequestGoldenResponseErrorOutput() AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput) ToAiEvaluationItemEvaluationRequestGoldenResponseErrorOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestGoldenResponseError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message.
+func (o AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestGoldenResponseError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestGoldenResponseError)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput) ToAiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput() AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput) ToAiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationRequestGoldenResponseError {
+		return vs[0].([]AiEvaluationItemEvaluationRequestGoldenResponseError)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPrompt struct {
+	// Represents the complete execution trace of a multi-turn conversation,
+	// which can involve single or multiple agents, as a JSON string. This
+	// serves as the input context for agent scraping.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	AgentData *string `pulumi:"agentData"`
+	// Prompt template data.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	// Structure is documented below.
+	PromptTemplateData *AiEvaluationItemEvaluationRequestPromptPromptTemplateData `pulumi:"promptTemplateData"`
+	// Text prompt.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	Text *string `pulumi:"text"`
+	// The generated user scenario used to drive multi-turn agent running results.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	// Structure is documented below.
+	UserScenario *AiEvaluationItemEvaluationRequestPromptUserScenario `pulumi:"userScenario"`
+	// Fields and values that can be used to populate the prompt template, as a JSON string.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	Value *string `pulumi:"value"`
+}
+
+// AiEvaluationItemEvaluationRequestPromptInput is an input type that accepts AiEvaluationItemEvaluationRequestPromptArgs and AiEvaluationItemEvaluationRequestPromptOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestPromptInput` via:
+//
+//	AiEvaluationItemEvaluationRequestPromptArgs{...}
+type AiEvaluationItemEvaluationRequestPromptInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestPromptOutput() AiEvaluationItemEvaluationRequestPromptOutput
+	ToAiEvaluationItemEvaluationRequestPromptOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestPromptOutput
+}
+
+type AiEvaluationItemEvaluationRequestPromptArgs struct {
+	// Represents the complete execution trace of a multi-turn conversation,
+	// which can involve single or multiple agents, as a JSON string. This
+	// serves as the input context for agent scraping.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	AgentData pulumi.StringPtrInput `pulumi:"agentData"`
+	// Prompt template data.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	// Structure is documented below.
+	PromptTemplateData AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrInput `pulumi:"promptTemplateData"`
+	// Text prompt.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// The generated user scenario used to drive multi-turn agent running results.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	// Structure is documented below.
+	UserScenario AiEvaluationItemEvaluationRequestPromptUserScenarioPtrInput `pulumi:"userScenario"`
+	// Fields and values that can be used to populate the prompt template, as a JSON string.
+	// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AiEvaluationItemEvaluationRequestPromptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestPrompt)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptArgs) ToAiEvaluationItemEvaluationRequestPromptOutput() AiEvaluationItemEvaluationRequestPromptOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptArgs) ToAiEvaluationItemEvaluationRequestPromptOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptOutput)
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptArgs) ToAiEvaluationItemEvaluationRequestPromptPtrOutput() AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptArgs) ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptOutput).ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(ctx)
+}
+
+// AiEvaluationItemEvaluationRequestPromptPtrInput is an input type that accepts AiEvaluationItemEvaluationRequestPromptArgs, AiEvaluationItemEvaluationRequestPromptPtr and AiEvaluationItemEvaluationRequestPromptPtrOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestPromptPtrInput` via:
+//
+//	        AiEvaluationItemEvaluationRequestPromptArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEvaluationItemEvaluationRequestPromptPtrInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestPromptPtrOutput() AiEvaluationItemEvaluationRequestPromptPtrOutput
+	ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestPromptPtrOutput
+}
+
+type aiEvaluationItemEvaluationRequestPromptPtrType AiEvaluationItemEvaluationRequestPromptArgs
+
+func AiEvaluationItemEvaluationRequestPromptPtr(v *AiEvaluationItemEvaluationRequestPromptArgs) AiEvaluationItemEvaluationRequestPromptPtrInput {
+	return (*aiEvaluationItemEvaluationRequestPromptPtrType)(v)
+}
+
+func (*aiEvaluationItemEvaluationRequestPromptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestPrompt)(nil)).Elem()
+}
+
+func (i *aiEvaluationItemEvaluationRequestPromptPtrType) ToAiEvaluationItemEvaluationRequestPromptPtrOutput() AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEvaluationItemEvaluationRequestPromptPtrType) ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPromptOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestPromptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestPrompt)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptOutput) ToAiEvaluationItemEvaluationRequestPromptOutput() AiEvaluationItemEvaluationRequestPromptOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptOutput) ToAiEvaluationItemEvaluationRequestPromptOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptOutput) ToAiEvaluationItemEvaluationRequestPromptPtrOutput() AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return o.ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(context.Background())
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptOutput) ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEvaluationItemEvaluationRequestPrompt) *AiEvaluationItemEvaluationRequestPrompt {
+		return &v
+	}).(AiEvaluationItemEvaluationRequestPromptPtrOutput)
+}
+
+// Represents the complete execution trace of a multi-turn conversation,
+// which can involve single or multiple agents, as a JSON string. This
+// serves as the input context for agent scraping.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+func (o AiEvaluationItemEvaluationRequestPromptOutput) AgentData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestPrompt) *string { return v.AgentData }).(pulumi.StringPtrOutput)
+}
+
+// Prompt template data.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestPromptOutput) PromptTemplateData() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestPrompt) *AiEvaluationItemEvaluationRequestPromptPromptTemplateData {
+		return v.PromptTemplateData
+	}).(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput)
+}
+
+// Text prompt.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+func (o AiEvaluationItemEvaluationRequestPromptOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestPrompt) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// The generated user scenario used to drive multi-turn agent running results.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestPromptOutput) UserScenario() AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestPrompt) *AiEvaluationItemEvaluationRequestPromptUserScenario {
+		return v.UserScenario
+	}).(AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput)
+}
+
+// Fields and values that can be used to populate the prompt template, as a JSON string.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+func (o AiEvaluationItemEvaluationRequestPromptOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestPrompt) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPromptPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestPromptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestPrompt)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPtrOutput) ToAiEvaluationItemEvaluationRequestPromptPtrOutput() AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPtrOutput) ToAiEvaluationItemEvaluationRequestPromptPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPtrOutput) Elem() AiEvaluationItemEvaluationRequestPromptOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPrompt) AiEvaluationItemEvaluationRequestPrompt {
+		if v != nil {
+			return *v
+		}
+		var ret AiEvaluationItemEvaluationRequestPrompt
+		return ret
+	}).(AiEvaluationItemEvaluationRequestPromptOutput)
+}
+
+// Represents the complete execution trace of a multi-turn conversation,
+// which can involve single or multiple agents, as a JSON string. This
+// serves as the input context for agent scraping.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+func (o AiEvaluationItemEvaluationRequestPromptPtrOutput) AgentData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPrompt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prompt template data.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestPromptPtrOutput) PromptTemplateData() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPrompt) *AiEvaluationItemEvaluationRequestPromptPromptTemplateData {
+		if v == nil {
+			return nil
+		}
+		return v.PromptTemplateData
+	}).(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput)
+}
+
+// Text prompt.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+func (o AiEvaluationItemEvaluationRequestPromptPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPrompt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// The generated user scenario used to drive multi-turn agent running results.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestPromptPtrOutput) UserScenario() AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPrompt) *AiEvaluationItemEvaluationRequestPromptUserScenario {
+		if v == nil {
+			return nil
+		}
+		return v.UserScenario
+	}).(AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput)
+}
+
+// Fields and values that can be used to populate the prompt template, as a JSON string.
+// At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+func (o AiEvaluationItemEvaluationRequestPromptPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPrompt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPromptPromptTemplateData struct {
+	// The values for fields in the prompt template, as a JSON string mapping
+	// field names to Content objects.
+	Values *string `pulumi:"values"`
+}
+
+// AiEvaluationItemEvaluationRequestPromptPromptTemplateDataInput is an input type that accepts AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs and AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestPromptPromptTemplateDataInput` via:
+//
+//	AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs{...}
+type AiEvaluationItemEvaluationRequestPromptPromptTemplateDataInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput
+	ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput
+}
+
+type AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs struct {
+	// The values for fields in the prompt template, as a JSON string mapping
+	// field names to Content objects.
+	Values pulumi.StringPtrInput `pulumi:"values"`
+}
+
+func (AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptPromptTemplateData)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput)
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput).ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(ctx)
+}
+
+// AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrInput is an input type that accepts AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs, AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtr and AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrInput` via:
+//
+//	        AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput
+	ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput
+}
+
+type aiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrType AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs
+
+func AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtr(v *AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrInput {
+	return (*aiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrType)(v)
+}
+
+func (*aiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestPromptPromptTemplateData)(nil)).Elem()
+}
+
+func (i *aiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrType) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrType) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptPromptTemplateData)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return o.ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(context.Background())
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEvaluationItemEvaluationRequestPromptPromptTemplateData) *AiEvaluationItemEvaluationRequestPromptPromptTemplateData {
+		return &v
+	}).(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput)
+}
+
+// The values for fields in the prompt template, as a JSON string mapping
+// field names to Content objects.
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestPromptPromptTemplateData) *string { return v.Values }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestPromptPromptTemplateData)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput) ToAiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput) Elem() AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPromptPromptTemplateData) AiEvaluationItemEvaluationRequestPromptPromptTemplateData {
+		if v != nil {
+			return *v
+		}
+		var ret AiEvaluationItemEvaluationRequestPromptPromptTemplateData
+		return ret
+	}).(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput)
+}
+
+// The values for fields in the prompt template, as a JSON string mapping
+// field names to Content objects.
+func (o AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPromptPromptTemplateData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPromptUserScenario struct {
+	// The plan for the conversation, used to drive the multi-turn agent run and
+	// generate the simulated agent evaluation dataset.
+	ConversationPlan string `pulumi:"conversationPlan"`
+	// The prompt that starts the conversation between the simulated user and
+	// the agent under test.
+	StartingPrompt string `pulumi:"startingPrompt"`
+}
+
+// AiEvaluationItemEvaluationRequestPromptUserScenarioInput is an input type that accepts AiEvaluationItemEvaluationRequestPromptUserScenarioArgs and AiEvaluationItemEvaluationRequestPromptUserScenarioOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestPromptUserScenarioInput` via:
+//
+//	AiEvaluationItemEvaluationRequestPromptUserScenarioArgs{...}
+type AiEvaluationItemEvaluationRequestPromptUserScenarioInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestPromptUserScenarioOutput() AiEvaluationItemEvaluationRequestPromptUserScenarioOutput
+	ToAiEvaluationItemEvaluationRequestPromptUserScenarioOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestPromptUserScenarioOutput
+}
+
+type AiEvaluationItemEvaluationRequestPromptUserScenarioArgs struct {
+	// The plan for the conversation, used to drive the multi-turn agent run and
+	// generate the simulated agent evaluation dataset.
+	ConversationPlan pulumi.StringInput `pulumi:"conversationPlan"`
+	// The prompt that starts the conversation between the simulated user and
+	// the agent under test.
+	StartingPrompt pulumi.StringInput `pulumi:"startingPrompt"`
+}
+
+func (AiEvaluationItemEvaluationRequestPromptUserScenarioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptUserScenario)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptUserScenarioArgs) ToAiEvaluationItemEvaluationRequestPromptUserScenarioOutput() AiEvaluationItemEvaluationRequestPromptUserScenarioOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptUserScenarioOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptUserScenarioArgs) ToAiEvaluationItemEvaluationRequestPromptUserScenarioOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptUserScenarioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptUserScenarioOutput)
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptUserScenarioArgs) ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput() AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestPromptUserScenarioArgs) ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptUserScenarioOutput).ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(ctx)
+}
+
+// AiEvaluationItemEvaluationRequestPromptUserScenarioPtrInput is an input type that accepts AiEvaluationItemEvaluationRequestPromptUserScenarioArgs, AiEvaluationItemEvaluationRequestPromptUserScenarioPtr and AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestPromptUserScenarioPtrInput` via:
+//
+//	        AiEvaluationItemEvaluationRequestPromptUserScenarioArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEvaluationItemEvaluationRequestPromptUserScenarioPtrInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput() AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput
+	ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput
+}
+
+type aiEvaluationItemEvaluationRequestPromptUserScenarioPtrType AiEvaluationItemEvaluationRequestPromptUserScenarioArgs
+
+func AiEvaluationItemEvaluationRequestPromptUserScenarioPtr(v *AiEvaluationItemEvaluationRequestPromptUserScenarioArgs) AiEvaluationItemEvaluationRequestPromptUserScenarioPtrInput {
+	return (*aiEvaluationItemEvaluationRequestPromptUserScenarioPtrType)(v)
+}
+
+func (*aiEvaluationItemEvaluationRequestPromptUserScenarioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestPromptUserScenario)(nil)).Elem()
+}
+
+func (i *aiEvaluationItemEvaluationRequestPromptUserScenarioPtrType) ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput() AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEvaluationItemEvaluationRequestPromptUserScenarioPtrType) ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPromptUserScenarioOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestPromptUserScenarioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptUserScenario)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioOutput) ToAiEvaluationItemEvaluationRequestPromptUserScenarioOutput() AiEvaluationItemEvaluationRequestPromptUserScenarioOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioOutput) ToAiEvaluationItemEvaluationRequestPromptUserScenarioOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptUserScenarioOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioOutput) ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput() AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return o.ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(context.Background())
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioOutput) ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEvaluationItemEvaluationRequestPromptUserScenario) *AiEvaluationItemEvaluationRequestPromptUserScenario {
+		return &v
+	}).(AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput)
+}
+
+// The plan for the conversation, used to drive the multi-turn agent run and
+// generate the simulated agent evaluation dataset.
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioOutput) ConversationPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestPromptUserScenario) string { return v.ConversationPlan }).(pulumi.StringOutput)
+}
+
+// The prompt that starts the conversation between the simulated user and
+// the agent under test.
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioOutput) StartingPrompt() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestPromptUserScenario) string { return v.StartingPrompt }).(pulumi.StringOutput)
+}
+
+type AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestPromptUserScenario)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput) ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput() AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput) ToAiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput) Elem() AiEvaluationItemEvaluationRequestPromptUserScenarioOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPromptUserScenario) AiEvaluationItemEvaluationRequestPromptUserScenario {
+		if v != nil {
+			return *v
+		}
+		var ret AiEvaluationItemEvaluationRequestPromptUserScenario
+		return ret
+	}).(AiEvaluationItemEvaluationRequestPromptUserScenarioOutput)
+}
+
+// The plan for the conversation, used to drive the multi-turn agent run and
+// generate the simulated agent evaluation dataset.
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput) ConversationPlan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPromptUserScenario) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConversationPlan
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prompt that starts the conversation between the simulated user and
+// the agent under test.
+func (o AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput) StartingPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestPromptUserScenario) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartingPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubric struct {
+	// Human-readable name for the group.
+	DisplayName *string `pulumi:"displayName"`
+	// Unique identifier for the group.
+	GroupId *string `pulumi:"groupId"`
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// Rubrics that are part of this group.
+	// Structure is documented below.
+	Rubrics []AiEvaluationItemEvaluationRequestRubricRubric `pulumi:"rubrics"`
+}
+
+// AiEvaluationItemEvaluationRequestRubricInput is an input type that accepts AiEvaluationItemEvaluationRequestRubricArgs and AiEvaluationItemEvaluationRequestRubricOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestRubricInput` via:
+//
+//	AiEvaluationItemEvaluationRequestRubricArgs{...}
+type AiEvaluationItemEvaluationRequestRubricInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestRubricOutput() AiEvaluationItemEvaluationRequestRubricOutput
+	ToAiEvaluationItemEvaluationRequestRubricOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestRubricOutput
+}
+
+type AiEvaluationItemEvaluationRequestRubricArgs struct {
+	// Human-readable name for the group.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Unique identifier for the group.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Rubrics that are part of this group.
+	// Structure is documented below.
+	Rubrics AiEvaluationItemEvaluationRequestRubricRubricArrayInput `pulumi:"rubrics"`
+}
+
+func (AiEvaluationItemEvaluationRequestRubricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubric)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricArgs) ToAiEvaluationItemEvaluationRequestRubricOutput() AiEvaluationItemEvaluationRequestRubricOutput {
+	return i.ToAiEvaluationItemEvaluationRequestRubricOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricArgs) ToAiEvaluationItemEvaluationRequestRubricOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestRubricOutput)
+}
+
+// AiEvaluationItemEvaluationRequestRubricArrayInput is an input type that accepts AiEvaluationItemEvaluationRequestRubricArray and AiEvaluationItemEvaluationRequestRubricArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestRubricArrayInput` via:
+//
+//	AiEvaluationItemEvaluationRequestRubricArray{ AiEvaluationItemEvaluationRequestRubricArgs{...} }
+type AiEvaluationItemEvaluationRequestRubricArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestRubricArrayOutput() AiEvaluationItemEvaluationRequestRubricArrayOutput
+	ToAiEvaluationItemEvaluationRequestRubricArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestRubricArrayOutput
+}
+
+type AiEvaluationItemEvaluationRequestRubricArray []AiEvaluationItemEvaluationRequestRubricInput
+
+func (AiEvaluationItemEvaluationRequestRubricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestRubric)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricArray) ToAiEvaluationItemEvaluationRequestRubricArrayOutput() AiEvaluationItemEvaluationRequestRubricArrayOutput {
+	return i.ToAiEvaluationItemEvaluationRequestRubricArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricArray) ToAiEvaluationItemEvaluationRequestRubricArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestRubricArrayOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestRubricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubric)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricOutput) ToAiEvaluationItemEvaluationRequestRubricOutput() AiEvaluationItemEvaluationRequestRubricOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricOutput) ToAiEvaluationItemEvaluationRequestRubricOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricOutput {
+	return o
+}
+
+// Human-readable name for the group.
+func (o AiEvaluationItemEvaluationRequestRubricOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubric) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier for the group.
+func (o AiEvaluationItemEvaluationRequestRubricOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubric) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o AiEvaluationItemEvaluationRequestRubricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubric) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Rubrics that are part of this group.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestRubricOutput) Rubrics() AiEvaluationItemEvaluationRequestRubricRubricArrayOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubric) []AiEvaluationItemEvaluationRequestRubricRubric {
+		return v.Rubrics
+	}).(AiEvaluationItemEvaluationRequestRubricRubricArrayOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestRubricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestRubric)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricArrayOutput) ToAiEvaluationItemEvaluationRequestRubricArrayOutput() AiEvaluationItemEvaluationRequestRubricArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricArrayOutput) ToAiEvaluationItemEvaluationRequestRubricArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationRequestRubricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationRequestRubric {
+		return vs[0].([]AiEvaluationItemEvaluationRequestRubric)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationRequestRubricOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubric struct {
+	// The actual testable criteria for the rubric.
+	// Structure is documented below.
+	Content AiEvaluationItemEvaluationRequestRubricRubricContent `pulumi:"content"`
+	// The relative importance of this rubric.
+	// Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+	Importance *string `pulumi:"importance"`
+	// Unique identifier for the rubric.
+	RubricId *string `pulumi:"rubricId"`
+	// A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+	Type *string `pulumi:"type"`
+}
+
+// AiEvaluationItemEvaluationRequestRubricRubricInput is an input type that accepts AiEvaluationItemEvaluationRequestRubricRubricArgs and AiEvaluationItemEvaluationRequestRubricRubricOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestRubricRubricInput` via:
+//
+//	AiEvaluationItemEvaluationRequestRubricRubricArgs{...}
+type AiEvaluationItemEvaluationRequestRubricRubricInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestRubricRubricOutput() AiEvaluationItemEvaluationRequestRubricRubricOutput
+	ToAiEvaluationItemEvaluationRequestRubricRubricOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestRubricRubricOutput
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricArgs struct {
+	// The actual testable criteria for the rubric.
+	// Structure is documented below.
+	Content AiEvaluationItemEvaluationRequestRubricRubricContentInput `pulumi:"content"`
+	// The relative importance of this rubric.
+	// Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+	Importance pulumi.StringPtrInput `pulumi:"importance"`
+	// Unique identifier for the rubric.
+	RubricId pulumi.StringPtrInput `pulumi:"rubricId"`
+	// A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AiEvaluationItemEvaluationRequestRubricRubricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubric)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricArgs) ToAiEvaluationItemEvaluationRequestRubricRubricOutput() AiEvaluationItemEvaluationRequestRubricRubricOutput {
+	return i.ToAiEvaluationItemEvaluationRequestRubricRubricOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricArgs) ToAiEvaluationItemEvaluationRequestRubricRubricOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestRubricRubricOutput)
+}
+
+// AiEvaluationItemEvaluationRequestRubricRubricArrayInput is an input type that accepts AiEvaluationItemEvaluationRequestRubricRubricArray and AiEvaluationItemEvaluationRequestRubricRubricArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestRubricRubricArrayInput` via:
+//
+//	AiEvaluationItemEvaluationRequestRubricRubricArray{ AiEvaluationItemEvaluationRequestRubricRubricArgs{...} }
+type AiEvaluationItemEvaluationRequestRubricRubricArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestRubricRubricArrayOutput() AiEvaluationItemEvaluationRequestRubricRubricArrayOutput
+	ToAiEvaluationItemEvaluationRequestRubricRubricArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestRubricRubricArrayOutput
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricArray []AiEvaluationItemEvaluationRequestRubricRubricInput
+
+func (AiEvaluationItemEvaluationRequestRubricRubricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestRubricRubric)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricArray) ToAiEvaluationItemEvaluationRequestRubricRubricArrayOutput() AiEvaluationItemEvaluationRequestRubricRubricArrayOutput {
+	return i.ToAiEvaluationItemEvaluationRequestRubricRubricArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricArray) ToAiEvaluationItemEvaluationRequestRubricRubricArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestRubricRubricArrayOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestRubricRubricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubric)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricOutput) ToAiEvaluationItemEvaluationRequestRubricRubricOutput() AiEvaluationItemEvaluationRequestRubricRubricOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricOutput) ToAiEvaluationItemEvaluationRequestRubricRubricOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricOutput {
+	return o
+}
+
+// The actual testable criteria for the rubric.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestRubricRubricOutput) Content() AiEvaluationItemEvaluationRequestRubricRubricContentOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubricRubric) AiEvaluationItemEvaluationRequestRubricRubricContent {
+		return v.Content
+	}).(AiEvaluationItemEvaluationRequestRubricRubricContentOutput)
+}
+
+// The relative importance of this rubric.
+// Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+func (o AiEvaluationItemEvaluationRequestRubricRubricOutput) Importance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubricRubric) *string { return v.Importance }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier for the rubric.
+func (o AiEvaluationItemEvaluationRequestRubricRubricOutput) RubricId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubricRubric) *string { return v.RubricId }).(pulumi.StringPtrOutput)
+}
+
+// A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+func (o AiEvaluationItemEvaluationRequestRubricRubricOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubricRubric) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestRubricRubricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationRequestRubricRubric)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricArrayOutput) ToAiEvaluationItemEvaluationRequestRubricRubricArrayOutput() AiEvaluationItemEvaluationRequestRubricRubricArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricArrayOutput) ToAiEvaluationItemEvaluationRequestRubricRubricArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationRequestRubricRubricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationRequestRubricRubric {
+		return vs[0].([]AiEvaluationItemEvaluationRequestRubricRubric)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationRequestRubricRubricOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricContent struct {
+	// Evaluation criteria based on a specific property.
+	// Structure is documented below.
+	Property *AiEvaluationItemEvaluationRequestRubricRubricContentProperty `pulumi:"property"`
+}
+
+// AiEvaluationItemEvaluationRequestRubricRubricContentInput is an input type that accepts AiEvaluationItemEvaluationRequestRubricRubricContentArgs and AiEvaluationItemEvaluationRequestRubricRubricContentOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestRubricRubricContentInput` via:
+//
+//	AiEvaluationItemEvaluationRequestRubricRubricContentArgs{...}
+type AiEvaluationItemEvaluationRequestRubricRubricContentInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestRubricRubricContentOutput() AiEvaluationItemEvaluationRequestRubricRubricContentOutput
+	ToAiEvaluationItemEvaluationRequestRubricRubricContentOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentOutput
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricContentArgs struct {
+	// Evaluation criteria based on a specific property.
+	// Structure is documented below.
+	Property AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrInput `pulumi:"property"`
+}
+
+func (AiEvaluationItemEvaluationRequestRubricRubricContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricContent)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricContentArgs) ToAiEvaluationItemEvaluationRequestRubricRubricContentOutput() AiEvaluationItemEvaluationRequestRubricRubricContentOutput {
+	return i.ToAiEvaluationItemEvaluationRequestRubricRubricContentOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricContentArgs) ToAiEvaluationItemEvaluationRequestRubricRubricContentOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestRubricRubricContentOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricContentOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestRubricRubricContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricContent)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentOutput) ToAiEvaluationItemEvaluationRequestRubricRubricContentOutput() AiEvaluationItemEvaluationRequestRubricRubricContentOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentOutput) ToAiEvaluationItemEvaluationRequestRubricRubricContentOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentOutput {
+	return o
+}
+
+// Evaluation criteria based on a specific property.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentOutput) Property() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubricRubricContent) *AiEvaluationItemEvaluationRequestRubricRubricContentProperty {
+		return v.Property
+	}).(AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricContentProperty struct {
+	// Description of the property being evaluated.
+	Description *string `pulumi:"description"`
+}
+
+// AiEvaluationItemEvaluationRequestRubricRubricContentPropertyInput is an input type that accepts AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs and AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestRubricRubricContentPropertyInput` via:
+//
+//	AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs{...}
+type AiEvaluationItemEvaluationRequestRubricRubricContentPropertyInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput
+	ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs struct {
+	// Description of the property being evaluated.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricContentProperty)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput {
+	return i.ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput)
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput).ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(ctx)
+}
+
+// AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrInput is an input type that accepts AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs, AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtr and AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrInput` via:
+//
+//	        AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput
+	ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput
+}
+
+type aiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrType AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs
+
+func AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtr(v *AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrInput {
+	return (*aiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrType)(v)
+}
+
+func (*aiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestRubricRubricContentProperty)(nil)).Elem()
+}
+
+func (i *aiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrType) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return i.ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrType) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricContentProperty)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return o.ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(context.Background())
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEvaluationItemEvaluationRequestRubricRubricContentProperty) *AiEvaluationItemEvaluationRequestRubricRubricContentProperty {
+		return &v
+	}).(AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput)
+}
+
+// Description of the property being evaluated.
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationRequestRubricRubricContentProperty) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationItemEvaluationRequestRubricRubricContentProperty)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput) ToAiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput) Elem() AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestRubricRubricContentProperty) AiEvaluationItemEvaluationRequestRubricRubricContentProperty {
+		if v != nil {
+			return *v
+		}
+		var ret AiEvaluationItemEvaluationRequestRubricRubricContentProperty
+		return ret
+	}).(AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput)
+}
+
+// Description of the property being evaluated.
+func (o AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationItemEvaluationRequestRubricRubricContentProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationResponse struct {
+	// (Output)
+	// The results for the metric.
+	// Structure is documented below.
+	CandidateResults []AiEvaluationItemEvaluationResponseCandidateResult `pulumi:"candidateResults"`
+	// The request to evaluate.
+	// Exactly one of `evaluationRequest` or `gcsUri` can be set.
+	// Structure is documented below.
+	EvaluationRequest *string `pulumi:"evaluationRequest"`
+	// (Output)
+	// The evaluation run that was used to generate the result. Format:
+	// `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+	EvaluationRun *string `pulumi:"evaluationRun"`
+	// User-defined metadata for this evaluation item as a JSON string.
+	Metadata *string `pulumi:"metadata"`
+	// (Output)
+	// The metric that was evaluated.
+	Metric *string `pulumi:"metric"`
+	// (Output)
+	// The request that was evaluated, as a JSON string.
+	Request *string `pulumi:"request"`
+}
+
+// AiEvaluationItemEvaluationResponseInput is an input type that accepts AiEvaluationItemEvaluationResponseArgs and AiEvaluationItemEvaluationResponseOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationResponseInput` via:
+//
+//	AiEvaluationItemEvaluationResponseArgs{...}
+type AiEvaluationItemEvaluationResponseInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationResponseOutput() AiEvaluationItemEvaluationResponseOutput
+	ToAiEvaluationItemEvaluationResponseOutputWithContext(context.Context) AiEvaluationItemEvaluationResponseOutput
+}
+
+type AiEvaluationItemEvaluationResponseArgs struct {
+	// (Output)
+	// The results for the metric.
+	// Structure is documented below.
+	CandidateResults AiEvaluationItemEvaluationResponseCandidateResultArrayInput `pulumi:"candidateResults"`
+	// The request to evaluate.
+	// Exactly one of `evaluationRequest` or `gcsUri` can be set.
+	// Structure is documented below.
+	EvaluationRequest pulumi.StringPtrInput `pulumi:"evaluationRequest"`
+	// (Output)
+	// The evaluation run that was used to generate the result. Format:
+	// `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+	EvaluationRun pulumi.StringPtrInput `pulumi:"evaluationRun"`
+	// User-defined metadata for this evaluation item as a JSON string.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	// (Output)
+	// The metric that was evaluated.
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	// (Output)
+	// The request that was evaluated, as a JSON string.
+	Request pulumi.StringPtrInput `pulumi:"request"`
+}
+
+func (AiEvaluationItemEvaluationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationResponse)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationResponseArgs) ToAiEvaluationItemEvaluationResponseOutput() AiEvaluationItemEvaluationResponseOutput {
+	return i.ToAiEvaluationItemEvaluationResponseOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationResponseArgs) ToAiEvaluationItemEvaluationResponseOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationResponseOutput)
+}
+
+// AiEvaluationItemEvaluationResponseArrayInput is an input type that accepts AiEvaluationItemEvaluationResponseArray and AiEvaluationItemEvaluationResponseArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationResponseArrayInput` via:
+//
+//	AiEvaluationItemEvaluationResponseArray{ AiEvaluationItemEvaluationResponseArgs{...} }
+type AiEvaluationItemEvaluationResponseArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationResponseArrayOutput() AiEvaluationItemEvaluationResponseArrayOutput
+	ToAiEvaluationItemEvaluationResponseArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationResponseArrayOutput
+}
+
+type AiEvaluationItemEvaluationResponseArray []AiEvaluationItemEvaluationResponseInput
+
+func (AiEvaluationItemEvaluationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationResponse)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationResponseArray) ToAiEvaluationItemEvaluationResponseArrayOutput() AiEvaluationItemEvaluationResponseArrayOutput {
+	return i.ToAiEvaluationItemEvaluationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationResponseArray) ToAiEvaluationItemEvaluationResponseArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationResponseArrayOutput)
+}
+
+type AiEvaluationItemEvaluationResponseOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationResponse)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationResponseOutput) ToAiEvaluationItemEvaluationResponseOutput() AiEvaluationItemEvaluationResponseOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseOutput) ToAiEvaluationItemEvaluationResponseOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseOutput {
+	return o
+}
+
+// (Output)
+// The results for the metric.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationResponseOutput) CandidateResults() AiEvaluationItemEvaluationResponseCandidateResultArrayOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponse) []AiEvaluationItemEvaluationResponseCandidateResult {
+		return v.CandidateResults
+	}).(AiEvaluationItemEvaluationResponseCandidateResultArrayOutput)
+}
+
+// The request to evaluate.
+// Exactly one of `evaluationRequest` or `gcsUri` can be set.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationResponseOutput) EvaluationRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponse) *string { return v.EvaluationRequest }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The evaluation run that was used to generate the result. Format:
+// `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+func (o AiEvaluationItemEvaluationResponseOutput) EvaluationRun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponse) *string { return v.EvaluationRun }).(pulumi.StringPtrOutput)
+}
+
+// User-defined metadata for this evaluation item as a JSON string.
+func (o AiEvaluationItemEvaluationResponseOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponse) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The metric that was evaluated.
+func (o AiEvaluationItemEvaluationResponseOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponse) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The request that was evaluated, as a JSON string.
+func (o AiEvaluationItemEvaluationResponseOutput) Request() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponse) *string { return v.Request }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationResponse)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationResponseArrayOutput) ToAiEvaluationItemEvaluationResponseArrayOutput() AiEvaluationItemEvaluationResponseArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseArrayOutput) ToAiEvaluationItemEvaluationResponseArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationResponse {
+		return vs[0].([]AiEvaluationItemEvaluationResponse)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationResponseOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResult struct {
+	// (Output)
+	// Additional results for the metric, as a JSON string.
+	AdditionalResults *string `pulumi:"additionalResults"`
+	// (Output)
+	// The candidate that is being evaluated.
+	Candidate *string `pulumi:"candidate"`
+	// (Output)
+	// Error while evaluating the candidate for the metric.
+	// Structure is documented below.
+	Errors []AiEvaluationItemEvaluationResponseCandidateResultError `pulumi:"errors"`
+	// (Output)
+	// The explanation for the metric.
+	Explanation *string `pulumi:"explanation"`
+	// (Output)
+	// The metric that was evaluated.
+	Metric *string `pulumi:"metric"`
+	// (Output)
+	// The rubric verdicts for the metric.
+	// Structure is documented below.
+	RubricVerdicts []AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict `pulumi:"rubricVerdicts"`
+	// (Output)
+	// The score for the metric.
+	Score *float64 `pulumi:"score"`
+}
+
+// AiEvaluationItemEvaluationResponseCandidateResultInput is an input type that accepts AiEvaluationItemEvaluationResponseCandidateResultArgs and AiEvaluationItemEvaluationResponseCandidateResultOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationResponseCandidateResultInput` via:
+//
+//	AiEvaluationItemEvaluationResponseCandidateResultArgs{...}
+type AiEvaluationItemEvaluationResponseCandidateResultInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationResponseCandidateResultOutput() AiEvaluationItemEvaluationResponseCandidateResultOutput
+	ToAiEvaluationItemEvaluationResponseCandidateResultOutputWithContext(context.Context) AiEvaluationItemEvaluationResponseCandidateResultOutput
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultArgs struct {
+	// (Output)
+	// Additional results for the metric, as a JSON string.
+	AdditionalResults pulumi.StringPtrInput `pulumi:"additionalResults"`
+	// (Output)
+	// The candidate that is being evaluated.
+	Candidate pulumi.StringPtrInput `pulumi:"candidate"`
+	// (Output)
+	// Error while evaluating the candidate for the metric.
+	// Structure is documented below.
+	Errors AiEvaluationItemEvaluationResponseCandidateResultErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// The explanation for the metric.
+	Explanation pulumi.StringPtrInput `pulumi:"explanation"`
+	// (Output)
+	// The metric that was evaluated.
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	// (Output)
+	// The rubric verdicts for the metric.
+	// Structure is documented below.
+	RubricVerdicts AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayInput `pulumi:"rubricVerdicts"`
+	// (Output)
+	// The score for the metric.
+	Score pulumi.Float64PtrInput `pulumi:"score"`
+}
+
+func (AiEvaluationItemEvaluationResponseCandidateResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResult)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultArgs) ToAiEvaluationItemEvaluationResponseCandidateResultOutput() AiEvaluationItemEvaluationResponseCandidateResultOutput {
+	return i.ToAiEvaluationItemEvaluationResponseCandidateResultOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultArgs) ToAiEvaluationItemEvaluationResponseCandidateResultOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationResponseCandidateResultOutput)
+}
+
+// AiEvaluationItemEvaluationResponseCandidateResultArrayInput is an input type that accepts AiEvaluationItemEvaluationResponseCandidateResultArray and AiEvaluationItemEvaluationResponseCandidateResultArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationResponseCandidateResultArrayInput` via:
+//
+//	AiEvaluationItemEvaluationResponseCandidateResultArray{ AiEvaluationItemEvaluationResponseCandidateResultArgs{...} }
+type AiEvaluationItemEvaluationResponseCandidateResultArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationResponseCandidateResultArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultArrayOutput
+	ToAiEvaluationItemEvaluationResponseCandidateResultArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationResponseCandidateResultArrayOutput
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultArray []AiEvaluationItemEvaluationResponseCandidateResultInput
+
+func (AiEvaluationItemEvaluationResponseCandidateResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationResponseCandidateResult)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultArray) ToAiEvaluationItemEvaluationResponseCandidateResultArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultArrayOutput {
+	return i.ToAiEvaluationItemEvaluationResponseCandidateResultArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultArray) ToAiEvaluationItemEvaluationResponseCandidateResultArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationResponseCandidateResultArrayOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationResponseCandidateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResult)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) ToAiEvaluationItemEvaluationResponseCandidateResultOutput() AiEvaluationItemEvaluationResponseCandidateResultOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) ToAiEvaluationItemEvaluationResponseCandidateResultOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultOutput {
+	return o
+}
+
+// (Output)
+// Additional results for the metric, as a JSON string.
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) AdditionalResults() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResult) *string { return v.AdditionalResults }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The candidate that is being evaluated.
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) Candidate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResult) *string { return v.Candidate }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Error while evaluating the candidate for the metric.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) Errors() AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResult) []AiEvaluationItemEvaluationResponseCandidateResultError {
+		return v.Errors
+	}).(AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput)
+}
+
+// (Output)
+// The explanation for the metric.
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) Explanation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResult) *string { return v.Explanation }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The metric that was evaluated.
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResult) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The rubric verdicts for the metric.
+// Structure is documented below.
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) RubricVerdicts() AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResult) []AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict {
+		return v.RubricVerdicts
+	}).(AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput)
+}
+
+// (Output)
+// The score for the metric.
+func (o AiEvaluationItemEvaluationResponseCandidateResultOutput) Score() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResult) *float64 { return v.Score }).(pulumi.Float64PtrOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationResponseCandidateResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationResponseCandidateResult)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultArrayOutput) ToAiEvaluationItemEvaluationResponseCandidateResultArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultArrayOutput) ToAiEvaluationItemEvaluationResponseCandidateResultArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationResponseCandidateResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationResponseCandidateResult {
+		return vs[0].([]AiEvaluationItemEvaluationResponseCandidateResult)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationResponseCandidateResultOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// AiEvaluationItemEvaluationResponseCandidateResultErrorInput is an input type that accepts AiEvaluationItemEvaluationResponseCandidateResultErrorArgs and AiEvaluationItemEvaluationResponseCandidateResultErrorOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationResponseCandidateResultErrorInput` via:
+//
+//	AiEvaluationItemEvaluationResponseCandidateResultErrorArgs{...}
+type AiEvaluationItemEvaluationResponseCandidateResultErrorInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationResponseCandidateResultErrorOutput() AiEvaluationItemEvaluationResponseCandidateResultErrorOutput
+	ToAiEvaluationItemEvaluationResponseCandidateResultErrorOutputWithContext(context.Context) AiEvaluationItemEvaluationResponseCandidateResultErrorOutput
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiEvaluationItemEvaluationResponseCandidateResultErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultError)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultErrorArgs) ToAiEvaluationItemEvaluationResponseCandidateResultErrorOutput() AiEvaluationItemEvaluationResponseCandidateResultErrorOutput {
+	return i.ToAiEvaluationItemEvaluationResponseCandidateResultErrorOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultErrorArgs) ToAiEvaluationItemEvaluationResponseCandidateResultErrorOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationResponseCandidateResultErrorOutput)
+}
+
+// AiEvaluationItemEvaluationResponseCandidateResultErrorArrayInput is an input type that accepts AiEvaluationItemEvaluationResponseCandidateResultErrorArray and AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationResponseCandidateResultErrorArrayInput` via:
+//
+//	AiEvaluationItemEvaluationResponseCandidateResultErrorArray{ AiEvaluationItemEvaluationResponseCandidateResultErrorArgs{...} }
+type AiEvaluationItemEvaluationResponseCandidateResultErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput
+	ToAiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultErrorArray []AiEvaluationItemEvaluationResponseCandidateResultErrorInput
+
+func (AiEvaluationItemEvaluationResponseCandidateResultErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationResponseCandidateResultError)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultErrorArray) ToAiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput {
+	return i.ToAiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultErrorArray) ToAiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultErrorOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationResponseCandidateResultErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultError)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultErrorOutput) ToAiEvaluationItemEvaluationResponseCandidateResultErrorOutput() AiEvaluationItemEvaluationResponseCandidateResultErrorOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultErrorOutput) ToAiEvaluationItemEvaluationResponseCandidateResultErrorOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiEvaluationItemEvaluationResponseCandidateResultErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResultError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message.
+func (o AiEvaluationItemEvaluationResponseCandidateResultErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResultError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationResponseCandidateResultError)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput) ToAiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput) ToAiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationResponseCandidateResultErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationResponseCandidateResultError {
+		return vs[0].([]AiEvaluationItemEvaluationResponseCandidateResultError)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationResponseCandidateResultErrorOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict struct {
+	// (Output)
+	// The full rubric definition that was evaluated, as a JSON string.
+	EvaluatedRubric *string `pulumi:"evaluatedRubric"`
+	// (Output)
+	// Human-readable reasoning for the verdict.
+	Reasoning *string `pulumi:"reasoning"`
+	// (Output)
+	// Outcome of the evaluation against the rubric.
+	Verdict *bool `pulumi:"verdict"`
+}
+
+// AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictInput is an input type that accepts AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs and AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictInput` via:
+//
+//	AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs{...}
+type AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput() AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput
+	ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutputWithContext(context.Context) AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs struct {
+	// (Output)
+	// The full rubric definition that was evaluated, as a JSON string.
+	EvaluatedRubric pulumi.StringPtrInput `pulumi:"evaluatedRubric"`
+	// (Output)
+	// Human-readable reasoning for the verdict.
+	Reasoning pulumi.StringPtrInput `pulumi:"reasoning"`
+	// (Output)
+	// Outcome of the evaluation against the rubric.
+	Verdict pulumi.BoolPtrInput `pulumi:"verdict"`
+}
+
+func (AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs) ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput() AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput {
+	return i.ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs) ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput)
+}
+
+// AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayInput is an input type that accepts AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArray and AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput values.
+// You can construct a concrete instance of `AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayInput` via:
+//
+//	AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArray{ AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs{...} }
+type AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayInput interface {
+	pulumi.Input
+
+	ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput
+	ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutputWithContext(context.Context) AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArray []AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictInput
+
+func (AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict)(nil)).Elem()
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArray) ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput {
+	return i.ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArray) ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput) ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput() AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput) ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput {
+	return o
+}
+
+// (Output)
+// The full rubric definition that was evaluated, as a JSON string.
+func (o AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput) EvaluatedRubric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict) *string {
+		return v.EvaluatedRubric
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human-readable reasoning for the verdict.
+func (o AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput) Reasoning() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict) *string { return v.Reasoning }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Outcome of the evaluation against the rubric.
+func (o AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput) Verdict() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict) *bool { return v.Verdict }).(pulumi.BoolPtrOutput)
+}
+
+type AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict)(nil)).Elem()
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput) ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput() AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput) ToAiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutputWithContext(ctx context.Context) AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput {
+	return o
+}
+
+func (o AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput) Index(i pulumi.IntInput) AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict {
+		return vs[0].([]AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict)[vs[1].(int)]
+	}).(AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput)
+}
+
 type AiEvaluationMetricEncryptionSpec struct {
 	// Required. The Cloud KMS resource identifier of the customer managed encryption key
 	// used to protect a resource. Has the form:
@@ -38956,6 +41531,9 @@ type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemo
 	// The inline data content of the part.
 	// Structure is documented below.
 	InlineData *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData `pulumi:"inlineData"`
+	// Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+	// Structure is documented below.
+	SpeechMetadata *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata `pulumi:"speechMetadata"`
 	// The text content of the part.
 	Text *string `pulumi:"text"`
 	// Indicates whether the part represents the model's thought process or reasoning.
@@ -38998,6 +41576,9 @@ type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemo
 	// The inline data content of the part.
 	// Structure is documented below.
 	InlineData AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataPtrInput `pulumi:"inlineData"`
+	// Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+	// Structure is documented below.
+	SpeechMetadata AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrInput `pulumi:"speechMetadata"`
 	// The text content of the part.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 	// Indicates whether the part represents the model's thought process or reasoning.
@@ -39112,6 +41693,14 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateM
 	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData {
 		return v.InlineData
 	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataPtrOutput)
+}
+
+// Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartOutput) SpeechMetadata() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata {
+		return v.SpeechMetadata
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput)
 }
 
 // The text content of the part.
@@ -40503,6 +43092,166 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateM
 			return nil
 		}
 		return &v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata struct {
+	// Identifies which speaker is speaking this turn.
+	Speaker *string `pulumi:"speaker"`
+	// Natural language description of the vocal style (e.g., "cheerful").
+	Style *string `pulumi:"style"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs struct {
+	// Identifies which speaker is speaking this turn.
+	Speaker pulumi.StringPtrInput `pulumi:"speaker"`
+	// Natural language description of the vocal style (e.g., "cheerful").
+	Style pulumi.StringPtrInput `pulumi:"style"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput).ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs, AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtr and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrType AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtr(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput)
+}
+
+// Identifies which speaker is speaking this turn.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput) Speaker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata) *string {
+		return v.Speaker
+	}).(pulumi.StringPtrOutput)
+}
+
+// Natural language description of the vocal style (e.g., "cheerful").
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput) Style() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata) *string {
+		return v.Style
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput)
+}
+
+// Identifies which speaker is speaking this turn.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput) Speaker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Speaker
+	}).(pulumi.StringPtrOutput)
+}
+
+// Natural language description of the vocal style (e.g., "cheerful").
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput) Style() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Style
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -53399,6 +56148,39 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemErrorInput)(nil)).Elem(), AiEvaluationItemErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemErrorArrayInput)(nil)).Elem(), AiEvaluationItemErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestPtrInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestCandidateResponseInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestCandidateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestCandidateResponseArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestCandidateResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestCandidateResponseErrorInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestCandidateResponseErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestGoldenResponseInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestGoldenResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestGoldenResponsePtrInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestGoldenResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestGoldenResponseErrorInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestGoldenResponseErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestPromptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptPtrInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestPromptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptPromptTemplateDataInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptUserScenarioInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestPromptUserScenarioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestPromptUserScenarioPtrInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestPromptUserScenarioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestRubricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestRubricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestRubricRubricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestRubricRubricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricContentInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestRubricRubricContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricContentPropertyInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrInput)(nil)).Elem(), AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationResponseInput)(nil)).Elem(), AiEvaluationItemEvaluationResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationResponseArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultInput)(nil)).Elem(), AiEvaluationItemEvaluationResponseCandidateResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationResponseCandidateResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultErrorInput)(nil)).Elem(), AiEvaluationItemEvaluationResponseCandidateResultErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultErrorArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationResponseCandidateResultErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictInput)(nil)).Elem(), AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayInput)(nil)).Elem(), AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationMetricEncryptionSpecInput)(nil)).Elem(), AiEvaluationMetricEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationMetricEncryptionSpecPtrInput)(nil)).Elem(), AiEvaluationMetricEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
@@ -53740,6 +56522,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponsePtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs{})
@@ -54027,6 +56811,39 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemErrorOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestPtrOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestCandidateResponseOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestCandidateResponseArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestCandidateResponseErrorOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestCandidateResponseErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestGoldenResponseOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestGoldenResponsePtrOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestGoldenResponseErrorOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestGoldenResponseErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestPromptOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestPromptPtrOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestPromptPromptTemplateDataPtrOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestPromptUserScenarioOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestPromptUserScenarioPtrOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestRubricOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestRubricArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestRubricRubricOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestRubricRubricArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestRubricRubricContentOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestRubricRubricContentPropertyOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationRequestRubricRubricContentPropertyPtrOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationResponseOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationResponseArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationResponseCandidateResultOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationResponseCandidateResultArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationResponseCandidateResultErrorOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationResponseCandidateResultErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictOutput{})
+	pulumi.RegisterOutputType(AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArrayOutput{})
 	pulumi.RegisterOutputType(AiEvaluationMetricEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiEvaluationMetricEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryOutput{})
@@ -54368,6 +57185,8 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponsePtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryOutput{})

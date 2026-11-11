@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = securesourcemanager.NewBranchRule(ctx, "basic", &securesourcemanager.BranchRuleArgs{
+//			_, err = securesourcemanager.NewBranchRule(ctx, "default", &securesourcemanager.BranchRuleArgs{
 //				BranchRuleId:   pulumi.String("my-basic-branchrule"),
 //				RepositoryId:   repository.RepositoryId,
 //				Location:       repository.Location,
@@ -84,14 +84,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
 //				Location:       pulumi.String("us-central1"),
-//				InstanceId:     pulumi.String("my-initial-instance"),
+//				InstanceId:     pulumi.String("my-basic-instance"),
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			repository, err := securesourcemanager.NewRepository(ctx, "repository", &securesourcemanager.RepositoryArgs{
-//				RepositoryId:   pulumi.String("my-initial-repository"),
+//				RepositoryId:   pulumi.String("my-basic-repository"),
 //				Instance:       instance.Name,
 //				Location:       instance.Location,
 //				DeletionPolicy: pulumi.String("PREVENT"),
@@ -100,7 +100,7 @@ import (
 //				return err
 //			}
 //			_, err = securesourcemanager.NewBranchRule(ctx, "default", &securesourcemanager.BranchRuleArgs{
-//				BranchRuleId:            pulumi.String("my-initial-branchrule"),
+//				BranchRuleId:            pulumi.String("my-basic-branchrule"),
 //				Location:                repository.Location,
 //				RepositoryId:            repository.RepositoryId,
 //				IncludePattern:          pulumi.String("test"),

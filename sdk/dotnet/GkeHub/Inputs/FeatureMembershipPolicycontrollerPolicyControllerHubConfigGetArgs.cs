@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         private InputList<Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigGetArgs>? _deploymentConfigs;
 
         /// <summary>
-        /// Map of deployment configs to deployments ("admission", "audit", "mutation").
+        /// Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
         /// </summary>
         public InputList<Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigGetArgs> DeploymentConfigs
         {

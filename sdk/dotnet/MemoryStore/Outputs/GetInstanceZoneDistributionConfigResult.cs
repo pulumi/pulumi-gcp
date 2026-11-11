@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class GetInstanceZoneDistributionConfigResult
     {
         /// <summary>
+        /// The exact list of zones where the instance currently has active VMs.
+        /// </summary>
+        public readonly ImmutableArray<string> ActiveZones;
+        /// <summary>
         /// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
         ///  Possible values:
         ///  MULTI_ZONE
@@ -25,15 +29,27 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         /// Ignored for MULTI_ZONE mode.
         /// </summary>
         public readonly string Zone;
+        /// <summary>
+        /// Specify the zones of a multi-zone instance where Memorystore
+        /// instance allocates resources. This flag isn't applicable for single-zone
+        /// instances.
+        /// </summary>
+        public readonly ImmutableArray<string> Zones;
 
         [OutputConstructor]
         private GetInstanceZoneDistributionConfigResult(
+            ImmutableArray<string> activeZones,
+
             string mode,
 
-            string zone)
+            string zone,
+
+            ImmutableArray<string> zones)
         {
+            ActiveZones = activeZones;
             Mode = mode;
             Zone = zone;
+            Zones = zones;
         }
     }
 }

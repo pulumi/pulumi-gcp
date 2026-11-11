@@ -18,7 +18,7 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
     public static final StandardAppVersionVpcAccessArgs Empty = new StandardAppVersionVpcAccessArgs();
 
     /**
-     * (Optional, Deprecated)
+     * (Optional, Beta, Deprecated)
      * The egress setting for the VPC Access, controlling what traffic is diverted through it.
      * 
      * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
@@ -31,7 +31,7 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
     private @Nullable Output<String> egressSetting;
 
     /**
-     * @return (Optional, Deprecated)
+     * @return (Optional, Beta, Deprecated)
      * The egress setting for the VPC Access, controlling what traffic is diverted through it.
      * 
      * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
@@ -105,7 +105,7 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param egressSetting (Optional, Deprecated)
+         * @param egressSetting (Optional, Beta, Deprecated)
          * The egress setting for the VPC Access, controlling what traffic is diverted through it.
          * 
          * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
@@ -122,7 +122,7 @@ public final class StandardAppVersionVpcAccessArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param egressSetting (Optional, Deprecated)
+         * @param egressSetting (Optional, Beta, Deprecated)
          * The egress setting for the VPC Access, controlling what traffic is diverted through it.
          * 
          * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.

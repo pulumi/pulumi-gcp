@@ -55,6 +55,11 @@ export type AiEndpointWithModelGardenDeployment = import("./aiEndpointWithModelG
 export const AiEndpointWithModelGardenDeployment: typeof import("./aiEndpointWithModelGardenDeployment").AiEndpointWithModelGardenDeployment = null as any;
 utilities.lazyLoad(exports, ["AiEndpointWithModelGardenDeployment"], () => require("./aiEndpointWithModelGardenDeployment"));
 
+export { AiEvaluationItemArgs, AiEvaluationItemState } from "./aiEvaluationItem";
+export type AiEvaluationItem = import("./aiEvaluationItem").AiEvaluationItem;
+export const AiEvaluationItem: typeof import("./aiEvaluationItem").AiEvaluationItem = null as any;
+utilities.lazyLoad(exports, ["AiEvaluationItem"], () => require("./aiEvaluationItem"));
+
 export { AiEvaluationMetricArgs, AiEvaluationMetricState } from "./aiEvaluationMetric";
 export type AiEvaluationMetric = import("./aiEvaluationMetric").AiEvaluationMetric;
 export const AiEvaluationMetric: typeof import("./aiEvaluationMetric").AiEvaluationMetric = null as any;
@@ -350,6 +355,8 @@ const _module = {
                 return new AiEndpointIamPolicy(name, <any>undefined, { urn })
             case "gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment":
                 return new AiEndpointWithModelGardenDeployment(name, <any>undefined, { urn })
+            case "gcp:vertex/aiEvaluationItem:AiEvaluationItem":
+                return new AiEvaluationItem(name, <any>undefined, { urn })
             case "gcp:vertex/aiEvaluationMetric:AiEvaluationMetric":
                 return new AiEvaluationMetric(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureGroup:AiFeatureGroup":
@@ -455,6 +462,7 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamBinding", _mod
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointWithModelGardenDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiEvaluationItem", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEvaluationMetric", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroupFeature", _module)

@@ -713,7 +713,7 @@ class CapacityCommitment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="capacityCommitmentId")
-    def capacity_commitment_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def capacity_commitment_id(self) -> pulumi.Output[_builtins.str]:
         """
         The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
         empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character

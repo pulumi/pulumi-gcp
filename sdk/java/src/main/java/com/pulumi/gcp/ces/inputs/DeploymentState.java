@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileArgs;
 import com.pulumi.gcp.ces.inputs.DeploymentInstagramCredentialsArgs;
+import com.pulumi.gcp.ces.inputs.DeploymentModelSettingsArgs;
 import com.pulumi.gcp.ces.inputs.DeploymentWhatsappCredentialsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -178,6 +179,42 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The modality of the deployment.
+     * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+     * 
+     */
+    @Import(name="modality")
+    private @Nullable Output<String> modality;
+
+    /**
+     * @return The modality of the deployment.
+     * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+     * 
+     */
+    public Optional<Output<String>> modality() {
+        return Optional.ofNullable(this.modality);
+    }
+
+    /**
+     * Model settings for the deployment.
+     * Overrides model settings configured at the app/agent levels.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="modelSettings")
+    private @Nullable Output<DeploymentModelSettingsArgs> modelSettings;
+
+    /**
+     * @return Model settings for the deployment.
+     * Overrides model settings configured at the app/agent levels.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DeploymentModelSettingsArgs>> modelSettings() {
+        return Optional.ofNullable(this.modelSettings);
+    }
+
+    /**
      * Identifier. The resource name of the deployment.
      * Format:
      * projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -257,6 +294,8 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         this.etag = $.etag;
         this.instagramCredentials = $.instagramCredentials;
         this.location = $.location;
+        this.modality = $.modality;
+        this.modelSettings = $.modelSettings;
         this.name = $.name;
         this.project = $.project;
         this.updateTime = $.updateTime;
@@ -492,6 +531,54 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param modality The modality of the deployment.
+         * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modality(@Nullable Output<String> modality) {
+            $.modality = modality;
+            return this;
+        }
+
+        /**
+         * @param modality The modality of the deployment.
+         * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modality(String modality) {
+            return modality(Output.of(modality));
+        }
+
+        /**
+         * @param modelSettings Model settings for the deployment.
+         * Overrides model settings configured at the app/agent levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelSettings(@Nullable Output<DeploymentModelSettingsArgs> modelSettings) {
+            $.modelSettings = modelSettings;
+            return this;
+        }
+
+        /**
+         * @param modelSettings Model settings for the deployment.
+         * Overrides model settings configured at the app/agent levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelSettings(DeploymentModelSettingsArgs modelSettings) {
+            return modelSettings(Output.of(modelSettings));
         }
 
         /**

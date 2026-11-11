@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *             .webGroundingType("WEB_GROUNDING_FOR_ENTERPRISE")
  *             .mutationsEnabled(true)
  *             .releaseChannel("EXPERIMENTAL")
+ *             .hasCustomInstructions(true)
  *             .build());
  * 
  *     }
@@ -200,6 +201,20 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
      */
     public Output<String> geminiGcpEnablementSettingId() {
         return this.geminiGcpEnablementSettingId;
+    }
+    /**
+     * Indicates whether custom instructions are defined.
+     * 
+     */
+    @Export(name="hasCustomInstructions", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> hasCustomInstructions;
+
+    /**
+     * @return Indicates whether custom instructions are defined.
+     * 
+     */
+    public Output<Optional<Boolean>> hasCustomInstructions() {
+        return Codegen.optional(this.hasCustomInstructions);
     }
     /**
      * Labels as key value pairs.

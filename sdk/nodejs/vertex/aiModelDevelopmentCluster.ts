@@ -101,6 +101,7 @@ import * as utilities from "../utilities";
  *     modelDevelopmentClusterId: "tftest",
  *     displayName: "tftest",
  *     deletionPolicy: "DELETE",
+ *     updateMode: "USER_AND_SERVICE",
  *     labels: {
  *         env: "dev",
  *     },
@@ -822,6 +823,16 @@ export class AiModelDevelopmentCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly startTime: pulumi.Output<string>;
     /**
+     * Whether the service also refreshes service-managed fields (startup and
+     * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+     * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+     * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+     * for GKE clusters (`kubernetesSpec`).
+     * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+     * `USER_AND_SERVICE`.
+     */
+    declare public readonly updateMode: pulumi.Output<string | undefined>;
+    /**
      * (Output)
      * Time when the TrainingService was most recently updated.
      */
@@ -859,6 +870,7 @@ export class AiModelDevelopmentCluster extends pulumi.CustomResource {
             resourceInputs["runtimeSpec"] = state?.runtimeSpec;
             resourceInputs["runtimes"] = state?.runtimes;
             resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["updateMode"] = state?.updateMode;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AiModelDevelopmentClusterArgs | undefined;
@@ -882,6 +894,7 @@ export class AiModelDevelopmentCluster extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["runtimeSpec"] = args?.runtimeSpec;
+            resourceInputs["updateMode"] = args?.updateMode;
             resourceInputs["clusterEvents"] = undefined /*out*/;
             resourceInputs["clusterStatuses"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -1019,6 +1032,16 @@ export interface AiModelDevelopmentClusterState {
      */
     startTime?: pulumi.Input<string | undefined>;
     /**
+     * Whether the service also refreshes service-managed fields (startup and
+     * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+     * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+     * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+     * for GKE clusters (`kubernetesSpec`).
+     * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+     * `USER_AND_SERVICE`.
+     */
+    updateMode?: pulumi.Input<string | undefined>;
+    /**
      * (Output)
      * Time when the TrainingService was most recently updated.
      */
@@ -1104,4 +1127,14 @@ export interface AiModelDevelopmentClusterArgs {
      * Structure is documented below.
      */
     runtimeSpec?: pulumi.Input<inputs.vertex.AiModelDevelopmentClusterRuntimeSpec | undefined>;
+    /**
+     * Whether the service also refreshes service-managed fields (startup and
+     * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+     * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+     * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+     * for GKE clusters (`kubernetesSpec`).
+     * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+     * `USER_AND_SERVICE`.
+     */
+    updateMode?: pulumi.Input<string | undefined>;
 }

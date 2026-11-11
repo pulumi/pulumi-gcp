@@ -1245,6 +1245,99 @@ namespace Pulumi.Gcp.Workstations
     /// });
     /// ```
     /// 
+    /// ### Workstation Config Reservation Affinity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-east4",
+    ///         Network = @default.Name,
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-east4",
+    ///     });
+    /// 
+    ///     var defaultReservation = new Gcp.Compute.Reservation("default", new()
+    ///     {
+    ///         Name = "workstation-reservation",
+    ///         Zone = "us-east4-a",
+    ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
+    ///         {
+    ///             Count = 1,
+    ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
+    ///             {
+    ///                 MachineType = "e2-standard-4",
+    ///             },
+    ///         },
+    ///         SpecificReservationRequired = true,
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-east4",
+    ///         ReplicaZones = new[]
+    ///         {
+    ///             "us-east4-a",
+    ///             "us-east4-b",
+    ///         },
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "e2-standard-4",
+    ///                 BootDiskSizeGb = 35,
+    ///                 DisablePublicIpAddresses = true,
+    ///                 ReservationAffinity = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceReservationAffinityArgs
+    ///                 {
+    ///                     ConsumeReservationType = "SPECIFIC_RESERVATION",
+    ///                     Key = "compute.googleapis.com/reservation-name",
+    ///                     Values = new[]
+    ///                     {
+    ///                         defaultReservation.Name,
+    ///                     },
+    ///                 },
+    ///                 BoostConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceBoostConfigArgs
+    ///                     {
+    ///                         Id = "boost-1",
+    ///                         MachineType = "e2-standard-4",
+    ///                         BootDiskSizeGb = 35,
+    ///                         ReservationAffinity = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs
+    ///                         {
+    ///                             ConsumeReservationType = "ANY_RESERVATION",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Regional Endpoint Policies
     /// 
     /// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.

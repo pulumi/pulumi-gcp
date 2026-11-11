@@ -12709,7 +12709,9 @@ class InstanceAttachedDisk(dict):
         :param _builtins.str disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         :param _builtins.str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
-        :param _builtins.bool force_attach: Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        :param _builtins.bool force_attach: boolean field that determines whether to force attach the regional
+               disk even if it's currently attached to another instance. If you try to force attach a zonal
+               disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         :param _builtins.str kms_key_self_link: The self_link of the encryption key that is
                stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
                may be set.
@@ -12794,7 +12796,9 @@ class InstanceAttachedDisk(dict):
     @pulumi.getter(name="forceAttach")
     def force_attach(self) -> Optional[_builtins.bool]:
         """
-        Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        boolean field that determines whether to force attach the regional
+        disk even if it's currently attached to another instance. If you try to force attach a zonal
+        disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         """
         return pulumi.get(self, "force_attach")
 
@@ -19147,7 +19151,7 @@ class InstanceGroupManagerStatus(dict):
                apply the configuration.
         :param _builtins.bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         :param Sequence['InstanceGroupManagerStatusStatefulArgs'] statefuls: Stateful status of the given Instance Group Manager.
-        :param Sequence['InstanceGroupManagerStatusVersionTargetArgs'] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        :param Sequence['InstanceGroupManagerStatusVersionTargetArgs'] version_targets: A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         """
         if all_instances_configs is not None:
             pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -19188,7 +19192,7 @@ class InstanceGroupManagerStatus(dict):
     @pulumi.getter(name="versionTargets")
     def version_targets(self) -> Optional[Sequence['outputs.InstanceGroupManagerStatusVersionTarget']]:
         """
-        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         """
         return pulumi.get(self, "version_targets")
 
@@ -20999,7 +21003,7 @@ class InstanceSchedulingGracefulShutdown(dict):
         :param _builtins.bool enabled: Opts-in for graceful shutdown.
         :param 'InstanceSchedulingGracefulShutdownMaxDurationArgs' max_duration: The time allotted for the instance to gracefully shut down.
                If the graceful shutdown isn't complete after this time, then the instance
-               transitions to the STOPPING state. Structure is documented below:
+               transitions to the STOPPING state. Structure is documented below.
         """
         pulumi.set(__self__, "enabled", enabled)
         if max_duration is not None:
@@ -21019,7 +21023,7 @@ class InstanceSchedulingGracefulShutdown(dict):
         """
         The time allotted for the instance to gracefully shut down.
         If the graceful shutdown isn't complete after this time, then the instance
-        transitions to the STOPPING state. Structure is documented below:
+        transitions to the STOPPING state. Structure is documented below.
         """
         return pulumi.get(self, "max_duration")
 
@@ -21031,7 +21035,7 @@ class InstanceSchedulingGracefulShutdownMaxDuration(dict):
                  nanos: Optional[_builtins.int] = None):
         """
         :param _builtins.int seconds: Span of time at a resolution of a second.
-               The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+               The value must be between 1 and 3600, which is 3,600 seconds (one hour).
         :param _builtins.int nanos: Span of time that's a fraction of a second at nanosecond
                resolution. Durations less than one second are represented with a 0
                `seconds` field and a positive `nanos` field. Must be from 0 to
@@ -21046,7 +21050,7 @@ class InstanceSchedulingGracefulShutdownMaxDuration(dict):
     def seconds(self) -> _builtins.int:
         """
         Span of time at a resolution of a second.
-        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).
         """
         return pulumi.get(self, "seconds")
 
@@ -23431,7 +23435,7 @@ class InstanceTemplateSchedulingGracefulShutdown(dict):
         :param _builtins.bool enabled: Opts-in for graceful shutdown.
         :param 'InstanceTemplateSchedulingGracefulShutdownMaxDurationArgs' max_duration: The time allotted for the instance to gracefully shut down.
                If the graceful shutdown isn't complete after this time, then the instance
-               transitions to the STOPPING state. Structure is documented below:
+               transitions to the STOPPING state. Structure is documented below.
         """
         pulumi.set(__self__, "enabled", enabled)
         if max_duration is not None:
@@ -23451,7 +23455,7 @@ class InstanceTemplateSchedulingGracefulShutdown(dict):
         """
         The time allotted for the instance to gracefully shut down.
         If the graceful shutdown isn't complete after this time, then the instance
-        transitions to the STOPPING state. Structure is documented below:
+        transitions to the STOPPING state. Structure is documented below.
         """
         return pulumi.get(self, "max_duration")
 
@@ -23463,7 +23467,7 @@ class InstanceTemplateSchedulingGracefulShutdownMaxDuration(dict):
                  nanos: Optional[_builtins.int] = None):
         """
         :param _builtins.int seconds: Span of time at a resolution of a second.
-               The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+               The value must be between 1 and 3600, which is 3,600 seconds (one hour).
         :param _builtins.int nanos: Span of time that's a fraction of a second at nanosecond
                resolution. Durations less than one second are represented with a 0
                `seconds` field and a positive `nanos` field. Must be from 0 to
@@ -23478,7 +23482,7 @@ class InstanceTemplateSchedulingGracefulShutdownMaxDuration(dict):
     def seconds(self) -> _builtins.int:
         """
         Span of time at a resolution of a second.
-        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).
         """
         return pulumi.get(self, "seconds")
 
@@ -23584,7 +23588,7 @@ class InstanceTemplateSchedulingNodeAffinity(dict):
         :param _builtins.str key: The key for the node affinity label.
         :param _builtins.str operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
-        :param Sequence[_builtins.str] values: Corresponds to the label values of a reservation resource.
+        :param Sequence[_builtins.str] values: The values for the node affinity label.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -23611,7 +23615,7 @@ class InstanceTemplateSchedulingNodeAffinity(dict):
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
         """
-        Corresponds to the label values of a reservation resource.
+        The values for the node affinity label.
         """
         return pulumi.get(self, "values")
 
@@ -24071,18 +24075,14 @@ class InterconnectApplicationAwareInterconnect(dict):
                  shape_average_percentages: Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectShapeAveragePercentage']] = None,
                  strict_priority_policy: Optional['outputs.InterconnectApplicationAwareInterconnectStrictPriorityPolicy'] = None):
         """
-        :param 'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs' bandwidth_percentage_policy: (Optional, Beta)
-               Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+        :param 'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs' bandwidth_percentage_policy: Bandwidth Percentage policy allows you to have granular control over how your Interconnect
                bandwidth is utilized among your workloads mapping to different traffic classes.
                Structure is documented below.
-        :param _builtins.str profile_description: (Optional, Beta)
-               A description for the AAI profile on this interconnect.
-        :param Sequence['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs'] shape_average_percentages: (Optional, Beta)
-               Optional field to specify a list of shape average percentages to be
+        :param _builtins.str profile_description: A description for the AAI profile on this interconnect.
+        :param Sequence['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs'] shape_average_percentages: Optional field to specify a list of shape average percentages to be
                applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
                Structure is documented below.
-        :param 'InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs' strict_priority_policy: (Optional, Beta)
-               Specify configuration for StrictPriorityPolicy.
+        :param 'InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs' strict_priority_policy: Specify configuration for StrictPriorityPolicy.
         """
         if bandwidth_percentage_policy is not None:
             pulumi.set(__self__, "bandwidth_percentage_policy", bandwidth_percentage_policy)
@@ -24097,7 +24097,6 @@ class InterconnectApplicationAwareInterconnect(dict):
     @pulumi.getter(name="bandwidthPercentagePolicy")
     def bandwidth_percentage_policy(self) -> Optional['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy']:
         """
-        (Optional, Beta)
         Bandwidth Percentage policy allows you to have granular control over how your Interconnect
         bandwidth is utilized among your workloads mapping to different traffic classes.
         Structure is documented below.
@@ -24108,7 +24107,6 @@ class InterconnectApplicationAwareInterconnect(dict):
     @pulumi.getter(name="profileDescription")
     def profile_description(self) -> Optional[_builtins.str]:
         """
-        (Optional, Beta)
         A description for the AAI profile on this interconnect.
         """
         return pulumi.get(self, "profile_description")
@@ -24117,7 +24115,6 @@ class InterconnectApplicationAwareInterconnect(dict):
     @pulumi.getter(name="shapeAveragePercentages")
     def shape_average_percentages(self) -> Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectShapeAveragePercentage']]:
         """
-        (Optional, Beta)
         Optional field to specify a list of shape average percentages to be
         applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
         Structure is documented below.
@@ -24128,7 +24125,6 @@ class InterconnectApplicationAwareInterconnect(dict):
     @pulumi.getter(name="strictPriorityPolicy")
     def strict_priority_policy(self) -> Optional['outputs.InterconnectApplicationAwareInterconnectStrictPriorityPolicy']:
         """
-        (Optional, Beta)
         Specify configuration for StrictPriorityPolicy.
         """
         return pulumi.get(self, "strict_priority_policy")
@@ -24156,8 +24152,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy(dict):
     def __init__(__self__, *,
                  bandwidth_percentages: Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage']] = None):
         """
-        :param Sequence['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs'] bandwidth_percentages: (Optional, Beta)
-               Specify bandwidth percentages for various traffic classes for queuing
+        :param Sequence['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs'] bandwidth_percentages: Specify bandwidth percentages for various traffic classes for queuing
                type Bandwidth Percent.
                Structure is documented below.
         """
@@ -24168,7 +24163,6 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy(dict):
     @pulumi.getter(name="bandwidthPercentages")
     def bandwidth_percentages(self) -> Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage']]:
         """
-        (Optional, Beta)
         Specify bandwidth percentages for various traffic classes for queuing
         type Bandwidth Percent.
         Structure is documented below.
@@ -24199,10 +24193,8 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
                  percentage: Optional[_builtins.int] = None,
                  traffic_class: Optional[_builtins.str] = None):
         """
-        :param _builtins.int percentage: (Optional, Beta)
-               Bandwidth percentage for a specific traffic class.
-        :param _builtins.str traffic_class: (Optional, Beta)
-               Enum representing the various traffic classes offered by AAI.
+        :param _builtins.int percentage: Bandwidth percentage for a specific traffic class.
+        :param _builtins.str traffic_class: Enum representing the various traffic classes offered by AAI.
                Default value is `TC_UNSPECIFIED`.
                Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
         """
@@ -24215,7 +24207,6 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
     @pulumi.getter
     def percentage(self) -> Optional[_builtins.int]:
         """
-        (Optional, Beta)
         Bandwidth percentage for a specific traffic class.
         """
         return pulumi.get(self, "percentage")
@@ -24224,7 +24215,6 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
     @pulumi.getter(name="trafficClass")
     def traffic_class(self) -> Optional[_builtins.str]:
         """
-        (Optional, Beta)
         Enum representing the various traffic classes offered by AAI.
         Default value is `TC_UNSPECIFIED`.
         Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -24255,10 +24245,8 @@ class InterconnectApplicationAwareInterconnectShapeAveragePercentage(dict):
                  percentage: Optional[_builtins.int] = None,
                  traffic_class: Optional[_builtins.str] = None):
         """
-        :param _builtins.int percentage: (Optional, Beta)
-               Bandwidth percentage for a specific traffic class.
-        :param _builtins.str traffic_class: (Optional, Beta)
-               Enum representing the various traffic classes offered by AAI.
+        :param _builtins.int percentage: Bandwidth percentage for a specific traffic class.
+        :param _builtins.str traffic_class: Enum representing the various traffic classes offered by AAI.
                Default value is `TC_UNSPECIFIED`.
                Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
         """
@@ -24271,7 +24259,6 @@ class InterconnectApplicationAwareInterconnectShapeAveragePercentage(dict):
     @pulumi.getter
     def percentage(self) -> Optional[_builtins.int]:
         """
-        (Optional, Beta)
         Bandwidth percentage for a specific traffic class.
         """
         return pulumi.get(self, "percentage")
@@ -24280,7 +24267,6 @@ class InterconnectApplicationAwareInterconnectShapeAveragePercentage(dict):
     @pulumi.getter(name="trafficClass")
     def traffic_class(self) -> Optional[_builtins.str]:
         """
-        (Optional, Beta)
         Enum representing the various traffic classes offered by AAI.
         Default value is `TC_UNSPECIFIED`.
         Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -37277,7 +37263,7 @@ class RegionInstanceGroupManagerStatus(dict):
                apply the configuration.
         :param _builtins.bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         :param Sequence['RegionInstanceGroupManagerStatusStatefulArgs'] statefuls: Stateful status of the given Instance Group Manager.
-        :param Sequence['RegionInstanceGroupManagerStatusVersionTargetArgs'] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        :param Sequence['RegionInstanceGroupManagerStatusVersionTargetArgs'] version_targets: A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         """
         if all_instances_configs is not None:
             pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -37318,7 +37304,7 @@ class RegionInstanceGroupManagerStatus(dict):
     @pulumi.getter(name="versionTargets")
     def version_targets(self) -> Optional[Sequence['outputs.RegionInstanceGroupManagerStatusVersionTarget']]:
         """
-        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         """
         return pulumi.get(self, "version_targets")
 
@@ -39418,14 +39404,11 @@ class RegionInstanceTemplateScheduling(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param _builtins.int availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
-        :param 'RegionInstanceTemplateSchedulingGracefulShutdownArgs' graceful_shutdown: Settings for the instance to perform a graceful shutdown.
+        :param 'RegionInstanceTemplateSchedulingGracefulShutdownArgs' graceful_shutdown: Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
         :param _builtins.int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param _builtins.str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param Sequence['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
-                 recovery of the Local Ssd state is attempted. Its value should be in
-                 between 0 and 168 hours with hour granularity and the default value being 1
-                 hour.
-        :param _builtins.str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        :param Sequence['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
+        :param _builtins.str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         :param 'RegionInstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         :param _builtins.int min_node_cpus: Minimum number of cpus for the instance.
         :param Sequence['RegionInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
@@ -39439,7 +39422,7 @@ class RegionInstanceTemplateScheduling(dict):
         :param _builtins.bool preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
-        :param 'RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs' preemption_notice_duration: The duration of the notice that the instance will receive before it is preempted.
+        :param 'RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs' preemption_notice_duration: Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
         :param _builtins.str provisioning_model: Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
@@ -39447,7 +39430,7 @@ class RegionInstanceTemplateScheduling(dict):
                If this is set to `FLEX_START`, `automatic_restart` should be `false` and `instance_termination_action` should be set to `DELETE`. A `max_run_duration` must also be specified. For more info about
                `FLEX_START`, read [here](https://cloud.google.com/compute/docs/instances/flex-start-vms).
                If this is set to `RESERVATION_BOUND`, the instance is bound to a specific reservation and will only consume capacity from that reservation. A `reservation_affinity` block with `type` set to `SPECIFIC_RESERVATION` should also be configured.
-        :param _builtins.bool skip_guest_os_shutdown: Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        :param _builtins.bool skip_guest_os_shutdown: Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         :param _builtins.str termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
@@ -39507,7 +39490,7 @@ class RegionInstanceTemplateScheduling(dict):
     @pulumi.getter(name="gracefulShutdown")
     def graceful_shutdown(self) -> Optional['outputs.RegionInstanceTemplateSchedulingGracefulShutdown']:
         """
-        Settings for the instance to perform a graceful shutdown.
+        Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -39531,10 +39514,7 @@ class RegionInstanceTemplateScheduling(dict):
     @pulumi.getter(name="localSsdRecoveryTimeouts")
     def local_ssd_recovery_timeouts(self) -> Optional[Sequence['outputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout']]:
         """
-        Specifies the maximum amount of time a Local Ssd Vm should wait while
-          recovery of the Local Ssd state is attempted. Its value should be in
-          between 0 and 168 hours with hour granularity and the default value being 1
-          hour.
+        (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
         """
         return pulumi.get(self, "local_ssd_recovery_timeouts")
 
@@ -39542,7 +39522,7 @@ class RegionInstanceTemplateScheduling(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[_builtins.str]:
         """
-        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -39605,7 +39585,7 @@ class RegionInstanceTemplateScheduling(dict):
     @pulumi.getter(name="preemptionNoticeDuration")
     def preemption_notice_duration(self) -> Optional['outputs.RegionInstanceTemplateSchedulingPreemptionNoticeDuration']:
         """
-        The duration of the notice that the instance will receive before it is preempted.
+        Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
         """
         return pulumi.get(self, "preemption_notice_duration")
 
@@ -39627,7 +39607,7 @@ class RegionInstanceTemplateScheduling(dict):
     @pulumi.getter(name="skipGuestOsShutdown")
     def skip_guest_os_shutdown(self) -> Optional[_builtins.bool]:
         """
-        Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         """
         return pulumi.get(self, "skip_guest_os_shutdown")
 
@@ -39666,7 +39646,7 @@ class RegionInstanceTemplateSchedulingGracefulShutdown(dict):
         :param _builtins.bool enabled: Opts-in for graceful shutdown.
         :param 'RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs' max_duration: The time allotted for the instance to gracefully shut down.
                If the graceful shutdown isn't complete after this time, then the instance
-               transitions to the STOPPING state. Structure is documented below:
+               transitions to the STOPPING state. Structure is documented below.
         """
         pulumi.set(__self__, "enabled", enabled)
         if max_duration is not None:
@@ -39686,7 +39666,7 @@ class RegionInstanceTemplateSchedulingGracefulShutdown(dict):
         """
         The time allotted for the instance to gracefully shut down.
         If the graceful shutdown isn't complete after this time, then the instance
-        transitions to the STOPPING state. Structure is documented below:
+        transitions to the STOPPING state. Structure is documented below.
         """
         return pulumi.get(self, "max_duration")
 
@@ -39698,7 +39678,7 @@ class RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration(dict):
                  nanos: Optional[_builtins.int] = None):
         """
         :param _builtins.int seconds: Span of time at a resolution of a second.
-               The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+               The value must be between 1 and 3600, which is 3,600 seconds (one hour).
         :param _builtins.int nanos: Span of time that's a fraction of a second at nanosecond
                resolution. Durations less than one second are represented with a 0
                `seconds` field and a positive `nanos` field. Must be from 0 to
@@ -39713,7 +39693,7 @@ class RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration(dict):
     def seconds(self) -> _builtins.int:
         """
         Span of time at a resolution of a second.
-        The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+        The value must be between 1 and 3600, which is 3,600 seconds (one hour).
         """
         return pulumi.get(self, "seconds")
 
@@ -39735,12 +39715,13 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
                  seconds: _builtins.int,
                  nanos: Optional[_builtins.int] = None):
         """
-        :param _builtins.int seconds: Span of time at a resolution of a second.
-               Must be from 0 to 315,576,000,000 inclusive.
+        :param _builtins.int seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         :param _builtins.int nanos: Span of time that's a fraction of a second at nanosecond
-               resolution. Durations less than one second are represented
-               with a 0 seconds field and a positive nanos field. Must
-               be from 0 to 999,999,999 inclusive.
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
@@ -39750,8 +39731,9 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
     @pulumi.getter
     def seconds(self) -> _builtins.int:
         """
-        Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         """
         return pulumi.get(self, "seconds")
 
@@ -39760,9 +39742,9 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
     def nanos(self) -> Optional[_builtins.int]:
         """
         Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
 
@@ -39817,7 +39799,7 @@ class RegionInstanceTemplateSchedulingNodeAffinity(dict):
         :param _builtins.str key: The key for the node affinity label.
         :param _builtins.str operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
-        :param Sequence[_builtins.str] values: Corresponds to the label values of a reservation resource.
+        :param Sequence[_builtins.str] values: The values for the node affinity label.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -39844,7 +39826,7 @@ class RegionInstanceTemplateSchedulingNodeAffinity(dict):
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
         """
-        Corresponds to the label values of a reservation resource.
+        The values for the node affinity label.
         """
         return pulumi.get(self, "values")
 
@@ -45182,7 +45164,8 @@ class RegionSecurityPolicyRuleRateLimitOptions(dict):
                * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-                 Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+               * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+                 Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
         :param Sequence['RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs'] enforce_on_key_configs: If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
                You can specify up to 3 enforceOnKeyConfigs.
                If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
@@ -45256,7 +45239,8 @@ class RegionSecurityPolicyRuleRateLimitOptions(dict):
         * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-          Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+        * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+          Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -45388,7 +45372,8 @@ class RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
                * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-                 Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+               * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+                 Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
         """
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
@@ -45421,7 +45406,8 @@ class RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
         * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-          Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+        * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+          Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
         """
         return pulumi.get(self, "enforce_on_key_type")
 
@@ -59390,7 +59376,8 @@ class SecurityPolicyRuleRateLimitOptions(dict):
                * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-                 Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+               * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+                 Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
         :param Sequence['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs'] enforce_on_key_configs: If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
                You can specify up to 3 enforceOnKeyConfigs.
                If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
@@ -59468,7 +59455,8 @@ class SecurityPolicyRuleRateLimitOptions(dict):
         * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-          Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+        * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+          Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -59609,7 +59597,8 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
                * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-                 Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+               * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+                 Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
         """
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
@@ -59642,7 +59631,8 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
         * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-          Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+        * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+          Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
         """
         return pulumi.get(self, "enforce_on_key_type")
 
@@ -61902,8 +61892,7 @@ class URLMapDefaultRouteAction(dict):
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
                Structure is documented below.
-        :param 'URLMapDefaultRouteActionImageOptimizationPolicyArgs' image_optimization_policy: (Optional, Beta)
-               Specifies the policy for optimizing images returned in the HTTP response.
+        :param 'URLMapDefaultRouteActionImageOptimizationPolicyArgs' image_optimization_policy: Specifies the policy for optimizing images returned in the HTTP response.
                Structure is documented below.
         :param 'URLMapDefaultRouteActionMaxStreamDurationArgs' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
                Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -62005,7 +61994,6 @@ class URLMapDefaultRouteAction(dict):
     @pulumi.getter(name="imageOptimizationPolicy")
     def image_optimization_policy(self) -> Optional['outputs.URLMapDefaultRouteActionImageOptimizationPolicy']:
         """
-        (Optional, Beta)
         Specifies the policy for optimizing images returned in the HTTP response.
         Structure is documented below.
         """
@@ -64622,8 +64610,7 @@ class URLMapPathMatcherDefaultRouteAction(dict):
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
                Structure is documented below.
-        :param 'URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs' image_optimization_policy: (Optional, Beta)
-               Specifies the policy for optimizing images returned in the HTTP response.
+        :param 'URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs' image_optimization_policy: Specifies the policy for optimizing images returned in the HTTP response.
                Structure is documented below.
         :param 'URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
                Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -64725,7 +64712,6 @@ class URLMapPathMatcherDefaultRouteAction(dict):
     @pulumi.getter(name="imageOptimizationPolicy")
     def image_optimization_policy(self) -> Optional['outputs.URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy']:
         """
-        (Optional, Beta)
         Specifies the policy for optimizing images returned in the HTTP response.
         Structure is documented below.
         """
@@ -67196,8 +67182,7 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param 'URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs' image_optimization_policy: (Optional, Beta)
-               Specifies the policy for optimizing images returned in the HTTP response.
+        :param 'URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs' image_optimization_policy: Specifies the policy for optimizing images returned in the HTTP response.
                Structure is documented below.
         :param 'URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
                Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -67305,7 +67290,6 @@ class URLMapPathMatcherPathRuleRouteAction(dict):
     @pulumi.getter(name="imageOptimizationPolicy")
     def image_optimization_policy(self) -> Optional['outputs.URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy']:
         """
-        (Optional, Beta)
         Specifies the policy for optimizing images returned in the HTTP response.
         Structure is documented below.
         """
@@ -70607,8 +70591,7 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
                Structure is documented below.
-        :param 'URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs' image_optimization_policy: (Optional, Beta)
-               Specifies the policy for optimizing images returned in the HTTP response.
+        :param 'URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs' image_optimization_policy: Specifies the policy for optimizing images returned in the HTTP response.
                Structure is documented below.
         :param 'URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
                Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -70716,7 +70699,6 @@ class URLMapPathMatcherRouteRuleRouteAction(dict):
     @pulumi.getter(name="imageOptimizationPolicy")
     def image_optimization_policy(self) -> Optional['outputs.URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy']:
         """
-        (Optional, Beta)
         Specifies the policy for optimizing images returned in the HTTP response.
         Structure is documented below.
         """
@@ -89788,7 +89770,8 @@ class GetRegionSecurityPolicyRuleRateLimitOptionResult(dict):
                * REGION_CODE: The country/region from which the request originates.
                * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+               * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
         :param Sequence['GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs'] enforce_on_key_configs: If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
                You can specify up to 3 enforceOnKeyConfigs.
                If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
@@ -89850,7 +89833,8 @@ class GetRegionSecurityPolicyRuleRateLimitOptionResult(dict):
         * REGION_CODE: The country/region from which the request originates.
         * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -89941,7 +89925,8 @@ class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult(dict):
                * REGION_CODE: The country/region from which the request originates.
                * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
                * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+               * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
         """
         pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
         pulumi.set(__self__, "enforce_on_key_type", enforce_on_key_type)
@@ -89971,7 +89956,8 @@ class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult(dict):
         * REGION_CODE: The country/region from which the request originates.
         * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
         * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
         """
         return pulumi.get(self, "enforce_on_key_type")
 

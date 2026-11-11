@@ -44,9 +44,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.saasruntime.UnitKind;
  * import com.pulumi.gcp.saasruntime.UnitKindArgs;
  * import com.pulumi.gcp.saasruntime.inputs.UnitKindDependencyArgs;
- * import com.pulumi.gcp.saasruntime.Release;
- * import com.pulumi.gcp.saasruntime.ReleaseArgs;
- * import com.pulumi.gcp.saasruntime.inputs.ReleaseBlueprintArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -54,12 +51,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var exampleSaas = new SaaS("exampleSaas", SaaSArgs.builder()
  *             .saasId("example-saas")
  *             .location("us-east1")
@@ -85,17 +82,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleRelease = new Release("exampleRelease", ReleaseArgs.builder()
- *             .location("us-east1")
- *             .releaseId("example-release")
- *             .unitKind(clusterUnitKind.id())
- *             .blueprint(ReleaseBlueprintArgs.builder()
- *                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image}{@literal @}{@code sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680")
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * 

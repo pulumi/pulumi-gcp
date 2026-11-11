@@ -137,7 +137,8 @@ import javax.annotation.Nullable;
  *             .features(Map.ofEntries(
  *                 Map.entry("agent-sharing-without-admin-approval", "FEATURE_STATE_ON"),
  *                 Map.entry("disable-agent-sharing", "FEATURE_STATE_OFF"),
- *                 Map.entry("enable-end-user-sharing-with-groups", "FEATURE_STATE_OFF")
+ *                 Map.entry("enable-end-user-sharing-with-groups", "FEATURE_STATE_OFF"),
+ *                 Map.entry("workflow-agents", "FEATURE_STATE_ON")
  *             ))
  *             .knowledgeGraphConfig(SearchEngineKnowledgeGraphConfigArgs.builder()
  *                 .build())

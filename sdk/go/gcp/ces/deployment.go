@@ -146,6 +146,12 @@ import (
 //						},
 //					},
 //				},
+//				Modality: pulumi.String("MODALITY_TEXT"),
+//				ModelSettings: &ces.DeploymentModelSettingsArgs{
+//					Model:         pulumi.String("gemini-3.0-flash-001"),
+//					Temperature:   pulumi.Float64(0.5),
+//					ThinkingLevel: pulumi.String("LOW"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -263,6 +269,13 @@ type Deployment struct {
 	InstagramCredentials DeploymentInstagramCredentialsPtrOutput `pulumi:"instagramCredentials"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The modality of the deployment.
+	// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+	Modality pulumi.StringPtrOutput `pulumi:"modality"`
+	// Model settings for the deployment.
+	// Overrides model settings configured at the app/agent levels.
+	// Structure is documented below.
+	ModelSettings DeploymentModelSettingsPtrOutput `pulumi:"modelSettings"`
 	// Identifier. The resource name of the deployment.
 	// Format:
 	// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -352,6 +365,13 @@ type deploymentState struct {
 	InstagramCredentials *DeploymentInstagramCredentials `pulumi:"instagramCredentials"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
+	// The modality of the deployment.
+	// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+	Modality *string `pulumi:"modality"`
+	// Model settings for the deployment.
+	// Overrides model settings configured at the app/agent levels.
+	// Structure is documented below.
+	ModelSettings *DeploymentModelSettings `pulumi:"modelSettings"`
 	// Identifier. The resource name of the deployment.
 	// Format:
 	// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -397,6 +417,13 @@ type DeploymentState struct {
 	InstagramCredentials DeploymentInstagramCredentialsPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
+	// The modality of the deployment.
+	// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+	Modality pulumi.StringPtrInput
+	// Model settings for the deployment.
+	// Overrides model settings configured at the app/agent levels.
+	// Structure is documented below.
+	ModelSettings DeploymentModelSettingsPtrInput
 	// Identifier. The resource name of the deployment.
 	// Format:
 	// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -446,6 +473,13 @@ type deploymentArgs struct {
 	InstagramCredentials *DeploymentInstagramCredentials `pulumi:"instagramCredentials"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
+	// The modality of the deployment.
+	// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+	Modality *string `pulumi:"modality"`
+	// Model settings for the deployment.
+	// Overrides model settings configured at the app/agent levels.
+	// Structure is documented below.
+	ModelSettings *DeploymentModelSettings `pulumi:"modelSettings"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -480,6 +514,13 @@ type DeploymentArgs struct {
 	InstagramCredentials DeploymentInstagramCredentialsPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
+	// The modality of the deployment.
+	// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+	Modality pulumi.StringPtrInput
+	// Model settings for the deployment.
+	// Overrides model settings configured at the app/agent levels.
+	// Structure is documented below.
+	ModelSettings DeploymentModelSettingsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -630,6 +671,19 @@ func (o DeploymentOutput) InstagramCredentials() DeploymentInstagramCredentialsP
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o DeploymentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The modality of the deployment.
+// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+func (o DeploymentOutput) Modality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringPtrOutput { return v.Modality }).(pulumi.StringPtrOutput)
+}
+
+// Model settings for the deployment.
+// Overrides model settings configured at the app/agent levels.
+// Structure is documented below.
+func (o DeploymentOutput) ModelSettings() DeploymentModelSettingsPtrOutput {
+	return o.ApplyT(func(v *Deployment) DeploymentModelSettingsPtrOutput { return v.ModelSettings }).(DeploymentModelSettingsPtrOutput)
 }
 
 // Identifier. The resource name of the deployment.

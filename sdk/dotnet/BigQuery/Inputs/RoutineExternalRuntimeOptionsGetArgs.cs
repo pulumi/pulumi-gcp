@@ -59,6 +59,21 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("runtimeVersion")]
         public Input<string>? RuntimeVersion { get; set; }
 
+        [Input("volumeMounts")]
+        private InputList<Inputs.RoutineExternalRuntimeOptionsVolumeMountGetArgs>? _volumeMounts;
+
+        /// <summary>
+        /// List of volume mounts for the Python UDF container that executes the
+        /// managed function. When volume mounts are set, `RuntimeConnection` must
+        /// also be set.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RoutineExternalRuntimeOptionsVolumeMountGetArgs> VolumeMounts
+        {
+            get => _volumeMounts ?? (_volumeMounts = new InputList<Inputs.RoutineExternalRuntimeOptionsVolumeMountGetArgs>());
+            set => _volumeMounts = value;
+        }
+
         public RoutineExternalRuntimeOptionsGetArgs()
         {
         }

@@ -16,38 +16,33 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterconnectApplicationAwareInterconnect {
     /**
-     * @return (Optional, Beta)
-     * Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+     * @return Bandwidth Percentage policy allows you to have granular control over how your Interconnect
      * bandwidth is utilized among your workloads mapping to different traffic classes.
      * Structure is documented below.
      * 
      */
     private @Nullable InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy bandwidthPercentagePolicy;
     /**
-     * @return (Optional, Beta)
-     * A description for the AAI profile on this interconnect.
+     * @return A description for the AAI profile on this interconnect.
      * 
      */
     private @Nullable String profileDescription;
     /**
-     * @return (Optional, Beta)
-     * Optional field to specify a list of shape average percentages to be
+     * @return Optional field to specify a list of shape average percentages to be
      * applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
      * Structure is documented below.
      * 
      */
     private @Nullable List<InterconnectApplicationAwareInterconnectShapeAveragePercentage> shapeAveragePercentages;
     /**
-     * @return (Optional, Beta)
-     * Specify configuration for StrictPriorityPolicy.
+     * @return Specify configuration for StrictPriorityPolicy.
      * 
      */
     private @Nullable InterconnectApplicationAwareInterconnectStrictPriorityPolicy strictPriorityPolicy;
 
     private InterconnectApplicationAwareInterconnect() {}
     /**
-     * @return (Optional, Beta)
-     * Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+     * @return Bandwidth Percentage policy allows you to have granular control over how your Interconnect
      * bandwidth is utilized among your workloads mapping to different traffic classes.
      * Structure is documented below.
      * 
@@ -56,16 +51,14 @@ public final class InterconnectApplicationAwareInterconnect {
         return Optional.ofNullable(this.bandwidthPercentagePolicy);
     }
     /**
-     * @return (Optional, Beta)
-     * A description for the AAI profile on this interconnect.
+     * @return A description for the AAI profile on this interconnect.
      * 
      */
     public Optional<String> profileDescription() {
         return Optional.ofNullable(this.profileDescription);
     }
     /**
-     * @return (Optional, Beta)
-     * Optional field to specify a list of shape average percentages to be
+     * @return Optional field to specify a list of shape average percentages to be
      * applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
      * Structure is documented below.
      * 
@@ -74,8 +67,7 @@ public final class InterconnectApplicationAwareInterconnect {
         return this.shapeAveragePercentages == null ? List.of() : this.shapeAveragePercentages;
     }
     /**
-     * @return (Optional, Beta)
-     * Specify configuration for StrictPriorityPolicy.
+     * @return Specify configuration for StrictPriorityPolicy.
      * 
      */
     public Optional<InterconnectApplicationAwareInterconnectStrictPriorityPolicy> strictPriorityPolicy() {

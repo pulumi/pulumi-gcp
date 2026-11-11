@@ -12,6 +12,7 @@ import com.pulumi.gcp.ces.DeploymentArgs;
 import com.pulumi.gcp.ces.inputs.DeploymentState;
 import com.pulumi.gcp.ces.outputs.DeploymentChannelProfile;
 import com.pulumi.gcp.ces.outputs.DeploymentInstagramCredentials;
+import com.pulumi.gcp.ces.outputs.DeploymentModelSettings;
 import com.pulumi.gcp.ces.outputs.DeploymentWhatsappCredentials;
 import java.lang.String;
 import java.util.Optional;
@@ -120,6 +121,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfilePersonaPropertyArgs;
  * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileWebWidgetConfigArgs;
  * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.DeploymentModelSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -176,6 +178,12 @@ import javax.annotation.Nullable;
  *                         .enableRecaptcha(true)
  *                         .build())
  *                     .build())
+ *                 .build())
+ *             .modality("MODALITY_TEXT")
+ *             .modelSettings(DeploymentModelSettingsArgs.builder()
+ *                 .model("gemini-3.0-flash-001")
+ *                 .temperature(0.5)
+ *                 .thinkingLevel("LOW")
  *                 .build())
  *             .build());
  * 
@@ -421,6 +429,40 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * The modality of the deployment.
+     * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+     * 
+     */
+    @Export(name="modality", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> modality;
+
+    /**
+     * @return The modality of the deployment.
+     * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+     * 
+     */
+    public Output<Optional<String>> modality() {
+        return Codegen.optional(this.modality);
+    }
+    /**
+     * Model settings for the deployment.
+     * Overrides model settings configured at the app/agent levels.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="modelSettings", refs={DeploymentModelSettings.class}, tree="[0]")
+    private Output</* @Nullable */ DeploymentModelSettings> modelSettings;
+
+    /**
+     * @return Model settings for the deployment.
+     * Overrides model settings configured at the app/agent levels.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DeploymentModelSettings>> modelSettings() {
+        return Codegen.optional(this.modelSettings);
     }
     /**
      * Identifier. The resource name of the deployment.

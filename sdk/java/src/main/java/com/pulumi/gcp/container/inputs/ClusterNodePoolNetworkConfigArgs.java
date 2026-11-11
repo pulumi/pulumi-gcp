@@ -97,14 +97,14 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Network bandwidth tier configuration.
+     * Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     @Import(name="networkPerformanceConfig")
     private @Nullable Output<ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs> networkPerformanceConfig;
 
     /**
-     * @return Network bandwidth tier configuration.
+     * @return Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
@@ -332,7 +332,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * @param networkPerformanceConfig Network bandwidth tier configuration. Structure is documented below.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * @param networkPerformanceConfig Network bandwidth tier configuration. Structure is documented below.
          * 
          * @return builder
          * 

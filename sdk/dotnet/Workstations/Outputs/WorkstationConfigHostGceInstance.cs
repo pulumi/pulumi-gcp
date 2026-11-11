@@ -58,6 +58,12 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly int? PoolSize;
         /// <summary>
+        /// (Optional, Beta)
+        /// Reservation affinity to setup a GCE instance.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkstationConfigHostGceInstanceReservationAffinity? ReservationAffinity;
+        /// <summary>
         /// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
         /// </summary>
         public readonly string? ServiceAccount;
@@ -105,6 +111,8 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             int? poolSize,
 
+            Outputs.WorkstationConfigHostGceInstanceReservationAffinity? reservationAffinity,
+
             string? serviceAccount,
 
             ImmutableArray<string> serviceAccountScopes,
@@ -125,6 +133,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
             InstanceMetadata = instanceMetadata;
             MachineType = machineType;
             PoolSize = poolSize;
+            ReservationAffinity = reservationAffinity;
             ServiceAccount = serviceAccount;
             ServiceAccountScopes = serviceAccountScopes;
             ShieldedInstanceConfig = shieldedInstanceConfig;

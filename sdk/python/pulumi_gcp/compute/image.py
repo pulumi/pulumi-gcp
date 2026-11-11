@@ -1079,6 +1079,9 @@ class Image(pulumi.CustomResource):
                 {
                     "type": "SEV_LIVE_MIGRATABLE_V2",
                 },
+                {
+                    "type": "SUSPEND_SAFE_FPR",
+                },
             ])
         ```
 
@@ -1274,6 +1277,9 @@ class Image(pulumi.CustomResource):
                 },
                 {
                     "type": "SEV_LIVE_MIGRATABLE_V2",
+                },
+                {
+                    "type": "SUSPEND_SAFE_FPR",
                 },
             ])
         ```

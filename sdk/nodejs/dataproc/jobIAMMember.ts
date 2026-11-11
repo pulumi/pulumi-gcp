@@ -158,6 +158,11 @@ export class JobIAMMember extends pulumi.CustomResource {
      * (Computed) The etag of the jobs's IAM policy.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
+    /**
+     * The name or relative resource id of the job to manage IAM policies for.
+     *
+     * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+     */
     declare public readonly jobId: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -242,6 +247,11 @@ export interface JobIAMMemberState {
      * (Computed) The etag of the jobs's IAM policy.
      */
     etag?: pulumi.Input<string | undefined>;
+    /**
+     * The name or relative resource id of the job to manage IAM policies for.
+     *
+     * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+     */
     jobId?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -279,6 +289,11 @@ export interface JobIAMMemberState {
  */
 export interface JobIAMMemberArgs {
     condition?: pulumi.Input<inputs.dataproc.JobIAMMemberCondition | undefined>;
+    /**
+     * The name or relative resource id of the job to manage IAM policies for.
+     *
+     * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+     */
     jobId: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.

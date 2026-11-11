@@ -175,6 +175,7 @@ import javax.annotation.Nullable;
  *             .modelDevelopmentClusterId("tftest")
  *             .displayName("tftest")
  *             .deletionPolicy("DELETE")
+ *             .updateMode("USER_AND_SERVICE")
  *             .labels(Map.of("env", "dev"))
  *             .runtimeSpec(AiModelDevelopmentClusterRuntimeSpecArgs.builder()
  *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
@@ -1115,6 +1116,32 @@ public class AiModelDevelopmentCluster extends com.pulumi.resources.CustomResour
      */
     public Output<String> startTime() {
         return this.startTime;
+    }
+    /**
+     * Whether the service also refreshes service-managed fields (startup and
+     * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+     * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+     * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+     * for GKE clusters (`kubernetesSpec`).
+     * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+     * `USER_AND_SERVICE`.
+     * 
+     */
+    @Export(name="updateMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> updateMode;
+
+    /**
+     * @return Whether the service also refreshes service-managed fields (startup and
+     * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+     * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+     * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+     * for GKE clusters (`kubernetesSpec`).
+     * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+     * `USER_AND_SERVICE`.
+     * 
+     */
+    public Output<Optional<String>> updateMode() {
+        return Codegen.optional(this.updateMode);
     }
     /**
      * (Output)

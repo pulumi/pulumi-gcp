@@ -99,6 +99,13 @@ public final class TriggerBuildOptions {
      * 
      */
     private @Nullable String workerPool;
+    /**
+     * @return Option to specify which release or release channel to use to run this build.
+     * Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+     * release version such as `legacy`.
+     * 
+     */
+    private @Nullable String workerRelease;
 
     private TriggerBuildOptions() {}
     /**
@@ -209,6 +216,15 @@ public final class TriggerBuildOptions {
     public Optional<String> workerPool() {
         return Optional.ofNullable(this.workerPool);
     }
+    /**
+     * @return Option to specify which release or release channel to use to run this build.
+     * Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+     * release version such as `legacy`.
+     * 
+     */
+    public Optional<String> workerRelease() {
+        return Optional.ofNullable(this.workerRelease);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -231,6 +247,7 @@ public final class TriggerBuildOptions {
         private @Nullable String substitutionOption;
         private @Nullable List<TriggerBuildOptionsVolume> volumes;
         private @Nullable String workerPool;
+        private @Nullable String workerRelease;
         public Builder() {}
         public Builder(TriggerBuildOptions defaults) {
     	      Objects.requireNonNull(defaults);
@@ -246,6 +263,7 @@ public final class TriggerBuildOptions {
     	      this.substitutionOption = defaults.substitutionOption;
     	      this.volumes = defaults.volumes;
     	      this.workerPool = defaults.workerPool;
+    	      this.workerRelease = defaults.workerRelease;
         }
 
         @CustomType.Setter
@@ -332,6 +350,12 @@ public final class TriggerBuildOptions {
             this.workerPool = workerPool;
             return this;
         }
+        @CustomType.Setter
+        public Builder workerRelease(@Nullable String workerRelease) {
+
+            this.workerRelease = workerRelease;
+            return this;
+        }
         public TriggerBuildOptions build() {
             final var _resultValue = new TriggerBuildOptions();
             _resultValue.diskSizeGb = diskSizeGb;
@@ -346,6 +370,7 @@ public final class TriggerBuildOptions {
             _resultValue.substitutionOption = substitutionOption;
             _resultValue.volumes = volumes;
             _resultValue.workerPool = workerPool;
+            _resultValue.workerRelease = workerRelease;
             return _resultValue;
         }
     }

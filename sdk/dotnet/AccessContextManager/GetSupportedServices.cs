@@ -41,8 +41,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// {
         ///     var all = Gcp.AccessContextManager.GetSupportedServices.Invoke();
         /// 
-        ///     var gaRestrictedServices = .Where(s =&gt; s.ServiceSupportStage == "GA" &amp;&amp; s.AvailableOnRestrictedVip).Select(s =&gt; 
-        ///     {
+        ///     var gaRestrictedServices = .Where(s =&gt; {
+        ///         return s.ServiceSupportStage == "GA" &amp;&amp; s.AvailableOnRestrictedVip;
+        ///     }).Select(s =&gt; {
         ///         return s.Name;
         ///     }).ToList();
         /// 
@@ -86,8 +87,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// {
         ///     var all = Gcp.AccessContextManager.GetSupportedServices.Invoke();
         /// 
-        ///     var gaRestrictedServices = .Where(s =&gt; s.ServiceSupportStage == "GA" &amp;&amp; s.AvailableOnRestrictedVip).Select(s =&gt; 
-        ///     {
+        ///     var gaRestrictedServices = .Where(s =&gt; {
+        ///         return s.ServiceSupportStage == "GA" &amp;&amp; s.AvailableOnRestrictedVip;
+        ///     }).Select(s =&gt; {
         ///         return s.Name;
         ///     }).ToList();
         /// 
@@ -131,8 +133,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// {
         ///     var all = Gcp.AccessContextManager.GetSupportedServices.Invoke();
         /// 
-        ///     var gaRestrictedServices = .Where(s =&gt; s.ServiceSupportStage == "GA" &amp;&amp; s.AvailableOnRestrictedVip).Select(s =&gt; 
-        ///     {
+        ///     var gaRestrictedServices = .Where(s =&gt; {
+        ///         return s.ServiceSupportStage == "GA" &amp;&amp; s.AvailableOnRestrictedVip;
+        ///     }).Select(s =&gt; {
         ///         return s.Name;
         ///     }).ToList();
         /// 

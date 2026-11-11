@@ -46,7 +46,6 @@ namespace Pulumi.Gcp.SaaSRuntime
     ///         Location = location,
     ///         UnitKindId = "vm-unitkind",
     ///         Saas = exampleSaas.Id,
-    ///         DefaultRelease = $"projects/my-project-name/locations/{location}/releases/example-release",
     ///     });
     /// 
     ///     var exampleRelease = new Gcp.SaaSRuntime.Release("example_release", new()

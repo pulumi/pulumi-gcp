@@ -5671,7 +5671,7 @@ type FeatureMembershipPolicycontrollerPolicyControllerHubConfig struct {
 	AuditIntervalSeconds *int `pulumi:"auditIntervalSeconds"`
 	// The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
 	ConstraintViolationLimit *int `pulumi:"constraintViolationLimit"`
-	// Map of deployment configs to deployments ("admission", "audit", "mutation").
+	// Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
 	DeploymentConfigs []FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig `pulumi:"deploymentConfigs"`
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
@@ -5705,7 +5705,7 @@ type FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs struct {
 	AuditIntervalSeconds pulumi.IntPtrInput `pulumi:"auditIntervalSeconds"`
 	// The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
 	ConstraintViolationLimit pulumi.IntPtrInput `pulumi:"constraintViolationLimit"`
-	// Map of deployment configs to deployments ("admission", "audit", "mutation").
+	// Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
 	DeploymentConfigs FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput `pulumi:"deploymentConfigs"`
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
@@ -5812,7 +5812,7 @@ func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) Constr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Map of deployment configs to deployments ("admission", "audit", "mutation").
+// Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
 func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) DeploymentConfigs() FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
 	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) []FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
 		return v.DeploymentConfigs
@@ -5906,7 +5906,7 @@ func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) Con
 	}).(pulumi.IntPtrOutput)
 }
 
-// Map of deployment configs to deployments ("admission", "audit", "mutation").
+// Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
 func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) DeploymentConfigs() FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
 	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) []FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
 		if v == nil {

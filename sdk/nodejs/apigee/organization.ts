@@ -301,7 +301,7 @@ export class Organization extends pulumi.CustomResource {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
      */
     declare public readonly retention: pulumi.Output<string | undefined>;
     /**
@@ -471,7 +471,7 @@ export interface OrganizationState {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
      */
     retention?: pulumi.Input<string | undefined>;
     /**
@@ -567,7 +567,7 @@ export interface OrganizationArgs {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
      */
     retention?: pulumi.Input<string | undefined>;
     /**

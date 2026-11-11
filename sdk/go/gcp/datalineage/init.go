@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:datalineage/config:Config":
 		r = &Config{}
+	case "gcp:datalineage/openLineageJob:OpenLineageJob":
+		r = &OpenLineageJob{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"datalineage/config",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"datalineage/openLineageJob",
 		&module{version},
 	)
 }

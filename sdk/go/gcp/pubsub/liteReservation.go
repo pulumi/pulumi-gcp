@@ -90,7 +90,7 @@ type LiteReservation struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the pubsub lite reservation.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The reserved throughput capacity. Every unit of throughput capacity is
 	// equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
 	// messages.
@@ -333,8 +333,8 @@ func (o LiteReservationOutput) Project() pulumi.StringOutput {
 }
 
 // The region of the pubsub lite reservation.
-func (o LiteReservationOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiteReservation) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+func (o LiteReservationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiteReservation) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The reserved throughput capacity. Every unit of throughput capacity is

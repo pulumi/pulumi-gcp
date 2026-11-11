@@ -419,8 +419,11 @@ func (o ApplicationIapPtrOutput) Oauth2ClientSecretWoVersion() pulumi.StringPtrO
 }
 
 type ApplicationUrlDispatchRule struct {
-	Domain  *string `pulumi:"domain"`
-	Path    *string `pulumi:"path"`
+	// Domain name to match against.
+	Domain *string `pulumi:"domain"`
+	// Pathname within the host.
+	Path *string `pulumi:"path"`
+	// Resource ID of a service in this application that should serve the matched request.
 	Service *string `pulumi:"service"`
 }
 
@@ -436,8 +439,11 @@ type ApplicationUrlDispatchRuleInput interface {
 }
 
 type ApplicationUrlDispatchRuleArgs struct {
-	Domain  pulumi.StringPtrInput `pulumi:"domain"`
-	Path    pulumi.StringPtrInput `pulumi:"path"`
+	// Domain name to match against.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// Pathname within the host.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Resource ID of a service in this application that should serve the matched request.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -492,14 +498,17 @@ func (o ApplicationUrlDispatchRuleOutput) ToApplicationUrlDispatchRuleOutputWith
 	return o
 }
 
+// Domain name to match against.
 func (o ApplicationUrlDispatchRuleOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationUrlDispatchRule) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
+// Pathname within the host.
 func (o ApplicationUrlDispatchRuleOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationUrlDispatchRule) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Resource ID of a service in this application that should serve the matched request.
 func (o ApplicationUrlDispatchRuleOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationUrlDispatchRule) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -7898,7 +7907,7 @@ func (o StandardAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutpu
 }
 
 type StandardAppVersionVpcAccess struct {
-	// (Optional, Deprecated)
+	// (Optional, Beta, Deprecated)
 	// The egress setting for the VPC Access, controlling what traffic is diverted through it.
 	//
 	// > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
@@ -7925,7 +7934,7 @@ type StandardAppVersionVpcAccessInput interface {
 }
 
 type StandardAppVersionVpcAccessArgs struct {
-	// (Optional, Deprecated)
+	// (Optional, Beta, Deprecated)
 	// The egress setting for the VPC Access, controlling what traffic is diverted through it.
 	//
 	// > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
@@ -8017,7 +8026,7 @@ func (o StandardAppVersionVpcAccessOutput) ToStandardAppVersionVpcAccessPtrOutpu
 	}).(StandardAppVersionVpcAccessPtrOutput)
 }
 
-// (Optional, Deprecated)
+// (Optional, Beta, Deprecated)
 // The egress setting for the VPC Access, controlling what traffic is diverted through it.
 //
 // > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
@@ -8065,7 +8074,7 @@ func (o StandardAppVersionVpcAccessPtrOutput) Elem() StandardAppVersionVpcAccess
 	}).(StandardAppVersionVpcAccessOutput)
 }
 
-// (Optional, Deprecated)
+// (Optional, Beta, Deprecated)
 // The egress setting for the VPC Access, controlling what traffic is diverted through it.
 //
 // > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.

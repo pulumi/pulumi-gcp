@@ -5,6 +5,9 @@ package com.pulumi.gcp.applicationintegration.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.applicationintegration.inputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsArgs;
+import com.pulumi.gcp.applicationintegration.inputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +17,21 @@ import javax.annotation.Nullable;
 public final class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs Empty = new AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs();
+
+    /**
+     * Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+     * 
+     */
+    @Import(name="applyReauthPolicy")
+    private @Nullable Output<Boolean> applyReauthPolicy;
+
+    /**
+     * @return Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+     * 
+     */
+    public Optional<Output<Boolean>> applyReauthPolicy() {
+        return Optional.ofNullable(this.applyReauthPolicy);
+    }
 
     /**
      * The auth url endpoint to send the auth code request to.
@@ -28,6 +46,21 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs exte
      */
     public Optional<Output<String>> authEndpoint() {
         return Optional.ofNullable(this.authEndpoint);
+    }
+
+    /**
+     * The auth parameters sent along with the auth code request.
+     * 
+     */
+    @Import(name="authParams")
+    private @Nullable Output<AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsArgs> authParams;
+
+    /**
+     * @return The auth parameters sent along with the auth code request.
+     * 
+     */
+    public Optional<Output<AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsArgs>> authParams() {
+        return Optional.ofNullable(this.authParams);
     }
 
     /**
@@ -61,6 +94,21 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs exte
     }
 
     /**
+     * Represent how to pass parameters to fetch access token Possible values: [&#34;REQUEST_BODY&#34;, &#34;QUERY_PARAMETERS&#34;, &#34;ENCODED_HEADER&#34;]
+     * 
+     */
+    @Import(name="requestType")
+    private @Nullable Output<String> requestType;
+
+    /**
+     * @return Represent how to pass parameters to fetch access token Possible values: [&#34;REQUEST_BODY&#34;, &#34;QUERY_PARAMETERS&#34;, &#34;ENCODED_HEADER&#34;]
+     * 
+     */
+    public Optional<Output<String>> requestType() {
+        return Optional.ofNullable(this.requestType);
+    }
+
+    /**
      * A space-delimited list of requested scope permissions.
      * 
      */
@@ -90,14 +138,33 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs exte
         return Optional.ofNullable(this.tokenEndpoint);
     }
 
+    /**
+     * The token parameters sent along with the token request.
+     * 
+     */
+    @Import(name="tokenParams")
+    private @Nullable Output<AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsArgs> tokenParams;
+
+    /**
+     * @return The token parameters sent along with the token request.
+     * 
+     */
+    public Optional<Output<AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsArgs>> tokenParams() {
+        return Optional.ofNullable(this.tokenParams);
+    }
+
     private AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs() {}
 
     private AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs(AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs $) {
+        this.applyReauthPolicy = $.applyReauthPolicy;
         this.authEndpoint = $.authEndpoint;
+        this.authParams = $.authParams;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.requestType = $.requestType;
         this.scope = $.scope;
         this.tokenEndpoint = $.tokenEndpoint;
+        this.tokenParams = $.tokenParams;
     }
 
     public static Builder builder() {
@@ -119,6 +186,27 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs exte
         }
 
         /**
+         * @param applyReauthPolicy Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applyReauthPolicy(@Nullable Output<Boolean> applyReauthPolicy) {
+            $.applyReauthPolicy = applyReauthPolicy;
+            return this;
+        }
+
+        /**
+         * @param applyReauthPolicy Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applyReauthPolicy(Boolean applyReauthPolicy) {
+            return applyReauthPolicy(Output.of(applyReauthPolicy));
+        }
+
+        /**
          * @param authEndpoint The auth url endpoint to send the auth code request to.
          * 
          * @return builder
@@ -137,6 +225,27 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs exte
          */
         public Builder authEndpoint(String authEndpoint) {
             return authEndpoint(Output.of(authEndpoint));
+        }
+
+        /**
+         * @param authParams The auth parameters sent along with the auth code request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authParams(@Nullable Output<AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsArgs> authParams) {
+            $.authParams = authParams;
+            return this;
+        }
+
+        /**
+         * @param authParams The auth parameters sent along with the auth code request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authParams(AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsArgs authParams) {
+            return authParams(Output.of(authParams));
         }
 
         /**
@@ -182,6 +291,27 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs exte
         }
 
         /**
+         * @param requestType Represent how to pass parameters to fetch access token Possible values: [&#34;REQUEST_BODY&#34;, &#34;QUERY_PARAMETERS&#34;, &#34;ENCODED_HEADER&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestType(@Nullable Output<String> requestType) {
+            $.requestType = requestType;
+            return this;
+        }
+
+        /**
+         * @param requestType Represent how to pass parameters to fetch access token Possible values: [&#34;REQUEST_BODY&#34;, &#34;QUERY_PARAMETERS&#34;, &#34;ENCODED_HEADER&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestType(String requestType) {
+            return requestType(Output.of(requestType));
+        }
+
+        /**
          * @param scope A space-delimited list of requested scope permissions.
          * 
          * @return builder
@@ -221,6 +351,27 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs exte
          */
         public Builder tokenEndpoint(String tokenEndpoint) {
             return tokenEndpoint(Output.of(tokenEndpoint));
+        }
+
+        /**
+         * @param tokenParams The token parameters sent along with the token request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenParams(@Nullable Output<AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsArgs> tokenParams) {
+            $.tokenParams = tokenParams;
+            return this;
+        }
+
+        /**
+         * @param tokenParams The token parameters sent along with the token request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenParams(AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsArgs tokenParams) {
+            return tokenParams(Output.of(tokenParams));
         }
 
         public AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs build() {

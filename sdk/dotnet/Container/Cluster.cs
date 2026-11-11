@@ -706,7 +706,7 @@ namespace Pulumi.Gcp.Container
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Network bandwidth tier configuration.
+        /// Network bandwidth tier configuration. Structure is documented below.
         /// </summary>
         [Output("networkPerformanceConfig")]
         public Output<Outputs.ClusterNetworkPerformanceConfig?> NetworkPerformanceConfig { get; private set; } = null!;
@@ -1518,7 +1518,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Network bandwidth tier configuration.
+        /// Network bandwidth tier configuration. Structure is documented below.
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.ClusterNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
@@ -2315,7 +2315,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Network bandwidth tier configuration.
+        /// Network bandwidth tier configuration. Structure is documented below.
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.ClusterNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }

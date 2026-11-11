@@ -82,6 +82,23 @@ __all__ = [
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket',
+    'AiEvaluationItemError',
+    'AiEvaluationItemEvaluationRequest',
+    'AiEvaluationItemEvaluationRequestCandidateResponse',
+    'AiEvaluationItemEvaluationRequestCandidateResponseError',
+    'AiEvaluationItemEvaluationRequestGoldenResponse',
+    'AiEvaluationItemEvaluationRequestGoldenResponseError',
+    'AiEvaluationItemEvaluationRequestPrompt',
+    'AiEvaluationItemEvaluationRequestPromptPromptTemplateData',
+    'AiEvaluationItemEvaluationRequestPromptUserScenario',
+    'AiEvaluationItemEvaluationRequestRubric',
+    'AiEvaluationItemEvaluationRequestRubricRubric',
+    'AiEvaluationItemEvaluationRequestRubricRubricContent',
+    'AiEvaluationItemEvaluationRequestRubricRubricContentProperty',
+    'AiEvaluationItemEvaluationResponse',
+    'AiEvaluationItemEvaluationResponseCandidateResult',
+    'AiEvaluationItemEvaluationResponseCandidateResultError',
+    'AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict',
     'AiEvaluationMetricEncryptionSpec',
     'AiFeatureGroupBigQuery',
     'AiFeatureGroupBigQueryBigQuerySource',
@@ -254,6 +271,7 @@ __all__ = [
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemory',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopic',
@@ -5555,6 +5573,1115 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
         Number must be in the range 1 to 65535.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class AiEvaluationItemError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param _builtins.str message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "candidateResponses":
+            suggest = "candidate_responses"
+        elif key == "goldenResponse":
+            suggest = "golden_response"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 candidate_responses: Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestCandidateResponse']] = None,
+                 golden_response: Optional['outputs.AiEvaluationItemEvaluationRequestGoldenResponse'] = None,
+                 prompt: Optional['outputs.AiEvaluationItemEvaluationRequestPrompt'] = None,
+                 rubrics: Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestRubric']] = None):
+        """
+        :param Sequence['AiEvaluationItemEvaluationRequestCandidateResponseArgs'] candidate_responses: Responses from model under test and other baseline models for comparison.
+               Structure is documented below.
+        :param 'AiEvaluationItemEvaluationRequestGoldenResponseArgs' golden_response: The ideal response or ground truth.
+               Structure is documented below.
+        :param 'AiEvaluationItemEvaluationRequestPromptArgs' prompt: The request/prompt to evaluate.
+               Structure is documented below.
+        :param Sequence['AiEvaluationItemEvaluationRequestRubricArgs'] rubrics: Named groups of rubrics associated with this prompt.
+               The key is a user-defined name for the rubric group.
+               Structure is documented below.
+        """
+        if candidate_responses is not None:
+            pulumi.set(__self__, "candidate_responses", candidate_responses)
+        if golden_response is not None:
+            pulumi.set(__self__, "golden_response", golden_response)
+        if prompt is not None:
+            pulumi.set(__self__, "prompt", prompt)
+        if rubrics is not None:
+            pulumi.set(__self__, "rubrics", rubrics)
+
+    @_builtins.property
+    @pulumi.getter(name="candidateResponses")
+    def candidate_responses(self) -> Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestCandidateResponse']]:
+        """
+        Responses from model under test and other baseline models for comparison.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "candidate_responses")
+
+    @_builtins.property
+    @pulumi.getter(name="goldenResponse")
+    def golden_response(self) -> Optional['outputs.AiEvaluationItemEvaluationRequestGoldenResponse']:
+        """
+        The ideal response or ground truth.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "golden_response")
+
+    @_builtins.property
+    @pulumi.getter
+    def prompt(self) -> Optional['outputs.AiEvaluationItemEvaluationRequestPrompt']:
+        """
+        The request/prompt to evaluate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "prompt")
+
+    @_builtins.property
+    @pulumi.getter
+    def rubrics(self) -> Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestRubric']]:
+        """
+        Named groups of rubrics associated with this prompt.
+        The key is a user-defined name for the rubric group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rubrics")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestCandidateResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentData":
+            suggest = "agent_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationRequestCandidateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationRequestCandidateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationRequestCandidateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 candidate: _builtins.str,
+                 agent_data: Optional[_builtins.str] = None,
+                 errors: Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestCandidateResponseError']] = None,
+                 text: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str candidate: The name of the candidate that produced the response.
+        :param _builtins.str agent_data: Represents the complete execution trace of a multi-turn conversation,
+               which can involve single or multiple agents, as a JSON string. This
+               field is used to provide the full output of an agent's run, including
+               all turns and events, for direct evaluation.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        :param Sequence['AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs'] errors: (Output)
+               Error while scraping model or agent.
+               Structure is documented below.
+               
+               <a name="nested_evaluation_request_candidate_responses_error"></a>The `error` block contains:
+        :param _builtins.str text: Text response.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        :param _builtins.str value: Fields and values that can be used to populate the response template, as a JSON string.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        pulumi.set(__self__, "candidate", candidate)
+        if agent_data is not None:
+            pulumi.set(__self__, "agent_data", agent_data)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def candidate(self) -> _builtins.str:
+        """
+        The name of the candidate that produced the response.
+        """
+        return pulumi.get(self, "candidate")
+
+    @_builtins.property
+    @pulumi.getter(name="agentData")
+    def agent_data(self) -> Optional[_builtins.str]:
+        """
+        Represents the complete execution trace of a multi-turn conversation,
+        which can involve single or multiple agents, as a JSON string. This
+        field is used to provide the full output of an agent's run, including
+        all turns and events, for direct evaluation.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "agent_data")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestCandidateResponseError']]:
+        """
+        (Output)
+        Error while scraping model or agent.
+        Structure is documented below.
+
+        <a name="nested_evaluation_request_candidate_responses_error"></a>The `error` block contains:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        Text response.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Fields and values that can be used to populate the response template, as a JSON string.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestCandidateResponseError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param _builtins.str message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestGoldenResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentData":
+            suggest = "agent_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationRequestGoldenResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationRequestGoldenResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationRequestGoldenResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 candidate: _builtins.str,
+                 agent_data: Optional[_builtins.str] = None,
+                 errors: Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestGoldenResponseError']] = None,
+                 text: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str candidate: The name of the candidate that produced the response.
+        :param _builtins.str agent_data: Represents the complete execution trace of a multi-turn conversation,
+               which can involve single or multiple agents, as a JSON string. This
+               field is used to provide the full output of an agent's run, including
+               all turns and events, for direct evaluation.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        :param Sequence['AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs'] errors: (Output)
+               Error while scraping model or agent.
+               Structure is documented below.
+               
+               <a name="nested_evaluation_request_golden_response_error"></a>The `error` block contains:
+        :param _builtins.str text: Text response.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        :param _builtins.str value: Fields and values that can be used to populate the response template, as a JSON string.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        pulumi.set(__self__, "candidate", candidate)
+        if agent_data is not None:
+            pulumi.set(__self__, "agent_data", agent_data)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def candidate(self) -> _builtins.str:
+        """
+        The name of the candidate that produced the response.
+        """
+        return pulumi.get(self, "candidate")
+
+    @_builtins.property
+    @pulumi.getter(name="agentData")
+    def agent_data(self) -> Optional[_builtins.str]:
+        """
+        Represents the complete execution trace of a multi-turn conversation,
+        which can involve single or multiple agents, as a JSON string. This
+        field is used to provide the full output of an agent's run, including
+        all turns and events, for direct evaluation.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "agent_data")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestGoldenResponseError']]:
+        """
+        (Output)
+        Error while scraping model or agent.
+        Structure is documented below.
+
+        <a name="nested_evaluation_request_golden_response_error"></a>The `error` block contains:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        Text response.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Fields and values that can be used to populate the response template, as a JSON string.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestGoldenResponseError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param _builtins.str message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestPrompt(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentData":
+            suggest = "agent_data"
+        elif key == "promptTemplateData":
+            suggest = "prompt_template_data"
+        elif key == "userScenario":
+            suggest = "user_scenario"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationRequestPrompt. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationRequestPrompt.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationRequestPrompt.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent_data: Optional[_builtins.str] = None,
+                 prompt_template_data: Optional['outputs.AiEvaluationItemEvaluationRequestPromptPromptTemplateData'] = None,
+                 text: Optional[_builtins.str] = None,
+                 user_scenario: Optional['outputs.AiEvaluationItemEvaluationRequestPromptUserScenario'] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str agent_data: Represents the complete execution trace of a multi-turn conversation,
+               which can involve single or multiple agents, as a JSON string. This
+               serves as the input context for agent scraping.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        :param 'AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs' prompt_template_data: Prompt template data.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+               Structure is documented below.
+        :param _builtins.str text: Text prompt.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        :param 'AiEvaluationItemEvaluationRequestPromptUserScenarioArgs' user_scenario: The generated user scenario used to drive multi-turn agent running results.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+               Structure is documented below.
+        :param _builtins.str value: Fields and values that can be used to populate the prompt template, as a JSON string.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        """
+        if agent_data is not None:
+            pulumi.set(__self__, "agent_data", agent_data)
+        if prompt_template_data is not None:
+            pulumi.set(__self__, "prompt_template_data", prompt_template_data)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if user_scenario is not None:
+            pulumi.set(__self__, "user_scenario", user_scenario)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentData")
+    def agent_data(self) -> Optional[_builtins.str]:
+        """
+        Represents the complete execution trace of a multi-turn conversation,
+        which can involve single or multiple agents, as a JSON string. This
+        serves as the input context for agent scraping.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        """
+        return pulumi.get(self, "agent_data")
+
+    @_builtins.property
+    @pulumi.getter(name="promptTemplateData")
+    def prompt_template_data(self) -> Optional['outputs.AiEvaluationItemEvaluationRequestPromptPromptTemplateData']:
+        """
+        Prompt template data.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "prompt_template_data")
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        Text prompt.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter(name="userScenario")
+    def user_scenario(self) -> Optional['outputs.AiEvaluationItemEvaluationRequestPromptUserScenario']:
+        """
+        The generated user scenario used to drive multi-turn agent running results.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_scenario")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Fields and values that can be used to populate the prompt template, as a JSON string.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestPromptPromptTemplateData(dict):
+    def __init__(__self__, *,
+                 values: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str values: The values for fields in the prompt template, as a JSON string mapping
+               field names to Content objects.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[_builtins.str]:
+        """
+        The values for fields in the prompt template, as a JSON string mapping
+        field names to Content objects.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestPromptUserScenario(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationPlan":
+            suggest = "conversation_plan"
+        elif key == "startingPrompt":
+            suggest = "starting_prompt"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationRequestPromptUserScenario. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationRequestPromptUserScenario.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationRequestPromptUserScenario.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conversation_plan: _builtins.str,
+                 starting_prompt: _builtins.str):
+        """
+        :param _builtins.str conversation_plan: The plan for the conversation, used to drive the multi-turn agent run and
+               generate the simulated agent evaluation dataset.
+        :param _builtins.str starting_prompt: The prompt that starts the conversation between the simulated user and
+               the agent under test.
+        """
+        pulumi.set(__self__, "conversation_plan", conversation_plan)
+        pulumi.set(__self__, "starting_prompt", starting_prompt)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationPlan")
+    def conversation_plan(self) -> _builtins.str:
+        """
+        The plan for the conversation, used to drive the multi-turn agent run and
+        generate the simulated agent evaluation dataset.
+        """
+        return pulumi.get(self, "conversation_plan")
+
+    @_builtins.property
+    @pulumi.getter(name="startingPrompt")
+    def starting_prompt(self) -> _builtins.str:
+        """
+        The prompt that starts the conversation between the simulated user and
+        the agent under test.
+        """
+        return pulumi.get(self, "starting_prompt")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestRubric(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "groupId":
+            suggest = "group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationRequestRubric. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationRequestRubric.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationRequestRubric.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 display_name: Optional[_builtins.str] = None,
+                 group_id: Optional[_builtins.str] = None,
+                 rubrics: Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestRubricRubric']] = None):
+        """
+        :param _builtins.str name: The identifier for this object. Format specified above.
+        :param _builtins.str display_name: Human-readable name for the group.
+        :param _builtins.str group_id: Unique identifier for the group.
+        :param Sequence['AiEvaluationItemEvaluationRequestRubricRubricArgs'] rubrics: Rubrics that are part of this group.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if rubrics is not None:
+            pulumi.set(__self__, "rubrics", rubrics)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Human-readable name for the group.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier for the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def rubrics(self) -> Optional[Sequence['outputs.AiEvaluationItemEvaluationRequestRubricRubric']]:
+        """
+        Rubrics that are part of this group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rubrics")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestRubricRubric(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rubricId":
+            suggest = "rubric_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationRequestRubricRubric. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationRequestRubricRubric.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationRequestRubricRubric.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content: 'outputs.AiEvaluationItemEvaluationRequestRubricRubricContent',
+                 importance: Optional[_builtins.str] = None,
+                 rubric_id: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param 'AiEvaluationItemEvaluationRequestRubricRubricContentArgs' content: The actual testable criteria for the rubric.
+               Structure is documented below.
+        :param _builtins.str importance: The relative importance of this rubric.
+               Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+        :param _builtins.str rubric_id: Unique identifier for the rubric.
+        :param _builtins.str type: A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+        """
+        pulumi.set(__self__, "content", content)
+        if importance is not None:
+            pulumi.set(__self__, "importance", importance)
+        if rubric_id is not None:
+            pulumi.set(__self__, "rubric_id", rubric_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> 'outputs.AiEvaluationItemEvaluationRequestRubricRubricContent':
+        """
+        The actual testable criteria for the rubric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def importance(self) -> Optional[_builtins.str]:
+        """
+        The relative importance of this rubric.
+        Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+        """
+        return pulumi.get(self, "importance")
+
+    @_builtins.property
+    @pulumi.getter(name="rubricId")
+    def rubric_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier for the rubric.
+        """
+        return pulumi.get(self, "rubric_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestRubricRubricContent(dict):
+    def __init__(__self__, *,
+                 property: Optional['outputs.AiEvaluationItemEvaluationRequestRubricRubricContentProperty'] = None):
+        """
+        :param 'AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs' property: Evaluation criteria based on a specific property.
+               Structure is documented below.
+        """
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> Optional['outputs.AiEvaluationItemEvaluationRequestRubricRubricContentProperty']:
+        """
+        Evaluation criteria based on a specific property.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationRequestRubricRubricContentProperty(dict):
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: Description of the property being evaluated.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the property being evaluated.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "candidateResults":
+            suggest = "candidate_results"
+        elif key == "evaluationRequest":
+            suggest = "evaluation_request"
+        elif key == "evaluationRun":
+            suggest = "evaluation_run"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 candidate_results: Optional[Sequence['outputs.AiEvaluationItemEvaluationResponseCandidateResult']] = None,
+                 evaluation_request: Optional[_builtins.str] = None,
+                 evaluation_run: Optional[_builtins.str] = None,
+                 metadata: Optional[_builtins.str] = None,
+                 metric: Optional[_builtins.str] = None,
+                 request: Optional[_builtins.str] = None):
+        """
+        :param Sequence['AiEvaluationItemEvaluationResponseCandidateResultArgs'] candidate_results: (Output)
+               The results for the metric.
+               Structure is documented below.
+        :param _builtins.str evaluation_request: The request to evaluate.
+               Exactly one of `evaluation_request` or `gcs_uri` can be set.
+               Structure is documented below.
+        :param _builtins.str evaluation_run: (Output)
+               The evaluation run that was used to generate the result. Format:
+               `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+        :param _builtins.str metadata: User-defined metadata for this evaluation item as a JSON string.
+        :param _builtins.str metric: (Output)
+               The metric that was evaluated.
+        :param _builtins.str request: (Output)
+               The request that was evaluated, as a JSON string.
+        """
+        if candidate_results is not None:
+            pulumi.set(__self__, "candidate_results", candidate_results)
+        if evaluation_request is not None:
+            pulumi.set(__self__, "evaluation_request", evaluation_request)
+        if evaluation_run is not None:
+            pulumi.set(__self__, "evaluation_run", evaluation_run)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if request is not None:
+            pulumi.set(__self__, "request", request)
+
+    @_builtins.property
+    @pulumi.getter(name="candidateResults")
+    def candidate_results(self) -> Optional[Sequence['outputs.AiEvaluationItemEvaluationResponseCandidateResult']]:
+        """
+        (Output)
+        The results for the metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "candidate_results")
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationRequest")
+    def evaluation_request(self) -> Optional[_builtins.str]:
+        """
+        The request to evaluate.
+        Exactly one of `evaluation_request` or `gcs_uri` can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "evaluation_request")
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationRun")
+    def evaluation_run(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The evaluation run that was used to generate the result. Format:
+        `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+        """
+        return pulumi.get(self, "evaluation_run")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Optional[_builtins.str]:
+        """
+        User-defined metadata for this evaluation item as a JSON string.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def metric(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The metric that was evaluated.
+        """
+        return pulumi.get(self, "metric")
+
+    @_builtins.property
+    @pulumi.getter
+    def request(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The request that was evaluated, as a JSON string.
+        """
+        return pulumi.get(self, "request")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationResponseCandidateResult(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalResults":
+            suggest = "additional_results"
+        elif key == "rubricVerdicts":
+            suggest = "rubric_verdicts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationResponseCandidateResult. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationResponseCandidateResult.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationResponseCandidateResult.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_results: Optional[_builtins.str] = None,
+                 candidate: Optional[_builtins.str] = None,
+                 errors: Optional[Sequence['outputs.AiEvaluationItemEvaluationResponseCandidateResultError']] = None,
+                 explanation: Optional[_builtins.str] = None,
+                 metric: Optional[_builtins.str] = None,
+                 rubric_verdicts: Optional[Sequence['outputs.AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict']] = None,
+                 score: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str additional_results: (Output)
+               Additional results for the metric, as a JSON string.
+        :param _builtins.str candidate: (Output)
+               The candidate that is being evaluated.
+        :param Sequence['AiEvaluationItemEvaluationResponseCandidateResultErrorArgs'] errors: (Output)
+               Error while evaluating the candidate for the metric.
+               Structure is documented below.
+        :param _builtins.str explanation: (Output)
+               The explanation for the metric.
+        :param _builtins.str metric: (Output)
+               The metric that was evaluated.
+        :param Sequence['AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs'] rubric_verdicts: (Output)
+               The rubric verdicts for the metric.
+               Structure is documented below.
+        :param _builtins.float score: (Output)
+               The score for the metric.
+        """
+        if additional_results is not None:
+            pulumi.set(__self__, "additional_results", additional_results)
+        if candidate is not None:
+            pulumi.set(__self__, "candidate", candidate)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if explanation is not None:
+            pulumi.set(__self__, "explanation", explanation)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if rubric_verdicts is not None:
+            pulumi.set(__self__, "rubric_verdicts", rubric_verdicts)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalResults")
+    def additional_results(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Additional results for the metric, as a JSON string.
+        """
+        return pulumi.get(self, "additional_results")
+
+    @_builtins.property
+    @pulumi.getter
+    def candidate(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The candidate that is being evaluated.
+        """
+        return pulumi.get(self, "candidate")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.AiEvaluationItemEvaluationResponseCandidateResultError']]:
+        """
+        (Output)
+        Error while evaluating the candidate for the metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def explanation(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The explanation for the metric.
+        """
+        return pulumi.get(self, "explanation")
+
+    @_builtins.property
+    @pulumi.getter
+    def metric(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The metric that was evaluated.
+        """
+        return pulumi.get(self, "metric")
+
+    @_builtins.property
+    @pulumi.getter(name="rubricVerdicts")
+    def rubric_verdicts(self) -> Optional[Sequence['outputs.AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict']]:
+        """
+        (Output)
+        The rubric verdicts for the metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rubric_verdicts")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> Optional[_builtins.float]:
+        """
+        (Output)
+        The score for the metric.
+        """
+        return pulumi.get(self, "score")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationResponseCandidateResultError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param _builtins.str message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluatedRubric":
+            suggest = "evaluated_rubric"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluated_rubric: Optional[_builtins.str] = None,
+                 reasoning: Optional[_builtins.str] = None,
+                 verdict: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str evaluated_rubric: (Output)
+               The full rubric definition that was evaluated, as a JSON string.
+        :param _builtins.str reasoning: (Output)
+               Human-readable reasoning for the verdict.
+        :param _builtins.bool verdict: (Output)
+               Outcome of the evaluation against the rubric.
+        """
+        if evaluated_rubric is not None:
+            pulumi.set(__self__, "evaluated_rubric", evaluated_rubric)
+        if reasoning is not None:
+            pulumi.set(__self__, "reasoning", reasoning)
+        if verdict is not None:
+            pulumi.set(__self__, "verdict", verdict)
+
+    @_builtins.property
+    @pulumi.getter(name="evaluatedRubric")
+    def evaluated_rubric(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The full rubric definition that was evaluated, as a JSON string.
+        """
+        return pulumi.get(self, "evaluated_rubric")
+
+    @_builtins.property
+    @pulumi.getter
+    def reasoning(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Human-readable reasoning for the verdict.
+        """
+        return pulumi.get(self, "reasoning")
+
+    @_builtins.property
+    @pulumi.getter
+    def verdict(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Outcome of the evaluation against the rubric.
+        """
+        return pulumi.get(self, "verdict")
 
 
 @pulumi.output_type
@@ -14974,6 +16101,8 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
             suggest = "function_response"
         elif key == "inlineData":
             suggest = "inline_data"
+        elif key == "speechMetadata":
+            suggest = "speech_metadata"
         elif key == "videoMetadata":
             suggest = "video_metadata"
 
@@ -14996,6 +16125,7 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
                  function_call: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall'] = None,
                  function_response: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse'] = None,
                  inline_data: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData'] = None,
+                 speech_metadata: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata'] = None,
                  text: Optional[_builtins.str] = None,
                  thought: Optional[_builtins.bool] = None,
                  video_metadata: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata'] = None):
@@ -15013,6 +16143,8 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
         :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs' function_response: The result of a function call.
                Structure is documented below.
         :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs' inline_data: The inline data content of the part.
+               Structure is documented below.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs' speech_metadata: Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
                Structure is documented below.
         :param _builtins.str text: The text content of the part.
         :param _builtins.bool thought: Indicates whether the part represents the model's thought process or reasoning.
@@ -15033,6 +16165,8 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
             pulumi.set(__self__, "function_response", function_response)
         if inline_data is not None:
             pulumi.set(__self__, "inline_data", inline_data)
+        if speech_metadata is not None:
+            pulumi.set(__self__, "speech_metadata", speech_metadata)
         if text is not None:
             pulumi.set(__self__, "text", text)
         if thought is not None:
@@ -15102,6 +16236,15 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
         Structure is documented below.
         """
         return pulumi.get(self, "inline_data")
+
+    @_builtins.property
+    @pulumi.getter(name="speechMetadata")
+    def speech_metadata(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata']:
+        """
+        Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "speech_metadata")
 
     @_builtins.property
     @pulumi.getter
@@ -15511,6 +16654,37 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
         The IANA standard MIME type of the source data.
         """
         return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata(dict):
+    def __init__(__self__, *,
+                 speaker: Optional[_builtins.str] = None,
+                 style: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str speaker: Identifies which speaker is speaking this turn.
+        :param _builtins.str style: Natural language description of the vocal style (e.g., "cheerful").
+        """
+        if speaker is not None:
+            pulumi.set(__self__, "speaker", speaker)
+        if style is not None:
+            pulumi.set(__self__, "style", style)
+
+    @_builtins.property
+    @pulumi.getter
+    def speaker(self) -> Optional[_builtins.str]:
+        """
+        Identifies which speaker is speaking this turn.
+        """
+        return pulumi.get(self, "speaker")
+
+    @_builtins.property
+    @pulumi.getter
+    def style(self) -> Optional[_builtins.str]:
+        """
+        Natural language description of the vocal style (e.g., "cheerful").
+        """
+        return pulumi.get(self, "style")
 
 
 @pulumi.output_type

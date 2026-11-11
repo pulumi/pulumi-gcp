@@ -309,8 +309,8 @@ namespace Pulumi.Gcp.GkeHub
     ///         Name = "rs-cluster",
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
-    ///         MinMasterVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.REGULAR),
-    ///         NodeVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.REGULAR),
+    ///         MinMasterVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion["REGULAR"]),
+    ///         NodeVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion["REGULAR"]),
     ///         DeletionProtection = false,
     ///         ReleaseChannel = new Gcp.Container.Inputs.ClusterReleaseChannelArgs
     ///         {
@@ -337,7 +337,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         Project = project.ProjectId,
     ///         RolloutSequenceId = "rs-user-triggered",
     ///         DisplayName = "User Triggered Rollout Sequence",
-    ///         MinControlPlaneVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.REGULAR),
+    ///         MinControlPlaneVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion["REGULAR"]),
     ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
     ///         {
     ///             LabelSelector = "!(has(resource.labels.rs_test_cluster) &amp;&amp; resource.labels.rs_test_cluster == 'tf-test-_17228')",

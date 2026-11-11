@@ -105,14 +105,18 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * boolean field that determines whether to force attach the regional
+     * disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal
+     * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
      * 
      */
     @Import(name="forceAttach")
     private @Nullable Output<Boolean> forceAttach;
 
     /**
-     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * @return boolean field that determines whether to force attach the regional
+     * disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal
+     * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
      * 
      */
     public Optional<Output<Boolean>> forceAttach() {
@@ -324,7 +328,9 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param forceAttach Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         * @param forceAttach boolean field that determines whether to force attach the regional
+         * disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal
+         * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
          * 
          * @return builder
          * 
@@ -335,7 +341,9 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param forceAttach Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         * @param forceAttach boolean field that determines whether to force attach the regional
+         * disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal
+         * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
          * 
          * @return builder
          * 

@@ -7534,7 +7534,7 @@ class LbTrafficExtensionExtensionChainArgsDict(TypedDict):
     A set of extensions to execute for the matching request.
     At least one extension is required. Up to 3 extensions can be defined for each extension chain for
     LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-    Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+    Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
     Structure is documented below.
     """
     match_condition: pulumi.Input['LbTrafficExtensionExtensionChainMatchConditionArgsDict']
@@ -7547,7 +7547,7 @@ class LbTrafficExtensionExtensionChainArgsDict(TypedDict):
     The name for this extension chain. The name is logged as part of the HTTP request logs.
     The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
     and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-    and the last a letter or a number.
+    and the last character must be a letter or a number.
     """
 
 @pulumi.input_type
@@ -7560,14 +7560,14 @@ class LbTrafficExtensionExtensionChainArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainExtensionArgs']]] extensions: A set of extensions to execute for the matching request.
                At least one extension is required. Up to 3 extensions can be defined for each extension chain for
                LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-               Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+               Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
                Structure is documented below.
         :param pulumi.Input['LbTrafficExtensionExtensionChainMatchConditionArgs'] match_condition: Conditions under which this chain is invoked for a request.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name for this extension chain. The name is logged as part of the HTTP request logs.
                The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
                and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-               and the last a letter or a number.
+               and the last character must be a letter or a number.
         """
         pulumi.set(__self__, "extensions", extensions)
         pulumi.set(__self__, "match_condition", match_condition)
@@ -7580,7 +7580,7 @@ class LbTrafficExtensionExtensionChainArgs:
         A set of extensions to execute for the matching request.
         At least one extension is required. Up to 3 extensions can be defined for each extension chain for
         LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-        Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+        Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
         Structure is documented below.
         """
         return pulumi.get(self, "extensions")
@@ -7609,7 +7609,7 @@ class LbTrafficExtensionExtensionChainArgs:
         The name for this extension chain. The name is logged as part of the HTTP request logs.
         The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
         and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-        and the last a letter or a number.
+        and the last character must be a letter or a number.
         """
         return pulumi.get(self, "name")
 
@@ -7665,6 +7665,15 @@ class LbTrafficExtensionExtensionChainExtensionArgsDict(TypedDict):
     You can set up key value pairs for metadata as you like and need.
     f.e. {"key": "value", "key2": "value2"}.
     """
+    observability_mode: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+    This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
+    For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+    This field is helpful when you want to try out the extension in async log-only mode.
+    Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+    Only `STREAMED` (default) body processing mode is supported.
+    """
     supported_events: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A set of events during request or response processing for which this extension is called.
@@ -7688,6 +7697,7 @@ class LbTrafficExtensionExtensionChainExtensionArgs:
                  forward_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 observability_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  supported_events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -7716,6 +7726,12 @@ class LbTrafficExtensionExtensionChainExtensionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the extension. This field is used to pass metadata to the extension service.
                You can set up key value pairs for metadata as you like and need.
                f.e. {"key": "value", "key2": "value2"}.
+        :param pulumi.Input[_builtins.bool] observability_mode: When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+               This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
+               For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+               This field is helpful when you want to try out the extension in async log-only mode.
+               Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+               Only `STREAMED` (default) body processing mode is supported.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_events: A set of events during request or response processing for which this extension is called.
                This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
                resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
@@ -7735,6 +7751,8 @@ class LbTrafficExtensionExtensionChainExtensionArgs:
             pulumi.set(__self__, "forward_headers", forward_headers)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if observability_mode is not None:
+            pulumi.set(__self__, "observability_mode", observability_mode)
         if supported_events is not None:
             pulumi.set(__self__, "supported_events", supported_events)
         if timeout is not None:
@@ -7841,6 +7859,23 @@ class LbTrafficExtensionExtensionChainExtensionArgs:
     @metadata.setter
     def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter(name="observabilityMode")
+    def observability_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+        This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
+        For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+        This field is helpful when you want to try out the extension in async log-only mode.
+        Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+        Only `STREAMED` (default) body processing mode is supported.
+        """
+        return pulumi.get(self, "observability_mode")
+
+    @observability_mode.setter
+    def observability_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "observability_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedEvents")

@@ -692,12 +692,14 @@ namespace Pulumi.Gcp.MemoryStore
 
         /// <summary>
         /// Immutable. User inputs for the auto-created endpoints connections.
+        /// Structure is documented below.
         /// </summary>
         [Output("desiredAutoCreatedEndpoints")]
         public Output<ImmutableArray<Outputs.InstanceDesiredAutoCreatedEndpoint>> DesiredAutoCreatedEndpoints { get; private set; } = null!;
 
         /// <summary>
         /// `DesiredPscAutoConnections` is deprecated  Use `DesiredAutoCreatedEndpoints` instead `pulumi import` will only work with DesiredAutoCreatedEndpoints`.
+        /// Structure is documented below.
         /// </summary>
         [Output("desiredPscAutoConnections")]
         public Output<ImmutableArray<Outputs.InstanceDesiredPscAutoConnection>> DesiredPscAutoConnections { get; private set; } = null!;
@@ -1076,6 +1078,7 @@ namespace Pulumi.Gcp.MemoryStore
 
         /// <summary>
         /// Immutable. User inputs for the auto-created endpoints connections.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceDesiredAutoCreatedEndpointArgs> DesiredAutoCreatedEndpoints
         {
@@ -1088,6 +1091,7 @@ namespace Pulumi.Gcp.MemoryStore
 
         /// <summary>
         /// `DesiredPscAutoConnections` is deprecated  Use `DesiredAutoCreatedEndpoints` instead `pulumi import` will only work with DesiredAutoCreatedEndpoints`.
+        /// Structure is documented below.
         /// </summary>
         [Obsolete(@"`DesiredPscAutoConnections` is deprecated. Use `DesiredAutoCreatedEndpoints` instead. `terraform import` will only work with DesiredAutoCreatedEndpoints`.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionArgs> DesiredPscAutoConnections
@@ -1351,6 +1355,7 @@ namespace Pulumi.Gcp.MemoryStore
 
         /// <summary>
         /// Immutable. User inputs for the auto-created endpoints connections.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceDesiredAutoCreatedEndpointGetArgs> DesiredAutoCreatedEndpoints
         {
@@ -1363,6 +1368,7 @@ namespace Pulumi.Gcp.MemoryStore
 
         /// <summary>
         /// `DesiredPscAutoConnections` is deprecated  Use `DesiredAutoCreatedEndpoints` instead `pulumi import` will only work with DesiredAutoCreatedEndpoints`.
+        /// Structure is documented below.
         /// </summary>
         [Obsolete(@"`DesiredPscAutoConnections` is deprecated. Use `DesiredAutoCreatedEndpoints` instead. `terraform import` will only work with DesiredAutoCreatedEndpoints`.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs> DesiredPscAutoConnections

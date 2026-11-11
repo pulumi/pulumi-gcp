@@ -24,65 +24,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.securesourcemanager.Instance("instance", {
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     instanceId: "my-instance",
  *     deletionPolicy: "PREVENT",
  * });
  * const _default = new gcp.securesourcemanager.Repository("default", {
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     repositoryId: "my-repository",
  *     instance: instance.name,
  *     deletionPolicy: "PREVENT",
- * });
- * ```
- *
- * ### Secure Source Manager Repository Initial Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.securesourcemanager.Instance("instance", {
- *     location: "us-central1",
- *     instanceId: "my-instance",
- *     deletionPolicy: "PREVENT",
- * });
- * const _default = new gcp.securesourcemanager.Repository("default", {
- *     location: "us-central1",
- *     repositoryId: "my-repository",
- *     instance: instance.name,
- *     description: "This is a test repository",
- *     initialConfig: {
- *         defaultBranch: "main",
- *         gitignores: ["python"],
- *         license: "mit",
- *         readme: "default",
- *     },
- *     deletionPolicy: "PREVENT",
- * });
- * ```
- *
- * ### Secure Source Manager Repository Service Account
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.securesourcemanager.Instance("instance", {
- *     location: "us-central1",
- *     instanceId: "my-instance",
- *     deletionPolicy: "PREVENT",
- * });
- * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "my-sa",
- *     displayName: "Test Service Account",
- * });
- * const _default = new gcp.securesourcemanager.Repository("default", {
- *     location: "us-central1",
- *     repositoryId: "my-repository",
- *     instance: instance.name,
- *     deletionPolicy: "PREVENT",
- *     serviceAccount: sa.email,
  * });
  * ```
  *
@@ -91,14 +41,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
  *
  * const instance = new gcp.securesourcemanager.Instance("instance", {
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     instanceId: "my-instance",
  *     deletionPolicy: "PREVENT",
  * });
  * const template = new gcp.dataloss.PreventionInspectTemplate("template", {
- *     parent: "projects/my-project-name/locations/us-central1",
+ *     parent: "projects/my-project-name/locations/europe-west4",
  *     displayName: "Test Inspect Template",
  *     inspectConfig: {
  *         infoTypes: [{
@@ -112,10 +63,15 @@ import * as utilities from "../utilities";
  *     role: "roles/dlp.inspectTemplatesReader",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`),
  * });
+ * // IAM permissions can take time to propagate
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [ssmP4saDlpReader],
+ * });
  * const _default = new gcp.securesourcemanager.Repository("default", {
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     repositoryId: "my-repository",
  *     instance: instance.name,
+ *     description: "This is a test repository",
  *     deletionPolicy: "PREVENT",
  *     scanConfig: {
  *         secretScanConfig: {
@@ -124,31 +80,38 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * }, {
- *     dependsOn: [ssmP4saDlpReader],
+ *     dependsOn: [wait120Seconds],
  * });
  * ```
  *
- * ### Secure Source Manager Repository Secret Scanning Default
+ * ### Secure Source Manager Repository Initial Config
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.securesourcemanager.Instance("instance", {
- *     location: "us-central1",
+ *     location: "asia-east1",
  *     instanceId: "my-instance",
  *     deletionPolicy: "PREVENT",
  * });
+ * const sa = new gcp.serviceaccount.Account("sa", {
+ *     accountId: "my-sa",
+ *     displayName: "Test Service Account",
+ * });
  * const _default = new gcp.securesourcemanager.Repository("default", {
- *     location: "us-central1",
+ *     location: "asia-east1",
  *     repositoryId: "my-repository",
  *     instance: instance.name,
- *     deletionPolicy: "PREVENT",
- *     scanConfig: {
- *         secretScanConfig: {
- *             enabled: true,
- *         },
+ *     description: "This is a test repository",
+ *     serviceAccount: sa.email,
+ *     initialConfig: {
+ *         defaultBranch: "main",
+ *         gitignores: ["python"],
+ *         license: "mit",
+ *         readme: "default",
  *     },
+ *     deletionPolicy: "PREVENT",
  * });
  * ```
  *

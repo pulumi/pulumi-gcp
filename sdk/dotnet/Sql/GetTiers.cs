@@ -32,8 +32,7 @@ namespace Pulumi.Gcp.Sql
         ///         Project = "sample-project",
         ///     });
         /// 
-        ///     var allAvailableTiers = .Select(v =&gt; 
-        ///     {
+        ///     var allAvailableTiers = .Select(v =&gt; {
         ///         return v.Tier;
         ///     }).ToList();
         /// 
@@ -68,8 +67,7 @@ namespace Pulumi.Gcp.Sql
         ///         Project = "sample-project",
         ///     });
         /// 
-        ///     var allAvailableTiers = .Select(v =&gt; 
-        ///     {
+        ///     var allAvailableTiers = .Select(v =&gt; {
         ///         return v.Tier;
         ///     }).ToList();
         /// 
@@ -104,8 +102,7 @@ namespace Pulumi.Gcp.Sql
         ///         Project = "sample-project",
         ///     });
         /// 
-        ///     var allAvailableTiers = .Select(v =&gt; 
-        ///     {
+        ///     var allAvailableTiers = .Select(v =&gt; {
         ///         return v.Tier;
         ///     }).ToList();
         /// 

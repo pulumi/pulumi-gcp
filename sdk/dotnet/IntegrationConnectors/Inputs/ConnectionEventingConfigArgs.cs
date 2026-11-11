@@ -25,6 +25,18 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
             set => _additionalVariables = value;
         }
 
+        [Input("allowedEventTypes")]
+        private InputList<string>? _allowedEventTypes;
+
+        /// <summary>
+        /// List of allowed event types for the connection.
+        /// </summary>
+        public InputList<string> AllowedEventTypes
+        {
+            get => _allowedEventTypes ?? (_allowedEventTypes = new InputList<string>());
+            set => _allowedEventTypes = value;
+        }
+
         /// <summary>
         /// authConfig for Eventing Configuration.
         /// Structure is documented below.
@@ -33,10 +45,30 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
         public Input<Inputs.ConnectionEventingConfigAuthConfigArgs>? AuthConfig { get; set; }
 
         /// <summary>
+        /// Dead letter configuration for eventing of a connection.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("deadLetterConfig")]
+        public Input<Inputs.ConnectionEventingConfigDeadLetterConfigArgs>? DeadLetterConfig { get; set; }
+
+        /// <summary>
+        /// Data enrichment configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("enrichmentConfig")]
+        public Input<Inputs.ConnectionEventingConfigEnrichmentConfigArgs>? EnrichmentConfig { get; set; }
+
+        /// <summary>
         /// Enrichment Enabled.
         /// </summary>
         [Input("enrichmentEnabled")]
         public Input<bool>? EnrichmentEnabled { get; set; }
+
+        /// <summary>
+        /// Filter to be applied on the events to be received by the connection.
+        /// </summary>
+        [Input("globalEventFilter")]
+        public Input<string>? GlobalEventFilter { get; set; }
 
         /// <summary>
         /// registrationDestinationConfig

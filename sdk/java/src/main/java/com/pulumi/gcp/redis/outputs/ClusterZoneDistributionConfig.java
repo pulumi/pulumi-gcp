@@ -5,12 +5,19 @@ package com.pulumi.gcp.redis.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterZoneDistributionConfig {
+    /**
+     * @return (Output)
+     * The exact list of zones where the cluster currently has active VMs.
+     * 
+     */
+    private @Nullable List<String> activeZones;
     /**
      * @return Immutable. The mode for zone distribution for Memorystore Redis cluster.
      * If not provided, MULTI_ZONE will be used as default
@@ -23,8 +30,22 @@ public final class ClusterZoneDistributionConfig {
      * 
      */
     private @Nullable String zone;
+    /**
+     * @return Specify the zones of a multi-zone cluster where Redis Cluster
+     * allocates resources. This flag isn&#39;t applicable for single-zone clusters.
+     * 
+     */
+    private @Nullable List<String> zones;
 
     private ClusterZoneDistributionConfig() {}
+    /**
+     * @return (Output)
+     * The exact list of zones where the cluster currently has active VMs.
+     * 
+     */
+    public List<String> activeZones() {
+        return this.activeZones == null ? List.of() : this.activeZones;
+    }
     /**
      * @return Immutable. The mode for zone distribution for Memorystore Redis cluster.
      * If not provided, MULTI_ZONE will be used as default
@@ -41,6 +62,14 @@ public final class ClusterZoneDistributionConfig {
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }
+    /**
+     * @return Specify the zones of a multi-zone cluster where Redis Cluster
+     * allocates resources. This flag isn&#39;t applicable for single-zone clusters.
+     * 
+     */
+    public List<String> zones() {
+        return this.zones == null ? List.of() : this.zones;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -51,15 +80,28 @@ public final class ClusterZoneDistributionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> activeZones;
         private @Nullable String mode;
         private @Nullable String zone;
+        private @Nullable List<String> zones;
         public Builder() {}
         public Builder(ClusterZoneDistributionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activeZones = defaults.activeZones;
     	      this.mode = defaults.mode;
     	      this.zone = defaults.zone;
+    	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
+        public Builder activeZones(@Nullable List<String> activeZones) {
+
+            this.activeZones = activeZones;
+            return this;
+        }
+        public Builder activeZones(String... activeZones) {
+            return activeZones(List.of(activeZones));
+        }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
 
@@ -72,10 +114,21 @@ public final class ClusterZoneDistributionConfig {
             this.zone = zone;
             return this;
         }
+        @CustomType.Setter
+        public Builder zones(@Nullable List<String> zones) {
+
+            this.zones = zones;
+            return this;
+        }
+        public Builder zones(String... zones) {
+            return zones(List.of(zones));
+        }
         public ClusterZoneDistributionConfig build() {
             final var _resultValue = new ClusterZoneDistributionConfig();
+            _resultValue.activeZones = activeZones;
             _resultValue.mode = mode;
             _resultValue.zone = zone;
+            _resultValue.zones = zones;
             return _resultValue;
         }
     }

@@ -50,22 +50,24 @@ class JobArgs:
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
-        :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: The config of Hadoop job
-        :param pulumi.Input['JobHiveConfigArgs'] hive_config: The config of hive job
+        :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: Submits a Hadoop job to the cluster. Structure is documented below.
+        :param pulumi.Input['JobHiveConfigArgs'] hive_config: Submits a Hive job to the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) to add to the job.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
-        :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
+        :param pulumi.Input['JobPigConfigArgs'] pig_config: Submits a Pig job to the cluster. Structure is documented below.
+        :param pulumi.Input['JobPrestoConfigArgs'] presto_config: Submits a Presto job to the cluster. Structure is documented below.
+               
+               ***
         :param pulumi.Input[_builtins.str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
-        :param pulumi.Input['JobPysparkConfigArgs'] pyspark_config: The config of pySpark job.
+        :param pulumi.Input['JobPysparkConfigArgs'] pyspark_config: Submits a PySpark job to the cluster. Structure is documented below.
         :param pulumi.Input['JobReferenceArgs'] reference: The reference of the job
         :param pulumi.Input[_builtins.str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
         :param pulumi.Input['JobSchedulingArgs'] scheduling: Optional. Job scheduling configuration.
-        :param pulumi.Input['JobSparkConfigArgs'] spark_config: The config of the Spark job.
-        :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
+        :param pulumi.Input['JobSparkConfigArgs'] spark_config: Submits a Spark job to the cluster. Structure is documented below.
+        :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: Submits a Spark SQL job to the cluster. Structure is documented below.
         :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         pulumi.set(__self__, "placement", placement)
@@ -147,7 +149,7 @@ class JobArgs:
     @pulumi.getter(name="hadoopConfig")
     def hadoop_config(self) -> pulumi.Input[Optional['JobHadoopConfigArgs']]:
         """
-        The config of Hadoop job
+        Submits a Hadoop job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hadoop_config")
 
@@ -159,7 +161,7 @@ class JobArgs:
     @pulumi.getter(name="hiveConfig")
     def hive_config(self) -> pulumi.Input[Optional['JobHiveConfigArgs']]:
         """
-        The config of hive job
+        Submits a Hive job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hive_config")
 
@@ -185,7 +187,7 @@ class JobArgs:
     @pulumi.getter(name="pigConfig")
     def pig_config(self) -> pulumi.Input[Optional['JobPigConfigArgs']]:
         """
-        The config of pag job.
+        Submits a Pig job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "pig_config")
 
@@ -197,7 +199,9 @@ class JobArgs:
     @pulumi.getter(name="prestoConfig")
     def presto_config(self) -> pulumi.Input[Optional['JobPrestoConfigArgs']]:
         """
-        The config of presto job
+        Submits a Presto job to the cluster. Structure is documented below.
+
+        ***
         """
         return pulumi.get(self, "presto_config")
 
@@ -222,7 +226,7 @@ class JobArgs:
     @pulumi.getter(name="pysparkConfig")
     def pyspark_config(self) -> pulumi.Input[Optional['JobPysparkConfigArgs']]:
         """
-        The config of pySpark job.
+        Submits a PySpark job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "pyspark_config")
 
@@ -271,7 +275,7 @@ class JobArgs:
     @pulumi.getter(name="sparkConfig")
     def spark_config(self) -> pulumi.Input[Optional['JobSparkConfigArgs']]:
         """
-        The config of the Spark job.
+        Submits a Spark job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "spark_config")
 
@@ -283,7 +287,7 @@ class JobArgs:
     @pulumi.getter(name="sparksqlConfig")
     def sparksql_config(self) -> pulumi.Input[Optional['JobSparksqlConfigArgs']]:
         """
-        The config of SparkSql job
+        Submits a Spark SQL job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "sparksql_config")
 
@@ -347,24 +351,26 @@ class _JobState:
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
-        :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: The config of Hadoop job
-        :param pulumi.Input['JobHiveConfigArgs'] hive_config: The config of hive job
+        :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: Submits a Hadoop job to the cluster. Structure is documented below.
+        :param pulumi.Input['JobHiveConfigArgs'] hive_config: Submits a Hive job to the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) to add to the job.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
+        :param pulumi.Input['JobPigConfigArgs'] pig_config: Submits a Pig job to the cluster. Structure is documented below.
         :param pulumi.Input['JobPlacementArgs'] placement: The config of job placement.
-        :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
+        :param pulumi.Input['JobPrestoConfigArgs'] presto_config: Submits a Presto job to the cluster. Structure is documented below.
+               
+               ***
         :param pulumi.Input[_builtins.str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input['JobPysparkConfigArgs'] pyspark_config: The config of pySpark job.
+        :param pulumi.Input['JobPysparkConfigArgs'] pyspark_config: Submits a PySpark job to the cluster. Structure is documented below.
         :param pulumi.Input['JobReferenceArgs'] reference: The reference of the job
         :param pulumi.Input[_builtins.str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
         :param pulumi.Input['JobSchedulingArgs'] scheduling: Optional. Job scheduling configuration.
-        :param pulumi.Input['JobSparkConfigArgs'] spark_config: The config of the Spark job.
-        :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
+        :param pulumi.Input['JobSparkConfigArgs'] spark_config: Submits a Spark job to the cluster. Structure is documented below.
+        :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: Submits a Spark SQL job to the cluster. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of the job.
         :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
@@ -486,7 +492,7 @@ class _JobState:
     @pulumi.getter(name="hadoopConfig")
     def hadoop_config(self) -> pulumi.Input[Optional['JobHadoopConfigArgs']]:
         """
-        The config of Hadoop job
+        Submits a Hadoop job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hadoop_config")
 
@@ -498,7 +504,7 @@ class _JobState:
     @pulumi.getter(name="hiveConfig")
     def hive_config(self) -> pulumi.Input[Optional['JobHiveConfigArgs']]:
         """
-        The config of hive job
+        Submits a Hive job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hive_config")
 
@@ -524,7 +530,7 @@ class _JobState:
     @pulumi.getter(name="pigConfig")
     def pig_config(self) -> pulumi.Input[Optional['JobPigConfigArgs']]:
         """
-        The config of pag job.
+        Submits a Pig job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "pig_config")
 
@@ -548,7 +554,9 @@ class _JobState:
     @pulumi.getter(name="prestoConfig")
     def presto_config(self) -> pulumi.Input[Optional['JobPrestoConfigArgs']]:
         """
-        The config of presto job
+        Submits a Presto job to the cluster. Structure is documented below.
+
+        ***
         """
         return pulumi.get(self, "presto_config")
 
@@ -585,7 +593,7 @@ class _JobState:
     @pulumi.getter(name="pysparkConfig")
     def pyspark_config(self) -> pulumi.Input[Optional['JobPysparkConfigArgs']]:
         """
-        The config of pySpark job.
+        Submits a PySpark job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "pyspark_config")
 
@@ -634,7 +642,7 @@ class _JobState:
     @pulumi.getter(name="sparkConfig")
     def spark_config(self) -> pulumi.Input[Optional['JobSparkConfigArgs']]:
         """
-        The config of the Spark job.
+        Submits a Spark job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "spark_config")
 
@@ -646,7 +654,7 @@ class _JobState:
     @pulumi.getter(name="sparksqlConfig")
     def sparksql_config(self) -> pulumi.Input[Optional['JobSparksqlConfigArgs']]:
         """
-        The config of SparkSql job
+        Submits a Spark SQL job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "sparksql_config")
 
@@ -770,23 +778,25 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
-        :param pulumi.Input[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']] hadoop_config: The config of Hadoop job
-        :param pulumi.Input[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']] hive_config: The config of hive job
+        :param pulumi.Input[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']] hadoop_config: Submits a Hadoop job to the cluster. Structure is documented below.
+        :param pulumi.Input[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']] hive_config: Submits a Hive job to the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) to add to the job.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']] pig_config: The config of pag job.
+        :param pulumi.Input[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']] pig_config: Submits a Pig job to the cluster. Structure is documented below.
         :param pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict', 'outputs.JobPlacement']] placement: The config of job placement.
-        :param pulumi.Input[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']] presto_config: The config of presto job
+        :param pulumi.Input[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']] presto_config: Submits a Presto job to the cluster. Structure is documented below.
+               
+               ***
         :param pulumi.Input[_builtins.str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']] pyspark_config: The config of pySpark job.
+        :param pulumi.Input[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']] pyspark_config: Submits a PySpark job to the cluster. Structure is documented below.
         :param pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict', 'outputs.JobReference']] reference: The reference of the job
         :param pulumi.Input[_builtins.str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
         :param pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict', 'outputs.JobScheduling']] scheduling: Optional. Job scheduling configuration.
-        :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']] spark_config: The config of the Spark job.
-        :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']] sparksql_config: The config of SparkSql job
+        :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']] spark_config: Submits a Spark job to the cluster. Structure is documented below.
+        :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']] sparksql_config: Submits a Spark SQL job to the cluster. Structure is documented below.
         :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
         ...
@@ -971,24 +981,26 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
-        :param pulumi.Input[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']] hadoop_config: The config of Hadoop job
-        :param pulumi.Input[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']] hive_config: The config of hive job
+        :param pulumi.Input[Union['JobHadoopConfigArgs', 'JobHadoopConfigArgsDict', 'outputs.JobHadoopConfig']] hadoop_config: Submits a Hadoop job to the cluster. Structure is documented below.
+        :param pulumi.Input[Union['JobHiveConfigArgs', 'JobHiveConfigArgsDict', 'outputs.JobHiveConfig']] hive_config: Submits a Hive job to the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of labels (key/value pairs) to add to the job.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']] pig_config: The config of pag job.
+        :param pulumi.Input[Union['JobPigConfigArgs', 'JobPigConfigArgsDict', 'outputs.JobPigConfig']] pig_config: Submits a Pig job to the cluster. Structure is documented below.
         :param pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict', 'outputs.JobPlacement']] placement: The config of job placement.
-        :param pulumi.Input[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']] presto_config: The config of presto job
+        :param pulumi.Input[Union['JobPrestoConfigArgs', 'JobPrestoConfigArgsDict', 'outputs.JobPrestoConfig']] presto_config: Submits a Presto job to the cluster. Structure is documented below.
+               
+               ***
         :param pulumi.Input[_builtins.str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']] pyspark_config: The config of pySpark job.
+        :param pulumi.Input[Union['JobPysparkConfigArgs', 'JobPysparkConfigArgsDict', 'outputs.JobPysparkConfig']] pyspark_config: Submits a PySpark job to the cluster. Structure is documented below.
         :param pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict', 'outputs.JobReference']] reference: The reference of the job
         :param pulumi.Input[_builtins.str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
         :param pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict', 'outputs.JobScheduling']] scheduling: Optional. Job scheduling configuration.
-        :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']] spark_config: The config of the Spark job.
-        :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']] sparksql_config: The config of SparkSql job
+        :param pulumi.Input[Union['JobSparkConfigArgs', 'JobSparkConfigArgsDict', 'outputs.JobSparkConfig']] spark_config: Submits a Spark job to the cluster. Structure is documented below.
+        :param pulumi.Input[Union['JobSparksqlConfigArgs', 'JobSparksqlConfigArgsDict', 'outputs.JobSparksqlConfig']] sparksql_config: Submits a Spark SQL job to the cluster. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]]] statuses: The status of the job.
         :param pulumi.Input[_builtins.bool] wait_for_completion: If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
         """
@@ -1122,7 +1134,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="hadoopConfig")
     def hadoop_config(self) -> pulumi.Output[Optional['outputs.JobHadoopConfig']]:
         """
-        The config of Hadoop job
+        Submits a Hadoop job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hadoop_config")
 
@@ -1130,7 +1142,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="hiveConfig")
     def hive_config(self) -> pulumi.Output[Optional['outputs.JobHiveConfig']]:
         """
-        The config of hive job
+        Submits a Hive job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "hive_config")
 
@@ -1148,7 +1160,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="pigConfig")
     def pig_config(self) -> pulumi.Output[Optional['outputs.JobPigConfig']]:
         """
-        The config of pag job.
+        Submits a Pig job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "pig_config")
 
@@ -1164,7 +1176,9 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="prestoConfig")
     def presto_config(self) -> pulumi.Output[Optional['outputs.JobPrestoConfig']]:
         """
-        The config of presto job
+        Submits a Presto job to the cluster. Structure is documented below.
+
+        ***
         """
         return pulumi.get(self, "presto_config")
 
@@ -1189,7 +1203,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="pysparkConfig")
     def pyspark_config(self) -> pulumi.Output[Optional['outputs.JobPysparkConfig']]:
         """
-        The config of pySpark job.
+        Submits a PySpark job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "pyspark_config")
 
@@ -1222,7 +1236,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="sparkConfig")
     def spark_config(self) -> pulumi.Output[Optional['outputs.JobSparkConfig']]:
         """
-        The config of the Spark job.
+        Submits a Spark job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "spark_config")
 
@@ -1230,7 +1244,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="sparksqlConfig")
     def sparksql_config(self) -> pulumi.Output[Optional['outputs.JobSparksqlConfig']]:
         """
-        The config of SparkSql job
+        Submits a Spark SQL job to the cluster. Structure is documented below.
         """
         return pulumi.get(self, "sparksql_config")
 

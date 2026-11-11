@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     deletionPolicy: "PREVENT",
  * });
- * const basic = new gcp.securesourcemanager.BranchRule("basic", {
+ * const _default = new gcp.securesourcemanager.BranchRule("default", {
  *     branchRuleId: "my-basic-branchrule",
  *     repositoryId: repository.repositoryId,
  *     location: repository.location,
@@ -48,17 +48,17 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.securesourcemanager.Instance("instance", {
  *     location: "us-central1",
- *     instanceId: "my-initial-instance",
+ *     instanceId: "my-basic-instance",
  *     deletionPolicy: "PREVENT",
  * });
  * const repository = new gcp.securesourcemanager.Repository("repository", {
- *     repositoryId: "my-initial-repository",
+ *     repositoryId: "my-basic-repository",
  *     instance: instance.name,
  *     location: instance.location,
  *     deletionPolicy: "PREVENT",
  * });
  * const _default = new gcp.securesourcemanager.BranchRule("default", {
- *     branchRuleId: "my-initial-branchrule",
+ *     branchRuleId: "my-basic-branchrule",
  *     location: repository.location,
  *     repositoryId: repository.repositoryId,
  *     includePattern: "test",

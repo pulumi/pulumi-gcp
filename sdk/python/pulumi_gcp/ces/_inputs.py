@@ -391,6 +391,8 @@ __all__ = [
     'DeploymentChannelProfileWhatsappConfigArgsDict',
     'DeploymentInstagramCredentialsArgs',
     'DeploymentInstagramCredentialsArgsDict',
+    'DeploymentModelSettingsArgs',
+    'DeploymentModelSettingsArgsDict',
     'DeploymentWhatsappCredentialsArgs',
     'DeploymentWhatsappCredentialsArgsDict',
     'EvaluationGoldenArgs',
@@ -20220,6 +20222,90 @@ class DeploymentInstagramCredentialsArgs:
     @conversation_profile_id.setter
     def conversation_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "conversation_profile_id", value)
+
+
+class DeploymentModelSettingsArgsDict(TypedDict):
+    model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The LLM model that the agent should use.
+    If not set, the agent will inherit the model from its parent agent.
+    """
+    temperature: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    If set, this temperature will be used for the LLM model. Temperature
+    controls the randomness of the model's responses. Lower temperatures
+    produce responses that are more predictable. Higher temperatures produce
+    responses that are more creative.
+    """
+    thinking_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The thinking level of the model.
+    Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+    """
+
+@pulumi.input_type
+class DeploymentModelSettingsArgs:
+    def __init__(__self__, *,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 temperature: pulumi.Input[Optional[_builtins.float]] = None,
+                 thinking_level: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] model: The LLM model that the agent should use.
+               If not set, the agent will inherit the model from its parent agent.
+        :param pulumi.Input[_builtins.float] temperature: If set, this temperature will be used for the LLM model. Temperature
+               controls the randomness of the model's responses. Lower temperatures
+               produce responses that are more predictable. Higher temperatures produce
+               responses that are more creative.
+        :param pulumi.Input[_builtins.str] thinking_level: The thinking level of the model.
+               Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+        if thinking_level is not None:
+            pulumi.set(__self__, "thinking_level", thinking_level)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The LLM model that the agent should use.
+        If not set, the agent will inherit the model from its parent agent.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        If set, this temperature will be used for the LLM model. Temperature
+        controls the randomness of the model's responses. Lower temperatures
+        produce responses that are more predictable. Higher temperatures produce
+        responses that are more creative.
+        """
+        return pulumi.get(self, "temperature")
+
+    @temperature.setter
+    def temperature(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "temperature", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thinkingLevel")
+    def thinking_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The thinking level of the model.
+        Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        """
+        return pulumi.get(self, "thinking_level")
+
+    @thinking_level.setter
+    def thinking_level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thinking_level", value)
 
 
 class DeploymentWhatsappCredentialsArgsDict(TypedDict):

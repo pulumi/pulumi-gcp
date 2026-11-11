@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolUpgradeSettingsBlueGreenSettings
     {
         /// <summary>
-        /// ) Autoscaled rollout policy for blue-green upgrade.
+        /// ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
         /// </summary>
         public readonly Outputs.NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy? AutoscaledRolloutPolicy;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? NodePoolSoakDuration;
         /// <summary>
-        /// Specifies the standard policy settings for blue-green upgrades.
+        /// Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
         /// </summary>
         public readonly Outputs.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy? StandardRolloutPolicy;
 

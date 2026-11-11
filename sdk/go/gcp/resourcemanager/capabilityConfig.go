@@ -31,20 +31,86 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/resourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := resourcemanager.NewCapabilityConfig(ctx, "capability_config", &resourcemanager.CapabilityConfigArgs{
+//			boundary, err := tags.NewTagKey(ctx, "boundary", &tags.TagKeyArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
+//				ShortName:   pulumi.String("bndkey"),
+//				Description: pulumi.String("Partitioning tag key used by boundaries."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			boundary1, err := tags.NewTagValue(ctx, "boundary_1", &tags.TagValueArgs{
+//				Parent:      boundary.ID(),
+//				ShortName:   pulumi.String("bndval-1"),
+//				Description: pulumi.String("Tag value for the first boundary."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			boundary2, err := tags.NewTagValue(ctx, "boundary_2", &tags.TagValueArgs{
+//				Parent:      boundary.ID(),
+//				ShortName:   pulumi.String("bndval-2"),
+//				Description: pulumi.String("Tag value for the second boundary."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			boundaryBoundaryConfig, err := resourcemanager.NewBoundaryConfig(ctx, "boundary", &resourcemanager.BoundaryConfigArgs{
+//				Parent: pulumi.String("organizations/123456789"),
+//				TagKey: boundary.NamespacedName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			boundary1Boundary, err := resourcemanager.NewBoundary(ctx, "boundary_1", &resourcemanager.BoundaryArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
+//				BoundaryId:  pulumi.String("boundary-1"),
+//				DisplayName: pulumi.String("Boundary 1"),
+//				ResourceFilter: &resourcemanager.BoundaryResourceFilterArgs{
+//					TagFilter: &resourcemanager.BoundaryResourceFilterTagFilterArgs{
+//						TagKey:   boundaryBoundaryConfig.TagKey,
+//						TagValue: boundary1.ShortName,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			boundary2Boundary, err := resourcemanager.NewBoundary(ctx, "boundary_2", &resourcemanager.BoundaryArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
+//				BoundaryId:  pulumi.String("boundary-2"),
+//				DisplayName: pulumi.String("Boundary 2"),
+//				ResourceFilter: &resourcemanager.BoundaryResourceFilterArgs{
+//					TagFilter: &resourcemanager.BoundaryResourceFilterTagFilterArgs{
+//						TagKey:   boundaryBoundaryConfig.TagKey,
+//						TagValue: boundary2.ShortName,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewCapabilityConfig(ctx, "capability_config", &resourcemanager.CapabilityConfigArgs{
 //				Parent:             pulumi.String("organizations/123456789"),
 //				CapabilityConfigId: pulumi.String("capcfg"),
 //				DisplayName:        pulumi.String("capdisp"),
 //				Types: pulumi.StringArray{
 //					pulumi.String("AGENT_MANAGEMENT"),
 //				},
-//			})
+//				Boundaries: pulumi.StringArray{
+//					boundary1Boundary.Name,
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				boundary1Boundary,
+//				boundary2Boundary,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -198,6 +264,10 @@ import (
 type CapabilityConfig struct {
 	pulumi.CustomResourceState
 
+	// The list of Boundaries associated with this capability config.
+	// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+	// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+	Boundaries pulumi.StringArrayOutput `pulumi:"boundaries"`
 	// User-specified identifier of the capability config. Must be 6 to 30 characters,
 	// and contain only lowercase letters, numbers, and hyphens.
 	CapabilityConfigId pulumi.StringOutput `pulumi:"capabilityConfigId"`
@@ -272,6 +342,10 @@ func GetCapabilityConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CapabilityConfig resources.
 type capabilityConfigState struct {
+	// The list of Boundaries associated with this capability config.
+	// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+	// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+	Boundaries []string `pulumi:"boundaries"`
 	// User-specified identifier of the capability config. Must be 6 to 30 characters,
 	// and contain only lowercase letters, numbers, and hyphens.
 	CapabilityConfigId *string `pulumi:"capabilityConfigId"`
@@ -308,6 +382,10 @@ type capabilityConfigState struct {
 }
 
 type CapabilityConfigState struct {
+	// The list of Boundaries associated with this capability config.
+	// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+	// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+	Boundaries pulumi.StringArrayInput
 	// User-specified identifier of the capability config. Must be 6 to 30 characters,
 	// and contain only lowercase letters, numbers, and hyphens.
 	CapabilityConfigId pulumi.StringPtrInput
@@ -354,6 +432,10 @@ func CapabilityConfigExists(ctx *pulumi.Context,
 }
 
 type capabilityConfigArgs struct {
+	// The list of Boundaries associated with this capability config.
+	// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+	// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+	Boundaries []string `pulumi:"boundaries"`
 	// User-specified identifier of the capability config. Must be 6 to 30 characters,
 	// and contain only lowercase letters, numbers, and hyphens.
 	CapabilityConfigId string `pulumi:"capabilityConfigId"`
@@ -380,6 +462,10 @@ type capabilityConfigArgs struct {
 
 // The set of arguments for constructing a CapabilityConfig resource.
 type CapabilityConfigArgs struct {
+	// The list of Boundaries associated with this capability config.
+	// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+	// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+	Boundaries pulumi.StringArrayInput
 	// User-specified identifier of the capability config. Must be 6 to 30 characters,
 	// and contain only lowercase letters, numbers, and hyphens.
 	CapabilityConfigId pulumi.StringInput
@@ -489,6 +575,13 @@ func (o CapabilityConfigOutput) ToCapabilityConfigOutput() CapabilityConfigOutpu
 
 func (o CapabilityConfigOutput) ToCapabilityConfigOutputWithContext(ctx context.Context) CapabilityConfigOutput {
 	return o
+}
+
+// The list of Boundaries associated with this capability config.
+// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+func (o CapabilityConfigOutput) Boundaries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CapabilityConfig) pulumi.StringArrayOutput { return v.Boundaries }).(pulumi.StringArrayOutput)
 }
 
 // User-specified identifier of the capability config. Must be 6 to 30 characters,

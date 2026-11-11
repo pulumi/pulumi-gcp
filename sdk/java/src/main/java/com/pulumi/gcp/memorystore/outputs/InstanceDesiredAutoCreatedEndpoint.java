@@ -11,23 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class InstanceDesiredAutoCreatedEndpoint {
     /**
-     * @return (Output)
-     * Output only. The consumer network where the IP address resides, in the form of
+     * @return Required. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
      * 
      */
     private String network;
     /**
-     * @return (Output)
-     * Output only. The consumer projectId where the forwarding rule is created from.
+     * @return Required. The consumer projectId where the forwarding rule is created from.
      * 
      */
     private String projectId;
 
     private InstanceDesiredAutoCreatedEndpoint() {}
     /**
-     * @return (Output)
-     * Output only. The consumer network where the IP address resides, in the form of
+     * @return Required. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
      * 
      */
@@ -35,8 +32,7 @@ public final class InstanceDesiredAutoCreatedEndpoint {
         return this.network;
     }
     /**
-     * @return (Output)
-     * Output only. The consumer projectId where the forwarding rule is created from.
+     * @return Required. The consumer projectId where the forwarding rule is created from.
      * 
      */
     public String projectId() {

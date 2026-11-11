@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +77,27 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * User labels applied to this API proxy. Changing only the labels does not create a new revision.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return User labels applied to this API proxy. Changing only the labels does not create a new revision.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * The ID of the API proxy.
      * 
      */
@@ -111,6 +133,7 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         this.configBundle = $.configBundle;
         this.deletionPolicy = $.deletionPolicy;
         this.detectMd5hash = $.detectMd5hash;
+        this.labels = $.labels;
         this.name = $.name;
         this.orgId = $.orgId;
     }
@@ -208,6 +231,33 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder detectMd5hash(String detectMd5hash) {
             return detectMd5hash(Output.of(detectMd5hash));
+        }
+
+        /**
+         * @param labels User labels applied to this API proxy. Changing only the labels does not create a new revision.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels User labels applied to this API proxy. Changing only the labels does not create a new revision.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

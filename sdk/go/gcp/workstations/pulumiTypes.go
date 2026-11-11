@@ -1619,6 +1619,10 @@ type WorkstationConfigHostGceInstance struct {
 	MachineType *string `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation startup.
 	PoolSize *int `pulumi:"poolSize"`
+	// (Optional, Beta)
+	// Reservation affinity to setup a GCE instance.
+	// Structure is documented below.
+	ReservationAffinity *WorkstationConfigHostGceInstanceReservationAffinity `pulumi:"reservationAffinity"`
 	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
@@ -1672,6 +1676,10 @@ type WorkstationConfigHostGceInstanceArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation startup.
 	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
+	// (Optional, Beta)
+	// Reservation affinity to setup a GCE instance.
+	// Structure is documented below.
+	ReservationAffinity WorkstationConfigHostGceInstanceReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
@@ -1824,6 +1832,15 @@ func (o WorkstationConfigHostGceInstanceOutput) MachineType() pulumi.StringPtrOu
 // Number of instances to pool for faster workstation startup.
 func (o WorkstationConfigHostGceInstanceOutput) PoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *int { return v.PoolSize }).(pulumi.IntPtrOutput)
+}
+
+// (Optional, Beta)
+// Reservation affinity to setup a GCE instance.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstanceOutput) ReservationAffinity() WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *WorkstationConfigHostGceInstanceReservationAffinity {
+		return v.ReservationAffinity
+	}).(WorkstationConfigHostGceInstanceReservationAffinityPtrOutput)
 }
 
 // Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -1984,6 +2001,18 @@ func (o WorkstationConfigHostGceInstancePtrOutput) PoolSize() pulumi.IntPtrOutpu
 		}
 		return v.PoolSize
 	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional, Beta)
+// Reservation affinity to setup a GCE instance.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstancePtrOutput) ReservationAffinity() WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *WorkstationConfigHostGceInstanceReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(WorkstationConfigHostGceInstanceReservationAffinityPtrOutput)
 }
 
 // Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -2165,6 +2194,10 @@ type WorkstationConfigHostGceInstanceBoostConfig struct {
 	MachineType *string `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation boosting.
 	PoolSize *int `pulumi:"poolSize"`
+	// (Optional, Beta)
+	// Reservation affinity to setup a GCE instance.
+	// Structure is documented below.
+	ReservationAffinity *WorkstationConfigHostGceInstanceBoostConfigReservationAffinity `pulumi:"reservationAffinity"`
 }
 
 // WorkstationConfigHostGceInstanceBoostConfigInput is an input type that accepts WorkstationConfigHostGceInstanceBoostConfigArgs and WorkstationConfigHostGceInstanceBoostConfigOutput values.
@@ -2196,6 +2229,10 @@ type WorkstationConfigHostGceInstanceBoostConfigArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation boosting.
 	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
+	// (Optional, Beta)
+	// Reservation affinity to setup a GCE instance.
+	// Structure is documented below.
+	ReservationAffinity WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 }
 
 func (WorkstationConfigHostGceInstanceBoostConfigArgs) ElementType() reflect.Type {
@@ -2287,6 +2324,15 @@ func (o WorkstationConfigHostGceInstanceBoostConfigOutput) MachineType() pulumi.
 // Number of instances to pool for faster workstation boosting.
 func (o WorkstationConfigHostGceInstanceBoostConfigOutput) PoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *int { return v.PoolSize }).(pulumi.IntPtrOutput)
+}
+
+// (Optional, Beta)
+// Reservation affinity to setup a GCE instance.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstanceBoostConfigOutput) ReservationAffinity() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *WorkstationConfigHostGceInstanceBoostConfigReservationAffinity {
+		return v.ReservationAffinity
+	}).(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput)
 }
 
 type WorkstationConfigHostGceInstanceBoostConfigArrayOutput struct{ *pulumi.OutputState }
@@ -2413,6 +2459,199 @@ func (o WorkstationConfigHostGceInstanceBoostConfigAcceleratorArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkstationConfigHostGceInstanceBoostConfigAccelerator {
 		return vs[0].([]WorkstationConfigHostGceInstanceBoostConfigAccelerator)[vs[1].(int)]
 	}).(WorkstationConfigHostGceInstanceBoostConfigAcceleratorOutput)
+}
+
+type WorkstationConfigHostGceInstanceBoostConfigReservationAffinity struct {
+	// Type of reservation consumption.
+	// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+	ConsumeReservationType *string `pulumi:"consumeReservationType"`
+	// Label key of reservation resource.
+	Key *string `pulumi:"key"`
+	// Label values of reservation resources.
+	// Valid values are either the name of a reservation in the same project
+	// or "projects/{project}/reservations/{reservation}" to target a shared
+	// reservation in the same zone but in a different project.
+	Values []string `pulumi:"values"`
+}
+
+// WorkstationConfigHostGceInstanceBoostConfigReservationAffinityInput is an input type that accepts WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs and WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceBoostConfigReservationAffinityInput` via:
+//
+//	WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs{...}
+type WorkstationConfigHostGceInstanceBoostConfigReservationAffinityInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput
+	ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutputWithContext(context.Context) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput
+}
+
+type WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs struct {
+	// Type of reservation consumption.
+	// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+	ConsumeReservationType pulumi.StringPtrInput `pulumi:"consumeReservationType"`
+	// Label key of reservation resource.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Label values of reservation resources.
+	// Valid values are either the name of a reservation in the same project
+	// or "projects/{project}/reservations/{reservation}" to target a shared
+	// reservation in the same zone but in a different project.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceBoostConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput {
+	return i.ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput)
+}
+
+func (i WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return i.ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput).ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrInput is an input type that accepts WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs, WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtr and WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrInput` via:
+//
+//	        WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput
+	ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(context.Context) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput
+}
+
+type workstationConfigHostGceInstanceBoostConfigReservationAffinityPtrType WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs
+
+func WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtr(v *WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrInput {
+	return (*workstationConfigHostGceInstanceBoostConfigReservationAffinityPtrType)(v)
+}
+
+func (*workstationConfigHostGceInstanceBoostConfigReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstanceBoostConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i *workstationConfigHostGceInstanceBoostConfigReservationAffinityPtrType) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return i.ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigHostGceInstanceBoostConfigReservationAffinityPtrType) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceBoostConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return o.ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigHostGceInstanceBoostConfigReservationAffinity) *WorkstationConfigHostGceInstanceBoostConfigReservationAffinity {
+		return &v
+	}).(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput)
+}
+
+// Type of reservation consumption.
+// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfigReservationAffinity) *string {
+		return v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label key of reservation resource.
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfigReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Label values of reservation resources.
+// Valid values are either the name of a reservation in the same project
+// or "projects/{project}/reservations/{reservation}" to target a shared
+// reservation in the same zone but in a different project.
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfigReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstanceBoostConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput) ToWorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput) Elem() WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceBoostConfigReservationAffinity) WorkstationConfigHostGceInstanceBoostConfigReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigHostGceInstanceBoostConfigReservationAffinity
+		return ret
+	}).(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput)
+}
+
+// Type of reservation consumption.
+// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceBoostConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label key of reservation resource.
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceBoostConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label values of reservation resources.
+// Valid values are either the name of a reservation in the same project
+// or "projects/{project}/reservations/{reservation}" to target a shared
+// reservation in the same zone but in a different project.
+func (o WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceBoostConfigReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type WorkstationConfigHostGceInstanceConfidentialInstanceConfig struct {
@@ -2552,6 +2791,197 @@ func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) Ena
 		}
 		return v.EnableConfidentialCompute
 	}).(pulumi.BoolPtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceReservationAffinity struct {
+	// Type of reservation consumption.
+	// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+	ConsumeReservationType *string `pulumi:"consumeReservationType"`
+	// Label key of reservation resource.
+	Key *string `pulumi:"key"`
+	// Label values of reservation resources.
+	// Valid values are either the name of a reservation in the same project
+	// or "projects/{project}/reservations/{reservation}" to target a shared
+	// reservation in the same zone but in a different project.
+	Values []string `pulumi:"values"`
+}
+
+// WorkstationConfigHostGceInstanceReservationAffinityInput is an input type that accepts WorkstationConfigHostGceInstanceReservationAffinityArgs and WorkstationConfigHostGceInstanceReservationAffinityOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceReservationAffinityInput` via:
+//
+//	WorkstationConfigHostGceInstanceReservationAffinityArgs{...}
+type WorkstationConfigHostGceInstanceReservationAffinityInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceReservationAffinityOutput() WorkstationConfigHostGceInstanceReservationAffinityOutput
+	ToWorkstationConfigHostGceInstanceReservationAffinityOutputWithContext(context.Context) WorkstationConfigHostGceInstanceReservationAffinityOutput
+}
+
+type WorkstationConfigHostGceInstanceReservationAffinityArgs struct {
+	// Type of reservation consumption.
+	// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+	ConsumeReservationType pulumi.StringPtrInput `pulumi:"consumeReservationType"`
+	// Label key of reservation resource.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Label values of reservation resources.
+	// Valid values are either the name of a reservation in the same project
+	// or "projects/{project}/reservations/{reservation}" to target a shared
+	// reservation in the same zone but in a different project.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (WorkstationConfigHostGceInstanceReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i WorkstationConfigHostGceInstanceReservationAffinityArgs) ToWorkstationConfigHostGceInstanceReservationAffinityOutput() WorkstationConfigHostGceInstanceReservationAffinityOutput {
+	return i.ToWorkstationConfigHostGceInstanceReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceReservationAffinityArgs) ToWorkstationConfigHostGceInstanceReservationAffinityOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceReservationAffinityOutput)
+}
+
+func (i WorkstationConfigHostGceInstanceReservationAffinityArgs) ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return i.ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceReservationAffinityArgs) ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceReservationAffinityOutput).ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigHostGceInstanceReservationAffinityPtrInput is an input type that accepts WorkstationConfigHostGceInstanceReservationAffinityArgs, WorkstationConfigHostGceInstanceReservationAffinityPtr and WorkstationConfigHostGceInstanceReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceReservationAffinityPtrInput` via:
+//
+//	        WorkstationConfigHostGceInstanceReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigHostGceInstanceReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceReservationAffinityPtrOutput
+	ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(context.Context) WorkstationConfigHostGceInstanceReservationAffinityPtrOutput
+}
+
+type workstationConfigHostGceInstanceReservationAffinityPtrType WorkstationConfigHostGceInstanceReservationAffinityArgs
+
+func WorkstationConfigHostGceInstanceReservationAffinityPtr(v *WorkstationConfigHostGceInstanceReservationAffinityArgs) WorkstationConfigHostGceInstanceReservationAffinityPtrInput {
+	return (*workstationConfigHostGceInstanceReservationAffinityPtrType)(v)
+}
+
+func (*workstationConfigHostGceInstanceReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i *workstationConfigHostGceInstanceReservationAffinityPtrType) ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return i.ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigHostGceInstanceReservationAffinityPtrType) ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceReservationAffinityPtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceReservationAffinityOutput) ToWorkstationConfigHostGceInstanceReservationAffinityOutput() WorkstationConfigHostGceInstanceReservationAffinityOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceReservationAffinityOutput) ToWorkstationConfigHostGceInstanceReservationAffinityOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceReservationAffinityOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceReservationAffinityOutput) ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return o.ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigHostGceInstanceReservationAffinityOutput) ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigHostGceInstanceReservationAffinity) *WorkstationConfigHostGceInstanceReservationAffinity {
+		return &v
+	}).(WorkstationConfigHostGceInstanceReservationAffinityPtrOutput)
+}
+
+// Type of reservation consumption.
+// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+func (o WorkstationConfigHostGceInstanceReservationAffinityOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceReservationAffinity) *string { return v.ConsumeReservationType }).(pulumi.StringPtrOutput)
+}
+
+// Label key of reservation resource.
+func (o WorkstationConfigHostGceInstanceReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Label values of reservation resources.
+// Valid values are either the name of a reservation in the same project
+// or "projects/{project}/reservations/{reservation}" to target a shared
+// reservation in the same zone but in a different project.
+func (o WorkstationConfigHostGceInstanceReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type WorkstationConfigHostGceInstanceReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceReservationAffinityPtrOutput) ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutput() WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceReservationAffinityPtrOutput) ToWorkstationConfigHostGceInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceReservationAffinityPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceReservationAffinityPtrOutput) Elem() WorkstationConfigHostGceInstanceReservationAffinityOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceReservationAffinity) WorkstationConfigHostGceInstanceReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigHostGceInstanceReservationAffinity
+		return ret
+	}).(WorkstationConfigHostGceInstanceReservationAffinityOutput)
+}
+
+// Type of reservation consumption.
+// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+func (o WorkstationConfigHostGceInstanceReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label key of reservation resource.
+func (o WorkstationConfigHostGceInstanceReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label values of reservation resources.
+// Valid values are either the name of a reservation in the same project
+// or "projects/{project}/reservations/{reservation}" to target a shared
+// reservation in the same zone but in a different project.
+func (o WorkstationConfigHostGceInstanceReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type WorkstationConfigHostGceInstanceShieldedInstanceConfig struct {
@@ -4074,8 +4504,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceBoostConfigArrayInput)(nil)).Elem(), WorkstationConfigHostGceInstanceBoostConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceBoostConfigAcceleratorInput)(nil)).Elem(), WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceBoostConfigAcceleratorArrayInput)(nil)).Elem(), WorkstationConfigHostGceInstanceBoostConfigAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceBoostConfigReservationAffinityInput)(nil)).Elem(), WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfigInput)(nil)).Elem(), WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceReservationAffinityInput)(nil)).Elem(), WorkstationConfigHostGceInstanceReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceReservationAffinityPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfigInput)(nil)).Elem(), WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigIamBindingConditionInput)(nil)).Elem(), WorkstationConfigIamBindingConditionArgs{})
@@ -4122,8 +4556,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceBoostConfigArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceBoostConfigAcceleratorOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceBoostConfigAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceReservationAffinityOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigIamBindingConditionOutput{})

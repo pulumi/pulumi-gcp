@@ -69,6 +69,20 @@ public final class AnalystAgentPersonaMcpDataSource {
      * 
      */
     private String serverUrl;
+    /**
+     * @return The HTTP header name used to pass the agent session ID in MCP server
+     * requests (defaults to &#39;X-Session-Id&#39; when unset). Must be a valid HTTP
+     * header field name (RFC 9110 token).
+     * 
+     */
+    private @Nullable String sessionIdHeader;
+    /**
+     * @return The HTTP header name used to pass the agent task ID in MCP server
+     * requests (defaults to &#39;X-Task-Id&#39; when unset). Must be a valid HTTP
+     * header field name (RFC 9110 token).
+     * 
+     */
+    private @Nullable String taskIdHeader;
 
     private AnalystAgentPersonaMcpDataSource() {}
     /**
@@ -149,6 +163,24 @@ public final class AnalystAgentPersonaMcpDataSource {
     public String serverUrl() {
         return this.serverUrl;
     }
+    /**
+     * @return The HTTP header name used to pass the agent session ID in MCP server
+     * requests (defaults to &#39;X-Session-Id&#39; when unset). Must be a valid HTTP
+     * header field name (RFC 9110 token).
+     * 
+     */
+    public Optional<String> sessionIdHeader() {
+        return Optional.ofNullable(this.sessionIdHeader);
+    }
+    /**
+     * @return The HTTP header name used to pass the agent task ID in MCP server
+     * requests (defaults to &#39;X-Task-Id&#39; when unset). Must be a valid HTTP
+     * header field name (RFC 9110 token).
+     * 
+     */
+    public Optional<String> taskIdHeader() {
+        return Optional.ofNullable(this.taskIdHeader);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -170,6 +202,8 @@ public final class AnalystAgentPersonaMcpDataSource {
         private @Nullable String oauthTokenUrl;
         private @Nullable String prompt;
         private String serverUrl;
+        private @Nullable String sessionIdHeader;
+        private @Nullable String taskIdHeader;
         public Builder() {}
         public Builder(AnalystAgentPersonaMcpDataSource defaults) {
     	      Objects.requireNonNull(defaults);
@@ -184,6 +218,8 @@ public final class AnalystAgentPersonaMcpDataSource {
     	      this.oauthTokenUrl = defaults.oauthTokenUrl;
     	      this.prompt = defaults.prompt;
     	      this.serverUrl = defaults.serverUrl;
+    	      this.sessionIdHeader = defaults.sessionIdHeader;
+    	      this.taskIdHeader = defaults.taskIdHeader;
         }
 
         @CustomType.Setter
@@ -260,6 +296,18 @@ public final class AnalystAgentPersonaMcpDataSource {
             this.serverUrl = serverUrl;
             return this;
         }
+        @CustomType.Setter
+        public Builder sessionIdHeader(@Nullable String sessionIdHeader) {
+
+            this.sessionIdHeader = sessionIdHeader;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder taskIdHeader(@Nullable String taskIdHeader) {
+
+            this.taskIdHeader = taskIdHeader;
+            return this;
+        }
         public AnalystAgentPersonaMcpDataSource build() {
             final var _resultValue = new AnalystAgentPersonaMcpDataSource();
             _resultValue.apiKey = apiKey;
@@ -273,6 +321,8 @@ public final class AnalystAgentPersonaMcpDataSource {
             _resultValue.oauthTokenUrl = oauthTokenUrl;
             _resultValue.prompt = prompt;
             _resultValue.serverUrl = serverUrl;
+            _resultValue.sessionIdHeader = sessionIdHeader;
+            _resultValue.taskIdHeader = taskIdHeader;
             return _resultValue;
         }
     }

@@ -1142,10 +1142,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.BackendAuthenticationConfig;
+ * import com.pulumi.gcp.networksecurity.BackendAuthenticationConfigArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingForwardProxyArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -1159,6 +1162,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var defaultBackendAuthenticationConfig = new BackendAuthenticationConfig("defaultBackendAuthenticationConfig", BackendAuthenticationConfigArgs.builder()
+ *             .name("authentication")
+ *             .wellKnownRoots("PUBLIC_ROOTS")
+ *             .build());
+ * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .loadBalancingScheme("INTERNAL_MANAGED")
@@ -1168,6 +1176,9 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .proxyMode("DIRECT_FORWARDING")
  *                     .build())
+ *                 .build())
+ *             .tlsSettings(BackendServiceTlsSettingsArgs.builder()
+ *                 .authenticationConfig(defaultBackendAuthenticationConfig.id().applyValue(_id -> String.format("//networksecurity.googleapis.com/%s", _id)))
  *                 .build())
  *             .build());
  * 

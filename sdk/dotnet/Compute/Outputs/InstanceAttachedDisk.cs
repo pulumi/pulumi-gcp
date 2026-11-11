@@ -40,7 +40,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? DiskEncryptionServiceAccount;
         /// <summary>
-        /// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+        /// boolean field that determines whether to force attach the regional
+        /// disk even if it's currently attached to another instance. If you try to force attach a zonal
+        /// disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
         /// </summary>
         public readonly bool? ForceAttach;
         /// <summary>

@@ -32,91 +32,17 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// {
     ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "europe-west4",
     ///         InstanceId = "my-instance",
     ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "europe-west4",
     ///         RepositoryId = "my-repository",
     ///         Instance = instance.Name,
     ///         DeletionPolicy = "PREVENT",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Secure Source Manager Repository Initial Config
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         InstanceId = "my-instance",
-    ///         DeletionPolicy = "PREVENT",
-    ///     });
-    /// 
-    ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         RepositoryId = "my-repository",
-    ///         Instance = instance.Name,
-    ///         Description = "This is a test repository",
-    ///         InitialConfig = new Gcp.SecureSourceManager.Inputs.RepositoryInitialConfigArgs
-    ///         {
-    ///             DefaultBranch = "main",
-    ///             Gitignores = new[]
-    ///             {
-    ///                 "python",
-    ///             },
-    ///             License = "mit",
-    ///             Readme = "default",
-    ///         },
-    ///         DeletionPolicy = "PREVENT",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Secure Source Manager Repository Service Account
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         InstanceId = "my-instance",
-    ///         DeletionPolicy = "PREVENT",
-    ///     });
-    /// 
-    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
-    ///     {
-    ///         AccountId = "my-sa",
-    ///         DisplayName = "Test Service Account",
-    ///     });
-    /// 
-    ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         RepositoryId = "my-repository",
-    ///         Instance = instance.Name,
-    ///         DeletionPolicy = "PREVENT",
-    ///         ServiceAccount = sa.Email,
     ///     });
     /// 
     /// });
@@ -129,19 +55,20 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "europe-west4",
     ///         InstanceId = "my-instance",
     ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     ///     var template = new Gcp.DataLoss.PreventionInspectTemplate("template", new()
     ///     {
-    ///         Parent = "projects/my-project-name/locations/us-central1",
+    ///         Parent = "projects/my-project-name/locations/europe-west4",
     ///         DisplayName = "Test Inspect Template",
     ///         InspectConfig = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigArgs
     ///         {
@@ -164,11 +91,24 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
     ///     });
     /// 
+    ///     // IAM permissions can take time to propagate
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             ssmP4saDlpReader,
+    ///         },
+    ///     });
+    /// 
     ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "europe-west4",
     ///         RepositoryId = "my-repository",
     ///         Instance = instance.Name,
+    ///         Description = "This is a test repository",
     ///         DeletionPolicy = "PREVENT",
     ///         ScanConfig = new Gcp.SecureSourceManager.Inputs.RepositoryScanConfigArgs
     ///         {
@@ -182,14 +122,14 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///     {
     ///         DependsOn =
     ///         {
-    ///             ssmP4saDlpReader,
+    ///             wait120Seconds,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ### Secure Source Manager Repository Secret Scanning Default
+    /// ### Secure Source Manager Repository Initial Config
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -201,24 +141,35 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// {
     ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "asia-east1",
     ///         InstanceId = "my-instance",
     ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-sa",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
     ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "asia-east1",
     ///         RepositoryId = "my-repository",
     ///         Instance = instance.Name,
-    ///         DeletionPolicy = "PREVENT",
-    ///         ScanConfig = new Gcp.SecureSourceManager.Inputs.RepositoryScanConfigArgs
+    ///         Description = "This is a test repository",
+    ///         ServiceAccount = sa.Email,
+    ///         InitialConfig = new Gcp.SecureSourceManager.Inputs.RepositoryInitialConfigArgs
     ///         {
-    ///             SecretScanConfig = new Gcp.SecureSourceManager.Inputs.RepositoryScanConfigSecretScanConfigArgs
+    ///             DefaultBranch = "main",
+    ///             Gitignores = new[]
     ///             {
-    ///                 Enabled = true,
+    ///                 "python",
     ///             },
+    ///             License = "mit",
+    ///             Readme = "default",
     ///         },
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     /// });

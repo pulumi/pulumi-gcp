@@ -12,6 +12,7 @@ import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOpt
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigParquetOptionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -111,6 +112,27 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Labels as key value pairs. Have a character limit of 64 per key and value.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels as key value pairs. Have a character limit of 64 per key and value.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      * 
@@ -184,6 +206,7 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
         this.displayName = $.displayName;
         this.forceDestroy = $.forceDestroy;
         this.frequencyOptions = $.frequencyOptions;
+        this.labels = $.labels;
         this.location = $.location;
         this.objectMetadataReportOptions = $.objectMetadataReportOptions;
         this.parquetOptions = $.parquetOptions;
@@ -325,6 +348,33 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder frequencyOptions(InsightsReportConfigFrequencyOptionsArgs frequencyOptions) {
             return frequencyOptions(Output.of(frequencyOptions));
+        }
+
+        /**
+         * @param labels Labels as key value pairs. Have a character limit of 64 per key and value.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels as key value pairs. Have a character limit of 64 per key and value.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

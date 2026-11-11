@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs;
+import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -131,6 +132,25 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
         return Optional.ofNullable(this.poolSize);
     }
 
+    /**
+     * (Optional, Beta)
+     * Reservation affinity to setup a GCE instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="reservationAffinity")
+    private @Nullable Output<WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs> reservationAffinity;
+
+    /**
+     * @return (Optional, Beta)
+     * Reservation affinity to setup a GCE instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs>> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
+
     private WorkstationConfigHostGceInstanceBoostConfigArgs() {}
 
     private WorkstationConfigHostGceInstanceBoostConfigArgs(WorkstationConfigHostGceInstanceBoostConfigArgs $) {
@@ -141,6 +161,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
         this.id = $.id;
         this.machineType = $.machineType;
         this.poolSize = $.poolSize;
+        this.reservationAffinity = $.reservationAffinity;
     }
 
     public static Builder builder() {
@@ -323,6 +344,31 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
          */
         public Builder poolSize(Integer poolSize) {
             return poolSize(Output.of(poolSize));
+        }
+
+        /**
+         * @param reservationAffinity (Optional, Beta)
+         * Reservation affinity to setup a GCE instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(@Nullable Output<WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs> reservationAffinity) {
+            $.reservationAffinity = reservationAffinity;
+            return this;
+        }
+
+        /**
+         * @param reservationAffinity (Optional, Beta)
+         * Reservation affinity to setup a GCE instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs reservationAffinity) {
+            return reservationAffinity(Output.of(reservationAffinity));
         }
 
         public WorkstationConfigHostGceInstanceBoostConfigArgs build() {

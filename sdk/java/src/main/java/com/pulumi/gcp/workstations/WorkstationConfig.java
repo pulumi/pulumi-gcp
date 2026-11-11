@@ -927,6 +927,110 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Workstation Config Reservation Affinity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.compute.Reservation;
+ * import com.pulumi.gcp.compute.ReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
+ * import com.pulumi.gcp.workstations.WorkstationConfig;
+ * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceReservationAffinityArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("workstation-cluster")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("workstation-cluster")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-east4")
+ *             .network(default_.name())
+ *             .build());
+ * 
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
+ *             .workstationClusterId("workstation-cluster")
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location("us-east4")
+ *             .build());
+ * 
+ *         var defaultReservation = new Reservation("defaultReservation", ReservationArgs.builder()
+ *             .name("workstation-reservation")
+ *             .zone("us-east4-a")
+ *             .specificReservation(ReservationSpecificReservationArgs.builder()
+ *                 .count(1)
+ *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
+ *                     .machineType("e2-standard-4")
+ *                     .build())
+ *                 .build())
+ *             .specificReservationRequired(true)
+ *             .build());
+ * 
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
+ *             .workstationConfigId("workstation-config")
+ *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
+ *             .location("us-east4")
+ *             .replicaZones(            
+ *                 "us-east4-a",
+ *                 "us-east4-b")
+ *             .host(WorkstationConfigHostArgs.builder()
+ *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
+ *                     .machineType("e2-standard-4")
+ *                     .bootDiskSizeGb(35)
+ *                     .disablePublicIpAddresses(true)
+ *                     .reservationAffinity(WorkstationConfigHostGceInstanceReservationAffinityArgs.builder()
+ *                         .consumeReservationType("SPECIFIC_RESERVATION")
+ *                         .key("compute.googleapis.com/reservation-name")
+ *                         .values(defaultReservation.name())
+ *                         .build())
+ *                     .boostConfigs(WorkstationConfigHostGceInstanceBoostConfigArgs.builder()
+ *                         .id("boost-1")
+ *                         .machineType("e2-standard-4")
+ *                         .bootDiskSizeGb(35)
+ *                         .reservationAffinity(WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs.builder()
+ *                             .consumeReservationType("ANY_RESERVATION")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Regional Endpoint Policies
  * 
  * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.

@@ -383,7 +383,7 @@ type DataConnector struct {
 	// 'PERIODIC', 'STREAMING'.
 	SyncMode pulumi.StringPtrOutput `pulumi:"syncMode"`
 	// User-facing, version-independent label for this connector.
-	Tag pulumi.StringPtrOutput `pulumi:"tag"`
+	Tag pulumi.StringOutput `pulumi:"tag"`
 	// Timestamp when the DataConnector was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -1235,8 +1235,8 @@ func (o DataConnectorOutput) SyncMode() pulumi.StringPtrOutput {
 }
 
 // User-facing, version-independent label for this connector.
-func (o DataConnectorOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataConnector) pulumi.StringPtrOutput { return v.Tag }).(pulumi.StringPtrOutput)
+func (o DataConnectorOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }
 
 // Timestamp when the DataConnector was updated.

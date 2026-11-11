@@ -25,6 +25,7 @@ class GeminiGcpEnablementSettingArgs:
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
                  gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -49,6 +50,7 @@ class GeminiGcpEnablementSettingArgs:
         :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
                Format: projects/{project}
                The `{project}` segment can be the project ID or project number.
+        :param pulumi.Input[_builtins.bool] has_custom_instructions: Indicates whether custom instructions are defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -75,6 +77,8 @@ class GeminiGcpEnablementSettingArgs:
             pulumi.set(__self__, "enable_customer_data_sharing", enable_customer_data_sharing)
         if gemini_enterprise_project is not None:
             pulumi.set(__self__, "gemini_enterprise_project", gemini_enterprise_project)
+        if has_custom_instructions is not None:
+            pulumi.set(__self__, "has_custom_instructions", has_custom_instructions)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if mutations_enabled is not None:
@@ -170,6 +174,18 @@ class GeminiGcpEnablementSettingArgs:
         pulumi.set(self, "gemini_enterprise_project", value)
 
     @_builtins.property
+    @pulumi.getter(name="hasCustomInstructions")
+    def has_custom_instructions(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether custom instructions are defined.
+        """
+        return pulumi.get(self, "has_custom_instructions")
+
+    @has_custom_instructions.setter
+    def has_custom_instructions(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "has_custom_instructions", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -247,6 +263,7 @@ class _GeminiGcpEnablementSettingState:
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
                  gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -276,6 +293,7 @@ class _GeminiGcpEnablementSettingState:
                Format: projects/{project}
                The `{project}` segment can be the project ID or project number.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
+        :param pulumi.Input[_builtins.bool] has_custom_instructions: Indicates whether custom instructions are defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -312,6 +330,8 @@ class _GeminiGcpEnablementSettingState:
             pulumi.set(__self__, "gemini_enterprise_project", gemini_enterprise_project)
         if gemini_gcp_enablement_setting_id is not None:
             pulumi.set(__self__, "gemini_gcp_enablement_setting_id", gemini_gcp_enablement_setting_id)
+        if has_custom_instructions is not None:
+            pulumi.set(__self__, "has_custom_instructions", has_custom_instructions)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -425,6 +445,18 @@ class _GeminiGcpEnablementSettingState:
     @gemini_gcp_enablement_setting_id.setter
     def gemini_gcp_enablement_setting_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gemini_gcp_enablement_setting_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hasCustomInstructions")
+    def has_custom_instructions(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether custom instructions are defined.
+        """
+        return pulumi.get(self, "has_custom_instructions")
+
+    @has_custom_instructions.setter
+    def has_custom_instructions(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "has_custom_instructions", value)
 
     @_builtins.property
     @pulumi.getter
@@ -555,6 +587,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
                  gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -582,7 +615,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             enable_customer_data_sharing=True,
             web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE",
             mutations_enabled=True,
-            release_channel="EXPERIMENTAL")
+            release_channel="EXPERIMENTAL",
+            has_custom_instructions=True)
         ```
 
         ## Import
@@ -619,6 +653,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                Format: projects/{project}
                The `{project}` segment can be the project ID or project number.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
+        :param pulumi.Input[_builtins.bool] has_custom_instructions: Indicates whether custom instructions are defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -659,7 +694,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             enable_customer_data_sharing=True,
             web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE",
             mutations_enabled=True,
-            release_channel="EXPERIMENTAL")
+            release_channel="EXPERIMENTAL",
+            has_custom_instructions=True)
         ```
 
         ## Import
@@ -699,6 +735,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
                  gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -721,6 +758,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             if gemini_gcp_enablement_setting_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gemini_gcp_enablement_setting_id'")
             __props__.__dict__["gemini_gcp_enablement_setting_id"] = gemini_gcp_enablement_setting_id
+            __props__.__dict__["has_custom_instructions"] = has_custom_instructions
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -753,6 +791,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
             gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
             gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+            has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -786,6 +825,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                Format: projects/{project}
                The `{project}` segment can be the project ID or project number.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
+        :param pulumi.Input[_builtins.bool] has_custom_instructions: Indicates whether custom instructions are defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -816,6 +856,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__.__dict__["enable_customer_data_sharing"] = enable_customer_data_sharing
         __props__.__dict__["gemini_enterprise_project"] = gemini_enterprise_project
         __props__.__dict__["gemini_gcp_enablement_setting_id"] = gemini_gcp_enablement_setting_id
+        __props__.__dict__["has_custom_instructions"] = has_custom_instructions
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["mutations_enabled"] = mutations_enabled
@@ -837,6 +878,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
             gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
             gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+            has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             mutations_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -854,6 +896,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__["enableCustomerDataSharing"] = enable_customer_data_sharing
         __props__["geminiEnterpriseProject"] = gemini_enterprise_project
         __props__["geminiGcpEnablementSettingId"] = gemini_gcp_enablement_setting_id
+        __props__["hasCustomInstructions"] = has_custom_instructions
         __props__["labels"] = labels
         __props__["location"] = location
         __props__["mutationsEnabled"] = mutations_enabled
@@ -931,6 +974,14 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         Id of the Gemini Gcp Enablement setting.
         """
         return pulumi.get(self, "gemini_gcp_enablement_setting_id")
+
+    @_builtins.property
+    @pulumi.getter(name="hasCustomInstructions")
+    def has_custom_instructions(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Indicates whether custom instructions are defined.
+        """
+        return pulumi.get(self, "has_custom_instructions")
 
     @_builtins.property
     @pulumi.getter

@@ -60,6 +60,11 @@ export type LicenseConfig = import("./licenseConfig").LicenseConfig;
 export const LicenseConfig: typeof import("./licenseConfig").LicenseConfig = null as any;
 utilities.lazyLoad(exports, ["LicenseConfig"], () => require("./licenseConfig"));
 
+export { ProjectProvisionArgs, ProjectProvisionState } from "./projectProvision";
+export type ProjectProvision = import("./projectProvision").ProjectProvision;
+export const ProjectProvision: typeof import("./projectProvision").ProjectProvision = null as any;
+utilities.lazyLoad(exports, ["ProjectProvision"], () => require("./projectProvision"));
+
 export { RecommendationEngineArgs, RecommendationEngineState } from "./recommendationEngine";
 export type RecommendationEngine = import("./recommendationEngine").RecommendationEngine;
 export const RecommendationEngine: typeof import("./recommendationEngine").RecommendationEngine = null as any;
@@ -136,6 +141,8 @@ const _module = {
                 return new DataStore(name, <any>undefined, { urn })
             case "gcp:discoveryengine/licenseConfig:LicenseConfig":
                 return new LicenseConfig(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/projectProvision:ProjectProvision":
+                return new ProjectProvision(name, <any>undefined, { urn })
             case "gcp:discoveryengine/recommendationEngine:RecommendationEngine":
                 return new RecommendationEngine(name, <any>undefined, { urn })
             case "gcp:discoveryengine/schema:Schema":
@@ -171,6 +178,7 @@ pulumi.runtime.registerResourceModule("gcp", "discoveryengine/control", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/licenseConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/projectProvision", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/recommendationEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/schema", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngine", _module)

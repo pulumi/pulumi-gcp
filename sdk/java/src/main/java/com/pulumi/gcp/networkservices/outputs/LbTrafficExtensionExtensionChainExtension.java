@@ -62,6 +62,16 @@ public final class LbTrafficExtensionExtensionChainExtension {
      */
     private String name;
     /**
+     * @return When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+     * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+     * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+     * This field is helpful when you want to try out the extension in async log-only mode.
+     * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+     * Only `STREAMED` (default) body processing mode is supported.
+     * 
+     */
+    private @Nullable Boolean observabilityMode;
+    /**
      * @return The reference to the service that runs the extension.
      * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
      * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -143,6 +153,18 @@ public final class LbTrafficExtensionExtensionChainExtension {
         return this.name;
     }
     /**
+     * @return When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+     * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+     * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+     * This field is helpful when you want to try out the extension in async log-only mode.
+     * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+     * Only `STREAMED` (default) body processing mode is supported.
+     * 
+     */
+    public Optional<Boolean> observabilityMode() {
+        return Optional.ofNullable(this.observabilityMode);
+    }
+    /**
      * @return The reference to the service that runs the extension.
      * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
      * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -185,6 +207,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
         private @Nullable List<String> forwardHeaders;
         private @Nullable Map<String,String> metadata;
         private String name;
+        private @Nullable Boolean observabilityMode;
         private String service;
         private @Nullable List<String> supportedEvents;
         private @Nullable String timeout;
@@ -197,6 +220,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
     	      this.forwardHeaders = defaults.forwardHeaders;
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
+    	      this.observabilityMode = defaults.observabilityMode;
     	      this.service = defaults.service;
     	      this.supportedEvents = defaults.supportedEvents;
     	      this.timeout = defaults.timeout;
@@ -247,6 +271,12 @@ public final class LbTrafficExtensionExtensionChainExtension {
             return this;
         }
         @CustomType.Setter
+        public Builder observabilityMode(@Nullable Boolean observabilityMode) {
+
+            this.observabilityMode = observabilityMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder service(String service) {
             if (service == null) {
               throw new MissingRequiredPropertyException("LbTrafficExtensionExtensionChainExtension", "service");
@@ -277,6 +307,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
             _resultValue.forwardHeaders = forwardHeaders;
             _resultValue.metadata = metadata;
             _resultValue.name = name;
+            _resultValue.observabilityMode = observabilityMode;
             _resultValue.service = service;
             _resultValue.supportedEvents = supportedEvents;
             _resultValue.timeout = timeout;

@@ -225,14 +225,14 @@ namespace Pulumi.Gcp.Workbench
     ///     {
     ///         Name = "wbi-test-default",
     ///         Network = myNetwork.Id,
-    ///         Region = "us-east1",
+    ///         Region = "us-central1",
     ///         IpCidrRange = "10.0.1.0/24",
     ///     });
     /// 
     ///     var @static = new Gcp.Compute.Address("static", new()
     ///     {
     ///         Name = "wbi-test-default",
-    ///         Region = "us-east1",
+    ///         Region = "us-central1",
     ///     });
     /// 
     ///     var actAsPermission = new Gcp.ServiceAccount.IAMMember("act_as_permission", new()
@@ -245,19 +245,19 @@ namespace Pulumi.Gcp.Workbench
     ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
     ///     {
     ///         Name = "wbi-reservation",
-    ///         Zone = "us-east1-b",
+    ///         Zone = "us-central1-a",
     ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
     ///         {
     ///             Count = 1,
     ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
     ///             {
-    ///                 MachineType = "g2-standard-4",
-    ///                 MinCpuPlatform = "Intel Cascade Lake",
+    ///                 MachineType = "n1-standard-4",
+    ///                 MinCpuPlatform = "Intel Broadwell",
     ///                 GuestAccelerators = new[]
     ///                 {
     ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
     ///                     {
-    ///                         AcceleratorType = "nvidia-l4",
+    ///                         AcceleratorType = "nvidia-tesla-t4",
     ///                         AcceleratorCount = 1,
     ///                     },
     ///                 },
@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.Workbench
     ///     var myPolicy = new Gcp.Compute.ResourcePolicy("my_policy", new()
     ///     {
     ///         Name = "wbi-policy",
-    ///         Region = "us-east1",
+    ///         Region = "us-central1",
     ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
     ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
@@ -286,17 +286,17 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-east1-b",
+    ///         Location = "us-central1-a",
     ///         EnableDeletionProtection = false,
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
-    ///             MachineType = "g2-standard-4",
-    ///             MinCpuPlatform = "Intel Cascade Lake",
+    ///             MachineType = "n1-standard-4",
+    ///             MinCpuPlatform = "Intel Broadwell",
     ///             AcceleratorConfigs = new[]
     ///             {
     ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
     ///                 {
-    ///                     Type = "NVIDIA_L4",
+    ///                     Type = "NVIDIA_TESLA_T4",
     ///                     CoreCount = "1",
     ///                 },
     ///             },

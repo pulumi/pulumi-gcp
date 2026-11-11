@@ -2483,6 +2483,9 @@ type VolumeReplicationDestinationVolumeParametersTieringPolicy struct {
 	// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
 	// Default is 31.
 	CoolingThresholdDays *int `pulumi:"coolingThresholdDays"`
+	// Flag indicating that the hot tier bypass mode is enabled. Default is false.
+	// Only applicable to Flex service level.
+	HotTierBypassModeEnabled *bool `pulumi:"hotTierBypassModeEnabled"`
 	// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
 	// Default value is `PAUSED`.
 	// Possible values are: `ENABLED`, `PAUSED`.
@@ -2504,6 +2507,9 @@ type VolumeReplicationDestinationVolumeParametersTieringPolicyArgs struct {
 	// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
 	// Default is 31.
 	CoolingThresholdDays pulumi.IntPtrInput `pulumi:"coolingThresholdDays"`
+	// Flag indicating that the hot tier bypass mode is enabled. Default is false.
+	// Only applicable to Flex service level.
+	HotTierBypassModeEnabled pulumi.BoolPtrInput `pulumi:"hotTierBypassModeEnabled"`
 	// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
 	// Default value is `PAUSED`.
 	// Possible values are: `ENABLED`, `PAUSED`.
@@ -2593,6 +2599,14 @@ func (o VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) Cooling
 	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParametersTieringPolicy) *int { return v.CoolingThresholdDays }).(pulumi.IntPtrOutput)
 }
 
+// Flag indicating that the hot tier bypass mode is enabled. Default is false.
+// Only applicable to Flex service level.
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) HotTierBypassModeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParametersTieringPolicy) *bool {
+		return v.HotTierBypassModeEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
 // Default value is `PAUSED`.
 // Possible values are: `ENABLED`, `PAUSED`.
@@ -2633,6 +2647,17 @@ func (o VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput) Cool
 		}
 		return v.CoolingThresholdDays
 	}).(pulumi.IntPtrOutput)
+}
+
+// Flag indicating that the hot tier bypass mode is enabled. Default is false.
+// Only applicable to Flex service level.
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput) HotTierBypassModeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParametersTieringPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HotTierBypassModeEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.

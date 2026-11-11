@@ -39,7 +39,7 @@ public final class RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationAr
 
     /**
      * Span of time at a resolution of a second.
-     * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+     * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
      * 
      */
     @Import(name="seconds", required=true)
@@ -47,7 +47,7 @@ public final class RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationAr
 
     /**
      * @return Span of time at a resolution of a second.
-     * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+     * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
      * 
      */
     public Output<Integer> seconds() {
@@ -108,7 +108,7 @@ public final class RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationAr
 
         /**
          * @param seconds Span of time at a resolution of a second.
-         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationAr
 
         /**
          * @param seconds Span of time at a resolution of a second.
-         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
          * 
          * @return builder
          * 

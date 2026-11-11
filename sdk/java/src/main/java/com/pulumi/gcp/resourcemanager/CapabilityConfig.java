@@ -36,8 +36,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.resourcemanager.BoundaryConfig;
+ * import com.pulumi.gcp.resourcemanager.BoundaryConfigArgs;
+ * import com.pulumi.gcp.resourcemanager.Boundary;
+ * import com.pulumi.gcp.resourcemanager.BoundaryArgs;
+ * import com.pulumi.gcp.resourcemanager.inputs.BoundaryResourceFilterArgs;
+ * import com.pulumi.gcp.resourcemanager.inputs.BoundaryResourceFilterTagFilterArgs;
  * import com.pulumi.gcp.resourcemanager.CapabilityConfig;
  * import com.pulumi.gcp.resourcemanager.CapabilityConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,12 +62,64 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var boundary = new TagKey("boundary", TagKeyArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .shortName("bndkey")
+ *             .description("Partitioning tag key used by boundaries.")
+ *             .build());
+ * 
+ *         var boundary1 = new TagValue("boundary1", TagValueArgs.builder()
+ *             .parent(boundary.id())
+ *             .shortName("bndval-1")
+ *             .description("Tag value for the first boundary.")
+ *             .build());
+ * 
+ *         var boundary2 = new TagValue("boundary2", TagValueArgs.builder()
+ *             .parent(boundary.id())
+ *             .shortName("bndval-2")
+ *             .description("Tag value for the second boundary.")
+ *             .build());
+ * 
+ *         var boundaryBoundaryConfig = new BoundaryConfig("boundaryBoundaryConfig", BoundaryConfigArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .tagKey(boundary.namespacedName())
+ *             .build());
+ * 
+ *         var boundary1Boundary = new Boundary("boundary1Boundary", BoundaryArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .boundaryId("boundary-1")
+ *             .displayName("Boundary 1")
+ *             .resourceFilter(BoundaryResourceFilterArgs.builder()
+ *                 .tagFilter(BoundaryResourceFilterTagFilterArgs.builder()
+ *                     .tagKey(boundaryBoundaryConfig.tagKey())
+ *                     .tagValue(boundary1.shortName())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var boundary2Boundary = new Boundary("boundary2Boundary", BoundaryArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .boundaryId("boundary-2")
+ *             .displayName("Boundary 2")
+ *             .resourceFilter(BoundaryResourceFilterArgs.builder()
+ *                 .tagFilter(BoundaryResourceFilterTagFilterArgs.builder()
+ *                     .tagKey(boundaryBoundaryConfig.tagKey())
+ *                     .tagValue(boundary2.shortName())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
  *         var capabilityConfig = new CapabilityConfig("capabilityConfig", CapabilityConfigArgs.builder()
  *             .parent("organizations/123456789")
  *             .capabilityConfigId("capcfg")
  *             .displayName("capdisp")
  *             .types("AGENT_MANAGEMENT")
- *             .build());
+ *             .boundaries(boundary1Boundary.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     boundary1Boundary,
+ *                     boundary2Boundary)
+ *                 .build());
  * 
  *     }
  * }
@@ -206,6 +269,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:resourcemanager/capabilityConfig:CapabilityConfig")
 public class CapabilityConfig extends com.pulumi.resources.CustomResource {
+    /**
+     * The list of Boundaries associated with this capability config.
+     * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+     * Boundaries must share the capability config&#39;s parent, and cannot be specified for project-scoped capability configs.
+     * 
+     */
+    @Export(name="boundaries", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> boundaries;
+
+    /**
+     * @return The list of Boundaries associated with this capability config.
+     * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+     * Boundaries must share the capability config&#39;s parent, and cannot be specified for project-scoped capability configs.
+     * 
+     */
+    public Output<Optional<List<String>>> boundaries() {
+        return Codegen.optional(this.boundaries);
+    }
     /**
      * User-specified identifier of the capability config. Must be 6 to 30 characters,
      * and contain only lowercase letters, numbers, and hyphens.

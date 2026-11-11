@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ConfigStoreSettingValueArgs',
+    'ConfigStoreSettingValueArgsDict',
     'PipelineScheduleInfoArgs',
     'PipelineScheduleInfoArgsDict',
     'PipelineWorkloadArgs',
@@ -32,6 +34,55 @@ __all__ = [
     'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs',
     'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgsDict',
 ]
+
+class ConfigStoreSettingValueArgsDict(TypedDict):
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Represents a boolean value.
+    """
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Represents a string value.
+    """
+
+@pulumi.input_type
+class ConfigStoreSettingValueArgs:
+    def __init__(__self__, *,
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
+        :param pulumi.Input[_builtins.str] string_value: Represents a string value.
+        """
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @_builtins.property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Represents a boolean value.
+        """
+        return pulumi.get(self, "bool_value")
+
+    @bool_value.setter
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bool_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Represents a string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "string_value", value)
+
 
 class PipelineScheduleInfoArgsDict(TypedDict):
     next_job_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]

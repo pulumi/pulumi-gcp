@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.Dataform
         /// A reference to the region
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The service account to run workflow invocations under.

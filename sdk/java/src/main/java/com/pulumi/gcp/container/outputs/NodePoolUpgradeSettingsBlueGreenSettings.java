@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolUpgradeSettingsBlueGreenSettings {
     /**
-     * @return ) Autoscaled rollout policy for blue-green upgrade.
+     * @return ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
      * 
      */
     private @Nullable NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy autoscaledRolloutPolicy;
@@ -25,14 +25,14 @@ public final class NodePoolUpgradeSettingsBlueGreenSettings {
      */
     private @Nullable String nodePoolSoakDuration;
     /**
-     * @return Specifies the standard policy settings for blue-green upgrades.
+     * @return Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
      * 
      */
     private @Nullable NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy;
 
     private NodePoolUpgradeSettingsBlueGreenSettings() {}
     /**
-     * @return ) Autoscaled rollout policy for blue-green upgrade.
+     * @return ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
      * 
      */
     public Optional<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy> autoscaledRolloutPolicy() {
@@ -47,7 +47,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettings {
         return Optional.ofNullable(this.nodePoolSoakDuration);
     }
     /**
-     * @return Specifies the standard policy settings for blue-green upgrades.
+     * @return Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
      * 
      */
     public Optional<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy> standardRolloutPolicy() {

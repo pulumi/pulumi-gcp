@@ -118,131 +118,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Secure Source Manager Instance Private
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.certificateauthority.CaPool;
- * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
- * import com.pulumi.gcp.certificateauthority.Authority;
- * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
- * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
- * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
- * import com.pulumi.gcp.securesourcemanager.Instance;
- * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
- * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var caPool = new CaPool("caPool", CaPoolArgs.builder()
- *             .name("ca-pool")
- *             .location("us-central1")
- *             .tier("ENTERPRISE")
- *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
- *                 .publishCaCert(true)
- *                 .publishCrl(true)
- *                 .build())
- *             .build());
- * 
- *         var rootCa = new Authority("rootCa", AuthorityArgs.builder()
- *             .pool(caPool.name())
- *             .certificateAuthorityId("root-ca")
- *             .location("us-central1")
- *             .config(AuthorityConfigArgs.builder()
- *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
- *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .organization("google")
- *                         .commonName("my-certificate-authority")
- *                         .build())
- *                     .build())
- *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
- *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
- *                         .isCa(true)
- *                         .build())
- *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
- *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
- *                             .certSign(true)
- *                             .crlSign(true)
- *                             .build())
- *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
- *                             .serverAuth(true)
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .build())
- *             .keySpec(AuthorityKeySpecArgs.builder()
- *                 .algorithm("RSA_PKCS1_4096_SHA256")
- *                 .build())
- *             .deletionProtection(false)
- *             .ignoreActiveCertificatesOnDeletion(true)
- *             .skipGracePeriod(true)
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .build());
- * 
- *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()
- *             .caPool(caPool.id())
- *             .role("roles/privateca.certificateRequester")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.number()))
- *             .build());
- * 
- *         // ca pool IAM permissions can take time to propagate
- *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
- *             .createDuration("120s")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(caPoolBinding)
- *                 .build());
- * 
- *         var default_ = new Instance("default", InstanceArgs.builder()
- *             .instanceId("my-instance")
- *             .location("us-central1")
- *             .privateConfig(InstancePrivateConfigArgs.builder()
- *                 .isPrivate(true)
- *                 .caPool(caPool.id())
- *                 .build())
- *             .deletionPolicy("PREVENT")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     rootCa,
- *                     wait120Seconds)
- *                 .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * 
  * ### Secure Source Manager Instance Private Custom Host
  * 
  * <pre>
@@ -254,6 +129,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.certificateauthority.CaPool;
  * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
@@ -276,6 +153,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigCustomHostConfigArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.InstanceWorkforceIdentityFederationConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -293,9 +171,16 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
+ *         var pscOtherProject = new Project("pscOtherProject", ProjectArgs.builder()
+ *             .projectId("psc-project")
+ *             .name("psc-project")
+ *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
  *         var caPool = new CaPool("caPool", CaPoolArgs.builder()
  *             .name("ca-pool")
- *             .location("us-central1")
+ *             .location("europe-west4")
  *             .tier("ENTERPRISE")
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
  *                 .publishCaCert(true)
@@ -306,7 +191,7 @@ import javax.annotation.Nullable;
  *         var rootCa = new Authority("rootCa", AuthorityArgs.builder()
  *             .pool(caPool.name())
  *             .certificateAuthorityId("root-ca")
- *             .location("us-central1")
+ *             .location("europe-west4")
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -352,16 +237,20 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceId("my-instance")
- *             .location("us-central1")
+ *             .location("europe-west4")
  *             .privateConfig(InstancePrivateConfigArgs.builder()
  *                 .isPrivate(true)
  *                 .caPool(caPool.id())
+ *                 .pscAllowedProjects(pscOtherProject.projectId())
  *                 .customHostConfig(InstancePrivateConfigCustomHostConfigArgs.builder()
  *                     .api("api.example.com")
  *                     .gitHttp("git-http.example.com")
  *                     .gitSsh("git-ssh.example.com")
  *                     .html("html.example.com")
  *                     .build())
+ *                 .build())
+ *             .workforceIdentityFederationConfig(InstanceWorkforceIdentityFederationConfigArgs.builder()
+ *                 .enabled(true)
  *                 .build())
  *             .deletionPolicy("PREVENT")
  *             .build(), CustomResourceOptions.builder()
@@ -822,45 +711,6 @@ import javax.annotation.Nullable;
  * 
  *     }}{@code
  * }}{@code
- * }
- * </pre>
- * 
- * ### Secure Source Manager Instance Workforce Identity Federation
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.securesourcemanager.Instance;
- * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
- * import com.pulumi.gcp.securesourcemanager.inputs.InstanceWorkforceIdentityFederationConfigArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Instance("default", InstanceArgs.builder()
- *             .location("us-central1")
- *             .instanceId("my-instance")
- *             .workforceIdentityFederationConfig(InstanceWorkforceIdentityFederationConfigArgs.builder()
- *                 .enabled(true)
- *                 .build())
- *             .deletionPolicy("PREVENT")
- *             .build());
- * 
- *     }
- * }
  * }
  * </pre>
  * 

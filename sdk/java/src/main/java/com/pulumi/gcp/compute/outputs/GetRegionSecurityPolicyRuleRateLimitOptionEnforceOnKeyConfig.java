@@ -29,7 +29,8 @@ public final class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig 
      * * REGION_CODE: The country/region from which the request originates.
      * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
      * * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-     * * USER_IP: The IP address of the originating client, which is resolved based on &#34;userIpRequestHeaders&#34; configured with the security policy. If there is no &#34;userIpRequestHeaders&#34; configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: [&#34;ALL&#34;, &#34;IP&#34;, &#34;HTTP_HEADER&#34;, &#34;XFF_IP&#34;, &#34;HTTP_COOKIE&#34;, &#34;HTTP_PATH&#34;, &#34;SNI&#34;, &#34;REGION_CODE&#34;, &#34;TLS_JA3_FINGERPRINT&#34;, &#34;TLS_JA4_FINGERPRINT&#34;, &#34;USER_IP&#34;]
+     * * USER_IP: The IP address of the originating client, which is resolved based on &#34;userIpRequestHeaders&#34; configured with the security policy. If there is no &#34;userIpRequestHeaders&#34; configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+     * * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: [&#34;ALL&#34;, &#34;IP&#34;, &#34;HTTP_HEADER&#34;, &#34;XFF_IP&#34;, &#34;HTTP_COOKIE&#34;, &#34;HTTP_PATH&#34;, &#34;SNI&#34;, &#34;REGION_CODE&#34;, &#34;TLS_JA3_FINGERPRINT&#34;, &#34;TLS_JA4_FINGERPRINT&#34;, &#34;USER_IP&#34;, &#34;ASN&#34;]
      * 
      */
     private String enforceOnKeyType;
@@ -56,7 +57,8 @@ public final class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig 
      * * REGION_CODE: The country/region from which the request originates.
      * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
      * * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-     * * USER_IP: The IP address of the originating client, which is resolved based on &#34;userIpRequestHeaders&#34; configured with the security policy. If there is no &#34;userIpRequestHeaders&#34; configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: [&#34;ALL&#34;, &#34;IP&#34;, &#34;HTTP_HEADER&#34;, &#34;XFF_IP&#34;, &#34;HTTP_COOKIE&#34;, &#34;HTTP_PATH&#34;, &#34;SNI&#34;, &#34;REGION_CODE&#34;, &#34;TLS_JA3_FINGERPRINT&#34;, &#34;TLS_JA4_FINGERPRINT&#34;, &#34;USER_IP&#34;]
+     * * USER_IP: The IP address of the originating client, which is resolved based on &#34;userIpRequestHeaders&#34; configured with the security policy. If there is no &#34;userIpRequestHeaders&#34; configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+     * * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: [&#34;ALL&#34;, &#34;IP&#34;, &#34;HTTP_HEADER&#34;, &#34;XFF_IP&#34;, &#34;HTTP_COOKIE&#34;, &#34;HTTP_PATH&#34;, &#34;SNI&#34;, &#34;REGION_CODE&#34;, &#34;TLS_JA3_FINGERPRINT&#34;, &#34;TLS_JA4_FINGERPRINT&#34;, &#34;USER_IP&#34;, &#34;ASN&#34;]
      * 
      */
     public String enforceOnKeyType() {

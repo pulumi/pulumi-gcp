@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -130,6 +132,11 @@ export class ManagedFolder extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Configuration options for the rapid cache of a managed folder.
+     * Structure is documented below.
+     */
+    declare public readonly rapidCacheConfig: pulumi.Output<outputs.storage.ManagedFolderRapidCacheConfig | undefined>;
+    /**
      * The URI of the created resource.
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
@@ -157,6 +164,7 @@ export class ManagedFolder extends pulumi.CustomResource {
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["metageneration"] = state?.metageneration;
             resourceInputs["name"] = state?.name;
+            resourceInputs["rapidCacheConfig"] = state?.rapidCacheConfig;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -168,6 +176,7 @@ export class ManagedFolder extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["name"] = args?.name;
+            resourceInputs["rapidCacheConfig"] = args?.rapidCacheConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["metageneration"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -216,6 +225,11 @@ export interface ManagedFolderState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Configuration options for the rapid cache of a managed folder.
+     * Structure is documented below.
+     */
+    rapidCacheConfig?: pulumi.Input<inputs.storage.ManagedFolderRapidCacheConfig | undefined>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string | undefined>;
@@ -254,4 +268,9 @@ export interface ManagedFolderArgs {
      * trailing '/'. For example, `example_dir/example_dir2/`.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration options for the rapid cache of a managed folder.
+     * Structure is documented below.
+     */
+    rapidCacheConfig?: pulumi.Input<inputs.storage.ManagedFolderRapidCacheConfig | undefined>;
 }

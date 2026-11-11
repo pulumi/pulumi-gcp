@@ -13,6 +13,1086 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CompanionAgentCesToolSpec struct {
+	// The resource name of the CES tool.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`.
+	CesTool *string `pulumi:"cesTool"`
+	// Indicates whether the tool requires human confirmation.
+	// Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+	ConfirmationRequirement *string `pulumi:"confirmationRequirement"`
+	// Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameterName` are disallowed and rejected during Companion Agent validation.
+	// Structure is documented below.
+	ParameterOverrides []CompanionAgentCesToolSpecParameterOverride `pulumi:"parameterOverrides"`
+	// Indicates whether the tool is enabled in proactive mode.
+	// All tools are enabled in proactive mode by default. To disable a tool in proactive mode, set this field to `false`.
+	// NOTE: At least one of `proactiveEnabled` or `reactiveEnabled` should be `true` else the tool will be ignored.
+	ProactiveEnabled *bool `pulumi:"proactiveEnabled"`
+	// Indicates whether the tool is enabled in reactive mode.
+	// All tools are disabled in reactive mode by default. To enable a tool in reactive mode, set this field to `true`.
+	// NOTE: At least one of `reactiveEnabled` or `proactiveEnabled` should be `true` else the tool will be ignored. CompanionAgent config will throw an error if any unsupported tool is enabled in reactive mode.
+	ReactiveEnabled *bool `pulumi:"reactiveEnabled"`
+}
+
+// CompanionAgentCesToolSpecInput is an input type that accepts CompanionAgentCesToolSpecArgs and CompanionAgentCesToolSpecOutput values.
+// You can construct a concrete instance of `CompanionAgentCesToolSpecInput` via:
+//
+//	CompanionAgentCesToolSpecArgs{...}
+type CompanionAgentCesToolSpecInput interface {
+	pulumi.Input
+
+	ToCompanionAgentCesToolSpecOutput() CompanionAgentCesToolSpecOutput
+	ToCompanionAgentCesToolSpecOutputWithContext(context.Context) CompanionAgentCesToolSpecOutput
+}
+
+type CompanionAgentCesToolSpecArgs struct {
+	// The resource name of the CES tool.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`.
+	CesTool pulumi.StringPtrInput `pulumi:"cesTool"`
+	// Indicates whether the tool requires human confirmation.
+	// Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+	ConfirmationRequirement pulumi.StringPtrInput `pulumi:"confirmationRequirement"`
+	// Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameterName` are disallowed and rejected during Companion Agent validation.
+	// Structure is documented below.
+	ParameterOverrides CompanionAgentCesToolSpecParameterOverrideArrayInput `pulumi:"parameterOverrides"`
+	// Indicates whether the tool is enabled in proactive mode.
+	// All tools are enabled in proactive mode by default. To disable a tool in proactive mode, set this field to `false`.
+	// NOTE: At least one of `proactiveEnabled` or `reactiveEnabled` should be `true` else the tool will be ignored.
+	ProactiveEnabled pulumi.BoolPtrInput `pulumi:"proactiveEnabled"`
+	// Indicates whether the tool is enabled in reactive mode.
+	// All tools are disabled in reactive mode by default. To enable a tool in reactive mode, set this field to `true`.
+	// NOTE: At least one of `reactiveEnabled` or `proactiveEnabled` should be `true` else the tool will be ignored. CompanionAgent config will throw an error if any unsupported tool is enabled in reactive mode.
+	ReactiveEnabled pulumi.BoolPtrInput `pulumi:"reactiveEnabled"`
+}
+
+func (CompanionAgentCesToolSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentCesToolSpec)(nil)).Elem()
+}
+
+func (i CompanionAgentCesToolSpecArgs) ToCompanionAgentCesToolSpecOutput() CompanionAgentCesToolSpecOutput {
+	return i.ToCompanionAgentCesToolSpecOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentCesToolSpecArgs) ToCompanionAgentCesToolSpecOutputWithContext(ctx context.Context) CompanionAgentCesToolSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentCesToolSpecOutput)
+}
+
+// CompanionAgentCesToolSpecArrayInput is an input type that accepts CompanionAgentCesToolSpecArray and CompanionAgentCesToolSpecArrayOutput values.
+// You can construct a concrete instance of `CompanionAgentCesToolSpecArrayInput` via:
+//
+//	CompanionAgentCesToolSpecArray{ CompanionAgentCesToolSpecArgs{...} }
+type CompanionAgentCesToolSpecArrayInput interface {
+	pulumi.Input
+
+	ToCompanionAgentCesToolSpecArrayOutput() CompanionAgentCesToolSpecArrayOutput
+	ToCompanionAgentCesToolSpecArrayOutputWithContext(context.Context) CompanionAgentCesToolSpecArrayOutput
+}
+
+type CompanionAgentCesToolSpecArray []CompanionAgentCesToolSpecInput
+
+func (CompanionAgentCesToolSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentCesToolSpec)(nil)).Elem()
+}
+
+func (i CompanionAgentCesToolSpecArray) ToCompanionAgentCesToolSpecArrayOutput() CompanionAgentCesToolSpecArrayOutput {
+	return i.ToCompanionAgentCesToolSpecArrayOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentCesToolSpecArray) ToCompanionAgentCesToolSpecArrayOutputWithContext(ctx context.Context) CompanionAgentCesToolSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentCesToolSpecArrayOutput)
+}
+
+type CompanionAgentCesToolSpecOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentCesToolSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentCesToolSpec)(nil)).Elem()
+}
+
+func (o CompanionAgentCesToolSpecOutput) ToCompanionAgentCesToolSpecOutput() CompanionAgentCesToolSpecOutput {
+	return o
+}
+
+func (o CompanionAgentCesToolSpecOutput) ToCompanionAgentCesToolSpecOutputWithContext(ctx context.Context) CompanionAgentCesToolSpecOutput {
+	return o
+}
+
+// The resource name of the CES tool.
+// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`.
+func (o CompanionAgentCesToolSpecOutput) CesTool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentCesToolSpec) *string { return v.CesTool }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the tool requires human confirmation.
+// Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+func (o CompanionAgentCesToolSpecOutput) ConfirmationRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentCesToolSpec) *string { return v.ConfirmationRequirement }).(pulumi.StringPtrOutput)
+}
+
+// Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameterName` are disallowed and rejected during Companion Agent validation.
+// Structure is documented below.
+func (o CompanionAgentCesToolSpecOutput) ParameterOverrides() CompanionAgentCesToolSpecParameterOverrideArrayOutput {
+	return o.ApplyT(func(v CompanionAgentCesToolSpec) []CompanionAgentCesToolSpecParameterOverride {
+		return v.ParameterOverrides
+	}).(CompanionAgentCesToolSpecParameterOverrideArrayOutput)
+}
+
+// Indicates whether the tool is enabled in proactive mode.
+// All tools are enabled in proactive mode by default. To disable a tool in proactive mode, set this field to `false`.
+// NOTE: At least one of `proactiveEnabled` or `reactiveEnabled` should be `true` else the tool will be ignored.
+func (o CompanionAgentCesToolSpecOutput) ProactiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CompanionAgentCesToolSpec) *bool { return v.ProactiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the tool is enabled in reactive mode.
+// All tools are disabled in reactive mode by default. To enable a tool in reactive mode, set this field to `true`.
+// NOTE: At least one of `reactiveEnabled` or `proactiveEnabled` should be `true` else the tool will be ignored. CompanionAgent config will throw an error if any unsupported tool is enabled in reactive mode.
+func (o CompanionAgentCesToolSpecOutput) ReactiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CompanionAgentCesToolSpec) *bool { return v.ReactiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type CompanionAgentCesToolSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentCesToolSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentCesToolSpec)(nil)).Elem()
+}
+
+func (o CompanionAgentCesToolSpecArrayOutput) ToCompanionAgentCesToolSpecArrayOutput() CompanionAgentCesToolSpecArrayOutput {
+	return o
+}
+
+func (o CompanionAgentCesToolSpecArrayOutput) ToCompanionAgentCesToolSpecArrayOutputWithContext(ctx context.Context) CompanionAgentCesToolSpecArrayOutput {
+	return o
+}
+
+func (o CompanionAgentCesToolSpecArrayOutput) Index(i pulumi.IntInput) CompanionAgentCesToolSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompanionAgentCesToolSpec {
+		return vs[0].([]CompanionAgentCesToolSpec)[vs[1].(int)]
+	}).(CompanionAgentCesToolSpecOutput)
+}
+
+type CompanionAgentCesToolSpecParameterOverride struct {
+	// The key of the context reference in ingested context references.
+	ContextReferenceKey string `pulumi:"contextReferenceKey"`
+	// The path into the JSON object of the latest content ingested under `contextReferenceKey` (e.g. `email` or `user.email`). If omitted, the entire content under `contextReferenceKey` is used.
+	// If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+	FieldPath *string `pulumi:"fieldPath"`
+	// The name of the tool input parameter to override, as defined in the tool's input schema. For example, `userEmail`.
+	ParameterName string `pulumi:"parameterName"`
+}
+
+// CompanionAgentCesToolSpecParameterOverrideInput is an input type that accepts CompanionAgentCesToolSpecParameterOverrideArgs and CompanionAgentCesToolSpecParameterOverrideOutput values.
+// You can construct a concrete instance of `CompanionAgentCesToolSpecParameterOverrideInput` via:
+//
+//	CompanionAgentCesToolSpecParameterOverrideArgs{...}
+type CompanionAgentCesToolSpecParameterOverrideInput interface {
+	pulumi.Input
+
+	ToCompanionAgentCesToolSpecParameterOverrideOutput() CompanionAgentCesToolSpecParameterOverrideOutput
+	ToCompanionAgentCesToolSpecParameterOverrideOutputWithContext(context.Context) CompanionAgentCesToolSpecParameterOverrideOutput
+}
+
+type CompanionAgentCesToolSpecParameterOverrideArgs struct {
+	// The key of the context reference in ingested context references.
+	ContextReferenceKey pulumi.StringInput `pulumi:"contextReferenceKey"`
+	// The path into the JSON object of the latest content ingested under `contextReferenceKey` (e.g. `email` or `user.email`). If omitted, the entire content under `contextReferenceKey` is used.
+	// If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+	// The name of the tool input parameter to override, as defined in the tool's input schema. For example, `userEmail`.
+	ParameterName pulumi.StringInput `pulumi:"parameterName"`
+}
+
+func (CompanionAgentCesToolSpecParameterOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentCesToolSpecParameterOverride)(nil)).Elem()
+}
+
+func (i CompanionAgentCesToolSpecParameterOverrideArgs) ToCompanionAgentCesToolSpecParameterOverrideOutput() CompanionAgentCesToolSpecParameterOverrideOutput {
+	return i.ToCompanionAgentCesToolSpecParameterOverrideOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentCesToolSpecParameterOverrideArgs) ToCompanionAgentCesToolSpecParameterOverrideOutputWithContext(ctx context.Context) CompanionAgentCesToolSpecParameterOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentCesToolSpecParameterOverrideOutput)
+}
+
+// CompanionAgentCesToolSpecParameterOverrideArrayInput is an input type that accepts CompanionAgentCesToolSpecParameterOverrideArray and CompanionAgentCesToolSpecParameterOverrideArrayOutput values.
+// You can construct a concrete instance of `CompanionAgentCesToolSpecParameterOverrideArrayInput` via:
+//
+//	CompanionAgentCesToolSpecParameterOverrideArray{ CompanionAgentCesToolSpecParameterOverrideArgs{...} }
+type CompanionAgentCesToolSpecParameterOverrideArrayInput interface {
+	pulumi.Input
+
+	ToCompanionAgentCesToolSpecParameterOverrideArrayOutput() CompanionAgentCesToolSpecParameterOverrideArrayOutput
+	ToCompanionAgentCesToolSpecParameterOverrideArrayOutputWithContext(context.Context) CompanionAgentCesToolSpecParameterOverrideArrayOutput
+}
+
+type CompanionAgentCesToolSpecParameterOverrideArray []CompanionAgentCesToolSpecParameterOverrideInput
+
+func (CompanionAgentCesToolSpecParameterOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentCesToolSpecParameterOverride)(nil)).Elem()
+}
+
+func (i CompanionAgentCesToolSpecParameterOverrideArray) ToCompanionAgentCesToolSpecParameterOverrideArrayOutput() CompanionAgentCesToolSpecParameterOverrideArrayOutput {
+	return i.ToCompanionAgentCesToolSpecParameterOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentCesToolSpecParameterOverrideArray) ToCompanionAgentCesToolSpecParameterOverrideArrayOutputWithContext(ctx context.Context) CompanionAgentCesToolSpecParameterOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentCesToolSpecParameterOverrideArrayOutput)
+}
+
+type CompanionAgentCesToolSpecParameterOverrideOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentCesToolSpecParameterOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentCesToolSpecParameterOverride)(nil)).Elem()
+}
+
+func (o CompanionAgentCesToolSpecParameterOverrideOutput) ToCompanionAgentCesToolSpecParameterOverrideOutput() CompanionAgentCesToolSpecParameterOverrideOutput {
+	return o
+}
+
+func (o CompanionAgentCesToolSpecParameterOverrideOutput) ToCompanionAgentCesToolSpecParameterOverrideOutputWithContext(ctx context.Context) CompanionAgentCesToolSpecParameterOverrideOutput {
+	return o
+}
+
+// The key of the context reference in ingested context references.
+func (o CompanionAgentCesToolSpecParameterOverrideOutput) ContextReferenceKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CompanionAgentCesToolSpecParameterOverride) string { return v.ContextReferenceKey }).(pulumi.StringOutput)
+}
+
+// The path into the JSON object of the latest content ingested under `contextReferenceKey` (e.g. `email` or `user.email`). If omitted, the entire content under `contextReferenceKey` is used.
+// If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+func (o CompanionAgentCesToolSpecParameterOverrideOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentCesToolSpecParameterOverride) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+// The name of the tool input parameter to override, as defined in the tool's input schema. For example, `userEmail`.
+func (o CompanionAgentCesToolSpecParameterOverrideOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v CompanionAgentCesToolSpecParameterOverride) string { return v.ParameterName }).(pulumi.StringOutput)
+}
+
+type CompanionAgentCesToolSpecParameterOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentCesToolSpecParameterOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentCesToolSpecParameterOverride)(nil)).Elem()
+}
+
+func (o CompanionAgentCesToolSpecParameterOverrideArrayOutput) ToCompanionAgentCesToolSpecParameterOverrideArrayOutput() CompanionAgentCesToolSpecParameterOverrideArrayOutput {
+	return o
+}
+
+func (o CompanionAgentCesToolSpecParameterOverrideArrayOutput) ToCompanionAgentCesToolSpecParameterOverrideArrayOutputWithContext(ctx context.Context) CompanionAgentCesToolSpecParameterOverrideArrayOutput {
+	return o
+}
+
+func (o CompanionAgentCesToolSpecParameterOverrideArrayOutput) Index(i pulumi.IntInput) CompanionAgentCesToolSpecParameterOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompanionAgentCesToolSpecParameterOverride {
+		return vs[0].([]CompanionAgentCesToolSpecParameterOverride)[vs[1].(int)]
+	}).(CompanionAgentCesToolSpecParameterOverrideOutput)
+}
+
+type CompanionAgentSkillConfig struct {
+	// Guidance skill configuration.
+	// Structure is documented below.
+	GuidanceSkillConfig *CompanionAgentSkillConfigGuidanceSkillConfig `pulumi:"guidanceSkillConfig"`
+	// The event that should trigger the skill.
+	// Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+	SkillTriggeringEvent *string `pulumi:"skillTriggeringEvent"`
+}
+
+// CompanionAgentSkillConfigInput is an input type that accepts CompanionAgentSkillConfigArgs and CompanionAgentSkillConfigOutput values.
+// You can construct a concrete instance of `CompanionAgentSkillConfigInput` via:
+//
+//	CompanionAgentSkillConfigArgs{...}
+type CompanionAgentSkillConfigInput interface {
+	pulumi.Input
+
+	ToCompanionAgentSkillConfigOutput() CompanionAgentSkillConfigOutput
+	ToCompanionAgentSkillConfigOutputWithContext(context.Context) CompanionAgentSkillConfigOutput
+}
+
+type CompanionAgentSkillConfigArgs struct {
+	// Guidance skill configuration.
+	// Structure is documented below.
+	GuidanceSkillConfig CompanionAgentSkillConfigGuidanceSkillConfigPtrInput `pulumi:"guidanceSkillConfig"`
+	// The event that should trigger the skill.
+	// Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+	SkillTriggeringEvent pulumi.StringPtrInput `pulumi:"skillTriggeringEvent"`
+}
+
+func (CompanionAgentSkillConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentSkillConfig)(nil)).Elem()
+}
+
+func (i CompanionAgentSkillConfigArgs) ToCompanionAgentSkillConfigOutput() CompanionAgentSkillConfigOutput {
+	return i.ToCompanionAgentSkillConfigOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentSkillConfigArgs) ToCompanionAgentSkillConfigOutputWithContext(ctx context.Context) CompanionAgentSkillConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigOutput)
+}
+
+// CompanionAgentSkillConfigArrayInput is an input type that accepts CompanionAgentSkillConfigArray and CompanionAgentSkillConfigArrayOutput values.
+// You can construct a concrete instance of `CompanionAgentSkillConfigArrayInput` via:
+//
+//	CompanionAgentSkillConfigArray{ CompanionAgentSkillConfigArgs{...} }
+type CompanionAgentSkillConfigArrayInput interface {
+	pulumi.Input
+
+	ToCompanionAgentSkillConfigArrayOutput() CompanionAgentSkillConfigArrayOutput
+	ToCompanionAgentSkillConfigArrayOutputWithContext(context.Context) CompanionAgentSkillConfigArrayOutput
+}
+
+type CompanionAgentSkillConfigArray []CompanionAgentSkillConfigInput
+
+func (CompanionAgentSkillConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentSkillConfig)(nil)).Elem()
+}
+
+func (i CompanionAgentSkillConfigArray) ToCompanionAgentSkillConfigArrayOutput() CompanionAgentSkillConfigArrayOutput {
+	return i.ToCompanionAgentSkillConfigArrayOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentSkillConfigArray) ToCompanionAgentSkillConfigArrayOutputWithContext(ctx context.Context) CompanionAgentSkillConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigArrayOutput)
+}
+
+type CompanionAgentSkillConfigOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentSkillConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentSkillConfig)(nil)).Elem()
+}
+
+func (o CompanionAgentSkillConfigOutput) ToCompanionAgentSkillConfigOutput() CompanionAgentSkillConfigOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigOutput) ToCompanionAgentSkillConfigOutputWithContext(ctx context.Context) CompanionAgentSkillConfigOutput {
+	return o
+}
+
+// Guidance skill configuration.
+// Structure is documented below.
+func (o CompanionAgentSkillConfigOutput) GuidanceSkillConfig() CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfig) *CompanionAgentSkillConfigGuidanceSkillConfig {
+		return v.GuidanceSkillConfig
+	}).(CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput)
+}
+
+// The event that should trigger the skill.
+// Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+func (o CompanionAgentSkillConfigOutput) SkillTriggeringEvent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfig) *string { return v.SkillTriggeringEvent }).(pulumi.StringPtrOutput)
+}
+
+type CompanionAgentSkillConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentSkillConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentSkillConfig)(nil)).Elem()
+}
+
+func (o CompanionAgentSkillConfigArrayOutput) ToCompanionAgentSkillConfigArrayOutput() CompanionAgentSkillConfigArrayOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigArrayOutput) ToCompanionAgentSkillConfigArrayOutputWithContext(ctx context.Context) CompanionAgentSkillConfigArrayOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigArrayOutput) Index(i pulumi.IntInput) CompanionAgentSkillConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompanionAgentSkillConfig {
+		return vs[0].([]CompanionAgentSkillConfig)[vs[1].(int)]
+	}).(CompanionAgentSkillConfigOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfig struct {
+	// Customized instructions for guidance.
+	// Structure is documented below.
+	GuidanceInstructions []CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction `pulumi:"guidanceInstructions"`
+	// This is specific additional guidance that can be configured by the user.
+	OverarchingGuidance *string `pulumi:"overarchingGuidance"`
+}
+
+// CompanionAgentSkillConfigGuidanceSkillConfigInput is an input type that accepts CompanionAgentSkillConfigGuidanceSkillConfigArgs and CompanionAgentSkillConfigGuidanceSkillConfigOutput values.
+// You can construct a concrete instance of `CompanionAgentSkillConfigGuidanceSkillConfigInput` via:
+//
+//	CompanionAgentSkillConfigGuidanceSkillConfigArgs{...}
+type CompanionAgentSkillConfigGuidanceSkillConfigInput interface {
+	pulumi.Input
+
+	ToCompanionAgentSkillConfigGuidanceSkillConfigOutput() CompanionAgentSkillConfigGuidanceSkillConfigOutput
+	ToCompanionAgentSkillConfigGuidanceSkillConfigOutputWithContext(context.Context) CompanionAgentSkillConfigGuidanceSkillConfigOutput
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigArgs struct {
+	// Customized instructions for guidance.
+	// Structure is documented below.
+	GuidanceInstructions CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayInput `pulumi:"guidanceInstructions"`
+	// This is specific additional guidance that can be configured by the user.
+	OverarchingGuidance pulumi.StringPtrInput `pulumi:"overarchingGuidance"`
+}
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfig)(nil)).Elem()
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigArgs) ToCompanionAgentSkillConfigGuidanceSkillConfigOutput() CompanionAgentSkillConfigGuidanceSkillConfigOutput {
+	return i.ToCompanionAgentSkillConfigGuidanceSkillConfigOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigArgs) ToCompanionAgentSkillConfigGuidanceSkillConfigOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigGuidanceSkillConfigOutput)
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigArgs) ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutput() CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return i.ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigArgs) ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigGuidanceSkillConfigOutput).ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(ctx)
+}
+
+// CompanionAgentSkillConfigGuidanceSkillConfigPtrInput is an input type that accepts CompanionAgentSkillConfigGuidanceSkillConfigArgs, CompanionAgentSkillConfigGuidanceSkillConfigPtr and CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput values.
+// You can construct a concrete instance of `CompanionAgentSkillConfigGuidanceSkillConfigPtrInput` via:
+//
+//	        CompanionAgentSkillConfigGuidanceSkillConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CompanionAgentSkillConfigGuidanceSkillConfigPtrInput interface {
+	pulumi.Input
+
+	ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutput() CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput
+	ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(context.Context) CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput
+}
+
+type companionAgentSkillConfigGuidanceSkillConfigPtrType CompanionAgentSkillConfigGuidanceSkillConfigArgs
+
+func CompanionAgentSkillConfigGuidanceSkillConfigPtr(v *CompanionAgentSkillConfigGuidanceSkillConfigArgs) CompanionAgentSkillConfigGuidanceSkillConfigPtrInput {
+	return (*companionAgentSkillConfigGuidanceSkillConfigPtrType)(v)
+}
+
+func (*companionAgentSkillConfigGuidanceSkillConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompanionAgentSkillConfigGuidanceSkillConfig)(nil)).Elem()
+}
+
+func (i *companionAgentSkillConfigGuidanceSkillConfigPtrType) ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutput() CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return i.ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *companionAgentSkillConfigGuidanceSkillConfigPtrType) ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfig)(nil)).Elem()
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigOutput() CompanionAgentSkillConfigGuidanceSkillConfigOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutput() CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return o.ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompanionAgentSkillConfigGuidanceSkillConfig) *CompanionAgentSkillConfigGuidanceSkillConfig {
+		return &v
+	}).(CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput)
+}
+
+// Customized instructions for guidance.
+// Structure is documented below.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigOutput) GuidanceInstructions() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfig) []CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction {
+		return v.GuidanceInstructions
+	}).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput)
+}
+
+// This is specific additional guidance that can be configured by the user.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigOutput) OverarchingGuidance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfig) *string { return v.OverarchingGuidance }).(pulumi.StringPtrOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompanionAgentSkillConfigGuidanceSkillConfig)(nil)).Elem()
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutput() CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigPtrOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput) Elem() CompanionAgentSkillConfigGuidanceSkillConfigOutput {
+	return o.ApplyT(func(v *CompanionAgentSkillConfigGuidanceSkillConfig) CompanionAgentSkillConfigGuidanceSkillConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CompanionAgentSkillConfigGuidanceSkillConfig
+		return ret
+	}).(CompanionAgentSkillConfigGuidanceSkillConfigOutput)
+}
+
+// Customized instructions for guidance.
+// Structure is documented below.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput) GuidanceInstructions() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput {
+	return o.ApplyT(func(v *CompanionAgentSkillConfigGuidanceSkillConfig) []CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction {
+		if v == nil {
+			return nil
+		}
+		return v.GuidanceInstructions
+	}).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput)
+}
+
+// This is specific additional guidance that can be configured by the user.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput) OverarchingGuidance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CompanionAgentSkillConfigGuidanceSkillConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OverarchingGuidance
+	}).(pulumi.StringPtrOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction struct {
+	// The action items that can be processed.
+	// Structure is documented below.
+	Actions []CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction `pulumi:"actions"`
+	// The condition of the instruction.
+	Condition *string `pulumi:"condition"`
+	// Whether to disable suggested reply generation for this instruction.
+	DisableSuggestedReply *bool `pulumi:"disableSuggestedReply"`
+	// The detailed description of this instruction.
+	DisplayDetails *string `pulumi:"displayDetails"`
+	// Display name for the instruction.
+	DisplayName *string `pulumi:"displayName"`
+	// Event that triggers the guidance instruction.
+	// Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+	TriggerEvent *string `pulumi:"triggerEvent"`
+}
+
+// CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionInput is an input type that accepts CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs and CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput values.
+// You can construct a concrete instance of `CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionInput` via:
+//
+//	CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs{...}
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionInput interface {
+	pulumi.Input
+
+	ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput
+	ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutputWithContext(context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs struct {
+	// The action items that can be processed.
+	// Structure is documented below.
+	Actions CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayInput `pulumi:"actions"`
+	// The condition of the instruction.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// Whether to disable suggested reply generation for this instruction.
+	DisableSuggestedReply pulumi.BoolPtrInput `pulumi:"disableSuggestedReply"`
+	// The detailed description of this instruction.
+	DisplayDetails pulumi.StringPtrInput `pulumi:"displayDetails"`
+	// Display name for the instruction.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Event that triggers the guidance instruction.
+	// Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+	TriggerEvent pulumi.StringPtrInput `pulumi:"triggerEvent"`
+}
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction)(nil)).Elem()
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput {
+	return i.ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput)
+}
+
+// CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayInput is an input type that accepts CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArray and CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput values.
+// You can construct a concrete instance of `CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayInput` via:
+//
+//	CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArray{ CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs{...} }
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayInput interface {
+	pulumi.Input
+
+	ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput
+	ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutputWithContext(context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArray []CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionInput
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction)(nil)).Elem()
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArray) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput {
+	return i.ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArray) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction)(nil)).Elem()
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput {
+	return o
+}
+
+// The action items that can be processed.
+// Structure is documented below.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) Actions() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction) []CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction {
+		return v.Actions
+	}).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput)
+}
+
+// The condition of the instruction.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable suggested reply generation for this instruction.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) DisableSuggestedReply() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction) *bool {
+		return v.DisableSuggestedReply
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The detailed description of this instruction.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) DisplayDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction) *string {
+		return v.DisplayDetails
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name for the instruction.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Event that triggers the guidance instruction.
+// Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput) TriggerEvent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction) *string { return v.TriggerEvent }).(pulumi.StringPtrOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction)(nil)).Elem()
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput) Index(i pulumi.IntInput) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction {
+		return vs[0].([]CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction)[vs[1].(int)]
+	}).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction struct {
+	// Description of action item.
+	Description string `pulumi:"description"`
+}
+
+// CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionInput is an input type that accepts CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs and CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput values.
+// You can construct a concrete instance of `CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionInput` via:
+//
+//	CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs{...}
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionInput interface {
+	pulumi.Input
+
+	ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput
+	ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutputWithContext(context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs struct {
+	// Description of action item.
+	Description pulumi.StringInput `pulumi:"description"`
+}
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction)(nil)).Elem()
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput {
+	return i.ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput)
+}
+
+// CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayInput is an input type that accepts CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArray and CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput values.
+// You can construct a concrete instance of `CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayInput` via:
+//
+//	CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArray{ CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs{...} }
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayInput interface {
+	pulumi.Input
+
+	ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput
+	ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutputWithContext(context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArray []CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionInput
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction)(nil)).Elem()
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArray) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput {
+	return i.ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArray) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction)(nil)).Elem()
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput {
+	return o
+}
+
+// Description of action item.
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+type CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction)(nil)).Elem()
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput() CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput) ToCompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutputWithContext(ctx context.Context) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput {
+	return o
+}
+
+func (o CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput) Index(i pulumi.IntInput) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction {
+		return vs[0].([]CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction)[vs[1].(int)]
+	}).(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput)
+}
+
+type CompanionAgentToolsetTool struct {
+	// Indicates whether the tool requires human confirmation.
+	// Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+	ConfirmationRequirement *string `pulumi:"confirmationRequirement"`
+	// The `operationId` field of the OpenAPI endpoint. The `operationId` must be present in the toolset's definition.
+	OperationId *string `pulumi:"operationId"`
+	// Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameterName` are disallowed and rejected during Companion Agent validation.
+	// Structure is documented below.
+	ParameterOverrides []CompanionAgentToolsetToolParameterOverride `pulumi:"parameterOverrides"`
+	// Indicates whether the toolset tool is enabled in proactive mode.
+	// NOTE: At least one of `proactiveEnabled` or `reactiveEnabled` should be `true` else the toolset tool will be ignored.
+	ProactiveEnabled *bool `pulumi:"proactiveEnabled"`
+	// Indicates whether the toolset tool is enabled in reactive mode.
+	// NOTE: At least one of `reactiveEnabled` or `proactiveEnabled` should be `true` else the toolset tool will be ignored.
+	ReactiveEnabled *bool `pulumi:"reactiveEnabled"`
+	// The name of the toolset to retrieve the schema for.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`.
+	Toolset string `pulumi:"toolset"`
+}
+
+// CompanionAgentToolsetToolInput is an input type that accepts CompanionAgentToolsetToolArgs and CompanionAgentToolsetToolOutput values.
+// You can construct a concrete instance of `CompanionAgentToolsetToolInput` via:
+//
+//	CompanionAgentToolsetToolArgs{...}
+type CompanionAgentToolsetToolInput interface {
+	pulumi.Input
+
+	ToCompanionAgentToolsetToolOutput() CompanionAgentToolsetToolOutput
+	ToCompanionAgentToolsetToolOutputWithContext(context.Context) CompanionAgentToolsetToolOutput
+}
+
+type CompanionAgentToolsetToolArgs struct {
+	// Indicates whether the tool requires human confirmation.
+	// Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+	ConfirmationRequirement pulumi.StringPtrInput `pulumi:"confirmationRequirement"`
+	// The `operationId` field of the OpenAPI endpoint. The `operationId` must be present in the toolset's definition.
+	OperationId pulumi.StringPtrInput `pulumi:"operationId"`
+	// Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameterName` are disallowed and rejected during Companion Agent validation.
+	// Structure is documented below.
+	ParameterOverrides CompanionAgentToolsetToolParameterOverrideArrayInput `pulumi:"parameterOverrides"`
+	// Indicates whether the toolset tool is enabled in proactive mode.
+	// NOTE: At least one of `proactiveEnabled` or `reactiveEnabled` should be `true` else the toolset tool will be ignored.
+	ProactiveEnabled pulumi.BoolPtrInput `pulumi:"proactiveEnabled"`
+	// Indicates whether the toolset tool is enabled in reactive mode.
+	// NOTE: At least one of `reactiveEnabled` or `proactiveEnabled` should be `true` else the toolset tool will be ignored.
+	ReactiveEnabled pulumi.BoolPtrInput `pulumi:"reactiveEnabled"`
+	// The name of the toolset to retrieve the schema for.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (CompanionAgentToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentToolsetTool)(nil)).Elem()
+}
+
+func (i CompanionAgentToolsetToolArgs) ToCompanionAgentToolsetToolOutput() CompanionAgentToolsetToolOutput {
+	return i.ToCompanionAgentToolsetToolOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentToolsetToolArgs) ToCompanionAgentToolsetToolOutputWithContext(ctx context.Context) CompanionAgentToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentToolsetToolOutput)
+}
+
+// CompanionAgentToolsetToolArrayInput is an input type that accepts CompanionAgentToolsetToolArray and CompanionAgentToolsetToolArrayOutput values.
+// You can construct a concrete instance of `CompanionAgentToolsetToolArrayInput` via:
+//
+//	CompanionAgentToolsetToolArray{ CompanionAgentToolsetToolArgs{...} }
+type CompanionAgentToolsetToolArrayInput interface {
+	pulumi.Input
+
+	ToCompanionAgentToolsetToolArrayOutput() CompanionAgentToolsetToolArrayOutput
+	ToCompanionAgentToolsetToolArrayOutputWithContext(context.Context) CompanionAgentToolsetToolArrayOutput
+}
+
+type CompanionAgentToolsetToolArray []CompanionAgentToolsetToolInput
+
+func (CompanionAgentToolsetToolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentToolsetTool)(nil)).Elem()
+}
+
+func (i CompanionAgentToolsetToolArray) ToCompanionAgentToolsetToolArrayOutput() CompanionAgentToolsetToolArrayOutput {
+	return i.ToCompanionAgentToolsetToolArrayOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentToolsetToolArray) ToCompanionAgentToolsetToolArrayOutputWithContext(ctx context.Context) CompanionAgentToolsetToolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentToolsetToolArrayOutput)
+}
+
+type CompanionAgentToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentToolsetTool)(nil)).Elem()
+}
+
+func (o CompanionAgentToolsetToolOutput) ToCompanionAgentToolsetToolOutput() CompanionAgentToolsetToolOutput {
+	return o
+}
+
+func (o CompanionAgentToolsetToolOutput) ToCompanionAgentToolsetToolOutputWithContext(ctx context.Context) CompanionAgentToolsetToolOutput {
+	return o
+}
+
+// Indicates whether the tool requires human confirmation.
+// Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+func (o CompanionAgentToolsetToolOutput) ConfirmationRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetTool) *string { return v.ConfirmationRequirement }).(pulumi.StringPtrOutput)
+}
+
+// The `operationId` field of the OpenAPI endpoint. The `operationId` must be present in the toolset's definition.
+func (o CompanionAgentToolsetToolOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetTool) *string { return v.OperationId }).(pulumi.StringPtrOutput)
+}
+
+// Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameterName` are disallowed and rejected during Companion Agent validation.
+// Structure is documented below.
+func (o CompanionAgentToolsetToolOutput) ParameterOverrides() CompanionAgentToolsetToolParameterOverrideArrayOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetTool) []CompanionAgentToolsetToolParameterOverride {
+		return v.ParameterOverrides
+	}).(CompanionAgentToolsetToolParameterOverrideArrayOutput)
+}
+
+// Indicates whether the toolset tool is enabled in proactive mode.
+// NOTE: At least one of `proactiveEnabled` or `reactiveEnabled` should be `true` else the toolset tool will be ignored.
+func (o CompanionAgentToolsetToolOutput) ProactiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetTool) *bool { return v.ProactiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the toolset tool is enabled in reactive mode.
+// NOTE: At least one of `reactiveEnabled` or `proactiveEnabled` should be `true` else the toolset tool will be ignored.
+func (o CompanionAgentToolsetToolOutput) ReactiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetTool) *bool { return v.ReactiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the toolset to retrieve the schema for.
+// Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`.
+func (o CompanionAgentToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetTool) string { return v.Toolset }).(pulumi.StringOutput)
+}
+
+type CompanionAgentToolsetToolArrayOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentToolsetToolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentToolsetTool)(nil)).Elem()
+}
+
+func (o CompanionAgentToolsetToolArrayOutput) ToCompanionAgentToolsetToolArrayOutput() CompanionAgentToolsetToolArrayOutput {
+	return o
+}
+
+func (o CompanionAgentToolsetToolArrayOutput) ToCompanionAgentToolsetToolArrayOutputWithContext(ctx context.Context) CompanionAgentToolsetToolArrayOutput {
+	return o
+}
+
+func (o CompanionAgentToolsetToolArrayOutput) Index(i pulumi.IntInput) CompanionAgentToolsetToolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompanionAgentToolsetTool {
+		return vs[0].([]CompanionAgentToolsetTool)[vs[1].(int)]
+	}).(CompanionAgentToolsetToolOutput)
+}
+
+type CompanionAgentToolsetToolParameterOverride struct {
+	// The key of the context reference in ingested context references.
+	ContextReferenceKey string `pulumi:"contextReferenceKey"`
+	// The path into the JSON object of the latest content ingested under `contextReferenceKey` (e.g. `email` or `user.email`). If omitted, the entire content under `contextReferenceKey` is used.
+	// If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+	FieldPath *string `pulumi:"fieldPath"`
+	// The name of the tool input parameter to override, as defined in the tool's input schema. For example, `userEmail`.
+	ParameterName string `pulumi:"parameterName"`
+}
+
+// CompanionAgentToolsetToolParameterOverrideInput is an input type that accepts CompanionAgentToolsetToolParameterOverrideArgs and CompanionAgentToolsetToolParameterOverrideOutput values.
+// You can construct a concrete instance of `CompanionAgentToolsetToolParameterOverrideInput` via:
+//
+//	CompanionAgentToolsetToolParameterOverrideArgs{...}
+type CompanionAgentToolsetToolParameterOverrideInput interface {
+	pulumi.Input
+
+	ToCompanionAgentToolsetToolParameterOverrideOutput() CompanionAgentToolsetToolParameterOverrideOutput
+	ToCompanionAgentToolsetToolParameterOverrideOutputWithContext(context.Context) CompanionAgentToolsetToolParameterOverrideOutput
+}
+
+type CompanionAgentToolsetToolParameterOverrideArgs struct {
+	// The key of the context reference in ingested context references.
+	ContextReferenceKey pulumi.StringInput `pulumi:"contextReferenceKey"`
+	// The path into the JSON object of the latest content ingested under `contextReferenceKey` (e.g. `email` or `user.email`). If omitted, the entire content under `contextReferenceKey` is used.
+	// If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+	// The name of the tool input parameter to override, as defined in the tool's input schema. For example, `userEmail`.
+	ParameterName pulumi.StringInput `pulumi:"parameterName"`
+}
+
+func (CompanionAgentToolsetToolParameterOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentToolsetToolParameterOverride)(nil)).Elem()
+}
+
+func (i CompanionAgentToolsetToolParameterOverrideArgs) ToCompanionAgentToolsetToolParameterOverrideOutput() CompanionAgentToolsetToolParameterOverrideOutput {
+	return i.ToCompanionAgentToolsetToolParameterOverrideOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentToolsetToolParameterOverrideArgs) ToCompanionAgentToolsetToolParameterOverrideOutputWithContext(ctx context.Context) CompanionAgentToolsetToolParameterOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentToolsetToolParameterOverrideOutput)
+}
+
+// CompanionAgentToolsetToolParameterOverrideArrayInput is an input type that accepts CompanionAgentToolsetToolParameterOverrideArray and CompanionAgentToolsetToolParameterOverrideArrayOutput values.
+// You can construct a concrete instance of `CompanionAgentToolsetToolParameterOverrideArrayInput` via:
+//
+//	CompanionAgentToolsetToolParameterOverrideArray{ CompanionAgentToolsetToolParameterOverrideArgs{...} }
+type CompanionAgentToolsetToolParameterOverrideArrayInput interface {
+	pulumi.Input
+
+	ToCompanionAgentToolsetToolParameterOverrideArrayOutput() CompanionAgentToolsetToolParameterOverrideArrayOutput
+	ToCompanionAgentToolsetToolParameterOverrideArrayOutputWithContext(context.Context) CompanionAgentToolsetToolParameterOverrideArrayOutput
+}
+
+type CompanionAgentToolsetToolParameterOverrideArray []CompanionAgentToolsetToolParameterOverrideInput
+
+func (CompanionAgentToolsetToolParameterOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentToolsetToolParameterOverride)(nil)).Elem()
+}
+
+func (i CompanionAgentToolsetToolParameterOverrideArray) ToCompanionAgentToolsetToolParameterOverrideArrayOutput() CompanionAgentToolsetToolParameterOverrideArrayOutput {
+	return i.ToCompanionAgentToolsetToolParameterOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i CompanionAgentToolsetToolParameterOverrideArray) ToCompanionAgentToolsetToolParameterOverrideArrayOutputWithContext(ctx context.Context) CompanionAgentToolsetToolParameterOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanionAgentToolsetToolParameterOverrideArrayOutput)
+}
+
+type CompanionAgentToolsetToolParameterOverrideOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentToolsetToolParameterOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanionAgentToolsetToolParameterOverride)(nil)).Elem()
+}
+
+func (o CompanionAgentToolsetToolParameterOverrideOutput) ToCompanionAgentToolsetToolParameterOverrideOutput() CompanionAgentToolsetToolParameterOverrideOutput {
+	return o
+}
+
+func (o CompanionAgentToolsetToolParameterOverrideOutput) ToCompanionAgentToolsetToolParameterOverrideOutputWithContext(ctx context.Context) CompanionAgentToolsetToolParameterOverrideOutput {
+	return o
+}
+
+// The key of the context reference in ingested context references.
+func (o CompanionAgentToolsetToolParameterOverrideOutput) ContextReferenceKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetToolParameterOverride) string { return v.ContextReferenceKey }).(pulumi.StringOutput)
+}
+
+// The path into the JSON object of the latest content ingested under `contextReferenceKey` (e.g. `email` or `user.email`). If omitted, the entire content under `contextReferenceKey` is used.
+// If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+func (o CompanionAgentToolsetToolParameterOverrideOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetToolParameterOverride) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+// The name of the tool input parameter to override, as defined in the tool's input schema. For example, `userEmail`.
+func (o CompanionAgentToolsetToolParameterOverrideOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v CompanionAgentToolsetToolParameterOverride) string { return v.ParameterName }).(pulumi.StringOutput)
+}
+
+type CompanionAgentToolsetToolParameterOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (CompanionAgentToolsetToolParameterOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompanionAgentToolsetToolParameterOverride)(nil)).Elem()
+}
+
+func (o CompanionAgentToolsetToolParameterOverrideArrayOutput) ToCompanionAgentToolsetToolParameterOverrideArrayOutput() CompanionAgentToolsetToolParameterOverrideArrayOutput {
+	return o
+}
+
+func (o CompanionAgentToolsetToolParameterOverrideArrayOutput) ToCompanionAgentToolsetToolParameterOverrideArrayOutputWithContext(ctx context.Context) CompanionAgentToolsetToolParameterOverrideArrayOutput {
+	return o
+}
+
+func (o CompanionAgentToolsetToolParameterOverrideArrayOutput) Index(i pulumi.IntInput) CompanionAgentToolsetToolParameterOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompanionAgentToolsetToolParameterOverride {
+		return vs[0].([]CompanionAgentToolsetToolParameterOverride)[vs[1].(int)]
+	}).(CompanionAgentToolsetToolParameterOverrideOutput)
+}
+
 type ConversationProfileAutomatedAgentConfig struct {
 	// ID of the Dialogflow agent environment to use.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
@@ -52977,6 +54057,22 @@ func (o ToolOpenApiSpecTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) Tool
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentCesToolSpecInput)(nil)).Elem(), CompanionAgentCesToolSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentCesToolSpecArrayInput)(nil)).Elem(), CompanionAgentCesToolSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentCesToolSpecParameterOverrideInput)(nil)).Elem(), CompanionAgentCesToolSpecParameterOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentCesToolSpecParameterOverrideArrayInput)(nil)).Elem(), CompanionAgentCesToolSpecParameterOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentSkillConfigInput)(nil)).Elem(), CompanionAgentSkillConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentSkillConfigArrayInput)(nil)).Elem(), CompanionAgentSkillConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigInput)(nil)).Elem(), CompanionAgentSkillConfigGuidanceSkillConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigPtrInput)(nil)).Elem(), CompanionAgentSkillConfigGuidanceSkillConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionInput)(nil)).Elem(), CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayInput)(nil)).Elem(), CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionInput)(nil)).Elem(), CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayInput)(nil)).Elem(), CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentToolsetToolInput)(nil)).Elem(), CompanionAgentToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentToolsetToolArrayInput)(nil)).Elem(), CompanionAgentToolsetToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentToolsetToolParameterOverrideInput)(nil)).Elem(), CompanionAgentToolsetToolParameterOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompanionAgentToolsetToolParameterOverrideArrayInput)(nil)).Elem(), CompanionAgentToolsetToolParameterOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileAutomatedAgentConfigInput)(nil)).Elem(), ConversationProfileAutomatedAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileAutomatedAgentConfigPtrInput)(nil)).Elem(), ConversationProfileAutomatedAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigArgs{})
@@ -53610,6 +54706,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecTlsConfigPtrInput)(nil)).Elem(), ToolOpenApiSpecTlsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecTlsConfigCaCertInput)(nil)).Elem(), ToolOpenApiSpecTlsConfigCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecTlsConfigCaCertArrayInput)(nil)).Elem(), ToolOpenApiSpecTlsConfigCaCertArray{})
+	pulumi.RegisterOutputType(CompanionAgentCesToolSpecOutput{})
+	pulumi.RegisterOutputType(CompanionAgentCesToolSpecArrayOutput{})
+	pulumi.RegisterOutputType(CompanionAgentCesToolSpecParameterOverrideOutput{})
+	pulumi.RegisterOutputType(CompanionAgentCesToolSpecParameterOverrideArrayOutput{})
+	pulumi.RegisterOutputType(CompanionAgentSkillConfigOutput{})
+	pulumi.RegisterOutputType(CompanionAgentSkillConfigArrayOutput{})
+	pulumi.RegisterOutputType(CompanionAgentSkillConfigGuidanceSkillConfigOutput{})
+	pulumi.RegisterOutputType(CompanionAgentSkillConfigGuidanceSkillConfigPtrOutput{})
+	pulumi.RegisterOutputType(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionOutput{})
+	pulumi.RegisterOutputType(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArrayOutput{})
+	pulumi.RegisterOutputType(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionOutput{})
+	pulumi.RegisterOutputType(CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArrayOutput{})
+	pulumi.RegisterOutputType(CompanionAgentToolsetToolOutput{})
+	pulumi.RegisterOutputType(CompanionAgentToolsetToolArrayOutput{})
+	pulumi.RegisterOutputType(CompanionAgentToolsetToolParameterOverrideOutput{})
+	pulumi.RegisterOutputType(CompanionAgentToolsetToolParameterOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigOutput{})

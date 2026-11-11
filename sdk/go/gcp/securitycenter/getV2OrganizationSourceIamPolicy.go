@@ -50,6 +50,9 @@ func LookupV2OrganizationSourceIamPolicy(ctx *pulumi.Context, args *LookupV2Orga
 
 // A collection of arguments for invoking getV2OrganizationSourceIamPolicy.
 type LookupV2OrganizationSourceIamPolicyArgs struct {
+	// The organization whose Cloud Security Command Center the Source
+	// lives in.
+	// Used to find the parent resource to bind the IAM policy to
 	Organization string `pulumi:"organization"`
 	// Used to find the parent resource to bind the IAM policy to
 	Source string `pulumi:"source"`
@@ -75,6 +78,9 @@ func LookupV2OrganizationSourceIamPolicyOutput(ctx *pulumi.Context, args LookupV
 
 // A collection of arguments for invoking getV2OrganizationSourceIamPolicy.
 type LookupV2OrganizationSourceIamPolicyOutputArgs struct {
+	// The organization whose Cloud Security Command Center the Source
+	// lives in.
+	// Used to find the parent resource to bind the IAM policy to
 	Organization pulumi.StringInput `pulumi:"organization"`
 	// Used to find the parent resource to bind the IAM policy to
 	Source pulumi.StringInput `pulumi:"source"`

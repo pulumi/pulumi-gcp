@@ -197,6 +197,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Immutable. User inputs for the auto-created endpoints connections.
+     * Structure is documented below.
      * 
      */
     @Import(name="desiredAutoCreatedEndpoints")
@@ -204,6 +205,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Immutable. User inputs for the auto-created endpoints connections.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceDesiredAutoCreatedEndpointArgs>>> desiredAutoCreatedEndpoints() {
@@ -212,6 +214,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+     * Structure is documented below.
      * 
      * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      * 
@@ -222,6 +225,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+     * Structure is documented below.
      * 
      * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      * 
@@ -1188,6 +1192,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param desiredAutoCreatedEndpoints Immutable. User inputs for the auto-created endpoints connections.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1199,6 +1204,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param desiredAutoCreatedEndpoints Immutable. User inputs for the auto-created endpoints connections.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1209,6 +1215,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param desiredAutoCreatedEndpoints Immutable. User inputs for the auto-created endpoints connections.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1219,6 +1226,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param desiredPscAutoConnections `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1233,6 +1241,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param desiredPscAutoConnections `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1246,6 +1255,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param desiredPscAutoConnections `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+         * Structure is documented below.
          * 
          * @return builder
          * 

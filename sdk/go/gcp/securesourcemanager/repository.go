@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:       pulumi.String("us-central1"),
+//				Location:       pulumi.String("europe-west4"),
 //				InstanceId:     pulumi.String("my-instance"),
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
@@ -45,102 +45,10 @@ import (
 //				return err
 //			}
 //			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
-//				Location:       pulumi.String("us-central1"),
+//				Location:       pulumi.String("europe-west4"),
 //				RepositoryId:   pulumi.String("my-repository"),
 //				Instance:       instance.Name,
 //				DeletionPolicy: pulumi.String("PREVENT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Secure Source Manager Repository Initial Config
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:       pulumi.String("us-central1"),
-//				InstanceId:     pulumi.String("my-instance"),
-//				DeletionPolicy: pulumi.String("PREVENT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
-//				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("my-repository"),
-//				Instance:     instance.Name,
-//				Description:  pulumi.String("This is a test repository"),
-//				InitialConfig: &securesourcemanager.RepositoryInitialConfigArgs{
-//					DefaultBranch: pulumi.String("main"),
-//					Gitignores: pulumi.StringArray{
-//						pulumi.String("python"),
-//					},
-//					License: pulumi.String("mit"),
-//					Readme:  pulumi.String("default"),
-//				},
-//				DeletionPolicy: pulumi.String("PREVENT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Secure Source Manager Repository Service Account
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:       pulumi.String("us-central1"),
-//				InstanceId:     pulumi.String("my-instance"),
-//				DeletionPolicy: pulumi.String("PREVENT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-sa"),
-//				DisplayName: pulumi.String("Test Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
-//				Location:       pulumi.String("us-central1"),
-//				RepositoryId:   pulumi.String("my-repository"),
-//				Instance:       instance.Name,
-//				DeletionPolicy: pulumi.String("PREVENT"),
-//				ServiceAccount: sa.Email,
 //			})
 //			if err != nil {
 //				return err
@@ -163,13 +71,14 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:       pulumi.String("us-central1"),
+//				Location:       pulumi.String("europe-west4"),
 //				InstanceId:     pulumi.String("my-instance"),
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
@@ -177,7 +86,7 @@ import (
 //				return err
 //			}
 //			template, err := dataloss.NewPreventionInspectTemplate(ctx, "template", &dataloss.PreventionInspectTemplateArgs{
-//				Parent:      pulumi.String("projects/my-project-name/locations/us-central1"),
+//				Parent:      pulumi.String("projects/my-project-name/locations/europe-west4"),
 //				DisplayName: pulumi.String("Test Inspect Template"),
 //				InspectConfig: &dataloss.PreventionInspectTemplateInspectConfigArgs{
 //					InfoTypes: dataloss.PreventionInspectTemplateInspectConfigInfoTypeArray{
@@ -202,10 +111,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// IAM permissions can take time to propagate
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				ssmP4saDlpReader,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
-//				Location:       pulumi.String("us-central1"),
+//				Location:       pulumi.String("europe-west4"),
 //				RepositoryId:   pulumi.String("my-repository"),
 //				Instance:       instance.Name,
+//				Description:    pulumi.String("This is a test repository"),
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //				ScanConfig: &securesourcemanager.RepositoryScanConfigArgs{
 //					SecretScanConfig: &securesourcemanager.RepositoryScanConfigSecretScanConfigArgs{
@@ -214,7 +133,7 @@ import (
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				ssmP4saDlpReader,
+//				wait120Seconds,
 //			}))
 //			if err != nil {
 //				return err
@@ -225,7 +144,7 @@ import (
 //
 // ```
 //
-// ### Secure Source Manager Repository Secret Scanning Default
+// ### Secure Source Manager Repository Initial Config
 //
 // ```go
 // package main
@@ -233,6 +152,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -240,23 +160,35 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:       pulumi.String("us-central1"),
+//				Location:       pulumi.String("asia-east1"),
 //				InstanceId:     pulumi.String("my-instance"),
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("my-sa"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
-//				Location:       pulumi.String("us-central1"),
+//				Location:       pulumi.String("asia-east1"),
 //				RepositoryId:   pulumi.String("my-repository"),
 //				Instance:       instance.Name,
-//				DeletionPolicy: pulumi.String("PREVENT"),
-//				ScanConfig: &securesourcemanager.RepositoryScanConfigArgs{
-//					SecretScanConfig: &securesourcemanager.RepositoryScanConfigSecretScanConfigArgs{
-//						Enabled: pulumi.Bool(true),
+//				Description:    pulumi.String("This is a test repository"),
+//				ServiceAccount: sa.Email,
+//				InitialConfig: &securesourcemanager.RepositoryInitialConfigArgs{
+//					DefaultBranch: pulumi.String("main"),
+//					Gitignores: pulumi.StringArray{
+//						pulumi.String("python"),
 //					},
+//					License: pulumi.String("mit"),
+//					Readme:  pulumi.String("default"),
 //				},
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err

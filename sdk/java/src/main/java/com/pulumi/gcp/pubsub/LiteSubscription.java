@@ -216,14 +216,14 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zone;
+    private Output<String> zone;
 
     /**
      * @return The zone of the pubsub lite topic.
      * 
      */
-    public Output<Optional<String>> zone() {
-        return Codegen.optional(this.zone);
+    public Output<String> zone() {
+        return this.zone;
     }
 
     /**

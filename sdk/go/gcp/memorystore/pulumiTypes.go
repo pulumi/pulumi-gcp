@@ -1443,12 +1443,10 @@ func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) Inde
 }
 
 type InstanceDesiredAutoCreatedEndpoint struct {
-	// (Output)
-	// Output only. The consumer network where the IP address resides, in the form of
+	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
-	// (Output)
-	// Output only. The consumer projectId where the forwarding rule is created from.
+	// Required. The consumer projectId where the forwarding rule is created from.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -1464,12 +1462,10 @@ type InstanceDesiredAutoCreatedEndpointInput interface {
 }
 
 type InstanceDesiredAutoCreatedEndpointArgs struct {
-	// (Output)
-	// Output only. The consumer network where the IP address resides, in the form of
+	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network pulumi.StringInput `pulumi:"network"`
-	// (Output)
-	// Output only. The consumer projectId where the forwarding rule is created from.
+	// Required. The consumer projectId where the forwarding rule is created from.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -1524,15 +1520,13 @@ func (o InstanceDesiredAutoCreatedEndpointOutput) ToInstanceDesiredAutoCreatedEn
 	return o
 }
 
-// (Output)
-// Output only. The consumer network where the IP address resides, in the form of
+// Required. The consumer network where the IP address resides, in the form of
 // projects/{project_id}/global/networks/{network_id}.
 func (o InstanceDesiredAutoCreatedEndpointOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDesiredAutoCreatedEndpoint) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// (Output)
-// Output only. The consumer projectId where the forwarding rule is created from.
+// Required. The consumer projectId where the forwarding rule is created from.
 func (o InstanceDesiredAutoCreatedEndpointOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDesiredAutoCreatedEndpoint) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -1558,12 +1552,10 @@ func (o InstanceDesiredAutoCreatedEndpointArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type InstanceDesiredPscAutoConnection struct {
-	// (Output)
-	// Output only. The consumer network where the IP address resides, in the form of
+	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
-	// (Output)
-	// Output only. The consumer projectId where the forwarding rule is created from.
+	// Required. The consumer projectId where the forwarding rule is created from.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -1579,12 +1571,10 @@ type InstanceDesiredPscAutoConnectionInput interface {
 }
 
 type InstanceDesiredPscAutoConnectionArgs struct {
-	// (Output)
-	// Output only. The consumer network where the IP address resides, in the form of
+	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network pulumi.StringInput `pulumi:"network"`
-	// (Output)
-	// Output only. The consumer projectId where the forwarding rule is created from.
+	// Required. The consumer projectId where the forwarding rule is created from.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -1639,15 +1629,13 @@ func (o InstanceDesiredPscAutoConnectionOutput) ToInstanceDesiredPscAutoConnecti
 	return o
 }
 
-// (Output)
-// Output only. The consumer network where the IP address resides, in the form of
+// Required. The consumer network where the IP address resides, in the form of
 // projects/{project_id}/global/networks/{network_id}.
 func (o InstanceDesiredPscAutoConnectionOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDesiredPscAutoConnection) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// (Output)
-// Output only. The consumer projectId where the forwarding rule is created from.
+// Required. The consumer projectId where the forwarding rule is created from.
 func (o InstanceDesiredPscAutoConnectionOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDesiredPscAutoConnection) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -5193,6 +5181,9 @@ func (o InstanceStateInfoUpdateInfoArrayOutput) Index(i pulumi.IntInput) Instanc
 }
 
 type InstanceZoneDistributionConfig struct {
+	// (Output)
+	// The exact list of zones where the instance currently has active VMs.
+	ActiveZones []string `pulumi:"activeZones"`
 	// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
 	// Possible values:
 	// MULTI_ZONE
@@ -5202,6 +5193,10 @@ type InstanceZoneDistributionConfig struct {
 	// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
 	// Ignored for MULTI_ZONE mode.
 	Zone *string `pulumi:"zone"`
+	// Specify the zones of a multi-zone instance where Memorystore
+	// instance allocates resources. This flag isn't applicable for single-zone
+	// instances.
+	Zones []string `pulumi:"zones"`
 }
 
 // InstanceZoneDistributionConfigInput is an input type that accepts InstanceZoneDistributionConfigArgs and InstanceZoneDistributionConfigOutput values.
@@ -5216,6 +5211,9 @@ type InstanceZoneDistributionConfigInput interface {
 }
 
 type InstanceZoneDistributionConfigArgs struct {
+	// (Output)
+	// The exact list of zones where the instance currently has active VMs.
+	ActiveZones pulumi.StringArrayInput `pulumi:"activeZones"`
 	// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
 	// Possible values:
 	// MULTI_ZONE
@@ -5225,6 +5223,10 @@ type InstanceZoneDistributionConfigArgs struct {
 	// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
 	// Ignored for MULTI_ZONE mode.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
+	// Specify the zones of a multi-zone instance where Memorystore
+	// instance allocates resources. This flag isn't applicable for single-zone
+	// instances.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
 
 func (InstanceZoneDistributionConfigArgs) ElementType() reflect.Type {
@@ -5304,6 +5306,12 @@ func (o InstanceZoneDistributionConfigOutput) ToInstanceZoneDistributionConfigPt
 	}).(InstanceZoneDistributionConfigPtrOutput)
 }
 
+// (Output)
+// The exact list of zones where the instance currently has active VMs.
+func (o InstanceZoneDistributionConfigOutput) ActiveZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceZoneDistributionConfig) []string { return v.ActiveZones }).(pulumi.StringArrayOutput)
+}
+
 // Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
 // Possible values:
 // MULTI_ZONE
@@ -5317,6 +5325,13 @@ func (o InstanceZoneDistributionConfigOutput) Mode() pulumi.StringPtrOutput {
 // Ignored for MULTI_ZONE mode.
 func (o InstanceZoneDistributionConfigOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceZoneDistributionConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+// Specify the zones of a multi-zone instance where Memorystore
+// instance allocates resources. This flag isn't applicable for single-zone
+// instances.
+func (o InstanceZoneDistributionConfigOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceZoneDistributionConfig) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 type InstanceZoneDistributionConfigPtrOutput struct{ *pulumi.OutputState }
@@ -5343,6 +5358,17 @@ func (o InstanceZoneDistributionConfigPtrOutput) Elem() InstanceZoneDistribution
 	}).(InstanceZoneDistributionConfigOutput)
 }
 
+// (Output)
+// The exact list of zones where the instance currently has active VMs.
+func (o InstanceZoneDistributionConfigPtrOutput) ActiveZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceZoneDistributionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveZones
+	}).(pulumi.StringArrayOutput)
+}
+
 // Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
 // Possible values:
 // MULTI_ZONE
@@ -5366,6 +5392,18 @@ func (o InstanceZoneDistributionConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 		}
 		return v.Zone
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the zones of a multi-zone instance where Memorystore
+// instance allocates resources. This flag isn't applicable for single-zone
+// instances.
+func (o InstanceZoneDistributionConfigPtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceZoneDistributionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
 }
 
 type GetAclPolicyRule struct {
@@ -9147,6 +9185,8 @@ func (o GetInstanceStateInfoUpdateInfoArrayOutput) Index(i pulumi.IntInput) GetI
 }
 
 type GetInstanceZoneDistributionConfig struct {
+	// The exact list of zones where the instance currently has active VMs.
+	ActiveZones []string `pulumi:"activeZones"`
 	// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
 	//  Possible values:
 	//  MULTI_ZONE
@@ -9155,6 +9195,10 @@ type GetInstanceZoneDistributionConfig struct {
 	// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
 	// Ignored for MULTI_ZONE mode.
 	Zone string `pulumi:"zone"`
+	// Specify the zones of a multi-zone instance where Memorystore
+	// instance allocates resources. This flag isn't applicable for single-zone
+	// instances.
+	Zones []string `pulumi:"zones"`
 }
 
 // GetInstanceZoneDistributionConfigInput is an input type that accepts GetInstanceZoneDistributionConfigArgs and GetInstanceZoneDistributionConfigOutput values.
@@ -9169,6 +9213,8 @@ type GetInstanceZoneDistributionConfigInput interface {
 }
 
 type GetInstanceZoneDistributionConfigArgs struct {
+	// The exact list of zones where the instance currently has active VMs.
+	ActiveZones pulumi.StringArrayInput `pulumi:"activeZones"`
 	// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
 	//  Possible values:
 	//  MULTI_ZONE
@@ -9177,6 +9223,10 @@ type GetInstanceZoneDistributionConfigArgs struct {
 	// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
 	// Ignored for MULTI_ZONE mode.
 	Zone pulumi.StringInput `pulumi:"zone"`
+	// Specify the zones of a multi-zone instance where Memorystore
+	// instance allocates resources. This flag isn't applicable for single-zone
+	// instances.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
 
 func (GetInstanceZoneDistributionConfigArgs) ElementType() reflect.Type {
@@ -9230,6 +9280,11 @@ func (o GetInstanceZoneDistributionConfigOutput) ToGetInstanceZoneDistributionCo
 	return o
 }
 
+// The exact list of zones where the instance currently has active VMs.
+func (o GetInstanceZoneDistributionConfigOutput) ActiveZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceZoneDistributionConfig) []string { return v.ActiveZones }).(pulumi.StringArrayOutput)
+}
+
 // Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
 //
 //	Possible values:
@@ -9244,6 +9299,13 @@ func (o GetInstanceZoneDistributionConfigOutput) Mode() pulumi.StringOutput {
 // Ignored for MULTI_ZONE mode.
 func (o GetInstanceZoneDistributionConfigOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceZoneDistributionConfig) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+// Specify the zones of a multi-zone instance where Memorystore
+// instance allocates resources. This flag isn't applicable for single-zone
+// instances.
+func (o GetInstanceZoneDistributionConfigOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceZoneDistributionConfig) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 type GetInstanceZoneDistributionConfigArrayOutput struct{ *pulumi.OutputState }

@@ -389,7 +389,7 @@ type Organization struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
 	Retention pulumi.StringPtrOutput `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -489,7 +489,7 @@ type organizationState struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
 	Retention *string `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -557,7 +557,7 @@ type OrganizationState struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
 	Retention pulumi.StringPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -628,7 +628,7 @@ type organizationArgs struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
 	Retention *string `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -687,7 +687,7 @@ type OrganizationArgs struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
 	Retention pulumi.StringPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -883,7 +883,7 @@ func (o OrganizationOutput) Properties() OrganizationPropertiesOutput {
 // operation completes. During this period, the Organization may be restored to its last known state.
 // After this period, the Organization will no longer be able to be restored.
 // Default value is `DELETION_RETENTION_UNSPECIFIED`.
-// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
 func (o OrganizationOutput) Retention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Retention }).(pulumi.StringPtrOutput)
 }

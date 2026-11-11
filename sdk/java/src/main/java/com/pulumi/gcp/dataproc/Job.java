@@ -207,28 +207,28 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDelete);
     }
     /**
-     * The config of Hadoop job
+     * Submits a Hadoop job to the cluster. Structure is documented below.
      * 
      */
     @Export(name="hadoopConfig", refs={JobHadoopConfig.class}, tree="[0]")
     private Output</* @Nullable */ JobHadoopConfig> hadoopConfig;
 
     /**
-     * @return The config of Hadoop job
+     * @return Submits a Hadoop job to the cluster. Structure is documented below.
      * 
      */
     public Output<Optional<JobHadoopConfig>> hadoopConfig() {
         return Codegen.optional(this.hadoopConfig);
     }
     /**
-     * The config of hive job
+     * Submits a Hive job to the cluster. Structure is documented below.
      * 
      */
     @Export(name="hiveConfig", refs={JobHiveConfig.class}, tree="[0]")
     private Output</* @Nullable */ JobHiveConfig> hiveConfig;
 
     /**
-     * @return The config of hive job
+     * @return Submits a Hive job to the cluster. Structure is documented below.
      * 
      */
     public Output<Optional<JobHiveConfig>> hiveConfig() {
@@ -253,14 +253,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The config of pag job.
+     * Submits a Pig job to the cluster. Structure is documented below.
      * 
      */
     @Export(name="pigConfig", refs={JobPigConfig.class}, tree="[0]")
     private Output</* @Nullable */ JobPigConfig> pigConfig;
 
     /**
-     * @return The config of pag job.
+     * @return Submits a Pig job to the cluster. Structure is documented below.
      * 
      */
     public Output<Optional<JobPigConfig>> pigConfig() {
@@ -281,14 +281,18 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.placement;
     }
     /**
-     * The config of presto job
+     * Submits a Presto job to the cluster. Structure is documented below.
+     * 
+     * ***
      * 
      */
     @Export(name="prestoConfig", refs={JobPrestoConfig.class}, tree="[0]")
     private Output</* @Nullable */ JobPrestoConfig> prestoConfig;
 
     /**
-     * @return The config of presto job
+     * @return Submits a Presto job to the cluster. Structure is documented below.
+     * 
+     * ***
      * 
      */
     public Output<Optional<JobPrestoConfig>> prestoConfig() {
@@ -325,14 +329,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * The config of pySpark job.
+     * Submits a PySpark job to the cluster. Structure is documented below.
      * 
      */
     @Export(name="pysparkConfig", refs={JobPysparkConfig.class}, tree="[0]")
     private Output</* @Nullable */ JobPysparkConfig> pysparkConfig;
 
     /**
-     * @return The config of pySpark job.
+     * @return Submits a PySpark job to the cluster. Structure is documented below.
      * 
      */
     public Output<Optional<JobPysparkConfig>> pysparkConfig() {
@@ -383,28 +387,28 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scheduling);
     }
     /**
-     * The config of the Spark job.
+     * Submits a Spark job to the cluster. Structure is documented below.
      * 
      */
     @Export(name="sparkConfig", refs={JobSparkConfig.class}, tree="[0]")
     private Output</* @Nullable */ JobSparkConfig> sparkConfig;
 
     /**
-     * @return The config of the Spark job.
+     * @return Submits a Spark job to the cluster. Structure is documented below.
      * 
      */
     public Output<Optional<JobSparkConfig>> sparkConfig() {
         return Codegen.optional(this.sparkConfig);
     }
     /**
-     * The config of SparkSql job
+     * Submits a Spark SQL job to the cluster. Structure is documented below.
      * 
      */
     @Export(name="sparksqlConfig", refs={JobSparksqlConfig.class}, tree="[0]")
     private Output</* @Nullable */ JobSparksqlConfig> sparksqlConfig;
 
     /**
-     * @return The config of SparkSql job
+     * @return Submits a Spark SQL job to the cluster. Structure is documented below.
      * 
      */
     public Output<Optional<JobSparksqlConfig>> sparksqlConfig() {

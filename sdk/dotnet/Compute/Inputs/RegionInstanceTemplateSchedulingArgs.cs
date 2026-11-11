@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? AvailabilityDomain { get; set; }
 
         /// <summary>
-        /// Settings for the instance to perform a graceful shutdown.
+        /// Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
         /// </summary>
         [Input("gracefulShutdown")]
         public Input<Inputs.RegionInstanceTemplateSchedulingGracefulShutdownArgs>? GracefulShutdown { get; set; }
@@ -48,10 +48,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>? _localSsdRecoveryTimeouts;
 
         /// <summary>
-        /// Specifies the maximum amount of time a Local Ssd Vm should wait while
-        ///   recovery of the Local Ssd state is attempted. Its value should be in
-        ///   between 0 and 168 hours with hour granularity and the default value being 1
-        ///   hour.
+        /// (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs> LocalSsdRecoveryTimeouts
         {
@@ -60,7 +57,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<string>? MaintenanceInterval { get; set; }
@@ -115,7 +112,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
-        /// The duration of the notice that the instance will receive before it is preempted.
+        /// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
         /// </summary>
         [Input("preemptionNoticeDuration")]
         public Input<Inputs.RegionInstanceTemplateSchedulingPreemptionNoticeDurationArgs>? PreemptionNoticeDuration { get; set; }
@@ -133,7 +130,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ProvisioningModel { get; set; }
 
         /// <summary>
-        /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        /// Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         /// </summary>
         [Input("skipGuestOsShutdown")]
         public Input<bool>? SkipGuestOsShutdown { get; set; }

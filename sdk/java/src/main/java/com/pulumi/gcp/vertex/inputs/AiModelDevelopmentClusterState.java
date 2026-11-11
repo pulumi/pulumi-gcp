@@ -389,6 +389,33 @@ public final class AiModelDevelopmentClusterState extends com.pulumi.resources.R
     }
 
     /**
+     * Whether the service also refreshes service-managed fields (startup and
+     * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+     * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+     * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+     * for GKE clusters (`kubernetesSpec`).
+     * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+     * `USER_AND_SERVICE`.
+     * 
+     */
+    @Import(name="updateMode")
+    private @Nullable Output<String> updateMode;
+
+    /**
+     * @return Whether the service also refreshes service-managed fields (startup and
+     * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+     * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+     * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+     * for GKE clusters (`kubernetesSpec`).
+     * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+     * `USER_AND_SERVICE`.
+     * 
+     */
+    public Optional<Output<String>> updateMode() {
+        return Optional.ofNullable(this.updateMode);
+    }
+
+    /**
      * (Output)
      * Time when the TrainingService was most recently updated.
      * 
@@ -427,6 +454,7 @@ public final class AiModelDevelopmentClusterState extends com.pulumi.resources.R
         this.runtimeSpec = $.runtimeSpec;
         this.runtimes = $.runtimes;
         this.startTime = $.startTime;
+        this.updateMode = $.updateMode;
         this.updateTime = $.updateTime;
     }
 
@@ -970,6 +998,39 @@ public final class AiModelDevelopmentClusterState extends com.pulumi.resources.R
          */
         public Builder startTime(String startTime) {
             return startTime(Output.of(startTime));
+        }
+
+        /**
+         * @param updateMode Whether the service also refreshes service-managed fields (startup and
+         * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+         * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+         * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+         * for GKE clusters (`kubernetesSpec`).
+         * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+         * `USER_AND_SERVICE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateMode(@Nullable Output<String> updateMode) {
+            $.updateMode = updateMode;
+            return this;
+        }
+
+        /**
+         * @param updateMode Whether the service also refreshes service-managed fields (startup and
+         * prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+         * only your changes; adding a node pool requires `USER_AND_SERVICE`.
+         * Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+         * for GKE clusters (`kubernetesSpec`).
+         * Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+         * `USER_AND_SERVICE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateMode(String updateMode) {
+            return updateMode(Output.of(updateMode));
         }
 
         /**

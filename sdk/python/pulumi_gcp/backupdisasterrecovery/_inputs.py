@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'AutoProtectionPolicyBackupPlanDetailArgs',
     'AutoProtectionPolicyBackupPlanDetailArgsDict',
+    'AutoProtectionPolicyBindingBindingEvaluationSummaryArgs',
+    'AutoProtectionPolicyBindingBindingEvaluationSummaryArgsDict',
     'AutoProtectionPolicyBindingSummaryArgs',
     'AutoProtectionPolicyBindingSummaryArgsDict',
     'AutoProtectionPolicyCriteriaArgs',
@@ -181,6 +183,84 @@ class AutoProtectionPolicyBackupPlanDetailArgs:
     @resource_type.setter
     def resource_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "resource_type", value)
+
+
+class AutoProtectionPolicyBindingBindingEvaluationSummaryArgsDict(TypedDict):
+    failed_resource_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The number of matching resources whose protection failed during the last job run.
+    """
+    matching_resource_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The number of resources that currently match the policy's criteria.
+    """
+    protected_resource_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The number of matching resources that are successfully protected.
+    """
+
+@pulumi.input_type
+class AutoProtectionPolicyBindingBindingEvaluationSummaryArgs:
+    def __init__(__self__, *,
+                 failed_resource_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching_resource_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_resource_count: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] failed_resource_count: (Output)
+               The number of matching resources whose protection failed during the last job run.
+        :param pulumi.Input[_builtins.str] matching_resource_count: (Output)
+               The number of resources that currently match the policy's criteria.
+        :param pulumi.Input[_builtins.str] protected_resource_count: (Output)
+               The number of matching resources that are successfully protected.
+        """
+        if failed_resource_count is not None:
+            pulumi.set(__self__, "failed_resource_count", failed_resource_count)
+        if matching_resource_count is not None:
+            pulumi.set(__self__, "matching_resource_count", matching_resource_count)
+        if protected_resource_count is not None:
+            pulumi.set(__self__, "protected_resource_count", protected_resource_count)
+
+    @_builtins.property
+    @pulumi.getter(name="failedResourceCount")
+    def failed_resource_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The number of matching resources whose protection failed during the last job run.
+        """
+        return pulumi.get(self, "failed_resource_count")
+
+    @failed_resource_count.setter
+    def failed_resource_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "failed_resource_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchingResourceCount")
+    def matching_resource_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The number of resources that currently match the policy's criteria.
+        """
+        return pulumi.get(self, "matching_resource_count")
+
+    @matching_resource_count.setter
+    def matching_resource_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "matching_resource_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protectedResourceCount")
+    def protected_resource_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The number of matching resources that are successfully protected.
+        """
+        return pulumi.get(self, "protected_resource_count")
+
+    @protected_resource_count.setter
+    def protected_resource_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protected_resource_count", value)
 
 
 class AutoProtectionPolicyBindingSummaryArgsDict(TypedDict):

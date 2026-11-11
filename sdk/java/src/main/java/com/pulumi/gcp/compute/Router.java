@@ -329,16 +329,25 @@ public class Router extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptedInterconnectRouter);
     }
     /**
+     * (Optional, Deprecated)
      * Keys used for MD5 authentication.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     * 
+     * @deprecated `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     * 
      */
+    @Deprecated
     @Export(name="md5AuthenticationKeys", refs={RouterMd5AuthenticationKeys.class}, tree="[0]")
     private Output</* @Nullable */ RouterMd5AuthenticationKeys> md5AuthenticationKeys;
 
     /**
-     * @return Keys used for MD5 authentication.
+     * @return (Optional, Deprecated)
+     * Keys used for MD5 authentication.
      * Structure is documented below.
+     * 
+     * &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
      * 
      */
     public Output<Optional<RouterMd5AuthenticationKeys>> md5AuthenticationKeys() {

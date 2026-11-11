@@ -14,9 +14,17 @@ namespace Pulumi.Gcp.ApplicationIntegration.Outputs
     public sealed class AuthConfigDecryptedCredentialOauth2AuthorizationCode
     {
         /// <summary>
+        /// Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+        /// </summary>
+        public readonly bool? ApplyReauthPolicy;
+        /// <summary>
         /// The auth url endpoint to send the auth code request to.
         /// </summary>
         public readonly string? AuthEndpoint;
+        /// <summary>
+        /// The auth parameters sent along with the auth code request.
+        /// </summary>
+        public readonly Outputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams? AuthParams;
         /// <summary>
         /// The client's id.
         /// </summary>
@@ -26,6 +34,10 @@ namespace Pulumi.Gcp.ApplicationIntegration.Outputs
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
+        /// Represent how to pass parameters to fetch access token Possible values: ["REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+        /// </summary>
+        public readonly string? RequestType;
+        /// <summary>
         /// A space-delimited list of requested scope permissions.
         /// </summary>
         public readonly string? Scope;
@@ -33,24 +45,40 @@ namespace Pulumi.Gcp.ApplicationIntegration.Outputs
         /// The token url endpoint to send the token request to.
         /// </summary>
         public readonly string? TokenEndpoint;
+        /// <summary>
+        /// The token parameters sent along with the token request.
+        /// </summary>
+        public readonly Outputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams? TokenParams;
 
         [OutputConstructor]
         private AuthConfigDecryptedCredentialOauth2AuthorizationCode(
+            bool? applyReauthPolicy,
+
             string? authEndpoint,
+
+            Outputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams? authParams,
 
             string? clientId,
 
             string? clientSecret,
 
+            string? requestType,
+
             string? scope,
 
-            string? tokenEndpoint)
+            string? tokenEndpoint,
+
+            Outputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams? tokenParams)
         {
+            ApplyReauthPolicy = applyReauthPolicy;
             AuthEndpoint = authEndpoint;
+            AuthParams = authParams;
             ClientId = clientId;
             ClientSecret = clientSecret;
+            RequestType = requestType;
             Scope = scope;
             TokenEndpoint = tokenEndpoint;
+            TokenParams = tokenParams;
         }
     }
 }

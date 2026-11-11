@@ -47,6 +47,13 @@ type Api struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringOutput `pulumi:"detectMd5hash"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The id of the most recently created revision for this API proxy.
 	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
 	// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
@@ -58,6 +65,8 @@ type Api struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Apigee Organization name associated with the Apigee instance.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A list of revisions of this API proxy.
 	Revisions pulumi.StringArrayOutput `pulumi:"revisions"`
 }
@@ -75,6 +84,11 @@ func NewApi(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Api
 	err := ctx.RegisterResource("gcp:apigee/api:Api", name, args, &resource, opts...)
@@ -111,6 +125,13 @@ type apiState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The id of the most recently created revision for this API proxy.
 	LatestRevisionId *string `pulumi:"latestRevisionId"`
 	// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
@@ -122,6 +143,8 @@ type apiState struct {
 	Name *string `pulumi:"name"`
 	// The Apigee Organization name associated with the Apigee instance.
 	OrgId *string `pulumi:"orgId"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A list of revisions of this API proxy.
 	Revisions []string `pulumi:"revisions"`
 }
@@ -140,6 +163,13 @@ type ApiState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
+	// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The id of the most recently created revision for this API proxy.
 	LatestRevisionId pulumi.StringPtrInput
 	// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
@@ -151,6 +181,8 @@ type ApiState struct {
 	Name pulumi.StringPtrInput
 	// The Apigee Organization name associated with the Apigee instance.
 	OrgId pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// A list of revisions of this API proxy.
 	Revisions pulumi.StringArrayInput
 }
@@ -179,6 +211,11 @@ type apiArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The ID of the API proxy.
 	Name *string `pulumi:"name"`
 	// The Apigee Organization name associated with the Apigee instance.
@@ -200,6 +237,11 @@ type ApiArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
 	DetectMd5hash pulumi.StringPtrInput
+	// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The ID of the API proxy.
 	Name pulumi.StringPtrInput
 	// The Apigee Organization name associated with the Apigee instance.
@@ -315,6 +357,19 @@ func (o ApiOutput) DetectMd5hash() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.DetectMd5hash }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o ApiOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o ApiOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // The id of the most recently created revision for this API proxy.
 func (o ApiOutput) LatestRevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.LatestRevisionId }).(pulumi.StringOutput)
@@ -339,6 +394,11 @@ func (o ApiOutput) Name() pulumi.StringOutput {
 // The Apigee Organization name associated with the Apigee instance.
 func (o ApiOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ApiOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // A list of revisions of this API proxy.

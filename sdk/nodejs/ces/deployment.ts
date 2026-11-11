@@ -106,6 +106,12 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ *     modality: "MODALITY_TEXT",
+ *     modelSettings: {
+ *         model: "gemini-3.0-flash-001",
+ *         temperature: 0.5,
+ *         thinkingLevel: "LOW",
+ *     },
  * });
  * ```
  *
@@ -251,6 +257,17 @@ export class Deployment extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * The modality of the deployment.
+     * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+     */
+    declare public readonly modality: pulumi.Output<string | undefined>;
+    /**
+     * Model settings for the deployment.
+     * Overrides model settings configured at the app/agent levels.
+     * Structure is documented below.
+     */
+    declare public readonly modelSettings: pulumi.Output<outputs.ces.DeploymentModelSettings | undefined>;
+    /**
      * Identifier. The resource name of the deployment.
      * Format:
      * projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -293,6 +310,8 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["etag"] = state?.etag;
             resourceInputs["instagramCredentials"] = state?.instagramCredentials;
             resourceInputs["location"] = state?.location;
+            resourceInputs["modality"] = state?.modality;
+            resourceInputs["modelSettings"] = state?.modelSettings;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -321,6 +340,8 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["instagramCredentials"] = args?.instagramCredentials;
             resourceInputs["location"] = args?.location;
+            resourceInputs["modality"] = args?.modality;
+            resourceInputs["modelSettings"] = args?.modelSettings;
             resourceInputs["project"] = args?.project;
             resourceInputs["whatsappCredentials"] = args?.whatsappCredentials;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -386,6 +407,17 @@ export interface DeploymentState {
      */
     location?: pulumi.Input<string | undefined>;
     /**
+     * The modality of the deployment.
+     * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+     */
+    modality?: pulumi.Input<string | undefined>;
+    /**
+     * Model settings for the deployment.
+     * Overrides model settings configured at the app/agent levels.
+     * Structure is documented below.
+     */
+    modelSettings?: pulumi.Input<inputs.ces.DeploymentModelSettings | undefined>;
+    /**
      * Identifier. The resource name of the deployment.
      * Format:
      * projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -449,6 +481,17 @@ export interface DeploymentArgs {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: pulumi.Input<string>;
+    /**
+     * The modality of the deployment.
+     * Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+     */
+    modality?: pulumi.Input<string | undefined>;
+    /**
+     * Model settings for the deployment.
+     * Overrides model settings configured at the app/agent levels.
+     * Structure is documented below.
+     */
+    modelSettings?: pulumi.Input<inputs.ces.DeploymentModelSettings | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

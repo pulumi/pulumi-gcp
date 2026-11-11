@@ -59,8 +59,7 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
      */
     private @Nullable URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy faultInjectionPolicy;
     /**
-     * @return (Optional, Beta)
-     * Specifies the policy for optimizing images returned in the HTTP response.
+     * @return Specifies the policy for optimizing images returned in the HTTP response.
      * Structure is documented below.
      * 
      */
@@ -166,8 +165,7 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
         return Optional.ofNullable(this.faultInjectionPolicy);
     }
     /**
-     * @return (Optional, Beta)
-     * Specifies the policy for optimizing images returned in the HTTP response.
+     * @return Specifies the policy for optimizing images returned in the HTTP response.
      * Structure is documented below.
      * 
      */

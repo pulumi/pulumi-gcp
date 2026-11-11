@@ -19,14 +19,32 @@ namespace Pulumi.Gcp.IntegrationConnectors.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionEventingConfigAdditionalVariable> AdditionalVariables;
         /// <summary>
+        /// List of allowed event types for the connection.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedEventTypes;
+        /// <summary>
         /// authConfig for Eventing Configuration.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConnectionEventingConfigAuthConfig? AuthConfig;
         /// <summary>
+        /// Dead letter configuration for eventing of a connection.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConnectionEventingConfigDeadLetterConfig? DeadLetterConfig;
+        /// <summary>
+        /// Data enrichment configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConnectionEventingConfigEnrichmentConfig? EnrichmentConfig;
+        /// <summary>
         /// Enrichment Enabled.
         /// </summary>
         public readonly bool? EnrichmentEnabled;
+        /// <summary>
+        /// Filter to be applied on the events to be received by the connection.
+        /// </summary>
+        public readonly string? GlobalEventFilter;
         /// <summary>
         /// registrationDestinationConfig
         /// Structure is documented below.
@@ -37,15 +55,27 @@ namespace Pulumi.Gcp.IntegrationConnectors.Outputs
         private ConnectionEventingConfig(
             ImmutableArray<Outputs.ConnectionEventingConfigAdditionalVariable> additionalVariables,
 
+            ImmutableArray<string> allowedEventTypes,
+
             Outputs.ConnectionEventingConfigAuthConfig? authConfig,
 
+            Outputs.ConnectionEventingConfigDeadLetterConfig? deadLetterConfig,
+
+            Outputs.ConnectionEventingConfigEnrichmentConfig? enrichmentConfig,
+
             bool? enrichmentEnabled,
+
+            string? globalEventFilter,
 
             Outputs.ConnectionEventingConfigRegistrationDestinationConfig registrationDestinationConfig)
         {
             AdditionalVariables = additionalVariables;
+            AllowedEventTypes = allowedEventTypes;
             AuthConfig = authConfig;
+            DeadLetterConfig = deadLetterConfig;
+            EnrichmentConfig = enrichmentConfig;
             EnrichmentEnabled = enrichmentEnabled;
+            GlobalEventFilter = globalEventFilter;
             RegistrationDestinationConfig = registrationDestinationConfig;
         }
     }

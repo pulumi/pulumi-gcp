@@ -164,14 +164,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     }
 
     /**
-     * Specifies the upgrade settings for NAP created node pools
+     * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
      * 
      */
     @Import(name="upgradeSettings")
     private @Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs> upgradeSettings;
 
     /**
-     * @return Specifies the upgrade settings for NAP created node pools
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs>> upgradeSettings() {
@@ -421,7 +421,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param upgradeSettings Specifies the upgrade settings for NAP created node pools
+         * @param upgradeSettings Specifies the upgrade settings for NAP created node pools. Structure is documented below.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param upgradeSettings Specifies the upgrade settings for NAP created node pools
+         * @param upgradeSettings Specifies the upgrade settings for NAP created node pools. Structure is documented below.
          * 
          * @return builder
          * 

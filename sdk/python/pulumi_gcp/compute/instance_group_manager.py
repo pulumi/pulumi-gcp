@@ -75,7 +75,7 @@ class InstanceGroupManagerArgs:
                ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
-        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
+        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group. Structure is documented below.
         :param pulumi.Input[_builtins.str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -265,7 +265,7 @@ class InstanceGroupManagerArgs:
     @pulumi.getter(name="instanceLifecyclePolicy")
     def instance_lifecycle_policy(self) -> pulumi.Input[Optional['InstanceGroupManagerInstanceLifecyclePolicyArgs']]:
         """
-        The instance lifecycle policy for this managed instance group.
+        The instance lifecycle policy for this managed instance group. Structure is documented below.
         """
         return pulumi.get(self, "instance_lifecycle_policy")
 
@@ -590,7 +590,7 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[_builtins.str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input[_builtins.int] instance_group_manager_id: The unique identifier number for the resource. This identifier is defined by the server.
-        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
+        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group. Structure is documented below.
         :param pulumi.Input[_builtins.str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -835,7 +835,7 @@ class _InstanceGroupManagerState:
     @pulumi.getter(name="instanceLifecyclePolicy")
     def instance_lifecycle_policy(self) -> pulumi.Input[Optional['InstanceGroupManagerInstanceLifecyclePolicyArgs']]:
         """
-        The instance lifecycle policy for this managed instance group.
+        The instance lifecycle policy for this managed instance group. Structure is documented below.
         """
         return pulumi.get(self, "instance_lifecycle_policy")
 
@@ -1370,7 +1370,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
-        :param pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict', 'outputs.InstanceGroupManagerInstanceLifecyclePolicy']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
+        :param pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict', 'outputs.InstanceGroupManagerInstanceLifecyclePolicy']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group. Structure is documented below.
         :param pulumi.Input[_builtins.str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -1757,7 +1757,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[_builtins.str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input[_builtins.int] instance_group_manager_id: The unique identifier number for the resource. This identifier is defined by the server.
-        :param pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict', 'outputs.InstanceGroupManagerInstanceLifecyclePolicy']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
+        :param pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict', 'outputs.InstanceGroupManagerInstanceLifecyclePolicy']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group. Structure is documented below.
         :param pulumi.Input[_builtins.str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -2010,7 +2010,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="instanceLifecyclePolicy")
     def instance_lifecycle_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerInstanceLifecyclePolicy']:
         """
-        The instance lifecycle policy for this managed instance group.
+        The instance lifecycle policy for this managed instance group. Structure is documented below.
         """
         return pulumi.get(self, "instance_lifecycle_policy")
 

@@ -548,11 +548,9 @@ class InstanceDesiredAutoCreatedEndpoint(dict):
                  network: _builtins.str,
                  project_id: _builtins.str):
         """
-        :param _builtins.str network: (Output)
-               Output only. The consumer network where the IP address resides, in the form of
+        :param _builtins.str network: Required. The consumer network where the IP address resides, in the form of
                projects/{project_id}/global/networks/{network_id}.
-        :param _builtins.str project_id: (Output)
-               Output only. The consumer project_id where the forwarding rule is created from.
+        :param _builtins.str project_id: Required. The consumer project_id where the forwarding rule is created from.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "project_id", project_id)
@@ -561,8 +559,7 @@ class InstanceDesiredAutoCreatedEndpoint(dict):
     @pulumi.getter
     def network(self) -> _builtins.str:
         """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
+        Required. The consumer network where the IP address resides, in the form of
         projects/{project_id}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
@@ -571,8 +568,7 @@ class InstanceDesiredAutoCreatedEndpoint(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> _builtins.str:
         """
-        (Output)
-        Output only. The consumer project_id where the forwarding rule is created from.
+        Required. The consumer project_id where the forwarding rule is created from.
         """
         return pulumi.get(self, "project_id")
 
@@ -600,11 +596,9 @@ class InstanceDesiredPscAutoConnection(dict):
                  network: _builtins.str,
                  project_id: _builtins.str):
         """
-        :param _builtins.str network: (Output)
-               Output only. The consumer network where the IP address resides, in the form of
+        :param _builtins.str network: Required. The consumer network where the IP address resides, in the form of
                projects/{project_id}/global/networks/{network_id}.
-        :param _builtins.str project_id: (Output)
-               Output only. The consumer project_id where the forwarding rule is created from.
+        :param _builtins.str project_id: Required. The consumer project_id where the forwarding rule is created from.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "project_id", project_id)
@@ -613,8 +607,7 @@ class InstanceDesiredPscAutoConnection(dict):
     @pulumi.getter
     def network(self) -> _builtins.str:
         """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
+        Required. The consumer network where the IP address resides, in the form of
         projects/{project_id}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
@@ -623,8 +616,7 @@ class InstanceDesiredPscAutoConnection(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> _builtins.str:
         """
-        (Output)
-        Output only. The consumer project_id where the forwarding rule is created from.
+        Required. The consumer project_id where the forwarding rule is created from.
         """
         return pulumi.get(self, "project_id")
 
@@ -2119,10 +2111,31 @@ class InstanceStateInfoUpdateInfo(dict):
 
 @pulumi.output_type
 class InstanceZoneDistributionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeZones":
+            suggest = "active_zones"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceZoneDistributionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceZoneDistributionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceZoneDistributionConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 active_zones: Optional[Sequence[_builtins.str]] = None,
                  mode: Optional[_builtins.str] = None,
-                 zone: Optional[_builtins.str] = None):
+                 zone: Optional[_builtins.str] = None,
+                 zones: Optional[Sequence[_builtins.str]] = None):
         """
+        :param Sequence[_builtins.str] active_zones: (Output)
+               The exact list of zones where the instance currently has active VMs.
         :param _builtins.str mode: Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
                Possible values:
                MULTI_ZONE
@@ -2130,11 +2143,27 @@ class InstanceZoneDistributionConfig(dict):
                Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
         :param _builtins.str zone: Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
                Ignored for MULTI_ZONE mode.
+        :param Sequence[_builtins.str] zones: Specify the zones of a multi-zone instance where Memorystore
+               instance allocates resources. This flag isn't applicable for single-zone
+               instances.
         """
+        if active_zones is not None:
+            pulumi.set(__self__, "active_zones", active_zones)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter(name="activeZones")
+    def active_zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The exact list of zones where the instance currently has active VMs.
+        """
+        return pulumi.get(self, "active_zones")
 
     @_builtins.property
     @pulumi.getter
@@ -2156,6 +2185,16 @@ class InstanceZoneDistributionConfig(dict):
         Ignored for MULTI_ZONE mode.
         """
         return pulumi.get(self, "zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specify the zones of a multi-zone instance where Memorystore
+        instance allocates resources. This flag isn't applicable for single-zone
+        instances.
+        """
+        return pulumi.get(self, "zones")
 
 
 @pulumi.output_type
@@ -3397,18 +3436,34 @@ class GetInstanceStateInfoUpdateInfoResult(dict):
 @pulumi.output_type
 class GetInstanceZoneDistributionConfigResult(dict):
     def __init__(__self__, *,
+                 active_zones: Sequence[_builtins.str],
                  mode: _builtins.str,
-                 zone: _builtins.str):
+                 zone: _builtins.str,
+                 zones: Sequence[_builtins.str]):
         """
+        :param Sequence[_builtins.str] active_zones: The exact list of zones where the instance currently has active VMs.
         :param _builtins.str mode: Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
                 Possible values:
                 MULTI_ZONE
                SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
         :param _builtins.str zone: Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
                Ignored for MULTI_ZONE mode.
+        :param Sequence[_builtins.str] zones: Specify the zones of a multi-zone instance where Memorystore
+               instance allocates resources. This flag isn't applicable for single-zone
+               instances.
         """
+        pulumi.set(__self__, "active_zones", active_zones)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "zone", zone)
+        pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter(name="activeZones")
+    def active_zones(self) -> Sequence[_builtins.str]:
+        """
+        The exact list of zones where the instance currently has active VMs.
+        """
+        return pulumi.get(self, "active_zones")
 
     @_builtins.property
     @pulumi.getter
@@ -3429,5 +3484,15 @@ class GetInstanceZoneDistributionConfigResult(dict):
         Ignored for MULTI_ZONE mode.
         """
         return pulumi.get(self, "zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> Sequence[_builtins.str]:
+        """
+        Specify the zones of a multi-zone instance where Memorystore
+        instance allocates resources. This flag isn't applicable for single-zone
+        instances.
+        """
+        return pulumi.get(self, "zones")
 
 

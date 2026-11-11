@@ -77,57 +77,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Vertex Ai Featureonlinestore With Optimized
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
- * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreOptimizedArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .build());
- * 
- *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
- *             .name("example_feature_online_store_optimized")
- *             .labels(Map.of("foo", "bar"))
- *             .region("us-central1")
- *             .optimized(AiFeatureOnlineStoreOptimizedArgs.builder()
- *                 .build())
- *             .dedicatedServingEndpoint(AiFeatureOnlineStoreDedicatedServingEndpointArgs.builder()
- *                 .privateServiceConnectConfig(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs.builder()
- *                     .enablePrivateServiceConnect(true)
- *                     .projectAllowlists(project.number())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
  * 
  * <pre>
@@ -389,14 +338,23 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * (Optional, Deprecated)
      * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      * 
+     * &gt; **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+     * 
+     * @deprecated `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+     * 
      */
+    @Deprecated
     @Export(name="optimized", refs={AiFeatureOnlineStoreOptimized.class}, tree="[0]")
     private Output</* @Nullable */ AiFeatureOnlineStoreOptimized> optimized;
 
     /**
-     * @return Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+     * @return (Optional, Deprecated)
+     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+     * 
+     * &gt; **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
      * 
      */
     public Output<Optional<AiFeatureOnlineStoreOptimized>> optimized() {

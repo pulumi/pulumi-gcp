@@ -46,7 +46,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy? FaultInjectionPolicy;
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the policy for optimizing images returned in the HTTP response.
         /// Structure is documented below.
         /// </summary>

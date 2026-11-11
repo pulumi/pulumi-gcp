@@ -503,7 +503,6 @@ type StandardAppVersion struct {
 	Threadsafe pulumi.BoolPtrOutput `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrOutput `pulumi:"versionId"`
-	// (Optional, Beta)
 	// Direct VPC Access settings for standard apps.
 	// Structure is documented below.
 	VpcAccess StandardAppVersionVpcAccessPtrOutput `pulumi:"vpcAccess"`
@@ -623,7 +622,6 @@ type standardAppVersionState struct {
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
-	// (Optional, Beta)
 	// Direct VPC Access settings for standard apps.
 	// Structure is documented below.
 	VpcAccess *StandardAppVersionVpcAccess `pulumi:"vpcAccess"`
@@ -702,7 +700,6 @@ type StandardAppVersionState struct {
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Direct VPC Access settings for standard apps.
 	// Structure is documented below.
 	VpcAccess StandardAppVersionVpcAccessPtrInput
@@ -789,7 +786,6 @@ type standardAppVersionArgs struct {
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
-	// (Optional, Beta)
 	// Direct VPC Access settings for standard apps.
 	// Structure is documented below.
 	VpcAccess *StandardAppVersionVpcAccess `pulumi:"vpcAccess"`
@@ -867,7 +863,6 @@ type StandardAppVersionArgs struct {
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Direct VPC Access settings for standard apps.
 	// Structure is documented below.
 	VpcAccess StandardAppVersionVpcAccessPtrInput
@@ -1101,7 +1096,6 @@ func (o StandardAppVersionOutput) VersionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringPtrOutput { return v.VersionId }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Direct VPC Access settings for standard apps.
 // Structure is documented below.
 func (o StandardAppVersionOutput) VpcAccess() StandardAppVersionVpcAccessPtrOutput {

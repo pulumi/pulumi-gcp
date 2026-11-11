@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:diagflow/agent:Agent":
 		r = &Agent{}
+	case "gcp:diagflow/companionAgent:CompanionAgent":
+		r = &CompanionAgent{}
 	case "gcp:diagflow/conversationProfile:ConversationProfile":
 		r = &ConversationProfile{}
 	case "gcp:diagflow/cxAgent:CxAgent":
@@ -89,6 +91,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"diagflow/agent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"diagflow/companionAgent",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

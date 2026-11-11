@@ -120,6 +120,10 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Type = "SEV_LIVE_MIGRATABLE_V2",
     ///             },
+    ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "SUSPEND_SAFE_FPR",
+    ///             },
     ///         },
     ///     });
     /// 

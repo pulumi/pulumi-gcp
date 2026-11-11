@@ -1672,19 +1672,55 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection(dict):
 
 @pulumi.output_type
 class ClusterZoneDistributionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeZones":
+            suggest = "active_zones"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterZoneDistributionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterZoneDistributionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterZoneDistributionConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 active_zones: Optional[Sequence[_builtins.str]] = None,
                  mode: Optional[_builtins.str] = None,
-                 zone: Optional[_builtins.str] = None):
+                 zone: Optional[_builtins.str] = None,
+                 zones: Optional[Sequence[_builtins.str]] = None):
         """
+        :param Sequence[_builtins.str] active_zones: (Output)
+               The exact list of zones where the cluster currently has active VMs.
         :param _builtins.str mode: Immutable. The mode for zone distribution for Memorystore Redis cluster.
                If not provided, MULTI_ZONE will be used as default
                Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
         :param _builtins.str zone: Immutable. The zone for single zone Memorystore Redis cluster.
+        :param Sequence[_builtins.str] zones: Specify the zones of a multi-zone cluster where Redis Cluster
+               allocates resources. This flag isn't applicable for single-zone clusters.
         """
+        if active_zones is not None:
+            pulumi.set(__self__, "active_zones", active_zones)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter(name="activeZones")
+    def active_zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The exact list of zones where the cluster currently has active VMs.
+        """
+        return pulumi.get(self, "active_zones")
 
     @_builtins.property
     @pulumi.getter
@@ -1703,6 +1739,15 @@ class ClusterZoneDistributionConfig(dict):
         Immutable. The zone for single zone Memorystore Redis cluster.
         """
         return pulumi.get(self, "zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specify the zones of a multi-zone cluster where Redis Cluster
+        allocates resources. This flag isn't applicable for single-zone clusters.
+        """
+        return pulumi.get(self, "zones")
 
 
 @pulumi.output_type
@@ -3251,15 +3296,30 @@ class GetClusterStateInfoUpdateInfoResult(dict):
 @pulumi.output_type
 class GetClusterZoneDistributionConfigResult(dict):
     def __init__(__self__, *,
+                 active_zones: Sequence[_builtins.str],
                  mode: _builtins.str,
-                 zone: _builtins.str):
+                 zone: _builtins.str,
+                 zones: Sequence[_builtins.str]):
         """
+        :param Sequence[_builtins.str] active_zones: The exact list of zones where the cluster currently has active VMs.
         :param _builtins.str mode: Immutable. The mode for zone distribution for Memorystore Redis cluster.
                If not provided, MULTI_ZONE will be used as default Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
         :param _builtins.str zone: Immutable. The zone for single zone Memorystore Redis cluster.
+        :param Sequence[_builtins.str] zones: Specify the zones of a multi-zone cluster where Redis Cluster
+               allocates resources. This flag isn't applicable for single-zone clusters.
         """
+        pulumi.set(__self__, "active_zones", active_zones)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "zone", zone)
+        pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter(name="activeZones")
+    def active_zones(self) -> Sequence[_builtins.str]:
+        """
+        The exact list of zones where the cluster currently has active VMs.
+        """
+        return pulumi.get(self, "active_zones")
 
     @_builtins.property
     @pulumi.getter
@@ -3277,6 +3337,15 @@ class GetClusterZoneDistributionConfigResult(dict):
         Immutable. The zone for single zone Memorystore Redis cluster.
         """
         return pulumi.get(self, "zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> Sequence[_builtins.str]:
+        """
+        Specify the zones of a multi-zone cluster where Redis Cluster
+        allocates resources. This flag isn't applicable for single-zone clusters.
+        """
+        return pulumi.get(self, "zones")
 
 
 @pulumi.output_type

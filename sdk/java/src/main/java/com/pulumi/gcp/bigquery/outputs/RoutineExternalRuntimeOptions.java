@@ -4,8 +4,10 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.bigquery.outputs.RoutineExternalRuntimeOptionsVolumeMount;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -53,6 +55,14 @@ public final class RoutineExternalRuntimeOptions {
      * 
      */
     private @Nullable String runtimeVersion;
+    /**
+     * @return List of volume mounts for the Python UDF container that executes the
+     * managed function. When volume mounts are set, `runtimeConnection` must
+     * also be set.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<RoutineExternalRuntimeOptionsVolumeMount> volumeMounts;
 
     private RoutineExternalRuntimeOptions() {}
     /**
@@ -108,6 +118,16 @@ public final class RoutineExternalRuntimeOptions {
     public Optional<String> runtimeVersion() {
         return Optional.ofNullable(this.runtimeVersion);
     }
+    /**
+     * @return List of volume mounts for the Python UDF container that executes the
+     * managed function. When volume mounts are set, `runtimeConnection` must
+     * also be set.
+     * Structure is documented below.
+     * 
+     */
+    public List<RoutineExternalRuntimeOptionsVolumeMount> volumeMounts() {
+        return this.volumeMounts == null ? List.of() : this.volumeMounts;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -124,6 +144,7 @@ public final class RoutineExternalRuntimeOptions {
         private @Nullable String maxBatchingRows;
         private @Nullable String runtimeConnection;
         private @Nullable String runtimeVersion;
+        private @Nullable List<RoutineExternalRuntimeOptionsVolumeMount> volumeMounts;
         public Builder() {}
         public Builder(RoutineExternalRuntimeOptions defaults) {
     	      Objects.requireNonNull(defaults);
@@ -133,6 +154,7 @@ public final class RoutineExternalRuntimeOptions {
     	      this.maxBatchingRows = defaults.maxBatchingRows;
     	      this.runtimeConnection = defaults.runtimeConnection;
     	      this.runtimeVersion = defaults.runtimeVersion;
+    	      this.volumeMounts = defaults.volumeMounts;
         }
 
         @CustomType.Setter
@@ -171,6 +193,15 @@ public final class RoutineExternalRuntimeOptions {
             this.runtimeVersion = runtimeVersion;
             return this;
         }
+        @CustomType.Setter
+        public Builder volumeMounts(@Nullable List<RoutineExternalRuntimeOptionsVolumeMount> volumeMounts) {
+
+            this.volumeMounts = volumeMounts;
+            return this;
+        }
+        public Builder volumeMounts(RoutineExternalRuntimeOptionsVolumeMount... volumeMounts) {
+            return volumeMounts(List.of(volumeMounts));
+        }
         public RoutineExternalRuntimeOptions build() {
             final var _resultValue = new RoutineExternalRuntimeOptions();
             _resultValue.containerCpu = containerCpu;
@@ -179,6 +210,7 @@ public final class RoutineExternalRuntimeOptions {
             _resultValue.maxBatchingRows = maxBatchingRows;
             _resultValue.runtimeConnection = runtimeConnection;
             _resultValue.runtimeVersion = runtimeVersion;
+            _resultValue.volumeMounts = volumeMounts;
             return _resultValue;
         }
     }

@@ -5414,7 +5414,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
                > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
         :param _builtins.str service_account: The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
@@ -5517,7 +5517,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings']:
         """
-        Specifies the upgrade settings for NAP created node pools
+        Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")
 
@@ -11267,7 +11267,19 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
         :param _builtins.str transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
+               Accepted values are:
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
         :param _builtins.str transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
+               Accepted values are:
+               * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+               * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+               * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+               * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
         """
         if accurate_time_config is not None:
             pulumi.set(__self__, "accurate_time_config", accurate_time_config)
@@ -11356,6 +11368,13 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
     def transparent_hugepage_defrag(self) -> Optional[_builtins.str]:
         """
         The Linux kernel transparent hugepage defrag setting.
+        Accepted values are:
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
         """
         return pulumi.get(self, "transparent_hugepage_defrag")
 
@@ -11364,6 +11383,11 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
     def transparent_hugepage_enabled(self) -> Optional[_builtins.str]:
         """
         The Linux kernel transparent hugepage setting.
+        Accepted values are:
+        * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+        * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+        * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+        * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
         """
         return pulumi.get(self, "transparent_hugepage_enabled")
 
@@ -13125,7 +13149,7 @@ class ClusterNodePoolDefaults(dict):
     def __init__(__self__, *,
                  node_config_defaults: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaults'] = None):
         """
-        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsArgs' node_config_defaults: Subset of NodeConfig message that has defaults.
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsArgs' node_config_defaults: Subset of NodeConfig message that has defaults. Structure is documented below.
         """
         if node_config_defaults is not None:
             pulumi.set(__self__, "node_config_defaults", node_config_defaults)
@@ -13134,7 +13158,7 @@ class ClusterNodePoolDefaults(dict):
     @pulumi.getter(name="nodeConfigDefaults")
     def node_config_defaults(self) -> Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaults']:
         """
-        Subset of NodeConfig message that has defaults.
+        Subset of NodeConfig message that has defaults. Structure is documented below.
         """
         return pulumi.get(self, "node_config_defaults")
 
@@ -13170,7 +13194,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
                  insecure_kubelet_readonly_port_enabled: Optional[_builtins.str] = None,
                  logging_variant: Optional[_builtins.str] = None):
         """
-        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs' containerd_config: Parameters for containerd configuration.
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs' containerd_config: Parameters for containerd configuration. Structure is documented below.
         :param 'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs' gcfs_config: The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param _builtins.str logging_variant: The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -13188,7 +13212,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
     @pulumi.getter(name="containerdConfig")
     def containerd_config(self) -> Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig']:
         """
-        Parameters for containerd configuration.
+        Parameters for containerd configuration. Structure is documented below.
         """
         return pulumi.get(self, "containerd_config")
 
@@ -13963,7 +13987,7 @@ class ClusterNodePoolNetworkConfig(dict):
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
         :param _builtins.bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
         :param _builtins.bool enable_private_nodes: Whether nodes have internal IP addresses only.
-        :param 'ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs' network_performance_config: Network bandwidth tier configuration.
+        :param 'ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs' network_performance_config: Network bandwidth tier configuration. Structure is documented below.
         :param 'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
         :param _builtins.str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param _builtins.str pod_range: The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
@@ -14035,7 +14059,7 @@ class ClusterNodePoolNetworkConfig(dict):
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional['outputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfig']:
         """
-        Network bandwidth tier configuration.
+        Network bandwidth tier configuration. Structure is documented below.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -17101,7 +17125,19 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
         :param _builtins.str transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
+               Accepted values are:
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+               * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
         :param _builtins.str transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
+               Accepted values are:
+               * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+               * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+               * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+               * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
         """
         if accurate_time_config is not None:
             pulumi.set(__self__, "accurate_time_config", accurate_time_config)
@@ -17190,6 +17226,13 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
     def transparent_hugepage_defrag(self) -> Optional[_builtins.str]:
         """
         The Linux kernel transparent hugepage defrag setting.
+        Accepted values are:
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+        * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
         """
         return pulumi.get(self, "transparent_hugepage_defrag")
 
@@ -17198,6 +17241,11 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
     def transparent_hugepage_enabled(self) -> Optional[_builtins.str]:
         """
         The Linux kernel transparent hugepage setting.
+        Accepted values are:
+        * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+        * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+        * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+        * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
         """
         return pulumi.get(self, "transparent_hugepage_enabled")
 
@@ -24451,10 +24499,10 @@ class NodePoolUpgradeSettingsBlueGreenSettings(dict):
                  node_pool_soak_duration: Optional[_builtins.str] = None,
                  standard_rollout_policy: Optional['outputs.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy'] = None):
         """
-        :param 'NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs' autoscaled_rollout_policy: ) Autoscaled rollout policy for blue-green upgrade.
+        :param 'NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs' autoscaled_rollout_policy: ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
         :param _builtins.str node_pool_soak_duration: Time needed after draining the entire blue pool.
                After this period, the blue pool will be cleaned up.
-        :param 'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs' standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades.
+        :param 'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs' standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
         """
         if autoscaled_rollout_policy is not None:
             pulumi.set(__self__, "autoscaled_rollout_policy", autoscaled_rollout_policy)
@@ -24467,7 +24515,7 @@ class NodePoolUpgradeSettingsBlueGreenSettings(dict):
     @pulumi.getter(name="autoscaledRolloutPolicy")
     def autoscaled_rollout_policy(self) -> Optional['outputs.NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy']:
         """
-        ) Autoscaled rollout policy for blue-green upgrade.
+        ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
         """
         return pulumi.get(self, "autoscaled_rollout_policy")
 
@@ -24484,7 +24532,7 @@ class NodePoolUpgradeSettingsBlueGreenSettings(dict):
     @pulumi.getter(name="standardRolloutPolicy")
     def standard_rollout_policy(self) -> Optional['outputs.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy']:
         """
-        Specifies the standard policy settings for blue-green upgrades.
+        Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
         """
         return pulumi.get(self, "standard_rollout_policy")
 

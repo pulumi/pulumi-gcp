@@ -183,6 +183,8 @@ __all__ = [
     'RoutineArgumentTableTypeColumnArgsDict',
     'RoutineExternalRuntimeOptionsArgs',
     'RoutineExternalRuntimeOptionsArgsDict',
+    'RoutineExternalRuntimeOptionsVolumeMountArgs',
+    'RoutineExternalRuntimeOptionsVolumeMountArgsDict',
     'RoutineIamBindingConditionArgs',
     'RoutineIamBindingConditionArgsDict',
     'RoutineIamMemberConditionArgs',
@@ -7065,6 +7067,13 @@ class RoutineExternalRuntimeOptionsArgsDict(TypedDict):
     """
     Language runtime version. Example: `python-3.11`.
     """
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RoutineExternalRuntimeOptionsVolumeMountArgsDict']]]]]
+    """
+    List of volume mounts for the Python UDF container that executes the
+    managed function. When volume mounts are set, `runtime_connection` must
+    also be set.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RoutineExternalRuntimeOptionsArgs:
@@ -7074,7 +7083,8 @@ class RoutineExternalRuntimeOptionsArgs:
                  container_request_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
                  max_batching_rows: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_connection: pulumi.Input[Optional[_builtins.str]] = None,
-                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None):
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['RoutineExternalRuntimeOptionsVolumeMountArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.float] container_cpu: Amount of CPU provisioned for a Python UDF container instance. For more
                information, see [Configure container limits for Python
@@ -7093,6 +7103,10 @@ class RoutineExternalRuntimeOptionsArgs:
                to execute the code in the container. Format:
                `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
         :param pulumi.Input[_builtins.str] runtime_version: Language runtime version. Example: `python-3.11`.
+        :param pulumi.Input[Sequence[pulumi.Input['RoutineExternalRuntimeOptionsVolumeMountArgs']]] volume_mounts: List of volume mounts for the Python UDF container that executes the
+               managed function. When volume mounts are set, `runtime_connection` must
+               also be set.
+               Structure is documented below.
         """
         if container_cpu is not None:
             pulumi.set(__self__, "container_cpu", container_cpu)
@@ -7106,6 +7120,8 @@ class RoutineExternalRuntimeOptionsArgs:
             pulumi.set(__self__, "runtime_connection", runtime_connection)
         if runtime_version is not None:
             pulumi.set(__self__, "runtime_version", runtime_version)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
 
     @_builtins.property
     @pulumi.getter(name="containerCpu")
@@ -7189,6 +7205,80 @@ class RoutineExternalRuntimeOptionsArgs:
     @runtime_version.setter
     def runtime_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RoutineExternalRuntimeOptionsVolumeMountArgs']]]]:
+        """
+        List of volume mounts for the Python UDF container that executes the
+        managed function. When volume mounts are set, `runtime_connection` must
+        also be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @volume_mounts.setter
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RoutineExternalRuntimeOptionsVolumeMountArgs']]]]):
+        pulumi.set(self, "volume_mounts", value)
+
+
+class RoutineExternalRuntimeOptionsVolumeMountArgsDict(TypedDict):
+    mount_path: pulumi.Input[_builtins.str]
+    """
+    The absolute path within the container where the volume should be
+    mounted. For example, `/mnt/data`.
+    """
+    source_path: pulumi.Input[_builtins.str]
+    """
+    The absolute path of the source to be mounted. Only Google Cloud
+    Storage buckets or folders are currently supported. For example,
+    `gs://bucket-xxx` for a Cloud Storage bucket, or
+    `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+    """
+
+@pulumi.input_type
+class RoutineExternalRuntimeOptionsVolumeMountArgs:
+    def __init__(__self__, *,
+                 mount_path: pulumi.Input[_builtins.str],
+                 source_path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] mount_path: The absolute path within the container where the volume should be
+               mounted. For example, `/mnt/data`.
+        :param pulumi.Input[_builtins.str] source_path: The absolute path of the source to be mounted. Only Google Cloud
+               Storage buckets or folders are currently supported. For example,
+               `gs://bucket-xxx` for a Cloud Storage bucket, or
+               `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "source_path", source_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        The absolute path within the container where the volume should be
+        mounted. For example, `/mnt/data`.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @mount_path.setter
+    def mount_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mount_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourcePath")
+    def source_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        The absolute path of the source to be mounted. Only Google Cloud
+        Storage buckets or folders are currently supported. For example,
+        `gs://bucket-xxx` for a Cloud Storage bucket, or
+        `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+        """
+        return pulumi.get(self, "source_path")
+
+    @source_path.setter
+    def source_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "source_path", value)
 
 
 class RoutineIamBindingConditionArgsDict(TypedDict):

@@ -30,6 +30,9 @@ class JobIAMMemberArgs:
         """
         The set of arguments for constructing a JobIAMMember resource.
 
+        :param pulumi.Input[_builtins.str] job_id: The name or relative resource id of the job to manage IAM policies for.
+               
+               For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -61,6 +64,11 @@ class JobIAMMemberArgs:
     @_builtins.property
     @pulumi.getter(name="jobId")
     def job_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name or relative resource id of the job to manage IAM policies for.
+
+        For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
+        """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
@@ -152,6 +160,9 @@ class _JobIAMMemberState:
         Input properties used for looking up and filtering JobIAMMember resources.
 
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the jobs's IAM policy.
+        :param pulumi.Input[_builtins.str] job_id: The name or relative resource id of the job to manage IAM policies for.
+               
+               For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -209,6 +220,11 @@ class _JobIAMMemberState:
     @_builtins.property
     @pulumi.getter(name="jobId")
     def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name or relative resource id of the job to manage IAM policies for.
+
+        For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
+        """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
@@ -391,6 +407,9 @@ class JobIAMMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] job_id: The name or relative resource id of the job to manage IAM policies for.
+               
+               For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -582,6 +601,9 @@ class JobIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the jobs's IAM policy.
+        :param pulumi.Input[_builtins.str] job_id: The name or relative resource id of the job to manage IAM policies for.
+               
+               For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -649,6 +671,11 @@ class JobIAMMember(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="jobId")
     def job_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name or relative resource id of the job to manage IAM policies for.
+
+        For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
+        """
         return pulumi.get(self, "job_id")
 
     @_builtins.property

@@ -128,6 +128,130 @@ func (o AutoProtectionPolicyBackupPlanDetailArrayOutput) Index(i pulumi.IntInput
 	}).(AutoProtectionPolicyBackupPlanDetailOutput)
 }
 
+type AutoProtectionPolicyBindingBindingEvaluationSummary struct {
+	// (Output)
+	// The number of matching resources whose protection failed during the last job run.
+	FailedResourceCount *string `pulumi:"failedResourceCount"`
+	// (Output)
+	// The number of resources that currently match the policy's criteria.
+	MatchingResourceCount *string `pulumi:"matchingResourceCount"`
+	// (Output)
+	// The number of matching resources that are successfully protected.
+	ProtectedResourceCount *string `pulumi:"protectedResourceCount"`
+}
+
+// AutoProtectionPolicyBindingBindingEvaluationSummaryInput is an input type that accepts AutoProtectionPolicyBindingBindingEvaluationSummaryArgs and AutoProtectionPolicyBindingBindingEvaluationSummaryOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyBindingBindingEvaluationSummaryInput` via:
+//
+//	AutoProtectionPolicyBindingBindingEvaluationSummaryArgs{...}
+type AutoProtectionPolicyBindingBindingEvaluationSummaryInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyBindingBindingEvaluationSummaryOutput() AutoProtectionPolicyBindingBindingEvaluationSummaryOutput
+	ToAutoProtectionPolicyBindingBindingEvaluationSummaryOutputWithContext(context.Context) AutoProtectionPolicyBindingBindingEvaluationSummaryOutput
+}
+
+type AutoProtectionPolicyBindingBindingEvaluationSummaryArgs struct {
+	// (Output)
+	// The number of matching resources whose protection failed during the last job run.
+	FailedResourceCount pulumi.StringPtrInput `pulumi:"failedResourceCount"`
+	// (Output)
+	// The number of resources that currently match the policy's criteria.
+	MatchingResourceCount pulumi.StringPtrInput `pulumi:"matchingResourceCount"`
+	// (Output)
+	// The number of matching resources that are successfully protected.
+	ProtectedResourceCount pulumi.StringPtrInput `pulumi:"protectedResourceCount"`
+}
+
+func (AutoProtectionPolicyBindingBindingEvaluationSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyBindingBindingEvaluationSummary)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyBindingBindingEvaluationSummaryArgs) ToAutoProtectionPolicyBindingBindingEvaluationSummaryOutput() AutoProtectionPolicyBindingBindingEvaluationSummaryOutput {
+	return i.ToAutoProtectionPolicyBindingBindingEvaluationSummaryOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyBindingBindingEvaluationSummaryArgs) ToAutoProtectionPolicyBindingBindingEvaluationSummaryOutputWithContext(ctx context.Context) AutoProtectionPolicyBindingBindingEvaluationSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyBindingBindingEvaluationSummaryOutput)
+}
+
+// AutoProtectionPolicyBindingBindingEvaluationSummaryArrayInput is an input type that accepts AutoProtectionPolicyBindingBindingEvaluationSummaryArray and AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyBindingBindingEvaluationSummaryArrayInput` via:
+//
+//	AutoProtectionPolicyBindingBindingEvaluationSummaryArray{ AutoProtectionPolicyBindingBindingEvaluationSummaryArgs{...} }
+type AutoProtectionPolicyBindingBindingEvaluationSummaryArrayInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput() AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput
+	ToAutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutputWithContext(context.Context) AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput
+}
+
+type AutoProtectionPolicyBindingBindingEvaluationSummaryArray []AutoProtectionPolicyBindingBindingEvaluationSummaryInput
+
+func (AutoProtectionPolicyBindingBindingEvaluationSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyBindingBindingEvaluationSummary)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyBindingBindingEvaluationSummaryArray) ToAutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput() AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput {
+	return i.ToAutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyBindingBindingEvaluationSummaryArray) ToAutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput)
+}
+
+type AutoProtectionPolicyBindingBindingEvaluationSummaryOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyBindingBindingEvaluationSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyBindingBindingEvaluationSummary)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyBindingBindingEvaluationSummaryOutput) ToAutoProtectionPolicyBindingBindingEvaluationSummaryOutput() AutoProtectionPolicyBindingBindingEvaluationSummaryOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBindingBindingEvaluationSummaryOutput) ToAutoProtectionPolicyBindingBindingEvaluationSummaryOutputWithContext(ctx context.Context) AutoProtectionPolicyBindingBindingEvaluationSummaryOutput {
+	return o
+}
+
+// (Output)
+// The number of matching resources whose protection failed during the last job run.
+func (o AutoProtectionPolicyBindingBindingEvaluationSummaryOutput) FailedResourceCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyBindingBindingEvaluationSummary) *string { return v.FailedResourceCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The number of resources that currently match the policy's criteria.
+func (o AutoProtectionPolicyBindingBindingEvaluationSummaryOutput) MatchingResourceCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyBindingBindingEvaluationSummary) *string { return v.MatchingResourceCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The number of matching resources that are successfully protected.
+func (o AutoProtectionPolicyBindingBindingEvaluationSummaryOutput) ProtectedResourceCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyBindingBindingEvaluationSummary) *string { return v.ProtectedResourceCount }).(pulumi.StringPtrOutput)
+}
+
+type AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyBindingBindingEvaluationSummary)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput) ToAutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput() AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput) ToAutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput) Index(i pulumi.IntInput) AutoProtectionPolicyBindingBindingEvaluationSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoProtectionPolicyBindingBindingEvaluationSummary {
+		return vs[0].([]AutoProtectionPolicyBindingBindingEvaluationSummary)[vs[1].(int)]
+	}).(AutoProtectionPolicyBindingBindingEvaluationSummaryOutput)
+}
+
 type AutoProtectionPolicyBindingSummary struct {
 	// (Output)
 	// The total number of projects protected by the policy.
@@ -13076,6 +13200,8 @@ func (o GetManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) GetManag
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBackupPlanDetailInput)(nil)).Elem(), AutoProtectionPolicyBackupPlanDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBackupPlanDetailArrayInput)(nil)).Elem(), AutoProtectionPolicyBackupPlanDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBindingBindingEvaluationSummaryInput)(nil)).Elem(), AutoProtectionPolicyBindingBindingEvaluationSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBindingBindingEvaluationSummaryArrayInput)(nil)).Elem(), AutoProtectionPolicyBindingBindingEvaluationSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBindingSummaryInput)(nil)).Elem(), AutoProtectionPolicyBindingSummaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBindingSummaryArrayInput)(nil)).Elem(), AutoProtectionPolicyBindingSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyCriteriaInput)(nil)).Elem(), AutoProtectionPolicyCriteriaArgs{})
@@ -13247,6 +13373,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkArrayInput)(nil)).Elem(), GetManagementServerNetworkArray{})
 	pulumi.RegisterOutputType(AutoProtectionPolicyBackupPlanDetailOutput{})
 	pulumi.RegisterOutputType(AutoProtectionPolicyBackupPlanDetailArrayOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyBindingBindingEvaluationSummaryOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyBindingBindingEvaluationSummaryArrayOutput{})
 	pulumi.RegisterOutputType(AutoProtectionPolicyBindingSummaryOutput{})
 	pulumi.RegisterOutputType(AutoProtectionPolicyBindingSummaryArrayOutput{})
 	pulumi.RegisterOutputType(AutoProtectionPolicyCriteriaOutput{})

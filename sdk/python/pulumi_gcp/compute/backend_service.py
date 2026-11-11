@@ -2561,6 +2561,9 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        default_backend_authentication_config = gcp.networksecurity.BackendAuthenticationConfig("default",
+            name="authentication",
+            well_known_roots="PUBLIC_ROOTS")
         default = gcp.compute.BackendService("default",
             name="backend-service",
             load_balancing_scheme="INTERNAL_MANAGED",
@@ -2570,6 +2573,9 @@ class BackendService(pulumi.CustomResource):
                     "enabled": True,
                     "proxy_mode": "DIRECT_FORWARDING",
                 },
+            },
+            tls_settings={
+                "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
 
@@ -3338,6 +3344,9 @@ class BackendService(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        default_backend_authentication_config = gcp.networksecurity.BackendAuthenticationConfig("default",
+            name="authentication",
+            well_known_roots="PUBLIC_ROOTS")
         default = gcp.compute.BackendService("default",
             name="backend-service",
             load_balancing_scheme="INTERNAL_MANAGED",
@@ -3347,6 +3356,9 @@ class BackendService(pulumi.CustomResource):
                     "enabled": True,
                     "proxy_mode": "DIRECT_FORWARDING",
                 },
+            },
+            tls_settings={
+                "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
 

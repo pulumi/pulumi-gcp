@@ -98,7 +98,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/interconnect:Interconnect")
 public class Interconnect extends com.pulumi.resources.CustomResource {
     /**
-     * (Optional, Beta)
      * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      * 
      */
@@ -106,8 +105,7 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> aaiEnabled;
 
     /**
-     * @return (Optional, Beta)
-     * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     * @return Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      * 
      */
     public Output<Optional<Boolean>> aaiEnabled() {
@@ -132,7 +130,6 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.adminEnabled);
     }
     /**
-     * (Optional, Beta)
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
@@ -142,8 +139,7 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InterconnectApplicationAwareInterconnect> applicationAwareInterconnect;
 
     /**
-     * @return (Optional, Beta)
-     * Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * @return Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
      * 

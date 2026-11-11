@@ -21,7 +21,7 @@ public final class InstanceSchedulingGracefulShutdown {
     /**
      * @return The time allotted for the instance to gracefully shut down.
      * If the graceful shutdown isn&#39;t complete after this time, then the instance
-     * transitions to the STOPPING state. Structure is documented below:
+     * transitions to the STOPPING state. Structure is documented below.
      * 
      */
     private @Nullable InstanceSchedulingGracefulShutdownMaxDuration maxDuration;
@@ -37,7 +37,7 @@ public final class InstanceSchedulingGracefulShutdown {
     /**
      * @return The time allotted for the instance to gracefully shut down.
      * If the graceful shutdown isn&#39;t complete after this time, then the instance
-     * transitions to the STOPPING state. Structure is documented below:
+     * transitions to the STOPPING state. Structure is documented below.
      * 
      */
     public Optional<InstanceSchedulingGracefulShutdownMaxDuration> maxDuration() {

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolDefaultsNodeConfigDefaults {
     /**
-     * @return Parameters for containerd configuration.
+     * @return Parameters for containerd configuration. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig containerdConfig;
@@ -36,7 +36,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
 
     private ClusterNodePoolDefaultsNodeConfigDefaults() {}
     /**
-     * @return Parameters for containerd configuration.
+     * @return Parameters for containerd configuration. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig> containerdConfig() {

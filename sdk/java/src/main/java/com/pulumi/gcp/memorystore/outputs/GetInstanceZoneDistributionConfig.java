@@ -6,10 +6,16 @@ package com.pulumi.gcp.memorystore.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceZoneDistributionConfig {
+    /**
+     * @return The exact list of zones where the instance currently has active VMs.
+     * 
+     */
+    private List<String> activeZones;
     /**
      * @return Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
      *  Possible values:
@@ -24,8 +30,22 @@ public final class GetInstanceZoneDistributionConfig {
      * 
      */
     private String zone;
+    /**
+     * @return Specify the zones of a multi-zone instance where Memorystore
+     * instance allocates resources. This flag isn&#39;t applicable for single-zone
+     * instances.
+     * 
+     */
+    private List<String> zones;
 
     private GetInstanceZoneDistributionConfig() {}
+    /**
+     * @return The exact list of zones where the instance currently has active VMs.
+     * 
+     */
+    public List<String> activeZones() {
+        return this.activeZones;
+    }
     /**
      * @return Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
      *  Possible values:
@@ -44,6 +64,15 @@ public final class GetInstanceZoneDistributionConfig {
     public String zone() {
         return this.zone;
     }
+    /**
+     * @return Specify the zones of a multi-zone instance where Memorystore
+     * instance allocates resources. This flag isn&#39;t applicable for single-zone
+     * instances.
+     * 
+     */
+    public List<String> zones() {
+        return this.zones;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,15 +83,30 @@ public final class GetInstanceZoneDistributionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> activeZones;
         private String mode;
         private String zone;
+        private List<String> zones;
         public Builder() {}
         public Builder(GetInstanceZoneDistributionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activeZones = defaults.activeZones;
     	      this.mode = defaults.mode;
     	      this.zone = defaults.zone;
+    	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
+        public Builder activeZones(List<String> activeZones) {
+            if (activeZones == null) {
+              throw new MissingRequiredPropertyException("GetInstanceZoneDistributionConfig", "activeZones");
+            }
+            this.activeZones = activeZones;
+            return this;
+        }
+        public Builder activeZones(String... activeZones) {
+            return activeZones(List.of(activeZones));
+        }
         @CustomType.Setter
         public Builder mode(String mode) {
             if (mode == null) {
@@ -79,10 +123,23 @@ public final class GetInstanceZoneDistributionConfig {
             this.zone = zone;
             return this;
         }
+        @CustomType.Setter
+        public Builder zones(List<String> zones) {
+            if (zones == null) {
+              throw new MissingRequiredPropertyException("GetInstanceZoneDistributionConfig", "zones");
+            }
+            this.zones = zones;
+            return this;
+        }
+        public Builder zones(String... zones) {
+            return zones(List.of(zones));
+        }
         public GetInstanceZoneDistributionConfig build() {
             final var _resultValue = new GetInstanceZoneDistributionConfig();
+            _resultValue.activeZones = activeZones;
             _resultValue.mode = mode;
             _resultValue.zone = zone;
+            _resultValue.zones = zones;
             return _resultValue;
         }
     }

@@ -676,6 +676,11 @@ namespace Pulumi.Gcp.Vertex
     ///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
     ///                                                     {
     ///                                                         Text = "I like pepperoni pizza",
+    ///                                                         SpeechMetadata = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs
+    ///                                                         {
+    ///                                                             Speaker = "Alice",
+    ///                                                             Style = "cheerful",
+    ///                                                         },
     ///                                                     },
     ///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
     ///                                                     {

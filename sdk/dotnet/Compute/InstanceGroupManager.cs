@@ -342,7 +342,7 @@ namespace Pulumi.Gcp.Compute
         public Output<int> InstanceGroupManagerId { get; private set; } = null!;
 
         /// <summary>
-        /// The instance lifecycle policy for this managed instance group.
+        /// The instance lifecycle policy for this managed instance group. Structure is documented below.
         /// </summary>
         [Output("instanceLifecyclePolicy")]
         public Output<Outputs.InstanceGroupManagerInstanceLifecyclePolicy> InstanceLifecyclePolicy { get; private set; } = null!;
@@ -601,7 +601,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The instance lifecycle policy for this managed instance group.
+        /// The instance lifecycle policy for this managed instance group. Structure is documented below.
         /// </summary>
         [Input("instanceLifecyclePolicy")]
         public Input<Inputs.InstanceGroupManagerInstanceLifecyclePolicyArgs>? InstanceLifecyclePolicy { get; set; }
@@ -873,7 +873,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? InstanceGroupManagerId { get; set; }
 
         /// <summary>
-        /// The instance lifecycle policy for this managed instance group.
+        /// The instance lifecycle policy for this managed instance group. Structure is documented below.
         /// </summary>
         [Input("instanceLifecyclePolicy")]
         public Input<Inputs.InstanceGroupManagerInstanceLifecyclePolicyGetArgs>? InstanceLifecyclePolicy { get; set; }

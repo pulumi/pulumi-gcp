@@ -3121,6 +3121,18 @@ class AnalystAgentPersonaMcpDataSourceArgsDict(TypedDict):
     """
     The custom prompt for the MCP agent.
     """
+    session_id_header: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The HTTP header name used to pass the agent session ID in MCP server
+    requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+    header field name (RFC 9110 token).
+    """
+    task_id_header: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The HTTP header name used to pass the agent task ID in MCP server
+    requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+    header field name (RFC 9110 token).
+    """
 
 @pulumi.input_type
 class AnalystAgentPersonaMcpDataSourceArgs:
@@ -3135,7 +3147,9 @@ class AnalystAgentPersonaMcpDataSourceArgs:
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_token_url: pulumi.Input[Optional[_builtins.str]] = None,
-                 prompt: pulumi.Input[Optional[_builtins.str]] = None):
+                 prompt: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_id_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_id_header: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the MCP agent.
         :param pulumi.Input[_builtins.str] display_name: The display name of the persona, shown to users.
@@ -3149,6 +3163,12 @@ class AnalystAgentPersonaMcpDataSourceArgs:
         :param pulumi.Input[_builtins.str] client_secret: Input only. The client secret for authentication.
         :param pulumi.Input[_builtins.str] oauth_token_url: The URL to use for retrieving the OAuth token.
         :param pulumi.Input[_builtins.str] prompt: The custom prompt for the MCP agent.
+        :param pulumi.Input[_builtins.str] session_id_header: The HTTP header name used to pass the agent session ID in MCP server
+               requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+               header field name (RFC 9110 token).
+        :param pulumi.Input[_builtins.str] task_id_header: The HTTP header name used to pass the agent task ID in MCP server
+               requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+               header field name (RFC 9110 token).
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
@@ -3168,6 +3188,10 @@ class AnalystAgentPersonaMcpDataSourceArgs:
             pulumi.set(__self__, "oauth_token_url", oauth_token_url)
         if prompt is not None:
             pulumi.set(__self__, "prompt", prompt)
+        if session_id_header is not None:
+            pulumi.set(__self__, "session_id_header", session_id_header)
+        if task_id_header is not None:
+            pulumi.set(__self__, "task_id_header", task_id_header)
 
     @_builtins.property
     @pulumi.getter
@@ -3301,6 +3325,34 @@ class AnalystAgentPersonaMcpDataSourceArgs:
     @prompt.setter
     def prompt(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prompt", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sessionIdHeader")
+    def session_id_header(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The HTTP header name used to pass the agent session ID in MCP server
+        requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+        header field name (RFC 9110 token).
+        """
+        return pulumi.get(self, "session_id_header")
+
+    @session_id_header.setter
+    def session_id_header(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "session_id_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="taskIdHeader")
+    def task_id_header(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The HTTP header name used to pass the agent task ID in MCP server
+        requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+        header field name (RFC 9110 token).
+        """
+        return pulumi.get(self, "task_id_header")
+
+    @task_id_header.setter
+    def task_id_header(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "task_id_header", value)
 
 
 class AnalystAgentPersonaResourceArgsDict(TypedDict):

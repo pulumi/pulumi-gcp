@@ -580,7 +580,7 @@ class BranchRule(pulumi.CustomResource):
             location=instance.location,
             instance=instance.name,
             deletion_policy="PREVENT")
-        basic = gcp.securesourcemanager.BranchRule("basic",
+        default = gcp.securesourcemanager.BranchRule("default",
             branch_rule_id="my-basic-branchrule",
             repository_id=repository.repository_id,
             location=repository.location,
@@ -595,15 +595,15 @@ class BranchRule(pulumi.CustomResource):
 
         instance = gcp.securesourcemanager.Instance("instance",
             location="us-central1",
-            instance_id="my-initial-instance",
+            instance_id="my-basic-instance",
             deletion_policy="PREVENT")
         repository = gcp.securesourcemanager.Repository("repository",
-            repository_id="my-initial-repository",
+            repository_id="my-basic-repository",
             instance=instance.name,
             location=instance.location,
             deletion_policy="PREVENT")
         default = gcp.securesourcemanager.BranchRule("default",
-            branch_rule_id="my-initial-branchrule",
+            branch_rule_id="my-basic-branchrule",
             location=repository.location,
             repository_id=repository.repository_id,
             include_pattern="test",
@@ -689,7 +689,7 @@ class BranchRule(pulumi.CustomResource):
             location=instance.location,
             instance=instance.name,
             deletion_policy="PREVENT")
-        basic = gcp.securesourcemanager.BranchRule("basic",
+        default = gcp.securesourcemanager.BranchRule("default",
             branch_rule_id="my-basic-branchrule",
             repository_id=repository.repository_id,
             location=repository.location,
@@ -704,15 +704,15 @@ class BranchRule(pulumi.CustomResource):
 
         instance = gcp.securesourcemanager.Instance("instance",
             location="us-central1",
-            instance_id="my-initial-instance",
+            instance_id="my-basic-instance",
             deletion_policy="PREVENT")
         repository = gcp.securesourcemanager.Repository("repository",
-            repository_id="my-initial-repository",
+            repository_id="my-basic-repository",
             instance=instance.name,
             location=instance.location,
             deletion_policy="PREVENT")
         default = gcp.securesourcemanager.BranchRule("default",
-            branch_rule_id="my-initial-branchrule",
+            branch_rule_id="my-basic-branchrule",
             location=repository.location,
             repository_id=repository.repository_id,
             include_pattern="test",

@@ -216,6 +216,53 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// });
     /// ```
     /// 
+    /// ### Backup Dr Backup Plan For Netapp Volume
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myBackupVault = new Gcp.BackupDisasterRecovery.BackupVault("my_backup_vault", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         BackupVaultId = "backup-vault-netapp-test",
+    ///         BackupMinimumEnforcedRetentionDuration = "100000s",
+    ///     });
+    /// 
+    ///     var my_netapp_backup_plan_1 = new Gcp.BackupDisasterRecovery.BackupPlan("my-netapp-backup-plan-1", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         BackupPlanId = "backup-plan-netapp-test",
+    ///         ResourceType = "netapp.googleapis.com/Volume",
+    ///         BackupVault = myBackupVault.Id,
+    ///         BackupRules = new[]
+    ///         {
+    ///             new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleArgs
+    ///             {
+    ///                 RuleId = "rule-1",
+    ///                 BackupRetentionDays = 5,
+    ///                 StandardSchedule = new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleStandardScheduleArgs
+    ///                 {
+    ///                     RecurrenceType = "HOURLY",
+    ///                     HourlyFrequency = 6,
+    ///                     TimeZone = "UTC",
+    ///                     BackupWindow = new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleStandardScheduleBackupWindowArgs
+    ///                     {
+    ///                         StartHourOfDay = 0,
+    ///                         EndHourOfDay = 6,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// BackupPlan can be imported using any of these accepted formats:
@@ -352,7 +399,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// The resource type to which the `BackupPlan` will be applied.
-        /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+        /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -518,7 +565,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// The resource type to which the `BackupPlan` will be applied.
-        /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+        /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -680,7 +727,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// The resource type to which the `BackupPlan` will be applied.
-        /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+        /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

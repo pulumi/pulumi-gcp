@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "gcp:redis/clusterAclPolicy:ClusterAclPolicy":
 		r = &ClusterAclPolicy{}
+	case "gcp:redis/clusterTokenAuthUser:ClusterTokenAuthUser":
+		r = &ClusterTokenAuthUser{}
 	case "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections":
 		r = &ClusterUserCreatedConnections{}
 	case "gcp:redis/instance:Instance":
@@ -50,6 +52,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"redis/clusterAclPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"redis/clusterTokenAuthUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

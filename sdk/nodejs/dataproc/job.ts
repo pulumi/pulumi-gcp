@@ -136,11 +136,11 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
-     * The config of Hadoop job
+     * Submits a Hadoop job to the cluster. Structure is documented below.
      */
     declare public readonly hadoopConfig: pulumi.Output<outputs.dataproc.JobHadoopConfig | undefined>;
     /**
-     * The config of hive job
+     * Submits a Hive job to the cluster. Structure is documented below.
      */
     declare public readonly hiveConfig: pulumi.Output<outputs.dataproc.JobHiveConfig | undefined>;
     /**
@@ -150,7 +150,7 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The config of pag job.
+     * Submits a Pig job to the cluster. Structure is documented below.
      */
     declare public readonly pigConfig: pulumi.Output<outputs.dataproc.JobPigConfig | undefined>;
     /**
@@ -158,7 +158,9 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly placement: pulumi.Output<outputs.dataproc.JobPlacement>;
     /**
-     * The config of presto job
+     * Submits a Presto job to the cluster. Structure is documented below.
+     *
+     * ***
      */
     declare public readonly prestoConfig: pulumi.Output<outputs.dataproc.JobPrestoConfig | undefined>;
     /**
@@ -171,7 +173,7 @@ export class Job extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
-     * The config of pySpark job.
+     * Submits a PySpark job to the cluster. Structure is documented below.
      */
     declare public readonly pysparkConfig: pulumi.Output<outputs.dataproc.JobPysparkConfig | undefined>;
     /**
@@ -188,11 +190,11 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly scheduling: pulumi.Output<outputs.dataproc.JobScheduling | undefined>;
     /**
-     * The config of the Spark job.
+     * Submits a Spark job to the cluster. Structure is documented below.
      */
     declare public readonly sparkConfig: pulumi.Output<outputs.dataproc.JobSparkConfig | undefined>;
     /**
-     * The config of SparkSql job
+     * Submits a Spark SQL job to the cluster. Structure is documented below.
      */
     declare public readonly sparksqlConfig: pulumi.Output<outputs.dataproc.JobSparksqlConfig | undefined>;
     /**
@@ -308,11 +310,11 @@ export interface JobState {
      */
     forceDelete?: pulumi.Input<boolean | undefined>;
     /**
-     * The config of Hadoop job
+     * Submits a Hadoop job to the cluster. Structure is documented below.
      */
     hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig | undefined>;
     /**
-     * The config of hive job
+     * Submits a Hive job to the cluster. Structure is documented below.
      */
     hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig | undefined>;
     /**
@@ -322,7 +324,7 @@ export interface JobState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The config of pag job.
+     * Submits a Pig job to the cluster. Structure is documented below.
      */
     pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig | undefined>;
     /**
@@ -330,7 +332,9 @@ export interface JobState {
      */
     placement?: pulumi.Input<inputs.dataproc.JobPlacement | undefined>;
     /**
-     * The config of presto job
+     * Submits a Presto job to the cluster. Structure is documented below.
+     *
+     * ***
      */
     prestoConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfig | undefined>;
     /**
@@ -343,7 +347,7 @@ export interface JobState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The config of pySpark job.
+     * Submits a PySpark job to the cluster. Structure is documented below.
      */
     pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig | undefined>;
     /**
@@ -360,11 +364,11 @@ export interface JobState {
      */
     scheduling?: pulumi.Input<inputs.dataproc.JobScheduling | undefined>;
     /**
-     * The config of the Spark job.
+     * Submits a Spark job to the cluster. Structure is documented below.
      */
     sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig | undefined>;
     /**
-     * The config of SparkSql job
+     * Submits a Spark SQL job to the cluster. Structure is documented below.
      */
     sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig | undefined>;
     /**
@@ -397,11 +401,11 @@ export interface JobArgs {
      */
     forceDelete?: pulumi.Input<boolean | undefined>;
     /**
-     * The config of Hadoop job
+     * Submits a Hadoop job to the cluster. Structure is documented below.
      */
     hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig | undefined>;
     /**
-     * The config of hive job
+     * Submits a Hive job to the cluster. Structure is documented below.
      */
     hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig | undefined>;
     /**
@@ -411,7 +415,7 @@ export interface JobArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The config of pag job.
+     * Submits a Pig job to the cluster. Structure is documented below.
      */
     pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig | undefined>;
     /**
@@ -419,7 +423,9 @@ export interface JobArgs {
      */
     placement: pulumi.Input<inputs.dataproc.JobPlacement>;
     /**
-     * The config of presto job
+     * Submits a Presto job to the cluster. Structure is documented below.
+     *
+     * ***
      */
     prestoConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfig | undefined>;
     /**
@@ -428,7 +434,7 @@ export interface JobArgs {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The config of pySpark job.
+     * Submits a PySpark job to the cluster. Structure is documented below.
      */
     pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig | undefined>;
     /**
@@ -445,11 +451,11 @@ export interface JobArgs {
      */
     scheduling?: pulumi.Input<inputs.dataproc.JobScheduling | undefined>;
     /**
-     * The config of the Spark job.
+     * Submits a Spark job to the cluster. Structure is documented below.
      */
     sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig | undefined>;
     /**
-     * The config of SparkSql job
+     * Submits a Spark SQL job to the cluster. Structure is documented below.
      */
     sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig | undefined>;
     /**

@@ -12,6 +12,7 @@ import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfig
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -144,6 +145,23 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
     }
 
     /**
+     * Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="speechMetadata")
+    private @Nullable Output<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs> speechMetadata;
+
+    /**
+     * @return Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs>> speechMetadata() {
+        return Optional.ofNullable(this.speechMetadata);
+    }
+
+    /**
      * The text content of the part.
      * 
      */
@@ -200,6 +218,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
         this.functionCall = $.functionCall;
         this.functionResponse = $.functionResponse;
         this.inlineData = $.inlineData;
+        this.speechMetadata = $.speechMetadata;
         this.text = $.text;
         this.thought = $.thought;
         this.videoMetadata = $.videoMetadata;
@@ -382,6 +401,29 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
          */
         public Builder inlineData(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs inlineData) {
             return inlineData(Output.of(inlineData));
+        }
+
+        /**
+         * @param speechMetadata Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder speechMetadata(@Nullable Output<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs> speechMetadata) {
+            $.speechMetadata = speechMetadata;
+            return this;
+        }
+
+        /**
+         * @param speechMetadata Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder speechMetadata(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs speechMetadata) {
+            return speechMetadata(Output.of(speechMetadata));
         }
 
         /**

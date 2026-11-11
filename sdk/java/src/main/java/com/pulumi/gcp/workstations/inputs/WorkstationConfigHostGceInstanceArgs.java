@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceAcceleratorArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs;
+import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceReservationAffinityArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -182,6 +183,25 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
     }
 
     /**
+     * (Optional, Beta)
+     * Reservation affinity to setup a GCE instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="reservationAffinity")
+    private @Nullable Output<WorkstationConfigHostGceInstanceReservationAffinityArgs> reservationAffinity;
+
+    /**
+     * @return (Optional, Beta)
+     * Reservation affinity to setup a GCE instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkstationConfigHostGceInstanceReservationAffinityArgs>> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
+
+    /**
      * Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
      * 
      */
@@ -279,6 +299,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         this.instanceMetadata = $.instanceMetadata;
         this.machineType = $.machineType;
         this.poolSize = $.poolSize;
+        this.reservationAffinity = $.reservationAffinity;
         this.serviceAccount = $.serviceAccount;
         this.serviceAccountScopes = $.serviceAccountScopes;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -542,6 +563,31 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
          */
         public Builder poolSize(Integer poolSize) {
             return poolSize(Output.of(poolSize));
+        }
+
+        /**
+         * @param reservationAffinity (Optional, Beta)
+         * Reservation affinity to setup a GCE instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(@Nullable Output<WorkstationConfigHostGceInstanceReservationAffinityArgs> reservationAffinity) {
+            $.reservationAffinity = reservationAffinity;
+            return this;
+        }
+
+        /**
+         * @param reservationAffinity (Optional, Beta)
+         * Reservation affinity to setup a GCE instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(WorkstationConfigHostGceInstanceReservationAffinityArgs reservationAffinity) {
+            return reservationAffinity(Output.of(reservationAffinity));
         }
 
         /**

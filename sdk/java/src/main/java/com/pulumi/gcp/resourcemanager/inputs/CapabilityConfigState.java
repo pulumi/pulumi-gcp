@@ -17,6 +17,25 @@ public final class CapabilityConfigState extends com.pulumi.resources.ResourceAr
     public static final CapabilityConfigState Empty = new CapabilityConfigState();
 
     /**
+     * The list of Boundaries associated with this capability config.
+     * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+     * Boundaries must share the capability config&#39;s parent, and cannot be specified for project-scoped capability configs.
+     * 
+     */
+    @Import(name="boundaries")
+    private @Nullable Output<List<String>> boundaries;
+
+    /**
+     * @return The list of Boundaries associated with this capability config.
+     * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+     * Boundaries must share the capability config&#39;s parent, and cannot be specified for project-scoped capability configs.
+     * 
+     */
+    public Optional<Output<List<String>>> boundaries() {
+        return Optional.ofNullable(this.boundaries);
+    }
+
+    /**
      * User-specified identifier of the capability config. Must be 6 to 30 characters,
      * and contain only lowercase letters, numbers, and hyphens.
      * 
@@ -206,6 +225,7 @@ public final class CapabilityConfigState extends com.pulumi.resources.ResourceAr
     private CapabilityConfigState() {}
 
     private CapabilityConfigState(CapabilityConfigState $) {
+        this.boundaries = $.boundaries;
         this.capabilityConfigId = $.capabilityConfigId;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
@@ -235,6 +255,43 @@ public final class CapabilityConfigState extends com.pulumi.resources.ResourceAr
 
         public Builder(CapabilityConfigState defaults) {
             $ = new CapabilityConfigState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param boundaries The list of Boundaries associated with this capability config.
+         * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+         * Boundaries must share the capability config&#39;s parent, and cannot be specified for project-scoped capability configs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boundaries(@Nullable Output<List<String>> boundaries) {
+            $.boundaries = boundaries;
+            return this;
+        }
+
+        /**
+         * @param boundaries The list of Boundaries associated with this capability config.
+         * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+         * Boundaries must share the capability config&#39;s parent, and cannot be specified for project-scoped capability configs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boundaries(List<String> boundaries) {
+            return boundaries(Output.of(boundaries));
+        }
+
+        /**
+         * @param boundaries The list of Boundaries associated with this capability config.
+         * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+         * Boundaries must share the capability config&#39;s parent, and cannot be specified for project-scoped capability configs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boundaries(String... boundaries) {
+            return boundaries(List.of(boundaries));
         }
 
         /**

@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.InstanceGroupManagerStatusVersionTargetArgs>? _versionTargets;
 
         /// <summary>
-        /// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        /// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatusVersionTargetArgs> VersionTargets
         {

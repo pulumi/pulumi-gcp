@@ -765,8 +765,7 @@ class UnitOperation(pulumi.CustomResource):
         cluster_unit_kind = gcp.saasruntime.UnitKind("cluster_unit_kind",
             location=location,
             unit_kind_id="vm-unitkind",
-            saas=example_saas.id,
-            default_release=f"projects/my-project-name/locations/{location}/releases/example-release")
+            saas=example_saas.id)
         example_release = gcp.saasruntime.Release("example_release",
             location=location,
             release_id="example-release",
@@ -988,8 +987,7 @@ class UnitOperation(pulumi.CustomResource):
         cluster_unit_kind = gcp.saasruntime.UnitKind("cluster_unit_kind",
             location=location,
             unit_kind_id="vm-unitkind",
-            saas=example_saas.id,
-            default_release=f"projects/my-project-name/locations/{location}/releases/example-release")
+            saas=example_saas.id)
         example_release = gcp.saasruntime.Release("example_release",
             location=location,
             release_id="example-release",

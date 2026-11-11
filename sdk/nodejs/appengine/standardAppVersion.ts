@@ -427,7 +427,6 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     declare public readonly versionId: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta)
      * Direct VPC Access settings for standard apps.
      * Structure is documented below.
      */
@@ -641,7 +640,6 @@ export interface StandardAppVersionState {
      */
     versionId?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Direct VPC Access settings for standard apps.
      * Structure is documented below.
      */
@@ -769,7 +767,6 @@ export interface StandardAppVersionArgs {
      */
     versionId?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Direct VPC Access settings for standard apps.
      * Structure is documented below.
      */

@@ -85,6 +85,12 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// This field is experimental.
         /// </summary>
         public readonly string WorkerPool;
+        /// <summary>
+        /// Option to specify which release or release channel to use to run this build.
+        /// Possible values are the release channels 'rapid', 'regular', or 'stable', or a specific
+        /// release version such as 'legacy'.
+        /// </summary>
+        public readonly string WorkerRelease;
 
         [OutputConstructor]
         private GetTriggerBuildOptionResult(
@@ -110,7 +116,9 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             ImmutableArray<Outputs.GetTriggerBuildOptionVolumeResult> volumes,
 
-            string workerPool)
+            string workerPool,
+
+            string workerRelease)
         {
             DiskSizeGb = diskSizeGb;
             DynamicSubstitutions = dynamicSubstitutions;
@@ -124,6 +132,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
             SubstitutionOption = substitutionOption;
             Volumes = volumes;
             WorkerPool = workerPool;
+            WorkerRelease = workerRelease;
         }
     }
 }

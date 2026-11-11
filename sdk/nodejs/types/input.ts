@@ -3472,6 +3472,18 @@ export namespace agenticapplications {
          * The URL of the MCP server.
          */
         serverUrl: pulumi.Input<string>;
+        /**
+         * The HTTP header name used to pass the agent session ID in MCP server
+         * requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+         * header field name (RFC 9110 token).
+         */
+        sessionIdHeader?: pulumi.Input<string | undefined>;
+        /**
+         * The HTTP header name used to pass the agent task ID in MCP server
+         * requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+         * header field name (RFC 9110 token).
+         */
+        taskIdHeader?: pulumi.Input<string | undefined>;
     }
 
     export interface AnalystAgentPersonaResource {
@@ -6118,8 +6130,17 @@ export namespace appengine {
     }
 
     export interface ApplicationUrlDispatchRule {
+        /**
+         * Domain name to match against.
+         */
         domain?: pulumi.Input<string | undefined>;
+        /**
+         * Pathname within the host.
+         */
         path?: pulumi.Input<string | undefined>;
+        /**
+         * Resource ID of a service in this application that should serve the matched request.
+         */
         service?: pulumi.Input<string | undefined>;
     }
 
@@ -6912,7 +6933,7 @@ export namespace appengine {
 
     export interface StandardAppVersionVpcAccess {
         /**
-         * (Optional, Deprecated)
+         * (Optional, Beta, Deprecated)
          * The egress setting for the VPC Access, controlling what traffic is diverted through it.
          *
          * > **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
@@ -7482,9 +7503,17 @@ export namespace applicationintegration {
 
     export interface AuthConfigDecryptedCredentialOauth2AuthorizationCode {
         /**
+         * Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+         */
+        applyReauthPolicy?: pulumi.Input<boolean | undefined>;
+        /**
          * The auth url endpoint to send the auth code request to.
          */
         authEndpoint?: pulumi.Input<string | undefined>;
+        /**
+         * The auth parameters sent along with the auth code request.
+         */
+        authParams?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams | undefined>;
         /**
          * The client's id.
          */
@@ -7494,6 +7523,10 @@ export namespace applicationintegration {
          */
         clientSecret?: pulumi.Input<string | undefined>;
         /**
+         * Represent how to pass parameters to fetch access token Possible values: ["REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+         */
+        requestType?: pulumi.Input<string | undefined>;
+        /**
          * A space-delimited list of requested scope permissions.
          */
         scope?: pulumi.Input<string | undefined>;
@@ -7501,6 +7534,112 @@ export namespace applicationintegration {
          * The token url endpoint to send the token request to.
          */
         tokenEndpoint?: pulumi.Input<string | undefined>;
+        /**
+         * The token parameters sent along with the token request.
+         */
+        tokenParams?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams {
+        /**
+         * A list of parameter map entries.
+         * Structure is documented below.
+         */
+        entries?: pulumi.Input<pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntry>[] | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntry {
+        /**
+         * Key of the map entry.
+         * Structure is documented below.
+         */
+        key?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntryKey | undefined>;
+        /**
+         * Value of the map entry.
+         * Structure is documented below.
+         */
+        value?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntryValue | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntryKey {
+        /**
+         * Passing a literal value
+         * Structure is documented below.
+         */
+        literalValue?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntryKeyLiteralValue | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntryKeyLiteralValue {
+        /**
+         * String.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntryValue {
+        /**
+         * Passing a literal value
+         * Structure is documented below.
+         */
+        literalValue?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntryValueLiteralValue | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsEntryValueLiteralValue {
+        /**
+         * String.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams {
+        /**
+         * A list of parameter map entries.
+         * Structure is documented below.
+         */
+        entries?: pulumi.Input<pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntry>[] | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntry {
+        /**
+         * Key of the map entry.
+         * Structure is documented below.
+         */
+        key?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntryKey | undefined>;
+        /**
+         * Value of the map entry.
+         * Structure is documented below.
+         */
+        value?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntryValue | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntryKey {
+        /**
+         * Passing a literal value
+         * Structure is documented below.
+         */
+        literalValue?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntryKeyLiteralValue | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntryKeyLiteralValue {
+        /**
+         * String.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntryValue {
+        /**
+         * Passing a literal value
+         * Structure is documented below.
+         */
+        literalValue?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntryValueLiteralValue | undefined>;
+    }
+
+    export interface AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsEntryValueLiteralValue {
+        /**
+         * String.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
     }
 
     export interface AuthConfigDecryptedCredentialOauth2ClientCredentials {
@@ -8172,6 +8311,24 @@ export namespace backupdisasterrecovery {
          * `compute.googleapis.com/Instance` or `compute.googleapis.com/Disk`.
          */
         resourceType: pulumi.Input<string>;
+    }
+
+    export interface AutoProtectionPolicyBindingBindingEvaluationSummary {
+        /**
+         * (Output)
+         * The number of matching resources whose protection failed during the last job run.
+         */
+        failedResourceCount?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The number of resources that currently match the policy's criteria.
+         */
+        matchingResourceCount?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The number of matching resources that are successfully protected.
+         */
+        protectedResourceCount?: pulumi.Input<string | undefined>;
     }
 
     export interface AutoProtectionPolicyBindingSummary {
@@ -11742,6 +11899,28 @@ export namespace bigquery {
          * Language runtime version. Example: `python-3.11`.
          */
         runtimeVersion?: pulumi.Input<string | undefined>;
+        /**
+         * List of volume mounts for the Python UDF container that executes the
+         * managed function. When volume mounts are set, `runtimeConnection` must
+         * also be set.
+         * Structure is documented below.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineExternalRuntimeOptionsVolumeMount>[] | undefined>;
+    }
+
+    export interface RoutineExternalRuntimeOptionsVolumeMount {
+        /**
+         * The absolute path within the container where the volume should be
+         * mounted. For example, `/mnt/data`.
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * The absolute path of the source to be mounted. Only Google Cloud
+         * Storage buckets or folders are currently supported. For example,
+         * `gs://bucket-xxx` for a Cloud Storage bucket, or
+         * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+         */
+        sourcePath: pulumi.Input<string>;
     }
 
     export interface RoutineIamBindingCondition {
@@ -20922,6 +21101,26 @@ export namespace ces {
          * The Conversation Profile ID to use for the deployment.
          */
         conversationProfileId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface DeploymentModelSettings {
+        /**
+         * The LLM model that the agent should use.
+         * If not set, the agent will inherit the model from its parent agent.
+         */
+        model?: pulumi.Input<string | undefined>;
+        /**
+         * If set, this temperature will be used for the LLM model. Temperature
+         * controls the randomness of the model's responses. Lower temperatures
+         * produce responses that are more predictable. Higher temperatures produce
+         * responses that are more creative.
+         */
+        temperature?: pulumi.Input<number | undefined>;
+        /**
+         * The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         */
+        thinkingLevel?: pulumi.Input<string | undefined>;
     }
 
     export interface DeploymentWhatsappCredentials {
@@ -30517,6 +30716,12 @@ export namespace cloudbuild {
          * This field is experimental.
          */
         workerPool?: pulumi.Input<string | undefined>;
+        /**
+         * Option to specify which release or release channel to use to run this build.
+         * Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+         * release version such as `legacy`.
+         */
+        workerRelease?: pulumi.Input<string | undefined>;
     }
 
     export interface TriggerBuildOptionsVolume {
@@ -44185,7 +44390,9 @@ export namespace compute {
          */
         diskEncryptionServiceAccount?: pulumi.Input<string | undefined>;
         /**
-         * Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+         * boolean field that determines whether to force attach the regional
+         * disk even if it's currently attached to another instance. If you try to force attach a zonal
+         * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
          */
         forceAttach?: pulumi.Input<boolean | undefined>;
         /**
@@ -45940,7 +46147,7 @@ export namespace compute {
          */
         statefuls?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatusStateful>[] | undefined>;
         /**
-         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         * A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
          */
         versionTargets?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatusVersionTarget>[] | undefined>;
     }
@@ -46465,7 +46672,7 @@ export namespace compute {
         /**
          * The time allotted for the instance to gracefully shut down.
          * If the graceful shutdown isn't complete after this time, then the instance
-         * transitions to the STOPPING state. Structure is documented below:
+         * transitions to the STOPPING state. Structure is documented below.
          */
         maxDuration?: pulumi.Input<inputs.compute.InstanceSchedulingGracefulShutdownMaxDuration | undefined>;
     }
@@ -46480,7 +46687,7 @@ export namespace compute {
         nanos?: pulumi.Input<number | undefined>;
         /**
          * Span of time at a resolution of a second.
-         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
          */
         seconds: pulumi.Input<number>;
     }
@@ -47203,7 +47410,7 @@ export namespace compute {
         /**
          * The time allotted for the instance to gracefully shut down.
          * If the graceful shutdown isn't complete after this time, then the instance
-         * transitions to the STOPPING state. Structure is documented below:
+         * transitions to the STOPPING state. Structure is documented below.
          */
         maxDuration?: pulumi.Input<inputs.compute.InstanceTemplateSchedulingGracefulShutdownMaxDuration | undefined>;
     }
@@ -47218,7 +47425,7 @@ export namespace compute {
         nanos?: pulumi.Input<number | undefined>;
         /**
          * Span of time at a resolution of a second.
-         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
          */
         seconds: pulumi.Input<number>;
     }
@@ -47266,7 +47473,7 @@ export namespace compute {
          */
         operator: pulumi.Input<string>;
         /**
-         * Corresponds to the label values of a reservation resource.
+         * The values for the node affinity label.
          */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -47401,26 +47608,22 @@ export namespace compute {
 
     export interface InterconnectApplicationAwareInterconnect {
         /**
-         * (Optional, Beta)
          * Bandwidth Percentage policy allows you to have granular control over how your Interconnect
          * bandwidth is utilized among your workloads mapping to different traffic classes.
          * Structure is documented below.
          */
         bandwidthPercentagePolicy?: pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy | undefined>;
         /**
-         * (Optional, Beta)
          * A description for the AAI profile on this interconnect.
          */
         profileDescription?: pulumi.Input<string | undefined>;
         /**
-         * (Optional, Beta)
          * Optional field to specify a list of shape average percentages to be
          * applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
          * Structure is documented below.
          */
         shapeAveragePercentages?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnectShapeAveragePercentage>[] | undefined>;
         /**
-         * (Optional, Beta)
          * Specify configuration for StrictPriorityPolicy.
          */
         strictPriorityPolicy?: pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnectStrictPriorityPolicy | undefined>;
@@ -47428,7 +47631,6 @@ export namespace compute {
 
     export interface InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
         /**
-         * (Optional, Beta)
          * Specify bandwidth percentages for various traffic classes for queuing
          * type Bandwidth Percent.
          * Structure is documented below.
@@ -47438,12 +47640,10 @@ export namespace compute {
 
     export interface InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage {
         /**
-         * (Optional, Beta)
          * Bandwidth percentage for a specific traffic class.
          */
         percentage?: pulumi.Input<number | undefined>;
         /**
-         * (Optional, Beta)
          * Enum representing the various traffic classes offered by AAI.
          * Default value is `TC_UNSPECIFIED`.
          * Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -47453,12 +47653,10 @@ export namespace compute {
 
     export interface InterconnectApplicationAwareInterconnectShapeAveragePercentage {
         /**
-         * (Optional, Beta)
          * Bandwidth percentage for a specific traffic class.
          */
         percentage?: pulumi.Input<number | undefined>;
         /**
-         * (Optional, Beta)
          * Enum representing the various traffic classes offered by AAI.
          * Default value is `TC_UNSPECIFIED`.
          * Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -51490,7 +51688,7 @@ export namespace compute {
          */
         statefuls?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatusStateful>[] | undefined>;
         /**
-         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         * A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
          */
         versionTargets?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatusVersionTarget>[] | undefined>;
     }
@@ -52085,7 +52283,7 @@ export namespace compute {
          */
         availabilityDomain?: pulumi.Input<number | undefined>;
         /**
-         * Settings for the instance to perform a graceful shutdown.
+         * Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
          */
         gracefulShutdown?: pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingGracefulShutdown | undefined>;
         /**
@@ -52097,14 +52295,11 @@ export namespace compute {
          */
         instanceTerminationAction?: pulumi.Input<string | undefined>;
         /**
-         * Specifies the maximum amount of time a Local Ssd Vm should wait while
-         *   recovery of the Local Ssd state is attempted. Its value should be in
-         *   between 0 and 168 hours with hour granularity and the default value being 1
-         *   hour.
+         * (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
          */
         localSsdRecoveryTimeouts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>[] | undefined>;
         /**
-         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          */
         maintenanceInterval?: pulumi.Input<string | undefined>;
         /**
@@ -52139,7 +52334,7 @@ export namespace compute {
          */
         preemptible?: pulumi.Input<boolean | undefined>;
         /**
-         * The duration of the notice that the instance will receive before it is preempted.
+         * Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
          */
         preemptionNoticeDuration?: pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingPreemptionNoticeDuration | undefined>;
         /**
@@ -52153,7 +52348,7 @@ export namespace compute {
          */
         provisioningModel?: pulumi.Input<string | undefined>;
         /**
-         * Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+         * Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
          */
         skipGuestOsShutdown?: pulumi.Input<boolean | undefined>;
         /**
@@ -52170,7 +52365,7 @@ export namespace compute {
         /**
          * The time allotted for the instance to gracefully shut down.
          * If the graceful shutdown isn't complete after this time, then the instance
-         * transitions to the STOPPING state. Structure is documented below:
+         * transitions to the STOPPING state. Structure is documented below.
          */
         maxDuration?: pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration | undefined>;
     }
@@ -52185,7 +52380,7 @@ export namespace compute {
         nanos?: pulumi.Input<number | undefined>;
         /**
          * Span of time at a resolution of a second.
-         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+         * The value must be between 1 and 3600, which is 3,600 seconds (one hour).
          */
         seconds: pulumi.Input<number>;
     }
@@ -52193,14 +52388,15 @@ export namespace compute {
     export interface RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
         /**
          * Span of time that's a fraction of a second at nanosecond
-         * resolution. Durations less than one second are represented
-         * with a 0 seconds field and a positive nanos field. Must
-         * be from 0 to 999,999,999 inclusive.
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
          */
         nanos?: pulumi.Input<number | undefined>;
         /**
-         * Span of time at a resolution of a second.
-         * Must be from 0 to 315,576,000,000 inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
         seconds: pulumi.Input<number>;
     }
@@ -52232,7 +52428,7 @@ export namespace compute {
          */
         operator: pulumi.Input<string>;
         /**
-         * Corresponds to the label values of a reservation resource.
+         * The values for the node affinity label.
          */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -53921,7 +54117,8 @@ export namespace compute {
          * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
          * * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
          * * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-         *   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+         * * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+         *   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
          */
         enforceOnKey?: pulumi.Input<string | undefined>;
         /**
@@ -53980,7 +54177,8 @@ export namespace compute {
          * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
          * * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
          * * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-         *   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+         * * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+         *   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
          */
         enforceOnKeyType?: pulumi.Input<string | undefined>;
     }
@@ -57869,7 +58067,8 @@ export namespace compute {
          * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
          * * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
          * * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-         *   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+         * * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+         *   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
          */
         enforceOnKey?: pulumi.Input<string | undefined>;
         /**
@@ -57933,7 +58132,8 @@ export namespace compute {
          * * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
          * * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
          * * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-         *   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+         * * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+         *   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
          */
         enforceOnKeyType?: pulumi.Input<string | undefined>;
     }
@@ -58618,7 +58818,6 @@ export namespace compute {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapDefaultRouteActionFaultInjectionPolicy | undefined>;
         /**
-         * (Optional, Beta)
          * Specifies the policy for optimizing images returned in the HTTP response.
          * Structure is documented below.
          */
@@ -59482,7 +59681,6 @@ export namespace compute {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy | undefined>;
         /**
-         * (Optional, Beta)
          * Specifies the policy for optimizing images returned in the HTTP response.
          * Structure is documented below.
          */
@@ -60300,7 +60498,6 @@ export namespace compute {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy | undefined>;
         /**
-         * (Optional, Beta)
          * Specifies the policy for optimizing images returned in the HTTP response.
          * Structure is documented below.
          */
@@ -61388,7 +61585,6 @@ export namespace compute {
          */
         faultInjectionPolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy | undefined>;
         /**
-         * (Optional, Beta)
          * Specifies the policy for optimizing images returned in the HTTP response.
          * Structure is documented below.
          */
@@ -63979,7 +64175,7 @@ export namespace container {
          */
         shieldedInstanceConfig?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig | undefined>;
         /**
-         * Specifies the upgrade settings for NAP created node pools
+         * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
          */
         upgradeSettings?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings | undefined>;
     }
@@ -65657,10 +65853,22 @@ export namespace container {
         sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
          * The Linux kernel transparent hugepage defrag setting.
+         * Accepted values are:
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
          */
         transparentHugepageDefrag?: pulumi.Input<string | undefined>;
         /**
          * The Linux kernel transparent hugepage setting.
+         * Accepted values are:
+         * * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+         * * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+         * * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+         * * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
          */
         transparentHugepageEnabled?: pulumi.Input<string | undefined>;
     }
@@ -66141,14 +66349,14 @@ export namespace container {
 
     export interface ClusterNodePoolDefaults {
         /**
-         * Subset of NodeConfig message that has defaults.
+         * Subset of NodeConfig message that has defaults. Structure is documented below.
          */
         nodeConfigDefaults?: pulumi.Input<inputs.container.ClusterNodePoolDefaultsNodeConfigDefaults | undefined>;
     }
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaults {
         /**
-         * Parameters for containerd configuration.
+         * Parameters for containerd configuration. Structure is documented below.
          */
         containerdConfig?: pulumi.Input<inputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig | undefined>;
         /**
@@ -66369,7 +66577,7 @@ export namespace container {
          */
         enablePrivateNodes?: pulumi.Input<boolean | undefined>;
         /**
-         * Network bandwidth tier configuration.
+         * Network bandwidth tier configuration. Structure is documented below.
          */
         networkPerformanceConfig?: pulumi.Input<inputs.container.ClusterNodePoolNetworkConfigNetworkPerformanceConfig | undefined>;
         /**
@@ -67269,10 +67477,22 @@ export namespace container {
         sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
          * The Linux kernel transparent hugepage defrag setting.
+         * Accepted values are:
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+         * * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
          */
         transparentHugepageDefrag?: pulumi.Input<string | undefined>;
         /**
          * The Linux kernel transparent hugepage setting.
+         * Accepted values are:
+         * * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+         * * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+         * * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+         * * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
          */
         transparentHugepageEnabled?: pulumi.Input<string | undefined>;
     }
@@ -69194,7 +69414,7 @@ export namespace container {
 
     export interface NodePoolUpgradeSettingsBlueGreenSettings {
         /**
-         * ) Autoscaled rollout policy for blue-green upgrade.
+         * ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
          */
         autoscaledRolloutPolicy?: pulumi.Input<inputs.container.NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy | undefined>;
         /**
@@ -69203,7 +69423,7 @@ export namespace container {
          */
         nodePoolSoakDuration?: pulumi.Input<string | undefined>;
         /**
-         * Specifies the standard policy settings for blue-green upgrades.
+         * Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
          */
         standardRolloutPolicy?: pulumi.Input<inputs.container.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy | undefined>;
     }
@@ -70268,6 +70488,17 @@ export namespace datacatalog {
 }
 
 export namespace dataflow {
+    export interface ConfigStoreSettingValue {
+        /**
+         * Represents a boolean value.
+         */
+        boolValue?: pulumi.Input<boolean | undefined>;
+        /**
+         * Represents a string value.
+         */
+        stringValue?: pulumi.Input<string | undefined>;
+    }
+
     export interface PipelineScheduleInfo {
         /**
          * (Output)
@@ -70944,6 +71175,199 @@ export namespace datalineage {
         enabled: pulumi.Input<boolean>;
     }
 
+    export interface OpenLineageJobInput {
+        /**
+         * Catalog information for the dataset.
+         * Structure is documented below.
+         */
+        catalog?: pulumi.Input<inputs.datalineage.OpenLineageJobInputCatalog | undefined>;
+        /**
+         * Name of the source dataset.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Namespace of the source dataset.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Symlink targets for the dataset.
+         * Structure is documented below.
+         */
+        symlinks?: pulumi.Input<pulumi.Input<inputs.datalineage.OpenLineageJobInputSymlink>[] | undefined>;
+    }
+
+    export interface OpenLineageJobInputCatalog {
+        /**
+         * Catalog framework.
+         */
+        framework: pulumi.Input<string>;
+        /**
+         * Catalog entity name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Catalog entity type.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface OpenLineageJobInputSymlink {
+        /**
+         * Name of the symlink target.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Namespace of the symlink target.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Type of the symlink target.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface OpenLineageJobOutput {
+        /**
+         * Catalog information for the dataset.
+         * Structure is documented below.
+         */
+        catalog?: pulumi.Input<inputs.datalineage.OpenLineageJobOutputCatalog | undefined>;
+        /**
+         * Column-level lineage information for the output dataset.
+         * Structure is documented below.
+         */
+        columnLineage?: pulumi.Input<inputs.datalineage.OpenLineageJobOutputColumnLineage | undefined>;
+        /**
+         * Name of the dataset.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Namespace of the dataset.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Symlink targets for the dataset.
+         * Structure is documented below.
+         */
+        symlinks?: pulumi.Input<pulumi.Input<inputs.datalineage.OpenLineageJobOutputSymlink>[] | undefined>;
+    }
+
+    export interface OpenLineageJobOutputCatalog {
+        /**
+         * Catalog framework.
+         */
+        framework: pulumi.Input<string>;
+        /**
+         * Catalog entity name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Catalog entity type.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface OpenLineageJobOutputColumnLineage {
+        /**
+         * Input fields participating in output dataset lineage.
+         * Structure is documented below.
+         */
+        datasetInputs?: pulumi.Input<pulumi.Input<inputs.datalineage.OpenLineageJobOutputColumnLineageDatasetInput>[] | undefined>;
+        /**
+         * Field-level lineage mappings.
+         * Structure is documented below.
+         */
+        fields: pulumi.Input<pulumi.Input<inputs.datalineage.OpenLineageJobOutputColumnLineageField>[]>;
+    }
+
+    export interface OpenLineageJobOutputColumnLineageDatasetInput {
+        /**
+         * Source field name.
+         */
+        field: pulumi.Input<string>;
+        /**
+         * Name of the source dataset.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Namespace of the source dataset.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Transformations applied to fields from this input.
+         * Structure is documented below.
+         */
+        transformations?: pulumi.Input<pulumi.Input<inputs.datalineage.OpenLineageJobOutputColumnLineageDatasetInputTransformation>[] | undefined>;
+    }
+
+    export interface OpenLineageJobOutputColumnLineageDatasetInputTransformation {
+        /**
+         * Transformation subtype.
+         */
+        subtype?: pulumi.Input<string | undefined>;
+        /**
+         * Transformation type.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface OpenLineageJobOutputColumnLineageField {
+        /**
+         * Input fields contributing to this output field.
+         * Structure is documented below.
+         */
+        inputs: pulumi.Input<pulumi.Input<inputs.datalineage.OpenLineageJobOutputColumnLineageFieldInput>[]>;
+        /**
+         * Output field name.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface OpenLineageJobOutputColumnLineageFieldInput {
+        /**
+         * Source field name.
+         */
+        field: pulumi.Input<string>;
+        /**
+         * Name of the source dataset.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Namespace of the source dataset.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Transformations applied from source to output field.
+         * Structure is documented below.
+         */
+        transformations?: pulumi.Input<pulumi.Input<inputs.datalineage.OpenLineageJobOutputColumnLineageFieldInputTransformation>[] | undefined>;
+    }
+
+    export interface OpenLineageJobOutputColumnLineageFieldInputTransformation {
+        /**
+         * Transformation subtype.
+         */
+        subtype?: pulumi.Input<string | undefined>;
+        /**
+         * Transformation type.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface OpenLineageJobOutputSymlink {
+        /**
+         * Name of the symlink target.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Namespace of the symlink target.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Type of the symlink target.
+         */
+        type: pulumi.Input<string>;
+    }
 }
 
 export namespace dataloss {
@@ -81765,7 +82189,7 @@ export namespace dataproc {
          */
         clusterName: pulumi.Input<string>;
         /**
-         * Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
+         * A cluster UUID generated by the Cloud Dataproc service when the job is submitted.
          */
         clusterUuid?: pulumi.Input<string | undefined>;
     }
@@ -87076,6 +87500,161 @@ export namespace developerconnect {
 }
 
 export namespace diagflow {
+    export interface CompanionAgentCesToolSpec {
+        /**
+         * The resource name of the CES tool.
+         * Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`.
+         */
+        cesTool?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates whether the tool requires human confirmation.
+         * Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+         */
+        confirmationRequirement?: pulumi.Input<string | undefined>;
+        /**
+         * Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameterName` are disallowed and rejected during Companion Agent validation.
+         * Structure is documented below.
+         */
+        parameterOverrides?: pulumi.Input<pulumi.Input<inputs.diagflow.CompanionAgentCesToolSpecParameterOverride>[] | undefined>;
+        /**
+         * Indicates whether the tool is enabled in proactive mode.
+         * All tools are enabled in proactive mode by default. To disable a tool in proactive mode, set this field to `false`.
+         * NOTE: At least one of `proactiveEnabled` or `reactiveEnabled` should be `true` else the tool will be ignored.
+         */
+        proactiveEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Indicates whether the tool is enabled in reactive mode.
+         * All tools are disabled in reactive mode by default. To enable a tool in reactive mode, set this field to `true`.
+         * NOTE: At least one of `reactiveEnabled` or `proactiveEnabled` should be `true` else the tool will be ignored. CompanionAgent config will throw an error if any unsupported tool is enabled in reactive mode.
+         */
+        reactiveEnabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface CompanionAgentCesToolSpecParameterOverride {
+        /**
+         * The key of the context reference in ingested context references.
+         */
+        contextReferenceKey: pulumi.Input<string>;
+        /**
+         * The path into the JSON object of the latest content ingested under `contextReferenceKey` (e.g. `email` or `user.email`). If omitted, the entire content under `contextReferenceKey` is used.
+         * If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+         */
+        fieldPath?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the tool input parameter to override, as defined in the tool's input schema. For example, `userEmail`.
+         */
+        parameterName: pulumi.Input<string>;
+    }
+
+    export interface CompanionAgentSkillConfig {
+        /**
+         * Guidance skill configuration.
+         * Structure is documented below.
+         */
+        guidanceSkillConfig?: pulumi.Input<inputs.diagflow.CompanionAgentSkillConfigGuidanceSkillConfig | undefined>;
+        /**
+         * The event that should trigger the skill.
+         * Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+         */
+        skillTriggeringEvent?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CompanionAgentSkillConfigGuidanceSkillConfig {
+        /**
+         * Customized instructions for guidance.
+         * Structure is documented below.
+         */
+        guidanceInstructions?: pulumi.Input<pulumi.Input<inputs.diagflow.CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction>[] | undefined>;
+        /**
+         * This is specific additional guidance that can be configured by the user.
+         */
+        overarchingGuidance?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction {
+        /**
+         * The action items that can be processed.
+         * Structure is documented below.
+         */
+        actions?: pulumi.Input<pulumi.Input<inputs.diagflow.CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction>[] | undefined>;
+        /**
+         * The condition of the instruction.
+         */
+        condition?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to disable suggested reply generation for this instruction.
+         */
+        disableSuggestedReply?: pulumi.Input<boolean | undefined>;
+        /**
+         * The detailed description of this instruction.
+         */
+        displayDetails?: pulumi.Input<string | undefined>;
+        /**
+         * Display name for the instruction.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * Event that triggers the guidance instruction.
+         * Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+         */
+        triggerEvent?: pulumi.Input<string | undefined>;
+    }
+
+    export interface CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction {
+        /**
+         * Description of action item.
+         */
+        description: pulumi.Input<string>;
+    }
+
+    export interface CompanionAgentToolsetTool {
+        /**
+         * Indicates whether the tool requires human confirmation.
+         * Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+         */
+        confirmationRequirement?: pulumi.Input<string | undefined>;
+        /**
+         * The `operationId` field of the OpenAPI endpoint. The `operationId` must be present in the toolset's definition.
+         */
+        operationId?: pulumi.Input<string | undefined>;
+        /**
+         * Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameterName` are disallowed and rejected during Companion Agent validation.
+         * Structure is documented below.
+         */
+        parameterOverrides?: pulumi.Input<pulumi.Input<inputs.diagflow.CompanionAgentToolsetToolParameterOverride>[] | undefined>;
+        /**
+         * Indicates whether the toolset tool is enabled in proactive mode.
+         * NOTE: At least one of `proactiveEnabled` or `reactiveEnabled` should be `true` else the toolset tool will be ignored.
+         */
+        proactiveEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Indicates whether the toolset tool is enabled in reactive mode.
+         * NOTE: At least one of `reactiveEnabled` or `proactiveEnabled` should be `true` else the toolset tool will be ignored.
+         */
+        reactiveEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The name of the toolset to retrieve the schema for.
+         * Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`.
+         */
+        toolset: pulumi.Input<string>;
+    }
+
+    export interface CompanionAgentToolsetToolParameterOverride {
+        /**
+         * The key of the context reference in ingested context references.
+         */
+        contextReferenceKey: pulumi.Input<string>;
+        /**
+         * The path into the JSON object of the latest content ingested under `contextReferenceKey` (e.g. `email` or `user.email`). If omitted, the entire content under `contextReferenceKey` is used.
+         * If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+         */
+        fieldPath?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the tool input parameter to override, as defined in the tool's input schema. For example, `userEmail`.
+         */
+        parameterName: pulumi.Input<string>;
+    }
+
     export interface ConversationProfileAutomatedAgentConfig {
         /**
          * ID of the Dialogflow agent environment to use.
@@ -93215,6 +93794,19 @@ export namespace discoveryengine {
          * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
          */
         year?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ProjectProvisionSaasParams {
+        /**
+         * Set to `true` to specify that the caller has read and consents to the
+         * Terms for business edition quality of service.
+         */
+        acceptBizQos?: pulumi.Input<boolean | undefined>;
+        /**
+         * Indicates whether the current request is for Business edition (`true`)
+         * or not (`false`).
+         */
+        isBiz?: pulumi.Input<boolean | undefined>;
     }
 
     export interface RecommendationEngineCommonConfig {
@@ -100127,7 +100719,7 @@ export namespace gkehub {
          */
         constraintViolationLimit?: pulumi.Input<number | undefined>;
         /**
-         * Map of deployment configs to deployments ("admission", "audit", "mutation").
+         * Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
          */
         deploymentConfigs?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig>[] | undefined>;
         /**
@@ -107472,14 +108064,32 @@ export namespace integrationconnectors {
          */
         additionalVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAdditionalVariable>[] | undefined>;
         /**
+         * List of allowed event types for the connection.
+         */
+        allowedEventTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
          * authConfig for Eventing Configuration.
          * Structure is documented below.
          */
         authConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAuthConfig | undefined>;
         /**
+         * Dead letter configuration for eventing of a connection.
+         * Structure is documented below.
+         */
+        deadLetterConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigDeadLetterConfig | undefined>;
+        /**
+         * Data enrichment configuration.
+         * Structure is documented below.
+         */
+        enrichmentConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigEnrichmentConfig | undefined>;
+        /**
          * Enrichment Enabled.
          */
         enrichmentEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Filter to be applied on the events to be received by the connection.
+         */
+        globalEventFilter?: pulumi.Input<string | undefined>;
         /**
          * registrationDestinationConfig
          * Structure is documented below.
@@ -107627,6 +108237,24 @@ export namespace integrationconnectors {
          * format as: projects/*&#47;secrets/*&#47;versions/*.
          */
         secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigDeadLetterConfig {
+        /**
+         * Project which has the topic given.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * Topic to push events which couldn't be processed.
+         */
+        topic: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigEnrichmentConfig {
+        /**
+         * Append ACL to the event.
+         */
+        appendAcl?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ConnectionEventingConfigRegistrationDestinationConfig {
@@ -109688,28 +110316,24 @@ export namespace memorystore {
 
     export interface InstanceDesiredAutoCreatedEndpoint {
         /**
-         * (Output)
-         * Output only. The consumer network where the IP address resides, in the form of
+         * Required. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
          */
         network: pulumi.Input<string>;
         /**
-         * (Output)
-         * Output only. The consumer projectId where the forwarding rule is created from.
+         * Required. The consumer projectId where the forwarding rule is created from.
          */
         projectId: pulumi.Input<string>;
     }
 
     export interface InstanceDesiredPscAutoConnection {
         /**
-         * (Output)
-         * Output only. The consumer network where the IP address resides, in the form of
+         * Required. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
          */
         network: pulumi.Input<string>;
         /**
-         * (Output)
-         * Output only. The consumer projectId where the forwarding rule is created from.
+         * Required. The consumer projectId where the forwarding rule is created from.
          */
         projectId: pulumi.Input<string>;
     }
@@ -110164,6 +110788,11 @@ export namespace memorystore {
 
     export interface InstanceZoneDistributionConfig {
         /**
+         * (Output)
+         * The exact list of zones where the instance currently has active VMs.
+         */
+        activeZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
          * Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
          * Possible values:
          * MULTI_ZONE
@@ -110176,6 +110805,12 @@ export namespace memorystore {
          * Ignored for MULTI_ZONE mode.
          */
         zone?: pulumi.Input<string | undefined>;
+        /**
+         * Specify the zones of a multi-zone instance where Memorystore
+         * instance allocates resources. This flag isn't applicable for single-zone
+         * instances.
+         */
+        zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 }
 
@@ -114597,6 +115232,11 @@ export namespace netapp {
          * Default is 31.
          */
         coolingThresholdDays?: pulumi.Input<number | undefined>;
+        /**
+         * Flag indicating that the hot tier bypass mode is enabled. Default is false.
+         * Only applicable to Flex service level.
+         */
+        hotTierBypassModeEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
          * Default value is `PAUSED`.
@@ -119175,7 +119815,7 @@ export namespace networkservices {
          * A set of extensions to execute for the matching request.
          * At least one extension is required. Up to 3 extensions can be defined for each extension chain for
          * LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-         * Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+         * Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
          * Structure is documented below.
          */
         extensions: pulumi.Input<pulumi.Input<inputs.networkservices.LbTrafficExtensionExtensionChainExtension>[]>;
@@ -119188,7 +119828,7 @@ export namespace networkservices {
          * The name for this extension chain. The name is logged as part of the HTTP request logs.
          * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
          * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-         * and the last a letter or a number.
+         * and the last character must be a letter or a number.
          */
         name: pulumi.Input<string>;
     }
@@ -119234,6 +119874,15 @@ export namespace networkservices {
          * and the last a letter or a number.
          */
         name: pulumi.Input<string>;
+        /**
+         * When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+         * This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
+         * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+         * This field is helpful when you want to try out the extension in async log-only mode.
+         * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+         * Only `STREAMED` (default) body processing mode is supported.
+         */
+        observabilityMode?: pulumi.Input<boolean | undefined>;
         /**
          * The reference to the service that runs the extension.
          * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
@@ -131904,6 +132553,11 @@ export namespace redis {
 
     export interface ClusterZoneDistributionConfig {
         /**
+         * (Output)
+         * The exact list of zones where the cluster currently has active VMs.
+         */
+        activeZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
          * Immutable. The mode for zone distribution for Memorystore Redis cluster.
          * If not provided, MULTI_ZONE will be used as default
          * Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
@@ -131913,6 +132567,11 @@ export namespace redis {
          * Immutable. The zone for single zone Memorystore Redis cluster.
          */
         zone?: pulumi.Input<string | undefined>;
+        /**
+         * Specify the zones of a multi-zone cluster where Redis Cluster
+         * allocates resources. This flag isn't applicable for single-zone clusters.
+         */
+        zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface InstanceMaintenancePolicy {
@@ -136941,6 +137600,29 @@ export namespace storage {
         title: pulumi.Input<string>;
     }
 
+    export interface ManagedFolderRapidCacheConfig {
+        /**
+         * A map of rapid cache IDs to the corresponding RapidCachePolicy
+         * configurations for a managed folder.
+         * Structure is documented below.
+         */
+        policies: pulumi.Input<pulumi.Input<inputs.storage.ManagedFolderRapidCacheConfigPolicy>[]>;
+    }
+
+    export interface ManagedFolderRapidCacheConfigPolicy {
+        /**
+         * The ingest-on-write policy for objects in the managed folder. When
+         * set to `enabled`, objects are automatically ingested into the cache
+         * when they are written to the managed folder.
+         * Possible values: ["enabled", "unspecified"]
+         */
+        ingestOnWrite?: pulumi.Input<string | undefined>;
+        /**
+         * The unique identifier of the rapid cache.
+         */
+        rapidCacheId: pulumi.Input<string>;
+    }
+
     export interface ObjectAccessControlProjectTeam {
         /**
          * The project team associated with the entity
@@ -140407,6 +141089,350 @@ export namespace vertex {
         port?: pulumi.Input<number | undefined>;
     }
 
+    export interface AiEvaluationItemError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequest {
+        /**
+         * Responses from model under test and other baseline models for comparison.
+         * Structure is documented below.
+         */
+        candidateResponses?: pulumi.Input<pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestCandidateResponse>[] | undefined>;
+        /**
+         * The ideal response or ground truth.
+         * Structure is documented below.
+         */
+        goldenResponse?: pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestGoldenResponse | undefined>;
+        /**
+         * The request/prompt to evaluate.
+         * Structure is documented below.
+         */
+        prompt?: pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestPrompt | undefined>;
+        /**
+         * Named groups of rubrics associated with this prompt.
+         * The key is a user-defined name for the rubric group.
+         * Structure is documented below.
+         */
+        rubrics?: pulumi.Input<pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestRubric>[] | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestCandidateResponse {
+        /**
+         * Represents the complete execution trace of a multi-turn conversation,
+         * which can involve single or multiple agents, as a JSON string. This
+         * field is used to provide the full output of an agent's run, including
+         * all turns and events, for direct evaluation.
+         * At most one of `text`, `value`, or `agentData` can be set.
+         */
+        agentData?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the candidate that produced the response.
+         */
+        candidate: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Error while scraping model or agent.
+         * Structure is documented below.
+         *
+         * <a name="nestedEvaluationRequestCandidateResponsesError"></a>The `error` block contains:
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestCandidateResponseError>[] | undefined>;
+        /**
+         * Text response.
+         * At most one of `text`, `value`, or `agentData` can be set.
+         */
+        text?: pulumi.Input<string | undefined>;
+        /**
+         * Fields and values that can be used to populate the response template, as a JSON string.
+         * At most one of `text`, `value`, or `agentData` can be set.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestCandidateResponseError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestGoldenResponse {
+        /**
+         * Represents the complete execution trace of a multi-turn conversation,
+         * which can involve single or multiple agents, as a JSON string. This
+         * field is used to provide the full output of an agent's run, including
+         * all turns and events, for direct evaluation.
+         * At most one of `text`, `value`, or `agentData` can be set.
+         */
+        agentData?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the candidate that produced the response.
+         */
+        candidate: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Error while scraping model or agent.
+         * Structure is documented below.
+         *
+         * <a name="nestedEvaluationRequestGoldenResponseError"></a>The `error` block contains:
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestGoldenResponseError>[] | undefined>;
+        /**
+         * Text response.
+         * At most one of `text`, `value`, or `agentData` can be set.
+         */
+        text?: pulumi.Input<string | undefined>;
+        /**
+         * Fields and values that can be used to populate the response template, as a JSON string.
+         * At most one of `text`, `value`, or `agentData` can be set.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestGoldenResponseError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestPrompt {
+        /**
+         * Represents the complete execution trace of a multi-turn conversation,
+         * which can involve single or multiple agents, as a JSON string. This
+         * serves as the input context for agent scraping.
+         * At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+         */
+        agentData?: pulumi.Input<string | undefined>;
+        /**
+         * Prompt template data.
+         * At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+         * Structure is documented below.
+         */
+        promptTemplateData?: pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestPromptPromptTemplateData | undefined>;
+        /**
+         * Text prompt.
+         * At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+         */
+        text?: pulumi.Input<string | undefined>;
+        /**
+         * The generated user scenario used to drive multi-turn agent running results.
+         * At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+         * Structure is documented below.
+         */
+        userScenario?: pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestPromptUserScenario | undefined>;
+        /**
+         * Fields and values that can be used to populate the prompt template, as a JSON string.
+         * At most one of `text`, `value`, `promptTemplateData`, `agentData`, or `userScenario` can be set.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestPromptPromptTemplateData {
+        /**
+         * The values for fields in the prompt template, as a JSON string mapping
+         * field names to Content objects.
+         */
+        values?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestPromptUserScenario {
+        /**
+         * The plan for the conversation, used to drive the multi-turn agent run and
+         * generate the simulated agent evaluation dataset.
+         */
+        conversationPlan: pulumi.Input<string>;
+        /**
+         * The prompt that starts the conversation between the simulated user and
+         * the agent under test.
+         */
+        startingPrompt: pulumi.Input<string>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestRubric {
+        /**
+         * Human-readable name for the group.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * Unique identifier for the group.
+         */
+        groupId?: pulumi.Input<string | undefined>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Rubrics that are part of this group.
+         * Structure is documented below.
+         */
+        rubrics?: pulumi.Input<pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestRubricRubric>[] | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestRubricRubric {
+        /**
+         * The actual testable criteria for the rubric.
+         * Structure is documented below.
+         */
+        content: pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestRubricRubricContent>;
+        /**
+         * The relative importance of this rubric.
+         * Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+         */
+        importance?: pulumi.Input<string | undefined>;
+        /**
+         * Unique identifier for the rubric.
+         */
+        rubricId?: pulumi.Input<string | undefined>;
+        /**
+         * A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestRubricRubricContent {
+        /**
+         * Evaluation criteria based on a specific property.
+         * Structure is documented below.
+         */
+        property?: pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationRequestRubricRubricContentProperty | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationRequestRubricRubricContentProperty {
+        /**
+         * Description of the property being evaluated.
+         */
+        description?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationResponse {
+        /**
+         * (Output)
+         * The results for the metric.
+         * Structure is documented below.
+         */
+        candidateResults?: pulumi.Input<pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationResponseCandidateResult>[] | undefined>;
+        /**
+         * The request to evaluate.
+         * Exactly one of `evaluationRequest` or `gcsUri` can be set.
+         * Structure is documented below.
+         */
+        evaluationRequest?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The evaluation run that was used to generate the result. Format:
+         * `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+         */
+        evaluationRun?: pulumi.Input<string | undefined>;
+        /**
+         * User-defined metadata for this evaluation item as a JSON string.
+         */
+        metadata?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The metric that was evaluated.
+         */
+        metric?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The request that was evaluated, as a JSON string.
+         */
+        request?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationResponseCandidateResult {
+        /**
+         * (Output)
+         * Additional results for the metric, as a JSON string.
+         */
+        additionalResults?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The candidate that is being evaluated.
+         */
+        candidate?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Error while evaluating the candidate for the metric.
+         * Structure is documented below.
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationResponseCandidateResultError>[] | undefined>;
+        /**
+         * (Output)
+         * The explanation for the metric.
+         */
+        explanation?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The metric that was evaluated.
+         */
+        metric?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The rubric verdicts for the metric.
+         * Structure is documented below.
+         */
+        rubricVerdicts?: pulumi.Input<pulumi.Input<inputs.vertex.AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict>[] | undefined>;
+        /**
+         * (Output)
+         * The score for the metric.
+         */
+        score?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationResponseCandidateResultError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * A developer-facing error message.
+         */
+        message?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiEvaluationItemEvaluationResponseCandidateResultRubricVerdict {
+        /**
+         * (Output)
+         * The full rubric definition that was evaluated, as a JSON string.
+         */
+        evaluatedRubric?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Human-readable reasoning for the verdict.
+         */
+        reasoning?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Outcome of the evaluation against the rubric.
+         */
+        verdict?: pulumi.Input<boolean | undefined>;
+    }
+
     export interface AiEvaluationMetricEncryptionSpec {
         /**
          * Required. The Cloud KMS resource identifier of the customer managed encryption key
@@ -143082,6 +144108,11 @@ export namespace vertex {
          */
         inlineData?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData | undefined>;
         /**
+         * Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+         * Structure is documented below.
+         */
+        speechMetadata?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata | undefined>;
+        /**
          * The text content of the part.
          */
         text?: pulumi.Input<string | undefined>;
@@ -143207,6 +144238,17 @@ export namespace vertex {
          * The IANA standard MIME type of the source data.
          */
         mimeType: pulumi.Input<string>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata {
+        /**
+         * Identifies which speaker is speaking this turn.
+         */
+        speaker?: pulumi.Input<string | undefined>;
+        /**
+         * Natural language description of the vocal style (e.g., "cheerful").
+         */
+        style?: pulumi.Input<string | undefined>;
     }
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata {
@@ -145495,6 +146537,12 @@ export namespace workstations {
          */
         poolSize?: pulumi.Input<number | undefined>;
         /**
+         * (Optional, Beta)
+         * Reservation affinity to setup a GCE instance.
+         * Structure is documented below.
+         */
+        reservationAffinity?: pulumi.Input<inputs.workstations.WorkstationConfigHostGceInstanceReservationAffinity | undefined>;
+        /**
          * Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
          */
         serviceAccount?: pulumi.Input<string | undefined>;
@@ -145564,6 +146612,12 @@ export namespace workstations {
          * Number of instances to pool for faster workstation boosting.
          */
         poolSize?: pulumi.Input<number | undefined>;
+        /**
+         * (Optional, Beta)
+         * Reservation affinity to setup a GCE instance.
+         * Structure is documented below.
+         */
+        reservationAffinity?: pulumi.Input<inputs.workstations.WorkstationConfigHostGceInstanceBoostConfigReservationAffinity | undefined>;
     }
 
     export interface WorkstationConfigHostGceInstanceBoostConfigAccelerator {
@@ -145577,11 +146631,49 @@ export namespace workstations {
         type: pulumi.Input<string>;
     }
 
+    export interface WorkstationConfigHostGceInstanceBoostConfigReservationAffinity {
+        /**
+         * Type of reservation consumption.
+         * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+         */
+        consumeReservationType?: pulumi.Input<string | undefined>;
+        /**
+         * Label key of reservation resource.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * Label values of reservation resources.
+         * Valid values are either the name of a reservation in the same project
+         * or "projects/{project}/reservations/{reservation}" to target a shared
+         * reservation in the same zone but in a different project.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
     export interface WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
         /**
          * Whether the instance has confidential compute enabled.
          */
         enableConfidentialCompute?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface WorkstationConfigHostGceInstanceReservationAffinity {
+        /**
+         * Type of reservation consumption.
+         * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+         */
+        consumeReservationType?: pulumi.Input<string | undefined>;
+        /**
+         * Label key of reservation resource.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * Label values of reservation resources.
+         * Valid values are either the name of a reservation in the same project
+         * or "projects/{project}/reservations/{reservation}" to target a shared
+         * reservation in the same zone but in a different project.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface WorkstationConfigHostGceInstanceShieldedInstanceConfig {

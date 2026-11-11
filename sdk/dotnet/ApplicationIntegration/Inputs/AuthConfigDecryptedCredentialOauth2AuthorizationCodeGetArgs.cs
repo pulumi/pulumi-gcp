@@ -13,10 +13,22 @@ namespace Pulumi.Gcp.ApplicationIntegration.Inputs
     public sealed class AuthConfigDecryptedCredentialOauth2AuthorizationCodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+        /// </summary>
+        [Input("applyReauthPolicy")]
+        public Input<bool>? ApplyReauthPolicy { get; set; }
+
+        /// <summary>
         /// The auth url endpoint to send the auth code request to.
         /// </summary>
         [Input("authEndpoint")]
         public Input<string>? AuthEndpoint { get; set; }
+
+        /// <summary>
+        /// The auth parameters sent along with the auth code request.
+        /// </summary>
+        [Input("authParams")]
+        public Input<Inputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParamsGetArgs>? AuthParams { get; set; }
 
         /// <summary>
         /// The client's id.
@@ -31,6 +43,12 @@ namespace Pulumi.Gcp.ApplicationIntegration.Inputs
         public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
+        /// Represent how to pass parameters to fetch access token Possible values: ["REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+        /// </summary>
+        [Input("requestType")]
+        public Input<string>? RequestType { get; set; }
+
+        /// <summary>
         /// A space-delimited list of requested scope permissions.
         /// </summary>
         [Input("scope")]
@@ -41,6 +59,12 @@ namespace Pulumi.Gcp.ApplicationIntegration.Inputs
         /// </summary>
         [Input("tokenEndpoint")]
         public Input<string>? TokenEndpoint { get; set; }
+
+        /// <summary>
+        /// The token parameters sent along with the token request.
+        /// </summary>
+        [Input("tokenParams")]
+        public Input<Inputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParamsGetArgs>? TokenParams { get; set; }
 
         public AuthConfigDecryptedCredentialOauth2AuthorizationCodeGetArgs()
         {

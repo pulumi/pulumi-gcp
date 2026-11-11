@@ -677,7 +677,7 @@ class LiteTopic(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone(self) -> pulumi.Output[_builtins.str]:
         """
         The zone of the pubsub lite topic.
         """

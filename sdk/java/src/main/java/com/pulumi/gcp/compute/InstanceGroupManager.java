@@ -483,14 +483,14 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.instanceGroupManagerId;
     }
     /**
-     * The instance lifecycle policy for this managed instance group.
+     * The instance lifecycle policy for this managed instance group. Structure is documented below.
      * 
      */
     @Export(name="instanceLifecyclePolicy", refs={InstanceGroupManagerInstanceLifecyclePolicy.class}, tree="[0]")
     private Output<InstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicy;
 
     /**
-     * @return The instance lifecycle policy for this managed instance group.
+     * @return The instance lifecycle policy for this managed instance group. Structure is documented below.
      * 
      */
     public Output<InstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicy() {

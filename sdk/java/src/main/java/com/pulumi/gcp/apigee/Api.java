@@ -13,6 +13,8 @@ import com.pulumi.gcp.apigee.inputs.ApiState;
 import com.pulumi.gcp.apigee.outputs.ApiMetaData;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -96,6 +98,40 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.detectMd5hash;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
+     * User labels applied to this API proxy. Changing only the labels does not create a new revision.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return User labels applied to this API proxy. Changing only the labels does not create a new revision.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
+    }
+    /**
      * The id of the most recently created revision for this API proxy.
      * 
      */
@@ -168,6 +204,20 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * A list of revisions of this API proxy.
      * 
      */
@@ -221,6 +271,10 @@ public class Api extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

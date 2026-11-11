@@ -31,7 +31,8 @@ class AiModelDevelopmentClusterArgs:
                  network: pulumi.Input[Optional['AiModelDevelopmentClusterNetworkArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 runtime_spec: pulumi.Input[Optional['AiModelDevelopmentClusterRuntimeSpecArgs']] = None):
+                 runtime_spec: pulumi.Input[Optional['AiModelDevelopmentClusterRuntimeSpecArgs']] = None,
+                 update_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiModelDevelopmentCluster resource.
 
@@ -77,6 +78,13 @@ class AiModelDevelopmentClusterArgs:
         :param pulumi.Input[_builtins.str] region: The region of the ModelDevelopmentCluster. eg us-central1
         :param pulumi.Input['AiModelDevelopmentClusterRuntimeSpecArgs'] runtime_spec: The runtime spec of the cluster.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] update_mode: Whether the service also refreshes service-managed fields (startup and
+               prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+               only your changes; adding a node pool requires `USER_AND_SERVICE`.
+               Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+               for GKE clusters (`kubernetes_spec`).
+               Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+               `USER_AND_SERVICE`.
         """
         pulumi.set(__self__, "model_development_cluster_id", model_development_cluster_id)
         pulumi.set(__self__, "node_pools", node_pools)
@@ -97,6 +105,8 @@ class AiModelDevelopmentClusterArgs:
             pulumi.set(__self__, "region", region)
         if runtime_spec is not None:
             pulumi.set(__self__, "runtime_spec", runtime_spec)
+        if update_mode is not None:
+            pulumi.set(__self__, "update_mode", update_mode)
 
     @_builtins.property
     @pulumi.getter(name="modelDevelopmentClusterId")
@@ -261,6 +271,24 @@ class AiModelDevelopmentClusterArgs:
     def runtime_spec(self, value: pulumi.Input[Optional['AiModelDevelopmentClusterRuntimeSpecArgs']]):
         pulumi.set(self, "runtime_spec", value)
 
+    @_builtins.property
+    @pulumi.getter(name="updateMode")
+    def update_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether the service also refreshes service-managed fields (startup and
+        prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+        only your changes; adding a node pool requires `USER_AND_SERVICE`.
+        Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+        for GKE clusters (`kubernetes_spec`).
+        Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+        `USER_AND_SERVICE`.
+        """
+        return pulumi.get(self, "update_mode")
+
+    @update_mode.setter
+    def update_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update_mode", value)
+
 
 @pulumi.input_type
 class _AiModelDevelopmentClusterState:
@@ -284,6 +312,7 @@ class _AiModelDevelopmentClusterState:
                  runtime_spec: pulumi.Input[Optional['AiModelDevelopmentClusterRuntimeSpecArgs']] = None,
                  runtimes: pulumi.Input[Optional[Sequence[pulumi.Input['AiModelDevelopmentClusterRuntimeArgs']]]] = None,
                  start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiModelDevelopmentCluster resources.
@@ -346,6 +375,13 @@ class _AiModelDevelopmentClusterState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] start_time: Time when the ModelDevelopmentCluster for the first time entered the
                `RUNNING` state.
+        :param pulumi.Input[_builtins.str] update_mode: Whether the service also refreshes service-managed fields (startup and
+               prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+               only your changes; adding a node pool requires `USER_AND_SERVICE`.
+               Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+               for GKE clusters (`kubernetes_spec`).
+               Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+               `USER_AND_SERVICE`.
         :param pulumi.Input[_builtins.str] update_time: (Output)
                Time when the TrainingService was most recently updated.
         """
@@ -387,6 +423,8 @@ class _AiModelDevelopmentClusterState:
             pulumi.set(__self__, "runtimes", runtimes)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if update_mode is not None:
+            pulumi.set(__self__, "update_mode", update_mode)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -658,6 +696,24 @@ class _AiModelDevelopmentClusterState:
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="updateMode")
+    def update_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether the service also refreshes service-managed fields (startup and
+        prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+        only your changes; adding a node pool requires `USER_AND_SERVICE`.
+        Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+        for GKE clusters (`kubernetes_spec`).
+        Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+        `USER_AND_SERVICE`.
+        """
+        return pulumi.get(self, "update_mode")
+
+    @update_mode.setter
+    def update_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -688,6 +744,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_spec: pulumi.Input[Optional[Union['AiModelDevelopmentClusterRuntimeSpecArgs', 'AiModelDevelopmentClusterRuntimeSpecArgsDict', 'outputs.AiModelDevelopmentClusterRuntimeSpec']]] = None,
+                 update_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Vertex AI ModelDevelopmentCluster resource that manages a cluster of compute
@@ -778,6 +835,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             model_development_cluster_id="tftest",
             display_name="tftest",
             deletion_policy="DELETE",
+            update_mode="USER_AND_SERVICE",
             labels={
                 "env": "dev",
             },
@@ -1382,6 +1440,13 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region of the ModelDevelopmentCluster. eg us-central1
         :param pulumi.Input[Union['AiModelDevelopmentClusterRuntimeSpecArgs', 'AiModelDevelopmentClusterRuntimeSpecArgsDict', 'outputs.AiModelDevelopmentClusterRuntimeSpec']] runtime_spec: The runtime spec of the cluster.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] update_mode: Whether the service also refreshes service-managed fields (startup and
+               prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+               only your changes; adding a node pool requires `USER_AND_SERVICE`.
+               Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+               for GKE clusters (`kubernetes_spec`).
+               Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+               `USER_AND_SERVICE`.
         """
         ...
     @overload
@@ -1478,6 +1543,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             model_development_cluster_id="tftest",
             display_name="tftest",
             deletion_policy="DELETE",
+            update_mode="USER_AND_SERVICE",
             labels={
                 "env": "dev",
             },
@@ -2064,6 +2130,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime_spec: pulumi.Input[Optional[Union['AiModelDevelopmentClusterRuntimeSpecArgs', 'AiModelDevelopmentClusterRuntimeSpecArgsDict', 'outputs.AiModelDevelopmentClusterRuntimeSpec']]] = None,
+                 update_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2090,6 +2157,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["runtime_spec"] = runtime_spec
+            __props__.__dict__["update_mode"] = update_mode
             __props__.__dict__["cluster_events"] = None
             __props__.__dict__["cluster_statuses"] = None
             __props__.__dict__["create_time"] = None
@@ -2130,6 +2198,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             runtime_spec: pulumi.Input[Optional[Union['AiModelDevelopmentClusterRuntimeSpecArgs', 'AiModelDevelopmentClusterRuntimeSpecArgsDict', 'outputs.AiModelDevelopmentClusterRuntimeSpec']]] = None,
             runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiModelDevelopmentClusterRuntimeArgs', 'AiModelDevelopmentClusterRuntimeArgsDict', 'outputs.AiModelDevelopmentClusterRuntime']]]]] = None,
             start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            update_mode: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiModelDevelopmentCluster':
         """
         Get an existing AiModelDevelopmentCluster resource's state with the given name, id, and optional extra
@@ -2196,6 +2265,13 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] start_time: Time when the ModelDevelopmentCluster for the first time entered the
                `RUNNING` state.
+        :param pulumi.Input[_builtins.str] update_mode: Whether the service also refreshes service-managed fields (startup and
+               prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+               only your changes; adding a node pool requires `USER_AND_SERVICE`.
+               Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+               for GKE clusters (`kubernetes_spec`).
+               Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+               `USER_AND_SERVICE`.
         :param pulumi.Input[_builtins.str] update_time: (Output)
                Time when the TrainingService was most recently updated.
         """
@@ -2222,6 +2298,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         __props__.__dict__["runtime_spec"] = runtime_spec
         __props__.__dict__["runtimes"] = runtimes
         __props__.__dict__["start_time"] = start_time
+        __props__.__dict__["update_mode"] = update_mode
         __props__.__dict__["update_time"] = update_time
         return AiModelDevelopmentCluster(resource_name, opts=opts, __props__=__props__)
 
@@ -2247,6 +2324,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
             runtime_spec: pulumi.Input[Optional[Union['AiModelDevelopmentClusterRuntimeSpecArgs', 'AiModelDevelopmentClusterRuntimeSpecArgsDict', 'outputs.AiModelDevelopmentClusterRuntimeSpec']]] = None,
             runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiModelDevelopmentClusterRuntimeArgs', 'AiModelDevelopmentClusterRuntimeArgsDict', 'outputs.AiModelDevelopmentClusterRuntime']]]]] = None,
             start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            update_mode: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["clusterEvents"] = cluster_events
@@ -2268,6 +2346,7 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         __props__["runtimeSpec"] = runtime_spec
         __props__["runtimes"] = runtimes
         __props__["startTime"] = start_time
+        __props__["updateMode"] = update_mode
         __props__["updateTime"] = update_time
         return pulumi.runtime.exists_resource(None, 'gcp:vertex/aiModelDevelopmentCluster:AiModelDevelopmentCluster', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -2461,6 +2540,20 @@ class AiModelDevelopmentCluster(pulumi.CustomResource):
         `RUNNING` state.
         """
         return pulumi.get(self, "start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updateMode")
+    def update_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Whether the service also refreshes service-managed fields (startup and
+        prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+        only your changes; adding a node pool requires `USER_AND_SERVICE`.
+        Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+        for GKE clusters (`kubernetes_spec`).
+        Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+        `USER_AND_SERVICE`.
+        """
+        return pulumi.get(self, "update_mode")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

@@ -18,14 +18,14 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
     public static final NodePoolUpgradeSettingsBlueGreenSettingsArgs Empty = new NodePoolUpgradeSettingsBlueGreenSettingsArgs();
 
     /**
-     * ) Autoscaled rollout policy for blue-green upgrade.
+     * ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
      * 
      */
     @Import(name="autoscaledRolloutPolicy")
     private @Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs> autoscaledRolloutPolicy;
 
     /**
-     * @return ) Autoscaled rollout policy for blue-green upgrade.
+     * @return ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
      * 
      */
     public Optional<Output<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs>> autoscaledRolloutPolicy() {
@@ -50,14 +50,14 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
     }
 
     /**
-     * Specifies the standard policy settings for blue-green upgrades.
+     * Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
      * 
      */
     @Import(name="standardRolloutPolicy")
     private @Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy;
 
     /**
-     * @return Specifies the standard policy settings for blue-green upgrades.
+     * @return Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
      * 
      */
     public Optional<Output<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs>> standardRolloutPolicy() {
@@ -91,7 +91,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
         }
 
         /**
-         * @param autoscaledRolloutPolicy ) Autoscaled rollout policy for blue-green upgrade.
+         * @param autoscaledRolloutPolicy ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
         }
 
         /**
-         * @param autoscaledRolloutPolicy ) Autoscaled rollout policy for blue-green upgrade.
+         * @param autoscaledRolloutPolicy ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
         }
 
         /**
-         * @param standardRolloutPolicy Specifies the standard policy settings for blue-green upgrades.
+         * @param standardRolloutPolicy Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
         }
 
         /**
-         * @param standardRolloutPolicy Specifies the standard policy settings for blue-green upgrades.
+         * @param standardRolloutPolicy Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
          * 
          * @return builder
          * 

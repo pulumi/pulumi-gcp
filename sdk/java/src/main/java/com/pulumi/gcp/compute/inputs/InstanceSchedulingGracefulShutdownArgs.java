@@ -35,7 +35,7 @@ public final class InstanceSchedulingGracefulShutdownArgs extends com.pulumi.res
     /**
      * The time allotted for the instance to gracefully shut down.
      * If the graceful shutdown isn&#39;t complete after this time, then the instance
-     * transitions to the STOPPING state. Structure is documented below:
+     * transitions to the STOPPING state. Structure is documented below.
      * 
      */
     @Import(name="maxDuration")
@@ -44,7 +44,7 @@ public final class InstanceSchedulingGracefulShutdownArgs extends com.pulumi.res
     /**
      * @return The time allotted for the instance to gracefully shut down.
      * If the graceful shutdown isn&#39;t complete after this time, then the instance
-     * transitions to the STOPPING state. Structure is documented below:
+     * transitions to the STOPPING state. Structure is documented below.
      * 
      */
     public Optional<Output<InstanceSchedulingGracefulShutdownMaxDurationArgs>> maxDuration() {
@@ -100,7 +100,7 @@ public final class InstanceSchedulingGracefulShutdownArgs extends com.pulumi.res
         /**
          * @param maxDuration The time allotted for the instance to gracefully shut down.
          * If the graceful shutdown isn&#39;t complete after this time, then the instance
-         * transitions to the STOPPING state. Structure is documented below:
+         * transitions to the STOPPING state. Structure is documented below.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class InstanceSchedulingGracefulShutdownArgs extends com.pulumi.res
         /**
          * @param maxDuration The time allotted for the instance to gracefully shut down.
          * If the graceful shutdown isn&#39;t complete after this time, then the instance
-         * transitions to the STOPPING state. Structure is documented below:
+         * transitions to the STOPPING state. Structure is documented below.
          * 
          * @return builder
          * 

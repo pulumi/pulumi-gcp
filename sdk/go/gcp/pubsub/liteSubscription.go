@@ -117,7 +117,7 @@ type LiteSubscription struct {
 	// A reference to a Topic resource.
 	Topic pulumi.StringOutput `pulumi:"topic"`
 	// The zone of the pubsub lite topic.
-	Zone pulumi.StringPtrOutput `pulumi:"zone"`
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewLiteSubscription registers a new resource with the given unique name, arguments, and options.
@@ -384,8 +384,8 @@ func (o LiteSubscriptionOutput) Topic() pulumi.StringOutput {
 }
 
 // The zone of the pubsub lite topic.
-func (o LiteSubscriptionOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiteSubscription) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
+func (o LiteSubscriptionOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiteSubscription) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 type LiteSubscriptionArrayOutput struct{ *pulumi.OutputState }

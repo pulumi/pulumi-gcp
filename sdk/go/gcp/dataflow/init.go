@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:dataflow/configStoreSetting:ConfigStoreSetting":
+		r = &ConfigStoreSetting{}
 	case "gcp:dataflow/flexTemplateJob:FlexTemplateJob":
 		r = &FlexTemplateJob{}
 	case "gcp:dataflow/job:Job":
@@ -40,6 +42,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataflow/configStoreSetting",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataflow/flexTemplateJob",

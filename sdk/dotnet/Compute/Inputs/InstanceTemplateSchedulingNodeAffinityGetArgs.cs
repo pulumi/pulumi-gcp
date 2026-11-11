@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// Corresponds to the label values of a reservation resource.
+        /// The values for the node affinity label.
         /// </summary>
         public InputList<string> Values
         {

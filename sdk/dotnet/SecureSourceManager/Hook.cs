@@ -18,6 +18,102 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// ## Example Usage
     /// 
+    /// ### Secure Source Manager Hook Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
+    ///     {
+    ///         Location = "asia-east1",
+    ///         InstanceId = "my-basic-instance",
+    ///         DeletionPolicy = "PREVENT",
+    ///     });
+    /// 
+    ///     var repository = new Gcp.SecureSourceManager.Repository("repository", new()
+    ///     {
+    ///         RepositoryId = "my-basic-repository",
+    ///         Location = instance.Location,
+    ///         Instance = instance.Name,
+    ///         DeletionPolicy = "PREVENT",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.SecureSourceManager.Hook("default", new()
+    ///     {
+    ///         HookId = "my-basic-hook",
+    ///         RepositoryId = repository.RepositoryId,
+    ///         Location = repository.Location,
+    ///         TargetUri = "https://www.example.com",
+    ///         Events = new[]
+    ///         {
+    ///             "PUSH",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Secure Source Manager Hook With Fields
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
+    ///     {
+    ///         Location = "asia-east1",
+    ///         InstanceId = "my-basic-instance",
+    ///         DeletionPolicy = "PREVENT",
+    ///     });
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-basic-sa",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var repository = new Gcp.SecureSourceManager.Repository("repository", new()
+    ///     {
+    ///         RepositoryId = "my-basic-repository",
+    ///         Instance = instance.Name,
+    ///         Location = instance.Location,
+    ///         ServiceAccount = sa.Email,
+    ///         DeletionPolicy = "PREVENT",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.SecureSourceManager.Hook("default", new()
+    ///     {
+    ///         HookId = "my-basic-hook",
+    ///         Location = repository.Location,
+    ///         RepositoryId = repository.RepositoryId,
+    ///         TargetUri = "https://www.example.com",
+    ///         SensitiveQueryString = "auth=fake_token",
+    ///         Disabled = false,
+    ///         ServiceAccountAuth = true,
+    ///         PushOption = new Gcp.SecureSourceManager.Inputs.HookPushOptionArgs
+    ///         {
+    ///             BranchFilter = "main",
+    ///         },
+    ///         Events = new[]
+    ///         {
+    ///             "PUSH",
+    ///             "PULL_REQUEST",
+    ///             "PULL_REQUEST_COMMENT",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Hook can be imported using any of these accepted formats:

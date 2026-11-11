@@ -419,7 +419,6 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Optional, Beta)
      * Direct VPC Access settings for standard apps.
      * Structure is documented below.
      * 
@@ -428,8 +427,7 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
     private @Nullable Output<StandardAppVersionVpcAccessArgs> vpcAccess;
 
     /**
-     * @return (Optional, Beta)
-     * Direct VPC Access settings for standard apps.
+     * @return Direct VPC Access settings for standard apps.
      * Structure is documented below.
      * 
      */
@@ -1078,8 +1076,7 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vpcAccess (Optional, Beta)
-         * Direct VPC Access settings for standard apps.
+         * @param vpcAccess Direct VPC Access settings for standard apps.
          * Structure is documented below.
          * 
          * @return builder
@@ -1091,8 +1088,7 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vpcAccess (Optional, Beta)
-         * Direct VPC Access settings for standard apps.
+         * @param vpcAccess Direct VPC Access settings for standard apps.
          * Structure is documented below.
          * 
          * @return builder
