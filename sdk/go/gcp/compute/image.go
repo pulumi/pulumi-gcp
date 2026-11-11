@@ -130,6 +130,9 @@ import (
 //					&compute.ImageGuestOsFeatureArgs{
 //						Type: pulumi.String("SEV_LIVE_MIGRATABLE_V2"),
 //					},
+//					&compute.ImageGuestOsFeatureArgs{
+//						Type: pulumi.String("SUSPEND_SAFE_FPR"),
+//					},
 //				},
 //			})
 //			if err != nil {

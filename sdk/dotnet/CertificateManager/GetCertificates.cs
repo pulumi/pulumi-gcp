@@ -28,8 +28,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };
@@ -53,8 +52,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };
@@ -79,8 +77,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };
@@ -107,8 +104,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };
@@ -132,8 +128,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };
@@ -158,8 +153,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };
@@ -186,8 +180,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };
@@ -211,8 +204,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };
@@ -237,8 +229,7 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
-        ///         {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; {
         ///             return cert.Name;
         ///         }).ToList()),
         ///     };

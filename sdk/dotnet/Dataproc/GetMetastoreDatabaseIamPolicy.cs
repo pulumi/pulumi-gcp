@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Dataproc
         ///         Project = dpmsService.Project,
         ///         Location = dpmsService.Location,
         ///         ServiceId = dpmsService.ServiceId,
-        ///         Database = hive.HiveConfig[0].Properties.Database,
+        ///         Database = hive.HiveConfig[0].Properties["database"],
         ///     });
         /// 
         /// });
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Dataproc
         ///         Project = dpmsService.Project,
         ///         Location = dpmsService.Location,
         ///         ServiceId = dpmsService.ServiceId,
-        ///         Database = hive.HiveConfig[0].Properties.Database,
+        ///         Database = hive.HiveConfig[0].Properties["database"],
         ///     });
         /// 
         /// });
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Dataproc
         ///         Project = dpmsService.Project,
         ///         Location = dpmsService.Location,
         ///         ServiceId = dpmsService.ServiceId,
-        ///         Database = hive.HiveConfig[0].Properties.Database,
+        ///         Database = hive.HiveConfig[0].Properties["database"],
         ///     });
         /// 
         /// });

@@ -49,8 +49,8 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
-        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.STABLE),
+        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion["STABLE"]),
+        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion["STABLE"]),
         ///     };
         /// });
         /// ```
@@ -96,8 +96,8 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
-        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.STABLE),
+        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion["STABLE"]),
+        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion["STABLE"]),
         ///     };
         /// });
         /// ```
@@ -143,8 +143,8 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
-        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.STABLE),
+        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion["STABLE"]),
+        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion["STABLE"]),
         ///     };
         /// });
         /// ```

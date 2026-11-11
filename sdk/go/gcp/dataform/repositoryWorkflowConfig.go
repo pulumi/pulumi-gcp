@@ -14,12 +14,9 @@ import (
 
 // A resource represents a Dataform workflow configuration
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about RepositoryWorkflowConfig, see:
 //
-// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.workflowConfigs)
+// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories.workflowConfigs)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dataform/docs/workflow-configurations)
 //

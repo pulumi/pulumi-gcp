@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("PREVENT")
  *             .build());
  * 
- *         var basic = new BranchRule("basic", BranchRuleArgs.builder()
+ *         var default_ = new BranchRule("default", BranchRuleArgs.builder()
  *             .branchRuleId("my-basic-branchrule")
  *             .repositoryId(repository.repositoryId())
  *             .location(repository.location())
@@ -110,19 +110,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .location("us-central1")
- *             .instanceId("my-initial-instance")
+ *             .instanceId("my-basic-instance")
  *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var repository = new Repository("repository", RepositoryArgs.builder()
- *             .repositoryId("my-initial-repository")
+ *             .repositoryId("my-basic-repository")
  *             .instance(instance.name())
  *             .location(instance.location())
  *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var default_ = new BranchRule("default", BranchRuleArgs.builder()
- *             .branchRuleId("my-initial-branchrule")
+ *             .branchRuleId("my-basic-branchrule")
  *             .location(repository.location())
  *             .repositoryId(repository.repositoryId())
  *             .includePattern("test")

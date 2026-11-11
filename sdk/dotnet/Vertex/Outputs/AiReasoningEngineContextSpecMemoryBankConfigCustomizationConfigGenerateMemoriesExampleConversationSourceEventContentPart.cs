@@ -49,6 +49,11 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData? InlineData;
         /// <summary>
+        /// Turn-level metadata for speech generation. May be set alongside `Text` to attach speaker and style information to a text part.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata? SpeechMetadata;
+        /// <summary>
         /// The text content of the part.
         /// </summary>
         public readonly string? Text;
@@ -78,6 +83,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData? inlineData,
 
+            Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata? speechMetadata,
+
             string? text,
 
             bool? thought,
@@ -91,6 +98,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
             FunctionCall = functionCall;
             FunctionResponse = functionResponse;
             InlineData = inlineData;
+            SpeechMetadata = speechMetadata;
             Text = text;
             Thought = thought;
             VideoMetadata = videoMetadata;

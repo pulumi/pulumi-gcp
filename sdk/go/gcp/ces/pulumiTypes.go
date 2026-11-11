@@ -30650,6 +30650,201 @@ func (o DeploymentInstagramCredentialsPtrOutput) ConversationProfileId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type DeploymentModelSettings struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model *string `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature *float64 `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel *string `pulumi:"thinkingLevel"`
+}
+
+// DeploymentModelSettingsInput is an input type that accepts DeploymentModelSettingsArgs and DeploymentModelSettingsOutput values.
+// You can construct a concrete instance of `DeploymentModelSettingsInput` via:
+//
+//	DeploymentModelSettingsArgs{...}
+type DeploymentModelSettingsInput interface {
+	pulumi.Input
+
+	ToDeploymentModelSettingsOutput() DeploymentModelSettingsOutput
+	ToDeploymentModelSettingsOutputWithContext(context.Context) DeploymentModelSettingsOutput
+}
+
+type DeploymentModelSettingsArgs struct {
+	// The LLM model that the agent should use.
+	// If not set, the agent will inherit the model from its parent agent.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// If set, this temperature will be used for the LLM model. Temperature
+	// controls the randomness of the model's responses. Lower temperatures
+	// produce responses that are more predictable. Higher temperatures produce
+	// responses that are more creative.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel pulumi.StringPtrInput `pulumi:"thinkingLevel"`
+}
+
+func (DeploymentModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentModelSettings)(nil)).Elem()
+}
+
+func (i DeploymentModelSettingsArgs) ToDeploymentModelSettingsOutput() DeploymentModelSettingsOutput {
+	return i.ToDeploymentModelSettingsOutputWithContext(context.Background())
+}
+
+func (i DeploymentModelSettingsArgs) ToDeploymentModelSettingsOutputWithContext(ctx context.Context) DeploymentModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentModelSettingsOutput)
+}
+
+func (i DeploymentModelSettingsArgs) ToDeploymentModelSettingsPtrOutput() DeploymentModelSettingsPtrOutput {
+	return i.ToDeploymentModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentModelSettingsArgs) ToDeploymentModelSettingsPtrOutputWithContext(ctx context.Context) DeploymentModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentModelSettingsOutput).ToDeploymentModelSettingsPtrOutputWithContext(ctx)
+}
+
+// DeploymentModelSettingsPtrInput is an input type that accepts DeploymentModelSettingsArgs, DeploymentModelSettingsPtr and DeploymentModelSettingsPtrOutput values.
+// You can construct a concrete instance of `DeploymentModelSettingsPtrInput` via:
+//
+//	        DeploymentModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentModelSettingsPtrOutput() DeploymentModelSettingsPtrOutput
+	ToDeploymentModelSettingsPtrOutputWithContext(context.Context) DeploymentModelSettingsPtrOutput
+}
+
+type deploymentModelSettingsPtrType DeploymentModelSettingsArgs
+
+func DeploymentModelSettingsPtr(v *DeploymentModelSettingsArgs) DeploymentModelSettingsPtrInput {
+	return (*deploymentModelSettingsPtrType)(v)
+}
+
+func (*deploymentModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentModelSettings)(nil)).Elem()
+}
+
+func (i *deploymentModelSettingsPtrType) ToDeploymentModelSettingsPtrOutput() DeploymentModelSettingsPtrOutput {
+	return i.ToDeploymentModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentModelSettingsPtrType) ToDeploymentModelSettingsPtrOutputWithContext(ctx context.Context) DeploymentModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentModelSettingsPtrOutput)
+}
+
+type DeploymentModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (DeploymentModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentModelSettings)(nil)).Elem()
+}
+
+func (o DeploymentModelSettingsOutput) ToDeploymentModelSettingsOutput() DeploymentModelSettingsOutput {
+	return o
+}
+
+func (o DeploymentModelSettingsOutput) ToDeploymentModelSettingsOutputWithContext(ctx context.Context) DeploymentModelSettingsOutput {
+	return o
+}
+
+func (o DeploymentModelSettingsOutput) ToDeploymentModelSettingsPtrOutput() DeploymentModelSettingsPtrOutput {
+	return o.ToDeploymentModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentModelSettingsOutput) ToDeploymentModelSettingsPtrOutputWithContext(ctx context.Context) DeploymentModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentModelSettings) *DeploymentModelSettings {
+		return &v
+	}).(DeploymentModelSettingsPtrOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o DeploymentModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o DeploymentModelSettingsOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DeploymentModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o DeploymentModelSettingsOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModelSettings) *string { return v.ThinkingLevel }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentModelSettings)(nil)).Elem()
+}
+
+func (o DeploymentModelSettingsPtrOutput) ToDeploymentModelSettingsPtrOutput() DeploymentModelSettingsPtrOutput {
+	return o
+}
+
+func (o DeploymentModelSettingsPtrOutput) ToDeploymentModelSettingsPtrOutputWithContext(ctx context.Context) DeploymentModelSettingsPtrOutput {
+	return o
+}
+
+func (o DeploymentModelSettingsPtrOutput) Elem() DeploymentModelSettingsOutput {
+	return o.ApplyT(func(v *DeploymentModelSettings) DeploymentModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentModelSettings
+		return ret
+	}).(DeploymentModelSettingsOutput)
+}
+
+// The LLM model that the agent should use.
+// If not set, the agent will inherit the model from its parent agent.
+func (o DeploymentModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, this temperature will be used for the LLM model. Temperature
+// controls the randomness of the model's responses. Lower temperatures
+// produce responses that are more predictable. Higher temperatures produce
+// responses that are more creative.
+func (o DeploymentModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DeploymentModelSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o DeploymentModelSettingsPtrOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThinkingLevel
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeploymentWhatsappCredentials struct {
 	// The Meta auth code provided by the embedded signup flow.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -63239,6 +63434,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileWhatsappConfigPtrInput)(nil)).Elem(), DeploymentChannelProfileWhatsappConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentInstagramCredentialsInput)(nil)).Elem(), DeploymentInstagramCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentInstagramCredentialsPtrInput)(nil)).Elem(), DeploymentInstagramCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentModelSettingsInput)(nil)).Elem(), DeploymentModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentModelSettingsPtrInput)(nil)).Elem(), DeploymentModelSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentWhatsappCredentialsInput)(nil)).Elem(), DeploymentWhatsappCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentWhatsappCredentialsPtrInput)(nil)).Elem(), DeploymentWhatsappCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenInput)(nil)).Elem(), EvaluationGoldenArgs{})
@@ -63966,6 +64163,8 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentChannelProfileWhatsappConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentInstagramCredentialsOutput{})
 	pulumi.RegisterOutputType(DeploymentInstagramCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentModelSettingsOutput{})
+	pulumi.RegisterOutputType(DeploymentModelSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentWhatsappCredentialsOutput{})
 	pulumi.RegisterOutputType(DeploymentWhatsappCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(EvaluationGoldenOutput{})

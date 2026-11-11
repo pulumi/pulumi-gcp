@@ -33,7 +33,7 @@ public final class RegionInstanceGroupManagerStatus {
      */
     private @Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls;
     /**
-     * @return A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
+     * @return A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
      * 
      */
     private @Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets;
@@ -63,7 +63,7 @@ public final class RegionInstanceGroupManagerStatus {
         return this.statefuls == null ? List.of() : this.statefuls;
     }
     /**
-     * @return A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
+     * @return A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
      * 
      */
     public List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets() {

@@ -313,7 +313,7 @@ type InstanceGroupManager struct {
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	InstanceGroupManagerId pulumi.IntOutput `pulumi:"instanceGroupManagerId"`
-	// The instance lifecycle policy for this managed instance group.
+	// The instance lifecycle policy for this managed instance group. Structure is documented below.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyOutput `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -458,7 +458,7 @@ type instanceGroupManagerState struct {
 	InstanceGroup *string `pulumi:"instanceGroup"`
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	InstanceGroupManagerId *int `pulumi:"instanceGroupManagerId"`
-	// The instance lifecycle policy for this managed instance group.
+	// The instance lifecycle policy for this managed instance group. Structure is documented below.
 	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -568,7 +568,7 @@ type InstanceGroupManagerState struct {
 	InstanceGroup pulumi.StringPtrInput
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	InstanceGroupManagerId pulumi.IntPtrInput
-	// The instance lifecycle policy for this managed instance group.
+	// The instance lifecycle policy for this managed instance group. Structure is documented below.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -680,7 +680,7 @@ type instanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description *string `pulumi:"description"`
-	// The instance lifecycle policy for this managed instance group.
+	// The instance lifecycle policy for this managed instance group. Structure is documented below.
 	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -778,7 +778,7 @@ type InstanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description pulumi.StringPtrInput
-	// The instance lifecycle policy for this managed instance group.
+	// The instance lifecycle policy for this managed instance group. Structure is documented below.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -1000,7 +1000,7 @@ func (o InstanceGroupManagerOutput) InstanceGroupManagerId() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.IntOutput { return v.InstanceGroupManagerId }).(pulumi.IntOutput)
 }
 
-// The instance lifecycle policy for this managed instance group.
+// The instance lifecycle policy for this managed instance group. Structure is documented below.
 func (o InstanceGroupManagerOutput) InstanceLifecyclePolicy() InstanceGroupManagerInstanceLifecyclePolicyOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerInstanceLifecyclePolicyOutput {
 		return v.InstanceLifecyclePolicy

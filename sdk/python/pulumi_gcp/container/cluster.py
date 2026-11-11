@@ -274,7 +274,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
-        :param pulumi.Input['ClusterNetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration.
+        :param pulumi.Input['ClusterNetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration. Structure is documented below.
         :param pulumi.Input['ClusterNetworkPolicyArgs'] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
@@ -1369,7 +1369,7 @@ class ClusterArgs:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> pulumi.Input[Optional['ClusterNetworkPerformanceConfigArgs']]:
         """
-        Network bandwidth tier configuration.
+        Network bandwidth tier configuration. Structure is documented below.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -2126,7 +2126,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
-        :param pulumi.Input['ClusterNetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration.
+        :param pulumi.Input['ClusterNetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration. Structure is documented below.
         :param pulumi.Input['ClusterNetworkPolicyArgs'] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
@@ -3312,7 +3312,7 @@ class _ClusterState:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> pulumi.Input[Optional['ClusterNetworkPerformanceConfigArgs']]:
         """
-        Network bandwidth tier configuration.
+        Network bandwidth tier configuration. Structure is documented below.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -4268,7 +4268,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
-        :param pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']] network_performance_config: Network bandwidth tier configuration.
+        :param pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']] network_performance_config: Network bandwidth tier configuration. Structure is documented below.
         :param pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict', 'outputs.ClusterNetworkPolicy']] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
@@ -5033,7 +5033,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
-        :param pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']] network_performance_config: Network bandwidth tier configuration.
+        :param pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict', 'outputs.ClusterNetworkPerformanceConfig']] network_performance_config: Network bandwidth tier configuration. Structure is documented below.
         :param pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict', 'outputs.ClusterNetworkPolicy']] network_policy: Configuration options for the
                [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
                feature. Structure is documented below.
@@ -6075,7 +6075,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> pulumi.Output[Optional['outputs.ClusterNetworkPerformanceConfig']]:
         """
-        Network bandwidth tier configuration.
+        Network bandwidth tier configuration. Structure is documented below.
         """
         return pulumi.get(self, "network_performance_config")
 

@@ -186,7 +186,7 @@ export class Repository extends pulumi.CustomResource {
     /**
      * A reference to the region
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The service account to run workflow invocations under.
      */

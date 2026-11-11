@@ -63,17 +63,6 @@ namespace Pulumi.Gcp.SaaSRuntime
     ///         },
     ///     });
     /// 
-    ///     var exampleRelease = new Gcp.SaaSRuntime.Release("example_release", new()
-    ///     {
-    ///         Location = "us-east1",
-    ///         ReleaseId = "example-release",
-    ///         UnitKind = clusterUnitKind.Id,
-    ///         Blueprint = new Gcp.SaaSRuntime.Inputs.ReleaseBlueprintArgs
-    ///         {
-    ///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
-    ///         },
-    ///     });
-    /// 
     /// });
     /// ```
     /// 

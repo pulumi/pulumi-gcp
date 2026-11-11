@@ -181,14 +181,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.defaultHostname;
     }
     /**
-     * A block of optional settings to configure specific App Engine features:
+     * A block of optional settings to configure specific App Engine features. Structure is documented below.
      * 
      */
     @Export(name="featureSettings", refs={ApplicationFeatureSettings.class}, tree="[0]")
     private Output<ApplicationFeatureSettings> featureSettings;
 
     /**
-     * @return A block of optional settings to configure specific App Engine features:
+     * @return A block of optional settings to configure specific App Engine features. Structure is documented below.
      * 
      */
     public Output<ApplicationFeatureSettings> featureSettings() {
@@ -209,14 +209,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.gcrDomain;
     }
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
      * 
      */
     @Export(name="iap", refs={ApplicationIap.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationIap> iap;
 
     /**
-     * @return Settings for enabling Cloud Identity Aware Proxy
+     * @return Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
      * 
      */
     public Output<Optional<ApplicationIap>> iap() {
@@ -299,14 +299,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.sslPolicy;
     }
     /**
-     * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+     * A list of dispatch rule blocks. Structure is documented below.
      * 
      */
     @Export(name="urlDispatchRules", refs={List.class,ApplicationUrlDispatchRule.class}, tree="[0,1]")
     private Output<List<ApplicationUrlDispatchRule>> urlDispatchRules;
 
     /**
-     * @return A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+     * @return A list of dispatch rule blocks. Structure is documented below.
      * 
      */
     public Output<List<ApplicationUrlDispatchRule>> urlDispatchRules() {

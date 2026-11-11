@@ -768,6 +768,10 @@ import (
 //														Parts: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArray{
 //															&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
 //																Text: pulumi.String("I like pepperoni pizza"),
+//																SpeechMetadata: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs{
+//																	Speaker: pulumi.String("Alice"),
+//																	Style:   pulumi.String("cheerful"),
+//																},
 //															},
 //															&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
 //																FunctionCall: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs{

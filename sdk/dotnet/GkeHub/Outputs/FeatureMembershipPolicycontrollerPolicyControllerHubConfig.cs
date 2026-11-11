@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly int? ConstraintViolationLimit;
         /// <summary>
-        /// Map of deployment configs to deployments ("admission", "audit", "mutation").
+        /// Map of deployment configs to deployments ("admission", "audit", "mutation"). Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> DeploymentConfigs;
         /// <summary>

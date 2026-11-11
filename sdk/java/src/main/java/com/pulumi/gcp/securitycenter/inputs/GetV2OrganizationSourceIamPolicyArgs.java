@@ -14,9 +14,21 @@ public final class GetV2OrganizationSourceIamPolicyArgs extends com.pulumi.resou
 
     public static final GetV2OrganizationSourceIamPolicyArgs Empty = new GetV2OrganizationSourceIamPolicyArgs();
 
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="organization", required=true)
     private Output<String> organization;
 
+    /**
+     * @return The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> organization() {
         return this.organization;
     }
@@ -61,11 +73,27 @@ public final class GetV2OrganizationSourceIamPolicyArgs extends com.pulumi.resou
             $ = new GetV2OrganizationSourceIamPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param organization The organization whose Cloud Security Command Center the Source
+         * lives in.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder organization(Output<String> organization) {
             $.organization = organization;
             return this;
         }
 
+        /**
+         * @param organization The organization whose Cloud Security Command Center the Source
+         * lives in.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder organization(String organization) {
             return organization(Output.of(organization));
         }

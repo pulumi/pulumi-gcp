@@ -37,11 +37,12 @@ class BackupPlanAssociationArgs:
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
                - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+               - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -71,6 +72,7 @@ class BackupPlanAssociationArgs:
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+        - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -119,7 +121,7 @@ class BackupPlanAssociationArgs:
     def resource_type(self) -> pulumi.Input[_builtins.str]:
         """
         The resource type of workload on which backupplan is applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
         """
         return pulumi.get(self, "resource_type")
 
@@ -185,6 +187,7 @@ class _BackupPlanAssociationState:
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
                - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+               - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[_builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
@@ -200,7 +203,7 @@ class _BackupPlanAssociationState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
         :param pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoArgs']]] rules_config_infos: Message for rules config info
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the instance was updated.
@@ -255,6 +258,7 @@ class _BackupPlanAssociationState:
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+        - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -369,7 +373,7 @@ class _BackupPlanAssociationState:
     def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource type of workload on which backupplan is applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
         """
         return pulumi.get(self, "resource_type")
 
@@ -540,6 +544,59 @@ class BackupPlanAssociation(pulumi.CustomResource):
             backup_plan=my_backup_plan.name)
         ```
 
+        ### Backup Dr Bpa Netapp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_network(name="test-network-bpa")
+        default_storage_pool = gcp.netapp.StoragePool("default",
+            name="test-pool-bpa",
+            location="us-central1-a",
+            service_level="FLEX",
+            type="UNIFIED",
+            capacity_gib="1024",
+            network=default.id)
+        my_volume = gcp.netapp.Volume("my_volume",
+            location="us-central1-a",
+            name="test-volume-bpa",
+            capacity_gib="100",
+            share_name="test-volume-bpa",
+            storage_pool=default_storage_pool.name,
+            protocols=["NFSV3"],
+            deletion_policy="FORCE")
+        my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+            location="us-central1",
+            backup_vault_id="bv-bpa-netapp",
+            backup_minimum_enforced_retention_duration="100000s",
+            force_delete=True)
+        my_backup_plan = gcp.backupdisasterrecovery.BackupPlan("my_backup_plan",
+            location="us-central1",
+            backup_plan_id="bp-bpa-netapp",
+            resource_type="netapp.googleapis.com/Volume",
+            backup_vault=my_backup_vault.id,
+            backup_rules=[{
+                "rule_id": "rule-1",
+                "backup_retention_days": 5,
+                "standard_schedule": {
+                    "recurrence_type": "HOURLY",
+                    "hourly_frequency": 6,
+                    "time_zone": "UTC",
+                    "backup_window": {
+                        "start_hour_of_day": 0,
+                        "end_hour_of_day": 6,
+                    },
+                },
+            }])
+        my_backup_plan_association_netapp = gcp.backupdisasterrecovery.BackupPlanAssociation("my-backup-plan-association-netapp",
+            location="us-central1",
+            resource_type="netapp.googleapis.com/Volume",
+            backup_plan_association_id="my-bpa-netapp",
+            resource=my_volume.id,
+            backup_plan=my_backup_plan.name)
+        ```
+
         ## Import
 
         BackupPlanAssociation can be imported using any of these accepted formats:
@@ -565,6 +622,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
                - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+               - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -577,7 +635,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
         """
         ...
     @overload
@@ -708,6 +766,59 @@ class BackupPlanAssociation(pulumi.CustomResource):
             backup_plan=my_backup_plan.name)
         ```
 
+        ### Backup Dr Bpa Netapp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_network(name="test-network-bpa")
+        default_storage_pool = gcp.netapp.StoragePool("default",
+            name="test-pool-bpa",
+            location="us-central1-a",
+            service_level="FLEX",
+            type="UNIFIED",
+            capacity_gib="1024",
+            network=default.id)
+        my_volume = gcp.netapp.Volume("my_volume",
+            location="us-central1-a",
+            name="test-volume-bpa",
+            capacity_gib="100",
+            share_name="test-volume-bpa",
+            storage_pool=default_storage_pool.name,
+            protocols=["NFSV3"],
+            deletion_policy="FORCE")
+        my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+            location="us-central1",
+            backup_vault_id="bv-bpa-netapp",
+            backup_minimum_enforced_retention_duration="100000s",
+            force_delete=True)
+        my_backup_plan = gcp.backupdisasterrecovery.BackupPlan("my_backup_plan",
+            location="us-central1",
+            backup_plan_id="bp-bpa-netapp",
+            resource_type="netapp.googleapis.com/Volume",
+            backup_vault=my_backup_vault.id,
+            backup_rules=[{
+                "rule_id": "rule-1",
+                "backup_retention_days": 5,
+                "standard_schedule": {
+                    "recurrence_type": "HOURLY",
+                    "hourly_frequency": 6,
+                    "time_zone": "UTC",
+                    "backup_window": {
+                        "start_hour_of_day": 0,
+                        "end_hour_of_day": 6,
+                    },
+                },
+            }])
+        my_backup_plan_association_netapp = gcp.backupdisasterrecovery.BackupPlanAssociation("my-backup-plan-association-netapp",
+            location="us-central1",
+            resource_type="netapp.googleapis.com/Volume",
+            backup_plan_association_id="my-bpa-netapp",
+            resource=my_volume.id,
+            backup_plan=my_backup_plan.name)
+        ```
+
         ## Import
 
         BackupPlanAssociation can be imported using any of these accepted formats:
@@ -817,6 +928,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
                - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+               - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[_builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
@@ -832,7 +944,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict', 'outputs.BackupPlanAssociationRulesConfigInfo']]]] rules_config_infos: Message for rules config info
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the instance was updated.
@@ -907,6 +1019,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+        - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -985,7 +1098,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
         The resource type of workload on which backupplan is applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
         """
         return pulumi.get(self, "resource_type")
 

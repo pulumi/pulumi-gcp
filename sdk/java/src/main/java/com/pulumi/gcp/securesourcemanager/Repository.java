@@ -56,120 +56,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .location("us-central1")
+ *             .location("europe-west4")
  *             .instanceId("my-instance")
  *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var default_ = new Repository("default", RepositoryArgs.builder()
- *             .location("us-central1")
+ *             .location("europe-west4")
  *             .repositoryId("my-repository")
  *             .instance(instance.name())
  *             .deletionPolicy("PREVENT")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Secure Source Manager Repository Initial Config
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.securesourcemanager.Instance;
- * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
- * import com.pulumi.gcp.securesourcemanager.Repository;
- * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
- * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryInitialConfigArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .location("us-central1")
- *             .instanceId("my-instance")
- *             .deletionPolicy("PREVENT")
- *             .build());
- * 
- *         var default_ = new Repository("default", RepositoryArgs.builder()
- *             .location("us-central1")
- *             .repositoryId("my-repository")
- *             .instance(instance.name())
- *             .description("This is a test repository")
- *             .initialConfig(RepositoryInitialConfigArgs.builder()
- *                 .defaultBranch("main")
- *                 .gitignores("python")
- *                 .license("mit")
- *                 .readme("default")
- *                 .build())
- *             .deletionPolicy("PREVENT")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Secure Source Manager Repository Service Account
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.securesourcemanager.Instance;
- * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.securesourcemanager.Repository;
- * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .location("us-central1")
- *             .instanceId("my-instance")
- *             .deletionPolicy("PREVENT")
- *             .build());
- * 
- *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-sa")
- *             .displayName("Test Service Account")
- *             .build());
- * 
- *         var default_ = new Repository("default", RepositoryArgs.builder()
- *             .location("us-central1")
- *             .repositoryId("my-repository")
- *             .instance(instance.name())
- *             .deletionPolicy("PREVENT")
- *             .serviceAccount(sa.email())
  *             .build());
  * 
  *     }
@@ -196,6 +92,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.securesourcemanager.Repository;
  * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryScanConfigArgs;
@@ -215,13 +113,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .location("us-central1")
+ *             .location("europe-west4")
  *             .instanceId("my-instance")
  *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var template = new PreventionInspectTemplate("template", PreventionInspectTemplateArgs.builder()
- *             .parent("projects/my-project-name/locations/us-central1")
+ *             .parent("projects/my-project-name/locations/europe-west4")
  *             .displayName("Test Inspect Template")
  *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
  *                 .infoTypes(PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
@@ -239,10 +137,18 @@ import javax.annotation.Nullable;
  *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
+ *         // IAM permissions can take time to propagate
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(ssmP4saDlpReader)
+ *                 .build());
+ * 
  *         var default_ = new Repository("default", RepositoryArgs.builder()
- *             .location("us-central1")
+ *             .location("europe-west4")
  *             .repositoryId("my-repository")
  *             .instance(instance.name())
+ *             .description("This is a test repository")
  *             .deletionPolicy("PREVENT")
  *             .scanConfig(RepositoryScanConfigArgs.builder()
  *                 .secretScanConfig(RepositoryScanConfigSecretScanConfigArgs.builder()
@@ -251,7 +157,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(ssmP4saDlpReader)
+ *                 .dependsOn(wait120Seconds)
  *                 .build());
  * 
  *     }}{@code
@@ -259,7 +165,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Secure Source Manager Repository Secret Scanning Default
+ * ### Secure Source Manager Repository Initial Config
  * 
  * <pre>
  * {@code
@@ -270,10 +176,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.securesourcemanager.Repository;
  * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
- * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryScanConfigArgs;
- * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryScanConfigSecretScanConfigArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryInitialConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -288,21 +195,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .location("us-central1")
+ *             .location("asia-east1")
  *             .instanceId("my-instance")
  *             .deletionPolicy("PREVENT")
  *             .build());
  * 
+ *         var sa = new Account("sa", AccountArgs.builder()
+ *             .accountId("my-sa")
+ *             .displayName("Test Service Account")
+ *             .build());
+ * 
  *         var default_ = new Repository("default", RepositoryArgs.builder()
- *             .location("us-central1")
+ *             .location("asia-east1")
  *             .repositoryId("my-repository")
  *             .instance(instance.name())
- *             .deletionPolicy("PREVENT")
- *             .scanConfig(RepositoryScanConfigArgs.builder()
- *                 .secretScanConfig(RepositoryScanConfigSecretScanConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
+ *             .description("This is a test repository")
+ *             .serviceAccount(sa.email())
+ *             .initialConfig(RepositoryInitialConfigArgs.builder()
+ *                 .defaultBranch("main")
+ *                 .gitignores("python")
+ *                 .license("mit")
+ *                 .readme("default")
  *                 .build())
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *     }

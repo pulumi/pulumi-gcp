@@ -279,7 +279,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly instanceGroupManagerId: pulumi.Output<number>;
     /**
-     * The instance lifecycle policy for this managed instance group.
+     * The instance lifecycle policy for this managed instance group. Structure is documented below.
      */
     declare public readonly instanceLifecyclePolicy: pulumi.Output<outputs.compute.InstanceGroupManagerInstanceLifecyclePolicy>;
     /**
@@ -548,7 +548,7 @@ export interface InstanceGroupManagerState {
      */
     instanceGroupManagerId?: pulumi.Input<number | undefined>;
     /**
-     * The instance lifecycle policy for this managed instance group.
+     * The instance lifecycle policy for this managed instance group. Structure is documented below.
      */
     instanceLifecyclePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerInstanceLifecyclePolicy | undefined>;
     /**
@@ -709,7 +709,7 @@ export interface InstanceGroupManagerArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The instance lifecycle policy for this managed instance group.
+     * The instance lifecycle policy for this managed instance group. Structure is documented below.
      */
     instanceLifecyclePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerInstanceLifecyclePolicy | undefined>;
     /**

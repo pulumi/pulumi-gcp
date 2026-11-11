@@ -15,6 +15,11 @@ export type ClusterAclPolicy = import("./clusterAclPolicy").ClusterAclPolicy;
 export const ClusterAclPolicy: typeof import("./clusterAclPolicy").ClusterAclPolicy = null as any;
 utilities.lazyLoad(exports, ["ClusterAclPolicy"], () => require("./clusterAclPolicy"));
 
+export { ClusterTokenAuthUserArgs, ClusterTokenAuthUserState } from "./clusterTokenAuthUser";
+export type ClusterTokenAuthUser = import("./clusterTokenAuthUser").ClusterTokenAuthUser;
+export const ClusterTokenAuthUser: typeof import("./clusterTokenAuthUser").ClusterTokenAuthUser = null as any;
+utilities.lazyLoad(exports, ["ClusterTokenAuthUser"], () => require("./clusterTokenAuthUser"));
+
 export { ClusterUserCreatedConnectionsArgs, ClusterUserCreatedConnectionsState } from "./clusterUserCreatedConnections";
 export type ClusterUserCreatedConnections = import("./clusterUserCreatedConnections").ClusterUserCreatedConnections;
 export const ClusterUserCreatedConnections: typeof import("./clusterUserCreatedConnections").ClusterUserCreatedConnections = null as any;
@@ -29,6 +34,11 @@ export { GetClusterAclPolicyArgs, GetClusterAclPolicyResult, GetClusterAclPolicy
 export const getClusterAclPolicy: typeof import("./getClusterAclPolicy").getClusterAclPolicy = null as any;
 export const getClusterAclPolicyOutput: typeof import("./getClusterAclPolicy").getClusterAclPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterAclPolicy","getClusterAclPolicyOutput"], () => require("./getClusterAclPolicy"));
+
+export { GetClusterTokenAuthUserArgs, GetClusterTokenAuthUserResult, GetClusterTokenAuthUserOutputArgs } from "./getClusterTokenAuthUser";
+export const getClusterTokenAuthUser: typeof import("./getClusterTokenAuthUser").getClusterTokenAuthUser = null as any;
+export const getClusterTokenAuthUserOutput: typeof import("./getClusterTokenAuthUser").getClusterTokenAuthUserOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterTokenAuthUser","getClusterTokenAuthUserOutput"], () => require("./getClusterTokenAuthUser"));
 
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
@@ -49,6 +59,8 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "gcp:redis/clusterAclPolicy:ClusterAclPolicy":
                 return new ClusterAclPolicy(name, <any>undefined, { urn })
+            case "gcp:redis/clusterTokenAuthUser:ClusterTokenAuthUser":
+                return new ClusterTokenAuthUser(name, <any>undefined, { urn })
             case "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections":
                 return new ClusterUserCreatedConnections(name, <any>undefined, { urn })
             case "gcp:redis/instance:Instance":
@@ -60,5 +72,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "redis/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "redis/clusterAclPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "redis/clusterTokenAuthUser", _module)
 pulumi.runtime.registerResourceModule("gcp", "redis/clusterUserCreatedConnections", _module)
 pulumi.runtime.registerResourceModule("gcp", "redis/instance", _module)

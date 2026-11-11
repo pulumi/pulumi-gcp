@@ -17,7 +17,6 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
     public static final InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs Empty = new InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs();
 
     /**
-     * (Optional, Beta)
      * Specify bandwidth percentages for various traffic classes for queuing
      * type Bandwidth Percent.
      * Structure is documented below.
@@ -27,8 +26,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
     private @Nullable Output<List<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs>> bandwidthPercentages;
 
     /**
-     * @return (Optional, Beta)
-     * Specify bandwidth percentages for various traffic classes for queuing
+     * @return Specify bandwidth percentages for various traffic classes for queuing
      * type Bandwidth Percent.
      * Structure is documented below.
      * 
@@ -62,8 +60,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
         }
 
         /**
-         * @param bandwidthPercentages (Optional, Beta)
-         * Specify bandwidth percentages for various traffic classes for queuing
+         * @param bandwidthPercentages Specify bandwidth percentages for various traffic classes for queuing
          * type Bandwidth Percent.
          * Structure is documented below.
          * 
@@ -76,8 +73,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
         }
 
         /**
-         * @param bandwidthPercentages (Optional, Beta)
-         * Specify bandwidth percentages for various traffic classes for queuing
+         * @param bandwidthPercentages Specify bandwidth percentages for various traffic classes for queuing
          * type Bandwidth Percent.
          * Structure is documented below.
          * 
@@ -89,8 +85,7 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
         }
 
         /**
-         * @param bandwidthPercentages (Optional, Beta)
-         * Specify bandwidth percentages for various traffic classes for queuing
+         * @param bandwidthPercentages Specify bandwidth percentages for various traffic classes for queuing
          * type Bandwidth Percent.
          * Structure is documented below.
          * 

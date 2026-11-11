@@ -93,8 +93,7 @@ class StandardAppVersionArgs:
         :param pulumi.Input[_builtins.str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[_builtins.bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[_builtins.str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input['StandardAppVersionVpcAccessArgs'] vpc_access: (Optional, Beta)
-               Direct VPC Access settings for standard apps.
+        :param pulumi.Input['StandardAppVersionVpcAccessArgs'] vpc_access: Direct VPC Access settings for standard apps.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
@@ -435,7 +434,6 @@ class StandardAppVersionArgs:
     @pulumi.getter(name="vpcAccess")
     def vpc_access(self) -> pulumi.Input[Optional['StandardAppVersionVpcAccessArgs']]:
         """
-        (Optional, Beta)
         Direct VPC Access settings for standard apps.
         Structure is documented below.
         """
@@ -536,8 +534,7 @@ class _StandardAppVersionState:
         :param pulumi.Input[_builtins.str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[_builtins.bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[_builtins.str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input['StandardAppVersionVpcAccessArgs'] vpc_access: (Optional, Beta)
-               Direct VPC Access settings for standard apps.
+        :param pulumi.Input['StandardAppVersionVpcAccessArgs'] vpc_access: Direct VPC Access settings for standard apps.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
@@ -896,7 +893,6 @@ class _StandardAppVersionState:
     @pulumi.getter(name="vpcAccess")
     def vpc_access(self) -> pulumi.Input[Optional['StandardAppVersionVpcAccessArgs']]:
         """
-        (Optional, Beta)
         Direct VPC Access settings for standard apps.
         Structure is documented below.
         """
@@ -1264,8 +1260,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[_builtins.bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[_builtins.str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']] vpc_access: (Optional, Beta)
-               Direct VPC Access settings for standard apps.
+        :param pulumi.Input[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']] vpc_access: Direct VPC Access settings for standard apps.
                Structure is documented below.
         :param pulumi.Input[Union['StandardAppVersionVpcAccessConnectorArgs', 'StandardAppVersionVpcAccessConnectorArgsDict', 'outputs.StandardAppVersionVpcAccessConnector']] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
@@ -1711,8 +1706,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[_builtins.bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[_builtins.str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']] vpc_access: (Optional, Beta)
-               Direct VPC Access settings for standard apps.
+        :param pulumi.Input[Union['StandardAppVersionVpcAccessArgs', 'StandardAppVersionVpcAccessArgsDict', 'outputs.StandardAppVersionVpcAccess']] vpc_access: Direct VPC Access settings for standard apps.
                Structure is documented below.
         :param pulumi.Input[Union['StandardAppVersionVpcAccessConnectorArgs', 'StandardAppVersionVpcAccessConnectorArgsDict', 'outputs.StandardAppVersionVpcAccessConnector']] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
@@ -2015,7 +2009,6 @@ class StandardAppVersion(pulumi.CustomResource):
     @pulumi.getter(name="vpcAccess")
     def vpc_access(self) -> pulumi.Output[Optional['outputs.StandardAppVersionVpcAccess']]:
         """
-        (Optional, Beta)
         Direct VPC Access settings for standard apps.
         Structure is documented below.
         """

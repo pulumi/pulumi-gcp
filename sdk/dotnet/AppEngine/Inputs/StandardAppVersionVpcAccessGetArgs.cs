@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class StandardAppVersionVpcAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Deprecated)
+        /// (Optional, Beta, Deprecated)
         /// The egress setting for the VPC Access, controlling what traffic is diverted through it.
         /// 
         /// &gt; **Warning:** `EgressSetting` is deprecated and will be removed in a future major release. Use `VpcEgress` instead.

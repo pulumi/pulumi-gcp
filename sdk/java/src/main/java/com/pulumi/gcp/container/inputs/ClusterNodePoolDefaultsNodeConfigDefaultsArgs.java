@@ -18,14 +18,14 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
     public static final ClusterNodePoolDefaultsNodeConfigDefaultsArgs Empty = new ClusterNodePoolDefaultsNodeConfigDefaultsArgs();
 
     /**
-     * Parameters for containerd configuration.
+     * Parameters for containerd configuration. Structure is documented below.
      * 
      */
     @Import(name="containerdConfig")
     private @Nullable Output<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs> containerdConfig;
 
     /**
-     * @return Parameters for containerd configuration.
+     * @return Parameters for containerd configuration. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs>> containerdConfig() {
@@ -105,7 +105,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
         }
 
         /**
-         * @param containerdConfig Parameters for containerd configuration.
+         * @param containerdConfig Parameters for containerd configuration. Structure is documented below.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
         }
 
         /**
-         * @param containerdConfig Parameters for containerd configuration.
+         * @param containerdConfig Parameters for containerd configuration. Structure is documented below.
          * 
          * @return builder
          * 

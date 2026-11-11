@@ -94,18 +94,30 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * Keys used for MD5 authentication.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     * 
+     * @deprecated `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     * 
      */
+    @Deprecated
     @Import(name="md5AuthenticationKeys")
     private @Nullable Output<RouterMd5AuthenticationKeysArgs> md5AuthenticationKeys;
 
     /**
-     * @return Keys used for MD5 authentication.
+     * @return (Optional, Deprecated)
+     * Keys used for MD5 authentication.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     * 
+     * @deprecated `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     * 
      */
+    @Deprecated
     public Optional<Output<RouterMd5AuthenticationKeysArgs>> md5AuthenticationKeys() {
         return Optional.ofNullable(this.md5AuthenticationKeys);
     }
@@ -347,24 +359,36 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param md5AuthenticationKeys Keys used for MD5 authentication.
+         * @param md5AuthenticationKeys (Optional, Deprecated)
+         * Keys used for MD5 authentication.
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
          * 
          * @return builder
          * 
+         * @deprecated `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+         * 
          */
+        @Deprecated
         public Builder md5AuthenticationKeys(@Nullable Output<RouterMd5AuthenticationKeysArgs> md5AuthenticationKeys) {
             $.md5AuthenticationKeys = md5AuthenticationKeys;
             return this;
         }
 
         /**
-         * @param md5AuthenticationKeys Keys used for MD5 authentication.
+         * @param md5AuthenticationKeys (Optional, Deprecated)
+         * Keys used for MD5 authentication.
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
          * 
          * @return builder
          * 
+         * @deprecated `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+         * 
          */
+        @Deprecated
         public Builder md5AuthenticationKeys(RouterMd5AuthenticationKeysArgs md5AuthenticationKeys) {
             return md5AuthenticationKeys(Output.of(md5AuthenticationKeys));
         }

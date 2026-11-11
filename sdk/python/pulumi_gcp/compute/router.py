@@ -46,8 +46,11 @@ class RouterArgs:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN
                attachments (interconnectAttachments).
-        :param pulumi.Input['RouterMd5AuthenticationKeysArgs'] md5_authentication_keys: Keys used for MD5 authentication.
+        :param pulumi.Input['RouterMd5AuthenticationKeysArgs'] md5_authentication_keys: (Optional, Deprecated)
+               Keys used for MD5 authentication.
                Structure is documented below.
+               
+               > **Warning:** `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -70,6 +73,9 @@ class RouterArgs:
             pulumi.set(__self__, "description", description)
         if encrypted_interconnect_router is not None:
             pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
+        if md5_authentication_keys is not None:
+            warnings.warn("""`md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.""", DeprecationWarning)
+            pulumi.log.warn("""md5_authentication_keys is deprecated: `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.""")
         if md5_authentication_keys is not None:
             pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
         if name is not None:
@@ -142,10 +148,14 @@ class RouterArgs:
 
     @_builtins.property
     @pulumi.getter(name="md5AuthenticationKeys")
+    @_utilities.deprecated("""`md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.""")
     def md5_authentication_keys(self) -> pulumi.Input[Optional['RouterMd5AuthenticationKeysArgs']]:
         """
+        (Optional, Deprecated)
         Keys used for MD5 authentication.
         Structure is documented below.
+
+        > **Warning:** `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         """
         return pulumi.get(self, "md5_authentication_keys")
 
@@ -265,8 +275,11 @@ class _RouterState:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN
                attachments (interconnectAttachments).
-        :param pulumi.Input['RouterMd5AuthenticationKeysArgs'] md5_authentication_keys: Keys used for MD5 authentication.
+        :param pulumi.Input['RouterMd5AuthenticationKeysArgs'] md5_authentication_keys: (Optional, Deprecated)
+               Keys used for MD5 authentication.
                Structure is documented below.
+               
+               > **Warning:** `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -293,6 +306,9 @@ class _RouterState:
             pulumi.set(__self__, "description", description)
         if encrypted_interconnect_router is not None:
             pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
+        if md5_authentication_keys is not None:
+            warnings.warn("""`md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.""", DeprecationWarning)
+            pulumi.log.warn("""md5_authentication_keys is deprecated: `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.""")
         if md5_authentication_keys is not None:
             pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
         if name is not None:
@@ -381,10 +397,14 @@ class _RouterState:
 
     @_builtins.property
     @pulumi.getter(name="md5AuthenticationKeys")
+    @_utilities.deprecated("""`md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.""")
     def md5_authentication_keys(self) -> pulumi.Input[Optional['RouterMd5AuthenticationKeysArgs']]:
         """
+        (Optional, Deprecated)
         Keys used for MD5 authentication.
         Structure is documented below.
+
+        > **Warning:** `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         """
         return pulumi.get(self, "md5_authentication_keys")
 
@@ -656,8 +676,11 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN
                attachments (interconnectAttachments).
-        :param pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']] md5_authentication_keys: Keys used for MD5 authentication.
+        :param pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']] md5_authentication_keys: (Optional, Deprecated)
+               Keys used for MD5 authentication.
                Structure is documented below.
+               
+               > **Warning:** `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -899,8 +922,11 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN
                attachments (interconnectAttachments).
-        :param pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']] md5_authentication_keys: Keys used for MD5 authentication.
+        :param pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict', 'outputs.RouterMd5AuthenticationKeys']] md5_authentication_keys: (Optional, Deprecated)
+               Keys used for MD5 authentication.
                Structure is documented below.
+               
+               > **Warning:** `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -1020,10 +1046,14 @@ class Router(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="md5AuthenticationKeys")
+    @_utilities.deprecated("""`md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.""")
     def md5_authentication_keys(self) -> pulumi.Output[Optional['outputs.RouterMd5AuthenticationKeys']]:
         """
+        (Optional, Deprecated)
         Keys used for MD5 authentication.
         Structure is documented below.
+
+        > **Warning:** `md5_authentication_keys` is deprecated and will be removed in a future major release. It has no effect; use the `md5_authentication_key` block of `compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         """
         return pulumi.get(self, "md5_authentication_keys")
 

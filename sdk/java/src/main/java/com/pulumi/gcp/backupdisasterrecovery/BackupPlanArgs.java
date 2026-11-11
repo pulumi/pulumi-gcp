@@ -228,7 +228,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34;, &#34;netapp.googleapis.com/Volume&#34; and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     @Import(name="resourceType", required=true)
@@ -236,7 +236,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource type to which the `BackupPlan` will be applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34;, &#34;netapp.googleapis.com/Volume&#34; and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     public Output<String> resourceType() {
@@ -568,7 +568,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceType The resource type to which the `BackupPlan` will be applied.
-         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34;, &#34;netapp.googleapis.com/Volume&#34; and &#34;storage.googleapis.com/Bucket&#34;.
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceType The resource type to which the `BackupPlan` will be applied.
-         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34;, &#34;netapp.googleapis.com/Volume&#34; and &#34;storage.googleapis.com/Bucket&#34;.
          * 
          * @return builder
          * 

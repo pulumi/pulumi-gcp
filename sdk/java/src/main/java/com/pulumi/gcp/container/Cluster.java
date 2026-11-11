@@ -1445,14 +1445,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.network);
     }
     /**
-     * Network bandwidth tier configuration.
+     * Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     @Export(name="networkPerformanceConfig", refs={ClusterNetworkPerformanceConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
-     * @return Network bandwidth tier configuration.
+     * @return Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     public Output<Optional<ClusterNetworkPerformanceConfig>> networkPerformanceConfig() {

@@ -27879,7 +27879,9 @@ type InstanceAttachedDisk struct {
 	DiskEncryptionKeySha256 *string `pulumi:"diskEncryptionKeySha256"`
 	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
 	DiskEncryptionServiceAccount *string `pulumi:"diskEncryptionServiceAccount"`
-	// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+	// boolean field that determines whether to force attach the regional
+	// disk even if it's currently attached to another instance. If you try to force attach a zonal
+	// disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
 	ForceAttach *bool `pulumi:"forceAttach"`
 	// The selfLink of the encryption key that is
 	// stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
@@ -27922,7 +27924,9 @@ type InstanceAttachedDiskArgs struct {
 	DiskEncryptionKeySha256 pulumi.StringPtrInput `pulumi:"diskEncryptionKeySha256"`
 	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
 	DiskEncryptionServiceAccount pulumi.StringPtrInput `pulumi:"diskEncryptionServiceAccount"`
-	// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+	// boolean field that determines whether to force attach the regional
+	// disk even if it's currently attached to another instance. If you try to force attach a zonal
+	// disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
 	ForceAttach pulumi.BoolPtrInput `pulumi:"forceAttach"`
 	// The selfLink of the encryption key that is
 	// stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
@@ -28019,7 +28023,9 @@ func (o InstanceAttachedDiskOutput) DiskEncryptionServiceAccount() pulumi.String
 	return o.ApplyT(func(v InstanceAttachedDisk) *string { return v.DiskEncryptionServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+// boolean field that determines whether to force attach the regional
+// disk even if it's currently attached to another instance. If you try to force attach a zonal
+// disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
 func (o InstanceAttachedDiskOutput) ForceAttach() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceAttachedDisk) *bool { return v.ForceAttach }).(pulumi.BoolPtrOutput)
 }
@@ -42422,7 +42428,7 @@ type InstanceGroupManagerStatus struct {
 	IsStable *bool `pulumi:"isStable"`
 	// Stateful status of the given Instance Group Manager.
 	Statefuls []InstanceGroupManagerStatusStateful `pulumi:"statefuls"`
-	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 	VersionTargets []InstanceGroupManagerStatusVersionTarget `pulumi:"versionTargets"`
 }
 
@@ -42446,7 +42452,7 @@ type InstanceGroupManagerStatusArgs struct {
 	IsStable pulumi.BoolPtrInput `pulumi:"isStable"`
 	// Stateful status of the given Instance Group Manager.
 	Statefuls InstanceGroupManagerStatusStatefulArrayInput `pulumi:"statefuls"`
-	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 	VersionTargets InstanceGroupManagerStatusVersionTargetArrayInput `pulumi:"versionTargets"`
 }
 
@@ -42520,7 +42526,7 @@ func (o InstanceGroupManagerStatusOutput) Statefuls() InstanceGroupManagerStatus
 	return o.ApplyT(func(v InstanceGroupManagerStatus) []InstanceGroupManagerStatusStateful { return v.Statefuls }).(InstanceGroupManagerStatusStatefulArrayOutput)
 }
 
-// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 func (o InstanceGroupManagerStatusOutput) VersionTargets() InstanceGroupManagerStatusVersionTargetArrayOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatus) []InstanceGroupManagerStatusVersionTarget { return v.VersionTargets }).(InstanceGroupManagerStatusVersionTargetArrayOutput)
 }
@@ -46391,7 +46397,7 @@ type InstanceSchedulingGracefulShutdown struct {
 	Enabled bool `pulumi:"enabled"`
 	// The time allotted for the instance to gracefully shut down.
 	// If the graceful shutdown isn't complete after this time, then the instance
-	// transitions to the STOPPING state. Structure is documented below:
+	// transitions to the STOPPING state. Structure is documented below.
 	MaxDuration *InstanceSchedulingGracefulShutdownMaxDuration `pulumi:"maxDuration"`
 }
 
@@ -46411,7 +46417,7 @@ type InstanceSchedulingGracefulShutdownArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The time allotted for the instance to gracefully shut down.
 	// If the graceful shutdown isn't complete after this time, then the instance
-	// transitions to the STOPPING state. Structure is documented below:
+	// transitions to the STOPPING state. Structure is documented below.
 	MaxDuration InstanceSchedulingGracefulShutdownMaxDurationPtrInput `pulumi:"maxDuration"`
 }
 
@@ -46499,7 +46505,7 @@ func (o InstanceSchedulingGracefulShutdownOutput) Enabled() pulumi.BoolOutput {
 
 // The time allotted for the instance to gracefully shut down.
 // If the graceful shutdown isn't complete after this time, then the instance
-// transitions to the STOPPING state. Structure is documented below:
+// transitions to the STOPPING state. Structure is documented below.
 func (o InstanceSchedulingGracefulShutdownOutput) MaxDuration() InstanceSchedulingGracefulShutdownMaxDurationPtrOutput {
 	return o.ApplyT(func(v InstanceSchedulingGracefulShutdown) *InstanceSchedulingGracefulShutdownMaxDuration {
 		return v.MaxDuration
@@ -46542,7 +46548,7 @@ func (o InstanceSchedulingGracefulShutdownPtrOutput) Enabled() pulumi.BoolPtrOut
 
 // The time allotted for the instance to gracefully shut down.
 // If the graceful shutdown isn't complete after this time, then the instance
-// transitions to the STOPPING state. Structure is documented below:
+// transitions to the STOPPING state. Structure is documented below.
 func (o InstanceSchedulingGracefulShutdownPtrOutput) MaxDuration() InstanceSchedulingGracefulShutdownMaxDurationPtrOutput {
 	return o.ApplyT(func(v *InstanceSchedulingGracefulShutdown) *InstanceSchedulingGracefulShutdownMaxDuration {
 		if v == nil {
@@ -46559,7 +46565,7 @@ type InstanceSchedulingGracefulShutdownMaxDuration struct {
 	// 999,999,999 inclusive.
 	Nanos *int `pulumi:"nanos"`
 	// Span of time at a resolution of a second.
-	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -46581,7 +46587,7 @@ type InstanceSchedulingGracefulShutdownMaxDurationArgs struct {
 	// 999,999,999 inclusive.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
 	// Span of time at a resolution of a second.
-	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -46671,7 +46677,7 @@ func (o InstanceSchedulingGracefulShutdownMaxDurationOutput) Nanos() pulumi.IntP
 }
 
 // Span of time at a resolution of a second.
-// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 func (o InstanceSchedulingGracefulShutdownMaxDurationOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceSchedulingGracefulShutdownMaxDuration) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -46714,7 +46720,7 @@ func (o InstanceSchedulingGracefulShutdownMaxDurationPtrOutput) Nanos() pulumi.I
 }
 
 // Span of time at a resolution of a second.
-// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 func (o InstanceSchedulingGracefulShutdownMaxDurationPtrOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceSchedulingGracefulShutdownMaxDuration) *int {
 		if v == nil {
@@ -51841,7 +51847,7 @@ type InstanceTemplateSchedulingGracefulShutdown struct {
 	Enabled bool `pulumi:"enabled"`
 	// The time allotted for the instance to gracefully shut down.
 	// If the graceful shutdown isn't complete after this time, then the instance
-	// transitions to the STOPPING state. Structure is documented below:
+	// transitions to the STOPPING state. Structure is documented below.
 	MaxDuration *InstanceTemplateSchedulingGracefulShutdownMaxDuration `pulumi:"maxDuration"`
 }
 
@@ -51861,7 +51867,7 @@ type InstanceTemplateSchedulingGracefulShutdownArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The time allotted for the instance to gracefully shut down.
 	// If the graceful shutdown isn't complete after this time, then the instance
-	// transitions to the STOPPING state. Structure is documented below:
+	// transitions to the STOPPING state. Structure is documented below.
 	MaxDuration InstanceTemplateSchedulingGracefulShutdownMaxDurationPtrInput `pulumi:"maxDuration"`
 }
 
@@ -51949,7 +51955,7 @@ func (o InstanceTemplateSchedulingGracefulShutdownOutput) Enabled() pulumi.BoolO
 
 // The time allotted for the instance to gracefully shut down.
 // If the graceful shutdown isn't complete after this time, then the instance
-// transitions to the STOPPING state. Structure is documented below:
+// transitions to the STOPPING state. Structure is documented below.
 func (o InstanceTemplateSchedulingGracefulShutdownOutput) MaxDuration() InstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateSchedulingGracefulShutdown) *InstanceTemplateSchedulingGracefulShutdownMaxDuration {
 		return v.MaxDuration
@@ -51992,7 +51998,7 @@ func (o InstanceTemplateSchedulingGracefulShutdownPtrOutput) Enabled() pulumi.Bo
 
 // The time allotted for the instance to gracefully shut down.
 // If the graceful shutdown isn't complete after this time, then the instance
-// transitions to the STOPPING state. Structure is documented below:
+// transitions to the STOPPING state. Structure is documented below.
 func (o InstanceTemplateSchedulingGracefulShutdownPtrOutput) MaxDuration() InstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplateSchedulingGracefulShutdown) *InstanceTemplateSchedulingGracefulShutdownMaxDuration {
 		if v == nil {
@@ -52009,7 +52015,7 @@ type InstanceTemplateSchedulingGracefulShutdownMaxDuration struct {
 	// 999,999,999 inclusive.
 	Nanos *int `pulumi:"nanos"`
 	// Span of time at a resolution of a second.
-	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -52031,7 +52037,7 @@ type InstanceTemplateSchedulingGracefulShutdownMaxDurationArgs struct {
 	// 999,999,999 inclusive.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
 	// Span of time at a resolution of a second.
-	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -52121,7 +52127,7 @@ func (o InstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Nanos() pul
 }
 
 // Span of time at a resolution of a second.
-// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 func (o InstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceTemplateSchedulingGracefulShutdownMaxDuration) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -52164,7 +52170,7 @@ func (o InstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput) Nanos() 
 }
 
 // Span of time at a resolution of a second.
-// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 func (o InstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplateSchedulingGracefulShutdownMaxDuration) *int {
 		if v == nil {
@@ -52477,7 +52483,7 @@ type InstanceTemplateSchedulingNodeAffinity struct {
 	// The operator. Can be `IN` for node-affinities
 	// or `NOT_IN` for anti-affinities.
 	Operator string `pulumi:"operator"`
-	// Corresponds to the label values of a reservation resource.
+	// The values for the node affinity label.
 	Values []string `pulumi:"values"`
 }
 
@@ -52498,7 +52504,7 @@ type InstanceTemplateSchedulingNodeAffinityArgs struct {
 	// The operator. Can be `IN` for node-affinities
 	// or `NOT_IN` for anti-affinities.
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// Corresponds to the label values of a reservation resource.
+	// The values for the node affinity label.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -52564,7 +52570,7 @@ func (o InstanceTemplateSchedulingNodeAffinityOutput) Operator() pulumi.StringOu
 	return o.ApplyT(func(v InstanceTemplateSchedulingNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// Corresponds to the label values of a reservation resource.
+// The values for the node affinity label.
 func (o InstanceTemplateSchedulingNodeAffinityOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceTemplateSchedulingNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -54113,20 +54119,16 @@ func (o InstantSnapshotParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOu
 }
 
 type InterconnectApplicationAwareInterconnect struct {
-	// (Optional, Beta)
 	// Bandwidth Percentage policy allows you to have granular control over how your Interconnect
 	// bandwidth is utilized among your workloads mapping to different traffic classes.
 	// Structure is documented below.
 	BandwidthPercentagePolicy *InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy `pulumi:"bandwidthPercentagePolicy"`
-	// (Optional, Beta)
 	// A description for the AAI profile on this interconnect.
 	ProfileDescription *string `pulumi:"profileDescription"`
-	// (Optional, Beta)
 	// Optional field to specify a list of shape average percentages to be
 	// applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
 	// Structure is documented below.
 	ShapeAveragePercentages []InterconnectApplicationAwareInterconnectShapeAveragePercentage `pulumi:"shapeAveragePercentages"`
-	// (Optional, Beta)
 	// Specify configuration for StrictPriorityPolicy.
 	StrictPriorityPolicy *InterconnectApplicationAwareInterconnectStrictPriorityPolicy `pulumi:"strictPriorityPolicy"`
 }
@@ -54143,20 +54145,16 @@ type InterconnectApplicationAwareInterconnectInput interface {
 }
 
 type InterconnectApplicationAwareInterconnectArgs struct {
-	// (Optional, Beta)
 	// Bandwidth Percentage policy allows you to have granular control over how your Interconnect
 	// bandwidth is utilized among your workloads mapping to different traffic classes.
 	// Structure is documented below.
 	BandwidthPercentagePolicy InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyPtrInput `pulumi:"bandwidthPercentagePolicy"`
-	// (Optional, Beta)
 	// A description for the AAI profile on this interconnect.
 	ProfileDescription pulumi.StringPtrInput `pulumi:"profileDescription"`
-	// (Optional, Beta)
 	// Optional field to specify a list of shape average percentages to be
 	// applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
 	// Structure is documented below.
 	ShapeAveragePercentages InterconnectApplicationAwareInterconnectShapeAveragePercentageArrayInput `pulumi:"shapeAveragePercentages"`
-	// (Optional, Beta)
 	// Specify configuration for StrictPriorityPolicy.
 	StrictPriorityPolicy InterconnectApplicationAwareInterconnectStrictPriorityPolicyPtrInput `pulumi:"strictPriorityPolicy"`
 }
@@ -54238,7 +54236,6 @@ func (o InterconnectApplicationAwareInterconnectOutput) ToInterconnectApplicatio
 	}).(InterconnectApplicationAwareInterconnectPtrOutput)
 }
 
-// (Optional, Beta)
 // Bandwidth Percentage policy allows you to have granular control over how your Interconnect
 // bandwidth is utilized among your workloads mapping to different traffic classes.
 // Structure is documented below.
@@ -54248,13 +54245,11 @@ func (o InterconnectApplicationAwareInterconnectOutput) BandwidthPercentagePolic
 	}).(InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // A description for the AAI profile on this interconnect.
 func (o InterconnectApplicationAwareInterconnectOutput) ProfileDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterconnectApplicationAwareInterconnect) *string { return v.ProfileDescription }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Optional field to specify a list of shape average percentages to be
 // applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
 // Structure is documented below.
@@ -54264,7 +54259,6 @@ func (o InterconnectApplicationAwareInterconnectOutput) ShapeAveragePercentages(
 	}).(InterconnectApplicationAwareInterconnectShapeAveragePercentageArrayOutput)
 }
 
-// (Optional, Beta)
 // Specify configuration for StrictPriorityPolicy.
 func (o InterconnectApplicationAwareInterconnectOutput) StrictPriorityPolicy() InterconnectApplicationAwareInterconnectStrictPriorityPolicyPtrOutput {
 	return o.ApplyT(func(v InterconnectApplicationAwareInterconnect) *InterconnectApplicationAwareInterconnectStrictPriorityPolicy {
@@ -54296,7 +54290,6 @@ func (o InterconnectApplicationAwareInterconnectPtrOutput) Elem() InterconnectAp
 	}).(InterconnectApplicationAwareInterconnectOutput)
 }
 
-// (Optional, Beta)
 // Bandwidth Percentage policy allows you to have granular control over how your Interconnect
 // bandwidth is utilized among your workloads mapping to different traffic classes.
 // Structure is documented below.
@@ -54309,7 +54302,6 @@ func (o InterconnectApplicationAwareInterconnectPtrOutput) BandwidthPercentagePo
 	}).(InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // A description for the AAI profile on this interconnect.
 func (o InterconnectApplicationAwareInterconnectPtrOutput) ProfileDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterconnectApplicationAwareInterconnect) *string {
@@ -54320,7 +54312,6 @@ func (o InterconnectApplicationAwareInterconnectPtrOutput) ProfileDescription() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Optional field to specify a list of shape average percentages to be
 // applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
 // Structure is documented below.
@@ -54333,7 +54324,6 @@ func (o InterconnectApplicationAwareInterconnectPtrOutput) ShapeAveragePercentag
 	}).(InterconnectApplicationAwareInterconnectShapeAveragePercentageArrayOutput)
 }
 
-// (Optional, Beta)
 // Specify configuration for StrictPriorityPolicy.
 func (o InterconnectApplicationAwareInterconnectPtrOutput) StrictPriorityPolicy() InterconnectApplicationAwareInterconnectStrictPriorityPolicyPtrOutput {
 	return o.ApplyT(func(v *InterconnectApplicationAwareInterconnect) *InterconnectApplicationAwareInterconnectStrictPriorityPolicy {
@@ -54345,7 +54335,6 @@ func (o InterconnectApplicationAwareInterconnectPtrOutput) StrictPriorityPolicy(
 }
 
 type InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy struct {
-	// (Optional, Beta)
 	// Specify bandwidth percentages for various traffic classes for queuing
 	// type Bandwidth Percent.
 	// Structure is documented below.
@@ -54364,7 +54353,6 @@ type InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyInput inte
 }
 
 type InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs struct {
-	// (Optional, Beta)
 	// Specify bandwidth percentages for various traffic classes for queuing
 	// type Bandwidth Percent.
 	// Structure is documented below.
@@ -54448,7 +54436,6 @@ func (o InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyOutput)
 	}).(InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specify bandwidth percentages for various traffic classes for queuing
 // type Bandwidth Percent.
 // Structure is documented below.
@@ -54482,7 +54469,6 @@ func (o InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyPtrOutp
 	}).(InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyOutput)
 }
 
-// (Optional, Beta)
 // Specify bandwidth percentages for various traffic classes for queuing
 // type Bandwidth Percent.
 // Structure is documented below.
@@ -54496,10 +54482,8 @@ func (o InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyPtrOutp
 }
 
 type InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage struct {
-	// (Optional, Beta)
 	// Bandwidth percentage for a specific traffic class.
 	Percentage *int `pulumi:"percentage"`
-	// (Optional, Beta)
 	// Enum representing the various traffic classes offered by AAI.
 	// Default value is `TC_UNSPECIFIED`.
 	// Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -54518,10 +54502,8 @@ type InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthP
 }
 
 type InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs struct {
-	// (Optional, Beta)
 	// Bandwidth percentage for a specific traffic class.
 	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
-	// (Optional, Beta)
 	// Enum representing the various traffic classes offered by AAI.
 	// Default value is `TC_UNSPECIFIED`.
 	// Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -54579,7 +54561,6 @@ func (o InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwid
 	return o
 }
 
-// (Optional, Beta)
 // Bandwidth percentage for a specific traffic class.
 func (o InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage) *int {
@@ -54587,7 +54568,6 @@ func (o InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwid
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional, Beta)
 // Enum representing the various traffic classes offered by AAI.
 // Default value is `TC_UNSPECIFIED`.
 // Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -54618,10 +54598,8 @@ func (o InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwid
 }
 
 type InterconnectApplicationAwareInterconnectShapeAveragePercentage struct {
-	// (Optional, Beta)
 	// Bandwidth percentage for a specific traffic class.
 	Percentage *int `pulumi:"percentage"`
-	// (Optional, Beta)
 	// Enum representing the various traffic classes offered by AAI.
 	// Default value is `TC_UNSPECIFIED`.
 	// Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -54640,10 +54618,8 @@ type InterconnectApplicationAwareInterconnectShapeAveragePercentageInput interfa
 }
 
 type InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs struct {
-	// (Optional, Beta)
 	// Bandwidth percentage for a specific traffic class.
 	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
-	// (Optional, Beta)
 	// Enum representing the various traffic classes offered by AAI.
 	// Default value is `TC_UNSPECIFIED`.
 	// Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -54701,13 +54677,11 @@ func (o InterconnectApplicationAwareInterconnectShapeAveragePercentageOutput) To
 	return o
 }
 
-// (Optional, Beta)
 // Bandwidth percentage for a specific traffic class.
 func (o InterconnectApplicationAwareInterconnectShapeAveragePercentageOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InterconnectApplicationAwareInterconnectShapeAveragePercentage) *int { return v.Percentage }).(pulumi.IntPtrOutput)
 }
 
-// (Optional, Beta)
 // Enum representing the various traffic classes offered by AAI.
 // Default value is `TC_UNSPECIFIED`.
 // Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -86888,7 +86862,7 @@ type RegionInstanceGroupManagerStatus struct {
 	IsStable *bool `pulumi:"isStable"`
 	// Stateful status of the given Instance Group Manager.
 	Statefuls []RegionInstanceGroupManagerStatusStateful `pulumi:"statefuls"`
-	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 	VersionTargets []RegionInstanceGroupManagerStatusVersionTarget `pulumi:"versionTargets"`
 }
 
@@ -86912,7 +86886,7 @@ type RegionInstanceGroupManagerStatusArgs struct {
 	IsStable pulumi.BoolPtrInput `pulumi:"isStable"`
 	// Stateful status of the given Instance Group Manager.
 	Statefuls RegionInstanceGroupManagerStatusStatefulArrayInput `pulumi:"statefuls"`
-	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 	VersionTargets RegionInstanceGroupManagerStatusVersionTargetArrayInput `pulumi:"versionTargets"`
 }
 
@@ -86988,7 +86962,7 @@ func (o RegionInstanceGroupManagerStatusOutput) Statefuls() RegionInstanceGroupM
 	}).(RegionInstanceGroupManagerStatusStatefulArrayOutput)
 }
 
-// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 func (o RegionInstanceGroupManagerStatusOutput) VersionTargets() RegionInstanceGroupManagerStatusVersionTargetArrayOutput {
 	return o.ApplyT(func(v RegionInstanceGroupManagerStatus) []RegionInstanceGroupManagerStatusVersionTarget {
 		return v.VersionTargets

@@ -30,7 +30,9 @@ __all__ = [
     'WorkstationConfigHostGceInstanceAccelerator',
     'WorkstationConfigHostGceInstanceBoostConfig',
     'WorkstationConfigHostGceInstanceBoostConfigAccelerator',
+    'WorkstationConfigHostGceInstanceBoostConfigReservationAffinity',
     'WorkstationConfigHostGceInstanceConfidentialInstanceConfig',
+    'WorkstationConfigHostGceInstanceReservationAffinity',
     'WorkstationConfigHostGceInstanceShieldedInstanceConfig',
     'WorkstationConfigIamBindingCondition',
     'WorkstationConfigIamMemberCondition',
@@ -631,6 +633,8 @@ class WorkstationConfigHostGceInstance(dict):
             suggest = "machine_type"
         elif key == "poolSize":
             suggest = "pool_size"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "serviceAccountScopes":
@@ -662,6 +666,7 @@ class WorkstationConfigHostGceInstance(dict):
                  instance_metadata: Optional[Mapping[str, _builtins.str]] = None,
                  machine_type: Optional[_builtins.str] = None,
                  pool_size: Optional[_builtins.int] = None,
+                 reservation_affinity: Optional['outputs.WorkstationConfigHostGceInstanceReservationAffinity'] = None,
                  service_account: Optional[_builtins.str] = None,
                  service_account_scopes: Optional[Sequence[_builtins.str]] = None,
                  shielded_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig'] = None,
@@ -682,6 +687,9 @@ class WorkstationConfigHostGceInstance(dict):
         :param Mapping[str, _builtins.str] instance_metadata: Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
         :param _builtins.str machine_type: The name of a Compute Engine machine type.
         :param _builtins.int pool_size: Number of instances to pool for faster workstation startup.
+        :param 'WorkstationConfigHostGceInstanceReservationAffinityArgs' reservation_affinity: (Optional, Beta)
+               Reservation affinity to setup a GCE instance.
+               Structure is documented below.
         :param _builtins.str service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
         :param Sequence[_builtins.str] service_account_scopes: Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
         :param 'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs' shielded_instance_config: A set of Compute Engine Shielded instance options.
@@ -713,6 +721,8 @@ class WorkstationConfigHostGceInstance(dict):
             pulumi.set(__self__, "machine_type", machine_type)
         if pool_size is not None:
             pulumi.set(__self__, "pool_size", pool_size)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -809,6 +819,16 @@ class WorkstationConfigHostGceInstance(dict):
         return pulumi.get(self, "pool_size")
 
     @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional['outputs.WorkstationConfigHostGceInstanceReservationAffinity']:
+        """
+        (Optional, Beta)
+        Reservation affinity to setup a GCE instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @_builtins.property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[_builtins.str]:
         """
@@ -898,6 +918,8 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
             suggest = "machine_type"
         elif key == "poolSize":
             suggest = "pool_size"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstanceBoostConfig. Access the value via the '{suggest}' property getter instead.")
@@ -917,7 +939,8 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
                  enable_automatic_failover: Optional[_builtins.bool] = None,
                  enable_nested_virtualization: Optional[_builtins.bool] = None,
                  machine_type: Optional[_builtins.str] = None,
-                 pool_size: Optional[_builtins.int] = None):
+                 pool_size: Optional[_builtins.int] = None,
+                 reservation_affinity: Optional['outputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinity'] = None):
         """
         :param _builtins.str id: The id to be used for the boost config.
         :param Sequence['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs'] accelerators: An accelerator card attached to the boost instance.
@@ -929,6 +952,9 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
                See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param _builtins.str machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
         :param _builtins.int pool_size: Number of instances to pool for faster workstation boosting.
+        :param 'WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs' reservation_affinity: (Optional, Beta)
+               Reservation affinity to setup a GCE instance.
+               Structure is documented below.
         """
         pulumi.set(__self__, "id", id)
         if accelerators is not None:
@@ -943,6 +969,8 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
             pulumi.set(__self__, "machine_type", machine_type)
         if pool_size is not None:
             pulumi.set(__self__, "pool_size", pool_size)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
 
     @_builtins.property
     @pulumi.getter
@@ -1003,6 +1031,16 @@ class WorkstationConfigHostGceInstanceBoostConfig(dict):
         """
         return pulumi.get(self, "pool_size")
 
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional['outputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinity']:
+        """
+        (Optional, Beta)
+        Reservation affinity to setup a GCE instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
 
 @pulumi.output_type
 class WorkstationConfigHostGceInstanceBoostConfigAccelerator(dict):
@@ -1031,6 +1069,74 @@ class WorkstationConfigHostGceInstanceBoostConfigAccelerator(dict):
         Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class WorkstationConfigHostGceInstanceBoostConfigReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstanceBoostConfigReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigHostGceInstanceBoostConfigReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigHostGceInstanceBoostConfigReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_reservation_type: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None,
+                 values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str consume_reservation_type: Type of reservation consumption.
+               Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+        :param _builtins.str key: Label key of reservation resource.
+        :param Sequence[_builtins.str] values: Label values of reservation resources.
+               Valid values are either the name of a reservation in the same project
+               or "projects/{project}/reservations/{reservation}" to target a shared
+               reservation in the same zone but in a different project.
+        """
+        if consume_reservation_type is not None:
+            pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> Optional[_builtins.str]:
+        """
+        Type of reservation consumption.
+        Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Label key of reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Label values of reservation resources.
+        Valid values are either the name of a reservation in the same project
+        or "projects/{project}/reservations/{reservation}" to target a shared
+        reservation in the same zone but in a different project.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -1067,6 +1173,74 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfig(dict):
         Whether the instance has confidential compute enabled.
         """
         return pulumi.get(self, "enable_confidential_compute")
+
+
+@pulumi.output_type
+class WorkstationConfigHostGceInstanceReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstanceReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigHostGceInstanceReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigHostGceInstanceReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_reservation_type: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None,
+                 values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str consume_reservation_type: Type of reservation consumption.
+               Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+        :param _builtins.str key: Label key of reservation resource.
+        :param Sequence[_builtins.str] values: Label values of reservation resources.
+               Valid values are either the name of a reservation in the same project
+               or "projects/{project}/reservations/{reservation}" to target a shared
+               reservation in the same zone but in a different project.
+        """
+        if consume_reservation_type is not None:
+            pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> Optional[_builtins.str]:
+        """
+        Type of reservation consumption.
+        Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Label key of reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Label values of reservation resources.
+        Valid values are either the name of a reservation in the same project
+        or "projects/{project}/reservations/{reservation}" to target a shared
+        reservation in the same zone but in a different project.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.Vertex
     ///         ModelDevelopmentClusterId = "tftest",
     ///         DisplayName = "tftest",
     ///         DeletionPolicy = "DELETE",
+    ///         UpdateMode = "USER_AND_SERVICE",
     ///         Labels = 
     ///         {
     ///             { "env", "dev" },
@@ -990,6 +991,18 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> StartTime { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the service also refreshes service-managed fields (startup and
+        /// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+        /// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+        /// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+        /// for GKE clusters (`KubernetesSpec`).
+        /// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+        /// `USER_AND_SERVICE`.
+        /// </summary>
+        [Output("updateMode")]
+        public Output<string?> UpdateMode { get; private set; } = null!;
+
+        /// <summary>
         /// (Output)
         /// Time when the TrainingService was most recently updated.
         /// </summary>
@@ -1155,6 +1168,18 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("runtimeSpec")]
         public Input<Inputs.AiModelDevelopmentClusterRuntimeSpecArgs>? RuntimeSpec { get; set; }
+
+        /// <summary>
+        /// Whether the service also refreshes service-managed fields (startup and
+        /// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+        /// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+        /// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+        /// for GKE clusters (`KubernetesSpec`).
+        /// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+        /// `USER_AND_SERVICE`.
+        /// </summary>
+        [Input("updateMode")]
+        public Input<string>? UpdateMode { get; set; }
 
         public AiModelDevelopmentClusterArgs()
         {
@@ -1366,6 +1391,18 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
+
+        /// <summary>
+        /// Whether the service also refreshes service-managed fields (startup and
+        /// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+        /// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+        /// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+        /// for GKE clusters (`KubernetesSpec`).
+        /// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+        /// `USER_AND_SERVICE`.
+        /// </summary>
+        [Input("updateMode")]
+        public Input<string>? UpdateMode { get; set; }
 
         /// <summary>
         /// (Output)

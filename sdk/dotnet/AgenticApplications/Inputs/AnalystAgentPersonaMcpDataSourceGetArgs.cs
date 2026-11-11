@@ -99,6 +99,22 @@ namespace Pulumi.Gcp.AgenticApplications.Inputs
         [Input("serverUrl", required: true)]
         public Input<string> ServerUrl { get; set; } = null!;
 
+        /// <summary>
+        /// The HTTP header name used to pass the agent session ID in MCP server
+        /// requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+        /// header field name (RFC 9110 token).
+        /// </summary>
+        [Input("sessionIdHeader")]
+        public Input<string>? SessionIdHeader { get; set; }
+
+        /// <summary>
+        /// The HTTP header name used to pass the agent task ID in MCP server
+        /// requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+        /// header field name (RFC 9110 token).
+        /// </summary>
+        [Input("taskIdHeader")]
+        public Input<string>? TaskIdHeader { get; set; }
+
         public AnalystAgentPersonaMcpDataSourceGetArgs()
         {
         }

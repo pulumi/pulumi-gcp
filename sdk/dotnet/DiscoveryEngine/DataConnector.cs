@@ -516,7 +516,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// User-facing, version-independent label for this connector.
         /// </summary>
         [Output("tag")]
-        public Output<string?> Tag { get; private set; } = null!;
+        public Output<string> Tag { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when the DataConnector was updated.

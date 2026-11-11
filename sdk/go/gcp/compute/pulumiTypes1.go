@@ -1635,18 +1635,15 @@ type RegionInstanceTemplateScheduling struct {
 	AutomaticRestart *bool `pulumi:"automaticRestart"`
 	// Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
 	AvailabilityDomain *int `pulumi:"availabilityDomain"`
-	// Settings for the instance to perform a graceful shutdown.
+	// Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
 	GracefulShutdown *RegionInstanceTemplateSchedulingGracefulShutdown `pulumi:"gracefulShutdown"`
 	// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds *int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction *string `pulumi:"instanceTerminationAction"`
-	// Specifies the maximum amount of time a Local Ssd Vm should wait while
-	//   recovery of the Local Ssd state is attempted. Its value should be in
-	//   between 0 and 168 hours with hour granularity and the default value being 1
-	//   hour.
+	// (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
 	LocalSsdRecoveryTimeouts []RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeouts"`
-	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 	MaintenanceInterval *string `pulumi:"maintenanceInterval"`
 	// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
 	MaxRunDuration *RegionInstanceTemplateSchedulingMaxRunDuration `pulumi:"maxRunDuration"`
@@ -1667,7 +1664,7 @@ type RegionInstanceTemplateScheduling struct {
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
 	Preemptible *bool `pulumi:"preemptible"`
-	// The duration of the notice that the instance will receive before it is preempted.
+	// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 	PreemptionNoticeDuration *RegionInstanceTemplateSchedulingPreemptionNoticeDuration `pulumi:"preemptionNoticeDuration"`
 	// Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
 	// `preemptible` should be `true` and `automaticRestart` should be
@@ -1677,7 +1674,7 @@ type RegionInstanceTemplateScheduling struct {
 	// `FLEX_START`, read [here](https://cloud.google.com/compute/docs/instances/flex-start-vms).
 	// If this is set to `RESERVATION_BOUND`, the instance is bound to a specific reservation and will only consume capacity from that reservation. A `reservationAffinity` block with `type` set to `SPECIFIC_RESERVATION` should also be configured.
 	ProvisioningModel *string `pulumi:"provisioningModel"`
-	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+	// Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 	SkipGuestOsShutdown *bool `pulumi:"skipGuestOsShutdown"`
 	// Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
 	TerminationTime *string `pulumi:"terminationTime"`
@@ -1701,18 +1698,15 @@ type RegionInstanceTemplateSchedulingArgs struct {
 	AutomaticRestart pulumi.BoolPtrInput `pulumi:"automaticRestart"`
 	// Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
 	AvailabilityDomain pulumi.IntPtrInput `pulumi:"availabilityDomain"`
-	// Settings for the instance to perform a graceful shutdown.
+	// Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
 	GracefulShutdown RegionInstanceTemplateSchedulingGracefulShutdownPtrInput `pulumi:"gracefulShutdown"`
 	// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds pulumi.IntPtrInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringPtrInput `pulumi:"instanceTerminationAction"`
-	// Specifies the maximum amount of time a Local Ssd Vm should wait while
-	//   recovery of the Local Ssd state is attempted. Its value should be in
-	//   between 0 and 168 hours with hour granularity and the default value being 1
-	//   hour.
+	// (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
 	LocalSsdRecoveryTimeouts RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput `pulumi:"localSsdRecoveryTimeouts"`
-	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 	MaintenanceInterval pulumi.StringPtrInput `pulumi:"maintenanceInterval"`
 	// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
 	MaxRunDuration RegionInstanceTemplateSchedulingMaxRunDurationPtrInput `pulumi:"maxRunDuration"`
@@ -1733,7 +1727,7 @@ type RegionInstanceTemplateSchedulingArgs struct {
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// The duration of the notice that the instance will receive before it is preempted.
+	// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 	PreemptionNoticeDuration RegionInstanceTemplateSchedulingPreemptionNoticeDurationPtrInput `pulumi:"preemptionNoticeDuration"`
 	// Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
 	// `preemptible` should be `true` and `automaticRestart` should be
@@ -1743,7 +1737,7 @@ type RegionInstanceTemplateSchedulingArgs struct {
 	// `FLEX_START`, read [here](https://cloud.google.com/compute/docs/instances/flex-start-vms).
 	// If this is set to `RESERVATION_BOUND`, the instance is bound to a specific reservation and will only consume capacity from that reservation. A `reservationAffinity` block with `type` set to `SPECIFIC_RESERVATION` should also be configured.
 	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
-	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+	// Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 	SkipGuestOsShutdown pulumi.BoolPtrInput `pulumi:"skipGuestOsShutdown"`
 	// Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
 	TerminationTime pulumi.StringPtrInput `pulumi:"terminationTime"`
@@ -1838,7 +1832,7 @@ func (o RegionInstanceTemplateSchedulingOutput) AvailabilityDomain() pulumi.IntP
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *int { return v.AvailabilityDomain }).(pulumi.IntPtrOutput)
 }
 
-// Settings for the instance to perform a graceful shutdown.
+// Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
 func (o RegionInstanceTemplateSchedulingOutput) GracefulShutdown() RegionInstanceTemplateSchedulingGracefulShutdownPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *RegionInstanceTemplateSchedulingGracefulShutdown {
 		return v.GracefulShutdown
@@ -1855,18 +1849,14 @@ func (o RegionInstanceTemplateSchedulingOutput) InstanceTerminationAction() pulu
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *string { return v.InstanceTerminationAction }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the maximum amount of time a Local Ssd Vm should wait while
-//
-//	recovery of the Local Ssd state is attempted. Its value should be in
-//	between 0 and 168 hours with hour granularity and the default value being 1
-//	hour.
+// (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
 func (o RegionInstanceTemplateSchedulingOutput) LocalSsdRecoveryTimeouts() RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) []RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
 		return v.LocalSsdRecoveryTimeouts
 	}).(RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput)
 }
 
-// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 func (o RegionInstanceTemplateSchedulingOutput) MaintenanceInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *string { return v.MaintenanceInterval }).(pulumi.StringPtrOutput)
 }
@@ -1914,7 +1904,7 @@ func (o RegionInstanceTemplateSchedulingOutput) Preemptible() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// The duration of the notice that the instance will receive before it is preempted.
+// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 func (o RegionInstanceTemplateSchedulingOutput) PreemptionNoticeDuration() RegionInstanceTemplateSchedulingPreemptionNoticeDurationPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *RegionInstanceTemplateSchedulingPreemptionNoticeDuration {
 		return v.PreemptionNoticeDuration
@@ -1932,7 +1922,7 @@ func (o RegionInstanceTemplateSchedulingOutput) ProvisioningModel() pulumi.Strin
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *string { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
 }
 
-// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+// Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 func (o RegionInstanceTemplateSchedulingOutput) SkipGuestOsShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *bool { return v.SkipGuestOsShutdown }).(pulumi.BoolPtrOutput)
 }
@@ -1988,7 +1978,7 @@ func (o RegionInstanceTemplateSchedulingPtrOutput) AvailabilityDomain() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Settings for the instance to perform a graceful shutdown.
+// Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
 func (o RegionInstanceTemplateSchedulingPtrOutput) GracefulShutdown() RegionInstanceTemplateSchedulingGracefulShutdownPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateScheduling) *RegionInstanceTemplateSchedulingGracefulShutdown {
 		if v == nil {
@@ -2018,11 +2008,7 @@ func (o RegionInstanceTemplateSchedulingPtrOutput) InstanceTerminationAction() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the maximum amount of time a Local Ssd Vm should wait while
-//
-//	recovery of the Local Ssd state is attempted. Its value should be in
-//	between 0 and 168 hours with hour granularity and the default value being 1
-//	hour.
+// (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
 func (o RegionInstanceTemplateSchedulingPtrOutput) LocalSsdRecoveryTimeouts() RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateScheduling) []RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
 		if v == nil {
@@ -2032,7 +2018,7 @@ func (o RegionInstanceTemplateSchedulingPtrOutput) LocalSsdRecoveryTimeouts() Re
 	}).(RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput)
 }
 
-// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 func (o RegionInstanceTemplateSchedulingPtrOutput) MaintenanceInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateScheduling) *string {
 		if v == nil {
@@ -2109,7 +2095,7 @@ func (o RegionInstanceTemplateSchedulingPtrOutput) Preemptible() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The duration of the notice that the instance will receive before it is preempted.
+// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 func (o RegionInstanceTemplateSchedulingPtrOutput) PreemptionNoticeDuration() RegionInstanceTemplateSchedulingPreemptionNoticeDurationPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateScheduling) *RegionInstanceTemplateSchedulingPreemptionNoticeDuration {
 		if v == nil {
@@ -2135,7 +2121,7 @@ func (o RegionInstanceTemplateSchedulingPtrOutput) ProvisioningModel() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+// Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 func (o RegionInstanceTemplateSchedulingPtrOutput) SkipGuestOsShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateScheduling) *bool {
 		if v == nil {
@@ -2160,7 +2146,7 @@ type RegionInstanceTemplateSchedulingGracefulShutdown struct {
 	Enabled bool `pulumi:"enabled"`
 	// The time allotted for the instance to gracefully shut down.
 	// If the graceful shutdown isn't complete after this time, then the instance
-	// transitions to the STOPPING state. Structure is documented below:
+	// transitions to the STOPPING state. Structure is documented below.
 	MaxDuration *RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration `pulumi:"maxDuration"`
 }
 
@@ -2180,7 +2166,7 @@ type RegionInstanceTemplateSchedulingGracefulShutdownArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The time allotted for the instance to gracefully shut down.
 	// If the graceful shutdown isn't complete after this time, then the instance
-	// transitions to the STOPPING state. Structure is documented below:
+	// transitions to the STOPPING state. Structure is documented below.
 	MaxDuration RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationPtrInput `pulumi:"maxDuration"`
 }
 
@@ -2268,7 +2254,7 @@ func (o RegionInstanceTemplateSchedulingGracefulShutdownOutput) Enabled() pulumi
 
 // The time allotted for the instance to gracefully shut down.
 // If the graceful shutdown isn't complete after this time, then the instance
-// transitions to the STOPPING state. Structure is documented below:
+// transitions to the STOPPING state. Structure is documented below.
 func (o RegionInstanceTemplateSchedulingGracefulShutdownOutput) MaxDuration() RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateSchedulingGracefulShutdown) *RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
 		return v.MaxDuration
@@ -2311,7 +2297,7 @@ func (o RegionInstanceTemplateSchedulingGracefulShutdownPtrOutput) Enabled() pul
 
 // The time allotted for the instance to gracefully shut down.
 // If the graceful shutdown isn't complete after this time, then the instance
-// transitions to the STOPPING state. Structure is documented below:
+// transitions to the STOPPING state. Structure is documented below.
 func (o RegionInstanceTemplateSchedulingGracefulShutdownPtrOutput) MaxDuration() RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateSchedulingGracefulShutdown) *RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
 		if v == nil {
@@ -2328,7 +2314,7 @@ type RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration struct {
 	// 999,999,999 inclusive.
 	Nanos *int `pulumi:"nanos"`
 	// Span of time at a resolution of a second.
-	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -2350,7 +2336,7 @@ type RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs struct {
 	// 999,999,999 inclusive.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
 	// Span of time at a resolution of a second.
-	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+	// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -2440,7 +2426,7 @@ func (o RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Nanos
 }
 
 // Span of time at a resolution of a second.
-// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 func (o RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -2483,7 +2469,7 @@ func (o RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput) Na
 }
 
 // Span of time at a resolution of a second.
-// The value must be between 1 and 3600, which is 3,600 seconds (one hour).`
+// The value must be between 1 and 3600, which is 3,600 seconds (one hour).
 func (o RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration) *int {
 		if v == nil {
@@ -2495,12 +2481,13 @@ func (o RegionInstanceTemplateSchedulingGracefulShutdownMaxDurationPtrOutput) Se
 
 type RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout struct {
 	// Span of time that's a fraction of a second at nanosecond
-	// resolution. Durations less than one second are represented
-	// with a 0 seconds field and a positive nanos field. Must
-	// be from 0 to 999,999,999 inclusive.
+	// resolution. Durations less than one second are represented with a 0
+	// `seconds` field and a positive `nanos` field. Must be from 0 to
+	// 999,999,999 inclusive.
 	Nanos *int `pulumi:"nanos"`
-	// Span of time at a resolution of a second.
-	// Must be from 0 to 315,576,000,000 inclusive.
+	// Span of time at a resolution of a second. Must be from 0 to
+	// 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+	// sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -2517,12 +2504,13 @@ type RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput interface {
 
 type RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs struct {
 	// Span of time that's a fraction of a second at nanosecond
-	// resolution. Durations less than one second are represented
-	// with a 0 seconds field and a positive nanos field. Must
-	// be from 0 to 999,999,999 inclusive.
+	// resolution. Durations less than one second are represented with a 0
+	// `seconds` field and a positive `nanos` field. Must be from 0 to
+	// 999,999,999 inclusive.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
-	// Span of time at a resolution of a second.
-	// Must be from 0 to 315,576,000,000 inclusive.
+	// Span of time at a resolution of a second. Must be from 0 to
+	// 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+	// sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -2578,15 +2566,16 @@ func (o RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) ToRegionI
 }
 
 // Span of time that's a fraction of a second at nanosecond
-// resolution. Durations less than one second are represented
-// with a 0 seconds field and a positive nanos field. Must
-// be from 0 to 999,999,999 inclusive.
+// resolution. Durations less than one second are represented with a 0
+// `seconds` field and a positive `nanos` field. Must be from 0 to
+// 999,999,999 inclusive.
 func (o RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
-// Span of time at a resolution of a second.
-// Must be from 0 to 315,576,000,000 inclusive.
+// Span of time at a resolution of a second. Must be from 0 to
+// 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+// sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
 func (o RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -2793,7 +2782,7 @@ type RegionInstanceTemplateSchedulingNodeAffinity struct {
 	// The operator. Can be `IN` for node-affinities
 	// or `NOT_IN` for anti-affinities.
 	Operator string `pulumi:"operator"`
-	// Corresponds to the label values of a reservation resource.
+	// The values for the node affinity label.
 	Values []string `pulumi:"values"`
 }
 
@@ -2814,7 +2803,7 @@ type RegionInstanceTemplateSchedulingNodeAffinityArgs struct {
 	// The operator. Can be `IN` for node-affinities
 	// or `NOT_IN` for anti-affinities.
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// Corresponds to the label values of a reservation resource.
+	// The values for the node affinity label.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -2880,7 +2869,7 @@ func (o RegionInstanceTemplateSchedulingNodeAffinityOutput) Operator() pulumi.St
 	return o.ApplyT(func(v RegionInstanceTemplateSchedulingNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// Corresponds to the label values of a reservation resource.
+// The values for the node affinity label.
 func (o RegionInstanceTemplateSchedulingNodeAffinityOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateSchedulingNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -15141,7 +15130,8 @@ type RegionSecurityPolicyRuleRateLimitOptions struct {
 	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+	// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 	EnforceOnKey *string `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
 	// You can specify up to 3 enforceOnKeyConfigs.
@@ -15194,7 +15184,8 @@ type RegionSecurityPolicyRuleRateLimitOptionsArgs struct {
 	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+	// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 	EnforceOnKey pulumi.StringPtrInput `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
 	// You can specify up to 3 enforceOnKeyConfigs.
@@ -15323,7 +15314,8 @@ func (o RegionSecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.S
 //   - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+//   - ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 func (o RegionSecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionSecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKey }).(pulumi.StringPtrOutput)
 }
@@ -15429,7 +15421,8 @@ func (o RegionSecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulum
 //   - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+//   - ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 func (o RegionSecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionSecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -15659,7 +15652,8 @@ type RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig struct {
 	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+	// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 	EnforceOnKeyType *string `pulumi:"enforceOnKeyType"`
 }
 
@@ -15691,7 +15685,8 @@ type RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs struct {
 	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+	// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 	EnforceOnKeyType pulumi.StringPtrInput `pulumi:"enforceOnKeyType"`
 }
 
@@ -15765,7 +15760,8 @@ func (o RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) Enforc
 //   - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+//   - ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 func (o RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *string { return v.EnforceOnKeyType }).(pulumi.StringPtrOutput)
 }
@@ -49294,7 +49290,8 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+	// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 	EnforceOnKey *string `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
 	// You can specify up to 3 enforceOnKeyConfigs.
@@ -49350,7 +49347,8 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+	// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 	EnforceOnKey pulumi.StringPtrInput `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
 	// You can specify up to 3 enforceOnKeyConfigs.
@@ -49482,7 +49480,8 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringP
 //   - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+//   - ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKey }).(pulumi.StringPtrOutput)
 }
@@ -49596,7 +49595,8 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.Stri
 //   - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+//   - ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -49837,7 +49837,8 @@ type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig struct {
 	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+	// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 	EnforceOnKeyType *string `pulumi:"enforceOnKeyType"`
 }
 
@@ -49869,7 +49870,8 @@ type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs struct {
 	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+	// * ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+	//   Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 	EnforceOnKeyType pulumi.StringPtrInput `pulumi:"enforceOnKeyType"`
 }
 
@@ -49943,7 +49945,8 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKey
 //   - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 //   - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
-//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`.
+//   - ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL.
+//     Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `TLS_JA4_FINGERPRINT`, `USER_IP`, `ASN`.
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *string { return v.EnforceOnKeyType }).(pulumi.StringPtrOutput)
 }
@@ -55689,7 +55692,6 @@ type URLMapDefaultRouteAction struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
-	// (Optional, Beta)
 	// Specifies the policy for optimizing images returned in the HTTP response.
 	// Structure is documented below.
 	ImageOptimizationPolicy *URLMapDefaultRouteActionImageOptimizationPolicy `pulumi:"imageOptimizationPolicy"`
@@ -55761,7 +55763,6 @@ type URLMapDefaultRouteActionArgs struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
-	// (Optional, Beta)
 	// Specifies the policy for optimizing images returned in the HTTP response.
 	// Structure is documented below.
 	ImageOptimizationPolicy URLMapDefaultRouteActionImageOptimizationPolicyPtrInput `pulumi:"imageOptimizationPolicy"`
@@ -55914,7 +55915,6 @@ func (o URLMapDefaultRouteActionOutput) FaultInjectionPolicy() URLMapDefaultRout
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the policy for optimizing images returned in the HTTP response.
 // Structure is documented below.
 func (o URLMapDefaultRouteActionOutput) ImageOptimizationPolicy() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
@@ -56057,7 +56057,6 @@ func (o URLMapDefaultRouteActionPtrOutput) FaultInjectionPolicy() URLMapDefaultR
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the policy for optimizing images returned in the HTTP response.
 // Structure is documented below.
 func (o URLMapDefaultRouteActionPtrOutput) ImageOptimizationPolicy() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
@@ -62508,7 +62507,6 @@ type URLMapPathMatcherDefaultRouteAction struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
-	// (Optional, Beta)
 	// Specifies the policy for optimizing images returned in the HTTP response.
 	// Structure is documented below.
 	ImageOptimizationPolicy *URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy `pulumi:"imageOptimizationPolicy"`
@@ -62580,7 +62578,6 @@ type URLMapPathMatcherDefaultRouteActionArgs struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
-	// (Optional, Beta)
 	// Specifies the policy for optimizing images returned in the HTTP response.
 	// Structure is documented below.
 	ImageOptimizationPolicy URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrInput `pulumi:"imageOptimizationPolicy"`
@@ -62737,7 +62734,6 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) FaultInjectionPolicy() URLMap
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the policy for optimizing images returned in the HTTP response.
 // Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionOutput) ImageOptimizationPolicy() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
@@ -62886,7 +62882,6 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) FaultInjectionPolicy() URL
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the policy for optimizing images returned in the HTTP response.
 // Structure is documented below.
 func (o URLMapPathMatcherDefaultRouteActionPtrOutput) ImageOptimizationPolicy() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
@@ -69159,7 +69154,6 @@ type URLMapPathMatcherPathRuleRouteAction struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
-	// (Optional, Beta)
 	// Specifies the policy for optimizing images returned in the HTTP response.
 	// Structure is documented below.
 	ImageOptimizationPolicy *URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy `pulumi:"imageOptimizationPolicy"`
@@ -69237,7 +69231,6 @@ type URLMapPathMatcherPathRuleRouteActionArgs struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
-	// (Optional, Beta)
 	// Specifies the policy for optimizing images returned in the HTTP response.
 	// Structure is documented below.
 	ImageOptimizationPolicy URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrInput `pulumi:"imageOptimizationPolicy"`
@@ -69400,7 +69393,6 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) FaultInjectionPolicy() URLMa
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the policy for optimizing images returned in the HTTP response.
 // Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionOutput) ImageOptimizationPolicy() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
@@ -69555,7 +69547,6 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) FaultInjectionPolicy() UR
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the policy for optimizing images returned in the HTTP response.
 // Structure is documented below.
 func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) ImageOptimizationPolicy() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
@@ -77210,7 +77201,6 @@ type URLMapPathMatcherRouteRuleRouteAction struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
-	// (Optional, Beta)
 	// Specifies the policy for optimizing images returned in the HTTP response.
 	// Structure is documented below.
 	ImageOptimizationPolicy *URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy `pulumi:"imageOptimizationPolicy"`
@@ -77288,7 +77278,6 @@ type URLMapPathMatcherRouteRuleRouteActionArgs struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
-	// (Optional, Beta)
 	// Specifies the policy for optimizing images returned in the HTTP response.
 	// Structure is documented below.
 	ImageOptimizationPolicy URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrInput `pulumi:"imageOptimizationPolicy"`
@@ -77451,7 +77440,6 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) FaultInjectionPolicy() URLM
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the policy for optimizing images returned in the HTTP response.
 // Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionOutput) ImageOptimizationPolicy() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
@@ -77606,7 +77594,6 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) FaultInjectionPolicy() U
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the policy for optimizing images returned in the HTTP response.
 // Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) ImageOptimizationPolicy() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {

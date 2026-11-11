@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The time allotted for the instance to gracefully shut down.
         /// If the graceful shutdown isn't complete after this time, then the instance
-        /// transitions to the STOPPING state. Structure is documented below:
+        /// transitions to the STOPPING state. Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration? MaxDuration;
 

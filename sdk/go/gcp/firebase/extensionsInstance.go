@@ -53,17 +53,15 @@ import (
 //				InstanceId: pulumi.String("storage-resize-images"),
 //				Config: &firebase.ExtensionsInstanceConfigArgs{
 //					ExtensionRef:     pulumi.String("firebase/storage-resize-images"),
-//					ExtensionVersion: pulumi.String("0.2.10"),
+//					ExtensionVersion: pulumi.String("0.3.6"),
 //					Params: pulumi.StringMap{
 //						"DELETE_ORIGINAL_FILE": pulumi.String("false"),
 //						"MAKE_PUBLIC":          pulumi.String("false"),
 //						"IMAGE_TYPE":           pulumi.String("false"),
 //						"IS_ANIMATED":          pulumi.String("true"),
 //						"FUNCTION_MEMORY":      pulumi.String("1024"),
-//						"DO_BACKFILL":          pulumi.String("false"),
 //						"IMG_SIZES":            pulumi.String("200x200"),
 //						"IMG_BUCKET":           images.Name,
-//						"BACKFILL_BATCH_SIZE":  pulumi.String("3"),
 //						"CONTENT_FILTER_LEVEL": pulumi.String("OFF"),
 //						"REGENERATE_TOKEN":     pulumi.String("true"),
 //					},

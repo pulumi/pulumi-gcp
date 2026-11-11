@@ -222,16 +222,28 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Optional, Deprecated)
      * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      * 
+     * &gt; **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+     * 
+     * @deprecated `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+     * 
      */
+    @Deprecated
     @Import(name="optimized")
     private @Nullable Output<AiFeatureOnlineStoreOptimizedArgs> optimized;
 
     /**
-     * @return Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+     * @return (Optional, Deprecated)
+     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+     * 
+     * &gt; **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+     * 
+     * @deprecated `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
      * 
      */
+    @Deprecated
     public Optional<Output<AiFeatureOnlineStoreOptimizedArgs>> optimized() {
         return Optional.ofNullable(this.optimized);
     }
@@ -621,22 +633,34 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param optimized Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+         * @param optimized (Optional, Deprecated)
+         * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+         * 
+         * &gt; **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
          * 
          * @return builder
          * 
+         * @deprecated `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+         * 
          */
+        @Deprecated
         public Builder optimized(@Nullable Output<AiFeatureOnlineStoreOptimizedArgs> optimized) {
             $.optimized = optimized;
             return this;
         }
 
         /**
-         * @param optimized Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+         * @param optimized (Optional, Deprecated)
+         * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+         * 
+         * &gt; **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
          * 
          * @return builder
          * 
+         * @deprecated `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+         * 
          */
+        @Deprecated
         public Builder optimized(AiFeatureOnlineStoreOptimizedArgs optimized) {
             return optimized(Output.of(optimized));
         }

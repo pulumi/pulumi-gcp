@@ -14317,7 +14317,7 @@ type LbTrafficExtensionExtensionChain struct {
 	// A set of extensions to execute for the matching request.
 	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-	// Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+	// Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 	// Structure is documented below.
 	Extensions []LbTrafficExtensionExtensionChainExtension `pulumi:"extensions"`
 	// Conditions under which this chain is invoked for a request.
@@ -14326,7 +14326,7 @@ type LbTrafficExtensionExtensionChain struct {
 	// The name for this extension chain. The name is logged as part of the HTTP request logs.
 	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-	// and the last a letter or a number.
+	// and the last character must be a letter or a number.
 	Name string `pulumi:"name"`
 }
 
@@ -14345,7 +14345,7 @@ type LbTrafficExtensionExtensionChainArgs struct {
 	// A set of extensions to execute for the matching request.
 	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-	// Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+	// Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 	// Structure is documented below.
 	Extensions LbTrafficExtensionExtensionChainExtensionArrayInput `pulumi:"extensions"`
 	// Conditions under which this chain is invoked for a request.
@@ -14354,7 +14354,7 @@ type LbTrafficExtensionExtensionChainArgs struct {
 	// The name for this extension chain. The name is logged as part of the HTTP request logs.
 	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-	// and the last a letter or a number.
+	// and the last character must be a letter or a number.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -14412,7 +14412,7 @@ func (o LbTrafficExtensionExtensionChainOutput) ToLbTrafficExtensionExtensionCha
 // A set of extensions to execute for the matching request.
 // At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 // LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-// Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+// Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 // Structure is documented below.
 func (o LbTrafficExtensionExtensionChainOutput) Extensions() LbTrafficExtensionExtensionChainExtensionArrayOutput {
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChain) []LbTrafficExtensionExtensionChainExtension {
@@ -14431,7 +14431,7 @@ func (o LbTrafficExtensionExtensionChainOutput) MatchCondition() LbTrafficExtens
 // The name for this extension chain. The name is logged as part of the HTTP request logs.
 // The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 // and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-// and the last a letter or a number.
+// and the last character must be a letter or a number.
 func (o LbTrafficExtensionExtensionChainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChain) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -14485,6 +14485,13 @@ type LbTrafficExtensionExtensionChainExtension struct {
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
 	// and the last a letter or a number.
 	Name string `pulumi:"name"`
+	// When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+	// This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
+	// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+	// This field is helpful when you want to try out the extension in async log-only mode.
+	// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+	// Only `STREAMED` (default) body processing mode is supported.
+	ObservabilityMode *bool `pulumi:"observabilityMode"`
 	// The reference to the service that runs the extension.
 	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
 	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -14539,6 +14546,13 @@ type LbTrafficExtensionExtensionChainExtensionArgs struct {
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
 	// and the last a letter or a number.
 	Name pulumi.StringInput `pulumi:"name"`
+	// When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+	// This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
+	// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+	// This field is helpful when you want to try out the extension in async log-only mode.
+	// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+	// Only `STREAMED` (default) body processing mode is supported.
+	ObservabilityMode pulumi.BoolPtrInput `pulumi:"observabilityMode"`
 	// The reference to the service that runs the extension.
 	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
 	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -14648,6 +14662,16 @@ func (o LbTrafficExtensionExtensionChainExtensionOutput) Metadata() pulumi.Strin
 // and the last a letter or a number.
 func (o LbTrafficExtensionExtensionChainExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+// This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
+// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+// This field is helpful when you want to try out the extension in async log-only mode.
+// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+// Only `STREAMED` (default) body processing mode is supported.
+func (o LbTrafficExtensionExtensionChainExtensionOutput) ObservabilityMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) *bool { return v.ObservabilityMode }).(pulumi.BoolPtrOutput)
 }
 
 // The reference to the service that runs the extension.

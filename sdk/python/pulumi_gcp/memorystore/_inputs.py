@@ -665,14 +665,12 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
 class InstanceDesiredAutoCreatedEndpointArgsDict(TypedDict):
     network: pulumi.Input[_builtins.str]
     """
-    (Output)
-    Output only. The consumer network where the IP address resides, in the form of
+    Required. The consumer network where the IP address resides, in the form of
     projects/{project_id}/global/networks/{network_id}.
     """
     project_id: pulumi.Input[_builtins.str]
     """
-    (Output)
-    Output only. The consumer project_id where the forwarding rule is created from.
+    Required. The consumer project_id where the forwarding rule is created from.
     """
 
 @pulumi.input_type
@@ -681,11 +679,9 @@ class InstanceDesiredAutoCreatedEndpointArgs:
                  network: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] network: (Output)
-               Output only. The consumer network where the IP address resides, in the form of
+        :param pulumi.Input[_builtins.str] network: Required. The consumer network where the IP address resides, in the form of
                projects/{project_id}/global/networks/{network_id}.
-        :param pulumi.Input[_builtins.str] project_id: (Output)
-               Output only. The consumer project_id where the forwarding rule is created from.
+        :param pulumi.Input[_builtins.str] project_id: Required. The consumer project_id where the forwarding rule is created from.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "project_id", project_id)
@@ -694,8 +690,7 @@ class InstanceDesiredAutoCreatedEndpointArgs:
     @pulumi.getter
     def network(self) -> pulumi.Input[_builtins.str]:
         """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
+        Required. The consumer network where the IP address resides, in the form of
         projects/{project_id}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
@@ -708,8 +703,7 @@ class InstanceDesiredAutoCreatedEndpointArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
         """
-        (Output)
-        Output only. The consumer project_id where the forwarding rule is created from.
+        Required. The consumer project_id where the forwarding rule is created from.
         """
         return pulumi.get(self, "project_id")
 
@@ -721,14 +715,12 @@ class InstanceDesiredAutoCreatedEndpointArgs:
 class InstanceDesiredPscAutoConnectionArgsDict(TypedDict):
     network: pulumi.Input[_builtins.str]
     """
-    (Output)
-    Output only. The consumer network where the IP address resides, in the form of
+    Required. The consumer network where the IP address resides, in the form of
     projects/{project_id}/global/networks/{network_id}.
     """
     project_id: pulumi.Input[_builtins.str]
     """
-    (Output)
-    Output only. The consumer project_id where the forwarding rule is created from.
+    Required. The consumer project_id where the forwarding rule is created from.
     """
 
 @pulumi.input_type
@@ -737,11 +729,9 @@ class InstanceDesiredPscAutoConnectionArgs:
                  network: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] network: (Output)
-               Output only. The consumer network where the IP address resides, in the form of
+        :param pulumi.Input[_builtins.str] network: Required. The consumer network where the IP address resides, in the form of
                projects/{project_id}/global/networks/{network_id}.
-        :param pulumi.Input[_builtins.str] project_id: (Output)
-               Output only. The consumer project_id where the forwarding rule is created from.
+        :param pulumi.Input[_builtins.str] project_id: Required. The consumer project_id where the forwarding rule is created from.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "project_id", project_id)
@@ -750,8 +740,7 @@ class InstanceDesiredPscAutoConnectionArgs:
     @pulumi.getter
     def network(self) -> pulumi.Input[_builtins.str]:
         """
-        (Output)
-        Output only. The consumer network where the IP address resides, in the form of
+        Required. The consumer network where the IP address resides, in the form of
         projects/{project_id}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
@@ -764,8 +753,7 @@ class InstanceDesiredPscAutoConnectionArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
         """
-        (Output)
-        Output only. The consumer project_id where the forwarding rule is created from.
+        Required. The consumer project_id where the forwarding rule is created from.
         """
         return pulumi.get(self, "project_id")
 
@@ -2614,6 +2602,11 @@ class InstanceStateInfoUpdateInfoArgs:
 
 
 class InstanceZoneDistributionConfigArgsDict(TypedDict):
+    active_zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The exact list of zones where the instance currently has active VMs.
+    """
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
@@ -2627,13 +2620,23 @@ class InstanceZoneDistributionConfigArgsDict(TypedDict):
     Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
     Ignored for MULTI_ZONE mode.
     """
+    zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Specify the zones of a multi-zone instance where Memorystore
+    instance allocates resources. This flag isn't applicable for single-zone
+    instances.
+    """
 
 @pulumi.input_type
 class InstanceZoneDistributionConfigArgs:
     def __init__(__self__, *,
+                 active_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_zones: (Output)
+               The exact list of zones where the instance currently has active VMs.
         :param pulumi.Input[_builtins.str] mode: Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
                Possible values:
                MULTI_ZONE
@@ -2641,11 +2644,31 @@ class InstanceZoneDistributionConfigArgs:
                Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
         :param pulumi.Input[_builtins.str] zone: Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
                Ignored for MULTI_ZONE mode.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zones: Specify the zones of a multi-zone instance where Memorystore
+               instance allocates resources. This flag isn't applicable for single-zone
+               instances.
         """
+        if active_zones is not None:
+            pulumi.set(__self__, "active_zones", active_zones)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter(name="activeZones")
+    def active_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The exact list of zones where the instance currently has active VMs.
+        """
+        return pulumi.get(self, "active_zones")
+
+    @active_zones.setter
+    def active_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "active_zones", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2675,5 +2698,19 @@ class InstanceZoneDistributionConfigArgs:
     @zone.setter
     def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specify the zones of a multi-zone instance where Memorystore
+        instance allocates resources. This flag isn't applicable for single-zone
+        instances.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "zones", value)
 
 

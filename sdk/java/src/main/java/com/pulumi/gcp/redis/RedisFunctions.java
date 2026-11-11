@@ -13,10 +13,13 @@ import com.pulumi.gcp.redis.inputs.GetClusterAclPolicyArgs;
 import com.pulumi.gcp.redis.inputs.GetClusterAclPolicyPlainArgs;
 import com.pulumi.gcp.redis.inputs.GetClusterArgs;
 import com.pulumi.gcp.redis.inputs.GetClusterPlainArgs;
+import com.pulumi.gcp.redis.inputs.GetClusterTokenAuthUserArgs;
+import com.pulumi.gcp.redis.inputs.GetClusterTokenAuthUserPlainArgs;
 import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
 import com.pulumi.gcp.redis.inputs.GetInstancePlainArgs;
 import com.pulumi.gcp.redis.outputs.GetClusterAclPolicyResult;
 import com.pulumi.gcp.redis.outputs.GetClusterResult;
+import com.pulumi.gcp.redis.outputs.GetClusterTokenAuthUserResult;
 import com.pulumi.gcp.redis.outputs.GetInstanceResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -430,6 +433,211 @@ public final class RedisFunctions {
      */
     public static CompletableFuture<GetClusterAclPolicyResult> getClusterAclPolicyPlain(GetClusterAclPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:redis/getClusterAclPolicy:getClusterAclPolicy", TypeShape.of(GetClusterAclPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Redis Cluster Token Auth User. For more details refer to the [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetClusterTokenAuthUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = RedisFunctions.getClusterTokenAuthUser(GetClusterTokenAuthUserArgs.builder()
+     *             .cluster(cluster.get("name"))
+     *             .userId("my-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClusterTokenAuthUserResult> getClusterTokenAuthUser(GetClusterTokenAuthUserArgs args) {
+        return getClusterTokenAuthUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Redis Cluster Token Auth User. For more details refer to the [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetClusterTokenAuthUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = RedisFunctions.getClusterTokenAuthUser(GetClusterTokenAuthUserArgs.builder()
+     *             .cluster(cluster.get("name"))
+     *             .userId("my-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClusterTokenAuthUserResult> getClusterTokenAuthUserPlain(GetClusterTokenAuthUserPlainArgs args) {
+        return getClusterTokenAuthUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Redis Cluster Token Auth User. For more details refer to the [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetClusterTokenAuthUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = RedisFunctions.getClusterTokenAuthUser(GetClusterTokenAuthUserArgs.builder()
+     *             .cluster(cluster.get("name"))
+     *             .userId("my-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClusterTokenAuthUserResult> getClusterTokenAuthUser(GetClusterTokenAuthUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:redis/getClusterTokenAuthUser:getClusterTokenAuthUser", TypeShape.of(GetClusterTokenAuthUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Redis Cluster Token Auth User. For more details refer to the [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetClusterTokenAuthUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = RedisFunctions.getClusterTokenAuthUser(GetClusterTokenAuthUserArgs.builder()
+     *             .cluster(cluster.get("name"))
+     *             .userId("my-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClusterTokenAuthUserResult> getClusterTokenAuthUser(GetClusterTokenAuthUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:redis/getClusterTokenAuthUser:getClusterTokenAuthUser", TypeShape.of(GetClusterTokenAuthUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Redis Cluster Token Auth User. For more details refer to the [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetClusterTokenAuthUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = RedisFunctions.getClusterTokenAuthUser(GetClusterTokenAuthUserArgs.builder()
+     *             .cluster(cluster.get("name"))
+     *             .userId("my-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClusterTokenAuthUserResult> getClusterTokenAuthUserPlain(GetClusterTokenAuthUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:redis/getClusterTokenAuthUser:getClusterTokenAuthUser", TypeShape.of(GetClusterTokenAuthUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get info about a Google Cloud Redis instance.

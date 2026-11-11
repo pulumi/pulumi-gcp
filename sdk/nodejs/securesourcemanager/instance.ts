@@ -55,81 +55,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Secure Source Manager Instance Private
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumiverse/time";
- *
- * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
- *     name: "ca-pool",
- *     location: "us-central1",
- *     tier: "ENTERPRISE",
- *     publishingOptions: {
- *         publishCaCert: true,
- *         publishCrl: true,
- *     },
- * });
- * const rootCa = new gcp.certificateauthority.Authority("root_ca", {
- *     pool: caPool.name,
- *     certificateAuthorityId: "root-ca",
- *     location: "us-central1",
- *     config: {
- *         subjectConfig: {
- *             subject: {
- *                 organization: "google",
- *                 commonName: "my-certificate-authority",
- *             },
- *         },
- *         x509Config: {
- *             caOptions: {
- *                 isCa: true,
- *             },
- *             keyUsage: {
- *                 baseKeyUsage: {
- *                     certSign: true,
- *                     crlSign: true,
- *                 },
- *                 extendedKeyUsage: {
- *                     serverAuth: true,
- *                 },
- *             },
- *         },
- *     },
- *     keySpec: {
- *         algorithm: "RSA_PKCS1_4096_SHA256",
- *     },
- *     deletionProtection: false,
- *     ignoreActiveCertificatesOnDeletion: true,
- *     skipGracePeriod: true,
- * });
- * const project = gcp.organizations.getProject({});
- * const caPoolBinding = new gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding", {
- *     caPool: caPool.id,
- *     role: "roles/privateca.certificateRequester",
- *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
- * });
- * // ca pool IAM permissions can take time to propagate
- * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
- *     dependsOn: [caPoolBinding],
- * });
- * const _default = new gcp.securesourcemanager.Instance("default", {
- *     instanceId: "my-instance",
- *     location: "us-central1",
- *     privateConfig: {
- *         isPrivate: true,
- *         caPool: caPool.id,
- *     },
- *     deletionPolicy: "PREVENT",
- * }, {
- *     dependsOn: [
- *         rootCa,
- *         wait120Seconds,
- *     ],
- * });
- * ```
- *
  * ### Secure Source Manager Instance Private Custom Host
  *
  * ```typescript
@@ -138,9 +63,15 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = gcp.organizations.getProject({});
+ * const pscOtherProject = new gcp.organizations.Project("psc_other_project", {
+ *     projectId: "psc-project",
+ *     name: "psc-project",
+ *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
+ * });
  * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
  *     name: "ca-pool",
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     tier: "ENTERPRISE",
  *     publishingOptions: {
  *         publishCaCert: true,
@@ -150,7 +81,7 @@ import * as utilities from "../utilities";
  * const rootCa = new gcp.certificateauthority.Authority("root_ca", {
  *     pool: caPool.name,
  *     certificateAuthorityId: "root-ca",
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -191,16 +122,20 @@ import * as utilities from "../utilities";
  * });
  * const _default = new gcp.securesourcemanager.Instance("default", {
  *     instanceId: "my-instance",
- *     location: "us-central1",
+ *     location: "europe-west4",
  *     privateConfig: {
  *         isPrivate: true,
  *         caPool: caPool.id,
+ *         pscAllowedProjects: [pscOtherProject.projectId],
  *         customHostConfig: {
  *             api: "api.example.com",
  *             gitHttp: "git-http.example.com",
  *             gitSsh: "git-ssh.example.com",
  *             html: "html.example.com",
  *         },
+ *     },
+ *     workforceIdentityFederationConfig: {
+ *         enabled: true,
  *     },
  *     deletionPolicy: "PREVENT",
  * }, {
@@ -506,22 +441,6 @@ import * as utilities from "../utilities";
  *     ttl: 300,
  *     managedZone: privateZone.name,
  *     rrdatas: [fwRuleServiceAttachment.ipAddress],
- * });
- * ```
- *
- * ### Secure Source Manager Instance Workforce Identity Federation
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.securesourcemanager.Instance("default", {
- *     location: "us-central1",
- *     instanceId: "my-instance",
- *     workforceIdentityFederationConfig: {
- *         enabled: true,
- *     },
- *     deletionPolicy: "PREVENT",
  * });
  * ```
  *

@@ -1392,6 +1392,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "backupdisasterrecovery/autoProtectionPolicyBinding",
+  "fqn": "pulumi_gcp.backupdisasterrecovery",
+  "classes": {
+   "gcp:backupdisasterrecovery/autoProtectionPolicyBinding:AutoProtectionPolicyBinding": "AutoProtectionPolicyBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "backupdisasterrecovery/backupPlan",
   "fqn": "pulumi_gcp.backupdisasterrecovery",
   "classes": {
@@ -5312,6 +5320,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataflow/configStoreSetting",
+  "fqn": "pulumi_gcp.dataflow",
+  "classes": {
+   "gcp:dataflow/configStoreSetting:ConfigStoreSetting": "ConfigStoreSetting"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataflow/flexTemplateJob",
   "fqn": "pulumi_gcp.dataflow",
   "classes": {
@@ -5420,6 +5436,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.datalineage",
   "classes": {
    "gcp:datalineage/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "datalineage/openLineageJob",
+  "fqn": "pulumi_gcp.datalineage",
+  "classes": {
+   "gcp:datalineage/openLineageJob:OpenLineageJob": "OpenLineageJob"
   }
  },
  {
@@ -6176,6 +6200,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/companionAgent",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/companionAgent:CompanionAgent": "CompanionAgent"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/conversationProfile",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -6436,6 +6468,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/licenseConfig:LicenseConfig": "LicenseConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/projectProvision",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/projectProvision:ProjectProvision": "ProjectProvision"
   }
  },
  {
@@ -10616,6 +10656,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "redis/clusterTokenAuthUser",
+  "fqn": "pulumi_gcp.redis",
+  "classes": {
+   "gcp:redis/clusterTokenAuthUser:ClusterTokenAuthUser": "ClusterTokenAuthUser"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "redis/clusterUserCreatedConnections",
   "fqn": "pulumi_gcp.redis",
   "classes": {
@@ -12044,6 +12092,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment": "AiEndpointWithModelGardenDeployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiEvaluationItem",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiEvaluationItem:AiEvaluationItem": "AiEvaluationItem"
   }
  },
  {

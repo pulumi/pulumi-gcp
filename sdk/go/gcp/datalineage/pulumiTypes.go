@@ -373,6 +373,1605 @@ func (o ConfigIngestionRuleLineageEnablementOutput) Enabled() pulumi.BoolOutput 
 	return o.ApplyT(func(v ConfigIngestionRuleLineageEnablement) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+type OpenLineageJobInputType struct {
+	// Catalog information for the dataset.
+	// Structure is documented below.
+	Catalog *OpenLineageJobInputCatalog `pulumi:"catalog"`
+	// Name of the source dataset.
+	Name string `pulumi:"name"`
+	// Namespace of the source dataset.
+	Namespace string `pulumi:"namespace"`
+	// Symlink targets for the dataset.
+	// Structure is documented below.
+	Symlinks []OpenLineageJobInputSymlink `pulumi:"symlinks"`
+}
+
+// OpenLineageJobInputTypeInput is an input type that accepts OpenLineageJobInputTypeArgs and OpenLineageJobInputTypeOutput values.
+// You can construct a concrete instance of `OpenLineageJobInputTypeInput` via:
+//
+//	OpenLineageJobInputTypeArgs{...}
+type OpenLineageJobInputTypeInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobInputTypeOutput() OpenLineageJobInputTypeOutput
+	ToOpenLineageJobInputTypeOutputWithContext(context.Context) OpenLineageJobInputTypeOutput
+}
+
+type OpenLineageJobInputTypeArgs struct {
+	// Catalog information for the dataset.
+	// Structure is documented below.
+	Catalog OpenLineageJobInputCatalogPtrInput `pulumi:"catalog"`
+	// Name of the source dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the source dataset.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Symlink targets for the dataset.
+	// Structure is documented below.
+	Symlinks OpenLineageJobInputSymlinkArrayInput `pulumi:"symlinks"`
+}
+
+func (OpenLineageJobInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobInputType)(nil)).Elem()
+}
+
+func (i OpenLineageJobInputTypeArgs) ToOpenLineageJobInputTypeOutput() OpenLineageJobInputTypeOutput {
+	return i.ToOpenLineageJobInputTypeOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobInputTypeArgs) ToOpenLineageJobInputTypeOutputWithContext(ctx context.Context) OpenLineageJobInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobInputTypeOutput)
+}
+
+// OpenLineageJobInputTypeArrayInput is an input type that accepts OpenLineageJobInputTypeArray and OpenLineageJobInputTypeArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobInputTypeArrayInput` via:
+//
+//	OpenLineageJobInputTypeArray{ OpenLineageJobInputTypeArgs{...} }
+type OpenLineageJobInputTypeArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobInputTypeArrayOutput() OpenLineageJobInputTypeArrayOutput
+	ToOpenLineageJobInputTypeArrayOutputWithContext(context.Context) OpenLineageJobInputTypeArrayOutput
+}
+
+type OpenLineageJobInputTypeArray []OpenLineageJobInputTypeInput
+
+func (OpenLineageJobInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobInputType)(nil)).Elem()
+}
+
+func (i OpenLineageJobInputTypeArray) ToOpenLineageJobInputTypeArrayOutput() OpenLineageJobInputTypeArrayOutput {
+	return i.ToOpenLineageJobInputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobInputTypeArray) ToOpenLineageJobInputTypeArrayOutputWithContext(ctx context.Context) OpenLineageJobInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobInputTypeArrayOutput)
+}
+
+type OpenLineageJobInputTypeOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobInputType)(nil)).Elem()
+}
+
+func (o OpenLineageJobInputTypeOutput) ToOpenLineageJobInputTypeOutput() OpenLineageJobInputTypeOutput {
+	return o
+}
+
+func (o OpenLineageJobInputTypeOutput) ToOpenLineageJobInputTypeOutputWithContext(ctx context.Context) OpenLineageJobInputTypeOutput {
+	return o
+}
+
+// Catalog information for the dataset.
+// Structure is documented below.
+func (o OpenLineageJobInputTypeOutput) Catalog() OpenLineageJobInputCatalogPtrOutput {
+	return o.ApplyT(func(v OpenLineageJobInputType) *OpenLineageJobInputCatalog { return v.Catalog }).(OpenLineageJobInputCatalogPtrOutput)
+}
+
+// Name of the source dataset.
+func (o OpenLineageJobInputTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobInputType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the source dataset.
+func (o OpenLineageJobInputTypeOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobInputType) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Symlink targets for the dataset.
+// Structure is documented below.
+func (o OpenLineageJobInputTypeOutput) Symlinks() OpenLineageJobInputSymlinkArrayOutput {
+	return o.ApplyT(func(v OpenLineageJobInputType) []OpenLineageJobInputSymlink { return v.Symlinks }).(OpenLineageJobInputSymlinkArrayOutput)
+}
+
+type OpenLineageJobInputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobInputType)(nil)).Elem()
+}
+
+func (o OpenLineageJobInputTypeArrayOutput) ToOpenLineageJobInputTypeArrayOutput() OpenLineageJobInputTypeArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobInputTypeArrayOutput) ToOpenLineageJobInputTypeArrayOutputWithContext(ctx context.Context) OpenLineageJobInputTypeArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobInputTypeArrayOutput) Index(i pulumi.IntInput) OpenLineageJobInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobInputType {
+		return vs[0].([]OpenLineageJobInputType)[vs[1].(int)]
+	}).(OpenLineageJobInputTypeOutput)
+}
+
+type OpenLineageJobInputCatalog struct {
+	// Catalog framework.
+	Framework string `pulumi:"framework"`
+	// Catalog entity name.
+	Name string `pulumi:"name"`
+	// Catalog entity type.
+	Type string `pulumi:"type"`
+}
+
+// OpenLineageJobInputCatalogInput is an input type that accepts OpenLineageJobInputCatalogArgs and OpenLineageJobInputCatalogOutput values.
+// You can construct a concrete instance of `OpenLineageJobInputCatalogInput` via:
+//
+//	OpenLineageJobInputCatalogArgs{...}
+type OpenLineageJobInputCatalogInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobInputCatalogOutput() OpenLineageJobInputCatalogOutput
+	ToOpenLineageJobInputCatalogOutputWithContext(context.Context) OpenLineageJobInputCatalogOutput
+}
+
+type OpenLineageJobInputCatalogArgs struct {
+	// Catalog framework.
+	Framework pulumi.StringInput `pulumi:"framework"`
+	// Catalog entity name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Catalog entity type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OpenLineageJobInputCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobInputCatalog)(nil)).Elem()
+}
+
+func (i OpenLineageJobInputCatalogArgs) ToOpenLineageJobInputCatalogOutput() OpenLineageJobInputCatalogOutput {
+	return i.ToOpenLineageJobInputCatalogOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobInputCatalogArgs) ToOpenLineageJobInputCatalogOutputWithContext(ctx context.Context) OpenLineageJobInputCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobInputCatalogOutput)
+}
+
+func (i OpenLineageJobInputCatalogArgs) ToOpenLineageJobInputCatalogPtrOutput() OpenLineageJobInputCatalogPtrOutput {
+	return i.ToOpenLineageJobInputCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobInputCatalogArgs) ToOpenLineageJobInputCatalogPtrOutputWithContext(ctx context.Context) OpenLineageJobInputCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobInputCatalogOutput).ToOpenLineageJobInputCatalogPtrOutputWithContext(ctx)
+}
+
+// OpenLineageJobInputCatalogPtrInput is an input type that accepts OpenLineageJobInputCatalogArgs, OpenLineageJobInputCatalogPtr and OpenLineageJobInputCatalogPtrOutput values.
+// You can construct a concrete instance of `OpenLineageJobInputCatalogPtrInput` via:
+//
+//	        OpenLineageJobInputCatalogArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenLineageJobInputCatalogPtrInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobInputCatalogPtrOutput() OpenLineageJobInputCatalogPtrOutput
+	ToOpenLineageJobInputCatalogPtrOutputWithContext(context.Context) OpenLineageJobInputCatalogPtrOutput
+}
+
+type openLineageJobInputCatalogPtrType OpenLineageJobInputCatalogArgs
+
+func OpenLineageJobInputCatalogPtr(v *OpenLineageJobInputCatalogArgs) OpenLineageJobInputCatalogPtrInput {
+	return (*openLineageJobInputCatalogPtrType)(v)
+}
+
+func (*openLineageJobInputCatalogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenLineageJobInputCatalog)(nil)).Elem()
+}
+
+func (i *openLineageJobInputCatalogPtrType) ToOpenLineageJobInputCatalogPtrOutput() OpenLineageJobInputCatalogPtrOutput {
+	return i.ToOpenLineageJobInputCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i *openLineageJobInputCatalogPtrType) ToOpenLineageJobInputCatalogPtrOutputWithContext(ctx context.Context) OpenLineageJobInputCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobInputCatalogPtrOutput)
+}
+
+type OpenLineageJobInputCatalogOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobInputCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobInputCatalog)(nil)).Elem()
+}
+
+func (o OpenLineageJobInputCatalogOutput) ToOpenLineageJobInputCatalogOutput() OpenLineageJobInputCatalogOutput {
+	return o
+}
+
+func (o OpenLineageJobInputCatalogOutput) ToOpenLineageJobInputCatalogOutputWithContext(ctx context.Context) OpenLineageJobInputCatalogOutput {
+	return o
+}
+
+func (o OpenLineageJobInputCatalogOutput) ToOpenLineageJobInputCatalogPtrOutput() OpenLineageJobInputCatalogPtrOutput {
+	return o.ToOpenLineageJobInputCatalogPtrOutputWithContext(context.Background())
+}
+
+func (o OpenLineageJobInputCatalogOutput) ToOpenLineageJobInputCatalogPtrOutputWithContext(ctx context.Context) OpenLineageJobInputCatalogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenLineageJobInputCatalog) *OpenLineageJobInputCatalog {
+		return &v
+	}).(OpenLineageJobInputCatalogPtrOutput)
+}
+
+// Catalog framework.
+func (o OpenLineageJobInputCatalogOutput) Framework() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobInputCatalog) string { return v.Framework }).(pulumi.StringOutput)
+}
+
+// Catalog entity name.
+func (o OpenLineageJobInputCatalogOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobInputCatalog) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Catalog entity type.
+func (o OpenLineageJobInputCatalogOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobInputCatalog) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OpenLineageJobInputCatalogPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobInputCatalogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenLineageJobInputCatalog)(nil)).Elem()
+}
+
+func (o OpenLineageJobInputCatalogPtrOutput) ToOpenLineageJobInputCatalogPtrOutput() OpenLineageJobInputCatalogPtrOutput {
+	return o
+}
+
+func (o OpenLineageJobInputCatalogPtrOutput) ToOpenLineageJobInputCatalogPtrOutputWithContext(ctx context.Context) OpenLineageJobInputCatalogPtrOutput {
+	return o
+}
+
+func (o OpenLineageJobInputCatalogPtrOutput) Elem() OpenLineageJobInputCatalogOutput {
+	return o.ApplyT(func(v *OpenLineageJobInputCatalog) OpenLineageJobInputCatalog {
+		if v != nil {
+			return *v
+		}
+		var ret OpenLineageJobInputCatalog
+		return ret
+	}).(OpenLineageJobInputCatalogOutput)
+}
+
+// Catalog framework.
+func (o OpenLineageJobInputCatalogPtrOutput) Framework() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenLineageJobInputCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Framework
+	}).(pulumi.StringPtrOutput)
+}
+
+// Catalog entity name.
+func (o OpenLineageJobInputCatalogPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenLineageJobInputCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Catalog entity type.
+func (o OpenLineageJobInputCatalogPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenLineageJobInputCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type OpenLineageJobInputSymlink struct {
+	// Name of the symlink target.
+	Name string `pulumi:"name"`
+	// Namespace of the symlink target.
+	Namespace string `pulumi:"namespace"`
+	// Type of the symlink target.
+	Type string `pulumi:"type"`
+}
+
+// OpenLineageJobInputSymlinkInput is an input type that accepts OpenLineageJobInputSymlinkArgs and OpenLineageJobInputSymlinkOutput values.
+// You can construct a concrete instance of `OpenLineageJobInputSymlinkInput` via:
+//
+//	OpenLineageJobInputSymlinkArgs{...}
+type OpenLineageJobInputSymlinkInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobInputSymlinkOutput() OpenLineageJobInputSymlinkOutput
+	ToOpenLineageJobInputSymlinkOutputWithContext(context.Context) OpenLineageJobInputSymlinkOutput
+}
+
+type OpenLineageJobInputSymlinkArgs struct {
+	// Name of the symlink target.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the symlink target.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Type of the symlink target.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OpenLineageJobInputSymlinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobInputSymlink)(nil)).Elem()
+}
+
+func (i OpenLineageJobInputSymlinkArgs) ToOpenLineageJobInputSymlinkOutput() OpenLineageJobInputSymlinkOutput {
+	return i.ToOpenLineageJobInputSymlinkOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobInputSymlinkArgs) ToOpenLineageJobInputSymlinkOutputWithContext(ctx context.Context) OpenLineageJobInputSymlinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobInputSymlinkOutput)
+}
+
+// OpenLineageJobInputSymlinkArrayInput is an input type that accepts OpenLineageJobInputSymlinkArray and OpenLineageJobInputSymlinkArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobInputSymlinkArrayInput` via:
+//
+//	OpenLineageJobInputSymlinkArray{ OpenLineageJobInputSymlinkArgs{...} }
+type OpenLineageJobInputSymlinkArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobInputSymlinkArrayOutput() OpenLineageJobInputSymlinkArrayOutput
+	ToOpenLineageJobInputSymlinkArrayOutputWithContext(context.Context) OpenLineageJobInputSymlinkArrayOutput
+}
+
+type OpenLineageJobInputSymlinkArray []OpenLineageJobInputSymlinkInput
+
+func (OpenLineageJobInputSymlinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobInputSymlink)(nil)).Elem()
+}
+
+func (i OpenLineageJobInputSymlinkArray) ToOpenLineageJobInputSymlinkArrayOutput() OpenLineageJobInputSymlinkArrayOutput {
+	return i.ToOpenLineageJobInputSymlinkArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobInputSymlinkArray) ToOpenLineageJobInputSymlinkArrayOutputWithContext(ctx context.Context) OpenLineageJobInputSymlinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobInputSymlinkArrayOutput)
+}
+
+type OpenLineageJobInputSymlinkOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobInputSymlinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobInputSymlink)(nil)).Elem()
+}
+
+func (o OpenLineageJobInputSymlinkOutput) ToOpenLineageJobInputSymlinkOutput() OpenLineageJobInputSymlinkOutput {
+	return o
+}
+
+func (o OpenLineageJobInputSymlinkOutput) ToOpenLineageJobInputSymlinkOutputWithContext(ctx context.Context) OpenLineageJobInputSymlinkOutput {
+	return o
+}
+
+// Name of the symlink target.
+func (o OpenLineageJobInputSymlinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobInputSymlink) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the symlink target.
+func (o OpenLineageJobInputSymlinkOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobInputSymlink) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Type of the symlink target.
+func (o OpenLineageJobInputSymlinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobInputSymlink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OpenLineageJobInputSymlinkArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobInputSymlinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobInputSymlink)(nil)).Elem()
+}
+
+func (o OpenLineageJobInputSymlinkArrayOutput) ToOpenLineageJobInputSymlinkArrayOutput() OpenLineageJobInputSymlinkArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobInputSymlinkArrayOutput) ToOpenLineageJobInputSymlinkArrayOutputWithContext(ctx context.Context) OpenLineageJobInputSymlinkArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobInputSymlinkArrayOutput) Index(i pulumi.IntInput) OpenLineageJobInputSymlinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobInputSymlink {
+		return vs[0].([]OpenLineageJobInputSymlink)[vs[1].(int)]
+	}).(OpenLineageJobInputSymlinkOutput)
+}
+
+type OpenLineageJobOutputType struct {
+	// Catalog information for the dataset.
+	// Structure is documented below.
+	Catalog *OpenLineageJobOutputCatalog `pulumi:"catalog"`
+	// Column-level lineage information for the output dataset.
+	// Structure is documented below.
+	ColumnLineage *OpenLineageJobOutputColumnLineage `pulumi:"columnLineage"`
+	// Name of the dataset.
+	Name string `pulumi:"name"`
+	// Namespace of the dataset.
+	Namespace string `pulumi:"namespace"`
+	// Symlink targets for the dataset.
+	// Structure is documented below.
+	Symlinks []OpenLineageJobOutputSymlink `pulumi:"symlinks"`
+}
+
+// OpenLineageJobOutputTypeInput is an input type that accepts OpenLineageJobOutputTypeArgs and OpenLineageJobOutputTypeOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputTypeInput` via:
+//
+//	OpenLineageJobOutputTypeArgs{...}
+type OpenLineageJobOutputTypeInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputTypeOutput() OpenLineageJobOutputTypeOutput
+	ToOpenLineageJobOutputTypeOutputWithContext(context.Context) OpenLineageJobOutputTypeOutput
+}
+
+type OpenLineageJobOutputTypeArgs struct {
+	// Catalog information for the dataset.
+	// Structure is documented below.
+	Catalog OpenLineageJobOutputCatalogPtrInput `pulumi:"catalog"`
+	// Column-level lineage information for the output dataset.
+	// Structure is documented below.
+	ColumnLineage OpenLineageJobOutputColumnLineagePtrInput `pulumi:"columnLineage"`
+	// Name of the dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the dataset.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Symlink targets for the dataset.
+	// Structure is documented below.
+	Symlinks OpenLineageJobOutputSymlinkArrayInput `pulumi:"symlinks"`
+}
+
+func (OpenLineageJobOutputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputType)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputTypeArgs) ToOpenLineageJobOutputTypeOutput() OpenLineageJobOutputTypeOutput {
+	return i.ToOpenLineageJobOutputTypeOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputTypeArgs) ToOpenLineageJobOutputTypeOutputWithContext(ctx context.Context) OpenLineageJobOutputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputTypeOutput)
+}
+
+// OpenLineageJobOutputTypeArrayInput is an input type that accepts OpenLineageJobOutputTypeArray and OpenLineageJobOutputTypeArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputTypeArrayInput` via:
+//
+//	OpenLineageJobOutputTypeArray{ OpenLineageJobOutputTypeArgs{...} }
+type OpenLineageJobOutputTypeArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputTypeArrayOutput() OpenLineageJobOutputTypeArrayOutput
+	ToOpenLineageJobOutputTypeArrayOutputWithContext(context.Context) OpenLineageJobOutputTypeArrayOutput
+}
+
+type OpenLineageJobOutputTypeArray []OpenLineageJobOutputTypeInput
+
+func (OpenLineageJobOutputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputType)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputTypeArray) ToOpenLineageJobOutputTypeArrayOutput() OpenLineageJobOutputTypeArrayOutput {
+	return i.ToOpenLineageJobOutputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputTypeArray) ToOpenLineageJobOutputTypeArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputTypeArrayOutput)
+}
+
+type OpenLineageJobOutputTypeOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputType)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputTypeOutput) ToOpenLineageJobOutputTypeOutput() OpenLineageJobOutputTypeOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputTypeOutput) ToOpenLineageJobOutputTypeOutputWithContext(ctx context.Context) OpenLineageJobOutputTypeOutput {
+	return o
+}
+
+// Catalog information for the dataset.
+// Structure is documented below.
+func (o OpenLineageJobOutputTypeOutput) Catalog() OpenLineageJobOutputCatalogPtrOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputType) *OpenLineageJobOutputCatalog { return v.Catalog }).(OpenLineageJobOutputCatalogPtrOutput)
+}
+
+// Column-level lineage information for the output dataset.
+// Structure is documented below.
+func (o OpenLineageJobOutputTypeOutput) ColumnLineage() OpenLineageJobOutputColumnLineagePtrOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputType) *OpenLineageJobOutputColumnLineage { return v.ColumnLineage }).(OpenLineageJobOutputColumnLineagePtrOutput)
+}
+
+// Name of the dataset.
+func (o OpenLineageJobOutputTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the dataset.
+func (o OpenLineageJobOutputTypeOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputType) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Symlink targets for the dataset.
+// Structure is documented below.
+func (o OpenLineageJobOutputTypeOutput) Symlinks() OpenLineageJobOutputSymlinkArrayOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputType) []OpenLineageJobOutputSymlink { return v.Symlinks }).(OpenLineageJobOutputSymlinkArrayOutput)
+}
+
+type OpenLineageJobOutputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputType)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputTypeArrayOutput) ToOpenLineageJobOutputTypeArrayOutput() OpenLineageJobOutputTypeArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputTypeArrayOutput) ToOpenLineageJobOutputTypeArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputTypeArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputTypeArrayOutput) Index(i pulumi.IntInput) OpenLineageJobOutputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobOutputType {
+		return vs[0].([]OpenLineageJobOutputType)[vs[1].(int)]
+	}).(OpenLineageJobOutputTypeOutput)
+}
+
+type OpenLineageJobOutputCatalog struct {
+	// Catalog framework.
+	Framework string `pulumi:"framework"`
+	// Catalog entity name.
+	Name string `pulumi:"name"`
+	// Catalog entity type.
+	Type string `pulumi:"type"`
+}
+
+// OpenLineageJobOutputCatalogInput is an input type that accepts OpenLineageJobOutputCatalogArgs and OpenLineageJobOutputCatalogOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputCatalogInput` via:
+//
+//	OpenLineageJobOutputCatalogArgs{...}
+type OpenLineageJobOutputCatalogInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputCatalogOutput() OpenLineageJobOutputCatalogOutput
+	ToOpenLineageJobOutputCatalogOutputWithContext(context.Context) OpenLineageJobOutputCatalogOutput
+}
+
+type OpenLineageJobOutputCatalogArgs struct {
+	// Catalog framework.
+	Framework pulumi.StringInput `pulumi:"framework"`
+	// Catalog entity name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Catalog entity type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OpenLineageJobOutputCatalogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputCatalog)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputCatalogArgs) ToOpenLineageJobOutputCatalogOutput() OpenLineageJobOutputCatalogOutput {
+	return i.ToOpenLineageJobOutputCatalogOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputCatalogArgs) ToOpenLineageJobOutputCatalogOutputWithContext(ctx context.Context) OpenLineageJobOutputCatalogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputCatalogOutput)
+}
+
+func (i OpenLineageJobOutputCatalogArgs) ToOpenLineageJobOutputCatalogPtrOutput() OpenLineageJobOutputCatalogPtrOutput {
+	return i.ToOpenLineageJobOutputCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputCatalogArgs) ToOpenLineageJobOutputCatalogPtrOutputWithContext(ctx context.Context) OpenLineageJobOutputCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputCatalogOutput).ToOpenLineageJobOutputCatalogPtrOutputWithContext(ctx)
+}
+
+// OpenLineageJobOutputCatalogPtrInput is an input type that accepts OpenLineageJobOutputCatalogArgs, OpenLineageJobOutputCatalogPtr and OpenLineageJobOutputCatalogPtrOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputCatalogPtrInput` via:
+//
+//	        OpenLineageJobOutputCatalogArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenLineageJobOutputCatalogPtrInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputCatalogPtrOutput() OpenLineageJobOutputCatalogPtrOutput
+	ToOpenLineageJobOutputCatalogPtrOutputWithContext(context.Context) OpenLineageJobOutputCatalogPtrOutput
+}
+
+type openLineageJobOutputCatalogPtrType OpenLineageJobOutputCatalogArgs
+
+func OpenLineageJobOutputCatalogPtr(v *OpenLineageJobOutputCatalogArgs) OpenLineageJobOutputCatalogPtrInput {
+	return (*openLineageJobOutputCatalogPtrType)(v)
+}
+
+func (*openLineageJobOutputCatalogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenLineageJobOutputCatalog)(nil)).Elem()
+}
+
+func (i *openLineageJobOutputCatalogPtrType) ToOpenLineageJobOutputCatalogPtrOutput() OpenLineageJobOutputCatalogPtrOutput {
+	return i.ToOpenLineageJobOutputCatalogPtrOutputWithContext(context.Background())
+}
+
+func (i *openLineageJobOutputCatalogPtrType) ToOpenLineageJobOutputCatalogPtrOutputWithContext(ctx context.Context) OpenLineageJobOutputCatalogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputCatalogPtrOutput)
+}
+
+type OpenLineageJobOutputCatalogOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputCatalogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputCatalog)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputCatalogOutput) ToOpenLineageJobOutputCatalogOutput() OpenLineageJobOutputCatalogOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputCatalogOutput) ToOpenLineageJobOutputCatalogOutputWithContext(ctx context.Context) OpenLineageJobOutputCatalogOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputCatalogOutput) ToOpenLineageJobOutputCatalogPtrOutput() OpenLineageJobOutputCatalogPtrOutput {
+	return o.ToOpenLineageJobOutputCatalogPtrOutputWithContext(context.Background())
+}
+
+func (o OpenLineageJobOutputCatalogOutput) ToOpenLineageJobOutputCatalogPtrOutputWithContext(ctx context.Context) OpenLineageJobOutputCatalogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenLineageJobOutputCatalog) *OpenLineageJobOutputCatalog {
+		return &v
+	}).(OpenLineageJobOutputCatalogPtrOutput)
+}
+
+// Catalog framework.
+func (o OpenLineageJobOutputCatalogOutput) Framework() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputCatalog) string { return v.Framework }).(pulumi.StringOutput)
+}
+
+// Catalog entity name.
+func (o OpenLineageJobOutputCatalogOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputCatalog) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Catalog entity type.
+func (o OpenLineageJobOutputCatalogOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputCatalog) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OpenLineageJobOutputCatalogPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputCatalogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenLineageJobOutputCatalog)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputCatalogPtrOutput) ToOpenLineageJobOutputCatalogPtrOutput() OpenLineageJobOutputCatalogPtrOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputCatalogPtrOutput) ToOpenLineageJobOutputCatalogPtrOutputWithContext(ctx context.Context) OpenLineageJobOutputCatalogPtrOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputCatalogPtrOutput) Elem() OpenLineageJobOutputCatalogOutput {
+	return o.ApplyT(func(v *OpenLineageJobOutputCatalog) OpenLineageJobOutputCatalog {
+		if v != nil {
+			return *v
+		}
+		var ret OpenLineageJobOutputCatalog
+		return ret
+	}).(OpenLineageJobOutputCatalogOutput)
+}
+
+// Catalog framework.
+func (o OpenLineageJobOutputCatalogPtrOutput) Framework() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenLineageJobOutputCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Framework
+	}).(pulumi.StringPtrOutput)
+}
+
+// Catalog entity name.
+func (o OpenLineageJobOutputCatalogPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenLineageJobOutputCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Catalog entity type.
+func (o OpenLineageJobOutputCatalogPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenLineageJobOutputCatalog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type OpenLineageJobOutputColumnLineage struct {
+	// Input fields participating in output dataset lineage.
+	// Structure is documented below.
+	DatasetInputs []OpenLineageJobOutputColumnLineageDatasetInput `pulumi:"datasetInputs"`
+	// Field-level lineage mappings.
+	// Structure is documented below.
+	Fields []OpenLineageJobOutputColumnLineageField `pulumi:"fields"`
+}
+
+// OpenLineageJobOutputColumnLineageInput is an input type that accepts OpenLineageJobOutputColumnLineageArgs and OpenLineageJobOutputColumnLineageOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageInput` via:
+//
+//	OpenLineageJobOutputColumnLineageArgs{...}
+type OpenLineageJobOutputColumnLineageInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageOutput() OpenLineageJobOutputColumnLineageOutput
+	ToOpenLineageJobOutputColumnLineageOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageOutput
+}
+
+type OpenLineageJobOutputColumnLineageArgs struct {
+	// Input fields participating in output dataset lineage.
+	// Structure is documented below.
+	DatasetInputs OpenLineageJobOutputColumnLineageDatasetInputArrayInput `pulumi:"datasetInputs"`
+	// Field-level lineage mappings.
+	// Structure is documented below.
+	Fields OpenLineageJobOutputColumnLineageFieldArrayInput `pulumi:"fields"`
+}
+
+func (OpenLineageJobOutputColumnLineageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineage)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageArgs) ToOpenLineageJobOutputColumnLineageOutput() OpenLineageJobOutputColumnLineageOutput {
+	return i.ToOpenLineageJobOutputColumnLineageOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageArgs) ToOpenLineageJobOutputColumnLineageOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageOutput)
+}
+
+func (i OpenLineageJobOutputColumnLineageArgs) ToOpenLineageJobOutputColumnLineagePtrOutput() OpenLineageJobOutputColumnLineagePtrOutput {
+	return i.ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageArgs) ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageOutput).ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(ctx)
+}
+
+// OpenLineageJobOutputColumnLineagePtrInput is an input type that accepts OpenLineageJobOutputColumnLineageArgs, OpenLineageJobOutputColumnLineagePtr and OpenLineageJobOutputColumnLineagePtrOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineagePtrInput` via:
+//
+//	        OpenLineageJobOutputColumnLineageArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenLineageJobOutputColumnLineagePtrInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineagePtrOutput() OpenLineageJobOutputColumnLineagePtrOutput
+	ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(context.Context) OpenLineageJobOutputColumnLineagePtrOutput
+}
+
+type openLineageJobOutputColumnLineagePtrType OpenLineageJobOutputColumnLineageArgs
+
+func OpenLineageJobOutputColumnLineagePtr(v *OpenLineageJobOutputColumnLineageArgs) OpenLineageJobOutputColumnLineagePtrInput {
+	return (*openLineageJobOutputColumnLineagePtrType)(v)
+}
+
+func (*openLineageJobOutputColumnLineagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenLineageJobOutputColumnLineage)(nil)).Elem()
+}
+
+func (i *openLineageJobOutputColumnLineagePtrType) ToOpenLineageJobOutputColumnLineagePtrOutput() OpenLineageJobOutputColumnLineagePtrOutput {
+	return i.ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(context.Background())
+}
+
+func (i *openLineageJobOutputColumnLineagePtrType) ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineagePtrOutput)
+}
+
+type OpenLineageJobOutputColumnLineageOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineage)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageOutput) ToOpenLineageJobOutputColumnLineageOutput() OpenLineageJobOutputColumnLineageOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageOutput) ToOpenLineageJobOutputColumnLineageOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageOutput) ToOpenLineageJobOutputColumnLineagePtrOutput() OpenLineageJobOutputColumnLineagePtrOutput {
+	return o.ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(context.Background())
+}
+
+func (o OpenLineageJobOutputColumnLineageOutput) ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenLineageJobOutputColumnLineage) *OpenLineageJobOutputColumnLineage {
+		return &v
+	}).(OpenLineageJobOutputColumnLineagePtrOutput)
+}
+
+// Input fields participating in output dataset lineage.
+// Structure is documented below.
+func (o OpenLineageJobOutputColumnLineageOutput) DatasetInputs() OpenLineageJobOutputColumnLineageDatasetInputArrayOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineage) []OpenLineageJobOutputColumnLineageDatasetInput {
+		return v.DatasetInputs
+	}).(OpenLineageJobOutputColumnLineageDatasetInputArrayOutput)
+}
+
+// Field-level lineage mappings.
+// Structure is documented below.
+func (o OpenLineageJobOutputColumnLineageOutput) Fields() OpenLineageJobOutputColumnLineageFieldArrayOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineage) []OpenLineageJobOutputColumnLineageField { return v.Fields }).(OpenLineageJobOutputColumnLineageFieldArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineagePtrOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenLineageJobOutputColumnLineage)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineagePtrOutput) ToOpenLineageJobOutputColumnLineagePtrOutput() OpenLineageJobOutputColumnLineagePtrOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineagePtrOutput) ToOpenLineageJobOutputColumnLineagePtrOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineagePtrOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineagePtrOutput) Elem() OpenLineageJobOutputColumnLineageOutput {
+	return o.ApplyT(func(v *OpenLineageJobOutputColumnLineage) OpenLineageJobOutputColumnLineage {
+		if v != nil {
+			return *v
+		}
+		var ret OpenLineageJobOutputColumnLineage
+		return ret
+	}).(OpenLineageJobOutputColumnLineageOutput)
+}
+
+// Input fields participating in output dataset lineage.
+// Structure is documented below.
+func (o OpenLineageJobOutputColumnLineagePtrOutput) DatasetInputs() OpenLineageJobOutputColumnLineageDatasetInputArrayOutput {
+	return o.ApplyT(func(v *OpenLineageJobOutputColumnLineage) []OpenLineageJobOutputColumnLineageDatasetInput {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetInputs
+	}).(OpenLineageJobOutputColumnLineageDatasetInputArrayOutput)
+}
+
+// Field-level lineage mappings.
+// Structure is documented below.
+func (o OpenLineageJobOutputColumnLineagePtrOutput) Fields() OpenLineageJobOutputColumnLineageFieldArrayOutput {
+	return o.ApplyT(func(v *OpenLineageJobOutputColumnLineage) []OpenLineageJobOutputColumnLineageField {
+		if v == nil {
+			return nil
+		}
+		return v.Fields
+	}).(OpenLineageJobOutputColumnLineageFieldArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInput struct {
+	// Source field name.
+	Field string `pulumi:"field"`
+	// Name of the source dataset.
+	Name string `pulumi:"name"`
+	// Namespace of the source dataset.
+	Namespace string `pulumi:"namespace"`
+	// Transformations applied to fields from this input.
+	// Structure is documented below.
+	Transformations []OpenLineageJobOutputColumnLineageDatasetInputTransformation `pulumi:"transformations"`
+}
+
+// OpenLineageJobOutputColumnLineageDatasetInputInput is an input type that accepts OpenLineageJobOutputColumnLineageDatasetInputArgs and OpenLineageJobOutputColumnLineageDatasetInputOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageDatasetInputInput` via:
+//
+//	OpenLineageJobOutputColumnLineageDatasetInputArgs{...}
+type OpenLineageJobOutputColumnLineageDatasetInputInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageDatasetInputOutput() OpenLineageJobOutputColumnLineageDatasetInputOutput
+	ToOpenLineageJobOutputColumnLineageDatasetInputOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageDatasetInputOutput
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputArgs struct {
+	// Source field name.
+	Field pulumi.StringInput `pulumi:"field"`
+	// Name of the source dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the source dataset.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Transformations applied to fields from this input.
+	// Structure is documented below.
+	Transformations OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayInput `pulumi:"transformations"`
+}
+
+func (OpenLineageJobOutputColumnLineageDatasetInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageDatasetInput)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageDatasetInputArgs) ToOpenLineageJobOutputColumnLineageDatasetInputOutput() OpenLineageJobOutputColumnLineageDatasetInputOutput {
+	return i.ToOpenLineageJobOutputColumnLineageDatasetInputOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageDatasetInputArgs) ToOpenLineageJobOutputColumnLineageDatasetInputOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageDatasetInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageDatasetInputOutput)
+}
+
+// OpenLineageJobOutputColumnLineageDatasetInputArrayInput is an input type that accepts OpenLineageJobOutputColumnLineageDatasetInputArray and OpenLineageJobOutputColumnLineageDatasetInputArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageDatasetInputArrayInput` via:
+//
+//	OpenLineageJobOutputColumnLineageDatasetInputArray{ OpenLineageJobOutputColumnLineageDatasetInputArgs{...} }
+type OpenLineageJobOutputColumnLineageDatasetInputArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageDatasetInputArrayOutput() OpenLineageJobOutputColumnLineageDatasetInputArrayOutput
+	ToOpenLineageJobOutputColumnLineageDatasetInputArrayOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageDatasetInputArrayOutput
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputArray []OpenLineageJobOutputColumnLineageDatasetInputInput
+
+func (OpenLineageJobOutputColumnLineageDatasetInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageDatasetInput)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageDatasetInputArray) ToOpenLineageJobOutputColumnLineageDatasetInputArrayOutput() OpenLineageJobOutputColumnLineageDatasetInputArrayOutput {
+	return i.ToOpenLineageJobOutputColumnLineageDatasetInputArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageDatasetInputArray) ToOpenLineageJobOutputColumnLineageDatasetInputArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageDatasetInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageDatasetInputArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageDatasetInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageDatasetInput)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputOutput) ToOpenLineageJobOutputColumnLineageDatasetInputOutput() OpenLineageJobOutputColumnLineageDatasetInputOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputOutput) ToOpenLineageJobOutputColumnLineageDatasetInputOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageDatasetInputOutput {
+	return o
+}
+
+// Source field name.
+func (o OpenLineageJobOutputColumnLineageDatasetInputOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageDatasetInput) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Name of the source dataset.
+func (o OpenLineageJobOutputColumnLineageDatasetInputOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageDatasetInput) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the source dataset.
+func (o OpenLineageJobOutputColumnLineageDatasetInputOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageDatasetInput) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Transformations applied to fields from this input.
+// Structure is documented below.
+func (o OpenLineageJobOutputColumnLineageDatasetInputOutput) Transformations() OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageDatasetInput) []OpenLineageJobOutputColumnLineageDatasetInputTransformation {
+		return v.Transformations
+	}).(OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageDatasetInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageDatasetInput)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputArrayOutput) ToOpenLineageJobOutputColumnLineageDatasetInputArrayOutput() OpenLineageJobOutputColumnLineageDatasetInputArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputArrayOutput) ToOpenLineageJobOutputColumnLineageDatasetInputArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageDatasetInputArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputArrayOutput) Index(i pulumi.IntInput) OpenLineageJobOutputColumnLineageDatasetInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobOutputColumnLineageDatasetInput {
+		return vs[0].([]OpenLineageJobOutputColumnLineageDatasetInput)[vs[1].(int)]
+	}).(OpenLineageJobOutputColumnLineageDatasetInputOutput)
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputTransformation struct {
+	// Transformation subtype.
+	Subtype *string `pulumi:"subtype"`
+	// Transformation type.
+	Type string `pulumi:"type"`
+}
+
+// OpenLineageJobOutputColumnLineageDatasetInputTransformationInput is an input type that accepts OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs and OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageDatasetInputTransformationInput` via:
+//
+//	OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs{...}
+type OpenLineageJobOutputColumnLineageDatasetInputTransformationInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageDatasetInputTransformationOutput() OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput
+	ToOpenLineageJobOutputColumnLineageDatasetInputTransformationOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs struct {
+	// Transformation subtype.
+	Subtype pulumi.StringPtrInput `pulumi:"subtype"`
+	// Transformation type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageDatasetInputTransformation)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs) ToOpenLineageJobOutputColumnLineageDatasetInputTransformationOutput() OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput {
+	return i.ToOpenLineageJobOutputColumnLineageDatasetInputTransformationOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs) ToOpenLineageJobOutputColumnLineageDatasetInputTransformationOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput)
+}
+
+// OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayInput is an input type that accepts OpenLineageJobOutputColumnLineageDatasetInputTransformationArray and OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayInput` via:
+//
+//	OpenLineageJobOutputColumnLineageDatasetInputTransformationArray{ OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs{...} }
+type OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput() OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput
+	ToOpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputTransformationArray []OpenLineageJobOutputColumnLineageDatasetInputTransformationInput
+
+func (OpenLineageJobOutputColumnLineageDatasetInputTransformationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageDatasetInputTransformation)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageDatasetInputTransformationArray) ToOpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput() OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput {
+	return i.ToOpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageDatasetInputTransformationArray) ToOpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageDatasetInputTransformation)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput) ToOpenLineageJobOutputColumnLineageDatasetInputTransformationOutput() OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput) ToOpenLineageJobOutputColumnLineageDatasetInputTransformationOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput {
+	return o
+}
+
+// Transformation subtype.
+func (o OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput) Subtype() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageDatasetInputTransformation) *string { return v.Subtype }).(pulumi.StringPtrOutput)
+}
+
+// Transformation type.
+func (o OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageDatasetInputTransformation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageDatasetInputTransformation)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput) ToOpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput() OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput) ToOpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput) Index(i pulumi.IntInput) OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobOutputColumnLineageDatasetInputTransformation {
+		return vs[0].([]OpenLineageJobOutputColumnLineageDatasetInputTransformation)[vs[1].(int)]
+	}).(OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput)
+}
+
+type OpenLineageJobOutputColumnLineageField struct {
+	// Input fields contributing to this output field.
+	// Structure is documented below.
+	Inputs []OpenLineageJobOutputColumnLineageFieldInputType `pulumi:"inputs"`
+	// Output field name.
+	Name string `pulumi:"name"`
+}
+
+// OpenLineageJobOutputColumnLineageFieldInput is an input type that accepts OpenLineageJobOutputColumnLineageFieldArgs and OpenLineageJobOutputColumnLineageFieldOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageFieldInput` via:
+//
+//	OpenLineageJobOutputColumnLineageFieldArgs{...}
+type OpenLineageJobOutputColumnLineageFieldInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageFieldOutput() OpenLineageJobOutputColumnLineageFieldOutput
+	ToOpenLineageJobOutputColumnLineageFieldOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageFieldOutput
+}
+
+type OpenLineageJobOutputColumnLineageFieldArgs struct {
+	// Input fields contributing to this output field.
+	// Structure is documented below.
+	Inputs OpenLineageJobOutputColumnLineageFieldInputTypeArrayInput `pulumi:"inputs"`
+	// Output field name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (OpenLineageJobOutputColumnLineageFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageField)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldArgs) ToOpenLineageJobOutputColumnLineageFieldOutput() OpenLineageJobOutputColumnLineageFieldOutput {
+	return i.ToOpenLineageJobOutputColumnLineageFieldOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldArgs) ToOpenLineageJobOutputColumnLineageFieldOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageFieldOutput)
+}
+
+// OpenLineageJobOutputColumnLineageFieldArrayInput is an input type that accepts OpenLineageJobOutputColumnLineageFieldArray and OpenLineageJobOutputColumnLineageFieldArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageFieldArrayInput` via:
+//
+//	OpenLineageJobOutputColumnLineageFieldArray{ OpenLineageJobOutputColumnLineageFieldArgs{...} }
+type OpenLineageJobOutputColumnLineageFieldArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageFieldArrayOutput() OpenLineageJobOutputColumnLineageFieldArrayOutput
+	ToOpenLineageJobOutputColumnLineageFieldArrayOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageFieldArrayOutput
+}
+
+type OpenLineageJobOutputColumnLineageFieldArray []OpenLineageJobOutputColumnLineageFieldInput
+
+func (OpenLineageJobOutputColumnLineageFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageField)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldArray) ToOpenLineageJobOutputColumnLineageFieldArrayOutput() OpenLineageJobOutputColumnLineageFieldArrayOutput {
+	return i.ToOpenLineageJobOutputColumnLineageFieldArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldArray) ToOpenLineageJobOutputColumnLineageFieldArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageFieldArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineageFieldOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageField)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldOutput) ToOpenLineageJobOutputColumnLineageFieldOutput() OpenLineageJobOutputColumnLineageFieldOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldOutput) ToOpenLineageJobOutputColumnLineageFieldOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldOutput {
+	return o
+}
+
+// Input fields contributing to this output field.
+// Structure is documented below.
+func (o OpenLineageJobOutputColumnLineageFieldOutput) Inputs() OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageField) []OpenLineageJobOutputColumnLineageFieldInputType {
+		return v.Inputs
+	}).(OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput)
+}
+
+// Output field name.
+func (o OpenLineageJobOutputColumnLineageFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type OpenLineageJobOutputColumnLineageFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageField)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldArrayOutput) ToOpenLineageJobOutputColumnLineageFieldArrayOutput() OpenLineageJobOutputColumnLineageFieldArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldArrayOutput) ToOpenLineageJobOutputColumnLineageFieldArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldArrayOutput) Index(i pulumi.IntInput) OpenLineageJobOutputColumnLineageFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobOutputColumnLineageField {
+		return vs[0].([]OpenLineageJobOutputColumnLineageField)[vs[1].(int)]
+	}).(OpenLineageJobOutputColumnLineageFieldOutput)
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputType struct {
+	// Source field name.
+	Field string `pulumi:"field"`
+	// Name of the source dataset.
+	Name string `pulumi:"name"`
+	// Namespace of the source dataset.
+	Namespace string `pulumi:"namespace"`
+	// Transformations applied from source to output field.
+	// Structure is documented below.
+	Transformations []OpenLineageJobOutputColumnLineageFieldInputTransformation `pulumi:"transformations"`
+}
+
+// OpenLineageJobOutputColumnLineageFieldInputTypeInput is an input type that accepts OpenLineageJobOutputColumnLineageFieldInputTypeArgs and OpenLineageJobOutputColumnLineageFieldInputTypeOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageFieldInputTypeInput` via:
+//
+//	OpenLineageJobOutputColumnLineageFieldInputTypeArgs{...}
+type OpenLineageJobOutputColumnLineageFieldInputTypeInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageFieldInputTypeOutput() OpenLineageJobOutputColumnLineageFieldInputTypeOutput
+	ToOpenLineageJobOutputColumnLineageFieldInputTypeOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageFieldInputTypeOutput
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTypeArgs struct {
+	// Source field name.
+	Field pulumi.StringInput `pulumi:"field"`
+	// Name of the source dataset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the source dataset.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Transformations applied from source to output field.
+	// Structure is documented below.
+	Transformations OpenLineageJobOutputColumnLineageFieldInputTransformationArrayInput `pulumi:"transformations"`
+}
+
+func (OpenLineageJobOutputColumnLineageFieldInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInputType)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldInputTypeArgs) ToOpenLineageJobOutputColumnLineageFieldInputTypeOutput() OpenLineageJobOutputColumnLineageFieldInputTypeOutput {
+	return i.ToOpenLineageJobOutputColumnLineageFieldInputTypeOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldInputTypeArgs) ToOpenLineageJobOutputColumnLineageFieldInputTypeOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageFieldInputTypeOutput)
+}
+
+// OpenLineageJobOutputColumnLineageFieldInputTypeArrayInput is an input type that accepts OpenLineageJobOutputColumnLineageFieldInputTypeArray and OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageFieldInputTypeArrayInput` via:
+//
+//	OpenLineageJobOutputColumnLineageFieldInputTypeArray{ OpenLineageJobOutputColumnLineageFieldInputTypeArgs{...} }
+type OpenLineageJobOutputColumnLineageFieldInputTypeArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput() OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput
+	ToOpenLineageJobOutputColumnLineageFieldInputTypeArrayOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTypeArray []OpenLineageJobOutputColumnLineageFieldInputTypeInput
+
+func (OpenLineageJobOutputColumnLineageFieldInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageFieldInputType)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldInputTypeArray) ToOpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput() OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput {
+	return i.ToOpenLineageJobOutputColumnLineageFieldInputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldInputTypeArray) ToOpenLineageJobOutputColumnLineageFieldInputTypeArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTypeOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageFieldInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInputType)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeOutput) ToOpenLineageJobOutputColumnLineageFieldInputTypeOutput() OpenLineageJobOutputColumnLineageFieldInputTypeOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeOutput) ToOpenLineageJobOutputColumnLineageFieldInputTypeOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldInputTypeOutput {
+	return o
+}
+
+// Source field name.
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageFieldInputType) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Name of the source dataset.
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageFieldInputType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the source dataset.
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageFieldInputType) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Transformations applied from source to output field.
+// Structure is documented below.
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeOutput) Transformations() OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageFieldInputType) []OpenLineageJobOutputColumnLineageFieldInputTransformation {
+		return v.Transformations
+	}).(OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageFieldInputType)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput) ToOpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput() OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput) ToOpenLineageJobOutputColumnLineageFieldInputTypeArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput) Index(i pulumi.IntInput) OpenLineageJobOutputColumnLineageFieldInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobOutputColumnLineageFieldInputType {
+		return vs[0].([]OpenLineageJobOutputColumnLineageFieldInputType)[vs[1].(int)]
+	}).(OpenLineageJobOutputColumnLineageFieldInputTypeOutput)
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTransformation struct {
+	// Transformation subtype.
+	Subtype *string `pulumi:"subtype"`
+	// Transformation type.
+	Type string `pulumi:"type"`
+}
+
+// OpenLineageJobOutputColumnLineageFieldInputTransformationInput is an input type that accepts OpenLineageJobOutputColumnLineageFieldInputTransformationArgs and OpenLineageJobOutputColumnLineageFieldInputTransformationOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageFieldInputTransformationInput` via:
+//
+//	OpenLineageJobOutputColumnLineageFieldInputTransformationArgs{...}
+type OpenLineageJobOutputColumnLineageFieldInputTransformationInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageFieldInputTransformationOutput() OpenLineageJobOutputColumnLineageFieldInputTransformationOutput
+	ToOpenLineageJobOutputColumnLineageFieldInputTransformationOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageFieldInputTransformationOutput
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTransformationArgs struct {
+	// Transformation subtype.
+	Subtype pulumi.StringPtrInput `pulumi:"subtype"`
+	// Transformation type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OpenLineageJobOutputColumnLineageFieldInputTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInputTransformation)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldInputTransformationArgs) ToOpenLineageJobOutputColumnLineageFieldInputTransformationOutput() OpenLineageJobOutputColumnLineageFieldInputTransformationOutput {
+	return i.ToOpenLineageJobOutputColumnLineageFieldInputTransformationOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldInputTransformationArgs) ToOpenLineageJobOutputColumnLineageFieldInputTransformationOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldInputTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageFieldInputTransformationOutput)
+}
+
+// OpenLineageJobOutputColumnLineageFieldInputTransformationArrayInput is an input type that accepts OpenLineageJobOutputColumnLineageFieldInputTransformationArray and OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputColumnLineageFieldInputTransformationArrayInput` via:
+//
+//	OpenLineageJobOutputColumnLineageFieldInputTransformationArray{ OpenLineageJobOutputColumnLineageFieldInputTransformationArgs{...} }
+type OpenLineageJobOutputColumnLineageFieldInputTransformationArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput() OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput
+	ToOpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutputWithContext(context.Context) OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTransformationArray []OpenLineageJobOutputColumnLineageFieldInputTransformationInput
+
+func (OpenLineageJobOutputColumnLineageFieldInputTransformationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageFieldInputTransformation)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldInputTransformationArray) ToOpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput() OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput {
+	return i.ToOpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputColumnLineageFieldInputTransformationArray) ToOpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput)
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTransformationOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageFieldInputTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInputTransformation)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTransformationOutput) ToOpenLineageJobOutputColumnLineageFieldInputTransformationOutput() OpenLineageJobOutputColumnLineageFieldInputTransformationOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTransformationOutput) ToOpenLineageJobOutputColumnLineageFieldInputTransformationOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldInputTransformationOutput {
+	return o
+}
+
+// Transformation subtype.
+func (o OpenLineageJobOutputColumnLineageFieldInputTransformationOutput) Subtype() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageFieldInputTransformation) *string { return v.Subtype }).(pulumi.StringPtrOutput)
+}
+
+// Transformation type.
+func (o OpenLineageJobOutputColumnLineageFieldInputTransformationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputColumnLineageFieldInputTransformation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputColumnLineageFieldInputTransformation)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput) ToOpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput() OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput) ToOpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput) Index(i pulumi.IntInput) OpenLineageJobOutputColumnLineageFieldInputTransformationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobOutputColumnLineageFieldInputTransformation {
+		return vs[0].([]OpenLineageJobOutputColumnLineageFieldInputTransformation)[vs[1].(int)]
+	}).(OpenLineageJobOutputColumnLineageFieldInputTransformationOutput)
+}
+
+type OpenLineageJobOutputSymlink struct {
+	// Name of the symlink target.
+	Name string `pulumi:"name"`
+	// Namespace of the symlink target.
+	Namespace string `pulumi:"namespace"`
+	// Type of the symlink target.
+	Type string `pulumi:"type"`
+}
+
+// OpenLineageJobOutputSymlinkInput is an input type that accepts OpenLineageJobOutputSymlinkArgs and OpenLineageJobOutputSymlinkOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputSymlinkInput` via:
+//
+//	OpenLineageJobOutputSymlinkArgs{...}
+type OpenLineageJobOutputSymlinkInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputSymlinkOutput() OpenLineageJobOutputSymlinkOutput
+	ToOpenLineageJobOutputSymlinkOutputWithContext(context.Context) OpenLineageJobOutputSymlinkOutput
+}
+
+type OpenLineageJobOutputSymlinkArgs struct {
+	// Name of the symlink target.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the symlink target.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Type of the symlink target.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OpenLineageJobOutputSymlinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputSymlink)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputSymlinkArgs) ToOpenLineageJobOutputSymlinkOutput() OpenLineageJobOutputSymlinkOutput {
+	return i.ToOpenLineageJobOutputSymlinkOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputSymlinkArgs) ToOpenLineageJobOutputSymlinkOutputWithContext(ctx context.Context) OpenLineageJobOutputSymlinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputSymlinkOutput)
+}
+
+// OpenLineageJobOutputSymlinkArrayInput is an input type that accepts OpenLineageJobOutputSymlinkArray and OpenLineageJobOutputSymlinkArrayOutput values.
+// You can construct a concrete instance of `OpenLineageJobOutputSymlinkArrayInput` via:
+//
+//	OpenLineageJobOutputSymlinkArray{ OpenLineageJobOutputSymlinkArgs{...} }
+type OpenLineageJobOutputSymlinkArrayInput interface {
+	pulumi.Input
+
+	ToOpenLineageJobOutputSymlinkArrayOutput() OpenLineageJobOutputSymlinkArrayOutput
+	ToOpenLineageJobOutputSymlinkArrayOutputWithContext(context.Context) OpenLineageJobOutputSymlinkArrayOutput
+}
+
+type OpenLineageJobOutputSymlinkArray []OpenLineageJobOutputSymlinkInput
+
+func (OpenLineageJobOutputSymlinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputSymlink)(nil)).Elem()
+}
+
+func (i OpenLineageJobOutputSymlinkArray) ToOpenLineageJobOutputSymlinkArrayOutput() OpenLineageJobOutputSymlinkArrayOutput {
+	return i.ToOpenLineageJobOutputSymlinkArrayOutputWithContext(context.Background())
+}
+
+func (i OpenLineageJobOutputSymlinkArray) ToOpenLineageJobOutputSymlinkArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputSymlinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenLineageJobOutputSymlinkArrayOutput)
+}
+
+type OpenLineageJobOutputSymlinkOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputSymlinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenLineageJobOutputSymlink)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputSymlinkOutput) ToOpenLineageJobOutputSymlinkOutput() OpenLineageJobOutputSymlinkOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputSymlinkOutput) ToOpenLineageJobOutputSymlinkOutputWithContext(ctx context.Context) OpenLineageJobOutputSymlinkOutput {
+	return o
+}
+
+// Name of the symlink target.
+func (o OpenLineageJobOutputSymlinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputSymlink) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the symlink target.
+func (o OpenLineageJobOutputSymlinkOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputSymlink) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Type of the symlink target.
+func (o OpenLineageJobOutputSymlinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenLineageJobOutputSymlink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OpenLineageJobOutputSymlinkArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenLineageJobOutputSymlinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenLineageJobOutputSymlink)(nil)).Elem()
+}
+
+func (o OpenLineageJobOutputSymlinkArrayOutput) ToOpenLineageJobOutputSymlinkArrayOutput() OpenLineageJobOutputSymlinkArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputSymlinkArrayOutput) ToOpenLineageJobOutputSymlinkArrayOutputWithContext(ctx context.Context) OpenLineageJobOutputSymlinkArrayOutput {
+	return o
+}
+
+func (o OpenLineageJobOutputSymlinkArrayOutput) Index(i pulumi.IntInput) OpenLineageJobOutputSymlinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenLineageJobOutputSymlink {
+		return vs[0].([]OpenLineageJobOutputSymlink)[vs[1].(int)]
+	}).(OpenLineageJobOutputSymlinkOutput)
+}
+
 type GetConfigIngestion struct {
 	// List of ingestion rules for Data Lineage ingestion.
 	Rules []GetConfigIngestionRule `pulumi:"rules"`
@@ -779,6 +2378,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigIngestionRuleArrayInput)(nil)).Elem(), ConfigIngestionRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigIngestionRuleIntegrationSelectorInput)(nil)).Elem(), ConfigIngestionRuleIntegrationSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigIngestionRuleLineageEnablementInput)(nil)).Elem(), ConfigIngestionRuleLineageEnablementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobInputTypeInput)(nil)).Elem(), OpenLineageJobInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobInputTypeArrayInput)(nil)).Elem(), OpenLineageJobInputTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobInputCatalogInput)(nil)).Elem(), OpenLineageJobInputCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobInputCatalogPtrInput)(nil)).Elem(), OpenLineageJobInputCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobInputSymlinkInput)(nil)).Elem(), OpenLineageJobInputSymlinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobInputSymlinkArrayInput)(nil)).Elem(), OpenLineageJobInputSymlinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputTypeInput)(nil)).Elem(), OpenLineageJobOutputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputTypeArrayInput)(nil)).Elem(), OpenLineageJobOutputTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputCatalogInput)(nil)).Elem(), OpenLineageJobOutputCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputCatalogPtrInput)(nil)).Elem(), OpenLineageJobOutputCatalogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineagePtrInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageDatasetInputInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageDatasetInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageDatasetInputArrayInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageDatasetInputArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageDatasetInputTransformationInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageDatasetInputTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageDatasetInputTransformationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldArrayInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInputTypeInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageFieldInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInputTypeArrayInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageFieldInputTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInputTransformationInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageFieldInputTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputColumnLineageFieldInputTransformationArrayInput)(nil)).Elem(), OpenLineageJobOutputColumnLineageFieldInputTransformationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputSymlinkInput)(nil)).Elem(), OpenLineageJobOutputSymlinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenLineageJobOutputSymlinkArrayInput)(nil)).Elem(), OpenLineageJobOutputSymlinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigIngestionInput)(nil)).Elem(), GetConfigIngestionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigIngestionArrayInput)(nil)).Elem(), GetConfigIngestionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigIngestionRuleInput)(nil)).Elem(), GetConfigIngestionRuleArgs{})
@@ -793,6 +2416,30 @@ func init() {
 	pulumi.RegisterOutputType(ConfigIngestionRuleArrayOutput{})
 	pulumi.RegisterOutputType(ConfigIngestionRuleIntegrationSelectorOutput{})
 	pulumi.RegisterOutputType(ConfigIngestionRuleLineageEnablementOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobInputTypeOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobInputTypeArrayOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobInputCatalogOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobInputCatalogPtrOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobInputSymlinkOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobInputSymlinkArrayOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputTypeOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputTypeArrayOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputCatalogOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputCatalogPtrOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineagePtrOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageDatasetInputOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageDatasetInputArrayOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageDatasetInputTransformationOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageDatasetInputTransformationArrayOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageFieldOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageFieldArrayOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageFieldInputTypeOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageFieldInputTypeArrayOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageFieldInputTransformationOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputColumnLineageFieldInputTransformationArrayOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputSymlinkOutput{})
+	pulumi.RegisterOutputType(OpenLineageJobOutputSymlinkArrayOutput{})
 	pulumi.RegisterOutputType(GetConfigIngestionOutput{})
 	pulumi.RegisterOutputType(GetConfigIngestionArrayOutput{})
 	pulumi.RegisterOutputType(GetConfigIngestionRuleOutput{})

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceAccelerator;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceBoostConfig;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig;
+import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceReservationAffinity;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -73,6 +74,13 @@ public final class WorkstationConfigHostGceInstance {
      * 
      */
     private @Nullable Integer poolSize;
+    /**
+     * @return (Optional, Beta)
+     * Reservation affinity to setup a GCE instance.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable WorkstationConfigHostGceInstanceReservationAffinity reservationAffinity;
     /**
      * @return Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
      * 
@@ -180,6 +188,15 @@ public final class WorkstationConfigHostGceInstance {
         return Optional.ofNullable(this.poolSize);
     }
     /**
+     * @return (Optional, Beta)
+     * Reservation affinity to setup a GCE instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<WorkstationConfigHostGceInstanceReservationAffinity> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
+    /**
      * @return Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
      * 
      */
@@ -239,6 +256,7 @@ public final class WorkstationConfigHostGceInstance {
         private @Nullable Map<String,String> instanceMetadata;
         private @Nullable String machineType;
         private @Nullable Integer poolSize;
+        private @Nullable WorkstationConfigHostGceInstanceReservationAffinity reservationAffinity;
         private @Nullable String serviceAccount;
         private @Nullable List<String> serviceAccountScopes;
         private @Nullable WorkstationConfigHostGceInstanceShieldedInstanceConfig shieldedInstanceConfig;
@@ -257,6 +275,7 @@ public final class WorkstationConfigHostGceInstance {
     	      this.instanceMetadata = defaults.instanceMetadata;
     	      this.machineType = defaults.machineType;
     	      this.poolSize = defaults.poolSize;
+    	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.serviceAccountScopes = defaults.serviceAccountScopes;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -331,6 +350,12 @@ public final class WorkstationConfigHostGceInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder reservationAffinity(@Nullable WorkstationConfigHostGceInstanceReservationAffinity reservationAffinity) {
+
+            this.reservationAffinity = reservationAffinity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
 
             this.serviceAccount = serviceAccount;
@@ -378,6 +403,7 @@ public final class WorkstationConfigHostGceInstance {
             _resultValue.instanceMetadata = instanceMetadata;
             _resultValue.machineType = machineType;
             _resultValue.poolSize = poolSize;
+            _resultValue.reservationAffinity = reservationAffinity;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.serviceAccountScopes = serviceAccountScopes;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;

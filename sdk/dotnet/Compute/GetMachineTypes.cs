@@ -105,16 +105,19 @@ namespace Pulumi.Gcp.Compute
         ///             {
         ///                 Input = new[]
         ///                 {
-        ///                     .Where(mt =&gt; invoke.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
-        ///                     .Where(mt =&gt; invoke1.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke1.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
-        ///                     .Where(mt =&gt; invoke2.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke2.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
         ///                 },
@@ -231,16 +234,19 @@ namespace Pulumi.Gcp.Compute
         ///             {
         ///                 Input = new[]
         ///                 {
-        ///                     .Where(mt =&gt; invoke.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
-        ///                     .Where(mt =&gt; invoke1.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke1.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
-        ///                     .Where(mt =&gt; invoke2.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke2.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
         ///                 },
@@ -357,16 +363,19 @@ namespace Pulumi.Gcp.Compute
         ///             {
         ///                 Input = new[]
         ///                 {
-        ///                     .Where(mt =&gt; invoke.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
-        ///                     .Where(mt =&gt; invoke1.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke1.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
-        ///                     .Where(mt =&gt; invoke2.Result).Select(mt =&gt; 
-        ///                     {
+        ///                     .Where(mt =&gt; {
+        ///                         return invoke2.Result;
+        ///                     }).Select(mt =&gt; {
         ///                         return mt.Name;
         ///                     }).ToList(),
         ///                 },

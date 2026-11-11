@@ -234,7 +234,10 @@ type JobIAMBinding struct {
 
 	Condition JobIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag  pulumi.StringOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The name or relative resource id of the job to manage IAM policies for.
+	//
+	// For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
 	JobId pulumi.StringOutput `pulumi:"jobId"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -300,7 +303,10 @@ func GetJobIAMBinding(ctx *pulumi.Context,
 type jobIAMBindingState struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag  *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// The name or relative resource id of the job to manage IAM policies for.
+	//
+	// For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
 	JobId *string `pulumi:"jobId"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -328,7 +334,10 @@ type jobIAMBindingState struct {
 type JobIAMBindingState struct {
 	Condition JobIAMBindingConditionPtrInput
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag  pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// The name or relative resource id of the job to manage IAM policies for.
+	//
+	// For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
 	JobId pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -365,7 +374,10 @@ func JobIAMBindingExists(ctx *pulumi.Context,
 
 type jobIAMBindingArgs struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
-	JobId     string                  `pulumi:"jobId"`
+	// The name or relative resource id of the job to manage IAM policies for.
+	//
+	// For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
+	JobId string `pulumi:"jobId"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -392,7 +404,10 @@ type jobIAMBindingArgs struct {
 // The set of arguments for constructing a JobIAMBinding resource.
 type JobIAMBindingArgs struct {
 	Condition JobIAMBindingConditionPtrInput
-	JobId     pulumi.StringInput
+	// The name or relative resource id of the job to manage IAM policies for.
+	//
+	// For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
+	JobId pulumi.StringInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -512,6 +527,9 @@ func (o JobIAMBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The name or relative resource id of the job to manage IAM policies for.
+//
+// For `dataproc.JobIAMMember` or `dataproc.JobIAMBinding`:
 func (o JobIAMBindingOutput) JobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMBinding) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
 }

@@ -58,7 +58,6 @@ namespace Pulumi.Gcp.Diagflow
     ///             UseGeminiAsr = true,
     ///             GeminiAsrConfig = new Gcp.Diagflow.Inputs.ConversationProfileSttConfigGeminiAsrConfigArgs
     ///             {
-    ///                 ModelId = "gemini-3-flash-lite-asr-preview",
     ///                 SilenceDurationMs = 1000,
     ///                 PrefixPaddingMs = 500,
     ///                 StartOfSpeechSensitivity = "START_SENSITIVITY_LOW",

@@ -262,16 +262,18 @@ import (
 //				},
 //				McpDataSources: agenticapplications.AnalystAgentPersonaMcpDataSourceArray{
 //					&agenticapplications.AnalystAgentPersonaMcpDataSourceArgs{
-//						ServerUrl:     pulumi.String("https://mcp.example.com"),
-//						DisplayName:   pulumi.String("Sample MCP Source"),
-//						Description:   pulumi.String("Sample MCP data source description"),
-//						Enabled:       pulumi.Bool(true),
-//						Prompt:        pulumi.String("Use this server for queries"),
-//						ApiKeyName:    pulumi.String("x-api-key"),
-//						ApiKeyHeader:  pulumi.String("x-api-key-header"),
-//						ClientId:      pulumi.String("sample-client-id"),
-//						ClientSecret:  pulumi.String("sample-client-secret"),
-//						OauthTokenUrl: pulumi.String("https://example.com/oauth/token"),
+//						ServerUrl:       pulumi.String("https://mcp.example.com"),
+//						DisplayName:     pulumi.String("Sample MCP Source"),
+//						Description:     pulumi.String("Sample MCP data source description"),
+//						Enabled:         pulumi.Bool(true),
+//						Prompt:          pulumi.String("Use this server for queries"),
+//						ApiKeyName:      pulumi.String("x-api-key"),
+//						ApiKeyHeader:    pulumi.String("x-api-key-header"),
+//						ClientId:        pulumi.String("sample-client-id"),
+//						ClientSecret:    pulumi.String("sample-client-secret"),
+//						OauthTokenUrl:   pulumi.String("https://example.com/oauth/token"),
+//						SessionIdHeader: pulumi.String("X-Session-Id"),
+//						TaskIdHeader:    pulumi.String("X-Task-Id"),
 //					},
 //				},
 //				Resources: agenticapplications.AnalystAgentPersonaResourceArray{
@@ -423,6 +425,51 @@ import (
 //						AppendAuditTrail:         pulumi.Bool(true),
 //						ExportFormat:             pulumi.String("MARKDOWN"),
 //						ExportAuditTrailArtifact: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Analyst Agent Persona Mcp Headers
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+//				Project:               pulumi.String("1111111111111"),
+//				Location:              pulumi.String("us"),
+//				AnalystAgentPersonaId: pulumi.String("mcp-headers"),
+//				DisplayName:           pulumi.String("Test Analyst Persona MCP Headers"),
+//				DisplayDescription:    pulumi.String("Sample analyst agent persona description"),
+//				ModelDescription:      pulumi.String("Sample model description"),
+//				Role:                  pulumi.String("ANALYST_ROLE_GENERIC_FINANCE_ANALYST"),
+//				McpDataSources: agenticapplications.AnalystAgentPersonaMcpDataSourceArray{
+//					&agenticapplications.AnalystAgentPersonaMcpDataSourceArgs{
+//						ServerUrl:       pulumi.String("https://mcp.example.com"),
+//						DisplayName:     pulumi.String("Sample MCP Source"),
+//						Description:     pulumi.String("Sample MCP data source description"),
+//						Enabled:         pulumi.Bool(true),
+//						Prompt:          pulumi.String("Use this server for queries"),
+//						ApiKeyName:      pulumi.String("x-api-key"),
+//						ApiKeyHeader:    pulumi.String("x-api-key-header"),
+//						SessionIdHeader: pulumi.String("X-Custom-Session-Id"),
+//						TaskIdHeader:    pulumi.String("X-Custom-Task-Id"),
 //					},
 //				},
 //			})
@@ -1050,6 +1097,18 @@ import (
 // * `serverUrl` -
 // (Required)
 // The URL of the MCP server.
+//
+// * `sessionIdHeader` -
+// (Optional)
+// The HTTP header name used to pass the agent session ID in MCP server
+// requests (defaults to `X-Session-Id` when unset). Must be a valid HTTP
+// header field name (RFC 9110 token).
+//
+// * `taskIdHeader` -
+// (Optional)
+// The HTTP header name used to pass the agent task ID in MCP server
+// requests (defaults to `X-Task-Id` when unset). Must be a valid HTTP
+// header field name (RFC 9110 token).
 //
 // <a name="nestedResources"></a>The `resources` block supports:
 //

@@ -66,7 +66,6 @@ namespace Pulumi.Gcp.Compute
     public partial class Interconnect : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         /// </summary>
         [Output("aaiEnabled")]
@@ -81,7 +80,6 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> AdminEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Configuration that enables Media Access Control security (MACsec) on the Cloud
         /// Interconnect connection between Google and your on-premises router.
         /// Structure is documented below.
@@ -416,7 +414,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class InterconnectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         /// </summary>
         [Input("aaiEnabled")]
@@ -431,7 +428,6 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? AdminEnabled { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Configuration that enables Media Access Control security (MACsec) on the Cloud
         /// Interconnect connection between Google and your on-premises router.
         /// Structure is documented below.
@@ -597,7 +593,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class InterconnectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         /// </summary>
         [Input("aaiEnabled")]
@@ -612,7 +607,6 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? AdminEnabled { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Configuration that enables Media Access Control security (MACsec) on the Cloud
         /// Interconnect connection between Google and your on-premises router.
         /// Structure is documented below.

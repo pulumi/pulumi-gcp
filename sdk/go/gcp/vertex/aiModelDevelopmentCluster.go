@@ -152,6 +152,7 @@ import (
 //				ModelDevelopmentClusterId: pulumi.String("tftest"),
 //				DisplayName:               pulumi.String("tftest"),
 //				DeletionPolicy:            pulumi.String("DELETE"),
+//				UpdateMode:                pulumi.String("USER_AND_SERVICE"),
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("dev"),
 //				},
@@ -852,6 +853,14 @@ type AiModelDevelopmentCluster struct {
 	// Time when the ModelDevelopmentCluster for the first time entered the
 	// `RUNNING` state.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// Whether the service also refreshes service-managed fields (startup and
+	// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+	// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+	// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+	// for GKE clusters (`kubernetesSpec`).
+	// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+	// `USER_AND_SERVICE`.
+	UpdateMode pulumi.StringPtrOutput `pulumi:"updateMode"`
 	// (Output)
 	// Time when the TrainingService was most recently updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -978,6 +987,14 @@ type aiModelDevelopmentClusterState struct {
 	// Time when the ModelDevelopmentCluster for the first time entered the
 	// `RUNNING` state.
 	StartTime *string `pulumi:"startTime"`
+	// Whether the service also refreshes service-managed fields (startup and
+	// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+	// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+	// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+	// for GKE clusters (`kubernetesSpec`).
+	// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+	// `USER_AND_SERVICE`.
+	UpdateMode *string `pulumi:"updateMode"`
 	// (Output)
 	// Time when the TrainingService was most recently updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -1061,6 +1078,14 @@ type AiModelDevelopmentClusterState struct {
 	// Time when the ModelDevelopmentCluster for the first time entered the
 	// `RUNNING` state.
 	StartTime pulumi.StringPtrInput
+	// Whether the service also refreshes service-managed fields (startup and
+	// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+	// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+	// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+	// for GKE clusters (`kubernetesSpec`).
+	// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+	// `USER_AND_SERVICE`.
+	UpdateMode pulumi.StringPtrInput
 	// (Output)
 	// Time when the TrainingService was most recently updated.
 	UpdateTime pulumi.StringPtrInput
@@ -1130,6 +1155,14 @@ type aiModelDevelopmentClusterArgs struct {
 	// The runtime spec of the cluster.
 	// Structure is documented below.
 	RuntimeSpec *AiModelDevelopmentClusterRuntimeSpec `pulumi:"runtimeSpec"`
+	// Whether the service also refreshes service-managed fields (startup and
+	// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+	// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+	// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+	// for GKE clusters (`kubernetesSpec`).
+	// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+	// `USER_AND_SERVICE`.
+	UpdateMode *string `pulumi:"updateMode"`
 }
 
 // The set of arguments for constructing a AiModelDevelopmentCluster resource.
@@ -1187,6 +1220,14 @@ type AiModelDevelopmentClusterArgs struct {
 	// The runtime spec of the cluster.
 	// Structure is documented below.
 	RuntimeSpec AiModelDevelopmentClusterRuntimeSpecPtrInput
+	// Whether the service also refreshes service-managed fields (startup and
+	// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+	// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+	// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+	// for GKE clusters (`kubernetesSpec`).
+	// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+	// `USER_AND_SERVICE`.
+	UpdateMode pulumi.StringPtrInput
 }
 
 func (AiModelDevelopmentClusterArgs) ElementType() reflect.Type {
@@ -1417,6 +1458,17 @@ func (o AiModelDevelopmentClusterOutput) Runtimes() AiModelDevelopmentClusterRun
 // `RUNNING` state.
 func (o AiModelDevelopmentClusterOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiModelDevelopmentCluster) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Whether the service also refreshes service-managed fields (startup and
+// prolog/epilog scripts, default node images) on update. `USER_ONLY` applies
+// only your changes; adding a node pool requires `USER_AND_SERVICE`.
+// Only applies to Slurm clusters (`orchestrator_spec.slurm_spec`); ignored
+// for GKE clusters (`kubernetesSpec`).
+// Defaults to `USER_AND_SERVICE`. Possible values are `USER_ONLY` and
+// `USER_AND_SERVICE`.
+func (o AiModelDevelopmentClusterOutput) UpdateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiModelDevelopmentCluster) pulumi.StringPtrOutput { return v.UpdateMode }).(pulumi.StringPtrOutput)
 }
 
 // (Output)

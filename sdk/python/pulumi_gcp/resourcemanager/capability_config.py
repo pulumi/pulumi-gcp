@@ -22,6 +22,7 @@ class CapabilityConfigArgs:
                  capability_config_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
                  types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  management_project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -34,6 +35,9 @@ class CapabilityConfigArgs:
                Format: `folders/{folder_id}`, `organizations/{organization_id}`, or `projects/{project_number}`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] types: The capabilities enabled for the resource and its sub-tree.
                Possible values: "AGENT_MANAGEMENT".
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boundaries: The list of Boundaries associated with this capability config.
+               Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+               Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -48,6 +52,8 @@ class CapabilityConfigArgs:
         pulumi.set(__self__, "capability_config_id", capability_config_id)
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "types", types)
+        if boundaries is not None:
+            pulumi.set(__self__, "boundaries", boundaries)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
@@ -93,6 +99,20 @@ class CapabilityConfigArgs:
     @types.setter
     def types(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "types", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def boundaries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Boundaries associated with this capability config.
+        Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+        Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+        """
+        return pulumi.get(self, "boundaries")
+
+    @boundaries.setter
+    def boundaries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "boundaries", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -141,6 +161,7 @@ class CapabilityConfigArgs:
 @pulumi.input_type
 class _CapabilityConfigState:
     def __init__(__self__, *,
+                 boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  capability_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -155,6 +176,9 @@ class _CapabilityConfigState:
         """
         Input properties used for looking up and filtering CapabilityConfig resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boundaries: The list of Boundaries associated with this capability config.
+               Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+               Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
         :param pulumi.Input[_builtins.str] capability_config_id: User-specified identifier of the capability config. Must be 6 to 30 characters,
                and contain only lowercase letters, numbers, and hyphens.
         :param pulumi.Input[_builtins.str] create_time: The time when the capability config was created.
@@ -178,6 +202,8 @@ class _CapabilityConfigState:
                Possible values: "AGENT_MANAGEMENT".
         :param pulumi.Input[_builtins.str] update_time: The time when the capability config was last updated.
         """
+        if boundaries is not None:
+            pulumi.set(__self__, "boundaries", boundaries)
         if capability_config_id is not None:
             pulumi.set(__self__, "capability_config_id", capability_config_id)
         if create_time is not None:
@@ -200,6 +226,20 @@ class _CapabilityConfigState:
             pulumi.set(__self__, "types", types)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def boundaries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Boundaries associated with this capability config.
+        Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+        Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+        """
+        return pulumi.get(self, "boundaries")
+
+    @boundaries.setter
+    def boundaries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "boundaries", value)
 
     @_builtins.property
     @pulumi.getter(name="capabilityConfigId")
@@ -351,6 +391,7 @@ class CapabilityConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  capability_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -376,11 +417,51 @@ class CapabilityConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        boundary = gcp.tags.TagKey("boundary",
+            parent="organizations/123456789",
+            short_name="bndkey",
+            description="Partitioning tag key used by boundaries.")
+        boundary1 = gcp.tags.TagValue("boundary_1",
+            parent=boundary.id,
+            short_name="bndval-1",
+            description="Tag value for the first boundary.")
+        boundary2 = gcp.tags.TagValue("boundary_2",
+            parent=boundary.id,
+            short_name="bndval-2",
+            description="Tag value for the second boundary.")
+        boundary_boundary_config = gcp.resourcemanager.BoundaryConfig("boundary",
+            parent="organizations/123456789",
+            tag_key=boundary.namespaced_name)
+        boundary1_boundary = gcp.resourcemanager.Boundary("boundary_1",
+            parent="organizations/123456789",
+            boundary_id="boundary-1",
+            display_name="Boundary 1",
+            resource_filter={
+                "tag_filter": {
+                    "tag_key": boundary_boundary_config.tag_key,
+                    "tag_value": boundary1.short_name,
+                },
+            })
+        boundary2_boundary = gcp.resourcemanager.Boundary("boundary_2",
+            parent="organizations/123456789",
+            boundary_id="boundary-2",
+            display_name="Boundary 2",
+            resource_filter={
+                "tag_filter": {
+                    "tag_key": boundary_boundary_config.tag_key,
+                    "tag_value": boundary2.short_name,
+                },
+            })
         capability_config = gcp.resourcemanager.CapabilityConfig("capability_config",
             parent="organizations/123456789",
             capability_config_id="capcfg",
             display_name="capdisp",
-            types=["AGENT_MANAGEMENT"])
+            types=["AGENT_MANAGEMENT"],
+            boundaries=[boundary1_boundary.name],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    boundary1_boundary,
+                    boundary2_boundary,
+                ]))
         ```
 
         ### Resource Manager Capability Config Folder
@@ -454,6 +535,9 @@ class CapabilityConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boundaries: The list of Boundaries associated with this capability config.
+               Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+               Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
         :param pulumi.Input[_builtins.str] capability_config_id: User-specified identifier of the capability config. Must be 6 to 30 characters,
                and contain only lowercase letters, numbers, and hyphens.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -495,11 +579,51 @@ class CapabilityConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        boundary = gcp.tags.TagKey("boundary",
+            parent="organizations/123456789",
+            short_name="bndkey",
+            description="Partitioning tag key used by boundaries.")
+        boundary1 = gcp.tags.TagValue("boundary_1",
+            parent=boundary.id,
+            short_name="bndval-1",
+            description="Tag value for the first boundary.")
+        boundary2 = gcp.tags.TagValue("boundary_2",
+            parent=boundary.id,
+            short_name="bndval-2",
+            description="Tag value for the second boundary.")
+        boundary_boundary_config = gcp.resourcemanager.BoundaryConfig("boundary",
+            parent="organizations/123456789",
+            tag_key=boundary.namespaced_name)
+        boundary1_boundary = gcp.resourcemanager.Boundary("boundary_1",
+            parent="organizations/123456789",
+            boundary_id="boundary-1",
+            display_name="Boundary 1",
+            resource_filter={
+                "tag_filter": {
+                    "tag_key": boundary_boundary_config.tag_key,
+                    "tag_value": boundary1.short_name,
+                },
+            })
+        boundary2_boundary = gcp.resourcemanager.Boundary("boundary_2",
+            parent="organizations/123456789",
+            boundary_id="boundary-2",
+            display_name="Boundary 2",
+            resource_filter={
+                "tag_filter": {
+                    "tag_key": boundary_boundary_config.tag_key,
+                    "tag_value": boundary2.short_name,
+                },
+            })
         capability_config = gcp.resourcemanager.CapabilityConfig("capability_config",
             parent="organizations/123456789",
             capability_config_id="capcfg",
             display_name="capdisp",
-            types=["AGENT_MANAGEMENT"])
+            types=["AGENT_MANAGEMENT"],
+            boundaries=[boundary1_boundary.name],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    boundary1_boundary,
+                    boundary2_boundary,
+                ]))
         ```
 
         ### Resource Manager Capability Config Folder
@@ -586,6 +710,7 @@ class CapabilityConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  capability_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -601,6 +726,7 @@ class CapabilityConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CapabilityConfigArgs.__new__(CapabilityConfigArgs)
 
+            __props__.__dict__["boundaries"] = boundaries
             if capability_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'capability_config_id'")
             __props__.__dict__["capability_config_id"] = capability_config_id
@@ -628,6 +754,7 @@ class CapabilityConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             capability_config_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -646,6 +773,9 @@ class CapabilityConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boundaries: The list of Boundaries associated with this capability config.
+               Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+               Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
         :param pulumi.Input[_builtins.str] capability_config_id: User-specified identifier of the capability config. Must be 6 to 30 characters,
                and contain only lowercase letters, numbers, and hyphens.
         :param pulumi.Input[_builtins.str] create_time: The time when the capability config was created.
@@ -673,6 +803,7 @@ class CapabilityConfig(pulumi.CustomResource):
 
         __props__ = _CapabilityConfigState.__new__(_CapabilityConfigState)
 
+        __props__.__dict__["boundaries"] = boundaries
         __props__.__dict__["capability_config_id"] = capability_config_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -689,6 +820,7 @@ class CapabilityConfig(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             capability_config_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -701,6 +833,7 @@ class CapabilityConfig(pulumi.CustomResource):
             types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["boundaries"] = boundaries
         __props__["capabilityConfigId"] = capability_config_id
         __props__["createTime"] = create_time
         __props__["deletionPolicy"] = deletion_policy
@@ -713,6 +846,16 @@ class CapabilityConfig(pulumi.CustomResource):
         __props__["types"] = types
         __props__["updateTime"] = update_time
         return pulumi.runtime.exists_resource(None, 'gcp:resourcemanager/capabilityConfig:CapabilityConfig', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter
+    def boundaries(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of Boundaries associated with this capability config.
+        Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+        Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+        """
+        return pulumi.get(self, "boundaries")
 
     @_builtins.property
     @pulumi.getter(name="capabilityConfigId")

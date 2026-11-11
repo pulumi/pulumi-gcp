@@ -7115,6 +7115,170 @@ func (o LicenseConfigStartDatePtrOutput) Year() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ProjectProvisionSaasParams struct {
+	// Set to `true` to specify that the caller has read and consents to the
+	// Terms for business edition quality of service.
+	AcceptBizQos *bool `pulumi:"acceptBizQos"`
+	// Indicates whether the current request is for Business edition (`true`)
+	// or not (`false`).
+	IsBiz *bool `pulumi:"isBiz"`
+}
+
+// ProjectProvisionSaasParamsInput is an input type that accepts ProjectProvisionSaasParamsArgs and ProjectProvisionSaasParamsOutput values.
+// You can construct a concrete instance of `ProjectProvisionSaasParamsInput` via:
+//
+//	ProjectProvisionSaasParamsArgs{...}
+type ProjectProvisionSaasParamsInput interface {
+	pulumi.Input
+
+	ToProjectProvisionSaasParamsOutput() ProjectProvisionSaasParamsOutput
+	ToProjectProvisionSaasParamsOutputWithContext(context.Context) ProjectProvisionSaasParamsOutput
+}
+
+type ProjectProvisionSaasParamsArgs struct {
+	// Set to `true` to specify that the caller has read and consents to the
+	// Terms for business edition quality of service.
+	AcceptBizQos pulumi.BoolPtrInput `pulumi:"acceptBizQos"`
+	// Indicates whether the current request is for Business edition (`true`)
+	// or not (`false`).
+	IsBiz pulumi.BoolPtrInput `pulumi:"isBiz"`
+}
+
+func (ProjectProvisionSaasParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProvisionSaasParams)(nil)).Elem()
+}
+
+func (i ProjectProvisionSaasParamsArgs) ToProjectProvisionSaasParamsOutput() ProjectProvisionSaasParamsOutput {
+	return i.ToProjectProvisionSaasParamsOutputWithContext(context.Background())
+}
+
+func (i ProjectProvisionSaasParamsArgs) ToProjectProvisionSaasParamsOutputWithContext(ctx context.Context) ProjectProvisionSaasParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProvisionSaasParamsOutput)
+}
+
+func (i ProjectProvisionSaasParamsArgs) ToProjectProvisionSaasParamsPtrOutput() ProjectProvisionSaasParamsPtrOutput {
+	return i.ToProjectProvisionSaasParamsPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectProvisionSaasParamsArgs) ToProjectProvisionSaasParamsPtrOutputWithContext(ctx context.Context) ProjectProvisionSaasParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProvisionSaasParamsOutput).ToProjectProvisionSaasParamsPtrOutputWithContext(ctx)
+}
+
+// ProjectProvisionSaasParamsPtrInput is an input type that accepts ProjectProvisionSaasParamsArgs, ProjectProvisionSaasParamsPtr and ProjectProvisionSaasParamsPtrOutput values.
+// You can construct a concrete instance of `ProjectProvisionSaasParamsPtrInput` via:
+//
+//	        ProjectProvisionSaasParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectProvisionSaasParamsPtrInput interface {
+	pulumi.Input
+
+	ToProjectProvisionSaasParamsPtrOutput() ProjectProvisionSaasParamsPtrOutput
+	ToProjectProvisionSaasParamsPtrOutputWithContext(context.Context) ProjectProvisionSaasParamsPtrOutput
+}
+
+type projectProvisionSaasParamsPtrType ProjectProvisionSaasParamsArgs
+
+func ProjectProvisionSaasParamsPtr(v *ProjectProvisionSaasParamsArgs) ProjectProvisionSaasParamsPtrInput {
+	return (*projectProvisionSaasParamsPtrType)(v)
+}
+
+func (*projectProvisionSaasParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectProvisionSaasParams)(nil)).Elem()
+}
+
+func (i *projectProvisionSaasParamsPtrType) ToProjectProvisionSaasParamsPtrOutput() ProjectProvisionSaasParamsPtrOutput {
+	return i.ToProjectProvisionSaasParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *projectProvisionSaasParamsPtrType) ToProjectProvisionSaasParamsPtrOutputWithContext(ctx context.Context) ProjectProvisionSaasParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectProvisionSaasParamsPtrOutput)
+}
+
+type ProjectProvisionSaasParamsOutput struct{ *pulumi.OutputState }
+
+func (ProjectProvisionSaasParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectProvisionSaasParams)(nil)).Elem()
+}
+
+func (o ProjectProvisionSaasParamsOutput) ToProjectProvisionSaasParamsOutput() ProjectProvisionSaasParamsOutput {
+	return o
+}
+
+func (o ProjectProvisionSaasParamsOutput) ToProjectProvisionSaasParamsOutputWithContext(ctx context.Context) ProjectProvisionSaasParamsOutput {
+	return o
+}
+
+func (o ProjectProvisionSaasParamsOutput) ToProjectProvisionSaasParamsPtrOutput() ProjectProvisionSaasParamsPtrOutput {
+	return o.ToProjectProvisionSaasParamsPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectProvisionSaasParamsOutput) ToProjectProvisionSaasParamsPtrOutputWithContext(ctx context.Context) ProjectProvisionSaasParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectProvisionSaasParams) *ProjectProvisionSaasParams {
+		return &v
+	}).(ProjectProvisionSaasParamsPtrOutput)
+}
+
+// Set to `true` to specify that the caller has read and consents to the
+// Terms for business edition quality of service.
+func (o ProjectProvisionSaasParamsOutput) AcceptBizQos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectProvisionSaasParams) *bool { return v.AcceptBizQos }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the current request is for Business edition (`true`)
+// or not (`false`).
+func (o ProjectProvisionSaasParamsOutput) IsBiz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectProvisionSaasParams) *bool { return v.IsBiz }).(pulumi.BoolPtrOutput)
+}
+
+type ProjectProvisionSaasParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectProvisionSaasParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectProvisionSaasParams)(nil)).Elem()
+}
+
+func (o ProjectProvisionSaasParamsPtrOutput) ToProjectProvisionSaasParamsPtrOutput() ProjectProvisionSaasParamsPtrOutput {
+	return o
+}
+
+func (o ProjectProvisionSaasParamsPtrOutput) ToProjectProvisionSaasParamsPtrOutputWithContext(ctx context.Context) ProjectProvisionSaasParamsPtrOutput {
+	return o
+}
+
+func (o ProjectProvisionSaasParamsPtrOutput) Elem() ProjectProvisionSaasParamsOutput {
+	return o.ApplyT(func(v *ProjectProvisionSaasParams) ProjectProvisionSaasParams {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectProvisionSaasParams
+		return ret
+	}).(ProjectProvisionSaasParamsOutput)
+}
+
+// Set to `true` to specify that the caller has read and consents to the
+// Terms for business edition quality of service.
+func (o ProjectProvisionSaasParamsPtrOutput) AcceptBizQos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectProvisionSaasParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptBizQos
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the current request is for Business edition (`true`)
+// or not (`false`).
+func (o ProjectProvisionSaasParamsPtrOutput) IsBiz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectProvisionSaasParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsBiz
+	}).(pulumi.BoolPtrOutput)
+}
+
 type RecommendationEngineCommonConfig struct {
 	// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
 	CompanyName *string `pulumi:"companyName"`
@@ -13552,6 +13716,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigEndDatePtrInput)(nil)).Elem(), LicenseConfigEndDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigStartDateInput)(nil)).Elem(), LicenseConfigStartDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseConfigStartDatePtrInput)(nil)).Elem(), LicenseConfigStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProvisionSaasParamsInput)(nil)).Elem(), ProjectProvisionSaasParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProvisionSaasParamsPtrInput)(nil)).Elem(), ProjectProvisionSaasParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineCommonConfigInput)(nil)).Elem(), RecommendationEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineCommonConfigPtrInput)(nil)).Elem(), RecommendationEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigArgs{})
@@ -13720,6 +13886,8 @@ func init() {
 	pulumi.RegisterOutputType(LicenseConfigEndDatePtrOutput{})
 	pulumi.RegisterOutputType(LicenseConfigStartDateOutput{})
 	pulumi.RegisterOutputType(LicenseConfigStartDatePtrOutput{})
+	pulumi.RegisterOutputType(ProjectProvisionSaasParamsOutput{})
+	pulumi.RegisterOutputType(ProjectProvisionSaasParamsPtrOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigOutput{})

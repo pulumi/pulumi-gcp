@@ -12,7 +12,6 @@ import com.pulumi.gcp.pubsub.LiteReservationArgs;
 import com.pulumi.gcp.pubsub.inputs.LiteReservationState;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -148,14 +147,14 @@ public class LiteReservation extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return The region of the pubsub lite reservation.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * The reserved throughput capacity. Every unit of throughput capacity is

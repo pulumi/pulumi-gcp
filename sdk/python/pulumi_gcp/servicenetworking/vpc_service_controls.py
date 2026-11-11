@@ -480,7 +480,7 @@ class VpcServiceControls(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def project(self) -> pulumi.Output[_builtins.str]:
         """
         The id of the Google Cloud project containing the consumer network.
         """

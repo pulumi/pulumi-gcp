@@ -80,7 +80,9 @@ class InstanceArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[_builtins.str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input['InstanceGcsSourceArgs'] gcs_source: GCS source for the instance.
@@ -318,6 +320,7 @@ class InstanceArgs:
     def desired_auto_created_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]:
         """
         Immutable. User inputs for the auto-created endpoints connections.
+        Structure is documented below.
         """
         return pulumi.get(self, "desired_auto_created_endpoints")
 
@@ -331,6 +334,7 @@ class InstanceArgs:
     def desired_psc_auto_connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
         """
         `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+        Structure is documented below.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 
@@ -649,7 +653,9 @@ class _InstanceState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]] discovery_endpoints: (Deprecated)
                Deprecated. Output only. Endpoints clients can connect to the instance through.
                Structure is documented below.
@@ -971,6 +977,7 @@ class _InstanceState:
     def desired_auto_created_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]:
         """
         Immutable. User inputs for the auto-created endpoints connections.
+        Structure is documented below.
         """
         return pulumi.get(self, "desired_auto_created_endpoints")
 
@@ -984,6 +991,7 @@ class _InstanceState:
     def desired_psc_auto_connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
         """
         `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+        Structure is documented below.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 
@@ -1922,7 +1930,9 @@ class Instance(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict', 'outputs.InstanceDesiredAutoCreatedEndpoint']]]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict', 'outputs.InstanceDesiredPscAutoConnection']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[_builtins.str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict', 'outputs.InstanceGcsSource']] gcs_source: GCS source for the instance.
@@ -2567,7 +2577,9 @@ class Instance(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict', 'outputs.InstanceDesiredAutoCreatedEndpoint']]]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict', 'outputs.InstanceDesiredPscAutoConnection']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict', 'outputs.InstanceDiscoveryEndpoint']]]] discovery_endpoints: (Deprecated)
                Deprecated. Output only. Endpoints clients can connect to the instance through.
                Structure is documented below.
@@ -2902,6 +2914,7 @@ class Instance(pulumi.CustomResource):
     def desired_auto_created_endpoints(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceDesiredAutoCreatedEndpoint']]]:
         """
         Immutable. User inputs for the auto-created endpoints connections.
+        Structure is documented below.
         """
         return pulumi.get(self, "desired_auto_created_endpoints")
 
@@ -2911,6 +2924,7 @@ class Instance(pulumi.CustomResource):
     def desired_psc_auto_connections(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceDesiredPscAutoConnection']]]:
         """
         `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+        Structure is documented below.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 

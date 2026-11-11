@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     [OutputType]
     public sealed class ApplicationUrlDispatchRule
     {
+        /// <summary>
+        /// Domain name to match against.
+        /// </summary>
         public readonly string? Domain;
+        /// <summary>
+        /// Pathname within the host.
+        /// </summary>
         public readonly string? Path;
+        /// <summary>
+        /// Resource ID of a service in this application that should serve the matched request.
+        /// </summary>
         public readonly string? Service;
 
         [OutputConstructor]

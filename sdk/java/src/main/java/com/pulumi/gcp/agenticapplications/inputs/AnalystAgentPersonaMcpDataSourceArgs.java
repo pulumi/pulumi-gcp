@@ -184,6 +184,44 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
         return this.serverUrl;
     }
 
+    /**
+     * The HTTP header name used to pass the agent session ID in MCP server
+     * requests (defaults to &#39;X-Session-Id&#39; when unset). Must be a valid HTTP
+     * header field name (RFC 9110 token).
+     * 
+     */
+    @Import(name="sessionIdHeader")
+    private @Nullable Output<String> sessionIdHeader;
+
+    /**
+     * @return The HTTP header name used to pass the agent session ID in MCP server
+     * requests (defaults to &#39;X-Session-Id&#39; when unset). Must be a valid HTTP
+     * header field name (RFC 9110 token).
+     * 
+     */
+    public Optional<Output<String>> sessionIdHeader() {
+        return Optional.ofNullable(this.sessionIdHeader);
+    }
+
+    /**
+     * The HTTP header name used to pass the agent task ID in MCP server
+     * requests (defaults to &#39;X-Task-Id&#39; when unset). Must be a valid HTTP
+     * header field name (RFC 9110 token).
+     * 
+     */
+    @Import(name="taskIdHeader")
+    private @Nullable Output<String> taskIdHeader;
+
+    /**
+     * @return The HTTP header name used to pass the agent task ID in MCP server
+     * requests (defaults to &#39;X-Task-Id&#39; when unset). Must be a valid HTTP
+     * header field name (RFC 9110 token).
+     * 
+     */
+    public Optional<Output<String>> taskIdHeader() {
+        return Optional.ofNullable(this.taskIdHeader);
+    }
+
     private AnalystAgentPersonaMcpDataSourceArgs() {}
 
     private AnalystAgentPersonaMcpDataSourceArgs(AnalystAgentPersonaMcpDataSourceArgs $) {
@@ -198,6 +236,8 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
         this.oauthTokenUrl = $.oauthTokenUrl;
         this.prompt = $.prompt;
         this.serverUrl = $.serverUrl;
+        this.sessionIdHeader = $.sessionIdHeader;
+        this.taskIdHeader = $.taskIdHeader;
     }
 
     public static Builder builder() {
@@ -449,6 +489,56 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
          */
         public Builder serverUrl(String serverUrl) {
             return serverUrl(Output.of(serverUrl));
+        }
+
+        /**
+         * @param sessionIdHeader The HTTP header name used to pass the agent session ID in MCP server
+         * requests (defaults to &#39;X-Session-Id&#39; when unset). Must be a valid HTTP
+         * header field name (RFC 9110 token).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionIdHeader(@Nullable Output<String> sessionIdHeader) {
+            $.sessionIdHeader = sessionIdHeader;
+            return this;
+        }
+
+        /**
+         * @param sessionIdHeader The HTTP header name used to pass the agent session ID in MCP server
+         * requests (defaults to &#39;X-Session-Id&#39; when unset). Must be a valid HTTP
+         * header field name (RFC 9110 token).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionIdHeader(String sessionIdHeader) {
+            return sessionIdHeader(Output.of(sessionIdHeader));
+        }
+
+        /**
+         * @param taskIdHeader The HTTP header name used to pass the agent task ID in MCP server
+         * requests (defaults to &#39;X-Task-Id&#39; when unset). Must be a valid HTTP
+         * header field name (RFC 9110 token).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taskIdHeader(@Nullable Output<String> taskIdHeader) {
+            $.taskIdHeader = taskIdHeader;
+            return this;
+        }
+
+        /**
+         * @param taskIdHeader The HTTP header name used to pass the agent task ID in MCP server
+         * requests (defaults to &#39;X-Task-Id&#39; when unset). Must be a valid HTTP
+         * header field name (RFC 9110 token).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder taskIdHeader(String taskIdHeader) {
+            return taskIdHeader(Output.of(taskIdHeader));
         }
 
         public AnalystAgentPersonaMcpDataSourceArgs build() {

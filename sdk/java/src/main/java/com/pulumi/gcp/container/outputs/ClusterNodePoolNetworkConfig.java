@@ -43,7 +43,7 @@ public final class ClusterNodePoolNetworkConfig {
      */
     private @Nullable Boolean enablePrivateNodes;
     /**
-     * @return Network bandwidth tier configuration.
+     * @return Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNetworkConfigNetworkPerformanceConfig networkPerformanceConfig;
@@ -106,7 +106,7 @@ public final class ClusterNodePoolNetworkConfig {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
     /**
-     * @return Network bandwidth tier configuration.
+     * @return Network bandwidth tier configuration. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfig() {

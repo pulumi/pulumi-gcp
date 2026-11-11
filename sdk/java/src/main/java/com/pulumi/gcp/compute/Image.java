@@ -162,6 +162,9 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 ImageGuestOsFeatureArgs.builder()
  *                     .type("SEV_LIVE_MIGRATABLE_V2")
+ *                     .build(),
+ *                 ImageGuestOsFeatureArgs.builder()
+ *                     .type("SUSPEND_SAFE_FPR")
  *                     .build())
  *             .build());
  * 

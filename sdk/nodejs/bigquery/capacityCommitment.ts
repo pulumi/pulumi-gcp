@@ -93,7 +93,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
      * cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
      * or merged.
      */
-    declare public readonly capacityCommitmentId: pulumi.Output<string | undefined>;
+    declare public readonly capacityCommitmentId: pulumi.Output<string>;
     /**
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      */

@@ -48,6 +48,8 @@ __all__ = [
     'ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue',
     'ConnectionEventingConfigAuthConfigUserPassword',
     'ConnectionEventingConfigAuthConfigUserPasswordPassword',
+    'ConnectionEventingConfigDeadLetterConfig',
+    'ConnectionEventingConfigEnrichmentConfig',
     'ConnectionEventingConfigRegistrationDestinationConfig',
     'ConnectionEventingConfigRegistrationDestinationConfigDestination',
     'ConnectionEventingRuntimeData',
@@ -1320,10 +1322,18 @@ class ConnectionEventingConfig(dict):
             suggest = "registration_destination_config"
         elif key == "additionalVariables":
             suggest = "additional_variables"
+        elif key == "allowedEventTypes":
+            suggest = "allowed_event_types"
         elif key == "authConfig":
             suggest = "auth_config"
+        elif key == "deadLetterConfig":
+            suggest = "dead_letter_config"
+        elif key == "enrichmentConfig":
+            suggest = "enrichment_config"
         elif key == "enrichmentEnabled":
             suggest = "enrichment_enabled"
+        elif key == "globalEventFilter":
+            suggest = "global_event_filter"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionEventingConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1339,24 +1349,42 @@ class ConnectionEventingConfig(dict):
     def __init__(__self__, *,
                  registration_destination_config: 'outputs.ConnectionEventingConfigRegistrationDestinationConfig',
                  additional_variables: Optional[Sequence['outputs.ConnectionEventingConfigAdditionalVariable']] = None,
+                 allowed_event_types: Optional[Sequence[_builtins.str]] = None,
                  auth_config: Optional['outputs.ConnectionEventingConfigAuthConfig'] = None,
-                 enrichment_enabled: Optional[_builtins.bool] = None):
+                 dead_letter_config: Optional['outputs.ConnectionEventingConfigDeadLetterConfig'] = None,
+                 enrichment_config: Optional['outputs.ConnectionEventingConfigEnrichmentConfig'] = None,
+                 enrichment_enabled: Optional[_builtins.bool] = None,
+                 global_event_filter: Optional[_builtins.str] = None):
         """
         :param 'ConnectionEventingConfigRegistrationDestinationConfigArgs' registration_destination_config: registrationDestinationConfig
                Structure is documented below.
         :param Sequence['ConnectionEventingConfigAdditionalVariableArgs'] additional_variables: List containing additional auth configs.
                Structure is documented below.
+        :param Sequence[_builtins.str] allowed_event_types: List of allowed event types for the connection.
         :param 'ConnectionEventingConfigAuthConfigArgs' auth_config: authConfig for Eventing Configuration.
                Structure is documented below.
+        :param 'ConnectionEventingConfigDeadLetterConfigArgs' dead_letter_config: Dead letter configuration for eventing of a connection.
+               Structure is documented below.
+        :param 'ConnectionEventingConfigEnrichmentConfigArgs' enrichment_config: Data enrichment configuration.
+               Structure is documented below.
         :param _builtins.bool enrichment_enabled: Enrichment Enabled.
+        :param _builtins.str global_event_filter: Filter to be applied on the events to be received by the connection.
         """
         pulumi.set(__self__, "registration_destination_config", registration_destination_config)
         if additional_variables is not None:
             pulumi.set(__self__, "additional_variables", additional_variables)
+        if allowed_event_types is not None:
+            pulumi.set(__self__, "allowed_event_types", allowed_event_types)
         if auth_config is not None:
             pulumi.set(__self__, "auth_config", auth_config)
+        if dead_letter_config is not None:
+            pulumi.set(__self__, "dead_letter_config", dead_letter_config)
+        if enrichment_config is not None:
+            pulumi.set(__self__, "enrichment_config", enrichment_config)
         if enrichment_enabled is not None:
             pulumi.set(__self__, "enrichment_enabled", enrichment_enabled)
+        if global_event_filter is not None:
+            pulumi.set(__self__, "global_event_filter", global_event_filter)
 
     @_builtins.property
     @pulumi.getter(name="registrationDestinationConfig")
@@ -1377,6 +1405,14 @@ class ConnectionEventingConfig(dict):
         return pulumi.get(self, "additional_variables")
 
     @_builtins.property
+    @pulumi.getter(name="allowedEventTypes")
+    def allowed_event_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed event types for the connection.
+        """
+        return pulumi.get(self, "allowed_event_types")
+
+    @_builtins.property
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> Optional['outputs.ConnectionEventingConfigAuthConfig']:
         """
@@ -1386,12 +1422,38 @@ class ConnectionEventingConfig(dict):
         return pulumi.get(self, "auth_config")
 
     @_builtins.property
+    @pulumi.getter(name="deadLetterConfig")
+    def dead_letter_config(self) -> Optional['outputs.ConnectionEventingConfigDeadLetterConfig']:
+        """
+        Dead letter configuration for eventing of a connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dead_letter_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enrichmentConfig")
+    def enrichment_config(self) -> Optional['outputs.ConnectionEventingConfigEnrichmentConfig']:
+        """
+        Data enrichment configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "enrichment_config")
+
+    @_builtins.property
     @pulumi.getter(name="enrichmentEnabled")
     def enrichment_enabled(self) -> Optional[_builtins.bool]:
         """
         Enrichment Enabled.
         """
         return pulumi.get(self, "enrichment_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="globalEventFilter")
+    def global_event_filter(self) -> Optional[_builtins.str]:
+        """
+        Filter to be applied on the events to be received by the connection.
+        """
+        return pulumi.get(self, "global_event_filter")
 
 
 @pulumi.output_type
@@ -1936,6 +1998,88 @@ class ConnectionEventingConfigAuthConfigUserPasswordPassword(dict):
         format as: projects/*/secrets/*/versions/*.
         """
         return pulumi.get(self, "secret_version")
+
+
+@pulumi.output_type
+class ConnectionEventingConfigDeadLetterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionEventingConfigDeadLetterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionEventingConfigDeadLetterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionEventingConfigDeadLetterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 topic: _builtins.str):
+        """
+        :param _builtins.str project_id: Project which has the topic given.
+        :param _builtins.str topic: Topic to push events which couldn't be processed.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "topic", topic)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Project which has the topic given.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def topic(self) -> _builtins.str:
+        """
+        Topic to push events which couldn't be processed.
+        """
+        return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class ConnectionEventingConfigEnrichmentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appendAcl":
+            suggest = "append_acl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionEventingConfigEnrichmentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionEventingConfigEnrichmentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionEventingConfigEnrichmentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 append_acl: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool append_acl: Append ACL to the event.
+        """
+        if append_acl is not None:
+            pulumi.set(__self__, "append_acl", append_acl)
+
+    @_builtins.property
+    @pulumi.getter(name="appendAcl")
+    def append_acl(self) -> Optional[_builtins.bool]:
+        """
+        Append ACL to the event.
+        """
+        return pulumi.get(self, "append_acl")
 
 
 @pulumi.output_type

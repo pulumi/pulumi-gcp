@@ -13,9 +13,21 @@ public final class GetSourceIamPolicyPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetSourceIamPolicyPlainArgs Empty = new GetSourceIamPolicyPlainArgs();
 
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="organization", required=true)
     private String organization;
 
+    /**
+     * @return The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public String organization() {
         return this.organization;
     }
@@ -60,6 +72,14 @@ public final class GetSourceIamPolicyPlainArgs extends com.pulumi.resources.Invo
             $ = new GetSourceIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param organization The organization whose Cloud Security Command Center the Source
+         * lives in.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder organization(String organization) {
             $.organization = organization;
             return this;

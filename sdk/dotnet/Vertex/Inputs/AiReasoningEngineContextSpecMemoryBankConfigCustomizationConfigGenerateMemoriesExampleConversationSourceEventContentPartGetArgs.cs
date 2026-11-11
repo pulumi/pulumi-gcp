@@ -62,6 +62,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataGetArgs>? InlineData { get; set; }
 
         /// <summary>
+        /// Turn-level metadata for speech generation. May be set alongside `Text` to attach speaker and style information to a text part.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("speechMetadata")]
+        public Input<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataGetArgs>? SpeechMetadata { get; set; }
+
+        /// <summary>
         /// The text content of the part.
         /// </summary>
         [Input("text")]

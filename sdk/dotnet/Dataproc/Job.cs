@@ -141,13 +141,13 @@ namespace Pulumi.Gcp.Dataproc
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// The config of Hadoop job
+        /// Submits a Hadoop job to the cluster. Structure is documented below.
         /// </summary>
         [Output("hadoopConfig")]
         public Output<Outputs.JobHadoopConfig?> HadoopConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The config of hive job
+        /// Submits a Hive job to the cluster. Structure is documented below.
         /// </summary>
         [Output("hiveConfig")]
         public Output<Outputs.JobHiveConfig?> HiveConfig { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The config of pag job.
+        /// Submits a Pig job to the cluster. Structure is documented below.
         /// </summary>
         [Output("pigConfig")]
         public Output<Outputs.JobPigConfig?> PigConfig { get; private set; } = null!;
@@ -173,7 +173,9 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.JobPlacement> Placement { get; private set; } = null!;
 
         /// <summary>
-        /// The config of presto job
+        /// Submits a Presto job to the cluster. Structure is documented below.
+        /// 
+        /// ***
         /// </summary>
         [Output("prestoConfig")]
         public Output<Outputs.JobPrestoConfig?> PrestoConfig { get; private set; } = null!;
@@ -192,7 +194,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The config of pySpark job.
+        /// Submits a PySpark job to the cluster. Structure is documented below.
         /// </summary>
         [Output("pysparkConfig")]
         public Output<Outputs.JobPysparkConfig?> PysparkConfig { get; private set; } = null!;
@@ -217,13 +219,13 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.JobScheduling?> Scheduling { get; private set; } = null!;
 
         /// <summary>
-        /// The config of the Spark job.
+        /// Submits a Spark job to the cluster. Structure is documented below.
         /// </summary>
         [Output("sparkConfig")]
         public Output<Outputs.JobSparkConfig?> SparkConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The config of SparkSql job
+        /// Submits a Spark SQL job to the cluster. Structure is documented below.
         /// </summary>
         [Output("sparksqlConfig")]
         public Output<Outputs.JobSparksqlConfig?> SparksqlConfig { get; private set; } = null!;
@@ -311,13 +313,13 @@ namespace Pulumi.Gcp.Dataproc
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// The config of Hadoop job
+        /// Submits a Hadoop job to the cluster. Structure is documented below.
         /// </summary>
         [Input("hadoopConfig")]
         public Input<Inputs.JobHadoopConfigArgs>? HadoopConfig { get; set; }
 
         /// <summary>
-        /// The config of hive job
+        /// Submits a Hive job to the cluster. Structure is documented below.
         /// </summary>
         [Input("hiveConfig")]
         public Input<Inputs.JobHiveConfigArgs>? HiveConfig { get; set; }
@@ -337,7 +339,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// The config of pag job.
+        /// Submits a Pig job to the cluster. Structure is documented below.
         /// </summary>
         [Input("pigConfig")]
         public Input<Inputs.JobPigConfigArgs>? PigConfig { get; set; }
@@ -349,7 +351,9 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.JobPlacementArgs> Placement { get; set; } = null!;
 
         /// <summary>
-        /// The config of presto job
+        /// Submits a Presto job to the cluster. Structure is documented below.
+        /// 
+        /// ***
         /// </summary>
         [Input("prestoConfig")]
         public Input<Inputs.JobPrestoConfigArgs>? PrestoConfig { get; set; }
@@ -362,7 +366,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The config of pySpark job.
+        /// Submits a PySpark job to the cluster. Structure is documented below.
         /// </summary>
         [Input("pysparkConfig")]
         public Input<Inputs.JobPysparkConfigArgs>? PysparkConfig { get; set; }
@@ -387,13 +391,13 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.JobSchedulingArgs>? Scheduling { get; set; }
 
         /// <summary>
-        /// The config of the Spark job.
+        /// Submits a Spark job to the cluster. Structure is documented below.
         /// </summary>
         [Input("sparkConfig")]
         public Input<Inputs.JobSparkConfigArgs>? SparkConfig { get; set; }
 
         /// <summary>
-        /// The config of SparkSql job
+        /// Submits a Spark SQL job to the cluster. Structure is documented below.
         /// </summary>
         [Input("sparksqlConfig")]
         public Input<Inputs.JobSparksqlConfigArgs>? SparksqlConfig { get; set; }
@@ -464,13 +468,13 @@ namespace Pulumi.Gcp.Dataproc
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// The config of Hadoop job
+        /// Submits a Hadoop job to the cluster. Structure is documented below.
         /// </summary>
         [Input("hadoopConfig")]
         public Input<Inputs.JobHadoopConfigGetArgs>? HadoopConfig { get; set; }
 
         /// <summary>
-        /// The config of hive job
+        /// Submits a Hive job to the cluster. Structure is documented below.
         /// </summary>
         [Input("hiveConfig")]
         public Input<Inputs.JobHiveConfigGetArgs>? HiveConfig { get; set; }
@@ -490,7 +494,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// The config of pag job.
+        /// Submits a Pig job to the cluster. Structure is documented below.
         /// </summary>
         [Input("pigConfig")]
         public Input<Inputs.JobPigConfigGetArgs>? PigConfig { get; set; }
@@ -502,7 +506,9 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.JobPlacementGetArgs>? Placement { get; set; }
 
         /// <summary>
-        /// The config of presto job
+        /// Submits a Presto job to the cluster. Structure is documented below.
+        /// 
+        /// ***
         /// </summary>
         [Input("prestoConfig")]
         public Input<Inputs.JobPrestoConfigGetArgs>? PrestoConfig { get; set; }
@@ -531,7 +537,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// The config of pySpark job.
+        /// Submits a PySpark job to the cluster. Structure is documented below.
         /// </summary>
         [Input("pysparkConfig")]
         public Input<Inputs.JobPysparkConfigGetArgs>? PysparkConfig { get; set; }
@@ -556,13 +562,13 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.JobSchedulingGetArgs>? Scheduling { get; set; }
 
         /// <summary>
-        /// The config of the Spark job.
+        /// Submits a Spark job to the cluster. Structure is documented below.
         /// </summary>
         [Input("sparkConfig")]
         public Input<Inputs.JobSparkConfigGetArgs>? SparkConfig { get; set; }
 
         /// <summary>
-        /// The config of SparkSql job
+        /// Submits a Spark SQL job to the cluster. Structure is documented below.
         /// </summary>
         [Input("sparksqlConfig")]
         public Input<Inputs.JobSparksqlConfigGetArgs>? SparksqlConfig { get; set; }

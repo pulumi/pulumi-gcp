@@ -86,6 +86,17 @@ export class Api extends pulumi.CustomResource {
      */
     declare public readonly detectMd5hash: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * User labels applied to this API proxy. Changing only the labels does not create a new revision.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The id of the most recently created revision for this API proxy.
      */
     declare public /*out*/ readonly latestRevisionId: pulumi.Output<string>;
@@ -107,6 +118,10 @@ export class Api extends pulumi.CustomResource {
      */
     declare public readonly orgId: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
+    /**
      * A list of revisions of this API proxy.
      */
     declare public /*out*/ readonly revisions: pulumi.Output<string[]>;
@@ -127,11 +142,14 @@ export class Api extends pulumi.CustomResource {
             resourceInputs["configBundle"] = state?.configBundle;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["detectMd5hash"] = state?.detectMd5hash;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["latestRevisionId"] = state?.latestRevisionId;
             resourceInputs["md5hash"] = state?.md5hash;
             resourceInputs["metaDatas"] = state?.metaDatas;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["revisions"] = state?.revisions;
         } else {
             const args = argsOrState as ApiArgs | undefined;
@@ -144,14 +162,19 @@ export class Api extends pulumi.CustomResource {
             resourceInputs["configBundle"] = args?.configBundle;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["detectMd5hash"] = args?.detectMd5hash;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["latestRevisionId"] = undefined /*out*/;
             resourceInputs["md5hash"] = undefined /*out*/;
             resourceInputs["metaDatas"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["revisions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Api.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -180,6 +203,17 @@ export interface ApiState {
      */
     detectMd5hash?: pulumi.Input<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * User labels applied to this API proxy. Changing only the labels does not create a new revision.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The id of the most recently created revision for this API proxy.
      */
     latestRevisionId?: pulumi.Input<string | undefined>;
@@ -200,6 +234,10 @@ export interface ApiState {
      * The Apigee Organization name associated with the Apigee instance.
      */
     orgId?: pulumi.Input<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of revisions of this API proxy.
      */
@@ -229,6 +267,13 @@ export interface ApiArgs {
      * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
      */
     detectMd5hash?: pulumi.Input<string | undefined>;
+    /**
+     * User labels applied to this API proxy. Changing only the labels does not create a new revision.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the API proxy.
      */

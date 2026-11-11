@@ -83,6 +83,17 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// When set to `TRUE`, enables `ObservabilityMode` on the `ExtProc` filter.
+        /// This makes `ExtProc` calls asynchronous. Envoy doesn't check for the response from `ExtProc` calls.
+        /// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+        /// This field is helpful when you want to try out the extension in async log-only mode.
+        /// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+        /// Only `STREAMED` (default) body processing mode is supported.
+        /// </summary>
+        [Input("observabilityMode")]
+        public Input<bool>? ObservabilityMode { get; set; }
+
+        /// <summary>
         /// The reference to the service that runs the extension.
         /// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
         /// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.

@@ -60,6 +60,7 @@ __all__ = [
     'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig',
     'LicenseConfigEndDate',
     'LicenseConfigStartDate',
+    'ProjectProvisionSaasParams',
     'RecommendationEngineCommonConfig',
     'RecommendationEngineMediaRecommendationEngineConfig',
     'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig',
@@ -2615,6 +2616,60 @@ class LicenseConfigStartDate(dict):
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
         return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class ProjectProvisionSaasParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceptBizQos":
+            suggest = "accept_biz_qos"
+        elif key == "isBiz":
+            suggest = "is_biz"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectProvisionSaasParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectProvisionSaasParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectProvisionSaasParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accept_biz_qos: Optional[_builtins.bool] = None,
+                 is_biz: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool accept_biz_qos: Set to `true` to specify that the caller has read and consents to the
+               Terms for business edition quality of service.
+        :param _builtins.bool is_biz: Indicates whether the current request is for Business edition (`true`)
+               or not (`false`).
+        """
+        if accept_biz_qos is not None:
+            pulumi.set(__self__, "accept_biz_qos", accept_biz_qos)
+        if is_biz is not None:
+            pulumi.set(__self__, "is_biz", is_biz)
+
+    @_builtins.property
+    @pulumi.getter(name="acceptBizQos")
+    def accept_biz_qos(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to specify that the caller has read and consents to the
+        Terms for business edition quality of service.
+        """
+        return pulumi.get(self, "accept_biz_qos")
+
+    @_builtins.property
+    @pulumi.getter(name="isBiz")
+    def is_biz(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the current request is for Business edition (`true`)
+        or not (`false`).
+        """
+        return pulumi.get(self, "is_biz")
 
 
 @pulumi.output_type

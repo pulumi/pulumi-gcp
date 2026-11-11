@@ -213,6 +213,102 @@ import (
 //
 // ```
 //
+// ### Backup Dr Bpa Netapp
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: pulumi.StringRef("test-network-bpa"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultStoragePool, err := netapp.NewStoragePool(ctx, "default", &netapp.StoragePoolArgs{
+//				Name:         pulumi.String("test-pool-bpa"),
+//				Location:     pulumi.String("us-central1-a"),
+//				ServiceLevel: pulumi.String("FLEX"),
+//				Type:         pulumi.String("UNIFIED"),
+//				CapacityGib:  pulumi.String("1024"),
+//				Network:      pulumi.String(_default.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myVolume, err := netapp.NewVolume(ctx, "my_volume", &netapp.VolumeArgs{
+//				Location:    pulumi.String("us-central1-a"),
+//				Name:        pulumi.String("test-volume-bpa"),
+//				CapacityGib: pulumi.String("100"),
+//				ShareName:   pulumi.String("test-volume-bpa"),
+//				StoragePool: defaultStoragePool.Name,
+//				Protocols: pulumi.StringArray{
+//					pulumi.String("NFSV3"),
+//				},
+//				DeletionPolicy: pulumi.String("FORCE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myBackupVault, err := backupdisasterrecovery.NewBackupVault(ctx, "my_backup_vault", &backupdisasterrecovery.BackupVaultArgs{
+//				Location:                               pulumi.String("us-central1"),
+//				BackupVaultId:                          pulumi.String("bv-bpa-netapp"),
+//				BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
+//				ForceDelete:                            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myBackupPlan, err := backupdisasterrecovery.NewBackupPlan(ctx, "my_backup_plan", &backupdisasterrecovery.BackupPlanArgs{
+//				Location:     pulumi.String("us-central1"),
+//				BackupPlanId: pulumi.String("bp-bpa-netapp"),
+//				ResourceType: pulumi.String("netapp.googleapis.com/Volume"),
+//				BackupVault:  myBackupVault.ID(),
+//				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
+//					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
+//						RuleId:              pulumi.String("rule-1"),
+//						BackupRetentionDays: pulumi.Int(5),
+//						StandardSchedule: &backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleArgs{
+//							RecurrenceType:  pulumi.String("HOURLY"),
+//							HourlyFrequency: pulumi.Int(6),
+//							TimeZone:        pulumi.String("UTC"),
+//							BackupWindow: &backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleBackupWindowArgs{
+//								StartHourOfDay: pulumi.Int(0),
+//								EndHourOfDay:   pulumi.Int(6),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = backupdisasterrecovery.NewBackupPlanAssociation(ctx, "my-backup-plan-association-netapp", &backupdisasterrecovery.BackupPlanAssociationArgs{
+//				Location:                pulumi.String("us-central1"),
+//				ResourceType:            pulumi.String("netapp.googleapis.com/Volume"),
+//				BackupPlanAssociationId: pulumi.String("my-bpa-netapp"),
+//				Resource:                myVolume.ID(),
+//				BackupPlan:              myBackupPlan.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // BackupPlanAssociation can be imported using any of these accepted formats:
@@ -240,6 +336,7 @@ type BackupPlanAssociation struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+	// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 	BackupPlan pulumi.StringOutput `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringOutput `pulumi:"backupPlanAssociationId"`
@@ -264,7 +361,7 @@ type BackupPlanAssociation struct {
 	// The resource for which BPA needs to be created
 	Resource pulumi.StringOutput `pulumi:"resource"`
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// Message for rules config info
 	// Structure is documented below.
@@ -327,6 +424,7 @@ type backupPlanAssociationState struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+	// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 	BackupPlan *string `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId *string `pulumi:"backupPlanAssociationId"`
@@ -351,7 +449,7 @@ type backupPlanAssociationState struct {
 	// The resource for which BPA needs to be created
 	Resource *string `pulumi:"resource"`
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 	ResourceType *string `pulumi:"resourceType"`
 	// Message for rules config info
 	// Structure is documented below.
@@ -370,6 +468,7 @@ type BackupPlanAssociationState struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+	// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 	BackupPlan pulumi.StringPtrInput
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringPtrInput
@@ -394,7 +493,7 @@ type BackupPlanAssociationState struct {
 	// The resource for which BPA needs to be created
 	Resource pulumi.StringPtrInput
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 	ResourceType pulumi.StringPtrInput
 	// Message for rules config info
 	// Structure is documented below.
@@ -420,6 +519,7 @@ type backupPlanAssociationArgs struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+	// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 	BackupPlan string `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId string `pulumi:"backupPlanAssociationId"`
@@ -438,7 +538,7 @@ type backupPlanAssociationArgs struct {
 	// The resource for which BPA needs to be created
 	Resource string `pulumi:"resource"`
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -450,6 +550,7 @@ type BackupPlanAssociationArgs struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+	// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 	BackupPlan pulumi.StringInput
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringInput
@@ -468,7 +569,7 @@ type BackupPlanAssociationArgs struct {
 	// The resource for which BPA needs to be created
 	Resource pulumi.StringInput
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 	ResourceType pulumi.StringInput
 }
 
@@ -571,6 +672,7 @@ func (o BackupPlanAssociationOutput) AutoProtectionPolicyBinding() pulumi.String
 // - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 // - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 // - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 func (o BackupPlanAssociationOutput) BackupPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.BackupPlan }).(pulumi.StringOutput)
 }
@@ -622,7 +724,7 @@ func (o BackupPlanAssociationOutput) Resource() pulumi.StringOutput {
 }
 
 // The resource type of workload on which backupplan is applied.
-// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 func (o BackupPlanAssociationOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

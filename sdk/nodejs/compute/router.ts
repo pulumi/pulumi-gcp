@@ -210,8 +210,13 @@ export class Router extends pulumi.CustomResource {
      */
     declare public readonly encryptedInterconnectRouter: pulumi.Output<boolean | undefined>;
     /**
+     * (Optional, Deprecated)
      * Keys used for MD5 authentication.
      * Structure is documented below.
+     *
+     * > **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     *
+     * @deprecated `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
      */
     declare public readonly md5AuthenticationKeys: pulumi.Output<outputs.compute.RouterMd5AuthenticationKeys | undefined>;
     /**
@@ -335,8 +340,13 @@ export interface RouterState {
      */
     encryptedInterconnectRouter?: pulumi.Input<boolean | undefined>;
     /**
+     * (Optional, Deprecated)
      * Keys used for MD5 authentication.
      * Structure is documented below.
+     *
+     * > **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     *
+     * @deprecated `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
      */
     md5AuthenticationKeys?: pulumi.Input<inputs.compute.RouterMd5AuthenticationKeys | undefined>;
     /**
@@ -408,8 +418,13 @@ export interface RouterArgs {
      */
     encryptedInterconnectRouter?: pulumi.Input<boolean | undefined>;
     /**
+     * (Optional, Deprecated)
      * Keys used for MD5 authentication.
      * Structure is documented below.
+     *
+     * > **Warning:** `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
+     *
+     * @deprecated `md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
      */
     md5AuthenticationKeys?: pulumi.Input<inputs.compute.RouterMd5AuthenticationKeys | undefined>;
     /**

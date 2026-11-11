@@ -147,6 +147,40 @@ __all__ = [
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict',
+    'AiEvaluationItemErrorArgs',
+    'AiEvaluationItemErrorArgsDict',
+    'AiEvaluationItemEvaluationRequestArgs',
+    'AiEvaluationItemEvaluationRequestArgsDict',
+    'AiEvaluationItemEvaluationRequestCandidateResponseArgs',
+    'AiEvaluationItemEvaluationRequestCandidateResponseArgsDict',
+    'AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs',
+    'AiEvaluationItemEvaluationRequestCandidateResponseErrorArgsDict',
+    'AiEvaluationItemEvaluationRequestGoldenResponseArgs',
+    'AiEvaluationItemEvaluationRequestGoldenResponseArgsDict',
+    'AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs',
+    'AiEvaluationItemEvaluationRequestGoldenResponseErrorArgsDict',
+    'AiEvaluationItemEvaluationRequestPromptArgs',
+    'AiEvaluationItemEvaluationRequestPromptArgsDict',
+    'AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs',
+    'AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgsDict',
+    'AiEvaluationItemEvaluationRequestPromptUserScenarioArgs',
+    'AiEvaluationItemEvaluationRequestPromptUserScenarioArgsDict',
+    'AiEvaluationItemEvaluationRequestRubricArgs',
+    'AiEvaluationItemEvaluationRequestRubricArgsDict',
+    'AiEvaluationItemEvaluationRequestRubricRubricArgs',
+    'AiEvaluationItemEvaluationRequestRubricRubricArgsDict',
+    'AiEvaluationItemEvaluationRequestRubricRubricContentArgs',
+    'AiEvaluationItemEvaluationRequestRubricRubricContentArgsDict',
+    'AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs',
+    'AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgsDict',
+    'AiEvaluationItemEvaluationResponseArgs',
+    'AiEvaluationItemEvaluationResponseArgsDict',
+    'AiEvaluationItemEvaluationResponseCandidateResultArgs',
+    'AiEvaluationItemEvaluationResponseCandidateResultArgsDict',
+    'AiEvaluationItemEvaluationResponseCandidateResultErrorArgs',
+    'AiEvaluationItemEvaluationResponseCandidateResultErrorArgsDict',
+    'AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs',
+    'AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgsDict',
     'AiEvaluationMetricEncryptionSpecArgs',
     'AiEvaluationMetricEncryptionSpecArgsDict',
     'AiFeatureGroupBigQueryArgs',
@@ -491,6 +525,8 @@ __all__ = [
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataArgs',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs',
@@ -7312,6 +7348,1480 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
     @port.setter
     def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+
+class AiEvaluationItemErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemErrorArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class AiEvaluationItemEvaluationRequestArgsDict(TypedDict):
+    candidate_responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseArgsDict']]]]]
+    """
+    Responses from model under test and other baseline models for comparison.
+    Structure is documented below.
+    """
+    golden_response: NotRequired[pulumi.Input[Optional['AiEvaluationItemEvaluationRequestGoldenResponseArgsDict']]]
+    """
+    The ideal response or ground truth.
+    Structure is documented below.
+    """
+    prompt: NotRequired[pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptArgsDict']]]
+    """
+    The request/prompt to evaluate.
+    Structure is documented below.
+    """
+    rubrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricArgsDict']]]]]
+    """
+    Named groups of rubrics associated with this prompt.
+    The key is a user-defined name for the rubric group.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestArgs:
+    def __init__(__self__, *,
+                 candidate_responses: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseArgs']]]] = None,
+                 golden_response: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestGoldenResponseArgs']] = None,
+                 prompt: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptArgs']] = None,
+                 rubrics: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseArgs']]] candidate_responses: Responses from model under test and other baseline models for comparison.
+               Structure is documented below.
+        :param pulumi.Input['AiEvaluationItemEvaluationRequestGoldenResponseArgs'] golden_response: The ideal response or ground truth.
+               Structure is documented below.
+        :param pulumi.Input['AiEvaluationItemEvaluationRequestPromptArgs'] prompt: The request/prompt to evaluate.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricArgs']]] rubrics: Named groups of rubrics associated with this prompt.
+               The key is a user-defined name for the rubric group.
+               Structure is documented below.
+        """
+        if candidate_responses is not None:
+            pulumi.set(__self__, "candidate_responses", candidate_responses)
+        if golden_response is not None:
+            pulumi.set(__self__, "golden_response", golden_response)
+        if prompt is not None:
+            pulumi.set(__self__, "prompt", prompt)
+        if rubrics is not None:
+            pulumi.set(__self__, "rubrics", rubrics)
+
+    @_builtins.property
+    @pulumi.getter(name="candidateResponses")
+    def candidate_responses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseArgs']]]]:
+        """
+        Responses from model under test and other baseline models for comparison.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "candidate_responses")
+
+    @candidate_responses.setter
+    def candidate_responses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseArgs']]]]):
+        pulumi.set(self, "candidate_responses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="goldenResponse")
+    def golden_response(self) -> pulumi.Input[Optional['AiEvaluationItemEvaluationRequestGoldenResponseArgs']]:
+        """
+        The ideal response or ground truth.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "golden_response")
+
+    @golden_response.setter
+    def golden_response(self, value: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestGoldenResponseArgs']]):
+        pulumi.set(self, "golden_response", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prompt(self) -> pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptArgs']]:
+        """
+        The request/prompt to evaluate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "prompt")
+
+    @prompt.setter
+    def prompt(self, value: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptArgs']]):
+        pulumi.set(self, "prompt", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rubrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricArgs']]]]:
+        """
+        Named groups of rubrics associated with this prompt.
+        The key is a user-defined name for the rubric group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rubrics")
+
+    @rubrics.setter
+    def rubrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricArgs']]]]):
+        pulumi.set(self, "rubrics", value)
+
+
+class AiEvaluationItemEvaluationRequestCandidateResponseArgsDict(TypedDict):
+    candidate: pulumi.Input[_builtins.str]
+    """
+    The name of the candidate that produced the response.
+    """
+    agent_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Represents the complete execution trace of a multi-turn conversation,
+    which can involve single or multiple agents, as a JSON string. This
+    field is used to provide the full output of an agent's run, including
+    all turns and events, for direct evaluation.
+    At most one of `text`, `value`, or `agent_data` can be set.
+    """
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseErrorArgsDict']]]]]
+    """
+    (Output)
+    Error while scraping model or agent.
+    Structure is documented below.
+
+    <a name="nested_evaluation_request_candidate_responses_error"></a>The `error` block contains:
+    """
+    text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Text response.
+    At most one of `text`, `value`, or `agent_data` can be set.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Fields and values that can be used to populate the response template, as a JSON string.
+    At most one of `text`, `value`, or `agent_data` can be set.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestCandidateResponseArgs:
+    def __init__(__self__, *,
+                 candidate: pulumi.Input[_builtins.str],
+                 agent_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs']]]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] candidate: The name of the candidate that produced the response.
+        :param pulumi.Input[_builtins.str] agent_data: Represents the complete execution trace of a multi-turn conversation,
+               which can involve single or multiple agents, as a JSON string. This
+               field is used to provide the full output of an agent's run, including
+               all turns and events, for direct evaluation.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs']]] errors: (Output)
+               Error while scraping model or agent.
+               Structure is documented below.
+               
+               <a name="nested_evaluation_request_candidate_responses_error"></a>The `error` block contains:
+        :param pulumi.Input[_builtins.str] text: Text response.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        :param pulumi.Input[_builtins.str] value: Fields and values that can be used to populate the response template, as a JSON string.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        pulumi.set(__self__, "candidate", candidate)
+        if agent_data is not None:
+            pulumi.set(__self__, "agent_data", agent_data)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def candidate(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the candidate that produced the response.
+        """
+        return pulumi.get(self, "candidate")
+
+    @candidate.setter
+    def candidate(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "candidate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentData")
+    def agent_data(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Represents the complete execution trace of a multi-turn conversation,
+        which can involve single or multiple agents, as a JSON string. This
+        field is used to provide the full output of an agent's run, including
+        all turns and events, for direct evaluation.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "agent_data")
+
+    @agent_data.setter
+    def agent_data(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_data", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs']]]]:
+        """
+        (Output)
+        Error while scraping model or agent.
+        Structure is documented below.
+
+        <a name="nested_evaluation_request_candidate_responses_error"></a>The `error` block contains:
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Text response.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Fields and values that can be used to populate the response template, as a JSON string.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AiEvaluationItemEvaluationRequestCandidateResponseErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestCandidateResponseErrorArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class AiEvaluationItemEvaluationRequestGoldenResponseArgsDict(TypedDict):
+    candidate: pulumi.Input[_builtins.str]
+    """
+    The name of the candidate that produced the response.
+    """
+    agent_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Represents the complete execution trace of a multi-turn conversation,
+    which can involve single or multiple agents, as a JSON string. This
+    field is used to provide the full output of an agent's run, including
+    all turns and events, for direct evaluation.
+    At most one of `text`, `value`, or `agent_data` can be set.
+    """
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestGoldenResponseErrorArgsDict']]]]]
+    """
+    (Output)
+    Error while scraping model or agent.
+    Structure is documented below.
+
+    <a name="nested_evaluation_request_golden_response_error"></a>The `error` block contains:
+    """
+    text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Text response.
+    At most one of `text`, `value`, or `agent_data` can be set.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Fields and values that can be used to populate the response template, as a JSON string.
+    At most one of `text`, `value`, or `agent_data` can be set.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestGoldenResponseArgs:
+    def __init__(__self__, *,
+                 candidate: pulumi.Input[_builtins.str],
+                 agent_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs']]]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] candidate: The name of the candidate that produced the response.
+        :param pulumi.Input[_builtins.str] agent_data: Represents the complete execution trace of a multi-turn conversation,
+               which can involve single or multiple agents, as a JSON string. This
+               field is used to provide the full output of an agent's run, including
+               all turns and events, for direct evaluation.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs']]] errors: (Output)
+               Error while scraping model or agent.
+               Structure is documented below.
+               
+               <a name="nested_evaluation_request_golden_response_error"></a>The `error` block contains:
+        :param pulumi.Input[_builtins.str] text: Text response.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        :param pulumi.Input[_builtins.str] value: Fields and values that can be used to populate the response template, as a JSON string.
+               At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        pulumi.set(__self__, "candidate", candidate)
+        if agent_data is not None:
+            pulumi.set(__self__, "agent_data", agent_data)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def candidate(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the candidate that produced the response.
+        """
+        return pulumi.get(self, "candidate")
+
+    @candidate.setter
+    def candidate(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "candidate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentData")
+    def agent_data(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Represents the complete execution trace of a multi-turn conversation,
+        which can involve single or multiple agents, as a JSON string. This
+        field is used to provide the full output of an agent's run, including
+        all turns and events, for direct evaluation.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "agent_data")
+
+    @agent_data.setter
+    def agent_data(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_data", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs']]]]:
+        """
+        (Output)
+        Error while scraping model or agent.
+        Structure is documented below.
+
+        <a name="nested_evaluation_request_golden_response_error"></a>The `error` block contains:
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Text response.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Fields and values that can be used to populate the response template, as a JSON string.
+        At most one of `text`, `value`, or `agent_data` can be set.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AiEvaluationItemEvaluationRequestGoldenResponseErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestGoldenResponseErrorArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class AiEvaluationItemEvaluationRequestPromptArgsDict(TypedDict):
+    agent_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Represents the complete execution trace of a multi-turn conversation,
+    which can involve single or multiple agents, as a JSON string. This
+    serves as the input context for agent scraping.
+    At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+    """
+    prompt_template_data: NotRequired[pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgsDict']]]
+    """
+    Prompt template data.
+    At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+    Structure is documented below.
+    """
+    text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Text prompt.
+    At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+    """
+    user_scenario: NotRequired[pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptUserScenarioArgsDict']]]
+    """
+    The generated user scenario used to drive multi-turn agent running results.
+    At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+    Structure is documented below.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Fields and values that can be used to populate the prompt template, as a JSON string.
+    At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestPromptArgs:
+    def __init__(__self__, *,
+                 agent_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt_template_data: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs']] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_scenario: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptUserScenarioArgs']] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] agent_data: Represents the complete execution trace of a multi-turn conversation,
+               which can involve single or multiple agents, as a JSON string. This
+               serves as the input context for agent scraping.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        :param pulumi.Input['AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs'] prompt_template_data: Prompt template data.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] text: Text prompt.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        :param pulumi.Input['AiEvaluationItemEvaluationRequestPromptUserScenarioArgs'] user_scenario: The generated user scenario used to drive multi-turn agent running results.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] value: Fields and values that can be used to populate the prompt template, as a JSON string.
+               At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        """
+        if agent_data is not None:
+            pulumi.set(__self__, "agent_data", agent_data)
+        if prompt_template_data is not None:
+            pulumi.set(__self__, "prompt_template_data", prompt_template_data)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if user_scenario is not None:
+            pulumi.set(__self__, "user_scenario", user_scenario)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentData")
+    def agent_data(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Represents the complete execution trace of a multi-turn conversation,
+        which can involve single or multiple agents, as a JSON string. This
+        serves as the input context for agent scraping.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        """
+        return pulumi.get(self, "agent_data")
+
+    @agent_data.setter
+    def agent_data(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="promptTemplateData")
+    def prompt_template_data(self) -> pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs']]:
+        """
+        Prompt template data.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "prompt_template_data")
+
+    @prompt_template_data.setter
+    def prompt_template_data(self, value: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs']]):
+        pulumi.set(self, "prompt_template_data", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Text prompt.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userScenario")
+    def user_scenario(self) -> pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptUserScenarioArgs']]:
+        """
+        The generated user scenario used to drive multi-turn agent running results.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_scenario")
+
+    @user_scenario.setter
+    def user_scenario(self, value: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestPromptUserScenarioArgs']]):
+        pulumi.set(self, "user_scenario", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Fields and values that can be used to populate the prompt template, as a JSON string.
+        At most one of `text`, `value`, `prompt_template_data`, `agent_data`, or `user_scenario` can be set.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The values for fields in the prompt template, as a JSON string mapping
+    field names to Content objects.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestPromptPromptTemplateDataArgs:
+    def __init__(__self__, *,
+                 values: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] values: The values for fields in the prompt template, as a JSON string mapping
+               field names to Content objects.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The values for fields in the prompt template, as a JSON string mapping
+        field names to Content objects.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "values", value)
+
+
+class AiEvaluationItemEvaluationRequestPromptUserScenarioArgsDict(TypedDict):
+    conversation_plan: pulumi.Input[_builtins.str]
+    """
+    The plan for the conversation, used to drive the multi-turn agent run and
+    generate the simulated agent evaluation dataset.
+    """
+    starting_prompt: pulumi.Input[_builtins.str]
+    """
+    The prompt that starts the conversation between the simulated user and
+    the agent under test.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestPromptUserScenarioArgs:
+    def __init__(__self__, *,
+                 conversation_plan: pulumi.Input[_builtins.str],
+                 starting_prompt: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] conversation_plan: The plan for the conversation, used to drive the multi-turn agent run and
+               generate the simulated agent evaluation dataset.
+        :param pulumi.Input[_builtins.str] starting_prompt: The prompt that starts the conversation between the simulated user and
+               the agent under test.
+        """
+        pulumi.set(__self__, "conversation_plan", conversation_plan)
+        pulumi.set(__self__, "starting_prompt", starting_prompt)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationPlan")
+    def conversation_plan(self) -> pulumi.Input[_builtins.str]:
+        """
+        The plan for the conversation, used to drive the multi-turn agent run and
+        generate the simulated agent evaluation dataset.
+        """
+        return pulumi.get(self, "conversation_plan")
+
+    @conversation_plan.setter
+    def conversation_plan(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "conversation_plan", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startingPrompt")
+    def starting_prompt(self) -> pulumi.Input[_builtins.str]:
+        """
+        The prompt that starts the conversation between the simulated user and
+        the agent under test.
+        """
+        return pulumi.get(self, "starting_prompt")
+
+    @starting_prompt.setter
+    def starting_prompt(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "starting_prompt", value)
+
+
+class AiEvaluationItemEvaluationRequestRubricArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Human-readable name for the group.
+    """
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Unique identifier for the group.
+    """
+    rubrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricArgsDict']]]]]
+    """
+    Rubrics that are part of this group.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestRubricArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rubrics: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[_builtins.str] display_name: Human-readable name for the group.
+        :param pulumi.Input[_builtins.str] group_id: Unique identifier for the group.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricArgs']]] rubrics: Rubrics that are part of this group.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if rubrics is not None:
+            pulumi.set(__self__, "rubrics", rubrics)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Human-readable name for the group.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Unique identifier for the group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rubrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricArgs']]]]:
+        """
+        Rubrics that are part of this group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rubrics")
+
+    @rubrics.setter
+    def rubrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricArgs']]]]):
+        pulumi.set(self, "rubrics", value)
+
+
+class AiEvaluationItemEvaluationRequestRubricRubricArgsDict(TypedDict):
+    content: pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricContentArgsDict']
+    """
+    The actual testable criteria for the rubric.
+    Structure is documented below.
+    """
+    importance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The relative importance of this rubric.
+    Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+    """
+    rubric_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Unique identifier for the rubric.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestRubricRubricArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricContentArgs'],
+                 importance: pulumi.Input[Optional[_builtins.str]] = None,
+                 rubric_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricContentArgs'] content: The actual testable criteria for the rubric.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] importance: The relative importance of this rubric.
+               Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+        :param pulumi.Input[_builtins.str] rubric_id: Unique identifier for the rubric.
+        :param pulumi.Input[_builtins.str] type: A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+        """
+        pulumi.set(__self__, "content", content)
+        if importance is not None:
+            pulumi.set(__self__, "importance", importance)
+        if rubric_id is not None:
+            pulumi.set(__self__, "rubric_id", rubric_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricContentArgs']:
+        """
+        The actual testable criteria for the rubric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricContentArgs']):
+        pulumi.set(self, "content", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def importance(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The relative importance of this rubric.
+        Possible values are: `HIGH`, `MEDIUM`, `LOW`.
+        """
+        return pulumi.get(self, "importance")
+
+    @importance.setter
+    def importance(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "importance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rubricId")
+    def rubric_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Unique identifier for the rubric.
+        """
+        return pulumi.get(self, "rubric_id")
+
+    @rubric_id.setter
+    def rubric_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "rubric_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A type designator for the rubric, e.g. `SUMMARIZATION_QUALITY`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class AiEvaluationItemEvaluationRequestRubricRubricContentArgsDict(TypedDict):
+    property: NotRequired[pulumi.Input[Optional['AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgsDict']]]
+    """
+    Evaluation criteria based on a specific property.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestRubricRubricContentArgs:
+    def __init__(__self__, *,
+                 property: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs']] = None):
+        """
+        :param pulumi.Input['AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs'] property: Evaluation criteria based on a specific property.
+               Structure is documented below.
+        """
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @_builtins.property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[Optional['AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs']]:
+        """
+        Evaluation criteria based on a specific property.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[Optional['AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs']]):
+        pulumi.set(self, "property", value)
+
+
+class AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Description of the property being evaluated.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationRequestRubricRubricContentPropertyArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of the property being evaluated.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the property being evaluated.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class AiEvaluationItemEvaluationResponseArgsDict(TypedDict):
+    candidate_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultArgsDict']]]]]
+    """
+    (Output)
+    The results for the metric.
+    Structure is documented below.
+    """
+    evaluation_request: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The request to evaluate.
+    Exactly one of `evaluation_request` or `gcs_uri` can be set.
+    Structure is documented below.
+    """
+    evaluation_run: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The evaluation run that was used to generate the result. Format:
+    `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+    """
+    metadata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User-defined metadata for this evaluation item as a JSON string.
+    """
+    metric: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The metric that was evaluated.
+    """
+    request: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The request that was evaluated, as a JSON string.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationResponseArgs:
+    def __init__(__self__, *,
+                 candidate_results: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultArgs']]]] = None,
+                 evaluation_request: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_run: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 request: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultArgs']]] candidate_results: (Output)
+               The results for the metric.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] evaluation_request: The request to evaluate.
+               Exactly one of `evaluation_request` or `gcs_uri` can be set.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] evaluation_run: (Output)
+               The evaluation run that was used to generate the result. Format:
+               `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+        :param pulumi.Input[_builtins.str] metadata: User-defined metadata for this evaluation item as a JSON string.
+        :param pulumi.Input[_builtins.str] metric: (Output)
+               The metric that was evaluated.
+        :param pulumi.Input[_builtins.str] request: (Output)
+               The request that was evaluated, as a JSON string.
+        """
+        if candidate_results is not None:
+            pulumi.set(__self__, "candidate_results", candidate_results)
+        if evaluation_request is not None:
+            pulumi.set(__self__, "evaluation_request", evaluation_request)
+        if evaluation_run is not None:
+            pulumi.set(__self__, "evaluation_run", evaluation_run)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if request is not None:
+            pulumi.set(__self__, "request", request)
+
+    @_builtins.property
+    @pulumi.getter(name="candidateResults")
+    def candidate_results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultArgs']]]]:
+        """
+        (Output)
+        The results for the metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "candidate_results")
+
+    @candidate_results.setter
+    def candidate_results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultArgs']]]]):
+        pulumi.set(self, "candidate_results", value)
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationRequest")
+    def evaluation_request(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The request to evaluate.
+        Exactly one of `evaluation_request` or `gcs_uri` can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "evaluation_request")
+
+    @evaluation_request.setter
+    def evaluation_request(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "evaluation_request", value)
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationRun")
+    def evaluation_run(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The evaluation run that was used to generate the result. Format:
+        `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+        """
+        return pulumi.get(self, "evaluation_run")
+
+    @evaluation_run.setter
+    def evaluation_run(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "evaluation_run", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-defined metadata for this evaluation item as a JSON string.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metric(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The metric that was evaluated.
+        """
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def request(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The request that was evaluated, as a JSON string.
+        """
+        return pulumi.get(self, "request")
+
+    @request.setter
+    def request(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "request", value)
+
+
+class AiEvaluationItemEvaluationResponseCandidateResultArgsDict(TypedDict):
+    additional_results: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Additional results for the metric, as a JSON string.
+    """
+    candidate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The candidate that is being evaluated.
+    """
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultErrorArgsDict']]]]]
+    """
+    (Output)
+    Error while evaluating the candidate for the metric.
+    Structure is documented below.
+    """
+    explanation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The explanation for the metric.
+    """
+    metric: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The metric that was evaluated.
+    """
+    rubric_verdicts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgsDict']]]]]
+    """
+    (Output)
+    The rubric verdicts for the metric.
+    Structure is documented below.
+    """
+    score: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Output)
+    The score for the metric.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationResponseCandidateResultArgs:
+    def __init__(__self__, *,
+                 additional_results: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate: pulumi.Input[Optional[_builtins.str]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultErrorArgs']]]] = None,
+                 explanation: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 rubric_verdicts: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs']]]] = None,
+                 score: pulumi.Input[Optional[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] additional_results: (Output)
+               Additional results for the metric, as a JSON string.
+        :param pulumi.Input[_builtins.str] candidate: (Output)
+               The candidate that is being evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultErrorArgs']]] errors: (Output)
+               Error while evaluating the candidate for the metric.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] explanation: (Output)
+               The explanation for the metric.
+        :param pulumi.Input[_builtins.str] metric: (Output)
+               The metric that was evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs']]] rubric_verdicts: (Output)
+               The rubric verdicts for the metric.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.float] score: (Output)
+               The score for the metric.
+        """
+        if additional_results is not None:
+            pulumi.set(__self__, "additional_results", additional_results)
+        if candidate is not None:
+            pulumi.set(__self__, "candidate", candidate)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if explanation is not None:
+            pulumi.set(__self__, "explanation", explanation)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if rubric_verdicts is not None:
+            pulumi.set(__self__, "rubric_verdicts", rubric_verdicts)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalResults")
+    def additional_results(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Additional results for the metric, as a JSON string.
+        """
+        return pulumi.get(self, "additional_results")
+
+    @additional_results.setter
+    def additional_results(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "additional_results", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def candidate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The candidate that is being evaluated.
+        """
+        return pulumi.get(self, "candidate")
+
+    @candidate.setter
+    def candidate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "candidate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultErrorArgs']]]]:
+        """
+        (Output)
+        Error while evaluating the candidate for the metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def explanation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The explanation for the metric.
+        """
+        return pulumi.get(self, "explanation")
+
+    @explanation.setter
+    def explanation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "explanation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metric(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The metric that was evaluated.
+        """
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rubricVerdicts")
+    def rubric_verdicts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs']]]]:
+        """
+        (Output)
+        The rubric verdicts for the metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rubric_verdicts")
+
+    @rubric_verdicts.setter
+    def rubric_verdicts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs']]]]):
+        pulumi.set(self, "rubric_verdicts", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Output)
+        The score for the metric.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "score", value)
+
+
+class AiEvaluationItemEvaluationResponseCandidateResultErrorArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationResponseCandidateResultErrorArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgsDict(TypedDict):
+    evaluated_rubric: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The full rubric definition that was evaluated, as a JSON string.
+    """
+    reasoning: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Human-readable reasoning for the verdict.
+    """
+    verdict: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Outcome of the evaluation against the rubric.
+    """
+
+@pulumi.input_type
+class AiEvaluationItemEvaluationResponseCandidateResultRubricVerdictArgs:
+    def __init__(__self__, *,
+                 evaluated_rubric: pulumi.Input[Optional[_builtins.str]] = None,
+                 reasoning: pulumi.Input[Optional[_builtins.str]] = None,
+                 verdict: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] evaluated_rubric: (Output)
+               The full rubric definition that was evaluated, as a JSON string.
+        :param pulumi.Input[_builtins.str] reasoning: (Output)
+               Human-readable reasoning for the verdict.
+        :param pulumi.Input[_builtins.bool] verdict: (Output)
+               Outcome of the evaluation against the rubric.
+        """
+        if evaluated_rubric is not None:
+            pulumi.set(__self__, "evaluated_rubric", evaluated_rubric)
+        if reasoning is not None:
+            pulumi.set(__self__, "reasoning", reasoning)
+        if verdict is not None:
+            pulumi.set(__self__, "verdict", verdict)
+
+    @_builtins.property
+    @pulumi.getter(name="evaluatedRubric")
+    def evaluated_rubric(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The full rubric definition that was evaluated, as a JSON string.
+        """
+        return pulumi.get(self, "evaluated_rubric")
+
+    @evaluated_rubric.setter
+    def evaluated_rubric(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "evaluated_rubric", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def reasoning(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Human-readable reasoning for the verdict.
+        """
+        return pulumi.get(self, "reasoning")
+
+    @reasoning.setter
+    def reasoning(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "reasoning", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def verdict(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Outcome of the evaluation against the rubric.
+        """
+        return pulumi.get(self, "verdict")
+
+    @verdict.setter
+    def verdict(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "verdict", value)
 
 
 class AiEvaluationMetricEncryptionSpecArgsDict(TypedDict):
@@ -18475,6 +19985,11 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
     The inline data content of the part.
     Structure is documented below.
     """
+    speech_metadata: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgsDict']]]
+    """
+    Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+    Structure is documented below.
+    """
     text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The text content of the part.
@@ -18499,6 +20014,7 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
                  function_call: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCallArgs']] = None,
                  function_response: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs']] = None,
                  inline_data: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs']] = None,
+                 speech_metadata: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs']] = None,
                  text: pulumi.Input[Optional[_builtins.str]] = None,
                  thought: pulumi.Input[Optional[_builtins.bool]] = None,
                  video_metadata: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataArgs']] = None):
@@ -18516,6 +20032,8 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs'] function_response: The result of a function call.
                Structure is documented below.
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs'] inline_data: The inline data content of the part.
+               Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs'] speech_metadata: Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] text: The text content of the part.
         :param pulumi.Input[_builtins.bool] thought: Indicates whether the part represents the model's thought process or reasoning.
@@ -18536,6 +20054,8 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
             pulumi.set(__self__, "function_response", function_response)
         if inline_data is not None:
             pulumi.set(__self__, "inline_data", inline_data)
+        if speech_metadata is not None:
+            pulumi.set(__self__, "speech_metadata", speech_metadata)
         if text is not None:
             pulumi.set(__self__, "text", text)
         if thought is not None:
@@ -18633,6 +20153,19 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
     @inline_data.setter
     def inline_data(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineDataArgs']]):
         pulumi.set(self, "inline_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="speechMetadata")
+    def speech_metadata(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs']]:
+        """
+        Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "speech_metadata")
+
+    @speech_metadata.setter
+    def speech_metadata(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs']]):
+        pulumi.set(self, "speech_metadata", value)
 
     @_builtins.property
     @pulumi.getter
@@ -19175,6 +20708,55 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMem
     @mime_type.setter
     def mime_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "mime_type", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgsDict(TypedDict):
+    speaker: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Identifies which speaker is speaking this turn.
+    """
+    style: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Natural language description of the vocal style (e.g., "cheerful").
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadataArgs:
+    def __init__(__self__, *,
+                 speaker: pulumi.Input[Optional[_builtins.str]] = None,
+                 style: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] speaker: Identifies which speaker is speaking this turn.
+        :param pulumi.Input[_builtins.str] style: Natural language description of the vocal style (e.g., "cheerful").
+        """
+        if speaker is not None:
+            pulumi.set(__self__, "speaker", speaker)
+        if style is not None:
+            pulumi.set(__self__, "style", style)
+
+    @_builtins.property
+    @pulumi.getter
+    def speaker(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifies which speaker is speaking this turn.
+        """
+        return pulumi.get(self, "speaker")
+
+    @speaker.setter
+    def speaker(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "speaker", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def style(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Natural language description of the vocal style (e.g., "cheerful").
+        """
+        return pulumi.get(self, "style")
+
+    @style.setter
+    def style(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "style", value)
 
 
 class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadataArgsDict(TypedDict):

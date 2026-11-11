@@ -219,6 +219,11 @@ export class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
      * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
     declare public readonly members: pulumi.Output<string[]>;
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     declare public readonly organization: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -300,6 +305,11 @@ export interface V2OrganizationSourceIamBindingState {
      * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
     members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     organization?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
@@ -333,6 +343,11 @@ export interface V2OrganizationSourceIamBindingArgs {
      * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
     members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     organization: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

@@ -12,7 +12,6 @@ import com.pulumi.gcp.servicenetworking.VpcServiceControlsArgs;
 import com.pulumi.gcp.servicenetworking.inputs.VpcServiceControlsState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -176,14 +175,14 @@ public class VpcServiceControls extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> project;
+    private Output<String> project;
 
     /**
      * @return The id of the Google Cloud project containing the consumer network.
      * 
      */
-    public Output<Optional<String>> project() {
-        return Codegen.optional(this.project);
+    public Output<String> project() {
+        return this.project;
     }
     /**
      * The service that is managing peering connectivity for a service

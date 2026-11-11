@@ -494,7 +494,7 @@ type Cluster struct {
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig ClusterNetworkPerformanceConfigPtrOutput `pulumi:"networkPerformanceConfig"`
 	// Configuration options for the
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -912,7 +912,7 @@ type clusterState struct {
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network *string `pulumi:"network"`
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig *ClusterNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Configuration options for the
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -1296,7 +1296,7 @@ type ClusterState struct {
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network pulumi.StringPtrInput
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig ClusterNetworkPerformanceConfigPtrInput
 	// Configuration options for the
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -1678,7 +1678,7 @@ type clusterArgs struct {
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network *string `pulumi:"network"`
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig *ClusterNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Configuration options for the
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -2037,7 +2037,7 @@ type ClusterArgs struct {
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network pulumi.StringPtrInput
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig ClusterNetworkPerformanceConfigPtrInput
 	// Configuration options for the
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -2684,7 +2684,7 @@ func (o ClusterOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// Network bandwidth tier configuration.
+// Network bandwidth tier configuration. Structure is documented below.
 func (o ClusterOutput) NetworkPerformanceConfig() ClusterNetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNetworkPerformanceConfigPtrOutput { return v.NetworkPerformanceConfig }).(ClusterNetworkPerformanceConfigPtrOutput)
 }

@@ -15,6 +15,11 @@ export const getConfig: typeof import("./getConfig").getConfig = null as any;
 export const getConfigOutput: typeof import("./getConfig").getConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
 
+export { OpenLineageJobArgs, OpenLineageJobState } from "./openLineageJob";
+export type OpenLineageJob = import("./openLineageJob").OpenLineageJob;
+export const OpenLineageJob: typeof import("./openLineageJob").OpenLineageJob = null as any;
+utilities.lazyLoad(exports, ["OpenLineageJob"], () => require("./openLineageJob"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,9 +27,12 @@ const _module = {
         switch (type) {
             case "gcp:datalineage/config:Config":
                 return new Config(name, <any>undefined, { urn })
+            case "gcp:datalineage/openLineageJob:OpenLineageJob":
+                return new OpenLineageJob(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "datalineage/config", _module)
+pulumi.runtime.registerResourceModule("gcp", "datalineage/openLineageJob", _module)

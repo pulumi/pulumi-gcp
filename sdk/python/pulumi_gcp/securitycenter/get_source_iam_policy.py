@@ -108,6 +108,9 @@ def get_source_iam_policy(organization: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str organization: The organization whose Cloud Security Command Center the Source
+           lives in.
+           Used to find the parent resource to bind the IAM policy to
     :param _builtins.str source: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()
@@ -138,6 +141,9 @@ def get_source_iam_policy_output(organization: pulumi.Input[Optional[_builtins.s
     ```
 
 
+    :param _builtins.str organization: The organization whose Cloud Security Command Center the Source
+           lives in.
+           Used to find the parent resource to bind the IAM policy to
     :param _builtins.str source: Used to find the parent resource to bind the IAM policy to
     """
     __args__ = dict()

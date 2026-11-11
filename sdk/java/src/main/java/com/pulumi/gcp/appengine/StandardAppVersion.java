@@ -811,7 +811,6 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.versionId);
     }
     /**
-     * (Optional, Beta)
      * Direct VPC Access settings for standard apps.
      * Structure is documented below.
      * 
@@ -820,8 +819,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ StandardAppVersionVpcAccess> vpcAccess;
 
     /**
-     * @return (Optional, Beta)
-     * Direct VPC Access settings for standard apps.
+     * @return Direct VPC Access settings for standard apps.
      * Structure is documented below.
      * 
      */

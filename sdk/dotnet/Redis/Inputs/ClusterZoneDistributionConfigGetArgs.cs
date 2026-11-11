@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Redis.Inputs
 
     public sealed class ClusterZoneDistributionConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("activeZones")]
+        private InputList<string>? _activeZones;
+
+        /// <summary>
+        /// (Output)
+        /// The exact list of zones where the cluster currently has active VMs.
+        /// </summary>
+        public InputList<string> ActiveZones
+        {
+            get => _activeZones ?? (_activeZones = new InputList<string>());
+            set => _activeZones = value;
+        }
+
         /// <summary>
         /// Immutable. The mode for zone distribution for Memorystore Redis cluster.
         /// If not provided, MULTI_ZONE will be used as default
@@ -25,6 +38,19 @@ namespace Pulumi.Gcp.Redis.Inputs
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// Specify the zones of a multi-zone cluster where Redis Cluster
+        /// allocates resources. This flag isn't applicable for single-zone clusters.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
 
         public ClusterZoneDistributionConfigGetArgs()
         {

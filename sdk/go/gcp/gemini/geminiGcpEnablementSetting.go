@@ -40,6 +40,7 @@ import (
 //				WebGroundingType:          pulumi.String("WEB_GROUNDING_FOR_ENTERPRISE"),
 //				MutationsEnabled:          pulumi.Bool(true),
 //				ReleaseChannel:            pulumi.String("EXPERIMENTAL"),
+//				HasCustomInstructions:     pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -94,6 +95,8 @@ type GeminiGcpEnablementSetting struct {
 	GeminiEnterpriseProject pulumi.StringPtrOutput `pulumi:"geminiEnterpriseProject"`
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId pulumi.StringOutput `pulumi:"geminiGcpEnablementSettingId"`
+	// Indicates whether custom instructions are defined.
+	HasCustomInstructions pulumi.BoolPtrOutput `pulumi:"hasCustomInstructions"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -190,6 +193,8 @@ type geminiGcpEnablementSettingState struct {
 	GeminiEnterpriseProject *string `pulumi:"geminiEnterpriseProject"`
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId *string `pulumi:"geminiGcpEnablementSettingId"`
+	// Indicates whether custom instructions are defined.
+	HasCustomInstructions *bool `pulumi:"hasCustomInstructions"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -246,6 +251,8 @@ type GeminiGcpEnablementSettingState struct {
 	GeminiEnterpriseProject pulumi.StringPtrInput
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId pulumi.StringPtrInput
+	// Indicates whether custom instructions are defined.
+	HasCustomInstructions pulumi.BoolPtrInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -308,6 +315,8 @@ type geminiGcpEnablementSettingArgs struct {
 	GeminiEnterpriseProject *string `pulumi:"geminiEnterpriseProject"`
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId string `pulumi:"geminiGcpEnablementSettingId"`
+	// Indicates whether custom instructions are defined.
+	HasCustomInstructions *bool `pulumi:"hasCustomInstructions"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -353,6 +362,8 @@ type GeminiGcpEnablementSettingArgs struct {
 	GeminiEnterpriseProject pulumi.StringPtrInput
 	// Id of the Gemini Gcp Enablement setting.
 	GeminiGcpEnablementSettingId pulumi.StringInput
+	// Indicates whether custom instructions are defined.
+	HasCustomInstructions pulumi.BoolPtrInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -506,6 +517,11 @@ func (o GeminiGcpEnablementSettingOutput) GeminiEnterpriseProject() pulumi.Strin
 // Id of the Gemini Gcp Enablement setting.
 func (o GeminiGcpEnablementSettingOutput) GeminiGcpEnablementSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringOutput { return v.GeminiGcpEnablementSettingId }).(pulumi.StringOutput)
+}
+
+// Indicates whether custom instructions are defined.
+func (o GeminiGcpEnablementSettingOutput) HasCustomInstructions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.BoolPtrOutput { return v.HasCustomInstructions }).(pulumi.BoolPtrOutput)
 }
 
 // Labels as key value pairs.

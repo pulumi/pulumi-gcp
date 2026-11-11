@@ -3497,11 +3497,21 @@ type ConnectionEventingConfig struct {
 	// List containing additional auth configs.
 	// Structure is documented below.
 	AdditionalVariables []ConnectionEventingConfigAdditionalVariable `pulumi:"additionalVariables"`
+	// List of allowed event types for the connection.
+	AllowedEventTypes []string `pulumi:"allowedEventTypes"`
 	// authConfig for Eventing Configuration.
 	// Structure is documented below.
 	AuthConfig *ConnectionEventingConfigAuthConfig `pulumi:"authConfig"`
+	// Dead letter configuration for eventing of a connection.
+	// Structure is documented below.
+	DeadLetterConfig *ConnectionEventingConfigDeadLetterConfig `pulumi:"deadLetterConfig"`
+	// Data enrichment configuration.
+	// Structure is documented below.
+	EnrichmentConfig *ConnectionEventingConfigEnrichmentConfig `pulumi:"enrichmentConfig"`
 	// Enrichment Enabled.
 	EnrichmentEnabled *bool `pulumi:"enrichmentEnabled"`
+	// Filter to be applied on the events to be received by the connection.
+	GlobalEventFilter *string `pulumi:"globalEventFilter"`
 	// registrationDestinationConfig
 	// Structure is documented below.
 	RegistrationDestinationConfig ConnectionEventingConfigRegistrationDestinationConfig `pulumi:"registrationDestinationConfig"`
@@ -3522,11 +3532,21 @@ type ConnectionEventingConfigArgs struct {
 	// List containing additional auth configs.
 	// Structure is documented below.
 	AdditionalVariables ConnectionEventingConfigAdditionalVariableArrayInput `pulumi:"additionalVariables"`
+	// List of allowed event types for the connection.
+	AllowedEventTypes pulumi.StringArrayInput `pulumi:"allowedEventTypes"`
 	// authConfig for Eventing Configuration.
 	// Structure is documented below.
 	AuthConfig ConnectionEventingConfigAuthConfigPtrInput `pulumi:"authConfig"`
+	// Dead letter configuration for eventing of a connection.
+	// Structure is documented below.
+	DeadLetterConfig ConnectionEventingConfigDeadLetterConfigPtrInput `pulumi:"deadLetterConfig"`
+	// Data enrichment configuration.
+	// Structure is documented below.
+	EnrichmentConfig ConnectionEventingConfigEnrichmentConfigPtrInput `pulumi:"enrichmentConfig"`
 	// Enrichment Enabled.
 	EnrichmentEnabled pulumi.BoolPtrInput `pulumi:"enrichmentEnabled"`
+	// Filter to be applied on the events to be received by the connection.
+	GlobalEventFilter pulumi.StringPtrInput `pulumi:"globalEventFilter"`
 	// registrationDestinationConfig
 	// Structure is documented below.
 	RegistrationDestinationConfig ConnectionEventingConfigRegistrationDestinationConfigInput `pulumi:"registrationDestinationConfig"`
@@ -3617,15 +3637,37 @@ func (o ConnectionEventingConfigOutput) AdditionalVariables() ConnectionEventing
 	}).(ConnectionEventingConfigAdditionalVariableArrayOutput)
 }
 
+// List of allowed event types for the connection.
+func (o ConnectionEventingConfigOutput) AllowedEventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionEventingConfig) []string { return v.AllowedEventTypes }).(pulumi.StringArrayOutput)
+}
+
 // authConfig for Eventing Configuration.
 // Structure is documented below.
 func (o ConnectionEventingConfigOutput) AuthConfig() ConnectionEventingConfigAuthConfigPtrOutput {
 	return o.ApplyT(func(v ConnectionEventingConfig) *ConnectionEventingConfigAuthConfig { return v.AuthConfig }).(ConnectionEventingConfigAuthConfigPtrOutput)
 }
 
+// Dead letter configuration for eventing of a connection.
+// Structure is documented below.
+func (o ConnectionEventingConfigOutput) DeadLetterConfig() ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionEventingConfig) *ConnectionEventingConfigDeadLetterConfig { return v.DeadLetterConfig }).(ConnectionEventingConfigDeadLetterConfigPtrOutput)
+}
+
+// Data enrichment configuration.
+// Structure is documented below.
+func (o ConnectionEventingConfigOutput) EnrichmentConfig() ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionEventingConfig) *ConnectionEventingConfigEnrichmentConfig { return v.EnrichmentConfig }).(ConnectionEventingConfigEnrichmentConfigPtrOutput)
+}
+
 // Enrichment Enabled.
 func (o ConnectionEventingConfigOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionEventingConfig) *bool { return v.EnrichmentEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Filter to be applied on the events to be received by the connection.
+func (o ConnectionEventingConfigOutput) GlobalEventFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionEventingConfig) *string { return v.GlobalEventFilter }).(pulumi.StringPtrOutput)
 }
 
 // registrationDestinationConfig
@@ -3671,6 +3713,16 @@ func (o ConnectionEventingConfigPtrOutput) AdditionalVariables() ConnectionEvent
 	}).(ConnectionEventingConfigAdditionalVariableArrayOutput)
 }
 
+// List of allowed event types for the connection.
+func (o ConnectionEventingConfigPtrOutput) AllowedEventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedEventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 // authConfig for Eventing Configuration.
 // Structure is documented below.
 func (o ConnectionEventingConfigPtrOutput) AuthConfig() ConnectionEventingConfigAuthConfigPtrOutput {
@@ -3682,6 +3734,28 @@ func (o ConnectionEventingConfigPtrOutput) AuthConfig() ConnectionEventingConfig
 	}).(ConnectionEventingConfigAuthConfigPtrOutput)
 }
 
+// Dead letter configuration for eventing of a connection.
+// Structure is documented below.
+func (o ConnectionEventingConfigPtrOutput) DeadLetterConfig() ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfig) *ConnectionEventingConfigDeadLetterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterConfig
+	}).(ConnectionEventingConfigDeadLetterConfigPtrOutput)
+}
+
+// Data enrichment configuration.
+// Structure is documented below.
+func (o ConnectionEventingConfigPtrOutput) EnrichmentConfig() ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfig) *ConnectionEventingConfigEnrichmentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EnrichmentConfig
+	}).(ConnectionEventingConfigEnrichmentConfigPtrOutput)
+}
+
 // Enrichment Enabled.
 func (o ConnectionEventingConfigPtrOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionEventingConfig) *bool {
@@ -3690,6 +3764,16 @@ func (o ConnectionEventingConfigPtrOutput) EnrichmentEnabled() pulumi.BoolPtrOut
 		}
 		return v.EnrichmentEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Filter to be applied on the events to be received by the connection.
+func (o ConnectionEventingConfigPtrOutput) GlobalEventFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalEventFilter
+	}).(pulumi.StringPtrOutput)
 }
 
 // registrationDestinationConfig
@@ -5130,6 +5214,299 @@ func (o ConnectionEventingConfigAuthConfigUserPasswordPasswordPtrOutput) SecretV
 		}
 		return &v.SecretVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionEventingConfigDeadLetterConfig struct {
+	// Project which has the topic given.
+	ProjectId string `pulumi:"projectId"`
+	// Topic to push events which couldn't be processed.
+	Topic string `pulumi:"topic"`
+}
+
+// ConnectionEventingConfigDeadLetterConfigInput is an input type that accepts ConnectionEventingConfigDeadLetterConfigArgs and ConnectionEventingConfigDeadLetterConfigOutput values.
+// You can construct a concrete instance of `ConnectionEventingConfigDeadLetterConfigInput` via:
+//
+//	ConnectionEventingConfigDeadLetterConfigArgs{...}
+type ConnectionEventingConfigDeadLetterConfigInput interface {
+	pulumi.Input
+
+	ToConnectionEventingConfigDeadLetterConfigOutput() ConnectionEventingConfigDeadLetterConfigOutput
+	ToConnectionEventingConfigDeadLetterConfigOutputWithContext(context.Context) ConnectionEventingConfigDeadLetterConfigOutput
+}
+
+type ConnectionEventingConfigDeadLetterConfigArgs struct {
+	// Project which has the topic given.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Topic to push events which couldn't be processed.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (ConnectionEventingConfigDeadLetterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionEventingConfigDeadLetterConfig)(nil)).Elem()
+}
+
+func (i ConnectionEventingConfigDeadLetterConfigArgs) ToConnectionEventingConfigDeadLetterConfigOutput() ConnectionEventingConfigDeadLetterConfigOutput {
+	return i.ToConnectionEventingConfigDeadLetterConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionEventingConfigDeadLetterConfigArgs) ToConnectionEventingConfigDeadLetterConfigOutputWithContext(ctx context.Context) ConnectionEventingConfigDeadLetterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionEventingConfigDeadLetterConfigOutput)
+}
+
+func (i ConnectionEventingConfigDeadLetterConfigArgs) ToConnectionEventingConfigDeadLetterConfigPtrOutput() ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return i.ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionEventingConfigDeadLetterConfigArgs) ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(ctx context.Context) ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionEventingConfigDeadLetterConfigOutput).ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionEventingConfigDeadLetterConfigPtrInput is an input type that accepts ConnectionEventingConfigDeadLetterConfigArgs, ConnectionEventingConfigDeadLetterConfigPtr and ConnectionEventingConfigDeadLetterConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionEventingConfigDeadLetterConfigPtrInput` via:
+//
+//	        ConnectionEventingConfigDeadLetterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionEventingConfigDeadLetterConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionEventingConfigDeadLetterConfigPtrOutput() ConnectionEventingConfigDeadLetterConfigPtrOutput
+	ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(context.Context) ConnectionEventingConfigDeadLetterConfigPtrOutput
+}
+
+type connectionEventingConfigDeadLetterConfigPtrType ConnectionEventingConfigDeadLetterConfigArgs
+
+func ConnectionEventingConfigDeadLetterConfigPtr(v *ConnectionEventingConfigDeadLetterConfigArgs) ConnectionEventingConfigDeadLetterConfigPtrInput {
+	return (*connectionEventingConfigDeadLetterConfigPtrType)(v)
+}
+
+func (*connectionEventingConfigDeadLetterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionEventingConfigDeadLetterConfig)(nil)).Elem()
+}
+
+func (i *connectionEventingConfigDeadLetterConfigPtrType) ToConnectionEventingConfigDeadLetterConfigPtrOutput() ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return i.ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionEventingConfigDeadLetterConfigPtrType) ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(ctx context.Context) ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionEventingConfigDeadLetterConfigPtrOutput)
+}
+
+type ConnectionEventingConfigDeadLetterConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionEventingConfigDeadLetterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionEventingConfigDeadLetterConfig)(nil)).Elem()
+}
+
+func (o ConnectionEventingConfigDeadLetterConfigOutput) ToConnectionEventingConfigDeadLetterConfigOutput() ConnectionEventingConfigDeadLetterConfigOutput {
+	return o
+}
+
+func (o ConnectionEventingConfigDeadLetterConfigOutput) ToConnectionEventingConfigDeadLetterConfigOutputWithContext(ctx context.Context) ConnectionEventingConfigDeadLetterConfigOutput {
+	return o
+}
+
+func (o ConnectionEventingConfigDeadLetterConfigOutput) ToConnectionEventingConfigDeadLetterConfigPtrOutput() ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return o.ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionEventingConfigDeadLetterConfigOutput) ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(ctx context.Context) ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionEventingConfigDeadLetterConfig) *ConnectionEventingConfigDeadLetterConfig {
+		return &v
+	}).(ConnectionEventingConfigDeadLetterConfigPtrOutput)
+}
+
+// Project which has the topic given.
+func (o ConnectionEventingConfigDeadLetterConfigOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionEventingConfigDeadLetterConfig) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Topic to push events which couldn't be processed.
+func (o ConnectionEventingConfigDeadLetterConfigOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionEventingConfigDeadLetterConfig) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type ConnectionEventingConfigDeadLetterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionEventingConfigDeadLetterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionEventingConfigDeadLetterConfig)(nil)).Elem()
+}
+
+func (o ConnectionEventingConfigDeadLetterConfigPtrOutput) ToConnectionEventingConfigDeadLetterConfigPtrOutput() ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionEventingConfigDeadLetterConfigPtrOutput) ToConnectionEventingConfigDeadLetterConfigPtrOutputWithContext(ctx context.Context) ConnectionEventingConfigDeadLetterConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionEventingConfigDeadLetterConfigPtrOutput) Elem() ConnectionEventingConfigDeadLetterConfigOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfigDeadLetterConfig) ConnectionEventingConfigDeadLetterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionEventingConfigDeadLetterConfig
+		return ret
+	}).(ConnectionEventingConfigDeadLetterConfigOutput)
+}
+
+// Project which has the topic given.
+func (o ConnectionEventingConfigDeadLetterConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfigDeadLetterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Topic to push events which couldn't be processed.
+func (o ConnectionEventingConfigDeadLetterConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfigDeadLetterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionEventingConfigEnrichmentConfig struct {
+	// Append ACL to the event.
+	AppendAcl *bool `pulumi:"appendAcl"`
+}
+
+// ConnectionEventingConfigEnrichmentConfigInput is an input type that accepts ConnectionEventingConfigEnrichmentConfigArgs and ConnectionEventingConfigEnrichmentConfigOutput values.
+// You can construct a concrete instance of `ConnectionEventingConfigEnrichmentConfigInput` via:
+//
+//	ConnectionEventingConfigEnrichmentConfigArgs{...}
+type ConnectionEventingConfigEnrichmentConfigInput interface {
+	pulumi.Input
+
+	ToConnectionEventingConfigEnrichmentConfigOutput() ConnectionEventingConfigEnrichmentConfigOutput
+	ToConnectionEventingConfigEnrichmentConfigOutputWithContext(context.Context) ConnectionEventingConfigEnrichmentConfigOutput
+}
+
+type ConnectionEventingConfigEnrichmentConfigArgs struct {
+	// Append ACL to the event.
+	AppendAcl pulumi.BoolPtrInput `pulumi:"appendAcl"`
+}
+
+func (ConnectionEventingConfigEnrichmentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionEventingConfigEnrichmentConfig)(nil)).Elem()
+}
+
+func (i ConnectionEventingConfigEnrichmentConfigArgs) ToConnectionEventingConfigEnrichmentConfigOutput() ConnectionEventingConfigEnrichmentConfigOutput {
+	return i.ToConnectionEventingConfigEnrichmentConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionEventingConfigEnrichmentConfigArgs) ToConnectionEventingConfigEnrichmentConfigOutputWithContext(ctx context.Context) ConnectionEventingConfigEnrichmentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionEventingConfigEnrichmentConfigOutput)
+}
+
+func (i ConnectionEventingConfigEnrichmentConfigArgs) ToConnectionEventingConfigEnrichmentConfigPtrOutput() ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return i.ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionEventingConfigEnrichmentConfigArgs) ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(ctx context.Context) ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionEventingConfigEnrichmentConfigOutput).ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionEventingConfigEnrichmentConfigPtrInput is an input type that accepts ConnectionEventingConfigEnrichmentConfigArgs, ConnectionEventingConfigEnrichmentConfigPtr and ConnectionEventingConfigEnrichmentConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionEventingConfigEnrichmentConfigPtrInput` via:
+//
+//	        ConnectionEventingConfigEnrichmentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionEventingConfigEnrichmentConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionEventingConfigEnrichmentConfigPtrOutput() ConnectionEventingConfigEnrichmentConfigPtrOutput
+	ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(context.Context) ConnectionEventingConfigEnrichmentConfigPtrOutput
+}
+
+type connectionEventingConfigEnrichmentConfigPtrType ConnectionEventingConfigEnrichmentConfigArgs
+
+func ConnectionEventingConfigEnrichmentConfigPtr(v *ConnectionEventingConfigEnrichmentConfigArgs) ConnectionEventingConfigEnrichmentConfigPtrInput {
+	return (*connectionEventingConfigEnrichmentConfigPtrType)(v)
+}
+
+func (*connectionEventingConfigEnrichmentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionEventingConfigEnrichmentConfig)(nil)).Elem()
+}
+
+func (i *connectionEventingConfigEnrichmentConfigPtrType) ToConnectionEventingConfigEnrichmentConfigPtrOutput() ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return i.ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionEventingConfigEnrichmentConfigPtrType) ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(ctx context.Context) ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionEventingConfigEnrichmentConfigPtrOutput)
+}
+
+type ConnectionEventingConfigEnrichmentConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionEventingConfigEnrichmentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionEventingConfigEnrichmentConfig)(nil)).Elem()
+}
+
+func (o ConnectionEventingConfigEnrichmentConfigOutput) ToConnectionEventingConfigEnrichmentConfigOutput() ConnectionEventingConfigEnrichmentConfigOutput {
+	return o
+}
+
+func (o ConnectionEventingConfigEnrichmentConfigOutput) ToConnectionEventingConfigEnrichmentConfigOutputWithContext(ctx context.Context) ConnectionEventingConfigEnrichmentConfigOutput {
+	return o
+}
+
+func (o ConnectionEventingConfigEnrichmentConfigOutput) ToConnectionEventingConfigEnrichmentConfigPtrOutput() ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return o.ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionEventingConfigEnrichmentConfigOutput) ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(ctx context.Context) ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionEventingConfigEnrichmentConfig) *ConnectionEventingConfigEnrichmentConfig {
+		return &v
+	}).(ConnectionEventingConfigEnrichmentConfigPtrOutput)
+}
+
+// Append ACL to the event.
+func (o ConnectionEventingConfigEnrichmentConfigOutput) AppendAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionEventingConfigEnrichmentConfig) *bool { return v.AppendAcl }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionEventingConfigEnrichmentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionEventingConfigEnrichmentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionEventingConfigEnrichmentConfig)(nil)).Elem()
+}
+
+func (o ConnectionEventingConfigEnrichmentConfigPtrOutput) ToConnectionEventingConfigEnrichmentConfigPtrOutput() ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionEventingConfigEnrichmentConfigPtrOutput) ToConnectionEventingConfigEnrichmentConfigPtrOutputWithContext(ctx context.Context) ConnectionEventingConfigEnrichmentConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionEventingConfigEnrichmentConfigPtrOutput) Elem() ConnectionEventingConfigEnrichmentConfigOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfigEnrichmentConfig) ConnectionEventingConfigEnrichmentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionEventingConfigEnrichmentConfig
+		return ret
+	}).(ConnectionEventingConfigEnrichmentConfigOutput)
+}
+
+// Append ACL to the event.
+func (o ConnectionEventingConfigEnrichmentConfigPtrOutput) AppendAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionEventingConfigEnrichmentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AppendAcl
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionEventingConfigRegistrationDestinationConfig struct {
@@ -7753,6 +8130,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigAuthConfigUserPasswordPtrInput)(nil)).Elem(), ConnectionEventingConfigAuthConfigUserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigAuthConfigUserPasswordPasswordInput)(nil)).Elem(), ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigAuthConfigUserPasswordPasswordPtrInput)(nil)).Elem(), ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigDeadLetterConfigInput)(nil)).Elem(), ConnectionEventingConfigDeadLetterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigDeadLetterConfigPtrInput)(nil)).Elem(), ConnectionEventingConfigDeadLetterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigEnrichmentConfigInput)(nil)).Elem(), ConnectionEventingConfigEnrichmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigEnrichmentConfigPtrInput)(nil)).Elem(), ConnectionEventingConfigEnrichmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigRegistrationDestinationConfigInput)(nil)).Elem(), ConnectionEventingConfigRegistrationDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigRegistrationDestinationConfigPtrInput)(nil)).Elem(), ConnectionEventingConfigRegistrationDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingConfigRegistrationDestinationConfigDestinationInput)(nil)).Elem(), ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs{})
@@ -7851,6 +8232,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionEventingConfigAuthConfigUserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionEventingConfigAuthConfigUserPasswordPasswordOutput{})
 	pulumi.RegisterOutputType(ConnectionEventingConfigAuthConfigUserPasswordPasswordPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionEventingConfigDeadLetterConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionEventingConfigDeadLetterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionEventingConfigEnrichmentConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionEventingConfigEnrichmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionEventingConfigRegistrationDestinationConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionEventingConfigRegistrationDestinationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionEventingConfigRegistrationDestinationConfigDestinationOutput{})

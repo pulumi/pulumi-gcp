@@ -432,6 +432,10 @@ import * as utilities from "../utilities";
  *                                     parts: [
  *                                         {
  *                                             text: "I like pepperoni pizza",
+ *                                             speechMetadata: {
+ *                                                 speaker: "Alice",
+ *                                                 style: "cheerful",
+ *                                             },
  *                                         },
  *                                         {
  *                                             functionCall: {

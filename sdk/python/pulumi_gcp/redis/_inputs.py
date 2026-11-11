@@ -2045,6 +2045,11 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs:
 
 
 class ClusterZoneDistributionConfigArgsDict(TypedDict):
+    active_zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The exact list of zones where the cluster currently has active VMs.
+    """
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Immutable. The mode for zone distribution for Memorystore Redis cluster.
@@ -2055,22 +2060,50 @@ class ClusterZoneDistributionConfigArgsDict(TypedDict):
     """
     Immutable. The zone for single zone Memorystore Redis cluster.
     """
+    zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Specify the zones of a multi-zone cluster where Redis Cluster
+    allocates resources. This flag isn't applicable for single-zone clusters.
+    """
 
 @pulumi.input_type
 class ClusterZoneDistributionConfigArgs:
     def __init__(__self__, *,
+                 active_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] active_zones: (Output)
+               The exact list of zones where the cluster currently has active VMs.
         :param pulumi.Input[_builtins.str] mode: Immutable. The mode for zone distribution for Memorystore Redis cluster.
                If not provided, MULTI_ZONE will be used as default
                Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
         :param pulumi.Input[_builtins.str] zone: Immutable. The zone for single zone Memorystore Redis cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zones: Specify the zones of a multi-zone cluster where Redis Cluster
+               allocates resources. This flag isn't applicable for single-zone clusters.
         """
+        if active_zones is not None:
+            pulumi.set(__self__, "active_zones", active_zones)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter(name="activeZones")
+    def active_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The exact list of zones where the cluster currently has active VMs.
+        """
+        return pulumi.get(self, "active_zones")
+
+    @active_zones.setter
+    def active_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "active_zones", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2097,6 +2130,19 @@ class ClusterZoneDistributionConfigArgs:
     @zone.setter
     def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specify the zones of a multi-zone cluster where Redis Cluster
+        allocates resources. This flag isn't applicable for single-zone clusters.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "zones", value)
 
 
 class InstanceMaintenancePolicyArgsDict(TypedDict):

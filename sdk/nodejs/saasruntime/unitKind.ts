@@ -42,14 +42,6 @@ import * as utilities from "../utilities";
  *         alias: "cluster",
  *     }],
  * });
- * const exampleRelease = new gcp.saasruntime.Release("example_release", {
- *     location: "us-east1",
- *     releaseId: "example-release",
- *     unitKind: clusterUnitKind.id,
- *     blueprint: {
- *         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
- *     },
- * });
  * ```
  *
  * ## Import

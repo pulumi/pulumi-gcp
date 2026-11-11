@@ -417,7 +417,7 @@ export class DataConnector extends pulumi.CustomResource {
     /**
      * User-facing, version-independent label for this connector.
      */
-    declare public readonly tag: pulumi.Output<string | undefined>;
+    declare public readonly tag: pulumi.Output<string>;
     /**
      * Timestamp when the DataConnector was updated.
      */

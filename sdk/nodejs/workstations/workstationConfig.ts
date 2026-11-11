@@ -862,6 +862,70 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Workstation Config Reservation Affinity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-east4",
+ *     network: _default.name,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-east4",
+ * });
+ * const defaultReservation = new gcp.compute.Reservation("default", {
+ *     name: "workstation-reservation",
+ *     zone: "us-east4-a",
+ *     specificReservation: {
+ *         count: 1,
+ *         instanceProperties: {
+ *             machineType: "e2-standard-4",
+ *         },
+ *     },
+ *     specificReservationRequired: true,
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-east4",
+ *     replicaZones: [
+ *         "us-east4-a",
+ *         "us-east4-b",
+ *     ],
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "e2-standard-4",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             reservationAffinity: {
+ *                 consumeReservationType: "SPECIFIC_RESERVATION",
+ *                 key: "compute.googleapis.com/reservation-name",
+ *                 values: [defaultReservation.name],
+ *             },
+ *             boostConfigs: [{
+ *                 id: "boost-1",
+ *                 machineType: "e2-standard-4",
+ *                 bootDiskSizeGb: 35,
+ *                 reservationAffinity: {
+ *                     consumeReservationType: "ANY_RESERVATION",
+ *                 },
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Regional Endpoint Policies
  *
  * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.

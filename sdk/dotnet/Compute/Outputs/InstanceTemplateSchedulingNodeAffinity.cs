@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Operator;
         /// <summary>
-        /// Corresponds to the label values of a reservation resource.
+        /// The values for the node affinity label.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

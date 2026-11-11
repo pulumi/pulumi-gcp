@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
     public sealed class ApplicationUrlDispatchRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Domain name to match against.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
+        /// <summary>
+        /// Pathname within the host.
+        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// Resource ID of a service in this application that should serve the matched request.
+        /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 

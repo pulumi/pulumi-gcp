@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .config_store_setting import *
 from .flex_template_job import *
 from .job import *
 from .pipeline import *

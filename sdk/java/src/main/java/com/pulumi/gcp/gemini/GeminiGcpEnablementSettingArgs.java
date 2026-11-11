@@ -120,6 +120,21 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Indicates whether custom instructions are defined.
+     * 
+     */
+    @Import(name="hasCustomInstructions")
+    private @Nullable Output<Boolean> hasCustomInstructions;
+
+    /**
+     * @return Indicates whether custom instructions are defined.
+     * 
+     */
+    public Optional<Output<Boolean>> hasCustomInstructions() {
+        return Optional.ofNullable(this.hasCustomInstructions);
+    }
+
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -231,6 +246,7 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         this.enableCustomerDataSharing = $.enableCustomerDataSharing;
         this.geminiEnterpriseProject = $.geminiEnterpriseProject;
         this.geminiGcpEnablementSettingId = $.geminiGcpEnablementSettingId;
+        this.hasCustomInstructions = $.hasCustomInstructions;
         this.labels = $.labels;
         this.location = $.location;
         this.mutationsEnabled = $.mutationsEnabled;
@@ -386,6 +402,27 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          */
         public Builder geminiGcpEnablementSettingId(String geminiGcpEnablementSettingId) {
             return geminiGcpEnablementSettingId(Output.of(geminiGcpEnablementSettingId));
+        }
+
+        /**
+         * @param hasCustomInstructions Indicates whether custom instructions are defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasCustomInstructions(@Nullable Output<Boolean> hasCustomInstructions) {
+            $.hasCustomInstructions = hasCustomInstructions;
+            return this;
+        }
+
+        /**
+         * @param hasCustomInstructions Indicates whether custom instructions are defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasCustomInstructions(Boolean hasCustomInstructions) {
+            return hasCustomInstructions(Output.of(hasCustomInstructions));
         }
 
         /**

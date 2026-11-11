@@ -1586,6 +1586,11 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict(TypedDic
     Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
     Default is 31.
     """
+    hot_tier_bypass_mode_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Flag indicating that the hot tier bypass mode is enabled. Default is false.
+    Only applicable to Flex service level.
+    """
     tier_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
@@ -1597,16 +1602,21 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict(TypedDic
 class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
     def __init__(__self__, *,
                  cooling_threshold_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 hot_tier_bypass_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  tier_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cooling_threshold_days: Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
                Default is 31.
+        :param pulumi.Input[_builtins.bool] hot_tier_bypass_mode_enabled: Flag indicating that the hot tier bypass mode is enabled. Default is false.
+               Only applicable to Flex service level.
         :param pulumi.Input[_builtins.str] tier_action: Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
                Default value is `PAUSED`.
                Possible values are: `ENABLED`, `PAUSED`.
         """
         if cooling_threshold_days is not None:
             pulumi.set(__self__, "cooling_threshold_days", cooling_threshold_days)
+        if hot_tier_bypass_mode_enabled is not None:
+            pulumi.set(__self__, "hot_tier_bypass_mode_enabled", hot_tier_bypass_mode_enabled)
         if tier_action is not None:
             pulumi.set(__self__, "tier_action", tier_action)
 
@@ -1622,6 +1632,19 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
     @cooling_threshold_days.setter
     def cooling_threshold_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooling_threshold_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hotTierBypassModeEnabled")
+    def hot_tier_bypass_mode_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Flag indicating that the hot tier bypass mode is enabled. Default is false.
+        Only applicable to Flex service level.
+        """
+        return pulumi.get(self, "hot_tier_bypass_mode_enabled")
+
+    @hot_tier_bypass_mode_enabled.setter
+    def hot_tier_bypass_mode_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "hot_tier_bypass_mode_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="tierAction")

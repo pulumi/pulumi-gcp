@@ -286,9 +286,21 @@ public class JobIAMMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * The name or relative resource id of the job to manage IAM policies for.
+     * 
+     * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+     * 
+     */
     @Export(name="jobId", refs={String.class}, tree="[0]")
     private Output<String> jobId;
 
+    /**
+     * @return The name or relative resource id of the job to manage IAM policies for.
+     * 
+     * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+     * 
+     */
     public Output<String> jobId() {
         return this.jobId;
     }

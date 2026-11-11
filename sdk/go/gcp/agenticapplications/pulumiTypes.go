@@ -6950,6 +6950,14 @@ type AnalystAgentPersonaMcpDataSource struct {
 	Prompt *string `pulumi:"prompt"`
 	// The URL of the MCP server.
 	ServerUrl string `pulumi:"serverUrl"`
+	// The HTTP header name used to pass the agent session ID in MCP server
+	// requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+	// header field name (RFC 9110 token).
+	SessionIdHeader *string `pulumi:"sessionIdHeader"`
+	// The HTTP header name used to pass the agent task ID in MCP server
+	// requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+	// header field name (RFC 9110 token).
+	TaskIdHeader *string `pulumi:"taskIdHeader"`
 }
 
 // AnalystAgentPersonaMcpDataSourceInput is an input type that accepts AnalystAgentPersonaMcpDataSourceArgs and AnalystAgentPersonaMcpDataSourceOutput values.
@@ -6987,6 +6995,14 @@ type AnalystAgentPersonaMcpDataSourceArgs struct {
 	Prompt pulumi.StringPtrInput `pulumi:"prompt"`
 	// The URL of the MCP server.
 	ServerUrl pulumi.StringInput `pulumi:"serverUrl"`
+	// The HTTP header name used to pass the agent session ID in MCP server
+	// requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+	// header field name (RFC 9110 token).
+	SessionIdHeader pulumi.StringPtrInput `pulumi:"sessionIdHeader"`
+	// The HTTP header name used to pass the agent task ID in MCP server
+	// requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+	// header field name (RFC 9110 token).
+	TaskIdHeader pulumi.StringPtrInput `pulumi:"taskIdHeader"`
 }
 
 func (AnalystAgentPersonaMcpDataSourceArgs) ElementType() reflect.Type {
@@ -7094,6 +7110,20 @@ func (o AnalystAgentPersonaMcpDataSourceOutput) Prompt() pulumi.StringPtrOutput 
 // The URL of the MCP server.
 func (o AnalystAgentPersonaMcpDataSourceOutput) ServerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSource) string { return v.ServerUrl }).(pulumi.StringOutput)
+}
+
+// The HTTP header name used to pass the agent session ID in MCP server
+// requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+// header field name (RFC 9110 token).
+func (o AnalystAgentPersonaMcpDataSourceOutput) SessionIdHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSource) *string { return v.SessionIdHeader }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP header name used to pass the agent task ID in MCP server
+// requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+// header field name (RFC 9110 token).
+func (o AnalystAgentPersonaMcpDataSourceOutput) TaskIdHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSource) *string { return v.TaskIdHeader }).(pulumi.StringPtrOutput)
 }
 
 type AnalystAgentPersonaMcpDataSourceArrayOutput struct{ *pulumi.OutputState }

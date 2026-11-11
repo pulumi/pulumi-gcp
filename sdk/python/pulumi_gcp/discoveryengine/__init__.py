@@ -17,6 +17,7 @@ from .get_data_store import *
 from .get_data_stores import *
 from .get_search_engine_iam_policy import *
 from .license_config import *
+from .project_provision import *
 from .recommendation_engine import *
 from .schema import *
 from .search_engine import *

@@ -969,6 +969,10 @@ class AiReasoningEngine(pulumi.CustomResource):
                                             "parts": [
                                                 {
                                                     "text": "I like pepperoni pizza",
+                                                    "speech_metadata": {
+                                                        "speaker": "Alice",
+                                                        "style": "cheerful",
+                                                    },
                                                 },
                                                 {
                                                     "function_call": {
@@ -1631,6 +1635,10 @@ class AiReasoningEngine(pulumi.CustomResource):
                                             "parts": [
                                                 {
                                                     "text": "I like pepperoni pizza",
+                                                    "speech_metadata": {
+                                                        "speaker": "Alice",
+                                                        "style": "cheerful",
+                                                    },
                                                 },
                                                 {
                                                     "function_call": {

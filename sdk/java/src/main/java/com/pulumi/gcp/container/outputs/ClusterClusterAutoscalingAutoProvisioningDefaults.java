@@ -66,7 +66,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig shieldedInstanceConfig;
     /**
-     * @return Specifies the upgrade settings for NAP created node pools
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
      * 
      */
     private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings upgradeSettings;
@@ -140,7 +140,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         return Optional.ofNullable(this.shieldedInstanceConfig);
     }
     /**
-     * @return Specifies the upgrade settings for NAP created node pools
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
      * 
      */
     public Optional<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings> upgradeSettings() {

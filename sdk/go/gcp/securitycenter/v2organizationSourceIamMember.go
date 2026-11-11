@@ -293,7 +293,10 @@ type V2OrganizationSourceIamMember struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-	Member       pulumi.StringOutput `pulumi:"member"`
+	Member pulumi.StringOutput `pulumi:"member"`
+	// The organization whose Cloud Security Command Center the Source
+	// lives in.
+	// Used to find the parent resource to bind the IAM policy to
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// The role that should be applied. Only one
 	// `securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -360,7 +363,10 @@ type v2organizationSourceIamMemberState struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-	Member       *string `pulumi:"member"`
+	Member *string `pulumi:"member"`
+	// The organization whose Cloud Security Command Center the Source
+	// lives in.
+	// Used to find the parent resource to bind the IAM policy to
 	Organization *string `pulumi:"organization"`
 	// The role that should be applied. Only one
 	// `securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -386,7 +392,10 @@ type V2OrganizationSourceIamMemberState struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-	Member       pulumi.StringPtrInput
+	Member pulumi.StringPtrInput
+	// The organization whose Cloud Security Command Center the Source
+	// lives in.
+	// Used to find the parent resource to bind the IAM policy to
 	Organization pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -420,7 +429,10 @@ type v2organizationSourceIamMemberArgs struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-	Member       string `pulumi:"member"`
+	Member string `pulumi:"member"`
+	// The organization whose Cloud Security Command Center the Source
+	// lives in.
+	// Used to find the parent resource to bind the IAM policy to
 	Organization string `pulumi:"organization"`
 	// The role that should be applied. Only one
 	// `securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -445,7 +457,10 @@ type V2OrganizationSourceIamMemberArgs struct {
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-	Member       pulumi.StringInput
+	Member pulumi.StringInput
+	// The organization whose Cloud Security Command Center the Source
+	// lives in.
+	// Used to find the parent resource to bind the IAM policy to
 	Organization pulumi.StringInput
 	// The role that should be applied. Only one
 	// `securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -569,6 +584,9 @@ func (o V2OrganizationSourceIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2OrganizationSourceIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
+// The organization whose Cloud Security Command Center the Source
+// lives in.
+// Used to find the parent resource to bind the IAM policy to
 func (o V2OrganizationSourceIamMemberOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2OrganizationSourceIamMember) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }

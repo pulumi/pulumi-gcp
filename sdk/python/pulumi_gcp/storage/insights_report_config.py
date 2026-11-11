@@ -27,6 +27,7 @@ class InsightsReportConfigArgs:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  frequency_options: pulumi.Input[Optional['InsightsReportConfigFrequencyOptionsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  object_metadata_report_options: pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
                  parquet_options: pulumi.Input[Optional['InsightsReportConfigParquetOptionsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -47,6 +48,10 @@ class InsightsReportConfigArgs:
         :param pulumi.Input[_builtins.bool] force_destroy: If set, all the inventory report details associated with this report configuration are deleted.
         :param pulumi.Input['InsightsReportConfigFrequencyOptionsArgs'] frequency_options: Options for configuring how inventory reports are generated.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Have a character limit of 64 per key and value.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs'] object_metadata_report_options: Options for including metadata in an inventory report.
                Structure is documented below.
         :param pulumi.Input['InsightsReportConfigParquetOptionsArgs'] parquet_options: An option for outputting inventory reports as parquet files.
@@ -64,6 +69,8 @@ class InsightsReportConfigArgs:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if frequency_options is not None:
             pulumi.set(__self__, "frequency_options", frequency_options)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if object_metadata_report_options is not None:
             pulumi.set(__self__, "object_metadata_report_options", object_metadata_report_options)
         if parquet_options is not None:
@@ -152,6 +159,21 @@ class InsightsReportConfigArgs:
         pulumi.set(self, "frequency_options", value)
 
     @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels as key value pairs. Have a character limit of 64 per key and value.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
     @pulumi.getter(name="objectMetadataReportOptions")
     def object_metadata_report_options(self) -> pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsArgs']]:
         """
@@ -196,13 +218,16 @@ class _InsightsReportConfigState:
                  csv_options: pulumi.Input[Optional['InsightsReportConfigCsvOptionsArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  frequency_options: pulumi.Input[Optional['InsightsReportConfigFrequencyOptionsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  object_metadata_report_options: pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
                  parquet_options: pulumi.Input[Optional['InsightsReportConfigParquetOptionsArgs']] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering InsightsReportConfig resources.
 
@@ -215,9 +240,14 @@ class _InsightsReportConfigState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] force_destroy: If set, all the inventory report details associated with this report configuration are deleted.
         :param pulumi.Input['InsightsReportConfigFrequencyOptionsArgs'] frequency_options: Options for configuring how inventory reports are generated.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Have a character limit of 64 per key and value.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
         :param pulumi.Input[_builtins.str] name: The UUID of the inventory report configuration.
@@ -226,6 +256,8 @@ class _InsightsReportConfigState:
         :param pulumi.Input['InsightsReportConfigParquetOptionsArgs'] parquet_options: An option for outputting inventory reports as parquet files.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         """
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
@@ -233,10 +265,14 @@ class _InsightsReportConfigState:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if frequency_options is not None:
             pulumi.set(__self__, "frequency_options", frequency_options)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -247,6 +283,8 @@ class _InsightsReportConfigState:
             pulumi.set(__self__, "parquet_options", parquet_options)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
 
     @_builtins.property
     @pulumi.getter(name="csvOptions")
@@ -291,6 +329,18 @@ class _InsightsReportConfigState:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -314,6 +364,21 @@ class _InsightsReportConfigState:
     @frequency_options.setter
     def frequency_options(self, value: pulumi.Input[Optional['InsightsReportConfigFrequencyOptionsArgs']]):
         pulumi.set(self, "frequency_options", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels as key value pairs. Have a character limit of 64 per key and value.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -378,6 +443,19 @@ class _InsightsReportConfigState:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
 
 @pulumi.type_token("gcp:storage/insightsReportConfig:InsightsReportConfig")
 class InsightsReportConfig(pulumi.CustomResource):
@@ -390,6 +468,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  frequency_options: pulumi.Input[Optional[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict', 'outputs.InsightsReportConfigFrequencyOptions']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  object_metadata_report_options: pulumi.Input[Optional[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict', 'outputs.InsightsReportConfigObjectMetadataReportOptions']]] = None,
                  parquet_options: pulumi.Input[Optional[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict', 'outputs.InsightsReportConfigParquetOptions']]] = None,
@@ -425,6 +504,9 @@ class InsightsReportConfig(pulumi.CustomResource):
         config = gcp.storage.InsightsReportConfig("config",
             display_name="Test Report Config",
             location="us-central1",
+            labels={
+                "key": "value",
+            },
             frequency_options={
                 "frequency": "WEEKLY",
                 "start_date": {
@@ -491,6 +573,10 @@ class InsightsReportConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_destroy: If set, all the inventory report details associated with this report configuration are deleted.
         :param pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict', 'outputs.InsightsReportConfigFrequencyOptions']] frequency_options: Options for configuring how inventory reports are generated.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Have a character limit of 64 per key and value.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
         :param pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict', 'outputs.InsightsReportConfigObjectMetadataReportOptions']] object_metadata_report_options: Options for including metadata in an inventory report.
@@ -535,6 +621,9 @@ class InsightsReportConfig(pulumi.CustomResource):
         config = gcp.storage.InsightsReportConfig("config",
             display_name="Test Report Config",
             location="us-central1",
+            labels={
+                "key": "value",
+            },
             frequency_options={
                 "frequency": "WEEKLY",
                 "start_date": {
@@ -607,6 +696,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  frequency_options: pulumi.Input[Optional[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict', 'outputs.InsightsReportConfigFrequencyOptions']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  object_metadata_report_options: pulumi.Input[Optional[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict', 'outputs.InsightsReportConfigObjectMetadataReportOptions']]] = None,
                  parquet_options: pulumi.Input[Optional[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict', 'outputs.InsightsReportConfigParquetOptions']]] = None,
@@ -625,13 +715,18 @@ class InsightsReportConfig(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["frequency_options"] = frequency_options
+            __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["object_metadata_report_options"] = object_metadata_report_options
             __props__.__dict__["parquet_options"] = parquet_options
             __props__.__dict__["project"] = project
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(InsightsReportConfig, __self__).__init__(
             'gcp:storage/insightsReportConfig:InsightsReportConfig',
             resource_name,
@@ -645,13 +740,16 @@ class InsightsReportConfig(pulumi.CustomResource):
             csv_options: pulumi.Input[Optional[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict', 'outputs.InsightsReportConfigCsvOptions']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             frequency_options: pulumi.Input[Optional[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict', 'outputs.InsightsReportConfigFrequencyOptions']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             object_metadata_report_options: pulumi.Input[Optional[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict', 'outputs.InsightsReportConfigObjectMetadataReportOptions']]] = None,
             parquet_options: pulumi.Input[Optional[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict', 'outputs.InsightsReportConfigParquetOptions']]] = None,
-            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'InsightsReportConfig':
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'InsightsReportConfig':
         """
         Get an existing InsightsReportConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -668,9 +766,14 @@ class InsightsReportConfig(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] force_destroy: If set, all the inventory report details associated with this report configuration are deleted.
         :param pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict', 'outputs.InsightsReportConfigFrequencyOptions']] frequency_options: Options for configuring how inventory reports are generated.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Have a character limit of 64 per key and value.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
         :param pulumi.Input[_builtins.str] name: The UUID of the inventory report configuration.
@@ -679,6 +782,8 @@ class InsightsReportConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict', 'outputs.InsightsReportConfigParquetOptions']] parquet_options: An option for outputting inventory reports as parquet files.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -687,13 +792,16 @@ class InsightsReportConfig(pulumi.CustomResource):
         __props__.__dict__["csv_options"] = csv_options
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["frequency_options"] = frequency_options
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["object_metadata_report_options"] = object_metadata_report_options
         __props__.__dict__["parquet_options"] = parquet_options
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         return InsightsReportConfig(resource_name, opts=opts, __props__=__props__)
 
     @staticmethod
@@ -702,24 +810,30 @@ class InsightsReportConfig(pulumi.CustomResource):
             csv_options: pulumi.Input[Optional[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict', 'outputs.InsightsReportConfigCsvOptions']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             frequency_options: pulumi.Input[Optional[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict', 'outputs.InsightsReportConfigFrequencyOptions']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             object_metadata_report_options: pulumi.Input[Optional[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict', 'outputs.InsightsReportConfigObjectMetadataReportOptions']]] = None,
             parquet_options: pulumi.Input[Optional[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict', 'outputs.InsightsReportConfigParquetOptions']]] = None,
-            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["csvOptions"] = csv_options
         __props__["deletionPolicy"] = deletion_policy
         __props__["displayName"] = display_name
+        __props__["effectiveLabels"] = effective_labels
         __props__["forceDestroy"] = force_destroy
         __props__["frequencyOptions"] = frequency_options
+        __props__["labels"] = labels
         __props__["location"] = location
         __props__["name"] = name
         __props__["objectMetadataReportOptions"] = object_metadata_report_options
         __props__["parquetOptions"] = parquet_options
         __props__["project"] = project
+        __props__["pulumiLabels"] = pulumi_labels
         return pulumi.runtime.exists_resource(None, 'gcp:storage/insightsReportConfig:InsightsReportConfig', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
@@ -753,6 +867,14 @@ class InsightsReportConfig(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -768,6 +890,17 @@ class InsightsReportConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "frequency_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Labels as key value pairs. Have a character limit of 64 per key and value.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
@@ -811,4 +944,13 @@ class InsightsReportConfig(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 

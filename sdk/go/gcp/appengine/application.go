@@ -90,11 +90,11 @@ type Application struct {
 	DefaultBucket pulumi.StringOutput `pulumi:"defaultBucket"`
 	// The default hostname for this app.
 	DefaultHostname pulumi.StringOutput `pulumi:"defaultHostname"`
-	// A block of optional settings to configure specific App Engine features:
+	// A block of optional settings to configure specific App Engine features. Structure is documented below.
 	FeatureSettings ApplicationFeatureSettingsOutput `pulumi:"featureSettings"`
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain pulumi.StringOutput `pulumi:"gcrDomain"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
 	Iap ApplicationIapPtrOutput `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
@@ -109,7 +109,7 @@ type Application struct {
 	ServingStatus pulumi.StringOutput `pulumi:"servingStatus"`
 	// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
 	SslPolicy pulumi.StringOutput `pulumi:"sslPolicy"`
-	// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+	// A list of dispatch rule blocks. Structure is documented below.
 	UrlDispatchRules ApplicationUrlDispatchRuleArrayOutput `pulumi:"urlDispatchRules"`
 }
 
@@ -163,11 +163,11 @@ type applicationState struct {
 	DefaultBucket *string `pulumi:"defaultBucket"`
 	// The default hostname for this app.
 	DefaultHostname *string `pulumi:"defaultHostname"`
-	// A block of optional settings to configure specific App Engine features:
+	// A block of optional settings to configure specific App Engine features. Structure is documented below.
 	FeatureSettings *ApplicationFeatureSettings `pulumi:"featureSettings"`
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain *string `pulumi:"gcrDomain"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
 	Iap *ApplicationIap `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
@@ -182,7 +182,7 @@ type applicationState struct {
 	ServingStatus *string `pulumi:"servingStatus"`
 	// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
 	SslPolicy *string `pulumi:"sslPolicy"`
-	// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+	// A list of dispatch rule blocks. Structure is documented below.
 	UrlDispatchRules []ApplicationUrlDispatchRule `pulumi:"urlDispatchRules"`
 }
 
@@ -204,11 +204,11 @@ type ApplicationState struct {
 	DefaultBucket pulumi.StringPtrInput
 	// The default hostname for this app.
 	DefaultHostname pulumi.StringPtrInput
-	// A block of optional settings to configure specific App Engine features:
+	// A block of optional settings to configure specific App Engine features. Structure is documented below.
 	FeatureSettings ApplicationFeatureSettingsPtrInput
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain pulumi.StringPtrInput
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
 	Iap ApplicationIapPtrInput
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
@@ -223,7 +223,7 @@ type ApplicationState struct {
 	ServingStatus pulumi.StringPtrInput
 	// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
 	SslPolicy pulumi.StringPtrInput
-	// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+	// A list of dispatch rule blocks. Structure is documented below.
 	UrlDispatchRules ApplicationUrlDispatchRuleArrayInput
 }
 
@@ -247,9 +247,9 @@ type applicationArgs struct {
 	// `firestore.Database`
 	// resource instead.
 	DatabaseType *string `pulumi:"databaseType"`
-	// A block of optional settings to configure specific App Engine features:
+	// A block of optional settings to configure specific App Engine features. Structure is documented below.
 	FeatureSettings *ApplicationFeatureSettings `pulumi:"featureSettings"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
 	Iap *ApplicationIap `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
@@ -275,9 +275,9 @@ type ApplicationArgs struct {
 	// `firestore.Database`
 	// resource instead.
 	DatabaseType pulumi.StringPtrInput
-	// A block of optional settings to configure specific App Engine features:
+	// A block of optional settings to configure specific App Engine features. Structure is documented below.
 	FeatureSettings ApplicationFeatureSettingsPtrInput
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
 	Iap ApplicationIapPtrInput
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
@@ -414,7 +414,7 @@ func (o ApplicationOutput) DefaultHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.DefaultHostname }).(pulumi.StringOutput)
 }
 
-// A block of optional settings to configure specific App Engine features:
+// A block of optional settings to configure specific App Engine features. Structure is documented below.
 func (o ApplicationOutput) FeatureSettings() ApplicationFeatureSettingsOutput {
 	return o.ApplyT(func(v *Application) ApplicationFeatureSettingsOutput { return v.FeatureSettings }).(ApplicationFeatureSettingsOutput)
 }
@@ -424,7 +424,7 @@ func (o ApplicationOutput) GcrDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.GcrDomain }).(pulumi.StringOutput)
 }
 
-// Settings for enabling Cloud Identity Aware Proxy
+// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
 func (o ApplicationOutput) Iap() ApplicationIapPtrOutput {
 	return o.ApplyT(func(v *Application) ApplicationIapPtrOutput { return v.Iap }).(ApplicationIapPtrOutput)
 }
@@ -457,7 +457,7 @@ func (o ApplicationOutput) SslPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.SslPolicy }).(pulumi.StringOutput)
 }
 
-// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+// A list of dispatch rule blocks. Structure is documented below.
 func (o ApplicationOutput) UrlDispatchRules() ApplicationUrlDispatchRuleArrayOutput {
 	return o.ApplyT(func(v *Application) ApplicationUrlDispatchRuleArrayOutput { return v.UrlDispatchRules }).(ApplicationUrlDispatchRuleArrayOutput)
 }

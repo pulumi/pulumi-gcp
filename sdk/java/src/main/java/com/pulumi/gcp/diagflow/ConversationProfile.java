@@ -88,7 +88,6 @@ import javax.annotation.Nullable;
  *             .sttConfig(ConversationProfileSttConfigArgs.builder()
  *                 .useGeminiAsr(true)
  *                 .geminiAsrConfig(ConversationProfileSttConfigGeminiAsrConfigArgs.builder()
- *                     .modelId("gemini-3-flash-lite-asr-preview")
  *                     .silenceDurationMs(1000)
  *                     .prefixPaddingMs(500)
  *                     .startOfSpeechSensitivity("START_SENSITIVITY_LOW")

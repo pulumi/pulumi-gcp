@@ -50,10 +50,9 @@ import (
 //				return err
 //			}
 //			clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
-//				Location:       pulumi.String(location),
-//				UnitKindId:     pulumi.String("vm-unitkind"),
-//				Saas:           exampleSaas.ID(),
-//				DefaultRelease: pulumi.Sprintf("projects/my-project-name/locations/%v/releases/example-release", location),
+//				Location:   pulumi.String(location),
+//				UnitKindId: pulumi.String("vm-unitkind"),
+//				Saas:       exampleSaas.ID(),
 //			})
 //			if err != nil {
 //				return err

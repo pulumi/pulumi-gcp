@@ -15,14 +15,11 @@ import (
 // An AutoProtectionPolicy automates backup management by applying a backup plan to all
 // eligible resources that match the policy's criteria, instead of protecting each resource
 // individually. A policy takes effect only after it is attached to a scope, such as a
-// project, with a `googleBackupDrAutoProtectionPolicyBinding`.
-//
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
+// project, with a `backupdisasterrecovery.AutoProtectionPolicyBinding`.
 //
 // To get more information about AutoProtectionPolicy, see:
 //
-// * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/reference/rest/v1beta/projects.locations.autoProtectionPolicies)
+// * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/reference/rest/v1/projects.locations.autoProtectionPolicies)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
 //

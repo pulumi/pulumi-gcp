@@ -20,7 +20,6 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
     public static final InterconnectApplicationAwareInterconnectArgs Empty = new InterconnectApplicationAwareInterconnectArgs();
 
     /**
-     * (Optional, Beta)
      * Bandwidth Percentage policy allows you to have granular control over how your Interconnect
      * bandwidth is utilized among your workloads mapping to different traffic classes.
      * Structure is documented below.
@@ -30,8 +29,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
     private @Nullable Output<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs> bandwidthPercentagePolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+     * @return Bandwidth Percentage policy allows you to have granular control over how your Interconnect
      * bandwidth is utilized among your workloads mapping to different traffic classes.
      * Structure is documented below.
      * 
@@ -41,7 +39,6 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
     }
 
     /**
-     * (Optional, Beta)
      * A description for the AAI profile on this interconnect.
      * 
      */
@@ -49,8 +46,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
     private @Nullable Output<String> profileDescription;
 
     /**
-     * @return (Optional, Beta)
-     * A description for the AAI profile on this interconnect.
+     * @return A description for the AAI profile on this interconnect.
      * 
      */
     public Optional<Output<String>> profileDescription() {
@@ -58,7 +54,6 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
     }
 
     /**
-     * (Optional, Beta)
      * Optional field to specify a list of shape average percentages to be
      * applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
      * Structure is documented below.
@@ -68,8 +63,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
     private @Nullable Output<List<InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs>> shapeAveragePercentages;
 
     /**
-     * @return (Optional, Beta)
-     * Optional field to specify a list of shape average percentages to be
+     * @return Optional field to specify a list of shape average percentages to be
      * applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
      * Structure is documented below.
      * 
@@ -79,7 +73,6 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
     }
 
     /**
-     * (Optional, Beta)
      * Specify configuration for StrictPriorityPolicy.
      * 
      */
@@ -87,8 +80,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
     private @Nullable Output<InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs> strictPriorityPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Specify configuration for StrictPriorityPolicy.
+     * @return Specify configuration for StrictPriorityPolicy.
      * 
      */
     public Optional<Output<InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs>> strictPriorityPolicy() {
@@ -123,8 +115,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param bandwidthPercentagePolicy (Optional, Beta)
-         * Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+         * @param bandwidthPercentagePolicy Bandwidth Percentage policy allows you to have granular control over how your Interconnect
          * bandwidth is utilized among your workloads mapping to different traffic classes.
          * Structure is documented below.
          * 
@@ -137,8 +128,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param bandwidthPercentagePolicy (Optional, Beta)
-         * Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+         * @param bandwidthPercentagePolicy Bandwidth Percentage policy allows you to have granular control over how your Interconnect
          * bandwidth is utilized among your workloads mapping to different traffic classes.
          * Structure is documented below.
          * 
@@ -150,8 +140,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param profileDescription (Optional, Beta)
-         * A description for the AAI profile on this interconnect.
+         * @param profileDescription A description for the AAI profile on this interconnect.
          * 
          * @return builder
          * 
@@ -162,8 +151,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param profileDescription (Optional, Beta)
-         * A description for the AAI profile on this interconnect.
+         * @param profileDescription A description for the AAI profile on this interconnect.
          * 
          * @return builder
          * 
@@ -173,8 +161,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param shapeAveragePercentages (Optional, Beta)
-         * Optional field to specify a list of shape average percentages to be
+         * @param shapeAveragePercentages Optional field to specify a list of shape average percentages to be
          * applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
          * Structure is documented below.
          * 
@@ -187,8 +174,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param shapeAveragePercentages (Optional, Beta)
-         * Optional field to specify a list of shape average percentages to be
+         * @param shapeAveragePercentages Optional field to specify a list of shape average percentages to be
          * applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
          * Structure is documented below.
          * 
@@ -200,8 +186,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param shapeAveragePercentages (Optional, Beta)
-         * Optional field to specify a list of shape average percentages to be
+         * @param shapeAveragePercentages Optional field to specify a list of shape average percentages to be
          * applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
          * Structure is documented below.
          * 
@@ -213,8 +198,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param strictPriorityPolicy (Optional, Beta)
-         * Specify configuration for StrictPriorityPolicy.
+         * @param strictPriorityPolicy Specify configuration for StrictPriorityPolicy.
          * 
          * @return builder
          * 
@@ -225,8 +209,7 @@ public final class InterconnectApplicationAwareInterconnectArgs extends com.pulu
         }
 
         /**
-         * @param strictPriorityPolicy (Optional, Beta)
-         * Specify configuration for StrictPriorityPolicy.
+         * @param strictPriorityPolicy Specify configuration for StrictPriorityPolicy.
          * 
          * @return builder
          * 

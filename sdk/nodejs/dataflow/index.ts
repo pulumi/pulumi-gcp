@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ConfigStoreSettingArgs, ConfigStoreSettingState } from "./configStoreSetting";
+export type ConfigStoreSetting = import("./configStoreSetting").ConfigStoreSetting;
+export const ConfigStoreSetting: typeof import("./configStoreSetting").ConfigStoreSetting = null as any;
+utilities.lazyLoad(exports, ["ConfigStoreSetting"], () => require("./configStoreSetting"));
+
 export { FlexTemplateJobArgs, FlexTemplateJobState } from "./flexTemplateJob";
 export type FlexTemplateJob = import("./flexTemplateJob").FlexTemplateJob;
 export const FlexTemplateJob: typeof import("./flexTemplateJob").FlexTemplateJob = null as any;
@@ -25,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:dataflow/configStoreSetting:ConfigStoreSetting":
+                return new ConfigStoreSetting(name, <any>undefined, { urn })
             case "gcp:dataflow/flexTemplateJob:FlexTemplateJob":
                 return new FlexTemplateJob(name, <any>undefined, { urn })
             case "gcp:dataflow/job:Job":
@@ -36,6 +43,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "dataflow/configStoreSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataflow/flexTemplateJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataflow/job", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataflow/pipeline", _module)

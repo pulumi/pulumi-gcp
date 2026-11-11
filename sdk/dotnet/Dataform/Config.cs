@@ -12,12 +12,9 @@ namespace Pulumi.Gcp.Dataform
     /// <summary>
     /// Config is a singleton resource used to configure the default Dataform settings for a specified location.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about Config, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations)
+    /// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations#Config)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/dataform/docs/)
     /// 
@@ -30,77 +27,15 @@ namespace Pulumi.Gcp.Dataform
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = new Gcp.Organizations.Project("project", new()
-    ///     {
-    ///         Name = "project-1",
-    ///         ProjectId = "project-1",
-    ///         OrgId = "123456789",
-    ///         BillingAccount = "000000-0000000-0000000-000000",
-    ///         DeletionPolicy = "DELETE",
-    ///     });
-    /// 
-    ///     // Enable Cloud Key KMS API
-    ///     var cloudkmsApi = new Gcp.Projects.Service("cloudkms_api", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         ServiceName = "cloudkms.googleapis.com",
-    ///         DisableOnDestroy = false,
-    ///     });
-    /// 
-    ///     // Enable Dataform API
-    ///     var dataformApi = new Gcp.Projects.Service("dataform_api", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         ServiceName = "dataform.googleapis.com",
-    ///         DisableOnDestroy = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             cloudkmsApi,
-    ///         },
-    ///     });
-    /// 
-    ///     // Add a sleep to wait for IAM propagation after API enablement
-    ///     var waitForDataformApi = new Time.Sleep("wait_for_dataform_api", new()
-    ///     {
-    ///         CreateDuration = "30s",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             dataformApi,
-    ///         },
-    ///     });
-    /// 
-    ///     // Retrieve the Dataform service identity
-    ///     var dataformSa = new Gcp.Projects.ServiceIdentity("dataform_sa", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         Service = "dataform.googleapis.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             waitForDataformApi,
-    ///         },
-    ///     });
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
-    ///         Project = project.ProjectId,
     ///         Name = "example-key-ring",
-    ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             waitForDataformApi,
-    ///         },
+    ///         Location = "us-east1",
     ///     });
     /// 
     ///     var exampleKey = new Gcp.Kms.CryptoKey("example_key", new()
@@ -114,15 +49,14 @@ namespace Pulumi.Gcp.Dataform
     ///     {
     ///         CryptoKeyId = exampleKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = dataformSa.Member,
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-dataform.iam.gserviceaccount.com",
     ///     });
     /// 
     ///     // Config with KMS key provided
     ///     var config = new Gcp.Dataform.Config("config", new()
     ///     {
-    ///         Region = "us-central1",
+    ///         Region = "us-east1",
     ///         DefaultKmsKeyName = exampleKey.Id,
-    ///         Project = project.ProjectId,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -141,50 +75,13 @@ namespace Pulumi.Gcp.Dataform
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = new Gcp.Organizations.Project("project", new()
-    ///     {
-    ///         Name = "project-1",
-    ///         ProjectId = "project-1",
-    ///         OrgId = "123456789",
-    ///         BillingAccount = "000000-0000000-0000000-000000",
-    ///         DeletionPolicy = "DELETE",
-    ///     });
-    /// 
-    ///     // Enable Dataform API
-    ///     var dataformApi = new Gcp.Projects.Service("dataform_api", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         ServiceName = "dataform.googleapis.com",
-    ///         DisableOnDestroy = false,
-    ///     });
-    /// 
-    ///     // Add a sleep to wait for IAM propagation after API enablement
-    ///     var waitForDataformApi = new Time.Sleep("wait_for_dataform_api", new()
-    ///     {
-    ///         CreateDuration = "30s",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             dataformApi,
-    ///         },
-    ///     });
-    /// 
     ///     // Config without KMS key provided
     ///     var config = new Gcp.Dataform.Config("config", new()
     ///     {
-    ///         Region = "us-central1",
-    ///         Project = project.ProjectId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             waitForDataformApi,
-    ///         },
+    ///         Region = "us-west1",
     ///     });
     /// 
     /// });

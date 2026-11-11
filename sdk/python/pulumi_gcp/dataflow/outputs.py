@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ConfigStoreSettingValue',
     'PipelineScheduleInfo',
     'PipelineWorkload',
     'PipelineWorkloadDataflowFlexTemplateRequest',
@@ -25,6 +26,56 @@ __all__ = [
     'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters',
     'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment',
 ]
+
+@pulumi.output_type
+class ConfigStoreSettingValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boolValue":
+            suggest = "bool_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigStoreSettingValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigStoreSettingValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigStoreSettingValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bool_value: Optional[_builtins.bool] = None,
+                 string_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool bool_value: Represents a boolean value.
+        :param _builtins.str string_value: Represents a string value.
+        """
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @_builtins.property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> Optional[_builtins.bool]:
+        """
+        Represents a boolean value.
+        """
+        return pulumi.get(self, "bool_value")
+
+    @_builtins.property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[_builtins.str]:
+        """
+        Represents a string value.
+        """
+        return pulumi.get(self, "string_value")
+
 
 @pulumi.output_type
 class PipelineScheduleInfo(dict):

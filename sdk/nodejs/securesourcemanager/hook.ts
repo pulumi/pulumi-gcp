@@ -15,6 +15,73 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Secure Source Manager Hook Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.securesourcemanager.Instance("instance", {
+ *     location: "asia-east1",
+ *     instanceId: "my-basic-instance",
+ *     deletionPolicy: "PREVENT",
+ * });
+ * const repository = new gcp.securesourcemanager.Repository("repository", {
+ *     repositoryId: "my-basic-repository",
+ *     location: instance.location,
+ *     instance: instance.name,
+ *     deletionPolicy: "PREVENT",
+ * });
+ * const _default = new gcp.securesourcemanager.Hook("default", {
+ *     hookId: "my-basic-hook",
+ *     repositoryId: repository.repositoryId,
+ *     location: repository.location,
+ *     targetUri: "https://www.example.com",
+ *     events: ["PUSH"],
+ * });
+ * ```
+ *
+ * ### Secure Source Manager Hook With Fields
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.securesourcemanager.Instance("instance", {
+ *     location: "asia-east1",
+ *     instanceId: "my-basic-instance",
+ *     deletionPolicy: "PREVENT",
+ * });
+ * const sa = new gcp.serviceaccount.Account("sa", {
+ *     accountId: "my-basic-sa",
+ *     displayName: "Test Service Account",
+ * });
+ * const repository = new gcp.securesourcemanager.Repository("repository", {
+ *     repositoryId: "my-basic-repository",
+ *     instance: instance.name,
+ *     location: instance.location,
+ *     serviceAccount: sa.email,
+ *     deletionPolicy: "PREVENT",
+ * });
+ * const _default = new gcp.securesourcemanager.Hook("default", {
+ *     hookId: "my-basic-hook",
+ *     location: repository.location,
+ *     repositoryId: repository.repositoryId,
+ *     targetUri: "https://www.example.com",
+ *     sensitiveQueryString: "auth=fake_token",
+ *     disabled: false,
+ *     serviceAccountAuth: true,
+ *     pushOption: {
+ *         branchFilter: "main",
+ *     },
+ *     events: [
+ *         "PUSH",
+ *         "PULL_REQUEST",
+ *         "PULL_REQUEST_COMMENT",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Hook can be imported using any of these accepted formats:

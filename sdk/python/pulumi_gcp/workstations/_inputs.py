@@ -43,8 +43,12 @@ __all__ = [
     'WorkstationConfigHostGceInstanceBoostConfigArgsDict',
     'WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs',
     'WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgsDict',
+    'WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs',
+    'WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgsDict',
     'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs',
     'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict',
+    'WorkstationConfigHostGceInstanceReservationAffinityArgs',
+    'WorkstationConfigHostGceInstanceReservationAffinityArgsDict',
     'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs',
     'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict',
     'WorkstationConfigIamBindingConditionArgs',
@@ -827,6 +831,12 @@ class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
     """
     Number of instances to pool for faster workstation startup.
     """
+    reservation_affinity: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceReservationAffinityArgsDict']]]
+    """
+    (Optional, Beta)
+    Reservation affinity to setup a GCE instance.
+    Structure is documented below.
+    """
     service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -866,6 +876,7 @@ class WorkstationConfigHostGceInstanceArgs:
                  instance_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 reservation_affinity: pulumi.Input[Optional['WorkstationConfigHostGceInstanceReservationAffinityArgs']] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shielded_instance_config: pulumi.Input[Optional['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']] = None,
@@ -886,6 +897,9 @@ class WorkstationConfigHostGceInstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] instance_metadata: Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
         :param pulumi.Input[_builtins.str] machine_type: The name of a Compute Engine machine type.
         :param pulumi.Input[_builtins.int] pool_size: Number of instances to pool for faster workstation startup.
+        :param pulumi.Input['WorkstationConfigHostGceInstanceReservationAffinityArgs'] reservation_affinity: (Optional, Beta)
+               Reservation affinity to setup a GCE instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_account_scopes: Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
         :param pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs'] shielded_instance_config: A set of Compute Engine Shielded instance options.
@@ -917,6 +931,8 @@ class WorkstationConfigHostGceInstanceArgs:
             pulumi.set(__self__, "machine_type", machine_type)
         if pool_size is not None:
             pulumi.set(__self__, "pool_size", pool_size)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -1051,6 +1067,20 @@ class WorkstationConfigHostGceInstanceArgs:
     @pool_size.setter
     def pool_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pool_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> pulumi.Input[Optional['WorkstationConfigHostGceInstanceReservationAffinityArgs']]:
+        """
+        (Optional, Beta)
+        Reservation affinity to setup a GCE instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: pulumi.Input[Optional['WorkstationConfigHostGceInstanceReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -1197,6 +1227,12 @@ class WorkstationConfigHostGceInstanceBoostConfigArgsDict(TypedDict):
     """
     Number of instances to pool for faster workstation boosting.
     """
+    reservation_affinity: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgsDict']]]
+    """
+    (Optional, Beta)
+    Reservation affinity to setup a GCE instance.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceBoostConfigArgs:
@@ -1207,7 +1243,8 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
                  enable_automatic_failover: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 pool_size: pulumi.Input[Optional[_builtins.int]] = None):
+                 pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 reservation_affinity: pulumi.Input[Optional['WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: The id to be used for the boost config.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]] accelerators: An accelerator card attached to the boost instance.
@@ -1219,6 +1256,9 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
                See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param pulumi.Input[_builtins.str] machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
         :param pulumi.Input[_builtins.int] pool_size: Number of instances to pool for faster workstation boosting.
+        :param pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs'] reservation_affinity: (Optional, Beta)
+               Reservation affinity to setup a GCE instance.
+               Structure is documented below.
         """
         pulumi.set(__self__, "id", id)
         if accelerators is not None:
@@ -1233,6 +1273,8 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
             pulumi.set(__self__, "machine_type", machine_type)
         if pool_size is not None:
             pulumi.set(__self__, "pool_size", pool_size)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
 
     @_builtins.property
     @pulumi.getter
@@ -1321,6 +1363,20 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
     def pool_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pool_size", value)
 
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> pulumi.Input[Optional['WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs']]:
+        """
+        (Optional, Beta)
+        Reservation affinity to setup a GCE instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: pulumi.Input[Optional['WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
+
 
 class WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgsDict(TypedDict):
     count: pulumi.Input[_builtins.int]
@@ -1369,6 +1425,87 @@ class WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs:
         pulumi.set(self, "type", value)
 
 
+class WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgsDict(TypedDict):
+    consume_reservation_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of reservation consumption.
+    Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+    """
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label key of reservation resource.
+    """
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Label values of reservation resources.
+    Valid values are either the name of a reservation in the same project
+    or "projects/{project}/reservations/{reservation}" to target a shared
+    reservation in the same zone but in a different project.
+    """
+
+@pulumi.input_type
+class WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs:
+    def __init__(__self__, *,
+                 consume_reservation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] consume_reservation_type: Type of reservation consumption.
+               Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+        :param pulumi.Input[_builtins.str] key: Label key of reservation resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Label values of reservation resources.
+               Valid values are either the name of a reservation in the same project
+               or "projects/{project}/reservations/{reservation}" to target a shared
+               reservation in the same zone but in a different project.
+        """
+        if consume_reservation_type is not None:
+            pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of reservation consumption.
+        Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @consume_reservation_type.setter
+    def consume_reservation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "consume_reservation_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label key of reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Label values of reservation resources.
+        Valid values are either the name of a reservation in the same project
+        or "projects/{project}/reservations/{reservation}" to target a shared
+        reservation in the same zone but in a different project.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "values", value)
+
+
 class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict(TypedDict):
     enable_confidential_compute: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -1396,6 +1533,87 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
     @enable_confidential_compute.setter
     def enable_confidential_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
+
+
+class WorkstationConfigHostGceInstanceReservationAffinityArgsDict(TypedDict):
+    consume_reservation_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of reservation consumption.
+    Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+    """
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label key of reservation resource.
+    """
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Label values of reservation resources.
+    Valid values are either the name of a reservation in the same project
+    or "projects/{project}/reservations/{reservation}" to target a shared
+    reservation in the same zone but in a different project.
+    """
+
+@pulumi.input_type
+class WorkstationConfigHostGceInstanceReservationAffinityArgs:
+    def __init__(__self__, *,
+                 consume_reservation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] consume_reservation_type: Type of reservation consumption.
+               Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+        :param pulumi.Input[_builtins.str] key: Label key of reservation resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Label values of reservation resources.
+               Valid values are either the name of a reservation in the same project
+               or "projects/{project}/reservations/{reservation}" to target a shared
+               reservation in the same zone but in a different project.
+        """
+        if consume_reservation_type is not None:
+            pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of reservation consumption.
+        Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @consume_reservation_type.setter
+    def consume_reservation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "consume_reservation_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label key of reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Label values of reservation resources.
+        Valid values are either the name of a reservation in the same project
+        or "projects/{project}/reservations/{reservation}" to target a shared
+        reservation in the same zone but in a different project.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "values", value)
 
 
 class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict(TypedDict):

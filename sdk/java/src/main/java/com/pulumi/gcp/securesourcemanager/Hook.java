@@ -26,6 +26,132 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Secure Source Manager Hook Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.securesourcemanager.Repository;
+ * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
+ * import com.pulumi.gcp.securesourcemanager.Hook;
+ * import com.pulumi.gcp.securesourcemanager.HookArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .location("asia-east1")
+ *             .instanceId("my-basic-instance")
+ *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *         var repository = new Repository("repository", RepositoryArgs.builder()
+ *             .repositoryId("my-basic-repository")
+ *             .location(instance.location())
+ *             .instance(instance.name())
+ *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *         var default_ = new Hook("default", HookArgs.builder()
+ *             .hookId("my-basic-hook")
+ *             .repositoryId(repository.repositoryId())
+ *             .location(repository.location())
+ *             .targetUri("https://www.example.com")
+ *             .events("PUSH")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Secure Source Manager Hook With Fields
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.securesourcemanager.Repository;
+ * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
+ * import com.pulumi.gcp.securesourcemanager.Hook;
+ * import com.pulumi.gcp.securesourcemanager.HookArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.HookPushOptionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .location("asia-east1")
+ *             .instanceId("my-basic-instance")
+ *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *         var sa = new Account("sa", AccountArgs.builder()
+ *             .accountId("my-basic-sa")
+ *             .displayName("Test Service Account")
+ *             .build());
+ * 
+ *         var repository = new Repository("repository", RepositoryArgs.builder()
+ *             .repositoryId("my-basic-repository")
+ *             .instance(instance.name())
+ *             .location(instance.location())
+ *             .serviceAccount(sa.email())
+ *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *         var default_ = new Hook("default", HookArgs.builder()
+ *             .hookId("my-basic-hook")
+ *             .location(repository.location())
+ *             .repositoryId(repository.repositoryId())
+ *             .targetUri("https://www.example.com")
+ *             .sensitiveQueryString("auth=fake_token")
+ *             .disabled(false)
+ *             .serviceAccountAuth(true)
+ *             .pushOption(HookPushOptionArgs.builder()
+ *                 .branchFilter("main")
+ *                 .build())
+ *             .events(            
+ *                 "PUSH",
+ *                 "PULL_REQUEST",
+ *                 "PULL_REQUEST_COMMENT")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Hook can be imported using any of these accepted formats:

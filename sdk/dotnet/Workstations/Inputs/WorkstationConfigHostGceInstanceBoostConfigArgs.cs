@@ -63,6 +63,14 @@ namespace Pulumi.Gcp.Workstations.Inputs
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }
 
+        /// <summary>
+        /// (Optional, Beta)
+        /// Reservation affinity to setup a GCE instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.WorkstationConfigHostGceInstanceBoostConfigReservationAffinityArgs>? ReservationAffinity { get; set; }
+
         public WorkstationConfigHostGceInstanceBoostConfigArgs()
         {
         }

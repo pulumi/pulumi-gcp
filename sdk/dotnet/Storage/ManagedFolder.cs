@@ -120,6 +120,13 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration options for the rapid cache of a managed folder.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("rapidCacheConfig")]
+        public Output<Outputs.ManagedFolderRapidCacheConfig?> RapidCacheConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
@@ -210,6 +217,13 @@ namespace Pulumi.Gcp.Storage
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configuration options for the rapid cache of a managed folder.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rapidCacheConfig")]
+        public Input<Inputs.ManagedFolderRapidCacheConfigArgs>? RapidCacheConfig { get; set; }
+
         public ManagedFolderArgs()
         {
         }
@@ -262,6 +276,13 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configuration options for the rapid cache of a managed folder.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rapidCacheConfig")]
+        public Input<Inputs.ManagedFolderRapidCacheConfigGetArgs>? RapidCacheConfig { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

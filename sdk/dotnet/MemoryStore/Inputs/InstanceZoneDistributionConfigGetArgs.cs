@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
 
     public sealed class InstanceZoneDistributionConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("activeZones")]
+        private InputList<string>? _activeZones;
+
+        /// <summary>
+        /// (Output)
+        /// The exact list of zones where the instance currently has active VMs.
+        /// </summary>
+        public InputList<string> ActiveZones
+        {
+            get => _activeZones ?? (_activeZones = new InputList<string>());
+            set => _activeZones = value;
+        }
+
         /// <summary>
         /// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
         /// Possible values:
@@ -28,6 +41,20 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// Specify the zones of a multi-zone instance where Memorystore
+        /// instance allocates resources. This flag isn't applicable for single-zone
+        /// instances.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
 
         public InstanceZoneDistributionConfigGetArgs()
         {

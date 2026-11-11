@@ -31,6 +31,63 @@ namespace Pulumi.Gcp.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var boundary = new Gcp.Tags.TagKey("boundary", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "bndkey",
+    ///         Description = "Partitioning tag key used by boundaries.",
+    ///     });
+    /// 
+    ///     var boundary1 = new Gcp.Tags.TagValue("boundary_1", new()
+    ///     {
+    ///         Parent = boundary.Id,
+    ///         ShortName = "bndval-1",
+    ///         Description = "Tag value for the first boundary.",
+    ///     });
+    /// 
+    ///     var boundary2 = new Gcp.Tags.TagValue("boundary_2", new()
+    ///     {
+    ///         Parent = boundary.Id,
+    ///         ShortName = "bndval-2",
+    ///         Description = "Tag value for the second boundary.",
+    ///     });
+    /// 
+    ///     var boundaryBoundaryConfig = new Gcp.ResourceManager.BoundaryConfig("boundary", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         TagKey = boundary.NamespacedName,
+    ///     });
+    /// 
+    ///     var boundary1Boundary = new Gcp.ResourceManager.Boundary("boundary_1", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         BoundaryId = "boundary-1",
+    ///         DisplayName = "Boundary 1",
+    ///         ResourceFilter = new Gcp.ResourceManager.Inputs.BoundaryResourceFilterArgs
+    ///         {
+    ///             TagFilter = new Gcp.ResourceManager.Inputs.BoundaryResourceFilterTagFilterArgs
+    ///             {
+    ///                 TagKey = boundaryBoundaryConfig.TagKey,
+    ///                 TagValue = boundary1.ShortName,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var boundary2Boundary = new Gcp.ResourceManager.Boundary("boundary_2", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         BoundaryId = "boundary-2",
+    ///         DisplayName = "Boundary 2",
+    ///         ResourceFilter = new Gcp.ResourceManager.Inputs.BoundaryResourceFilterArgs
+    ///         {
+    ///             TagFilter = new Gcp.ResourceManager.Inputs.BoundaryResourceFilterTagFilterArgs
+    ///             {
+    ///                 TagKey = boundaryBoundaryConfig.TagKey,
+    ///                 TagValue = boundary2.ShortName,
+    ///             },
+    ///         },
+    ///     });
+    /// 
     ///     var capabilityConfig = new Gcp.ResourceManager.CapabilityConfig("capability_config", new()
     ///     {
     ///         Parent = "organizations/123456789",
@@ -39,6 +96,17 @@ namespace Pulumi.Gcp.ResourceManager
     ///         Types = new[]
     ///         {
     ///             "AGENT_MANAGEMENT",
+    ///         },
+    ///         Boundaries = new[]
+    ///         {
+    ///             boundary1Boundary.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             boundary1Boundary,
+    ///             boundary2Boundary,
     ///         },
     ///     });
     /// 
@@ -176,6 +244,14 @@ namespace Pulumi.Gcp.ResourceManager
     public partial class CapabilityConfig : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The list of Boundaries associated with this capability config.
+        /// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+        /// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+        /// </summary>
+        [Output("boundaries")]
+        public Output<ImmutableArray<string>> Boundaries { get; private set; } = null!;
+
+        /// <summary>
         /// User-specified identifier of the capability config. Must be 6 to 30 characters,
         /// and contain only lowercase letters, numbers, and hyphens.
         /// </summary>
@@ -298,6 +374,20 @@ namespace Pulumi.Gcp.ResourceManager
 
     public sealed class CapabilityConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("boundaries")]
+        private InputList<string>? _boundaries;
+
+        /// <summary>
+        /// The list of Boundaries associated with this capability config.
+        /// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+        /// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+        /// </summary>
+        public InputList<string> Boundaries
+        {
+            get => _boundaries ?? (_boundaries = new InputList<string>());
+            set => _boundaries = value;
+        }
+
         /// <summary>
         /// User-specified identifier of the capability config. Must be 6 to 30 characters,
         /// and contain only lowercase letters, numbers, and hyphens.
@@ -358,6 +448,20 @@ namespace Pulumi.Gcp.ResourceManager
 
     public sealed class CapabilityConfigState : global::Pulumi.ResourceArgs
     {
+        [Input("boundaries")]
+        private InputList<string>? _boundaries;
+
+        /// <summary>
+        /// The list of Boundaries associated with this capability config.
+        /// Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+        /// Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+        /// </summary>
+        public InputList<string> Boundaries
+        {
+            get => _boundaries ?? (_boundaries = new InputList<string>());
+            set => _boundaries = value;
+        }
+
         /// <summary>
         /// User-specified identifier of the capability config. Must be 6 to 30 characters,
         /// and contain only lowercase letters, numbers, and hyphens.

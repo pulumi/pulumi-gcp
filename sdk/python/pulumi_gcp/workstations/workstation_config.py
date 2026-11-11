@@ -1815,6 +1815,65 @@ class WorkstationConfig(pulumi.CustomResource):
             })
         ```
 
+        ### Workstation Config Reservation Affinity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-east4",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-east4")
+        default_reservation = gcp.compute.Reservation("default",
+            name="workstation-reservation",
+            zone="us-east4-a",
+            specific_reservation={
+                "count": 1,
+                "instance_properties": {
+                    "machine_type": "e2-standard-4",
+                },
+            },
+            specific_reservation_required=True)
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-east4",
+            replica_zones=[
+                "us-east4-a",
+                "us-east4-b",
+            ],
+            host={
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "reservation_affinity": {
+                        "consume_reservation_type": "SPECIFIC_RESERVATION",
+                        "key": "compute.googleapis.com/reservation-name",
+                        "values": [default_reservation.name],
+                    },
+                    "boost_configs": [{
+                        "id": "boost-1",
+                        "machine_type": "e2-standard-4",
+                        "boot_disk_size_gb": 35,
+                        "reservation_affinity": {
+                            "consume_reservation_type": "ANY_RESERVATION",
+                        },
+                    }],
+                },
+            })
+        ```
+
         ## Regional Endpoint Policies
 
         This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
@@ -2681,6 +2740,65 @@ class WorkstationConfig(pulumi.CustomResource):
                     "machine_type": "e2-standard-4",
                     "boot_disk_size_gb": 35,
                     "disable_public_ip_addresses": True,
+                },
+            })
+        ```
+
+        ### Workstation Config Reservation Affinity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-east4",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-east4")
+        default_reservation = gcp.compute.Reservation("default",
+            name="workstation-reservation",
+            zone="us-east4-a",
+            specific_reservation={
+                "count": 1,
+                "instance_properties": {
+                    "machine_type": "e2-standard-4",
+                },
+            },
+            specific_reservation_required=True)
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-east4",
+            replica_zones=[
+                "us-east4-a",
+                "us-east4-b",
+            ],
+            host={
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "reservation_affinity": {
+                        "consume_reservation_type": "SPECIFIC_RESERVATION",
+                        "key": "compute.googleapis.com/reservation-name",
+                        "values": [default_reservation.name],
+                    },
+                    "boost_configs": [{
+                        "id": "boost-1",
+                        "machine_type": "e2-standard-4",
+                        "boot_disk_size_gb": 35,
+                        "reservation_affinity": {
+                            "consume_reservation_type": "ANY_RESERVATION",
+                        },
+                    }],
                 },
             })
         ```

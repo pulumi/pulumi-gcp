@@ -369,9 +369,21 @@ public class V2OrganizationSourceIamBinding extends com.pulumi.resources.CustomR
     public Output<List<String>> members() {
         return this.members;
     }
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
+    /**
+     * @return The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> organization() {
         return this.organization;
     }

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ManagedFolderArgs', 'ManagedFolder']
 
@@ -22,7 +24,8 @@ class ManagedFolderArgs:
                  bucket: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rapid_cache_config: pulumi.Input[Optional['ManagedFolderRapidCacheConfigArgs']] = None):
         """
         The set of arguments for constructing a ManagedFolder resource.
 
@@ -39,6 +42,8 @@ class ManagedFolderArgs:
                same name.
         :param pulumi.Input[_builtins.str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
+        :param pulumi.Input['ManagedFolderRapidCacheConfigArgs'] rapid_cache_config: Configuration options for the rapid cache of a managed folder.
+               Structure is documented below.
         """
         pulumi.set(__self__, "bucket", bucket)
         if deletion_policy is not None:
@@ -47,6 +52,8 @@ class ManagedFolderArgs:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if rapid_cache_config is not None:
+            pulumi.set(__self__, "rapid_cache_config", rapid_cache_config)
 
     @_builtins.property
     @pulumi.getter
@@ -105,6 +112,19 @@ class ManagedFolderArgs:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="rapidCacheConfig")
+    def rapid_cache_config(self) -> pulumi.Input[Optional['ManagedFolderRapidCacheConfigArgs']]:
+        """
+        Configuration options for the rapid cache of a managed folder.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rapid_cache_config")
+
+    @rapid_cache_config.setter
+    def rapid_cache_config(self, value: pulumi.Input[Optional['ManagedFolderRapidCacheConfigArgs']]):
+        pulumi.set(self, "rapid_cache_config", value)
+
 
 @pulumi.input_type
 class _ManagedFolderState:
@@ -115,6 +135,7 @@ class _ManagedFolderState:
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  metageneration: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rapid_cache_config: pulumi.Input[Optional['ManagedFolderRapidCacheConfigArgs']] = None,
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -135,6 +156,8 @@ class _ManagedFolderState:
         :param pulumi.Input[_builtins.str] metageneration: The metadata generation of the managed folder.
         :param pulumi.Input[_builtins.str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
+        :param pulumi.Input['ManagedFolderRapidCacheConfigArgs'] rapid_cache_config: Configuration options for the rapid cache of a managed folder.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] update_time: The timestamp at which this managed folder was most recently updated.
         """
@@ -150,6 +173,8 @@ class _ManagedFolderState:
             pulumi.set(__self__, "metageneration", metageneration)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if rapid_cache_config is not None:
+            pulumi.set(__self__, "rapid_cache_config", rapid_cache_config)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if update_time is not None:
@@ -237,6 +262,19 @@ class _ManagedFolderState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="rapidCacheConfig")
+    def rapid_cache_config(self) -> pulumi.Input[Optional['ManagedFolderRapidCacheConfigArgs']]:
+        """
+        Configuration options for the rapid cache of a managed folder.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rapid_cache_config")
+
+    @rapid_cache_config.setter
+    def rapid_cache_config(self, value: pulumi.Input[Optional['ManagedFolderRapidCacheConfigArgs']]):
+        pulumi.set(self, "rapid_cache_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -271,6 +309,7 @@ class ManagedFolder(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rapid_cache_config: pulumi.Input[Optional[Union['ManagedFolderRapidCacheConfigArgs', 'ManagedFolderRapidCacheConfigArgsDict', 'outputs.ManagedFolderRapidCacheConfig']]] = None,
                  __props__=None):
         """
         A Google Cloud Storage Managed Folder.
@@ -339,6 +378,8 @@ class ManagedFolder(pulumi.CustomResource):
                same name.
         :param pulumi.Input[_builtins.str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
+        :param pulumi.Input[Union['ManagedFolderRapidCacheConfigArgs', 'ManagedFolderRapidCacheConfigArgsDict', 'outputs.ManagedFolderRapidCacheConfig']] rapid_cache_config: Configuration options for the rapid cache of a managed folder.
+               Structure is documented below.
         """
         ...
     @overload
@@ -417,6 +458,7 @@ class ManagedFolder(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rapid_cache_config: pulumi.Input[Optional[Union['ManagedFolderRapidCacheConfigArgs', 'ManagedFolderRapidCacheConfigArgsDict', 'outputs.ManagedFolderRapidCacheConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -432,6 +474,7 @@ class ManagedFolder(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["name"] = name
+            __props__.__dict__["rapid_cache_config"] = rapid_cache_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["metageneration"] = None
             __props__.__dict__["self_link"] = None
@@ -452,6 +495,7 @@ class ManagedFolder(pulumi.CustomResource):
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             metageneration: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            rapid_cache_config: pulumi.Input[Optional[Union['ManagedFolderRapidCacheConfigArgs', 'ManagedFolderRapidCacheConfigArgsDict', 'outputs.ManagedFolderRapidCacheConfig']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ManagedFolder':
         """
@@ -476,6 +520,8 @@ class ManagedFolder(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] metageneration: The metadata generation of the managed folder.
         :param pulumi.Input[_builtins.str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
+        :param pulumi.Input[Union['ManagedFolderRapidCacheConfigArgs', 'ManagedFolderRapidCacheConfigArgsDict', 'outputs.ManagedFolderRapidCacheConfig']] rapid_cache_config: Configuration options for the rapid cache of a managed folder.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] update_time: The timestamp at which this managed folder was most recently updated.
         """
@@ -489,6 +535,7 @@ class ManagedFolder(pulumi.CustomResource):
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["metageneration"] = metageneration
         __props__.__dict__["name"] = name
+        __props__.__dict__["rapid_cache_config"] = rapid_cache_config
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["update_time"] = update_time
         return ManagedFolder(resource_name, opts=opts, __props__=__props__)
@@ -502,6 +549,7 @@ class ManagedFolder(pulumi.CustomResource):
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             metageneration: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            rapid_cache_config: pulumi.Input[Optional[Union['ManagedFolderRapidCacheConfigArgs', 'ManagedFolderRapidCacheConfigArgsDict', 'outputs.ManagedFolderRapidCacheConfig']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
@@ -511,6 +559,7 @@ class ManagedFolder(pulumi.CustomResource):
         __props__["forceDestroy"] = force_destroy
         __props__["metageneration"] = metageneration
         __props__["name"] = name
+        __props__["rapidCacheConfig"] = rapid_cache_config
         __props__["selfLink"] = self_link
         __props__["updateTime"] = update_time
         return pulumi.runtime.exists_resource(None, 'gcp:storage/managedFolder:ManagedFolder', id, __props__, opts or pulumi.ResourceOptions())
@@ -571,6 +620,15 @@ class ManagedFolder(pulumi.CustomResource):
         trailing '/'. For example, `example_dir/example_dir2/`.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="rapidCacheConfig")
+    def rapid_cache_config(self) -> pulumi.Output[Optional['outputs.ManagedFolderRapidCacheConfig']]:
+        """
+        Configuration options for the rapid cache of a managed folder.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rapid_cache_config")
 
     @_builtins.property
     @pulumi.getter(name="selfLink")

@@ -16,6 +16,14 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'CompanionAgentCesToolSpec',
+    'CompanionAgentCesToolSpecParameterOverride',
+    'CompanionAgentSkillConfig',
+    'CompanionAgentSkillConfigGuidanceSkillConfig',
+    'CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction',
+    'CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction',
+    'CompanionAgentToolsetTool',
+    'CompanionAgentToolsetToolParameterOverride',
     'ConversationProfileAutomatedAgentConfig',
     'ConversationProfileHumanAgentAssistantConfig',
     'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig',
@@ -335,6 +343,583 @@ __all__ = [
     'ToolOpenApiSpecTlsConfig',
     'ToolOpenApiSpecTlsConfigCaCert',
 ]
+
+@pulumi.output_type
+class CompanionAgentCesToolSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cesTool":
+            suggest = "ces_tool"
+        elif key == "confirmationRequirement":
+            suggest = "confirmation_requirement"
+        elif key == "parameterOverrides":
+            suggest = "parameter_overrides"
+        elif key == "proactiveEnabled":
+            suggest = "proactive_enabled"
+        elif key == "reactiveEnabled":
+            suggest = "reactive_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompanionAgentCesToolSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompanionAgentCesToolSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompanionAgentCesToolSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ces_tool: Optional[_builtins.str] = None,
+                 confirmation_requirement: Optional[_builtins.str] = None,
+                 parameter_overrides: Optional[Sequence['outputs.CompanionAgentCesToolSpecParameterOverride']] = None,
+                 proactive_enabled: Optional[_builtins.bool] = None,
+                 reactive_enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str ces_tool: The resource name of the CES tool.
+               Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`.
+        :param _builtins.str confirmation_requirement: Indicates whether the tool requires human confirmation.
+               Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+        :param Sequence['CompanionAgentCesToolSpecParameterOverrideArgs'] parameter_overrides: Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameter_name` are disallowed and rejected during Companion Agent validation.
+               Structure is documented below.
+        :param _builtins.bool proactive_enabled: Indicates whether the tool is enabled in proactive mode.
+               All tools are enabled in proactive mode by default. To disable a tool in proactive mode, set this field to `false`.
+               NOTE: At least one of `proactive_enabled` or `reactive_enabled` should be `true` else the tool will be ignored.
+        :param _builtins.bool reactive_enabled: Indicates whether the tool is enabled in reactive mode.
+               All tools are disabled in reactive mode by default. To enable a tool in reactive mode, set this field to `true`.
+               NOTE: At least one of `reactive_enabled` or `proactive_enabled` should be `true` else the tool will be ignored. CompanionAgent config will throw an error if any unsupported tool is enabled in reactive mode.
+        """
+        if ces_tool is not None:
+            pulumi.set(__self__, "ces_tool", ces_tool)
+        if confirmation_requirement is not None:
+            pulumi.set(__self__, "confirmation_requirement", confirmation_requirement)
+        if parameter_overrides is not None:
+            pulumi.set(__self__, "parameter_overrides", parameter_overrides)
+        if proactive_enabled is not None:
+            pulumi.set(__self__, "proactive_enabled", proactive_enabled)
+        if reactive_enabled is not None:
+            pulumi.set(__self__, "reactive_enabled", reactive_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="cesTool")
+    def ces_tool(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the CES tool.
+        Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`.
+        """
+        return pulumi.get(self, "ces_tool")
+
+    @_builtins.property
+    @pulumi.getter(name="confirmationRequirement")
+    def confirmation_requirement(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether the tool requires human confirmation.
+        Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+        """
+        return pulumi.get(self, "confirmation_requirement")
+
+    @_builtins.property
+    @pulumi.getter(name="parameterOverrides")
+    def parameter_overrides(self) -> Optional[Sequence['outputs.CompanionAgentCesToolSpecParameterOverride']]:
+        """
+        Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameter_name` are disallowed and rejected during Companion Agent validation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parameter_overrides")
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveEnabled")
+    def proactive_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the tool is enabled in proactive mode.
+        All tools are enabled in proactive mode by default. To disable a tool in proactive mode, set this field to `false`.
+        NOTE: At least one of `proactive_enabled` or `reactive_enabled` should be `true` else the tool will be ignored.
+        """
+        return pulumi.get(self, "proactive_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="reactiveEnabled")
+    def reactive_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the tool is enabled in reactive mode.
+        All tools are disabled in reactive mode by default. To enable a tool in reactive mode, set this field to `true`.
+        NOTE: At least one of `reactive_enabled` or `proactive_enabled` should be `true` else the tool will be ignored. CompanionAgent config will throw an error if any unsupported tool is enabled in reactive mode.
+        """
+        return pulumi.get(self, "reactive_enabled")
+
+
+@pulumi.output_type
+class CompanionAgentCesToolSpecParameterOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contextReferenceKey":
+            suggest = "context_reference_key"
+        elif key == "parameterName":
+            suggest = "parameter_name"
+        elif key == "fieldPath":
+            suggest = "field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompanionAgentCesToolSpecParameterOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompanionAgentCesToolSpecParameterOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompanionAgentCesToolSpecParameterOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 context_reference_key: _builtins.str,
+                 parameter_name: _builtins.str,
+                 field_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str context_reference_key: The key of the context reference in ingested context references.
+        :param _builtins.str parameter_name: The name of the tool input parameter to override, as defined in the tool's input schema. For example, `user_email`.
+        :param _builtins.str field_path: The path into the JSON object of the latest content ingested under `context_reference_key` (e.g. `email` or `user.email`). If omitted, the entire content under `context_reference_key` is used.
+               If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+        """
+        pulumi.set(__self__, "context_reference_key", context_reference_key)
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+
+    @_builtins.property
+    @pulumi.getter(name="contextReferenceKey")
+    def context_reference_key(self) -> _builtins.str:
+        """
+        The key of the context reference in ingested context references.
+        """
+        return pulumi.get(self, "context_reference_key")
+
+    @_builtins.property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> _builtins.str:
+        """
+        The name of the tool input parameter to override, as defined in the tool's input schema. For example, `user_email`.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[_builtins.str]:
+        """
+        The path into the JSON object of the latest content ingested under `context_reference_key` (e.g. `email` or `user.email`). If omitted, the entire content under `context_reference_key` is used.
+        If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+        """
+        return pulumi.get(self, "field_path")
+
+
+@pulumi.output_type
+class CompanionAgentSkillConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "guidanceSkillConfig":
+            suggest = "guidance_skill_config"
+        elif key == "skillTriggeringEvent":
+            suggest = "skill_triggering_event"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompanionAgentSkillConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompanionAgentSkillConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompanionAgentSkillConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 guidance_skill_config: Optional['outputs.CompanionAgentSkillConfigGuidanceSkillConfig'] = None,
+                 skill_triggering_event: Optional[_builtins.str] = None):
+        """
+        :param 'CompanionAgentSkillConfigGuidanceSkillConfigArgs' guidance_skill_config: Guidance skill configuration.
+               Structure is documented below.
+        :param _builtins.str skill_triggering_event: The event that should trigger the skill.
+               Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+        """
+        if guidance_skill_config is not None:
+            pulumi.set(__self__, "guidance_skill_config", guidance_skill_config)
+        if skill_triggering_event is not None:
+            pulumi.set(__self__, "skill_triggering_event", skill_triggering_event)
+
+    @_builtins.property
+    @pulumi.getter(name="guidanceSkillConfig")
+    def guidance_skill_config(self) -> Optional['outputs.CompanionAgentSkillConfigGuidanceSkillConfig']:
+        """
+        Guidance skill configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guidance_skill_config")
+
+    @_builtins.property
+    @pulumi.getter(name="skillTriggeringEvent")
+    def skill_triggering_event(self) -> Optional[_builtins.str]:
+        """
+        The event that should trigger the skill.
+        Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+        """
+        return pulumi.get(self, "skill_triggering_event")
+
+
+@pulumi.output_type
+class CompanionAgentSkillConfigGuidanceSkillConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "guidanceInstructions":
+            suggest = "guidance_instructions"
+        elif key == "overarchingGuidance":
+            suggest = "overarching_guidance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompanionAgentSkillConfigGuidanceSkillConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompanionAgentSkillConfigGuidanceSkillConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompanionAgentSkillConfigGuidanceSkillConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 guidance_instructions: Optional[Sequence['outputs.CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction']] = None,
+                 overarching_guidance: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionArgs'] guidance_instructions: Customized instructions for guidance.
+               Structure is documented below.
+        :param _builtins.str overarching_guidance: This is specific additional guidance that can be configured by the user.
+        """
+        if guidance_instructions is not None:
+            pulumi.set(__self__, "guidance_instructions", guidance_instructions)
+        if overarching_guidance is not None:
+            pulumi.set(__self__, "overarching_guidance", overarching_guidance)
+
+    @_builtins.property
+    @pulumi.getter(name="guidanceInstructions")
+    def guidance_instructions(self) -> Optional[Sequence['outputs.CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction']]:
+        """
+        Customized instructions for guidance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guidance_instructions")
+
+    @_builtins.property
+    @pulumi.getter(name="overarchingGuidance")
+    def overarching_guidance(self) -> Optional[_builtins.str]:
+        """
+        This is specific additional guidance that can be configured by the user.
+        """
+        return pulumi.get(self, "overarching_guidance")
+
+
+@pulumi.output_type
+class CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableSuggestedReply":
+            suggest = "disable_suggested_reply"
+        elif key == "displayDetails":
+            suggest = "display_details"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "triggerEvent":
+            suggest = "trigger_event"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstruction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 actions: Optional[Sequence['outputs.CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction']] = None,
+                 condition: Optional[_builtins.str] = None,
+                 disable_suggested_reply: Optional[_builtins.bool] = None,
+                 display_details: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 trigger_event: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionActionArgs'] actions: The action items that can be processed.
+               Structure is documented below.
+        :param _builtins.str condition: The condition of the instruction.
+        :param _builtins.bool disable_suggested_reply: Whether to disable suggested reply generation for this instruction.
+        :param _builtins.str display_details: The detailed description of this instruction.
+        :param _builtins.str display_name: Display name for the instruction.
+        :param _builtins.str trigger_event: Event that triggers the guidance instruction.
+               Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if disable_suggested_reply is not None:
+            pulumi.set(__self__, "disable_suggested_reply", disable_suggested_reply)
+        if display_details is not None:
+            pulumi.set(__self__, "display_details", display_details)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if trigger_event is not None:
+            pulumi.set(__self__, "trigger_event", trigger_event)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence['outputs.CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction']]:
+        """
+        The action items that can be processed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> Optional[_builtins.str]:
+        """
+        The condition of the instruction.
+        """
+        return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter(name="disableSuggestedReply")
+    def disable_suggested_reply(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable suggested reply generation for this instruction.
+        """
+        return pulumi.get(self, "disable_suggested_reply")
+
+    @_builtins.property
+    @pulumi.getter(name="displayDetails")
+    def display_details(self) -> Optional[_builtins.str]:
+        """
+        The detailed description of this instruction.
+        """
+        return pulumi.get(self, "display_details")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name for the instruction.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="triggerEvent")
+    def trigger_event(self) -> Optional[_builtins.str]:
+        """
+        Event that triggers the guidance instruction.
+        Possible values are: `END_OF_UTTERANCE`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
+        """
+        return pulumi.get(self, "trigger_event")
+
+
+@pulumi.output_type
+class CompanionAgentSkillConfigGuidanceSkillConfigGuidanceInstructionAction(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str):
+        """
+        :param _builtins.str description: Description of action item.
+        """
+        pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of action item.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class CompanionAgentToolsetTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confirmationRequirement":
+            suggest = "confirmation_requirement"
+        elif key == "operationId":
+            suggest = "operation_id"
+        elif key == "parameterOverrides":
+            suggest = "parameter_overrides"
+        elif key == "proactiveEnabled":
+            suggest = "proactive_enabled"
+        elif key == "reactiveEnabled":
+            suggest = "reactive_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompanionAgentToolsetTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompanionAgentToolsetTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompanionAgentToolsetTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 toolset: _builtins.str,
+                 confirmation_requirement: Optional[_builtins.str] = None,
+                 operation_id: Optional[_builtins.str] = None,
+                 parameter_overrides: Optional[Sequence['outputs.CompanionAgentToolsetToolParameterOverride']] = None,
+                 proactive_enabled: Optional[_builtins.bool] = None,
+                 reactive_enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str toolset: The name of the toolset to retrieve the schema for.
+               Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`.
+        :param _builtins.str confirmation_requirement: Indicates whether the tool requires human confirmation.
+               Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+        :param _builtins.str operation_id: The `operationId` field of the OpenAPI endpoint. The `operationId` must be present in the toolset's definition.
+        :param Sequence['CompanionAgentToolsetToolParameterOverrideArgs'] parameter_overrides: Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameter_name` are disallowed and rejected during Companion Agent validation.
+               Structure is documented below.
+        :param _builtins.bool proactive_enabled: Indicates whether the toolset tool is enabled in proactive mode.
+               NOTE: At least one of `proactive_enabled` or `reactive_enabled` should be `true` else the toolset tool will be ignored.
+        :param _builtins.bool reactive_enabled: Indicates whether the toolset tool is enabled in reactive mode.
+               NOTE: At least one of `reactive_enabled` or `proactive_enabled` should be `true` else the toolset tool will be ignored.
+        """
+        pulumi.set(__self__, "toolset", toolset)
+        if confirmation_requirement is not None:
+            pulumi.set(__self__, "confirmation_requirement", confirmation_requirement)
+        if operation_id is not None:
+            pulumi.set(__self__, "operation_id", operation_id)
+        if parameter_overrides is not None:
+            pulumi.set(__self__, "parameter_overrides", parameter_overrides)
+        if proactive_enabled is not None:
+            pulumi.set(__self__, "proactive_enabled", proactive_enabled)
+        if reactive_enabled is not None:
+            pulumi.set(__self__, "reactive_enabled", reactive_enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def toolset(self) -> _builtins.str:
+        """
+        The name of the toolset to retrieve the schema for.
+        Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`.
+        """
+        return pulumi.get(self, "toolset")
+
+    @_builtins.property
+    @pulumi.getter(name="confirmationRequirement")
+    def confirmation_requirement(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether the tool requires human confirmation.
+        Possible values are: `REQUIRED`, `NOT_REQUIRED`.
+        """
+        return pulumi.get(self, "confirmation_requirement")
+
+    @_builtins.property
+    @pulumi.getter(name="operationId")
+    def operation_id(self) -> Optional[_builtins.str]:
+        """
+        The `operationId` field of the OpenAPI endpoint. The `operationId` must be present in the toolset's definition.
+        """
+        return pulumi.get(self, "operation_id")
+
+    @_builtins.property
+    @pulumi.getter(name="parameterOverrides")
+    def parameter_overrides(self) -> Optional[Sequence['outputs.CompanionAgentToolsetToolParameterOverride']]:
+        """
+        Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same `parameter_name` are disallowed and rejected during Companion Agent validation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parameter_overrides")
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveEnabled")
+    def proactive_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the toolset tool is enabled in proactive mode.
+        NOTE: At least one of `proactive_enabled` or `reactive_enabled` should be `true` else the toolset tool will be ignored.
+        """
+        return pulumi.get(self, "proactive_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="reactiveEnabled")
+    def reactive_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the toolset tool is enabled in reactive mode.
+        NOTE: At least one of `reactive_enabled` or `proactive_enabled` should be `true` else the toolset tool will be ignored.
+        """
+        return pulumi.get(self, "reactive_enabled")
+
+
+@pulumi.output_type
+class CompanionAgentToolsetToolParameterOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contextReferenceKey":
+            suggest = "context_reference_key"
+        elif key == "parameterName":
+            suggest = "parameter_name"
+        elif key == "fieldPath":
+            suggest = "field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompanionAgentToolsetToolParameterOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompanionAgentToolsetToolParameterOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompanionAgentToolsetToolParameterOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 context_reference_key: _builtins.str,
+                 parameter_name: _builtins.str,
+                 field_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str context_reference_key: The key of the context reference in ingested context references.
+        :param _builtins.str parameter_name: The name of the tool input parameter to override, as defined in the tool's input schema. For example, `user_email`.
+        :param _builtins.str field_path: The path into the JSON object of the latest content ingested under `context_reference_key` (e.g. `email` or `user.email`). If omitted, the entire content under `context_reference_key` is used.
+               If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+        """
+        pulumi.set(__self__, "context_reference_key", context_reference_key)
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+
+    @_builtins.property
+    @pulumi.getter(name="contextReferenceKey")
+    def context_reference_key(self) -> _builtins.str:
+        """
+        The key of the context reference in ingested context references.
+        """
+        return pulumi.get(self, "context_reference_key")
+
+    @_builtins.property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> _builtins.str:
+        """
+        The name of the tool input parameter to override, as defined in the tool's input schema. For example, `user_email`.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[_builtins.str]:
+        """
+        The path into the JSON object of the latest content ingested under `context_reference_key` (e.g. `email` or `user.email`). If omitted, the entire content under `context_reference_key` is used.
+        If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+        """
+        return pulumi.get(self, "field_path")
+
 
 @pulumi.output_type
 class ConversationProfileAutomatedAgentConfig(dict):

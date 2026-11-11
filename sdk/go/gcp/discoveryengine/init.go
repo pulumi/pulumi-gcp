@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataStore{}
 	case "gcp:discoveryengine/licenseConfig:LicenseConfig":
 		r = &LicenseConfig{}
+	case "gcp:discoveryengine/projectProvision:ProjectProvision":
+		r = &ProjectProvision{}
 	case "gcp:discoveryengine/recommendationEngine:RecommendationEngine":
 		r = &RecommendationEngine{}
 	case "gcp:discoveryengine/schema:Schema":
@@ -110,6 +112,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"discoveryengine/licenseConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/projectProvision",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

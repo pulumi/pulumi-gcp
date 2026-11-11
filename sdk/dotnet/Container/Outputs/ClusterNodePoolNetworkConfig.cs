@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? EnablePrivateNodes;
         /// <summary>
-        /// Network bandwidth tier configuration.
+        /// Network bandwidth tier configuration. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfig? NetworkPerformanceConfig;
         /// <summary>

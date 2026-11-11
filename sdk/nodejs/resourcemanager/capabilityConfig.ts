@@ -22,11 +22,58 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const boundary = new gcp.tags.TagKey("boundary", {
+ *     parent: "organizations/123456789",
+ *     shortName: "bndkey",
+ *     description: "Partitioning tag key used by boundaries.",
+ * });
+ * const boundary1 = new gcp.tags.TagValue("boundary_1", {
+ *     parent: boundary.id,
+ *     shortName: "bndval-1",
+ *     description: "Tag value for the first boundary.",
+ * });
+ * const boundary2 = new gcp.tags.TagValue("boundary_2", {
+ *     parent: boundary.id,
+ *     shortName: "bndval-2",
+ *     description: "Tag value for the second boundary.",
+ * });
+ * const boundaryBoundaryConfig = new gcp.resourcemanager.BoundaryConfig("boundary", {
+ *     parent: "organizations/123456789",
+ *     tagKey: boundary.namespacedName,
+ * });
+ * const boundary1Boundary = new gcp.resourcemanager.Boundary("boundary_1", {
+ *     parent: "organizations/123456789",
+ *     boundaryId: "boundary-1",
+ *     displayName: "Boundary 1",
+ *     resourceFilter: {
+ *         tagFilter: {
+ *             tagKey: boundaryBoundaryConfig.tagKey,
+ *             tagValue: boundary1.shortName,
+ *         },
+ *     },
+ * });
+ * const boundary2Boundary = new gcp.resourcemanager.Boundary("boundary_2", {
+ *     parent: "organizations/123456789",
+ *     boundaryId: "boundary-2",
+ *     displayName: "Boundary 2",
+ *     resourceFilter: {
+ *         tagFilter: {
+ *             tagKey: boundaryBoundaryConfig.tagKey,
+ *             tagValue: boundary2.shortName,
+ *         },
+ *     },
+ * });
  * const capabilityConfig = new gcp.resourcemanager.CapabilityConfig("capability_config", {
  *     parent: "organizations/123456789",
  *     capabilityConfigId: "capcfg",
  *     displayName: "capdisp",
  *     types: ["AGENT_MANAGEMENT"],
+ *     boundaries: [boundary1Boundary.name],
+ * }, {
+ *     dependsOn: [
+ *         boundary1Boundary,
+ *         boundary2Boundary,
+ *     ],
  * });
  * ```
  *
@@ -147,6 +194,12 @@ export class CapabilityConfig extends pulumi.CustomResource {
     }
 
     /**
+     * The list of Boundaries associated with this capability config.
+     * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+     * Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+     */
+    declare public readonly boundaries: pulumi.Output<string[] | undefined>;
+    /**
      * User-specified identifier of the capability config. Must be 6 to 30 characters,
      * and contain only lowercase letters, numbers, and hyphens.
      */
@@ -215,6 +268,7 @@ export class CapabilityConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CapabilityConfigState | undefined;
+            resourceInputs["boundaries"] = state?.boundaries;
             resourceInputs["capabilityConfigId"] = state?.capabilityConfigId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -237,6 +291,7 @@ export class CapabilityConfig extends pulumi.CustomResource {
             if (args?.types === undefined && !opts.urn) {
                 throw new Error("Missing required property 'types'");
             }
+            resourceInputs["boundaries"] = args?.boundaries;
             resourceInputs["capabilityConfigId"] = args?.capabilityConfigId;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
@@ -258,6 +313,12 @@ export class CapabilityConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CapabilityConfig resources.
  */
 export interface CapabilityConfigState {
+    /**
+     * The list of Boundaries associated with this capability config.
+     * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+     * Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+     */
+    boundaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User-specified identifier of the capability config. Must be 6 to 30 characters,
      * and contain only lowercase letters, numbers, and hyphens.
@@ -319,6 +380,12 @@ export interface CapabilityConfigState {
  * The set of arguments for constructing a CapabilityConfig resource.
  */
 export interface CapabilityConfigArgs {
+    /**
+     * The list of Boundaries associated with this capability config.
+     * Format: `organizations/{organization}/boundaries/{boundary}` or `folders/{folder}/boundaries/{boundary}`.
+     * Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+     */
+    boundaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User-specified identifier of the capability config. Must be 6 to 30 characters,
      * and contain only lowercase letters, numbers, and hyphens.

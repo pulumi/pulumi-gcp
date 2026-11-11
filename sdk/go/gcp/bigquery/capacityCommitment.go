@@ -76,7 +76,7 @@ type CapacityCommitment struct {
 	// empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
 	// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
 	// or merged.
-	CapacityCommitmentId pulumi.StringPtrOutput `pulumi:"capacityCommitmentId"`
+	CapacityCommitmentId pulumi.StringOutput `pulumi:"capacityCommitmentId"`
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentEndTime pulumi.StringOutput `pulumi:"commitmentEndTime"`
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
@@ -387,8 +387,8 @@ func (o CapacityCommitmentOutput) ToCapacityCommitmentOutputWithContext(ctx cont
 // empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
 // cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
 // or merged.
-func (o CapacityCommitmentOutput) CapacityCommitmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringPtrOutput { return v.CapacityCommitmentId }).(pulumi.StringPtrOutput)
+func (o CapacityCommitmentOutput) CapacityCommitmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.CapacityCommitmentId }).(pulumi.StringOutput)
 }
 
 // The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.

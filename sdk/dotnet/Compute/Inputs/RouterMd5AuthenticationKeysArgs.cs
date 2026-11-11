@@ -12,11 +12,21 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RouterMd5AuthenticationKeysArgs : global::Pulumi.ResourceArgs
     {
+        [Input("key", required: true)]
+        private Input<string>? _key;
+
         /// <summary>
         /// Value of the key used for MD5 authentication.
         /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and

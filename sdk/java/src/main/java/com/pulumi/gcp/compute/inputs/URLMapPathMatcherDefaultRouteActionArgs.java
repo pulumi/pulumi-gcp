@@ -115,7 +115,6 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
     }
 
     /**
-     * (Optional, Beta)
      * Specifies the policy for optimizing images returned in the HTTP response.
      * Structure is documented below.
      * 
@@ -124,8 +123,7 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
     private @Nullable Output<URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs> imageOptimizationPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Specifies the policy for optimizing images returned in the HTTP response.
+     * @return Specifies the policy for optimizing images returned in the HTTP response.
      * Structure is documented below.
      * 
      */
@@ -410,8 +408,7 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
         }
 
         /**
-         * @param imageOptimizationPolicy (Optional, Beta)
-         * Specifies the policy for optimizing images returned in the HTTP response.
+         * @param imageOptimizationPolicy Specifies the policy for optimizing images returned in the HTTP response.
          * Structure is documented below.
          * 
          * @return builder
@@ -423,8 +420,7 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
         }
 
         /**
-         * @param imageOptimizationPolicy (Optional, Beta)
-         * Specifies the policy for optimizing images returned in the HTTP response.
+         * @param imageOptimizationPolicy Specifies the policy for optimizing images returned in the HTTP response.
          * Structure is documented below.
          * 
          * @return builder

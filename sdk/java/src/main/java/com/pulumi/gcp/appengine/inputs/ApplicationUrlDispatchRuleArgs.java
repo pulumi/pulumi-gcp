@@ -15,23 +15,47 @@ public final class ApplicationUrlDispatchRuleArgs extends com.pulumi.resources.R
 
     public static final ApplicationUrlDispatchRuleArgs Empty = new ApplicationUrlDispatchRuleArgs();
 
+    /**
+     * Domain name to match against.
+     * 
+     */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
+    /**
+     * @return Domain name to match against.
+     * 
+     */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
 
+    /**
+     * Pathname within the host.
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
+    /**
+     * @return Pathname within the host.
+     * 
+     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * Resource ID of a service in this application that should serve the matched request.
+     * 
+     */
     @Import(name="service")
     private @Nullable Output<String> service;
 
+    /**
+     * @return Resource ID of a service in this application that should serve the matched request.
+     * 
+     */
     public Optional<Output<String>> service() {
         return Optional.ofNullable(this.service);
     }
@@ -62,29 +86,65 @@ public final class ApplicationUrlDispatchRuleArgs extends com.pulumi.resources.R
             $ = new ApplicationUrlDispatchRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param domain Domain name to match against.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain Domain name to match against.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
 
+        /**
+         * @param path Pathname within the host.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path Pathname within the host.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param service Resource ID of a service in this application that should serve the matched request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder service(@Nullable Output<String> service) {
             $.service = service;
             return this;
         }
 
+        /**
+         * @param service Resource ID of a service in this application that should serve the matched request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder service(String service) {
             return service(Output.of(service));
         }

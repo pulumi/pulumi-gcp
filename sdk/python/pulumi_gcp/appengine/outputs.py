@@ -227,6 +227,11 @@ class ApplicationUrlDispatchRule(dict):
                  domain: Optional[_builtins.str] = None,
                  path: Optional[_builtins.str] = None,
                  service: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: Domain name to match against.
+        :param _builtins.str path: Pathname within the host.
+        :param _builtins.str service: Resource ID of a service in this application that should serve the matched request.
+        """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if path is not None:
@@ -237,16 +242,25 @@ class ApplicationUrlDispatchRule(dict):
     @_builtins.property
     @pulumi.getter
     def domain(self) -> Optional[_builtins.str]:
+        """
+        Domain name to match against.
+        """
         return pulumi.get(self, "domain")
 
     @_builtins.property
     @pulumi.getter
     def path(self) -> Optional[_builtins.str]:
+        """
+        Pathname within the host.
+        """
         return pulumi.get(self, "path")
 
     @_builtins.property
     @pulumi.getter
     def service(self) -> Optional[_builtins.str]:
+        """
+        Resource ID of a service in this application that should serve the matched request.
+        """
         return pulumi.get(self, "service")
 
 
@@ -3090,7 +3104,7 @@ class StandardAppVersionVpcAccess(dict):
                  network_interfaces: Optional[Sequence['outputs.StandardAppVersionVpcAccessNetworkInterface']] = None,
                  vpc_egress: Optional[_builtins.str] = None):
         """
-        :param _builtins.str egress_setting: (Optional, Deprecated)
+        :param _builtins.str egress_setting: (Optional, Beta, Deprecated)
                The egress setting for the VPC Access, controlling what traffic is diverted through it.
                
                > **Warning:** `egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.
@@ -3111,7 +3125,7 @@ class StandardAppVersionVpcAccess(dict):
     @_utilities.deprecated("""`egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.""")
     def egress_setting(self) -> Optional[_builtins.str]:
         """
-        (Optional, Deprecated)
+        (Optional, Beta, Deprecated)
         The egress setting for the VPC Access, controlling what traffic is diverted through it.
 
         > **Warning:** `egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.

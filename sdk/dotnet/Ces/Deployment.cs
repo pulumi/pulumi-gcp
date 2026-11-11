@@ -139,6 +139,13 @@ namespace Pulumi.Gcp.Ces
     ///                 },
     ///             },
     ///         },
+    ///         Modality = "MODALITY_TEXT",
+    ///         ModelSettings = new Gcp.Ces.Inputs.DeploymentModelSettingsArgs
+    ///         {
+    ///             Model = "gemini-3.0-flash-001",
+    ///             Temperature = 0.5,
+    ///             ThinkingLevel = "LOW",
+    ///         },
     ///     });
     /// 
     /// });
@@ -282,6 +289,21 @@ namespace Pulumi.Gcp.Ces
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The modality of the deployment.
+        /// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        /// </summary>
+        [Output("modality")]
+        public Output<string?> Modality { get; private set; } = null!;
+
+        /// <summary>
+        /// Model settings for the deployment.
+        /// Overrides model settings configured at the app/agent levels.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("modelSettings")]
+        public Output<Outputs.DeploymentModelSettings?> ModelSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier. The resource name of the deployment.
         /// Format:
         /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -408,6 +430,21 @@ namespace Pulumi.Gcp.Ces
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// The modality of the deployment.
+        /// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        /// </summary>
+        [Input("modality")]
+        public Input<string>? Modality { get; set; }
+
+        /// <summary>
+        /// Model settings for the deployment.
+        /// Overrides model settings configured at the app/agent levels.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("modelSettings")]
+        public Input<Inputs.DeploymentModelSettingsArgs>? ModelSettings { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -494,6 +531,21 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The modality of the deployment.
+        /// Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        /// </summary>
+        [Input("modality")]
+        public Input<string>? Modality { get; set; }
+
+        /// <summary>
+        /// Model settings for the deployment.
+        /// Overrides model settings configured at the app/agent levels.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("modelSettings")]
+        public Input<Inputs.DeploymentModelSettingsGetArgs>? ModelSettings { get; set; }
 
         /// <summary>
         /// Identifier. The resource name of the deployment.

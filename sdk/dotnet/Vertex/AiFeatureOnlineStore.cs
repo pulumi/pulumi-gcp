@@ -52,43 +52,6 @@ namespace Pulumi.Gcp.Vertex
     /// });
     /// ```
     /// 
-    /// ### Vertex Ai Featureonlinestore With Optimized
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
-    ///     {
-    ///         Name = "example_feature_online_store_optimized",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Region = "us-central1",
-    ///         Optimized = new() { },
-    ///         DedicatedServingEndpoint = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs
-    ///         {
-    ///             PrivateServiceConnectConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs
-    ///             {
-    ///                 EnablePrivateServiceConnect = true,
-    ///                 ProjectAllowlists = new[]
-    ///                 {
-    ///                     project.Apply(getProjectResult =&gt; getProjectResult.Number),
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
     /// 
     /// ```csharp
@@ -230,7 +193,10 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        /// 
+        /// &gt; **Warning:** `Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.
         /// </summary>
         [Output("optimized")]
         public Output<Outputs.AiFeatureOnlineStoreOptimized?> Optimized { get; private set; } = null!;
@@ -387,7 +353,10 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        /// 
+        /// &gt; **Warning:** `Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.
         /// </summary>
         [Input("optimized")]
         public Input<Inputs.AiFeatureOnlineStoreOptimizedArgs>? Optimized { get; set; }
@@ -510,7 +479,10 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        /// 
+        /// &gt; **Warning:** `Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.
         /// </summary>
         [Input("optimized")]
         public Input<Inputs.AiFeatureOnlineStoreOptimizedGetArgs>? Optimized { get; set; }

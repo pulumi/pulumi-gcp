@@ -7,8 +7,11 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigAdditionalVariable;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigAuthConfig;
+import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigDeadLetterConfig;
+import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigEnrichmentConfig;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigRegistrationDestinationConfig;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,16 +26,38 @@ public final class ConnectionEventingConfig {
      */
     private @Nullable List<ConnectionEventingConfigAdditionalVariable> additionalVariables;
     /**
+     * @return List of allowed event types for the connection.
+     * 
+     */
+    private @Nullable List<String> allowedEventTypes;
+    /**
      * @return authConfig for Eventing Configuration.
      * Structure is documented below.
      * 
      */
     private @Nullable ConnectionEventingConfigAuthConfig authConfig;
     /**
+     * @return Dead letter configuration for eventing of a connection.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ConnectionEventingConfigDeadLetterConfig deadLetterConfig;
+    /**
+     * @return Data enrichment configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ConnectionEventingConfigEnrichmentConfig enrichmentConfig;
+    /**
      * @return Enrichment Enabled.
      * 
      */
     private @Nullable Boolean enrichmentEnabled;
+    /**
+     * @return Filter to be applied on the events to be received by the connection.
+     * 
+     */
+    private @Nullable String globalEventFilter;
     /**
      * @return registrationDestinationConfig
      * Structure is documented below.
@@ -50,6 +75,13 @@ public final class ConnectionEventingConfig {
         return this.additionalVariables == null ? List.of() : this.additionalVariables;
     }
     /**
+     * @return List of allowed event types for the connection.
+     * 
+     */
+    public List<String> allowedEventTypes() {
+        return this.allowedEventTypes == null ? List.of() : this.allowedEventTypes;
+    }
+    /**
      * @return authConfig for Eventing Configuration.
      * Structure is documented below.
      * 
@@ -58,11 +90,34 @@ public final class ConnectionEventingConfig {
         return Optional.ofNullable(this.authConfig);
     }
     /**
+     * @return Dead letter configuration for eventing of a connection.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ConnectionEventingConfigDeadLetterConfig> deadLetterConfig() {
+        return Optional.ofNullable(this.deadLetterConfig);
+    }
+    /**
+     * @return Data enrichment configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ConnectionEventingConfigEnrichmentConfig> enrichmentConfig() {
+        return Optional.ofNullable(this.enrichmentConfig);
+    }
+    /**
      * @return Enrichment Enabled.
      * 
      */
     public Optional<Boolean> enrichmentEnabled() {
         return Optional.ofNullable(this.enrichmentEnabled);
+    }
+    /**
+     * @return Filter to be applied on the events to be received by the connection.
+     * 
+     */
+    public Optional<String> globalEventFilter() {
+        return Optional.ofNullable(this.globalEventFilter);
     }
     /**
      * @return registrationDestinationConfig
@@ -83,15 +138,23 @@ public final class ConnectionEventingConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ConnectionEventingConfigAdditionalVariable> additionalVariables;
+        private @Nullable List<String> allowedEventTypes;
         private @Nullable ConnectionEventingConfigAuthConfig authConfig;
+        private @Nullable ConnectionEventingConfigDeadLetterConfig deadLetterConfig;
+        private @Nullable ConnectionEventingConfigEnrichmentConfig enrichmentConfig;
         private @Nullable Boolean enrichmentEnabled;
+        private @Nullable String globalEventFilter;
         private ConnectionEventingConfigRegistrationDestinationConfig registrationDestinationConfig;
         public Builder() {}
         public Builder(ConnectionEventingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalVariables = defaults.additionalVariables;
+    	      this.allowedEventTypes = defaults.allowedEventTypes;
     	      this.authConfig = defaults.authConfig;
+    	      this.deadLetterConfig = defaults.deadLetterConfig;
+    	      this.enrichmentConfig = defaults.enrichmentConfig;
     	      this.enrichmentEnabled = defaults.enrichmentEnabled;
+    	      this.globalEventFilter = defaults.globalEventFilter;
     	      this.registrationDestinationConfig = defaults.registrationDestinationConfig;
         }
 
@@ -105,15 +168,42 @@ public final class ConnectionEventingConfig {
             return additionalVariables(List.of(additionalVariables));
         }
         @CustomType.Setter
+        public Builder allowedEventTypes(@Nullable List<String> allowedEventTypes) {
+
+            this.allowedEventTypes = allowedEventTypes;
+            return this;
+        }
+        public Builder allowedEventTypes(String... allowedEventTypes) {
+            return allowedEventTypes(List.of(allowedEventTypes));
+        }
+        @CustomType.Setter
         public Builder authConfig(@Nullable ConnectionEventingConfigAuthConfig authConfig) {
 
             this.authConfig = authConfig;
             return this;
         }
         @CustomType.Setter
+        public Builder deadLetterConfig(@Nullable ConnectionEventingConfigDeadLetterConfig deadLetterConfig) {
+
+            this.deadLetterConfig = deadLetterConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enrichmentConfig(@Nullable ConnectionEventingConfigEnrichmentConfig enrichmentConfig) {
+
+            this.enrichmentConfig = enrichmentConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enrichmentEnabled(@Nullable Boolean enrichmentEnabled) {
 
             this.enrichmentEnabled = enrichmentEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder globalEventFilter(@Nullable String globalEventFilter) {
+
+            this.globalEventFilter = globalEventFilter;
             return this;
         }
         @CustomType.Setter
@@ -127,8 +217,12 @@ public final class ConnectionEventingConfig {
         public ConnectionEventingConfig build() {
             final var _resultValue = new ConnectionEventingConfig();
             _resultValue.additionalVariables = additionalVariables;
+            _resultValue.allowedEventTypes = allowedEventTypes;
             _resultValue.authConfig = authConfig;
+            _resultValue.deadLetterConfig = deadLetterConfig;
+            _resultValue.enrichmentConfig = enrichmentConfig;
             _resultValue.enrichmentEnabled = enrichmentEnabled;
+            _resultValue.globalEventFilter = globalEventFilter;
             _resultValue.registrationDestinationConfig = registrationDestinationConfig;
             return _resultValue;
         }

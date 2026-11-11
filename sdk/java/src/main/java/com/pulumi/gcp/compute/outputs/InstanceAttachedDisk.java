@@ -45,7 +45,9 @@ public final class InstanceAttachedDisk {
      */
     private @Nullable String diskEncryptionServiceAccount;
     /**
-     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * @return boolean field that determines whether to force attach the regional
+     * disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal
+     * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
      * 
      */
     private @Nullable Boolean forceAttach;
@@ -113,7 +115,9 @@ public final class InstanceAttachedDisk {
         return Optional.ofNullable(this.diskEncryptionServiceAccount);
     }
     /**
-     * @return Whether to force attach the regional disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
+     * @return boolean field that determines whether to force attach the regional
+     * disk even if it&#39;s currently attached to another instance. If you try to force attach a zonal
+     * disk to an instance, you will receive an error. Setting this parameter cause VM recreation.
      * 
      */
     public Optional<Boolean> forceAttach() {

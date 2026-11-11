@@ -521,6 +521,66 @@ class Hook(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Secure Source Manager Hook Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="asia-east1",
+            instance_id="my-basic-instance",
+            deletion_policy="PREVENT")
+        repository = gcp.securesourcemanager.Repository("repository",
+            repository_id="my-basic-repository",
+            location=instance.location,
+            instance=instance.name,
+            deletion_policy="PREVENT")
+        default = gcp.securesourcemanager.Hook("default",
+            hook_id="my-basic-hook",
+            repository_id=repository.repository_id,
+            location=repository.location,
+            target_uri="https://www.example.com",
+            events=["PUSH"])
+        ```
+
+        ### Secure Source Manager Hook With Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="asia-east1",
+            instance_id="my-basic-instance",
+            deletion_policy="PREVENT")
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-basic-sa",
+            display_name="Test Service Account")
+        repository = gcp.securesourcemanager.Repository("repository",
+            repository_id="my-basic-repository",
+            instance=instance.name,
+            location=instance.location,
+            service_account=sa.email,
+            deletion_policy="PREVENT")
+        default = gcp.securesourcemanager.Hook("default",
+            hook_id="my-basic-hook",
+            location=repository.location,
+            repository_id=repository.repository_id,
+            target_uri="https://www.example.com",
+            sensitive_query_string="auth=fake_token",
+            disabled=False,
+            service_account_auth=True,
+            push_option={
+                "branch_filter": "main",
+            },
+            events=[
+                "PUSH",
+                "PULL_REQUEST",
+                "PULL_REQUEST_COMMENT",
+            ])
+        ```
+
         ## Import
 
         Hook can be imported using any of these accepted formats:
@@ -579,6 +639,66 @@ class Hook(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
 
         ## Example Usage
+
+        ### Secure Source Manager Hook Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="asia-east1",
+            instance_id="my-basic-instance",
+            deletion_policy="PREVENT")
+        repository = gcp.securesourcemanager.Repository("repository",
+            repository_id="my-basic-repository",
+            location=instance.location,
+            instance=instance.name,
+            deletion_policy="PREVENT")
+        default = gcp.securesourcemanager.Hook("default",
+            hook_id="my-basic-hook",
+            repository_id=repository.repository_id,
+            location=repository.location,
+            target_uri="https://www.example.com",
+            events=["PUSH"])
+        ```
+
+        ### Secure Source Manager Hook With Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="asia-east1",
+            instance_id="my-basic-instance",
+            deletion_policy="PREVENT")
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-basic-sa",
+            display_name="Test Service Account")
+        repository = gcp.securesourcemanager.Repository("repository",
+            repository_id="my-basic-repository",
+            instance=instance.name,
+            location=instance.location,
+            service_account=sa.email,
+            deletion_policy="PREVENT")
+        default = gcp.securesourcemanager.Hook("default",
+            hook_id="my-basic-hook",
+            location=repository.location,
+            repository_id=repository.repository_id,
+            target_uri="https://www.example.com",
+            sensitive_query_string="auth=fake_token",
+            disabled=False,
+            service_account_auth=True,
+            push_option={
+                "branch_filter": "main",
+            },
+            events=[
+                "PUSH",
+                "PULL_REQUEST",
+                "PULL_REQUEST_COMMENT",
+            ])
+        ```
 
         ## Import
 

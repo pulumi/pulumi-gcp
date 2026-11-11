@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:backupdisasterrecovery/autoProtectionPolicy:AutoProtectionPolicy":
 		r = &AutoProtectionPolicy{}
+	case "gcp:backupdisasterrecovery/autoProtectionPolicyBinding:AutoProtectionPolicyBinding":
+		r = &AutoProtectionPolicyBinding{}
 	case "gcp:backupdisasterrecovery/backupPlan:BackupPlan":
 		r = &BackupPlan{}
 	case "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation":
@@ -51,6 +53,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"backupdisasterrecovery/autoProtectionPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"backupdisasterrecovery/autoProtectionPolicyBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StandardAppVersionVpcAccess {
     /**
-     * @return (Optional, Deprecated)
+     * @return (Optional, Beta, Deprecated)
      * The egress setting for the VPC Access, controlling what traffic is diverted through it.
      * 
      * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.
@@ -39,7 +39,7 @@ public final class StandardAppVersionVpcAccess {
 
     private StandardAppVersionVpcAccess() {}
     /**
-     * @return (Optional, Deprecated)
+     * @return (Optional, Beta, Deprecated)
      * The egress setting for the VPC Access, controlling what traffic is diverted through it.
      * 
      * &gt; **Warning:** `egressSetting` is deprecated and will be removed in a future major release. Use `vpcEgress` instead.

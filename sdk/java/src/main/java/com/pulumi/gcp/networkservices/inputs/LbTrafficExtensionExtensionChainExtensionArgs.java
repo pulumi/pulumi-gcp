@@ -142,6 +142,31 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
     }
 
     /**
+     * When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+     * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+     * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+     * This field is helpful when you want to try out the extension in async log-only mode.
+     * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+     * Only `STREAMED` (default) body processing mode is supported.
+     * 
+     */
+    @Import(name="observabilityMode")
+    private @Nullable Output<Boolean> observabilityMode;
+
+    /**
+     * @return When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+     * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+     * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+     * This field is helpful when you want to try out the extension in async log-only mode.
+     * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+     * Only `STREAMED` (default) body processing mode is supported.
+     * 
+     */
+    public Optional<Output<Boolean>> observabilityMode() {
+        return Optional.ofNullable(this.observabilityMode);
+    }
+
+    /**
      * The reference to the service that runs the extension.
      * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
      * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -207,6 +232,7 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
         this.forwardHeaders = $.forwardHeaders;
         this.metadata = $.metadata;
         this.name = $.name;
+        this.observabilityMode = $.observabilityMode;
         this.service = $.service;
         this.supportedEvents = $.supportedEvents;
         this.timeout = $.timeout;
@@ -412,6 +438,37 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param observabilityMode When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+         * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+         * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+         * This field is helpful when you want to try out the extension in async log-only mode.
+         * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+         * Only `STREAMED` (default) body processing mode is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder observabilityMode(@Nullable Output<Boolean> observabilityMode) {
+            $.observabilityMode = observabilityMode;
+            return this;
+        }
+
+        /**
+         * @param observabilityMode When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+         * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+         * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+         * This field is helpful when you want to try out the extension in async log-only mode.
+         * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+         * Only `STREAMED` (default) body processing mode is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder observabilityMode(Boolean observabilityMode) {
+            return observabilityMode(Output.of(observabilityMode));
         }
 
         /**

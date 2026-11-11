@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.PubSub
         /// The region of the pubsub lite reservation.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The reserved throughput capacity. Every unit of throughput capacity is

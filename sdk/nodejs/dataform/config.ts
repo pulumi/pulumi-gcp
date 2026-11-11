@@ -7,12 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Config is a singleton resource used to configure the default Dataform settings for a specified location.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about Config, see:
  *
- * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations)
+ * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations#Config)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dataform/docs/)
  *
@@ -23,46 +20,11 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumiverse/time";
  *
- * const project = new gcp.organizations.Project("project", {
- *     name: "project-1",
- *     projectId: "project-1",
- *     orgId: "123456789",
- *     billingAccount: "000000-0000000-0000000-000000",
- *     deletionPolicy: "DELETE",
- * });
- * // Enable Cloud Key KMS API
- * const cloudkmsApi = new gcp.projects.Service("cloudkms_api", {
- *     project: project.projectId,
- *     service: "cloudkms.googleapis.com",
- *     disableOnDestroy: false,
- * });
- * // Enable Dataform API
- * const dataformApi = new gcp.projects.Service("dataform_api", {
- *     project: project.projectId,
- *     service: "dataform.googleapis.com",
- *     disableOnDestroy: false,
- * }, {
- *     dependsOn: [cloudkmsApi],
- * });
- * // Add a sleep to wait for IAM propagation after API enablement
- * const waitForDataformApi = new time.Sleep("wait_for_dataform_api", {createDuration: "30s"}, {
- *     dependsOn: [dataformApi],
- * });
- * // Retrieve the Dataform service identity
- * const dataformSa = new gcp.projects.ServiceIdentity("dataform_sa", {
- *     project: project.projectId,
- *     service: "dataform.googleapis.com",
- * }, {
- *     dependsOn: [waitForDataformApi],
- * });
+ * const project = gcp.organizations.getProject({});
  * const keyring = new gcp.kms.KeyRing("keyring", {
- *     project: project.projectId,
  *     name: "example-key-ring",
- *     location: "us-central1",
- * }, {
- *     dependsOn: [waitForDataformApi],
+ *     location: "us-east1",
  * });
  * const exampleKey = new gcp.kms.CryptoKey("example_key", {
  *     name: "example-crypto-key-name",
@@ -72,13 +34,12 @@ import * as utilities from "../utilities";
  * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMMember("crypto_key_binding", {
  *     cryptoKeyId: exampleKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: dataformSa.member,
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-dataform.iam.gserviceaccount.com`),
  * });
  * // Config with KMS key provided
  * const config = new gcp.dataform.Config("config", {
- *     region: "us-central1",
+ *     region: "us-east1",
  *     defaultKmsKeyName: exampleKey.id,
- *     project: project.projectId,
  * }, {
  *     dependsOn: [cryptoKeyBinding],
  * });
@@ -89,32 +50,9 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumiverse/time";
  *
- * const project = new gcp.organizations.Project("project", {
- *     name: "project-1",
- *     projectId: "project-1",
- *     orgId: "123456789",
- *     billingAccount: "000000-0000000-0000000-000000",
- *     deletionPolicy: "DELETE",
- * });
- * // Enable Dataform API
- * const dataformApi = new gcp.projects.Service("dataform_api", {
- *     project: project.projectId,
- *     service: "dataform.googleapis.com",
- *     disableOnDestroy: false,
- * });
- * // Add a sleep to wait for IAM propagation after API enablement
- * const waitForDataformApi = new time.Sleep("wait_for_dataform_api", {createDuration: "30s"}, {
- *     dependsOn: [dataformApi],
- * });
  * // Config without KMS key provided
- * const config = new gcp.dataform.Config("config", {
- *     region: "us-central1",
- *     project: project.projectId,
- * }, {
- *     dependsOn: [waitForDataformApi],
- * });
+ * const config = new gcp.dataform.Config("config", {region: "us-west1"});
  * ```
  *
  * ## Import

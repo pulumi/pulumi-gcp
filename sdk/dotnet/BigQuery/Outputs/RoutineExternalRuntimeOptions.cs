@@ -48,6 +48,13 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// Language runtime version. Example: `python-3.11`.
         /// </summary>
         public readonly string? RuntimeVersion;
+        /// <summary>
+        /// List of volume mounts for the Python UDF container that executes the
+        /// managed function. When volume mounts are set, `RuntimeConnection` must
+        /// also be set.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RoutineExternalRuntimeOptionsVolumeMount> VolumeMounts;
 
         [OutputConstructor]
         private RoutineExternalRuntimeOptions(
@@ -61,7 +68,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string? runtimeConnection,
 
-            string? runtimeVersion)
+            string? runtimeVersion,
+
+            ImmutableArray<Outputs.RoutineExternalRuntimeOptionsVolumeMount> volumeMounts)
         {
             ContainerCpu = containerCpu;
             ContainerMemory = containerMemory;
@@ -69,6 +78,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             MaxBatchingRows = maxBatchingRows;
             RuntimeConnection = runtimeConnection;
             RuntimeVersion = runtimeVersion;
+            VolumeMounts = volumeMounts;
         }
     }
 }

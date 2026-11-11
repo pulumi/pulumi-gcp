@@ -91,7 +91,6 @@ export class Interconnect extends pulumi.CustomResource {
     }
 
     /**
-     * (Optional, Beta)
      * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      */
     declare public readonly aaiEnabled: pulumi.Output<boolean | undefined>;
@@ -102,7 +101,6 @@ export class Interconnect extends pulumi.CustomResource {
      */
     declare public readonly adminEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional, Beta)
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
@@ -430,7 +428,6 @@ export class Interconnect extends pulumi.CustomResource {
  */
 export interface InterconnectState {
     /**
-     * (Optional, Beta)
      * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      */
     aaiEnabled?: pulumi.Input<boolean | undefined>;
@@ -441,7 +438,6 @@ export interface InterconnectState {
      */
     adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * (Optional, Beta)
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
@@ -661,7 +657,6 @@ export interface InterconnectState {
  */
 export interface InterconnectArgs {
     /**
-     * (Optional, Beta)
      * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      */
     aaiEnabled?: pulumi.Input<boolean | undefined>;
@@ -672,7 +667,6 @@ export interface InterconnectArgs {
      */
     adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * (Optional, Beta)
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.

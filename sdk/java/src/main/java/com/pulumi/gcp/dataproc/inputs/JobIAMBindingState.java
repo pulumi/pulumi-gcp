@@ -39,9 +39,21 @@ public final class JobIAMBindingState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * The name or relative resource id of the job to manage IAM policies for.
+     * 
+     * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+     * 
+     */
     @Import(name="jobId")
     private @Nullable Output<String> jobId;
 
+    /**
+     * @return The name or relative resource id of the job to manage IAM policies for.
+     * 
+     * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+     * 
+     */
     public Optional<Output<String>> jobId() {
         return Optional.ofNullable(this.jobId);
     }
@@ -192,11 +204,27 @@ public final class JobIAMBindingState extends com.pulumi.resources.ResourceArgs 
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param jobId The name or relative resource id of the job to manage IAM policies for.
+         * 
+         * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobId(@Nullable Output<String> jobId) {
             $.jobId = jobId;
             return this;
         }
 
+        /**
+         * @param jobId The name or relative resource id of the job to manage IAM policies for.
+         * 
+         * For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobId(String jobId) {
             return jobId(Output.of(jobId));
         }

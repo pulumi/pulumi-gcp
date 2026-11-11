@@ -51,7 +51,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs>? FaultInjectionPolicy { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the policy for optimizing images returned in the HTTP response.
         /// Structure is documented below.
         /// </summary>

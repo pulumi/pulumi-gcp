@@ -57,7 +57,10 @@ class AiFeatureOnlineStoreArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input['AiFeatureOnlineStoreOptimizedArgs'] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        :param pulumi.Input['AiFeatureOnlineStoreOptimizedArgs'] optimized: (Optional, Deprecated)
+               Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+               
+               > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of feature online store. eg us-central1
@@ -81,6 +84,9 @@ class AiFeatureOnlineStoreArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if optimized is not None:
+            warnings.warn("""`optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.""", DeprecationWarning)
+            pulumi.log.warn("""optimized is deprecated: `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.""")
         if optimized is not None:
             pulumi.set(__self__, "optimized", optimized)
         if project is not None:
@@ -201,9 +207,13 @@ class AiFeatureOnlineStoreArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.""")
     def optimized(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreOptimizedArgs']]:
         """
+        (Optional, Deprecated)
         Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+
+        > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
         """
         return pulumi.get(self, "optimized")
 
@@ -285,7 +295,10 @@ class _AiFeatureOnlineStoreState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input['AiFeatureOnlineStoreOptimizedArgs'] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        :param pulumi.Input['AiFeatureOnlineStoreOptimizedArgs'] optimized: (Optional, Deprecated)
+               Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+               
+               > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -319,6 +332,9 @@ class _AiFeatureOnlineStoreState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if optimized is not None:
+            warnings.warn("""`optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.""", DeprecationWarning)
+            pulumi.log.warn("""optimized is deprecated: `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.""")
         if optimized is not None:
             pulumi.set(__self__, "optimized", optimized)
         if project is not None:
@@ -481,9 +497,13 @@ class _AiFeatureOnlineStoreState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.""")
     def optimized(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreOptimizedArgs']]:
         """
+        (Optional, Deprecated)
         Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+
+        > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
         """
         return pulumi.get(self, "optimized")
 
@@ -604,28 +624,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             })
         ```
 
-        ### Vertex Ai Featureonlinestore With Optimized
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
-            name="example_feature_online_store_optimized",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            optimized={},
-            dedicated_serving_endpoint={
-                "private_service_connect_config": {
-                    "enable_private_service_connect": True,
-                    "project_allowlists": [project.number],
-                },
-            })
-        ```
-
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
         ```python
@@ -695,7 +693,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']] optimized: (Optional, Deprecated)
+               Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+               
+               > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of feature online store. eg us-central1
@@ -734,28 +735,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                     "min_node_count": 1,
                     "max_node_count": 3,
                     "cpu_utilization_target": 50,
-                },
-            })
-        ```
-
-        ### Vertex Ai Featureonlinestore With Optimized
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
-            name="example_feature_online_store_optimized",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            optimized={},
-            dedicated_serving_endpoint={
-                "private_service_connect_config": {
-                    "enable_private_service_connect": True,
-                    "project_allowlists": [project.number],
                 },
             })
         ```
@@ -918,7 +897,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict', 'outputs.AiFeatureOnlineStoreOptimized']] optimized: (Optional, Deprecated)
+               Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+               
+               > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1095,9 +1077,13 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.""")
     def optimized(self) -> pulumi.Output[Optional['outputs.AiFeatureOnlineStoreOptimized']]:
         """
+        (Optional, Deprecated)
         Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+
+        > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
         """
         return pulumi.get(self, "optimized")
 

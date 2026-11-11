@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     webGroundingType: "WEB_GROUNDING_FOR_ENTERPRISE",
  *     mutationsEnabled: true,
  *     releaseChannel: "EXPERIMENTAL",
+ *     hasCustomInstructions: true,
  * });
  * ```
  *
@@ -124,6 +125,10 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
      */
     declare public readonly geminiGcpEnablementSettingId: pulumi.Output<string>;
     /**
+     * Indicates whether custom instructions are defined.
+     */
+    declare public readonly hasCustomInstructions: pulumi.Output<boolean | undefined>;
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -189,6 +194,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["enableCustomerDataSharing"] = state?.enableCustomerDataSharing;
             resourceInputs["geminiEnterpriseProject"] = state?.geminiEnterpriseProject;
             resourceInputs["geminiGcpEnablementSettingId"] = state?.geminiGcpEnablementSettingId;
+            resourceInputs["hasCustomInstructions"] = state?.hasCustomInstructions;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["mutationsEnabled"] = state?.mutationsEnabled;
@@ -211,6 +217,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["enableCustomerDataSharing"] = args?.enableCustomerDataSharing;
             resourceInputs["geminiEnterpriseProject"] = args?.geminiEnterpriseProject;
             resourceInputs["geminiGcpEnablementSettingId"] = args?.geminiGcpEnablementSettingId;
+            resourceInputs["hasCustomInstructions"] = args?.hasCustomInstructions;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["mutationsEnabled"] = args?.mutationsEnabled;
@@ -274,6 +281,10 @@ export interface GeminiGcpEnablementSettingState {
      * Id of the Gemini Gcp Enablement setting.
      */
     geminiGcpEnablementSettingId?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether custom instructions are defined.
+     */
+    hasCustomInstructions?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -357,6 +368,10 @@ export interface GeminiGcpEnablementSettingArgs {
      * Id of the Gemini Gcp Enablement setting.
      */
     geminiGcpEnablementSettingId: pulumi.Input<string>;
+    /**
+     * Indicates whether custom instructions are defined.
+     */
+    hasCustomInstructions?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

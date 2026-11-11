@@ -13,16 +13,14 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
     public sealed class InstanceDesiredAutoCreatedEndpointGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
-        /// Output only. The consumer network where the IP address resides, in the form of
+        /// Required. The consumer network where the IP address resides, in the form of
         /// projects/{project_id}/global/networks/{network_id}.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// Output only. The consumer ProjectId where the forwarding rule is created from.
+        /// Required. The consumer ProjectId where the forwarding rule is created from.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;

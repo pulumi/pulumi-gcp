@@ -237,6 +237,58 @@ import (
 //
 // ```
 //
+// ### Backup Dr Backup Plan For Netapp Volume
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myBackupVault, err := backupdisasterrecovery.NewBackupVault(ctx, "my_backup_vault", &backupdisasterrecovery.BackupVaultArgs{
+//				Location:                               pulumi.String("us-central1"),
+//				BackupVaultId:                          pulumi.String("backup-vault-netapp-test"),
+//				BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = backupdisasterrecovery.NewBackupPlan(ctx, "my-netapp-backup-plan-1", &backupdisasterrecovery.BackupPlanArgs{
+//				Location:     pulumi.String("us-central1"),
+//				BackupPlanId: pulumi.String("backup-plan-netapp-test"),
+//				ResourceType: pulumi.String("netapp.googleapis.com/Volume"),
+//				BackupVault:  myBackupVault.ID(),
+//				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
+//					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
+//						RuleId:              pulumi.String("rule-1"),
+//						BackupRetentionDays: pulumi.Int(5),
+//						StandardSchedule: &backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleArgs{
+//							RecurrenceType:  pulumi.String("HOURLY"),
+//							HourlyFrequency: pulumi.Int(6),
+//							TimeZone:        pulumi.String("UTC"),
+//							BackupWindow: &backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleBackupWindowArgs{
+//								StartHourOfDay: pulumi.Int(0),
+//								EndHourOfDay:   pulumi.Int(6),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // BackupPlan can be imported using any of these accepted formats:
@@ -303,7 +355,7 @@ type BackupPlan struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The resource type to which the `BackupPlan` will be applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// The list of all resource types to which the `BackupPlan` can be applied.
 	SupportedResourceTypes pulumi.StringArrayOutput `pulumi:"supportedResourceTypes"`
@@ -406,7 +458,7 @@ type backupPlanState struct {
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The resource type to which the `BackupPlan` will be applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 	ResourceType *string `pulumi:"resourceType"`
 	// The list of all resource types to which the `BackupPlan` can be applied.
 	SupportedResourceTypes []string `pulumi:"supportedResourceTypes"`
@@ -463,7 +515,7 @@ type BackupPlanState struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The resource type to which the `BackupPlan` will be applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 	ResourceType pulumi.StringPtrInput
 	// The list of all resource types to which the `BackupPlan` can be applied.
 	SupportedResourceTypes pulumi.StringArrayInput
@@ -519,7 +571,7 @@ type backupPlanArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The resource type to which the `BackupPlan` will be applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -562,7 +614,7 @@ type BackupPlanArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The resource type to which the `BackupPlan` will be applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 	ResourceType pulumi.StringInput
 }
 
@@ -755,7 +807,7 @@ func (o BackupPlanOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // The resource type to which the `BackupPlan` will be applied.
-// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 func (o BackupPlanOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

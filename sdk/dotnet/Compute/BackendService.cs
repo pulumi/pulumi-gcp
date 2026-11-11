@@ -857,6 +857,12 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var defaultBackendAuthenticationConfig = new Gcp.NetworkSecurity.BackendAuthenticationConfig("default", new()
+    ///     {
+    ///         Name = "authentication",
+    ///         WellKnownRoots = "PUBLIC_ROOTS",
+    ///     });
+    /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "backend-service",
@@ -869,6 +875,10 @@ namespace Pulumi.Gcp.Compute
     ///                 Enabled = true,
     ///                 ProxyMode = "DIRECT_FORWARDING",
     ///             },
+    ///         },
+    ///         TlsSettings = new Gcp.Compute.Inputs.BackendServiceTlsSettingsArgs
+    ///         {
+    ///             AuthenticationConfig = defaultBackendAuthenticationConfig.Id.Apply(id =&gt; $"//networksecurity.googleapis.com/{id}"),
     ///         },
     ///     });
     /// 

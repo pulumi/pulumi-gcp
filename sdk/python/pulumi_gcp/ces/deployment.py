@@ -28,6 +28,8 @@ class DeploymentArgs:
                  location: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instagram_credentials: pulumi.Input[Optional['DeploymentInstagramCredentialsArgs']] = None,
+                 modality: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_settings: pulumi.Input[Optional['DeploymentModelSettingsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  whatsapp_credentials: pulumi.Input[Optional['DeploymentWhatsappCredentialsArgs']] = None):
         """
@@ -50,6 +52,11 @@ class DeploymentArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['DeploymentInstagramCredentialsArgs'] instagram_credentials: Ephemeral Meta credentials required when configuring an Instagram channel profile.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] modality: The modality of the deployment.
+               Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        :param pulumi.Input['DeploymentModelSettingsArgs'] model_settings: Model settings for the deployment.
+               Overrides model settings configured at the app/agent levels.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['DeploymentWhatsappCredentialsArgs'] whatsapp_credentials: Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
@@ -64,6 +71,10 @@ class DeploymentArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if instagram_credentials is not None:
             pulumi.set(__self__, "instagram_credentials", instagram_credentials)
+        if modality is not None:
+            pulumi.set(__self__, "modality", modality)
+        if model_settings is not None:
+            pulumi.set(__self__, "model_settings", model_settings)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if whatsapp_credentials is not None:
@@ -165,6 +176,33 @@ class DeploymentArgs:
 
     @_builtins.property
     @pulumi.getter
+    def modality(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The modality of the deployment.
+        Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        """
+        return pulumi.get(self, "modality")
+
+    @modality.setter
+    def modality(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "modality", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelSettings")
+    def model_settings(self) -> pulumi.Input[Optional['DeploymentModelSettingsArgs']]:
+        """
+        Model settings for the deployment.
+        Overrides model settings configured at the app/agent levels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_settings")
+
+    @model_settings.setter
+    def model_settings(self, value: pulumi.Input[Optional['DeploymentModelSettingsArgs']]):
+        pulumi.set(self, "model_settings", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -202,6 +240,8 @@ class _DeploymentState:
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  instagram_credentials: pulumi.Input[Optional['DeploymentInstagramCredentialsArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 modality: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_settings: pulumi.Input[Optional['DeploymentModelSettingsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -230,6 +270,11 @@ class _DeploymentState:
         :param pulumi.Input['DeploymentInstagramCredentialsArgs'] instagram_credentials: Ephemeral Meta credentials required when configuring an Instagram channel profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] modality: The modality of the deployment.
+               Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        :param pulumi.Input['DeploymentModelSettingsArgs'] model_settings: Model settings for the deployment.
+               Overrides model settings configured at the app/agent levels.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the deployment.
                Format:
                projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -257,6 +302,10 @@ class _DeploymentState:
             pulumi.set(__self__, "instagram_credentials", instagram_credentials)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if modality is not None:
+            pulumi.set(__self__, "modality", modality)
+        if model_settings is not None:
+            pulumi.set(__self__, "model_settings", model_settings)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -388,6 +437,33 @@ class _DeploymentState:
 
     @_builtins.property
     @pulumi.getter
+    def modality(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The modality of the deployment.
+        Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        """
+        return pulumi.get(self, "modality")
+
+    @modality.setter
+    def modality(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "modality", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelSettings")
+    def model_settings(self) -> pulumi.Input[Optional['DeploymentModelSettingsArgs']]:
+        """
+        Model settings for the deployment.
+        Overrides model settings configured at the app/agent levels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_settings")
+
+    @model_settings.setter
+    def model_settings(self, value: pulumi.Input[Optional['DeploymentModelSettingsArgs']]):
+        pulumi.set(self, "model_settings", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the deployment.
@@ -452,6 +528,8 @@ class Deployment(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instagram_credentials: pulumi.Input[Optional[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 modality: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_settings: pulumi.Input[Optional[Union['DeploymentModelSettingsArgs', 'DeploymentModelSettingsArgsDict', 'outputs.DeploymentModelSettings']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  whatsapp_credentials: pulumi.Input[Optional[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']]] = None,
                  __props__=None):
@@ -549,6 +627,12 @@ class Deployment(pulumi.CustomResource):
                         "enable_recaptcha": True,
                     },
                 },
+            },
+            modality="MODALITY_TEXT",
+            model_settings={
+                "model": "gemini-3.0-flash-001",
+                "temperature": 0.5,
+                "thinking_level": "LOW",
             })
         ```
 
@@ -623,6 +707,11 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']] instagram_credentials: Ephemeral Meta credentials required when configuring an Instagram channel profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] modality: The modality of the deployment.
+               Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        :param pulumi.Input[Union['DeploymentModelSettingsArgs', 'DeploymentModelSettingsArgsDict', 'outputs.DeploymentModelSettings']] model_settings: Model settings for the deployment.
+               Overrides model settings configured at the app/agent levels.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']] whatsapp_credentials: Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
@@ -728,6 +817,12 @@ class Deployment(pulumi.CustomResource):
                         "enable_recaptcha": True,
                     },
                 },
+            },
+            modality="MODALITY_TEXT",
+            model_settings={
+                "model": "gemini-3.0-flash-001",
+                "temperature": 0.5,
+                "thinking_level": "LOW",
             })
         ```
 
@@ -805,6 +900,8 @@ class Deployment(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instagram_credentials: pulumi.Input[Optional[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 modality: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_settings: pulumi.Input[Optional[Union['DeploymentModelSettingsArgs', 'DeploymentModelSettingsArgsDict', 'outputs.DeploymentModelSettings']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  whatsapp_credentials: pulumi.Input[Optional[Union['DeploymentWhatsappCredentialsArgs', 'DeploymentWhatsappCredentialsArgsDict', 'outputs.DeploymentWhatsappCredentials']]] = None,
                  __props__=None):
@@ -833,6 +930,8 @@ class Deployment(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["modality"] = modality
+            __props__.__dict__["model_settings"] = model_settings
             __props__.__dict__["project"] = project
             __props__.__dict__["whatsapp_credentials"] = whatsapp_credentials
             __props__.__dict__["create_time"] = None
@@ -858,6 +957,8 @@ class Deployment(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             instagram_credentials: pulumi.Input[Optional[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            modality: pulumi.Input[Optional[_builtins.str]] = None,
+            model_settings: pulumi.Input[Optional[Union['DeploymentModelSettingsArgs', 'DeploymentModelSettingsArgsDict', 'outputs.DeploymentModelSettings']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -890,6 +991,11 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']] instagram_credentials: Ephemeral Meta credentials required when configuring an Instagram channel profile.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] modality: The modality of the deployment.
+               Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        :param pulumi.Input[Union['DeploymentModelSettingsArgs', 'DeploymentModelSettingsArgsDict', 'outputs.DeploymentModelSettings']] model_settings: Model settings for the deployment.
+               Overrides model settings configured at the app/agent levels.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the deployment.
                Format:
                projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
@@ -912,6 +1018,8 @@ class Deployment(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["instagram_credentials"] = instagram_credentials
         __props__.__dict__["location"] = location
+        __props__.__dict__["modality"] = modality
+        __props__.__dict__["model_settings"] = model_settings
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["update_time"] = update_time
@@ -930,6 +1038,8 @@ class Deployment(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             instagram_credentials: pulumi.Input[Optional[Union['DeploymentInstagramCredentialsArgs', 'DeploymentInstagramCredentialsArgsDict', 'outputs.DeploymentInstagramCredentials']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            modality: pulumi.Input[Optional[_builtins.str]] = None,
+            model_settings: pulumi.Input[Optional[Union['DeploymentModelSettingsArgs', 'DeploymentModelSettingsArgsDict', 'outputs.DeploymentModelSettings']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -944,6 +1054,8 @@ class Deployment(pulumi.CustomResource):
         __props__["etag"] = etag
         __props__["instagramCredentials"] = instagram_credentials
         __props__["location"] = location
+        __props__["modality"] = modality
+        __props__["modelSettings"] = model_settings
         __props__["name"] = name
         __props__["project"] = project
         __props__["updateTime"] = update_time
@@ -1033,6 +1145,25 @@ class Deployment(pulumi.CustomResource):
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def modality(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The modality of the deployment.
+        Possible values are: `MODALITY_TEXT`, `MODALITY_VOICE`, `MODALITY_VIDEO`.
+        """
+        return pulumi.get(self, "modality")
+
+    @_builtins.property
+    @pulumi.getter(name="modelSettings")
+    def model_settings(self) -> pulumi.Output[Optional['outputs.DeploymentModelSettings']]:
+        """
+        Model settings for the deployment.
+        Overrides model settings configured at the app/agent levels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_settings")
 
     @_builtins.property
     @pulumi.getter

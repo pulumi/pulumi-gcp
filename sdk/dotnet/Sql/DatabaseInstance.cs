@@ -107,16 +107,14 @@ namespace Pulumi.Gcp.Sql
     ///             Tier = "db-f1-micro",
     ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
     ///             {
-    ///                 AuthorizedNetworks = .Apply(entries =&gt; entries.Select(entry =&gt; 
-    ///                 {
+    ///                 AuthorizedNetworks = .Apply(entries =&gt; entries.Select(entry =&gt; {
     ///                     return 
     ///                     {
     ///                         { "name", entry.Value.Name },
     ///                         { "value", entry.Value.NetworkInterface[0].AccessConfig[0].NatIp },
     ///                     };
     ///                 }).ToList()),
-    ///                 AuthorizedNetworks = onprem.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry2 =&gt; 
-    ///                 {
+    ///                 AuthorizedNetworks = onprem.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry2 =&gt; {
     ///                     return new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
     ///                     {
     ///                         Name = $"onprem-{entry2.Key}",

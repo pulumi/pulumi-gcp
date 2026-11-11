@@ -23,6 +23,7 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
      * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
      * - A Backup Plan configured for &#39;file.googleapis.com/Instance&#39; can only protect Filestore instances.
      * - A Backup Plan configured for &#39;sqladmin.googleapis.com/Instance&#39; can only protect Cloud SQL instances.
+     * - A Backup Plan configured for &#39;netapp.googleapis.com/Volume&#39; can only protect NetApp volumes.
      * 
      */
     @Import(name="backupPlan", required=true)
@@ -35,6 +36,7 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
      * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
      * - A Backup Plan configured for &#39;file.googleapis.com/Instance&#39; can only protect Filestore instances.
      * - A Backup Plan configured for &#39;sqladmin.googleapis.com/Instance&#39; can only protect Cloud SQL instances.
+     * - A Backup Plan configured for &#39;netapp.googleapis.com/Volume&#39; can only protect NetApp volumes.
      * 
      */
     public Output<String> backupPlan() {
@@ -130,7 +132,7 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
 
     /**
      * The resource type of workload on which backupplan is applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, and &#34;file.googleapis.com/Instance&#34;
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, &#34;file.googleapis.com/Instance&#34;, and &#34;netapp.googleapis.com/Volume&#34;
      * 
      */
     @Import(name="resourceType", required=true)
@@ -138,7 +140,7 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The resource type of workload on which backupplan is applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, and &#34;file.googleapis.com/Instance&#34;
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, &#34;file.googleapis.com/Instance&#34;, and &#34;netapp.googleapis.com/Volume&#34;
      * 
      */
     public Output<String> resourceType() {
@@ -182,6 +184,7 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
          * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
          * - A Backup Plan configured for &#39;file.googleapis.com/Instance&#39; can only protect Filestore instances.
          * - A Backup Plan configured for &#39;sqladmin.googleapis.com/Instance&#39; can only protect Cloud SQL instances.
+         * - A Backup Plan configured for &#39;netapp.googleapis.com/Volume&#39; can only protect NetApp volumes.
          * 
          * @return builder
          * 
@@ -198,6 +201,7 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
          * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
          * - A Backup Plan configured for &#39;file.googleapis.com/Instance&#39; can only protect Filestore instances.
          * - A Backup Plan configured for &#39;sqladmin.googleapis.com/Instance&#39; can only protect Cloud SQL instances.
+         * - A Backup Plan configured for &#39;netapp.googleapis.com/Volume&#39; can only protect NetApp volumes.
          * 
          * @return builder
          * 
@@ -325,7 +329,7 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
 
         /**
          * @param resourceType The resource type of workload on which backupplan is applied.
-         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, and &#34;file.googleapis.com/Instance&#34;
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, &#34;file.googleapis.com/Instance&#34;, and &#34;netapp.googleapis.com/Volume&#34;
          * 
          * @return builder
          * 
@@ -337,7 +341,7 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
 
         /**
          * @param resourceType The resource type of workload on which backupplan is applied.
-         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, and &#34;file.googleapis.com/Instance&#34;
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, &#34;file.googleapis.com/Instance&#34;, and &#34;netapp.googleapis.com/Volume&#34;
          * 
          * @return builder
          * 

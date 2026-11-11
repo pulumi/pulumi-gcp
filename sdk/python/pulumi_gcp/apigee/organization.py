@@ -71,7 +71,7 @@ class OrganizationArgs:
                operation completes. During this period, the Organization may be restored to its last known state.
                After this period, the Organization will no longer be able to be restored.
                Default value is `DELETION_RETENTION_UNSPECIFIED`.
-               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         :param pulumi.Input[_builtins.str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
@@ -278,7 +278,7 @@ class OrganizationArgs:
         operation completes. During this period, the Organization may be restored to its last known state.
         After this period, the Organization will no longer be able to be restored.
         Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         """
         return pulumi.get(self, "retention")
 
@@ -377,7 +377,7 @@ class _OrganizationState:
                operation completes. During this period, the Organization may be restored to its last known state.
                After this period, the Organization will no longer be able to be restored.
                Default value is `DELETION_RETENTION_UNSPECIFIED`.
-               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         :param pulumi.Input[_builtins.str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
@@ -632,7 +632,7 @@ class _OrganizationState:
         operation completes. During this period, the Organization may be restored to its last known state.
         After this period, the Organization will no longer be able to be restored.
         Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         """
         return pulumi.get(self, "retention")
 
@@ -894,7 +894,7 @@ class Organization(pulumi.CustomResource):
                operation completes. During this period, the Organization may be restored to its last known state.
                After this period, the Organization will no longer be able to be restored.
                Default value is `DELETION_RETENTION_UNSPECIFIED`.
-               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         :param pulumi.Input[_builtins.str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
@@ -1196,7 +1196,7 @@ class Organization(pulumi.CustomResource):
                operation completes. During this period, the Organization may be restored to its last known state.
                After this period, the Organization will no longer be able to be restored.
                Default value is `DELETION_RETENTION_UNSPECIFIED`.
-               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         :param pulumi.Input[_builtins.str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
@@ -1421,7 +1421,7 @@ class Organization(pulumi.CustomResource):
         operation completes. During this period, the Organization may be restored to its last known state.
         After this period, the Organization will no longer be able to be restored.
         Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         """
         return pulumi.get(self, "retention")
 

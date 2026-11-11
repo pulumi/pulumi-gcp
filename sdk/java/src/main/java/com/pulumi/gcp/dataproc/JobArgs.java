@@ -73,14 +73,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of Hadoop job
+     * Submits a Hadoop job to the cluster. Structure is documented below.
      * 
      */
     @Import(name="hadoopConfig")
     private @Nullable Output<JobHadoopConfigArgs> hadoopConfig;
 
     /**
-     * @return The config of Hadoop job
+     * @return Submits a Hadoop job to the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<JobHadoopConfigArgs>> hadoopConfig() {
@@ -88,14 +88,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of hive job
+     * Submits a Hive job to the cluster. Structure is documented below.
      * 
      */
     @Import(name="hiveConfig")
     private @Nullable Output<JobHiveConfigArgs> hiveConfig;
 
     /**
-     * @return The config of hive job
+     * @return Submits a Hive job to the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<JobHiveConfigArgs>> hiveConfig() {
@@ -122,14 +122,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of pag job.
+     * Submits a Pig job to the cluster. Structure is documented below.
      * 
      */
     @Import(name="pigConfig")
     private @Nullable Output<JobPigConfigArgs> pigConfig;
 
     /**
-     * @return The config of pag job.
+     * @return Submits a Pig job to the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<JobPigConfigArgs>> pigConfig() {
@@ -152,14 +152,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of presto job
+     * Submits a Presto job to the cluster. Structure is documented below.
+     * 
+     * ***
      * 
      */
     @Import(name="prestoConfig")
     private @Nullable Output<JobPrestoConfigArgs> prestoConfig;
 
     /**
-     * @return The config of presto job
+     * @return Submits a Presto job to the cluster. Structure is documented below.
+     * 
+     * ***
      * 
      */
     public Optional<Output<JobPrestoConfigArgs>> prestoConfig() {
@@ -184,14 +188,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of pySpark job.
+     * Submits a PySpark job to the cluster. Structure is documented below.
      * 
      */
     @Import(name="pysparkConfig")
     private @Nullable Output<JobPysparkConfigArgs> pysparkConfig;
 
     /**
-     * @return The config of pySpark job.
+     * @return Submits a PySpark job to the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<JobPysparkConfigArgs>> pysparkConfig() {
@@ -246,14 +250,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of the Spark job.
+     * Submits a Spark job to the cluster. Structure is documented below.
      * 
      */
     @Import(name="sparkConfig")
     private @Nullable Output<JobSparkConfigArgs> sparkConfig;
 
     /**
-     * @return The config of the Spark job.
+     * @return Submits a Spark job to the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<JobSparkConfigArgs>> sparkConfig() {
@@ -261,14 +265,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of SparkSql job
+     * Submits a Spark SQL job to the cluster. Structure is documented below.
      * 
      */
     @Import(name="sparksqlConfig")
     private @Nullable Output<JobSparksqlConfigArgs> sparksqlConfig;
 
     /**
-     * @return The config of SparkSql job
+     * @return Submits a Spark SQL job to the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<JobSparksqlConfigArgs>> sparksqlConfig() {
@@ -386,7 +390,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hadoopConfig The config of Hadoop job
+         * @param hadoopConfig Submits a Hadoop job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -397,7 +401,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hadoopConfig The config of Hadoop job
+         * @param hadoopConfig Submits a Hadoop job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -407,7 +411,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hiveConfig The config of hive job
+         * @param hiveConfig Submits a Hive job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -418,7 +422,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hiveConfig The config of hive job
+         * @param hiveConfig Submits a Hive job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -453,7 +457,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pigConfig The config of pag job.
+         * @param pigConfig Submits a Pig job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -464,7 +468,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pigConfig The config of pag job.
+         * @param pigConfig Submits a Pig job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -495,7 +499,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prestoConfig The config of presto job
+         * @param prestoConfig Submits a Presto job to the cluster. Structure is documented below.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -506,7 +512,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prestoConfig The config of presto job
+         * @param prestoConfig Submits a Presto job to the cluster. Structure is documented below.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -539,7 +547,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pysparkConfig The config of pySpark job.
+         * @param pysparkConfig Submits a PySpark job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -550,7 +558,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pysparkConfig The config of pySpark job.
+         * @param pysparkConfig Submits a PySpark job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -625,7 +633,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sparkConfig The config of the Spark job.
+         * @param sparkConfig Submits a Spark job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -636,7 +644,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sparkConfig The config of the Spark job.
+         * @param sparkConfig Submits a Spark job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -646,7 +654,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sparksqlConfig The config of SparkSql job
+         * @param sparksqlConfig Submits a Spark SQL job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -657,7 +665,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sparksqlConfig The config of SparkSql job
+         * @param sparksqlConfig Submits a Spark SQL job to the cluster. Structure is documented below.
          * 
          * @return builder
          * 

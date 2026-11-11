@@ -115,7 +115,7 @@ export class Application extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly defaultHostname: pulumi.Output<string>;
     /**
-     * A block of optional settings to configure specific App Engine features:
+     * A block of optional settings to configure specific App Engine features. Structure is documented below.
      */
     declare public readonly featureSettings: pulumi.Output<outputs.appengine.ApplicationFeatureSettings>;
     /**
@@ -123,7 +123,7 @@ export class Application extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly gcrDomain: pulumi.Output<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
      */
     declare public readonly iap: pulumi.Output<outputs.appengine.ApplicationIap | undefined>;
     /**
@@ -150,7 +150,7 @@ export class Application extends pulumi.CustomResource {
      */
     declare public readonly sslPolicy: pulumi.Output<string>;
     /**
-     * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+     * A list of dispatch rule blocks. Structure is documented below.
      */
     declare public /*out*/ readonly urlDispatchRules: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRule[]>;
 
@@ -242,7 +242,7 @@ export interface ApplicationState {
      */
     defaultHostname?: pulumi.Input<string | undefined>;
     /**
-     * A block of optional settings to configure specific App Engine features:
+     * A block of optional settings to configure specific App Engine features. Structure is documented below.
      */
     featureSettings?: pulumi.Input<inputs.appengine.ApplicationFeatureSettings | undefined>;
     /**
@@ -250,7 +250,7 @@ export interface ApplicationState {
      */
     gcrDomain?: pulumi.Input<string | undefined>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
      */
     iap?: pulumi.Input<inputs.appengine.ApplicationIap | undefined>;
     /**
@@ -277,7 +277,7 @@ export interface ApplicationState {
      */
     sslPolicy?: pulumi.Input<string | undefined>;
     /**
-     * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
+     * A list of dispatch rule blocks. Structure is documented below.
      */
     urlDispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRule>[] | undefined>;
 }
@@ -300,11 +300,11 @@ export interface ApplicationArgs {
      */
     databaseType?: pulumi.Input<string | undefined>;
     /**
-     * A block of optional settings to configure specific App Engine features:
+     * A block of optional settings to configure specific App Engine features. Structure is documented below.
      */
     featureSettings?: pulumi.Input<inputs.appengine.ApplicationFeatureSettings | undefined>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
      */
     iap?: pulumi.Input<inputs.appengine.ApplicationIap | undefined>;
     /**

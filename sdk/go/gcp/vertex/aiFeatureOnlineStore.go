@@ -58,50 +58,6 @@ import (
 //
 // ```
 //
-// ### Vertex Ai Featureonlinestore With Optimized
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
-//				Name: pulumi.String("example_feature_online_store_optimized"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				Region:    pulumi.String("us-central1"),
-//				Optimized: &vertex.AiFeatureOnlineStoreOptimizedArgs{},
-//				DedicatedServingEndpoint: &vertex.AiFeatureOnlineStoreDedicatedServingEndpointArgs{
-//					PrivateServiceConnectConfig: &vertex.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{
-//						EnablePrivateServiceConnect: pulumi.Bool(true),
-//						ProjectAllowlists: pulumi.StringArray{
-//							pulumi.String(project.Number),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 //
 // ```go
@@ -206,7 +162,12 @@ type AiFeatureOnlineStore struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+	//
+	// > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+	//
+	// Deprecated: `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
 	Optimized AiFeatureOnlineStoreOptimizedPtrOutput `pulumi:"optimized"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -295,7 +256,12 @@ type aiFeatureOnlineStoreState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+	//
+	// > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+	//
+	// Deprecated: `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
 	Optimized *AiFeatureOnlineStoreOptimized `pulumi:"optimized"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -350,7 +316,12 @@ type AiFeatureOnlineStoreState struct {
 	Labels pulumi.StringMapInput
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+	//
+	// > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+	//
+	// Deprecated: `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
 	Optimized AiFeatureOnlineStoreOptimizedPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -409,7 +380,12 @@ type aiFeatureOnlineStoreArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+	//
+	// > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+	//
+	// Deprecated: `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
 	Optimized *AiFeatureOnlineStoreOptimized `pulumi:"optimized"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -452,7 +428,12 @@ type AiFeatureOnlineStoreArgs struct {
 	Labels pulumi.StringMapInput
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+	//
+	// > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+	//
+	// Deprecated: `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
 	Optimized AiFeatureOnlineStoreOptimizedPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -623,7 +604,12 @@ func (o AiFeatureOnlineStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+//
+// > **Warning:** `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
+//
+// Deprecated: `optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `bigtable` for online serving instead.
 func (o AiFeatureOnlineStoreOutput) Optimized() AiFeatureOnlineStoreOptimizedPtrOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) AiFeatureOnlineStoreOptimizedPtrOutput { return v.Optimized }).(AiFeatureOnlineStoreOptimizedPtrOutput)
 }

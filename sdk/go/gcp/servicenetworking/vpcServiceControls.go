@@ -137,7 +137,7 @@ type VpcServiceControls struct {
 	// The network that the consumer is using to connect with services.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The id of the Google Cloud project containing the consumer network.
-	Project pulumi.StringPtrOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
@@ -348,8 +348,8 @@ func (o VpcServiceControlsOutput) Network() pulumi.StringOutput {
 }
 
 // The id of the Google Cloud project containing the consumer network.
-func (o VpcServiceControlsOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpcServiceControls) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
+func (o VpcServiceControlsOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcServiceControls) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The service that is managing peering connectivity for a service

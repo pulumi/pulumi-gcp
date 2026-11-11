@@ -147,7 +147,7 @@ export class LiteTopic extends pulumi.CustomResource {
     /**
      * The zone of the pubsub lite topic.
      */
-    declare public readonly zone: pulumi.Output<string | undefined>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a LiteTopic resource with the given unique name, arguments, and options.

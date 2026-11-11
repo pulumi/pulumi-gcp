@@ -12814,6 +12814,266 @@ func (o ManagedFolderIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedFolderRapidCacheConfig struct {
+	// A map of rapid cache IDs to the corresponding RapidCachePolicy
+	// configurations for a managed folder.
+	// Structure is documented below.
+	Policies []ManagedFolderRapidCacheConfigPolicy `pulumi:"policies"`
+}
+
+// ManagedFolderRapidCacheConfigInput is an input type that accepts ManagedFolderRapidCacheConfigArgs and ManagedFolderRapidCacheConfigOutput values.
+// You can construct a concrete instance of `ManagedFolderRapidCacheConfigInput` via:
+//
+//	ManagedFolderRapidCacheConfigArgs{...}
+type ManagedFolderRapidCacheConfigInput interface {
+	pulumi.Input
+
+	ToManagedFolderRapidCacheConfigOutput() ManagedFolderRapidCacheConfigOutput
+	ToManagedFolderRapidCacheConfigOutputWithContext(context.Context) ManagedFolderRapidCacheConfigOutput
+}
+
+type ManagedFolderRapidCacheConfigArgs struct {
+	// A map of rapid cache IDs to the corresponding RapidCachePolicy
+	// configurations for a managed folder.
+	// Structure is documented below.
+	Policies ManagedFolderRapidCacheConfigPolicyArrayInput `pulumi:"policies"`
+}
+
+func (ManagedFolderRapidCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderRapidCacheConfig)(nil)).Elem()
+}
+
+func (i ManagedFolderRapidCacheConfigArgs) ToManagedFolderRapidCacheConfigOutput() ManagedFolderRapidCacheConfigOutput {
+	return i.ToManagedFolderRapidCacheConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderRapidCacheConfigArgs) ToManagedFolderRapidCacheConfigOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderRapidCacheConfigOutput)
+}
+
+func (i ManagedFolderRapidCacheConfigArgs) ToManagedFolderRapidCacheConfigPtrOutput() ManagedFolderRapidCacheConfigPtrOutput {
+	return i.ToManagedFolderRapidCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderRapidCacheConfigArgs) ToManagedFolderRapidCacheConfigPtrOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderRapidCacheConfigOutput).ToManagedFolderRapidCacheConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedFolderRapidCacheConfigPtrInput is an input type that accepts ManagedFolderRapidCacheConfigArgs, ManagedFolderRapidCacheConfigPtr and ManagedFolderRapidCacheConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedFolderRapidCacheConfigPtrInput` via:
+//
+//	        ManagedFolderRapidCacheConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedFolderRapidCacheConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedFolderRapidCacheConfigPtrOutput() ManagedFolderRapidCacheConfigPtrOutput
+	ToManagedFolderRapidCacheConfigPtrOutputWithContext(context.Context) ManagedFolderRapidCacheConfigPtrOutput
+}
+
+type managedFolderRapidCacheConfigPtrType ManagedFolderRapidCacheConfigArgs
+
+func ManagedFolderRapidCacheConfigPtr(v *ManagedFolderRapidCacheConfigArgs) ManagedFolderRapidCacheConfigPtrInput {
+	return (*managedFolderRapidCacheConfigPtrType)(v)
+}
+
+func (*managedFolderRapidCacheConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedFolderRapidCacheConfig)(nil)).Elem()
+}
+
+func (i *managedFolderRapidCacheConfigPtrType) ToManagedFolderRapidCacheConfigPtrOutput() ManagedFolderRapidCacheConfigPtrOutput {
+	return i.ToManagedFolderRapidCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedFolderRapidCacheConfigPtrType) ToManagedFolderRapidCacheConfigPtrOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderRapidCacheConfigPtrOutput)
+}
+
+type ManagedFolderRapidCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderRapidCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderRapidCacheConfig)(nil)).Elem()
+}
+
+func (o ManagedFolderRapidCacheConfigOutput) ToManagedFolderRapidCacheConfigOutput() ManagedFolderRapidCacheConfigOutput {
+	return o
+}
+
+func (o ManagedFolderRapidCacheConfigOutput) ToManagedFolderRapidCacheConfigOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigOutput {
+	return o
+}
+
+func (o ManagedFolderRapidCacheConfigOutput) ToManagedFolderRapidCacheConfigPtrOutput() ManagedFolderRapidCacheConfigPtrOutput {
+	return o.ToManagedFolderRapidCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedFolderRapidCacheConfigOutput) ToManagedFolderRapidCacheConfigPtrOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedFolderRapidCacheConfig) *ManagedFolderRapidCacheConfig {
+		return &v
+	}).(ManagedFolderRapidCacheConfigPtrOutput)
+}
+
+// A map of rapid cache IDs to the corresponding RapidCachePolicy
+// configurations for a managed folder.
+// Structure is documented below.
+func (o ManagedFolderRapidCacheConfigOutput) Policies() ManagedFolderRapidCacheConfigPolicyArrayOutput {
+	return o.ApplyT(func(v ManagedFolderRapidCacheConfig) []ManagedFolderRapidCacheConfigPolicy { return v.Policies }).(ManagedFolderRapidCacheConfigPolicyArrayOutput)
+}
+
+type ManagedFolderRapidCacheConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderRapidCacheConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedFolderRapidCacheConfig)(nil)).Elem()
+}
+
+func (o ManagedFolderRapidCacheConfigPtrOutput) ToManagedFolderRapidCacheConfigPtrOutput() ManagedFolderRapidCacheConfigPtrOutput {
+	return o
+}
+
+func (o ManagedFolderRapidCacheConfigPtrOutput) ToManagedFolderRapidCacheConfigPtrOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigPtrOutput {
+	return o
+}
+
+func (o ManagedFolderRapidCacheConfigPtrOutput) Elem() ManagedFolderRapidCacheConfigOutput {
+	return o.ApplyT(func(v *ManagedFolderRapidCacheConfig) ManagedFolderRapidCacheConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedFolderRapidCacheConfig
+		return ret
+	}).(ManagedFolderRapidCacheConfigOutput)
+}
+
+// A map of rapid cache IDs to the corresponding RapidCachePolicy
+// configurations for a managed folder.
+// Structure is documented below.
+func (o ManagedFolderRapidCacheConfigPtrOutput) Policies() ManagedFolderRapidCacheConfigPolicyArrayOutput {
+	return o.ApplyT(func(v *ManagedFolderRapidCacheConfig) []ManagedFolderRapidCacheConfigPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.Policies
+	}).(ManagedFolderRapidCacheConfigPolicyArrayOutput)
+}
+
+type ManagedFolderRapidCacheConfigPolicy struct {
+	// The ingest-on-write policy for objects in the managed folder. When
+	// set to `enabled`, objects are automatically ingested into the cache
+	// when they are written to the managed folder.
+	// Possible values: ["enabled", "unspecified"]
+	IngestOnWrite *string `pulumi:"ingestOnWrite"`
+	// The unique identifier of the rapid cache.
+	RapidCacheId string `pulumi:"rapidCacheId"`
+}
+
+// ManagedFolderRapidCacheConfigPolicyInput is an input type that accepts ManagedFolderRapidCacheConfigPolicyArgs and ManagedFolderRapidCacheConfigPolicyOutput values.
+// You can construct a concrete instance of `ManagedFolderRapidCacheConfigPolicyInput` via:
+//
+//	ManagedFolderRapidCacheConfigPolicyArgs{...}
+type ManagedFolderRapidCacheConfigPolicyInput interface {
+	pulumi.Input
+
+	ToManagedFolderRapidCacheConfigPolicyOutput() ManagedFolderRapidCacheConfigPolicyOutput
+	ToManagedFolderRapidCacheConfigPolicyOutputWithContext(context.Context) ManagedFolderRapidCacheConfigPolicyOutput
+}
+
+type ManagedFolderRapidCacheConfigPolicyArgs struct {
+	// The ingest-on-write policy for objects in the managed folder. When
+	// set to `enabled`, objects are automatically ingested into the cache
+	// when they are written to the managed folder.
+	// Possible values: ["enabled", "unspecified"]
+	IngestOnWrite pulumi.StringPtrInput `pulumi:"ingestOnWrite"`
+	// The unique identifier of the rapid cache.
+	RapidCacheId pulumi.StringInput `pulumi:"rapidCacheId"`
+}
+
+func (ManagedFolderRapidCacheConfigPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderRapidCacheConfigPolicy)(nil)).Elem()
+}
+
+func (i ManagedFolderRapidCacheConfigPolicyArgs) ToManagedFolderRapidCacheConfigPolicyOutput() ManagedFolderRapidCacheConfigPolicyOutput {
+	return i.ToManagedFolderRapidCacheConfigPolicyOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderRapidCacheConfigPolicyArgs) ToManagedFolderRapidCacheConfigPolicyOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderRapidCacheConfigPolicyOutput)
+}
+
+// ManagedFolderRapidCacheConfigPolicyArrayInput is an input type that accepts ManagedFolderRapidCacheConfigPolicyArray and ManagedFolderRapidCacheConfigPolicyArrayOutput values.
+// You can construct a concrete instance of `ManagedFolderRapidCacheConfigPolicyArrayInput` via:
+//
+//	ManagedFolderRapidCacheConfigPolicyArray{ ManagedFolderRapidCacheConfigPolicyArgs{...} }
+type ManagedFolderRapidCacheConfigPolicyArrayInput interface {
+	pulumi.Input
+
+	ToManagedFolderRapidCacheConfigPolicyArrayOutput() ManagedFolderRapidCacheConfigPolicyArrayOutput
+	ToManagedFolderRapidCacheConfigPolicyArrayOutputWithContext(context.Context) ManagedFolderRapidCacheConfigPolicyArrayOutput
+}
+
+type ManagedFolderRapidCacheConfigPolicyArray []ManagedFolderRapidCacheConfigPolicyInput
+
+func (ManagedFolderRapidCacheConfigPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedFolderRapidCacheConfigPolicy)(nil)).Elem()
+}
+
+func (i ManagedFolderRapidCacheConfigPolicyArray) ToManagedFolderRapidCacheConfigPolicyArrayOutput() ManagedFolderRapidCacheConfigPolicyArrayOutput {
+	return i.ToManagedFolderRapidCacheConfigPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderRapidCacheConfigPolicyArray) ToManagedFolderRapidCacheConfigPolicyArrayOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderRapidCacheConfigPolicyArrayOutput)
+}
+
+type ManagedFolderRapidCacheConfigPolicyOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderRapidCacheConfigPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderRapidCacheConfigPolicy)(nil)).Elem()
+}
+
+func (o ManagedFolderRapidCacheConfigPolicyOutput) ToManagedFolderRapidCacheConfigPolicyOutput() ManagedFolderRapidCacheConfigPolicyOutput {
+	return o
+}
+
+func (o ManagedFolderRapidCacheConfigPolicyOutput) ToManagedFolderRapidCacheConfigPolicyOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigPolicyOutput {
+	return o
+}
+
+// The ingest-on-write policy for objects in the managed folder. When
+// set to `enabled`, objects are automatically ingested into the cache
+// when they are written to the managed folder.
+// Possible values: ["enabled", "unspecified"]
+func (o ManagedFolderRapidCacheConfigPolicyOutput) IngestOnWrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedFolderRapidCacheConfigPolicy) *string { return v.IngestOnWrite }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the rapid cache.
+func (o ManagedFolderRapidCacheConfigPolicyOutput) RapidCacheId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedFolderRapidCacheConfigPolicy) string { return v.RapidCacheId }).(pulumi.StringOutput)
+}
+
+type ManagedFolderRapidCacheConfigPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderRapidCacheConfigPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedFolderRapidCacheConfigPolicy)(nil)).Elem()
+}
+
+func (o ManagedFolderRapidCacheConfigPolicyArrayOutput) ToManagedFolderRapidCacheConfigPolicyArrayOutput() ManagedFolderRapidCacheConfigPolicyArrayOutput {
+	return o
+}
+
+func (o ManagedFolderRapidCacheConfigPolicyArrayOutput) ToManagedFolderRapidCacheConfigPolicyArrayOutputWithContext(ctx context.Context) ManagedFolderRapidCacheConfigPolicyArrayOutput {
+	return o
+}
+
+func (o ManagedFolderRapidCacheConfigPolicyArrayOutput) Index(i pulumi.IntInput) ManagedFolderRapidCacheConfigPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedFolderRapidCacheConfigPolicy {
+		return vs[0].([]ManagedFolderRapidCacheConfigPolicy)[vs[1].(int)]
+	}).(ManagedFolderRapidCacheConfigPolicyOutput)
+}
+
 type ObjectAccessControlProjectTeam struct {
 	// The project team associated with the entity
 	ProjectNumber *string `pulumi:"projectNumber"`
@@ -38864,6 +39124,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamBindingConditionPtrInput)(nil)).Elem(), ManagedFolderIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamMemberConditionInput)(nil)).Elem(), ManagedFolderIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamMemberConditionPtrInput)(nil)).Elem(), ManagedFolderIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderRapidCacheConfigInput)(nil)).Elem(), ManagedFolderRapidCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderRapidCacheConfigPtrInput)(nil)).Elem(), ManagedFolderRapidCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderRapidCacheConfigPolicyInput)(nil)).Elem(), ManagedFolderRapidCacheConfigPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderRapidCacheConfigPolicyArrayInput)(nil)).Elem(), ManagedFolderRapidCacheConfigPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), ObjectAccessControlProjectTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferAgentPoolBandwidthLimitInput)(nil)).Elem(), TransferAgentPoolBandwidthLimitArgs{})
@@ -39418,6 +39682,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedFolderIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ManagedFolderIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(ManagedFolderIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ManagedFolderRapidCacheConfigOutput{})
+	pulumi.RegisterOutputType(ManagedFolderRapidCacheConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedFolderRapidCacheConfigPolicyOutput{})
+	pulumi.RegisterOutputType(ManagedFolderRapidCacheConfigPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(TransferAgentPoolBandwidthLimitOutput{})

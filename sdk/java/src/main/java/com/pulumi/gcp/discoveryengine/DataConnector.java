@@ -860,14 +860,14 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tag", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tag;
+    private Output<String> tag;
 
     /**
      * @return User-facing, version-independent label for this connector.
      * 
      */
-    public Output<Optional<String>> tag() {
-        return Codegen.optional(this.tag);
+    public Output<String> tag() {
+        return this.tag;
     }
     /**
      * Timestamp when the DataConnector was updated.

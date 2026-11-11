@@ -48,14 +48,14 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
     }
 
     /**
-     * Corresponds to the label values of a reservation resource.
+     * The values for the node affinity label.
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return Corresponds to the label values of a reservation resource.
+     * @return The values for the node affinity label.
      * 
      */
     public Output<List<String>> values() {
@@ -133,7 +133,7 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
         }
 
         /**
-         * @param values Corresponds to the label values of a reservation resource.
+         * @param values The values for the node affinity label.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
         }
 
         /**
-         * @param values Corresponds to the label values of a reservation resource.
+         * @param values The values for the node affinity label.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
         }
 
         /**
-         * @param values Corresponds to the label values of a reservation resource.
+         * @param values The values for the node affinity label.
          * 
          * @return builder
          * 

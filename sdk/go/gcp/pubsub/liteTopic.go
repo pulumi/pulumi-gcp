@@ -120,7 +120,7 @@ type LiteTopic struct {
 	// Structure is documented below.
 	RetentionConfig LiteTopicRetentionConfigPtrOutput `pulumi:"retentionConfig"`
 	// The zone of the pubsub lite topic.
-	Zone pulumi.StringPtrOutput `pulumi:"zone"`
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewLiteTopic registers a new resource with the given unique name, arguments, and options.
@@ -407,8 +407,8 @@ func (o LiteTopicOutput) RetentionConfig() LiteTopicRetentionConfigPtrOutput {
 }
 
 // The zone of the pubsub lite topic.
-func (o LiteTopicOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiteTopic) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
+func (o LiteTopicOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiteTopic) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 type LiteTopicArrayOutput struct{ *pulumi.OutputState }

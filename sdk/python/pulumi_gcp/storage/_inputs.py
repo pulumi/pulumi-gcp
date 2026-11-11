@@ -187,6 +187,10 @@ __all__ = [
     'ManagedFolderIamBindingConditionArgsDict',
     'ManagedFolderIamMemberConditionArgs',
     'ManagedFolderIamMemberConditionArgsDict',
+    'ManagedFolderRapidCacheConfigArgs',
+    'ManagedFolderRapidCacheConfigArgsDict',
+    'ManagedFolderRapidCacheConfigPolicyArgs',
+    'ManagedFolderRapidCacheConfigPolicyArgsDict',
     'ObjectAccessControlProjectTeamArgs',
     'ObjectAccessControlProjectTeamArgsDict',
     'TransferAgentPoolBandwidthLimitArgs',
@@ -4923,6 +4927,97 @@ class ManagedFolderIamMemberConditionArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class ManagedFolderRapidCacheConfigArgsDict(TypedDict):
+    policies: pulumi.Input[Sequence[pulumi.Input['ManagedFolderRapidCacheConfigPolicyArgsDict']]]
+    """
+    A map of rapid cache IDs to the corresponding RapidCachePolicy
+    configurations for a managed folder.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ManagedFolderRapidCacheConfigArgs:
+    def __init__(__self__, *,
+                 policies: pulumi.Input[Sequence[pulumi.Input['ManagedFolderRapidCacheConfigPolicyArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedFolderRapidCacheConfigPolicyArgs']]] policies: A map of rapid cache IDs to the corresponding RapidCachePolicy
+               configurations for a managed folder.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "policies", policies)
+
+    @_builtins.property
+    @pulumi.getter
+    def policies(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedFolderRapidCacheConfigPolicyArgs']]]:
+        """
+        A map of rapid cache IDs to the corresponding RapidCachePolicy
+        configurations for a managed folder.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedFolderRapidCacheConfigPolicyArgs']]]):
+        pulumi.set(self, "policies", value)
+
+
+class ManagedFolderRapidCacheConfigPolicyArgsDict(TypedDict):
+    rapid_cache_id: pulumi.Input[_builtins.str]
+    """
+    The unique identifier of the rapid cache.
+    """
+    ingest_on_write: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ingest-on-write policy for objects in the managed folder. When
+    set to `enabled`, objects are automatically ingested into the cache
+    when they are written to the managed folder.
+    Possible values: ["enabled", "unspecified"]
+    """
+
+@pulumi.input_type
+class ManagedFolderRapidCacheConfigPolicyArgs:
+    def __init__(__self__, *,
+                 rapid_cache_id: pulumi.Input[_builtins.str],
+                 ingest_on_write: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] rapid_cache_id: The unique identifier of the rapid cache.
+        :param pulumi.Input[_builtins.str] ingest_on_write: The ingest-on-write policy for objects in the managed folder. When
+               set to `enabled`, objects are automatically ingested into the cache
+               when they are written to the managed folder.
+               Possible values: ["enabled", "unspecified"]
+        """
+        pulumi.set(__self__, "rapid_cache_id", rapid_cache_id)
+        if ingest_on_write is not None:
+            pulumi.set(__self__, "ingest_on_write", ingest_on_write)
+
+    @_builtins.property
+    @pulumi.getter(name="rapidCacheId")
+    def rapid_cache_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The unique identifier of the rapid cache.
+        """
+        return pulumi.get(self, "rapid_cache_id")
+
+    @rapid_cache_id.setter
+    def rapid_cache_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "rapid_cache_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ingestOnWrite")
+    def ingest_on_write(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ingest-on-write policy for objects in the managed folder. When
+        set to `enabled`, objects are automatically ingested into the cache
+        when they are written to the managed folder.
+        Possible values: ["enabled", "unspecified"]
+        """
+        return pulumi.get(self, "ingest_on_write")
+
+    @ingest_on_write.setter
+    def ingest_on_write(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ingest_on_write", value)
 
 
 class ObjectAccessControlProjectTeamArgsDict(TypedDict):

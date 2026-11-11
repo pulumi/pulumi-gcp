@@ -11,6 +11,7 @@ import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOpt
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigParquetOptionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -78,6 +79,21 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * If set, all the inventory report details associated with this report configuration are deleted.
      * 
      */
@@ -107,6 +123,27 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
      */
     public Optional<Output<InsightsReportConfigFrequencyOptionsArgs>> frequencyOptions() {
         return Optional.ofNullable(this.frequencyOptions);
+    }
+
+    /**
+     * Labels as key value pairs. Have a character limit of 64 per key and value.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels as key value pairs. Have a character limit of 64 per key and value.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -190,19 +227,39 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
     private InsightsReportConfigState() {}
 
     private InsightsReportConfigState(InsightsReportConfigState $) {
         this.csvOptions = $.csvOptions;
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
+        this.effectiveLabels = $.effectiveLabels;
         this.forceDestroy = $.forceDestroy;
         this.frequencyOptions = $.frequencyOptions;
+        this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
         this.objectMetadataReportOptions = $.objectMetadataReportOptions;
         this.parquetOptions = $.parquetOptions;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
     }
 
     public static Builder builder() {
@@ -299,6 +356,27 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param forceDestroy If set, all the inventory report details associated with this report configuration are deleted.
          * 
          * @return builder
@@ -340,6 +418,33 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
          */
         public Builder frequencyOptions(InsightsReportConfigFrequencyOptionsArgs frequencyOptions) {
             return frequencyOptions(Output.of(frequencyOptions));
+        }
+
+        /**
+         * @param labels Labels as key value pairs. Have a character limit of 64 per key and value.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels as key value pairs. Have a character limit of 64 per key and value.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**
@@ -451,6 +556,29 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         public InsightsReportConfigState build() {

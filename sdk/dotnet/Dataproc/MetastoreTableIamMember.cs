@@ -54,8 +54,8 @@ namespace Pulumi.Gcp.Dataproc
     ///         Project = dpmsService.Project,
     ///         Location = dpmsService.Location,
     ///         ServiceId = dpmsService.ServiceId,
-    ///         DatabaseId = hive.HiveConfig[0].Properties.Database,
-    ///         Table = hive.HiveConfig[0].Properties.Table,
+    ///         DatabaseId = hive.HiveConfig[0].Properties["database"],
+    ///         Table = hive.HiveConfig[0].Properties["table"],
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -77,8 +77,8 @@ namespace Pulumi.Gcp.Dataproc
     ///         Project = dpmsService.Project,
     ///         Location = dpmsService.Location,
     ///         ServiceId = dpmsService.ServiceId,
-    ///         DatabaseId = hive.HiveConfig[0].Properties.Database,
-    ///         Table = hive.HiveConfig[0].Properties.Table,
+    ///         DatabaseId = hive.HiveConfig[0].Properties["database"],
+    ///         Table = hive.HiveConfig[0].Properties["table"],
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -104,8 +104,8 @@ namespace Pulumi.Gcp.Dataproc
     ///         Project = dpmsService.Project,
     ///         Location = dpmsService.Location,
     ///         ServiceId = dpmsService.ServiceId,
-    ///         DatabaseId = hive.HiveConfig[0].Properties.Database,
-    ///         Table = hive.HiveConfig[0].Properties.Table,
+    ///         DatabaseId = hive.HiveConfig[0].Properties["database"],
+    ///         Table = hive.HiveConfig[0].Properties["table"],
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -163,8 +163,8 @@ namespace Pulumi.Gcp.Dataproc
     ///         Project = dpmsService.Project,
     ///         Location = dpmsService.Location,
     ///         ServiceId = dpmsService.ServiceId,
-    ///         DatabaseId = hive.HiveConfig[0].Properties.Database,
-    ///         Table = hive.HiveConfig[0].Properties.Table,
+    ///         DatabaseId = hive.HiveConfig[0].Properties["database"],
+    ///         Table = hive.HiveConfig[0].Properties["table"],
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -186,8 +186,8 @@ namespace Pulumi.Gcp.Dataproc
     ///         Project = dpmsService.Project,
     ///         Location = dpmsService.Location,
     ///         ServiceId = dpmsService.ServiceId,
-    ///         DatabaseId = hive.HiveConfig[0].Properties.Database,
-    ///         Table = hive.HiveConfig[0].Properties.Table,
+    ///         DatabaseId = hive.HiveConfig[0].Properties["database"],
+    ///         Table = hive.HiveConfig[0].Properties["table"],
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -213,8 +213,8 @@ namespace Pulumi.Gcp.Dataproc
     ///         Project = dpmsService.Project,
     ///         Location = dpmsService.Location,
     ///         ServiceId = dpmsService.ServiceId,
-    ///         DatabaseId = hive.HiveConfig[0].Properties.Database,
-    ///         Table = hive.HiveConfig[0].Properties.Table,
+    ///         DatabaseId = hive.HiveConfig[0].Properties["database"],
+    ///         Table = hive.HiveConfig[0].Properties["table"],
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });

@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> DefaultHostname { get; private set; } = null!;
 
         /// <summary>
-        /// A block of optional settings to configure specific App Engine features:
+        /// A block of optional settings to configure specific App Engine features. Structure is documented below.
         /// </summary>
         [Output("featureSettings")]
         public Output<Outputs.ApplicationFeatureSettings> FeatureSettings { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> GcrDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
         /// </summary>
         [Output("iap")]
         public Output<Outputs.ApplicationIap?> Iap { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> SslPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// A list of dispatch rule blocks. Each block has a `Domain`, `Path`, and `Service` field.
+        /// A list of dispatch rule blocks. Structure is documented below.
         /// </summary>
         [Output("urlDispatchRules")]
         public Output<ImmutableArray<Outputs.ApplicationUrlDispatchRule>> UrlDispatchRules { get; private set; } = null!;
@@ -223,13 +223,13 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? DatabaseType { get; set; }
 
         /// <summary>
-        /// A block of optional settings to configure specific App Engine features:
+        /// A block of optional settings to configure specific App Engine features. Structure is documented below.
         /// </summary>
         [Input("featureSettings")]
         public Input<Inputs.ApplicationFeatureSettingsArgs>? FeatureSettings { get; set; }
 
         /// <summary>
-        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
         /// </summary>
         [Input("iap")]
         public Input<Inputs.ApplicationIapArgs>? Iap { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? DefaultHostname { get; set; }
 
         /// <summary>
-        /// A block of optional settings to configure specific App Engine features:
+        /// A block of optional settings to configure specific App Engine features. Structure is documented below.
         /// </summary>
         [Input("featureSettings")]
         public Input<Inputs.ApplicationFeatureSettingsGetArgs>? FeatureSettings { get; set; }
@@ -323,7 +323,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? GcrDomain { get; set; }
 
         /// <summary>
-        /// Settings for enabling Cloud Identity Aware Proxy
+        /// Settings for enabling Cloud Identity Aware Proxy. Structure is documented below.
         /// </summary>
         [Input("iap")]
         public Input<Inputs.ApplicationIapGetArgs>? Iap { get; set; }
@@ -365,7 +365,7 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.ApplicationUrlDispatchRuleGetArgs>? _urlDispatchRules;
 
         /// <summary>
-        /// A list of dispatch rule blocks. Each block has a `Domain`, `Path`, and `Service` field.
+        /// A list of dispatch rule blocks. Structure is documented below.
         /// </summary>
         public InputList<Inputs.ApplicationUrlDispatchRuleGetArgs> UrlDispatchRules
         {

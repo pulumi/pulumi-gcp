@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.storage.inputs.ManagedFolderRapidCacheConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -125,6 +126,23 @@ public final class ManagedFolderState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Configuration options for the rapid cache of a managed folder.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="rapidCacheConfig")
+    private @Nullable Output<ManagedFolderRapidCacheConfigArgs> rapidCacheConfig;
+
+    /**
+     * @return Configuration options for the rapid cache of a managed folder.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ManagedFolderRapidCacheConfigArgs>> rapidCacheConfig() {
+        return Optional.ofNullable(this.rapidCacheConfig);
+    }
+
+    /**
      * The URI of the created resource.
      * 
      */
@@ -163,6 +181,7 @@ public final class ManagedFolderState extends com.pulumi.resources.ResourceArgs 
         this.forceDestroy = $.forceDestroy;
         this.metageneration = $.metageneration;
         this.name = $.name;
+        this.rapidCacheConfig = $.rapidCacheConfig;
         this.selfLink = $.selfLink;
         this.updateTime = $.updateTime;
     }
@@ -327,6 +346,29 @@ public final class ManagedFolderState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param rapidCacheConfig Configuration options for the rapid cache of a managed folder.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rapidCacheConfig(@Nullable Output<ManagedFolderRapidCacheConfigArgs> rapidCacheConfig) {
+            $.rapidCacheConfig = rapidCacheConfig;
+            return this;
+        }
+
+        /**
+         * @param rapidCacheConfig Configuration options for the rapid cache of a managed folder.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rapidCacheConfig(ManagedFolderRapidCacheConfigArgs rapidCacheConfig) {
+            return rapidCacheConfig(Output.of(rapidCacheConfig));
         }
 
         /**

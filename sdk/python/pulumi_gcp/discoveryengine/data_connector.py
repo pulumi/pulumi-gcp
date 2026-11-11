@@ -2346,7 +2346,7 @@ class DataConnector(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def tag(self) -> pulumi.Output[_builtins.str]:
         """
         User-facing, version-independent label for this connector.
         """

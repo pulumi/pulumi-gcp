@@ -15074,6 +15074,11 @@ type RoutineExternalRuntimeOptions struct {
 	RuntimeConnection *string `pulumi:"runtimeConnection"`
 	// Language runtime version. Example: `python-3.11`.
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
+	// List of volume mounts for the Python UDF container that executes the
+	// managed function. When volume mounts are set, `runtimeConnection` must
+	// also be set.
+	// Structure is documented below.
+	VolumeMounts []RoutineExternalRuntimeOptionsVolumeMount `pulumi:"volumeMounts"`
 }
 
 // RoutineExternalRuntimeOptionsInput is an input type that accepts RoutineExternalRuntimeOptionsArgs and RoutineExternalRuntimeOptionsOutput values.
@@ -15111,6 +15116,11 @@ type RoutineExternalRuntimeOptionsArgs struct {
 	RuntimeConnection pulumi.StringPtrInput `pulumi:"runtimeConnection"`
 	// Language runtime version. Example: `python-3.11`.
 	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+	// List of volume mounts for the Python UDF container that executes the
+	// managed function. When volume mounts are set, `runtimeConnection` must
+	// also be set.
+	// Structure is documented below.
+	VolumeMounts RoutineExternalRuntimeOptionsVolumeMountArrayInput `pulumi:"volumeMounts"`
 }
 
 func (RoutineExternalRuntimeOptionsArgs) ElementType() reflect.Type {
@@ -15231,6 +15241,16 @@ func (o RoutineExternalRuntimeOptionsOutput) RuntimeVersion() pulumi.StringPtrOu
 	return o.ApplyT(func(v RoutineExternalRuntimeOptions) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
 }
 
+// List of volume mounts for the Python UDF container that executes the
+// managed function. When volume mounts are set, `runtimeConnection` must
+// also be set.
+// Structure is documented below.
+func (o RoutineExternalRuntimeOptionsOutput) VolumeMounts() RoutineExternalRuntimeOptionsVolumeMountArrayOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptions) []RoutineExternalRuntimeOptionsVolumeMount {
+		return v.VolumeMounts
+	}).(RoutineExternalRuntimeOptionsVolumeMountArrayOutput)
+}
+
 type RoutineExternalRuntimeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (RoutineExternalRuntimeOptionsPtrOutput) ElementType() reflect.Type {
@@ -15324,6 +15344,137 @@ func (o RoutineExternalRuntimeOptionsPtrOutput) RuntimeVersion() pulumi.StringPt
 		}
 		return v.RuntimeVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of volume mounts for the Python UDF container that executes the
+// managed function. When volume mounts are set, `runtimeConnection` must
+// also be set.
+// Structure is documented below.
+func (o RoutineExternalRuntimeOptionsPtrOutput) VolumeMounts() RoutineExternalRuntimeOptionsVolumeMountArrayOutput {
+	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) []RoutineExternalRuntimeOptionsVolumeMount {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeMounts
+	}).(RoutineExternalRuntimeOptionsVolumeMountArrayOutput)
+}
+
+type RoutineExternalRuntimeOptionsVolumeMount struct {
+	// The absolute path within the container where the volume should be
+	// mounted. For example, `/mnt/data`.
+	MountPath string `pulumi:"mountPath"`
+	// The absolute path of the source to be mounted. Only Google Cloud
+	// Storage buckets or folders are currently supported. For example,
+	// `gs://bucket-xxx` for a Cloud Storage bucket, or
+	// `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+	SourcePath string `pulumi:"sourcePath"`
+}
+
+// RoutineExternalRuntimeOptionsVolumeMountInput is an input type that accepts RoutineExternalRuntimeOptionsVolumeMountArgs and RoutineExternalRuntimeOptionsVolumeMountOutput values.
+// You can construct a concrete instance of `RoutineExternalRuntimeOptionsVolumeMountInput` via:
+//
+//	RoutineExternalRuntimeOptionsVolumeMountArgs{...}
+type RoutineExternalRuntimeOptionsVolumeMountInput interface {
+	pulumi.Input
+
+	ToRoutineExternalRuntimeOptionsVolumeMountOutput() RoutineExternalRuntimeOptionsVolumeMountOutput
+	ToRoutineExternalRuntimeOptionsVolumeMountOutputWithContext(context.Context) RoutineExternalRuntimeOptionsVolumeMountOutput
+}
+
+type RoutineExternalRuntimeOptionsVolumeMountArgs struct {
+	// The absolute path within the container where the volume should be
+	// mounted. For example, `/mnt/data`.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// The absolute path of the source to be mounted. Only Google Cloud
+	// Storage buckets or folders are currently supported. For example,
+	// `gs://bucket-xxx` for a Cloud Storage bucket, or
+	// `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+	SourcePath pulumi.StringInput `pulumi:"sourcePath"`
+}
+
+func (RoutineExternalRuntimeOptionsVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineExternalRuntimeOptionsVolumeMount)(nil)).Elem()
+}
+
+func (i RoutineExternalRuntimeOptionsVolumeMountArgs) ToRoutineExternalRuntimeOptionsVolumeMountOutput() RoutineExternalRuntimeOptionsVolumeMountOutput {
+	return i.ToRoutineExternalRuntimeOptionsVolumeMountOutputWithContext(context.Background())
+}
+
+func (i RoutineExternalRuntimeOptionsVolumeMountArgs) ToRoutineExternalRuntimeOptionsVolumeMountOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineExternalRuntimeOptionsVolumeMountOutput)
+}
+
+// RoutineExternalRuntimeOptionsVolumeMountArrayInput is an input type that accepts RoutineExternalRuntimeOptionsVolumeMountArray and RoutineExternalRuntimeOptionsVolumeMountArrayOutput values.
+// You can construct a concrete instance of `RoutineExternalRuntimeOptionsVolumeMountArrayInput` via:
+//
+//	RoutineExternalRuntimeOptionsVolumeMountArray{ RoutineExternalRuntimeOptionsVolumeMountArgs{...} }
+type RoutineExternalRuntimeOptionsVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToRoutineExternalRuntimeOptionsVolumeMountArrayOutput() RoutineExternalRuntimeOptionsVolumeMountArrayOutput
+	ToRoutineExternalRuntimeOptionsVolumeMountArrayOutputWithContext(context.Context) RoutineExternalRuntimeOptionsVolumeMountArrayOutput
+}
+
+type RoutineExternalRuntimeOptionsVolumeMountArray []RoutineExternalRuntimeOptionsVolumeMountInput
+
+func (RoutineExternalRuntimeOptionsVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutineExternalRuntimeOptionsVolumeMount)(nil)).Elem()
+}
+
+func (i RoutineExternalRuntimeOptionsVolumeMountArray) ToRoutineExternalRuntimeOptionsVolumeMountArrayOutput() RoutineExternalRuntimeOptionsVolumeMountArrayOutput {
+	return i.ToRoutineExternalRuntimeOptionsVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i RoutineExternalRuntimeOptionsVolumeMountArray) ToRoutineExternalRuntimeOptionsVolumeMountArrayOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineExternalRuntimeOptionsVolumeMountArrayOutput)
+}
+
+type RoutineExternalRuntimeOptionsVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (RoutineExternalRuntimeOptionsVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineExternalRuntimeOptionsVolumeMount)(nil)).Elem()
+}
+
+func (o RoutineExternalRuntimeOptionsVolumeMountOutput) ToRoutineExternalRuntimeOptionsVolumeMountOutput() RoutineExternalRuntimeOptionsVolumeMountOutput {
+	return o
+}
+
+func (o RoutineExternalRuntimeOptionsVolumeMountOutput) ToRoutineExternalRuntimeOptionsVolumeMountOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsVolumeMountOutput {
+	return o
+}
+
+// The absolute path within the container where the volume should be
+// mounted. For example, `/mnt/data`.
+func (o RoutineExternalRuntimeOptionsVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptionsVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// The absolute path of the source to be mounted. Only Google Cloud
+// Storage buckets or folders are currently supported. For example,
+// `gs://bucket-xxx` for a Cloud Storage bucket, or
+// `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+func (o RoutineExternalRuntimeOptionsVolumeMountOutput) SourcePath() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptionsVolumeMount) string { return v.SourcePath }).(pulumi.StringOutput)
+}
+
+type RoutineExternalRuntimeOptionsVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (RoutineExternalRuntimeOptionsVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutineExternalRuntimeOptionsVolumeMount)(nil)).Elem()
+}
+
+func (o RoutineExternalRuntimeOptionsVolumeMountArrayOutput) ToRoutineExternalRuntimeOptionsVolumeMountArrayOutput() RoutineExternalRuntimeOptionsVolumeMountArrayOutput {
+	return o
+}
+
+func (o RoutineExternalRuntimeOptionsVolumeMountArrayOutput) ToRoutineExternalRuntimeOptionsVolumeMountArrayOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsVolumeMountArrayOutput {
+	return o
+}
+
+func (o RoutineExternalRuntimeOptionsVolumeMountArrayOutput) Index(i pulumi.IntInput) RoutineExternalRuntimeOptionsVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutineExternalRuntimeOptionsVolumeMount {
+		return vs[0].([]RoutineExternalRuntimeOptionsVolumeMount)[vs[1].(int)]
+	}).(RoutineExternalRuntimeOptionsVolumeMountOutput)
 }
 
 type RoutineIamBindingCondition struct {
@@ -26525,6 +26676,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentTableTypeColumnArrayInput)(nil)).Elem(), RoutineArgumentTableTypeColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineExternalRuntimeOptionsInput)(nil)).Elem(), RoutineExternalRuntimeOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineExternalRuntimeOptionsPtrInput)(nil)).Elem(), RoutineExternalRuntimeOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineExternalRuntimeOptionsVolumeMountInput)(nil)).Elem(), RoutineExternalRuntimeOptionsVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineExternalRuntimeOptionsVolumeMountArrayInput)(nil)).Elem(), RoutineExternalRuntimeOptionsVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineIamBindingConditionInput)(nil)).Elem(), RoutineIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineIamBindingConditionPtrInput)(nil)).Elem(), RoutineIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineIamMemberConditionInput)(nil)).Elem(), RoutineIamMemberConditionArgs{})
@@ -26831,6 +26984,8 @@ func init() {
 	pulumi.RegisterOutputType(RoutineArgumentTableTypeColumnArrayOutput{})
 	pulumi.RegisterOutputType(RoutineExternalRuntimeOptionsOutput{})
 	pulumi.RegisterOutputType(RoutineExternalRuntimeOptionsPtrOutput{})
+	pulumi.RegisterOutputType(RoutineExternalRuntimeOptionsVolumeMountOutput{})
+	pulumi.RegisterOutputType(RoutineExternalRuntimeOptionsVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(RoutineIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RoutineIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RoutineIamMemberConditionOutput{})

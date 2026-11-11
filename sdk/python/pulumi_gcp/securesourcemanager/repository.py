@@ -469,59 +469,14 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
+            location="europe-west4",
             instance_id="my-instance",
             deletion_policy="PREVENT")
         default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
+            location="europe-west4",
             repository_id="my-repository",
             instance=instance.name,
             deletion_policy="PREVENT")
-        ```
-
-        ### Secure Source Manager Repository Initial Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
-            instance_id="my-instance",
-            deletion_policy="PREVENT")
-        default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
-            repository_id="my-repository",
-            instance=instance.name,
-            description="This is a test repository",
-            initial_config={
-                "default_branch": "main",
-                "gitignores": ["python"],
-                "license": "mit",
-                "readme": "default",
-            },
-            deletion_policy="PREVENT")
-        ```
-
-        ### Secure Source Manager Repository Service Account
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
-            instance_id="my-instance",
-            deletion_policy="PREVENT")
-        sa = gcp.serviceaccount.Account("sa",
-            account_id="my-sa",
-            display_name="Test Service Account")
-        default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
-            repository_id="my-repository",
-            instance=instance.name,
-            deletion_policy="PREVENT",
-            service_account=sa.email)
         ```
 
         ### Secure Source Manager Repository Secret Scanning
@@ -529,13 +484,14 @@ class Repository(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
         instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
+            location="europe-west4",
             instance_id="my-instance",
             deletion_policy="PREVENT")
         template = gcp.dataloss.PreventionInspectTemplate("template",
-            parent="projects/my-project-name/locations/us-central1",
+            parent="projects/my-project-name/locations/europe-west4",
             display_name="Test Inspect Template",
             inspect_config={
                 "info_types": [{
@@ -547,10 +503,14 @@ class Repository(pulumi.CustomResource):
             project=project.project_id,
             role="roles/dlp.inspectTemplatesReader",
             member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
+        # IAM permissions can take time to propagate
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[ssm_p4sa_dlp_reader]))
         default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
+            location="europe-west4",
             repository_id="my-repository",
             instance=instance.name,
+            description="This is a test repository",
             deletion_policy="PREVENT",
             scan_config={
                 "secret_scan_config": {
@@ -558,29 +518,35 @@ class Repository(pulumi.CustomResource):
                     "inspect_template": template.id,
                 },
             },
-            opts = pulumi.ResourceOptions(depends_on=[ssm_p4sa_dlp_reader]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         ```
 
-        ### Secure Source Manager Repository Secret Scanning Default
+        ### Secure Source Manager Repository Initial Config
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
+            location="asia-east1",
             instance_id="my-instance",
             deletion_policy="PREVENT")
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-sa",
+            display_name="Test Service Account")
         default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
+            location="asia-east1",
             repository_id="my-repository",
             instance=instance.name,
-            deletion_policy="PREVENT",
-            scan_config={
-                "secret_scan_config": {
-                    "enabled": True,
-                },
-            })
+            description="This is a test repository",
+            service_account=sa.email,
+            initial_config={
+                "default_branch": "main",
+                "gitignores": ["python"],
+                "license": "mit",
+                "readme": "default",
+            },
+            deletion_policy="PREVENT")
         ```
 
         ## Import
@@ -646,59 +612,14 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
+            location="europe-west4",
             instance_id="my-instance",
             deletion_policy="PREVENT")
         default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
+            location="europe-west4",
             repository_id="my-repository",
             instance=instance.name,
             deletion_policy="PREVENT")
-        ```
-
-        ### Secure Source Manager Repository Initial Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
-            instance_id="my-instance",
-            deletion_policy="PREVENT")
-        default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
-            repository_id="my-repository",
-            instance=instance.name,
-            description="This is a test repository",
-            initial_config={
-                "default_branch": "main",
-                "gitignores": ["python"],
-                "license": "mit",
-                "readme": "default",
-            },
-            deletion_policy="PREVENT")
-        ```
-
-        ### Secure Source Manager Repository Service Account
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
-            instance_id="my-instance",
-            deletion_policy="PREVENT")
-        sa = gcp.serviceaccount.Account("sa",
-            account_id="my-sa",
-            display_name="Test Service Account")
-        default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
-            repository_id="my-repository",
-            instance=instance.name,
-            deletion_policy="PREVENT",
-            service_account=sa.email)
         ```
 
         ### Secure Source Manager Repository Secret Scanning
@@ -706,13 +627,14 @@ class Repository(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
         instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
+            location="europe-west4",
             instance_id="my-instance",
             deletion_policy="PREVENT")
         template = gcp.dataloss.PreventionInspectTemplate("template",
-            parent="projects/my-project-name/locations/us-central1",
+            parent="projects/my-project-name/locations/europe-west4",
             display_name="Test Inspect Template",
             inspect_config={
                 "info_types": [{
@@ -724,10 +646,14 @@ class Repository(pulumi.CustomResource):
             project=project.project_id,
             role="roles/dlp.inspectTemplatesReader",
             member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
+        # IAM permissions can take time to propagate
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[ssm_p4sa_dlp_reader]))
         default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
+            location="europe-west4",
             repository_id="my-repository",
             instance=instance.name,
+            description="This is a test repository",
             deletion_policy="PREVENT",
             scan_config={
                 "secret_scan_config": {
@@ -735,29 +661,35 @@ class Repository(pulumi.CustomResource):
                     "inspect_template": template.id,
                 },
             },
-            opts = pulumi.ResourceOptions(depends_on=[ssm_p4sa_dlp_reader]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         ```
 
-        ### Secure Source Manager Repository Secret Scanning Default
+        ### Secure Source Manager Repository Initial Config
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         instance = gcp.securesourcemanager.Instance("instance",
-            location="us-central1",
+            location="asia-east1",
             instance_id="my-instance",
             deletion_policy="PREVENT")
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-sa",
+            display_name="Test Service Account")
         default = gcp.securesourcemanager.Repository("default",
-            location="us-central1",
+            location="asia-east1",
             repository_id="my-repository",
             instance=instance.name,
-            deletion_policy="PREVENT",
-            scan_config={
-                "secret_scan_config": {
-                    "enabled": True,
-                },
-            })
+            description="This is a test repository",
+            service_account=sa.email,
+            initial_config={
+                "default_branch": "main",
+                "gitignores": ["python"],
+                "license": "mit",
+                "readme": "default",
+            },
+            deletion_policy="PREVENT")
         ```
 
         ## Import

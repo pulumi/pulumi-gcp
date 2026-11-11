@@ -530,75 +530,6 @@ class Instance(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
 
-        ### Secure Source Manager Instance Private
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumiverse_time as time
-
-        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
-            name="ca-pool",
-            location="us-central1",
-            tier="ENTERPRISE",
-            publishing_options={
-                "publish_ca_cert": True,
-                "publish_crl": True,
-            })
-        root_ca = gcp.certificateauthority.Authority("root_ca",
-            pool=ca_pool.name,
-            certificate_authority_id="root-ca",
-            location="us-central1",
-            config={
-                "subject_config": {
-                    "subject": {
-                        "organization": "google",
-                        "common_name": "my-certificate-authority",
-                    },
-                },
-                "x509_config": {
-                    "ca_options": {
-                        "is_ca": True,
-                    },
-                    "key_usage": {
-                        "base_key_usage": {
-                            "cert_sign": True,
-                            "crl_sign": True,
-                        },
-                        "extended_key_usage": {
-                            "server_auth": True,
-                        },
-                    },
-                },
-            },
-            key_spec={
-                "algorithm": "RSA_PKCS1_4096_SHA256",
-            },
-            deletion_protection=False,
-            ignore_active_certificates_on_deletion=True,
-            skip_grace_period=True)
-        project = gcp.organizations.get_project()
-        ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
-            ca_pool=ca_pool.id,
-            role="roles/privateca.certificateRequester",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
-        # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
-        opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
-        default = gcp.securesourcemanager.Instance("default",
-            instance_id="my-instance",
-            location="us-central1",
-            private_config={
-                "is_private": True,
-                "ca_pool": ca_pool.id,
-            },
-            deletion_policy="PREVENT",
-            opts = pulumi.ResourceOptions(depends_on=[
-                    root_ca,
-                    wait120_seconds,
-                ]))
-        ```
-
         ### Secure Source Manager Instance Private Custom Host
 
         ```python
@@ -607,9 +538,14 @@ class Instance(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.get_project()
+        psc_other_project = gcp.organizations.Project("psc_other_project",
+            project_id="psc-project",
+            name="psc-project",
+            org_id="123456789",
+            deletion_policy="DELETE")
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
             name="ca-pool",
-            location="us-central1",
+            location="europe-west4",
             tier="ENTERPRISE",
             publishing_options={
                 "publish_ca_cert": True,
@@ -618,7 +554,7 @@ class Instance(pulumi.CustomResource):
         root_ca = gcp.certificateauthority.Authority("root_ca",
             pool=ca_pool.name,
             certificate_authority_id="root-ca",
-            location="us-central1",
+            location="europe-west4",
             config={
                 "subject_config": {
                     "subject": {
@@ -656,16 +592,20 @@ class Instance(pulumi.CustomResource):
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
-            location="us-central1",
+            location="europe-west4",
             private_config={
                 "is_private": True,
                 "ca_pool": ca_pool.id,
+                "psc_allowed_projects": [psc_other_project.project_id],
                 "custom_host_config": {
                     "api": "api.example.com",
                     "git_http": "git-http.example.com",
                     "git_ssh": "git-ssh.example.com",
                     "html": "html.example.com",
                 },
+            },
+            workforce_identity_federation_config={
+                "enabled": True,
             },
             deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[
@@ -938,21 +878,6 @@ class Instance(pulumi.CustomResource):
             ttl=300,
             managed_zone=private_zone.name,
             rrdatas=[fw_rule_service_attachment.ip_address])
-        ```
-
-        ### Secure Source Manager Instance Workforce Identity Federation
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.securesourcemanager.Instance("default",
-            location="us-central1",
-            instance_id="my-instance",
-            workforce_identity_federation_config={
-                "enabled": True,
-            },
-            deletion_policy="PREVENT")
         ```
 
         ## Import
@@ -1048,75 +973,6 @@ class Instance(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
 
-        ### Secure Source Manager Instance Private
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumiverse_time as time
-
-        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
-            name="ca-pool",
-            location="us-central1",
-            tier="ENTERPRISE",
-            publishing_options={
-                "publish_ca_cert": True,
-                "publish_crl": True,
-            })
-        root_ca = gcp.certificateauthority.Authority("root_ca",
-            pool=ca_pool.name,
-            certificate_authority_id="root-ca",
-            location="us-central1",
-            config={
-                "subject_config": {
-                    "subject": {
-                        "organization": "google",
-                        "common_name": "my-certificate-authority",
-                    },
-                },
-                "x509_config": {
-                    "ca_options": {
-                        "is_ca": True,
-                    },
-                    "key_usage": {
-                        "base_key_usage": {
-                            "cert_sign": True,
-                            "crl_sign": True,
-                        },
-                        "extended_key_usage": {
-                            "server_auth": True,
-                        },
-                    },
-                },
-            },
-            key_spec={
-                "algorithm": "RSA_PKCS1_4096_SHA256",
-            },
-            deletion_protection=False,
-            ignore_active_certificates_on_deletion=True,
-            skip_grace_period=True)
-        project = gcp.organizations.get_project()
-        ca_pool_binding = gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding",
-            ca_pool=ca_pool.id,
-            role="roles/privateca.certificateRequester",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
-        # ca pool IAM permissions can take time to propagate
-        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
-        opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
-        default = gcp.securesourcemanager.Instance("default",
-            instance_id="my-instance",
-            location="us-central1",
-            private_config={
-                "is_private": True,
-                "ca_pool": ca_pool.id,
-            },
-            deletion_policy="PREVENT",
-            opts = pulumi.ResourceOptions(depends_on=[
-                    root_ca,
-                    wait120_seconds,
-                ]))
-        ```
-
         ### Secure Source Manager Instance Private Custom Host
 
         ```python
@@ -1125,9 +981,14 @@ class Instance(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.get_project()
+        psc_other_project = gcp.organizations.Project("psc_other_project",
+            project_id="psc-project",
+            name="psc-project",
+            org_id="123456789",
+            deletion_policy="DELETE")
         ca_pool = gcp.certificateauthority.CaPool("ca_pool",
             name="ca-pool",
-            location="us-central1",
+            location="europe-west4",
             tier="ENTERPRISE",
             publishing_options={
                 "publish_ca_cert": True,
@@ -1136,7 +997,7 @@ class Instance(pulumi.CustomResource):
         root_ca = gcp.certificateauthority.Authority("root_ca",
             pool=ca_pool.name,
             certificate_authority_id="root-ca",
-            location="us-central1",
+            location="europe-west4",
             config={
                 "subject_config": {
                     "subject": {
@@ -1174,16 +1035,20 @@ class Instance(pulumi.CustomResource):
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
-            location="us-central1",
+            location="europe-west4",
             private_config={
                 "is_private": True,
                 "ca_pool": ca_pool.id,
+                "psc_allowed_projects": [psc_other_project.project_id],
                 "custom_host_config": {
                     "api": "api.example.com",
                     "git_http": "git-http.example.com",
                     "git_ssh": "git-ssh.example.com",
                     "html": "html.example.com",
                 },
+            },
+            workforce_identity_federation_config={
+                "enabled": True,
             },
             deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1456,21 +1321,6 @@ class Instance(pulumi.CustomResource):
             ttl=300,
             managed_zone=private_zone.name,
             rrdatas=[fw_rule_service_attachment.ip_address])
-        ```
-
-        ### Secure Source Manager Instance Workforce Identity Federation
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.securesourcemanager.Instance("default",
-            location="us-central1",
-            instance_id="my-instance",
-            workforce_identity_federation_config={
-                "enabled": True,
-            },
-            deletion_policy="PREVENT")
         ```
 
         ## Import

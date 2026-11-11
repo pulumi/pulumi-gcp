@@ -513,10 +513,12 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly deletionProtectionEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Immutable. User inputs for the auto-created endpoints connections.
+     * Structure is documented below.
      */
     declare public readonly desiredAutoCreatedEndpoints: pulumi.Output<outputs.memorystore.InstanceDesiredAutoCreatedEndpoint[] | undefined>;
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+     * Structure is documented below.
      *
      * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      */
@@ -905,10 +907,12 @@ export interface InstanceState {
     deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Immutable. User inputs for the auto-created endpoints connections.
+     * Structure is documented below.
      */
     desiredAutoCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredAutoCreatedEndpoint>[] | undefined>;
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+     * Structure is documented below.
      *
      * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      */
@@ -1159,10 +1163,12 @@ export interface InstanceArgs {
     deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Immutable. User inputs for the auto-created endpoints connections.
+     * Structure is documented below.
      */
     desiredAutoCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredAutoCreatedEndpoint>[] | undefined>;
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
+     * Structure is documented below.
      *
      * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      */

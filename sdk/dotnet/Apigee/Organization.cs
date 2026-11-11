@@ -386,7 +386,7 @@ namespace Pulumi.Gcp.Apigee
         /// operation completes. During this period, the Organization may be restored to its last known state.
         /// After this period, the Organization will no longer be able to be restored.
         /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         /// </summary>
         [Output("retention")]
         public Output<string?> Retention { get; private set; } = null!;
@@ -554,7 +554,7 @@ namespace Pulumi.Gcp.Apigee
         /// operation completes. During this period, the Organization may be restored to its last known state.
         /// After this period, the Organization will no longer be able to be restored.
         /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
@@ -696,7 +696,7 @@ namespace Pulumi.Gcp.Apigee
         /// operation completes. During this period, the Organization may be restored to its last known state.
         /// After this period, the Organization will no longer be able to be restored.
         /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }

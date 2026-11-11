@@ -5,8 +5,10 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigquery.inputs.RoutineExternalRuntimeOptionsVolumeMountArgs;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -128,6 +130,27 @@ public final class RoutineExternalRuntimeOptionsArgs extends com.pulumi.resource
         return Optional.ofNullable(this.runtimeVersion);
     }
 
+    /**
+     * List of volume mounts for the Python UDF container that executes the
+     * managed function. When volume mounts are set, `runtimeConnection` must
+     * also be set.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="volumeMounts")
+    private @Nullable Output<List<RoutineExternalRuntimeOptionsVolumeMountArgs>> volumeMounts;
+
+    /**
+     * @return List of volume mounts for the Python UDF container that executes the
+     * managed function. When volume mounts are set, `runtimeConnection` must
+     * also be set.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RoutineExternalRuntimeOptionsVolumeMountArgs>>> volumeMounts() {
+        return Optional.ofNullable(this.volumeMounts);
+    }
+
     private RoutineExternalRuntimeOptionsArgs() {}
 
     private RoutineExternalRuntimeOptionsArgs(RoutineExternalRuntimeOptionsArgs $) {
@@ -137,6 +160,7 @@ public final class RoutineExternalRuntimeOptionsArgs extends com.pulumi.resource
         this.maxBatchingRows = $.maxBatchingRows;
         this.runtimeConnection = $.runtimeConnection;
         this.runtimeVersion = $.runtimeVersion;
+        this.volumeMounts = $.volumeMounts;
     }
 
     public static Builder builder() {
@@ -303,6 +327,46 @@ public final class RoutineExternalRuntimeOptionsArgs extends com.pulumi.resource
          */
         public Builder runtimeVersion(String runtimeVersion) {
             return runtimeVersion(Output.of(runtimeVersion));
+        }
+
+        /**
+         * @param volumeMounts List of volume mounts for the Python UDF container that executes the
+         * managed function. When volume mounts are set, `runtimeConnection` must
+         * also be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeMounts(@Nullable Output<List<RoutineExternalRuntimeOptionsVolumeMountArgs>> volumeMounts) {
+            $.volumeMounts = volumeMounts;
+            return this;
+        }
+
+        /**
+         * @param volumeMounts List of volume mounts for the Python UDF container that executes the
+         * managed function. When volume mounts are set, `runtimeConnection` must
+         * also be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeMounts(List<RoutineExternalRuntimeOptionsVolumeMountArgs> volumeMounts) {
+            return volumeMounts(Output.of(volumeMounts));
+        }
+
+        /**
+         * @param volumeMounts List of volume mounts for the Python UDF container that executes the
+         * managed function. When volume mounts are set, `runtimeConnection` must
+         * also be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeMounts(RoutineExternalRuntimeOptionsVolumeMountArgs... volumeMounts) {
+            return volumeMounts(List.of(volumeMounts));
         }
 
         public RoutineExternalRuntimeOptionsArgs build() {

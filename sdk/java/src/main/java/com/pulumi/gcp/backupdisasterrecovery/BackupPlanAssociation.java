@@ -225,6 +225,106 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Backup Dr Bpa Netapp
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.netapp.StoragePool;
+ * import com.pulumi.gcp.netapp.StoragePoolArgs;
+ * import com.pulumi.gcp.netapp.Volume;
+ * import com.pulumi.gcp.netapp.VolumeArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlan;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleBackupWindowArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanAssociation;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanAssociationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("test-network-bpa")
+ *             .build());
+ * 
+ *         var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()
+ *             .name("test-pool-bpa")
+ *             .location("us-central1-a")
+ *             .serviceLevel("FLEX")
+ *             .type("UNIFIED")
+ *             .capacityGib("1024")
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var myVolume = new Volume("myVolume", VolumeArgs.builder()
+ *             .location("us-central1-a")
+ *             .name("test-volume-bpa")
+ *             .capacityGib("100")
+ *             .shareName("test-volume-bpa")
+ *             .storagePool(defaultStoragePool.name())
+ *             .protocols("NFSV3")
+ *             .deletionPolicy("FORCE")
+ *             .build());
+ * 
+ *         var myBackupVault = new BackupVault("myBackupVault", BackupVaultArgs.builder()
+ *             .location("us-central1")
+ *             .backupVaultId("bv-bpa-netapp")
+ *             .backupMinimumEnforcedRetentionDuration("100000s")
+ *             .forceDelete(true)
+ *             .build());
+ * 
+ *         var myBackupPlan = new BackupPlan("myBackupPlan", BackupPlanArgs.builder()
+ *             .location("us-central1")
+ *             .backupPlanId("bp-bpa-netapp")
+ *             .resourceType("netapp.googleapis.com/Volume")
+ *             .backupVault(myBackupVault.id())
+ *             .backupRules(BackupPlanBackupRuleArgs.builder()
+ *                 .ruleId("rule-1")
+ *                 .backupRetentionDays(5)
+ *                 .standardSchedule(BackupPlanBackupRuleStandardScheduleArgs.builder()
+ *                     .recurrenceType("HOURLY")
+ *                     .hourlyFrequency(6)
+ *                     .timeZone("UTC")
+ *                     .backupWindow(BackupPlanBackupRuleStandardScheduleBackupWindowArgs.builder()
+ *                         .startHourOfDay(0)
+ *                         .endHourOfDay(6)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_backup_plan_association_netapp = new BackupPlanAssociation("my-backup-plan-association-netapp", BackupPlanAssociationArgs.builder()
+ *             .location("us-central1")
+ *             .resourceType("netapp.googleapis.com/Volume")
+ *             .backupPlanAssociationId("my-bpa-netapp")
+ *             .resource(myVolume.id())
+ *             .backupPlan(myBackupPlan.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * BackupPlanAssociation can be imported using any of these accepted formats:
@@ -267,6 +367,7 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
      * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
      * - A Backup Plan configured for &#39;file.googleapis.com/Instance&#39; can only protect Filestore instances.
      * - A Backup Plan configured for &#39;sqladmin.googleapis.com/Instance&#39; can only protect Cloud SQL instances.
+     * - A Backup Plan configured for &#39;netapp.googleapis.com/Volume&#39; can only protect NetApp volumes.
      * 
      */
     @Export(name="backupPlan", refs={String.class}, tree="[0]")
@@ -279,6 +380,7 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
      * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
      * - A Backup Plan configured for &#39;file.googleapis.com/Instance&#39; can only protect Filestore instances.
      * - A Backup Plan configured for &#39;sqladmin.googleapis.com/Instance&#39; can only protect Cloud SQL instances.
+     * - A Backup Plan configured for &#39;netapp.googleapis.com/Volume&#39; can only protect NetApp volumes.
      * 
      */
     public Output<String> backupPlan() {
@@ -410,7 +512,7 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource type of workload on which backupplan is applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, and &#34;file.googleapis.com/Instance&#34;
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, &#34;file.googleapis.com/Instance&#34;, and &#34;netapp.googleapis.com/Volume&#34;
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
@@ -418,7 +520,7 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource type of workload on which backupplan is applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, and &#34;file.googleapis.com/Instance&#34;
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, &#34;file.googleapis.com/Instance&#34;, and &#34;netapp.googleapis.com/Volume&#34;
      * 
      */
     public Output<String> resourceType() {

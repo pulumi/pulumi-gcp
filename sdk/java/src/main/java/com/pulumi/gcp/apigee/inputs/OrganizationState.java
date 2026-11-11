@@ -280,7 +280,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
      * 
      */
     @Import(name="retention")
@@ -292,7 +292,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
      * 
      */
     public Optional<Output<String>> retention() {
@@ -751,7 +751,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          * operation completes. During this period, the Organization may be restored to its last known state.
          * After this period, the Organization will no longer be able to be restored.
          * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-         * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+         * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          * operation completes. During this period, the Organization may be restored to its last known state.
          * After this period, the Organization will no longer be able to be restored.
          * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-         * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
+         * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`, `NO_RETENTION`.
          * 
          * @return builder
          * 

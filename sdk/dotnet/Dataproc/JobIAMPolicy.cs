@@ -192,6 +192,11 @@ namespace Pulumi.Gcp.Dataproc
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The name or relative resource id of the job to manage IAM policies for.
+        /// 
+        /// For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+        /// </summary>
         [Output("jobId")]
         public Output<string> JobId { get; private set; } = null!;
 
@@ -263,6 +268,11 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobIAMPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name or relative resource id of the job to manage IAM policies for.
+        /// 
+        /// For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+        /// </summary>
         [Input("jobId", required: true)]
         public Input<string> JobId { get; set; } = null!;
 
@@ -302,6 +312,11 @@ namespace Pulumi.Gcp.Dataproc
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The name or relative resource id of the job to manage IAM policies for.
+        /// 
+        /// For `gcp.dataproc.JobIAMMember` or `gcp.dataproc.JobIAMBinding`:
+        /// </summary>
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
 

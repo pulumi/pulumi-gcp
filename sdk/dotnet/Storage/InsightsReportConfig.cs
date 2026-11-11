@@ -51,6 +51,10 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         DisplayName = "Test Report Config",
     ///         Location = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
     ///         FrequencyOptions = new Gcp.Storage.Inputs.InsightsReportConfigFrequencyOptionsArgs
     ///         {
     ///             Frequency = "WEEKLY",
@@ -147,6 +151,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// If set, all the inventory report details associated with this report configuration are deleted.
         /// </summary>
         [Output("forceDestroy")]
@@ -158,6 +168,15 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("frequencyOptions")]
         public Output<Outputs.InsightsReportConfigFrequencyOptions?> FrequencyOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels as key value pairs. Have a character limit of 64 per key and value.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
@@ -192,6 +211,13 @@ namespace Pulumi.Gcp.Storage
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        ///  and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a InsightsReportConfig resource with the given unique name, arguments, and options.
@@ -215,6 +241,11 @@ namespace Pulumi.Gcp.Storage
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -275,6 +306,21 @@ namespace Pulumi.Gcp.Storage
         [Input("frequencyOptions")]
         public Input<Inputs.InsightsReportConfigFrequencyOptionsArgs>? FrequencyOptions { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels as key value pairs. Have a character limit of 64 per key and value.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         /// must be in the same location.
@@ -334,6 +380,22 @@ namespace Pulumi.Gcp.Storage
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// If set, all the inventory report details associated with this report configuration are deleted.
         /// </summary>
@@ -346,6 +408,21 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("frequencyOptions")]
         public Input<Inputs.InsightsReportConfigFrequencyOptionsGetArgs>? FrequencyOptions { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels as key value pairs. Have a character limit of 64 per key and value.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
@@ -379,6 +456,23 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        ///  and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         public InsightsReportConfigState()
         {

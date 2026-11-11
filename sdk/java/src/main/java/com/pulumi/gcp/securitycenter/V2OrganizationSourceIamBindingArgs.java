@@ -62,9 +62,21 @@ public final class V2OrganizationSourceIamBindingArgs extends com.pulumi.resourc
         return this.members;
     }
 
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="organization", required=true)
     private Output<String> organization;
 
+    /**
+     * @return The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> organization() {
         return this.organization;
     }
@@ -204,11 +216,27 @@ public final class V2OrganizationSourceIamBindingArgs extends com.pulumi.resourc
             return members(List.of(members));
         }
 
+        /**
+         * @param organization The organization whose Cloud Security Command Center the Source
+         * lives in.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder organization(Output<String> organization) {
             $.organization = organization;
             return this;
         }
 
+        /**
+         * @param organization The organization whose Cloud Security Command Center the Source
+         * lives in.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder organization(String organization) {
             return organization(Output.of(organization));
         }

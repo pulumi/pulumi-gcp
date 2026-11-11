@@ -4464,12 +4464,18 @@ func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOu
 }
 
 type ClusterZoneDistributionConfig struct {
+	// (Output)
+	// The exact list of zones where the cluster currently has active VMs.
+	ActiveZones []string `pulumi:"activeZones"`
 	// Immutable. The mode for zone distribution for Memorystore Redis cluster.
 	// If not provided, MULTI_ZONE will be used as default
 	// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
 	Mode *string `pulumi:"mode"`
 	// Immutable. The zone for single zone Memorystore Redis cluster.
 	Zone *string `pulumi:"zone"`
+	// Specify the zones of a multi-zone cluster where Redis Cluster
+	// allocates resources. This flag isn't applicable for single-zone clusters.
+	Zones []string `pulumi:"zones"`
 }
 
 // ClusterZoneDistributionConfigInput is an input type that accepts ClusterZoneDistributionConfigArgs and ClusterZoneDistributionConfigOutput values.
@@ -4484,12 +4490,18 @@ type ClusterZoneDistributionConfigInput interface {
 }
 
 type ClusterZoneDistributionConfigArgs struct {
+	// (Output)
+	// The exact list of zones where the cluster currently has active VMs.
+	ActiveZones pulumi.StringArrayInput `pulumi:"activeZones"`
 	// Immutable. The mode for zone distribution for Memorystore Redis cluster.
 	// If not provided, MULTI_ZONE will be used as default
 	// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Immutable. The zone for single zone Memorystore Redis cluster.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
+	// Specify the zones of a multi-zone cluster where Redis Cluster
+	// allocates resources. This flag isn't applicable for single-zone clusters.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
 
 func (ClusterZoneDistributionConfigArgs) ElementType() reflect.Type {
@@ -4569,6 +4581,12 @@ func (o ClusterZoneDistributionConfigOutput) ToClusterZoneDistributionConfigPtrO
 	}).(ClusterZoneDistributionConfigPtrOutput)
 }
 
+// (Output)
+// The exact list of zones where the cluster currently has active VMs.
+func (o ClusterZoneDistributionConfigOutput) ActiveZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterZoneDistributionConfig) []string { return v.ActiveZones }).(pulumi.StringArrayOutput)
+}
+
 // Immutable. The mode for zone distribution for Memorystore Redis cluster.
 // If not provided, MULTI_ZONE will be used as default
 // Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
@@ -4579,6 +4597,12 @@ func (o ClusterZoneDistributionConfigOutput) Mode() pulumi.StringPtrOutput {
 // Immutable. The zone for single zone Memorystore Redis cluster.
 func (o ClusterZoneDistributionConfigOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterZoneDistributionConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+// Specify the zones of a multi-zone cluster where Redis Cluster
+// allocates resources. This flag isn't applicable for single-zone clusters.
+func (o ClusterZoneDistributionConfigOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterZoneDistributionConfig) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 type ClusterZoneDistributionConfigPtrOutput struct{ *pulumi.OutputState }
@@ -4605,6 +4629,17 @@ func (o ClusterZoneDistributionConfigPtrOutput) Elem() ClusterZoneDistributionCo
 	}).(ClusterZoneDistributionConfigOutput)
 }
 
+// (Output)
+// The exact list of zones where the cluster currently has active VMs.
+func (o ClusterZoneDistributionConfigPtrOutput) ActiveZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterZoneDistributionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveZones
+	}).(pulumi.StringArrayOutput)
+}
+
 // Immutable. The mode for zone distribution for Memorystore Redis cluster.
 // If not provided, MULTI_ZONE will be used as default
 // Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
@@ -4625,6 +4660,17 @@ func (o ClusterZoneDistributionConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 		}
 		return v.Zone
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the zones of a multi-zone cluster where Redis Cluster
+// allocates resources. This flag isn't applicable for single-zone clusters.
+func (o ClusterZoneDistributionConfigPtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterZoneDistributionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
 }
 
 type InstanceMaintenancePolicy struct {
@@ -8978,11 +9024,16 @@ func (o GetClusterStateInfoUpdateInfoArrayOutput) Index(i pulumi.IntInput) GetCl
 }
 
 type GetClusterZoneDistributionConfig struct {
+	// The exact list of zones where the cluster currently has active VMs.
+	ActiveZones []string `pulumi:"activeZones"`
 	// Immutable. The mode for zone distribution for Memorystore Redis cluster.
 	// If not provided, MULTI_ZONE will be used as default Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
 	Mode string `pulumi:"mode"`
 	// Immutable. The zone for single zone Memorystore Redis cluster.
 	Zone string `pulumi:"zone"`
+	// Specify the zones of a multi-zone cluster where Redis Cluster
+	// allocates resources. This flag isn't applicable for single-zone clusters.
+	Zones []string `pulumi:"zones"`
 }
 
 // GetClusterZoneDistributionConfigInput is an input type that accepts GetClusterZoneDistributionConfigArgs and GetClusterZoneDistributionConfigOutput values.
@@ -8997,11 +9048,16 @@ type GetClusterZoneDistributionConfigInput interface {
 }
 
 type GetClusterZoneDistributionConfigArgs struct {
+	// The exact list of zones where the cluster currently has active VMs.
+	ActiveZones pulumi.StringArrayInput `pulumi:"activeZones"`
 	// Immutable. The mode for zone distribution for Memorystore Redis cluster.
 	// If not provided, MULTI_ZONE will be used as default Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// Immutable. The zone for single zone Memorystore Redis cluster.
 	Zone pulumi.StringInput `pulumi:"zone"`
+	// Specify the zones of a multi-zone cluster where Redis Cluster
+	// allocates resources. This flag isn't applicable for single-zone clusters.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
 
 func (GetClusterZoneDistributionConfigArgs) ElementType() reflect.Type {
@@ -9055,6 +9111,11 @@ func (o GetClusterZoneDistributionConfigOutput) ToGetClusterZoneDistributionConf
 	return o
 }
 
+// The exact list of zones where the cluster currently has active VMs.
+func (o GetClusterZoneDistributionConfigOutput) ActiveZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterZoneDistributionConfig) []string { return v.ActiveZones }).(pulumi.StringArrayOutput)
+}
+
 // Immutable. The mode for zone distribution for Memorystore Redis cluster.
 // If not provided, MULTI_ZONE will be used as default Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
 func (o GetClusterZoneDistributionConfigOutput) Mode() pulumi.StringOutput {
@@ -9064,6 +9125,12 @@ func (o GetClusterZoneDistributionConfigOutput) Mode() pulumi.StringOutput {
 // Immutable. The zone for single zone Memorystore Redis cluster.
 func (o GetClusterZoneDistributionConfigOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterZoneDistributionConfig) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+// Specify the zones of a multi-zone cluster where Redis Cluster
+// allocates resources. This flag isn't applicable for single-zone clusters.
+func (o GetClusterZoneDistributionConfigOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterZoneDistributionConfig) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 type GetClusterZoneDistributionConfigArrayOutput struct{ *pulumi.OutputState }

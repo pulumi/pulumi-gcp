@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The time allotted for the instance to gracefully shut down.
         /// If the graceful shutdown isn't complete after this time, then the instance
-        /// transitions to the STOPPING state. Structure is documented below:
+        /// transitions to the STOPPING state. Structure is documented below.
         /// </summary>
         [Input("maxDuration")]
         public Input<Inputs.InstanceSchedulingGracefulShutdownMaxDurationArgs>? MaxDuration { get; set; }

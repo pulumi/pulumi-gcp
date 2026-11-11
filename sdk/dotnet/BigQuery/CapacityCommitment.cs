@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.BigQuery
         /// or merged.
         /// </summary>
         [Output("capacityCommitmentId")]
-        public Output<string?> CapacityCommitmentId { get; private set; } = null!;
+        public Output<string> CapacityCommitmentId { get; private set; } = null!;
 
         /// <summary>
         /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.

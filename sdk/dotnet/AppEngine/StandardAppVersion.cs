@@ -563,7 +563,6 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string?> VersionId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Direct VPC Access settings for standard apps.
         /// Structure is documented below.
         /// </summary>
@@ -809,7 +808,6 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? VersionId { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Direct VPC Access settings for standard apps.
         /// Structure is documented below.
         /// </summary>
@@ -1023,7 +1021,6 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? VersionId { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Direct VPC Access settings for standard apps.
         /// Structure is documented below.
         /// </summary>

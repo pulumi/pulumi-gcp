@@ -202,14 +202,14 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The instance lifecycle policy for this managed instance group.
+     * The instance lifecycle policy for this managed instance group. Structure is documented below.
      * 
      */
     @Import(name="instanceLifecyclePolicy")
     private @Nullable Output<InstanceGroupManagerInstanceLifecyclePolicyArgs> instanceLifecyclePolicy;
 
     /**
-     * @return The instance lifecycle policy for this managed instance group.
+     * @return The instance lifecycle policy for this managed instance group. Structure is documented below.
      * 
      */
     public Optional<Output<InstanceGroupManagerInstanceLifecyclePolicyArgs>> instanceLifecyclePolicy() {
@@ -883,7 +883,7 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceLifecyclePolicy The instance lifecycle policy for this managed instance group.
+         * @param instanceLifecyclePolicy The instance lifecycle policy for this managed instance group. Structure is documented below.
          * 
          * @return builder
          * 
@@ -894,7 +894,7 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceLifecyclePolicy The instance lifecycle policy for this managed instance group.
+         * @param instanceLifecyclePolicy The instance lifecycle policy for this managed instance group. Structure is documented below.
          * 
          * @return builder
          * 

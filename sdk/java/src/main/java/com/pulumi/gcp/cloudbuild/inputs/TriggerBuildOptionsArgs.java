@@ -247,6 +247,25 @@ public final class TriggerBuildOptionsArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.workerPool);
     }
 
+    /**
+     * Option to specify which release or release channel to use to run this build.
+     * Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+     * release version such as `legacy`.
+     * 
+     */
+    @Import(name="workerRelease")
+    private @Nullable Output<String> workerRelease;
+
+    /**
+     * @return Option to specify which release or release channel to use to run this build.
+     * Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+     * release version such as `legacy`.
+     * 
+     */
+    public Optional<Output<String>> workerRelease() {
+        return Optional.ofNullable(this.workerRelease);
+    }
+
     private TriggerBuildOptionsArgs() {}
 
     private TriggerBuildOptionsArgs(TriggerBuildOptionsArgs $) {
@@ -262,6 +281,7 @@ public final class TriggerBuildOptionsArgs extends com.pulumi.resources.Resource
         this.substitutionOption = $.substitutionOption;
         this.volumes = $.volumes;
         this.workerPool = $.workerPool;
+        this.workerRelease = $.workerRelease;
     }
 
     public static Builder builder() {
@@ -632,6 +652,31 @@ public final class TriggerBuildOptionsArgs extends com.pulumi.resources.Resource
          */
         public Builder workerPool(String workerPool) {
             return workerPool(Output.of(workerPool));
+        }
+
+        /**
+         * @param workerRelease Option to specify which release or release channel to use to run this build.
+         * Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+         * release version such as `legacy`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerRelease(@Nullable Output<String> workerRelease) {
+            $.workerRelease = workerRelease;
+            return this;
+        }
+
+        /**
+         * @param workerRelease Option to specify which release or release channel to use to run this build.
+         * Possible values are the release channels `rapid`, `regular`, or `stable`, or a specific
+         * release version such as `legacy`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerRelease(String workerRelease) {
+            return workerRelease(Output.of(workerRelease));
         }
 
         public TriggerBuildOptionsArgs build() {

@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Redis.Outputs
     public sealed class ClusterZoneDistributionConfig
     {
         /// <summary>
+        /// (Output)
+        /// The exact list of zones where the cluster currently has active VMs.
+        /// </summary>
+        public readonly ImmutableArray<string> ActiveZones;
+        /// <summary>
         /// Immutable. The mode for zone distribution for Memorystore Redis cluster.
         /// If not provided, MULTI_ZONE will be used as default
         /// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
@@ -23,15 +28,26 @@ namespace Pulumi.Gcp.Redis.Outputs
         /// Immutable. The zone for single zone Memorystore Redis cluster.
         /// </summary>
         public readonly string? Zone;
+        /// <summary>
+        /// Specify the zones of a multi-zone cluster where Redis Cluster
+        /// allocates resources. This flag isn't applicable for single-zone clusters.
+        /// </summary>
+        public readonly ImmutableArray<string> Zones;
 
         [OutputConstructor]
         private ClusterZoneDistributionConfig(
+            ImmutableArray<string> activeZones,
+
             string? mode,
 
-            string? zone)
+            string? zone,
+
+            ImmutableArray<string> zones)
         {
+            ActiveZones = activeZones;
             Mode = mode;
             Zone = zone;
+            Zones = zones;
         }
     }
 }

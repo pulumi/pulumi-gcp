@@ -4,6 +4,9 @@
 package com.pulumi.gcp.applicationintegration.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.applicationintegration.outputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams;
+import com.pulumi.gcp.applicationintegration.outputs.AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,10 +15,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
     /**
+     * @return Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+     * 
+     */
+    private @Nullable Boolean applyReauthPolicy;
+    /**
      * @return The auth url endpoint to send the auth code request to.
      * 
      */
     private @Nullable String authEndpoint;
+    /**
+     * @return The auth parameters sent along with the auth code request.
+     * 
+     */
+    private @Nullable AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams authParams;
     /**
      * @return The client&#39;s id.
      * 
@@ -27,6 +40,11 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
      */
     private @Nullable String clientSecret;
     /**
+     * @return Represent how to pass parameters to fetch access token Possible values: [&#34;REQUEST_BODY&#34;, &#34;QUERY_PARAMETERS&#34;, &#34;ENCODED_HEADER&#34;]
+     * 
+     */
+    private @Nullable String requestType;
+    /**
      * @return A space-delimited list of requested scope permissions.
      * 
      */
@@ -36,14 +54,33 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
      * 
      */
     private @Nullable String tokenEndpoint;
+    /**
+     * @return The token parameters sent along with the token request.
+     * 
+     */
+    private @Nullable AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams tokenParams;
 
     private AuthConfigDecryptedCredentialOauth2AuthorizationCode() {}
+    /**
+     * @return Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
+     * 
+     */
+    public Optional<Boolean> applyReauthPolicy() {
+        return Optional.ofNullable(this.applyReauthPolicy);
+    }
     /**
      * @return The auth url endpoint to send the auth code request to.
      * 
      */
     public Optional<String> authEndpoint() {
         return Optional.ofNullable(this.authEndpoint);
+    }
+    /**
+     * @return The auth parameters sent along with the auth code request.
+     * 
+     */
+    public Optional<AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams> authParams() {
+        return Optional.ofNullable(this.authParams);
     }
     /**
      * @return The client&#39;s id.
@@ -60,6 +97,13 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
         return Optional.ofNullable(this.clientSecret);
     }
     /**
+     * @return Represent how to pass parameters to fetch access token Possible values: [&#34;REQUEST_BODY&#34;, &#34;QUERY_PARAMETERS&#34;, &#34;ENCODED_HEADER&#34;]
+     * 
+     */
+    public Optional<String> requestType() {
+        return Optional.ofNullable(this.requestType);
+    }
+    /**
      * @return A space-delimited list of requested scope permissions.
      * 
      */
@@ -73,6 +117,13 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
     public Optional<String> tokenEndpoint() {
         return Optional.ofNullable(this.tokenEndpoint);
     }
+    /**
+     * @return The token parameters sent along with the token request.
+     * 
+     */
+    public Optional<AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams> tokenParams() {
+        return Optional.ofNullable(this.tokenParams);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -83,25 +134,45 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean applyReauthPolicy;
         private @Nullable String authEndpoint;
+        private @Nullable AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams authParams;
         private @Nullable String clientId;
         private @Nullable String clientSecret;
+        private @Nullable String requestType;
         private @Nullable String scope;
         private @Nullable String tokenEndpoint;
+        private @Nullable AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams tokenParams;
         public Builder() {}
         public Builder(AuthConfigDecryptedCredentialOauth2AuthorizationCode defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.applyReauthPolicy = defaults.applyReauthPolicy;
     	      this.authEndpoint = defaults.authEndpoint;
+    	      this.authParams = defaults.authParams;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
+    	      this.requestType = defaults.requestType;
     	      this.scope = defaults.scope;
     	      this.tokenEndpoint = defaults.tokenEndpoint;
+    	      this.tokenParams = defaults.tokenParams;
         }
 
+        @CustomType.Setter
+        public Builder applyReauthPolicy(@Nullable Boolean applyReauthPolicy) {
+
+            this.applyReauthPolicy = applyReauthPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder authEndpoint(@Nullable String authEndpoint) {
 
             this.authEndpoint = authEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authParams(@Nullable AuthConfigDecryptedCredentialOauth2AuthorizationCodeAuthParams authParams) {
+
+            this.authParams = authParams;
             return this;
         }
         @CustomType.Setter
@@ -117,6 +188,12 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
             return this;
         }
         @CustomType.Setter
+        public Builder requestType(@Nullable String requestType) {
+
+            this.requestType = requestType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scope(@Nullable String scope) {
 
             this.scope = scope;
@@ -128,13 +205,23 @@ public final class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
             this.tokenEndpoint = tokenEndpoint;
             return this;
         }
+        @CustomType.Setter
+        public Builder tokenParams(@Nullable AuthConfigDecryptedCredentialOauth2AuthorizationCodeTokenParams tokenParams) {
+
+            this.tokenParams = tokenParams;
+            return this;
+        }
         public AuthConfigDecryptedCredentialOauth2AuthorizationCode build() {
             final var _resultValue = new AuthConfigDecryptedCredentialOauth2AuthorizationCode();
+            _resultValue.applyReauthPolicy = applyReauthPolicy;
             _resultValue.authEndpoint = authEndpoint;
+            _resultValue.authParams = authParams;
             _resultValue.clientId = clientId;
             _resultValue.clientSecret = clientSecret;
+            _resultValue.requestType = requestType;
             _resultValue.scope = scope;
             _resultValue.tokenEndpoint = tokenEndpoint;
+            _resultValue.tokenParams = tokenParams;
             return _resultValue;
         }
     }

@@ -98,115 +98,6 @@ import (
 //
 // ```
 //
-// ### Secure Source Manager Instance Private
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			caPool, err := certificateauthority.NewCaPool(ctx, "ca_pool", &certificateauthority.CaPoolArgs{
-//				Name:     pulumi.String("ca-pool"),
-//				Location: pulumi.String("us-central1"),
-//				Tier:     pulumi.String("ENTERPRISE"),
-//				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
-//					PublishCaCert: pulumi.Bool(true),
-//					PublishCrl:    pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			rootCa, err := certificateauthority.NewAuthority(ctx, "root_ca", &certificateauthority.AuthorityArgs{
-//				Pool:                   caPool.Name,
-//				CertificateAuthorityId: pulumi.String("root-ca"),
-//				Location:               pulumi.String("us-central1"),
-//				Config: &certificateauthority.AuthorityConfigArgs{
-//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
-//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
-//							Organization: pulumi.String("google"),
-//							CommonName:   pulumi.String("my-certificate-authority"),
-//						},
-//					},
-//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
-//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
-//							IsCa: pulumi.Bool(true),
-//						},
-//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
-//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
-//								CertSign: pulumi.Bool(true),
-//								CrlSign:  pulumi.Bool(true),
-//							},
-//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
-//								ServerAuth: pulumi.Bool(true),
-//							},
-//						},
-//					},
-//				},
-//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
-//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
-//				},
-//				DeletionProtection:                 pulumi.Bool(false),
-//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
-//				SkipGracePeriod:                    pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
-//				CaPool: caPool.ID(),
-//				Role:   pulumi.String("roles/privateca.certificateRequester"),
-//				Members: pulumi.StringArray{
-//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// ca pool IAM permissions can take time to propagate
-//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: pulumi.String("120s"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				caPoolBinding,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
-//				InstanceId: pulumi.String("my-instance"),
-//				Location:   pulumi.String("us-central1"),
-//				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
-//					IsPrivate: pulumi.Bool(true),
-//					CaPool:    caPool.ID(),
-//				},
-//				DeletionPolicy: pulumi.String("PREVENT"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				rootCa,
-//				wait120Seconds,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ### Secure Source Manager Instance Private Custom Host
 //
 // ```go
@@ -228,9 +119,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			pscOtherProject, err := organizations.NewProject(ctx, "psc_other_project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("psc-project"),
+//				Name:           pulumi.String("psc-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			caPool, err := certificateauthority.NewCaPool(ctx, "ca_pool", &certificateauthority.CaPoolArgs{
 //				Name:     pulumi.String("ca-pool"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("europe-west4"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
 //					PublishCaCert: pulumi.Bool(true),
@@ -243,7 +143,7 @@ import (
 //			rootCa, err := certificateauthority.NewAuthority(ctx, "root_ca", &certificateauthority.AuthorityArgs{
 //				Pool:                   caPool.Name,
 //				CertificateAuthorityId: pulumi.String("root-ca"),
-//				Location:               pulumi.String("us-central1"),
+//				Location:               pulumi.String("europe-west4"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -297,16 +197,22 @@ import (
 //			}
 //			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
 //				InstanceId: pulumi.String("my-instance"),
-//				Location:   pulumi.String("us-central1"),
+//				Location:   pulumi.String("europe-west4"),
 //				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
 //					IsPrivate: pulumi.Bool(true),
 //					CaPool:    caPool.ID(),
+//					PscAllowedProjects: pulumi.StringArray{
+//						pscOtherProject.ProjectId,
+//					},
 //					CustomHostConfig: &securesourcemanager.InstancePrivateConfigCustomHostConfigArgs{
 //						Api:     pulumi.String("api.example.com"),
 //						GitHttp: pulumi.String("git-http.example.com"),
 //						GitSsh:  pulumi.String("git-ssh.example.com"),
 //						Html:    pulumi.String("html.example.com"),
 //					},
+//				},
+//				WorkforceIdentityFederationConfig: &securesourcemanager.InstanceWorkforceIdentityFederationConfigArgs{
+//					Enabled: pulumi.Bool(true),
 //				},
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -773,37 +679,6 @@ import (
 //				Rrdatas: pulumi.StringArray{
 //					fwRuleServiceAttachment.IpAddress,
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Secure Source Manager Instance Workforce Identity Federation
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
-//				Location:   pulumi.String("us-central1"),
-//				InstanceId: pulumi.String("my-instance"),
-//				WorkforceIdentityFederationConfig: &securesourcemanager.InstanceWorkforceIdentityFederationConfigArgs{
-//					Enabled: pulumi.Bool(true),
-//				},
-//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err

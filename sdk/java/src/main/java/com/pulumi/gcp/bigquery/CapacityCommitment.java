@@ -92,7 +92,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="capacityCommitmentId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> capacityCommitmentId;
+    private Output<String> capacityCommitmentId;
 
     /**
      * @return The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
@@ -101,8 +101,8 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * or merged.
      * 
      */
-    public Output<Optional<String>> capacityCommitmentId() {
-        return Codegen.optional(this.capacityCommitmentId);
+    public Output<String> capacityCommitmentId() {
+        return this.capacityCommitmentId;
     }
     /**
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.

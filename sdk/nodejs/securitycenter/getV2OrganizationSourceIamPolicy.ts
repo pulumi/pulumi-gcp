@@ -30,6 +30,11 @@ export function getV2OrganizationSourceIamPolicy(args: GetV2OrganizationSourceIa
  * A collection of arguments for invoking getV2OrganizationSourceIamPolicy.
  */
 export interface GetV2OrganizationSourceIamPolicyArgs {
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     organization: string;
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -83,6 +88,11 @@ export function getV2OrganizationSourceIamPolicyOutput(args: GetV2OrganizationSo
  * A collection of arguments for invoking getV2OrganizationSourceIamPolicy.
  */
 export interface GetV2OrganizationSourceIamPolicyOutputArgs {
+    /**
+     * The organization whose Cloud Security Command Center the Source
+     * lives in.
+     * Used to find the parent resource to bind the IAM policy to
+     */
     organization: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to

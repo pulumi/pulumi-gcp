@@ -122,26 +122,28 @@ type Job struct {
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
-	// The config of Hadoop job
+	// Submits a Hadoop job to the cluster. Structure is documented below.
 	HadoopConfig JobHadoopConfigPtrOutput `pulumi:"hadoopConfig"`
-	// The config of hive job
+	// Submits a Hive job to the cluster. Structure is documented below.
 	HiveConfig JobHiveConfigPtrOutput `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The config of pag job.
+	// Submits a Pig job to the cluster. Structure is documented below.
 	PigConfig JobPigConfigPtrOutput `pulumi:"pigConfig"`
 	// The config of job placement.
 	Placement JobPlacementOutput `pulumi:"placement"`
-	// The config of presto job
+	// Submits a Presto job to the cluster. Structure is documented below.
+	//
+	// ***
 	PrestoConfig JobPrestoConfigPtrOutput `pulumi:"prestoConfig"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// The config of pySpark job.
+	// Submits a PySpark job to the cluster. Structure is documented below.
 	PysparkConfig JobPysparkConfigPtrOutput `pulumi:"pysparkConfig"`
 	// The reference of the job
 	Reference JobReferenceOutput `pulumi:"reference"`
@@ -150,9 +152,9 @@ type Job struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Optional. Job scheduling configuration.
 	Scheduling JobSchedulingPtrOutput `pulumi:"scheduling"`
-	// The config of the Spark job.
+	// Submits a Spark job to the cluster. Structure is documented below.
 	SparkConfig JobSparkConfigPtrOutput `pulumi:"sparkConfig"`
-	// The config of SparkSql job
+	// Submits a Spark SQL job to the cluster. Structure is documented below.
 	SparksqlConfig JobSparksqlConfigPtrOutput `pulumi:"sparksqlConfig"`
 	// The status of the job.
 	Statuses JobStatusArrayOutput `pulumi:"statuses"`
@@ -219,26 +221,28 @@ type jobState struct {
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// The config of Hadoop job
+	// Submits a Hadoop job to the cluster. Structure is documented below.
 	HadoopConfig *JobHadoopConfig `pulumi:"hadoopConfig"`
-	// The config of hive job
+	// Submits a Hive job to the cluster. Structure is documented below.
 	HiveConfig *JobHiveConfig `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The config of pag job.
+	// Submits a Pig job to the cluster. Structure is documented below.
 	PigConfig *JobPigConfig `pulumi:"pigConfig"`
 	// The config of job placement.
 	Placement *JobPlacement `pulumi:"placement"`
-	// The config of presto job
+	// Submits a Presto job to the cluster. Structure is documented below.
+	//
+	// ***
 	PrestoConfig *JobPrestoConfig `pulumi:"prestoConfig"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// The config of pySpark job.
+	// Submits a PySpark job to the cluster. Structure is documented below.
 	PysparkConfig *JobPysparkConfig `pulumi:"pysparkConfig"`
 	// The reference of the job
 	Reference *JobReference `pulumi:"reference"`
@@ -247,9 +251,9 @@ type jobState struct {
 	Region *string `pulumi:"region"`
 	// Optional. Job scheduling configuration.
 	Scheduling *JobScheduling `pulumi:"scheduling"`
-	// The config of the Spark job.
+	// Submits a Spark job to the cluster. Structure is documented below.
 	SparkConfig *JobSparkConfig `pulumi:"sparkConfig"`
-	// The config of SparkSql job
+	// Submits a Spark SQL job to the cluster. Structure is documented below.
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
 	// The status of the job.
 	Statuses []JobStatus `pulumi:"statuses"`
@@ -279,26 +283,28 @@ type JobState struct {
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
 	ForceDelete pulumi.BoolPtrInput
-	// The config of Hadoop job
+	// Submits a Hadoop job to the cluster. Structure is documented below.
 	HadoopConfig JobHadoopConfigPtrInput
-	// The config of hive job
+	// Submits a Hive job to the cluster. Structure is documented below.
 	HiveConfig JobHiveConfigPtrInput
 	// The list of labels (key/value pairs) to add to the job.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The config of pag job.
+	// Submits a Pig job to the cluster. Structure is documented below.
 	PigConfig JobPigConfigPtrInput
 	// The config of job placement.
 	Placement JobPlacementPtrInput
-	// The config of presto job
+	// Submits a Presto job to the cluster. Structure is documented below.
+	//
+	// ***
 	PrestoConfig JobPrestoConfigPtrInput
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// The config of pySpark job.
+	// Submits a PySpark job to the cluster. Structure is documented below.
 	PysparkConfig JobPysparkConfigPtrInput
 	// The reference of the job
 	Reference JobReferencePtrInput
@@ -307,9 +313,9 @@ type JobState struct {
 	Region pulumi.StringPtrInput
 	// Optional. Job scheduling configuration.
 	Scheduling JobSchedulingPtrInput
-	// The config of the Spark job.
+	// Submits a Spark job to the cluster. Structure is documented below.
 	SparkConfig JobSparkConfigPtrInput
-	// The config of SparkSql job
+	// Submits a Spark SQL job to the cluster. Structure is documented below.
 	SparksqlConfig JobSparksqlConfigPtrInput
 	// The status of the job.
 	Statuses JobStatusArrayInput
@@ -339,24 +345,26 @@ type jobArgs struct {
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// The config of Hadoop job
+	// Submits a Hadoop job to the cluster. Structure is documented below.
 	HadoopConfig *JobHadoopConfig `pulumi:"hadoopConfig"`
-	// The config of hive job
+	// Submits a Hive job to the cluster. Structure is documented below.
 	HiveConfig *JobHiveConfig `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The config of pag job.
+	// Submits a Pig job to the cluster. Structure is documented below.
 	PigConfig *JobPigConfig `pulumi:"pigConfig"`
 	// The config of job placement.
 	Placement JobPlacement `pulumi:"placement"`
-	// The config of presto job
+	// Submits a Presto job to the cluster. Structure is documented below.
+	//
+	// ***
 	PrestoConfig *JobPrestoConfig `pulumi:"prestoConfig"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The config of pySpark job.
+	// Submits a PySpark job to the cluster. Structure is documented below.
 	PysparkConfig *JobPysparkConfig `pulumi:"pysparkConfig"`
 	// The reference of the job
 	Reference *JobReference `pulumi:"reference"`
@@ -365,9 +373,9 @@ type jobArgs struct {
 	Region *string `pulumi:"region"`
 	// Optional. Job scheduling configuration.
 	Scheduling *JobScheduling `pulumi:"scheduling"`
-	// The config of the Spark job.
+	// Submits a Spark job to the cluster. Structure is documented below.
 	SparkConfig *JobSparkConfig `pulumi:"sparkConfig"`
-	// The config of SparkSql job
+	// Submits a Spark SQL job to the cluster. Structure is documented below.
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
 	// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
 	WaitForCompletion *bool `pulumi:"waitForCompletion"`
@@ -386,24 +394,26 @@ type JobArgs struct {
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
 	ForceDelete pulumi.BoolPtrInput
-	// The config of Hadoop job
+	// Submits a Hadoop job to the cluster. Structure is documented below.
 	HadoopConfig JobHadoopConfigPtrInput
-	// The config of hive job
+	// Submits a Hive job to the cluster. Structure is documented below.
 	HiveConfig JobHiveConfigPtrInput
 	// The list of labels (key/value pairs) to add to the job.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The config of pag job.
+	// Submits a Pig job to the cluster. Structure is documented below.
 	PigConfig JobPigConfigPtrInput
 	// The config of job placement.
 	Placement JobPlacementInput
-	// The config of presto job
+	// Submits a Presto job to the cluster. Structure is documented below.
+	//
+	// ***
 	PrestoConfig JobPrestoConfigPtrInput
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The config of pySpark job.
+	// Submits a PySpark job to the cluster. Structure is documented below.
 	PysparkConfig JobPysparkConfigPtrInput
 	// The reference of the job
 	Reference JobReferencePtrInput
@@ -412,9 +422,9 @@ type JobArgs struct {
 	Region pulumi.StringPtrInput
 	// Optional. Job scheduling configuration.
 	Scheduling JobSchedulingPtrInput
-	// The config of the Spark job.
+	// Submits a Spark job to the cluster. Structure is documented below.
 	SparkConfig JobSparkConfigPtrInput
-	// The config of SparkSql job
+	// Submits a Spark SQL job to the cluster. Structure is documented below.
 	SparksqlConfig JobSparksqlConfigPtrInput
 	// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
 	WaitForCompletion pulumi.BoolPtrInput
@@ -543,12 +553,12 @@ func (o JobOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
-// The config of Hadoop job
+// Submits a Hadoop job to the cluster. Structure is documented below.
 func (o JobOutput) HadoopConfig() JobHadoopConfigPtrOutput {
 	return o.ApplyT(func(v *Job) JobHadoopConfigPtrOutput { return v.HadoopConfig }).(JobHadoopConfigPtrOutput)
 }
 
-// The config of hive job
+// Submits a Hive job to the cluster. Structure is documented below.
 func (o JobOutput) HiveConfig() JobHiveConfigPtrOutput {
 	return o.ApplyT(func(v *Job) JobHiveConfigPtrOutput { return v.HiveConfig }).(JobHiveConfigPtrOutput)
 }
@@ -560,7 +570,7 @@ func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The config of pag job.
+// Submits a Pig job to the cluster. Structure is documented below.
 func (o JobOutput) PigConfig() JobPigConfigPtrOutput {
 	return o.ApplyT(func(v *Job) JobPigConfigPtrOutput { return v.PigConfig }).(JobPigConfigPtrOutput)
 }
@@ -570,7 +580,9 @@ func (o JobOutput) Placement() JobPlacementOutput {
 	return o.ApplyT(func(v *Job) JobPlacementOutput { return v.Placement }).(JobPlacementOutput)
 }
 
-// The config of presto job
+// Submits a Presto job to the cluster. Structure is documented below.
+//
+// ***
 func (o JobOutput) PrestoConfig() JobPrestoConfigPtrOutput {
 	return o.ApplyT(func(v *Job) JobPrestoConfigPtrOutput { return v.PrestoConfig }).(JobPrestoConfigPtrOutput)
 }
@@ -586,7 +598,7 @@ func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// The config of pySpark job.
+// Submits a PySpark job to the cluster. Structure is documented below.
 func (o JobOutput) PysparkConfig() JobPysparkConfigPtrOutput {
 	return o.ApplyT(func(v *Job) JobPysparkConfigPtrOutput { return v.PysparkConfig }).(JobPysparkConfigPtrOutput)
 }
@@ -607,12 +619,12 @@ func (o JobOutput) Scheduling() JobSchedulingPtrOutput {
 	return o.ApplyT(func(v *Job) JobSchedulingPtrOutput { return v.Scheduling }).(JobSchedulingPtrOutput)
 }
 
-// The config of the Spark job.
+// Submits a Spark job to the cluster. Structure is documented below.
 func (o JobOutput) SparkConfig() JobSparkConfigPtrOutput {
 	return o.ApplyT(func(v *Job) JobSparkConfigPtrOutput { return v.SparkConfig }).(JobSparkConfigPtrOutput)
 }
 
-// The config of SparkSql job
+// Submits a Spark SQL job to the cluster. Structure is documented below.
 func (o JobOutput) SparksqlConfig() JobSparksqlConfigPtrOutput {
 	return o.ApplyT(func(v *Job) JobSparksqlConfigPtrOutput { return v.SparksqlConfig }).(JobSparksqlConfigPtrOutput)
 }

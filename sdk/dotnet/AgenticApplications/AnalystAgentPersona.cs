@@ -299,6 +299,8 @@ namespace Pulumi.Gcp.AgenticApplications
     ///                 ClientId = "sample-client-id",
     ///                 ClientSecret = "sample-client-secret",
     ///                 OauthTokenUrl = "https://example.com/oauth/token",
+    ///                 SessionIdHeader = "X-Session-Id",
+    ///                 TaskIdHeader = "X-Task-Id",
     ///             },
     ///         },
     ///         Resources = new[]
@@ -459,6 +461,45 @@ namespace Pulumi.Gcp.AgenticApplications
     ///                 AppendAuditTrail = true,
     ///                 ExportFormat = "MARKDOWN",
     ///                 ExportAuditTrailArtifact = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Analyst Agent Persona Mcp Headers
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
+    ///     {
+    ///         Project = "1111111111111",
+    ///         Location = "us",
+    ///         AnalystAgentPersonaId = "mcp-headers",
+    ///         DisplayName = "Test Analyst Persona MCP Headers",
+    ///         DisplayDescription = "Sample analyst agent persona description",
+    ///         ModelDescription = "Sample model description",
+    ///         Role = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+    ///         McpDataSources = new[]
+    ///         {
+    ///             new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaMcpDataSourceArgs
+    ///             {
+    ///                 ServerUrl = "https://mcp.example.com",
+    ///                 DisplayName = "Sample MCP Source",
+    ///                 Description = "Sample MCP data source description",
+    ///                 Enabled = true,
+    ///                 Prompt = "Use this server for queries",
+    ///                 ApiKeyName = "x-api-key",
+    ///                 ApiKeyHeader = "x-api-key-header",
+    ///                 SessionIdHeader = "X-Custom-Session-Id",
+    ///                 TaskIdHeader = "X-Custom-Task-Id",
     ///             },
     ///         },
     ///     });
@@ -1078,6 +1119,18 @@ namespace Pulumi.Gcp.AgenticApplications
     /// * `ServerUrl` -
     /// (Required)
     /// The URL of the MCP server.
+    /// 
+    /// * `SessionIdHeader` -
+    /// (Optional)
+    /// The HTTP header name used to pass the agent session ID in MCP server
+    /// requests (defaults to `X-Session-Id` when unset). Must be a valid HTTP
+    /// header field name (RFC 9110 token).
+    /// 
+    /// * `TaskIdHeader` -
+    /// (Optional)
+    /// The HTTP header name used to pass the agent task ID in MCP server
+    /// requests (defaults to `X-Task-Id` when unset). Must be a valid HTTP
+    /// header field name (RFC 9110 token).
     /// 
     /// &lt;a name="NestedResources"&gt;&lt;/a&gt;The `Resources` block supports:
     /// 

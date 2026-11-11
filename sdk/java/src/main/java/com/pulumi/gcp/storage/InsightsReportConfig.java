@@ -16,6 +16,8 @@ import com.pulumi.gcp.storage.outputs.InsightsReportConfigObjectMetadataReportOp
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigParquetOptions;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -87,6 +89,7 @@ import javax.annotation.Nullable;
  *         var config = new InsightsReportConfig("config", InsightsReportConfigArgs.builder()
  *             .displayName("Test Report Config")
  *             .location("us-central1")
+ *             .labels(Map.of("key", "value"))
  *             .frequencyOptions(InsightsReportConfigFrequencyOptionsArgs.builder()
  *                 .frequency("WEEKLY")
  *                 .startDate(InsightsReportConfigFrequencyOptionsStartDateArgs.builder()
@@ -203,6 +206,20 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * If set, all the inventory report details associated with this report configuration are deleted.
      * 
      */
@@ -231,6 +248,26 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InsightsReportConfigFrequencyOptions>> frequencyOptions() {
         return Codegen.optional(this.frequencyOptions);
+    }
+    /**
+     * Labels as key value pairs. Have a character limit of 64 per key and value.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Labels as key value pairs. Have a character limit of 64 per key and value.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
@@ -308,6 +345,22 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
 
     /**
      *
@@ -348,6 +401,10 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

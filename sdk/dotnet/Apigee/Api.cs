@@ -59,6 +59,21 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> DetectMd5hash { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The id of the most recently created revision for this API proxy.
         /// </summary>
         [Output("latestRevisionId")]
@@ -90,6 +105,12 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// A list of revisions of this API proxy.
         /// </summary>
         [Output("revisions")]
@@ -118,6 +139,11 @@ namespace Pulumi.Gcp.Apigee
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -166,6 +192,21 @@ namespace Pulumi.Gcp.Apigee
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The ID of the API proxy.
         /// </summary>
@@ -211,6 +252,37 @@ namespace Pulumi.Gcp.Apigee
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// User labels applied to this API proxy. Changing only the labels does not create a new revision.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The id of the most recently created revision for this API proxy.
         /// </summary>
@@ -247,6 +319,22 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         [Input("revisions")]
         private InputList<string>? _revisions;

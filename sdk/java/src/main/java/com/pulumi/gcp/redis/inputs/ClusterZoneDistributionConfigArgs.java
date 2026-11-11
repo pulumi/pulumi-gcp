@@ -6,6 +6,7 @@ package com.pulumi.gcp.redis.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class ClusterZoneDistributionConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterZoneDistributionConfigArgs Empty = new ClusterZoneDistributionConfigArgs();
+
+    /**
+     * (Output)
+     * The exact list of zones where the cluster currently has active VMs.
+     * 
+     */
+    @Import(name="activeZones")
+    private @Nullable Output<List<String>> activeZones;
+
+    /**
+     * @return (Output)
+     * The exact list of zones where the cluster currently has active VMs.
+     * 
+     */
+    public Optional<Output<List<String>>> activeZones() {
+        return Optional.ofNullable(this.activeZones);
+    }
 
     /**
      * Immutable. The mode for zone distribution for Memorystore Redis cluster.
@@ -49,11 +67,30 @@ public final class ClusterZoneDistributionConfigArgs extends com.pulumi.resource
         return Optional.ofNullable(this.zone);
     }
 
+    /**
+     * Specify the zones of a multi-zone cluster where Redis Cluster
+     * allocates resources. This flag isn&#39;t applicable for single-zone clusters.
+     * 
+     */
+    @Import(name="zones")
+    private @Nullable Output<List<String>> zones;
+
+    /**
+     * @return Specify the zones of a multi-zone cluster where Redis Cluster
+     * allocates resources. This flag isn&#39;t applicable for single-zone clusters.
+     * 
+     */
+    public Optional<Output<List<String>>> zones() {
+        return Optional.ofNullable(this.zones);
+    }
+
     private ClusterZoneDistributionConfigArgs() {}
 
     private ClusterZoneDistributionConfigArgs(ClusterZoneDistributionConfigArgs $) {
+        this.activeZones = $.activeZones;
         this.mode = $.mode;
         this.zone = $.zone;
+        this.zones = $.zones;
     }
 
     public static Builder builder() {
@@ -72,6 +109,40 @@ public final class ClusterZoneDistributionConfigArgs extends com.pulumi.resource
 
         public Builder(ClusterZoneDistributionConfigArgs defaults) {
             $ = new ClusterZoneDistributionConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param activeZones (Output)
+         * The exact list of zones where the cluster currently has active VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activeZones(@Nullable Output<List<String>> activeZones) {
+            $.activeZones = activeZones;
+            return this;
+        }
+
+        /**
+         * @param activeZones (Output)
+         * The exact list of zones where the cluster currently has active VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activeZones(List<String> activeZones) {
+            return activeZones(Output.of(activeZones));
+        }
+
+        /**
+         * @param activeZones (Output)
+         * The exact list of zones where the cluster currently has active VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activeZones(String... activeZones) {
+            return activeZones(List.of(activeZones));
         }
 
         /**
@@ -118,6 +189,40 @@ public final class ClusterZoneDistributionConfigArgs extends com.pulumi.resource
          */
         public Builder zone(String zone) {
             return zone(Output.of(zone));
+        }
+
+        /**
+         * @param zones Specify the zones of a multi-zone cluster where Redis Cluster
+         * allocates resources. This flag isn&#39;t applicable for single-zone clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(@Nullable Output<List<String>> zones) {
+            $.zones = zones;
+            return this;
+        }
+
+        /**
+         * @param zones Specify the zones of a multi-zone cluster where Redis Cluster
+         * allocates resources. This flag isn&#39;t applicable for single-zone clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(List<String> zones) {
+            return zones(Output.of(zones));
+        }
+
+        /**
+         * @param zones Specify the zones of a multi-zone cluster where Redis Cluster
+         * allocates resources. This flag isn&#39;t applicable for single-zone clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zones(String... zones) {
+            return zones(List.of(zones));
         }
 
         public ClusterZoneDistributionConfigArgs build() {

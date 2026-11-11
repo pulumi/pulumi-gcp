@@ -560,7 +560,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string | undefined>;
     /**
-     * Network bandwidth tier configuration.
+     * Network bandwidth tier configuration. Structure is documented below.
      */
     declare public readonly networkPerformanceConfig: pulumi.Output<outputs.container.ClusterNetworkPerformanceConfig | undefined>;
     /**
@@ -1379,7 +1379,7 @@ export interface ClusterState {
      */
     network?: pulumi.Input<string | undefined>;
     /**
-     * Network bandwidth tier configuration.
+     * Network bandwidth tier configuration. Structure is documented below.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.container.ClusterNetworkPerformanceConfig | undefined>;
     /**
@@ -1948,7 +1948,7 @@ export interface ClusterArgs {
      */
     network?: pulumi.Input<string | undefined>;
     /**
-     * Network bandwidth tier configuration.
+     * Network bandwidth tier configuration. Structure is documented below.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.container.ClusterNetworkPerformanceConfig | undefined>;
     /**

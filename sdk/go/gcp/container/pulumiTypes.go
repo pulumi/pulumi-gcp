@@ -15800,7 +15800,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	// Specifies the upgrade settings for NAP created node pools
+	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 	UpgradeSettings *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings `pulumi:"upgradeSettings"`
 }
 
@@ -15838,7 +15838,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	// Specifies the upgrade settings for NAP created node pools
+	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 	UpgradeSettings ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 }
 
@@ -15972,7 +15972,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ShieldedInstanc
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrOutput)
 }
 
-// Specifies the upgrade settings for NAP created node pools
+// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) UpgradeSettings() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings {
 		return v.UpgradeSettings
@@ -16097,7 +16097,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ShieldedInst
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrOutput)
 }
 
-// Specifies the upgrade settings for NAP created node pools
+// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) UpgradeSettings() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings {
 		if v == nil {
@@ -31177,8 +31177,20 @@ type ClusterNodeConfigLinuxNodeConfig struct {
 	// Note that validations happen all server side. All attributes are optional.
 	Sysctls map[string]string `pulumi:"sysctls"`
 	// The Linux kernel transparent hugepage defrag setting.
+	// Accepted values are:
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 	TransparentHugepageDefrag *string `pulumi:"transparentHugepageDefrag"`
 	// The Linux kernel transparent hugepage setting.
+	// Accepted values are:
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 	TransparentHugepageEnabled *string `pulumi:"transparentHugepageEnabled"`
 }
 
@@ -31216,8 +31228,20 @@ type ClusterNodeConfigLinuxNodeConfigArgs struct {
 	// Note that validations happen all server side. All attributes are optional.
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 	// The Linux kernel transparent hugepage defrag setting.
+	// Accepted values are:
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 	TransparentHugepageDefrag pulumi.StringPtrInput `pulumi:"transparentHugepageDefrag"`
 	// The Linux kernel transparent hugepage setting.
+	// Accepted values are:
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 	TransparentHugepageEnabled pulumi.StringPtrInput `pulumi:"transparentHugepageEnabled"`
 }
 
@@ -31351,11 +31375,23 @@ func (o ClusterNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput
 }
 
 // The Linux kernel transparent hugepage defrag setting.
+// Accepted values are:
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 func (o ClusterNodeConfigLinuxNodeConfigOutput) TransparentHugepageDefrag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfig) *string { return v.TransparentHugepageDefrag }).(pulumi.StringPtrOutput)
 }
 
 // The Linux kernel transparent hugepage setting.
+// Accepted values are:
+// * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 func (o ClusterNodeConfigLinuxNodeConfigOutput) TransparentHugepageEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfig) *string { return v.TransparentHugepageEnabled }).(pulumi.StringPtrOutput)
 }
@@ -31462,6 +31498,13 @@ func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOut
 }
 
 // The Linux kernel transparent hugepage defrag setting.
+// Accepted values are:
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) TransparentHugepageDefrag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfig) *string {
 		if v == nil {
@@ -31472,6 +31515,11 @@ func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) TransparentHugepageDefrag() p
 }
 
 // The Linux kernel transparent hugepage setting.
+// Accepted values are:
+// * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) TransparentHugepageEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfig) *string {
 		if v == nil {
@@ -36450,7 +36498,7 @@ func (o ClusterNodePoolBestEffortProvisioningPtrOutput) MinProvisionNodes() pulu
 }
 
 type ClusterNodePoolDefaults struct {
-	// Subset of NodeConfig message that has defaults.
+	// Subset of NodeConfig message that has defaults. Structure is documented below.
 	NodeConfigDefaults *ClusterNodePoolDefaultsNodeConfigDefaults `pulumi:"nodeConfigDefaults"`
 }
 
@@ -36466,7 +36514,7 @@ type ClusterNodePoolDefaultsInput interface {
 }
 
 type ClusterNodePoolDefaultsArgs struct {
-	// Subset of NodeConfig message that has defaults.
+	// Subset of NodeConfig message that has defaults. Structure is documented below.
 	NodeConfigDefaults ClusterNodePoolDefaultsNodeConfigDefaultsPtrInput `pulumi:"nodeConfigDefaults"`
 }
 
@@ -36547,7 +36595,7 @@ func (o ClusterNodePoolDefaultsOutput) ToClusterNodePoolDefaultsPtrOutputWithCon
 	}).(ClusterNodePoolDefaultsPtrOutput)
 }
 
-// Subset of NodeConfig message that has defaults.
+// Subset of NodeConfig message that has defaults. Structure is documented below.
 func (o ClusterNodePoolDefaultsOutput) NodeConfigDefaults() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaults) *ClusterNodePoolDefaultsNodeConfigDefaults {
 		return v.NodeConfigDefaults
@@ -36578,7 +36626,7 @@ func (o ClusterNodePoolDefaultsPtrOutput) Elem() ClusterNodePoolDefaultsOutput {
 	}).(ClusterNodePoolDefaultsOutput)
 }
 
-// Subset of NodeConfig message that has defaults.
+// Subset of NodeConfig message that has defaults. Structure is documented below.
 func (o ClusterNodePoolDefaultsPtrOutput) NodeConfigDefaults() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolDefaults) *ClusterNodePoolDefaultsNodeConfigDefaults {
 		if v == nil {
@@ -36589,7 +36637,7 @@ func (o ClusterNodePoolDefaultsPtrOutput) NodeConfigDefaults() ClusterNodePoolDe
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaults struct {
-	// Parameters for containerd configuration.
+	// Parameters for containerd configuration. Structure is documented below.
 	ContainerdConfig *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig `pulumi:"containerdConfig"`
 	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig `pulumi:"gcfsConfig"`
@@ -36611,7 +36659,7 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsInput interface {
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsArgs struct {
-	// Parameters for containerd configuration.
+	// Parameters for containerd configuration. Structure is documented below.
 	ContainerdConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrInput `pulumi:"containerdConfig"`
 	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput `pulumi:"gcfsConfig"`
@@ -36698,7 +36746,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ToClusterNodePoolDefaul
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput)
 }
 
-// Parameters for containerd configuration.
+// Parameters for containerd configuration. Structure is documented below.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ContainerdConfig() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
 		return v.ContainerdConfig
@@ -36746,7 +36794,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) Elem() ClusterNodePo
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsOutput)
 }
 
-// Parameters for containerd configuration.
+// Parameters for containerd configuration. Structure is documented below.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) ContainerdConfig() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
 		if v == nil {
@@ -38753,7 +38801,7 @@ type ClusterNodePoolNetworkConfig struct {
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
 	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig *ClusterNodePoolNetworkConfigNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
 	PodCidrOverprovisionConfig *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
@@ -38788,7 +38836,7 @@ type ClusterNodePoolNetworkConfigArgs struct {
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
 	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
-	// Network bandwidth tier configuration.
+	// Network bandwidth tier configuration. Structure is documented below.
 	NetworkPerformanceConfig ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
 	PodCidrOverprovisionConfig ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
@@ -38907,7 +38955,7 @@ func (o ClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrO
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
-// Network bandwidth tier configuration.
+// Network bandwidth tier configuration. Structure is documented below.
 func (o ClusterNodePoolNetworkConfigOutput) NetworkPerformanceConfig() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
 		return v.NetworkPerformanceConfig
@@ -39011,7 +39059,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Network bandwidth tier configuration.
+// Network bandwidth tier configuration. Structure is documented below.
 func (o ClusterNodePoolNetworkConfigPtrOutput) NetworkPerformanceConfig() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
 		if v == nil {
@@ -46275,8 +46323,20 @@ type ClusterNodePoolNodeConfigLinuxNodeConfig struct {
 	// Note that validations happen all server side. All attributes are optional.
 	Sysctls map[string]string `pulumi:"sysctls"`
 	// The Linux kernel transparent hugepage defrag setting.
+	// Accepted values are:
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 	TransparentHugepageDefrag *string `pulumi:"transparentHugepageDefrag"`
 	// The Linux kernel transparent hugepage setting.
+	// Accepted values are:
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 	TransparentHugepageEnabled *string `pulumi:"transparentHugepageEnabled"`
 }
 
@@ -46314,8 +46374,20 @@ type ClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
 	// Note that validations happen all server side. All attributes are optional.
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 	// The Linux kernel transparent hugepage defrag setting.
+	// Accepted values are:
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+	// * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 	TransparentHugepageDefrag pulumi.StringPtrInput `pulumi:"transparentHugepageDefrag"`
 	// The Linux kernel transparent hugepage setting.
+	// Accepted values are:
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+	// * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 	TransparentHugepageEnabled pulumi.StringPtrInput `pulumi:"transparentHugepageEnabled"`
 }
 
@@ -46449,11 +46521,23 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringM
 }
 
 // The Linux kernel transparent hugepage defrag setting.
+// Accepted values are:
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) TransparentHugepageDefrag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfig) *string { return v.TransparentHugepageDefrag }).(pulumi.StringPtrOutput)
 }
 
 // The Linux kernel transparent hugepage setting.
+// Accepted values are:
+// * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) TransparentHugepageEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfig) *string { return v.TransparentHugepageEnabled }).(pulumi.StringPtrOutput)
 }
@@ -46560,6 +46644,13 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.Stri
 }
 
 // The Linux kernel transparent hugepage defrag setting.
+// Accepted values are:
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_ALWAYS`: An application requesting THP will stall on allocation failure and directly reclaim pages and compact memory in an effort to allocate a THP immediately.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER`: An application will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future. It is the responsibility of khugepaged to then install the THP pages later.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_DEFER_WITH_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_MADVISE`: An application will enter direct reclaim and compaction like always, but only for regions that have used madvise(MADV_HUGEPAGE); all other regions will wake kswapd in the background to reclaim pages and wake kcompactd to compact memory so that THP is available in the near future.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_NEVER`: An application will never enter direct reclaim or compaction.
+// * `TRANSPARENT_HUGEPAGE_DEFRAG_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) TransparentHugepageDefrag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfig) *string {
 		if v == nil {
@@ -46570,6 +46661,11 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) TransparentHugepageDe
 }
 
 // The Linux kernel transparent hugepage setting.
+// Accepted values are:
+// * `TRANSPARENT_HUGEPAGE_ENABLED_ALWAYS`: Transparent hugepage is enabled system wide.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_MADVISE`: Transparent hugepage is enabled inside MADV_HUGEPAGE regions. This is the default kernel configuration.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_NEVER`: Transparent hugepage is disabled.
+// * `TRANSPARENT_HUGEPAGE_ENABLED_UNSPECIFIED`: Default value. GKE will not modify the kernel configuration.
 func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) TransparentHugepageEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfig) *string {
 		if v == nil {
@@ -67379,12 +67475,12 @@ func (o NodePoolUpgradeSettingsPtrOutput) Strategy() pulumi.StringPtrOutput {
 }
 
 type NodePoolUpgradeSettingsBlueGreenSettings struct {
-	// ) Autoscaled rollout policy for blue-green upgrade.
+	// ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
 	AutoscaledRolloutPolicy *NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy `pulumi:"autoscaledRolloutPolicy"`
 	// Time needed after draining the entire blue pool.
 	// After this period, the blue pool will be cleaned up.
 	NodePoolSoakDuration *string `pulumi:"nodePoolSoakDuration"`
-	// Specifies the standard policy settings for blue-green upgrades.
+	// Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
 	StandardRolloutPolicy *NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy `pulumi:"standardRolloutPolicy"`
 }
 
@@ -67400,12 +67496,12 @@ type NodePoolUpgradeSettingsBlueGreenSettingsInput interface {
 }
 
 type NodePoolUpgradeSettingsBlueGreenSettingsArgs struct {
-	// ) Autoscaled rollout policy for blue-green upgrade.
+	// ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
 	AutoscaledRolloutPolicy NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyPtrInput `pulumi:"autoscaledRolloutPolicy"`
 	// Time needed after draining the entire blue pool.
 	// After this period, the blue pool will be cleaned up.
 	NodePoolSoakDuration pulumi.StringPtrInput `pulumi:"nodePoolSoakDuration"`
-	// Specifies the standard policy settings for blue-green upgrades.
+	// Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
 	StandardRolloutPolicy NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrInput `pulumi:"standardRolloutPolicy"`
 }
 
@@ -67486,7 +67582,7 @@ func (o NodePoolUpgradeSettingsBlueGreenSettingsOutput) ToNodePoolUpgradeSetting
 	}).(NodePoolUpgradeSettingsBlueGreenSettingsPtrOutput)
 }
 
-// ) Autoscaled rollout policy for blue-green upgrade.
+// ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
 func (o NodePoolUpgradeSettingsBlueGreenSettingsOutput) AutoscaledRolloutPolicy() NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettingsBlueGreenSettings) *NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
 		return v.AutoscaledRolloutPolicy
@@ -67499,7 +67595,7 @@ func (o NodePoolUpgradeSettingsBlueGreenSettingsOutput) NodePoolSoakDuration() p
 	return o.ApplyT(func(v NodePoolUpgradeSettingsBlueGreenSettings) *string { return v.NodePoolSoakDuration }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the standard policy settings for blue-green upgrades.
+// Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
 func (o NodePoolUpgradeSettingsBlueGreenSettingsOutput) StandardRolloutPolicy() NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettingsBlueGreenSettings) *NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
 		return v.StandardRolloutPolicy
@@ -67530,7 +67626,7 @@ func (o NodePoolUpgradeSettingsBlueGreenSettingsPtrOutput) Elem() NodePoolUpgrad
 	}).(NodePoolUpgradeSettingsBlueGreenSettingsOutput)
 }
 
-// ) Autoscaled rollout policy for blue-green upgrade.
+// ) Autoscaled rollout policy for blue-green upgrade. Structure is documented below.
 func (o NodePoolUpgradeSettingsBlueGreenSettingsPtrOutput) AutoscaledRolloutPolicy() NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePoolUpgradeSettingsBlueGreenSettings) *NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
 		if v == nil {
@@ -67551,7 +67647,7 @@ func (o NodePoolUpgradeSettingsBlueGreenSettingsPtrOutput) NodePoolSoakDuration(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the standard policy settings for blue-green upgrades.
+// Specifies the standard policy settings for blue-green upgrades. Structure is documented below.
 func (o NodePoolUpgradeSettingsBlueGreenSettingsPtrOutput) StandardRolloutPolicy() NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePoolUpgradeSettingsBlueGreenSettings) *NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
 		if v == nil {

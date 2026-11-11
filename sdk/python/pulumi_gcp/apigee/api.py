@@ -25,6 +25,7 @@ class ApiArgs:
                  org_id: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Api resource.
@@ -40,6 +41,10 @@ class ApiArgs:
                
                ***
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels applied to this API proxy. Changing only the labels does not create a new revision.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         """
         pulumi.set(__self__, "config_bundle", config_bundle)
@@ -48,6 +53,8 @@ class ApiArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -108,6 +115,21 @@ class ApiArgs:
 
     @_builtins.property
     @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        User labels applied to this API proxy. Changing only the labels does not create a new revision.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the API proxy.
@@ -125,11 +147,14 @@ class _ApiState:
                  config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  md5hash: pulumi.Input[Optional[_builtins.str]] = None,
                  meta_datas: pulumi.Input[Optional[Sequence[pulumi.Input['ApiMetaDataArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  revisions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Api resources.
@@ -144,12 +169,18 @@ class _ApiState:
                
                ***
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels applied to this API proxy. Changing only the labels does not create a new revision.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this API proxy.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input['ApiMetaDataArgs']]] meta_datas: Metadata describing the API proxy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] revisions: A list of revisions of this API proxy.
         """
         if config_bundle is not None:
@@ -158,6 +189,10 @@ class _ApiState:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if latest_revision_id is not None:
             pulumi.set(__self__, "latest_revision_id", latest_revision_id)
         if md5hash is not None:
@@ -168,6 +203,8 @@ class _ApiState:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if revisions is not None:
             pulumi.set(__self__, "revisions", revisions)
 
@@ -213,6 +250,33 @@ class _ApiState:
     @detect_md5hash.setter
     def detect_md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detect_md5hash", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        User labels applied to this API proxy. Changing only the labels does not create a new revision.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="latestRevisionId")
@@ -276,6 +340,18 @@ class _ApiState:
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @_builtins.property
     @pulumi.getter
     def revisions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -297,6 +373,7 @@ class Api(pulumi.CustomResource):
                  config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -334,6 +411,10 @@ class Api(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels applied to this API proxy. Changing only the labels does not create a new revision.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
         """
@@ -383,6 +464,7 @@ class Api(pulumi.CustomResource):
                  config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -399,14 +481,19 @@ class Api(pulumi.CustomResource):
             __props__.__dict__["config_bundle"] = config_bundle
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["detect_md5hash"] = detect_md5hash
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["latest_revision_id"] = None
             __props__.__dict__["md5hash"] = None
             __props__.__dict__["meta_datas"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["revisions"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Api, __self__).__init__(
             'gcp:apigee/api:Api',
             resource_name,
@@ -420,11 +507,14 @@ class Api(pulumi.CustomResource):
             config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
             md5hash: pulumi.Input[Optional[_builtins.str]] = None,
             meta_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiMetaDataArgs', 'ApiMetaDataArgsDict', 'outputs.ApiMetaData']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             revisions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Api':
         """
         Get an existing Api resource's state with the given name, id, and optional extra
@@ -443,12 +533,18 @@ class Api(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels applied to this API proxy. Changing only the labels does not create a new revision.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this API proxy.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiMetaDataArgs', 'ApiMetaDataArgsDict', 'outputs.ApiMetaData']]]] meta_datas: Metadata describing the API proxy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] revisions: A list of revisions of this API proxy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -458,11 +554,14 @@ class Api(pulumi.CustomResource):
         __props__.__dict__["config_bundle"] = config_bundle
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["detect_md5hash"] = detect_md5hash
+        __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["latest_revision_id"] = latest_revision_id
         __props__.__dict__["md5hash"] = md5hash
         __props__.__dict__["meta_datas"] = meta_datas
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["revisions"] = revisions
         return Api(resource_name, opts=opts, __props__=__props__)
 
@@ -472,21 +571,27 @@ class Api(pulumi.CustomResource):
             config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
             md5hash: pulumi.Input[Optional[_builtins.str]] = None,
             meta_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiMetaDataArgs', 'ApiMetaDataArgsDict', 'outputs.ApiMetaData']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             revisions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["configBundle"] = config_bundle
         __props__["deletionPolicy"] = deletion_policy
         __props__["detectMd5hash"] = detect_md5hash
+        __props__["effectiveLabels"] = effective_labels
+        __props__["labels"] = labels
         __props__["latestRevisionId"] = latest_revision_id
         __props__["md5hash"] = md5hash
         __props__["metaDatas"] = meta_datas
         __props__["name"] = name
         __props__["orgId"] = org_id
+        __props__["pulumiLabels"] = pulumi_labels
         __props__["revisions"] = revisions
         return pulumi.runtime.exists_resource(None, 'gcp:apigee/api:Api', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -520,6 +625,25 @@ class Api(pulumi.CustomResource):
         (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         """
         return pulumi.get(self, "detect_md5hash")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        User labels applied to this API proxy. Changing only the labels does not create a new revision.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="latestRevisionId")
@@ -561,6 +685,14 @@ class Api(pulumi.CustomResource):
         The Apigee Organization name associated with the Apigee instance.
         """
         return pulumi.get(self, "org_id")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
     @pulumi.getter

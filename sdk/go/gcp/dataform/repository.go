@@ -165,7 +165,7 @@ type Repository struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the region
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The service account to run workflow invocations under.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
@@ -547,8 +547,8 @@ func (o RepositoryOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // A reference to the region
-func (o RepositoryOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+func (o RepositoryOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The service account to run workflow invocations under.

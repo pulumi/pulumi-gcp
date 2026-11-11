@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? EnablePrivateNodes { get; set; }
 
         /// <summary>
-        /// Network bandwidth tier configuration.
+        /// Network bandwidth tier configuration. Structure is documented below.
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }

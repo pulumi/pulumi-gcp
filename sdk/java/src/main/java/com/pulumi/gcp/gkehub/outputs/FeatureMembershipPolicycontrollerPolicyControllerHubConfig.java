@@ -28,7 +28,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
      */
     private @Nullable Integer constraintViolationLimit;
     /**
-     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;). Structure is documented below.
      * 
      */
     private @Nullable List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs;
@@ -84,7 +84,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
         return Optional.ofNullable(this.constraintViolationLimit);
     }
     /**
-     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;). Structure is documented below.
      * 
      */
     public List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs() {

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolDefaultsNodeConfigDefaultsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Parameters for containerd configuration.
+        /// Parameters for containerd configuration. Structure is documented below.
         /// </summary>
         [Input("containerdConfig")]
         public Input<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs>? ContainerdConfig { get; set; }

@@ -17,12 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Config is a singleton resource used to configure the default Dataform settings for a specified location.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about Config, see:
  * 
- * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations)
+ * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations#Config)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dataform/docs/)
  * 
@@ -37,14 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.projects.Service;
- * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
- * import com.pulumi.gcp.projects.ServiceIdentity;
- * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.KeyRing;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
@@ -61,58 +52,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()
- *             .name("project-1")
- *             .projectId("project-1")
- *             .orgId("123456789")
- *             .billingAccount("000000-0000000-0000000-000000")
- *             .deletionPolicy("DELETE")
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
- * 
- *         // Enable Cloud Key KMS API
- *         var cloudkmsApi = new Service("cloudkmsApi", ServiceArgs.builder()
- *             .project(project.projectId())
- *             .service("cloudkms.googleapis.com")
- *             .disableOnDestroy(false)
- *             .build());
- * 
- *         // Enable Dataform API
- *         var dataformApi = new Service("dataformApi", ServiceArgs.builder()
- *             .project(project.projectId())
- *             .service("dataform.googleapis.com")
- *             .disableOnDestroy(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(cloudkmsApi)
- *                 .build());
- * 
- *         // Add a sleep to wait for IAM propagation after API enablement
- *         var waitForDataformApi = new Sleep("waitForDataformApi", SleepArgs.builder()
- *             .createDuration("30s")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(dataformApi)
- *                 .build());
- * 
- *         // Retrieve the Dataform service identity
- *         var dataformSa = new ServiceIdentity("dataformSa", ServiceIdentityArgs.builder()
- *             .project(project.projectId())
- *             .service("dataform.googleapis.com")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(waitForDataformApi)
- *                 .build());
  * 
  *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
- *             .project(project.projectId())
  *             .name("example-key-ring")
- *             .location("us-central1")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(waitForDataformApi)
- *                 .build());
+ *             .location("us-east1")
+ *             .build());
  * 
  *         var exampleKey = new CryptoKey("exampleKey", CryptoKeyArgs.builder()
  *             .name("example-crypto-key-name")
@@ -123,20 +75,19 @@ import javax.annotation.Nullable;
  *         var cryptoKeyBinding = new CryptoKeyIAMMember("cryptoKeyBinding", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(exampleKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(dataformSa.member())
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-dataform.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         // Config with KMS key provided
  *         var config = new Config("config", ConfigArgs.builder()
- *             .region("us-central1")
+ *             .region("us-east1")
  *             .defaultKmsKeyName(exampleKey.id())
- *             .project(project.projectId())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(cryptoKeyBinding)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -149,15 +100,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.projects.Service;
- * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumiverse.time.Sleep;
- * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.dataform.Config;
  * import com.pulumi.gcp.dataform.ConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -171,35 +115,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project("project", ProjectArgs.builder()
- *             .name("project-1")
- *             .projectId("project-1")
- *             .orgId("123456789")
- *             .billingAccount("000000-0000000-0000000-000000")
- *             .deletionPolicy("DELETE")
- *             .build());
- * 
- *         // Enable Dataform API
- *         var dataformApi = new Service("dataformApi", ServiceArgs.builder()
- *             .project(project.projectId())
- *             .service("dataform.googleapis.com")
- *             .disableOnDestroy(false)
- *             .build());
- * 
- *         // Add a sleep to wait for IAM propagation after API enablement
- *         var waitForDataformApi = new Sleep("waitForDataformApi", SleepArgs.builder()
- *             .createDuration("30s")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(dataformApi)
- *                 .build());
- * 
  *         // Config without KMS key provided
  *         var config = new Config("config", ConfigArgs.builder()
- *             .region("us-central1")
- *             .project(project.projectId())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(waitForDataformApi)
- *                 .build());
+ *             .region("us-west1")
+ *             .build());
  * 
  *     }
  * }

@@ -296,8 +296,17 @@ class ApplicationIapArgs:
 
 class ApplicationUrlDispatchRuleArgsDict(TypedDict):
     domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Domain name to match against.
+    """
     path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Pathname within the host.
+    """
     service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Resource ID of a service in this application that should serve the matched request.
+    """
 
 @pulumi.input_type
 class ApplicationUrlDispatchRuleArgs:
@@ -305,6 +314,11 @@ class ApplicationUrlDispatchRuleArgs:
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] domain: Domain name to match against.
+        :param pulumi.Input[_builtins.str] path: Pathname within the host.
+        :param pulumi.Input[_builtins.str] service: Resource ID of a service in this application that should serve the matched request.
+        """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if path is not None:
@@ -315,6 +329,9 @@ class ApplicationUrlDispatchRuleArgs:
     @_builtins.property
     @pulumi.getter
     def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Domain name to match against.
+        """
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -324,6 +341,9 @@ class ApplicationUrlDispatchRuleArgs:
     @_builtins.property
     @pulumi.getter
     def path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Pathname within the host.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -333,6 +353,9 @@ class ApplicationUrlDispatchRuleArgs:
     @_builtins.property
     @pulumi.getter
     def service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Resource ID of a service in this application that should serve the matched request.
+        """
         return pulumi.get(self, "service")
 
     @service.setter
@@ -3810,7 +3833,7 @@ class StandardAppVersionManualScalingArgs:
 class StandardAppVersionVpcAccessArgsDict(TypedDict):
     egress_setting: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Optional, Deprecated)
+    (Optional, Beta, Deprecated)
     The egress setting for the VPC Access, controlling what traffic is diverted through it.
 
     > **Warning:** `egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.
@@ -3833,7 +3856,7 @@ class StandardAppVersionVpcAccessArgs:
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionVpcAccessNetworkInterfaceArgs']]]] = None,
                  vpc_egress: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] egress_setting: (Optional, Deprecated)
+        :param pulumi.Input[_builtins.str] egress_setting: (Optional, Beta, Deprecated)
                The egress setting for the VPC Access, controlling what traffic is diverted through it.
                
                > **Warning:** `egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.
@@ -3857,7 +3880,7 @@ class StandardAppVersionVpcAccessArgs:
     @_utilities.deprecated("""`egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.""")
     def egress_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Deprecated)
+        (Optional, Beta, Deprecated)
         The egress setting for the VPC Access, controlling what traffic is diverted through it.
 
         > **Warning:** `egress_setting` is deprecated and will be removed in a future major release. Use `vpc_egress` instead.

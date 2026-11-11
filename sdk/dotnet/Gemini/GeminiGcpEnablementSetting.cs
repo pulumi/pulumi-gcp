@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.Gemini
     ///         WebGroundingType = "WEB_GROUNDING_FOR_ENTERPRISE",
     ///         MutationsEnabled = true,
     ///         ReleaseChannel = "EXPERIMENTAL",
+    ///         HasCustomInstructions = true,
     ///     });
     /// 
     /// });
@@ -111,6 +112,12 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Output("geminiGcpEnablementSettingId")]
         public Output<string> GeminiGcpEnablementSettingId { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether custom instructions are defined.
+        /// </summary>
+        [Output("hasCustomInstructions")]
+        public Output<bool?> HasCustomInstructions { get; private set; } = null!;
 
         /// <summary>
         /// Labels as key value pairs.
@@ -266,6 +273,12 @@ namespace Pulumi.Gcp.Gemini
         [Input("geminiGcpEnablementSettingId", required: true)]
         public Input<string> GeminiGcpEnablementSettingId { get; set; } = null!;
 
+        /// <summary>
+        /// Indicates whether custom instructions are defined.
+        /// </summary>
+        [Input("hasCustomInstructions")]
+        public Input<bool>? HasCustomInstructions { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -384,6 +397,12 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Input("geminiGcpEnablementSettingId")]
         public Input<string>? GeminiGcpEnablementSettingId { get; set; }
+
+        /// <summary>
+        /// Indicates whether custom instructions are defined.
+        /// </summary>
+        [Input("hasCustomInstructions")]
+        public Input<bool>? HasCustomInstructions { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

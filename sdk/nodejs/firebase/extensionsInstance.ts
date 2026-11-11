@@ -36,17 +36,15 @@ import * as utilities from "../utilities";
  *     instanceId: "storage-resize-images",
  *     config: {
  *         extensionRef: "firebase/storage-resize-images",
- *         extensionVersion: "0.2.10",
+ *         extensionVersion: "0.3.6",
  *         params: {
  *             DELETE_ORIGINAL_FILE: "false",
  *             MAKE_PUBLIC: "false",
  *             IMAGE_TYPE: "false",
  *             IS_ANIMATED: "true",
  *             FUNCTION_MEMORY: "1024",
- *             DO_BACKFILL: "false",
  *             IMG_SIZES: "200x200",
  *             IMG_BUCKET: images.name,
- *             BACKFILL_BATCH_SIZE: "3",
  *             CONTENT_FILTER_LEVEL: "OFF",
  *             REGENERATE_TOKEN: "true",
  *         },

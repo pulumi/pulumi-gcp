@@ -11,6 +11,7 @@ import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfi
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata;
 import java.lang.Boolean;
 import java.lang.String;
@@ -62,6 +63,12 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
      * 
      */
     private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData inlineData;
+    /**
+     * @return Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata speechMetadata;
     /**
      * @return The text content of the part.
      * 
@@ -137,6 +144,14 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
         return Optional.ofNullable(this.inlineData);
     }
     /**
+     * @return Turn-level metadata for speech generation. May be set alongside `text` to attach speaker and style information to a text part.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata> speechMetadata() {
+        return Optional.ofNullable(this.speechMetadata);
+    }
+    /**
      * @return The text content of the part.
      * 
      */
@@ -175,6 +190,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionCall functionCall;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponse functionResponse;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartInlineData inlineData;
+        private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata speechMetadata;
         private @Nullable String text;
         private @Nullable Boolean thought;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartVideoMetadata videoMetadata;
@@ -188,6 +204,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
     	      this.functionCall = defaults.functionCall;
     	      this.functionResponse = defaults.functionResponse;
     	      this.inlineData = defaults.inlineData;
+    	      this.speechMetadata = defaults.speechMetadata;
     	      this.text = defaults.text;
     	      this.thought = defaults.thought;
     	      this.videoMetadata = defaults.videoMetadata;
@@ -236,6 +253,12 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
             return this;
         }
         @CustomType.Setter
+        public Builder speechMetadata(@Nullable AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartSpeechMetadata speechMetadata) {
+
+            this.speechMetadata = speechMetadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder text(@Nullable String text) {
 
             this.text = text;
@@ -262,6 +285,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConf
             _resultValue.functionCall = functionCall;
             _resultValue.functionResponse = functionResponse;
             _resultValue.inlineData = inlineData;
+            _resultValue.speechMetadata = speechMetadata;
             _resultValue.text = text;
             _resultValue.thought = thought;
             _resultValue.videoMetadata = videoMetadata;
