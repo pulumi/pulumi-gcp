@@ -526964,6 +526964,50 @@
                 "type": "object"
             }
         },
+        "gcp:organizations/getOrganizationIamPolicy:getOrganizationIamPolicy": {
+            "description": "Retrieves the current IAM policy data for a organization.\n\n## example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gcp from \"@pulumi/gcp\";\n\nconst policy = gcp.organizations.getOrganizationIamPolicy({\n    orgId: \"123456789\",\n});\n```\n```python\nimport pulumi\nimport pulumi_gcp as gcp\n\npolicy = gcp.organizations.get_organization_iam_policy(org_id=\"123456789\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Gcp = Pulumi.Gcp;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var policy = Gcp.Organizations.GetOrganizationIamPolicy.Invoke(new()\n    {\n        OrgId = \"123456789\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := organizations.GetOrganizationIamPolicy(ctx, \u0026organizations.GetOrganizationIamPolicyArgs{\n\t\t\tOrgId: \"123456789\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    gcp = {\n      source = \"pulumi/gcp\"\n    }\n  }\n}\n\ndata \"gcp_organizations_organization_iam_policy\" \"policy\" {\n  org_id = \"123456789\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gcp.organizations.OrganizationsFunctions;\nimport com.pulumi.gcp.organizations.inputs.GetOrganizationIamPolicyArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var policy = OrganizationsFunctions.getOrganizationIamPolicy(GetOrganizationIamPolicyArgs.builder()\n            .orgId(\"123456789\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  policy:\n    fn::invoke:\n      function: gcp:organizations:getOrganizationIamPolicy\n      arguments:\n        orgId: '123456789'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationIamPolicy.\n",
+                "properties": {
+                    "orgId": {
+                        "type": "string",
+                        "description": "The organization id of the target organization.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "orgId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationIamPolicy.\n",
+                "properties": {
+                    "etag": {
+                        "description": "(Computed) The etag of the IAM policy.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "policyData": {
+                        "description": "(Computed) The policy data\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "etag",
+                    "orgId",
+                    "policyData",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "gcp:organizations/getProject:getProject": {
             "description": "Use this data source to get project details.\nFor more information see\n[API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gcp from \"@pulumi/gcp\";\n\nconst project = gcp.organizations.getProject({});\nexport const projectNumber = project.then(project =\u003e project.number);\n```\n```python\nimport pulumi\nimport pulumi_gcp as gcp\n\nproject = gcp.organizations.get_project()\npulumi.export(\"projectNumber\", project.number)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Gcp = Pulumi.Gcp;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var project = Gcp.Organizations.GetProject.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"projectNumber\"] = project.Apply(getProjectResult =\u003e getProjectResult.Number),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject, err := organizations.LookupProject(ctx, \u0026organizations.LookupProjectArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"projectNumber\", project.Number)\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    gcp = {\n      source = \"pulumi/gcp\"\n    }\n  }\n}\n\ndata \"gcp_organizations_project\" \"project\" {\n}\n\noutput \"projectNumber\" {\n  value = data.gcp_organizations_project.project.number\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gcp.organizations.OrganizationsFunctions;\nimport com.pulumi.gcp.organizations.inputs.GetProjectArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()\n            .build());\n\n        ctx.export(\"projectNumber\", project.number());\n    }\n}\n```\n```yaml\nvariables:\n  project:\n    fn::invoke:\n      function: gcp:organizations:getProject\n      arguments: {}\noutputs:\n  projectNumber: ${project.number}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
