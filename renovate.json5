@@ -23,6 +23,54 @@
       rangeStrategy: "bump",
       enabled: true,
     },
+    // ci-mgmt (https://github.com/pulumi/ci-mgmt) owns these files and
+    // overwrites them on every sync, so Renovate edits here (e.g. #4235 on
+    // publish.yml) just get reverted. packageRules, not ignorePaths: the
+    // latter is non-mergeable and would drop the preset's own ignores
+    // (e.g. generated sdk/**) instead of adding to them.
+    {
+      matchManagers: ["github-actions"],
+      matchFileNames: [
+        ".github/actions/download-prerequisites/action.yml",
+        ".github/actions/download-provider/action.yml",
+        ".github/actions/download-sdk/action.yml",
+        ".github/actions/upload-prerequisites/action.yml",
+        ".github/actions/upload-sdk/action.yml",
+        ".github/workflows/build_provider.yml",
+        ".github/workflows/build_sdk.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/command-dispatch.yml",
+        ".github/workflows/comment-on-stale-issues.yml",
+        ".github/workflows/community-moderation.yml",
+        ".github/workflows/export-repo-secrets.yml",
+        ".github/workflows/license.yml",
+        ".github/workflows/lint.yml",
+        ".github/workflows/main-post-build.yml",
+        ".github/workflows/main.yml",
+        ".github/workflows/maintenance-release.yml",
+        ".github/workflows/maintenance-scan.yml",
+        ".github/workflows/prerelease.yml",
+        ".github/workflows/prerequisites.yml",
+        ".github/workflows/publish.yml",
+        ".github/workflows/pull-request.yml",
+        ".github/workflows/release.yml",
+        ".github/workflows/release_command.yml",
+        ".github/workflows/run-acceptance-tests.yml",
+        ".github/workflows/test.yml",
+        ".github/workflows/update-skills.yml",
+        ".github/workflows/upgrade-bridge.yml",
+        ".github/workflows/upgrade-provider.yml",
+        ".github/workflows/verify-release.yml",
+      ],
+      enabled: false,
+    },
+    // Same for the tool versions ci-mgmt pins in .config/mise*.toml: a Node
+    // bump here (#4173) was silently reverted by the next sync (#4180).
+    {
+      matchManagers: ["mise"],
+      matchFileNames: [".config/mise.toml", ".config/mise.test.toml"],
+      enabled: false,
+    },
   ],
   // Vulnerability-fix PRs inherit this as a forced override, which re-enables
   // the packages the v9 rule above disables. Same as Renovate's
