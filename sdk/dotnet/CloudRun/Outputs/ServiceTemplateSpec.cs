@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// 
         /// &gt; **Warning:** `ServingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
+        [Obsolete(@"`ServingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.")]
         public readonly string? ServingState;
         /// <summary>
         /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
@@ -77,7 +78,9 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             Containers = containers;
             NodeSelector = nodeSelector;
             ServiceAccountName = serviceAccountName;
+#pragma warning disable CS0618
             ServingState = servingState;
+#pragma warning restore CS0618
             TimeoutSeconds = timeoutSeconds;
             Volumes = volumes;
         }

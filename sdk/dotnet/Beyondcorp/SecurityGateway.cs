@@ -198,6 +198,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// &gt; **Warning:** `Location` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("location")]
+        [Obsolete(@"`Location` is deprecated and will be removed in a future major release.")]
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
@@ -347,6 +348,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// &gt; **Warning:** `Location` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("location")]
+        [Obsolete(@"`Location` is deprecated and will be removed in a future major release.")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
@@ -457,6 +459,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// &gt; **Warning:** `Location` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("location")]
+        [Obsolete(@"`Location` is deprecated and will be removed in a future major release.")]
         public Input<string>? Location { get; set; }
 
         /// <summary>

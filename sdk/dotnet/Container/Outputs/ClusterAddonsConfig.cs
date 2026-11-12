@@ -122,6 +122,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
         /// `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
         /// </summary>
+        [Obsolete(@"`addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.")]
         public readonly Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? ParallelstoreCsiDriverConfig;
         /// <summary>
         /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
@@ -216,7 +217,9 @@ namespace Pulumi.Gcp.Container.Outputs
             LustreCsiDriverConfig = lustreCsiDriverConfig;
             NetworkPolicyConfig = networkPolicyConfig;
             NodeReadinessConfig = nodeReadinessConfig;
+#pragma warning disable CS0618
             ParallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
+#pragma warning restore CS0618
             PodSnapshotConfig = podSnapshotConfig;
             RayOperatorConfigs = rayOperatorConfigs;
             SliceControllerConfig = sliceControllerConfig;

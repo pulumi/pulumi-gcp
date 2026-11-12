@@ -353,6 +353,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Output("interface")]
+        [Obsolete(@"`Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.")]
         public Output<string?> Interface { get; private set; } = null!;
 
         /// <summary>
@@ -795,6 +796,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Input("interface")]
+        [Obsolete(@"`Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.")]
         public Input<string>? Interface { get; set; }
 
         [Input("labels")]
@@ -1162,6 +1164,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Input("interface")]
+        [Obsolete(@"`Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.")]
         public Input<string>? Interface { get; set; }
 
         /// <summary>

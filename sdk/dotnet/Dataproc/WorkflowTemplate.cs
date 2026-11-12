@@ -394,6 +394,7 @@ namespace Pulumi.Gcp.Dataproc
         /// Output only. The current version of this workflow template.
         /// </summary>
         [Output("version")]
+        [Obsolete(@"version is not useful as a configurable field, and will be removed in the future.")]
         public Output<int> Version { get; private set; } = null!;
 
 
@@ -537,6 +538,7 @@ namespace Pulumi.Gcp.Dataproc
         /// Output only. The current version of this workflow template.
         /// </summary>
         [Input("version")]
+        [Obsolete(@"version is not useful as a configurable field, and will be removed in the future.")]
         public Input<int>? Version { get; set; }
 
         public WorkflowTemplateArgs()
@@ -681,6 +683,7 @@ namespace Pulumi.Gcp.Dataproc
         /// Output only. The current version of this workflow template.
         /// </summary>
         [Input("version")]
+        [Obsolete(@"version is not useful as a configurable field, and will be removed in the future.")]
         public Input<int>? Version { get; set; }
 
         public WorkflowTemplateState()

@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         /// &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
         /// </summary>
         [Input("contains")]
+        [Obsolete(@"`principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.")]
         public Input<string>? Contains { get; set; }
 
         /// <summary>
@@ -32,6 +33,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         /// &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
         /// </summary>
         [Input("exact")]
+        [Obsolete(@"`principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.")]
         public Input<string>? Exact { get; set; }
 
         /// <summary>
@@ -41,6 +43,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         /// &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
         /// </summary>
         [Input("ignoreCase")]
+        [Obsolete(@"`principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.")]
         public Input<bool>? IgnoreCase { get; set; }
 
         /// <summary>
@@ -52,6 +55,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         /// &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
         /// </summary>
         [Input("prefix")]
+        [Obsolete(@"`principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.")]
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
@@ -79,6 +83,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         /// &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
         /// </summary>
         [Input("suffix")]
+        [Obsolete(@"`principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.")]
         public Input<string>? Suffix { get; set; }
 
         public AuthzPolicyHttpRuleFromNotSourcePrincipalArgs()

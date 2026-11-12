@@ -283,6 +283,7 @@ namespace Pulumi.Gcp.Diagflow
         /// &gt; **Warning:** `EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Output("enableStackdriverLogging")]
+        [Obsolete(@"`EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.")]
         public Output<bool?> EnableStackdriverLogging { get; private set; } = null!;
 
         /// <summary>
@@ -533,6 +534,7 @@ namespace Pulumi.Gcp.Diagflow
         /// &gt; **Warning:** `EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Input("enableStackdriverLogging")]
+        [Obsolete(@"`EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
         /// <summary>
@@ -727,6 +729,7 @@ namespace Pulumi.Gcp.Diagflow
         /// &gt; **Warning:** `EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Input("enableStackdriverLogging")]
+        [Obsolete(@"`EnableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
         /// <summary>

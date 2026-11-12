@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// <summary>
         /// **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
         /// </summary>
+        [Obsolete(@"Deprecated in favor of the `Management` field")]
         public readonly string? ControlPlane;
         /// <summary>
         /// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -28,7 +29,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             string? management)
         {
+#pragma warning disable CS0618
             ControlPlane = controlPlane;
+#pragma warning restore CS0618
             Management = management;
         }
     }

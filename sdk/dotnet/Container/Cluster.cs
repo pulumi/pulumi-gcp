@@ -504,6 +504,7 @@ namespace Pulumi.Gcp.Container
         /// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         /// </summary>
         [Output("enterpriseConfig")]
+        [Obsolete(@"GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release")]
         public Output<Outputs.ClusterEnterpriseConfig> EnterpriseConfig { get; private set; } = null!;
 
         /// <summary>
@@ -883,6 +884,7 @@ namespace Pulumi.Gcp.Container
         /// to at least `1`.
         /// </summary>
         [Output("removeDefaultNodePool")]
+        [Obsolete(@"On newer cluster versions (1.36.4-gke.1469000+) omit InitialNodeCount and NodeConfig (or set InitialNodeCount = 0) instead.")]
         public Output<bool?> RemoveDefaultNodePool { get; private set; } = null!;
 
         /// <summary>
@@ -1330,6 +1332,7 @@ namespace Pulumi.Gcp.Container
         /// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         /// </summary>
         [Input("enterpriseConfig")]
+        [Obsolete(@"GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release")]
         public Input<Inputs.ClusterEnterpriseConfigArgs>? EnterpriseConfig { get; set; }
 
         /// <summary>
@@ -1698,6 +1701,7 @@ namespace Pulumi.Gcp.Container
         /// to at least `1`.
         /// </summary>
         [Input("removeDefaultNodePool")]
+        [Obsolete(@"On newer cluster versions (1.36.4-gke.1469000+) omit InitialNodeCount and NodeConfig (or set InitialNodeCount = 0) instead.")]
         public Input<bool>? RemoveDefaultNodePool { get; set; }
 
         [Input("resourceLabels")]
@@ -2113,6 +2117,7 @@ namespace Pulumi.Gcp.Container
         /// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         /// </summary>
         [Input("enterpriseConfig")]
+        [Obsolete(@"GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release")]
         public Input<Inputs.ClusterEnterpriseConfigGetArgs>? EnterpriseConfig { get; set; }
 
         /// <summary>
@@ -2514,6 +2519,7 @@ namespace Pulumi.Gcp.Container
         /// to at least `1`.
         /// </summary>
         [Input("removeDefaultNodePool")]
+        [Obsolete(@"On newer cluster versions (1.36.4-gke.1469000+) omit InitialNodeCount and NodeConfig (or set InitialNodeCount = 0) instead.")]
         public Input<bool>? RemoveDefaultNodePool { get; set; }
 
         [Input("resourceLabels")]

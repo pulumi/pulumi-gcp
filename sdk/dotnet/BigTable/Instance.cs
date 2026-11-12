@@ -174,6 +174,7 @@ namespace Pulumi.Gcp.BigTable
         /// is functionally identical to a `"DEVELOPMENT"` instance, but without the accompanying restrictions.
         /// </summary>
         [Output("instanceType")]
+        [Obsolete(@"It is recommended to leave this field unspecified since the distinction between ""DEVELOPMENT"" and ""PRODUCTION"" instances is going away, and all instances will become ""PRODUCTION"" instances. This means that new and existing ""DEVELOPMENT"" instances will be converted to ""PRODUCTION"" instances. It is recommended for users to use ""PRODUCTION"" instances in any case, since a 1-node ""PRODUCTION"" instance is functionally identical to a ""DEVELOPMENT"" instance, but without the accompanying restrictions.")]
         public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
@@ -323,6 +324,7 @@ namespace Pulumi.Gcp.BigTable
         /// is functionally identical to a `"DEVELOPMENT"` instance, but without the accompanying restrictions.
         /// </summary>
         [Input("instanceType")]
+        [Obsolete(@"It is recommended to leave this field unspecified since the distinction between ""DEVELOPMENT"" and ""PRODUCTION"" instances is going away, and all instances will become ""PRODUCTION"" instances. This means that new and existing ""DEVELOPMENT"" instances will be converted to ""PRODUCTION"" instances. It is recommended for users to use ""PRODUCTION"" instances in any case, since a 1-node ""PRODUCTION"" instance is functionally identical to a ""DEVELOPMENT"" instance, but without the accompanying restrictions.")]
         public Input<string>? InstanceType { get; set; }
 
         [Input("labels")]
@@ -451,6 +453,7 @@ namespace Pulumi.Gcp.BigTable
         /// is functionally identical to a `"DEVELOPMENT"` instance, but without the accompanying restrictions.
         /// </summary>
         [Input("instanceType")]
+        [Obsolete(@"It is recommended to leave this field unspecified since the distinction between ""DEVELOPMENT"" and ""PRODUCTION"" instances is going away, and all instances will become ""PRODUCTION"" instances. This means that new and existing ""DEVELOPMENT"" instances will be converted to ""PRODUCTION"" instances. It is recommended for users to use ""PRODUCTION"" instances in any case, since a 1-node ""PRODUCTION"" instance is functionally identical to a ""DEVELOPMENT"" instance, but without the accompanying restrictions.")]
         public Input<string>? InstanceType { get; set; }
 
         [Input("labels")]

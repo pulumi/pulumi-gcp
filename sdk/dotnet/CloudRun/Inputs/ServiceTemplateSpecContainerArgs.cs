@@ -158,6 +158,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// &gt; **Warning:** `WorkingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
         [Input("workingDir")]
+        [Obsolete(@"`WorkingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.")]
         public Input<string>? WorkingDir { get; set; }
 
         public ServiceTemplateSpecContainerArgs()

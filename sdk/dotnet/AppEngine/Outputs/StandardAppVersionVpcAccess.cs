@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// 
         /// &gt; **Warning:** `EgressSetting` is deprecated and will be removed in a future major release. Use `VpcEgress` instead.
         /// </summary>
+        [Obsolete(@"`EgressSetting` is deprecated and will be removed in a future major release. Use `VpcEgress` instead.")]
         public readonly string? EgressSetting;
         /// <summary>
         /// List of network interfaces for the VPC Access. Currently only a single network interface is supported.
@@ -39,7 +40,9 @@ namespace Pulumi.Gcp.AppEngine.Outputs
 
             string? vpcEgress)
         {
+#pragma warning disable CS0618
             EgressSetting = egressSetting;
+#pragma warning restore CS0618
             NetworkInterfaces = networkInterfaces;
             VpcEgress = vpcEgress;
         }

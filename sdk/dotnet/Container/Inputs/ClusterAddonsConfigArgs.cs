@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// `addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.
         /// </summary>
         [Input("parallelstoreCsiDriverConfig")]
+        [Obsolete(@"`addons_config.parallelstore_csi_driver_config` is deprecated and will be removed in a future major release. Use `addons_config.lustre_csi_driver_config` instead.")]
         public Input<Inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigArgs>? ParallelstoreCsiDriverConfig { get; set; }
 
         /// <summary>

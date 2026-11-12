@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         /// **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
         /// </summary>
         [Input("controlPlane")]
+        [Obsolete(@"Deprecated in favor of the `Management` field")]
         public Input<string>? ControlPlane { get; set; }
 
         /// <summary>

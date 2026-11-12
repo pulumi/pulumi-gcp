@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// 
         /// &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
         /// </summary>
+        [Obsolete(@"`principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.")]
         public readonly string? Contains;
         /// <summary>
         /// (Optional, Deprecated)
@@ -30,6 +31,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// 
         /// &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
         /// </summary>
+        [Obsolete(@"`principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.")]
         public readonly string? Exact;
         /// <summary>
         /// (Optional, Deprecated)
@@ -37,6 +39,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// 
         /// &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
         /// </summary>
+        [Obsolete(@"`principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.")]
         public readonly bool? IgnoreCase;
         /// <summary>
         /// (Optional, Deprecated)
@@ -46,6 +49,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// 
         /// &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
         /// </summary>
+        [Obsolete(@"`principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.")]
         public readonly string? Prefix;
         /// <summary>
         /// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
@@ -67,6 +71,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// 
         /// &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
         /// </summary>
+        [Obsolete(@"`principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.")]
         public readonly string? Suffix;
 
         [OutputConstructor]
@@ -85,13 +90,23 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
 
             string? suffix)
         {
+#pragma warning disable CS0618
             Contains = contains;
+#pragma warning restore CS0618
+#pragma warning disable CS0618
             Exact = exact;
+#pragma warning restore CS0618
+#pragma warning disable CS0618
             IgnoreCase = ignoreCase;
+#pragma warning restore CS0618
+#pragma warning disable CS0618
             Prefix = prefix;
+#pragma warning restore CS0618
             Principal = principal;
             PrincipalSelector = principalSelector;
+#pragma warning disable CS0618
             Suffix = suffix;
+#pragma warning restore CS0618
         }
     }
 }

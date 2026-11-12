@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         /// Structure is documented below.
         /// </summary>
+        [Obsolete(@"`externalProtectionLevelOptions` is being un-nested from the `Attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.")]
         public readonly Outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions? ExternalProtectionLevelOptions;
         /// <summary>
         /// (Output)
@@ -46,7 +47,9 @@ namespace Pulumi.Gcp.Kms.Outputs
         {
             CertChains = certChains;
             Content = content;
+#pragma warning disable CS0618
             ExternalProtectionLevelOptions = externalProtectionLevelOptions;
+#pragma warning restore CS0618
             Format = format;
         }
     }

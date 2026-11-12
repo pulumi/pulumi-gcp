@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// 
         /// &gt; **Warning:** `LeafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `FractionLeafNodesToSearch` instead.
         /// </summary>
+        [Obsolete(@"`LeafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `FractionLeafNodesToSearch` instead.")]
         public readonly int? LeafNodesToSearchPercent;
 
         [OutputConstructor]
@@ -42,7 +43,9 @@ namespace Pulumi.Gcp.Vertex.Outputs
         {
             FractionLeafNodesToSearch = fractionLeafNodesToSearch;
             LeafNodeEmbeddingCount = leafNodeEmbeddingCount;
+#pragma warning disable CS0618
             LeafNodesToSearchPercent = leafNodesToSearchPercent;
+#pragma warning restore CS0618
         }
     }
 }

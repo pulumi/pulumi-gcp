@@ -88,6 +88,7 @@ namespace Pulumi.Gcp.Storage
         /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         /// </summary>
         [Output("admissionPolicy")]
+        [Obsolete(@"`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.")]
         public Output<string?> AdmissionPolicy { get; private set; } = null!;
 
         /// <summary>
@@ -211,6 +212,7 @@ namespace Pulumi.Gcp.Storage
         /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         /// </summary>
         [Input("admissionPolicy")]
+        [Obsolete(@"`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.")]
         public Input<string>? AdmissionPolicy { get; set; }
 
         /// <summary>
@@ -266,6 +268,7 @@ namespace Pulumi.Gcp.Storage
         /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         /// </summary>
         [Input("admissionPolicy")]
+        [Obsolete(@"`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.")]
         public Input<string>? AdmissionPolicy { get; set; }
 
         /// <summary>

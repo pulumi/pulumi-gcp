@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// 
         /// &gt; **Warning:** `MaxResults` is deprecated and will be removed in a future release.
         /// </summary>
+        [Obsolete(@"`MaxResults` is deprecated and will be removed in a future release.")]
         public readonly int? MaxResults;
         /// <summary>
         /// The modality configs for the data store.
@@ -83,7 +84,9 @@ namespace Pulumi.Gcp.Ces.Outputs
             Description = description;
             EngineSource = engineSource;
             FilterParameterBehavior = filterParameterBehavior;
+#pragma warning disable CS0618
             MaxResults = maxResults;
+#pragma warning restore CS0618
             ModalityConfigs = modalityConfigs;
             Name = name;
         }

@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// &gt; **Warning:** `ServingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
         [Input("servingState")]
+        [Obsolete(@"`ServingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.")]
         public Input<string>? ServingState { get; set; }
 
         /// <summary>

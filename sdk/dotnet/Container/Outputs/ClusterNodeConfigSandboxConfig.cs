@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// 
         /// * `"gvisor"`: Pods run within a gVisor sandbox.
         /// </summary>
+        [Obsolete(@"`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.")]
         public readonly string? SandboxType;
         /// <summary>
         /// Which sandbox to use for pods in the node pool.
@@ -35,7 +36,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? type)
         {
+#pragma warning disable CS0618
             SandboxType = sandboxType;
+#pragma warning restore CS0618
             Type = type;
         }
     }

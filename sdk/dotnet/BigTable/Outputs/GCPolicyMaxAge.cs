@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// <summary>
         /// Number of days before applying GC policy.
         /// </summary>
+        [Obsolete(@"Deprecated in favor of duration")]
         public readonly int? Days;
         /// <summary>
         /// Duration before applying GC policy (ex. "8h"). This is required when `Days` isn't set
@@ -30,7 +31,9 @@ namespace Pulumi.Gcp.BigTable.Outputs
 
             string? duration)
         {
+#pragma warning disable CS0618
             Days = days;
+#pragma warning restore CS0618
             Duration = duration;
         }
     }

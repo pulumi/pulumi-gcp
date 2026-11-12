@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// * `"gvisor"`: Pods run within a gVisor sandbox.
         /// </summary>
         [Input("sandboxType")]
+        [Obsolete(@"`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.")]
         public Input<string>? SandboxType { get; set; }
 
         /// <summary>

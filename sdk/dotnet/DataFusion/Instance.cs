@@ -520,6 +520,7 @@ namespace Pulumi.Gcp.DataFusion
         /// Service account which will be used to access resources in the customer project.
         /// </summary>
         [Output("serviceAccount")]
+        [Obsolete(@"`ServiceAccount` is deprecated and will be removed in a future major release. Instead, use `TenantProjectId` to extract the tenant project ID.")]
         public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
@@ -1069,6 +1070,7 @@ namespace Pulumi.Gcp.DataFusion
         /// Service account which will be used to access resources in the customer project.
         /// </summary>
         [Input("serviceAccount")]
+        [Obsolete(@"`ServiceAccount` is deprecated and will be removed in a future major release. Instead, use `TenantProjectId` to extract the tenant project ID.")]
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>

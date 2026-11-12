@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// &gt; **Warning:** `MonitoringInterval` is deprecated and will be removed in a future release.
         /// </summary>
         [Input("monitoringInterval")]
+        [Obsolete(@"`MonitoringInterval` is deprecated and will be removed in a future release.")]
         public Input<string>? MonitoringInterval { get; set; }
 
         /// <summary>

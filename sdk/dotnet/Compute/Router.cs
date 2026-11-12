@@ -249,6 +249,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; **Warning:** `Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         /// </summary>
         [Output("md5AuthenticationKeys")]
+        [Obsolete(@"`Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.")]
         public Output<Outputs.RouterMd5AuthenticationKeys?> Md5AuthenticationKeys { get; private set; } = null!;
 
         /// <summary>
@@ -391,6 +392,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; **Warning:** `Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         /// </summary>
         [Input("md5AuthenticationKeys")]
+        [Obsolete(@"`Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.")]
         public Input<Inputs.RouterMd5AuthenticationKeysArgs>? Md5AuthenticationKeys { get; set; }
 
         /// <summary>
@@ -489,6 +491,7 @@ namespace Pulumi.Gcp.Compute
         /// &gt; **Warning:** `Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.
         /// </summary>
         [Input("md5AuthenticationKeys")]
+        [Obsolete(@"`Md5AuthenticationKeys` is deprecated and will be removed in a future major release. It has no effect; use the `Md5AuthenticationKey` block of `gcp.compute.RouterPeer` to configure MD5 authentication for a BGP peer instead.")]
         public Input<Inputs.RouterMd5AuthenticationKeysGetArgs>? Md5AuthenticationKeys { get; set; }
 
         /// <summary>

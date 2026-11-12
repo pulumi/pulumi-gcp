@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// specified. `RequirePartitionFilter` is deprecated and will be removed in
         /// a future major release. Use the top level field with the same name instead.
         /// </summary>
+        [Obsolete(@"This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.")]
         public readonly bool? RequirePartitionFilter;
         /// <summary>
         /// The supported types are DAY, HOUR, MONTH, and YEAR,
@@ -49,7 +50,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         {
             ExpirationMs = expirationMs;
             Field = field;
+#pragma warning disable CS0618
             RequirePartitionFilter = requirePartitionFilter;
+#pragma warning restore CS0618
             Type = type;
         }
     }

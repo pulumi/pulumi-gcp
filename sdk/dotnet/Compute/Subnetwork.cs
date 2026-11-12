@@ -529,6 +529,7 @@ namespace Pulumi.Gcp.Compute
         /// Fingerprint of this resource. This field is used internally during updates of this resource.
         /// </summary>
         [Output("fingerprint")]
+        [Obsolete(@"This field is not useful for users, and has been removed as an output.")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
@@ -1061,6 +1062,7 @@ namespace Pulumi.Gcp.Compute
         /// Fingerprint of this resource. This field is used internally during updates of this resource.
         /// </summary>
         [Input("fingerprint")]
+        [Obsolete(@"This field is not useful for users, and has been removed as an output.")]
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>

@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// 
         /// &gt; **Warning:** `EnvFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
+        [Obsolete(@"`EnvFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.")]
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerEnvFrom> EnvFroms;
         /// <summary>
         /// List of environment variables to set in the container.
@@ -95,6 +96,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// 
         /// &gt; **Warning:** `WorkingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
+        [Obsolete(@"`WorkingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.")]
         public readonly string? WorkingDir;
 
         [OutputConstructor]
@@ -129,7 +131,9 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         {
             Args = args;
             Commands = commands;
+#pragma warning disable CS0618
             EnvFroms = envFroms;
+#pragma warning restore CS0618
             Envs = envs;
             Image = image;
             LivenessProbe = livenessProbe;
@@ -140,7 +144,9 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             SandboxLauncher = sandboxLauncher;
             StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;
+#pragma warning disable CS0618
             WorkingDir = workingDir;
+#pragma warning restore CS0618
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.
         /// </summary>
         [Input("diskType")]
+        [Obsolete(@"`DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>

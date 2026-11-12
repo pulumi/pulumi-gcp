@@ -275,6 +275,7 @@ namespace Pulumi.Gcp.Healthcare
         /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Output("notificationConfig")]
+        [Obsolete(@"`NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.")]
         public Output<Outputs.Hl7StoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
@@ -418,6 +419,7 @@ namespace Pulumi.Gcp.Healthcare
         /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Input("notificationConfig")]
+        [Obsolete(@"`NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.")]
         public Input<Inputs.Hl7StoreNotificationConfigArgs>? NotificationConfig { get; set; }
 
         [Input("notificationConfigs")]
@@ -527,6 +529,7 @@ namespace Pulumi.Gcp.Healthcare
         /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Input("notificationConfig")]
+        [Obsolete(@"`NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.")]
         public Input<Inputs.Hl7StoreNotificationConfigGetArgs>? NotificationConfig { get; set; }
 
         [Input("notificationConfigs")]

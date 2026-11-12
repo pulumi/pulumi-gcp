@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.
         /// </summary>
+        [Obsolete(@"`DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.")]
         public readonly string? DiskType;
         /// <summary>
         /// Indicates how many IOPS to provision for the disk.
@@ -47,7 +48,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             string? type)
         {
             DiskSizeGb = diskSizeGb;
+#pragma warning disable CS0618
             DiskType = diskType;
+#pragma warning restore CS0618
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
             Type = type;

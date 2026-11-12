@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
         /// </summary>
         [Input("failOpen")]
+        [Obsolete(@"`failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.")]
         public Input<bool>? FailOpen { get; set; }
 
         /// <summary>

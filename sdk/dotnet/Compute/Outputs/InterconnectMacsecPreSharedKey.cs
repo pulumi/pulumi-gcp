@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// 
         /// &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
         /// </summary>
+        [Obsolete(@"`failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.")]
         public readonly bool? FailOpen;
         /// <summary>
         /// A name for this pre-shared key. The name must be 1-63 characters long, and
@@ -49,7 +50,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? startTime)
         {
+#pragma warning disable CS0618
             FailOpen = failOpen;
+#pragma warning restore CS0618
             Name = name;
             StartTime = startTime;
         }

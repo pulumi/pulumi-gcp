@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
         /// </summary>
         [Input("useServerlessAnalytics")]
+        [Obsolete(@"`useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.")]
         public Input<bool>? UseServerlessAnalytics { get; set; }
 
         public ConnectionCloudSpannerArgs()

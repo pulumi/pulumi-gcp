@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         /// &gt; **Warning:** `EgressSetting` is deprecated and will be removed in a future major release. Use `VpcEgress` instead.
         /// </summary>
         [Input("egressSetting")]
+        [Obsolete(@"`EgressSetting` is deprecated and will be removed in a future major release. Use `VpcEgress` instead.")]
         public Input<string>? EgressSetting { get; set; }
 
         [Input("networkInterfaces")]

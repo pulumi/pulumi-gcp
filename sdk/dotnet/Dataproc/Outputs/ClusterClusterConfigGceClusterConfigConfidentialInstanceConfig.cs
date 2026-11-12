@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// Defines whether the instance should have confidential compute enabled. `EnableConfidentialCompute` is deprecated and will be removed in a future major release. Use `ConfidentialInstanceType` instead.
         /// </summary>
+        [Obsolete(@"enable_confidential_compute is deprecated and will be removed in a future major release. Use ConfidentialInstanceType instead.")]
         public readonly bool? EnableConfidentialCompute;
 
         [OutputConstructor]
@@ -29,7 +30,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             bool? enableConfidentialCompute)
         {
             ConfidentialInstanceType = confidentialInstanceType;
+#pragma warning disable CS0618
             EnableConfidentialCompute = enableConfidentialCompute;
+#pragma warning restore CS0618
         }
     }
 }

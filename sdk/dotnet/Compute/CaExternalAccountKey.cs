@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.Compute
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("b64MacKey")]
+        [Obsolete(@"`B64MacKey` is deprecated and will be removed in a future major release. Use `MacKey` instead.")]
         public Output<string> B64MacKey { get; private set; } = null!;
 
         /// <summary>
@@ -69,6 +70,7 @@ namespace Pulumi.Gcp.Compute
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("b64urlMacKey")]
+        [Obsolete(@"`B64urlMacKey` is deprecated and will be removed in a future major release. Use `MacKey` instead.")]
         public Output<string> B64urlMacKey { get; private set; } = null!;
 
         /// <summary>

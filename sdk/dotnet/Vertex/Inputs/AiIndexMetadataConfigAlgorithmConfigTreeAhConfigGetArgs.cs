@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// &gt; **Warning:** `LeafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `FractionLeafNodesToSearch` instead.
         /// </summary>
         [Input("leafNodesToSearchPercent")]
+        [Obsolete(@"`LeafNodesToSearchPercent` is deprecated and will be removed in a future major release. Use `FractionLeafNodesToSearch` instead.")]
         public Input<int>? LeafNodesToSearchPercent { get; set; }
 
         public AiIndexMetadataConfigAlgorithmConfigTreeAhConfigGetArgs()

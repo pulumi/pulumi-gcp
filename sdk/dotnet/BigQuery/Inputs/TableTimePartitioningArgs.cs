@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// a future major release. Use the top level field with the same name instead.
         /// </summary>
         [Input("requirePartitionFilter")]
+        [Obsolete(@"This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.")]
         public Input<bool>? RequirePartitionFilter { get; set; }
 
         /// <summary>

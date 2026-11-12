@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// &gt; **Warning:** `Domain` is deprecated and will be removed in a future major release. Use `Domains` instead.
         /// </summary>
         [Input("domain")]
+        [Obsolete(@"`Domain` is deprecated and will be removed in a future major release. Use `Domains` instead.")]
         public Input<string>? Domain { get; set; }
 
         [Input("domains")]
