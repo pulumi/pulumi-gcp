@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
         /// </summary>
+        [Obsolete(@"`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.")]
         public readonly string? SandboxType;
         /// <summary>
         /// Type of the sandbox to use for the node (e.g. 'GVISOR').
@@ -28,7 +29,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? type)
         {
+#pragma warning disable CS0618
             SandboxType = sandboxType;
+#pragma warning restore CS0618
             Type = type;
         }
     }

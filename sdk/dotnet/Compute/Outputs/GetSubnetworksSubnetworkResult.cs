@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// (Deprecated) The name of the parent network computed from `Network` attribute. (deprecated and will be removed in a future major release. Use `NetworkName` instead.)
         /// </summary>
+        [Obsolete(@"Use `NetworkName` instead. This field will be removed in a future major release.")]
         public readonly string NetworkSelfLink;
         /// <summary>
         /// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
@@ -69,7 +70,9 @@ namespace Pulumi.Gcp.Compute.Outputs
             Name = name;
             Network = network;
             NetworkName = networkName;
+#pragma warning disable CS0618
             NetworkSelfLink = networkSelfLink;
+#pragma warning restore CS0618
             PrivateIpGoogleAccess = privateIpGoogleAccess;
             SelfLink = selfLink;
         }

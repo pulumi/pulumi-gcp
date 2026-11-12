@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// 
         /// &gt; **Warning:** `MonitoringInterval` is deprecated and will be removed in a future release.
         /// </summary>
+        [Obsolete(@"`MonitoringInterval` is deprecated and will be removed in a future release.")]
         public readonly string? MonitoringInterval;
         /// <summary>
         /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
@@ -46,7 +47,9 @@ namespace Pulumi.Gcp.Vertex.Outputs
             int? stalenessDays)
         {
             Disabled = disabled;
+#pragma warning disable CS0618
             MonitoringInterval = monitoringInterval;
+#pragma warning restore CS0618
             MonitoringIntervalDays = monitoringIntervalDays;
             StalenessDays = stalenessDays;
         }

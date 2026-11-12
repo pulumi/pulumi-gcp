@@ -329,6 +329,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// &gt; **Warning:** `Protocols` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("protocols")]
+        [Obsolete(@"`Protocols` is deprecated and will be removed in a future major release.")]
         public Output<ImmutableArray<string>> Protocols { get; private set; } = null!;
 
         /// <summary>

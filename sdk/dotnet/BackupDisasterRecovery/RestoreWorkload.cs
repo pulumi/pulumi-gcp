@@ -387,6 +387,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// &gt; **Warning:** `Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         /// </summary>
         [Output("name")]
+        [Obsolete(@"`Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
@@ -540,6 +541,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// &gt; **Warning:** `Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         /// </summary>
         [Input("name")]
+        [Obsolete(@"`Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
@@ -648,6 +650,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// &gt; **Warning:** `Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
         /// </summary>
         [Input("name")]
+        [Obsolete(@"`Name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).")]
         public Input<string>? Name { get; set; }
 
         /// <summary>

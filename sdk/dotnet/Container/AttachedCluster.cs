@@ -381,6 +381,7 @@ namespace Pulumi.Gcp.Container
         /// &gt; **Warning:** `SecurityPostureConfig` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("securityPostureConfig")]
+        [Obsolete(@"`SecurityPostureConfig` is deprecated and will be removed in a future major release.")]
         public Output<Outputs.AttachedClusterSecurityPostureConfig> SecurityPostureConfig { get; private set; } = null!;
 
         /// <summary>
@@ -594,6 +595,7 @@ namespace Pulumi.Gcp.Container
         /// &gt; **Warning:** `SecurityPostureConfig` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("securityPostureConfig")]
+        [Obsolete(@"`SecurityPostureConfig` is deprecated and will be removed in a future major release.")]
         public Input<Inputs.AttachedClusterSecurityPostureConfigArgs>? SecurityPostureConfig { get; set; }
 
         public AttachedClusterArgs()
@@ -793,6 +795,7 @@ namespace Pulumi.Gcp.Container
         /// &gt; **Warning:** `SecurityPostureConfig` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("securityPostureConfig")]
+        [Obsolete(@"`SecurityPostureConfig` is deprecated and will be removed in a future major release.")]
         public Input<Inputs.AttachedClusterSecurityPostureConfigGetArgs>? SecurityPostureConfig { get; set; }
 
         /// <summary>

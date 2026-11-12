@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// 
         /// &gt; **Warning:** `CertificatePem` is deprecated and will be removed in a future major release. Use `PemCertificate` instead.
         /// </summary>
+        [Obsolete(@"`CertificatePem` is deprecated and will be removed in a future major release. Use `PemCertificate` instead.")]
         public readonly string? CertificatePem;
         /// <summary>
         /// The certificate chain in PEM-encoded form.
@@ -53,6 +54,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// 
         /// &gt; **Warning:** `PrivateKeyPem` is deprecated and will be removed in a future major release. Use `PemPrivateKey` instead.
         /// </summary>
+        [Obsolete(@"`PrivateKeyPem` is deprecated and will be removed in a future major release. Use `PemPrivateKey` instead.")]
         public readonly string? PrivateKeyPem;
 
         [OutputConstructor]
@@ -69,12 +71,16 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
 
             string? privateKeyPem)
         {
+#pragma warning disable CS0618
             CertificatePem = certificatePem;
+#pragma warning restore CS0618
             PemCertificate = pemCertificate;
             PemPrivateKey = pemPrivateKey;
             PemPrivateKeyWo = pemPrivateKeyWo;
             PemPrivateKeyWoVersion = pemPrivateKeyWoVersion;
+#pragma warning disable CS0618
             PrivateKeyPem = privateKeyPem;
+#pragma warning restore CS0618
         }
     }
 }

@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.Gemini
         /// &gt; **Warning:** `DisableWebGrounding` is deprecated. Use `WebGroundingType` instead.
         /// </summary>
         [Output("disableWebGrounding")]
+        [Obsolete(@"`DisableWebGrounding` is deprecated. Use `WebGroundingType` instead.")]
         public Output<bool?> DisableWebGrounding { get; private set; } = null!;
 
         /// <summary>
@@ -251,6 +252,7 @@ namespace Pulumi.Gcp.Gemini
         /// &gt; **Warning:** `DisableWebGrounding` is deprecated. Use `WebGroundingType` instead.
         /// </summary>
         [Input("disableWebGrounding")]
+        [Obsolete(@"`DisableWebGrounding` is deprecated. Use `WebGroundingType` instead.")]
         public Input<bool>? DisableWebGrounding { get; set; }
 
         /// <summary>
@@ -360,6 +362,7 @@ namespace Pulumi.Gcp.Gemini
         /// &gt; **Warning:** `DisableWebGrounding` is deprecated. Use `WebGroundingType` instead.
         /// </summary>
         [Input("disableWebGrounding")]
+        [Obsolete(@"`DisableWebGrounding` is deprecated. Use `WebGroundingType` instead.")]
         public Input<bool>? DisableWebGrounding { get; set; }
 
         [Input("effectiveLabels")]

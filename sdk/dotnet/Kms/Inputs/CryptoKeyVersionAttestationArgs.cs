@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Kms.Inputs
         /// Structure is documented below.
         /// </summary>
         [Input("externalProtectionLevelOptions")]
+        [Obsolete(@"`externalProtectionLevelOptions` is being un-nested from the `Attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.")]
         public Input<Inputs.CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs>? ExternalProtectionLevelOptions { get; set; }
 
         /// <summary>

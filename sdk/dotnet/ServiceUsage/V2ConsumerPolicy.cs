@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.ServiceUsage
         /// Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Output("checkUsageOnRemove")]
+        [Obsolete(@"`CheckUsageOnRemove` is deprecated and will be removed in a future major release.")]
         public Output<bool?> CheckUsageOnRemove { get; private set; } = null!;
 
         /// <summary>
@@ -135,6 +136,7 @@ namespace Pulumi.Gcp.ServiceUsage
         /// Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Input("checkUsageOnRemove")]
+        [Obsolete(@"`CheckUsageOnRemove` is deprecated and will be removed in a future major release.")]
         public Input<bool>? CheckUsageOnRemove { get; set; }
 
         /// <summary>
@@ -191,6 +193,7 @@ namespace Pulumi.Gcp.ServiceUsage
         /// Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Input("checkUsageOnRemove")]
+        [Obsolete(@"`CheckUsageOnRemove` is deprecated and will be removed in a future major release.")]
         public Input<bool>? CheckUsageOnRemove { get; set; }
 
         /// <summary>

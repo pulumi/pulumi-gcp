@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.Vertex
         /// &gt; **Warning:** `EmbeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         /// </summary>
         [Output("embeddingManagement")]
+        [Obsolete(@"`EmbeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type")]
         public Output<Outputs.AiFeatureOnlineStoreEmbeddingManagement> EmbeddingManagement { get; private set; } = null!;
 
         /// <summary>
@@ -199,6 +200,7 @@ namespace Pulumi.Gcp.Vertex
         /// &gt; **Warning:** `Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.
         /// </summary>
         [Output("optimized")]
+        [Obsolete(@"`Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.")]
         public Output<Outputs.AiFeatureOnlineStoreOptimized?> Optimized { get; private set; } = null!;
 
         /// <summary>
@@ -317,6 +319,7 @@ namespace Pulumi.Gcp.Vertex
         /// &gt; **Warning:** `EmbeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         /// </summary>
         [Input("embeddingManagement")]
+        [Obsolete(@"`EmbeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type")]
         public Input<Inputs.AiFeatureOnlineStoreEmbeddingManagementArgs>? EmbeddingManagement { get; set; }
 
         /// <summary>
@@ -359,6 +362,7 @@ namespace Pulumi.Gcp.Vertex
         /// &gt; **Warning:** `Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.
         /// </summary>
         [Input("optimized")]
+        [Obsolete(@"`Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.")]
         public Input<Inputs.AiFeatureOnlineStoreOptimizedArgs>? Optimized { get; set; }
 
         /// <summary>
@@ -437,6 +441,7 @@ namespace Pulumi.Gcp.Vertex
         /// &gt; **Warning:** `EmbeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         /// </summary>
         [Input("embeddingManagement")]
+        [Obsolete(@"`EmbeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type")]
         public Input<Inputs.AiFeatureOnlineStoreEmbeddingManagementGetArgs>? EmbeddingManagement { get; set; }
 
         /// <summary>
@@ -485,6 +490,7 @@ namespace Pulumi.Gcp.Vertex
         /// &gt; **Warning:** `Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.
         /// </summary>
         [Input("optimized")]
+        [Obsolete(@"`Optimized` is deprecated because Vertex AI Feature Store Optimized online serving is deprecated and new FeatureOnlineStore creation is no longer supported. Use `Bigtable` for online serving instead.")]
         public Input<Inputs.AiFeatureOnlineStoreOptimizedGetArgs>? Optimized { get; set; }
 
         /// <summary>

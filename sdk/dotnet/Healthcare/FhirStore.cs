@@ -457,6 +457,7 @@ namespace Pulumi.Gcp.Healthcare
         /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Output("notificationConfig")]
+        [Obsolete(@"`NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.")]
         public Output<Outputs.FhirStoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
@@ -687,6 +688,7 @@ namespace Pulumi.Gcp.Healthcare
         /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Input("notificationConfig")]
+        [Obsolete(@"`NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.")]
         public Input<Inputs.FhirStoreNotificationConfigArgs>? NotificationConfig { get; set; }
 
         [Input("notificationConfigs")]
@@ -889,6 +891,7 @@ namespace Pulumi.Gcp.Healthcare
         /// &gt; **Warning:** `NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.
         /// </summary>
         [Input("notificationConfig")]
+        [Obsolete(@"`NotificationConfig` is deprecated and will be removed in a future major release. Use `NotificationConfigs` instead.")]
         public Input<Inputs.FhirStoreNotificationConfigGetArgs>? NotificationConfig { get; set; }
 
         [Input("notificationConfigs")]

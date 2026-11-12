@@ -16,10 +16,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// The effective tier of the cluster.
         /// </summary>
+        [Obsolete(@"GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release")]
         public readonly string? ClusterTier;
         /// <summary>
         /// (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         /// </summary>
+        [Obsolete(@"GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release")]
         public readonly string? DesiredTier;
 
         [OutputConstructor]
@@ -28,8 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? desiredTier)
         {
+#pragma warning disable CS0618
             ClusterTier = clusterTier;
+#pragma warning restore CS0618
+#pragma warning disable CS0618
             DesiredTier = desiredTier;
+#pragma warning restore CS0618
         }
     }
 }

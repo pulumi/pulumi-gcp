@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Enable Binary Authorization for this cluster. Deprecated in favor of `EvaluationMode`.
         /// </summary>
+        [Obsolete(@"Deprecated in favor of evaluation_mode.")]
         public readonly bool? Enabled;
         /// <summary>
         /// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
@@ -29,7 +30,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? evaluationMode)
         {
+#pragma warning disable CS0618
             Enabled = enabled;
+#pragma warning restore CS0618
             EvaluationMode = evaluationMode;
         }
     }

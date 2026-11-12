@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Enable Binary Authorization for this cluster. Deprecated in favor of `EvaluationMode`.
         /// </summary>
         [Input("enabled")]
+        [Obsolete(@"Deprecated in favor of evaluation_mode.")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>

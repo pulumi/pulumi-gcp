@@ -702,6 +702,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// Structure is documented below.
         /// </summary>
         [Output("desiredPscAutoConnections")]
+        [Obsolete(@"`DesiredPscAutoConnections` is deprecated. Use `DesiredAutoCreatedEndpoints` instead. `terraform import` will only work with DesiredAutoCreatedEndpoints`.")]
         public Output<ImmutableArray<Outputs.InstanceDesiredPscAutoConnection>> DesiredPscAutoConnections { get; private set; } = null!;
 
         /// <summary>
@@ -710,6 +711,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// Structure is documented below.
         /// </summary>
         [Output("discoveryEndpoints")]
+        [Obsolete(@"This field is deprecated. As a result it will not be populated if the connections are created using `DesiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.")]
         public Output<ImmutableArray<Outputs.InstanceDiscoveryEndpoint>> DiscoveryEndpoints { get; private set; } = null!;
 
         /// <summary>
@@ -892,6 +894,7 @@ namespace Pulumi.Gcp.MemoryStore
         /// Structure is documented below.
         /// </summary>
         [Output("pscAutoConnections")]
+        [Obsolete(@"`PscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.")]
         public Output<ImmutableArray<Outputs.InstancePscAutoConnection>> PscAutoConnections { get; private set; } = null!;
 
         /// <summary>

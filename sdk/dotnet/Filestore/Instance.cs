@@ -404,6 +404,7 @@ namespace Pulumi.Gcp.Filestore
         /// &gt; **Warning:** `Zone` is deprecated and will be removed in a future major release. Use `Location` instead.
         /// </summary>
         [Output("zone")]
+        [Obsolete(@"`Zone` is deprecated and will be removed in a future major release. Use `Location` instead.")]
         public Output<string> Zone { get; private set; } = null!;
 
 
@@ -623,6 +624,7 @@ namespace Pulumi.Gcp.Filestore
         /// &gt; **Warning:** `Zone` is deprecated and will be removed in a future major release. Use `Location` instead.
         /// </summary>
         [Input("zone")]
+        [Obsolete(@"`Zone` is deprecated and will be removed in a future major release. Use `Location` instead.")]
         public Input<string>? Zone { get; set; }
 
         public InstanceArgs()
@@ -858,6 +860,7 @@ namespace Pulumi.Gcp.Filestore
         /// &gt; **Warning:** `Zone` is deprecated and will be removed in a future major release. Use `Location` instead.
         /// </summary>
         [Input("zone")]
+        [Obsolete(@"`Zone` is deprecated and will be removed in a future major release. Use `Location` instead.")]
         public Input<string>? Zone { get; set; }
 
         public InstanceState()

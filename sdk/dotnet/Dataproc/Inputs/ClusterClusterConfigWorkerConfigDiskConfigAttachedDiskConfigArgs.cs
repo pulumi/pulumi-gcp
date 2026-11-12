@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.
         /// </summary>
         [Input("diskType")]
+        [Obsolete(@"`DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>

@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.CloudQuota
         /// Expect this field to be empty currently.
         /// </summary>
         [Output("effectiveContainer")]
+        [Obsolete(@"`effectiveContainer` is deprecated and will be removed in a future major release. Use `InheritedFrom` instead.")]
         public Output<string> EffectiveContainer { get; private set; } = null!;
 
         /// <summary>
@@ -68,6 +69,7 @@ namespace Pulumi.Gcp.CloudQuota
         /// Expect this field to be empty currently.
         /// </summary>
         [Output("effectiveEnablement")]
+        [Obsolete(@"`effectiveEnablement` is deprecated and will be removed in a future major release. Use `Inherited` instead.")]
         public Output<string> EffectiveEnablement { get; private set; } = null!;
 
         /// <summary>
@@ -170,6 +172,7 @@ namespace Pulumi.Gcp.CloudQuota
         /// Expect this field to be empty currently.
         /// </summary>
         [Input("effectiveContainer")]
+        [Obsolete(@"`effectiveContainer` is deprecated and will be removed in a future major release. Use `InheritedFrom` instead.")]
         public Input<string>? EffectiveContainer { get; set; }
 
         /// <summary>
@@ -178,6 +181,7 @@ namespace Pulumi.Gcp.CloudQuota
         /// Expect this field to be empty currently.
         /// </summary>
         [Input("effectiveEnablement")]
+        [Obsolete(@"`effectiveEnablement` is deprecated and will be removed in a future major release. Use `Inherited` instead.")]
         public Input<string>? EffectiveEnablement { get; set; }
 
         /// <summary>

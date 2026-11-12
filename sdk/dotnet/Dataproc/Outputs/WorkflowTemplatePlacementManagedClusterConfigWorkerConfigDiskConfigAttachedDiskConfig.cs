@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// (Optional, Deprecated)
         /// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.
         /// </summary>
+        [Obsolete(@"`DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.")]
         public readonly string? DiskType;
         /// <summary>
         /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -48,7 +49,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             string? type)
         {
             DiskSizeGb = diskSizeGb;
+#pragma warning disable CS0618
             DiskType = diskType;
+#pragma warning restore CS0618
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
             Type = type;

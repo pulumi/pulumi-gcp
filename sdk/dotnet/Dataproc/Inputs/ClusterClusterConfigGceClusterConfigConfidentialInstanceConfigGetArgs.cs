@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// Defines whether the instance should have confidential compute enabled. `EnableConfidentialCompute` is deprecated and will be removed in a future major release. Use `ConfidentialInstanceType` instead.
         /// </summary>
         [Input("enableConfidentialCompute")]
+        [Obsolete(@"enable_confidential_compute is deprecated and will be removed in a future major release. Use ConfidentialInstanceType instead.")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
 
         public ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigGetArgs()

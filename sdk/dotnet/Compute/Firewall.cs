@@ -209,6 +209,7 @@ namespace Pulumi.Gcp.Compute
         /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `LogConfig`
         /// </summary>
         [Output("enableLogging")]
+        [Obsolete(@"Deprecated in favor of log_config")]
         public Output<bool> EnableLogging { get; private set; } = null!;
 
         /// <summary>
@@ -470,6 +471,7 @@ namespace Pulumi.Gcp.Compute
         /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `LogConfig`
         /// </summary>
         [Input("enableLogging")]
+        [Obsolete(@"Deprecated in favor of log_config")]
         public Input<bool>? EnableLogging { get; set; }
 
         /// <summary>
@@ -717,6 +719,7 @@ namespace Pulumi.Gcp.Compute
         /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `LogConfig`
         /// </summary>
         [Input("enableLogging")]
+        [Obsolete(@"Deprecated in favor of log_config")]
         public Input<bool>? EnableLogging { get; set; }
 
         /// <summary>

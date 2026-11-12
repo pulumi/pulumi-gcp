@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// 
         /// &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
         /// </summary>
+        [Obsolete(@"The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.")]
         public readonly string? Version;
 
         [OutputConstructor]
@@ -60,7 +61,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
             SecretType = secretType;
             SyncRepo = syncRepo;
             SyncWaitSecs = syncWaitSecs;
+#pragma warning disable CS0618
             Version = version;
+#pragma warning restore CS0618
         }
     }
 }

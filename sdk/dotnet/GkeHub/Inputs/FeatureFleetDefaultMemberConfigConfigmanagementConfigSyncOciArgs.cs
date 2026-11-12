@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         /// &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
         /// </summary>
         [Input("version")]
+        [Obsolete(@"The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.")]
         public Input<string>? Version { get; set; }
 
         public FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs()

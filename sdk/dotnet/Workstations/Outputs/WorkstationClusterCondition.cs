@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// (Output, Deprecated)
         /// A list of messages that carry the error details.
         /// </summary>
+        [Obsolete(@"`Details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.")]
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Details;
         /// <summary>
         /// (Output)
@@ -38,7 +39,9 @@ namespace Pulumi.Gcp.Workstations.Outputs
             string? message)
         {
             Code = code;
+#pragma warning disable CS0618
             Details = details;
+#pragma warning restore CS0618
             Message = message;
         }
     }

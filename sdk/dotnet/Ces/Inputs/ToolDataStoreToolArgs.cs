@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// &gt; **Warning:** `MaxResults` is deprecated and will be removed in a future release.
         /// </summary>
         [Input("maxResults")]
+        [Obsolete(@"`MaxResults` is deprecated and will be removed in a future release.")]
         public Input<int>? MaxResults { get; set; }
 
         [Input("modalityConfigs")]

@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.ManagedKafka.Outputs
         /// 
         /// &gt; **Warning:** `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
         /// </summary>
+        [Obsolete(@"`additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.")]
         public readonly ImmutableArray<string> AdditionalSubnets;
         /// <summary>
         /// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
@@ -37,7 +38,9 @@ namespace Pulumi.Gcp.ManagedKafka.Outputs
 
             string primarySubnet)
         {
+#pragma warning disable CS0618
             AdditionalSubnets = additionalSubnets;
+#pragma warning restore CS0618
             DnsDomainNames = dnsDomainNames;
             PrimarySubnet = primarySubnet;
         }

@@ -187,6 +187,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// (Deprecated) The numeric unique identifier for the resource. `NumericId` is deprecated and will be removed in a future major release. Use `NetworkId` instead.
         /// </summary>
+        [Obsolete(@"`NumericId` is deprecated and will be removed in a future major release. Use `NetworkId` instead.")]
         public readonly string NumericId;
         public readonly string Project;
         /// <summary>
@@ -229,7 +230,9 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             NetworkId = networkId;
             NetworkProfile = networkProfile;
+#pragma warning disable CS0618
             NumericId = numericId;
+#pragma warning restore CS0618
             Project = project;
             SelfLink = selfLink;
             SubnetworksSelfLinks = subnetworksSelfLinks;

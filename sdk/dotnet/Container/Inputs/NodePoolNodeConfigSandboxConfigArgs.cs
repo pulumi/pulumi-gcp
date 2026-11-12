@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
         /// </summary>
         [Input("sandboxType")]
+        [Obsolete(@"`sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.")]
         public Input<string>? SandboxType { get; set; }
 
         /// <summary>

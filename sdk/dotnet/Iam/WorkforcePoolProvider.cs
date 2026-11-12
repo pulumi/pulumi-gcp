@@ -793,6 +793,7 @@ namespace Pulumi.Gcp.Iam
         /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.
         /// </summary>
         [Output("extendedAttributesOauth2Client")]
+        [Obsolete(@"`ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.")]
         public Output<Outputs.WorkforcePoolProviderExtendedAttributesOauth2Client?> ExtendedAttributesOauth2Client { get; private set; } = null!;
 
         /// <summary>
@@ -1037,6 +1038,7 @@ namespace Pulumi.Gcp.Iam
         /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.
         /// </summary>
         [Input("extendedAttributesOauth2Client")]
+        [Obsolete(@"`ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.")]
         public Input<Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientArgs>? ExtendedAttributesOauth2Client { get; set; }
 
         /// <summary>
@@ -1225,6 +1227,7 @@ namespace Pulumi.Gcp.Iam
         /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.
         /// </summary>
         [Input("extendedAttributesOauth2Client")]
+        [Obsolete(@"`ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.")]
         public Input<Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientGetArgs>? ExtendedAttributesOauth2Client { get; set; }
 
         /// <summary>

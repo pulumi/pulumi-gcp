@@ -150,6 +150,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// Structure is documented below.
         /// </summary>
         [Output("locationsDetails")]
+        [Obsolete(@"`locationsDetails` is deprecated and will be removed in a future major release. Use `Locations` instead.")]
         public Output<ImmutableArray<Outputs.MirroringEndpointGroupAssociationLocationsDetail>> LocationsDetails { get; private set; } = null!;
 
         /// <summary>

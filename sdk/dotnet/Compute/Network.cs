@@ -325,6 +325,7 @@ namespace Pulumi.Gcp.Compute
         /// The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>
         [Output("numericId")]
+        [Obsolete(@"`NumericId` is deprecated and will be removed in a future major release. Use `NetworkId` instead.")]
         public Output<string> NumericId { get; private set; } = null!;
 
         /// <summary>
@@ -695,6 +696,7 @@ namespace Pulumi.Gcp.Compute
         /// The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>
         [Input("numericId")]
+        [Obsolete(@"`NumericId` is deprecated and will be removed in a future major release. Use `NetworkId` instead.")]
         public Input<string>? NumericId { get; set; }
 
         /// <summary>

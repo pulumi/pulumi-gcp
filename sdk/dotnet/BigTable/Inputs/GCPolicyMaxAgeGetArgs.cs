@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
         /// Number of days before applying GC policy.
         /// </summary>
         [Input("days")]
+        [Obsolete(@"Deprecated in favor of duration")]
         public Input<int>? Days { get; set; }
 
         /// <summary>

@@ -397,6 +397,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Output("organization")]
+        [Obsolete(@"Use `Parent` instead.")]
         public Output<string> Organization { get; private set; } = null!;
 
         /// <summary>
@@ -539,6 +540,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Input("organization")]
+        [Obsolete(@"Use `Parent` instead.")]
         public Input<string>? Organization { get; set; }
 
         /// <summary>
@@ -642,6 +644,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
         /// &gt; **Warning:** Use `Parent` instead.
         /// </summary>
         [Input("organization")]
+        [Obsolete(@"Use `Parent` instead.")]
         public Input<string>? Organization { get; set; }
 
         /// <summary>

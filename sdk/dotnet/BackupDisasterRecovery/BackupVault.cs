@@ -233,6 +233,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// &gt; **Warning:** `ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.
         /// </summary>
         [Output("forceDelete")]
+        [Obsolete(@"`ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
@@ -473,6 +474,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// &gt; **Warning:** `ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.
         /// </summary>
         [Input("forceDelete")]
+        [Obsolete(@"`ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.")]
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
@@ -678,6 +680,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// &gt; **Warning:** `ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.
         /// </summary>
         [Input("forceDelete")]
+        [Obsolete(@"`ForceDelete` is deprecated and will be removed in a future major release. Use `IgnoreInactiveDatasources` instead.")]
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>

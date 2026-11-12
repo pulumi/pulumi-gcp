@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// 
         /// &gt; **Warning:** `Domain` is deprecated and will be removed in a future major release. Use `Domains` instead.
         /// </summary>
+        [Obsolete(@"`Domain` is deprecated and will be removed in a future major release. Use `Domains` instead.")]
         public readonly string? Domain;
         /// <summary>
         /// The list of domain names to peer for DNS resolution. Each entry
@@ -42,7 +43,9 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             string targetNetwork)
         {
+#pragma warning disable CS0618
             Domain = domain;
+#pragma warning restore CS0618
             Domains = domains;
             TargetNetwork = targetNetwork;
         }

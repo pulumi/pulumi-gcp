@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// 
         /// &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
         /// </summary>
+        [Obsolete(@"`useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.")]
         public readonly bool? UseServerlessAnalytics;
 
         [OutputConstructor]
@@ -60,7 +61,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             MaxParallelism = maxParallelism;
             UseDataBoost = useDataBoost;
             UseParallelism = useParallelism;
+#pragma warning disable CS0618
             UseServerlessAnalytics = useServerlessAnalytics;
+#pragma warning restore CS0618
         }
     }
 }
