@@ -404,7 +404,7 @@ var wrongRegionErr string
 
 // escHintMessage is the text of the product hint that the Pulumi CLI may show when no credentials are found.
 const escHintMessage = "Pulumi ESC can give your stacks short-lived Google Cloud credentials through OIDC. " +
-	"To set it up, run `pulumi env setup gcp`. Learn more: " +
+	"To set it up, run `pulumi env setup gcp`.\nLearn more: " +
 	"https://www.pulumi.com/registry/packages/gcp/installation-configuration/#authenticate-with-dynamically-generated-credentials" //nolint:lll // URL
 
 // credentialsFailure turns an error from loading the provider's credentials into a check failure. When no
