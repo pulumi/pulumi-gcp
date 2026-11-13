@@ -129,7 +129,7 @@ jobs:
     - name: Upload Provider Binaries
       run: aws s3 cp dist s3://get.pulumi.com/releases/plugins/ --recursive
     - name: Create GH Release
-      uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3
+      uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3
       if: inputs.isPrerelease == false
       with:
         tag_name: v${{ inputs.version }}
@@ -196,7 +196,7 @@ jobs:
         registry-url: https://registry.npmjs.org
     - name: Publish SDKs
       if: inputs.skipJavaSdk == false
-      uses: pulumi/pulumi-package-publisher@aed8501bbe740c32879bd38ecec6fc34e2be2c06 # v0.1.0
+      uses: pulumi/pulumi-package-publisher@v0.1.0
       with:
         sdk: all
         version: ${{ inputs.version }}
@@ -213,7 +213,7 @@ jobs:
         NUGET_PUBLISH_KEY: ${{ steps.esc-secrets.outputs.NUGET_PUBLISH_KEY }}
     - name: Publish SDKs (except Java)
       if: inputs.skipJavaSdk == true
-      uses: pulumi/pulumi-package-publisher@aed8501bbe740c32879bd38ecec6fc34e2be2c06 # v0.1.0
+      uses: pulumi/pulumi-package-publisher@v0.1.0
       with:
         sdk: all,!java
         version: ${{ inputs.version }}
