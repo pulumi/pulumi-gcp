@@ -7,10 +7,10 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.3.1
-	github.com/pulumi/providertest v0.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.1-0.20261110173442-b5861ce4c80b
-	github.com/pulumi/pulumi/pkg/v3 v3.274.2-0.20261110173231-0128bbd59799
-	github.com/pulumi/pulumi/sdk/v3 v3.275.0
+	github.com/pulumi/providertest v0.7.1-0.20261113151537-6df71fb5ef23
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.1-0.20261113152249-884b9cca6f91
+	github.com/pulumi/pulumi/pkg/v3 v3.277.0
+	github.com/pulumi/pulumi/sdk/v3 v3.277.0
 	github.com/stretchr/testify v1.12.1
 	google.golang.org/api v0.305.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -265,15 +265,15 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	go4.org/netipx v0.0.0-20260823151212-3075585bcbeb // indirect
-	golang.org/x/crypto v0.58.0 // indirect
+	golang.org/x/crypto v0.59.0 // indirect
 	golang.org/x/exp v0.0.0-20261014143641-f0251eb4aa3e // indirect
 	golang.org/x/mod v0.42.0 // indirect
 	golang.org/x/net v0.62.0 // indirect
 	golang.org/x/oauth2 v0.37.0 // indirect
-	golang.org/x/sync v0.24.0 // indirect
-	golang.org/x/sys v0.49.0 // indirect
-	golang.org/x/term v0.47.0 // indirect
-	golang.org/x/text v0.43.0 // indirect
+	golang.org/x/sync v0.25.0 // indirect
+	golang.org/x/sys v0.50.0 // indirect
+	golang.org/x/term v0.48.0 // indirect
+	golang.org/x/text v0.44.0 // indirect
 	golang.org/x/time v0.16.0 // indirect
 	golang.org/x/tools v0.52.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
@@ -288,4 +288,6 @@ require (
 	mvdan.cc/gofumpt v0.9.2 // indirect
 )
 
-replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.274.2-0.20261110173231-0128bbd59799
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.276.1-0.20261113151812-6824964413ee
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.276.1-0.20261113151812-6824964413ee

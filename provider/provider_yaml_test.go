@@ -573,7 +573,7 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 	t.Setenv("GOOGLE_REGION", "")
 	replay.Replay(t, providerServer(t), strings.ReplaceAll(`
 {
-	"method": "/pulumirpc.ResourceProvider/CheckConfig",
+	"method": "/pulumirpc.ResourceProvider/CheckConfig2",
     "request": {
         "urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
         "olds": {
