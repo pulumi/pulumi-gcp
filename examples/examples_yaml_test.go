@@ -53,7 +53,6 @@ func TestAccDatasourceYAML(t *testing.T) {
 }
 
 // Regression test for pulumi/pulumi-gcp#1843: duplicate labels on cloudrun.Service.
-// Replaces the Python TestRegress1843.
 func TestRegress1843YAML(t *testing.T) {
 	skipIfShort(t)
 	test := getBaseOptions(t).
