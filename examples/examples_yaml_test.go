@@ -52,6 +52,17 @@ func TestAccDatasourceYAML(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+// Regression test for pulumi/pulumi-gcp#1843: duplicate labels on cloudrun.Service.
+func TestRegress1843YAML(t *testing.T) {
+	skipIfShort(t)
+	test := getBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "regress-1843-yaml"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestPulumiLabelsSecretYAML(t *testing.T) {
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "yaml"),
