@@ -1,0 +1,31 @@
+name: regress-1843-yaml
+description: Regression test for pulumi/pulumi-gcp#1843, a cloudrun.Service with labels in its metadata
+runtime: yaml
+
+resources:
+  test-gcr:
+    type: gcp:cloudrun:Service
+    properties:
+      location: us-west1
+      autogenerateRevisionName: true
+      metadata:
+        labels:
+          env: dev
+        annotations:
+          run.googleapis.com/ingress: all
+      template:
+        metadata:
+          annotations:
+            autoscaling.knative.dev/maxScale: "100"
+        spec:
+          timeoutSeconds: 60
+          containerConcurrency: 30
+          containers:
+            - image: us-docker.pkg.dev/cloudrun/container/hello
+              resources:
+                limits:
+                  memory: 512Mi
+                  cpu: "1"
+      traffics:
+        - percent: 100
+          latestRevision: true
