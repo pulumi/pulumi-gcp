@@ -44,20 +44,3 @@ func TestAccWebserverPy(t *testing.T) {
 		})
 	}
 }
-
-func TestRegress1036(t *testing.T) {
-	skipIfShort(t)
-	dir := filepath.Join(getCwd(t), "regress-1036")
-	test := getPythonBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: dir,
-			EditDirs: []integration.EditDir{
-				{
-					Dir:      filepath.Join(dir, "stage2"),
-					Additive: true,
-				},
-			},
-		})
-
-	integration.ProgramTest(t, &test)
-}

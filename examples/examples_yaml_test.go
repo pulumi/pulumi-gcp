@@ -63,6 +63,25 @@ func TestRegress1843YAML(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+// Regression test for pulumi/pulumi-gcp#1036: managedZoneId stringification on dns.ManagedZone.
+// The second stage edits the description in place, which forces an update of the zone.
+func TestRegress1036YAML(t *testing.T) {
+	skipIfShort(t)
+	dir := filepath.Join(getCwd(t), "regress-1036-yaml")
+	test := getBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: dir,
+			EditDirs: []integration.EditDir{
+				{
+					Dir:      filepath.Join(dir, "stage2"),
+					Additive: true,
+				},
+			},
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestPulumiLabelsSecretYAML(t *testing.T) {
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "yaml"),
