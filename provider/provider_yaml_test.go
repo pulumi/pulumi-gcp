@@ -576,9 +576,9 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 	"method": "/pulumirpc.ResourceProvider/CheckConfig2",
     "request": {
         "urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
-        "olds": {
+        "oldInputs": {
         },
-        "news": {
+        "newInputs": {
             "version": "7.6.0"
         }
     },
