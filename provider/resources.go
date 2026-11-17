@@ -378,6 +378,23 @@ func nameField(info *tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
 	}
 }
 
+// nodePoolAutoName auto-names a node pool the way SetAutonaming would, but leaves name unset when namePrefix is
+// given. Upstream rejects a node pool that sets both, and only checks that when expanding the resource
+// rather than with ConflictsWith, so the bridge cannot skip the auto-name on its own.
+func nodePoolAutoName() *tfbridge.SchemaInfo {
+	info := tfbridge.AutoName("name", 255, "-")
+	autoName := info.Default.ComputeDefault
+	info.Default.ComputeDefault = func(ctx context.Context, opts tfbridge.ComputeDefaultOptions) (interface{}, error) {
+		// An empty namePrefix counts as unset upstream.
+		prefix := opts.Properties["namePrefix"]
+		if !prefix.IsNull() && (!prefix.IsString() || prefix.StringValue() != "") {
+			return nil, nil
+		}
+		return autoName(ctx, opts)
+	}
+	return info
+}
+
 func getRegionsList(ctx context.Context, project string, clientOpts []option.ClientOption) ([]string, error) {
 	computeService, err := compute.NewService(ctx, clientOpts...)
 	if err != nil {
@@ -1289,8 +1306,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Container/Kubernetes resources
-			containerClusterToken:               {Tok: gcpResource(gcpKubernetes, "Cluster")},
-			"google_container_node_pool":        {Tok: gcpResource(gcpKubernetes, "NodePool")},
+			containerClusterToken: {Tok: gcpResource(gcpKubernetes, "Cluster")},
+			"google_container_node_pool": {
+				Tok:    gcpResource(gcpKubernetes, "NodePool"),
+				Fields: nameField(nodePoolAutoName()),
+			},
 			"google_container_registry":         {Tok: gcpResource(gcpKubernetes, "Registry")},
 			"google_container_aws_cluster":      {Tok: gcpResource(gcpKubernetes, "AwsCluster")},
 			"google_container_aws_node_pool":    {Tok: gcpResource(gcpKubernetes, "AwsNodePool")},
