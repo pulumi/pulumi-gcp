@@ -54,7 +54,7 @@ func main() {
 			return err
 		}
 
-		ctx.Export("bucket", pulumi.Unsecret(bucket.PulumiLabels.ApplyT(func(x interface{}) string {
+		ctx.Export("bucket", pulumi.Unsecret(bucket.PulumiLabels.ApplyT(func(x any) string {
 			b, err := json.Marshal(x.(map[string]string))
 			if err != nil {
 				panic(err)
