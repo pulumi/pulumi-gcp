@@ -97,6 +97,7 @@ const (
 	gcpDatastore                = "Datastore"                // Datastore resources
 	gcpDatastream               = "Datastream"               // Datastream resources
 	gcpDeploymentManager        = "DeploymentManager"        // DeploymentManager resources
+	gcpDesignCenter             = "DesignCenter"             // Design Center resources
 	gcpDiagflow                 = "Diagflow"                 // Diagflow resources
 	gcpDiscoveryEngine          = "DiscoveryEngine"          // Discovery Engine
 	gcpEdgeNetwork              = "EdgeNetwork"              // Distributed Cloud Edge Network resources
@@ -245,6 +246,7 @@ var moduleMapping = map[string]string{
 	"datastore":                  gcpDatastore,
 	"datastream":                 gcpDatastream,
 	"deployment_manager":         gcpDeploymentManager,
+	"design_center":              gcpDesignCenter,
 	"developer_connect":          gcpDeveloperConnect,
 	"dialogflow":                 gcpDiagflow,
 	"discovery_engine":           gcpDiscoveryEngine,
