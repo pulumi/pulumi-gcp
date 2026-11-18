@@ -110,6 +110,7 @@ namespace Pulumi.Gcp.Firebaserules
 
         /// <summary>
         /// Output only. The metadata for this ruleset.
+        /// Structure is documented below.
         /// </summary>
         [Output("metadatas")]
         public Output<ImmutableArray<Outputs.RulesetMetadata>> Metadatas { get; private set; } = null!;
@@ -128,6 +129,7 @@ namespace Pulumi.Gcp.Firebaserules
 
         /// <summary>
         /// `Source` for the `Ruleset`.
+        /// Structure is documented below.
         /// </summary>
         [Output("source")]
         public Output<Outputs.RulesetSource> Source { get; private set; } = null!;
@@ -197,6 +199,7 @@ namespace Pulumi.Gcp.Firebaserules
 
         /// <summary>
         /// `Source` for the `Ruleset`.
+        /// Structure is documented below.
         /// </summary>
         [Input("source", required: true)]
         public Input<Inputs.RulesetSourceArgs> Source { get; set; } = null!;
@@ -231,6 +234,7 @@ namespace Pulumi.Gcp.Firebaserules
 
         /// <summary>
         /// Output only. The metadata for this ruleset.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RulesetMetadataGetArgs> Metadatas
         {
@@ -252,6 +256,7 @@ namespace Pulumi.Gcp.Firebaserules
 
         /// <summary>
         /// `Source` for the `Ruleset`.
+        /// Structure is documented below.
         /// </summary>
         [Input("source")]
         public Input<Inputs.RulesetSourceGetArgs>? Source { get; set; }

@@ -8,11 +8,34 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceDesiredAutoCreatedEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceDesiredAutoCreatedEndpointArgs Empty = new InstanceDesiredAutoCreatedEndpointArgs();
+
+    /**
+     * (Optional, Beta)
+     * Immutable. The IP version that the consumer endpoint will use.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return (Optional, Beta)
+     * Immutable. The IP version that the consumer endpoint will use.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
 
     /**
      * Required. The consumer network where the IP address resides, in the form of
@@ -49,6 +72,7 @@ public final class InstanceDesiredAutoCreatedEndpointArgs extends com.pulumi.res
     private InstanceDesiredAutoCreatedEndpointArgs() {}
 
     private InstanceDesiredAutoCreatedEndpointArgs(InstanceDesiredAutoCreatedEndpointArgs $) {
+        this.ipVersion = $.ipVersion;
         this.network = $.network;
         this.projectId = $.projectId;
     }
@@ -69,6 +93,33 @@ public final class InstanceDesiredAutoCreatedEndpointArgs extends com.pulumi.res
 
         public Builder(InstanceDesiredAutoCreatedEndpointArgs defaults) {
             $ = new InstanceDesiredAutoCreatedEndpointArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param ipVersion (Optional, Beta)
+         * Immutable. The IP version that the consumer endpoint will use.
+         * Default value is `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion (Optional, Beta)
+         * Immutable. The IP version that the consumer endpoint will use.
+         * Default value is `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
         }
 
         /**

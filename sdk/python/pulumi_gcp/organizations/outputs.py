@@ -309,12 +309,12 @@ class PolicyListPolicy(dict):
                  inherit_from_parent: Optional[_builtins.bool] = None,
                  suggested_value: Optional[_builtins.str] = None):
         """
-        :param 'PolicyListPolicyAllowArgs' allow: or `deny` - (Optional) One or the other must be set.
-        :param 'PolicyListPolicyDenyArgs' deny: One or the other must be set.
+        :param 'PolicyListPolicyAllowArgs' allow: Exactly one of `allow` or `deny` must be set. Structure is documented below.
+        :param 'PolicyListPolicyDenyArgs' deny: Exactly one of `allow` or `deny` must be set. Structure is documented below.
         :param _builtins.bool inherit_from_parent: If set to true, the values from the effective Policy of the parent resource
                are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
                
-               The `allow` or `deny` blocks support:
+               <a name="nested_allow_or_deny"></a>The `allow` or `deny` blocks support:
         :param _builtins.str suggested_value: The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
         """
         if allow is not None:
@@ -330,7 +330,7 @@ class PolicyListPolicy(dict):
     @pulumi.getter
     def allow(self) -> Optional['outputs.PolicyListPolicyAllow']:
         """
-        or `deny` - (Optional) One or the other must be set.
+        Exactly one of `allow` or `deny` must be set. Structure is documented below.
         """
         return pulumi.get(self, "allow")
 
@@ -338,7 +338,7 @@ class PolicyListPolicy(dict):
     @pulumi.getter
     def deny(self) -> Optional['outputs.PolicyListPolicyDeny']:
         """
-        One or the other must be set.
+        Exactly one of `allow` or `deny` must be set. Structure is documented below.
         """
         return pulumi.get(self, "deny")
 
@@ -349,7 +349,7 @@ class PolicyListPolicy(dict):
         If set to true, the values from the effective Policy of the parent resource
         are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 
-        The `allow` or `deny` blocks support:
+        <a name="nested_allow_or_deny"></a>The `allow` or `deny` blocks support:
         """
         return pulumi.get(self, "inherit_from_parent")
 

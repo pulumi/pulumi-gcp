@@ -34,6 +34,7 @@ class InstanceGroupManagerArgs:
                  params: pulumi.Input[Optional['InstanceGroupManagerParamsArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_policies: pulumi.Input[Optional['InstanceGroupManagerResourcePoliciesArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  standby_policy: pulumi.Input[Optional['InstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
                  stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]]] = None,
@@ -92,6 +93,7 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_account: ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -143,6 +145,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "project", project)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if standby_policy is not None:
             pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_disks is not None:
@@ -356,6 +360,18 @@ class InstanceGroupManagerArgs:
         pulumi.set(self, "resource_policies", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
     @pulumi.getter(name="standbyPolicy")
     def standby_policy(self) -> pulumi.Input[Optional['InstanceGroupManagerStandbyPolicyArgs']]:
         """
@@ -546,6 +562,7 @@ class _InstanceGroupManagerState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_policies: pulumi.Input[Optional['InstanceGroupManagerResourcePoliciesArgs']] = None,
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  standby_policy: pulumi.Input[Optional['InstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
                  stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]]] = None,
@@ -608,6 +625,7 @@ class _InstanceGroupManagerState:
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
+        :param pulumi.Input[_builtins.str] service_account: ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -675,6 +693,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if standby_policy is not None:
             pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_disks is not None:
@@ -947,6 +967,18 @@ class _InstanceGroupManagerState:
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
     @pulumi.getter(name="standbyPolicy")
     def standby_policy(self) -> pulumi.Input[Optional['InstanceGroupManagerStandbyPolicyArgs']]:
         """
@@ -1160,6 +1192,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  params: pulumi.Input[Optional[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict', 'outputs.InstanceGroupManagerParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_policies: pulumi.Input[Optional[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict', 'outputs.InstanceGroupManagerResourcePolicies']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  standby_policy: pulumi.Input[Optional[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict', 'outputs.InstanceGroupManagerStandbyPolicy']]] = None,
                  stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict', 'outputs.InstanceGroupManagerStatefulDisk']]]]] = None,
                  stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.InstanceGroupManagerStatefulExternalIp']]]]] = None,
@@ -1387,6 +1420,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict', 'outputs.InstanceGroupManagerResourcePolicies']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_account: ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict', 'outputs.InstanceGroupManagerStandbyPolicy']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict', 'outputs.InstanceGroupManagerStatefulDisk']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.InstanceGroupManagerStatefulExternalIp']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1621,6 +1655,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  params: pulumi.Input[Optional[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict', 'outputs.InstanceGroupManagerParams']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_policies: pulumi.Input[Optional[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict', 'outputs.InstanceGroupManagerResourcePolicies']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  standby_policy: pulumi.Input[Optional[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict', 'outputs.InstanceGroupManagerStandbyPolicy']]] = None,
                  stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict', 'outputs.InstanceGroupManagerStatefulDisk']]]]] = None,
                  stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.InstanceGroupManagerStatefulExternalIp']]]]] = None,
@@ -1658,6 +1693,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_policies"] = resource_policies
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["standby_policy"] = standby_policy
             __props__.__dict__["stateful_disks"] = stateful_disks
             __props__.__dict__["stateful_external_ips"] = stateful_external_ips
@@ -1709,6 +1745,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             resource_policies: pulumi.Input[Optional[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict', 'outputs.InstanceGroupManagerResourcePolicies']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
             standby_policy: pulumi.Input[Optional[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict', 'outputs.InstanceGroupManagerStandbyPolicy']]] = None,
             stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict', 'outputs.InstanceGroupManagerStatefulDisk']]]]] = None,
             stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.InstanceGroupManagerStatefulExternalIp']]]]] = None,
@@ -1775,6 +1812,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict', 'outputs.InstanceGroupManagerResourcePolicies']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
+        :param pulumi.Input[_builtins.str] service_account: ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict', 'outputs.InstanceGroupManagerStandbyPolicy']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict', 'outputs.InstanceGroupManagerStatefulDisk']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.InstanceGroupManagerStatefulExternalIp']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1828,6 +1866,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["service_account"] = service_account
         __props__.__dict__["standby_policy"] = standby_policy
         __props__.__dict__["stateful_disks"] = stateful_disks
         __props__.__dict__["stateful_external_ips"] = stateful_external_ips
@@ -1866,6 +1905,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             resource_policies: pulumi.Input[Optional[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict', 'outputs.InstanceGroupManagerResourcePolicies']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
             standby_policy: pulumi.Input[Optional[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict', 'outputs.InstanceGroupManagerStandbyPolicy']]] = None,
             stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict', 'outputs.InstanceGroupManagerStatefulDisk']]]]] = None,
             stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.InstanceGroupManagerStatefulExternalIp']]]]] = None,
@@ -1900,6 +1940,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__["project"] = project
         __props__["resourcePolicies"] = resource_policies
         __props__["selfLink"] = self_link
+        __props__["serviceAccount"] = service_account
         __props__["standbyPolicy"] = standby_policy
         __props__["statefulDisks"] = stateful_disks
         __props__["statefulExternalIps"] = stateful_external_ips
@@ -2084,6 +2125,14 @@ class InstanceGroupManager(pulumi.CustomResource):
         The URL of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[_builtins.str]:
+        """
+        ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        """
+        return pulumi.get(self, "service_account")
 
     @_builtins.property
     @pulumi.getter(name="standbyPolicy")

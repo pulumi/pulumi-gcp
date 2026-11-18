@@ -10,6 +10,7 @@ import com.pulumi.gcp.ces.outputs.AppLoggingSettingsCloudLoggingSettings;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettingsConversationLoggingSettings;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettingsMetricAnalysisSettings;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettingsRedactionConfig;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -53,6 +54,17 @@ public final class AppLoggingSettings {
      * 
      */
     private @Nullable AppLoggingSettingsRedactionConfig redactionConfig;
+    /**
+     * @return Whether the app has to say what may be recorded before anything is kept.
+     * When true, a session starts with recording off and stays off until the
+     * client sends SessionInput.recording_control, which then decides every turn
+     * from that point on. This covers audio recording as well as conversation
+     * history, BigQuery export and Cloud Logging.
+     * When `false`, the default, the settings above decide on their own and the
+     * client does not have to send anything.
+     * 
+     */
+    private @Nullable Boolean requiredRecordingConsent;
 
     private AppLoggingSettings() {}
     /**
@@ -104,6 +116,19 @@ public final class AppLoggingSettings {
     public Optional<AppLoggingSettingsRedactionConfig> redactionConfig() {
         return Optional.ofNullable(this.redactionConfig);
     }
+    /**
+     * @return Whether the app has to say what may be recorded before anything is kept.
+     * When true, a session starts with recording off and stays off until the
+     * client sends SessionInput.recording_control, which then decides every turn
+     * from that point on. This covers audio recording as well as conversation
+     * history, BigQuery export and Cloud Logging.
+     * When `false`, the default, the settings above decide on their own and the
+     * client does not have to send anything.
+     * 
+     */
+    public Optional<Boolean> requiredRecordingConsent() {
+        return Optional.ofNullable(this.requiredRecordingConsent);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -120,6 +145,7 @@ public final class AppLoggingSettings {
         private @Nullable AppLoggingSettingsConversationLoggingSettings conversationLoggingSettings;
         private @Nullable AppLoggingSettingsMetricAnalysisSettings metricAnalysisSettings;
         private @Nullable AppLoggingSettingsRedactionConfig redactionConfig;
+        private @Nullable Boolean requiredRecordingConsent;
         public Builder() {}
         public Builder(AppLoggingSettings defaults) {
     	      Objects.requireNonNull(defaults);
@@ -129,6 +155,7 @@ public final class AppLoggingSettings {
     	      this.conversationLoggingSettings = defaults.conversationLoggingSettings;
     	      this.metricAnalysisSettings = defaults.metricAnalysisSettings;
     	      this.redactionConfig = defaults.redactionConfig;
+    	      this.requiredRecordingConsent = defaults.requiredRecordingConsent;
         }
 
         @CustomType.Setter
@@ -167,6 +194,12 @@ public final class AppLoggingSettings {
             this.redactionConfig = redactionConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder requiredRecordingConsent(@Nullable Boolean requiredRecordingConsent) {
+
+            this.requiredRecordingConsent = requiredRecordingConsent;
+            return this;
+        }
         public AppLoggingSettings build() {
             final var _resultValue = new AppLoggingSettings();
             _resultValue.audioRecordingConfig = audioRecordingConfig;
@@ -175,6 +208,7 @@ public final class AppLoggingSettings {
             _resultValue.conversationLoggingSettings = conversationLoggingSettings;
             _resultValue.metricAnalysisSettings = metricAnalysisSettings;
             _resultValue.redactionConfig = redactionConfig;
+            _resultValue.requiredRecordingConsent = requiredRecordingConsent;
             return _resultValue;
         }
     }

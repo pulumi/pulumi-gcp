@@ -155,9 +155,17 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+     * 
+     */
     @Import(name="passwordPolicy")
     private @Nullable Output<UserPasswordPolicyArgs> passwordPolicy;
 
+    /**
+     * @return The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+     * 
+     */
     public Optional<Output<UserPasswordPolicyArgs>> passwordPolicy() {
         return Optional.ofNullable(this.passwordPolicy);
     }
@@ -471,11 +479,23 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
             return password(Output.of(password));
         }
 
+        /**
+         * @param passwordPolicy The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder passwordPolicy(@Nullable Output<UserPasswordPolicyArgs> passwordPolicy) {
             $.passwordPolicy = passwordPolicy;
             return this;
         }
 
+        /**
+         * @param passwordPolicy The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder passwordPolicy(UserPasswordPolicyArgs passwordPolicy) {
             return passwordPolicy(Output.of(passwordPolicy));
         }

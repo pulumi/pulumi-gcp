@@ -38,6 +38,7 @@ class RegionInstanceGroupManagerArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_policies: pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  standby_policy: pulumi.Input[Optional['RegionInstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
                  stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
@@ -100,6 +101,7 @@ class RegionInstanceGroupManagerArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_account: ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
                
                ***
         :param pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -157,6 +159,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "region", region)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if standby_policy is not None:
             pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_disks is not None:
@@ -409,14 +413,26 @@ class RegionInstanceGroupManagerArgs:
     def resource_policies(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']]:
         """
         Resource policies for this managed instance group. Structure is documented below.
-
-        ***
         """
         return pulumi.get(self, "resource_policies")
 
     @resource_policies.setter
     def resource_policies(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']]):
         pulumi.set(self, "resource_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+
+        ***
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyPolicy")
@@ -597,6 +613,7 @@ class _RegionInstanceGroupManagerState:
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_policies: pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']] = None,
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  standby_policy: pulumi.Input[Optional['RegionInstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
                  stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
@@ -662,9 +679,10 @@ class _RegionInstanceGroupManagerState:
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+        :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
+        :param pulumi.Input[_builtins.str] service_account: ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
                
                ***
-        :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
         :param pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -734,6 +752,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if standby_policy is not None:
             pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_disks is not None:
@@ -1024,8 +1044,6 @@ class _RegionInstanceGroupManagerState:
     def resource_policies(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']]:
         """
         Resource policies for this managed instance group. Structure is documented below.
-
-        ***
         """
         return pulumi.get(self, "resource_policies")
 
@@ -1044,6 +1062,20 @@ class _RegionInstanceGroupManagerState:
     @self_link.setter
     def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+
+        ***
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyPolicy")
@@ -1248,6 +1280,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict', 'outputs.RegionInstanceGroupManagerResourcePolicies']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  standby_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict', 'outputs.RegionInstanceGroupManagerStandbyPolicy']]] = None,
                  stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict', 'outputs.RegionInstanceGroupManagerStatefulDisk']]]]] = None,
                  stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.RegionInstanceGroupManagerStatefulExternalIp']]]]] = None,
@@ -1428,6 +1461,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict', 'outputs.RegionInstanceGroupManagerResourcePolicies']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_account: ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
                
                ***
         :param pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict', 'outputs.RegionInstanceGroupManagerStandbyPolicy']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -1613,6 +1647,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict', 'outputs.RegionInstanceGroupManagerResourcePolicies']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  standby_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict', 'outputs.RegionInstanceGroupManagerStandbyPolicy']]] = None,
                  stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict', 'outputs.RegionInstanceGroupManagerStatefulDisk']]]]] = None,
                  stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.RegionInstanceGroupManagerStatefulExternalIp']]]]] = None,
@@ -1653,6 +1688,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["resource_policies"] = resource_policies
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["standby_policy"] = standby_policy
             __props__.__dict__["stateful_disks"] = stateful_disks
             __props__.__dict__["stateful_external_ips"] = stateful_external_ips
@@ -1705,6 +1741,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             resource_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict', 'outputs.RegionInstanceGroupManagerResourcePolicies']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
             standby_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict', 'outputs.RegionInstanceGroupManagerStandbyPolicy']]] = None,
             stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict', 'outputs.RegionInstanceGroupManagerStatefulDisk']]]]] = None,
             stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.RegionInstanceGroupManagerStatefulExternalIp']]]]] = None,
@@ -1774,9 +1811,10 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict', 'outputs.RegionInstanceGroupManagerResourcePolicies']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
+        :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
+        :param pulumi.Input[_builtins.str] service_account: ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
                
                ***
-        :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
         :param pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict', 'outputs.RegionInstanceGroupManagerStandbyPolicy']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict', 'outputs.RegionInstanceGroupManagerStatefulDisk']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.RegionInstanceGroupManagerStatefulExternalIp']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1829,6 +1867,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["service_account"] = service_account
         __props__.__dict__["standby_policy"] = standby_policy
         __props__.__dict__["stateful_disks"] = stateful_disks
         __props__.__dict__["stateful_external_ips"] = stateful_external_ips
@@ -1869,6 +1908,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             resource_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict', 'outputs.RegionInstanceGroupManagerResourcePolicies']]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
             standby_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict', 'outputs.RegionInstanceGroupManagerStandbyPolicy']]] = None,
             stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict', 'outputs.RegionInstanceGroupManagerStatefulDisk']]]]] = None,
             stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict', 'outputs.RegionInstanceGroupManagerStatefulExternalIp']]]]] = None,
@@ -1905,6 +1945,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__["region"] = region
         __props__["resourcePolicies"] = resource_policies
         __props__["selfLink"] = self_link
+        __props__["serviceAccount"] = service_account
         __props__["standbyPolicy"] = standby_policy
         __props__["statefulDisks"] = stateful_disks
         __props__["statefulExternalIps"] = stateful_external_ips
@@ -2106,8 +2147,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def resource_policies(self) -> pulumi.Output[Optional['outputs.RegionInstanceGroupManagerResourcePolicies']]:
         """
         Resource policies for this managed instance group. Structure is documented below.
-
-        ***
         """
         return pulumi.get(self, "resource_policies")
 
@@ -2118,6 +2157,16 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         The URL of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[_builtins.str]:
+        """
+        ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+
+        ***
+        """
+        return pulumi.get(self, "service_account")
 
     @_builtins.property
     @pulumi.getter(name="standbyPolicy")

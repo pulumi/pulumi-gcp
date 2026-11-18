@@ -239,6 +239,9 @@ export class User extends pulumi.CustomResource {
      * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      */
     declare public readonly password: pulumi.Output<string | undefined>;
+    /**
+     * The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+     */
     declare public readonly passwordPolicy: pulumi.Output<outputs.sql.UserPasswordPolicy | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -259,6 +262,9 @@ export class User extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * (read only) SQL Server specific user details. Structure is documented below.
+     */
     declare public /*out*/ readonly sqlServerUserDetails: pulumi.Output<outputs.sql.UserSqlServerUserDetail[]>;
     /**
      * The user type. It determines the method to authenticate the
@@ -378,6 +384,9 @@ export interface UserState {
      * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+     */
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -398,6 +407,9 @@ export interface UserState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * (read only) SQL Server specific user details. Structure is documented below.
+     */
     sqlServerUserDetails?: pulumi.Input<pulumi.Input<inputs.sql.UserSqlServerUserDetail>[] | undefined>;
     /**
      * The user type. It determines the method to authenticate the
@@ -462,6 +474,9 @@ export interface UserArgs {
      * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+     */
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.

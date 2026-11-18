@@ -74,6 +74,8 @@ class GlobalAddressArgs:
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+               * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+               * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -253,6 +255,8 @@ class GlobalAddressArgs:
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
         * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+        * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+        * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         """
         return pulumi.get(self, "purpose")
 
@@ -330,6 +334,8 @@ class _GlobalAddressState:
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+               * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+               * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         """
         if address is not None:
@@ -570,6 +576,8 @@ class _GlobalAddressState:
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
         * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+        * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+        * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         """
         return pulumi.get(self, "purpose")
 
@@ -706,6 +714,8 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+               * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+               * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         """
         ...
     @overload
@@ -901,6 +911,8 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+               * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+               * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1112,6 +1124,8 @@ class GlobalAddress(pulumi.CustomResource):
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
         * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+        * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+        * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         """
         return pulumi.get(self, "purpose")
 

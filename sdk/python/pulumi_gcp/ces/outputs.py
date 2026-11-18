@@ -45,6 +45,7 @@ __all__ = [
     'AppAudioProcessingConfig',
     'AppAudioProcessingConfigAmbientSoundConfig',
     'AppAudioProcessingConfigBargeInConfig',
+    'AppAudioProcessingConfigCustomVoiceSample',
     'AppAudioProcessingConfigSynthesizeSpeechConfig',
     'AppClientCertificateSettings',
     'AppDataStoreSettings',
@@ -2202,6 +2203,8 @@ class AppAudioProcessingConfig(dict):
             suggest = "ambient_sound_config"
         elif key == "bargeInConfig":
             suggest = "barge_in_config"
+        elif key == "customVoiceSamples":
+            suggest = "custom_voice_samples"
         elif key == "inactivityTimeout":
             suggest = "inactivity_timeout"
         elif key == "synthesizeSpeechConfigs":
@@ -2221,6 +2224,7 @@ class AppAudioProcessingConfig(dict):
     def __init__(__self__, *,
                  ambient_sound_config: Optional['outputs.AppAudioProcessingConfigAmbientSoundConfig'] = None,
                  barge_in_config: Optional['outputs.AppAudioProcessingConfigBargeInConfig'] = None,
+                 custom_voice_samples: Optional[Sequence['outputs.AppAudioProcessingConfigCustomVoiceSample']] = None,
                  inactivity_timeout: Optional[_builtins.str] = None,
                  synthesize_speech_configs: Optional[Sequence['outputs.AppAudioProcessingConfigSynthesizeSpeechConfig']] = None):
         """
@@ -2228,6 +2232,8 @@ class AppAudioProcessingConfig(dict):
                response, to enhance the naturalness of the conversation.
                Structure is documented below.
         :param 'AppAudioProcessingConfigBargeInConfigArgs' barge_in_config: Configuration for how the user barge-in activities should be handled.
+               Structure is documented below.
+        :param Sequence['AppAudioProcessingConfigCustomVoiceSampleArgs'] custom_voice_samples: Configures custom voice samples for voice cloning.
                Structure is documented below.
         :param _builtins.str inactivity_timeout: The duration of user inactivity (no speech or interaction) before the agent
                prompts the user for reengagement. If not set, the agent will not prompt
@@ -2245,6 +2251,8 @@ class AppAudioProcessingConfig(dict):
             pulumi.set(__self__, "ambient_sound_config", ambient_sound_config)
         if barge_in_config is not None:
             pulumi.set(__self__, "barge_in_config", barge_in_config)
+        if custom_voice_samples is not None:
+            pulumi.set(__self__, "custom_voice_samples", custom_voice_samples)
         if inactivity_timeout is not None:
             pulumi.set(__self__, "inactivity_timeout", inactivity_timeout)
         if synthesize_speech_configs is not None:
@@ -2268,6 +2276,15 @@ class AppAudioProcessingConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "barge_in_config")
+
+    @_builtins.property
+    @pulumi.getter(name="customVoiceSamples")
+    def custom_voice_samples(self) -> Optional[Sequence['outputs.AppAudioProcessingConfigCustomVoiceSample']]:
+        """
+        Configures custom voice samples for voice cloning.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_voice_samples")
 
     @_builtins.property
     @pulumi.getter(name="inactivityTimeout")
@@ -2429,6 +2446,100 @@ class AppAudioProcessingConfigBargeInConfig(dict):
         visually.
         """
         return pulumi.get(self, "barge_in_awareness")
+
+
+@pulumi.output_type
+class AppAudioProcessingConfigCustomVoiceSample(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consentAudioGcsUri":
+            suggest = "consent_audio_gcs_uri"
+        elif key == "previewText":
+            suggest = "preview_text"
+        elif key == "voiceInstruction":
+            suggest = "voice_instruction"
+        elif key == "voiceSampleGcsUri":
+            suggest = "voice_sample_gcs_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppAudioProcessingConfigCustomVoiceSample. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppAudioProcessingConfigCustomVoiceSample.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppAudioProcessingConfigCustomVoiceSample.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consent_audio_gcs_uri: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 preview_text: Optional[_builtins.str] = None,
+                 voice_instruction: Optional[_builtins.str] = None,
+                 voice_sample_gcs_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str consent_audio_gcs_uri: Consent audio for voice cloning.
+        :param _builtins.str name: The user-defined name for the custom voice sample.
+        :param _builtins.str preview_text: Text for synthesizing preview audio for custom voice.
+        :param _builtins.str voice_instruction: Natural language instructions for voice style, tone, pacing, or
+               pronunciation.
+        :param _builtins.str voice_sample_gcs_uri: The Cloud Storage URI to the audio sample for voice cloning. The
+               audio sample should be a mono-channel, 24kHz WAV file.
+        """
+        if consent_audio_gcs_uri is not None:
+            pulumi.set(__self__, "consent_audio_gcs_uri", consent_audio_gcs_uri)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if preview_text is not None:
+            pulumi.set(__self__, "preview_text", preview_text)
+        if voice_instruction is not None:
+            pulumi.set(__self__, "voice_instruction", voice_instruction)
+        if voice_sample_gcs_uri is not None:
+            pulumi.set(__self__, "voice_sample_gcs_uri", voice_sample_gcs_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="consentAudioGcsUri")
+    def consent_audio_gcs_uri(self) -> Optional[_builtins.str]:
+        """
+        Consent audio for voice cloning.
+        """
+        return pulumi.get(self, "consent_audio_gcs_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The user-defined name for the custom voice sample.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="previewText")
+    def preview_text(self) -> Optional[_builtins.str]:
+        """
+        Text for synthesizing preview audio for custom voice.
+        """
+        return pulumi.get(self, "preview_text")
+
+    @_builtins.property
+    @pulumi.getter(name="voiceInstruction")
+    def voice_instruction(self) -> Optional[_builtins.str]:
+        """
+        Natural language instructions for voice style, tone, pacing, or
+        pronunciation.
+        """
+        return pulumi.get(self, "voice_instruction")
+
+    @_builtins.property
+    @pulumi.getter(name="voiceSampleGcsUri")
+    def voice_sample_gcs_uri(self) -> Optional[_builtins.str]:
+        """
+        The Cloud Storage URI to the audio sample for voice cloning. The
+        audio sample should be a mono-channel, 24kHz WAV file.
+        """
+        return pulumi.get(self, "voice_sample_gcs_uri")
 
 
 @pulumi.output_type
@@ -3716,6 +3827,8 @@ class AppLoggingSettings(dict):
             suggest = "metric_analysis_settings"
         elif key == "redactionConfig":
             suggest = "redaction_config"
+        elif key == "requiredRecordingConsent":
+            suggest = "required_recording_consent"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AppLoggingSettings. Access the value via the '{suggest}' property getter instead.")
@@ -3734,7 +3847,8 @@ class AppLoggingSettings(dict):
                  cloud_logging_settings: Optional['outputs.AppLoggingSettingsCloudLoggingSettings'] = None,
                  conversation_logging_settings: Optional['outputs.AppLoggingSettingsConversationLoggingSettings'] = None,
                  metric_analysis_settings: Optional['outputs.AppLoggingSettingsMetricAnalysisSettings'] = None,
-                 redaction_config: Optional['outputs.AppLoggingSettingsRedactionConfig'] = None):
+                 redaction_config: Optional['outputs.AppLoggingSettingsRedactionConfig'] = None,
+                 required_recording_consent: Optional[_builtins.bool] = None):
         """
         :param 'AppLoggingSettingsAudioRecordingConfigArgs' audio_recording_config: Configuration for how the audio interactions should be recorded.
                Structure is documented below.
@@ -3749,6 +3863,13 @@ class AppLoggingSettings(dict):
                Structure is documented below.
         :param 'AppLoggingSettingsRedactionConfigArgs' redaction_config: Configuration to instruct how sensitive data should be handled.
                Structure is documented below.
+        :param _builtins.bool required_recording_consent: Whether the app has to say what may be recorded before anything is kept.
+               When true, a session starts with recording off and stays off until the
+               client sends SessionInput.recording_control, which then decides every turn
+               from that point on. This covers audio recording as well as conversation
+               history, BigQuery export and Cloud Logging.
+               When `false`, the default, the settings above decide on their own and the
+               client does not have to send anything.
         """
         if audio_recording_config is not None:
             pulumi.set(__self__, "audio_recording_config", audio_recording_config)
@@ -3762,6 +3883,8 @@ class AppLoggingSettings(dict):
             pulumi.set(__self__, "metric_analysis_settings", metric_analysis_settings)
         if redaction_config is not None:
             pulumi.set(__self__, "redaction_config", redaction_config)
+        if required_recording_consent is not None:
+            pulumi.set(__self__, "required_recording_consent", required_recording_consent)
 
     @_builtins.property
     @pulumi.getter(name="audioRecordingConfig")
@@ -3817,6 +3940,20 @@ class AppLoggingSettings(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "redaction_config")
+
+    @_builtins.property
+    @pulumi.getter(name="requiredRecordingConsent")
+    def required_recording_consent(self) -> Optional[_builtins.bool]:
+        """
+        Whether the app has to say what may be recorded before anything is kept.
+        When true, a session starts with recording off and stays off until the
+        client sends SessionInput.recording_control, which then decides every turn
+        from that point on. This covers audio recording as well as conversation
+        history, BigQuery export and Cloud Logging.
+        When `false`, the default, the settings above decide on their own and the
+        client does not have to send anything.
+        """
+        return pulumi.get(self, "required_recording_consent")
 
 
 @pulumi.output_type

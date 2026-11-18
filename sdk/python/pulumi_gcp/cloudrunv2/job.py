@@ -1095,6 +1095,12 @@ class Job(pulumi.CustomResource):
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
                         "sandbox_launcher": True,
                     }],
+                    "sandboxes": {
+                        "templates": [{
+                            "name": "hello",
+                            "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                        }],
+                    },
                 },
             })
         ```
@@ -1616,6 +1622,12 @@ class Job(pulumi.CustomResource):
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
                         "sandbox_launcher": True,
                     }],
+                    "sandboxes": {
+                        "templates": [{
+                            "name": "hello",
+                            "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                        }],
+                    },
                 },
             })
         ```

@@ -627,6 +627,13 @@ namespace Pulumi.Gcp
             set => _deploymentManagerCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _designCenterCustomEndpoint = new __Value<string?>(() => __config.Get("designCenterCustomEndpoint"));
+        public static string? DesignCenterCustomEndpoint
+        {
+            get => _designCenterCustomEndpoint.Get();
+            set => _designCenterCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _developerConnectCustomEndpoint = new __Value<string?>(() => __config.Get("developerConnectCustomEndpoint"));
         public static string? DeveloperConnectCustomEndpoint
         {

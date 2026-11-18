@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AddonArgs, AddonState } from "./addon";
+export type Addon = import("./addon").Addon;
+export const Addon: typeof import("./addon").Addon = null as any;
+utilities.lazyLoad(exports, ["Addon"], () => require("./addon"));
+
 export { ApiHubInstanceArgs, ApiHubInstanceState } from "./apiHubInstance";
 export type ApiHubInstance = import("./apiHubInstance").ApiHubInstance;
 export const ApiHubInstance: typeof import("./apiHubInstance").ApiHubInstance = null as any;
@@ -40,6 +45,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:apihub/addon:Addon":
+                return new Addon(name, <any>undefined, { urn })
             case "gcp:apihub/apiHubInstance:ApiHubInstance":
                 return new ApiHubInstance(name, <any>undefined, { urn })
             case "gcp:apihub/curation:Curation":
@@ -57,6 +64,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "apihub/addon", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/apiHubInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/curation", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/hostProjectRegistration", _module)

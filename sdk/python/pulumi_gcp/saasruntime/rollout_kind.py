@@ -656,9 +656,6 @@ class RolloutKind(pulumi.CustomResource):
         """
         A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## Example Usage
 
         ### Saas Runtime Rollout Kind Basic
@@ -757,9 +754,6 @@ class RolloutKind(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## Example Usage
 

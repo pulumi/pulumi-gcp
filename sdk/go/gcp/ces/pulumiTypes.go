@@ -4394,6 +4394,9 @@ type AppAudioProcessingConfig struct {
 	// Configuration for how the user barge-in activities should be handled.
 	// Structure is documented below.
 	BargeInConfig *AppAudioProcessingConfigBargeInConfig `pulumi:"bargeInConfig"`
+	// Configures custom voice samples for voice cloning.
+	// Structure is documented below.
+	CustomVoiceSamples []AppAudioProcessingConfigCustomVoiceSample `pulumi:"customVoiceSamples"`
 	// The duration of user inactivity (no speech or interaction) before the agent
 	// prompts the user for reengagement. If not set, the agent will not prompt
 	// the user for reengagement.
@@ -4428,6 +4431,9 @@ type AppAudioProcessingConfigArgs struct {
 	// Configuration for how the user barge-in activities should be handled.
 	// Structure is documented below.
 	BargeInConfig AppAudioProcessingConfigBargeInConfigPtrInput `pulumi:"bargeInConfig"`
+	// Configures custom voice samples for voice cloning.
+	// Structure is documented below.
+	CustomVoiceSamples AppAudioProcessingConfigCustomVoiceSampleArrayInput `pulumi:"customVoiceSamples"`
 	// The duration of user inactivity (no speech or interaction) before the agent
 	// prompts the user for reengagement. If not set, the agent will not prompt
 	// the user for reengagement.
@@ -4535,6 +4541,14 @@ func (o AppAudioProcessingConfigOutput) BargeInConfig() AppAudioProcessingConfig
 	return o.ApplyT(func(v AppAudioProcessingConfig) *AppAudioProcessingConfigBargeInConfig { return v.BargeInConfig }).(AppAudioProcessingConfigBargeInConfigPtrOutput)
 }
 
+// Configures custom voice samples for voice cloning.
+// Structure is documented below.
+func (o AppAudioProcessingConfigOutput) CustomVoiceSamples() AppAudioProcessingConfigCustomVoiceSampleArrayOutput {
+	return o.ApplyT(func(v AppAudioProcessingConfig) []AppAudioProcessingConfigCustomVoiceSample {
+		return v.CustomVoiceSamples
+	}).(AppAudioProcessingConfigCustomVoiceSampleArrayOutput)
+}
+
 // The duration of user inactivity (no speech or interaction) before the agent
 // prompts the user for reengagement. If not set, the agent will not prompt
 // the user for reengagement.
@@ -4601,6 +4615,17 @@ func (o AppAudioProcessingConfigPtrOutput) BargeInConfig() AppAudioProcessingCon
 		}
 		return v.BargeInConfig
 	}).(AppAudioProcessingConfigBargeInConfigPtrOutput)
+}
+
+// Configures custom voice samples for voice cloning.
+// Structure is documented below.
+func (o AppAudioProcessingConfigPtrOutput) CustomVoiceSamples() AppAudioProcessingConfigCustomVoiceSampleArrayOutput {
+	return o.ApplyT(func(v *AppAudioProcessingConfig) []AppAudioProcessingConfigCustomVoiceSample {
+		if v == nil {
+			return nil
+		}
+		return v.CustomVoiceSamples
+	}).(AppAudioProcessingConfigCustomVoiceSampleArrayOutput)
 }
 
 // The duration of user inactivity (no speech or interaction) before the agent
@@ -5014,6 +5039,145 @@ func (o AppAudioProcessingConfigBargeInConfigPtrOutput) BargeInAwareness() pulum
 		}
 		return v.BargeInAwareness
 	}).(pulumi.BoolPtrOutput)
+}
+
+type AppAudioProcessingConfigCustomVoiceSample struct {
+	// Consent audio for voice cloning.
+	ConsentAudioGcsUri *string `pulumi:"consentAudioGcsUri"`
+	// The user-defined name for the custom voice sample.
+	Name *string `pulumi:"name"`
+	// Text for synthesizing preview audio for custom voice.
+	PreviewText *string `pulumi:"previewText"`
+	// Natural language instructions for voice style, tone, pacing, or
+	// pronunciation.
+	VoiceInstruction *string `pulumi:"voiceInstruction"`
+	// The Cloud Storage URI to the audio sample for voice cloning. The
+	// audio sample should be a mono-channel, 24kHz WAV file.
+	VoiceSampleGcsUri *string `pulumi:"voiceSampleGcsUri"`
+}
+
+// AppAudioProcessingConfigCustomVoiceSampleInput is an input type that accepts AppAudioProcessingConfigCustomVoiceSampleArgs and AppAudioProcessingConfigCustomVoiceSampleOutput values.
+// You can construct a concrete instance of `AppAudioProcessingConfigCustomVoiceSampleInput` via:
+//
+//	AppAudioProcessingConfigCustomVoiceSampleArgs{...}
+type AppAudioProcessingConfigCustomVoiceSampleInput interface {
+	pulumi.Input
+
+	ToAppAudioProcessingConfigCustomVoiceSampleOutput() AppAudioProcessingConfigCustomVoiceSampleOutput
+	ToAppAudioProcessingConfigCustomVoiceSampleOutputWithContext(context.Context) AppAudioProcessingConfigCustomVoiceSampleOutput
+}
+
+type AppAudioProcessingConfigCustomVoiceSampleArgs struct {
+	// Consent audio for voice cloning.
+	ConsentAudioGcsUri pulumi.StringPtrInput `pulumi:"consentAudioGcsUri"`
+	// The user-defined name for the custom voice sample.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Text for synthesizing preview audio for custom voice.
+	PreviewText pulumi.StringPtrInput `pulumi:"previewText"`
+	// Natural language instructions for voice style, tone, pacing, or
+	// pronunciation.
+	VoiceInstruction pulumi.StringPtrInput `pulumi:"voiceInstruction"`
+	// The Cloud Storage URI to the audio sample for voice cloning. The
+	// audio sample should be a mono-channel, 24kHz WAV file.
+	VoiceSampleGcsUri pulumi.StringPtrInput `pulumi:"voiceSampleGcsUri"`
+}
+
+func (AppAudioProcessingConfigCustomVoiceSampleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAudioProcessingConfigCustomVoiceSample)(nil)).Elem()
+}
+
+func (i AppAudioProcessingConfigCustomVoiceSampleArgs) ToAppAudioProcessingConfigCustomVoiceSampleOutput() AppAudioProcessingConfigCustomVoiceSampleOutput {
+	return i.ToAppAudioProcessingConfigCustomVoiceSampleOutputWithContext(context.Background())
+}
+
+func (i AppAudioProcessingConfigCustomVoiceSampleArgs) ToAppAudioProcessingConfigCustomVoiceSampleOutputWithContext(ctx context.Context) AppAudioProcessingConfigCustomVoiceSampleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppAudioProcessingConfigCustomVoiceSampleOutput)
+}
+
+// AppAudioProcessingConfigCustomVoiceSampleArrayInput is an input type that accepts AppAudioProcessingConfigCustomVoiceSampleArray and AppAudioProcessingConfigCustomVoiceSampleArrayOutput values.
+// You can construct a concrete instance of `AppAudioProcessingConfigCustomVoiceSampleArrayInput` via:
+//
+//	AppAudioProcessingConfigCustomVoiceSampleArray{ AppAudioProcessingConfigCustomVoiceSampleArgs{...} }
+type AppAudioProcessingConfigCustomVoiceSampleArrayInput interface {
+	pulumi.Input
+
+	ToAppAudioProcessingConfigCustomVoiceSampleArrayOutput() AppAudioProcessingConfigCustomVoiceSampleArrayOutput
+	ToAppAudioProcessingConfigCustomVoiceSampleArrayOutputWithContext(context.Context) AppAudioProcessingConfigCustomVoiceSampleArrayOutput
+}
+
+type AppAudioProcessingConfigCustomVoiceSampleArray []AppAudioProcessingConfigCustomVoiceSampleInput
+
+func (AppAudioProcessingConfigCustomVoiceSampleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppAudioProcessingConfigCustomVoiceSample)(nil)).Elem()
+}
+
+func (i AppAudioProcessingConfigCustomVoiceSampleArray) ToAppAudioProcessingConfigCustomVoiceSampleArrayOutput() AppAudioProcessingConfigCustomVoiceSampleArrayOutput {
+	return i.ToAppAudioProcessingConfigCustomVoiceSampleArrayOutputWithContext(context.Background())
+}
+
+func (i AppAudioProcessingConfigCustomVoiceSampleArray) ToAppAudioProcessingConfigCustomVoiceSampleArrayOutputWithContext(ctx context.Context) AppAudioProcessingConfigCustomVoiceSampleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppAudioProcessingConfigCustomVoiceSampleArrayOutput)
+}
+
+type AppAudioProcessingConfigCustomVoiceSampleOutput struct{ *pulumi.OutputState }
+
+func (AppAudioProcessingConfigCustomVoiceSampleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppAudioProcessingConfigCustomVoiceSample)(nil)).Elem()
+}
+
+func (o AppAudioProcessingConfigCustomVoiceSampleOutput) ToAppAudioProcessingConfigCustomVoiceSampleOutput() AppAudioProcessingConfigCustomVoiceSampleOutput {
+	return o
+}
+
+func (o AppAudioProcessingConfigCustomVoiceSampleOutput) ToAppAudioProcessingConfigCustomVoiceSampleOutputWithContext(ctx context.Context) AppAudioProcessingConfigCustomVoiceSampleOutput {
+	return o
+}
+
+// Consent audio for voice cloning.
+func (o AppAudioProcessingConfigCustomVoiceSampleOutput) ConsentAudioGcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAudioProcessingConfigCustomVoiceSample) *string { return v.ConsentAudioGcsUri }).(pulumi.StringPtrOutput)
+}
+
+// The user-defined name for the custom voice sample.
+func (o AppAudioProcessingConfigCustomVoiceSampleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAudioProcessingConfigCustomVoiceSample) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Text for synthesizing preview audio for custom voice.
+func (o AppAudioProcessingConfigCustomVoiceSampleOutput) PreviewText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAudioProcessingConfigCustomVoiceSample) *string { return v.PreviewText }).(pulumi.StringPtrOutput)
+}
+
+// Natural language instructions for voice style, tone, pacing, or
+// pronunciation.
+func (o AppAudioProcessingConfigCustomVoiceSampleOutput) VoiceInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAudioProcessingConfigCustomVoiceSample) *string { return v.VoiceInstruction }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage URI to the audio sample for voice cloning. The
+// audio sample should be a mono-channel, 24kHz WAV file.
+func (o AppAudioProcessingConfigCustomVoiceSampleOutput) VoiceSampleGcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAudioProcessingConfigCustomVoiceSample) *string { return v.VoiceSampleGcsUri }).(pulumi.StringPtrOutput)
+}
+
+type AppAudioProcessingConfigCustomVoiceSampleArrayOutput struct{ *pulumi.OutputState }
+
+func (AppAudioProcessingConfigCustomVoiceSampleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppAudioProcessingConfigCustomVoiceSample)(nil)).Elem()
+}
+
+func (o AppAudioProcessingConfigCustomVoiceSampleArrayOutput) ToAppAudioProcessingConfigCustomVoiceSampleArrayOutput() AppAudioProcessingConfigCustomVoiceSampleArrayOutput {
+	return o
+}
+
+func (o AppAudioProcessingConfigCustomVoiceSampleArrayOutput) ToAppAudioProcessingConfigCustomVoiceSampleArrayOutputWithContext(ctx context.Context) AppAudioProcessingConfigCustomVoiceSampleArrayOutput {
+	return o
+}
+
+func (o AppAudioProcessingConfigCustomVoiceSampleArrayOutput) Index(i pulumi.IntInput) AppAudioProcessingConfigCustomVoiceSampleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppAudioProcessingConfigCustomVoiceSample {
+		return vs[0].([]AppAudioProcessingConfigCustomVoiceSample)[vs[1].(int)]
+	}).(AppAudioProcessingConfigCustomVoiceSampleOutput)
 }
 
 type AppAudioProcessingConfigSynthesizeSpeechConfig struct {
@@ -8447,6 +8611,14 @@ type AppLoggingSettings struct {
 	// Configuration to instruct how sensitive data should be handled.
 	// Structure is documented below.
 	RedactionConfig *AppLoggingSettingsRedactionConfig `pulumi:"redactionConfig"`
+	// Whether the app has to say what may be recorded before anything is kept.
+	// When true, a session starts with recording off and stays off until the
+	// client sends SessionInput.recording_control, which then decides every turn
+	// from that point on. This covers audio recording as well as conversation
+	// history, BigQuery export and Cloud Logging.
+	// When `false`, the default, the settings above decide on their own and the
+	// client does not have to send anything.
+	RequiredRecordingConsent *bool `pulumi:"requiredRecordingConsent"`
 }
 
 // AppLoggingSettingsInput is an input type that accepts AppLoggingSettingsArgs and AppLoggingSettingsOutput values.
@@ -8480,6 +8652,14 @@ type AppLoggingSettingsArgs struct {
 	// Configuration to instruct how sensitive data should be handled.
 	// Structure is documented below.
 	RedactionConfig AppLoggingSettingsRedactionConfigPtrInput `pulumi:"redactionConfig"`
+	// Whether the app has to say what may be recorded before anything is kept.
+	// When true, a session starts with recording off and stays off until the
+	// client sends SessionInput.recording_control, which then decides every turn
+	// from that point on. This covers audio recording as well as conversation
+	// history, BigQuery export and Cloud Logging.
+	// When `false`, the default, the settings above decide on their own and the
+	// client does not have to send anything.
+	RequiredRecordingConsent pulumi.BoolPtrInput `pulumi:"requiredRecordingConsent"`
 }
 
 func (AppLoggingSettingsArgs) ElementType() reflect.Type {
@@ -8598,6 +8778,17 @@ func (o AppLoggingSettingsOutput) RedactionConfig() AppLoggingSettingsRedactionC
 	return o.ApplyT(func(v AppLoggingSettings) *AppLoggingSettingsRedactionConfig { return v.RedactionConfig }).(AppLoggingSettingsRedactionConfigPtrOutput)
 }
 
+// Whether the app has to say what may be recorded before anything is kept.
+// When true, a session starts with recording off and stays off until the
+// client sends SessionInput.recording_control, which then decides every turn
+// from that point on. This covers audio recording as well as conversation
+// history, BigQuery export and Cloud Logging.
+// When `false`, the default, the settings above decide on their own and the
+// client does not have to send anything.
+func (o AppLoggingSettingsOutput) RequiredRecordingConsent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppLoggingSettings) *bool { return v.RequiredRecordingConsent }).(pulumi.BoolPtrOutput)
+}
+
 type AppLoggingSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (AppLoggingSettingsPtrOutput) ElementType() reflect.Type {
@@ -8687,6 +8878,22 @@ func (o AppLoggingSettingsPtrOutput) RedactionConfig() AppLoggingSettingsRedacti
 		}
 		return v.RedactionConfig
 	}).(AppLoggingSettingsRedactionConfigPtrOutput)
+}
+
+// Whether the app has to say what may be recorded before anything is kept.
+// When true, a session starts with recording off and stays off until the
+// client sends SessionInput.recording_control, which then decides every turn
+// from that point on. This covers audio recording as well as conversation
+// history, BigQuery export and Cloud Logging.
+// When `false`, the default, the settings above decide on their own and the
+// client does not have to send anything.
+func (o AppLoggingSettingsPtrOutput) RequiredRecordingConsent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredRecordingConsent
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AppLoggingSettingsAudioRecordingConfig struct {
@@ -63117,6 +63324,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigAmbientSoundConfigPtrInput)(nil)).Elem(), AppAudioProcessingConfigAmbientSoundConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigBargeInConfigInput)(nil)).Elem(), AppAudioProcessingConfigBargeInConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigBargeInConfigPtrInput)(nil)).Elem(), AppAudioProcessingConfigBargeInConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigCustomVoiceSampleInput)(nil)).Elem(), AppAudioProcessingConfigCustomVoiceSampleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigCustomVoiceSampleArrayInput)(nil)).Elem(), AppAudioProcessingConfigCustomVoiceSampleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigSynthesizeSpeechConfigInput)(nil)).Elem(), AppAudioProcessingConfigSynthesizeSpeechConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppAudioProcessingConfigSynthesizeSpeechConfigArrayInput)(nil)).Elem(), AppAudioProcessingConfigSynthesizeSpeechConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppClientCertificateSettingsInput)(nil)).Elem(), AppClientCertificateSettingsArgs{})
@@ -63846,6 +64055,8 @@ func init() {
 	pulumi.RegisterOutputType(AppAudioProcessingConfigAmbientSoundConfigPtrOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigBargeInConfigOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigBargeInConfigPtrOutput{})
+	pulumi.RegisterOutputType(AppAudioProcessingConfigCustomVoiceSampleOutput{})
+	pulumi.RegisterOutputType(AppAudioProcessingConfigCustomVoiceSampleArrayOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigSynthesizeSpeechConfigOutput{})
 	pulumi.RegisterOutputType(AppAudioProcessingConfigSynthesizeSpeechConfigArrayOutput{})
 	pulumi.RegisterOutputType(AppClientCertificateSettingsOutput{})

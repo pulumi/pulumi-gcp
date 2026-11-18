@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.BigTable.Outputs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// 
-        /// For `gcp.bigtable.InstanceIamPolicy` only:
         /// </summary>
         public readonly string? Description;
         /// <summary>

@@ -14,16 +14,11 @@ import (
 
 // A Cloud Identity Policy binds a Setting to a PolicyQuery for a Google Workspace / Cloud Identity customer.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about Policy, see:
 //
-// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/policies)
+// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/policies)
 // * How-to Guides
 //   - [Policy API overview](https://docs.cloud.google.com/identity/docs/concepts/overview-policies)
-//
-// > **Note:** This is available only in beta
 //
 // ## Example Usage
 //
@@ -43,22 +38,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]bool{
-//				"enabled": true,
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"displayName": "Project Sensitive Terms",
+//				"description": "Detector for project-specific confidential keywords.",
+//				"wordList": map[string][]string{
+//					"words": []string{
+//						"confidential",
+//						"top-secret",
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = cloudidentity.NewPolicy(ctx, "primary", &cloudidentity.PolicyArgs{
-//				Customer: pulumi.String("customers/C01234567"),
+//				Customer: pulumi.String("customers/A01b123xz"),
 //				PolicyQuery: &cloudidentity.PolicyPolicyQueryArgs{
 //					OrgUnit: pulumi.String("orgUnits/03abcxyz"),
-//					Group:   pulumi.String("groups/0123456789"),
-//					Query:   pulumi.String("true"),
 //				},
 //				Setting: &cloudidentity.PolicySettingArgs{
-//					Type:      pulumi.String("something.googleapis.com/SettingType"),
+//					Type:      pulumi.String("settings/detector.word_list"),
 //					ValueJson: pulumi.String(json0),
 //				},
 //			})

@@ -24,6 +24,7 @@ class GeminiGcpEnablementSettingArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -47,6 +48,11 @@ class GeminiGcpEnablementSettingArgs:
                
                > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
+        :param pulumi.Input[_builtins.str] gcs_bucket: The Cloud Storage bucket name allocated for this setting.
+               Note: Please make sure the cloudaicompanion service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+               has `storage.objects.get` and `storage.objects.create` permission to the
+               Cloud Storage bucket.
         :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
                Format: projects/{project}
                The `{project}` segment can be the project ID or project number.
@@ -75,6 +81,8 @@ class GeminiGcpEnablementSettingArgs:
             pulumi.set(__self__, "disable_web_grounding", disable_web_grounding)
         if enable_customer_data_sharing is not None:
             pulumi.set(__self__, "enable_customer_data_sharing", enable_customer_data_sharing)
+        if gcs_bucket is not None:
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if gemini_enterprise_project is not None:
             pulumi.set(__self__, "gemini_enterprise_project", gemini_enterprise_project)
         if has_custom_instructions is not None:
@@ -158,6 +166,22 @@ class GeminiGcpEnablementSettingArgs:
     @enable_customer_data_sharing.setter
     def enable_customer_data_sharing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_customer_data_sharing", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Cloud Storage bucket name allocated for this setting.
+        Note: Please make sure the cloudaicompanion service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+        has `storage.objects.get` and `storage.objects.create` permission to the
+        Cloud Storage bucket.
+        """
+        return pulumi.get(self, "gcs_bucket")
+
+    @gcs_bucket.setter
+    def gcs_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gcs_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="geminiEnterpriseProject")
@@ -261,6 +285,7 @@ class _GeminiGcpEnablementSettingState:
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -289,6 +314,11 @@ class _GeminiGcpEnablementSettingState:
                > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
+        :param pulumi.Input[_builtins.str] gcs_bucket: The Cloud Storage bucket name allocated for this setting.
+               Note: Please make sure the cloudaicompanion service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+               has `storage.objects.get` and `storage.objects.create` permission to the
+               Cloud Storage bucket.
         :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
                Format: projects/{project}
                The `{project}` segment can be the project ID or project number.
@@ -326,6 +356,8 @@ class _GeminiGcpEnablementSettingState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_customer_data_sharing is not None:
             pulumi.set(__self__, "enable_customer_data_sharing", enable_customer_data_sharing)
+        if gcs_bucket is not None:
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if gemini_enterprise_project is not None:
             pulumi.set(__self__, "gemini_enterprise_project", gemini_enterprise_project)
         if gemini_gcp_enablement_setting_id is not None:
@@ -419,6 +451,22 @@ class _GeminiGcpEnablementSettingState:
     @enable_customer_data_sharing.setter
     def enable_customer_data_sharing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_customer_data_sharing", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Cloud Storage bucket name allocated for this setting.
+        Note: Please make sure the cloudaicompanion service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+        has `storage.objects.get` and `storage.objects.create` permission to the
+        Cloud Storage bucket.
+        """
+        return pulumi.get(self, "gcs_bucket")
+
+    @gcs_bucket.setter
+    def gcs_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gcs_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="geminiEnterpriseProject")
@@ -585,6 +633,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -649,6 +698,11 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                
                > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
+        :param pulumi.Input[_builtins.str] gcs_bucket: The Cloud Storage bucket name allocated for this setting.
+               Note: Please make sure the cloudaicompanion service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+               has `storage.objects.get` and `storage.objects.create` permission to the
+               Cloud Storage bucket.
         :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
                Format: projects/{project}
                The `{project}` segment can be the project ID or project number.
@@ -733,6 +787,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -754,6 +809,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disable_web_grounding"] = disable_web_grounding
             __props__.__dict__["enable_customer_data_sharing"] = enable_customer_data_sharing
+            __props__.__dict__["gcs_bucket"] = gcs_bucket
             __props__.__dict__["gemini_enterprise_project"] = gemini_enterprise_project
             if gemini_gcp_enablement_setting_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gemini_gcp_enablement_setting_id'")
@@ -789,6 +845,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
             gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
             gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
             has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -821,6 +878,11 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
+        :param pulumi.Input[_builtins.str] gcs_bucket: The Cloud Storage bucket name allocated for this setting.
+               Note: Please make sure the cloudaicompanion service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+               has `storage.objects.get` and `storage.objects.create` permission to the
+               Cloud Storage bucket.
         :param pulumi.Input[_builtins.str] gemini_enterprise_project: The Gemini enterprise project for this setting.
                Format: projects/{project}
                The `{project}` segment can be the project ID or project number.
@@ -854,6 +916,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__.__dict__["disable_web_grounding"] = disable_web_grounding
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_customer_data_sharing"] = enable_customer_data_sharing
+        __props__.__dict__["gcs_bucket"] = gcs_bucket
         __props__.__dict__["gemini_enterprise_project"] = gemini_enterprise_project
         __props__.__dict__["gemini_gcp_enablement_setting_id"] = gemini_gcp_enablement_setting_id
         __props__.__dict__["has_custom_instructions"] = has_custom_instructions
@@ -876,6 +939,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             disable_web_grounding: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_customer_data_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
             gemini_enterprise_project: pulumi.Input[Optional[_builtins.str]] = None,
             gemini_gcp_enablement_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
             has_custom_instructions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -894,6 +958,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__["disableWebGrounding"] = disable_web_grounding
         __props__["effectiveLabels"] = effective_labels
         __props__["enableCustomerDataSharing"] = enable_customer_data_sharing
+        __props__["gcsBucket"] = gcs_bucket
         __props__["geminiEnterpriseProject"] = gemini_enterprise_project
         __props__["geminiGcpEnablementSettingId"] = gemini_gcp_enablement_setting_id
         __props__["hasCustomInstructions"] = has_custom_instructions
@@ -956,6 +1021,18 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         Whether customer data sharing should be enabled.
         """
         return pulumi.get(self, "enable_customer_data_sharing")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Cloud Storage bucket name allocated for this setting.
+        Note: Please make sure the cloudaicompanion service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+        has `storage.objects.get` and `storage.objects.create` permission to the
+        Cloud Storage bucket.
+        """
+        return pulumi.get(self, "gcs_bucket")
 
     @_builtins.property
     @pulumi.getter(name="geminiEnterpriseProject")

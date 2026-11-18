@@ -199,6 +199,96 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Firebase App Hosting Traffic Rollout Policy With Paths
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.firebase.AppHostingBackend;
+ * import com.pulumi.gcp.firebase.AppHostingBackendArgs;
+ * import com.pulumi.gcp.firebase.AppHostingTraffic;
+ * import com.pulumi.gcp.firebase.AppHostingTrafficArgs;
+ * import com.pulumi.gcp.firebase.inputs.AppHostingTrafficRolloutPolicyArgs;
+ * import com.pulumi.gcp.firebase.inputs.AppHostingTrafficRolloutPolicyRequiredPathArgs;
+ * import com.pulumi.gcp.firebase.inputs.AppHostingTrafficRolloutPolicyIgnoredPathArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         //## Include these blocks only once per project if you are starting from scratch ###
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
+ *             .project("my-project-name")
+ *             .accountId("firebase-app-hosting-compute")
+ *             .displayName("Firebase App Hosting compute service account")
+ *             .createIgnoreAlreadyExists(true)
+ *             .build());
+ * 
+ *         var appHostingSaRunner = new IAMMember("appHostingSaRunner", IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/firebaseapphosting.computeRunner")
+ *             .member(serviceAccount.member())
+ *             .build());
+ * 
+ *         var fah = new Service("fah", ServiceArgs.builder()
+ *             .project("my-project-name")
+ *             .service("firebaseapphosting.googleapis.com")
+ *             .build());
+ * 
+ *         var exampleAppHostingBackend = new AppHostingBackend("exampleAppHostingBackend", AppHostingBackendArgs.builder()
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .backendId("traffic-rpwp")
+ *             .appId("1:0000000000:web:674cde32020e16fbce9dbd")
+ *             .servingLocality("GLOBAL_ACCESS")
+ *             .serviceAccount(serviceAccount.email())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     fah,
+ *                     appHostingSaRunner)
+ *                 .build());
+ * 
+ *         var example = new AppHostingTraffic("example", AppHostingTrafficArgs.builder()
+ *             .project(exampleAppHostingBackend.project())
+ *             .location(exampleAppHostingBackend.location())
+ *             .backend(exampleAppHostingBackend.backendId())
+ *             .rolloutPolicy(AppHostingTrafficRolloutPolicyArgs.builder()
+ *                 .codebaseBranch("main")
+ *                 .requiredPaths(AppHostingTrafficRolloutPolicyRequiredPathArgs.builder()
+ *                     .pattern("foo/bar/*")
+ *                     .type("GLOB")
+ *                     .build())
+ *                 .ignoredPaths(AppHostingTrafficRolloutPolicyIgnoredPathArgs.builder()
+ *                     .pattern("foo/bar/excluded/*")
+ *                     .type("GLOB")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Firebase App Hosting Traffic Rollout Policy Disabled
  * 
  * <pre>

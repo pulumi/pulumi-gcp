@@ -52,8 +52,8 @@ class GCPolicyArgs:
                you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
                
                ***
-        :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
-        :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
+        :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
         :param pulumi.Input[_builtins.str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
@@ -163,7 +163,7 @@ class GCPolicyArgs:
     @pulumi.getter(name="maxAge")
     def max_age(self) -> pulumi.Input[Optional['GCPolicyMaxAgeArgs']]:
         """
-        GC policy that applies to all cells older than the given age.
+        GC policy that applies to all cells older than the given age. Structure is documented below.
         """
         return pulumi.get(self, "max_age")
 
@@ -175,7 +175,7 @@ class GCPolicyArgs:
     @pulumi.getter(name="maxVersions")
     def max_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]:
         """
-        GC policy that applies to all versions of a cell except for the most recent.
+        GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
         """
         return pulumi.get(self, "max_versions")
 
@@ -241,8 +241,8 @@ class _GCPolicyState:
                
                ***
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
-        :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
+        :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
         :param pulumi.Input[_builtins.str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] table: The name of the table.
@@ -344,7 +344,7 @@ class _GCPolicyState:
     @pulumi.getter(name="maxAge")
     def max_age(self) -> pulumi.Input[Optional['GCPolicyMaxAgeArgs']]:
         """
-        GC policy that applies to all cells older than the given age.
+        GC policy that applies to all cells older than the given age. Structure is documented below.
         """
         return pulumi.get(self, "max_age")
 
@@ -356,7 +356,7 @@ class _GCPolicyState:
     @pulumi.getter(name="maxVersions")
     def max_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]:
         """
-        GC policy that applies to all versions of a cell except for the most recent.
+        GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
         """
         return pulumi.get(self, "max_versions")
 
@@ -562,8 +562,8 @@ class GCPolicy(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']] max_age: GC policy that applies to all cells older than the given age.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
+        :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']] max_age: GC policy that applies to all cells older than the given age. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
         :param pulumi.Input[_builtins.str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] table: The name of the table.
@@ -793,8 +793,8 @@ class GCPolicy(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']] max_age: GC policy that applies to all cells older than the given age.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
+        :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict', 'outputs.GCPolicyMaxAge']] max_age: GC policy that applies to all cells older than the given age. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict', 'outputs.GCPolicyMaxVersion']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
         :param pulumi.Input[_builtins.str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] table: The name of the table.
@@ -897,7 +897,7 @@ class GCPolicy(pulumi.CustomResource):
     @pulumi.getter(name="maxAge")
     def max_age(self) -> pulumi.Output[Optional['outputs.GCPolicyMaxAge']]:
         """
-        GC policy that applies to all cells older than the given age.
+        GC policy that applies to all cells older than the given age. Structure is documented below.
         """
         return pulumi.get(self, "max_age")
 
@@ -905,7 +905,7 @@ class GCPolicy(pulumi.CustomResource):
     @pulumi.getter(name="maxVersions")
     def max_versions(self) -> pulumi.Output[Optional[Sequence['outputs.GCPolicyMaxVersion']]]:
         """
-        GC policy that applies to all versions of a cell except for the most recent.
+        GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
         """
         return pulumi.get(self, "max_versions")
 

@@ -21368,18 +21368,73 @@ public final class ComputeFunctions {
     public static CompletableFuture<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicyPlain(GetStoragePoolIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getStoragePoolIamPolicy:getStoragePoolIamPolicy", TypeShape.of(GetStoragePoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Represents a StoragePoolType data source.
+     * The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+     * 
+     * To get more information about StoragePoolType, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+     * * How-to Guides
+     *     * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+     * 
+     */
     public static Output<GetStoragePoolTypesResult> getStoragePoolTypes(GetStoragePoolTypesArgs args) {
         return getStoragePoolTypes(args, InvokeOptions.Empty);
     }
+    /**
+     * Represents a StoragePoolType data source.
+     * The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+     * 
+     * To get more information about StoragePoolType, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+     * * How-to Guides
+     *     * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+     * 
+     */
     public static CompletableFuture<GetStoragePoolTypesResult> getStoragePoolTypesPlain(GetStoragePoolTypesPlainArgs args) {
         return getStoragePoolTypesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Represents a StoragePoolType data source.
+     * The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+     * 
+     * To get more information about StoragePoolType, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+     * * How-to Guides
+     *     * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+     * 
+     */
     public static Output<GetStoragePoolTypesResult> getStoragePoolTypes(GetStoragePoolTypesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", TypeShape.of(GetStoragePoolTypesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Represents a StoragePoolType data source.
+     * The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+     * 
+     * To get more information about StoragePoolType, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+     * * How-to Guides
+     *     * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+     * 
+     */
     public static Output<GetStoragePoolTypesResult> getStoragePoolTypes(GetStoragePoolTypesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", TypeShape.of(GetStoragePoolTypesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Represents a StoragePoolType data source.
+     * The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+     * 
+     * To get more information about StoragePoolType, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+     * * How-to Guides
+     *     * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+     * 
+     */
     public static CompletableFuture<GetStoragePoolTypesResult> getStoragePoolTypesPlain(GetStoragePoolTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", TypeShape.of(GetStoragePoolTypesResult.class), args, Utilities.withVersion(options));
     }

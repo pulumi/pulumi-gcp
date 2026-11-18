@@ -204,6 +204,8 @@ namespace Pulumi.Gcp.Compute
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
         /// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+        /// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+        /// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -363,6 +365,8 @@ namespace Pulumi.Gcp.Compute
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
         /// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+        /// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+        /// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -519,6 +523,8 @@ namespace Pulumi.Gcp.Compute
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
         /// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+        /// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+        /// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

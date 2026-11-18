@@ -3643,6 +3643,8 @@ class WorkloadIdentityPoolProviderOidc(dict):
             suggest = "issuer_uri"
         elif key == "allowedAudiences":
             suggest = "allowed_audiences"
+        elif key == "discoveryUri":
+            suggest = "discovery_uri"
         elif key == "jwksJson":
             suggest = "jwks_json"
 
@@ -3660,6 +3662,7 @@ class WorkloadIdentityPoolProviderOidc(dict):
     def __init__(__self__, *,
                  issuer_uri: _builtins.str,
                  allowed_audiences: Optional[Sequence[_builtins.str]] = None,
+                 discovery_uri: Optional[_builtins.str] = None,
                  jwks_json: Optional[_builtins.str] = None):
         """
         :param _builtins.str issuer_uri: The OIDC issuer URL.
@@ -3674,6 +3677,23 @@ class WorkloadIdentityPoolProviderOidc(dict):
                //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
                https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
                ```
+        :param _builtins.str discovery_uri: The URL to fetch the OIDC discovery document from, overriding the default URL
+               derived from `issuer_uri`. If not set, `discovery_uri` defaults to `issuer_uri`
+               with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+               Discovery 1.0 specification.
+               If set, `discovery_uri` must meet the following requirements:
+               * Must start with `https://`.
+               * Must not exceed 2000 characters.
+               * The scheme, host, and port must match `issuer_uri`.
+               * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+                 empty, such as `openid-configuration`) and conform to the `issuer_uri`
+                 topology:
+               * The well-known path segment is inserted before the issuer path (for
+                 example, `https://example.com/.well-known/openid-configuration/tenant1`
+                 for issuer `https://example.com/tenant1`), or
+               * The well-known path segment is appended under the issuer path (for
+                 example, `https://example.com/tenant1/.well-known/openid-configuration`
+                 for issuer `https://example.com/tenant1`).
         :param _builtins.str jwks_json: OIDC JWKs in JSON String format. For details on definition of a
                JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
                use the `jwks_uri` from the discovery document fetched from the
@@ -3701,6 +3721,8 @@ class WorkloadIdentityPoolProviderOidc(dict):
         pulumi.set(__self__, "issuer_uri", issuer_uri)
         if allowed_audiences is not None:
             pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        if discovery_uri is not None:
+            pulumi.set(__self__, "discovery_uri", discovery_uri)
         if jwks_json is not None:
             pulumi.set(__self__, "jwks_json", jwks_json)
 
@@ -3729,6 +3751,30 @@ class WorkloadIdentityPoolProviderOidc(dict):
         ```
         """
         return pulumi.get(self, "allowed_audiences")
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryUri")
+    def discovery_uri(self) -> Optional[_builtins.str]:
+        """
+        The URL to fetch the OIDC discovery document from, overriding the default URL
+        derived from `issuer_uri`. If not set, `discovery_uri` defaults to `issuer_uri`
+        with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+        Discovery 1.0 specification.
+        If set, `discovery_uri` must meet the following requirements:
+        * Must start with `https://`.
+        * Must not exceed 2000 characters.
+        * The scheme, host, and port must match `issuer_uri`.
+        * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+          empty, such as `openid-configuration`) and conform to the `issuer_uri`
+          topology:
+        * The well-known path segment is inserted before the issuer path (for
+          example, `https://example.com/.well-known/openid-configuration/tenant1`
+          for issuer `https://example.com/tenant1`), or
+        * The well-known path segment is appended under the issuer path (for
+          example, `https://example.com/tenant1/.well-known/openid-configuration`
+          for issuer `https://example.com/tenant1`).
+        """
+        return pulumi.get(self, "discovery_uri")
 
     @_builtins.property
     @pulumi.getter(name="jwksJson")
@@ -4467,6 +4513,7 @@ class GetWorkloadIdentityPoolProviderAwResult(dict):
 class GetWorkloadIdentityPoolProviderOidcResult(dict):
     def __init__(__self__, *,
                  allowed_audiences: Sequence[_builtins.str],
+                 discovery_uri: _builtins.str,
                  issuer_uri: _builtins.str,
                  jwks_json: _builtins.str):
         """
@@ -4482,6 +4529,24 @@ class GetWorkloadIdentityPoolProviderOidcResult(dict):
                //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
                https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
                '''
+        :param _builtins.str discovery_uri: The URL to fetch the OIDC discovery document from, overriding the default URL
+               derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+               with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+               Discovery 1.0 specification.
+               
+               If set, 'discovery_uri' must meet the following requirements:
+                 * Must start with 'https://'.
+                 * Must not exceed 2000 characters.
+                 * The scheme, host, and port must match 'issuer_uri'.
+                 * The path must contain '/.well-known/<suffix>' (where '<suffix>' is not
+                   empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+                   topology:
+                   * The well-known path segment is inserted before the issuer path (for
+                     example, 'https://example.com/.well-known/openid-configuration/tenant1'
+                     for issuer 'https://example.com/tenant1'), or
+                   * The well-known path segment is appended under the issuer path (for
+                     example, 'https://example.com/tenant1/.well-known/openid-configuration'
+                     for issuer 'https://example.com/tenant1').
         :param _builtins.str issuer_uri: The OIDC issuer URL.
         :param _builtins.str jwks_json: OIDC JWKs in JSON String format. For details on definition of a
                JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
@@ -4508,6 +4573,7 @@ class GetWorkloadIdentityPoolProviderOidcResult(dict):
                '''
         """
         pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        pulumi.set(__self__, "discovery_uri", discovery_uri)
         pulumi.set(__self__, "issuer_uri", issuer_uri)
         pulumi.set(__self__, "jwks_json", jwks_json)
 
@@ -4529,6 +4595,31 @@ class GetWorkloadIdentityPoolProviderOidcResult(dict):
         '''
         """
         return pulumi.get(self, "allowed_audiences")
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryUri")
+    def discovery_uri(self) -> _builtins.str:
+        """
+        The URL to fetch the OIDC discovery document from, overriding the default URL
+        derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+        with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+        Discovery 1.0 specification.
+
+        If set, 'discovery_uri' must meet the following requirements:
+          * Must start with 'https://'.
+          * Must not exceed 2000 characters.
+          * The scheme, host, and port must match 'issuer_uri'.
+          * The path must contain '/.well-known/<suffix>' (where '<suffix>' is not
+            empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+            topology:
+            * The well-known path segment is inserted before the issuer path (for
+              example, 'https://example.com/.well-known/openid-configuration/tenant1'
+              for issuer 'https://example.com/tenant1'), or
+            * The well-known path segment is appended under the issuer path (for
+              example, 'https://example.com/tenant1/.well-known/openid-configuration'
+              for issuer 'https://example.com/tenant1').
+        """
+        return pulumi.get(self, "discovery_uri")
 
     @_builtins.property
     @pulumi.getter(name="issuerUri")

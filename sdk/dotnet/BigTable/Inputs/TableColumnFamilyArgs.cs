@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.BigTable.Inputs
 
         /// <summary>
         /// The type of the column family.
+        /// 
+        /// ***
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

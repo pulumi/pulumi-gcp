@@ -1102,7 +1102,7 @@ namespace Pulumi.Gcp.Compute
         /// load balancing cannot be used with the other. For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `EXTERNAL_MANAGED`.
-        /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -1567,7 +1567,7 @@ namespace Pulumi.Gcp.Compute
         /// load balancing cannot be used with the other. For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `EXTERNAL_MANAGED`.
-        /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -2013,7 +2013,7 @@ namespace Pulumi.Gcp.Compute
         /// load balancing cannot be used with the other. For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `EXTERNAL_MANAGED`.
-        /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }

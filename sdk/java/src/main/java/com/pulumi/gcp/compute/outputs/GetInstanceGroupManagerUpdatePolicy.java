@@ -7,10 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerUpdatePolicy {
+    /**
+     * @return Specifies the allowed actions list for this update. Valid values are: &#34;NONE&#34;, &#34;REFRESH&#34;, &#34;RESTART_IN_PLACE&#34;, &#34;RESTART&#34;, &#34;REPLACE&#34;. allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+     * 
+     */
+    private List<String> allowedActions;
     /**
      * @return Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
      * 
@@ -58,6 +64,13 @@ public final class GetInstanceGroupManagerUpdatePolicy {
     private String type;
 
     private GetInstanceGroupManagerUpdatePolicy() {}
+    /**
+     * @return Specifies the allowed actions list for this update. Valid values are: &#34;NONE&#34;, &#34;REFRESH&#34;, &#34;RESTART_IN_PLACE&#34;, &#34;RESTART&#34;, &#34;REPLACE&#34;. allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+     * 
+     */
+    public List<String> allowedActions() {
+        return this.allowedActions;
+    }
     /**
      * @return Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
      * 
@@ -131,6 +144,7 @@ public final class GetInstanceGroupManagerUpdatePolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> allowedActions;
         private Integer maxSurgeFixed;
         private Integer maxSurgePercent;
         private Integer maxUnavailableFixed;
@@ -143,6 +157,7 @@ public final class GetInstanceGroupManagerUpdatePolicy {
         public Builder() {}
         public Builder(GetInstanceGroupManagerUpdatePolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedActions = defaults.allowedActions;
     	      this.maxSurgeFixed = defaults.maxSurgeFixed;
     	      this.maxSurgePercent = defaults.maxSurgePercent;
     	      this.maxUnavailableFixed = defaults.maxUnavailableFixed;
@@ -154,6 +169,17 @@ public final class GetInstanceGroupManagerUpdatePolicy {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder allowedActions(List<String> allowedActions) {
+            if (allowedActions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "allowedActions");
+            }
+            this.allowedActions = allowedActions;
+            return this;
+        }
+        public Builder allowedActions(String... allowedActions) {
+            return allowedActions(List.of(allowedActions));
+        }
         @CustomType.Setter
         public Builder maxSurgeFixed(Integer maxSurgeFixed) {
             if (maxSurgeFixed == null) {
@@ -228,6 +254,7 @@ public final class GetInstanceGroupManagerUpdatePolicy {
         }
         public GetInstanceGroupManagerUpdatePolicy build() {
             final var _resultValue = new GetInstanceGroupManagerUpdatePolicy();
+            _resultValue.allowedActions = allowedActions;
             _resultValue.maxSurgeFixed = maxSurgeFixed;
             _resultValue.maxSurgePercent = maxSurgePercent;
             _resultValue.maxUnavailableFixed = maxUnavailableFixed;

@@ -13,74 +13,198 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStoragePoolTypesResult {
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
     private String creationTimestamp;
+    /**
+     * @return (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+     * This is only informational and the status will not change unless the client explicitly changes it.
+     * 
+     */
     private List<GetStoragePoolTypesDeprecated> deprecateds;
+    /**
+     * @return An optional description of this resource.
+     * 
+     */
     private String description;
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
     private Integer id;
+    /**
+     * @return Type of the resource. Always compute#storagePoolType for storage pool types.
+     * 
+     */
     private String kind;
+    /**
+     * @return Maximum storage pool size in GB.
+     * 
+     */
     private Integer maxPoolProvisionedCapacityGb;
+    /**
+     * @return Maximum provisioned IOPS.
+     * 
+     */
     private Integer maxPoolProvisionedIops;
+    /**
+     * @return Maximum provisioned throughput.
+     * 
+     */
     private Integer maxPoolProvisionedThroughput;
+    /**
+     * @return Minimum storage pool size in GB.
+     * 
+     */
     private Integer minPoolProvisionedCapacityGb;
+    /**
+     * @return Minimum provisioned IOPS.
+     * 
+     */
     private Integer minPoolProvisionedIops;
+    /**
+     * @return Minimum provisioned throughput.
+     * 
+     */
     private Integer minPoolProvisionedThroughput;
+    /**
+     * @return Name of the resource.
+     * 
+     */
     private String name;
     private String project;
+    /**
+     * @return Server-defined URL for the resource.
+     * 
+     */
     private String selfLink;
+    /**
+     * @return Server-defined URL for this resource with the resource id.
+     * 
+     */
     private String selfLinkWithId;
     private String storagePoolType;
+    /**
+     * @return The list of disk types supported in this storage pool type.
+     * 
+     */
     private List<String> supportedDiskTypes;
     private String zone;
 
     private GetStoragePoolTypesResult() {}
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
     public String creationTimestamp() {
         return this.creationTimestamp;
     }
+    /**
+     * @return (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+     * This is only informational and the status will not change unless the client explicitly changes it.
+     * 
+     */
     public List<GetStoragePoolTypesDeprecated> deprecateds() {
         return this.deprecateds;
     }
+    /**
+     * @return An optional description of this resource.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return Type of the resource. Always compute#storagePoolType for storage pool types.
+     * 
+     */
     public String kind() {
         return this.kind;
     }
+    /**
+     * @return Maximum storage pool size in GB.
+     * 
+     */
     public Integer maxPoolProvisionedCapacityGb() {
         return this.maxPoolProvisionedCapacityGb;
     }
+    /**
+     * @return Maximum provisioned IOPS.
+     * 
+     */
     public Integer maxPoolProvisionedIops() {
         return this.maxPoolProvisionedIops;
     }
+    /**
+     * @return Maximum provisioned throughput.
+     * 
+     */
     public Integer maxPoolProvisionedThroughput() {
         return this.maxPoolProvisionedThroughput;
     }
+    /**
+     * @return Minimum storage pool size in GB.
+     * 
+     */
     public Integer minPoolProvisionedCapacityGb() {
         return this.minPoolProvisionedCapacityGb;
     }
+    /**
+     * @return Minimum provisioned IOPS.
+     * 
+     */
     public Integer minPoolProvisionedIops() {
         return this.minPoolProvisionedIops;
     }
+    /**
+     * @return Minimum provisioned throughput.
+     * 
+     */
     public Integer minPoolProvisionedThroughput() {
         return this.minPoolProvisionedThroughput;
     }
+    /**
+     * @return Name of the resource.
+     * 
+     */
     public String name() {
         return this.name;
     }
     public String project() {
         return this.project;
     }
+    /**
+     * @return Server-defined URL for the resource.
+     * 
+     */
     public String selfLink() {
         return this.selfLink;
     }
+    /**
+     * @return Server-defined URL for this resource with the resource id.
+     * 
+     */
     public String selfLinkWithId() {
         return this.selfLinkWithId;
     }
     public String storagePoolType() {
         return this.storagePoolType;
     }
+    /**
+     * @return The list of disk types supported in this storage pool type.
+     * 
+     */
     public List<String> supportedDiskTypes() {
         return this.supportedDiskTypes;
     }

@@ -60,6 +60,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Output only. The metadata for this ruleset.
+     * Structure is documented below.
      * 
      */
     @Import(name="metadatas")
@@ -67,6 +68,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Output only. The metadata for this ruleset.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RulesetMetadataArgs>>> metadatas() {
@@ -105,6 +107,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * `Source` for the `Ruleset`.
+     * Structure is documented below.
      * 
      */
     @Import(name="source")
@@ -112,6 +115,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return `Source` for the `Ruleset`.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RulesetSourceArgs>> source() {
@@ -201,6 +205,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param metadatas Output only. The metadata for this ruleset.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -212,6 +217,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param metadatas Output only. The metadata for this ruleset.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -222,6 +228,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param metadatas Output only. The metadata for this ruleset.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -274,6 +281,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param source `Source` for the `Ruleset`.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -285,6 +293,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param source `Source` for the `Ruleset`.
+         * Structure is documented below.
          * 
          * @return builder
          * 

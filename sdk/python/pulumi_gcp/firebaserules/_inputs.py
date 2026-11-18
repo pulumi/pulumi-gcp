@@ -56,6 +56,7 @@ class RulesetSourceArgsDict(TypedDict):
     files: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgsDict']]]
     """
     `File` set constituting the `Source` bundle.
+    Structure is documented below.
     """
     language: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -71,6 +72,7 @@ class RulesetSourceArgs:
                  language: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]] files: `File` set constituting the `Source` bundle.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] language: `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
                
                ***
@@ -84,6 +86,7 @@ class RulesetSourceArgs:
     def files(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]]:
         """
         `File` set constituting the `Source` bundle.
+        Structure is documented below.
         """
         return pulumi.get(self, "files")
 

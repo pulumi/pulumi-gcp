@@ -15,14 +15,16 @@ public final class GetIamPolicyArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetIamPolicyArgs Empty = new GetIamPolicyArgs();
 
     /**
-     * The fully-qualified name of the service account to apply policy to.
+     * The fully-qualified name of the service account, in the form
+     * `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
      * 
      */
     @Import(name="serviceAccountId", required=true)
     private Output<String> serviceAccountId;
 
     /**
-     * @return The fully-qualified name of the service account to apply policy to.
+     * @return The fully-qualified name of the service account, in the form
+     * `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
      * 
      */
     public Output<String> serviceAccountId() {
@@ -54,7 +56,8 @@ public final class GetIamPolicyArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceAccountId The fully-qualified name of the service account to apply policy to.
+         * @param serviceAccountId The fully-qualified name of the service account, in the form
+         * `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
          * 
          * @return builder
          * 
@@ -65,7 +68,8 @@ public final class GetIamPolicyArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceAccountId The fully-qualified name of the service account to apply policy to.
+         * @param serviceAccountId The fully-qualified name of the service account, in the form
+         * `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
          * 
          * @return builder
          * 

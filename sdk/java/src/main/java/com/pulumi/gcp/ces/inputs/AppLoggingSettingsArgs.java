@@ -11,6 +11,7 @@ import com.pulumi.gcp.ces.inputs.AppLoggingSettingsCloudLoggingSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsConversationLoggingSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsMetricAnalysisSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsRedactionConfigArgs;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -124,6 +125,33 @@ public final class AppLoggingSettingsArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.redactionConfig);
     }
 
+    /**
+     * Whether the app has to say what may be recorded before anything is kept.
+     * When true, a session starts with recording off and stays off until the
+     * client sends SessionInput.recording_control, which then decides every turn
+     * from that point on. This covers audio recording as well as conversation
+     * history, BigQuery export and Cloud Logging.
+     * When `false`, the default, the settings above decide on their own and the
+     * client does not have to send anything.
+     * 
+     */
+    @Import(name="requiredRecordingConsent")
+    private @Nullable Output<Boolean> requiredRecordingConsent;
+
+    /**
+     * @return Whether the app has to say what may be recorded before anything is kept.
+     * When true, a session starts with recording off and stays off until the
+     * client sends SessionInput.recording_control, which then decides every turn
+     * from that point on. This covers audio recording as well as conversation
+     * history, BigQuery export and Cloud Logging.
+     * When `false`, the default, the settings above decide on their own and the
+     * client does not have to send anything.
+     * 
+     */
+    public Optional<Output<Boolean>> requiredRecordingConsent() {
+        return Optional.ofNullable(this.requiredRecordingConsent);
+    }
+
     private AppLoggingSettingsArgs() {}
 
     private AppLoggingSettingsArgs(AppLoggingSettingsArgs $) {
@@ -133,6 +161,7 @@ public final class AppLoggingSettingsArgs extends com.pulumi.resources.ResourceA
         this.conversationLoggingSettings = $.conversationLoggingSettings;
         this.metricAnalysisSettings = $.metricAnalysisSettings;
         this.redactionConfig = $.redactionConfig;
+        this.requiredRecordingConsent = $.requiredRecordingConsent;
     }
 
     public static Builder builder() {
@@ -291,6 +320,39 @@ public final class AppLoggingSettingsArgs extends com.pulumi.resources.ResourceA
          */
         public Builder redactionConfig(AppLoggingSettingsRedactionConfigArgs redactionConfig) {
             return redactionConfig(Output.of(redactionConfig));
+        }
+
+        /**
+         * @param requiredRecordingConsent Whether the app has to say what may be recorded before anything is kept.
+         * When true, a session starts with recording off and stays off until the
+         * client sends SessionInput.recording_control, which then decides every turn
+         * from that point on. This covers audio recording as well as conversation
+         * history, BigQuery export and Cloud Logging.
+         * When `false`, the default, the settings above decide on their own and the
+         * client does not have to send anything.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredRecordingConsent(@Nullable Output<Boolean> requiredRecordingConsent) {
+            $.requiredRecordingConsent = requiredRecordingConsent;
+            return this;
+        }
+
+        /**
+         * @param requiredRecordingConsent Whether the app has to say what may be recorded before anything is kept.
+         * When true, a session starts with recording off and stays off until the
+         * client sends SessionInput.recording_control, which then decides every turn
+         * from that point on. This covers audio recording as well as conversation
+         * history, BigQuery export and Cloud Logging.
+         * When `false`, the default, the settings above decide on their own and the
+         * client does not have to send anything.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredRecordingConsent(Boolean requiredRecordingConsent) {
+            return requiredRecordingConsent(Output.of(requiredRecordingConsent));
         }
 
         public AppLoggingSettingsArgs build() {

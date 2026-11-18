@@ -69,6 +69,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string Revision;
         /// <summary>
+        /// Configuration for sandboxes.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkerPoolTemplateSandboxResult> Sandboxes;
+        /// <summary>
         /// Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         /// </summary>
         public readonly string ServiceAccount;
@@ -105,6 +109,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             string revision,
 
+            ImmutableArray<Outputs.GetWorkerPoolTemplateSandboxResult> sandboxes,
+
             string serviceAccount,
 
             ImmutableArray<Outputs.GetWorkerPoolTemplateVolumeResult> volumes,
@@ -122,6 +128,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Labels = labels;
             NodeSelectors = nodeSelectors;
             Revision = revision;
+            Sandboxes = sandboxes;
             ServiceAccount = serviceAccount;
             Volumes = volumes;
             VpcAccesses = vpcAccesses;

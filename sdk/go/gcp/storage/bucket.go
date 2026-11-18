@@ -402,7 +402,7 @@ type Bucket struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrOutput `pulumi:"enableObjectRetention"`
@@ -514,7 +514,7 @@ type bucketState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention *bool `pulumi:"enableObjectRetention"`
@@ -589,7 +589,7 @@ type BucketState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
 	EnableObjectRetention pulumi.BoolPtrInput
@@ -898,7 +898,7 @@ func (o BucketOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o BucketOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

@@ -32,6 +32,39 @@ namespace Pulumi.Gcp.Firebase.Inputs
         [Input("disabledTime")]
         public Input<string>? DisabledTime { get; set; }
 
+        [Input("ignoredPaths")]
+        private InputList<Inputs.AppHostingTrafficRolloutPolicyIgnoredPathGetArgs>? _ignoredPaths;
+
+        /// <summary>
+        /// A list of file paths patterns to exclude from triggering a rollout.
+        /// Patterns in this list take precedence over required_paths.
+        /// **Note**: All paths must be in the IgnoredPaths in order for the
+        /// rollout to be skipped. Limited to 100 paths.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppHostingTrafficRolloutPolicyIgnoredPathGetArgs> IgnoredPaths
+        {
+            get => _ignoredPaths ?? (_ignoredPaths = new InputList<Inputs.AppHostingTrafficRolloutPolicyIgnoredPathGetArgs>());
+            set => _ignoredPaths = value;
+        }
+
+        [Input("requiredPaths")]
+        private InputList<Inputs.AppHostingTrafficRolloutPolicyRequiredPathGetArgs>? _requiredPaths;
+
+        /// <summary>
+        /// A list of file paths patterns that trigger a build and rollout
+        /// if at least one of the changed files in the commit are present in
+        /// this list. This field is optional; the rollout policy will default to
+        /// triggering on all paths if both IgnoredPaths and RequiredPaths are
+        /// not populated. Limited to 100 paths.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppHostingTrafficRolloutPolicyRequiredPathGetArgs> RequiredPaths
+        {
+            get => _requiredPaths ?? (_requiredPaths = new InputList<Inputs.AppHostingTrafficRolloutPolicyRequiredPathGetArgs>());
+            set => _requiredPaths = value;
+        }
+
         public AppHostingTrafficRolloutPolicyGetArgs()
         {
         }

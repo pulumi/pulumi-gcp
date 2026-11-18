@@ -233,6 +233,49 @@ import (
 //
 // ```
 //
+// ### Bigquery Routine Any Table
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("dataset_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
+//				DatasetId:      test.DatasetId,
+//				RoutineId:      pulumi.String("routine_id"),
+//				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
+//				Language:       pulumi.String("SQL"),
+//				Description:    pulumi.String("Gets every row from a table."),
+//				DefinitionBody: pulumi.String("SELECT * FROM t1"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:         pulumi.String("t1"),
+//						ArgumentKind: pulumi.String("ANY_TABLE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Bigquery Routine Pyspark
 //
 // ```go

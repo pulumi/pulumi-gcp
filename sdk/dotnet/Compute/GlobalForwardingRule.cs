@@ -648,6 +648,14 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> AllowPscGlobalAccess { get; private set; } = null!;
 
         /// <summary>
+        /// Identifies the backend service to which the forwarding rule sends traffic.
+        /// Required for Global External Passthrough Network Load Balancing;
+        /// must be omitted for all other load balancer types.
+        /// </summary>
+        [Output("backendService")]
+        public Output<string?> BackendService { get; private set; } = null!;
+
+        /// <summary>
         /// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         /// </summary>
         [Output("baseForwardingRule")]
@@ -747,6 +755,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// IP addresses for which this forwarding rule accepts traffic, ordered by
+        /// Availability Group 0 followed by Availability Group 1. Specify literal
+        /// IP addresses (for example, `google_compute_global_address.example.address`).
+        /// </summary>
+        [Output("ipAddresses")]
+        public Output<ImmutableArray<string>> IpAddresses { get; private set; } = null!;
+
+        /// <summary>
         /// The IP protocol to which this rule applies.
         /// For protocol forwarding, valid
         /// options are `TCP`, `UDP`, `ESP`,
@@ -788,7 +804,7 @@ namespace Pulumi.Gcp.Compute
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         /// Default value is `EXTERNAL_MANAGED`.
-        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -955,7 +971,7 @@ namespace Pulumi.Gcp.Compute
         ///    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         /// </summary>
         [Output("target")]
-        public Output<string> Target { get; private set; } = null!;
+        public Output<string?> Target { get; private set; } = null!;
 
 
         /// <summary>
@@ -965,7 +981,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public GlobalForwardingRule(string name, GlobalForwardingRuleArgs args, CustomResourceOptions? options = null)
+        public GlobalForwardingRule(string name, GlobalForwardingRuleArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, args ?? new GlobalForwardingRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -1014,6 +1030,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("allowPscGlobalAccess")]
         public Input<bool>? AllowPscGlobalAccess { get; set; }
+
+        /// <summary>
+        /// Identifies the backend service to which the forwarding rule sends traffic.
+        /// Required for Global External Passthrough Network Load Balancing;
+        /// must be omitted for all other load balancer types.
+        /// </summary>
+        [Input("backendService")]
+        public Input<string>? BackendService { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1096,6 +1120,20 @@ namespace Pulumi.Gcp.Compute
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        [Input("ipAddresses")]
+        private InputList<string>? _ipAddresses;
+
+        /// <summary>
+        /// IP addresses for which this forwarding rule accepts traffic, ordered by
+        /// Availability Group 0 followed by Availability Group 1. Specify literal
+        /// IP addresses (for example, `google_compute_global_address.example.address`).
+        /// </summary>
+        public InputList<string> IpAddresses
+        {
+            get => _ipAddresses ?? (_ipAddresses = new InputList<string>());
+            set => _ipAddresses = value;
+        }
+
         /// <summary>
         /// The IP protocol to which this rule applies.
         /// For protocol forwarding, valid
@@ -1137,7 +1175,7 @@ namespace Pulumi.Gcp.Compute
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         /// Default value is `EXTERNAL_MANAGED`.
-        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -1290,8 +1328,8 @@ namespace Pulumi.Gcp.Compute
         /// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         ///    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         /// </summary>
-        [Input("target", required: true)]
-        public Input<string> Target { get; set; } = null!;
+        [Input("target")]
+        public Input<string>? Target { get; set; }
 
         public GlobalForwardingRuleArgs()
         {
@@ -1307,6 +1345,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("allowPscGlobalAccess")]
         public Input<bool>? AllowPscGlobalAccess { get; set; }
+
+        /// <summary>
+        /// Identifies the backend service to which the forwarding rule sends traffic.
+        /// Required for Global External Passthrough Network Load Balancing;
+        /// must be omitted for all other load balancer types.
+        /// </summary>
+        [Input("backendService")]
+        public Input<string>? BackendService { get; set; }
 
         /// <summary>
         /// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
@@ -1417,6 +1463,20 @@ namespace Pulumi.Gcp.Compute
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        [Input("ipAddresses")]
+        private InputList<string>? _ipAddresses;
+
+        /// <summary>
+        /// IP addresses for which this forwarding rule accepts traffic, ordered by
+        /// Availability Group 0 followed by Availability Group 1. Specify literal
+        /// IP addresses (for example, `google_compute_global_address.example.address`).
+        /// </summary>
+        public InputList<string> IpAddresses
+        {
+            get => _ipAddresses ?? (_ipAddresses = new InputList<string>());
+            set => _ipAddresses = value;
+        }
+
         /// <summary>
         /// The IP protocol to which this rule applies.
         /// For protocol forwarding, valid
@@ -1465,7 +1525,7 @@ namespace Pulumi.Gcp.Compute
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         /// Default value is `EXTERNAL_MANAGED`.
-        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }

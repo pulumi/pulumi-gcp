@@ -14,7 +14,9 @@ namespace Pulumi.Gcp.BigTable.Outputs
     public sealed class InstanceCluster
     {
         /// <summary>
-        /// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+        /// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+        /// 
+        /// &gt; **Warning**: Only one of `AutoscalingConfig` or `NumNodes` should be set for a cluster. If both are set, `NumNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         /// </summary>
         public readonly Outputs.InstanceClusterAutoscalingConfig? AutoscalingConfig;
         /// <summary>
@@ -36,6 +38,8 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// `ClusterId`) will cause the provider to delete/recreate the entire
         /// `gcp.bigtable.Instance` resource. If these values are changing, use a new
         /// `ClusterId`.
+        /// 
+        /// ***
         /// </summary>
         public readonly string? NodeScalingFactor;
         /// <summary>

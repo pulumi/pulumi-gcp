@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkloadIdentityPoolProviderResult {
+    private List<String> actorProviders;
     private String attributeCondition;
     private Map<String,String> attributeMapping;
     private List<GetWorkloadIdentityPoolProviderAw> aws;
@@ -41,6 +42,9 @@ public final class GetWorkloadIdentityPoolProviderResult {
     private List<GetWorkloadIdentityPoolProviderX509> x509s;
 
     private GetWorkloadIdentityPoolProviderResult() {}
+    public List<String> actorProviders() {
+        return this.actorProviders;
+    }
     public String attributeCondition() {
         return this.attributeCondition;
     }
@@ -103,6 +107,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> actorProviders;
         private String attributeCondition;
         private Map<String,String> attributeMapping;
         private List<GetWorkloadIdentityPoolProviderAw> aws;
@@ -122,6 +127,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
         public Builder() {}
         public Builder(GetWorkloadIdentityPoolProviderResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.actorProviders = defaults.actorProviders;
     	      this.attributeCondition = defaults.attributeCondition;
     	      this.attributeMapping = defaults.attributeMapping;
     	      this.aws = defaults.aws;
@@ -140,6 +146,17 @@ public final class GetWorkloadIdentityPoolProviderResult {
     	      this.x509s = defaults.x509s;
         }
 
+        @CustomType.Setter
+        public Builder actorProviders(List<String> actorProviders) {
+            if (actorProviders == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "actorProviders");
+            }
+            this.actorProviders = actorProviders;
+            return this;
+        }
+        public Builder actorProviders(String... actorProviders) {
+            return actorProviders(List.of(actorProviders));
+        }
         @CustomType.Setter
         public Builder attributeCondition(String attributeCondition) {
             if (attributeCondition == null) {
@@ -280,6 +297,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
         }
         public GetWorkloadIdentityPoolProviderResult build() {
             final var _resultValue = new GetWorkloadIdentityPoolProviderResult();
+            _resultValue.actorProviders = actorProviders;
             _resultValue.attributeCondition = attributeCondition;
             _resultValue.attributeMapping = attributeMapping;
             _resultValue.aws = aws;

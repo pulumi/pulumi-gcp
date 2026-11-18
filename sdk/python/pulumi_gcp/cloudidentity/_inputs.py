@@ -27,6 +27,14 @@ __all__ = [
     'GroupMembershipRoleArgsDict',
     'GroupMembershipRoleExpiryDetailArgs',
     'GroupMembershipRoleExpiryDetailArgsDict',
+    'InboundOidcSsoProfileIdpConfigArgs',
+    'InboundOidcSsoProfileIdpConfigArgsDict',
+    'InboundOidcSsoProfileRpConfigArgs',
+    'InboundOidcSsoProfileRpConfigArgsDict',
+    'InboundSamlSsoProfileIdpConfigArgs',
+    'InboundSamlSsoProfileIdpConfigArgsDict',
+    'InboundSamlSsoProfileSpConfigArgs',
+    'InboundSamlSsoProfileSpConfigArgsDict',
     'PolicyPolicyQueryArgs',
     'PolicyPolicyQueryArgsDict',
     'PolicySettingArgs',
@@ -448,10 +456,314 @@ class GroupMembershipRoleExpiryDetailArgs:
         pulumi.set(self, "expire_time", value)
 
 
+class InboundOidcSsoProfileIdpConfigArgsDict(TypedDict):
+    issuer_uri: pulumi.Input[_builtins.str]
+    """
+    The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+    from this as described in Section 4 of the OIDC specification.
+    """
+    change_password_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The **Change Password URL** of the identity provider. Users will be sent to this URL
+    when changing their passwords at `myaccount.google.com`. This takes precedence over
+    the change password URL configured at customer-level. Must use `HTTPS`.
+    """
+
+@pulumi.input_type
+class InboundOidcSsoProfileIdpConfigArgs:
+    def __init__(__self__, *,
+                 issuer_uri: pulumi.Input[_builtins.str],
+                 change_password_uri: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] issuer_uri: The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+               from this as described in Section 4 of the OIDC specification.
+        :param pulumi.Input[_builtins.str] change_password_uri: The **Change Password URL** of the identity provider. Users will be sent to this URL
+               when changing their passwords at `myaccount.google.com`. This takes precedence over
+               the change password URL configured at customer-level. Must use `HTTPS`.
+        """
+        pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if change_password_uri is not None:
+            pulumi.set(__self__, "change_password_uri", change_password_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+        from this as described in Section 4 of the OIDC specification.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+    @issuer_uri.setter
+    def issuer_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "issuer_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="changePasswordUri")
+    def change_password_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The **Change Password URL** of the identity provider. Users will be sent to this URL
+        when changing their passwords at `myaccount.google.com`. This takes precedence over
+        the change password URL configured at customer-level. Must use `HTTPS`.
+        """
+        return pulumi.get(self, "change_password_uri")
+
+    @change_password_uri.setter
+    def change_password_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "change_password_uri", value)
+
+
+class InboundOidcSsoProfileRpConfigArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    OAuth2 client ID for OIDC. Must be set together with `client_secret`.
+    """
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Input only. OAuth2 client secret for OIDC. Must be set together with `client_id`.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    redirect_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The URL(s) that this client may use in authentication requests.
+    """
+
+@pulumi.input_type
+class InboundOidcSsoProfileRpConfigArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: OAuth2 client ID for OIDC. Must be set together with `client_secret`.
+        :param pulumi.Input[_builtins.str] client_secret: Input only. OAuth2 client secret for OIDC. Must be set together with `client_id`.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redirect_uris: (Output)
+               The URL(s) that this client may use in authentication requests.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if redirect_uris is not None:
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        OAuth2 client ID for OIDC. Must be set together with `client_secret`.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Input only. OAuth2 client secret for OIDC. Must be set together with `client_id`.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The URL(s) that this client may use in authentication requests.
+        """
+        return pulumi.get(self, "redirect_uris")
+
+    @redirect_uris.setter
+    def redirect_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "redirect_uris", value)
+
+
+class InboundSamlSsoProfileIdpConfigArgsDict(TypedDict):
+    entity_id: pulumi.Input[_builtins.str]
+    """
+    The SAML **Entity ID** of the identity provider.
+    """
+    single_sign_on_service_uri: pulumi.Input[_builtins.str]
+    """
+    The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+    This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+    Assumed to accept the `HTTP-Redirect` binding.
+    """
+    change_password_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The **Change Password URL** of the identity provider. Users will be sent to this URL
+    when changing their passwords at `myaccount.google.com`. This takes precedence over
+    the change password URL configured at customer-level. Must use `HTTPS`.
+    """
+    logout_redirect_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+    clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+    a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+    supported. Must use `HTTPS`.
+    """
+
+@pulumi.input_type
+class InboundSamlSsoProfileIdpConfigArgs:
+    def __init__(__self__, *,
+                 entity_id: pulumi.Input[_builtins.str],
+                 single_sign_on_service_uri: pulumi.Input[_builtins.str],
+                 change_password_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 logout_redirect_uri: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] entity_id: The SAML **Entity ID** of the identity provider.
+        :param pulumi.Input[_builtins.str] single_sign_on_service_uri: The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+               This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+               Assumed to accept the `HTTP-Redirect` binding.
+        :param pulumi.Input[_builtins.str] change_password_uri: The **Change Password URL** of the identity provider. Users will be sent to this URL
+               when changing their passwords at `myaccount.google.com`. This takes precedence over
+               the change password URL configured at customer-level. Must use `HTTPS`.
+        :param pulumi.Input[_builtins.str] logout_redirect_uri: The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+               clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+               a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+               supported. Must use `HTTPS`.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "single_sign_on_service_uri", single_sign_on_service_uri)
+        if change_password_uri is not None:
+            pulumi.set(__self__, "change_password_uri", change_password_uri)
+        if logout_redirect_uri is not None:
+            pulumi.set(__self__, "logout_redirect_uri", logout_redirect_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The SAML **Entity ID** of the identity provider.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "entity_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="singleSignOnServiceUri")
+    def single_sign_on_service_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+        This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+        Assumed to accept the `HTTP-Redirect` binding.
+        """
+        return pulumi.get(self, "single_sign_on_service_uri")
+
+    @single_sign_on_service_uri.setter
+    def single_sign_on_service_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "single_sign_on_service_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="changePasswordUri")
+    def change_password_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The **Change Password URL** of the identity provider. Users will be sent to this URL
+        when changing their passwords at `myaccount.google.com`. This takes precedence over
+        the change password URL configured at customer-level. Must use `HTTPS`.
+        """
+        return pulumi.get(self, "change_password_uri")
+
+    @change_password_uri.setter
+    def change_password_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "change_password_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logoutRedirectUri")
+    def logout_redirect_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+        clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+        a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+        supported. Must use `HTTPS`.
+        """
+        return pulumi.get(self, "logout_redirect_uri")
+
+    @logout_redirect_uri.setter
+    def logout_redirect_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "logout_redirect_uri", value)
+
+
+class InboundSamlSsoProfileSpConfigArgsDict(TypedDict):
+    assertion_consumer_service_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated
+    login. Assumed to accept response messages via the `HTTP-POST` binding.
+    """
+    entity_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The SAML **Entity ID** for this service provider.
+    """
+
+@pulumi.input_type
+class InboundSamlSsoProfileSpConfigArgs:
+    def __init__(__self__, *,
+                 assertion_consumer_service_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] assertion_consumer_service_uri: (Output)
+               The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated
+               login. Assumed to accept response messages via the `HTTP-POST` binding.
+        :param pulumi.Input[_builtins.str] entity_id: (Output)
+               The SAML **Entity ID** for this service provider.
+        """
+        if assertion_consumer_service_uri is not None:
+            pulumi.set(__self__, "assertion_consumer_service_uri", assertion_consumer_service_uri)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
+
+    @_builtins.property
+    @pulumi.getter(name="assertionConsumerServiceUri")
+    def assertion_consumer_service_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated
+        login. Assumed to accept response messages via the `HTTP-POST` binding.
+        """
+        return pulumi.get(self, "assertion_consumer_service_uri")
+
+    @assertion_consumer_service_uri.setter
+    def assertion_consumer_service_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "assertion_consumer_service_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The SAML **Entity ID** for this service provider.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "entity_id", value)
+
+
 class PolicyPolicyQueryArgsDict(TypedDict):
     org_unit: pulumi.Input[_builtins.str]
     """
-    The OrgUnit the query applies to.
+    The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+    `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+    Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+    and display names are not resolved and are rejected for most settings.
+    For detector settings (`settings/detector.*`), the API ignores this value and
+    always applies the policy to, and returns, the customer's root org unit, so any
+    other value produces a diff; set it to the root org unit's ID.
     """
     group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -475,7 +787,13 @@ class PolicyPolicyQueryArgs:
                  query: pulumi.Input[Optional[_builtins.str]] = None,
                  sort_order: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] org_unit: The OrgUnit the query applies to.
+        :param pulumi.Input[_builtins.str] org_unit: The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+               `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+               Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+               and display names are not resolved and are rejected for most settings.
+               For detector settings (`settings/detector.*`), the API ignores this value and
+               always applies the policy to, and returns, the customer's root org unit, so any
+               other value produces a diff; set it to the root org unit's ID.
         :param pulumi.Input[_builtins.str] group: The group that the query applies to.
         :param pulumi.Input[_builtins.str] query: The CEL query that defines which entities the Policy applies to.
         :param pulumi.Input[_builtins.int] sort_order: (Output)
@@ -493,7 +811,13 @@ class PolicyPolicyQueryArgs:
     @pulumi.getter(name="orgUnit")
     def org_unit(self) -> pulumi.Input[_builtins.str]:
         """
-        The OrgUnit the query applies to.
+        The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+        `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+        Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+        and display names are not resolved and are rejected for most settings.
+        For detector settings (`settings/detector.*`), the API ignores this value and
+        always applies the policy to, and returns, the customer's root org unit, so any
+        other value produces a diff; set it to the root org unit's ID.
         """
         return pulumi.get(self, "org_unit")
 

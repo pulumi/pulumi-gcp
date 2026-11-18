@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -39,8 +41,12 @@ import * as utilities from "../utilities";
  *     region: "us",
  *     agentAnomalyDetectionScopeId: "agent-anomaly-detection-scope",
  *     displayName: "Basic AAD scope",
+ *     autoEnroll: true,
  *     logBuckets: [aad_log_bucket.id],
  *     observabilityBuckets: [project.then(project => `projects/${project.projectId}/locations/us/buckets/_Trace/datasets/Spans`)],
+ *     encryptionSpec: {
+ *         kmsKeyName: "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+ *     },
  * });
  * ```
  *
@@ -108,6 +114,14 @@ export class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
      */
     declare public readonly agentAnomalyDetectionScopeId: pulumi.Output<string>;
     /**
+     * When true, newly discovered agents that share log and observability
+     * buckets with this scope are automatically enrolled as ACTIVE monitored
+     * agents, up to the project's monitored agent quota. When false, newly
+     * discovered agents are added as DISABLED monitored agents and must be
+     * enabled explicitly.
+     */
+    declare public readonly autoEnroll: pulumi.Output<boolean | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -120,6 +134,14 @@ export class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
      * User provided display name of the AgentAnomalyDetectionScope.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * Customer-managed encryption key spec for the scope. If set, this scope
+     * and all sub-resources are secured by this key. The key must be a Cloud
+     * KMS key co-located with the scope location (for example, `us` for a `us`
+     * scope, `europe` for an `eu` scope, or matching single region).
+     * Structure is documented below.
+     */
+    declare public readonly encryptionSpec: pulumi.Output<outputs.vertex.AiAgentAnomalyDetectionScopeEncryptionSpec | undefined>;
     /**
      * Customer owned Cloud Logging bucket resource names attached to this scope.
      * Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
@@ -164,8 +186,10 @@ export class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AiAgentAnomalyDetectionScopeState | undefined;
             resourceInputs["agentAnomalyDetectionScopeId"] = state?.agentAnomalyDetectionScopeId;
+            resourceInputs["autoEnroll"] = state?.autoEnroll;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
             resourceInputs["logBuckets"] = state?.logBuckets;
             resourceInputs["name"] = state?.name;
             resourceInputs["observabilityBuckets"] = state?.observabilityBuckets;
@@ -187,8 +211,10 @@ export class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["agentAnomalyDetectionScopeId"] = args?.agentAnomalyDetectionScopeId;
+            resourceInputs["autoEnroll"] = args?.autoEnroll;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
             resourceInputs["logBuckets"] = args?.logBuckets;
             resourceInputs["observabilityBuckets"] = args?.observabilityBuckets;
             resourceInputs["project"] = args?.project;
@@ -212,6 +238,14 @@ export interface AiAgentAnomalyDetectionScopeState {
      */
     agentAnomalyDetectionScopeId?: pulumi.Input<string | undefined>;
     /**
+     * When true, newly discovered agents that share log and observability
+     * buckets with this scope are automatically enrolled as ACTIVE monitored
+     * agents, up to the project's monitored agent quota. When false, newly
+     * discovered agents are added as DISABLED monitored agents and must be
+     * enabled explicitly.
+     */
+    autoEnroll?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -224,6 +258,14 @@ export interface AiAgentAnomalyDetectionScopeState {
      * User provided display name of the AgentAnomalyDetectionScope.
      */
     displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Customer-managed encryption key spec for the scope. If set, this scope
+     * and all sub-resources are secured by this key. The key must be a Cloud
+     * KMS key co-located with the scope location (for example, `us` for a `us`
+     * scope, `europe` for an `eu` scope, or matching single region).
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiAgentAnomalyDetectionScopeEncryptionSpec | undefined>;
     /**
      * Customer owned Cloud Logging bucket resource names attached to this scope.
      * Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
@@ -266,6 +308,14 @@ export interface AiAgentAnomalyDetectionScopeArgs {
      */
     agentAnomalyDetectionScopeId: pulumi.Input<string>;
     /**
+     * When true, newly discovered agents that share log and observability
+     * buckets with this scope are automatically enrolled as ACTIVE monitored
+     * agents, up to the project's monitored agent quota. When false, newly
+     * discovered agents are added as DISABLED monitored agents and must be
+     * enabled explicitly.
+     */
+    autoEnroll?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -278,6 +328,14 @@ export interface AiAgentAnomalyDetectionScopeArgs {
      * User provided display name of the AgentAnomalyDetectionScope.
      */
     displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Customer-managed encryption key spec for the scope. If set, this scope
+     * and all sub-resources are secured by this key. The key must be a Cloud
+     * KMS key co-located with the scope location (for example, `us` for a `us`
+     * scope, `europe` for an `eu` scope, or matching single region).
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiAgentAnomalyDetectionScopeEncryptionSpec | undefined>;
     /**
      * Customer owned Cloud Logging bucket resource names attached to this scope.
      * Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.

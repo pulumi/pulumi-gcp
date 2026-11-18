@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "function-neg",
     ///         Description = "My function",
-    ///         Runtime = "nodejs20",
+    ///         Runtime = "nodejs22",
     ///         AvailableMemoryMb = 128,
     ///         SourceArchiveBucket = bucket.Name,
     ///         SourceArchiveObject = archive.Name,

@@ -672,19 +672,33 @@ class InstanceDesiredAutoCreatedEndpointArgsDict(TypedDict):
     """
     Required. The consumer project_id where the forwarding rule is created from.
     """
+    ip_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Optional, Beta)
+    Immutable. The IP version that the consumer endpoint will use.
+    Default value is `IPV4`.
+    Possible values are: `IPV4`, `IPV6`.
+    """
 
 @pulumi.input_type
 class InstanceDesiredAutoCreatedEndpointArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
-                 project_id: pulumi.Input[_builtins.str]):
+                 project_id: pulumi.Input[_builtins.str],
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: Required. The consumer network where the IP address resides, in the form of
                projects/{project_id}/global/networks/{network_id}.
         :param pulumi.Input[_builtins.str] project_id: Required. The consumer project_id where the forwarding rule is created from.
+        :param pulumi.Input[_builtins.str] ip_version: (Optional, Beta)
+               Immutable. The IP version that the consumer endpoint will use.
+               Default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "project_id", project_id)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
 
     @_builtins.property
     @pulumi.getter
@@ -710,6 +724,21 @@ class InstanceDesiredAutoCreatedEndpointArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Immutable. The IP version that the consumer endpoint will use.
+        Default value is `IPV4`.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_version", value)
 
 
 class InstanceDesiredPscAutoConnectionArgsDict(TypedDict):
@@ -1196,6 +1225,11 @@ class InstanceEndpointConnectionPscAutoConnectionArgsDict(TypedDict):
     (Output)
     Output only. The IP allocated on the consumer network for the PSC forwarding rule.
     """
+    ip_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output, Beta)
+    The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+    """
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -1230,6 +1264,7 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
                  forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1248,6 +1283,8 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
                projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
         :param pulumi.Input[_builtins.str] ip_address: (Output)
                Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        :param pulumi.Input[_builtins.str] ip_version: (Output, Beta)
+               The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[_builtins.str] network: (Output)
                Output only. The consumer network where the IP address resides, in the form of
                projects/{project_id}/global/networks/{network_id}.
@@ -1267,6 +1304,8 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
             pulumi.set(__self__, "forwarding_rule", forwarding_rule)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if port is not None:
@@ -1322,6 +1361,19 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
     @ip_address.setter
     def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output, Beta)
+        The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2238,6 +2290,11 @@ class InstancePscAutoConnectionArgsDict(TypedDict):
     (Output)
     Output only. The IP allocated on the consumer network for the PSC forwarding rule.
     """
+    ip_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output, Beta)
+    The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+    """
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -2280,6 +2337,7 @@ class InstancePscAutoConnectionArgs:
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
                  forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2299,6 +2357,8 @@ class InstancePscAutoConnectionArgs:
                projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
         :param pulumi.Input[_builtins.str] ip_address: (Output)
                Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        :param pulumi.Input[_builtins.str] ip_version: (Output, Beta)
+               The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[_builtins.str] network: (Output)
                Output only. The consumer network where the IP address resides, in the form of
                projects/{project_id}/global/networks/{network_id}.
@@ -2323,6 +2383,8 @@ class InstancePscAutoConnectionArgs:
             pulumi.set(__self__, "forwarding_rule", forwarding_rule)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if port is not None:
@@ -2380,6 +2442,19 @@ class InstancePscAutoConnectionArgs:
     @ip_address.setter
     def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output, Beta)
+        The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter

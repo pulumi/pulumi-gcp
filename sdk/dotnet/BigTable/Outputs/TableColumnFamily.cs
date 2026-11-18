@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.BigTable.Outputs
         public readonly string Family;
         /// <summary>
         /// The type of the column family.
+        /// 
+        /// ***
         /// </summary>
         public readonly string? Type;
 

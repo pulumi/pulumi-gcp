@@ -493,6 +493,32 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Cloudrunv2 Worker Pool Sandbox Templates
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.WorkerPool("default", {
+ *     name: "cloudrun-example",
+ *     location: "us-west1",
+ *     deletionProtection: false,
+ *     launchStage: "BETA",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             sandboxLauncher: true,
+ *         }],
+ *         sandboxes: {
+ *             templates: [{
+ *                 name: "hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * WorkerPool can be imported using any of these accepted formats:

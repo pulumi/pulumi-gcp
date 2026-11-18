@@ -201,6 +201,40 @@ import (
 //
 // > **Note:** If you omit the `controlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
 //
+// ### GKE Cluster With KCP_HPA Logging
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("gke-logging-cluster"),
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//				LoggingConfig: &container.ClusterLoggingConfigArgs{
+//					EnableComponents: pulumi.StringArray{
+//						pulumi.String("SYSTEM_COMPONENTS"),
+//						pulumi.String("KCP_HPA"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Autopilot
 //
 // ```go

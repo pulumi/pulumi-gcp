@@ -33,14 +33,26 @@ public final class PolicyPolicyQueryArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The OrgUnit the query applies to.
+     * The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+     * `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+     * Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+     * and display names are not resolved and are rejected for most settings.
+     * For detector settings (`settings/detector.*`), the API ignores this value and
+     * always applies the policy to, and returns, the customer&#39;s root org unit, so any
+     * other value produces a diff; set it to the root org unit&#39;s ID.
      * 
      */
     @Import(name="orgUnit", required=true)
     private Output<String> orgUnit;
 
     /**
-     * @return The OrgUnit the query applies to.
+     * @return The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+     * `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+     * Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+     * and display names are not resolved and are rejected for most settings.
+     * For detector settings (`settings/detector.*`), the API ignores this value and
+     * always applies the policy to, and returns, the customer&#39;s root org unit, so any
+     * other value produces a diff; set it to the root org unit&#39;s ID.
      * 
      */
     public Output<String> orgUnit() {
@@ -128,7 +140,13 @@ public final class PolicyPolicyQueryArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param orgUnit The OrgUnit the query applies to.
+         * @param orgUnit The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+         * `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+         * Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+         * and display names are not resolved and are rejected for most settings.
+         * For detector settings (`settings/detector.*`), the API ignores this value and
+         * always applies the policy to, and returns, the customer&#39;s root org unit, so any
+         * other value produces a diff; set it to the root org unit&#39;s ID.
          * 
          * @return builder
          * 
@@ -139,7 +157,13 @@ public final class PolicyPolicyQueryArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param orgUnit The OrgUnit the query applies to.
+         * @param orgUnit The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+         * `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+         * Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+         * and display names are not resolved and are rejected for most settings.
+         * For detector settings (`settings/detector.*`), the API ignores this value and
+         * always applies the policy to, and returns, the customer&#39;s root org unit, so any
+         * other value produces a diff; set it to the root org unit&#39;s ID.
          * 
          * @return builder
          * 

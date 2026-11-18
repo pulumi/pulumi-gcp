@@ -209,11 +209,11 @@ export class GCPolicy extends pulumi.CustomResource {
      */
     declare public readonly instanceName: pulumi.Output<string>;
     /**
-     * GC policy that applies to all cells older than the given age.
+     * GC policy that applies to all cells older than the given age. Structure is documented below.
      */
     declare public readonly maxAge: pulumi.Output<outputs.bigtable.GCPolicyMaxAge | undefined>;
     /**
-     * GC policy that applies to all versions of a cell except for the most recent.
+     * GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
      */
     declare public readonly maxVersions: pulumi.Output<outputs.bigtable.GCPolicyMaxVersion[] | undefined>;
     /**
@@ -316,11 +316,11 @@ export interface GCPolicyState {
      */
     instanceName?: pulumi.Input<string | undefined>;
     /**
-     * GC policy that applies to all cells older than the given age.
+     * GC policy that applies to all cells older than the given age. Structure is documented below.
      */
     maxAge?: pulumi.Input<inputs.bigtable.GCPolicyMaxAge | undefined>;
     /**
-     * GC policy that applies to all versions of a cell except for the most recent.
+     * GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
      */
     maxVersions?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxVersion>[] | undefined>;
     /**
@@ -374,11 +374,11 @@ export interface GCPolicyArgs {
      */
     instanceName: pulumi.Input<string>;
     /**
-     * GC policy that applies to all cells older than the given age.
+     * GC policy that applies to all cells older than the given age. Structure is documented below.
      */
     maxAge?: pulumi.Input<inputs.bigtable.GCPolicyMaxAge | undefined>;
     /**
-     * GC policy that applies to all versions of a cell except for the most recent.
+     * GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
      */
     maxVersions?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxVersion>[] | undefined>;
     /**

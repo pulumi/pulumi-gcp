@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     public sealed class GetInstanceDesiredAutoCreatedEndpointResult
     {
         /// <summary>
+        /// Immutable. The IP version that the consumer endpoint will use.
+        /// Default value is 'IPV4'. Possible values: ["IPV4", "IPV6"]
+        /// </summary>
+        public readonly string IpVersion;
+        /// <summary>
         /// Required. The consumer network where the IP address resides, in the form of
         /// projects/{project_id}/global/networks/{network_id}.
         /// </summary>
@@ -25,10 +30,13 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
 
         [OutputConstructor]
         private GetInstanceDesiredAutoCreatedEndpointResult(
+            string ipVersion,
+
             string network,
 
             string projectId)
         {
+            IpVersion = ipVersion;
             Network = network;
             ProjectId = projectId;
         }

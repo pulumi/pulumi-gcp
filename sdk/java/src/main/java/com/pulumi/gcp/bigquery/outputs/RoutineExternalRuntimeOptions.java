@@ -58,7 +58,8 @@ public final class RoutineExternalRuntimeOptions {
     /**
      * @return List of volume mounts for the Python UDF container that executes the
      * managed function. When volume mounts are set, `runtimeConnection` must
-     * also be set.
+     * also be set. For more information, see [Create a Python UDF with volume
+     * mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
      * Structure is documented below.
      * 
      */
@@ -121,7 +122,8 @@ public final class RoutineExternalRuntimeOptions {
     /**
      * @return List of volume mounts for the Python UDF container that executes the
      * managed function. When volume mounts are set, `runtimeConnection` must
-     * also be set.
+     * also be set. For more information, see [Create a Python UDF with volume
+     * mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
      * Structure is documented below.
      * 
      */

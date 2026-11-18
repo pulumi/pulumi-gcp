@@ -6,9 +6,11 @@ package com.pulumi.gcp.agentidentity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs;
+import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs;
 import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsGeAuthProviderArgs;
 import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsThreeLeggedOauthArgs;
 import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsTwoLeggedOauthArgs;
+import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,6 +36,23 @@ public final class AuthProviderAuthProviderTypeParamsArgs extends com.pulumi.res
      */
     public Optional<Output<AuthProviderAuthProviderTypeParamsApiKeyArgs>> apiKey() {
         return Optional.ofNullable(this.apiKey);
+    }
+
+    /**
+     * Parameters for Connector Reference authentication.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="connectorReferenceAuthProvider")
+    private @Nullable Output<AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs> connectorReferenceAuthProvider;
+
+    /**
+     * @return Parameters for Connector Reference authentication.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs>> connectorReferenceAuthProvider() {
+        return Optional.ofNullable(this.connectorReferenceAuthProvider);
     }
 
     /**
@@ -89,13 +108,32 @@ public final class AuthProviderAuthProviderTypeParamsArgs extends com.pulumi.res
         return Optional.ofNullable(this.twoLeggedOauth);
     }
 
+    /**
+     * Parameters for Cross-App Access authentication.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="xaaAuthProvider")
+    private @Nullable Output<AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs> xaaAuthProvider;
+
+    /**
+     * @return Parameters for Cross-App Access authentication.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs>> xaaAuthProvider() {
+        return Optional.ofNullable(this.xaaAuthProvider);
+    }
+
     private AuthProviderAuthProviderTypeParamsArgs() {}
 
     private AuthProviderAuthProviderTypeParamsArgs(AuthProviderAuthProviderTypeParamsArgs $) {
         this.apiKey = $.apiKey;
+        this.connectorReferenceAuthProvider = $.connectorReferenceAuthProvider;
         this.geAuthProviders = $.geAuthProviders;
         this.threeLeggedOauth = $.threeLeggedOauth;
         this.twoLeggedOauth = $.twoLeggedOauth;
+        this.xaaAuthProvider = $.xaaAuthProvider;
     }
 
     public static Builder builder() {
@@ -137,6 +175,29 @@ public final class AuthProviderAuthProviderTypeParamsArgs extends com.pulumi.res
          */
         public Builder apiKey(AuthProviderAuthProviderTypeParamsApiKeyArgs apiKey) {
             return apiKey(Output.of(apiKey));
+        }
+
+        /**
+         * @param connectorReferenceAuthProvider Parameters for Connector Reference authentication.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorReferenceAuthProvider(@Nullable Output<AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs> connectorReferenceAuthProvider) {
+            $.connectorReferenceAuthProvider = connectorReferenceAuthProvider;
+            return this;
+        }
+
+        /**
+         * @param connectorReferenceAuthProvider Parameters for Connector Reference authentication.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorReferenceAuthProvider(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs connectorReferenceAuthProvider) {
+            return connectorReferenceAuthProvider(Output.of(connectorReferenceAuthProvider));
         }
 
         /**
@@ -220,6 +281,29 @@ public final class AuthProviderAuthProviderTypeParamsArgs extends com.pulumi.res
          */
         public Builder twoLeggedOauth(AuthProviderAuthProviderTypeParamsTwoLeggedOauthArgs twoLeggedOauth) {
             return twoLeggedOauth(Output.of(twoLeggedOauth));
+        }
+
+        /**
+         * @param xaaAuthProvider Parameters for Cross-App Access authentication.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xaaAuthProvider(@Nullable Output<AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs> xaaAuthProvider) {
+            $.xaaAuthProvider = xaaAuthProvider;
+            return this;
+        }
+
+        /**
+         * @param xaaAuthProvider Parameters for Cross-App Access authentication.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xaaAuthProvider(AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs xaaAuthProvider) {
+            return xaaAuthProvider(Output.of(xaaAuthProvider));
         }
 
         public AuthProviderAuthProviderTypeParamsArgs build() {

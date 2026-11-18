@@ -271,6 +271,9 @@ public final class Config {
     public Optional<String> deploymentManagerCustomEndpoint() {
         return Codegen.stringProp("deploymentManagerCustomEndpoint").config(config).get();
     }
+    public Optional<String> designCenterCustomEndpoint() {
+        return Codegen.stringProp("designCenterCustomEndpoint").config(config).get();
+    }
     public Optional<String> developerConnectCustomEndpoint() {
         return Codegen.stringProp("developerConnectCustomEndpoint").config(config).get();
     }

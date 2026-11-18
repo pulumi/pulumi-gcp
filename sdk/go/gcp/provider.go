@@ -100,6 +100,7 @@ type Provider struct {
 	DatastreamCustomEndpoint               pulumi.StringPtrOutput `pulumi:"datastreamCustomEndpoint"`
 	DeletionPolicy                         pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrOutput `pulumi:"deploymentManagerCustomEndpoint"`
+	DesignCenterCustomEndpoint             pulumi.StringPtrOutput `pulumi:"designCenterCustomEndpoint"`
 	DeveloperConnectCustomEndpoint         pulumi.StringPtrOutput `pulumi:"developerConnectCustomEndpoint"`
 	DialogflowCustomEndpoint               pulumi.StringPtrOutput `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dialogflowCxCustomEndpoint"`
@@ -356,6 +357,7 @@ type providerArgs struct {
 	DefaultLabels                          map[string]string            `pulumi:"defaultLabels"`
 	DeletionPolicy                         *string                      `pulumi:"deletionPolicy"`
 	DeploymentManagerCustomEndpoint        *string                      `pulumi:"deploymentManagerCustomEndpoint"`
+	DesignCenterCustomEndpoint             *string                      `pulumi:"designCenterCustomEndpoint"`
 	DeveloperConnectCustomEndpoint         *string                      `pulumi:"developerConnectCustomEndpoint"`
 	DialogflowCustomEndpoint               *string                      `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint             *string                      `pulumi:"dialogflowCxCustomEndpoint"`
@@ -582,6 +584,7 @@ type ProviderArgs struct {
 	DefaultLabels                          pulumi.StringMapInput
 	DeletionPolicy                         pulumi.StringPtrInput
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrInput
+	DesignCenterCustomEndpoint             pulumi.StringPtrInput
 	DeveloperConnectCustomEndpoint         pulumi.StringPtrInput
 	DialogflowCustomEndpoint               pulumi.StringPtrInput
 	DialogflowCxCustomEndpoint             pulumi.StringPtrInput
@@ -1107,6 +1110,10 @@ func (o ProviderOutput) DeletionPolicy() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) DeploymentManagerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DeploymentManagerCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) DesignCenterCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DesignCenterCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) DeveloperConnectCustomEndpoint() pulumi.StringPtrOutput {

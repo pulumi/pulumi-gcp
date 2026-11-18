@@ -141,7 +141,7 @@ class BackendServiceArgs:
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL_MANAGED`.
-               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -639,7 +639,7 @@ class BackendServiceArgs:
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL_MANAGED`.
-        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1092,7 +1092,7 @@ class _BackendServiceState:
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL_MANAGED`.
-               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -1636,7 +1636,7 @@ class _BackendServiceState:
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL_MANAGED`.
-        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -2676,7 +2676,7 @@ class BackendService(pulumi.CustomResource):
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL_MANAGED`.
-               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict', 'outputs.BackendServiceLocalityLbPolicy']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -3627,7 +3627,7 @@ class BackendService(pulumi.CustomResource):
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL_MANAGED`.
-               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict', 'outputs.BackendServiceLocalityLbPolicy']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -4133,7 +4133,7 @@ class BackendService(pulumi.CustomResource):
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL_MANAGED`.
-        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 

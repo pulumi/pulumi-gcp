@@ -349,6 +349,21 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
     }
 
     /**
+     * ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      * 
      */
@@ -624,6 +639,7 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         this.project = $.project;
         this.resourcePolicies = $.resourcePolicies;
         this.selfLink = $.selfLink;
+        this.serviceAccount = $.serviceAccount;
         this.standbyPolicy = $.standbyPolicy;
         this.statefulDisks = $.statefulDisks;
         this.statefulExternalIps = $.statefulExternalIps;
@@ -1088,6 +1104,27 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param serviceAccount ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**

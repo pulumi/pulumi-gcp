@@ -115,6 +115,7 @@ export class Ruleset extends pulumi.CustomResource {
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * Output only. The metadata for this ruleset.
+     * Structure is documented below.
      */
     declare public /*out*/ readonly metadatas: pulumi.Output<outputs.firebaserules.RulesetMetadata[]>;
     /**
@@ -127,6 +128,7 @@ export class Ruleset extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * `Source` for the `Ruleset`.
+     * Structure is documented below.
      */
     declare public readonly source: pulumi.Output<outputs.firebaserules.RulesetSource>;
 
@@ -185,6 +187,7 @@ export interface RulesetState {
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Output only. The metadata for this ruleset.
+     * Structure is documented below.
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.firebaserules.RulesetMetadata>[] | undefined>;
     /**
@@ -197,6 +200,7 @@ export interface RulesetState {
     project?: pulumi.Input<string | undefined>;
     /**
      * `Source` for the `Ruleset`.
+     * Structure is documented below.
      */
     source?: pulumi.Input<inputs.firebaserules.RulesetSource | undefined>;
 }
@@ -220,6 +224,7 @@ export interface RulesetArgs {
     project?: pulumi.Input<string | undefined>;
     /**
      * `Source` for the `Ruleset`.
+     * Structure is documented below.
      */
     source: pulumi.Input<inputs.firebaserules.RulesetSource>;
 }

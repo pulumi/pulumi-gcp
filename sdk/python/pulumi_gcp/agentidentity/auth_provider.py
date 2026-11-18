@@ -636,6 +636,95 @@ class AuthProvider(pulumi.CustomResource):
             })
         ```
 
+        ### Agent Identity Auth Provider Connector Reference
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="connref-provider",
+            description="Connector reference auth provider",
+            auth_provider_type_params={
+                "connector_reference_auth_provider": {
+                    "connector": "salesforce-connector-prod",
+                    "authorization_details": json.dumps([{
+                        "type": "oauth_authorization",
+                        "resource": "https://example.com/api",
+                    }]),
+                },
+            })
+        ```
+
+        ### Agent Identity Auth Provider Xaa
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="xaa-provider",
+            description="Cross-App Access auth provider",
+            auth_provider_type_params={
+                "xaa_auth_provider": {
+                    "additional_parameters": {
+                        "prompt": "consent",
+                    },
+                    "client_secret_auth": {
+                        "client_id": "test-client-id",
+                        "client_secret": "test-client-secret",
+                    },
+                    "custom_issuer": {
+                        "token_url": "https://auth.example.com/token",
+                        "issuer": "https://auth.example.com",
+                    },
+                    "id_token_input": {
+                        "id_jag_auth_provider": "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+                        "id_jag_additional_claims": json.dumps({
+                            "env": "test",
+                        }),
+                    },
+                },
+            })
+        ```
+
+        ### Agent Identity Auth Provider Xaa Jwt
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="xaa-jwt-provider",
+            description="Cross-App Access with Client Assertion JWT",
+            auth_provider_type_params={
+                "xaa_auth_provider": {
+                    "client_assertion_jwt_auth": {
+                        "client_id": "test-jwt-client-id",
+                    },
+                    "custom_issuer": {
+                        "token_url": "https://auth.example.com/token",
+                    },
+                    "id_token_input": {
+                        "id_jag_auth_provider": "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+                        "id_jag_additional_claims": json.dumps({
+                            "env": "test",
+                        }),
+                    },
+                },
+            })
+        ```
+
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+
         ## Import
 
         AuthProvider can be imported using any of these accepted formats:
@@ -721,6 +810,95 @@ class AuthProvider(pulumi.CustomResource):
                 },
             })
         ```
+
+        ### Agent Identity Auth Provider Connector Reference
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="connref-provider",
+            description="Connector reference auth provider",
+            auth_provider_type_params={
+                "connector_reference_auth_provider": {
+                    "connector": "salesforce-connector-prod",
+                    "authorization_details": json.dumps([{
+                        "type": "oauth_authorization",
+                        "resource": "https://example.com/api",
+                    }]),
+                },
+            })
+        ```
+
+        ### Agent Identity Auth Provider Xaa
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="xaa-provider",
+            description="Cross-App Access auth provider",
+            auth_provider_type_params={
+                "xaa_auth_provider": {
+                    "additional_parameters": {
+                        "prompt": "consent",
+                    },
+                    "client_secret_auth": {
+                        "client_id": "test-client-id",
+                        "client_secret": "test-client-secret",
+                    },
+                    "custom_issuer": {
+                        "token_url": "https://auth.example.com/token",
+                        "issuer": "https://auth.example.com",
+                    },
+                    "id_token_input": {
+                        "id_jag_auth_provider": "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+                        "id_jag_additional_claims": json.dumps({
+                            "env": "test",
+                        }),
+                    },
+                },
+            })
+        ```
+
+        ### Agent Identity Auth Provider Xaa Jwt
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="xaa-jwt-provider",
+            description="Cross-App Access with Client Assertion JWT",
+            auth_provider_type_params={
+                "xaa_auth_provider": {
+                    "client_assertion_jwt_auth": {
+                        "client_id": "test-jwt-client-id",
+                    },
+                    "custom_issuer": {
+                        "token_url": "https://auth.example.com/token",
+                    },
+                    "id_token_input": {
+                        "id_jag_auth_provider": "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+                        "id_jag_additional_claims": json.dumps({
+                            "env": "test",
+                        }),
+                    },
+                },
+            })
+        ```
+
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 
         ## Import
 

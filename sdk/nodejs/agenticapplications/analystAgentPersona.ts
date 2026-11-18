@@ -327,10 +327,18 @@ import * as utilities from "../utilities";
  *         description: "Sample MCP data source description",
  *         enabled: true,
  *         prompt: "Use this server for queries",
- *         apiKeyName: "x-api-key",
- *         apiKeyHeader: "x-api-key-header",
  *         sessionIdHeader: "X-Custom-Session-Id",
  *         taskIdHeader: "X-Custom-Task-Id",
+ *         requestHeaders: [
+ *             {
+ *                 headerName: "X-Custom-Static",
+ *                 value: "initial-static-value",
+ *             },
+ *             {
+ *                 headerName: "X-Custom-User",
+ *                 dynamicValue: "USER_ID",
+ *             },
+ *         ],
  *     }],
  * });
  * ```
@@ -944,6 +952,14 @@ import * as utilities from "../utilities";
  * (Optional)
  * The custom prompt for the MCP agent.
  *
+ * * `requestHeaders` -
+ * (Optional)
+ * Additional HTTP headers sent on every request to the MCP server, for
+ * example a static header required by an API gateway. Headers managed by the
+ * agent take precedence and cannot be set here. When empty, no additional
+ * headers are sent.
+ * Structure is documented below.
+ *
  * * `serverUrl` -
  * (Required)
  * The URL of the MCP server.
@@ -959,6 +975,26 @@ import * as utilities from "../utilities";
  * The HTTP header name used to pass the agent task ID in MCP server
  * requests (defaults to `X-Task-Id` when unset). Must be a valid HTTP
  * header field name (RFC 9110 token).
+ *
+ * <a name="nestedMcpDataSourcesRequestHeaders"></a>The `requestHeaders` block supports:
+ *
+ * * `dynamicValue` -
+ * (Optional)
+ * A value the agent fills in for each request.
+ * Possible values:
+ * USER_ID
+ *
+ * * `headerName` -
+ * (Required)
+ * The header name. Must be a valid HTTP field name (RFC 9110 token),
+ * unique ignoring case within the data source, and not a header managed
+ * by the agent (such as `Authorization`, `Content-Type`, `mcp-session-id`,
+ * or the configured API key, session ID, or task ID headers).
+ *
+ * * `value` -
+ * (Optional)
+ * A static value, sent as-is on every request. The value is stored and
+ * returned in plain text, so do not use it for credentials.
  *
  * <a name="nestedResources"></a>The `resources` block supports:
  *

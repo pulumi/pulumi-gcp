@@ -1163,6 +1163,7 @@ class App(pulumi.CustomResource):
                 "metric_analysis_settings": {
                     "llm_metrics_opted_out": False,
                 },
+                "required_recording_consent": True,
             },
             model_settings={
                 "model": "gemini-3.0-flash-001",
@@ -1601,6 +1602,7 @@ class App(pulumi.CustomResource):
                 "metric_analysis_settings": {
                     "llm_metrics_opted_out": False,
                 },
+                "required_recording_consent": True,
             },
             model_settings={
                 "model": "gemini-3.0-flash-001",

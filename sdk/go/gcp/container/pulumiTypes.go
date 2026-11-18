@@ -20717,8 +20717,7 @@ func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) Disabled()
 }
 
 type ClusterLoggingConfig struct {
-	// The GKE components exposing logs. Supported values include:
-	// `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+	// The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
 	EnableComponents []string `pulumi:"enableComponents"`
 }
 
@@ -20734,8 +20733,7 @@ type ClusterLoggingConfigInput interface {
 }
 
 type ClusterLoggingConfigArgs struct {
-	// The GKE components exposing logs. Supported values include:
-	// `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+	// The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 }
 
@@ -20816,8 +20814,7 @@ func (o ClusterLoggingConfigOutput) ToClusterLoggingConfigPtrOutputWithContext(c
 	}).(ClusterLoggingConfigPtrOutput)
 }
 
-// The GKE components exposing logs. Supported values include:
-// `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+// The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
 func (o ClusterLoggingConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterLoggingConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }
@@ -20846,8 +20843,7 @@ func (o ClusterLoggingConfigPtrOutput) Elem() ClusterLoggingConfigOutput {
 	}).(ClusterLoggingConfigOutput)
 }
 
-// The GKE components exposing logs. Supported values include:
-// `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+// The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
 func (o ClusterLoggingConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterLoggingConfig) []string {
 		if v == nil {

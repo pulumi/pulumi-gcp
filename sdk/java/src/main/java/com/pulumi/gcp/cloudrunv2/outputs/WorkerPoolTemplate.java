@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateNodeSelector;
+import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateSandboxes;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateVpcAccess;
 import java.lang.Boolean;
@@ -83,6 +84,12 @@ public final class WorkerPoolTemplate {
      * 
      */
     private @Nullable String revision;
+    /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable WorkerPoolTemplateSandboxes sandboxes;
     /**
      * @return Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project&#39;s default service account.
      * 
@@ -190,6 +197,14 @@ public final class WorkerPoolTemplate {
         return Optional.ofNullable(this.revision);
     }
     /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<WorkerPoolTemplateSandboxes> sandboxes() {
+        return Optional.ofNullable(this.sandboxes);
+    }
+    /**
      * @return Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project&#39;s default service account.
      * 
      */
@@ -233,6 +248,7 @@ public final class WorkerPoolTemplate {
         private @Nullable Map<String,String> labels;
         private @Nullable WorkerPoolTemplateNodeSelector nodeSelector;
         private @Nullable String revision;
+        private @Nullable WorkerPoolTemplateSandboxes sandboxes;
         private @Nullable String serviceAccount;
         private @Nullable List<WorkerPoolTemplateVolume> volumes;
         private @Nullable WorkerPoolTemplateVpcAccess vpcAccess;
@@ -250,6 +266,7 @@ public final class WorkerPoolTemplate {
     	      this.labels = defaults.labels;
     	      this.nodeSelector = defaults.nodeSelector;
     	      this.revision = defaults.revision;
+    	      this.sandboxes = defaults.sandboxes;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.volumes = defaults.volumes;
     	      this.vpcAccess = defaults.vpcAccess;
@@ -325,6 +342,12 @@ public final class WorkerPoolTemplate {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxes(@Nullable WorkerPoolTemplateSandboxes sandboxes) {
+
+            this.sandboxes = sandboxes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
 
             this.serviceAccount = serviceAccount;
@@ -358,6 +381,7 @@ public final class WorkerPoolTemplate {
             _resultValue.labels = labels;
             _resultValue.nodeSelector = nodeSelector;
             _resultValue.revision = revision;
+            _resultValue.sandboxes = sandboxes;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.volumes = volumes;
             _resultValue.vpcAccess = vpcAccess;

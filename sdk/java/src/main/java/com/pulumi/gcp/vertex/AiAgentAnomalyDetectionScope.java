@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiAgentAnomalyDetectionScopeArgs;
 import com.pulumi.gcp.vertex.inputs.AiAgentAnomalyDetectionScopeState;
+import com.pulumi.gcp.vertex.outputs.AiAgentAnomalyDetectionScopeEncryptionSpec;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +49,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
  * import com.pulumi.gcp.vertex.AiAgentAnomalyDetectionScope;
  * import com.pulumi.gcp.vertex.AiAgentAnomalyDetectionScopeArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiAgentAnomalyDetectionScopeEncryptionSpecArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -75,8 +78,12 @@ import javax.annotation.Nullable;
  *             .region("us")
  *             .agentAnomalyDetectionScopeId("agent-anomaly-detection-scope")
  *             .displayName("Basic AAD scope")
+ *             .autoEnroll(true)
  *             .logBuckets(aad_log_bucket.id())
  *             .observabilityBuckets(String.format("projects/%s/locations/us/buckets/_Trace/datasets/Spans", project.projectId()))
+ *             .encryptionSpec(AiAgentAnomalyDetectionScopeEncryptionSpecArgs.builder()
+ *                 .kmsKeyName("projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -124,6 +131,28 @@ public class AiAgentAnomalyDetectionScope extends com.pulumi.resources.CustomRes
         return this.agentAnomalyDetectionScopeId;
     }
     /**
+     * When true, newly discovered agents that share log and observability
+     * buckets with this scope are automatically enrolled as ACTIVE monitored
+     * agents, up to the project&#39;s monitored agent quota. When false, newly
+     * discovered agents are added as DISABLED monitored agents and must be
+     * enabled explicitly.
+     * 
+     */
+    @Export(name="autoEnroll", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoEnroll;
+
+    /**
+     * @return When true, newly discovered agents that share log and observability
+     * buckets with this scope are automatically enrolled as ACTIVE monitored
+     * agents, up to the project&#39;s monitored agent quota. When false, newly
+     * discovered agents are added as DISABLED monitored agents and must be
+     * enabled explicitly.
+     * 
+     */
+    public Output<Optional<Boolean>> autoEnroll() {
+        return Codegen.optional(this.autoEnroll);
+    }
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
@@ -160,6 +189,28 @@ public class AiAgentAnomalyDetectionScope extends com.pulumi.resources.CustomRes
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * Customer-managed encryption key spec for the scope. If set, this scope
+     * and all sub-resources are secured by this key. The key must be a Cloud
+     * KMS key co-located with the scope location (for example, `us` for a `us`
+     * scope, `europe` for an `eu` scope, or matching single region).
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionSpec", refs={AiAgentAnomalyDetectionScopeEncryptionSpec.class}, tree="[0]")
+    private Output</* @Nullable */ AiAgentAnomalyDetectionScopeEncryptionSpec> encryptionSpec;
+
+    /**
+     * @return Customer-managed encryption key spec for the scope. If set, this scope
+     * and all sub-resources are secured by this key. The key must be a Cloud
+     * KMS key co-located with the scope location (for example, `us` for a `us`
+     * scope, `europe` for an `eu` scope, or matching single region).
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiAgentAnomalyDetectionScopeEncryptionSpec>> encryptionSpec() {
+        return Codegen.optional(this.encryptionSpec);
     }
     /**
      * Customer owned Cloud Logging bucket resource names attached to this scope.

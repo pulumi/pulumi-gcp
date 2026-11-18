@@ -515,6 +515,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> deploymentManagerCustomEndpoint() {
         return Codegen.optional(this.deploymentManagerCustomEndpoint);
     }
+    @Export(name="designCenterCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> designCenterCustomEndpoint;
+
+    public Output<Optional<String>> designCenterCustomEndpoint() {
+        return Codegen.optional(this.designCenterCustomEndpoint);
+    }
     @Export(name="developerConnectCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> developerConnectCustomEndpoint;
 

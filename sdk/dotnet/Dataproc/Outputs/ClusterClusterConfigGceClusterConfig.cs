@@ -31,6 +31,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
+        /// Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+        /// Structure defined below.
+        /// 
+        /// ***
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigGceClusterConfigMultiZoneConfig? MultiZoneConfig;
+        /// <summary>
         /// The name or SelfLink of the Google Compute Engine
         /// network to the cluster will be part of. Conflicts with `Subnetwork`.
         /// If neither is specified, this defaults to the "default" network.
@@ -65,8 +72,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly ImmutableArray<string> ServiceAccountScopes;
         /// <summary>
         /// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-        /// 
-        /// ***
         /// </summary>
         public readonly Outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig? ShieldedInstanceConfig;
         /// <summary>
@@ -98,6 +103,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             ImmutableDictionary<string, string>? metadata,
 
+            Outputs.ClusterClusterConfigGceClusterConfigMultiZoneConfig? multiZoneConfig,
+
             string? network,
 
             Outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity? nodeGroupAffinity,
@@ -121,6 +128,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             ConfidentialInstanceConfig = confidentialInstanceConfig;
             InternalIpOnly = internalIpOnly;
             Metadata = metadata;
+            MultiZoneConfig = multiZoneConfig;
             Network = network;
             NodeGroupAffinity = nodeGroupAffinity;
             ReservationAffinity = reservationAffinity;

@@ -943,6 +943,26 @@ class Routine(pulumi.CustomResource):
             }])
         ```
 
+        ### Bigquery Routine Any Table
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            description="Gets every row from a table.",
+            definition_body="SELECT * FROM t1",
+            arguments=[{
+                "name": "t1",
+                "argument_kind": "ANY_TABLE",
+            }])
+        ```
+
         ### Bigquery Routine Pyspark
 
         ```python
@@ -1314,6 +1334,26 @@ class Routine(pulumi.CustomResource):
                         }),
                     }],
                 },
+            }])
+        ```
+
+        ### Bigquery Routine Any Table
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            description="Gets every row from a table.",
+            definition_body="SELECT * FROM t1",
+            arguments=[{
+                "name": "t1",
+                "argument_kind": "ANY_TABLE",
             }])
         ```
 

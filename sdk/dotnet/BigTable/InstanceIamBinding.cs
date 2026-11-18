@@ -199,7 +199,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The name or relative resource id of the instance to manage IAM policies for.
         /// 
-        /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+        /// For `gcp.bigtable.InstanceIamPolicy` only:
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The name or relative resource id of the instance to manage IAM policies for.
         /// 
-        /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+        /// For `gcp.bigtable.InstanceIamPolicy` only:
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The name or relative resource id of the instance to manage IAM policies for.
         /// 
-        /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+        /// For `gcp.bigtable.InstanceIamPolicy` only:
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

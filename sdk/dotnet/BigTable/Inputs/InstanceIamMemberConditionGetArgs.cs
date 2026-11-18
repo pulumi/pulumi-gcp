@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.BigTable.Inputs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// 
-        /// For `gcp.bigtable.InstanceIamPolicy` only:
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

@@ -185,6 +185,8 @@ deletionPolicy: Optional[str]
 
 deploymentManagerCustomEndpoint: Optional[str]
 
+designCenterCustomEndpoint: Optional[str]
+
 developerConnectCustomEndpoint: Optional[str]
 
 dialogflowCustomEndpoint: Optional[str]

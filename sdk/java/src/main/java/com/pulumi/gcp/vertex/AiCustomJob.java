@@ -77,6 +77,9 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .labels(Map.of("env", "test"))
  *             .jobSpec(AiCustomJobJobSpecArgs.builder()
+ *                 .persistentResourceId("example-persistent-resource")
+ *                 .experiment("example-experiment")
+ *                 .experimentRun("example-experiment-run")
  *                 .workerPoolSpecs(AiCustomJobJobSpecWorkerPoolSpecArgs.builder()
  *                     .replicaCount(1)
  *                     .machineSpec(AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs.builder()
@@ -87,7 +90,7 @@ import javax.annotation.Nullable;
  *                         .bootDiskSizeGb(100)
  *                         .build())
  *                     .containerSpec(AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs.builder()
- *                         .imageUri("us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-8.py310:latest")
+ *                         .imageUri("us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-12.py310:latest")
  *                         .commands(                        
  *                             "echo",
  *                             "test")
@@ -105,6 +108,62 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .baseOutputDirectory(AiCustomJobJobSpecBaseOutputDirectoryArgs.builder()
  *                     .outputUriPrefix(jobBucket.name().applyValue(_name -> String.format("gs://%s/custom-job-output", _name)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Vertex Ai Custom Job Models
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiCustomJob;
+ * import com.pulumi.gcp.vertex.AiCustomJobArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiCustomJobJobSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiCustomJobJobSpecWorkerPoolSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customJob = new AiCustomJob("customJob", AiCustomJobArgs.builder()
+ *             .displayName("example-custom-job-models")
+ *             .region("us-central1")
+ *             .jobSpec(AiCustomJobJobSpecArgs.builder()
+ *                 .protectedArtifactLocationId("us-central1")
+ *                 .models("example-model")
+ *                 .workerPoolSpecs(AiCustomJobJobSpecWorkerPoolSpecArgs.builder()
+ *                     .replicaCount(1)
+ *                     .machineSpec(AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs.builder()
+ *                         .machineType("n1-standard-4")
+ *                         .build())
+ *                     .diskSpec(AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs.builder()
+ *                         .bootDiskType("pd-ssd")
+ *                         .bootDiskSizeGb(100)
+ *                         .build())
+ *                     .containerSpec(AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs.builder()
+ *                         .imageUri("us-docker.pkg.dev/vertex-ai-restricted/llm/llm-pets-cpu:latest")
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
@@ -205,6 +264,7 @@ import javax.annotation.Nullable;
  *             .jobSpec(AiCustomJobJobSpecArgs.builder()
  *                 .serviceAccount(customJobSa.email())
  *                 .tensorboard(tensorboard.id())
+ *                 .experiment("example-experiment")
  *                 .enableWebAccess(true)
  *                 .enableDashboardAccess(true)
  *                 .baseOutputDirectory(AiCustomJobJobSpecBaseOutputDirectoryArgs.builder()

@@ -88,7 +88,8 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The fully-qualified name of the service account to apply policy to.
+        /// The fully-qualified name of the service account, in the form
+        /// `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
         /// </summary>
         [Input("serviceAccountId", required: true)]
         public string ServiceAccountId { get; set; } = null!;
@@ -102,7 +103,8 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The fully-qualified name of the service account to apply policy to.
+        /// The fully-qualified name of the service account, in the form
+        /// `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
         /// </summary>
         [Input("serviceAccountId", required: true)]
         public Input<string> ServiceAccountId { get; set; } = null!;

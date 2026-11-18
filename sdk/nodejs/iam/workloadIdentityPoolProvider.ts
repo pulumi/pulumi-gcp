@@ -114,6 +114,16 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
+ * const actor = new gcp.iam.WorkloadIdentityPoolProvider("actor", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "actor-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://sts.windows.net/azure-tenant-id",
+ *     },
+ * });
  * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
  *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
  *     workloadIdentityPoolProviderId: "example-prvdr",
@@ -136,7 +146,9 @@ import * as utilities from "../utilities";
  *             "example.com/gcp-oidc-federation",
  *         ],
  *         issuerUri: "https://sts.windows.net/azure-tenant-id",
+ *         discoveryUri: "https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration",
  *     },
+ *     actorProviders: [actor.id],
  * });
  * ```
  *
@@ -341,6 +353,18 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     }
 
     /**
+     * A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+     * that are authorized to issue actor tokens for this provider. An actor token
+     * represents the identity of the acting party to whom authority is delegated. At
+     * most 3 actor providers can be specified. Actor providers are only supported for
+     * OIDC providers.
+     * Each entry must be formatted as
+     * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+     * where `{project}` matches the `project` configured on this resource (for example,
+     * by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+     */
+    declare public readonly actorProviders: pulumi.Output<string[] | undefined>;
+    /**
      * [A Common Expression Language](https://github.com/google/cel-spec) expression, in
      * plain text, to restrict what otherwise valid authentication credentials issued by the
      * provider should not be accepted.
@@ -491,6 +515,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolProviderState | undefined;
+            resourceInputs["actorProviders"] = state?.actorProviders;
             resourceInputs["attributeCondition"] = state?.attributeCondition;
             resourceInputs["attributeMapping"] = state?.attributeMapping;
             resourceInputs["aws"] = state?.aws;
@@ -514,6 +539,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             if (args?.workloadIdentityPoolProviderId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolProviderId'");
             }
+            resourceInputs["actorProviders"] = args?.actorProviders;
             resourceInputs["attributeCondition"] = args?.attributeCondition;
             resourceInputs["attributeMapping"] = args?.attributeMapping;
             resourceInputs["aws"] = args?.aws;
@@ -539,6 +565,18 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkloadIdentityPoolProvider resources.
  */
 export interface WorkloadIdentityPoolProviderState {
+    /**
+     * A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+     * that are authorized to issue actor tokens for this provider. An actor token
+     * represents the identity of the acting party to whom authority is delegated. At
+     * most 3 actor providers can be specified. Actor providers are only supported for
+     * OIDC providers.
+     * Each entry must be formatted as
+     * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+     * where `{project}` matches the `project` configured on this resource (for example,
+     * by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+     */
+    actorProviders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [A Common Expression Language](https://github.com/google/cel-spec) expression, in
      * plain text, to restrict what otherwise valid authentication credentials issued by the
@@ -682,6 +720,18 @@ export interface WorkloadIdentityPoolProviderState {
  * The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
  */
 export interface WorkloadIdentityPoolProviderArgs {
+    /**
+     * A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+     * that are authorized to issue actor tokens for this provider. An actor token
+     * represents the identity of the acting party to whom authority is delegated. At
+     * most 3 actor providers can be specified. Actor providers are only supported for
+     * OIDC providers.
+     * Each entry must be formatted as
+     * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+     * where `{project}` matches the `project` configured on this resource (for example,
+     * by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+     */
+    actorProviders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [A Common Expression Language](https://github.com/google/cel-spec) expression, in
      * plain text, to restrict what otherwise valid authentication credentials issued by the

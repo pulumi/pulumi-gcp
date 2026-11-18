@@ -208,24 +208,14 @@ public class Variable extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * or `value` - (Required) The content to associate with the variable.
-     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-     * is specified, it must be base64 encoded and less than 4096 bytes in length.
-     * 
-     * ***
+     * The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
      * 
      */
     @Export(name="text", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> text;
 
     /**
-     * @return or `value` - (Required) The content to associate with the variable.
-     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-     * is specified, it must be base64 encoded and less than 4096 bytes in length.
-     * 
-     * ***
+     * @return The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
      * 
      */
     public Output<Optional<String>> text() {
@@ -249,9 +239,21 @@ public class Variable extends com.pulumi.resources.CustomResource {
     public Output<String> updateTime() {
         return this.updateTime;
     }
+    /**
+     * The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+     * 
+     * ***
+     * 
+     */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> value;
 
+    /**
+     * @return The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+     * 
+     * ***
+     * 
+     */
     public Output<Optional<String>> value() {
         return Codegen.optional(this.value);
     }

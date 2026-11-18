@@ -42,6 +42,11 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///         Issuer = "issuer",
     ///         Enabled = true,
     ///         ClientSecret = "secret",
+    ///         ResponseType = new Gcp.IdentityPlatform.Inputs.TenantOauthIdpConfigResponseTypeArgs
+    ///         {
+    ///             IdToken = true,
+    ///             Code = false,
+    ///         },
     ///     });
     /// 
     /// });
@@ -119,6 +124,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The response type to request for in the OAuth authorization flow.
+        /// You can set either idToken or code to true, but not both.
+        /// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("responseType")]
+        public Output<Outputs.TenantOauthIdpConfigResponseType> ResponseType { get; private set; } = null!;
 
         /// <summary>
         /// The name of the tenant where this OIDC IDP configuration resource exists
@@ -227,6 +241,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The response type to request for in the OAuth authorization flow.
+        /// You can set either idToken or code to true, but not both.
+        /// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("responseType")]
+        public Input<Inputs.TenantOauthIdpConfigResponseTypeArgs>? ResponseType { get; set; }
+
+        /// <summary>
         /// The name of the tenant where this OIDC IDP configuration resource exists
         /// </summary>
         [Input("tenant", required: true)]
@@ -293,6 +316,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The response type to request for in the OAuth authorization flow.
+        /// You can set either idToken or code to true, but not both.
+        /// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("responseType")]
+        public Input<Inputs.TenantOauthIdpConfigResponseTypeGetArgs>? ResponseType { get; set; }
 
         /// <summary>
         /// The name of the tenant where this OIDC IDP configuration resource exists

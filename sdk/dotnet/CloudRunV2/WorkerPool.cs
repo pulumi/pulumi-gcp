@@ -793,6 +793,49 @@ namespace Pulumi.Gcp.CloudRunV2
     /// });
     /// ```
     /// 
+    /// ### Cloudrunv2 Worker Pool Sandbox Templates
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.WorkerPool("default", new()
+    ///     {
+    ///         Name = "cloudrun-example",
+    ///         Location = "us-west1",
+    ///         DeletionProtection = false,
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     SandboxLauncher = true,
+    ///                 },
+    ///             },
+    ///             Sandboxes = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateSandboxesArgs
+    ///             {
+    ///                 Templates = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateSandboxesTemplateArgs
+    ///                     {
+    ///                         Name = "hello",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// WorkerPool can be imported using any of these accepted formats:

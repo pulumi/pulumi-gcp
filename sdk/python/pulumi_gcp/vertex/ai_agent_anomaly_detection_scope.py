@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AiAgentAnomalyDetectionScopeArgs', 'AiAgentAnomalyDetectionScope']
 
@@ -23,8 +25,10 @@ class AiAgentAnomalyDetectionScopeArgs:
                  log_buckets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  observability_buckets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  region: pulumi.Input[_builtins.str],
+                 auto_enroll: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiAgentAnomalyDetectionScopeEncryptionSpecArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiAgentAnomalyDetectionScope resource.
@@ -38,6 +42,11 @@ class AiAgentAnomalyDetectionScopeArgs:
                scope.
                Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}/datasets/{{dataset}}.
         :param pulumi.Input[_builtins.str] region: The region of the AgentAnomalyDetectionScope, e.g. us-central1.
+        :param pulumi.Input[_builtins.bool] auto_enroll: When true, newly discovered agents that share log and observability
+               buckets with this scope are automatically enrolled as ACTIVE monitored
+               agents, up to the project's monitored agent quota. When false, newly
+               discovered agents are added as DISABLED monitored agents and must be
+               enabled explicitly.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -45,6 +54,11 @@ class AiAgentAnomalyDetectionScopeArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User provided display name of the AgentAnomalyDetectionScope.
+        :param pulumi.Input['AiAgentAnomalyDetectionScopeEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for the scope. If set, this scope
+               and all sub-resources are secured by this key. The key must be a Cloud
+               KMS key co-located with the scope location (for example, `us` for a `us`
+               scope, `europe` for an `eu` scope, or matching single region).
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -52,10 +66,14 @@ class AiAgentAnomalyDetectionScopeArgs:
         pulumi.set(__self__, "log_buckets", log_buckets)
         pulumi.set(__self__, "observability_buckets", observability_buckets)
         pulumi.set(__self__, "region", region)
+        if auto_enroll is not None:
+            pulumi.set(__self__, "auto_enroll", auto_enroll)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -113,6 +131,22 @@ class AiAgentAnomalyDetectionScopeArgs:
         pulumi.set(self, "region", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoEnroll")
+    def auto_enroll(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, newly discovered agents that share log and observability
+        buckets with this scope are automatically enrolled as ACTIVE monitored
+        agents, up to the project's monitored agent quota. When false, newly
+        discovered agents are added as DISABLED monitored agents and must be
+        enabled explicitly.
+        """
+        return pulumi.get(self, "auto_enroll")
+
+    @auto_enroll.setter
+    def auto_enroll(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_enroll", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -142,6 +176,22 @@ class AiAgentAnomalyDetectionScopeArgs:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Input[Optional['AiAgentAnomalyDetectionScopeEncryptionSpecArgs']]:
+        """
+        Customer-managed encryption key spec for the scope. If set, this scope
+        and all sub-resources are secured by this key. The key must be a Cloud
+        KMS key co-located with the scope location (for example, `us` for a `us`
+        scope, `europe` for an `eu` scope, or matching single region).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: pulumi.Input[Optional['AiAgentAnomalyDetectionScopeEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -159,8 +209,10 @@ class AiAgentAnomalyDetectionScopeArgs:
 class _AiAgentAnomalyDetectionScopeState:
     def __init__(__self__, *,
                  agent_anomaly_detection_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_enroll: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiAgentAnomalyDetectionScopeEncryptionSpecArgs']] = None,
                  log_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  observability_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -173,6 +225,11 @@ class _AiAgentAnomalyDetectionScopeState:
         :param pulumi.Input[_builtins.str] agent_anomaly_detection_scope_id: The ID to use for the AgentAnomalyDetectionScope, which will become the
                final component of the scope's resource name. This value should be 1-63
                characters and valid characters are /[a-z][0-9]-/.
+        :param pulumi.Input[_builtins.bool] auto_enroll: When true, newly discovered agents that share log and observability
+               buckets with this scope are automatically enrolled as ACTIVE monitored
+               agents, up to the project's monitored agent quota. When false, newly
+               discovered agents are added as DISABLED monitored agents and must be
+               enabled explicitly.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -180,6 +237,11 @@ class _AiAgentAnomalyDetectionScopeState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User provided display name of the AgentAnomalyDetectionScope.
+        :param pulumi.Input['AiAgentAnomalyDetectionScopeEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for the scope. If set, this scope
+               and all sub-resources are secured by this key. The key must be a Cloud
+               KMS key co-located with the scope location (for example, `us` for a `us`
+               scope, `europe` for an `eu` scope, or matching single region).
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_buckets: Customer owned Cloud Logging bucket resource names attached to this scope.
                Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
         :param pulumi.Input[_builtins.str] name: The resource name of the AgentAnomalyDetectionScope, in the format
@@ -194,10 +256,14 @@ class _AiAgentAnomalyDetectionScopeState:
         """
         if agent_anomaly_detection_scope_id is not None:
             pulumi.set(__self__, "agent_anomaly_detection_scope_id", agent_anomaly_detection_scope_id)
+        if auto_enroll is not None:
+            pulumi.set(__self__, "auto_enroll", auto_enroll)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if log_buckets is not None:
             pulumi.set(__self__, "log_buckets", log_buckets)
         if name is not None:
@@ -226,6 +292,22 @@ class _AiAgentAnomalyDetectionScopeState:
         pulumi.set(self, "agent_anomaly_detection_scope_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoEnroll")
+    def auto_enroll(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, newly discovered agents that share log and observability
+        buckets with this scope are automatically enrolled as ACTIVE monitored
+        agents, up to the project's monitored agent quota. When false, newly
+        discovered agents are added as DISABLED monitored agents and must be
+        enabled explicitly.
+        """
+        return pulumi.get(self, "auto_enroll")
+
+    @auto_enroll.setter
+    def auto_enroll(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_enroll", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -253,6 +335,22 @@ class _AiAgentAnomalyDetectionScopeState:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Input[Optional['AiAgentAnomalyDetectionScopeEncryptionSpecArgs']]:
+        """
+        Customer-managed encryption key spec for the scope. If set, this scope
+        and all sub-resources are secured by this key. The key must be a Cloud
+        KMS key co-located with the scope location (for example, `us` for a `us`
+        scope, `europe` for an `eu` scope, or matching single region).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: pulumi.Input[Optional['AiAgentAnomalyDetectionScopeEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="logBuckets")
@@ -339,8 +437,10 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_anomaly_detection_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_enroll: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiAgentAnomalyDetectionScopeEncryptionSpecArgs', 'AiAgentAnomalyDetectionScopeEncryptionSpecArgsDict', 'outputs.AiAgentAnomalyDetectionScopeEncryptionSpec']]] = None,
                  log_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  observability_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -380,8 +480,12 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
             region="us",
             agent_anomaly_detection_scope_id="agent-anomaly-detection-scope",
             display_name="Basic AAD scope",
+            auto_enroll=True,
             log_buckets=[aad_log_bucket.id],
-            observability_buckets=[f"projects/{project.project_id}/locations/us/buckets/_Trace/datasets/Spans"])
+            observability_buckets=[f"projects/{project.project_id}/locations/us/buckets/_Trace/datasets/Spans"],
+            encryption_spec={
+                "kms_key_name": "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+            })
         ```
 
         ## Import
@@ -408,6 +512,11 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_anomaly_detection_scope_id: The ID to use for the AgentAnomalyDetectionScope, which will become the
                final component of the scope's resource name. This value should be 1-63
                characters and valid characters are /[a-z][0-9]-/.
+        :param pulumi.Input[_builtins.bool] auto_enroll: When true, newly discovered agents that share log and observability
+               buckets with this scope are automatically enrolled as ACTIVE monitored
+               agents, up to the project's monitored agent quota. When false, newly
+               discovered agents are added as DISABLED monitored agents and must be
+               enabled explicitly.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -415,6 +524,11 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User provided display name of the AgentAnomalyDetectionScope.
+        :param pulumi.Input[Union['AiAgentAnomalyDetectionScopeEncryptionSpecArgs', 'AiAgentAnomalyDetectionScopeEncryptionSpecArgsDict', 'outputs.AiAgentAnomalyDetectionScopeEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for the scope. If set, this scope
+               and all sub-resources are secured by this key. The key must be a Cloud
+               KMS key co-located with the scope location (for example, `us` for a `us`
+               scope, `europe` for an `eu` scope, or matching single region).
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_buckets: Customer owned Cloud Logging bucket resource names attached to this scope.
                Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] observability_buckets: Customer owned Cloud Observability bucket resource names attached to this
@@ -464,8 +578,12 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
             region="us",
             agent_anomaly_detection_scope_id="agent-anomaly-detection-scope",
             display_name="Basic AAD scope",
+            auto_enroll=True,
             log_buckets=[aad_log_bucket.id],
-            observability_buckets=[f"projects/{project.project_id}/locations/us/buckets/_Trace/datasets/Spans"])
+            observability_buckets=[f"projects/{project.project_id}/locations/us/buckets/_Trace/datasets/Spans"],
+            encryption_spec={
+                "kms_key_name": "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+            })
         ```
 
         ## Import
@@ -503,8 +621,10 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_anomaly_detection_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_enroll: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiAgentAnomalyDetectionScopeEncryptionSpecArgs', 'AiAgentAnomalyDetectionScopeEncryptionSpecArgsDict', 'outputs.AiAgentAnomalyDetectionScopeEncryptionSpec']]] = None,
                  log_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  observability_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -521,8 +641,10 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
             if agent_anomaly_detection_scope_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_anomaly_detection_scope_id'")
             __props__.__dict__["agent_anomaly_detection_scope_id"] = agent_anomaly_detection_scope_id
+            __props__.__dict__["auto_enroll"] = auto_enroll
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["encryption_spec"] = encryption_spec
             if log_buckets is None and not opts.urn:
                 raise TypeError("Missing required property 'log_buckets'")
             __props__.__dict__["log_buckets"] = log_buckets
@@ -546,8 +668,10 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             agent_anomaly_detection_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_enroll: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiAgentAnomalyDetectionScopeEncryptionSpecArgs', 'AiAgentAnomalyDetectionScopeEncryptionSpecArgsDict', 'outputs.AiAgentAnomalyDetectionScopeEncryptionSpec']]] = None,
             log_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             observability_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -564,6 +688,11 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_anomaly_detection_scope_id: The ID to use for the AgentAnomalyDetectionScope, which will become the
                final component of the scope's resource name. This value should be 1-63
                characters and valid characters are /[a-z][0-9]-/.
+        :param pulumi.Input[_builtins.bool] auto_enroll: When true, newly discovered agents that share log and observability
+               buckets with this scope are automatically enrolled as ACTIVE monitored
+               agents, up to the project's monitored agent quota. When false, newly
+               discovered agents are added as DISABLED monitored agents and must be
+               enabled explicitly.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -571,6 +700,11 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User provided display name of the AgentAnomalyDetectionScope.
+        :param pulumi.Input[Union['AiAgentAnomalyDetectionScopeEncryptionSpecArgs', 'AiAgentAnomalyDetectionScopeEncryptionSpecArgsDict', 'outputs.AiAgentAnomalyDetectionScopeEncryptionSpec']] encryption_spec: Customer-managed encryption key spec for the scope. If set, this scope
+               and all sub-resources are secured by this key. The key must be a Cloud
+               KMS key co-located with the scope location (for example, `us` for a `us`
+               scope, `europe` for an `eu` scope, or matching single region).
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_buckets: Customer owned Cloud Logging bucket resource names attached to this scope.
                Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
         :param pulumi.Input[_builtins.str] name: The resource name of the AgentAnomalyDetectionScope, in the format
@@ -588,8 +722,10 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
         __props__ = _AiAgentAnomalyDetectionScopeState.__new__(_AiAgentAnomalyDetectionScopeState)
 
         __props__.__dict__["agent_anomaly_detection_scope_id"] = agent_anomaly_detection_scope_id
+        __props__.__dict__["auto_enroll"] = auto_enroll
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["log_buckets"] = log_buckets
         __props__.__dict__["name"] = name
         __props__.__dict__["observability_buckets"] = observability_buckets
@@ -602,8 +738,10 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             agent_anomaly_detection_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_enroll: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiAgentAnomalyDetectionScopeEncryptionSpecArgs', 'AiAgentAnomalyDetectionScopeEncryptionSpecArgsDict', 'outputs.AiAgentAnomalyDetectionScopeEncryptionSpec']]] = None,
             log_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             observability_buckets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -612,8 +750,10 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
             state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["agentAnomalyDetectionScopeId"] = agent_anomaly_detection_scope_id
+        __props__["autoEnroll"] = auto_enroll
         __props__["deletionPolicy"] = deletion_policy
         __props__["displayName"] = display_name
+        __props__["encryptionSpec"] = encryption_spec
         __props__["logBuckets"] = log_buckets
         __props__["name"] = name
         __props__["observabilityBuckets"] = observability_buckets
@@ -631,6 +771,18 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
         characters and valid characters are /[a-z][0-9]-/.
         """
         return pulumi.get(self, "agent_anomaly_detection_scope_id")
+
+    @_builtins.property
+    @pulumi.getter(name="autoEnroll")
+    def auto_enroll(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        When true, newly discovered agents that share log and observability
+        buckets with this scope are automatically enrolled as ACTIVE monitored
+        agents, up to the project's monitored agent quota. When false, newly
+        discovered agents are added as DISABLED monitored agents and must be
+        enabled explicitly.
+        """
+        return pulumi.get(self, "auto_enroll")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -652,6 +804,18 @@ class AiAgentAnomalyDetectionScope(pulumi.CustomResource):
         User provided display name of the AgentAnomalyDetectionScope.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiAgentAnomalyDetectionScopeEncryptionSpec']]:
+        """
+        Customer-managed encryption key spec for the scope. If set, this scope
+        and all sub-resources are secured by this key. The key must be a Cloud
+        KMS key co-located with the scope location (for example, `us` for a `us`
+        scope, `europe` for an `eu` scope, or matching single region).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
 
     @_builtins.property
     @pulumi.getter(name="logBuckets")

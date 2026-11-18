@@ -80,6 +80,12 @@ import * as utilities from "../utilities";
  *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *                 sandboxLauncher: true,
  *             }],
+ *             sandboxes: {
+ *                 templates: [{
+ *                     name: "hello",
+ *                     image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 }],
+ *             },
  *         },
  *     },
  * });

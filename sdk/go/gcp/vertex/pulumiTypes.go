@@ -13,6 +13,147 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AiAgentAnomalyDetectionScopeEncryptionSpec struct {
+	// Resource name of the Cloud KMS key used to protect the resource.
+	// Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiAgentAnomalyDetectionScopeEncryptionSpecInput is an input type that accepts AiAgentAnomalyDetectionScopeEncryptionSpecArgs and AiAgentAnomalyDetectionScopeEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiAgentAnomalyDetectionScopeEncryptionSpecInput` via:
+//
+//	AiAgentAnomalyDetectionScopeEncryptionSpecArgs{...}
+type AiAgentAnomalyDetectionScopeEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiAgentAnomalyDetectionScopeEncryptionSpecOutput() AiAgentAnomalyDetectionScopeEncryptionSpecOutput
+	ToAiAgentAnomalyDetectionScopeEncryptionSpecOutputWithContext(context.Context) AiAgentAnomalyDetectionScopeEncryptionSpecOutput
+}
+
+type AiAgentAnomalyDetectionScopeEncryptionSpecArgs struct {
+	// Resource name of the Cloud KMS key used to protect the resource.
+	// Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiAgentAnomalyDetectionScopeEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiAgentAnomalyDetectionScopeEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiAgentAnomalyDetectionScopeEncryptionSpecArgs) ToAiAgentAnomalyDetectionScopeEncryptionSpecOutput() AiAgentAnomalyDetectionScopeEncryptionSpecOutput {
+	return i.ToAiAgentAnomalyDetectionScopeEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiAgentAnomalyDetectionScopeEncryptionSpecArgs) ToAiAgentAnomalyDetectionScopeEncryptionSpecOutputWithContext(ctx context.Context) AiAgentAnomalyDetectionScopeEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiAgentAnomalyDetectionScopeEncryptionSpecOutput)
+}
+
+func (i AiAgentAnomalyDetectionScopeEncryptionSpecArgs) ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput() AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return i.ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiAgentAnomalyDetectionScopeEncryptionSpecArgs) ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(ctx context.Context) AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiAgentAnomalyDetectionScopeEncryptionSpecOutput).ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiAgentAnomalyDetectionScopeEncryptionSpecPtrInput is an input type that accepts AiAgentAnomalyDetectionScopeEncryptionSpecArgs, AiAgentAnomalyDetectionScopeEncryptionSpecPtr and AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiAgentAnomalyDetectionScopeEncryptionSpecPtrInput` via:
+//
+//	        AiAgentAnomalyDetectionScopeEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiAgentAnomalyDetectionScopeEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput() AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput
+	ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(context.Context) AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput
+}
+
+type aiAgentAnomalyDetectionScopeEncryptionSpecPtrType AiAgentAnomalyDetectionScopeEncryptionSpecArgs
+
+func AiAgentAnomalyDetectionScopeEncryptionSpecPtr(v *AiAgentAnomalyDetectionScopeEncryptionSpecArgs) AiAgentAnomalyDetectionScopeEncryptionSpecPtrInput {
+	return (*aiAgentAnomalyDetectionScopeEncryptionSpecPtrType)(v)
+}
+
+func (*aiAgentAnomalyDetectionScopeEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiAgentAnomalyDetectionScopeEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiAgentAnomalyDetectionScopeEncryptionSpecPtrType) ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput() AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return i.ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiAgentAnomalyDetectionScopeEncryptionSpecPtrType) ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(ctx context.Context) AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput)
+}
+
+type AiAgentAnomalyDetectionScopeEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiAgentAnomalyDetectionScopeEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiAgentAnomalyDetectionScopeEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecOutput) ToAiAgentAnomalyDetectionScopeEncryptionSpecOutput() AiAgentAnomalyDetectionScopeEncryptionSpecOutput {
+	return o
+}
+
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecOutput) ToAiAgentAnomalyDetectionScopeEncryptionSpecOutputWithContext(ctx context.Context) AiAgentAnomalyDetectionScopeEncryptionSpecOutput {
+	return o
+}
+
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecOutput) ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput() AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return o.ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecOutput) ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(ctx context.Context) AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiAgentAnomalyDetectionScopeEncryptionSpec) *AiAgentAnomalyDetectionScopeEncryptionSpec {
+		return &v
+	}).(AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource.
+// Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiAgentAnomalyDetectionScopeEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiAgentAnomalyDetectionScopeEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput) ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput() AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput) ToAiAgentAnomalyDetectionScopeEncryptionSpecPtrOutputWithContext(ctx context.Context) AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput) Elem() AiAgentAnomalyDetectionScopeEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiAgentAnomalyDetectionScopeEncryptionSpec) AiAgentAnomalyDetectionScopeEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiAgentAnomalyDetectionScopeEncryptionSpec
+		return ret
+	}).(AiAgentAnomalyDetectionScopeEncryptionSpecOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource.
+// Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+func (o AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiAgentAnomalyDetectionScopeEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiCustomJobEncryptionSpec struct {
 	// Resource name of the Cloud KMS key used to protect the resource.
 	// The Cloud KMS key must be in the same region as the resource. It must have the format
@@ -278,8 +419,26 @@ type AiCustomJobJobSpec struct {
 	EnableDashboardAccess *bool `pulumi:"enableDashboardAccess"`
 	// Whether you want Vertex AI to enable interactive shell access to training containers.
 	EnableWebAccess *bool `pulumi:"enableWebAccess"`
+	// The Experiment associated with this job.
+	// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+	Experiment *string `pulumi:"experiment"`
+	// The Experiment Run associated with this job.
+	// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+	ExperimentRun *string `pulumi:"experimentRun"`
+	// The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+	// Format: `projects/{project}/locations/{location}/models/{model}`
+	// In order to retrieve a specific version of the model, also provide the version ID or version alias.
+	// Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+	// If no version ID or alias is specified, the "default" version will be returned.
+	Models []string `pulumi:"models"`
 	// The full name of the Compute Engine network to which the Job should be peered.
 	Network *string `pulumi:"network"`
+	// The ID of the PersistentResource in the same Project and Location which to run.
+	// If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+	// The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+	PersistentResourceId *string `pulumi:"persistentResourceId"`
+	// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+	ProtectedArtifactLocationId *string `pulumi:"protectedArtifactLocationId"`
 	// Configuration for PSC-I for CustomJob.
 	// Structure is documented below.
 	PscInterfaceConfig *AiCustomJobJobSpecPscInterfaceConfig `pulumi:"pscInterfaceConfig"`
@@ -317,8 +476,26 @@ type AiCustomJobJobSpecArgs struct {
 	EnableDashboardAccess pulumi.BoolPtrInput `pulumi:"enableDashboardAccess"`
 	// Whether you want Vertex AI to enable interactive shell access to training containers.
 	EnableWebAccess pulumi.BoolPtrInput `pulumi:"enableWebAccess"`
+	// The Experiment associated with this job.
+	// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+	Experiment pulumi.StringPtrInput `pulumi:"experiment"`
+	// The Experiment Run associated with this job.
+	// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+	ExperimentRun pulumi.StringPtrInput `pulumi:"experimentRun"`
+	// The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+	// Format: `projects/{project}/locations/{location}/models/{model}`
+	// In order to retrieve a specific version of the model, also provide the version ID or version alias.
+	// Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+	// If no version ID or alias is specified, the "default" version will be returned.
+	Models pulumi.StringArrayInput `pulumi:"models"`
 	// The full name of the Compute Engine network to which the Job should be peered.
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The ID of the PersistentResource in the same Project and Location which to run.
+	// If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+	// The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+	PersistentResourceId pulumi.StringPtrInput `pulumi:"persistentResourceId"`
+	// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+	ProtectedArtifactLocationId pulumi.StringPtrInput `pulumi:"protectedArtifactLocationId"`
 	// Configuration for PSC-I for CustomJob.
 	// Structure is documented below.
 	PscInterfaceConfig AiCustomJobJobSpecPscInterfaceConfigPtrInput `pulumi:"pscInterfaceConfig"`
@@ -430,9 +607,42 @@ func (o AiCustomJobJobSpecOutput) EnableWebAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiCustomJobJobSpec) *bool { return v.EnableWebAccess }).(pulumi.BoolPtrOutput)
 }
 
+// The Experiment associated with this job.
+// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+func (o AiCustomJobJobSpecOutput) Experiment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *string { return v.Experiment }).(pulumi.StringPtrOutput)
+}
+
+// The Experiment Run associated with this job.
+// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+func (o AiCustomJobJobSpecOutput) ExperimentRun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *string { return v.ExperimentRun }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+// Format: `projects/{project}/locations/{location}/models/{model}`
+// In order to retrieve a specific version of the model, also provide the version ID or version alias.
+// Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+// If no version ID or alias is specified, the "default" version will be returned.
+func (o AiCustomJobJobSpecOutput) Models() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) []string { return v.Models }).(pulumi.StringArrayOutput)
+}
+
 // The full name of the Compute Engine network to which the Job should be peered.
 func (o AiCustomJobJobSpecOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiCustomJobJobSpec) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the PersistentResource in the same Project and Location which to run.
+// If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+// The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+func (o AiCustomJobJobSpecOutput) PersistentResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *string { return v.PersistentResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+func (o AiCustomJobJobSpecOutput) ProtectedArtifactLocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiCustomJobJobSpec) *string { return v.ProtectedArtifactLocationId }).(pulumi.StringPtrOutput)
 }
 
 // Configuration for PSC-I for CustomJob.
@@ -524,6 +734,42 @@ func (o AiCustomJobJobSpecPtrOutput) EnableWebAccess() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The Experiment associated with this job.
+// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+func (o AiCustomJobJobSpecPtrOutput) Experiment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Experiment
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Experiment Run associated with this job.
+// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+func (o AiCustomJobJobSpecPtrOutput) ExperimentRun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExperimentRun
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+// Format: `projects/{project}/locations/{location}/models/{model}`
+// In order to retrieve a specific version of the model, also provide the version ID or version alias.
+// Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+// If no version ID or alias is specified, the "default" version will be returned.
+func (o AiCustomJobJobSpecPtrOutput) Models() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Models
+	}).(pulumi.StringArrayOutput)
+}
+
 // The full name of the Compute Engine network to which the Job should be peered.
 func (o AiCustomJobJobSpecPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiCustomJobJobSpec) *string {
@@ -531,6 +777,28 @@ func (o AiCustomJobJobSpecPtrOutput) Network() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the PersistentResource in the same Project and Location which to run.
+// If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+// The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+func (o AiCustomJobJobSpecPtrOutput) PersistentResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+func (o AiCustomJobJobSpecPtrOutput) ProtectedArtifactLocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiCustomJobJobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectedArtifactLocationId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56016,6 +56284,8 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) Index(i 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AiAgentAnomalyDetectionScopeEncryptionSpecInput)(nil)).Elem(), AiAgentAnomalyDetectionScopeEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiAgentAnomalyDetectionScopeEncryptionSpecPtrInput)(nil)).Elem(), AiAgentAnomalyDetectionScopeEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobEncryptionSpecInput)(nil)).Elem(), AiCustomJobEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobEncryptionSpecPtrInput)(nil)).Elem(), AiCustomJobEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiCustomJobErrorInput)(nil)).Elem(), AiCustomJobErrorArgs{})
@@ -56679,6 +56949,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray{})
+	pulumi.RegisterOutputType(AiAgentAnomalyDetectionScopeEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiCustomJobEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiCustomJobEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiCustomJobErrorOutput{})

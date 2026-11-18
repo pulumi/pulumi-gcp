@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.AppAudioProcessingConfigAmbientSoundConfig;
 import com.pulumi.gcp.ces.outputs.AppAudioProcessingConfigBargeInConfig;
+import com.pulumi.gcp.ces.outputs.AppAudioProcessingConfigCustomVoiceSample;
 import com.pulumi.gcp.ces.outputs.AppAudioProcessingConfigSynthesizeSpeechConfig;
 import java.lang.String;
 import java.util.List;
@@ -28,6 +29,12 @@ public final class AppAudioProcessingConfig {
      * 
      */
     private @Nullable AppAudioProcessingConfigBargeInConfig bargeInConfig;
+    /**
+     * @return Configures custom voice samples for voice cloning.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppAudioProcessingConfigCustomVoiceSample> customVoiceSamples;
     /**
      * @return The duration of user inactivity (no speech or interaction) before the agent
      * prompts the user for reengagement. If not set, the agent will not prompt
@@ -67,6 +74,14 @@ public final class AppAudioProcessingConfig {
         return Optional.ofNullable(this.bargeInConfig);
     }
     /**
+     * @return Configures custom voice samples for voice cloning.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppAudioProcessingConfigCustomVoiceSample> customVoiceSamples() {
+        return this.customVoiceSamples == null ? List.of() : this.customVoiceSamples;
+    }
+    /**
      * @return The duration of user inactivity (no speech or interaction) before the agent
      * prompts the user for reengagement. If not set, the agent will not prompt
      * the user for reengagement.
@@ -101,6 +116,7 @@ public final class AppAudioProcessingConfig {
     public static final class Builder {
         private @Nullable AppAudioProcessingConfigAmbientSoundConfig ambientSoundConfig;
         private @Nullable AppAudioProcessingConfigBargeInConfig bargeInConfig;
+        private @Nullable List<AppAudioProcessingConfigCustomVoiceSample> customVoiceSamples;
         private @Nullable String inactivityTimeout;
         private @Nullable List<AppAudioProcessingConfigSynthesizeSpeechConfig> synthesizeSpeechConfigs;
         public Builder() {}
@@ -108,6 +124,7 @@ public final class AppAudioProcessingConfig {
     	      Objects.requireNonNull(defaults);
     	      this.ambientSoundConfig = defaults.ambientSoundConfig;
     	      this.bargeInConfig = defaults.bargeInConfig;
+    	      this.customVoiceSamples = defaults.customVoiceSamples;
     	      this.inactivityTimeout = defaults.inactivityTimeout;
     	      this.synthesizeSpeechConfigs = defaults.synthesizeSpeechConfigs;
         }
@@ -123,6 +140,15 @@ public final class AppAudioProcessingConfig {
 
             this.bargeInConfig = bargeInConfig;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customVoiceSamples(@Nullable List<AppAudioProcessingConfigCustomVoiceSample> customVoiceSamples) {
+
+            this.customVoiceSamples = customVoiceSamples;
+            return this;
+        }
+        public Builder customVoiceSamples(AppAudioProcessingConfigCustomVoiceSample... customVoiceSamples) {
+            return customVoiceSamples(List.of(customVoiceSamples));
         }
         @CustomType.Setter
         public Builder inactivityTimeout(@Nullable String inactivityTimeout) {
@@ -143,6 +169,7 @@ public final class AppAudioProcessingConfig {
             final var _resultValue = new AppAudioProcessingConfig();
             _resultValue.ambientSoundConfig = ambientSoundConfig;
             _resultValue.bargeInConfig = bargeInConfig;
+            _resultValue.customVoiceSamples = customVoiceSamples;
             _resultValue.inactivityTimeout = inactivityTimeout;
             _resultValue.synthesizeSpeechConfigs = synthesizeSpeechConfigs;
             return _resultValue;

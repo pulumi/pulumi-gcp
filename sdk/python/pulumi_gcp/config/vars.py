@@ -362,6 +362,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('deploymentManagerCustomEndpoint')
 
     @_builtins.property
+    def design_center_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('designCenterCustomEndpoint')
+
+    @_builtins.property
     def developer_connect_custom_endpoint(self) -> Optional[str]:
         return __config__.get('developerConnectCustomEndpoint')
 

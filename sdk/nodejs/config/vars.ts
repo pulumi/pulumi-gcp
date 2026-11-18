@@ -689,6 +689,14 @@ Object.defineProperty(exports, "deploymentManagerCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const designCenterCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "designCenterCustomEndpoint", {
+    get() {
+        return __config.get("designCenterCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const developerConnectCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "developerConnectCustomEndpoint", {
     get() {

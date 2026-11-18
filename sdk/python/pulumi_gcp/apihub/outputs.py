@@ -16,6 +16,16 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AddonConfig',
+    'AddonConfigAllDataAddonConfig',
+    'AddonConfigGatewayPluginAddonConfig',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfig',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter',
     'ApiHubInstanceConfig',
     'CurationEndpoint',
     'CurationEndpointApplicationIntegrationEndpointDetails',
@@ -43,6 +53,458 @@ __all__ = [
     'PluginInstanceAuthConfigUserPasswordConfig',
     'PluginInstanceAuthConfigUserPasswordConfigPassword',
 ]
+
+@pulumi.output_type
+class AddonConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allDataAddonConfig":
+            suggest = "all_data_addon_config"
+        elif key == "gatewayPluginAddonConfig":
+            suggest = "gateway_plugin_addon_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 all_data_addon_config: Optional['outputs.AddonConfigAllDataAddonConfig'] = None,
+                 gateway_plugin_addon_config: Optional['outputs.AddonConfigGatewayPluginAddonConfig'] = None):
+        """
+        :param 'AddonConfigAllDataAddonConfigArgs' all_data_addon_config: Configuration for addons which act on all data in the API hub.
+               Structure is documented below.
+        :param 'AddonConfigGatewayPluginAddonConfigArgs' gateway_plugin_addon_config: Configuration for gateway plugin addons.
+               Structure is documented below.
+        """
+        if all_data_addon_config is not None:
+            pulumi.set(__self__, "all_data_addon_config", all_data_addon_config)
+        if gateway_plugin_addon_config is not None:
+            pulumi.set(__self__, "gateway_plugin_addon_config", gateway_plugin_addon_config)
+
+    @_builtins.property
+    @pulumi.getter(name="allDataAddonConfig")
+    def all_data_addon_config(self) -> Optional['outputs.AddonConfigAllDataAddonConfig']:
+        """
+        Configuration for addons which act on all data in the API hub.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "all_data_addon_config")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayPluginAddonConfig")
+    def gateway_plugin_addon_config(self) -> Optional['outputs.AddonConfigGatewayPluginAddonConfig']:
+        """
+        Configuration for gateway plugin addons.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_plugin_addon_config")
+
+
+@pulumi.output_type
+class AddonConfigAllDataAddonConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: If true, the addon is enabled for all data in the API hub.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        If true, the addon is enabled for all data in the API hub.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class AddonConfigGatewayPluginAddonConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewayPluginConfigs":
+            suggest = "gateway_plugin_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfigGatewayPluginAddonConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfigGatewayPluginAddonConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfigGatewayPluginAddonConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gateway_plugin_configs: Sequence['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfig']):
+        """
+        :param Sequence['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs'] gateway_plugin_configs: The list of gateway plugin configs for which the addon is enabled.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "gateway_plugin_configs", gateway_plugin_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayPluginConfigs")
+    def gateway_plugin_configs(self) -> Sequence['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfig']:
+        """
+        The list of gateway plugin configs for which the addon is enabled.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_plugin_configs")
+
+
+@pulumi.output_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pluginInstance":
+            suggest = "plugin_instance"
+        elif key == "apigeeEdgeConfig":
+            suggest = "apigee_edge_config"
+        elif key == "apigeeOpdkConfig":
+            suggest = "apigee_opdk_config"
+        elif key == "apigeeXHybridConfig":
+            suggest = "apigee_x_hybrid_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfigGatewayPluginAddonConfigGatewayPluginConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 plugin_instance: _builtins.str,
+                 apigee_edge_config: Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig'] = None,
+                 apigee_opdk_config: Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig'] = None,
+                 apigee_x_hybrid_config: Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig'] = None):
+        """
+        :param _builtins.str plugin_instance: The name of the gateway plugin instance for which the config is to be specified.
+               Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+        :param 'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs' apigee_edge_config: Configuration for Apigee Edge gateways.
+               Structure is documented below.
+        :param 'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs' apigee_opdk_config: Configuration for Apigee OPDK gateways.
+               Structure is documented below.
+        :param 'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs' apigee_x_hybrid_config: Configuration for Apigee X and Apigee Hybrid gateways.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "plugin_instance", plugin_instance)
+        if apigee_edge_config is not None:
+            pulumi.set(__self__, "apigee_edge_config", apigee_edge_config)
+        if apigee_opdk_config is not None:
+            pulumi.set(__self__, "apigee_opdk_config", apigee_opdk_config)
+        if apigee_x_hybrid_config is not None:
+            pulumi.set(__self__, "apigee_x_hybrid_config", apigee_x_hybrid_config)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginInstance")
+    def plugin_instance(self) -> _builtins.str:
+        """
+        The name of the gateway plugin instance for which the config is to be specified.
+        Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+        """
+        return pulumi.get(self, "plugin_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="apigeeEdgeConfig")
+    def apigee_edge_config(self) -> Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig']:
+        """
+        Configuration for Apigee Edge gateways.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "apigee_edge_config")
+
+    @_builtins.property
+    @pulumi.getter(name="apigeeOpdkConfig")
+    def apigee_opdk_config(self) -> Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig']:
+        """
+        Configuration for Apigee OPDK gateways.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "apigee_opdk_config")
+
+    @_builtins.property
+    @pulumi.getter(name="apigeeXHybridConfig")
+    def apigee_x_hybrid_config(self) -> Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig']:
+        """
+        Configuration for Apigee X and Apigee Hybrid gateways.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "apigee_x_hybrid_config")
+
+
+@pulumi.output_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentFilter":
+            suggest = "environment_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_filter: Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter'] = None):
+        """
+        :param 'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs' environment_filter: The filter to apply on the resources managed by the gateway plugin instance.
+               Structure is documented below.
+        """
+        if environment_filter is not None:
+            pulumi.set(__self__, "environment_filter", environment_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentFilter")
+    def environment_filter(self) -> Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter']:
+        """
+        The filter to apply on the resources managed by the gateway plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "environment_filter")
+
+
+@pulumi.output_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allEnvironments":
+            suggest = "all_environments"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 all_environments: Optional[_builtins.bool] = None,
+                 environments: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool all_environments: Indicates if this filter should match all environments or only a subset of environments.
+        :param Sequence[_builtins.str] environments: If provided, only environments in this list are matched.
+        """
+        if all_environments is not None:
+            pulumi.set(__self__, "all_environments", all_environments)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
+
+    @_builtins.property
+    @pulumi.getter(name="allEnvironments")
+    def all_environments(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if this filter should match all environments or only a subset of environments.
+        """
+        return pulumi.get(self, "all_environments")
+
+    @_builtins.property
+    @pulumi.getter
+    def environments(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        If provided, only environments in this list are matched.
+        """
+        return pulumi.get(self, "environments")
+
+
+@pulumi.output_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentFilter":
+            suggest = "environment_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_filter: Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter'] = None):
+        """
+        :param 'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs' environment_filter: The filter to apply on the resources managed by the gateway plugin instance.
+               Structure is documented below.
+        """
+        if environment_filter is not None:
+            pulumi.set(__self__, "environment_filter", environment_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentFilter")
+    def environment_filter(self) -> Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter']:
+        """
+        The filter to apply on the resources managed by the gateway plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "environment_filter")
+
+
+@pulumi.output_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allEnvironments":
+            suggest = "all_environments"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 all_environments: Optional[_builtins.bool] = None,
+                 environments: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool all_environments: Indicates if this filter should match all environments or only a subset of environments.
+        :param Sequence[_builtins.str] environments: If provided, only environments in this list are matched.
+        """
+        if all_environments is not None:
+            pulumi.set(__self__, "all_environments", all_environments)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
+
+    @_builtins.property
+    @pulumi.getter(name="allEnvironments")
+    def all_environments(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if this filter should match all environments or only a subset of environments.
+        """
+        return pulumi.get(self, "all_environments")
+
+    @_builtins.property
+    @pulumi.getter
+    def environments(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        If provided, only environments in this list are matched.
+        """
+        return pulumi.get(self, "environments")
+
+
+@pulumi.output_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentFilter":
+            suggest = "environment_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_filter: Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter'] = None):
+        """
+        :param 'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs' environment_filter: The filter to apply on the resources managed by the gateway plugin instance.
+               Structure is documented below.
+        """
+        if environment_filter is not None:
+            pulumi.set(__self__, "environment_filter", environment_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentFilter")
+    def environment_filter(self) -> Optional['outputs.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter']:
+        """
+        The filter to apply on the resources managed by the gateway plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "environment_filter")
+
+
+@pulumi.output_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allEnvironments":
+            suggest = "all_environments"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 all_environments: Optional[_builtins.bool] = None,
+                 environments: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool all_environments: Indicates if this filter should match all environments or only a subset of environments.
+        :param Sequence[_builtins.str] environments: If provided, only environments in this list are matched.
+        """
+        if all_environments is not None:
+            pulumi.set(__self__, "all_environments", all_environments)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
+
+    @_builtins.property
+    @pulumi.getter(name="allEnvironments")
+    def all_environments(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if this filter should match all environments or only a subset of environments.
+        """
+        return pulumi.get(self, "all_environments")
+
+    @_builtins.property
+    @pulumi.getter
+    def environments(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        If provided, only environments in this list are matched.
+        """
+        return pulumi.get(self, "environments")
+
 
 @pulumi.output_type
 class ApiHubInstanceConfig(dict):

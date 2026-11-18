@@ -295,7 +295,7 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      * 
-     * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+     * For `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
@@ -304,7 +304,7 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
     /**
      * @return The name or relative resource id of the instance to manage IAM policies for.
      * 
-     * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+     * For `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
     public Output<String> instance() {

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetRegionInstanceGroupManagerUpdatePolicyResult
     {
         /// <summary>
+        /// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". AllowedActions is the only way to request RESTART_IN_PLACE. Conflicts with MinimalAction and most_disruptive_allowed_action.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedActions;
+        /// <summary>
         /// The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
         /// </summary>
         public readonly string InstanceRedistributionType;
@@ -56,6 +60,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetRegionInstanceGroupManagerUpdatePolicyResult(
+            ImmutableArray<string> allowedActions,
+
             string instanceRedistributionType,
 
             int maxSurgeFixed,
@@ -76,6 +82,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string type)
         {
+            AllowedActions = allowedActions;
             InstanceRedistributionType = instanceRedistributionType;
             MaxSurgeFixed = maxSurgeFixed;
             MaxSurgePercent = maxSurgePercent;

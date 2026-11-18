@@ -62,6 +62,7 @@ type LookupGlobalForwardingRuleArgs struct {
 // A collection of values returned by getGlobalForwardingRule.
 type LookupGlobalForwardingRuleResult struct {
 	AllowPscGlobalAccess                                   bool              `pulumi:"allowPscGlobalAccess"`
+	BackendService                                         string            `pulumi:"backendService"`
 	BaseForwardingRule                                     string            `pulumi:"baseForwardingRule"`
 	DeletionPolicy                                         string            `pulumi:"deletionPolicy"`
 	Description                                            string            `pulumi:"description"`
@@ -72,6 +73,7 @@ type LookupGlobalForwardingRuleResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                                                `pulumi:"id"`
 	IpAddress                     string                                                `pulumi:"ipAddress"`
+	IpAddresses                   []string                                              `pulumi:"ipAddresses"`
 	IpProtocol                    string                                                `pulumi:"ipProtocol"`
 	IpVersion                     string                                                `pulumi:"ipVersion"`
 	LabelFingerprint              string                                                `pulumi:"labelFingerprint"`
@@ -133,6 +135,10 @@ func (o LookupGlobalForwardingRuleResultOutput) AllowPscGlobalAccess() pulumi.Bo
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) bool { return v.AllowPscGlobalAccess }).(pulumi.BoolOutput)
 }
 
+func (o LookupGlobalForwardingRuleResultOutput) BackendService() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
 func (o LookupGlobalForwardingRuleResultOutput) BaseForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.BaseForwardingRule }).(pulumi.StringOutput)
 }
@@ -170,6 +176,10 @@ func (o LookupGlobalForwardingRuleResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupGlobalForwardingRuleResultOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupGlobalForwardingRuleResultOutput) IpProtocol() pulumi.StringOutput {

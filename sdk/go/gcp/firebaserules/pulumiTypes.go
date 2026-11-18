@@ -112,6 +112,7 @@ func (o RulesetMetadataArrayOutput) Index(i pulumi.IntInput) RulesetMetadataOutp
 
 type RulesetSource struct {
 	// `File` set constituting the `Source` bundle.
+	// Structure is documented below.
 	Files []RulesetSourceFile `pulumi:"files"`
 	// `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
 	//
@@ -132,6 +133,7 @@ type RulesetSourceInput interface {
 
 type RulesetSourceArgs struct {
 	// `File` set constituting the `Source` bundle.
+	// Structure is documented below.
 	Files RulesetSourceFileArrayInput `pulumi:"files"`
 	// `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
 	//
@@ -217,6 +219,7 @@ func (o RulesetSourceOutput) ToRulesetSourcePtrOutputWithContext(ctx context.Con
 }
 
 // `File` set constituting the `Source` bundle.
+// Structure is documented below.
 func (o RulesetSourceOutput) Files() RulesetSourceFileArrayOutput {
 	return o.ApplyT(func(v RulesetSource) []RulesetSourceFile { return v.Files }).(RulesetSourceFileArrayOutput)
 }
@@ -253,6 +256,7 @@ func (o RulesetSourcePtrOutput) Elem() RulesetSourceOutput {
 }
 
 // `File` set constituting the `Source` bundle.
+// Structure is documented below.
 func (o RulesetSourcePtrOutput) Files() RulesetSourceFileArrayOutput {
 	return o.ApplyT(func(v *RulesetSource) []RulesetSourceFile {
 		if v == nil {

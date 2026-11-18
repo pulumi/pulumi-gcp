@@ -135,22 +135,6 @@ export class Table extends pulumi.CustomResource {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
-     *
-     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-     *
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced a field data type (`STRUCT` with
-     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-     * the recurring diff this causes. As a workaround, we recommend using the
-     * schema as returned by the API.
-     *
-     * ~>**NOTE:**  If you use `externalDataConfiguration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -285,6 +269,20 @@ export class Table extends pulumi.CustomResource {
     declare public readonly resourceTags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A JSON schema for the table.
+     *
+     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
+     *
+     * ~>**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
      */
     declare public readonly schema: pulumi.Output<string>;
     /**
@@ -307,7 +305,10 @@ export class Table extends pulumi.CustomResource {
      */
     declare public readonly tableId: pulumi.Output<string>;
     /**
-     * View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     * Specifies the view that determines which
+     * table information is returned. By default, basic table information and
+     * storage statistics (`STORAGE_STATS`) are returned. Possible values are
+     * `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
      */
     declare public readonly tableMetadataView: pulumi.Output<string | undefined>;
     /**
@@ -471,22 +472,6 @@ export interface TableState {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
-     *
-     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-     *
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced a field data type (`STRUCT` with
-     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-     * the recurring diff this causes. As a workaround, we recommend using the
-     * schema as returned by the API.
-     *
-     * ~>**NOTE:**  If you use `externalDataConfiguration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -621,6 +606,20 @@ export interface TableState {
     resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A JSON schema for the table.
+     *
+     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
+     *
+     * ~>**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
      */
     schema?: pulumi.Input<string | undefined>;
     /**
@@ -643,7 +642,10 @@ export interface TableState {
      */
     tableId?: pulumi.Input<string | undefined>;
     /**
-     * View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     * Specifies the view that determines which
+     * table information is returned. By default, basic table information and
+     * storage statistics (`STORAGE_STATS`) are returned. Possible values are
+     * `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
      */
     tableMetadataView?: pulumi.Input<string | undefined>;
     /**
@@ -695,22 +697,6 @@ export interface TableArgs {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
-     *
-     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-     *
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced a field data type (`STRUCT` with
-     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-     * the recurring diff this causes. As a workaround, we recommend using the
-     * schema as returned by the API.
-     *
-     * ~>**NOTE:**  If you use `externalDataConfiguration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -809,6 +795,20 @@ export interface TableArgs {
     resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A JSON schema for the table.
+     *
+     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
+     *
+     * ~>**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
      */
     schema?: pulumi.Input<string | undefined>;
     /**
@@ -827,7 +827,10 @@ export interface TableArgs {
      */
     tableId: pulumi.Input<string>;
     /**
-     * View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     * Specifies the view that determines which
+     * table information is returned. By default, basic table information and
+     * storage statistics (`STORAGE_STATS`) are returned. Possible values are
+     * `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
      */
     tableMetadataView?: pulumi.Input<string | undefined>;
     /**

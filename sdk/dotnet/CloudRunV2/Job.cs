@@ -122,6 +122,17 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                         SandboxLauncher = true,
     ///                     },
     ///                 },
+    ///                 Sandboxes = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateSandboxesArgs
+    ///                 {
+    ///                     Templates = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.JobTemplateTemplateSandboxesTemplateArgs
+    ///                         {
+    ///                             Name = "hello",
+    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         },
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///     });

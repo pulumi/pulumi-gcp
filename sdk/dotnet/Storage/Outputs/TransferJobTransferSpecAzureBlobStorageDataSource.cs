@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class TransferJobTransferSpecAzureBlobStorageDataSource
     {
         /// <summary>
-        /// ) Credentials used to authenticate API requests to Azure block.
+        /// ) Credentials used to authenticate API requests to Azure block. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials? AzureCredentials;
         /// <summary>

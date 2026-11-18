@@ -49,6 +49,9 @@ namespace Pulumi.Gcp.Vertex
     ///         },
     ///         JobSpec = new Gcp.Vertex.Inputs.AiCustomJobJobSpecArgs
     ///         {
+    ///             PersistentResourceId = "example-persistent-resource",
+    ///             Experiment = "example-experiment",
+    ///             ExperimentRun = "example-experiment-run",
     ///             WorkerPoolSpecs = new[]
     ///             {
     ///                 new Gcp.Vertex.Inputs.AiCustomJobJobSpecWorkerPoolSpecArgs
@@ -65,7 +68,7 @@ namespace Pulumi.Gcp.Vertex
     ///                     },
     ///                     ContainerSpec = new Gcp.Vertex.Inputs.AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs
     ///                     {
-    ///                         ImageUri = "us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-8.py310:latest",
+    ///                         ImageUri = "us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-12.py310:latest",
     ///                         Commands = new[]
     ///                         {
     ///                             "echo",
@@ -95,6 +98,53 @@ namespace Pulumi.Gcp.Vertex
     ///             BaseOutputDirectory = new Gcp.Vertex.Inputs.AiCustomJobJobSpecBaseOutputDirectoryArgs
     ///             {
     ///                 OutputUriPrefix = jobBucket.Name.Apply(name =&gt; $"gs://{name}/custom-job-output"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Vertex Ai Custom Job Models
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customJob = new Gcp.Vertex.AiCustomJob("custom_job", new()
+    ///     {
+    ///         DisplayName = "example-custom-job-models",
+    ///         Region = "us-central1",
+    ///         JobSpec = new Gcp.Vertex.Inputs.AiCustomJobJobSpecArgs
+    ///         {
+    ///             ProtectedArtifactLocationId = "us-central1",
+    ///             Models = new[]
+    ///             {
+    ///                 "example-model",
+    ///             },
+    ///             WorkerPoolSpecs = new[]
+    ///             {
+    ///                 new Gcp.Vertex.Inputs.AiCustomJobJobSpecWorkerPoolSpecArgs
+    ///                 {
+    ///                     ReplicaCount = 1,
+    ///                     MachineSpec = new Gcp.Vertex.Inputs.AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs
+    ///                     {
+    ///                         MachineType = "n1-standard-4",
+    ///                     },
+    ///                     DiskSpec = new Gcp.Vertex.Inputs.AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs
+    ///                     {
+    ///                         BootDiskType = "pd-ssd",
+    ///                         BootDiskSizeGb = 100,
+    ///                     },
+    ///                     ContainerSpec = new Gcp.Vertex.Inputs.AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs
+    ///                     {
+    ///                         ImageUri = "us-docker.pkg.dev/vertex-ai-restricted/llm/llm-pets-cpu:latest",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -160,6 +210,7 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             ServiceAccount = customJobSa.Email,
     ///             Tensorboard = tensorboard.Id,
+    ///             Experiment = "example-experiment",
     ///             EnableWebAccess = true,
     ///             EnableDashboardAccess = true,
     ///             BaseOutputDirectory = new Gcp.Vertex.Inputs.AiCustomJobJobSpecBaseOutputDirectoryArgs

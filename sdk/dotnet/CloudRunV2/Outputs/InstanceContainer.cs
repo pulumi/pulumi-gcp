@@ -51,6 +51,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.InstanceContainerResources? Resources;
         /// <summary>
+        /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        public readonly bool? SandboxLauncher;
+        /// <summary>
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         /// Structure is documented below.
         /// </summary>
@@ -83,6 +87,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.InstanceContainerResources? resources,
 
+            bool? sandboxLauncher,
+
             Outputs.InstanceContainerStartupProbe? startupProbe,
 
             ImmutableArray<Outputs.InstanceContainerVolumeMount> volumeMounts,
@@ -97,6 +103,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Name = name;
             Ports = ports;
             Resources = resources;
+            SandboxLauncher = sandboxLauncher;
             StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;

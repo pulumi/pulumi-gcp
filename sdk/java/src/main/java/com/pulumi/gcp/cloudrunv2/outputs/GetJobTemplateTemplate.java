@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateNodeSelector;
+import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateSandbox;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVpcAccess;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateWorkloadIdentityConfig;
@@ -48,6 +49,11 @@ public final class GetJobTemplateTemplate {
      * 
      */
     private List<GetJobTemplateTemplateNodeSelector> nodeSelectors;
+    /**
+     * @return Configuration for sandboxes.
+     * 
+     */
+    private List<GetJobTemplateTemplateSandbox> sandboxes;
     /**
      * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
@@ -121,6 +127,13 @@ public final class GetJobTemplateTemplate {
         return this.nodeSelectors;
     }
     /**
+     * @return Configuration for sandboxes.
+     * 
+     */
+    public List<GetJobTemplateTemplateSandbox> sandboxes() {
+        return this.sandboxes;
+    }
+    /**
      * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
      */
@@ -174,6 +187,7 @@ public final class GetJobTemplateTemplate {
         private Boolean gpuZonalRedundancyDisabled;
         private Integer maxRetries;
         private List<GetJobTemplateTemplateNodeSelector> nodeSelectors;
+        private List<GetJobTemplateTemplateSandbox> sandboxes;
         private String serviceAccount;
         private String timeout;
         private List<GetJobTemplateTemplateVolume> volumes;
@@ -188,6 +202,7 @@ public final class GetJobTemplateTemplate {
     	      this.gpuZonalRedundancyDisabled = defaults.gpuZonalRedundancyDisabled;
     	      this.maxRetries = defaults.maxRetries;
     	      this.nodeSelectors = defaults.nodeSelectors;
+    	      this.sandboxes = defaults.sandboxes;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
@@ -250,6 +265,17 @@ public final class GetJobTemplateTemplate {
             return nodeSelectors(List.of(nodeSelectors));
         }
         @CustomType.Setter
+        public Builder sandboxes(List<GetJobTemplateTemplateSandbox> sandboxes) {
+            if (sandboxes == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "sandboxes");
+            }
+            this.sandboxes = sandboxes;
+            return this;
+        }
+        public Builder sandboxes(GetJobTemplateTemplateSandbox... sandboxes) {
+            return sandboxes(List.of(sandboxes));
+        }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             if (serviceAccount == null) {
               throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "serviceAccount");
@@ -306,6 +332,7 @@ public final class GetJobTemplateTemplate {
             _resultValue.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             _resultValue.maxRetries = maxRetries;
             _resultValue.nodeSelectors = nodeSelectors;
+            _resultValue.sandboxes = sandboxes;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;

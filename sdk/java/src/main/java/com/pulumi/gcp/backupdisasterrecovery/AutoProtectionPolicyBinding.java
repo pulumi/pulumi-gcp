@@ -22,12 +22,9 @@ import javax.annotation.Nullable;
  * project. Once bound, the policy automatically protects the eligible resources in that
  * scope that match its criteria.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about AutoProtectionPolicyBinding, see:
  * 
- * * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/reference/rest/v1beta/projects.locations.autoProtectionPolicies.bindings)
+ * * [API documentation](https://cloud.google.com/backup-disaster-recovery/docs/reference/rest/v1/projects.locations.autoProtectionPolicies.bindings)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/backup-disaster-recovery/docs)
  * 

@@ -40,9 +40,11 @@ class SQuotaPreferenceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
                NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
                Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
-        :param pulumi.Input[_builtins.str] ignore_safety_checks: The list of quota safety checks to be ignored.
-               Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-               Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        :param pulumi.Input[_builtins.str] ignore_safety_checks: A comma-separated list of quota safety checks to be ignored, for example
+               `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+               values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+               `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+               be combined with other values.
         :param pulumi.Input[_builtins.str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[_builtins.str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[_builtins.str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
@@ -112,9 +114,11 @@ class SQuotaPreferenceArgs:
     @pulumi.getter(name="ignoreSafetyChecks")
     def ignore_safety_checks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The list of quota safety checks to be ignored.
-        Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        A comma-separated list of quota safety checks to be ignored, for example
+        `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+        values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+        `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+        be combined with other values.
         """
         return pulumi.get(self, "ignore_safety_checks")
 
@@ -211,9 +215,11 @@ class _SQuotaPreferenceState:
                NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
                Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
         :param pulumi.Input[_builtins.str] etag: The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
-        :param pulumi.Input[_builtins.str] ignore_safety_checks: The list of quota safety checks to be ignored.
-               Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-               Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        :param pulumi.Input[_builtins.str] ignore_safety_checks: A comma-separated list of quota safety checks to be ignored, for example
+               `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+               values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+               `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+               be combined with other values.
         :param pulumi.Input[_builtins.str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[_builtins.str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[_builtins.str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
@@ -309,9 +315,11 @@ class _SQuotaPreferenceState:
     @pulumi.getter(name="ignoreSafetyChecks")
     def ignore_safety_checks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The list of quota safety checks to be ignored.
-        Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        A comma-separated list of quota safety checks to be ignored, for example
+        `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+        values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+        `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+        be combined with other values.
         """
         return pulumi.get(self, "ignore_safety_checks")
 
@@ -486,9 +494,11 @@ class SQuotaPreference(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dimensions: The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
                NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
                Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
-        :param pulumi.Input[_builtins.str] ignore_safety_checks: The list of quota safety checks to be ignored.
-               Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-               Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        :param pulumi.Input[_builtins.str] ignore_safety_checks: A comma-separated list of quota safety checks to be ignored, for example
+               `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+               values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+               `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+               be combined with other values.
         :param pulumi.Input[_builtins.str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[_builtins.str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[_builtins.str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
@@ -634,9 +644,11 @@ class SQuotaPreference(pulumi.CustomResource):
                NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
                Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
         :param pulumi.Input[_builtins.str] etag: The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
-        :param pulumi.Input[_builtins.str] ignore_safety_checks: The list of quota safety checks to be ignored.
-               Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-               Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        :param pulumi.Input[_builtins.str] ignore_safety_checks: A comma-separated list of quota safety checks to be ignored, for example
+               `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+               values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+               `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+               be combined with other values.
         :param pulumi.Input[_builtins.str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[_builtins.str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[_builtins.str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
@@ -740,9 +752,11 @@ class SQuotaPreference(pulumi.CustomResource):
     @pulumi.getter(name="ignoreSafetyChecks")
     def ignore_safety_checks(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The list of quota safety checks to be ignored.
-        Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        A comma-separated list of quota safety checks to be ignored, for example
+        `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+        values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+        `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+        be combined with other values.
         """
         return pulumi.get(self, "ignore_safety_checks")
 

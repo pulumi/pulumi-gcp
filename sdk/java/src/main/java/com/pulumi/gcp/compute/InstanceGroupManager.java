@@ -621,6 +621,20 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
+     * ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+     * 
+     */
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    private Output<String> serviceAccount;
+
+    /**
+     * @return ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+     * 
+     */
+    public Output<String> serviceAccount() {
+        return this.serviceAccount;
+    }
+    /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      * 
      */

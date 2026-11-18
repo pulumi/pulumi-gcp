@@ -605,6 +605,78 @@ namespace Pulumi.Gcp.MemoryStore
     /// });
     /// ```
     /// 
+    /// ### Memorystore Instance Auto Created Endpoints Ipv6
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///         EnableUlaInternalIpv6 = true,
+    ///     });
+    /// 
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     {
+    ///         Name = "my-subnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "asia-east1",
+    ///         Network = producerNet.Id,
+    ///         StackType = "IPV4_IPV6",
+    ///         Ipv6AccessType = "INTERNAL",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "my-policy",
+    ///         Location = "asia-east1",
+    ///         ServiceClass = "gcp-memorystore",
+    ///         Description = "my basic service connection policy",
+    ///         Network = producerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 producerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var instance_ipv6 = new Gcp.MemoryStore.Instance("instance-ipv6", new()
+    ///     {
+    ///         InstanceId = "ipv6-instance",
+    ///         ShardCount = 1,
+    ///         DesiredAutoCreatedEndpoints = new[]
+    ///         {
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
+    ///             {
+    ///                 Network = producerNet.Id,
+    ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///                 IpVersion = "IPV6",
+    ///             },
+    ///         },
+    ///         Location = "asia-east1",
+    ///         NodeType = "SHARED_CORE_NANO",
+    ///         DeletionProtectionEnabled = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instance can be imported using any of these accepted formats:

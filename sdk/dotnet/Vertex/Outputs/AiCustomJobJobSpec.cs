@@ -27,9 +27,37 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly bool? EnableWebAccess;
         /// <summary>
+        /// The Experiment associated with this job.
+        /// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+        /// </summary>
+        public readonly string? Experiment;
+        /// <summary>
+        /// The Experiment Run associated with this job.
+        /// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+        /// </summary>
+        public readonly string? ExperimentRun;
+        /// <summary>
+        /// The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+        /// Format: `projects/{project}/locations/{location}/models/{model}`
+        /// In order to retrieve a specific version of the model, also provide the version ID or version alias.
+        /// Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+        /// If no version ID or alias is specified, the "default" version will be returned.
+        /// </summary>
+        public readonly ImmutableArray<string> Models;
+        /// <summary>
         /// The full name of the Compute Engine network to which the Job should be peered.
         /// </summary>
         public readonly string? Network;
+        /// <summary>
+        /// The ID of the PersistentResource in the same Project and Location which to run.
+        /// If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+        /// The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+        /// </summary>
+        public readonly string? PersistentResourceId;
+        /// <summary>
+        /// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+        /// </summary>
+        public readonly string? ProtectedArtifactLocationId;
         /// <summary>
         /// Configuration for PSC-I for CustomJob.
         /// Structure is documented below.
@@ -67,7 +95,17 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             bool? enableWebAccess,
 
+            string? experiment,
+
+            string? experimentRun,
+
+            ImmutableArray<string> models,
+
             string? network,
+
+            string? persistentResourceId,
+
+            string? protectedArtifactLocationId,
 
             Outputs.AiCustomJobJobSpecPscInterfaceConfig? pscInterfaceConfig,
 
@@ -84,7 +122,12 @@ namespace Pulumi.Gcp.Vertex.Outputs
             BaseOutputDirectory = baseOutputDirectory;
             EnableDashboardAccess = enableDashboardAccess;
             EnableWebAccess = enableWebAccess;
+            Experiment = experiment;
+            ExperimentRun = experimentRun;
+            Models = models;
             Network = network;
+            PersistentResourceId = persistentResourceId;
+            ProtectedArtifactLocationId = protectedArtifactLocationId;
             PscInterfaceConfig = pscInterfaceConfig;
             ReservedIpRanges = reservedIpRanges;
             Scheduling = scheduling;

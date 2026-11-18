@@ -329,7 +329,7 @@ namespace Pulumi.Gcp.Monitoring
     ///         Location = "us-central1",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "SyntheticFunction",
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///             {

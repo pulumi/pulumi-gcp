@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Represents a StoragePoolType data source.
+// The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+//
+// To get more information about StoragePoolType, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+// * How-to Guides
+//   - [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
 func GetStoragePoolTypes(ctx *pulumi.Context, args *GetStoragePoolTypesArgs, opts ...pulumi.InvokeOption) (*GetStoragePoolTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStoragePoolTypesResult
@@ -23,31 +31,54 @@ func GetStoragePoolTypes(ctx *pulumi.Context, args *GetStoragePoolTypesArgs, opt
 
 // A collection of arguments for invoking getStoragePoolTypes.
 type GetStoragePoolTypesArgs struct {
-	Project         *string `pulumi:"project"`
-	StoragePoolType string  `pulumi:"storagePoolType"`
-	Zone            string  `pulumi:"zone"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// Name of the storage pool type.
+	//
+	// ***
+	StoragePoolType string `pulumi:"storagePoolType"`
+	// The name of the zone.
+	Zone string `pulumi:"zone"`
 }
 
 // A collection of values returned by getStoragePoolTypes.
 type GetStoragePoolTypesResult struct {
-	CreationTimestamp            string                          `pulumi:"creationTimestamp"`
-	Deprecateds                  []GetStoragePoolTypesDeprecated `pulumi:"deprecateds"`
-	Description                  string                          `pulumi:"description"`
-	Id                           int                             `pulumi:"id"`
-	Kind                         string                          `pulumi:"kind"`
-	MaxPoolProvisionedCapacityGb int                             `pulumi:"maxPoolProvisionedCapacityGb"`
-	MaxPoolProvisionedIops       int                             `pulumi:"maxPoolProvisionedIops"`
-	MaxPoolProvisionedThroughput int                             `pulumi:"maxPoolProvisionedThroughput"`
-	MinPoolProvisionedCapacityGb int                             `pulumi:"minPoolProvisionedCapacityGb"`
-	MinPoolProvisionedIops       int                             `pulumi:"minPoolProvisionedIops"`
-	MinPoolProvisionedThroughput int                             `pulumi:"minPoolProvisionedThroughput"`
-	Name                         string                          `pulumi:"name"`
-	Project                      string                          `pulumi:"project"`
-	SelfLink                     string                          `pulumi:"selfLink"`
-	SelfLinkWithId               string                          `pulumi:"selfLinkWithId"`
-	StoragePoolType              string                          `pulumi:"storagePoolType"`
-	SupportedDiskTypes           []string                        `pulumi:"supportedDiskTypes"`
-	Zone                         string                          `pulumi:"zone"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// (Output)
+	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+	// This is only informational and the status will not change unless the client explicitly changes it.
+	Deprecateds []GetStoragePoolTypesDeprecated `pulumi:"deprecateds"`
+	// An optional description of this resource.
+	Description string `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id int `pulumi:"id"`
+	// Type of the resource. Always compute#storagePoolType for storage pool types.
+	Kind string `pulumi:"kind"`
+	// Maximum storage pool size in GB.
+	MaxPoolProvisionedCapacityGb int `pulumi:"maxPoolProvisionedCapacityGb"`
+	// Maximum provisioned IOPS.
+	MaxPoolProvisionedIops int `pulumi:"maxPoolProvisionedIops"`
+	// Maximum provisioned throughput.
+	MaxPoolProvisionedThroughput int `pulumi:"maxPoolProvisionedThroughput"`
+	// Minimum storage pool size in GB.
+	MinPoolProvisionedCapacityGb int `pulumi:"minPoolProvisionedCapacityGb"`
+	// Minimum provisioned IOPS.
+	MinPoolProvisionedIops int `pulumi:"minPoolProvisionedIops"`
+	// Minimum provisioned throughput.
+	MinPoolProvisionedThroughput int `pulumi:"minPoolProvisionedThroughput"`
+	// Name of the resource.
+	Name    string `pulumi:"name"`
+	Project string `pulumi:"project"`
+	// Server-defined URL for the resource.
+	SelfLink string `pulumi:"selfLink"`
+	// Server-defined URL for this resource with the resource id.
+	SelfLinkWithId  string `pulumi:"selfLinkWithId"`
+	StoragePoolType string `pulumi:"storagePoolType"`
+	// The list of disk types supported in this storage pool type.
+	SupportedDiskTypes []string `pulumi:"supportedDiskTypes"`
+	Zone               string   `pulumi:"zone"`
 }
 
 func GetStoragePoolTypesOutput(ctx *pulumi.Context, args GetStoragePoolTypesOutputArgs, opts ...pulumi.InvokeOption) GetStoragePoolTypesResultOutput {
@@ -57,9 +88,15 @@ func GetStoragePoolTypesOutput(ctx *pulumi.Context, args GetStoragePoolTypesOutp
 
 // A collection of arguments for invoking getStoragePoolTypes.
 type GetStoragePoolTypesOutputArgs struct {
-	Project         pulumi.StringPtrInput `pulumi:"project"`
-	StoragePoolType pulumi.StringInput    `pulumi:"storagePoolType"`
-	Zone            pulumi.StringInput    `pulumi:"zone"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Name of the storage pool type.
+	//
+	// ***
+	StoragePoolType pulumi.StringInput `pulumi:"storagePoolType"`
+	// The name of the zone.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetStoragePoolTypesOutputArgs) ElementType() reflect.Type {
@@ -81,50 +118,64 @@ func (o GetStoragePoolTypesResultOutput) ToGetStoragePoolTypesResultOutputWithCo
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
 func (o GetStoragePoolTypesResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+// (Output)
+// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+// This is only informational and the status will not change unless the client explicitly changes it.
 func (o GetStoragePoolTypesResultOutput) Deprecateds() GetStoragePoolTypesDeprecatedArrayOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) []GetStoragePoolTypesDeprecated { return v.Deprecateds }).(GetStoragePoolTypesDeprecatedArrayOutput)
 }
 
+// An optional description of this resource.
 func (o GetStoragePoolTypesResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The unique identifier for the resource. This identifier is defined by the server.
 func (o GetStoragePoolTypesResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// Type of the resource. Always compute#storagePoolType for storage pool types.
 func (o GetStoragePoolTypesResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Maximum storage pool size in GB.
 func (o GetStoragePoolTypesResultOutput) MaxPoolProvisionedCapacityGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) int { return v.MaxPoolProvisionedCapacityGb }).(pulumi.IntOutput)
 }
 
+// Maximum provisioned IOPS.
 func (o GetStoragePoolTypesResultOutput) MaxPoolProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) int { return v.MaxPoolProvisionedIops }).(pulumi.IntOutput)
 }
 
+// Maximum provisioned throughput.
 func (o GetStoragePoolTypesResultOutput) MaxPoolProvisionedThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) int { return v.MaxPoolProvisionedThroughput }).(pulumi.IntOutput)
 }
 
+// Minimum storage pool size in GB.
 func (o GetStoragePoolTypesResultOutput) MinPoolProvisionedCapacityGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) int { return v.MinPoolProvisionedCapacityGb }).(pulumi.IntOutput)
 }
 
+// Minimum provisioned IOPS.
 func (o GetStoragePoolTypesResultOutput) MinPoolProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) int { return v.MinPoolProvisionedIops }).(pulumi.IntOutput)
 }
 
+// Minimum provisioned throughput.
 func (o GetStoragePoolTypesResultOutput) MinPoolProvisionedThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) int { return v.MinPoolProvisionedThroughput }).(pulumi.IntOutput)
 }
 
+// Name of the resource.
 func (o GetStoragePoolTypesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -133,10 +184,12 @@ func (o GetStoragePoolTypesResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Server-defined URL for the resource.
 func (o GetStoragePoolTypesResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
+// Server-defined URL for this resource with the resource id.
 func (o GetStoragePoolTypesResultOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
@@ -145,6 +198,7 @@ func (o GetStoragePoolTypesResultOutput) StoragePoolType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) string { return v.StoragePoolType }).(pulumi.StringOutput)
 }
 
+// The list of disk types supported in this storage pool type.
 func (o GetStoragePoolTypesResultOutput) SupportedDiskTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesResult) []string { return v.SupportedDiskTypes }).(pulumi.StringArrayOutput)
 }

@@ -93,6 +93,21 @@ namespace Pulumi.Gcp.AgenticApplications.Inputs
         [Input("prompt")]
         public Input<string>? Prompt { get; set; }
 
+        [Input("requestHeaders")]
+        private InputList<Inputs.AnalystAgentPersonaMcpDataSourceRequestHeaderGetArgs>? _requestHeaders;
+
+        /// <summary>
+        /// Additional HTTP headers sent on every request to the MCP server, for
+        /// example a static header required by an API gateway. Headers managed by the
+        /// agent take precedence and cannot be set here. When empty, no additional
+        /// headers are sent.
+        /// </summary>
+        public InputList<Inputs.AnalystAgentPersonaMcpDataSourceRequestHeaderGetArgs> RequestHeaders
+        {
+            get => _requestHeaders ?? (_requestHeaders = new InputList<Inputs.AnalystAgentPersonaMcpDataSourceRequestHeaderGetArgs>());
+            set => _requestHeaders = value;
+        }
+
         /// <summary>
         /// The URL of the MCP server.
         /// </summary>

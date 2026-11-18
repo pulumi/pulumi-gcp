@@ -102,6 +102,7 @@ import * as utilities from "../utilities";
  *         metricAnalysisSettings: {
  *             llmMetricsOptedOut: false,
  *         },
+ *         requiredRecordingConsent: true,
  *     },
  *     modelSettings: {
  *         model: "gemini-3.0-flash-001",

@@ -1141,7 +1141,7 @@ type BackendService struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -1415,7 +1415,7 @@ type backendServiceState struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -1660,7 +1660,7 @@ type BackendServiceState struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -1908,7 +1908,7 @@ type backendServiceArgs struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -2145,7 +2145,7 @@ type BackendServiceArgs struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -2543,7 +2543,7 @@ func (o BackendServiceOutput) IpAddressSelectionPolicy() pulumi.StringPtrOutput 
 // load balancing cannot be used with the other. For more information, refer to
 // [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 // Default value is `EXTERNAL_MANAGED`.
-// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 func (o BackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }

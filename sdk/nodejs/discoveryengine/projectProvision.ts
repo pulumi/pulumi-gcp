@@ -147,6 +147,18 @@ export class ProjectProvision extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * The Gemini Enterprise experience that the project is provisioned for.
+     * `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+     * experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+     * Gemini Enterprise experience. If unset, the API chooses the experience.
+     * Changing this field forces a new resource, which calls the provisioning API
+     * again with the new value. Provisioning doesn't remove an experience that the
+     * project was already provisioned for, and the API may reject provisioning a
+     * project that uses the classic experience for the new experience.
+     * Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+     */
+    declare public readonly provisionIntent: pulumi.Output<string | undefined>;
+    /**
      * Parameters for Gemini Enterprise (Agentspace) provisioning.
      * Structure is documented below.
      */
@@ -169,6 +181,7 @@ export class ProjectProvision extends pulumi.CustomResource {
             resourceInputs["dataUseTermsVersion"] = state?.dataUseTermsVersion;
             resourceInputs["location"] = state?.location;
             resourceInputs["project"] = state?.project;
+            resourceInputs["provisionIntent"] = state?.provisionIntent;
             resourceInputs["saasParams"] = state?.saasParams;
         } else {
             const args = argsOrState as ProjectProvisionArgs | undefined;
@@ -176,6 +189,7 @@ export class ProjectProvision extends pulumi.CustomResource {
             resourceInputs["dataUseTermsVersion"] = args?.dataUseTermsVersion;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["provisionIntent"] = args?.provisionIntent;
             resourceInputs["saasParams"] = args?.saasParams;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -209,6 +223,18 @@ export interface ProjectProvisionState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * The Gemini Enterprise experience that the project is provisioned for.
+     * `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+     * experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+     * Gemini Enterprise experience. If unset, the API chooses the experience.
+     * Changing this field forces a new resource, which calls the provisioning API
+     * again with the new value. Provisioning doesn't remove an experience that the
+     * project was already provisioned for, and the API may reject provisioning a
+     * project that uses the classic experience for the new experience.
+     * Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+     */
+    provisionIntent?: pulumi.Input<string | undefined>;
+    /**
      * Parameters for Gemini Enterprise (Agentspace) provisioning.
      * Structure is documented below.
      */
@@ -240,6 +266,18 @@ export interface ProjectProvisionArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The Gemini Enterprise experience that the project is provisioned for.
+     * `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+     * experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+     * Gemini Enterprise experience. If unset, the API chooses the experience.
+     * Changing this field forces a new resource, which calls the provisioning API
+     * again with the new value. Provisioning doesn't remove an experience that the
+     * project was already provisioned for, and the API may reject provisioning a
+     * project that uses the classic experience for the new experience.
+     * Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+     */
+    provisionIntent?: pulumi.Input<string | undefined>;
     /**
      * Parameters for Gemini Enterprise (Agentspace) provisioning.
      * Structure is documented below.

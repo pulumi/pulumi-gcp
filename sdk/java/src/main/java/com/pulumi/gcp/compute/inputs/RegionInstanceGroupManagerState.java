@@ -377,16 +377,12 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<RegionInstanceGroupManagerResourcePoliciesArgs> resourcePolicies;
 
     /**
      * @return Resource policies for this managed instance group. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<RegionInstanceGroupManagerResourcePoliciesArgs>> resourcePolicies() {
@@ -406,6 +402,25 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
      */
     public Optional<Output<String>> selfLink() {
         return Optional.ofNullable(this.selfLink);
+    }
+
+    /**
+     * ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
     }
 
     /**
@@ -666,6 +681,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         this.region = $.region;
         this.resourcePolicies = $.resourcePolicies;
         this.selfLink = $.selfLink;
+        this.serviceAccount = $.serviceAccount;
         this.standbyPolicy = $.standbyPolicy;
         this.statefulDisks = $.statefulDisks;
         this.statefulExternalIps = $.statefulExternalIps;
@@ -1180,8 +1196,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         /**
          * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1192,8 +1206,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
 
         /**
          * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1221,6 +1233,31 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param serviceAccount ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**

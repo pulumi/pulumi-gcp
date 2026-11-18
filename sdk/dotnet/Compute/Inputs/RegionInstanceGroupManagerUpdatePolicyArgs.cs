@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RegionInstanceGroupManagerUpdatePolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedActions")]
+        private InputList<string>? _allowedActions;
+
+        /// <summary>
+        /// ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `AllowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `MinimalAction` and `MostDisruptiveAllowedAction`.
+        /// </summary>
+        public InputList<string> AllowedActions
+        {
+            get => _allowedActions ?? (_allowedActions = new InputList<string>());
+            set => _allowedActions = value;
+        }
+
         /// <summary>
         /// The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
         /// </summary>
@@ -49,13 +61,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? MinReadySec { get; set; }
 
         /// <summary>
-        /// Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        /// Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `Google` provider; optional in `google-beta` when `AllowedActions` is set (conflicts with `AllowedActions`).
         /// </summary>
-        [Input("minimalAction", required: true)]
-        public Input<string> MinimalAction { get; set; } = null!;
+        [Input("minimalAction")]
+        public Input<string>? MinimalAction { get; set; }
 
         /// <summary>
-        /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `AllowedActions`.
         /// </summary>
         [Input("mostDisruptiveAllowedAction")]
         public Input<string>? MostDisruptiveAllowedAction { get; set; }

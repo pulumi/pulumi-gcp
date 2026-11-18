@@ -496,10 +496,21 @@ namespace Pulumi.Gcp.AgenticApplications
     ///                 Description = "Sample MCP data source description",
     ///                 Enabled = true,
     ///                 Prompt = "Use this server for queries",
-    ///                 ApiKeyName = "x-api-key",
-    ///                 ApiKeyHeader = "x-api-key-header",
     ///                 SessionIdHeader = "X-Custom-Session-Id",
     ///                 TaskIdHeader = "X-Custom-Task-Id",
+    ///                 RequestHeaders = new[]
+    ///                 {
+    ///                     new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaMcpDataSourceRequestHeaderArgs
+    ///                     {
+    ///                         HeaderName = "X-Custom-Static",
+    ///                         Value = "initial-static-value",
+    ///                     },
+    ///                     new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaMcpDataSourceRequestHeaderArgs
+    ///                     {
+    ///                         HeaderName = "X-Custom-User",
+    ///                         DynamicValue = "USER_ID",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -1116,6 +1127,14 @@ namespace Pulumi.Gcp.AgenticApplications
     /// (Optional)
     /// The custom prompt for the MCP agent.
     /// 
+    /// * `RequestHeaders` -
+    /// (Optional)
+    /// Additional HTTP headers sent on every request to the MCP server, for
+    /// example a static header required by an API gateway. Headers managed by the
+    /// agent take precedence and cannot be set here. When empty, no additional
+    /// headers are sent.
+    /// Structure is documented below.
+    /// 
     /// * `ServerUrl` -
     /// (Required)
     /// The URL of the MCP server.
@@ -1131,6 +1150,26 @@ namespace Pulumi.Gcp.AgenticApplications
     /// The HTTP header name used to pass the agent task ID in MCP server
     /// requests (defaults to `X-Task-Id` when unset). Must be a valid HTTP
     /// header field name (RFC 9110 token).
+    /// 
+    /// &lt;a name="NestedMcpDataSourcesRequestHeaders"&gt;&lt;/a&gt;The `RequestHeaders` block supports:
+    /// 
+    /// * `DynamicValue` -
+    /// (Optional)
+    /// A value the agent fills in for each request.
+    /// Possible values:
+    /// USER_ID
+    /// 
+    /// * `HeaderName` -
+    /// (Required)
+    /// The header name. Must be a valid HTTP field name (RFC 9110 token),
+    /// unique ignoring case within the data source, and not a header managed
+    /// by the agent (such as `Authorization`, `Content-Type`, `mcp-session-id`,
+    /// or the configured API key, session ID, or task ID headers).
+    /// 
+    /// * `Value` -
+    /// (Optional)
+    /// A static value, sent as-is on every request. The value is stored and
+    /// returned in plain text, so do not use it for credentials.
     /// 
     /// &lt;a name="NestedResources"&gt;&lt;/a&gt;The `Resources` block supports:
     /// 

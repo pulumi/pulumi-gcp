@@ -70,6 +70,63 @@ public final class AiCustomJobJobSpecArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The Experiment associated with this job.
+     * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+     * 
+     */
+    @Import(name="experiment")
+    private @Nullable Output<String> experiment;
+
+    /**
+     * @return The Experiment associated with this job.
+     * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+     * 
+     */
+    public Optional<Output<String>> experiment() {
+        return Optional.ofNullable(this.experiment);
+    }
+
+    /**
+     * The Experiment Run associated with this job.
+     * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+     * 
+     */
+    @Import(name="experimentRun")
+    private @Nullable Output<String> experimentRun;
+
+    /**
+     * @return The Experiment Run associated with this job.
+     * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+     * 
+     */
+    public Optional<Output<String>> experimentRun() {
+        return Optional.ofNullable(this.experimentRun);
+    }
+
+    /**
+     * The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+     * Format: `projects/{project}/locations/{location}/models/{model}`
+     * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+     * Example: `projects/{project}/locations/{location}/models/{model}{@literal @}2` or `projects/{project}/locations/{location}/models/{model}{@literal @}golden`
+     * If no version ID or alias is specified, the &#34;default&#34; version will be returned.
+     * 
+     */
+    @Import(name="models")
+    private @Nullable Output<List<String>> models;
+
+    /**
+     * @return The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+     * Format: `projects/{project}/locations/{location}/models/{model}`
+     * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+     * Example: `projects/{project}/locations/{location}/models/{model}{@literal @}2` or `projects/{project}/locations/{location}/models/{model}{@literal @}golden`
+     * If no version ID or alias is specified, the &#34;default&#34; version will be returned.
+     * 
+     */
+    public Optional<Output<List<String>>> models() {
+        return Optional.ofNullable(this.models);
+    }
+
+    /**
      * The full name of the Compute Engine network to which the Job should be peered.
      * 
      */
@@ -82,6 +139,40 @@ public final class AiCustomJobJobSpecArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * The ID of the PersistentResource in the same Project and Location which to run.
+     * If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+     * The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+     * 
+     */
+    @Import(name="persistentResourceId")
+    private @Nullable Output<String> persistentResourceId;
+
+    /**
+     * @return The ID of the PersistentResource in the same Project and Location which to run.
+     * If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+     * The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+     * 
+     */
+    public Optional<Output<String>> persistentResourceId() {
+        return Optional.ofNullable(this.persistentResourceId);
+    }
+
+    /**
+     * The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+     * 
+     */
+    @Import(name="protectedArtifactLocationId")
+    private @Nullable Output<String> protectedArtifactLocationId;
+
+    /**
+     * @return The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+     * 
+     */
+    public Optional<Output<String>> protectedArtifactLocationId() {
+        return Optional.ofNullable(this.protectedArtifactLocationId);
     }
 
     /**
@@ -188,7 +279,12 @@ public final class AiCustomJobJobSpecArgs extends com.pulumi.resources.ResourceA
         this.baseOutputDirectory = $.baseOutputDirectory;
         this.enableDashboardAccess = $.enableDashboardAccess;
         this.enableWebAccess = $.enableWebAccess;
+        this.experiment = $.experiment;
+        this.experimentRun = $.experimentRun;
+        this.models = $.models;
         this.network = $.network;
+        this.persistentResourceId = $.persistentResourceId;
+        this.protectedArtifactLocationId = $.protectedArtifactLocationId;
         this.pscInterfaceConfig = $.pscInterfaceConfig;
         this.reservedIpRanges = $.reservedIpRanges;
         this.scheduling = $.scheduling;
@@ -281,6 +377,95 @@ public final class AiCustomJobJobSpecArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param experiment The Experiment associated with this job.
+         * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder experiment(@Nullable Output<String> experiment) {
+            $.experiment = experiment;
+            return this;
+        }
+
+        /**
+         * @param experiment The Experiment associated with this job.
+         * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder experiment(String experiment) {
+            return experiment(Output.of(experiment));
+        }
+
+        /**
+         * @param experimentRun The Experiment Run associated with this job.
+         * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder experimentRun(@Nullable Output<String> experimentRun) {
+            $.experimentRun = experimentRun;
+            return this;
+        }
+
+        /**
+         * @param experimentRun The Experiment Run associated with this job.
+         * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder experimentRun(String experimentRun) {
+            return experimentRun(Output.of(experimentRun));
+        }
+
+        /**
+         * @param models The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+         * Format: `projects/{project}/locations/{location}/models/{model}`
+         * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+         * Example: `projects/{project}/locations/{location}/models/{model}{@literal @}2` or `projects/{project}/locations/{location}/models/{model}{@literal @}golden`
+         * If no version ID or alias is specified, the &#34;default&#34; version will be returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder models(@Nullable Output<List<String>> models) {
+            $.models = models;
+            return this;
+        }
+
+        /**
+         * @param models The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+         * Format: `projects/{project}/locations/{location}/models/{model}`
+         * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+         * Example: `projects/{project}/locations/{location}/models/{model}{@literal @}2` or `projects/{project}/locations/{location}/models/{model}{@literal @}golden`
+         * If no version ID or alias is specified, the &#34;default&#34; version will be returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder models(List<String> models) {
+            return models(Output.of(models));
+        }
+
+        /**
+         * @param models The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+         * Format: `projects/{project}/locations/{location}/models/{model}`
+         * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+         * Example: `projects/{project}/locations/{location}/models/{model}{@literal @}2` or `projects/{project}/locations/{location}/models/{model}{@literal @}golden`
+         * If no version ID or alias is specified, the &#34;default&#34; version will be returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder models(String... models) {
+            return models(List.of(models));
+        }
+
+        /**
          * @param network The full name of the Compute Engine network to which the Job should be peered.
          * 
          * @return builder
@@ -299,6 +484,52 @@ public final class AiCustomJobJobSpecArgs extends com.pulumi.resources.ResourceA
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param persistentResourceId The ID of the PersistentResource in the same Project and Location which to run.
+         * If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+         * The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistentResourceId(@Nullable Output<String> persistentResourceId) {
+            $.persistentResourceId = persistentResourceId;
+            return this;
+        }
+
+        /**
+         * @param persistentResourceId The ID of the PersistentResource in the same Project and Location which to run.
+         * If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+         * The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistentResourceId(String persistentResourceId) {
+            return persistentResourceId(Output.of(persistentResourceId));
+        }
+
+        /**
+         * @param protectedArtifactLocationId The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedArtifactLocationId(@Nullable Output<String> protectedArtifactLocationId) {
+            $.protectedArtifactLocationId = protectedArtifactLocationId;
+            return this;
+        }
+
+        /**
+         * @param protectedArtifactLocationId The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedArtifactLocationId(String protectedArtifactLocationId) {
+            return protectedArtifactLocationId(Output.of(protectedArtifactLocationId));
         }
 
         /**

@@ -332,28 +332,28 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
         return this.instanceName;
     }
     /**
-     * GC policy that applies to all cells older than the given age.
+     * GC policy that applies to all cells older than the given age. Structure is documented below.
      * 
      */
     @Export(name="maxAge", refs={GCPolicyMaxAge.class}, tree="[0]")
     private Output</* @Nullable */ GCPolicyMaxAge> maxAge;
 
     /**
-     * @return GC policy that applies to all cells older than the given age.
+     * @return GC policy that applies to all cells older than the given age. Structure is documented below.
      * 
      */
     public Output<Optional<GCPolicyMaxAge>> maxAge() {
         return Codegen.optional(this.maxAge);
     }
     /**
-     * GC policy that applies to all versions of a cell except for the most recent.
+     * GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
      * 
      */
     @Export(name="maxVersions", refs={List.class,GCPolicyMaxVersion.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GCPolicyMaxVersion>> maxVersions;
 
     /**
-     * @return GC policy that applies to all versions of a cell except for the most recent.
+     * @return GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
      * 
      */
     public Output<Optional<List<GCPolicyMaxVersion>>> maxVersions() {

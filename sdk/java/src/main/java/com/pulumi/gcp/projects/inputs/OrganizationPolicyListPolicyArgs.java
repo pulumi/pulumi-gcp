@@ -19,14 +19,14 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
     public static final OrganizationPolicyListPolicyArgs Empty = new OrganizationPolicyListPolicyArgs();
 
     /**
-     * or `deny` - (Optional) One or the other must be set.
+     * Exactly one of `allow` or `deny` must be set. Structure is documented below.
      * 
      */
     @Import(name="allow")
     private @Nullable Output<OrganizationPolicyListPolicyAllowArgs> allow;
 
     /**
-     * @return or `deny` - (Optional) One or the other must be set.
+     * @return Exactly one of `allow` or `deny` must be set. Structure is documented below.
      * 
      */
     public Optional<Output<OrganizationPolicyListPolicyAllowArgs>> allow() {
@@ -34,14 +34,14 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * One or the other must be set.
+     * Exactly one of `allow` or `deny` must be set. Structure is documented below.
      * 
      */
     @Import(name="deny")
     private @Nullable Output<OrganizationPolicyListPolicyDenyArgs> deny;
 
     /**
-     * @return One or the other must be set.
+     * @return Exactly one of `allow` or `deny` must be set. Structure is documented below.
      * 
      */
     public Optional<Output<OrganizationPolicyListPolicyDenyArgs>> deny() {
@@ -52,7 +52,7 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
      * If set to true, the values from the effective Policy of the parent resource
      * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
      * 
-     * The `allow` or `deny` blocks support:
+     * &lt;a name=&#34;nestedAllowOrDeny&#34;&gt;&lt;/a&gt;The `allow` or `deny` blocks support:
      * 
      */
     @Import(name="inheritFromParent")
@@ -62,7 +62,7 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
      * @return If set to true, the values from the effective Policy of the parent resource
      * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
      * 
-     * The `allow` or `deny` blocks support:
+     * &lt;a name=&#34;nestedAllowOrDeny&#34;&gt;&lt;/a&gt;The `allow` or `deny` blocks support:
      * 
      */
     public Optional<Output<Boolean>> inheritFromParent() {
@@ -112,7 +112,7 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param allow or `deny` - (Optional) One or the other must be set.
+         * @param allow Exactly one of `allow` or `deny` must be set. Structure is documented below.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param allow or `deny` - (Optional) One or the other must be set.
+         * @param allow Exactly one of `allow` or `deny` must be set. Structure is documented below.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param deny One or the other must be set.
+         * @param deny Exactly one of `allow` or `deny` must be set. Structure is documented below.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param deny One or the other must be set.
+         * @param deny Exactly one of `allow` or `deny` must be set. Structure is documented below.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
          * @param inheritFromParent If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          * 
-         * The `allow` or `deny` blocks support:
+         * &lt;a name=&#34;nestedAllowOrDeny&#34;&gt;&lt;/a&gt;The `allow` or `deny` blocks support:
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
          * @param inheritFromParent If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          * 
-         * The `allow` or `deny` blocks support:
+         * &lt;a name=&#34;nestedAllowOrDeny&#34;&gt;&lt;/a&gt;The `allow` or `deny` blocks support:
          * 
          * @return builder
          * 

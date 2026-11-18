@@ -342,7 +342,7 @@ import (
 //				Name:     pulumi.String("synthetic_function"),
 //				Location: pulumi.String("us-central1"),
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs20"),
+//					Runtime:    pulumi.String("nodejs24"),
 //					EntryPoint: pulumi.String("SyntheticFunction"),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{

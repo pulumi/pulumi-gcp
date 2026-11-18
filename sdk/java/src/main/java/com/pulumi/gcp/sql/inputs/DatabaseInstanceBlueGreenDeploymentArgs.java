@@ -65,6 +65,21 @@ public final class DatabaseInstanceBlueGreenDeploymentArgs extends com.pulumi.re
     }
 
     /**
+     * User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = &#34;TARGET&#34;`).
      * 
      */
@@ -160,6 +175,7 @@ public final class DatabaseInstanceBlueGreenDeploymentArgs extends com.pulumi.re
         this.activeEnvironment = $.activeEnvironment;
         this.deleteOldSourceOnDestroy = $.deleteOldSourceOnDestroy;
         this.deploymentName = $.deploymentName;
+        this.description = $.description;
         this.oldSourceInstanceConnectionName = $.oldSourceInstanceConnectionName;
         this.oldSourceInstanceName = $.oldSourceInstanceName;
         this.targetDatabaseVersion = $.targetDatabaseVersion;
@@ -247,6 +263,27 @@ public final class DatabaseInstanceBlueGreenDeploymentArgs extends com.pulumi.re
          */
         public Builder deploymentName(String deploymentName) {
             return deploymentName(Output.of(deploymentName));
+        }
+
+        /**
+         * @param description User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

@@ -31,7 +31,7 @@ class InstanceIamMemberArgs:
 
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
-               For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+               For `bigtable.InstanceIamPolicy` only:
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -61,7 +61,7 @@ class InstanceIamMemberArgs:
         """
         The name or relative resource id of the instance to manage IAM policies for.
 
-        For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+        For `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "instance")
 
@@ -144,7 +144,7 @@ class _InstanceIamMemberState:
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
-               For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+               For `bigtable.InstanceIamPolicy` only:
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -202,7 +202,7 @@ class _InstanceIamMemberState:
         """
         The name or relative resource id of the instance to manage IAM policies for.
 
-        For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+        For `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "instance")
 
@@ -371,7 +371,7 @@ class InstanceIamMember(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceIamMemberConditionArgs', 'InstanceIamMemberConditionArgsDict', 'outputs.InstanceIamMemberCondition']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
-               For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+               For `bigtable.InstanceIamPolicy` only:
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -557,7 +557,7 @@ class InstanceIamMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
-               For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+               For `bigtable.InstanceIamPolicy` only:
         :param pulumi.Input[_builtins.str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -624,7 +624,7 @@ class InstanceIamMember(pulumi.CustomResource):
         """
         The name or relative resource id of the instance to manage IAM policies for.
 
-        For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+        For `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "instance")
 

@@ -129,6 +129,14 @@ import (
 //								SandboxLauncher: pulumi.Bool(true),
 //							},
 //						},
+//						Sandboxes: &cloudrunv2.JobTemplateTemplateSandboxesArgs{
+//							Templates: cloudrunv2.JobTemplateTemplateSandboxesTemplateArray{
+//								&cloudrunv2.JobTemplateTemplateSandboxesTemplateArgs{
+//									Name:  pulumi.String("hello"),
+//									Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								},
+//							},
+//						},
 //					},
 //				},
 //			})

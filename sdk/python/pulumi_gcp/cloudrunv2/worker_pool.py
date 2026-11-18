@@ -1426,6 +1426,31 @@ class WorkerPool(pulumi.CustomResource):
             })
         ```
 
+        ### Cloudrunv2 Worker Pool Sandbox Templates
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.WorkerPool("default",
+            name="cloudrun-example",
+            location="us-west1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "sandbox_launcher": True,
+                }],
+                "sandboxes": {
+                    "templates": [{
+                        "name": "hello",
+                        "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    }],
+                },
+            })
+        ```
+
         ## Import
 
         WorkerPool can be imported using any of these accepted formats:
@@ -1950,6 +1975,31 @@ class WorkerPool(pulumi.CustomResource):
                         "network": custom_test.id,
                         "subnetwork": custom_test_subnetwork.id,
                         "tags": [],
+                    }],
+                },
+            })
+        ```
+
+        ### Cloudrunv2 Worker Pool Sandbox Templates
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.WorkerPool("default",
+            name="cloudrun-example",
+            location="us-west1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "sandbox_launcher": True,
+                }],
+                "sandboxes": {
+                    "templates": [{
+                        "name": "hello",
+                        "image": "us-docker.pkg.dev/cloudrun/container/hello",
                     }],
                 },
             })

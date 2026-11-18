@@ -120,14 +120,14 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * GC policy that applies to all cells older than the given age.
+     * GC policy that applies to all cells older than the given age. Structure is documented below.
      * 
      */
     @Import(name="maxAge")
     private @Nullable Output<GCPolicyMaxAgeArgs> maxAge;
 
     /**
-     * @return GC policy that applies to all cells older than the given age.
+     * @return GC policy that applies to all cells older than the given age. Structure is documented below.
      * 
      */
     public Optional<Output<GCPolicyMaxAgeArgs>> maxAge() {
@@ -135,14 +135,14 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * GC policy that applies to all versions of a cell except for the most recent.
+     * GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
      * 
      */
     @Import(name="maxVersions")
     private @Nullable Output<List<GCPolicyMaxVersionArgs>> maxVersions;
 
     /**
-     * @return GC policy that applies to all versions of a cell except for the most recent.
+     * @return GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
      * 
      */
     public Optional<Output<List<GCPolicyMaxVersionArgs>>> maxVersions() {
@@ -357,7 +357,7 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxAge GC policy that applies to all cells older than the given age.
+         * @param maxAge GC policy that applies to all cells older than the given age. Structure is documented below.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxAge GC policy that applies to all cells older than the given age.
+         * @param maxAge GC policy that applies to all cells older than the given age. Structure is documented below.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxVersions GC policy that applies to all versions of a cell except for the most recent.
+         * @param maxVersions GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxVersions GC policy that applies to all versions of a cell except for the most recent.
+         * @param maxVersions GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxVersions GC policy that applies to all versions of a cell except for the most recent.
+         * @param maxVersions GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
          * 
          * @return builder
          * 

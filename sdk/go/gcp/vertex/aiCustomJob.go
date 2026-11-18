@@ -56,6 +56,9 @@ import (
 //					"env": pulumi.String("test"),
 //				},
 //				JobSpec: &vertex.AiCustomJobJobSpecArgs{
+//					PersistentResourceId: pulumi.String("example-persistent-resource"),
+//					Experiment:           pulumi.String("example-experiment"),
+//					ExperimentRun:        pulumi.String("example-experiment-run"),
 //					WorkerPoolSpecs: vertex.AiCustomJobJobSpecWorkerPoolSpecArray{
 //						&vertex.AiCustomJobJobSpecWorkerPoolSpecArgs{
 //							ReplicaCount: pulumi.Int(1),
@@ -67,7 +70,7 @@ import (
 //								BootDiskSizeGb: pulumi.Int(100),
 //							},
 //							ContainerSpec: &vertex.AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs{
-//								ImageUri: pulumi.String("us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-8.py310:latest"),
+//								ImageUri: pulumi.String("us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-12.py310:latest"),
 //								Commands: pulumi.StringArray{
 //									pulumi.String("echo"),
 //									pulumi.String("test"),
@@ -93,6 +96,54 @@ import (
 //						OutputUriPrefix: jobBucket.Name.ApplyT(func(name string) (string, error) {
 //							return fmt.Sprintf("gs://%v/custom-job-output", name), nil
 //						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Vertex Ai Custom Job Models
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiCustomJob(ctx, "custom_job", &vertex.AiCustomJobArgs{
+//				DisplayName: pulumi.String("example-custom-job-models"),
+//				Region:      pulumi.String("us-central1"),
+//				JobSpec: &vertex.AiCustomJobJobSpecArgs{
+//					ProtectedArtifactLocationId: pulumi.String("us-central1"),
+//					Models: pulumi.StringArray{
+//						pulumi.String("example-model"),
+//					},
+//					WorkerPoolSpecs: vertex.AiCustomJobJobSpecWorkerPoolSpecArray{
+//						&vertex.AiCustomJobJobSpecWorkerPoolSpecArgs{
+//							ReplicaCount: pulumi.Int(1),
+//							MachineSpec: &vertex.AiCustomJobJobSpecWorkerPoolSpecMachineSpecArgs{
+//								MachineType: pulumi.String("n1-standard-4"),
+//							},
+//							DiskSpec: &vertex.AiCustomJobJobSpecWorkerPoolSpecDiskSpecArgs{
+//								BootDiskType:   pulumi.String("pd-ssd"),
+//								BootDiskSizeGb: pulumi.Int(100),
+//							},
+//							ContainerSpec: &vertex.AiCustomJobJobSpecWorkerPoolSpecContainerSpecArgs{
+//								ImageUri: pulumi.String("us-docker.pkg.dev/vertex-ai-restricted/llm/llm-pets-cpu:latest"),
+//							},
+//						},
 //					},
 //				},
 //			})
@@ -177,6 +228,7 @@ import (
 //				JobSpec: &vertex.AiCustomJobJobSpecArgs{
 //					ServiceAccount:        customJobSa.Email,
 //					Tensorboard:           tensorboard.ID(),
+//					Experiment:            pulumi.String("example-experiment"),
 //					EnableWebAccess:       pulumi.Bool(true),
 //					EnableDashboardAccess: pulumi.Bool(true),
 //					BaseOutputDirectory: &vertex.AiCustomJobJobSpecBaseOutputDirectoryArgs{

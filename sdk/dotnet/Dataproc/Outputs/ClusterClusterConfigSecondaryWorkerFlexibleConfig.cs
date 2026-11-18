@@ -14,20 +14,20 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigSecondaryWorkerFlexibleConfig
     {
         /// <summary>
-        /// The boot disk size in GB.
-        /// Changing this forces a new resource to be created.
+        /// The boot disk size in GB. Changing this on an existing
+        /// secondary worker group forces a new resource to be created.
         /// ***
         /// </summary>
         public readonly int? BootDiskSizeGb;
         /// <summary>
         /// The number of vCPUs per instance. Must be a power of 2
-        /// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+        /// (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
         /// </summary>
         public readonly int CoreCount;
         /// <summary>
         /// Controls the hardware class for the flexible instance group.
         /// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-        /// Changing this forces a new resource to be created.
+        /// Changing this on an existing secondary worker group forces a new resource to be created.
         /// </summary>
         public readonly string? HardwareClass;
         /// <summary>

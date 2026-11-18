@@ -91,6 +91,7 @@ type LookupInstanceGroupManagerResult struct {
 	Project                     *string                                          `pulumi:"project"`
 	ResourcePolicies            []GetInstanceGroupManagerResourcePolicy          `pulumi:"resourcePolicies"`
 	SelfLink                    *string                                          `pulumi:"selfLink"`
+	ServiceAccount              string                                           `pulumi:"serviceAccount"`
 	StandbyPolicies             []GetInstanceGroupManagerStandbyPolicy           `pulumi:"standbyPolicies"`
 	StatefulDisks               []GetInstanceGroupManagerStatefulDisk            `pulumi:"statefulDisks"`
 	StatefulExternalIps         []GetInstanceGroupManagerStatefulExternalIp      `pulumi:"statefulExternalIps"`
@@ -227,6 +228,10 @@ func (o LookupInstanceGroupManagerResultOutput) ResourcePolicies() GetInstanceGr
 
 func (o LookupInstanceGroupManagerResultOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceGroupManagerResultOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceGroupManagerResultOutput) StandbyPolicies() GetInstanceGroupManagerStandbyPolicyArrayOutput {

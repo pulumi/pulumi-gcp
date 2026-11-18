@@ -19,14 +19,14 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
     public static final TransferJobTransferSpecAzureBlobStorageDataSourceArgs Empty = new TransferJobTransferSpecAzureBlobStorageDataSourceArgs();
 
     /**
-     * ) Credentials used to authenticate API requests to Azure block.
+     * ) Credentials used to authenticate API requests to Azure block. Structure documented below.
      * 
      */
     @Import(name="azureCredentials")
     private @Nullable Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs> azureCredentials;
 
     /**
-     * @return ) Credentials used to authenticate API requests to Azure block.
+     * @return ) Credentials used to authenticate API requests to Azure block. Structure documented below.
      * 
      */
     public Optional<Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs>> azureCredentials() {
@@ -154,7 +154,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         }
 
         /**
-         * @param azureCredentials ) Credentials used to authenticate API requests to Azure block.
+         * @param azureCredentials ) Credentials used to authenticate API requests to Azure block. Structure documented below.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         }
 
         /**
-         * @param azureCredentials ) Credentials used to authenticate API requests to Azure block.
+         * @param azureCredentials ) Credentials used to authenticate API requests to Azure block. Structure documented below.
          * 
          * @return builder
          * 

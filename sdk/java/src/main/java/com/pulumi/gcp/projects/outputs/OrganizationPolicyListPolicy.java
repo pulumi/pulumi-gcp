@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrganizationPolicyListPolicy {
     /**
-     * @return or `deny` - (Optional) One or the other must be set.
+     * @return Exactly one of `allow` or `deny` must be set. Structure is documented below.
      * 
      */
     private @Nullable OrganizationPolicyListPolicyAllow allow;
     /**
-     * @return One or the other must be set.
+     * @return Exactly one of `allow` or `deny` must be set. Structure is documented below.
      * 
      */
     private @Nullable OrganizationPolicyListPolicyDeny deny;
@@ -28,7 +28,7 @@ public final class OrganizationPolicyListPolicy {
      * @return If set to true, the values from the effective Policy of the parent resource
      * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
      * 
-     * The `allow` or `deny` blocks support:
+     * &lt;a name=&#34;nestedAllowOrDeny&#34;&gt;&lt;/a&gt;The `allow` or `deny` blocks support:
      * 
      */
     private @Nullable Boolean inheritFromParent;
@@ -40,14 +40,14 @@ public final class OrganizationPolicyListPolicy {
 
     private OrganizationPolicyListPolicy() {}
     /**
-     * @return or `deny` - (Optional) One or the other must be set.
+     * @return Exactly one of `allow` or `deny` must be set. Structure is documented below.
      * 
      */
     public Optional<OrganizationPolicyListPolicyAllow> allow() {
         return Optional.ofNullable(this.allow);
     }
     /**
-     * @return One or the other must be set.
+     * @return Exactly one of `allow` or `deny` must be set. Structure is documented below.
      * 
      */
     public Optional<OrganizationPolicyListPolicyDeny> deny() {
@@ -57,7 +57,7 @@ public final class OrganizationPolicyListPolicy {
      * @return If set to true, the values from the effective Policy of the parent resource
      * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
      * 
-     * The `allow` or `deny` blocks support:
+     * &lt;a name=&#34;nestedAllowOrDeny&#34;&gt;&lt;/a&gt;The `allow` or `deny` blocks support:
      * 
      */
     public Optional<Boolean> inheritFromParent() {

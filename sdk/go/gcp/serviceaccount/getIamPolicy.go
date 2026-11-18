@@ -50,7 +50,8 @@ func GetIamPolicy(ctx *pulumi.Context, args *GetIamPolicyArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getIamPolicy.
 type GetIamPolicyArgs struct {
-	// The fully-qualified name of the service account to apply policy to.
+	// The fully-qualified name of the service account, in the form
+	// `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
 	ServiceAccountId string `pulumi:"serviceAccountId"`
 }
 
@@ -72,7 +73,8 @@ func GetIamPolicyOutput(ctx *pulumi.Context, args GetIamPolicyOutputArgs, opts .
 
 // A collection of arguments for invoking getIamPolicy.
 type GetIamPolicyOutputArgs struct {
-	// The fully-qualified name of the service account to apply policy to.
+	// The fully-qualified name of the service account, in the form
+	// `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
 	ServiceAccountId pulumi.StringInput `pulumi:"serviceAccountId"`
 }
 

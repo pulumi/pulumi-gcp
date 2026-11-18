@@ -11,6 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceDesiredAutoCreatedEndpoint {
     /**
+     * @return Immutable. The IP version that the consumer endpoint will use.
+     * Default value is &#39;IPV4&#39;. Possible values: [&#34;IPV4&#34;, &#34;IPV6&#34;]
+     * 
+     */
+    private String ipVersion;
+    /**
      * @return Required. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
      * 
@@ -23,6 +29,14 @@ public final class GetInstanceDesiredAutoCreatedEndpoint {
     private String projectId;
 
     private GetInstanceDesiredAutoCreatedEndpoint() {}
+    /**
+     * @return Immutable. The IP version that the consumer endpoint will use.
+     * Default value is &#39;IPV4&#39;. Possible values: [&#34;IPV4&#34;, &#34;IPV6&#34;]
+     * 
+     */
+    public String ipVersion() {
+        return this.ipVersion;
+    }
     /**
      * @return Required. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
@@ -48,15 +62,25 @@ public final class GetInstanceDesiredAutoCreatedEndpoint {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String ipVersion;
         private String network;
         private String projectId;
         public Builder() {}
         public Builder(GetInstanceDesiredAutoCreatedEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.ipVersion = defaults.ipVersion;
     	      this.network = defaults.network;
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
+        public Builder ipVersion(String ipVersion) {
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceDesiredAutoCreatedEndpoint", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
+            return this;
+        }
         @CustomType.Setter
         public Builder network(String network) {
             if (network == null) {
@@ -75,6 +99,7 @@ public final class GetInstanceDesiredAutoCreatedEndpoint {
         }
         public GetInstanceDesiredAutoCreatedEndpoint build() {
             final var _resultValue = new GetInstanceDesiredAutoCreatedEndpoint();
+            _resultValue.ipVersion = ipVersion;
             _resultValue.network = network;
             _resultValue.projectId = projectId;
             return _resultValue;

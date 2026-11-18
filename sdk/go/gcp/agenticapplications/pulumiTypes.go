@@ -6948,6 +6948,11 @@ type AnalystAgentPersonaMcpDataSource struct {
 	OauthTokenUrl *string `pulumi:"oauthTokenUrl"`
 	// The custom prompt for the MCP agent.
 	Prompt *string `pulumi:"prompt"`
+	// Additional HTTP headers sent on every request to the MCP server, for
+	// example a static header required by an API gateway. Headers managed by the
+	// agent take precedence and cannot be set here. When empty, no additional
+	// headers are sent.
+	RequestHeaders []AnalystAgentPersonaMcpDataSourceRequestHeader `pulumi:"requestHeaders"`
 	// The URL of the MCP server.
 	ServerUrl string `pulumi:"serverUrl"`
 	// The HTTP header name used to pass the agent session ID in MCP server
@@ -6993,6 +6998,11 @@ type AnalystAgentPersonaMcpDataSourceArgs struct {
 	OauthTokenUrl pulumi.StringPtrInput `pulumi:"oauthTokenUrl"`
 	// The custom prompt for the MCP agent.
 	Prompt pulumi.StringPtrInput `pulumi:"prompt"`
+	// Additional HTTP headers sent on every request to the MCP server, for
+	// example a static header required by an API gateway. Headers managed by the
+	// agent take precedence and cannot be set here. When empty, no additional
+	// headers are sent.
+	RequestHeaders AnalystAgentPersonaMcpDataSourceRequestHeaderArrayInput `pulumi:"requestHeaders"`
 	// The URL of the MCP server.
 	ServerUrl pulumi.StringInput `pulumi:"serverUrl"`
 	// The HTTP header name used to pass the agent session ID in MCP server
@@ -7107,6 +7117,16 @@ func (o AnalystAgentPersonaMcpDataSourceOutput) Prompt() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSource) *string { return v.Prompt }).(pulumi.StringPtrOutput)
 }
 
+// Additional HTTP headers sent on every request to the MCP server, for
+// example a static header required by an API gateway. Headers managed by the
+// agent take precedence and cannot be set here. When empty, no additional
+// headers are sent.
+func (o AnalystAgentPersonaMcpDataSourceOutput) RequestHeaders() AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSource) []AnalystAgentPersonaMcpDataSourceRequestHeader {
+		return v.RequestHeaders
+	}).(AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput)
+}
+
 // The URL of the MCP server.
 func (o AnalystAgentPersonaMcpDataSourceOutput) ServerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSource) string { return v.ServerUrl }).(pulumi.StringOutput)
@@ -7144,6 +7164,139 @@ func (o AnalystAgentPersonaMcpDataSourceArrayOutput) Index(i pulumi.IntInput) An
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AnalystAgentPersonaMcpDataSource {
 		return vs[0].([]AnalystAgentPersonaMcpDataSource)[vs[1].(int)]
 	}).(AnalystAgentPersonaMcpDataSourceOutput)
+}
+
+type AnalystAgentPersonaMcpDataSourceRequestHeader struct {
+	// A value the agent fills in for each request.
+	// Possible values:
+	// USER_ID
+	DynamicValue *string `pulumi:"dynamicValue"`
+	// The header name. Must be a valid HTTP field name (RFC 9110 token),
+	// unique ignoring case within the data source, and not a header managed
+	// by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+	// or the configured API key, session ID, or task ID headers).
+	HeaderName string `pulumi:"headerName"`
+	// A static value, sent as-is on every request. The value is stored and
+	// returned in plain text, so do not use it for credentials.
+	Value *string `pulumi:"value"`
+}
+
+// AnalystAgentPersonaMcpDataSourceRequestHeaderInput is an input type that accepts AnalystAgentPersonaMcpDataSourceRequestHeaderArgs and AnalystAgentPersonaMcpDataSourceRequestHeaderOutput values.
+// You can construct a concrete instance of `AnalystAgentPersonaMcpDataSourceRequestHeaderInput` via:
+//
+//	AnalystAgentPersonaMcpDataSourceRequestHeaderArgs{...}
+type AnalystAgentPersonaMcpDataSourceRequestHeaderInput interface {
+	pulumi.Input
+
+	ToAnalystAgentPersonaMcpDataSourceRequestHeaderOutput() AnalystAgentPersonaMcpDataSourceRequestHeaderOutput
+	ToAnalystAgentPersonaMcpDataSourceRequestHeaderOutputWithContext(context.Context) AnalystAgentPersonaMcpDataSourceRequestHeaderOutput
+}
+
+type AnalystAgentPersonaMcpDataSourceRequestHeaderArgs struct {
+	// A value the agent fills in for each request.
+	// Possible values:
+	// USER_ID
+	DynamicValue pulumi.StringPtrInput `pulumi:"dynamicValue"`
+	// The header name. Must be a valid HTTP field name (RFC 9110 token),
+	// unique ignoring case within the data source, and not a header managed
+	// by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+	// or the configured API key, session ID, or task ID headers).
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// A static value, sent as-is on every request. The value is stored and
+	// returned in plain text, so do not use it for credentials.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AnalystAgentPersonaMcpDataSourceRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalystAgentPersonaMcpDataSourceRequestHeader)(nil)).Elem()
+}
+
+func (i AnalystAgentPersonaMcpDataSourceRequestHeaderArgs) ToAnalystAgentPersonaMcpDataSourceRequestHeaderOutput() AnalystAgentPersonaMcpDataSourceRequestHeaderOutput {
+	return i.ToAnalystAgentPersonaMcpDataSourceRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i AnalystAgentPersonaMcpDataSourceRequestHeaderArgs) ToAnalystAgentPersonaMcpDataSourceRequestHeaderOutputWithContext(ctx context.Context) AnalystAgentPersonaMcpDataSourceRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaMcpDataSourceRequestHeaderOutput)
+}
+
+// AnalystAgentPersonaMcpDataSourceRequestHeaderArrayInput is an input type that accepts AnalystAgentPersonaMcpDataSourceRequestHeaderArray and AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `AnalystAgentPersonaMcpDataSourceRequestHeaderArrayInput` via:
+//
+//	AnalystAgentPersonaMcpDataSourceRequestHeaderArray{ AnalystAgentPersonaMcpDataSourceRequestHeaderArgs{...} }
+type AnalystAgentPersonaMcpDataSourceRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput() AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput
+	ToAnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutputWithContext(context.Context) AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput
+}
+
+type AnalystAgentPersonaMcpDataSourceRequestHeaderArray []AnalystAgentPersonaMcpDataSourceRequestHeaderInput
+
+func (AnalystAgentPersonaMcpDataSourceRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AnalystAgentPersonaMcpDataSourceRequestHeader)(nil)).Elem()
+}
+
+func (i AnalystAgentPersonaMcpDataSourceRequestHeaderArray) ToAnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput() AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput {
+	return i.ToAnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AnalystAgentPersonaMcpDataSourceRequestHeaderArray) ToAnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutputWithContext(ctx context.Context) AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput)
+}
+
+type AnalystAgentPersonaMcpDataSourceRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (AnalystAgentPersonaMcpDataSourceRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalystAgentPersonaMcpDataSourceRequestHeader)(nil)).Elem()
+}
+
+func (o AnalystAgentPersonaMcpDataSourceRequestHeaderOutput) ToAnalystAgentPersonaMcpDataSourceRequestHeaderOutput() AnalystAgentPersonaMcpDataSourceRequestHeaderOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaMcpDataSourceRequestHeaderOutput) ToAnalystAgentPersonaMcpDataSourceRequestHeaderOutputWithContext(ctx context.Context) AnalystAgentPersonaMcpDataSourceRequestHeaderOutput {
+	return o
+}
+
+// A value the agent fills in for each request.
+// Possible values:
+// USER_ID
+func (o AnalystAgentPersonaMcpDataSourceRequestHeaderOutput) DynamicValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSourceRequestHeader) *string { return v.DynamicValue }).(pulumi.StringPtrOutput)
+}
+
+// The header name. Must be a valid HTTP field name (RFC 9110 token),
+// unique ignoring case within the data source, and not a header managed
+// by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+// or the configured API key, session ID, or task ID headers).
+func (o AnalystAgentPersonaMcpDataSourceRequestHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSourceRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// A static value, sent as-is on every request. The value is stored and
+// returned in plain text, so do not use it for credentials.
+func (o AnalystAgentPersonaMcpDataSourceRequestHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSourceRequestHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AnalystAgentPersonaMcpDataSourceRequestHeader)(nil)).Elem()
+}
+
+func (o AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput) ToAnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput() AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput) ToAnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutputWithContext(ctx context.Context) AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput) Index(i pulumi.IntInput) AnalystAgentPersonaMcpDataSourceRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AnalystAgentPersonaMcpDataSourceRequestHeader {
+		return vs[0].([]AnalystAgentPersonaMcpDataSourceRequestHeader)[vs[1].(int)]
+	}).(AnalystAgentPersonaMcpDataSourceRequestHeaderOutput)
 }
 
 type AnalystAgentPersonaResource struct {
@@ -8943,6 +9096,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaExternalDataSourceUsdaPtrInput)(nil)).Elem(), AnalystAgentPersonaExternalDataSourceUsdaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaMcpDataSourceInput)(nil)).Elem(), AnalystAgentPersonaMcpDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaMcpDataSourceArrayInput)(nil)).Elem(), AnalystAgentPersonaMcpDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaMcpDataSourceRequestHeaderInput)(nil)).Elem(), AnalystAgentPersonaMcpDataSourceRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaMcpDataSourceRequestHeaderArrayInput)(nil)).Elem(), AnalystAgentPersonaMcpDataSourceRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaResourceInput)(nil)).Elem(), AnalystAgentPersonaResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaResourceArrayInput)(nil)).Elem(), AnalystAgentPersonaResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaResourceBigqueryResourceInput)(nil)).Elem(), AnalystAgentPersonaResourceBigqueryResourceArgs{})
@@ -9049,6 +9204,8 @@ func init() {
 	pulumi.RegisterOutputType(AnalystAgentPersonaExternalDataSourceUsdaPtrOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaMcpDataSourceOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaMcpDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(AnalystAgentPersonaMcpDataSourceRequestHeaderOutput{})
+	pulumi.RegisterOutputType(AnalystAgentPersonaMcpDataSourceRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaResourceOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaResourceArrayOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaResourceBigqueryResourceOutput{})

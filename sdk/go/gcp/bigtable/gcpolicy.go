@@ -237,9 +237,9 @@ type GCPolicy struct {
 	IgnoreWarnings pulumi.BoolPtrOutput `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// GC policy that applies to all cells older than the given age.
+	// GC policy that applies to all cells older than the given age. Structure is documented below.
 	MaxAge GCPolicyMaxAgePtrOutput `pulumi:"maxAge"`
-	// GC policy that applies to all versions of a cell except for the most recent.
+	// GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
 	MaxVersions GCPolicyMaxVersionArrayOutput `pulumi:"maxVersions"`
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
 	Mode pulumi.StringPtrOutput `pulumi:"mode"`
@@ -310,9 +310,9 @@ type gcpolicyState struct {
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName *string `pulumi:"instanceName"`
-	// GC policy that applies to all cells older than the given age.
+	// GC policy that applies to all cells older than the given age. Structure is documented below.
 	MaxAge *GCPolicyMaxAge `pulumi:"maxAge"`
-	// GC policy that applies to all versions of a cell except for the most recent.
+	// GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
 	MaxVersions []GCPolicyMaxVersion `pulumi:"maxVersions"`
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
 	Mode *string `pulumi:"mode"`
@@ -345,9 +345,9 @@ type GCPolicyState struct {
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringPtrInput
-	// GC policy that applies to all cells older than the given age.
+	// GC policy that applies to all cells older than the given age. Structure is documented below.
 	MaxAge GCPolicyMaxAgePtrInput
-	// GC policy that applies to all versions of a cell except for the most recent.
+	// GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
 	MaxVersions GCPolicyMaxVersionArrayInput
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
 	Mode pulumi.StringPtrInput
@@ -390,9 +390,9 @@ type gcpolicyArgs struct {
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName string `pulumi:"instanceName"`
-	// GC policy that applies to all cells older than the given age.
+	// GC policy that applies to all cells older than the given age. Structure is documented below.
 	MaxAge *GCPolicyMaxAge `pulumi:"maxAge"`
-	// GC policy that applies to all versions of a cell except for the most recent.
+	// GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
 	MaxVersions []GCPolicyMaxVersion `pulumi:"maxVersions"`
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
 	Mode *string `pulumi:"mode"`
@@ -426,9 +426,9 @@ type GCPolicyArgs struct {
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringInput
-	// GC policy that applies to all cells older than the given age.
+	// GC policy that applies to all cells older than the given age. Structure is documented below.
 	MaxAge GCPolicyMaxAgePtrInput
-	// GC policy that applies to all versions of a cell except for the most recent.
+	// GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
 	MaxVersions GCPolicyMaxVersionArrayInput
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
 	Mode pulumi.StringPtrInput
@@ -562,12 +562,12 @@ func (o GCPolicyOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GCPolicy) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// GC policy that applies to all cells older than the given age.
+// GC policy that applies to all cells older than the given age. Structure is documented below.
 func (o GCPolicyOutput) MaxAge() GCPolicyMaxAgePtrOutput {
 	return o.ApplyT(func(v *GCPolicy) GCPolicyMaxAgePtrOutput { return v.MaxAge }).(GCPolicyMaxAgePtrOutput)
 }
 
-// GC policy that applies to all versions of a cell except for the most recent.
+// GC policy that applies to all versions of a cell except for the most recent. Structure is documented below.
 func (o GCPolicyOutput) MaxVersions() GCPolicyMaxVersionArrayOutput {
 	return o.ApplyT(func(v *GCPolicy) GCPolicyMaxVersionArrayOutput { return v.MaxVersions }).(GCPolicyMaxVersionArrayOutput)
 }

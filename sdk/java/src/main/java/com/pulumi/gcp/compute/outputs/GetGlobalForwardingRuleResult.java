@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGlobalForwardingRuleResult {
     private Boolean allowPscGlobalAccess;
+    private String backendService;
     private String baseForwardingRule;
     private String deletionPolicy;
     private String description;
@@ -33,6 +34,7 @@ public final class GetGlobalForwardingRuleResult {
      */
     private String id;
     private String ipAddress;
+    private List<String> ipAddresses;
     private String ipProtocol;
     private String ipVersion;
     private String labelFingerprint;
@@ -57,6 +59,9 @@ public final class GetGlobalForwardingRuleResult {
     private GetGlobalForwardingRuleResult() {}
     public Boolean allowPscGlobalAccess() {
         return this.allowPscGlobalAccess;
+    }
+    public String backendService() {
+        return this.backendService;
     }
     public String baseForwardingRule() {
         return this.baseForwardingRule;
@@ -88,6 +93,9 @@ public final class GetGlobalForwardingRuleResult {
     }
     public String ipAddress() {
         return this.ipAddress;
+    }
+    public List<String> ipAddresses() {
+        return this.ipAddresses;
     }
     public String ipProtocol() {
         return this.ipProtocol;
@@ -160,6 +168,7 @@ public final class GetGlobalForwardingRuleResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allowPscGlobalAccess;
+        private String backendService;
         private String baseForwardingRule;
         private String deletionPolicy;
         private String description;
@@ -169,6 +178,7 @@ public final class GetGlobalForwardingRuleResult {
         private Integer forwardingRuleId;
         private String id;
         private String ipAddress;
+        private List<String> ipAddresses;
         private String ipProtocol;
         private String ipVersion;
         private String labelFingerprint;
@@ -193,6 +203,7 @@ public final class GetGlobalForwardingRuleResult {
         public Builder(GetGlobalForwardingRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowPscGlobalAccess = defaults.allowPscGlobalAccess;
+    	      this.backendService = defaults.backendService;
     	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
@@ -202,6 +213,7 @@ public final class GetGlobalForwardingRuleResult {
     	      this.forwardingRuleId = defaults.forwardingRuleId;
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
+    	      this.ipAddresses = defaults.ipAddresses;
     	      this.ipProtocol = defaults.ipProtocol;
     	      this.ipVersion = defaults.ipVersion;
     	      this.labelFingerprint = defaults.labelFingerprint;
@@ -230,6 +242,14 @@ public final class GetGlobalForwardingRuleResult {
               throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "allowPscGlobalAccess");
             }
             this.allowPscGlobalAccess = allowPscGlobalAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backendService(String backendService) {
+            if (backendService == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "backendService");
+            }
+            this.backendService = backendService;
             return this;
         }
         @CustomType.Setter
@@ -303,6 +323,17 @@ public final class GetGlobalForwardingRuleResult {
             }
             this.ipAddress = ipAddress;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipAddresses(List<String> ipAddresses) {
+            if (ipAddresses == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "ipAddresses");
+            }
+            this.ipAddresses = ipAddresses;
+            return this;
+        }
+        public Builder ipAddresses(String... ipAddresses) {
+            return ipAddresses(List.of(ipAddresses));
         }
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
@@ -474,6 +505,7 @@ public final class GetGlobalForwardingRuleResult {
         public GetGlobalForwardingRuleResult build() {
             final var _resultValue = new GetGlobalForwardingRuleResult();
             _resultValue.allowPscGlobalAccess = allowPscGlobalAccess;
+            _resultValue.backendService = backendService;
             _resultValue.baseForwardingRule = baseForwardingRule;
             _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
@@ -483,6 +515,7 @@ public final class GetGlobalForwardingRuleResult {
             _resultValue.forwardingRuleId = forwardingRuleId;
             _resultValue.id = id;
             _resultValue.ipAddress = ipAddress;
+            _resultValue.ipAddresses = ipAddresses;
             _resultValue.ipProtocol = ipProtocol;
             _resultValue.ipVersion = ipVersion;
             _resultValue.labelFingerprint = labelFingerprint;

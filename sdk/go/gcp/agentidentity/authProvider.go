@@ -51,6 +51,163 @@ import (
 //
 // ```
 //
+// ### Agent Identity Auth Provider Connector Reference
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal([]map[string]string{
+//				{
+//					"type":     "oauth_authorization",
+//					"resource": "https://example.com/api",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+//				Location:       pulumi.String("us-central1"),
+//				AuthProviderId: pulumi.String("connref-provider"),
+//				Description:    pulumi.String("Connector reference auth provider"),
+//				AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+//					ConnectorReferenceAuthProvider: &agentidentity.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs{
+//						Connector:            pulumi.String("salesforce-connector-prod"),
+//						AuthorizationDetails: pulumi.String(json0),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Agent Identity Auth Provider Xaa
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]string{
+//				"env": "test",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+//				Location:       pulumi.String("us-central1"),
+//				AuthProviderId: pulumi.String("xaa-provider"),
+//				Description:    pulumi.String("Cross-App Access auth provider"),
+//				AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+//					XaaAuthProvider: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs{
+//						AdditionalParameters: pulumi.StringMap{
+//							"prompt": pulumi.String("consent"),
+//						},
+//						ClientSecretAuth: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs{
+//							ClientId:     pulumi.String("test-client-id"),
+//							ClientSecret: pulumi.String("test-client-secret"),
+//						},
+//						CustomIssuer: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs{
+//							TokenUrl: pulumi.String("https://auth.example.com/token"),
+//							Issuer:   pulumi.String("https://auth.example.com"),
+//						},
+//						IdTokenInput: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs{
+//							IdJagAuthProvider:     pulumi.String("projects/my-project-name/locations/us-central1/authProviders/idp-provider"),
+//							IdJagAdditionalClaims: pulumi.String(json0),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Agent Identity Auth Provider Xaa Jwt
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]string{
+//				"env": "test",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+//				Location:       pulumi.String("us-central1"),
+//				AuthProviderId: pulumi.String("xaa-jwt-provider"),
+//				Description:    pulumi.String("Cross-App Access with Client Assertion JWT"),
+//				AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+//					XaaAuthProvider: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs{
+//						ClientAssertionJwtAuth: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs{
+//							ClientId: pulumi.String("test-jwt-client-id"),
+//						},
+//						CustomIssuer: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs{
+//							TokenUrl: pulumi.String("https://auth.example.com/token"),
+//						},
+//						IdTokenInput: &agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs{
+//							IdJagAuthProvider:     pulumi.String("projects/my-project-name/locations/us-central1/authProviders/idp-provider"),
+//							IdJagAdditionalClaims: pulumi.String(json0),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Regional Endpoint Policies
+//
+// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+//
 // ## Import
 //
 // AuthProvider can be imported using any of these accepted formats:

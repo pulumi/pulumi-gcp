@@ -58,6 +58,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<Inputs.JobTemplateTemplateNodeSelectorGetArgs>? NodeSelector { get; set; }
 
         /// <summary>
+        /// Configuration for sandboxes.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sandboxes")]
+        public Input<Inputs.JobTemplateTemplateSandboxesGetArgs>? Sandboxes { get; set; }
+
+        /// <summary>
         /// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         /// </summary>
         [Input("serviceAccount")]

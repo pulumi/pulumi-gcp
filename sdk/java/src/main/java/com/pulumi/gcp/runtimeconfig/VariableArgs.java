@@ -93,33 +93,35 @@ public final class VariableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * or `value` - (Required) The content to associate with the variable.
-     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-     * is specified, it must be base64 encoded and less than 4096 bytes in length.
-     * 
-     * ***
+     * The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
      * 
      */
     @Import(name="text")
     private @Nullable Output<String> text;
 
     /**
-     * @return or `value` - (Required) The content to associate with the variable.
-     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-     * is specified, it must be base64 encoded and less than 4096 bytes in length.
-     * 
-     * ***
+     * @return The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
      * 
      */
     public Optional<Output<String>> text() {
         return Optional.ofNullable(this.text);
     }
 
+    /**
+     * The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+     * 
+     * ***
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+     * 
+     * ***
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -254,12 +256,7 @@ public final class VariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param text or `value` - (Required) The content to associate with the variable.
-         * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-         * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-         * is specified, it must be base64 encoded and less than 4096 bytes in length.
-         * 
-         * ***
+         * @param text The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
          * 
          * @return builder
          * 
@@ -270,12 +267,7 @@ public final class VariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param text or `value` - (Required) The content to associate with the variable.
-         * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-         * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-         * is specified, it must be base64 encoded and less than 4096 bytes in length.
-         * 
-         * ***
+         * @param text The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
          * 
          * @return builder
          * 
@@ -284,11 +276,27 @@ public final class VariableArgs extends com.pulumi.resources.ResourceArgs {
             return text(Output.of(text));
         }
 
+        /**
+         * @param value The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

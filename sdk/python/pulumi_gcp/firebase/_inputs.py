@@ -65,6 +65,10 @@ __all__ = [
     'AppHostingTrafficCurrentSplitArgsDict',
     'AppHostingTrafficRolloutPolicyArgs',
     'AppHostingTrafficRolloutPolicyArgsDict',
+    'AppHostingTrafficRolloutPolicyIgnoredPathArgs',
+    'AppHostingTrafficRolloutPolicyIgnoredPathArgsDict',
+    'AppHostingTrafficRolloutPolicyRequiredPathArgs',
+    'AppHostingTrafficRolloutPolicyRequiredPathArgsDict',
     'AppHostingTrafficTargetArgs',
     'AppHostingTrafficTargetArgsDict',
     'AppHostingTrafficTargetSplitArgs',
@@ -2250,19 +2254,49 @@ class AppHostingTrafficRolloutPolicyArgsDict(TypedDict):
     (Output)
     If disabled is set, the time at which the rollouts were disabled.
     """
+    ignored_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyIgnoredPathArgsDict']]]]]
+    """
+    A list of file paths patterns to exclude from triggering a rollout.
+    Patterns in this list take precedence over required_paths.
+    **Note**: All paths must be in the ignored_paths in order for the
+    rollout to be skipped. Limited to 100 paths.
+    Structure is documented below.
+    """
+    required_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyRequiredPathArgsDict']]]]]
+    """
+    A list of file paths patterns that trigger a build and rollout
+    if at least one of the changed files in the commit are present in
+    this list. This field is optional; the rollout policy will default to
+    triggering on all paths if both ignored_paths and required_paths are
+    not populated. Limited to 100 paths.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppHostingTrafficRolloutPolicyArgs:
     def __init__(__self__, *,
                  codebase_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 disabled_time: pulumi.Input[Optional[_builtins.str]] = None):
+                 disabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignored_paths: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyIgnoredPathArgs']]]] = None,
+                 required_paths: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyRequiredPathArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] codebase_branch: Specifies a branch that triggers a new build to be started with this
                policy. If not set, no automatic rollouts will happen.
         :param pulumi.Input[_builtins.bool] disabled: A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
         :param pulumi.Input[_builtins.str] disabled_time: (Output)
                If disabled is set, the time at which the rollouts were disabled.
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyIgnoredPathArgs']]] ignored_paths: A list of file paths patterns to exclude from triggering a rollout.
+               Patterns in this list take precedence over required_paths.
+               **Note**: All paths must be in the ignored_paths in order for the
+               rollout to be skipped. Limited to 100 paths.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyRequiredPathArgs']]] required_paths: A list of file paths patterns that trigger a build and rollout
+               if at least one of the changed files in the commit are present in
+               this list. This field is optional; the rollout policy will default to
+               triggering on all paths if both ignored_paths and required_paths are
+               not populated. Limited to 100 paths.
+               Structure is documented below.
         """
         if codebase_branch is not None:
             pulumi.set(__self__, "codebase_branch", codebase_branch)
@@ -2270,6 +2304,10 @@ class AppHostingTrafficRolloutPolicyArgs:
             pulumi.set(__self__, "disabled", disabled)
         if disabled_time is not None:
             pulumi.set(__self__, "disabled_time", disabled_time)
+        if ignored_paths is not None:
+            pulumi.set(__self__, "ignored_paths", ignored_paths)
+        if required_paths is not None:
+            pulumi.set(__self__, "required_paths", required_paths)
 
     @_builtins.property
     @pulumi.getter(name="codebaseBranch")
@@ -2308,6 +2346,139 @@ class AppHostingTrafficRolloutPolicyArgs:
     @disabled_time.setter
     def disabled_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disabled_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoredPaths")
+    def ignored_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyIgnoredPathArgs']]]]:
+        """
+        A list of file paths patterns to exclude from triggering a rollout.
+        Patterns in this list take precedence over required_paths.
+        **Note**: All paths must be in the ignored_paths in order for the
+        rollout to be skipped. Limited to 100 paths.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ignored_paths")
+
+    @ignored_paths.setter
+    def ignored_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyIgnoredPathArgs']]]]):
+        pulumi.set(self, "ignored_paths", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requiredPaths")
+    def required_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyRequiredPathArgs']]]]:
+        """
+        A list of file paths patterns that trigger a build and rollout
+        if at least one of the changed files in the commit are present in
+        this list. This field is optional; the rollout policy will default to
+        triggering on all paths if both ignored_paths and required_paths are
+        not populated. Limited to 100 paths.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "required_paths")
+
+    @required_paths.setter
+    def required_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficRolloutPolicyRequiredPathArgs']]]]):
+        pulumi.set(self, "required_paths", value)
+
+
+class AppHostingTrafficRolloutPolicyIgnoredPathArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    The pattern to match against.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of pattern to match against.
+    Possible values are: `RE2`, `GLOB`, `PREFIX`.
+    """
+
+@pulumi.input_type
+class AppHostingTrafficRolloutPolicyIgnoredPathArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] pattern: The pattern to match against.
+        :param pulumi.Input[_builtins.str] type: The type of pattern to match against.
+               Possible values are: `RE2`, `GLOB`, `PREFIX`.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        The pattern to match against.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of pattern to match against.
+        Possible values are: `RE2`, `GLOB`, `PREFIX`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+class AppHostingTrafficRolloutPolicyRequiredPathArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    The pattern to match against.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of pattern to match against.
+    Possible values are: `RE2`, `GLOB`, `PREFIX`.
+    """
+
+@pulumi.input_type
+class AppHostingTrafficRolloutPolicyRequiredPathArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] pattern: The pattern to match against.
+        :param pulumi.Input[_builtins.str] type: The type of pattern to match against.
+               Possible values are: `RE2`, `GLOB`, `PREFIX`.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        The pattern to match against.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of pattern to match against.
+        Possible values are: `RE2`, `GLOB`, `PREFIX`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
 
 
 class AppHostingTrafficTargetArgsDict(TypedDict):

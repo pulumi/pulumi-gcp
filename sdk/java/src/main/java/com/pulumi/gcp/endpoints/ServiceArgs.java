@@ -17,8 +17,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServiceArgs Empty = new ServiceArgs();
 
     /**
-     * Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
-     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
@@ -29,8 +29,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
-     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
@@ -154,8 +154,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
-         * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.
@@ -170,8 +170,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
-         * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.

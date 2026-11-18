@@ -44,6 +44,16 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AppLoggingSettingsRedactionConfig? RedactionConfig;
+        /// <summary>
+        /// Whether the app has to say what may be recorded before anything is kept.
+        /// When true, a session starts with recording off and stays off until the
+        /// client sends SessionInput.recording_control, which then decides every turn
+        /// from that point on. This covers audio recording as well as conversation
+        /// history, BigQuery export and Cloud Logging.
+        /// When `False`, the default, the settings above decide on their own and the
+        /// client does not have to send anything.
+        /// </summary>
+        public readonly bool? RequiredRecordingConsent;
 
         [OutputConstructor]
         private AppLoggingSettings(
@@ -57,7 +67,9 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             Outputs.AppLoggingSettingsMetricAnalysisSettings? metricAnalysisSettings,
 
-            Outputs.AppLoggingSettingsRedactionConfig? redactionConfig)
+            Outputs.AppLoggingSettingsRedactionConfig? redactionConfig,
+
+            bool? requiredRecordingConsent)
         {
             AudioRecordingConfig = audioRecordingConfig;
             BigqueryExportSettings = bigqueryExportSettings;
@@ -65,6 +77,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             ConversationLoggingSettings = conversationLoggingSettings;
             MetricAnalysisSettings = metricAnalysisSettings;
             RedactionConfig = redactionConfig;
+            RequiredRecordingConsent = requiredRecordingConsent;
         }
     }
 }

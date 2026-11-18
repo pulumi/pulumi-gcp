@@ -16,16 +16,14 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
     public static final ClusterLoggingConfigArgs Empty = new ClusterLoggingConfigArgs();
 
     /**
-     * The GKE components exposing logs. Supported values include:
-     * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+     * The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
      * 
      */
     @Import(name="enableComponents", required=true)
     private Output<List<String>> enableComponents;
 
     /**
-     * @return The GKE components exposing logs. Supported values include:
-     * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+     * @return The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
      * 
      */
     public Output<List<String>> enableComponents() {
@@ -57,8 +55,7 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enableComponents The GKE components exposing logs. Supported values include:
-         * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+         * @param enableComponents The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
          * 
          * @return builder
          * 
@@ -69,8 +66,7 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enableComponents The GKE components exposing logs. Supported values include:
-         * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+         * @param enableComponents The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
          * 
          * @return builder
          * 
@@ -80,8 +76,7 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enableComponents The GKE components exposing logs. Supported values include:
-         * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+         * @param enableComponents The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
          * 
          * @return builder
          * 

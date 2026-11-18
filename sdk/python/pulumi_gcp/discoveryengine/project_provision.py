@@ -25,6 +25,7 @@ class ProjectProvisionArgs:
                  data_use_terms_version: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provision_intent: pulumi.Input[Optional[_builtins.str]] = None,
                  saas_params: pulumi.Input[Optional['ProjectProvisionSaasParamsArgs']] = None):
         """
         The set of arguments for constructing a ProjectProvision resource.
@@ -38,6 +39,15 @@ class ProjectProvisionArgs:
                `global`, `us`, or `eu`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] provision_intent: The Gemini Enterprise experience that the project is provisioned for.
+               `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+               experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+               Gemini Enterprise experience. If unset, the API chooses the experience.
+               Changing this field forces a new resource, which calls the provisioning API
+               again with the new value. Provisioning doesn't remove an experience that the
+               project was already provisioned for, and the API may reject provisioning a
+               project that uses the classic experience for the new experience.
+               Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
         :param pulumi.Input['ProjectProvisionSaasParamsArgs'] saas_params: Parameters for Gemini Enterprise (Agentspace) provisioning.
                Structure is documented below.
         """
@@ -49,6 +59,8 @@ class ProjectProvisionArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if provision_intent is not None:
+            pulumi.set(__self__, "provision_intent", provision_intent)
         if saas_params is not None:
             pulumi.set(__self__, "saas_params", saas_params)
 
@@ -104,6 +116,26 @@ class ProjectProvisionArgs:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionIntent")
+    def provision_intent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Gemini Enterprise experience that the project is provisioned for.
+        `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+        experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+        Gemini Enterprise experience. If unset, the API chooses the experience.
+        Changing this field forces a new resource, which calls the provisioning API
+        again with the new value. Provisioning doesn't remove an experience that the
+        project was already provisioned for, and the API may reject provisioning a
+        project that uses the classic experience for the new experience.
+        Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+        """
+        return pulumi.get(self, "provision_intent")
+
+    @provision_intent.setter
+    def provision_intent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "provision_intent", value)
 
     @_builtins.property
     @pulumi.getter(name="saasParams")
@@ -126,6 +158,7 @@ class _ProjectProvisionState:
                  data_use_terms_version: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provision_intent: pulumi.Input[Optional[_builtins.str]] = None,
                  saas_params: pulumi.Input[Optional['ProjectProvisionSaasParamsArgs']] = None):
         """
         Input properties used for looking up and filtering ProjectProvision resources.
@@ -139,6 +172,15 @@ class _ProjectProvisionState:
                `global`, `us`, or `eu`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] provision_intent: The Gemini Enterprise experience that the project is provisioned for.
+               `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+               experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+               Gemini Enterprise experience. If unset, the API chooses the experience.
+               Changing this field forces a new resource, which calls the provisioning API
+               again with the new value. Provisioning doesn't remove an experience that the
+               project was already provisioned for, and the API may reject provisioning a
+               project that uses the classic experience for the new experience.
+               Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
         :param pulumi.Input['ProjectProvisionSaasParamsArgs'] saas_params: Parameters for Gemini Enterprise (Agentspace) provisioning.
                Structure is documented below.
         """
@@ -150,6 +192,8 @@ class _ProjectProvisionState:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if provision_intent is not None:
+            pulumi.set(__self__, "provision_intent", provision_intent)
         if saas_params is not None:
             pulumi.set(__self__, "saas_params", saas_params)
 
@@ -205,6 +249,26 @@ class _ProjectProvisionState:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionIntent")
+    def provision_intent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Gemini Enterprise experience that the project is provisioned for.
+        `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+        experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+        Gemini Enterprise experience. If unset, the API chooses the experience.
+        Changing this field forces a new resource, which calls the provisioning API
+        again with the new value. Provisioning doesn't remove an experience that the
+        project was already provisioned for, and the API may reject provisioning a
+        project that uses the classic experience for the new experience.
+        Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+        """
+        return pulumi.get(self, "provision_intent")
+
+    @provision_intent.setter
+    def provision_intent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "provision_intent", value)
 
     @_builtins.property
     @pulumi.getter(name="saasParams")
@@ -230,6 +294,7 @@ class ProjectProvision(pulumi.CustomResource):
                  data_use_terms_version: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provision_intent: pulumi.Input[Optional[_builtins.str]] = None,
                  saas_params: pulumi.Input[Optional[Union['ProjectProvisionSaasParamsArgs', 'ProjectProvisionSaasParamsArgsDict', 'outputs.ProjectProvisionSaasParams']]] = None,
                  __props__=None):
         """
@@ -314,6 +379,15 @@ class ProjectProvision(pulumi.CustomResource):
                `global`, `us`, or `eu`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] provision_intent: The Gemini Enterprise experience that the project is provisioned for.
+               `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+               experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+               Gemini Enterprise experience. If unset, the API chooses the experience.
+               Changing this field forces a new resource, which calls the provisioning API
+               again with the new value. Provisioning doesn't remove an experience that the
+               project was already provisioned for, and the API may reject provisioning a
+               project that uses the classic experience for the new experience.
+               Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
         :param pulumi.Input[Union['ProjectProvisionSaasParamsArgs', 'ProjectProvisionSaasParamsArgsDict', 'outputs.ProjectProvisionSaasParams']] saas_params: Parameters for Gemini Enterprise (Agentspace) provisioning.
                Structure is documented below.
         """
@@ -413,6 +487,7 @@ class ProjectProvision(pulumi.CustomResource):
                  data_use_terms_version: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provision_intent: pulumi.Input[Optional[_builtins.str]] = None,
                  saas_params: pulumi.Input[Optional[Union['ProjectProvisionSaasParamsArgs', 'ProjectProvisionSaasParamsArgsDict', 'outputs.ProjectProvisionSaasParams']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -427,6 +502,7 @@ class ProjectProvision(pulumi.CustomResource):
             __props__.__dict__["data_use_terms_version"] = data_use_terms_version
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["provision_intent"] = provision_intent
             __props__.__dict__["saas_params"] = saas_params
         super(ProjectProvision, __self__).__init__(
             'gcp:discoveryengine/projectProvision:ProjectProvision',
@@ -442,6 +518,7 @@ class ProjectProvision(pulumi.CustomResource):
             data_use_terms_version: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            provision_intent: pulumi.Input[Optional[_builtins.str]] = None,
             saas_params: pulumi.Input[Optional[Union['ProjectProvisionSaasParamsArgs', 'ProjectProvisionSaasParamsArgsDict', 'outputs.ProjectProvisionSaasParams']]] = None) -> 'ProjectProvision':
         """
         Get an existing ProjectProvision resource's state with the given name, id, and optional extra
@@ -459,6 +536,15 @@ class ProjectProvision(pulumi.CustomResource):
                `global`, `us`, or `eu`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] provision_intent: The Gemini Enterprise experience that the project is provisioned for.
+               `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+               experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+               Gemini Enterprise experience. If unset, the API chooses the experience.
+               Changing this field forces a new resource, which calls the provisioning API
+               again with the new value. Provisioning doesn't remove an experience that the
+               project was already provisioned for, and the API may reject provisioning a
+               project that uses the classic experience for the new experience.
+               Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
         :param pulumi.Input[Union['ProjectProvisionSaasParamsArgs', 'ProjectProvisionSaasParamsArgsDict', 'outputs.ProjectProvisionSaasParams']] saas_params: Parameters for Gemini Enterprise (Agentspace) provisioning.
                Structure is documented below.
         """
@@ -470,6 +556,7 @@ class ProjectProvision(pulumi.CustomResource):
         __props__.__dict__["data_use_terms_version"] = data_use_terms_version
         __props__.__dict__["location"] = location
         __props__.__dict__["project"] = project
+        __props__.__dict__["provision_intent"] = provision_intent
         __props__.__dict__["saas_params"] = saas_params
         return ProjectProvision(resource_name, opts=opts, __props__=__props__)
 
@@ -480,12 +567,14 @@ class ProjectProvision(pulumi.CustomResource):
             data_use_terms_version: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            provision_intent: pulumi.Input[Optional[_builtins.str]] = None,
             saas_params: pulumi.Input[Optional[Union['ProjectProvisionSaasParamsArgs', 'ProjectProvisionSaasParamsArgsDict', 'outputs.ProjectProvisionSaasParams']]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["acceptDataUseTerms"] = accept_data_use_terms
         __props__["dataUseTermsVersion"] = data_use_terms_version
         __props__["location"] = location
         __props__["project"] = project
+        __props__["provisionIntent"] = provision_intent
         __props__["saasParams"] = saas_params
         return pulumi.runtime.exists_resource(None, 'gcp:discoveryengine/projectProvision:ProjectProvision', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -525,6 +614,22 @@ class ProjectProvision(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionIntent")
+    def provision_intent(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Gemini Enterprise experience that the project is provisioned for.
+        `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+        experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+        Gemini Enterprise experience. If unset, the API chooses the experience.
+        Changing this field forces a new resource, which calls the provisioning API
+        again with the new value. Provisioning doesn't remove an experience that the
+        project was already provisioned for, and the API may reject provisioning a
+        project that uses the classic experience for the new experience.
+        Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+        """
+        return pulumi.get(self, "provision_intent")
 
     @_builtins.property
     @pulumi.getter(name="saasParams")

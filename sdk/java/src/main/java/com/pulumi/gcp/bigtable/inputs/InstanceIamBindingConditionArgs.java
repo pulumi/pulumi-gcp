@@ -19,16 +19,12 @@ public final class InstanceIamBindingConditionArgs extends com.pulumi.resources.
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
-     * For `gcp.bigtable.InstanceIamPolicy` only:
-     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     * For `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
     public Optional<Output<String>> description() {
@@ -94,8 +90,6 @@ public final class InstanceIamBindingConditionArgs extends com.pulumi.resources.
         /**
          * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 
-         * For `gcp.bigtable.InstanceIamPolicy` only:
-         * 
          * @return builder
          * 
          */
@@ -106,8 +100,6 @@ public final class InstanceIamBindingConditionArgs extends com.pulumi.resources.
 
         /**
          * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         * 
-         * For `gcp.bigtable.InstanceIamPolicy` only:
          * 
          * @return builder
          * 

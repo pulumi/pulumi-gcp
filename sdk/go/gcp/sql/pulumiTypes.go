@@ -20,6 +20,8 @@ type DatabaseInstanceBlueGreenDeployment struct {
 	DeleteOldSourceOnDestroy *bool `pulumi:"deleteOldSourceOnDestroy"`
 	// The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
 	DeploymentName string `pulumi:"deploymentName"`
+	// User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+	Description *string `pulumi:"description"`
 	// The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
 	OldSourceInstanceConnectionName *string `pulumi:"oldSourceInstanceConnectionName"`
 	// The name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
@@ -52,6 +54,8 @@ type DatabaseInstanceBlueGreenDeploymentArgs struct {
 	DeleteOldSourceOnDestroy pulumi.BoolPtrInput `pulumi:"deleteOldSourceOnDestroy"`
 	// The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
 	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
 	OldSourceInstanceConnectionName pulumi.StringPtrInput `pulumi:"oldSourceInstanceConnectionName"`
 	// The name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
@@ -158,6 +162,11 @@ func (o DatabaseInstanceBlueGreenDeploymentOutput) DeploymentName() pulumi.Strin
 	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) string { return v.DeploymentName }).(pulumi.StringOutput)
 }
 
+// User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+func (o DatabaseInstanceBlueGreenDeploymentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
 func (o DatabaseInstanceBlueGreenDeploymentOutput) OldSourceInstanceConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *string { return v.OldSourceInstanceConnectionName }).(pulumi.StringPtrOutput)
@@ -241,6 +250,16 @@ func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) DeploymentName() pulumi.St
 			return nil
 		}
 		return &v.DeploymentName
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7373,8 +7392,9 @@ type UserPasswordPolicy struct {
 	// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
 	EnablePasswordVerification *bool `pulumi:"enablePasswordVerification"`
 	// Password expiration duration with one week grace period.
-	PasswordExpirationDuration *string                    `pulumi:"passwordExpirationDuration"`
-	Statuses                   []UserPasswordPolicyStatus `pulumi:"statuses"`
+	PasswordExpirationDuration *string `pulumi:"passwordExpirationDuration"`
+	// The password status of the user. Structure is documented below.
+	Statuses []UserPasswordPolicyStatus `pulumi:"statuses"`
 }
 
 // UserPasswordPolicyInput is an input type that accepts UserPasswordPolicyArgs and UserPasswordPolicyOutput values.
@@ -7396,8 +7416,9 @@ type UserPasswordPolicyArgs struct {
 	// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
 	EnablePasswordVerification pulumi.BoolPtrInput `pulumi:"enablePasswordVerification"`
 	// Password expiration duration with one week grace period.
-	PasswordExpirationDuration pulumi.StringPtrInput              `pulumi:"passwordExpirationDuration"`
-	Statuses                   UserPasswordPolicyStatusArrayInput `pulumi:"statuses"`
+	PasswordExpirationDuration pulumi.StringPtrInput `pulumi:"passwordExpirationDuration"`
+	// The password status of the user. Structure is documented below.
+	Statuses UserPasswordPolicyStatusArrayInput `pulumi:"statuses"`
 }
 
 func (UserPasswordPolicyArgs) ElementType() reflect.Type {
@@ -7497,6 +7518,7 @@ func (o UserPasswordPolicyOutput) PasswordExpirationDuration() pulumi.StringPtrO
 	return o.ApplyT(func(v UserPasswordPolicy) *string { return v.PasswordExpirationDuration }).(pulumi.StringPtrOutput)
 }
 
+// The password status of the user. Structure is documented below.
 func (o UserPasswordPolicyOutput) Statuses() UserPasswordPolicyStatusArrayOutput {
 	return o.ApplyT(func(v UserPasswordPolicy) []UserPasswordPolicyStatus { return v.Statuses }).(UserPasswordPolicyStatusArrayOutput)
 }
@@ -7565,6 +7587,7 @@ func (o UserPasswordPolicyPtrOutput) PasswordExpirationDuration() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The password status of the user. Structure is documented below.
 func (o UserPasswordPolicyPtrOutput) Statuses() UserPasswordPolicyStatusArrayOutput {
 	return o.ApplyT(func(v *UserPasswordPolicy) []UserPasswordPolicyStatus {
 		if v == nil {
@@ -7681,9 +7704,9 @@ func (o UserPasswordPolicyStatusArrayOutput) Index(i pulumi.IntInput) UserPasswo
 }
 
 type UserSqlServerUserDetail struct {
-	// If the user has been disabled.
+	// (read only) If the user has been disabled.
 	Disabled *bool `pulumi:"disabled"`
-	// The server roles for this user in the database.
+	// (read only) The server roles for this user in the database.
 	ServerRoles []string `pulumi:"serverRoles"`
 }
 
@@ -7699,9 +7722,9 @@ type UserSqlServerUserDetailInput interface {
 }
 
 type UserSqlServerUserDetailArgs struct {
-	// If the user has been disabled.
+	// (read only) If the user has been disabled.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// The server roles for this user in the database.
+	// (read only) The server roles for this user in the database.
 	ServerRoles pulumi.StringArrayInput `pulumi:"serverRoles"`
 }
 
@@ -7756,12 +7779,12 @@ func (o UserSqlServerUserDetailOutput) ToUserSqlServerUserDetailOutputWithContex
 	return o
 }
 
-// If the user has been disabled.
+// (read only) If the user has been disabled.
 func (o UserSqlServerUserDetailOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserSqlServerUserDetail) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The server roles for this user in the database.
+// (read only) The server roles for this user in the database.
 func (o UserSqlServerUserDetailOutput) ServerRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserSqlServerUserDetail) []string { return v.ServerRoles }).(pulumi.StringArrayOutput)
 }
@@ -7926,6 +7949,8 @@ type GetDatabaseInstanceBlueGreenDeployment struct {
 	DeleteOldSourceOnDestroy bool `pulumi:"deleteOldSourceOnDestroy"`
 	// A unique identifier for the blue-green deployment within the project and region.
 	DeploymentName string `pulumi:"deploymentName"`
+	// User-provided description for the blue-green deployment.
+	Description string `pulumi:"description"`
 	// Auth Proxy connection string for the former Blue instance post-switchover.
 	OldSourceInstanceConnectionName string `pulumi:"oldSourceInstanceConnectionName"`
 	// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
@@ -7958,6 +7983,8 @@ type GetDatabaseInstanceBlueGreenDeploymentArgs struct {
 	DeleteOldSourceOnDestroy pulumi.BoolInput `pulumi:"deleteOldSourceOnDestroy"`
 	// A unique identifier for the blue-green deployment within the project and region.
 	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// User-provided description for the blue-green deployment.
+	Description pulumi.StringInput `pulumi:"description"`
 	// Auth Proxy connection string for the former Blue instance post-switchover.
 	OldSourceInstanceConnectionName pulumi.StringInput `pulumi:"oldSourceInstanceConnectionName"`
 	// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
@@ -8036,6 +8063,11 @@ func (o GetDatabaseInstanceBlueGreenDeploymentOutput) DeleteOldSourceOnDestroy()
 // A unique identifier for the blue-green deployment within the project and region.
 func (o GetDatabaseInstanceBlueGreenDeploymentOutput) DeploymentName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.DeploymentName }).(pulumi.StringOutput)
+}
+
+// User-provided description for the blue-green deployment.
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Auth Proxy connection string for the former Blue instance post-switchover.
@@ -13225,6 +13257,8 @@ type GetDatabaseInstancesInstanceBlueGreenDeployment struct {
 	DeleteOldSourceOnDestroy bool `pulumi:"deleteOldSourceOnDestroy"`
 	// A unique identifier for the blue-green deployment within the project and region.
 	DeploymentName string `pulumi:"deploymentName"`
+	// User-provided description for the blue-green deployment.
+	Description string `pulumi:"description"`
 	// Auth Proxy connection string for the former Blue instance post-switchover.
 	OldSourceInstanceConnectionName string `pulumi:"oldSourceInstanceConnectionName"`
 	// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
@@ -13257,6 +13291,8 @@ type GetDatabaseInstancesInstanceBlueGreenDeploymentArgs struct {
 	DeleteOldSourceOnDestroy pulumi.BoolInput `pulumi:"deleteOldSourceOnDestroy"`
 	// A unique identifier for the blue-green deployment within the project and region.
 	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// User-provided description for the blue-green deployment.
+	Description pulumi.StringInput `pulumi:"description"`
 	// Auth Proxy connection string for the former Blue instance post-switchover.
 	OldSourceInstanceConnectionName pulumi.StringInput `pulumi:"oldSourceInstanceConnectionName"`
 	// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
@@ -13335,6 +13371,11 @@ func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) DeleteOldSourceOn
 // A unique identifier for the blue-green deployment within the project and region.
 func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) DeploymentName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string { return v.DeploymentName }).(pulumi.StringOutput)
+}
+
+// User-provided description for the blue-green deployment.
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Auth Proxy connection string for the former Blue instance post-switchover.

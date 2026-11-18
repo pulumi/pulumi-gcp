@@ -22,6 +22,7 @@ __all__ = ['RegionPerInstanceConfigArgs', 'RegionPerInstanceConfig']
 class RegionPerInstanceConfigArgs:
     def __init__(__self__, *,
                  region_instance_group_manager: pulumi.Input[_builtins.str],
+                 allowed_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35,6 +36,15 @@ class RegionPerInstanceConfigArgs:
         The set of arguments for constructing a RegionPerInstanceConfig resource.
 
         :param pulumi.Input[_builtins.str] region_instance_group_manager: The region instance group manager this instance config is part of.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_actions: Beta The list of allowed actions to perform on the instance during an update.
+               `allowed_actions` is the only way to request `RESTART_IN_PLACE`.
+               Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+               Possible values are:
+               * REPLACE
+               * RESTART
+               * RESTART_IN_PLACE
+               * REFRESH
+               * NONE
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -66,6 +76,8 @@ class RegionPerInstanceConfigArgs:
                State will be removed on the next instance recreation or update.
         """
         pulumi.set(__self__, "region_instance_group_manager", region_instance_group_manager)
+        if allowed_actions is not None:
+            pulumi.set(__self__, "allowed_actions", allowed_actions)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if minimal_action is not None:
@@ -96,6 +108,26 @@ class RegionPerInstanceConfigArgs:
     @region_instance_group_manager.setter
     def region_instance_group_manager(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region_instance_group_manager", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Beta The list of allowed actions to perform on the instance during an update.
+        `allowed_actions` is the only way to request `RESTART_IN_PLACE`.
+        Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+        Possible values are:
+        * REPLACE
+        * RESTART
+        * RESTART_IN_PLACE
+        * REFRESH
+        * NONE
+        """
+        return pulumi.get(self, "allowed_actions")
+
+    @allowed_actions.setter
+    def allowed_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -229,6 +261,7 @@ class RegionPerInstanceConfigArgs:
 @pulumi.input_type
 class _RegionPerInstanceConfigState:
     def __init__(__self__, *,
+                 allowed_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -242,6 +275,15 @@ class _RegionPerInstanceConfigState:
         """
         Input properties used for looking up and filtering RegionPerInstanceConfig resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_actions: Beta The list of allowed actions to perform on the instance during an update.
+               `allowed_actions` is the only way to request `RESTART_IN_PLACE`.
+               Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+               Possible values are:
+               * REPLACE
+               * RESTART
+               * RESTART_IN_PLACE
+               * REFRESH
+               * NONE
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -273,6 +315,8 @@ class _RegionPerInstanceConfigState:
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
         """
+        if allowed_actions is not None:
+            pulumi.set(__self__, "allowed_actions", allowed_actions)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if minimal_action is not None:
@@ -293,6 +337,26 @@ class _RegionPerInstanceConfigState:
             pulumi.set(__self__, "remove_instance_on_destroy", remove_instance_on_destroy)
         if remove_instance_state_on_destroy is not None:
             pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Beta The list of allowed actions to perform on the instance during an update.
+        `allowed_actions` is the only way to request `RESTART_IN_PLACE`.
+        Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+        Possible values are:
+        * REPLACE
+        * RESTART
+        * RESTART_IN_PLACE
+        * REFRESH
+        * NONE
+        """
+        return pulumi.get(self, "allowed_actions")
+
+    @allowed_actions.setter
+    def allowed_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -441,6 +505,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -555,6 +620,15 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_actions: Beta The list of allowed actions to perform on the instance during an update.
+               `allowed_actions` is the only way to request `RESTART_IN_PLACE`.
+               Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+               Possible values are:
+               * REPLACE
+               * RESTART
+               * RESTART_IN_PLACE
+               * REFRESH
+               * NONE
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -708,6 +782,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -727,6 +802,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionPerInstanceConfigArgs.__new__(RegionPerInstanceConfigArgs)
 
+            __props__.__dict__["allowed_actions"] = allowed_actions
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["minimal_action"] = minimal_action
             __props__.__dict__["most_disruptive_allowed_action"] = most_disruptive_allowed_action
@@ -749,6 +825,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
             most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -766,6 +843,15 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_actions: Beta The list of allowed actions to perform on the instance during an update.
+               `allowed_actions` is the only way to request `RESTART_IN_PLACE`.
+               Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+               Possible values are:
+               * REPLACE
+               * RESTART
+               * RESTART_IN_PLACE
+               * REFRESH
+               * NONE
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -801,6 +887,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
         __props__ = _RegionPerInstanceConfigState.__new__(_RegionPerInstanceConfigState)
 
+        __props__.__dict__["allowed_actions"] = allowed_actions
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["minimal_action"] = minimal_action
         __props__.__dict__["most_disruptive_allowed_action"] = most_disruptive_allowed_action
@@ -816,6 +903,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
             most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -827,6 +915,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["allowedActions"] = allowed_actions
         __props__["deletionPolicy"] = deletion_policy
         __props__["minimalAction"] = minimal_action
         __props__["mostDisruptiveAllowedAction"] = most_disruptive_allowed_action
@@ -838,6 +927,22 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         __props__["removeInstanceOnDestroy"] = remove_instance_on_destroy
         __props__["removeInstanceStateOnDestroy"] = remove_instance_state_on_destroy
         return pulumi.runtime.exists_resource(None, 'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Beta The list of allowed actions to perform on the instance during an update.
+        `allowed_actions` is the only way to request `RESTART_IN_PLACE`.
+        Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+        Possible values are:
+        * REPLACE
+        * RESTART
+        * RESTART_IN_PLACE
+        * REFRESH
+        * NONE
+        """
+        return pulumi.get(self, "allowed_actions")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")

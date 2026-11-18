@@ -24858,13 +24858,13 @@ class InstanceGroupManagerTargetSizePolicyArgs:
 
 
 class InstanceGroupManagerUpdatePolicyArgsDict(TypedDict):
-    minimal_action: pulumi.Input[_builtins.str]
-    """
-    Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-    """
     type: pulumi.Input[_builtins.str]
     """
     The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+    """
+    allowed_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
     """
     max_surge_fixed: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -24886,9 +24886,13 @@ class InstanceGroupManagerUpdatePolicyArgsDict(TypedDict):
     """
     ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
     """
+    minimal_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+    """
     most_disruptive_allowed_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+    Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
     """
     replacement_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -24899,29 +24903,32 @@ class InstanceGroupManagerUpdatePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceGroupManagerUpdatePolicyArgs:
     def __init__(__self__, *,
-                 minimal_action: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 allowed_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  max_surge_fixed: pulumi.Input[Optional[_builtins.int]] = None,
                  max_surge_percent: pulumi.Input[Optional[_builtins.int]] = None,
                  max_unavailable_fixed: pulumi.Input[Optional[_builtins.int]] = None,
                  max_unavailable_percent: pulumi.Input[Optional[_builtins.int]] = None,
                  min_ready_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
                  replacement_method: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param pulumi.Input[_builtins.str] type: The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_actions: ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
         :param pulumi.Input[_builtins.int] max_surge_fixed: , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         :param pulumi.Input[_builtins.int] max_surge_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         :param pulumi.Input[_builtins.int] max_unavailable_fixed: , Specifies a fixed number of VM instances. This must be a positive integer.
         :param pulumi.Input[_builtins.int] max_unavailable_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         :param pulumi.Input[_builtins.int] min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        :param pulumi.Input[_builtins.str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        :param pulumi.Input[_builtins.str] minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+        :param pulumi.Input[_builtins.str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
         :param pulumi.Input[_builtins.str] replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                ***
         """
-        pulumi.set(__self__, "minimal_action", minimal_action)
         pulumi.set(__self__, "type", type)
+        if allowed_actions is not None:
+            pulumi.set(__self__, "allowed_actions", allowed_actions)
         if max_surge_fixed is not None:
             pulumi.set(__self__, "max_surge_fixed", max_surge_fixed)
         if max_surge_percent is not None:
@@ -24932,22 +24939,12 @@ class InstanceGroupManagerUpdatePolicyArgs:
             pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
         if min_ready_sec is not None:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        if minimal_action is not None:
+            pulumi.set(__self__, "minimal_action", minimal_action)
         if most_disruptive_allowed_action is not None:
             pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
         if replacement_method is not None:
             pulumi.set(__self__, "replacement_method", replacement_method)
-
-    @_builtins.property
-    @pulumi.getter(name="minimalAction")
-    def minimal_action(self) -> pulumi.Input[_builtins.str]:
-        """
-        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-        """
-        return pulumi.get(self, "minimal_action")
-
-    @minimal_action.setter
-    def minimal_action(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "minimal_action", value)
 
     @_builtins.property
     @pulumi.getter
@@ -24960,6 +24957,18 @@ class InstanceGroupManagerUpdatePolicyArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+        """
+        return pulumi.get(self, "allowed_actions")
+
+    @allowed_actions.setter
+    def allowed_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSurgeFixed")
@@ -25022,10 +25031,22 @@ class InstanceGroupManagerUpdatePolicyArgs:
         pulumi.set(self, "min_ready_sec", value)
 
     @_builtins.property
+    @pulumi.getter(name="minimalAction")
+    def minimal_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+        """
+        return pulumi.get(self, "minimal_action")
+
+    @minimal_action.setter
+    def minimal_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "minimal_action", value)
+
+    @_builtins.property
     @pulumi.getter(name="mostDisruptiveAllowedAction")
     def most_disruptive_allowed_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
         """
         return pulumi.get(self, "most_disruptive_allowed_action")
 
@@ -48197,13 +48218,13 @@ class RegionInstanceGroupManagerTargetSizePolicyArgs:
 
 
 class RegionInstanceGroupManagerUpdatePolicyArgsDict(TypedDict):
-    minimal_action: pulumi.Input[_builtins.str]
-    """
-    Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-    """
     type: pulumi.Input[_builtins.str]
     """
     The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+    """
+    allowed_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
     """
     instance_redistribution_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -48229,9 +48250,13 @@ class RegionInstanceGroupManagerUpdatePolicyArgsDict(TypedDict):
     """
     ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
     """
+    minimal_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+    """
     most_disruptive_allowed_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+    Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
     """
     replacement_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -48242,31 +48267,34 @@ class RegionInstanceGroupManagerUpdatePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class RegionInstanceGroupManagerUpdatePolicyArgs:
     def __init__(__self__, *,
-                 minimal_action: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 allowed_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_redistribution_type: pulumi.Input[Optional[_builtins.str]] = None,
                  max_surge_fixed: pulumi.Input[Optional[_builtins.int]] = None,
                  max_surge_percent: pulumi.Input[Optional[_builtins.int]] = None,
                  max_unavailable_fixed: pulumi.Input[Optional[_builtins.int]] = None,
                  max_unavailable_percent: pulumi.Input[Optional[_builtins.int]] = None,
                  min_ready_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
                  replacement_method: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param pulumi.Input[_builtins.str] type: The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_actions: ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
         :param pulumi.Input[_builtins.str] instance_redistribution_type: The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
         :param pulumi.Input[_builtins.int] max_surge_fixed: , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         :param pulumi.Input[_builtins.int] max_surge_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         :param pulumi.Input[_builtins.int] max_unavailable_fixed: , Specifies a fixed number of VM instances. This must be a positive integer.
         :param pulumi.Input[_builtins.int] max_unavailable_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         :param pulumi.Input[_builtins.int] min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        :param pulumi.Input[_builtins.str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        :param pulumi.Input[_builtins.str] minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+        :param pulumi.Input[_builtins.str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
         :param pulumi.Input[_builtins.str] replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                ***
         """
-        pulumi.set(__self__, "minimal_action", minimal_action)
         pulumi.set(__self__, "type", type)
+        if allowed_actions is not None:
+            pulumi.set(__self__, "allowed_actions", allowed_actions)
         if instance_redistribution_type is not None:
             pulumi.set(__self__, "instance_redistribution_type", instance_redistribution_type)
         if max_surge_fixed is not None:
@@ -48279,22 +48307,12 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
             pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
         if min_ready_sec is not None:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        if minimal_action is not None:
+            pulumi.set(__self__, "minimal_action", minimal_action)
         if most_disruptive_allowed_action is not None:
             pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
         if replacement_method is not None:
             pulumi.set(__self__, "replacement_method", replacement_method)
-
-    @_builtins.property
-    @pulumi.getter(name="minimalAction")
-    def minimal_action(self) -> pulumi.Input[_builtins.str]:
-        """
-        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-        """
-        return pulumi.get(self, "minimal_action")
-
-    @minimal_action.setter
-    def minimal_action(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "minimal_action", value)
 
     @_builtins.property
     @pulumi.getter
@@ -48307,6 +48325,18 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+        """
+        return pulumi.get(self, "allowed_actions")
+
+    @allowed_actions.setter
+    def allowed_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceRedistributionType")
@@ -48381,10 +48411,22 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
         pulumi.set(self, "min_ready_sec", value)
 
     @_builtins.property
+    @pulumi.getter(name="minimalAction")
+    def minimal_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+        """
+        return pulumi.get(self, "minimal_action")
+
+    @minimal_action.setter
+    def minimal_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "minimal_action", value)
+
+    @_builtins.property
     @pulumi.getter(name="mostDisruptiveAllowedAction")
     def most_disruptive_allowed_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
         """
         return pulumi.get(self, "most_disruptive_allowed_action")
 

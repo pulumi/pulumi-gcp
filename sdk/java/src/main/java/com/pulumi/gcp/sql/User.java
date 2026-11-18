@@ -432,9 +432,17 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
+    /**
+     * The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+     * 
+     */
     @Export(name="passwordPolicy", refs={UserPasswordPolicy.class}, tree="[0]")
     private Output</* @Nullable */ UserPasswordPolicy> passwordPolicy;
 
+    /**
+     * @return The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+     * 
+     */
     public Output<Optional<UserPasswordPolicy>> passwordPolicy() {
         return Codegen.optional(this.passwordPolicy);
     }
@@ -494,9 +502,17 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * (read only) SQL Server specific user details. Structure is documented below.
+     * 
+     */
     @Export(name="sqlServerUserDetails", refs={List.class,UserSqlServerUserDetail.class}, tree="[0,1]")
     private Output<List<UserSqlServerUserDetail>> sqlServerUserDetails;
 
+    /**
+     * @return (read only) SQL Server specific user details. Structure is documented below.
+     * 
+     */
     public Output<List<UserSqlServerUserDetail>> sqlServerUserDetails() {
         return this.sqlServerUserDetails;
     }

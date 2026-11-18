@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
     public sealed class JobTemplateTemplateContainerEnvGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        /// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

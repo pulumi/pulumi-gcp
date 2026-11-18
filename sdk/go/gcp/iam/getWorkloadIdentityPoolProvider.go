@@ -69,6 +69,7 @@ type LookupWorkloadIdentityPoolProviderArgs struct {
 
 // A collection of values returned by getWorkloadIdentityPoolProvider.
 type LookupWorkloadIdentityPoolProviderResult struct {
+	ActorProviders     []string                            `pulumi:"actorProviders"`
 	AttributeCondition string                              `pulumi:"attributeCondition"`
 	AttributeMapping   map[string]string                   `pulumi:"attributeMapping"`
 	Aws                []GetWorkloadIdentityPoolProviderAw `pulumi:"aws"`
@@ -125,6 +126,10 @@ func (o LookupWorkloadIdentityPoolProviderResultOutput) ToLookupWorkloadIdentity
 
 func (o LookupWorkloadIdentityPoolProviderResultOutput) ToLookupWorkloadIdentityPoolProviderResultOutputWithContext(ctx context.Context) LookupWorkloadIdentityPoolProviderResultOutput {
 	return o
+}
+
+func (o LookupWorkloadIdentityPoolProviderResultOutput) ActorProviders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolProviderResult) []string { return v.ActorProviders }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupWorkloadIdentityPoolProviderResultOutput) AttributeCondition() pulumi.StringOutput {

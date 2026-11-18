@@ -19,8 +19,8 @@ public final class RoutineExternalRuntimeOptionsVolumeMount {
     /**
      * @return The absolute path of the source to be mounted. Only Google Cloud
      * Storage buckets or folders are currently supported. For example,
-     * `gs://bucket-xxx` for a Cloud Storage bucket, or
-     * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+     * `gs://my-bucket` for a Cloud Storage bucket, or
+     * `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
      * 
      */
     private String sourcePath;
@@ -37,8 +37,8 @@ public final class RoutineExternalRuntimeOptionsVolumeMount {
     /**
      * @return The absolute path of the source to be mounted. Only Google Cloud
      * Storage buckets or folders are currently supported. For example,
-     * `gs://bucket-xxx` for a Cloud Storage bucket, or
-     * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+     * `gs://my-bucket` for a Cloud Storage bucket, or
+     * `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
      * 
      */
     public String sourcePath() {

@@ -35,6 +35,10 @@ public final class UserPasswordPolicy {
      * 
      */
     private @Nullable String passwordExpirationDuration;
+    /**
+     * @return The password status of the user. Structure is documented below.
+     * 
+     */
     private @Nullable List<UserPasswordPolicyStatus> statuses;
 
     private UserPasswordPolicy() {}
@@ -66,6 +70,10 @@ public final class UserPasswordPolicy {
     public Optional<String> passwordExpirationDuration() {
         return Optional.ofNullable(this.passwordExpirationDuration);
     }
+    /**
+     * @return The password status of the user. Structure is documented below.
+     * 
+     */
     public List<UserPasswordPolicyStatus> statuses() {
         return this.statuses == null ? List.of() : this.statuses;
     }

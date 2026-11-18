@@ -72,8 +72,8 @@ namespace Pulumi.Gcp.Endpoints
         public Output<string> ConfigId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
-        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.
@@ -175,8 +175,8 @@ namespace Pulumi.Gcp.Endpoints
     public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
-        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.
@@ -246,8 +246,8 @@ namespace Pulumi.Gcp.Endpoints
         public Input<string>? ConfigId { get; set; }
 
         /// <summary>
-        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
-        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.

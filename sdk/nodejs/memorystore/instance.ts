@@ -408,6 +408,52 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Memorystore Instance Auto Created Endpoints Ipv6
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerNet = new gcp.compute.Network("producer_net", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ *     enableUlaInternalIpv6: true,
+ * });
+ * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
+ *     name: "my-subnet",
+ *     ipCidrRange: "10.0.0.248/29",
+ *     region: "asia-east1",
+ *     network: producerNet.id,
+ *     stackType: "IPV4_IPV6",
+ *     ipv6AccessType: "INTERNAL",
+ * });
+ * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "my-policy",
+ *     location: "asia-east1",
+ *     serviceClass: "gcp-memorystore",
+ *     description: "my basic service connection policy",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [producerSubnet.id],
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const instance_ipv6 = new gcp.memorystore.Instance("instance-ipv6", {
+ *     instanceId: "ipv6-instance",
+ *     shardCount: 1,
+ *     desiredAutoCreatedEndpoints: [{
+ *         network: producerNet.id,
+ *         projectId: project.then(project => project.projectId),
+ *         ipVersion: "IPV6",
+ *     }],
+ *     location: "asia-east1",
+ *     nodeType: "SHARED_CORE_NANO",
+ *     deletionProtectionEnabled: false,
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:

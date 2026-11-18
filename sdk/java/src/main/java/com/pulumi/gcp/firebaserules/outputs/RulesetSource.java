@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class RulesetSource {
     /**
      * @return `File` set constituting the `Source` bundle.
+     * Structure is documented below.
      * 
      */
     private List<RulesetSourceFile> files;
@@ -30,6 +31,7 @@ public final class RulesetSource {
     private RulesetSource() {}
     /**
      * @return `File` set constituting the `Source` bundle.
+     * Structure is documented below.
      * 
      */
     public List<RulesetSourceFile> files() {

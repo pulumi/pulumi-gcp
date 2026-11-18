@@ -18,14 +18,14 @@ public final class JobTemplateTemplateContainerEnvArgs extends com.pulumi.resour
     public static final JobTemplateTemplateContainerEnvArgs Empty = new JobTemplateTemplateContainerEnvArgs();
 
     /**
-     * Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+     * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+     * @return Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
      * 
      */
     public Output<String> name() {
@@ -91,7 +91,7 @@ public final class JobTemplateTemplateContainerEnvArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class JobTemplateTemplateContainerEnvArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
          * 
          * @return builder
          * 

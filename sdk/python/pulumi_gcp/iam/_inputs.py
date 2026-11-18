@@ -4784,6 +4784,26 @@ class WorkloadIdentityPoolProviderOidcArgsDict(TypedDict):
     https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
     ```
     """
+    discovery_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The URL to fetch the OIDC discovery document from, overriding the default URL
+    derived from `issuer_uri`. If not set, `discovery_uri` defaults to `issuer_uri`
+    with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+    Discovery 1.0 specification.
+    If set, `discovery_uri` must meet the following requirements:
+    * Must start with `https://`.
+    * Must not exceed 2000 characters.
+    * The scheme, host, and port must match `issuer_uri`.
+    * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+      empty, such as `openid-configuration`) and conform to the `issuer_uri`
+      topology:
+    * The well-known path segment is inserted before the issuer path (for
+      example, `https://example.com/.well-known/openid-configuration/tenant1`
+      for issuer `https://example.com/tenant1`), or
+    * The well-known path segment is appended under the issuer path (for
+      example, `https://example.com/tenant1/.well-known/openid-configuration`
+      for issuer `https://example.com/tenant1`).
+    """
     jwks_json: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OIDC JWKs in JSON String format. For details on definition of a
@@ -4816,6 +4836,7 @@ class WorkloadIdentityPoolProviderOidcArgs:
     def __init__(__self__, *,
                  issuer_uri: pulumi.Input[_builtins.str],
                  allowed_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 discovery_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  jwks_json: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] issuer_uri: The OIDC issuer URL.
@@ -4830,6 +4851,23 @@ class WorkloadIdentityPoolProviderOidcArgs:
                //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
                https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
                ```
+        :param pulumi.Input[_builtins.str] discovery_uri: The URL to fetch the OIDC discovery document from, overriding the default URL
+               derived from `issuer_uri`. If not set, `discovery_uri` defaults to `issuer_uri`
+               with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+               Discovery 1.0 specification.
+               If set, `discovery_uri` must meet the following requirements:
+               * Must start with `https://`.
+               * Must not exceed 2000 characters.
+               * The scheme, host, and port must match `issuer_uri`.
+               * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+                 empty, such as `openid-configuration`) and conform to the `issuer_uri`
+                 topology:
+               * The well-known path segment is inserted before the issuer path (for
+                 example, `https://example.com/.well-known/openid-configuration/tenant1`
+                 for issuer `https://example.com/tenant1`), or
+               * The well-known path segment is appended under the issuer path (for
+                 example, `https://example.com/tenant1/.well-known/openid-configuration`
+                 for issuer `https://example.com/tenant1`).
         :param pulumi.Input[_builtins.str] jwks_json: OIDC JWKs in JSON String format. For details on definition of a
                JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
                use the `jwks_uri` from the discovery document fetched from the
@@ -4857,6 +4895,8 @@ class WorkloadIdentityPoolProviderOidcArgs:
         pulumi.set(__self__, "issuer_uri", issuer_uri)
         if allowed_audiences is not None:
             pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        if discovery_uri is not None:
+            pulumi.set(__self__, "discovery_uri", discovery_uri)
         if jwks_json is not None:
             pulumi.set(__self__, "jwks_json", jwks_json)
 
@@ -4893,6 +4933,34 @@ class WorkloadIdentityPoolProviderOidcArgs:
     @allowed_audiences.setter
     def allowed_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_audiences", value)
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryUri")
+    def discovery_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URL to fetch the OIDC discovery document from, overriding the default URL
+        derived from `issuer_uri`. If not set, `discovery_uri` defaults to `issuer_uri`
+        with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+        Discovery 1.0 specification.
+        If set, `discovery_uri` must meet the following requirements:
+        * Must start with `https://`.
+        * Must not exceed 2000 characters.
+        * The scheme, host, and port must match `issuer_uri`.
+        * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+          empty, such as `openid-configuration`) and conform to the `issuer_uri`
+          topology:
+        * The well-known path segment is inserted before the issuer path (for
+          example, `https://example.com/.well-known/openid-configuration/tenant1`
+          for issuer `https://example.com/tenant1`), or
+        * The well-known path segment is appended under the issuer path (for
+          example, `https://example.com/tenant1/.well-known/openid-configuration`
+          for issuer `https://example.com/tenant1`).
+        """
+        return pulumi.get(self, "discovery_uri")
+
+    @discovery_uri.setter
+    def discovery_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "discovery_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="jwksJson")

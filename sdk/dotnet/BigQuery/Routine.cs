@@ -195,6 +195,42 @@ namespace Pulumi.Gcp.BigQuery
     /// });
     /// ```
     /// 
+    /// ### Bigquery Routine Any Table
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
+    ///     {
+    ///         DatasetId = "dataset_id",
+    ///     });
+    /// 
+    ///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
+    ///     {
+    ///         DatasetId = test.DatasetId,
+    ///         RoutineId = "routine_id",
+    ///         RoutineType = "TABLE_VALUED_FUNCTION",
+    ///         Language = "SQL",
+    ///         Description = "Gets every row from a table.",
+    ///         DefinitionBody = "SELECT * FROM t1",
+    ///         Arguments = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "t1",
+    ///                 ArgumentKind = "ANY_TABLE",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Bigquery Routine Pyspark
     /// 
     /// ```csharp

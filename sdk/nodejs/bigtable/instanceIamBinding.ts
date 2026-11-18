@@ -162,7 +162,7 @@ export class InstanceIamBinding extends pulumi.CustomResource {
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      *
-     * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+     * For `gcp.bigtable.InstanceIamPolicy` only:
      */
     declare public readonly instance: pulumi.Output<string>;
     /**
@@ -245,7 +245,7 @@ export interface InstanceIamBindingState {
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      *
-     * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+     * For `gcp.bigtable.InstanceIamPolicy` only:
      */
     instance?: pulumi.Input<string | undefined>;
     /**
@@ -283,7 +283,7 @@ export interface InstanceIamBindingArgs {
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      *
-     * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+     * For `gcp.bigtable.InstanceIamPolicy` only:
      */
     instance: pulumi.Input<string>;
     /**

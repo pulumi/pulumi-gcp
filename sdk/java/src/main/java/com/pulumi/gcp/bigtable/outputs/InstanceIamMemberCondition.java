@@ -15,8 +15,6 @@ public final class InstanceIamMemberCondition {
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
-     * For `gcp.bigtable.InstanceIamPolicy` only:
-     * 
      */
     private @Nullable String description;
     /**
@@ -33,8 +31,6 @@ public final class InstanceIamMemberCondition {
     private InstanceIamMemberCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     * For `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
     public Optional<String> description() {

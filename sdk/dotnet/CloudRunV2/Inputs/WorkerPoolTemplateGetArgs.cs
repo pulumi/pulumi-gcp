@@ -107,6 +107,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string>? Revision { get; set; }
 
         /// <summary>
+        /// Configuration for sandboxes.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sandboxes")]
+        public Input<Inputs.WorkerPoolTemplateSandboxesGetArgs>? Sandboxes { get; set; }
+
+        /// <summary>
         /// Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         /// </summary>
         [Input("serviceAccount")]

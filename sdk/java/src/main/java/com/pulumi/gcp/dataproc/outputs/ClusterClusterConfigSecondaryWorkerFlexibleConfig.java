@@ -14,22 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigSecondaryWorkerFlexibleConfig {
     /**
-     * @return The boot disk size in GB.
-     * Changing this forces a new resource to be created.
+     * @return The boot disk size in GB. Changing this on an existing
+     * secondary worker group forces a new resource to be created.
      * ***
      * 
      */
     private @Nullable Integer bootDiskSizeGb;
     /**
      * @return The number of vCPUs per instance. Must be a power of 2
-     * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+     * (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
      * 
      */
     private Integer coreCount;
     /**
      * @return Controls the hardware class for the flexible instance group.
      * Allowed values are `&#34;STANDARD&#34;` and `&#34;PERFORMANCE&#34;`. Defaults to `&#34;STANDARD&#34;`.
-     * Changing this forces a new resource to be created.
+     * Changing this on an existing secondary worker group forces a new resource to be created.
      * 
      */
     private @Nullable String hardwareClass;
@@ -42,8 +42,8 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfig {
 
     private ClusterClusterConfigSecondaryWorkerFlexibleConfig() {}
     /**
-     * @return The boot disk size in GB.
-     * Changing this forces a new resource to be created.
+     * @return The boot disk size in GB. Changing this on an existing
+     * secondary worker group forces a new resource to be created.
      * ***
      * 
      */
@@ -52,7 +52,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfig {
     }
     /**
      * @return The number of vCPUs per instance. Must be a power of 2
-     * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+     * (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
      * 
      */
     public Integer coreCount() {
@@ -61,7 +61,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfig {
     /**
      * @return Controls the hardware class for the flexible instance group.
      * Allowed values are `&#34;STANDARD&#34;` and `&#34;PERFORMANCE&#34;`. Defaults to `&#34;STANDARD&#34;`.
-     * Changing this forces a new resource to be created.
+     * Changing this on an existing secondary worker group forces a new resource to be created.
      * 
      */
     public Optional<String> hardwareClass() {

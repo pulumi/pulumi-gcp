@@ -88,6 +88,37 @@ public final class ProjectProvisionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The Gemini Enterprise experience that the project is provisioned for.
+     * `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+     * experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+     * Gemini Enterprise experience. If unset, the API chooses the experience.
+     * Changing this field forces a new resource, which calls the provisioning API
+     * again with the new value. Provisioning doesn&#39;t remove an experience that the
+     * project was already provisioned for, and the API may reject provisioning a
+     * project that uses the classic experience for the new experience.
+     * Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+     * 
+     */
+    @Import(name="provisionIntent")
+    private @Nullable Output<String> provisionIntent;
+
+    /**
+     * @return The Gemini Enterprise experience that the project is provisioned for.
+     * `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+     * experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+     * Gemini Enterprise experience. If unset, the API chooses the experience.
+     * Changing this field forces a new resource, which calls the provisioning API
+     * again with the new value. Provisioning doesn&#39;t remove an experience that the
+     * project was already provisioned for, and the API may reject provisioning a
+     * project that uses the classic experience for the new experience.
+     * Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+     * 
+     */
+    public Optional<Output<String>> provisionIntent() {
+        return Optional.ofNullable(this.provisionIntent);
+    }
+
+    /**
      * Parameters for Gemini Enterprise (Agentspace) provisioning.
      * Structure is documented below.
      * 
@@ -111,6 +142,7 @@ public final class ProjectProvisionState extends com.pulumi.resources.ResourceAr
         this.dataUseTermsVersion = $.dataUseTermsVersion;
         this.location = $.location;
         this.project = $.project;
+        this.provisionIntent = $.provisionIntent;
         this.saasParams = $.saasParams;
     }
 
@@ -224,6 +256,43 @@ public final class ProjectProvisionState extends com.pulumi.resources.ResourceAr
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param provisionIntent The Gemini Enterprise experience that the project is provisioned for.
+         * `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+         * experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+         * Gemini Enterprise experience. If unset, the API chooses the experience.
+         * Changing this field forces a new resource, which calls the provisioning API
+         * again with the new value. Provisioning doesn&#39;t remove an experience that the
+         * project was already provisioned for, and the API may reject provisioning a
+         * project that uses the classic experience for the new experience.
+         * Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionIntent(@Nullable Output<String> provisionIntent) {
+            $.provisionIntent = provisionIntent;
+            return this;
+        }
+
+        /**
+         * @param provisionIntent The Gemini Enterprise experience that the project is provisioned for.
+         * `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+         * experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+         * Gemini Enterprise experience. If unset, the API chooses the experience.
+         * Changing this field forces a new resource, which calls the provisioning API
+         * again with the new value. Provisioning doesn&#39;t remove an experience that the
+         * project was already provisioned for, and the API may reject provisioning a
+         * project that uses the classic experience for the new experience.
+         * Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionIntent(String provisionIntent) {
+            return provisionIntent(Output.of(provisionIntent));
         }
 
         /**

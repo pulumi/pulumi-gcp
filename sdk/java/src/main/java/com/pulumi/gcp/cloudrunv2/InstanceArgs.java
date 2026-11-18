@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.InstanceContainerArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.InstanceSandboxesArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.InstanceVolumeArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -319,6 +320,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sandboxes")
+    private @Nullable Output<InstanceSandboxesArgs> sandboxes;
+
+    /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceSandboxesArgs>> sandboxes() {
+        return Optional.ofNullable(this.sandboxes);
+    }
+
+    /**
      * Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
      * 
      */
@@ -370,6 +388,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.restartPolicy = $.restartPolicy;
+        this.sandboxes = $.sandboxes;
         this.serviceAccount = $.serviceAccount;
         this.volumes = $.volumes;
     }
@@ -800,6 +819,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder restartPolicy(String restartPolicy) {
             return restartPolicy(Output.of(restartPolicy));
+        }
+
+        /**
+         * @param sandboxes Configuration for sandboxes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxes(@Nullable Output<InstanceSandboxesArgs> sandboxes) {
+            $.sandboxes = sandboxes;
+            return this;
+        }
+
+        /**
+         * @param sandboxes Configuration for sandboxes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxes(InstanceSandboxesArgs sandboxes) {
+            return sandboxes(Output.of(sandboxes));
         }
 
         /**

@@ -1443,6 +1443,11 @@ func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) Inde
 }
 
 type InstanceDesiredAutoCreatedEndpoint struct {
+	// (Optional, Beta)
+	// Immutable. The IP version that the consumer endpoint will use.
+	// Default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	IpVersion *string `pulumi:"ipVersion"`
 	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
@@ -1462,6 +1467,11 @@ type InstanceDesiredAutoCreatedEndpointInput interface {
 }
 
 type InstanceDesiredAutoCreatedEndpointArgs struct {
+	// (Optional, Beta)
+	// Immutable. The IP version that the consumer endpoint will use.
+	// Default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
 	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network pulumi.StringInput `pulumi:"network"`
@@ -1518,6 +1528,14 @@ func (o InstanceDesiredAutoCreatedEndpointOutput) ToInstanceDesiredAutoCreatedEn
 
 func (o InstanceDesiredAutoCreatedEndpointOutput) ToInstanceDesiredAutoCreatedEndpointOutputWithContext(ctx context.Context) InstanceDesiredAutoCreatedEndpointOutput {
 	return o
+}
+
+// (Optional, Beta)
+// Immutable. The IP version that the consumer endpoint will use.
+// Default value is `IPV4`.
+// Possible values are: `IPV4`, `IPV6`.
+func (o InstanceDesiredAutoCreatedEndpointOutput) IpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDesiredAutoCreatedEndpoint) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
 // Required. The consumer network where the IP address resides, in the form of
@@ -2547,6 +2565,9 @@ type InstanceEndpointConnectionPscAutoConnection struct {
 	// (Output)
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	IpAddress *string `pulumi:"ipAddress"`
+	// (Output, Beta)
+	// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+	IpVersion *string `pulumi:"ipVersion"`
 	// (Output)
 	// Output only. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
@@ -2593,6 +2614,9 @@ type InstanceEndpointConnectionPscAutoConnectionArgs struct {
 	// (Output)
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// (Output, Beta)
+	// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
 	// (Output)
 	// Output only. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
@@ -2713,6 +2737,12 @@ func (o InstanceEndpointConnectionPscAutoConnectionOutput) IpAddress() pulumi.St
 	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// (Output, Beta)
+// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+func (o InstanceEndpointConnectionPscAutoConnectionOutput) IpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEndpointConnectionPscAutoConnection) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
+}
+
 // (Output)
 // Output only. The consumer network where the IP address resides, in the form of
 // projects/{project_id}/global/networks/{network_id}.
@@ -2805,6 +2835,17 @@ func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) IpAddress() pulumi
 			return nil
 		}
 		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output, Beta)
+// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) IpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEndpointConnectionPscAutoConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4728,6 +4769,9 @@ type InstancePscAutoConnection struct {
 	// (Output)
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	IpAddress *string `pulumi:"ipAddress"`
+	// (Output, Beta)
+	// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+	IpVersion *string `pulumi:"ipVersion"`
 	// (Output)
 	// Output only. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
@@ -4780,6 +4824,9 @@ type InstancePscAutoConnectionArgs struct {
 	// (Output)
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// (Output, Beta)
+	// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
 	// (Output)
 	// Output only. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
@@ -4878,6 +4925,12 @@ func (o InstancePscAutoConnectionOutput) ForwardingRule() pulumi.StringPtrOutput
 // Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 func (o InstancePscAutoConnectionOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePscAutoConnection) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output, Beta)
+// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+func (o InstancePscAutoConnectionOutput) IpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscAutoConnection) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -6523,6 +6576,9 @@ func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) I
 }
 
 type GetInstanceDesiredAutoCreatedEndpoint struct {
+	// Immutable. The IP version that the consumer endpoint will use.
+	// Default value is 'IPV4'. Possible values: ["IPV4", "IPV6"]
+	IpVersion string `pulumi:"ipVersion"`
 	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
@@ -6542,6 +6598,9 @@ type GetInstanceDesiredAutoCreatedEndpointInput interface {
 }
 
 type GetInstanceDesiredAutoCreatedEndpointArgs struct {
+	// Immutable. The IP version that the consumer endpoint will use.
+	// Default value is 'IPV4'. Possible values: ["IPV4", "IPV6"]
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
 	// Required. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network pulumi.StringInput `pulumi:"network"`
@@ -6598,6 +6657,12 @@ func (o GetInstanceDesiredAutoCreatedEndpointOutput) ToGetInstanceDesiredAutoCre
 
 func (o GetInstanceDesiredAutoCreatedEndpointOutput) ToGetInstanceDesiredAutoCreatedEndpointOutputWithContext(ctx context.Context) GetInstanceDesiredAutoCreatedEndpointOutput {
 	return o
+}
+
+// Immutable. The IP version that the consumer endpoint will use.
+// Default value is 'IPV4'. Possible values: ["IPV4", "IPV6"]
+func (o GetInstanceDesiredAutoCreatedEndpointOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDesiredAutoCreatedEndpoint) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 // Required. The consumer network where the IP address resides, in the form of
@@ -7070,6 +7135,8 @@ type GetInstanceEndpointConnectionPscAutoConnection struct {
 	ForwardingRule string `pulumi:"forwardingRule"`
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	IpAddress string `pulumi:"ipAddress"`
+	// The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+	IpVersion string `pulumi:"ipVersion"`
 	// Output only. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
@@ -7108,6 +7175,8 @@ type GetInstanceEndpointConnectionPscAutoConnectionArgs struct {
 	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
 	// Output only. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network pulumi.StringInput `pulumi:"network"`
@@ -7193,6 +7262,11 @@ func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) ForwardingRule() p
 // Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+func (o GetInstanceEndpointConnectionPscAutoConnectionOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEndpointConnectionPscAutoConnection) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 // Output only. The consumer network where the IP address resides, in the form of
@@ -8772,6 +8846,8 @@ type GetInstancePscAutoConnection struct {
 	ForwardingRule string `pulumi:"forwardingRule"`
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	IpAddress string `pulumi:"ipAddress"`
+	// The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+	IpVersion string `pulumi:"ipVersion"`
 	// Output only. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
@@ -8815,6 +8891,8 @@ type GetInstancePscAutoConnectionArgs struct {
 	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
 	// Output only. The consumer network where the IP address resides, in the form of
 	// projects/{project_id}/global/networks/{network_id}.
 	Network pulumi.StringInput `pulumi:"network"`
@@ -8905,6 +8983,11 @@ func (o GetInstancePscAutoConnectionOutput) ForwardingRule() pulumi.StringOutput
 // Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 func (o GetInstancePscAutoConnectionOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+func (o GetInstancePscAutoConnectionOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAutoConnection) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 // Output only. The consumer network where the IP address resides, in the form of

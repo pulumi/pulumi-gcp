@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateNodeSelector;
+import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateSandboxes;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVpcAccess;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateWorkloadIdentityConfig;
@@ -52,6 +53,12 @@ public final class JobTemplateTemplate {
      * 
      */
     private @Nullable JobTemplateTemplateNodeSelector nodeSelector;
+    /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable JobTemplateTemplateSandboxes sandboxes;
     /**
      * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
@@ -131,6 +138,14 @@ public final class JobTemplateTemplate {
         return Optional.ofNullable(this.nodeSelector);
     }
     /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<JobTemplateTemplateSandboxes> sandboxes() {
+        return Optional.ofNullable(this.sandboxes);
+    }
+    /**
      * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
      */
@@ -187,6 +202,7 @@ public final class JobTemplateTemplate {
         private @Nullable Boolean gpuZonalRedundancyDisabled;
         private @Nullable Integer maxRetries;
         private @Nullable JobTemplateTemplateNodeSelector nodeSelector;
+        private @Nullable JobTemplateTemplateSandboxes sandboxes;
         private @Nullable String serviceAccount;
         private @Nullable String timeout;
         private @Nullable List<JobTemplateTemplateVolume> volumes;
@@ -201,6 +217,7 @@ public final class JobTemplateTemplate {
     	      this.gpuZonalRedundancyDisabled = defaults.gpuZonalRedundancyDisabled;
     	      this.maxRetries = defaults.maxRetries;
     	      this.nodeSelector = defaults.nodeSelector;
+    	      this.sandboxes = defaults.sandboxes;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
@@ -248,6 +265,12 @@ public final class JobTemplateTemplate {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxes(@Nullable JobTemplateTemplateSandboxes sandboxes) {
+
+            this.sandboxes = sandboxes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
 
             this.serviceAccount = serviceAccount;
@@ -288,6 +311,7 @@ public final class JobTemplateTemplate {
             _resultValue.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             _resultValue.maxRetries = maxRetries;
             _resultValue.nodeSelector = nodeSelector;
+            _resultValue.sandboxes = sandboxes;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;

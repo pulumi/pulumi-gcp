@@ -20,6 +20,8 @@ public final class TableColumnFamily {
     /**
      * @return The type of the column family.
      * 
+     * ***
+     * 
      */
     private @Nullable String type;
 
@@ -33,6 +35,8 @@ public final class TableColumnFamily {
     }
     /**
      * @return The type of the column family.
+     * 
+     * ***
      * 
      */
     public Optional<String> type() {

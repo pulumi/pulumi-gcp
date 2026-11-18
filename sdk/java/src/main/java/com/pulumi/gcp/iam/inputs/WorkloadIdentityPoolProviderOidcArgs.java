@@ -45,6 +45,53 @@ public final class WorkloadIdentityPoolProviderOidcArgs extends com.pulumi.resou
     }
 
     /**
+     * The URL to fetch the OIDC discovery document from, overriding the default URL
+     * derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+     * with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+     * Discovery 1.0 specification.
+     * If set, `discoveryUri` must meet the following requirements:
+     * * Must start with `https://`.
+     * * Must not exceed 2000 characters.
+     * * The scheme, host, and port must match `issuerUri`.
+     * * The path must contain `/.well-known/&lt;suffix&gt;` (where `&lt;suffix&gt;` is not
+     *   empty, such as `openid-configuration`) and conform to the `issuerUri`
+     *   topology:
+     * * The well-known path segment is inserted before the issuer path (for
+     *   example, `https://example.com/.well-known/openid-configuration/tenant1`
+     *   for issuer `https://example.com/tenant1`), or
+     * * The well-known path segment is appended under the issuer path (for
+     *   example, `https://example.com/tenant1/.well-known/openid-configuration`
+     *   for issuer `https://example.com/tenant1`).
+     * 
+     */
+    @Import(name="discoveryUri")
+    private @Nullable Output<String> discoveryUri;
+
+    /**
+     * @return The URL to fetch the OIDC discovery document from, overriding the default URL
+     * derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+     * with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+     * Discovery 1.0 specification.
+     * If set, `discoveryUri` must meet the following requirements:
+     * * Must start with `https://`.
+     * * Must not exceed 2000 characters.
+     * * The scheme, host, and port must match `issuerUri`.
+     * * The path must contain `/.well-known/&lt;suffix&gt;` (where `&lt;suffix&gt;` is not
+     *   empty, such as `openid-configuration`) and conform to the `issuerUri`
+     *   topology:
+     * * The well-known path segment is inserted before the issuer path (for
+     *   example, `https://example.com/.well-known/openid-configuration/tenant1`
+     *   for issuer `https://example.com/tenant1`), or
+     * * The well-known path segment is appended under the issuer path (for
+     *   example, `https://example.com/tenant1/.well-known/openid-configuration`
+     *   for issuer `https://example.com/tenant1`).
+     * 
+     */
+    public Optional<Output<String>> discoveryUri() {
+        return Optional.ofNullable(this.discoveryUri);
+    }
+
+    /**
      * The OIDC issuer URL.
      * 
      */
@@ -88,6 +135,7 @@ public final class WorkloadIdentityPoolProviderOidcArgs extends com.pulumi.resou
 
     private WorkloadIdentityPoolProviderOidcArgs(WorkloadIdentityPoolProviderOidcArgs $) {
         this.allowedAudiences = $.allowedAudiences;
+        this.discoveryUri = $.discoveryUri;
         this.issuerUri = $.issuerUri;
         this.jwksJson = $.jwksJson;
     }
@@ -157,6 +205,59 @@ public final class WorkloadIdentityPoolProviderOidcArgs extends com.pulumi.resou
          */
         public Builder allowedAudiences(String... allowedAudiences) {
             return allowedAudiences(List.of(allowedAudiences));
+        }
+
+        /**
+         * @param discoveryUri The URL to fetch the OIDC discovery document from, overriding the default URL
+         * derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+         * with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+         * Discovery 1.0 specification.
+         * If set, `discoveryUri` must meet the following requirements:
+         * * Must start with `https://`.
+         * * Must not exceed 2000 characters.
+         * * The scheme, host, and port must match `issuerUri`.
+         * * The path must contain `/.well-known/&lt;suffix&gt;` (where `&lt;suffix&gt;` is not
+         *   empty, such as `openid-configuration`) and conform to the `issuerUri`
+         *   topology:
+         * * The well-known path segment is inserted before the issuer path (for
+         *   example, `https://example.com/.well-known/openid-configuration/tenant1`
+         *   for issuer `https://example.com/tenant1`), or
+         * * The well-known path segment is appended under the issuer path (for
+         *   example, `https://example.com/tenant1/.well-known/openid-configuration`
+         *   for issuer `https://example.com/tenant1`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder discoveryUri(@Nullable Output<String> discoveryUri) {
+            $.discoveryUri = discoveryUri;
+            return this;
+        }
+
+        /**
+         * @param discoveryUri The URL to fetch the OIDC discovery document from, overriding the default URL
+         * derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+         * with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+         * Discovery 1.0 specification.
+         * If set, `discoveryUri` must meet the following requirements:
+         * * Must start with `https://`.
+         * * Must not exceed 2000 characters.
+         * * The scheme, host, and port must match `issuerUri`.
+         * * The path must contain `/.well-known/&lt;suffix&gt;` (where `&lt;suffix&gt;` is not
+         *   empty, such as `openid-configuration`) and conform to the `issuerUri`
+         *   topology:
+         * * The well-known path segment is inserted before the issuer path (for
+         *   example, `https://example.com/.well-known/openid-configuration/tenant1`
+         *   for issuer `https://example.com/tenant1`), or
+         * * The well-known path segment is appended under the issuer path (for
+         *   example, `https://example.com/tenant1/.well-known/openid-configuration`
+         *   for issuer `https://example.com/tenant1`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder discoveryUri(String discoveryUri) {
+            return discoveryUri(Output.of(discoveryUri));
         }
 
         /**

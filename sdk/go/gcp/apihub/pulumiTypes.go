@@ -13,6 +13,1501 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AddonConfig struct {
+	// Configuration for addons which act on all data in the API hub.
+	// Structure is documented below.
+	AllDataAddonConfig *AddonConfigAllDataAddonConfig `pulumi:"allDataAddonConfig"`
+	// Configuration for gateway plugin addons.
+	// Structure is documented below.
+	GatewayPluginAddonConfig *AddonConfigGatewayPluginAddonConfig `pulumi:"gatewayPluginAddonConfig"`
+}
+
+// AddonConfigInput is an input type that accepts AddonConfigArgs and AddonConfigOutput values.
+// You can construct a concrete instance of `AddonConfigInput` via:
+//
+//	AddonConfigArgs{...}
+type AddonConfigInput interface {
+	pulumi.Input
+
+	ToAddonConfigOutput() AddonConfigOutput
+	ToAddonConfigOutputWithContext(context.Context) AddonConfigOutput
+}
+
+type AddonConfigArgs struct {
+	// Configuration for addons which act on all data in the API hub.
+	// Structure is documented below.
+	AllDataAddonConfig AddonConfigAllDataAddonConfigPtrInput `pulumi:"allDataAddonConfig"`
+	// Configuration for gateway plugin addons.
+	// Structure is documented below.
+	GatewayPluginAddonConfig AddonConfigGatewayPluginAddonConfigPtrInput `pulumi:"gatewayPluginAddonConfig"`
+}
+
+func (AddonConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfig)(nil)).Elem()
+}
+
+func (i AddonConfigArgs) ToAddonConfigOutput() AddonConfigOutput {
+	return i.ToAddonConfigOutputWithContext(context.Background())
+}
+
+func (i AddonConfigArgs) ToAddonConfigOutputWithContext(ctx context.Context) AddonConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigOutput)
+}
+
+func (i AddonConfigArgs) ToAddonConfigPtrOutput() AddonConfigPtrOutput {
+	return i.ToAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigArgs) ToAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigOutput).ToAddonConfigPtrOutputWithContext(ctx)
+}
+
+// AddonConfigPtrInput is an input type that accepts AddonConfigArgs, AddonConfigPtr and AddonConfigPtrOutput values.
+// You can construct a concrete instance of `AddonConfigPtrInput` via:
+//
+//	        AddonConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigPtrOutput() AddonConfigPtrOutput
+	ToAddonConfigPtrOutputWithContext(context.Context) AddonConfigPtrOutput
+}
+
+type addonConfigPtrType AddonConfigArgs
+
+func AddonConfigPtr(v *AddonConfigArgs) AddonConfigPtrInput {
+	return (*addonConfigPtrType)(v)
+}
+
+func (*addonConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfig)(nil)).Elem()
+}
+
+func (i *addonConfigPtrType) ToAddonConfigPtrOutput() AddonConfigPtrOutput {
+	return i.ToAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigPtrType) ToAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigPtrOutput)
+}
+
+type AddonConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfig)(nil)).Elem()
+}
+
+func (o AddonConfigOutput) ToAddonConfigOutput() AddonConfigOutput {
+	return o
+}
+
+func (o AddonConfigOutput) ToAddonConfigOutputWithContext(ctx context.Context) AddonConfigOutput {
+	return o
+}
+
+func (o AddonConfigOutput) ToAddonConfigPtrOutput() AddonConfigPtrOutput {
+	return o.ToAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigOutput) ToAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfig) *AddonConfig {
+		return &v
+	}).(AddonConfigPtrOutput)
+}
+
+// Configuration for addons which act on all data in the API hub.
+// Structure is documented below.
+func (o AddonConfigOutput) AllDataAddonConfig() AddonConfigAllDataAddonConfigPtrOutput {
+	return o.ApplyT(func(v AddonConfig) *AddonConfigAllDataAddonConfig { return v.AllDataAddonConfig }).(AddonConfigAllDataAddonConfigPtrOutput)
+}
+
+// Configuration for gateway plugin addons.
+// Structure is documented below.
+func (o AddonConfigOutput) GatewayPluginAddonConfig() AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return o.ApplyT(func(v AddonConfig) *AddonConfigGatewayPluginAddonConfig { return v.GatewayPluginAddonConfig }).(AddonConfigGatewayPluginAddonConfigPtrOutput)
+}
+
+type AddonConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfig)(nil)).Elem()
+}
+
+func (o AddonConfigPtrOutput) ToAddonConfigPtrOutput() AddonConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigPtrOutput) ToAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigPtrOutput) Elem() AddonConfigOutput {
+	return o.ApplyT(func(v *AddonConfig) AddonConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfig
+		return ret
+	}).(AddonConfigOutput)
+}
+
+// Configuration for addons which act on all data in the API hub.
+// Structure is documented below.
+func (o AddonConfigPtrOutput) AllDataAddonConfig() AddonConfigAllDataAddonConfigPtrOutput {
+	return o.ApplyT(func(v *AddonConfig) *AddonConfigAllDataAddonConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AllDataAddonConfig
+	}).(AddonConfigAllDataAddonConfigPtrOutput)
+}
+
+// Configuration for gateway plugin addons.
+// Structure is documented below.
+func (o AddonConfigPtrOutput) GatewayPluginAddonConfig() AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return o.ApplyT(func(v *AddonConfig) *AddonConfigGatewayPluginAddonConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayPluginAddonConfig
+	}).(AddonConfigGatewayPluginAddonConfigPtrOutput)
+}
+
+type AddonConfigAllDataAddonConfig struct {
+	// If true, the addon is enabled for all data in the API hub.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// AddonConfigAllDataAddonConfigInput is an input type that accepts AddonConfigAllDataAddonConfigArgs and AddonConfigAllDataAddonConfigOutput values.
+// You can construct a concrete instance of `AddonConfigAllDataAddonConfigInput` via:
+//
+//	AddonConfigAllDataAddonConfigArgs{...}
+type AddonConfigAllDataAddonConfigInput interface {
+	pulumi.Input
+
+	ToAddonConfigAllDataAddonConfigOutput() AddonConfigAllDataAddonConfigOutput
+	ToAddonConfigAllDataAddonConfigOutputWithContext(context.Context) AddonConfigAllDataAddonConfigOutput
+}
+
+type AddonConfigAllDataAddonConfigArgs struct {
+	// If true, the addon is enabled for all data in the API hub.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (AddonConfigAllDataAddonConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigAllDataAddonConfig)(nil)).Elem()
+}
+
+func (i AddonConfigAllDataAddonConfigArgs) ToAddonConfigAllDataAddonConfigOutput() AddonConfigAllDataAddonConfigOutput {
+	return i.ToAddonConfigAllDataAddonConfigOutputWithContext(context.Background())
+}
+
+func (i AddonConfigAllDataAddonConfigArgs) ToAddonConfigAllDataAddonConfigOutputWithContext(ctx context.Context) AddonConfigAllDataAddonConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigAllDataAddonConfigOutput)
+}
+
+func (i AddonConfigAllDataAddonConfigArgs) ToAddonConfigAllDataAddonConfigPtrOutput() AddonConfigAllDataAddonConfigPtrOutput {
+	return i.ToAddonConfigAllDataAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigAllDataAddonConfigArgs) ToAddonConfigAllDataAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigAllDataAddonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigAllDataAddonConfigOutput).ToAddonConfigAllDataAddonConfigPtrOutputWithContext(ctx)
+}
+
+// AddonConfigAllDataAddonConfigPtrInput is an input type that accepts AddonConfigAllDataAddonConfigArgs, AddonConfigAllDataAddonConfigPtr and AddonConfigAllDataAddonConfigPtrOutput values.
+// You can construct a concrete instance of `AddonConfigAllDataAddonConfigPtrInput` via:
+//
+//	        AddonConfigAllDataAddonConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigAllDataAddonConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigAllDataAddonConfigPtrOutput() AddonConfigAllDataAddonConfigPtrOutput
+	ToAddonConfigAllDataAddonConfigPtrOutputWithContext(context.Context) AddonConfigAllDataAddonConfigPtrOutput
+}
+
+type addonConfigAllDataAddonConfigPtrType AddonConfigAllDataAddonConfigArgs
+
+func AddonConfigAllDataAddonConfigPtr(v *AddonConfigAllDataAddonConfigArgs) AddonConfigAllDataAddonConfigPtrInput {
+	return (*addonConfigAllDataAddonConfigPtrType)(v)
+}
+
+func (*addonConfigAllDataAddonConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigAllDataAddonConfig)(nil)).Elem()
+}
+
+func (i *addonConfigAllDataAddonConfigPtrType) ToAddonConfigAllDataAddonConfigPtrOutput() AddonConfigAllDataAddonConfigPtrOutput {
+	return i.ToAddonConfigAllDataAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigAllDataAddonConfigPtrType) ToAddonConfigAllDataAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigAllDataAddonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigAllDataAddonConfigPtrOutput)
+}
+
+type AddonConfigAllDataAddonConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigAllDataAddonConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigAllDataAddonConfig)(nil)).Elem()
+}
+
+func (o AddonConfigAllDataAddonConfigOutput) ToAddonConfigAllDataAddonConfigOutput() AddonConfigAllDataAddonConfigOutput {
+	return o
+}
+
+func (o AddonConfigAllDataAddonConfigOutput) ToAddonConfigAllDataAddonConfigOutputWithContext(ctx context.Context) AddonConfigAllDataAddonConfigOutput {
+	return o
+}
+
+func (o AddonConfigAllDataAddonConfigOutput) ToAddonConfigAllDataAddonConfigPtrOutput() AddonConfigAllDataAddonConfigPtrOutput {
+	return o.ToAddonConfigAllDataAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigAllDataAddonConfigOutput) ToAddonConfigAllDataAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigAllDataAddonConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfigAllDataAddonConfig) *AddonConfigAllDataAddonConfig {
+		return &v
+	}).(AddonConfigAllDataAddonConfigPtrOutput)
+}
+
+// If true, the addon is enabled for all data in the API hub.
+func (o AddonConfigAllDataAddonConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AddonConfigAllDataAddonConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type AddonConfigAllDataAddonConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigAllDataAddonConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigAllDataAddonConfig)(nil)).Elem()
+}
+
+func (o AddonConfigAllDataAddonConfigPtrOutput) ToAddonConfigAllDataAddonConfigPtrOutput() AddonConfigAllDataAddonConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigAllDataAddonConfigPtrOutput) ToAddonConfigAllDataAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigAllDataAddonConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigAllDataAddonConfigPtrOutput) Elem() AddonConfigAllDataAddonConfigOutput {
+	return o.ApplyT(func(v *AddonConfigAllDataAddonConfig) AddonConfigAllDataAddonConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfigAllDataAddonConfig
+		return ret
+	}).(AddonConfigAllDataAddonConfigOutput)
+}
+
+// If true, the addon is enabled for all data in the API hub.
+func (o AddonConfigAllDataAddonConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonConfigAllDataAddonConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfig struct {
+	// The list of gateway plugin configs for which the addon is enabled.
+	// Structure is documented below.
+	GatewayPluginConfigs []AddonConfigGatewayPluginAddonConfigGatewayPluginConfig `pulumi:"gatewayPluginConfigs"`
+}
+
+// AddonConfigGatewayPluginAddonConfigInput is an input type that accepts AddonConfigGatewayPluginAddonConfigArgs and AddonConfigGatewayPluginAddonConfigOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigArgs{...}
+type AddonConfigGatewayPluginAddonConfigInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigOutput() AddonConfigGatewayPluginAddonConfigOutput
+	ToAddonConfigGatewayPluginAddonConfigOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigArgs struct {
+	// The list of gateway plugin configs for which the addon is enabled.
+	// Structure is documented below.
+	GatewayPluginConfigs AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayInput `pulumi:"gatewayPluginConfigs"`
+}
+
+func (AddonConfigGatewayPluginAddonConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfig)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigArgs) ToAddonConfigGatewayPluginAddonConfigOutput() AddonConfigGatewayPluginAddonConfigOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigArgs) ToAddonConfigGatewayPluginAddonConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigOutput)
+}
+
+func (i AddonConfigGatewayPluginAddonConfigArgs) ToAddonConfigGatewayPluginAddonConfigPtrOutput() AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigArgs) ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigOutput).ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(ctx)
+}
+
+// AddonConfigGatewayPluginAddonConfigPtrInput is an input type that accepts AddonConfigGatewayPluginAddonConfigArgs, AddonConfigGatewayPluginAddonConfigPtr and AddonConfigGatewayPluginAddonConfigPtrOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigPtrInput` via:
+//
+//	        AddonConfigGatewayPluginAddonConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigGatewayPluginAddonConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigPtrOutput() AddonConfigGatewayPluginAddonConfigPtrOutput
+	ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigPtrOutput
+}
+
+type addonConfigGatewayPluginAddonConfigPtrType AddonConfigGatewayPluginAddonConfigArgs
+
+func AddonConfigGatewayPluginAddonConfigPtr(v *AddonConfigGatewayPluginAddonConfigArgs) AddonConfigGatewayPluginAddonConfigPtrInput {
+	return (*addonConfigGatewayPluginAddonConfigPtrType)(v)
+}
+
+func (*addonConfigGatewayPluginAddonConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfig)(nil)).Elem()
+}
+
+func (i *addonConfigGatewayPluginAddonConfigPtrType) ToAddonConfigGatewayPluginAddonConfigPtrOutput() AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigGatewayPluginAddonConfigPtrType) ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigOutput) ToAddonConfigGatewayPluginAddonConfigOutput() AddonConfigGatewayPluginAddonConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigOutput) ToAddonConfigGatewayPluginAddonConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigOutput) ToAddonConfigGatewayPluginAddonConfigPtrOutput() AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return o.ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigGatewayPluginAddonConfigOutput) ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfigGatewayPluginAddonConfig) *AddonConfigGatewayPluginAddonConfig {
+		return &v
+	}).(AddonConfigGatewayPluginAddonConfigPtrOutput)
+}
+
+// The list of gateway plugin configs for which the addon is enabled.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigOutput) GatewayPluginConfigs() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfig) []AddonConfigGatewayPluginAddonConfigGatewayPluginConfig {
+		return v.GatewayPluginConfigs
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigPtrOutput) ToAddonConfigGatewayPluginAddonConfigPtrOutput() AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigPtrOutput) ToAddonConfigGatewayPluginAddonConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigPtrOutput) Elem() AddonConfigGatewayPluginAddonConfigOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfig) AddonConfigGatewayPluginAddonConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfigGatewayPluginAddonConfig
+		return ret
+	}).(AddonConfigGatewayPluginAddonConfigOutput)
+}
+
+// The list of gateway plugin configs for which the addon is enabled.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigPtrOutput) GatewayPluginConfigs() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfig) []AddonConfigGatewayPluginAddonConfigGatewayPluginConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayPluginConfigs
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfig struct {
+	// Configuration for Apigee Edge gateways.
+	// Structure is documented below.
+	ApigeeEdgeConfig *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig `pulumi:"apigeeEdgeConfig"`
+	// Configuration for Apigee OPDK gateways.
+	// Structure is documented below.
+	ApigeeOpdkConfig *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig `pulumi:"apigeeOpdkConfig"`
+	// Configuration for Apigee X and Apigee Hybrid gateways.
+	// Structure is documented below.
+	ApigeeXHybridConfig *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig `pulumi:"apigeeXHybridConfig"`
+	// The name of the gateway plugin instance for which the config is to be specified.
+	// Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+	PluginInstance string `pulumi:"pluginInstance"`
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs{...}
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs struct {
+	// Configuration for Apigee Edge gateways.
+	// Structure is documented below.
+	ApigeeEdgeConfig AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrInput `pulumi:"apigeeEdgeConfig"`
+	// Configuration for Apigee OPDK gateways.
+	// Structure is documented below.
+	ApigeeOpdkConfig AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrInput `pulumi:"apigeeOpdkConfig"`
+	// Configuration for Apigee X and Apigee Hybrid gateways.
+	// Structure is documented below.
+	ApigeeXHybridConfig AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrInput `pulumi:"apigeeXHybridConfig"`
+	// The name of the gateway plugin instance for which the config is to be specified.
+	// Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+	PluginInstance pulumi.StringInput `pulumi:"pluginInstance"`
+}
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfig)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput)
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArray and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArray{ AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs{...} }
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArray []AddonConfigGatewayPluginAddonConfigGatewayPluginConfigInput
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddonConfigGatewayPluginAddonConfigGatewayPluginConfig)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArray) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArray) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput {
+	return o
+}
+
+// Configuration for Apigee Edge gateways.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput) ApigeeEdgeConfig() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig {
+		return v.ApigeeEdgeConfig
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput)
+}
+
+// Configuration for Apigee OPDK gateways.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput) ApigeeOpdkConfig() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig {
+		return v.ApigeeOpdkConfig
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput)
+}
+
+// Configuration for Apigee X and Apigee Hybrid gateways.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput) ApigeeXHybridConfig() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig {
+		return v.ApigeeXHybridConfig
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput)
+}
+
+// The name of the gateway plugin instance for which the config is to be specified.
+// Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput) PluginInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfig) string { return v.PluginInstance }).(pulumi.StringOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddonConfigGatewayPluginAddonConfigGatewayPluginConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput) Index(i pulumi.IntInput) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddonConfigGatewayPluginAddonConfigGatewayPluginConfig {
+		return vs[0].([]AddonConfigGatewayPluginAddonConfigGatewayPluginConfig)[vs[1].(int)]
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig struct {
+	// The filter to apply on the resources managed by the gateway plugin instance.
+	// Structure is documented below.
+	EnvironmentFilter *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter `pulumi:"environmentFilter"`
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs{...}
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs struct {
+	// The filter to apply on the resources managed by the gateway plugin instance.
+	// Structure is documented below.
+	EnvironmentFilter AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrInput `pulumi:"environmentFilter"`
+}
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput)
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput).ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(ctx)
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs, AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtr and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrInput` via:
+//
+//	        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput
+}
+
+type addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrType AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs
+
+func AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtr(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrInput {
+	return (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrType)(v)
+}
+
+func (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig)(nil)).Elem()
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return o.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig {
+		return &v
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput)
+}
+
+// The filter to apply on the resources managed by the gateway plugin instance.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput) EnvironmentFilter() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter {
+		return v.EnvironmentFilter
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput) Elem() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig
+		return ret
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput)
+}
+
+// The filter to apply on the resources managed by the gateway plugin instance.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput) EnvironmentFilter() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentFilter
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter struct {
+	// Indicates if this filter should match all environments or only a subset of environments.
+	AllEnvironments *bool `pulumi:"allEnvironments"`
+	// If provided, only environments in this list are matched.
+	Environments []string `pulumi:"environments"`
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs{...}
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs struct {
+	// Indicates if this filter should match all environments or only a subset of environments.
+	AllEnvironments pulumi.BoolPtrInput `pulumi:"allEnvironments"`
+	// If provided, only environments in this list are matched.
+	Environments pulumi.StringArrayInput `pulumi:"environments"`
+}
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput)
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput).ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(ctx)
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs, AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtr and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrInput` via:
+//
+//	        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput
+}
+
+type addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrType AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs
+
+func AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtr(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrInput {
+	return (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrType)(v)
+}
+
+func (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return o.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter {
+		return &v
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput)
+}
+
+// Indicates if this filter should match all environments or only a subset of environments.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput) AllEnvironments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter) *bool {
+		return v.AllEnvironments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If provided, only environments in this list are matched.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter) []string {
+		return v.Environments
+	}).(pulumi.StringArrayOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput) Elem() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter
+		return ret
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput)
+}
+
+// Indicates if this filter should match all environments or only a subset of environments.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput) AllEnvironments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllEnvironments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If provided, only environments in this list are matched.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Environments
+	}).(pulumi.StringArrayOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig struct {
+	// The filter to apply on the resources managed by the gateway plugin instance.
+	// Structure is documented below.
+	EnvironmentFilter *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter `pulumi:"environmentFilter"`
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs{...}
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs struct {
+	// The filter to apply on the resources managed by the gateway plugin instance.
+	// Structure is documented below.
+	EnvironmentFilter AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrInput `pulumi:"environmentFilter"`
+}
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput)
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput).ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(ctx)
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs, AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtr and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrInput` via:
+//
+//	        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput
+}
+
+type addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrType AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs
+
+func AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtr(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrInput {
+	return (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrType)(v)
+}
+
+func (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig)(nil)).Elem()
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return o.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig {
+		return &v
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput)
+}
+
+// The filter to apply on the resources managed by the gateway plugin instance.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput) EnvironmentFilter() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter {
+		return v.EnvironmentFilter
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput) Elem() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig
+		return ret
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput)
+}
+
+// The filter to apply on the resources managed by the gateway plugin instance.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput) EnvironmentFilter() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentFilter
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter struct {
+	// Indicates if this filter should match all environments or only a subset of environments.
+	AllEnvironments *bool `pulumi:"allEnvironments"`
+	// If provided, only environments in this list are matched.
+	Environments []string `pulumi:"environments"`
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs{...}
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs struct {
+	// Indicates if this filter should match all environments or only a subset of environments.
+	AllEnvironments pulumi.BoolPtrInput `pulumi:"allEnvironments"`
+	// If provided, only environments in this list are matched.
+	Environments pulumi.StringArrayInput `pulumi:"environments"`
+}
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput)
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput).ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(ctx)
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs, AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtr and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrInput` via:
+//
+//	        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput
+}
+
+type addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrType AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs
+
+func AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtr(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrInput {
+	return (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrType)(v)
+}
+
+func (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return o.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter {
+		return &v
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput)
+}
+
+// Indicates if this filter should match all environments or only a subset of environments.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput) AllEnvironments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter) *bool {
+		return v.AllEnvironments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If provided, only environments in this list are matched.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter) []string {
+		return v.Environments
+	}).(pulumi.StringArrayOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput) Elem() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter
+		return ret
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput)
+}
+
+// Indicates if this filter should match all environments or only a subset of environments.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput) AllEnvironments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllEnvironments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If provided, only environments in this list are matched.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Environments
+	}).(pulumi.StringArrayOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig struct {
+	// The filter to apply on the resources managed by the gateway plugin instance.
+	// Structure is documented below.
+	EnvironmentFilter *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter `pulumi:"environmentFilter"`
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs{...}
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs struct {
+	// The filter to apply on the resources managed by the gateway plugin instance.
+	// Structure is documented below.
+	EnvironmentFilter AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrInput `pulumi:"environmentFilter"`
+}
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput)
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput).ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(ctx)
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs, AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtr and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrInput` via:
+//
+//	        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput
+}
+
+type addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrType AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs
+
+func AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtr(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrInput {
+	return (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrType)(v)
+}
+
+func (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig)(nil)).Elem()
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return o.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig {
+		return &v
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput)
+}
+
+// The filter to apply on the resources managed by the gateway plugin instance.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput) EnvironmentFilter() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter {
+		return v.EnvironmentFilter
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput) Elem() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig
+		return ret
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput)
+}
+
+// The filter to apply on the resources managed by the gateway plugin instance.
+// Structure is documented below.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput) EnvironmentFilter() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentFilter
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter struct {
+	// Indicates if this filter should match all environments or only a subset of environments.
+	AllEnvironments *bool `pulumi:"allEnvironments"`
+	// If provided, only environments in this list are matched.
+	Environments []string `pulumi:"environments"`
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterInput` via:
+//
+//	AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs{...}
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs struct {
+	// Indicates if this filter should match all environments or only a subset of environments.
+	AllEnvironments pulumi.BoolPtrInput `pulumi:"allEnvironments"`
+	// If provided, only environments in this list are matched.
+	Environments pulumi.StringArrayInput `pulumi:"environments"`
+}
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput)
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (i AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput).ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(ctx)
+}
+
+// AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrInput is an input type that accepts AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs, AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtr and AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput values.
+// You can construct a concrete instance of `AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrInput` via:
+//
+//	        AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrInput interface {
+	pulumi.Input
+
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput
+	ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput
+}
+
+type addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrType AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs
+
+func AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtr(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrInput {
+	return (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrType)(v)
+}
+
+func (*addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return i.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *addonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrType) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return o.ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(context.Background())
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter) *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter {
+		return &v
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput)
+}
+
+// Indicates if this filter should match all environments or only a subset of environments.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput) AllEnvironments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter) *bool {
+		return v.AllEnvironments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If provided, only environments in this list are matched.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter) []string {
+		return v.Environments
+	}).(pulumi.StringArrayOutput)
+}
+
+type AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter)(nil)).Elem()
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput) ToAddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutputWithContext(ctx context.Context) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput {
+	return o
+}
+
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput) Elem() AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter) AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter {
+		if v != nil {
+			return *v
+		}
+		var ret AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter
+		return ret
+	}).(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput)
+}
+
+// Indicates if this filter should match all environments or only a subset of environments.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput) AllEnvironments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllEnvironments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If provided, only environments in this list are matched.
+func (o AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Environments
+	}).(pulumi.StringArrayOutput)
+}
+
 type ApiHubInstanceConfig struct {
 	// Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
 	// The CMEK name should follow the format of
@@ -4177,6 +5672,26 @@ func (o PluginInstanceAuthConfigUserPasswordConfigPasswordPtrOutput) SecretVersi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigInput)(nil)).Elem(), AddonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigPtrInput)(nil)).Elem(), AddonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigAllDataAddonConfigInput)(nil)).Elem(), AddonConfigAllDataAddonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigAllDataAddonConfigPtrInput)(nil)).Elem(), AddonConfigAllDataAddonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigPtrInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrInput)(nil)).Elem(), AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiHubInstanceConfigInput)(nil)).Elem(), ApiHubInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiHubInstanceConfigPtrInput)(nil)).Elem(), ApiHubInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CurationEndpointInput)(nil)).Elem(), CurationEndpointArgs{})
@@ -4229,6 +5744,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigPtrInput)(nil)).Elem(), PluginInstanceAuthConfigUserPasswordConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigPasswordInput)(nil)).Elem(), PluginInstanceAuthConfigUserPasswordConfigPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PluginInstanceAuthConfigUserPasswordConfigPasswordPtrInput)(nil)).Elem(), PluginInstanceAuthConfigUserPasswordConfigPasswordArgs{})
+	pulumi.RegisterOutputType(AddonConfigOutput{})
+	pulumi.RegisterOutputType(AddonConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonConfigAllDataAddonConfigOutput{})
+	pulumi.RegisterOutputType(AddonConfigAllDataAddonConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArrayOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterPtrOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterPtrOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterOutput{})
+	pulumi.RegisterOutputType(AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterPtrOutput{})
 	pulumi.RegisterOutputType(ApiHubInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ApiHubInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(CurationEndpointOutput{})

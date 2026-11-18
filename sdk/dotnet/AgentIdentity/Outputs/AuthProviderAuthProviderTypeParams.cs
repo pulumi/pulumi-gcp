@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.AgentIdentity.Outputs
         /// </summary>
         public readonly Outputs.AuthProviderAuthProviderTypeParamsApiKey? ApiKey;
         /// <summary>
+        /// Parameters for Connector Reference authentication.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider? ConnectorReferenceAuthProvider;
+        /// <summary>
         /// (Output)
         /// Message describing GeminiEnterpriseAuthProviderParams object.
         /// Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the GeAuthProvider type.
@@ -34,21 +39,32 @@ namespace Pulumi.Gcp.AgentIdentity.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AuthProviderAuthProviderTypeParamsTwoLeggedOauth? TwoLeggedOauth;
+        /// <summary>
+        /// Parameters for Cross-App Access authentication.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AuthProviderAuthProviderTypeParamsXaaAuthProvider? XaaAuthProvider;
 
         [OutputConstructor]
         private AuthProviderAuthProviderTypeParams(
             Outputs.AuthProviderAuthProviderTypeParamsApiKey? apiKey,
 
+            Outputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider? connectorReferenceAuthProvider,
+
             ImmutableArray<Outputs.AuthProviderAuthProviderTypeParamsGeAuthProvider> geAuthProviders,
 
             Outputs.AuthProviderAuthProviderTypeParamsThreeLeggedOauth? threeLeggedOauth,
 
-            Outputs.AuthProviderAuthProviderTypeParamsTwoLeggedOauth? twoLeggedOauth)
+            Outputs.AuthProviderAuthProviderTypeParamsTwoLeggedOauth? twoLeggedOauth,
+
+            Outputs.AuthProviderAuthProviderTypeParamsXaaAuthProvider? xaaAuthProvider)
         {
             ApiKey = apiKey;
+            ConnectorReferenceAuthProvider = connectorReferenceAuthProvider;
             GeAuthProviders = geAuthProviders;
             ThreeLeggedOauth = threeLeggedOauth;
             TwoLeggedOauth = twoLeggedOauth;
+            XaaAuthProvider = xaaAuthProvider;
         }
     }
 }

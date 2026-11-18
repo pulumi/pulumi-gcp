@@ -219,16 +219,11 @@ class Policy(pulumi.CustomResource):
         """
         A Cloud Identity Policy binds a Setting to a PolicyQuery for a Google Workspace / Cloud Identity customer.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about Policy, see:
 
-        * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/policies)
+        * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/policies)
         * How-to Guides
             * [Policy API overview](https://docs.cloud.google.com/identity/docs/concepts/overview-policies)
-
-        > **Note:** This is available only in beta
 
         ## Example Usage
 
@@ -240,16 +235,21 @@ class Policy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.cloudidentity.Policy("primary",
-            customer="customers/C01234567",
+            customer="customers/A01b123xz",
             policy_query={
                 "org_unit": "orgUnits/03abcxyz",
-                "group": "groups/0123456789",
-                "query": "true",
             },
             setting={
-                "type": "something.googleapis.com/SettingType",
+                "type": "settings/detector.word_list",
                 "value_json": json.dumps({
-                    "enabled": True,
+                    "displayName": "Project Sensitive Terms",
+                    "description": "Detector for project-specific confidential keywords.",
+                    "wordList": {
+                        "words": [
+                            "confidential",
+                            "top-secret",
+                        ],
+                    },
                 }),
             })
         ```
@@ -292,16 +292,11 @@ class Policy(pulumi.CustomResource):
         """
         A Cloud Identity Policy binds a Setting to a PolicyQuery for a Google Workspace / Cloud Identity customer.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about Policy, see:
 
-        * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/policies)
+        * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/policies)
         * How-to Guides
             * [Policy API overview](https://docs.cloud.google.com/identity/docs/concepts/overview-policies)
-
-        > **Note:** This is available only in beta
 
         ## Example Usage
 
@@ -313,16 +308,21 @@ class Policy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.cloudidentity.Policy("primary",
-            customer="customers/C01234567",
+            customer="customers/A01b123xz",
             policy_query={
                 "org_unit": "orgUnits/03abcxyz",
-                "group": "groups/0123456789",
-                "query": "true",
             },
             setting={
-                "type": "something.googleapis.com/SettingType",
+                "type": "settings/detector.word_list",
                 "value_json": json.dumps({
-                    "enabled": True,
+                    "displayName": "Project Sensitive Terms",
+                    "description": "Detector for project-specific confidential keywords.",
+                    "wordList": {
+                        "words": [
+                            "confidential",
+                            "top-secret",
+                        ],
+                    },
                 }),
             })
         ```

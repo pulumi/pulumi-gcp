@@ -154,6 +154,16 @@ import (
 type RegionPerInstanceConfig struct {
 	pulumi.CustomResourceState
 
+	// Beta The list of allowed actions to perform on the instance during an update.
+	// `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+	// Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+	// Possible values are:
+	// * REPLACE
+	// * RESTART
+	// * RESTART_IN_PLACE
+	// * REFRESH
+	// * NONE
+	AllowedActions pulumi.StringArrayOutput `pulumi:"allowedActions"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -229,6 +239,16 @@ func GetRegionPerInstanceConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionPerInstanceConfig resources.
 type regionPerInstanceConfigState struct {
+	// Beta The list of allowed actions to perform on the instance during an update.
+	// `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+	// Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+	// Possible values are:
+	// * REPLACE
+	// * RESTART
+	// * RESTART_IN_PLACE
+	// * REFRESH
+	// * NONE
+	AllowedActions []string `pulumi:"allowedActions"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -272,6 +292,16 @@ type regionPerInstanceConfigState struct {
 }
 
 type RegionPerInstanceConfigState struct {
+	// Beta The list of allowed actions to perform on the instance during an update.
+	// `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+	// Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+	// Possible values are:
+	// * REPLACE
+	// * RESTART
+	// * RESTART_IN_PLACE
+	// * REFRESH
+	// * NONE
+	AllowedActions pulumi.StringArrayInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -325,6 +355,16 @@ func RegionPerInstanceConfigExists(ctx *pulumi.Context,
 }
 
 type regionPerInstanceConfigArgs struct {
+	// Beta The list of allowed actions to perform on the instance during an update.
+	// `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+	// Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+	// Possible values are:
+	// * REPLACE
+	// * RESTART
+	// * RESTART_IN_PLACE
+	// * REFRESH
+	// * NONE
+	AllowedActions []string `pulumi:"allowedActions"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -369,6 +409,16 @@ type regionPerInstanceConfigArgs struct {
 
 // The set of arguments for constructing a RegionPerInstanceConfig resource.
 type RegionPerInstanceConfigArgs struct {
+	// Beta The list of allowed actions to perform on the instance during an update.
+	// `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+	// Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+	// Possible values are:
+	// * REPLACE
+	// * RESTART
+	// * RESTART_IN_PLACE
+	// * REFRESH
+	// * NONE
+	AllowedActions pulumi.StringArrayInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -496,6 +546,19 @@ func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigOutput() RegionP
 
 func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigOutputWithContext(ctx context.Context) RegionPerInstanceConfigOutput {
 	return o
+}
+
+// Beta The list of allowed actions to perform on the instance during an update.
+// `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+// Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+// Possible values are:
+// * REPLACE
+// * RESTART
+// * RESTART_IN_PLACE
+// * REFRESH
+// * NONE
+func (o RegionPerInstanceConfigOutput) AllowedActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionPerInstanceConfig) pulumi.StringArrayOutput { return v.AllowedActions }).(pulumi.StringArrayOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

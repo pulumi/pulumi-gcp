@@ -97,14 +97,18 @@ public final class IAMMemberState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fully-qualified name of the service account to apply policy to.
+     * The fully-qualified name of the service account to apply policy to,
+     * in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+     * Unlike an email, a unique ID never refers to a later account recreated with the same email.
      * 
      */
     @Import(name="serviceAccountId")
     private @Nullable Output<String> serviceAccountId;
 
     /**
-     * @return The fully-qualified name of the service account to apply policy to.
+     * @return The fully-qualified name of the service account to apply policy to,
+     * in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+     * Unlike an email, a unique ID never refers to a later account recreated with the same email.
      * 
      */
     public Optional<Output<String>> serviceAccountId() {
@@ -244,7 +248,9 @@ public final class IAMMemberState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccountId The fully-qualified name of the service account to apply policy to.
+         * @param serviceAccountId The fully-qualified name of the service account to apply policy to,
+         * in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+         * Unlike an email, a unique ID never refers to a later account recreated with the same email.
          * 
          * @return builder
          * 
@@ -255,7 +261,9 @@ public final class IAMMemberState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccountId The fully-qualified name of the service account to apply policy to.
+         * @param serviceAccountId The fully-qualified name of the service account to apply policy to,
+         * in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+         * Unlike an email, a unique ID never refers to a later account recreated with the same email.
          * 
          * @return builder
          * 

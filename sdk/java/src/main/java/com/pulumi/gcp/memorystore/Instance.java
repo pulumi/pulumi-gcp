@@ -652,6 +652,90 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Memorystore Instance Auto Created Endpoints Ipv6
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.memorystore.Instance;
+ * import com.pulumi.gcp.memorystore.InstanceArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .enableUlaInternalIpv6(true)
+ *             .build());
+ * 
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("asia-east1")
+ *             .network(producerNet.id())
+ *             .stackType("IPV4_IPV6")
+ *             .ipv6AccessType("INTERNAL")
+ *             .build());
+ * 
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
+ *             .name("my-policy")
+ *             .location("asia-east1")
+ *             .serviceClass("gcp-memorystore")
+ *             .description("my basic service connection policy")
+ *             .network(producerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(producerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var instance_ipv6 = new Instance("instance-ipv6", InstanceArgs.builder()
+ *             .instanceId("ipv6-instance")
+ *             .shardCount(1)
+ *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
+ *                 .network(producerNet.id())
+ *                 .projectId(project.projectId())
+ *                 .ipVersion("IPV6")
+ *                 .build())
+ *             .location("asia-east1")
+ *             .nodeType("SHARED_CORE_NANO")
+ *             .deletionProtectionEnabled(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Instance can be imported using any of these accepted formats:

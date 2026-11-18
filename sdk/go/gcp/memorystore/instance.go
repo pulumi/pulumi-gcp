@@ -611,6 +611,86 @@ import (
 //
 // ```
 //
+// ### Memorystore Instance Auto Created Endpoints Ipv6
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//				EnableUlaInternalIpv6: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
+//				Name:           pulumi.String("my-subnet"),
+//				IpCidrRange:    pulumi.String("10.0.0.248/29"),
+//				Region:         pulumi.String("asia-east1"),
+//				Network:        producerNet.ID(),
+//				StackType:      pulumi.String("IPV4_IPV6"),
+//				Ipv6AccessType: pulumi.String("INTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("my-policy"),
+//				Location:     pulumi.String("asia-east1"),
+//				ServiceClass: pulumi.String("gcp-memorystore"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      producerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						producerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = memorystore.NewInstance(ctx, "instance-ipv6", &memorystore.InstanceArgs{
+//				InstanceId: pulumi.String("ipv6-instance"),
+//				ShardCount: pulumi.Int(1),
+//				DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
+//					&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
+//						Network:   producerNet.ID(),
+//						ProjectId: pulumi.String(project.ProjectId),
+//						IpVersion: pulumi.String("IPV6"),
+//					},
+//				},
+//				Location:                  pulumi.String("asia-east1"),
+//				NodeType:                  pulumi.String("SHARED_CORE_NANO"),
+//				DeletionProtectionEnabled: pulumi.Bool(false),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Instance can be imported using any of these accepted formats:

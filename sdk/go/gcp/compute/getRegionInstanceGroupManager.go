@@ -89,6 +89,7 @@ type LookupRegionInstanceGroupManagerResult struct {
 	Region                      *string                                                  `pulumi:"region"`
 	ResourcePolicies            []GetRegionInstanceGroupManagerResourcePolicy            `pulumi:"resourcePolicies"`
 	SelfLink                    *string                                                  `pulumi:"selfLink"`
+	ServiceAccount              string                                                   `pulumi:"serviceAccount"`
 	StandbyPolicies             []GetRegionInstanceGroupManagerStandbyPolicy             `pulumi:"standbyPolicies"`
 	StatefulDisks               []GetRegionInstanceGroupManagerStatefulDisk              `pulumi:"statefulDisks"`
 	StatefulExternalIps         []GetRegionInstanceGroupManagerStatefulExternalIp        `pulumi:"statefulExternalIps"`
@@ -241,6 +242,10 @@ func (o LookupRegionInstanceGroupManagerResultOutput) ResourcePolicies() GetRegi
 
 func (o LookupRegionInstanceGroupManagerResultOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRegionInstanceGroupManagerResultOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionInstanceGroupManagerResultOutput) StandbyPolicies() GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {

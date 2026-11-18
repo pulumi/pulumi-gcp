@@ -18,14 +18,14 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
     public static final UserSqlServerUserDetailArgs Empty = new UserSqlServerUserDetailArgs();
 
     /**
-     * If the user has been disabled.
+     * (read only) If the user has been disabled.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return If the user has been disabled.
+     * @return (read only) If the user has been disabled.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -33,14 +33,14 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The server roles for this user in the database.
+     * (read only) The server roles for this user in the database.
      * 
      */
     @Import(name="serverRoles")
     private @Nullable Output<List<String>> serverRoles;
 
     /**
-     * @return The server roles for this user in the database.
+     * @return (read only) The server roles for this user in the database.
      * 
      */
     public Optional<Output<List<String>>> serverRoles() {
@@ -73,7 +73,7 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param disabled If the user has been disabled.
+         * @param disabled (read only) If the user has been disabled.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param disabled If the user has been disabled.
+         * @param disabled (read only) If the user has been disabled.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverRoles The server roles for this user in the database.
+         * @param serverRoles (read only) The server roles for this user in the database.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverRoles The server roles for this user in the database.
+         * @param serverRoles (read only) The server roles for this user in the database.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverRoles The server roles for this user in the database.
+         * @param serverRoles (read only) The server roles for this user in the database.
          * 
          * @return builder
          * 

@@ -21,13 +21,14 @@ __all__ = ['GlobalForwardingRuleArgs', 'GlobalForwardingRule']
 @pulumi.input_type
 class GlobalForwardingRuleArgs:
     def __init__(__self__, *,
-                 target: pulumi.Input[_builtins.str],
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_service: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -41,22 +42,16 @@ class GlobalForwardingRuleArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_directory_registrations: pulumi.Input[Optional['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
                  source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalForwardingRule resource.
 
-        :param pulumi.Input[_builtins.str] target: The URL of the target resource to receive the matched traffic.  For
-               regional forwarding rules, this target must be in the same region as the
-               forwarding rule. For global forwarding rules, this target must be a global
-               load balancing resource.
-               The forwarded traffic must be of a type appropriate to the target object.
-               *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-               *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-               *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-               *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-                  For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         :param pulumi.Input[_builtins.bool] allow_psc_global_access: (Optional, Beta)
                This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[_builtins.str] backend_service: Identifies the backend service to which the forwarding rule sends traffic.
+               Required for Global External Passthrough Network Load Balancing;
+               must be omitted for all other load balancer types.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -113,6 +108,9 @@ class GlobalForwardingRuleArgs:
                  specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
                  When reading an `IPAddress`, the API always returns the IP
                  address number.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: IP addresses for which this forwarding rule accepts traffic, ordered by
+               Availability Group 0 followed by Availability Group 1. Specify literal
+               IP addresses (for example, `google_compute_global_address.example.address`).
         :param pulumi.Input[_builtins.str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -132,7 +130,7 @@ class GlobalForwardingRuleArgs:
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL_MANAGED`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -207,10 +205,21 @@ class GlobalForwardingRuleArgs:
                If the network specified is in auto subnet mode, this field is optional.
                However, a subnetwork must be specified if the network is in custom subnet
                mode or when creating external forwarding rule with IPv6.
+        :param pulumi.Input[_builtins.str] target: The URL of the target resource to receive the matched traffic.  For
+               regional forwarding rules, this target must be in the same region as the
+               forwarding rule. For global forwarding rules, this target must be a global
+               load balancing resource.
+               The forwarded traffic must be of a type appropriate to the target object.
+               *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+               *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+               *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+               *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+                  For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
-        pulumi.set(__self__, "target", target)
         if allow_psc_global_access is not None:
             pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+        if backend_service is not None:
+            pulumi.set(__self__, "backend_service", backend_service)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -221,6 +230,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "external_managed_backend_bucket_migration_testing_percentage", external_managed_backend_bucket_migration_testing_percentage)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ip_addresses is not None:
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
         if ip_protocol is not None:
             pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ip_version is not None:
@@ -249,27 +260,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
-
-    @_builtins.property
-    @pulumi.getter
-    def target(self) -> pulumi.Input[_builtins.str]:
-        """
-        The URL of the target resource to receive the matched traffic.  For
-        regional forwarding rules, this target must be in the same region as the
-        forwarding rule. For global forwarding rules, this target must be a global
-        load balancing resource.
-        The forwarded traffic must be of a type appropriate to the target object.
-        *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-        *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-        *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-           For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-        """
-        return pulumi.get(self, "target")
-
-    @target.setter
-    def target(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "target", value)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
 
     @_builtins.property
     @pulumi.getter(name="allowPscGlobalAccess")
@@ -283,6 +275,20 @@ class GlobalForwardingRuleArgs:
     @allow_psc_global_access.setter
     def allow_psc_global_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_psc_global_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendService")
+    def backend_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifies the backend service to which the forwarding rule sends traffic.
+        Required for Global External Passthrough Network Load Balancing;
+        must be omitted for all other load balancer types.
+        """
+        return pulumi.get(self, "backend_service")
+
+    @backend_service.setter
+    def backend_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_service", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -396,6 +402,20 @@ class GlobalForwardingRuleArgs:
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        IP addresses for which this forwarding rule accepts traffic, ordered by
+        Availability Group 0 followed by Availability Group 1. Specify literal
+        IP addresses (for example, `google_compute_global_address.example.address`).
+        """
+        return pulumi.get(self, "ip_addresses")
+
+    @ip_addresses.setter
+    def ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ip_addresses", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -451,7 +471,7 @@ class GlobalForwardingRuleArgs:
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         Default value is `EXTERNAL_MANAGED`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -643,11 +663,33 @@ class GlobalForwardingRuleArgs:
     def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URL of the target resource to receive the matched traffic.  For
+        regional forwarding rules, this target must be in the same region as the
+        forwarding rule. For global forwarding rules, this target must be a global
+        load balancing resource.
+        The forwarded traffic must be of a type appropriate to the target object.
+        *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+        *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+        *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+           For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target", value)
+
 
 @pulumi.input_type
 class _GlobalForwardingRuleState:
     def __init__(__self__, *,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_service: pulumi.Input[Optional[_builtins.str]] = None,
                  base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -656,6 +698,7 @@ class _GlobalForwardingRuleState:
                  external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
                  forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -681,6 +724,9 @@ class _GlobalForwardingRuleState:
 
         :param pulumi.Input[_builtins.bool] allow_psc_global_access: (Optional, Beta)
                This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[_builtins.str] backend_service: Identifies the backend service to which the forwarding rule sends traffic.
+               Required for Global External Passthrough Network Load Balancing;
+               must be omitted for all other load balancer types.
         :param pulumi.Input[_builtins.str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -740,6 +786,9 @@ class _GlobalForwardingRuleState:
                  specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
                  When reading an `IPAddress`, the API always returns the IP
                  address number.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: IP addresses for which this forwarding rule accepts traffic, ordered by
+               Availability Group 0 followed by Availability Group 1. Specify literal
+               IP addresses (for example, `google_compute_global_address.example.address`).
         :param pulumi.Input[_builtins.str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -761,7 +810,7 @@ class _GlobalForwardingRuleState:
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL_MANAGED`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -854,6 +903,8 @@ class _GlobalForwardingRuleState:
         """
         if allow_psc_global_access is not None:
             pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+        if backend_service is not None:
+            pulumi.set(__self__, "backend_service", backend_service)
         if base_forwarding_rule is not None:
             pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
         if deletion_policy is not None:
@@ -870,6 +921,8 @@ class _GlobalForwardingRuleState:
             pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ip_addresses is not None:
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
         if ip_protocol is not None:
             pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ip_version is not None:
@@ -923,6 +976,20 @@ class _GlobalForwardingRuleState:
     @allow_psc_global_access.setter
     def allow_psc_global_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_psc_global_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendService")
+    def backend_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifies the backend service to which the forwarding rule sends traffic.
+        Required for Global External Passthrough Network Load Balancing;
+        must be omitted for all other load balancer types.
+        """
+        return pulumi.get(self, "backend_service")
+
+    @backend_service.setter
+    def backend_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_service", value)
 
     @_builtins.property
     @pulumi.getter(name="baseForwardingRule")
@@ -1072,6 +1139,20 @@ class _GlobalForwardingRuleState:
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        IP addresses for which this forwarding rule accepts traffic, ordered by
+        Availability Group 0 followed by Availability Group 1. Specify literal
+        IP addresses (for example, `google_compute_global_address.example.address`).
+        """
+        return pulumi.get(self, "ip_addresses")
+
+    @ip_addresses.setter
+    def ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ip_addresses", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1140,7 +1221,7 @@ class _GlobalForwardingRuleState:
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         Default value is `EXTERNAL_MANAGED`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1410,11 +1491,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_service: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1810,6 +1893,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_psc_global_access: (Optional, Beta)
                This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[_builtins.str] backend_service: Identifies the backend service to which the forwarding rule sends traffic.
+               Required for Global External Passthrough Network Load Balancing;
+               must be omitted for all other load balancer types.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1866,6 +1952,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
                  When reading an `IPAddress`, the API always returns the IP
                  address number.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: IP addresses for which this forwarding rule accepts traffic, ordered by
+               Availability Group 0 followed by Availability Group 1. Specify literal
+               IP addresses (for example, `google_compute_global_address.example.address`).
         :param pulumi.Input[_builtins.str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -1885,7 +1974,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL_MANAGED`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict', 'outputs.GlobalForwardingRuleMetadataFilter']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -1975,7 +2064,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GlobalForwardingRuleArgs,
+                 args: Optional[GlobalForwardingRuleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a GlobalForwardingRule resource. Global forwarding rules are
@@ -2368,11 +2457,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_service: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
                  external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2398,11 +2489,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__ = GlobalForwardingRuleArgs.__new__(GlobalForwardingRuleArgs)
 
             __props__.__dict__["allow_psc_global_access"] = allow_psc_global_access
+            __props__.__dict__["backend_service"] = backend_service
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["external_managed_backend_bucket_migration_state"] = external_managed_backend_bucket_migration_state
             __props__.__dict__["external_managed_backend_bucket_migration_testing_percentage"] = external_managed_backend_bucket_migration_testing_percentage
             __props__.__dict__["ip_address"] = ip_address
+            __props__.__dict__["ip_addresses"] = ip_addresses
             __props__.__dict__["ip_protocol"] = ip_protocol
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["labels"] = labels
@@ -2417,8 +2510,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["service_directory_registrations"] = service_directory_registrations
             __props__.__dict__["source_ip_ranges"] = source_ip_ranges
             __props__.__dict__["subnetwork"] = subnetwork
-            if target is None and not opts.urn:
-                raise TypeError("Missing required property 'target'")
             __props__.__dict__["target"] = target
             __props__.__dict__["base_forwarding_rule"] = None
             __props__.__dict__["effective_labels"] = None
@@ -2441,6 +2532,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_service: pulumi.Input[Optional[_builtins.str]] = None,
             base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2449,6 +2541,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
             forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
             ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             ip_version: pulumi.Input[Optional[_builtins.str]] = None,
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2478,6 +2571,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_psc_global_access: (Optional, Beta)
                This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[_builtins.str] backend_service: Identifies the backend service to which the forwarding rule sends traffic.
+               Required for Global External Passthrough Network Load Balancing;
+               must be omitted for all other load balancer types.
         :param pulumi.Input[_builtins.str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -2537,6 +2633,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
                  When reading an `IPAddress`, the API always returns the IP
                  address number.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: IP addresses for which this forwarding rule accepts traffic, ordered by
+               Availability Group 0 followed by Availability Group 1. Specify literal
+               IP addresses (for example, `google_compute_global_address.example.address`).
         :param pulumi.Input[_builtins.str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -2558,7 +2657,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL_MANAGED`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict', 'outputs.GlobalForwardingRuleMetadataFilter']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -2654,6 +2753,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__ = _GlobalForwardingRuleState.__new__(_GlobalForwardingRuleState)
 
         __props__.__dict__["allow_psc_global_access"] = allow_psc_global_access
+        __props__.__dict__["backend_service"] = backend_service
         __props__.__dict__["base_forwarding_rule"] = base_forwarding_rule
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
@@ -2662,6 +2762,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["external_managed_backend_bucket_migration_testing_percentage"] = external_managed_backend_bucket_migration_testing_percentage
         __props__.__dict__["forwarding_rule_id"] = forwarding_rule_id
         __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["ip_addresses"] = ip_addresses
         __props__.__dict__["ip_protocol"] = ip_protocol
         __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["label_fingerprint"] = label_fingerprint
@@ -2688,6 +2789,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_service: pulumi.Input[Optional[_builtins.str]] = None,
             base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2696,6 +2798,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
             forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
             ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             ip_version: pulumi.Input[Optional[_builtins.str]] = None,
             label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2718,6 +2821,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["allowPscGlobalAccess"] = allow_psc_global_access
+        __props__["backendService"] = backend_service
         __props__["baseForwardingRule"] = base_forwarding_rule
         __props__["deletionPolicy"] = deletion_policy
         __props__["description"] = description
@@ -2726,6 +2830,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__["externalManagedBackendBucketMigrationTestingPercentage"] = external_managed_backend_bucket_migration_testing_percentage
         __props__["forwardingRuleId"] = forwarding_rule_id
         __props__["ipAddress"] = ip_address
+        __props__["ipAddresses"] = ip_addresses
         __props__["ipProtocol"] = ip_protocol
         __props__["ipVersion"] = ip_version
         __props__["labelFingerprint"] = label_fingerprint
@@ -2756,6 +2861,16 @@ class GlobalForwardingRule(pulumi.CustomResource):
         This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         """
         return pulumi.get(self, "allow_psc_global_access")
+
+    @_builtins.property
+    @pulumi.getter(name="backendService")
+    def backend_service(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Identifies the backend service to which the forwarding rule sends traffic.
+        Required for Global External Passthrough Network Load Balancing;
+        must be omitted for all other load balancer types.
+        """
+        return pulumi.get(self, "backend_service")
 
     @_builtins.property
     @pulumi.getter(name="baseForwardingRule")
@@ -2873,6 +2988,16 @@ class GlobalForwardingRule(pulumi.CustomResource):
         return pulumi.get(self, "ip_address")
 
     @_builtins.property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        IP addresses for which this forwarding rule accepts traffic, ordered by
+        Availability Group 0 followed by Availability Group 1. Specify literal
+        IP addresses (for example, `google_compute_global_address.example.address`).
+        """
+        return pulumi.get(self, "ip_addresses")
+
+    @_builtins.property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Output[_builtins.str]:
         """
@@ -2925,7 +3050,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         Default value is `EXTERNAL_MANAGED`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -3108,7 +3233,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> pulumi.Output[_builtins.str]:
+    def target(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The URL of the target resource to receive the matched traffic.  For
         regional forwarding rules, this target must be in the same region as the

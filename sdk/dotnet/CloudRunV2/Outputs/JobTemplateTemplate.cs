@@ -41,6 +41,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.JobTemplateTemplateNodeSelector? NodeSelector;
         /// <summary>
+        /// Configuration for sandboxes.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.JobTemplateTemplateSandboxes? Sandboxes;
+        /// <summary>
         /// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         /// </summary>
         public readonly string? ServiceAccount;
@@ -81,6 +86,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.JobTemplateTemplateNodeSelector? nodeSelector,
 
+            Outputs.JobTemplateTemplateSandboxes? sandboxes,
+
             string? serviceAccount,
 
             string? timeout,
@@ -97,6 +104,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             GpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             MaxRetries = maxRetries;
             NodeSelector = nodeSelector;
+            Sandboxes = sandboxes;
             ServiceAccount = serviceAccount;
             Timeout = timeout;
             Volumes = volumes;

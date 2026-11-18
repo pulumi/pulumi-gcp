@@ -6344,6 +6344,11 @@ type ClusterClusterConfigGceClusterConfig struct {
 	// A map of the Compute Engine metadata entries to add to all instances
 	// (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata map[string]string `pulumi:"metadata"`
+	// Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+	// Structure defined below.
+	//
+	// ***
+	MultiZoneConfig *ClusterClusterConfigGceClusterConfigMultiZoneConfig `pulumi:"multiZoneConfig"`
 	// The name or selfLink of the Google Compute Engine
 	// network to the cluster will be part of. Conflicts with `subnetwork`.
 	// If neither is specified, this defaults to the "default" network.
@@ -6366,8 +6371,6 @@ type ClusterClusterConfigGceClusterConfig struct {
 	// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
 	// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-	//
-	// ***
 	ShieldedInstanceConfig *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork the cluster will be part of. Conflicts with `network`.
@@ -6408,6 +6411,11 @@ type ClusterClusterConfigGceClusterConfigArgs struct {
 	// A map of the Compute Engine metadata entries to add to all instances
 	// (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+	// Structure defined below.
+	//
+	// ***
+	MultiZoneConfig ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrInput `pulumi:"multiZoneConfig"`
 	// The name or selfLink of the Google Compute Engine
 	// network to the cluster will be part of. Conflicts with `subnetwork`.
 	// If neither is specified, this defaults to the "default" network.
@@ -6430,8 +6438,6 @@ type ClusterClusterConfigGceClusterConfigArgs struct {
 	// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
 	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
 	// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-	//
-	// ***
 	ShieldedInstanceConfig ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork the cluster will be part of. Conflicts with `network`.
@@ -6548,6 +6554,16 @@ func (o ClusterClusterConfigGceClusterConfigOutput) Metadata() pulumi.StringMapO
 	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+// Structure defined below.
+//
+// ***
+func (o ClusterClusterConfigGceClusterConfigOutput) MultiZoneConfig() ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigMultiZoneConfig {
+		return v.MultiZoneConfig
+	}).(ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput)
+}
+
 // The name or selfLink of the Google Compute Engine
 // network to the cluster will be part of. Conflicts with `subnetwork`.
 // If neither is specified, this defaults to the "default" network.
@@ -6592,8 +6608,6 @@ func (o ClusterClusterConfigGceClusterConfigOutput) ServiceAccountScopes() pulum
 }
 
 // Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-//
-// ***
 func (o ClusterClusterConfigGceClusterConfigOutput) ShieldedInstanceConfig() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfig
@@ -6682,6 +6696,19 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) Metadata() pulumi.StringM
 	}).(pulumi.StringMapOutput)
 }
 
+// Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+// Structure defined below.
+//
+// ***
+func (o ClusterClusterConfigGceClusterConfigPtrOutput) MultiZoneConfig() ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigMultiZoneConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MultiZoneConfig
+	}).(ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput)
+}
+
 // The name or selfLink of the Google Compute Engine
 // network to the cluster will be part of. Conflicts with `subnetwork`.
 // If neither is specified, this defaults to the "default" network.
@@ -6752,8 +6779,6 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) ServiceAccountScopes() pu
 }
 
 // Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-//
-// ***
 func (o ClusterClusterConfigGceClusterConfigPtrOutput) ShieldedInstanceConfig() ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
 		if v == nil {
@@ -6967,6 +6992,151 @@ func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput)
 		}
 		return v.EnableConfidentialCompute
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigMultiZoneConfig struct {
+	// The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+	//
+	// ***
+	TargetShape string `pulumi:"targetShape"`
+}
+
+// ClusterClusterConfigGceClusterConfigMultiZoneConfigInput is an input type that accepts ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs and ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigMultiZoneConfigInput` via:
+//
+//	ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs{...}
+type ClusterClusterConfigGceClusterConfigMultiZoneConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigGceClusterConfigMultiZoneConfigOutput() ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput
+	ToClusterClusterConfigGceClusterConfigMultiZoneConfigOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput
+}
+
+type ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs struct {
+	// The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+	//
+	// ***
+	TargetShape pulumi.StringInput `pulumi:"targetShape"`
+}
+
+func (ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigMultiZoneConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs) ToClusterClusterConfigGceClusterConfigMultiZoneConfigOutput() ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return i.ToClusterClusterConfigGceClusterConfigMultiZoneConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs) ToClusterClusterConfigGceClusterConfigMultiZoneConfigOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput)
+}
+
+func (i ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs) ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return i.ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs) ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput).ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrInput is an input type that accepts ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs, ClusterClusterConfigGceClusterConfigMultiZoneConfigPtr and ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrInput` via:
+//
+//	        ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput
+	ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput
+}
+
+type clusterClusterConfigGceClusterConfigMultiZoneConfigPtrType ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs
+
+func ClusterClusterConfigGceClusterConfigMultiZoneConfigPtr(v *ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs) ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrInput {
+	return (*clusterClusterConfigGceClusterConfigMultiZoneConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigGceClusterConfigMultiZoneConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigMultiZoneConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigGceClusterConfigMultiZoneConfigPtrType) ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return i.ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigGceClusterConfigMultiZoneConfigPtrType) ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigMultiZoneConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput) ToClusterClusterConfigGceClusterConfigMultiZoneConfigOutput() ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput) ToClusterClusterConfigGceClusterConfigMultiZoneConfigOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput) ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o.ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput) ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfigMultiZoneConfig) *ClusterClusterConfigGceClusterConfigMultiZoneConfig {
+		return &v
+	}).(ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput)
+}
+
+// The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+//
+// ***
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput) TargetShape() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigMultiZoneConfig) string { return v.TargetShape }).(pulumi.StringOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigMultiZoneConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput() ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) ToClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) Elem() ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigMultiZoneConfig) ClusterClusterConfigGceClusterConfigMultiZoneConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigGceClusterConfigMultiZoneConfig
+		return ret
+	}).(ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput)
+}
+
+// The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+//
+// ***
+func (o ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput) TargetShape() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigMultiZoneConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetShape
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigGceClusterConfigNodeGroupAffinity struct {
@@ -11526,16 +11696,16 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProv
 }
 
 type ClusterClusterConfigSecondaryWorkerFlexibleConfig struct {
-	// The boot disk size in GB.
-	// Changing this forces a new resource to be created.
+	// The boot disk size in GB. Changing this on an existing
+	// secondary worker group forces a new resource to be created.
 	// ***
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// The number of vCPUs per instance. Must be a power of 2
-	// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+	// (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
 	CoreCount int `pulumi:"coreCount"`
 	// Controls the hardware class for the flexible instance group.
 	// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-	// Changing this forces a new resource to be created.
+	// Changing this on an existing secondary worker group forces a new resource to be created.
 	HardwareClass *string `pulumi:"hardwareClass"`
 	// Specifies the number of secondary worker instances to create.
 	// Defaults to `0`; can be scaled down to `0`; updatable in place.
@@ -11554,16 +11724,16 @@ type ClusterClusterConfigSecondaryWorkerFlexibleConfigInput interface {
 }
 
 type ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs struct {
-	// The boot disk size in GB.
-	// Changing this forces a new resource to be created.
+	// The boot disk size in GB. Changing this on an existing
+	// secondary worker group forces a new resource to be created.
 	// ***
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// The number of vCPUs per instance. Must be a power of 2
-	// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+	// (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
 	CoreCount pulumi.IntInput `pulumi:"coreCount"`
 	// Controls the hardware class for the flexible instance group.
 	// Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-	// Changing this forces a new resource to be created.
+	// Changing this on an existing secondary worker group forces a new resource to be created.
 	HardwareClass pulumi.StringPtrInput `pulumi:"hardwareClass"`
 	// Specifies the number of secondary worker instances to create.
 	// Defaults to `0`; can be scaled down to `0`; updatable in place.
@@ -11647,22 +11817,22 @@ func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) ToClusterCluste
 	}).(ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput)
 }
 
-// The boot disk size in GB.
-// Changing this forces a new resource to be created.
+// The boot disk size in GB. Changing this on an existing
+// secondary worker group forces a new resource to be created.
 // ***
 func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSecondaryWorkerFlexibleConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 // The number of vCPUs per instance. Must be a power of 2
-// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+// (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
 func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) CoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSecondaryWorkerFlexibleConfig) int { return v.CoreCount }).(pulumi.IntOutput)
 }
 
 // Controls the hardware class for the flexible instance group.
 // Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-// Changing this forces a new resource to be created.
+// Changing this on an existing secondary worker group forces a new resource to be created.
 func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput) HardwareClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSecondaryWorkerFlexibleConfig) *string { return v.HardwareClass }).(pulumi.StringPtrOutput)
 }
@@ -11697,8 +11867,8 @@ func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) Elem() Clust
 	}).(ClusterClusterConfigSecondaryWorkerFlexibleConfigOutput)
 }
 
-// The boot disk size in GB.
-// Changing this forces a new resource to be created.
+// The boot disk size in GB. Changing this on an existing
+// secondary worker group forces a new resource to be created.
 // ***
 func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigSecondaryWorkerFlexibleConfig) *int {
@@ -11710,7 +11880,7 @@ func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) BootDiskSize
 }
 
 // The number of vCPUs per instance. Must be a power of 2
-// (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+// (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
 func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigSecondaryWorkerFlexibleConfig) *int {
 		if v == nil {
@@ -11722,7 +11892,7 @@ func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) CoreCount() 
 
 // Controls the hardware class for the flexible instance group.
 // Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-// Changing this forces a new resource to be created.
+// Changing this on an existing secondary worker group forces a new resource to be created.
 func (o ClusterClusterConfigSecondaryWorkerFlexibleConfigPtrOutput) HardwareClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigSecondaryWorkerFlexibleConfig) *string {
 		if v == nil {
@@ -43733,6 +43903,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigMultiZoneConfigInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigNodeGroupAffinityInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigReservationAffinityInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigReservationAffinityArgs{})
@@ -44215,6 +44387,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigMultiZoneConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigMultiZoneConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigReservationAffinityOutput{})

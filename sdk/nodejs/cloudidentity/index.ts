@@ -45,6 +45,16 @@ export type GroupMembership = import("./groupMembership").GroupMembership;
 export const GroupMembership: typeof import("./groupMembership").GroupMembership = null as any;
 utilities.lazyLoad(exports, ["GroupMembership"], () => require("./groupMembership"));
 
+export { InboundOidcSsoProfileArgs, InboundOidcSsoProfileState } from "./inboundOidcSsoProfile";
+export type InboundOidcSsoProfile = import("./inboundOidcSsoProfile").InboundOidcSsoProfile;
+export const InboundOidcSsoProfile: typeof import("./inboundOidcSsoProfile").InboundOidcSsoProfile = null as any;
+utilities.lazyLoad(exports, ["InboundOidcSsoProfile"], () => require("./inboundOidcSsoProfile"));
+
+export { InboundSamlSsoProfileArgs, InboundSamlSsoProfileState } from "./inboundSamlSsoProfile";
+export type InboundSamlSsoProfile = import("./inboundSamlSsoProfile").InboundSamlSsoProfile;
+export const InboundSamlSsoProfile: typeof import("./inboundSamlSsoProfile").InboundSamlSsoProfile = null as any;
+utilities.lazyLoad(exports, ["InboundSamlSsoProfile"], () => require("./inboundSamlSsoProfile"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
@@ -59,6 +69,10 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "gcp:cloudidentity/groupMembership:GroupMembership":
                 return new GroupMembership(name, <any>undefined, { urn })
+            case "gcp:cloudidentity/inboundOidcSsoProfile:InboundOidcSsoProfile":
+                return new InboundOidcSsoProfile(name, <any>undefined, { urn })
+            case "gcp:cloudidentity/inboundSamlSsoProfile:InboundSamlSsoProfile":
+                return new InboundSamlSsoProfile(name, <any>undefined, { urn })
             case "gcp:cloudidentity/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             default:
@@ -68,4 +82,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "cloudidentity/group", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudidentity/groupMembership", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudidentity/inboundOidcSsoProfile", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudidentity/inboundSamlSsoProfile", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudidentity/policy", _module)

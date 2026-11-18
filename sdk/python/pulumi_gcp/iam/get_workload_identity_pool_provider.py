@@ -27,7 +27,10 @@ class GetWorkloadIdentityPoolProviderResult:
     """
     A collection of values returned by getWorkloadIdentityPoolProvider.
     """
-    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, deletion_policy=None, description=None, disabled=None, display_name=None, id=None, name=None, oidcs=None, project=None, samls=None, state=None, workload_identity_pool_id=None, workload_identity_pool_provider_id=None, x509s=None):
+    def __init__(__self__, actor_providers=None, attribute_condition=None, attribute_mapping=None, aws=None, deletion_policy=None, description=None, disabled=None, display_name=None, id=None, name=None, oidcs=None, project=None, samls=None, state=None, workload_identity_pool_id=None, workload_identity_pool_provider_id=None, x509s=None):
+        if actor_providers and not isinstance(actor_providers, list):
+            raise TypeError("Expected argument 'actor_providers' to be a list")
+        pulumi.set(__self__, "actor_providers", actor_providers)
         if attribute_condition and not isinstance(attribute_condition, str):
             raise TypeError("Expected argument 'attribute_condition' to be a str")
         pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -76,6 +79,11 @@ class GetWorkloadIdentityPoolProviderResult:
         if x509s and not isinstance(x509s, list):
             raise TypeError("Expected argument 'x509s' to be a list")
         pulumi.set(__self__, "x509s", x509s)
+
+    @_builtins.property
+    @pulumi.getter(name="actorProviders")
+    def actor_providers(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "actor_providers")
 
     @_builtins.property
     @pulumi.getter(name="attributeCondition")
@@ -167,6 +175,7 @@ class AwaitableGetWorkloadIdentityPoolProviderResult(GetWorkloadIdentityPoolProv
         if False:
             yield self
         return GetWorkloadIdentityPoolProviderResult(
+            actor_providers=self.actor_providers,
             attribute_condition=self.attribute_condition,
             attribute_mapping=self.attribute_mapping,
             aws=self.aws,
@@ -223,6 +232,7 @@ def get_workload_identity_pool_provider(project: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider', __args__, opts=opts, typ=GetWorkloadIdentityPoolProviderResult).value
 
     return AwaitableGetWorkloadIdentityPoolProviderResult(
+        actor_providers=pulumi.get(__ret__, 'actor_providers'),
         attribute_condition=pulumi.get(__ret__, 'attribute_condition'),
         attribute_mapping=pulumi.get(__ret__, 'attribute_mapping'),
         aws=pulumi.get(__ret__, 'aws'),
@@ -276,6 +286,7 @@ def get_workload_identity_pool_provider_output(project: pulumi.Input[Optional[Op
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider', __args__, opts=opts, typ=GetWorkloadIdentityPoolProviderResult)
     return __ret__.apply(lambda __response__: GetWorkloadIdentityPoolProviderResult(
+        actor_providers=pulumi.get(__response__, 'actor_providers'),
         attribute_condition=pulumi.get(__response__, 'attribute_condition'),
         attribute_mapping=pulumi.get(__response__, 'attribute_mapping'),
         aws=pulumi.get(__response__, 'aws'),

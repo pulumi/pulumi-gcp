@@ -39,7 +39,9 @@ class IAMMemberArgs:
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[_builtins.str] service_account_id: The fully-qualified name of the service account to apply policy to.
+        :param pulumi.Input[_builtins.str] service_account_id: The fully-qualified name of the service account to apply policy to,
+               in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+               Unlike an email, a unique ID never refers to a later account recreated with the same email.
         :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
@@ -86,7 +88,9 @@ class IAMMemberArgs:
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The fully-qualified name of the service account to apply policy to.
+        The fully-qualified name of the service account to apply policy to,
+        in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+        Unlike an email, a unique ID never refers to a later account recreated with the same email.
         """
         return pulumi.get(self, "service_account_id")
 
@@ -133,7 +137,9 @@ class _IAMMemberState:
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[_builtins.str] service_account_id: The fully-qualified name of the service account to apply policy to.
+        :param pulumi.Input[_builtins.str] service_account_id: The fully-qualified name of the service account to apply policy to,
+               in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+               Unlike an email, a unique ID never refers to a later account recreated with the same email.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -208,7 +214,9 @@ class _IAMMemberState:
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The fully-qualified name of the service account to apply policy to.
+        The fully-qualified name of the service account to apply policy to,
+        in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+        Unlike an email, a unique ID never refers to a later account recreated with the same email.
         """
         return pulumi.get(self, "service_account_id")
 
@@ -342,6 +350,9 @@ class IAMMember(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+        In the import IDs and resource identity below, `service_account_id` may also use the unique ID form. Use the same form as your configuration;
+        changing `service_account_id` between forms replaces the resource.
+
         ### Importing with conditions:
 
         Here are examples of importing IAM memberships and bindings that include conditions:
@@ -368,7 +379,9 @@ class IAMMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[_builtins.str] service_account_id: The fully-qualified name of the service account to apply policy to.
+        :param pulumi.Input[_builtins.str] service_account_id: The fully-qualified name of the service account to apply policy to,
+               in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+               Unlike an email, a unique ID never refers to a later account recreated with the same email.
         """
         ...
     @overload
@@ -490,6 +503,9 @@ class IAMMember(pulumi.CustomResource):
         > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
+        In the import IDs and resource identity below, `service_account_id` may also use the unique ID form. Use the same form as your configuration;
+        changing `service_account_id` between forms replaces the resource.
+
         ### Importing with conditions:
 
         Here are examples of importing IAM memberships and bindings that include conditions:
@@ -578,7 +594,9 @@ class IAMMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[_builtins.str] service_account_id: The fully-qualified name of the service account to apply policy to.
+        :param pulumi.Input[_builtins.str] service_account_id: The fully-qualified name of the service account to apply policy to,
+               in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+               Unlike an email, a unique ID never refers to a later account recreated with the same email.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -653,7 +671,9 @@ class IAMMember(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The fully-qualified name of the service account to apply policy to.
+        The fully-qualified name of the service account to apply policy to,
+        in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+        Unlike an email, a unique ID never refers to a later account recreated with the same email.
         """
         return pulumi.get(self, "service_account_id")
 

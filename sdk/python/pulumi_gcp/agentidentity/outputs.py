@@ -18,9 +18,15 @@ from . import outputs
 __all__ = [
     'AuthProviderAuthProviderTypeParams',
     'AuthProviderAuthProviderTypeParamsApiKey',
+    'AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider',
     'AuthProviderAuthProviderTypeParamsGeAuthProvider',
     'AuthProviderAuthProviderTypeParamsThreeLeggedOauth',
     'AuthProviderAuthProviderTypeParamsTwoLeggedOauth',
+    'AuthProviderAuthProviderTypeParamsXaaAuthProvider',
+    'AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth',
+    'AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth',
+    'AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer',
+    'AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput',
     'AuthProviderIamBindingCondition',
     'AuthProviderIamMemberCondition',
 ]
@@ -32,12 +38,16 @@ class AuthProviderAuthProviderTypeParams(dict):
         suggest = None
         if key == "apiKey":
             suggest = "api_key"
+        elif key == "connectorReferenceAuthProvider":
+            suggest = "connector_reference_auth_provider"
         elif key == "geAuthProviders":
             suggest = "ge_auth_providers"
         elif key == "threeLeggedOauth":
             suggest = "three_legged_oauth"
         elif key == "twoLeggedOauth":
             suggest = "two_legged_oauth"
+        elif key == "xaaAuthProvider":
+            suggest = "xaa_auth_provider"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AuthProviderAuthProviderTypeParams. Access the value via the '{suggest}' property getter instead.")
@@ -52,11 +62,15 @@ class AuthProviderAuthProviderTypeParams(dict):
 
     def __init__(__self__, *,
                  api_key: Optional['outputs.AuthProviderAuthProviderTypeParamsApiKey'] = None,
+                 connector_reference_auth_provider: Optional['outputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider'] = None,
                  ge_auth_providers: Optional[Sequence['outputs.AuthProviderAuthProviderTypeParamsGeAuthProvider']] = None,
                  three_legged_oauth: Optional['outputs.AuthProviderAuthProviderTypeParamsThreeLeggedOauth'] = None,
-                 two_legged_oauth: Optional['outputs.AuthProviderAuthProviderTypeParamsTwoLeggedOauth'] = None):
+                 two_legged_oauth: Optional['outputs.AuthProviderAuthProviderTypeParamsTwoLeggedOauth'] = None,
+                 xaa_auth_provider: Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProvider'] = None):
         """
         :param 'AuthProviderAuthProviderTypeParamsApiKeyArgs' api_key: Message describing ApiKeyParams object.
+               Structure is documented below.
+        :param 'AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs' connector_reference_auth_provider: Parameters for Connector Reference authentication.
                Structure is documented below.
         :param Sequence['AuthProviderAuthProviderTypeParamsGeAuthProviderArgs'] ge_auth_providers: (Output)
                Message describing GeminiEnterpriseAuthProviderParams object.
@@ -65,15 +79,21 @@ class AuthProviderAuthProviderTypeParams(dict):
                Structure is documented below.
         :param 'AuthProviderAuthProviderTypeParamsTwoLeggedOauthArgs' two_legged_oauth: Message describing TwoLeggedOAuth object.
                Structure is documented below.
+        :param 'AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs' xaa_auth_provider: Parameters for Cross-App Access authentication.
+               Structure is documented below.
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
+        if connector_reference_auth_provider is not None:
+            pulumi.set(__self__, "connector_reference_auth_provider", connector_reference_auth_provider)
         if ge_auth_providers is not None:
             pulumi.set(__self__, "ge_auth_providers", ge_auth_providers)
         if three_legged_oauth is not None:
             pulumi.set(__self__, "three_legged_oauth", three_legged_oauth)
         if two_legged_oauth is not None:
             pulumi.set(__self__, "two_legged_oauth", two_legged_oauth)
+        if xaa_auth_provider is not None:
+            pulumi.set(__self__, "xaa_auth_provider", xaa_auth_provider)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
@@ -83,6 +103,15 @@ class AuthProviderAuthProviderTypeParams(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorReferenceAuthProvider")
+    def connector_reference_auth_provider(self) -> Optional['outputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider']:
+        """
+        Parameters for Connector Reference authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_reference_auth_provider")
 
     @_builtins.property
     @pulumi.getter(name="geAuthProviders")
@@ -111,6 +140,15 @@ class AuthProviderAuthProviderTypeParams(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "two_legged_oauth")
+
+    @_builtins.property
+    @pulumi.getter(name="xaaAuthProvider")
+    def xaa_auth_provider(self) -> Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProvider']:
+        """
+        Parameters for Cross-App Access authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "xaa_auth_provider")
 
 
 @pulumi.output_type
@@ -149,6 +187,65 @@ class AuthProviderAuthProviderTypeParamsApiKey(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "api_key")
+
+
+@pulumi.output_type
+class AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationDetails":
+            suggest = "authorization_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector: _builtins.str,
+                 authorization_details: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connector: Required. The name of the referenced connector. For Gemini Enterprise, this
+               is either a Data Connector name
+               (`projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector`),
+               an Authorization name
+               (`projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}`),
+               or a connector ID (e.g. `salesforce-connector-prod`).
+        :param _builtins.str authorization_details: Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+               resources/scopes, formatted as a JSON array of JSON objects.
+        """
+        pulumi.set(__self__, "connector", connector)
+        if authorization_details is not None:
+            pulumi.set(__self__, "authorization_details", authorization_details)
+
+    @_builtins.property
+    @pulumi.getter
+    def connector(self) -> _builtins.str:
+        """
+        Required. The name of the referenced connector. For Gemini Enterprise, this
+        is either a Data Connector name
+        (`projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector`),
+        an Authorization name
+        (`projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}`),
+        or a connector ID (e.g. `salesforce-connector-prod`).
+        """
+        return pulumi.get(self, "connector")
+
+    @_builtins.property
+    @pulumi.getter(name="authorizationDetails")
+    def authorization_details(self) -> Optional[_builtins.str]:
+        """
+        Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+        resources/scopes, formatted as a JSON array of JSON objects.
+        """
+        return pulumi.get(self, "authorization_details")
 
 
 @pulumi.output_type
@@ -433,6 +530,288 @@ class AuthProviderAuthProviderTypeParamsTwoLeggedOauth(dict):
         The token endpoint of the OAuth client.
         """
         return pulumi.get(self, "token_url")
+
+
+@pulumi.output_type
+class AuthProviderAuthProviderTypeParamsXaaAuthProvider(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalParameters":
+            suggest = "additional_parameters"
+        elif key == "clientAssertionJwtAuth":
+            suggest = "client_assertion_jwt_auth"
+        elif key == "clientSecretAuth":
+            suggest = "client_secret_auth"
+        elif key == "customIssuer":
+            suggest = "custom_issuer"
+        elif key == "idTokenInput":
+            suggest = "id_token_input"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthProviderAuthProviderTypeParamsXaaAuthProvider. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProvider.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProvider.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_parameters: Optional[Mapping[str, _builtins.str]] = None,
+                 client_assertion_jwt_auth: Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth'] = None,
+                 client_secret_auth: Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth'] = None,
+                 custom_issuer: Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer'] = None,
+                 id_token_input: Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput'] = None):
+        """
+        :param Mapping[str, _builtins.str] additional_parameters: Optional. Additional parameters to be passed to the token endpoint.
+        :param 'AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs' client_assertion_jwt_auth: Option 2: Authenticate using a standard `client_id` and a Client Assertion JWT.
+               Structure is documented below.
+        :param 'AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs' client_secret_auth: Option 1: Authenticate using a standard `client_id` and `client_secret`.
+               Structure is documented below.
+        :param 'AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs' custom_issuer: Configuration for a custom or third-party authorization server issuer.
+               Structure is documented below.
+        :param 'AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs' id_token_input: Configuration for when the input is an ID token.
+               Structure is documented below.
+        """
+        if additional_parameters is not None:
+            pulumi.set(__self__, "additional_parameters", additional_parameters)
+        if client_assertion_jwt_auth is not None:
+            pulumi.set(__self__, "client_assertion_jwt_auth", client_assertion_jwt_auth)
+        if client_secret_auth is not None:
+            pulumi.set(__self__, "client_secret_auth", client_secret_auth)
+        if custom_issuer is not None:
+            pulumi.set(__self__, "custom_issuer", custom_issuer)
+        if id_token_input is not None:
+            pulumi.set(__self__, "id_token_input", id_token_input)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalParameters")
+    def additional_parameters(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Optional. Additional parameters to be passed to the token endpoint.
+        """
+        return pulumi.get(self, "additional_parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="clientAssertionJwtAuth")
+    def client_assertion_jwt_auth(self) -> Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth']:
+        """
+        Option 2: Authenticate using a standard `client_id` and a Client Assertion JWT.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_assertion_jwt_auth")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretAuth")
+    def client_secret_auth(self) -> Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth']:
+        """
+        Option 1: Authenticate using a standard `client_id` and `client_secret`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_secret_auth")
+
+    @_builtins.property
+    @pulumi.getter(name="customIssuer")
+    def custom_issuer(self) -> Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer']:
+        """
+        Configuration for a custom or third-party authorization server issuer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_issuer")
+
+    @_builtins.property
+    @pulumi.getter(name="idTokenInput")
+    def id_token_input(self) -> Optional['outputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput']:
+        """
+        Configuration for when the input is an ID token.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "id_token_input")
+
+
+@pulumi.output_type
+class AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: _builtins.str):
+        """
+        :param _builtins.str client_id: Required. The client identifier.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        Required. The client identifier.
+        """
+        return pulumi.get(self, "client_id")
+
+
+@pulumi.output_type
+class AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: _builtins.str,
+                 client_secret: _builtins.str):
+        """
+        :param _builtins.str client_id: Required. The client identifier.
+        :param _builtins.str client_secret: Required. Input only. The client secret.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        Required. The client identifier.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> _builtins.str:
+        """
+        Required. Input only. The client secret.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_secret")
+
+
+@pulumi.output_type
+class AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_url: _builtins.str,
+                 issuer: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str token_url: Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+        :param _builtins.str issuer: Optional. The issuer identifier of the target Authorization Server.
+        """
+        pulumi.set(__self__, "token_url", token_url)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> _builtins.str:
+        """
+        Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+        """
+        return pulumi.get(self, "token_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> Optional[_builtins.str]:
+        """
+        Optional. The issuer identifier of the target Authorization Server.
+        """
+        return pulumi.get(self, "issuer")
+
+
+@pulumi.output_type
+class AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idJagAdditionalClaims":
+            suggest = "id_jag_additional_claims"
+        elif key == "idJagAuthProvider":
+            suggest = "id_jag_auth_provider"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id_jag_additional_claims: Optional[_builtins.str] = None,
+                 id_jag_auth_provider: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id_jag_additional_claims: Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string.
+        :param _builtins.str id_jag_auth_provider: The resource name of the ID-JAG auth provider. Format: `projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}`
+        """
+        if id_jag_additional_claims is not None:
+            pulumi.set(__self__, "id_jag_additional_claims", id_jag_additional_claims)
+        if id_jag_auth_provider is not None:
+            pulumi.set(__self__, "id_jag_auth_provider", id_jag_auth_provider)
+
+    @_builtins.property
+    @pulumi.getter(name="idJagAdditionalClaims")
+    def id_jag_additional_claims(self) -> Optional[_builtins.str]:
+        """
+        Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string.
+        """
+        return pulumi.get(self, "id_jag_additional_claims")
+
+    @_builtins.property
+    @pulumi.getter(name="idJagAuthProvider")
+    def id_jag_auth_provider(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the ID-JAG auth provider. Format: `projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}`
+        """
+        return pulumi.get(self, "id_jag_auth_provider")
 
 
 @pulumi.output_type

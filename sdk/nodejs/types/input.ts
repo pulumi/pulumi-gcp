@@ -3469,6 +3469,13 @@ export namespace agenticapplications {
          */
         prompt?: pulumi.Input<string | undefined>;
         /**
+         * Additional HTTP headers sent on every request to the MCP server, for
+         * example a static header required by an API gateway. Headers managed by the
+         * agent take precedence and cannot be set here. When empty, no additional
+         * headers are sent.
+         */
+        requestHeaders?: pulumi.Input<pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaMcpDataSourceRequestHeader>[] | undefined>;
+        /**
          * The URL of the MCP server.
          */
         serverUrl: pulumi.Input<string>;
@@ -3484,6 +3491,27 @@ export namespace agenticapplications {
          * header field name (RFC 9110 token).
          */
         taskIdHeader?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaMcpDataSourceRequestHeader {
+        /**
+         * A value the agent fills in for each request.
+         * Possible values:
+         * USER_ID
+         */
+        dynamicValue?: pulumi.Input<string | undefined>;
+        /**
+         * The header name. Must be a valid HTTP field name (RFC 9110 token),
+         * unique ignoring case within the data source, and not a header managed
+         * by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+         * or the configured API key, session ID, or task ID headers).
+         */
+        headerName: pulumi.Input<string>;
+        /**
+         * A static value, sent as-is on every request. The value is stored and
+         * returned in plain text, so do not use it for credentials.
+         */
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface AnalystAgentPersonaResource {
@@ -3694,6 +3722,11 @@ export namespace agentidentity {
          */
         apiKey?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsApiKey | undefined>;
         /**
+         * Parameters for Connector Reference authentication.
+         * Structure is documented below.
+         */
+        connectorReferenceAuthProvider?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider | undefined>;
+        /**
          * (Output)
          * Message describing GeminiEnterpriseAuthProviderParams object.
          * Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
@@ -3709,6 +3742,11 @@ export namespace agentidentity {
          * Structure is documented below.
          */
         twoLeggedOauth?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsTwoLeggedOauth | undefined>;
+        /**
+         * Parameters for Cross-App Access authentication.
+         * Structure is documented below.
+         */
+        xaaAuthProvider?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProvider | undefined>;
     }
 
     export interface AuthProviderAuthProviderTypeParamsApiKey {
@@ -3717,6 +3755,23 @@ export namespace agentidentity {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         apiKey?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider {
+        /**
+         * Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+         * resources/scopes, formatted as a JSON array of JSON objects.
+         */
+        authorizationDetails?: pulumi.Input<string | undefined>;
+        /**
+         * Required. The name of the referenced connector. For Gemini Enterprise, this
+         * is either a Data Connector name
+         * (`projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector`),
+         * an Authorization name
+         * (`projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}`),
+         * or a connector ID (e.g. `salesforce-connector-prod`).
+         */
+        connector: pulumi.Input<string>;
     }
 
     export interface AuthProviderAuthProviderTypeParamsGeAuthProvider {
@@ -3801,6 +3856,74 @@ export namespace agentidentity {
          * The token endpoint of the OAuth client.
          */
         tokenUrl?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProvider {
+        /**
+         * Optional. Additional parameters to be passed to the token endpoint.
+         */
+        additionalParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * Option 2: Authenticate using a standard `clientId` and a Client Assertion JWT.
+         * Structure is documented below.
+         */
+        clientAssertionJwtAuth?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth | undefined>;
+        /**
+         * Option 1: Authenticate using a standard `clientId` and `clientSecret`.
+         * Structure is documented below.
+         */
+        clientSecretAuth?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth | undefined>;
+        /**
+         * Configuration for a custom or third-party authorization server issuer.
+         * Structure is documented below.
+         */
+        customIssuer?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer | undefined>;
+        /**
+         * Configuration for when the input is an ID token.
+         * Structure is documented below.
+         */
+        idTokenInput?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput | undefined>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth {
+        /**
+         * Required. The client identifier.
+         */
+        clientId: pulumi.Input<string>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth {
+        /**
+         * Required. The client identifier.
+         */
+        clientId: pulumi.Input<string>;
+        /**
+         * Required. Input only. The client secret.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret: pulumi.Input<string>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer {
+        /**
+         * Optional. The issuer identifier of the target Authorization Server.
+         */
+        issuer?: pulumi.Input<string | undefined>;
+        /**
+         * Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+         */
+        tokenUrl: pulumi.Input<string>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput {
+        /**
+         * Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string.
+         */
+        idJagAdditionalClaims?: pulumi.Input<string | undefined>;
+        /**
+         * The resource name of the ID-JAG auth provider. Format: `projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}`
+         */
+        idJagAuthProvider?: pulumi.Input<string | undefined>;
     }
 
     export interface AuthProviderIamBindingCondition {
@@ -5637,6 +5760,114 @@ export namespace apigee {
 }
 
 export namespace apihub {
+    export interface AddonConfig {
+        /**
+         * Configuration for addons which act on all data in the API hub.
+         * Structure is documented below.
+         */
+        allDataAddonConfig?: pulumi.Input<inputs.apihub.AddonConfigAllDataAddonConfig | undefined>;
+        /**
+         * Configuration for gateway plugin addons.
+         * Structure is documented below.
+         */
+        gatewayPluginAddonConfig?: pulumi.Input<inputs.apihub.AddonConfigGatewayPluginAddonConfig | undefined>;
+    }
+
+    export interface AddonConfigAllDataAddonConfig {
+        /**
+         * If true, the addon is enabled for all data in the API hub.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfig {
+        /**
+         * The list of gateway plugin configs for which the addon is enabled.
+         * Structure is documented below.
+         */
+        gatewayPluginConfigs: pulumi.Input<pulumi.Input<inputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfig>[]>;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfig {
+        /**
+         * Configuration for Apigee Edge gateways.
+         * Structure is documented below.
+         */
+        apigeeEdgeConfig?: pulumi.Input<inputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig | undefined>;
+        /**
+         * Configuration for Apigee OPDK gateways.
+         * Structure is documented below.
+         */
+        apigeeOpdkConfig?: pulumi.Input<inputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig | undefined>;
+        /**
+         * Configuration for Apigee X and Apigee Hybrid gateways.
+         * Structure is documented below.
+         */
+        apigeeXHybridConfig?: pulumi.Input<inputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig | undefined>;
+        /**
+         * The name of the gateway plugin instance for which the config is to be specified.
+         * Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+         */
+        pluginInstance: pulumi.Input<string>;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig {
+        /**
+         * The filter to apply on the resources managed by the gateway plugin instance.
+         * Structure is documented below.
+         */
+        environmentFilter?: pulumi.Input<inputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter | undefined>;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter {
+        /**
+         * Indicates if this filter should match all environments or only a subset of environments.
+         */
+        allEnvironments?: pulumi.Input<boolean | undefined>;
+        /**
+         * If provided, only environments in this list are matched.
+         */
+        environments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig {
+        /**
+         * The filter to apply on the resources managed by the gateway plugin instance.
+         * Structure is documented below.
+         */
+        environmentFilter?: pulumi.Input<inputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter | undefined>;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter {
+        /**
+         * Indicates if this filter should match all environments or only a subset of environments.
+         */
+        allEnvironments?: pulumi.Input<boolean | undefined>;
+        /**
+         * If provided, only environments in this list are matched.
+         */
+        environments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig {
+        /**
+         * The filter to apply on the resources managed by the gateway plugin instance.
+         * Structure is documented below.
+         */
+        environmentFilter?: pulumi.Input<inputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter | undefined>;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter {
+        /**
+         * Indicates if this filter should match all environments or only a subset of environments.
+         */
+        allEnvironments?: pulumi.Input<boolean | undefined>;
+        /**
+         * If provided, only environments in this list are matched.
+         */
+        environments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
     export interface ApiHubInstanceConfig {
         /**
          * Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
@@ -11809,11 +12040,11 @@ export namespace bigquery {
         /**
          * Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
          */
         argumentKind?: pulumi.Input<string | undefined>;
         /**
-         * A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+         * A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
          * ~>**NOTE**: Because this field expects a JSON string, any changes to the string
          * will create a diff, even if the JSON itself hasn't changed. If the API returns
          * a different value for the same schema, e.g. it switched the order of values
@@ -11902,7 +12133,8 @@ export namespace bigquery {
         /**
          * List of volume mounts for the Python UDF container that executes the
          * managed function. When volume mounts are set, `runtimeConnection` must
-         * also be set.
+         * also be set. For more information, see [Create a Python UDF with volume
+         * mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
          * Structure is documented below.
          */
         volumeMounts?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineExternalRuntimeOptionsVolumeMount>[] | undefined>;
@@ -11917,8 +12149,8 @@ export namespace bigquery {
         /**
          * The absolute path of the source to be mounted. Only Google Cloud
          * Storage buckets or folders are currently supported. For example,
-         * `gs://bucket-xxx` for a Cloud Storage bucket, or
-         * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+         * `gs://my-bucket` for a Cloud Storage bucket, or
+         * `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
          */
         sourcePath: pulumi.Input<string>;
     }
@@ -12159,8 +12391,7 @@ export namespace bigquery {
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
          *
          * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * table schema must be specified using the top-level `schema` field.
          */
         connectionId?: pulumi.Input<string | undefined>;
         /**
@@ -12257,8 +12488,7 @@ export namespace bigquery {
          * `google_bigquery_table.schema`
          *
          * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * table schema must be specified using the top-level `schema` field.
          */
         schema?: pulumi.Input<string | undefined>;
         /**
@@ -13465,7 +13695,9 @@ export namespace bigtable {
 
     export interface InstanceCluster {
         /**
-         * [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+         * [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+         *
+         * > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
          */
         autoscalingConfig?: pulumi.Input<inputs.bigtable.InstanceClusterAutoscalingConfig | undefined>;
         /**
@@ -13487,6 +13719,8 @@ export namespace bigtable {
          * `clusterId`) will cause the provider to delete/recreate the entire
          * `gcp.bigtable.Instance` resource. If these values are changing, use a new
          * `clusterId`.
+         *
+         * ***
          */
         nodeScalingFactor?: pulumi.Input<string | undefined>;
         /**
@@ -13526,8 +13760,6 @@ export namespace bigtable {
         minNodes: pulumi.Input<number>;
         /**
          * The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-         *
-         * > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
          */
         storageTarget?: pulumi.Input<number | undefined>;
     }
@@ -13535,8 +13767,6 @@ export namespace bigtable {
     export interface InstanceIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * For `gcp.bigtable.InstanceIamPolicy` only:
          */
         description?: pulumi.Input<string | undefined>;
         /**
@@ -13552,8 +13782,6 @@ export namespace bigtable {
     export interface InstanceIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * For `gcp.bigtable.InstanceIamPolicy` only:
          */
         description?: pulumi.Input<string | undefined>;
         /**
@@ -13603,6 +13831,8 @@ export namespace bigtable {
         family: pulumi.Input<string>;
         /**
          * The type of the column family.
+         *
+         * ***
          */
         type?: pulumi.Input<string | undefined>;
     }
@@ -16902,6 +17132,11 @@ export namespace ces {
          */
         bargeInConfig?: pulumi.Input<inputs.ces.AppAudioProcessingConfigBargeInConfig | undefined>;
         /**
+         * Configures custom voice samples for voice cloning.
+         * Structure is documented below.
+         */
+        customVoiceSamples?: pulumi.Input<pulumi.Input<inputs.ces.AppAudioProcessingConfigCustomVoiceSample>[] | undefined>;
+        /**
          * The duration of user inactivity (no speech or interaction) before the agent
          * prompts the user for reengagement. If not set, the agent will not prompt
          * the user for reengagement.
@@ -16958,6 +17193,31 @@ export namespace ces {
          * visually.
          */
         bargeInAwareness?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AppAudioProcessingConfigCustomVoiceSample {
+        /**
+         * Consent audio for voice cloning.
+         */
+        consentAudioGcsUri?: pulumi.Input<string | undefined>;
+        /**
+         * The user-defined name for the custom voice sample.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Text for synthesizing preview audio for custom voice.
+         */
+        previewText?: pulumi.Input<string | undefined>;
+        /**
+         * Natural language instructions for voice style, tone, pacing, or
+         * pronunciation.
+         */
+        voiceInstruction?: pulumi.Input<string | undefined>;
+        /**
+         * The Cloud Storage URI to the audio sample for voice cloning. The
+         * audio sample should be a mono-channel, 24kHz WAV file.
+         */
+        voiceSampleGcsUri?: pulumi.Input<string | undefined>;
     }
 
     export interface AppAudioProcessingConfigSynthesizeSpeechConfig {
@@ -17356,6 +17616,16 @@ export namespace ces {
          * Structure is documented below.
          */
         redactionConfig?: pulumi.Input<inputs.ces.AppLoggingSettingsRedactionConfig | undefined>;
+        /**
+         * Whether the app has to say what may be recorded before anything is kept.
+         * When true, a session starts with recording off and stays off until the
+         * client sends SessionInput.recording_control, which then decides every turn
+         * from that point on. This covers audio recording as well as conversation
+         * history, BigQuery export and Cloud Logging.
+         * When `false`, the default, the settings above decide on their own and the
+         * client does not have to send anything.
+         */
+        requiredRecordingConsent?: pulumi.Input<boolean | undefined>;
     }
 
     export interface AppLoggingSettingsAudioRecordingConfig {
@@ -33996,13 +34266,90 @@ export namespace cloudidentity {
         expireTime: pulumi.Input<string>;
     }
 
+    export interface InboundOidcSsoProfileIdpConfig {
+        /**
+         * The **Change Password URL** of the identity provider. Users will be sent to this URL
+         * when changing their passwords at `myaccount.google.com`. This takes precedence over
+         * the change password URL configured at customer-level. Must use `HTTPS`.
+         */
+        changePasswordUri?: pulumi.Input<string | undefined>;
+        /**
+         * The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+         * from this as described in Section 4 of the OIDC specification.
+         */
+        issuerUri: pulumi.Input<string>;
+    }
+
+    export interface InboundOidcSsoProfileRpConfig {
+        /**
+         * OAuth2 client ID for OIDC. Must be set together with `clientSecret`.
+         */
+        clientId?: pulumi.Input<string | undefined>;
+        /**
+         * Input only. OAuth2 client secret for OIDC. Must be set together with `clientId`.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The URL(s) that this client may use in authentication requests.
+         */
+        redirectUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface InboundSamlSsoProfileIdpConfig {
+        /**
+         * The **Change Password URL** of the identity provider. Users will be sent to this URL
+         * when changing their passwords at `myaccount.google.com`. This takes precedence over
+         * the change password URL configured at customer-level. Must use `HTTPS`.
+         */
+        changePasswordUri?: pulumi.Input<string | undefined>;
+        /**
+         * The SAML **Entity ID** of the identity provider.
+         */
+        entityId: pulumi.Input<string>;
+        /**
+         * The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+         * clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+         * a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+         * supported. Must use `HTTPS`.
+         */
+        logoutRedirectUri?: pulumi.Input<string | undefined>;
+        /**
+         * The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+         * This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+         * Assumed to accept the `HTTP-Redirect` binding.
+         */
+        singleSignOnServiceUri: pulumi.Input<string>;
+    }
+
+    export interface InboundSamlSsoProfileSpConfig {
+        /**
+         * (Output)
+         * The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated
+         * login. Assumed to accept response messages via the `HTTP-POST` binding.
+         */
+        assertionConsumerServiceUri?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The SAML **Entity ID** for this service provider.
+         */
+        entityId?: pulumi.Input<string | undefined>;
+    }
+
     export interface PolicyPolicyQuery {
         /**
          * The group that the query applies to.
          */
         group?: pulumi.Input<string | undefined>;
         /**
-         * The OrgUnit the query applies to.
+         * The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+         * `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+         * Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+         * and display names are not resolved and are rejected for most settings.
+         * For detector settings (`settings/detector.*`), the API ignores this value and
+         * always applies the policy to, and returns, the customer's root org unit, so any
+         * other value produces a diff; set it to the root org unit's ID.
          */
         orgUnit: pulumi.Input<string>;
         /**
@@ -35255,6 +35602,10 @@ export namespace cloudrunv2 {
          */
         resources?: pulumi.Input<inputs.cloudrunv2.InstanceContainerResources | undefined>;
         /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: pulumi.Input<boolean | undefined>;
+        /**
          * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
          * Structure is documented below.
          */
@@ -35506,6 +35857,73 @@ export namespace cloudrunv2 {
         description?: pulumi.Input<string | undefined>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface InstanceSandboxes {
+        /**
+         * Sandbox templates that can be launched through the `sandbox` CLI.
+         * Structure is documented below.
+         */
+        templates?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.InstanceSandboxesTemplate>[] | undefined>;
+    }
+
+    export interface InstanceSandboxesTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * List of environment variables to set in the sandbox.
+         * Structure is documented below.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.InstanceSandboxesTemplateEnv>[] | undefined>;
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: pulumi.Input<string>;
+        /**
+         * Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.InstanceSandboxesTemplateVolumeMount>[] | undefined>;
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: pulumi.Input<string | undefined>;
+    }
+
+    export interface InstanceSandboxesTemplateEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface InstanceSandboxesTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: pulumi.Input<string | undefined>;
     }
 
     export interface InstanceTerminalCondition {
@@ -35815,6 +36233,11 @@ export namespace cloudrunv2 {
          */
         nodeSelector?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateNodeSelector | undefined>;
         /**
+         * Configuration for sandboxes.
+         * Structure is documented below.
+         */
+        sandboxes?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateSandboxes | undefined>;
+        /**
          * Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
          */
         serviceAccount?: pulumi.Input<string | undefined>;
@@ -35903,7 +36326,7 @@ export namespace cloudrunv2 {
 
     export interface JobTemplateTemplateContainerEnv {
         /**
-         * Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
          */
         name: pulumi.Input<string>;
         /**
@@ -36064,6 +36487,73 @@ export namespace cloudrunv2 {
          * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
          */
         accelerator: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateTemplateSandboxes {
+        /**
+         * Sandbox templates that can be launched through the `sandbox` CLI.
+         * Structure is documented below.
+         */
+        templates?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateSandboxesTemplate>[] | undefined>;
+    }
+
+    export interface JobTemplateTemplateSandboxesTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * List of environment variables to set in the sandbox.
+         * Structure is documented below.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateSandboxesTemplateEnv>[] | undefined>;
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: pulumi.Input<string>;
+        /**
+         * Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateSandboxesTemplateVolumeMount>[] | undefined>;
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: pulumi.Input<string | undefined>;
+    }
+
+    export interface JobTemplateTemplateSandboxesTemplateEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface JobTemplateTemplateSandboxesTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: pulumi.Input<string | undefined>;
     }
 
     export interface JobTemplateTemplateVolume {
@@ -37489,6 +37979,11 @@ export namespace cloudrunv2 {
          */
         revision?: pulumi.Input<string | undefined>;
         /**
+         * Configuration for sandboxes.
+         * Structure is documented below.
+         */
+        sandboxes?: pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateSandboxes | undefined>;
+        /**
          * Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
          */
         serviceAccount?: pulumi.Input<string | undefined>;
@@ -37780,6 +38275,73 @@ export namespace cloudrunv2 {
          * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
          */
         accelerator: pulumi.Input<string>;
+    }
+
+    export interface WorkerPoolTemplateSandboxes {
+        /**
+         * Sandbox templates that can be launched through the `sandbox` CLI.
+         * Structure is documented below.
+         */
+        templates?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateSandboxesTemplate>[] | undefined>;
+    }
+
+    export interface WorkerPoolTemplateSandboxesTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * List of environment variables to set in the sandbox.
+         * Structure is documented below.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateSandboxesTemplateEnv>[] | undefined>;
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: pulumi.Input<string>;
+        /**
+         * Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.WorkerPoolTemplateSandboxesTemplateVolumeMount>[] | undefined>;
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: pulumi.Input<string | undefined>;
+    }
+
+    export interface WorkerPoolTemplateSandboxesTemplateEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface WorkerPoolTemplateSandboxesTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: pulumi.Input<string | undefined>;
     }
 
     export interface WorkerPoolTemplateVolume {
@@ -46197,6 +46759,10 @@ export namespace compute {
 
     export interface InstanceGroupManagerUpdatePolicy {
         /**
+         * ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         */
+        allowedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
          * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
          */
         maxSurgeFixed?: pulumi.Input<number | undefined>;
@@ -46217,11 +46783,11 @@ export namespace compute {
          */
         minReadySec?: pulumi.Input<number | undefined>;
         /**
-         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
          */
-        minimalAction: pulumi.Input<string>;
+        minimalAction?: pulumi.Input<string | undefined>;
         /**
-         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
          */
         mostDisruptiveAllowedAction?: pulumi.Input<string | undefined>;
         /**
@@ -51738,6 +52304,10 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerUpdatePolicy {
         /**
+         * ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         */
+        allowedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
          * The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
          */
         instanceRedistributionType?: pulumi.Input<string | undefined>;
@@ -51762,11 +52332,11 @@ export namespace compute {
          */
         minReadySec?: pulumi.Input<number | undefined>;
         /**
-         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
          */
-        minimalAction: pulumi.Input<string>;
+        minimalAction?: pulumi.Input<string | undefined>;
         /**
-         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
          */
         mostDisruptiveAllowedAction?: pulumi.Input<string | undefined>;
         /**
@@ -64578,8 +65148,7 @@ export namespace container {
 
     export interface ClusterLoggingConfig {
         /**
-         * The GKE components exposing logs. Supported values include:
-         * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+         * The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
          */
         enableComponents: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -80735,6 +81304,13 @@ export namespace dataproc {
          */
         metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
+         * Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+         * Structure defined below.
+         *
+         * ***
+         */
+        multiZoneConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigGceClusterConfigMultiZoneConfig | undefined>;
+        /**
          * The name or selfLink of the Google Compute Engine
          * network to the cluster will be part of. Conflicts with `subnetwork`.
          * If neither is specified, this defaults to the "default" network.
@@ -80769,8 +81345,6 @@ export namespace dataproc {
         serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-         *
-         * ***
          */
         shieldedInstanceConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig | undefined>;
         /**
@@ -80806,6 +81380,15 @@ export namespace dataproc {
          * @deprecated enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
          */
         enableConfidentialCompute?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface ClusterClusterConfigGceClusterConfigMultiZoneConfig {
+        /**
+         * The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+         *
+         * ***
+         */
+        targetShape: pulumi.Input<string>;
     }
 
     export interface ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
@@ -81349,20 +81932,20 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigSecondaryWorkerFlexibleConfig {
         /**
-         * The boot disk size in GB.
-         * Changing this forces a new resource to be created.
+         * The boot disk size in GB. Changing this on an existing
+         * secondary worker group forces a new resource to be created.
          * ***
          */
         bootDiskSizeGb?: pulumi.Input<number | undefined>;
         /**
          * The number of vCPUs per instance. Must be a power of 2
-         * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+         * (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
          */
         coreCount: pulumi.Input<number>;
         /**
          * Controls the hardware class for the flexible instance group.
          * Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-         * Changing this forces a new resource to be created.
+         * Changing this on an existing secondary worker group forces a new resource to be created.
          */
         hardwareClass?: pulumi.Input<string | undefined>;
         /**
@@ -86814,6 +87397,366 @@ export namespace deploymentmanager {
          * configuration.
          */
         name?: pulumi.Input<string | undefined>;
+    }
+}
+
+export namespace designcenter {
+    export interface ApplicationAppParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationAttributes {
+        /**
+         * Business team that ensures user needs are met and value is delivered.
+         * Structure is documented below.
+         */
+        businessOwners?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationAttributesBusinessOwner>[] | undefined>;
+        /**
+         * Criticality of the application.
+         * Structure is documented below.
+         */
+        criticality?: pulumi.Input<inputs.designcenter.ApplicationAttributesCriticality | undefined>;
+        /**
+         * Developer team that owns development and coding.
+         * Structure is documented below.
+         */
+        developerOwners?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationAttributesDeveloperOwner>[] | undefined>;
+        /**
+         * Environment of the application.
+         * Structure is documented below.
+         */
+        environment?: pulumi.Input<inputs.designcenter.ApplicationAttributesEnvironment | undefined>;
+        /**
+         * Operator team that ensures runtime and operations.
+         * Structure is documented below.
+         */
+        operatorOwners?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationAttributesOperatorOwner>[] | undefined>;
+    }
+
+    export interface ApplicationAttributesBusinessOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * Email address of the contact.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ApplicationAttributesCriticality {
+        /**
+         * Criticality type. Possible values are `MISSION_CRITICAL`, `HIGH`,
+         * `MEDIUM` and `LOW`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ApplicationAttributesDeveloperOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * Email address of the contact.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ApplicationAttributesEnvironment {
+        /**
+         * Environment type. Possible values are `PRODUCTION`, `STAGING`,
+         * `TEST` and `DEVELOPMENT`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ApplicationAttributesOperatorOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * Email address of the contact.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ApplicationComponentParameter {
+        /**
+         * The URI of the component that the parameters belong to.
+         */
+        component: pulumi.Input<string>;
+        /**
+         * A list of parameters associated with the component.
+         * Structure is documented below.
+         */
+        parameters?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationComponentParameterParameter>[] | undefined>;
+        /**
+         * (Output)
+         * The deployment state of the component.
+         */
+        state?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationComponentParameterParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationCompositeApplicationParameters {
+        /**
+         * A map from a component URI to the service account that deploys the
+         * component. Keys use the format
+         * `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/components/{component}`
+         * and values use the format
+         * `projects/{project}/serviceAccounts/{email_address}`.
+         */
+        serviceAccountMap?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface ApplicationConnectionConfig {
+        /**
+         * The URI of the connection.
+         */
+        connectionUri: pulumi.Input<string>;
+        /**
+         * The parameters of the connection associated with the destination
+         * component.
+         * Structure is documented below.
+         */
+        destinationComponentParameters?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationConnectionConfigDestinationComponentParameter>[] | undefined>;
+        /**
+         * The parameters of the connection associated with the source
+         * component.
+         * Structure is documented below.
+         */
+        sourceComponentParameters?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationConnectionConfigSourceComponentParameter>[] | undefined>;
+    }
+
+    export interface ApplicationConnectionConfigDestinationComponentParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationConnectionConfigSourceComponentParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationDeploymentMetadata {
+        /**
+         * (Output)
+         * The Cloud Build instance UUID associated with the deployment.
+         */
+        build?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The component output parameters of the deployment.
+         * Structure is documented below.
+         */
+        componentOutputParameters?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationDeploymentMetadataComponentOutputParameter>[] | undefined>;
+        /**
+         * (Output)
+         * The error associated with the deployment.
+         * Structure is documented below.
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationDeploymentMetadataError>[] | undefined>;
+        /**
+         * (Output)
+         * The number of deployment retries attempted.
+         */
+        retryAttempts?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * The revision of the deployment associated with the application.
+         */
+        revision?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The Cloud Build worker pool used to deploy the application.
+         */
+        workerPool?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationDeploymentMetadataComponentOutputParameter {
+        /**
+         * (Output)
+         * The name of the component that the output parameters belong to.
+         */
+        component?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The output parameters of the component.
+         * Structure is documented below.
+         */
+        parameters?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationDeploymentMetadataComponentOutputParameterParameter>[] | undefined>;
+    }
+
+    export interface ApplicationDeploymentMetadataComponentOutputParameterParameter {
+        /**
+         * The key of the parameter.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationDeploymentMetadataError {
+        /**
+         * (Output)
+         * The deployment error code, based on the Infrastructure Manager
+         * error codes.
+         */
+        code?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * A human-readable summary of the deployment error.
+         */
+        detail?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The errors generated by Infrastructure Manager, and any
+         * non-internal errors that occurred before the deployment started.
+         */
+        errorMessage?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The error type based on the deployment error code.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationDeploymentTarget {
+        /**
+         * The GKE deployment target.
+         * Structure is documented below.
+         */
+        gkeDeploymentTarget?: pulumi.Input<inputs.designcenter.ApplicationDeploymentTargetGkeDeploymentTarget | undefined>;
+    }
+
+    export interface ApplicationDeploymentTargetGkeDeploymentTarget {
+        /**
+         * The self link of the cluster where the GKE based application is
+         * deployed.
+         */
+        clusterSelfLink: pulumi.Input<string>;
+        /**
+         * The Kubernetes service account in the namespace, such as
+         * `default`.
+         */
+        kubernetesServiceAccount: pulumi.Input<string>;
+        /**
+         * Whether to create the Kubernetes service account. If `true`, the
+         * service account is created in the namespace. If `false`, the
+         * service account must already exist in the namespace.
+         */
+        kubernetesServiceAccountCreation?: pulumi.Input<boolean | undefined>;
+        /**
+         * The namespace where the application is deployed.
+         */
+        namespace: pulumi.Input<string>;
+    }
+
+    export interface ApplicationRolesApisConfig {
+        /**
+         * APIs that must be enabled in this project before the application is
+         * deployed, in the form of `*.googleapis.com`.
+         * Structure is documented below.
+         */
+        apis?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationRolesApisConfigApi>[] | undefined>;
+        /**
+         * The project ID to which these configurations apply.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * IAM roles that the deployment service account needs to deploy the
+         * application within this project.
+         * Structure is documented below.
+         */
+        roles?: pulumi.Input<pulumi.Input<inputs.designcenter.ApplicationRolesApisConfigRole>[] | undefined>;
+    }
+
+    export interface ApplicationRolesApisConfigApi {
+        /**
+         * API name, such as `compute.googleapis.com`.
+         */
+        api: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Whether Application Design Center added the API.
+         */
+        systemProvided?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface ApplicationRolesApisConfigRole {
+        /**
+         * IAM role name, such as `roles/editor`.
+         */
+        role: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Whether Application Design Center added the role.
+         */
+        systemProvided?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface ApplicationScope {
+        /**
+         * Scope type.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationSource {
+        /**
+         * Application template revision URI.
+         */
+        applicationTemplateRevision?: pulumi.Input<string | undefined>;
+    }
+
+    export interface SpaceIamBindingCondition {
+        description?: pulumi.Input<string | undefined>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SpaceIamMemberCondition {
+        description?: pulumi.Input<string | undefined>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -97116,6 +98059,47 @@ export namespace firebase {
          * If disabled is set, the time at which the rollouts were disabled.
          */
         disabledTime?: pulumi.Input<string | undefined>;
+        /**
+         * A list of file paths patterns to exclude from triggering a rollout.
+         * Patterns in this list take precedence over required_paths.
+         * **Note**: All paths must be in the ignoredPaths in order for the
+         * rollout to be skipped. Limited to 100 paths.
+         * Structure is documented below.
+         */
+        ignoredPaths?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingTrafficRolloutPolicyIgnoredPath>[] | undefined>;
+        /**
+         * A list of file paths patterns that trigger a build and rollout
+         * if at least one of the changed files in the commit are present in
+         * this list. This field is optional; the rollout policy will default to
+         * triggering on all paths if both ignoredPaths and requiredPaths are
+         * not populated. Limited to 100 paths.
+         * Structure is documented below.
+         */
+        requiredPaths?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingTrafficRolloutPolicyRequiredPath>[] | undefined>;
+    }
+
+    export interface AppHostingTrafficRolloutPolicyIgnoredPath {
+        /**
+         * The pattern to match against.
+         */
+        pattern: pulumi.Input<string>;
+        /**
+         * The type of pattern to match against.
+         * Possible values are: `RE2`, `GLOB`, `PREFIX`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AppHostingTrafficRolloutPolicyRequiredPath {
+        /**
+         * The pattern to match against.
+         */
+        pattern: pulumi.Input<string>;
+        /**
+         * The type of pattern to match against.
+         * Possible values are: `RE2`, `GLOB`, `PREFIX`.
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface AppHostingTrafficTarget {
@@ -97846,6 +98830,7 @@ export namespace firebaserules {
     export interface RulesetSource {
         /**
          * `File` set constituting the `Source` bundle.
+         * Structure is documented below.
          */
         files: pulumi.Input<pulumi.Input<inputs.firebaserules.RulesetSourceFile>[]>;
         /**
@@ -98170,18 +99155,18 @@ export namespace folder {
 
     export interface OrganizationPolicyListPolicy {
         /**
-         * or `deny` - (Optional) One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         allow?: pulumi.Input<inputs.folder.OrganizationPolicyListPolicyAllow | undefined>;
         /**
-         * One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         deny?: pulumi.Input<inputs.folder.OrganizationPolicyListPolicyDeny | undefined>;
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          *
-         * The `allow` or `deny` blocks support:
+         * <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
          */
         inheritFromParent?: pulumi.Input<boolean | undefined>;
         /**
@@ -106287,6 +107272,26 @@ export namespace iam {
          */
         allowedAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
+         * The URL to fetch the OIDC discovery document from, overriding the default URL
+         * derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+         * with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+         * Discovery 1.0 specification.
+         * If set, `discoveryUri` must meet the following requirements:
+         * * Must start with `https://`.
+         * * Must not exceed 2000 characters.
+         * * The scheme, host, and port must match `issuerUri`.
+         * * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+         *   empty, such as `openid-configuration`) and conform to the `issuerUri`
+         *   topology:
+         * * The well-known path segment is inserted before the issuer path (for
+         *   example, `https://example.com/.well-known/openid-configuration/tenant1`
+         *   for issuer `https://example.com/tenant1`), or
+         * * The well-known path segment is appended under the issuer path (for
+         *   example, `https://example.com/tenant1/.well-known/openid-configuration`
+         *   for issuer `https://example.com/tenant1`).
+         */
+        discoveryUri?: pulumi.Input<string | undefined>;
+        /**
          * The OIDC issuer URL.
          */
         issuerUri: pulumi.Input<string>;
@@ -107729,6 +108734,17 @@ export namespace identityplatform {
          * The x509 certificate
          */
         x509Certificate?: pulumi.Input<string | undefined>;
+    }
+
+    export interface TenantOauthIdpConfigResponseType {
+        /**
+         * If true, authorization code is returned from IdP's authorization endpoint.
+         */
+        code?: pulumi.Input<boolean | undefined>;
+        /**
+         * If true, ID token is returned from IdP's authorization endpoint.
+         */
+        idToken?: pulumi.Input<boolean | undefined>;
     }
 }
 
@@ -110316,6 +111332,13 @@ export namespace memorystore {
 
     export interface InstanceDesiredAutoCreatedEndpoint {
         /**
+         * (Optional, Beta)
+         * Immutable. The IP version that the consumer endpoint will use.
+         * Default value is `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
+         */
+        ipVersion?: pulumi.Input<string | undefined>;
+        /**
          * Required. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
          */
@@ -110459,6 +111482,11 @@ export namespace memorystore {
          * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
          */
         ipAddress?: pulumi.Input<string | undefined>;
+        /**
+         * (Output, Beta)
+         * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+         */
+        ipVersion?: pulumi.Input<string | undefined>;
         /**
          * (Output)
          * Output only. The consumer network where the IP address resides, in the form of
@@ -110717,6 +111745,11 @@ export namespace memorystore {
          * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
          */
         ipAddress?: pulumi.Input<string | undefined>;
+        /**
+         * (Output, Beta)
+         * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+         */
+        ipVersion?: pulumi.Input<string | undefined>;
         /**
          * (Output)
          * Output only. The consumer network where the IP address resides, in the form of
@@ -124788,18 +125821,18 @@ export namespace organizations {
 
     export interface PolicyListPolicy {
         /**
-         * or `deny` - (Optional) One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         allow?: pulumi.Input<inputs.organizations.PolicyListPolicyAllow | undefined>;
         /**
-         * One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         deny?: pulumi.Input<inputs.organizations.PolicyListPolicyDeny | undefined>;
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          *
-         * The `allow` or `deny` blocks support:
+         * <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
          */
         inheritFromParent?: pulumi.Input<boolean | undefined>;
         /**
@@ -131057,18 +132090,18 @@ export namespace projects {
 
     export interface OrganizationPolicyListPolicy {
         /**
-         * or `deny` - (Optional) One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         allow?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicyAllow | undefined>;
         /**
-         * One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         deny?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicyDeny | undefined>;
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          *
-         * The `allow` or `deny` blocks support:
+         * <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
          */
         inheritFromParent?: pulumi.Input<boolean | undefined>;
         /**
@@ -135539,6 +136572,10 @@ export namespace sql {
          */
         deploymentName: pulumi.Input<string>;
         /**
+         * User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
          * The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
          */
         oldSourceInstanceConnectionName?: pulumi.Input<string | undefined>;
@@ -136480,6 +137517,9 @@ export namespace sql {
          * Password expiration duration with one week grace period.
          */
         passwordExpirationDuration?: pulumi.Input<string | undefined>;
+        /**
+         * The password status of the user. Structure is documented below.
+         */
         statuses?: pulumi.Input<pulumi.Input<inputs.sql.UserPasswordPolicyStatus>[] | undefined>;
     }
 
@@ -136496,11 +137536,11 @@ export namespace sql {
 
     export interface UserSqlServerUserDetail {
         /**
-         * If the user has been disabled.
+         * (read only) If the user has been disabled.
          */
         disabled?: pulumi.Input<boolean | undefined>;
         /**
-         * The server roles for this user in the database.
+         * (read only) The server roles for this user in the database.
          */
         serverRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
@@ -138031,7 +139071,7 @@ export namespace storage {
 
     export interface TransferJobTransferSpecAzureBlobStorageDataSource {
         /**
-         * ) Credentials used to authenticate API requests to Azure block.
+         * ) Credentials used to authenticate API requests to Azure block. Structure documented below.
          */
         azureCredentials?: pulumi.Input<inputs.storage.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials | undefined>;
         /**
@@ -139493,6 +140533,14 @@ export namespace vectorsearch {
 }
 
 export namespace vertex {
+    export interface AiAgentAnomalyDetectionScopeEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource.
+         * Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
     export interface AiCustomJobEncryptionSpec {
         /**
          * Resource name of the Cloud KMS key used to protect the resource.
@@ -139530,9 +140578,37 @@ export namespace vertex {
          */
         enableWebAccess?: pulumi.Input<boolean | undefined>;
         /**
+         * The Experiment associated with this job.
+         * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+         */
+        experiment?: pulumi.Input<string | undefined>;
+        /**
+         * The Experiment Run associated with this job.
+         * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+         */
+        experimentRun?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+         * Format: `projects/{project}/locations/{location}/models/{model}`
+         * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+         * Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+         * If no version ID or alias is specified, the "default" version will be returned.
+         */
+        models?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
          * The full name of the Compute Engine network to which the Job should be peered.
          */
         network?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the PersistentResource in the same Project and Location which to run.
+         * If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+         * The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+         */
+        persistentResourceId?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+         */
+        protectedArtifactLocationId?: pulumi.Input<string | undefined>;
         /**
          * Configuration for PSC-I for CustomJob.
          * Structure is documented below.

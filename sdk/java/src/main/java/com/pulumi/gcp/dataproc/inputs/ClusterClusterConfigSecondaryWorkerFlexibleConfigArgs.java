@@ -18,8 +18,8 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
     public static final ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs Empty = new ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs();
 
     /**
-     * The boot disk size in GB.
-     * Changing this forces a new resource to be created.
+     * The boot disk size in GB. Changing this on an existing
+     * secondary worker group forces a new resource to be created.
      * ***
      * 
      */
@@ -27,8 +27,8 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
     private @Nullable Output<Integer> bootDiskSizeGb;
 
     /**
-     * @return The boot disk size in GB.
-     * Changing this forces a new resource to be created.
+     * @return The boot disk size in GB. Changing this on an existing
+     * secondary worker group forces a new resource to be created.
      * ***
      * 
      */
@@ -38,7 +38,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
 
     /**
      * The number of vCPUs per instance. Must be a power of 2
-     * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+     * (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
      * 
      */
     @Import(name="coreCount", required=true)
@@ -46,7 +46,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
 
     /**
      * @return The number of vCPUs per instance. Must be a power of 2
-     * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+     * (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
      * 
      */
     public Output<Integer> coreCount() {
@@ -56,7 +56,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
     /**
      * Controls the hardware class for the flexible instance group.
      * Allowed values are `&#34;STANDARD&#34;` and `&#34;PERFORMANCE&#34;`. Defaults to `&#34;STANDARD&#34;`.
-     * Changing this forces a new resource to be created.
+     * Changing this on an existing secondary worker group forces a new resource to be created.
      * 
      */
     @Import(name="hardwareClass")
@@ -65,7 +65,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
     /**
      * @return Controls the hardware class for the flexible instance group.
      * Allowed values are `&#34;STANDARD&#34;` and `&#34;PERFORMANCE&#34;`. Defaults to `&#34;STANDARD&#34;`.
-     * Changing this forces a new resource to be created.
+     * Changing this on an existing secondary worker group forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> hardwareClass() {
@@ -117,8 +117,8 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
         }
 
         /**
-         * @param bootDiskSizeGb The boot disk size in GB.
-         * Changing this forces a new resource to be created.
+         * @param bootDiskSizeGb The boot disk size in GB. Changing this on an existing
+         * secondary worker group forces a new resource to be created.
          * ***
          * 
          * @return builder
@@ -130,8 +130,8 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
         }
 
         /**
-         * @param bootDiskSizeGb The boot disk size in GB.
-         * Changing this forces a new resource to be created.
+         * @param bootDiskSizeGb The boot disk size in GB. Changing this on an existing
+         * secondary worker group forces a new resource to be created.
          * ***
          * 
          * @return builder
@@ -143,7 +143,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
 
         /**
          * @param coreCount The number of vCPUs per instance. Must be a power of 2
-         * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+         * (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
 
         /**
          * @param coreCount The number of vCPUs per instance. Must be a power of 2
-         * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+         * (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
         /**
          * @param hardwareClass Controls the hardware class for the flexible instance group.
          * Allowed values are `&#34;STANDARD&#34;` and `&#34;PERFORMANCE&#34;`. Defaults to `&#34;STANDARD&#34;`.
-         * Changing this forces a new resource to be created.
+         * Changing this on an existing secondary worker group forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs extends
         /**
          * @param hardwareClass Controls the hardware class for the flexible instance group.
          * Allowed values are `&#34;STANDARD&#34;` and `&#34;PERFORMANCE&#34;`. Defaults to `&#34;STANDARD&#34;`.
-         * Changing this forces a new resource to be created.
+         * Changing this on an existing secondary worker group forces a new resource to be created.
          * 
          * @return builder
          * 

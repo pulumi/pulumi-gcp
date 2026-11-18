@@ -20,6 +20,7 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * `File` set constituting the `Source` bundle.
+     * Structure is documented below.
      * 
      */
     @Import(name="files", required=true)
@@ -27,6 +28,7 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return `File` set constituting the `Source` bundle.
+     * Structure is documented below.
      * 
      */
     public Output<List<RulesetSourceFileArgs>> files() {
@@ -79,6 +81,7 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param files `File` set constituting the `Source` bundle.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -90,6 +93,7 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param files `File` set constituting the `Source` bundle.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -100,6 +104,7 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param files `File` set constituting the `Source` bundle.
+         * Structure is documented below.
          * 
          * @return builder
          * 

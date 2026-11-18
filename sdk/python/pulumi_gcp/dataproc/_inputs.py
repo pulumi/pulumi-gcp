@@ -83,6 +83,8 @@ __all__ = [
     'ClusterClusterConfigGceClusterConfigArgsDict',
     'ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs',
     'ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict',
+    'ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs',
+    'ClusterClusterConfigGceClusterConfigMultiZoneConfigArgsDict',
     'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs',
     'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict',
     'ClusterClusterConfigGceClusterConfigReservationAffinityArgs',
@@ -3743,6 +3745,13 @@ class ClusterClusterConfigGceClusterConfigArgsDict(TypedDict):
     A map of the Compute Engine metadata entries to add to all instances
     (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
     """
+    multi_zone_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigMultiZoneConfigArgsDict']]]
+    """
+    Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+    Structure defined below.
+
+    ***
+    """
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name or self_link of the Google Compute Engine
@@ -3779,8 +3788,6 @@ class ClusterClusterConfigGceClusterConfigArgsDict(TypedDict):
     shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict']]]
     """
     Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-
-    ***
     """
     subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -3809,6 +3816,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
                  confidential_instance_config: pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs']] = None,
                  internal_ip_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 multi_zone_config: pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs']] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  node_group_affinity: pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs']] = None,
                  reservation_affinity: pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigReservationAffinityArgs']] = None,
@@ -3828,6 +3836,10 @@ class ClusterClusterConfigGceClusterConfigArgs:
                will be launched in.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of the Compute Engine metadata entries to add to all instances
                (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        :param pulumi.Input['ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs'] multi_zone_config: Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+               Structure defined below.
+               
+               ***
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to the cluster will be part of. Conflicts with `subnetwork`.
                If neither is specified, this defaults to the "default" network.
@@ -3844,8 +3856,6 @@ class ClusterClusterConfigGceClusterConfigArgs:
                short names are supported. To allow full access to all Cloud APIs, use the
                `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
         :param pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-               
-               ***
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork the cluster will be part of. Conflicts with `network`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of instance tags applied to instances in the cluster.
@@ -3864,6 +3874,8 @@ class ClusterClusterConfigGceClusterConfigArgs:
             pulumi.set(__self__, "internal_ip_only", internal_ip_only)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if multi_zone_config is not None:
+            pulumi.set(__self__, "multi_zone_config", multi_zone_config)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if node_group_affinity is not None:
@@ -3925,6 +3937,21 @@ class ClusterClusterConfigGceClusterConfigArgs:
     @metadata.setter
     def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multiZoneConfig")
+    def multi_zone_config(self) -> pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs']]:
+        """
+        Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+        Structure defined below.
+
+        ***
+        """
+        return pulumi.get(self, "multi_zone_config")
+
+    @multi_zone_config.setter
+    def multi_zone_config(self, value: pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs']]):
+        pulumi.set(self, "multi_zone_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -4012,8 +4039,6 @@ class ClusterClusterConfigGceClusterConfigArgs:
     def shielded_instance_config(self) -> pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]:
         """
         Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-
-        ***
         """
         return pulumi.get(self, "shielded_instance_config")
 
@@ -4117,6 +4142,40 @@ class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs:
     @enable_confidential_compute.setter
     def enable_confidential_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
+
+
+class ClusterClusterConfigGceClusterConfigMultiZoneConfigArgsDict(TypedDict):
+    target_shape: pulumi.Input[_builtins.str]
+    """
+    The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+
+    ***
+    """
+
+@pulumi.input_type
+class ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs:
+    def __init__(__self__, *,
+                 target_shape: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] target_shape: The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+               
+               ***
+        """
+        pulumi.set(__self__, "target_shape", target_shape)
+
+    @_builtins.property
+    @pulumi.getter(name="targetShape")
+    def target_shape(self) -> pulumi.Input[_builtins.str]:
+        """
+        The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+
+        ***
+        """
+        return pulumi.get(self, "target_shape")
+
+    @target_shape.setter
+    def target_shape(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_shape", value)
 
 
 class ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict(TypedDict):
@@ -6518,19 +6577,19 @@ class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgsDict(TypedDict):
     core_count: pulumi.Input[_builtins.int]
     """
     The number of vCPUs per instance. Must be a power of 2
-    (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+    (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
     """
     boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The boot disk size in GB.
-    Changing this forces a new resource to be created.
+    The boot disk size in GB. Changing this on an existing
+    secondary worker group forces a new resource to be created.
     ***
     """
     hardware_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Controls the hardware class for the flexible instance group.
     Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-    Changing this forces a new resource to be created.
+    Changing this on an existing secondary worker group forces a new resource to be created.
     """
     num_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -6547,13 +6606,13 @@ class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs:
                  num_instances: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] core_count: The number of vCPUs per instance. Must be a power of 2
-               (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
-        :param pulumi.Input[_builtins.int] boot_disk_size_gb: The boot disk size in GB.
-               Changing this forces a new resource to be created.
+               (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: The boot disk size in GB. Changing this on an existing
+               secondary worker group forces a new resource to be created.
                ***
         :param pulumi.Input[_builtins.str] hardware_class: Controls the hardware class for the flexible instance group.
                Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-               Changing this forces a new resource to be created.
+               Changing this on an existing secondary worker group forces a new resource to be created.
         :param pulumi.Input[_builtins.int] num_instances: Specifies the number of secondary worker instances to create.
                Defaults to `0`; can be scaled down to `0`; updatable in place.
         """
@@ -6570,7 +6629,7 @@ class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs:
     def core_count(self) -> pulumi.Input[_builtins.int]:
         """
         The number of vCPUs per instance. Must be a power of 2
-        (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+        (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
         """
         return pulumi.get(self, "core_count")
 
@@ -6582,8 +6641,8 @@ class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs:
     @pulumi.getter(name="bootDiskSizeGb")
     def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The boot disk size in GB.
-        Changing this forces a new resource to be created.
+        The boot disk size in GB. Changing this on an existing
+        secondary worker group forces a new resource to be created.
         ***
         """
         return pulumi.get(self, "boot_disk_size_gb")
@@ -6598,7 +6657,7 @@ class ClusterClusterConfigSecondaryWorkerFlexibleConfigArgs:
         """
         Controls the hardware class for the flexible instance group.
         Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-        Changing this forces a new resource to be created.
+        Changing this on an existing secondary worker group forces a new resource to be created.
         """
         return pulumi.get(self, "hardware_class")
 

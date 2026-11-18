@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * const _function = new gcp.cloudfunctions.Function("function", {
  *     name: "function-test",
  *     description: "My function",
- *     runtime: "nodejs20",
+ *     runtime: "nodejs22",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  * const _function = new gcp.cloudfunctions.Function("function", {
  *     name: "function-test",
  *     description: "My function",
- *     runtime: "nodejs20",
+ *     runtime: "nodejs22",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
@@ -266,7 +266,7 @@ export class Function extends pulumi.CustomResource {
     declare public readonly region: pulumi.Output<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * Eg. `"nodejs22"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      *
      * ***
      */
@@ -541,7 +541,7 @@ export interface FunctionState {
     region?: pulumi.Input<string | undefined>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * Eg. `"nodejs22"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      *
      * ***
      */
@@ -707,7 +707,7 @@ export interface FunctionArgs {
     region?: pulumi.Input<string | undefined>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * Eg. `"nodejs22"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      *
      * ***
      */

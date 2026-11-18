@@ -403,6 +403,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         /// </summary>
         [Output("standbyPolicy")]
@@ -657,6 +663,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("resourcePolicies")]
         public Input<Inputs.InstanceGroupManagerResourcePoliciesArgs>? ResourcePolicies { get; set; }
+
+        /// <summary>
+        /// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -938,6 +950,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).

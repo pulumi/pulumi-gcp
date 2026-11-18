@@ -796,14 +796,14 @@ func (o PolicyBooleanPolicyPtrOutput) Enforced() pulumi.BoolPtrOutput {
 }
 
 type PolicyListPolicy struct {
-	// or `deny` - (Optional) One or the other must be set.
+	// Exactly one of `allow` or `deny` must be set. Structure is documented below.
 	Allow *PolicyListPolicyAllow `pulumi:"allow"`
-	// One or the other must be set.
+	// Exactly one of `allow` or `deny` must be set. Structure is documented below.
 	Deny *PolicyListPolicyDeny `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 	//
-	// The `allow` or `deny` blocks support:
+	// <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
 	InheritFromParent *bool `pulumi:"inheritFromParent"`
 	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 	SuggestedValue *string `pulumi:"suggestedValue"`
@@ -821,14 +821,14 @@ type PolicyListPolicyInput interface {
 }
 
 type PolicyListPolicyArgs struct {
-	// or `deny` - (Optional) One or the other must be set.
+	// Exactly one of `allow` or `deny` must be set. Structure is documented below.
 	Allow PolicyListPolicyAllowPtrInput `pulumi:"allow"`
-	// One or the other must be set.
+	// Exactly one of `allow` or `deny` must be set. Structure is documented below.
 	Deny PolicyListPolicyDenyPtrInput `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 	//
-	// The `allow` or `deny` blocks support:
+	// <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
 	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
 	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 	SuggestedValue pulumi.StringPtrInput `pulumi:"suggestedValue"`
@@ -911,12 +911,12 @@ func (o PolicyListPolicyOutput) ToPolicyListPolicyPtrOutputWithContext(ctx conte
 	}).(PolicyListPolicyPtrOutput)
 }
 
-// or `deny` - (Optional) One or the other must be set.
+// Exactly one of `allow` or `deny` must be set. Structure is documented below.
 func (o PolicyListPolicyOutput) Allow() PolicyListPolicyAllowPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyAllow { return v.Allow }).(PolicyListPolicyAllowPtrOutput)
 }
 
-// One or the other must be set.
+// Exactly one of `allow` or `deny` must be set. Structure is documented below.
 func (o PolicyListPolicyOutput) Deny() PolicyListPolicyDenyPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyDeny { return v.Deny }).(PolicyListPolicyDenyPtrOutput)
 }
@@ -924,7 +924,7 @@ func (o PolicyListPolicyOutput) Deny() PolicyListPolicyDenyPtrOutput {
 // If set to true, the values from the effective Policy of the parent resource
 // are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 //
-// The `allow` or `deny` blocks support:
+// <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
 func (o PolicyListPolicyOutput) InheritFromParent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
 }
@@ -958,7 +958,7 @@ func (o PolicyListPolicyPtrOutput) Elem() PolicyListPolicyOutput {
 	}).(PolicyListPolicyOutput)
 }
 
-// or `deny` - (Optional) One or the other must be set.
+// Exactly one of `allow` or `deny` must be set. Structure is documented below.
 func (o PolicyListPolicyPtrOutput) Allow() PolicyListPolicyAllowPtrOutput {
 	return o.ApplyT(func(v *PolicyListPolicy) *PolicyListPolicyAllow {
 		if v == nil {
@@ -968,7 +968,7 @@ func (o PolicyListPolicyPtrOutput) Allow() PolicyListPolicyAllowPtrOutput {
 	}).(PolicyListPolicyAllowPtrOutput)
 }
 
-// One or the other must be set.
+// Exactly one of `allow` or `deny` must be set. Structure is documented below.
 func (o PolicyListPolicyPtrOutput) Deny() PolicyListPolicyDenyPtrOutput {
 	return o.ApplyT(func(v *PolicyListPolicy) *PolicyListPolicyDeny {
 		if v == nil {
@@ -981,7 +981,7 @@ func (o PolicyListPolicyPtrOutput) Deny() PolicyListPolicyDenyPtrOutput {
 // If set to true, the values from the effective Policy of the parent resource
 // are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 //
-// The `allow` or `deny` blocks support:
+// <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
 func (o PolicyListPolicyPtrOutput) InheritFromParent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PolicyListPolicy) *bool {
 		if v == nil {

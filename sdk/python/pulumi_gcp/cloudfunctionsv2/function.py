@@ -563,7 +563,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -603,7 +603,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -661,7 +661,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -753,7 +753,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "entryPoint",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -840,7 +840,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "entryPoint",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -934,7 +934,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -985,7 +985,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1041,7 +1041,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1091,7 +1091,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1159,7 +1159,7 @@ class Function(pulumi.CustomResource):
             description="CMEK function",
             kms_key_name="cmek-key",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "docker_repository": encoded_ar_repo.id,
                 "source": {
@@ -1201,7 +1201,7 @@ class Function(pulumi.CustomResource):
             location="europe-west6",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -1260,7 +1260,7 @@ class Function(pulumi.CustomResource):
             location="europe-west6",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -1315,7 +1315,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1421,7 +1421,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1461,7 +1461,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -1519,7 +1519,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1611,7 +1611,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "entryPoint",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -1698,7 +1698,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "entryPoint",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -1792,7 +1792,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1843,7 +1843,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1899,7 +1899,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -1949,7 +1949,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {
@@ -2017,7 +2017,7 @@ class Function(pulumi.CustomResource):
             description="CMEK function",
             kms_key_name="cmek-key",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "docker_repository": encoded_ar_repo.id,
                 "source": {
@@ -2059,7 +2059,7 @@ class Function(pulumi.CustomResource):
             location="europe-west6",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -2118,7 +2118,7 @@ class Function(pulumi.CustomResource):
             location="europe-west6",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
                     "BUILD_CONFIG_TEST": "build_test",
@@ -2173,7 +2173,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config={
-                "runtime": "nodejs20",
+                "runtime": "nodejs24",
                 "entry_point": "helloHttp",
                 "source": {
                     "storage_source": {

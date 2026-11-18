@@ -145,6 +145,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateSandboxesArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateSandboxesTemplateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -168,6 +170,12 @@ import javax.annotation.Nullable;
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
  *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .sandboxLauncher(true)
+ *                         .build())
+ *                     .sandboxes(JobTemplateTemplateSandboxesArgs.builder()
+ *                         .templates(JobTemplateTemplateSandboxesTemplateArgs.builder()
+ *                             .name("hello")
+ *                             .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())

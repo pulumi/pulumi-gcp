@@ -10432,6 +10432,8 @@ func (o GetInstanceGroupManagerTargetSizePolicyArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetInstanceGroupManagerUpdatePolicy struct {
+	// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+	AllowedActions []string `pulumi:"allowedActions"`
 	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
 	MaxSurgeFixed int `pulumi:"maxSurgeFixed"`
 	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
@@ -10464,6 +10466,8 @@ type GetInstanceGroupManagerUpdatePolicyInput interface {
 }
 
 type GetInstanceGroupManagerUpdatePolicyArgs struct {
+	// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+	AllowedActions pulumi.StringArrayInput `pulumi:"allowedActions"`
 	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
 	MaxSurgeFixed pulumi.IntInput `pulumi:"maxSurgeFixed"`
 	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
@@ -10533,6 +10537,11 @@ func (o GetInstanceGroupManagerUpdatePolicyOutput) ToGetInstanceGroupManagerUpda
 
 func (o GetInstanceGroupManagerUpdatePolicyOutput) ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyOutput {
 	return o
+}
+
+// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+func (o GetInstanceGroupManagerUpdatePolicyOutput) AllowedActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) []string { return v.AllowedActions }).(pulumi.StringArrayOutput)
 }
 
 // Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
@@ -27762,6 +27771,8 @@ func (o GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput) Index(i pulumi
 }
 
 type GetRegionInstanceGroupManagerUpdatePolicy struct {
+	// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+	AllowedActions []string `pulumi:"allowedActions"`
 	// The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
 	InstanceRedistributionType string `pulumi:"instanceRedistributionType"`
 	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
@@ -27796,6 +27807,8 @@ type GetRegionInstanceGroupManagerUpdatePolicyInput interface {
 }
 
 type GetRegionInstanceGroupManagerUpdatePolicyArgs struct {
+	// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+	AllowedActions pulumi.StringArrayInput `pulumi:"allowedActions"`
 	// The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
 	InstanceRedistributionType pulumi.StringInput `pulumi:"instanceRedistributionType"`
 	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
@@ -27867,6 +27880,11 @@ func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) ToGetRegionInstanceGrou
 
 func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) ToGetRegionInstanceGroupManagerUpdatePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerUpdatePolicyOutput {
 	return o
+}
+
+// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) AllowedActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) []string { return v.AllowedActions }).(pulumi.StringArrayOutput)
 }
 
 // The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
@@ -49142,18 +49160,23 @@ func (o GetStoragePoolStatusArrayOutput) Index(i pulumi.IntInput) GetStoragePool
 }
 
 type GetStoragePoolTypesDeprecated struct {
+	// (Output)
 	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
 	// This is only informational and the status will not change unless the client explicitly changes it.
 	Deleted string `pulumi:"deleted"`
+	// (Output)
 	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
 	// This is only informational and the status will not change unless the client explicitly changes it.
 	Deprecated string `pulumi:"deprecated"`
+	// (Output)
 	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
 	// This is only informational and the status will not change unless the client explicitly changes it.
 	Obsolete string `pulumi:"obsolete"`
+	// (Output)
 	// The URL of the suggested replacement for a deprecated resource.
 	// The suggested replacement resource must be the same kind of resource as the deprecated resource.
 	Replacement string `pulumi:"replacement"`
+	// (Output)
 	// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
 	// Operations which communicate the end of life date for an image, can use ACTIVE.
 	// Operations which create a new resource using a DEPRECATED resource will return successfully,
@@ -49174,18 +49197,23 @@ type GetStoragePoolTypesDeprecatedInput interface {
 }
 
 type GetStoragePoolTypesDeprecatedArgs struct {
+	// (Output)
 	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
 	// This is only informational and the status will not change unless the client explicitly changes it.
 	Deleted pulumi.StringInput `pulumi:"deleted"`
+	// (Output)
 	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
 	// This is only informational and the status will not change unless the client explicitly changes it.
 	Deprecated pulumi.StringInput `pulumi:"deprecated"`
+	// (Output)
 	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
 	// This is only informational and the status will not change unless the client explicitly changes it.
 	Obsolete pulumi.StringInput `pulumi:"obsolete"`
+	// (Output)
 	// The URL of the suggested replacement for a deprecated resource.
 	// The suggested replacement resource must be the same kind of resource as the deprecated resource.
 	Replacement pulumi.StringInput `pulumi:"replacement"`
+	// (Output)
 	// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
 	// Operations which communicate the end of life date for an image, can use ACTIVE.
 	// Operations which create a new resource using a DEPRECATED resource will return successfully,
@@ -49245,30 +49273,35 @@ func (o GetStoragePoolTypesDeprecatedOutput) ToGetStoragePoolTypesDeprecatedOutp
 	return o
 }
 
+// (Output)
 // An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
 // This is only informational and the status will not change unless the client explicitly changes it.
 func (o GetStoragePoolTypesDeprecatedOutput) Deleted() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesDeprecated) string { return v.Deleted }).(pulumi.StringOutput)
 }
 
+// (Output)
 // An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
 // This is only informational and the status will not change unless the client explicitly changes it.
 func (o GetStoragePoolTypesDeprecatedOutput) Deprecated() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesDeprecated) string { return v.Deprecated }).(pulumi.StringOutput)
 }
 
+// (Output)
 // An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
 // This is only informational and the status will not change unless the client explicitly changes it.
 func (o GetStoragePoolTypesDeprecatedOutput) Obsolete() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesDeprecated) string { return v.Obsolete }).(pulumi.StringOutput)
 }
 
+// (Output)
 // The URL of the suggested replacement for a deprecated resource.
 // The suggested replacement resource must be the same kind of resource as the deprecated resource.
 func (o GetStoragePoolTypesDeprecatedOutput) Replacement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragePoolTypesDeprecated) string { return v.Replacement }).(pulumi.StringOutput)
 }
 
+// (Output)
 // The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
 // Operations which communicate the end of life date for an image, can use ACTIVE.
 // Operations which create a new resource using a DEPRECATED resource will return successfully,

@@ -235,7 +235,7 @@ import * as utilities from "../utilities";
  *     name: "synthetic_function",
  *     location: "us-central1",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "SyntheticFunction",
  *         source: {
  *             storageSource: {

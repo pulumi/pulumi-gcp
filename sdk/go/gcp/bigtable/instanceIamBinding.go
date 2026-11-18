@@ -236,7 +236,7 @@ type InstanceIamBinding struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
 	//
-	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	// For `bigtable.InstanceIamPolicy` only:
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -301,7 +301,7 @@ type instanceIamBindingState struct {
 	Etag *string `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
 	//
-	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	// For `bigtable.InstanceIamPolicy` only:
 	Instance *string `pulumi:"instance"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -328,7 +328,7 @@ type InstanceIamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	//
-	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	// For `bigtable.InstanceIamPolicy` only:
 	Instance pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -363,7 +363,7 @@ type instanceIamBindingArgs struct {
 	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance to manage IAM policies for.
 	//
-	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	// For `bigtable.InstanceIamPolicy` only:
 	Instance string `pulumi:"instance"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -389,7 +389,7 @@ type InstanceIamBindingArgs struct {
 	Condition InstanceIamBindingConditionPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	//
-	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	// For `bigtable.InstanceIamPolicy` only:
 	Instance pulumi.StringInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
@@ -508,7 +508,7 @@ func (o InstanceIamBindingOutput) Etag() pulumi.StringOutput {
 
 // The name or relative resource id of the instance to manage IAM policies for.
 //
-// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamBindingOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

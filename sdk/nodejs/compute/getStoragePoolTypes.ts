@@ -6,6 +6,16 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a StoragePoolType data source.
+ * The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+ *
+ * To get more information about StoragePoolType, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+ * * How-to Guides
+ *     * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+ */
 export function getStoragePoolTypes(args: GetStoragePoolTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetStoragePoolTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", {
@@ -19,8 +29,20 @@ export function getStoragePoolTypes(args: GetStoragePoolTypesArgs, opts?: pulumi
  * A collection of arguments for invoking getStoragePoolTypes.
  */
 export interface GetStoragePoolTypesArgs {
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: string;
+    /**
+     * Name of the storage pool type.
+     *
+     * ***
+     */
     storagePoolType: string;
+    /**
+     * The name of the zone.
+     */
     zone: string;
 }
 
@@ -28,25 +50,82 @@ export interface GetStoragePoolTypesArgs {
  * A collection of values returned by getStoragePoolTypes.
  */
 export interface GetStoragePoolTypesResult {
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp: string;
+    /**
+     * (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+     * This is only informational and the status will not change unless the client explicitly changes it.
+     */
     readonly deprecateds: outputs.compute.GetStoragePoolTypesDeprecated[];
+    /**
+     * An optional description of this resource.
+     */
     readonly description: string;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
     readonly id: number;
+    /**
+     * Type of the resource. Always compute#storagePoolType for storage pool types.
+     */
     readonly kind: string;
+    /**
+     * Maximum storage pool size in GB.
+     */
     readonly maxPoolProvisionedCapacityGb: number;
+    /**
+     * Maximum provisioned IOPS.
+     */
     readonly maxPoolProvisionedIops: number;
+    /**
+     * Maximum provisioned throughput.
+     */
     readonly maxPoolProvisionedThroughput: number;
+    /**
+     * Minimum storage pool size in GB.
+     */
     readonly minPoolProvisionedCapacityGb: number;
+    /**
+     * Minimum provisioned IOPS.
+     */
     readonly minPoolProvisionedIops: number;
+    /**
+     * Minimum provisioned throughput.
+     */
     readonly minPoolProvisionedThroughput: number;
+    /**
+     * Name of the resource.
+     */
     readonly name: string;
     readonly project: string;
+    /**
+     * Server-defined URL for the resource.
+     */
     readonly selfLink: string;
+    /**
+     * Server-defined URL for this resource with the resource id.
+     */
     readonly selfLinkWithId: string;
     readonly storagePoolType: string;
+    /**
+     * The list of disk types supported in this storage pool type.
+     */
     readonly supportedDiskTypes: string[];
     readonly zone: string;
 }
+/**
+ * Represents a StoragePoolType data source.
+ * The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+ *
+ * To get more information about StoragePoolType, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+ * * How-to Guides
+ *     * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+ */
 export function getStoragePoolTypesOutput(args: GetStoragePoolTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStoragePoolTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", {
@@ -60,7 +139,19 @@ export function getStoragePoolTypesOutput(args: GetStoragePoolTypesOutputArgs, o
  * A collection of arguments for invoking getStoragePoolTypes.
  */
 export interface GetStoragePoolTypesOutputArgs {
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the storage pool type.
+     *
+     * ***
+     */
     storagePoolType: pulumi.Input<string>;
+    /**
+     * The name of the zone.
+     */
     zone: pulumi.Input<string>;
 }

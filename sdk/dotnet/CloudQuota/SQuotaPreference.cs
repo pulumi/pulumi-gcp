@@ -94,9 +94,11 @@ namespace Pulumi.Gcp.CloudQuota
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The list of quota safety checks to be ignored.
-        /// Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        /// Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        /// A comma-separated list of quota safety checks to be ignored, for example
+        /// `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+        /// values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+        /// `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+        /// be combined with other values.
         /// </summary>
         [Output("ignoreSafetyChecks")]
         public Output<string?> IgnoreSafetyChecks { get; private set; } = null!;
@@ -220,9 +222,11 @@ namespace Pulumi.Gcp.CloudQuota
         }
 
         /// <summary>
-        /// The list of quota safety checks to be ignored.
-        /// Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        /// Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        /// A comma-separated list of quota safety checks to be ignored, for example
+        /// `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+        /// values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+        /// `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+        /// be combined with other values.
         /// </summary>
         [Input("ignoreSafetyChecks")]
         public Input<string>? IgnoreSafetyChecks { get; set; }
@@ -308,9 +312,11 @@ namespace Pulumi.Gcp.CloudQuota
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The list of quota safety checks to be ignored.
-        /// Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-        /// Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+        /// A comma-separated list of quota safety checks to be ignored, for example
+        /// `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+        /// values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+        /// `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+        /// be combined with other values.
         /// </summary>
         [Input("ignoreSafetyChecks")]
         public Input<string>? IgnoreSafetyChecks { get; set; }
