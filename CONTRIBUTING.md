@@ -30,7 +30,7 @@ You must generate and check in the SDKs on each pull request containing a code c
 
 Every upstream resource is assigned to a Pulumi module by `moduleMapping` in `provider/resources.go`, keyed by the resource name with the `google_` prefix stripped. There is no default module, so a resource whose prefix is not in that map fails `make tfgen`.
 
-The keys are magic-modules product names in snake_case. To find the name for a new upstream release, run [`scripts/new_resources`](./scripts/new_resources/README.md), which walks each new resource back to the magic-modules product it came from and prints the name to add.
+The keys are magic-modules product names in snake_case. To find the name for a new upstream release, run [`scripts/new_resources`](./scripts/new_resources/README.md), which walks each new resource back to the magic-modules product it came from and prints the name to add. `make tfgen` already does this automatically for the unambiguous, common case (see `.mk/tfgen-repair.mk`) and retries once; reach for `scripts/new_resources` by hand when it declines (it says why on stderr) or to double check its guess.
 
 ## Running Integration Tests
 

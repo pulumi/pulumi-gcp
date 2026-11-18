@@ -18,6 +18,8 @@ import re
 import subprocess
 import sys
 
+from . import fix
+
 TPG_REPO = "hashicorp/terraform-provider-google-beta"
 MM_REPO = "GoogleCloudPlatform/magic-modules"
 
@@ -191,35 +193,25 @@ def products(mm_pr):
         yield path, (m.group(1) if m else None)
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument(
-        "ref",
-        nargs="?",
-        help="upstream tag, branch or sha to walk (default: the `upstream` submodule ref)",
-    )
-    ap.add_argument(
-        "--kind",
-        default="Resource",
-        help="CHANGELOG feature kind to walk, e.g. Resource, Data Source, "
-        "List Resource, or `all` (default: Resource)",
-    )
-    ap.add_argument("--json", action="store_true", help="emit JSON instead of text")
-    args = ap.parse_args()
+def collect_results(repo, ref, kind):
+    """Resolve `ref` and return `(sha, tag, section, results)` for `kind`.
 
-    repo = default_repo()
-    sha, tag = resolve_ref(repo, args.ref)
+    Shared by the normal print path and `--fix`, which always passes `"all"`
+    since a missing mapping can surface from a resource or a data source (or
+    both, as the same upstream name) alike.
+    """
+    sha, tag = resolve_ref(repo, ref)
     version = tag.lstrip("v") if tag else None
     text = changelog(repo, sha)
     section = section_title(text, version)
     entries = list(features(text, version))
-    if args.kind != "all":
-        entries = [e for e in entries if e[0] == args.kind]
+    if kind != "all":
+        entries = [e for e in entries if e[0] == kind]
 
     results = []
-    for kind, resource, tpg_pr in entries:
+    for entry_kind, resource, tpg_pr in entries:
         row = {
-            "kind": kind,
+            "kind": entry_kind,
             "resource": resource,
             "tpg_pr": f"https://github.com/{TPG_REPO}/pull/{tpg_pr}",
             "products": [],
@@ -236,6 +228,85 @@ def main():
                     }
                 )
         results.append(row)
+    return sha, tag, section, results
+
+
+def run_fix(repo, relpath, results):
+    """Implements `--fix`. Returns the process exit code.
+
+    Writes `relpath` (resolved against `repo` if not already absolute) only
+    when there was at least one unambiguous addition; see `fix.plan` for what
+    "unambiguous" excludes. Every exclusion and every addition is reported on
+    stderr/stdout respectively, for the Makefile's retry log and for a human
+    re-running this by hand to see why nothing changed.
+    """
+    path = relpath if os.path.isabs(relpath) else os.path.join(repo, relpath)
+    candidates, notes = fix.candidates_from_results(results)
+    try:
+        with open(path) as fh:
+            go_src = fh.read()
+        parsed, additions, plan_notes = fix.plan(go_src, candidates)
+    except (OSError, fix.NotFound) as exc:
+        print(f"--fix: {exc}", file=sys.stderr)
+        return 1
+    notes += plan_notes
+
+    for note in notes:
+        print(f"--fix: {note}", file=sys.stderr)
+
+    if not additions:
+        print(
+            "--fix: nothing unambiguous to add; see scripts/new_resources/README.md",
+            file=sys.stderr,
+        )
+        return 1
+
+    new_src = fix.apply(parsed, additions)
+    with open(path, "w") as fh:
+        fh.write(new_src)
+    if not fix.gofmt(path):
+        print(f"--fix: gofmt not on PATH; wrote unformatted Go to {relpath}", file=sys.stderr)
+
+    for key, name in sorted(additions.items()):
+        print(f'--fix: added "{key}": "{name}" to {relpath}')
+    return 0
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument(
+        "ref",
+        nargs="?",
+        help="upstream tag, branch or sha to walk (default: the `upstream` submodule ref)",
+    )
+    ap.add_argument(
+        "--kind",
+        default="Resource",
+        help="CHANGELOG feature kind to walk, e.g. Resource, Data Source, "
+        "List Resource, or `all` (default: Resource). Ignored by --fix, which "
+        "always walks every kind.",
+    )
+    ap.add_argument("--json", action="store_true", help="emit JSON instead of text")
+    ap.add_argument(
+        "--fix",
+        nargs="?",
+        const="provider/resources.go",
+        default=None,
+        metavar="FILE",
+        help="instead of printing, add every unambiguous new product's moduleMapping "
+        "entry to FILE (default: provider/resources.go, resolved against the repo "
+        "root regardless of the current directory, same as a relative FILE) and "
+        "gofmt it. Exits non-zero, without writing FILE, if there was nothing "
+        "unambiguous to add.",
+    )
+    args = ap.parse_args()
+
+    repo = default_repo()
+    kind = "all" if args.fix is not None else args.kind
+    sha, tag, section, results = collect_results(repo, args.ref, kind)
+
+    if args.fix is not None:
+        sys.exit(run_fix(repo, args.fix, results))
 
     if args.json:
         print(
