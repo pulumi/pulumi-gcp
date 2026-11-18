@@ -195,9 +195,9 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-cloud-sdk/go v1.20261116.1208 // indirect
+	github.com/pulumi/pulumi-cloud-sdk/go v1.20261117.1636 // indirect
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.119.0 // indirect
-	github.com/pulumi/pulumi-hcl v0.20.0 // indirect
+	github.com/pulumi/pulumi-hcl v0.20.1 // indirect
 	github.com/pulumi/pulumi-java v1.40.1 // indirect
 	github.com/pulumi/pulumi-yaml v1.39.1 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
@@ -258,7 +258,6 @@ require (
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	go4.org/netipx v0.0.0-20260823151212-3075585bcbeb // indirect
 	golang.org/x/crypto v0.59.0 // indirect
-	golang.org/x/crypto/openpgp v0.1.0-deprecated // indirect
 	golang.org/x/exp v0.0.0-20261014143641-f0251eb4aa3e // indirect
 	golang.org/x/mod v0.42.0 // indirect
 	golang.org/x/net v0.62.0 // indirect
