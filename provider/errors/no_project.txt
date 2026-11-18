@@ -1,6 +1,0 @@
-unable to detect a global setting for GCP Project.
-Pulumi will rely on per-resource settings for this operation.
-Set the GCP Project by using:
-    `pulumi config set gcp:project <project>`
-If you would like to disable this warning use:
-    `pulumi config set gcp:disableGlobalProjectWarning true`

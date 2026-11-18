@@ -1,7 +1,0 @@
-name: explicit-provider-with-config
-runtime: nodejs
-description: A minimal Google Cloud TypeScript Pulumi program
-config:
-  pulumi:tags:
-    value:
-      pulumi:template: gcp-typescript
