@@ -148,6 +148,9 @@ jobs:
     name: publish_sdk
     needs: publish
     runs-on: ubuntu-latest
+    env:
+      # Layers .config/mise.publish.toml over .config/mise.toml to pin the Pulumi CLI (publish.pulumiVersion).
+      MISE_ENV: publish
     outputs:
       python_version: ${{ steps.python_version.outputs.version }}
     steps:
