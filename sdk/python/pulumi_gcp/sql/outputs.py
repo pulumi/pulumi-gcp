@@ -166,6 +166,7 @@ class DatabaseInstanceBlueGreenDeployment(dict):
                  deployment_name: _builtins.str,
                  active_environment: Optional[_builtins.str] = None,
                  delete_old_source_on_destroy: Optional[_builtins.bool] = None,
+                 description: Optional[_builtins.str] = None,
                  old_source_instance_connection_name: Optional[_builtins.str] = None,
                  old_source_instance_name: Optional[_builtins.str] = None,
                  target_database_version: Optional[_builtins.str] = None,
@@ -176,6 +177,7 @@ class DatabaseInstanceBlueGreenDeployment(dict):
         :param _builtins.str deployment_name: The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
         :param _builtins.str active_environment: Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
         :param _builtins.bool delete_old_source_on_destroy: Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`active_environment = "TARGET"`). Defaults to `false`.
+        :param _builtins.str description: User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
         :param _builtins.str old_source_instance_connection_name: The connection name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
         :param _builtins.str old_source_instance_name: The name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
         :param _builtins.str target_database_version: The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `database_version`. Cannot be changed while the deployment is active.
@@ -188,6 +190,8 @@ class DatabaseInstanceBlueGreenDeployment(dict):
             pulumi.set(__self__, "active_environment", active_environment)
         if delete_old_source_on_destroy is not None:
             pulumi.set(__self__, "delete_old_source_on_destroy", delete_old_source_on_destroy)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if old_source_instance_connection_name is not None:
             pulumi.set(__self__, "old_source_instance_connection_name", old_source_instance_connection_name)
         if old_source_instance_name is not None:
@@ -224,6 +228,14 @@ class DatabaseInstanceBlueGreenDeployment(dict):
         Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`active_environment = "TARGET"`). Defaults to `false`.
         """
         return pulumi.get(self, "delete_old_source_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="oldSourceInstanceConnectionName")
@@ -3680,6 +3692,7 @@ class UserPasswordPolicy(dict):
         :param _builtins.bool enable_failed_attempts_check: If true, the check that will lock user after too many failed login attempts will be enabled.
         :param _builtins.bool enable_password_verification: If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
         :param _builtins.str password_expiration_duration: Password expiration duration with one week grace period.
+        :param Sequence['UserPasswordPolicyStatusArgs'] statuses: The password status of the user. Structure is documented below.
         """
         if allowed_failed_attempts is not None:
             pulumi.set(__self__, "allowed_failed_attempts", allowed_failed_attempts)
@@ -3727,6 +3740,9 @@ class UserPasswordPolicy(dict):
     @_builtins.property
     @pulumi.getter
     def statuses(self) -> Optional[Sequence['outputs.UserPasswordPolicyStatus']]:
+        """
+        The password status of the user. Structure is documented below.
+        """
         return pulumi.get(self, "statuses")
 
 
@@ -3801,8 +3817,8 @@ class UserSqlServerUserDetail(dict):
                  disabled: Optional[_builtins.bool] = None,
                  server_roles: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.bool disabled: If the user has been disabled.
-        :param Sequence[_builtins.str] server_roles: The server roles for this user in the database.
+        :param _builtins.bool disabled: (read only) If the user has been disabled.
+        :param Sequence[_builtins.str] server_roles: (read only) The server roles for this user in the database.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -3813,7 +3829,7 @@ class UserSqlServerUserDetail(dict):
     @pulumi.getter
     def disabled(self) -> Optional[_builtins.bool]:
         """
-        If the user has been disabled.
+        (read only) If the user has been disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -3821,7 +3837,7 @@ class UserSqlServerUserDetail(dict):
     @pulumi.getter(name="serverRoles")
     def server_roles(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The server roles for this user in the database.
+        (read only) The server roles for this user in the database.
         """
         return pulumi.get(self, "server_roles")
 
@@ -3894,6 +3910,7 @@ class GetDatabaseInstanceBlueGreenDeploymentResult(dict):
                  active_environment: _builtins.str,
                  delete_old_source_on_destroy: _builtins.bool,
                  deployment_name: _builtins.str,
+                 description: _builtins.str,
                  old_source_instance_connection_name: _builtins.str,
                  old_source_instance_name: _builtins.str,
                  target_database_version: _builtins.str,
@@ -3904,6 +3921,7 @@ class GetDatabaseInstanceBlueGreenDeploymentResult(dict):
         :param _builtins.str active_environment: Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
         :param _builtins.bool delete_old_source_on_destroy: Defaults to false. If true, removing the blue_green_deployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
         :param _builtins.str deployment_name: A unique identifier for the blue-green deployment within the project and region.
+        :param _builtins.str description: User-provided description for the blue-green deployment.
         :param _builtins.str old_source_instance_connection_name: Auth Proxy connection string for the former Blue instance post-switchover.
         :param _builtins.str old_source_instance_name: Renamed GCP identifier of the former Blue (Source) instance post-switchover.
         :param _builtins.str target_database_version: The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
@@ -3914,6 +3932,7 @@ class GetDatabaseInstanceBlueGreenDeploymentResult(dict):
         pulumi.set(__self__, "active_environment", active_environment)
         pulumi.set(__self__, "delete_old_source_on_destroy", delete_old_source_on_destroy)
         pulumi.set(__self__, "deployment_name", deployment_name)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "old_source_instance_connection_name", old_source_instance_connection_name)
         pulumi.set(__self__, "old_source_instance_name", old_source_instance_name)
         pulumi.set(__self__, "target_database_version", target_database_version)
@@ -3944,6 +3963,14 @@ class GetDatabaseInstanceBlueGreenDeploymentResult(dict):
         A unique identifier for the blue-green deployment within the project and region.
         """
         return pulumi.get(self, "deployment_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        User-provided description for the blue-green deployment.
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="oldSourceInstanceConnectionName")
@@ -6705,6 +6732,7 @@ class GetDatabaseInstancesInstanceBlueGreenDeploymentResult(dict):
                  active_environment: _builtins.str,
                  delete_old_source_on_destroy: _builtins.bool,
                  deployment_name: _builtins.str,
+                 description: _builtins.str,
                  old_source_instance_connection_name: _builtins.str,
                  old_source_instance_name: _builtins.str,
                  target_database_version: _builtins.str,
@@ -6715,6 +6743,7 @@ class GetDatabaseInstancesInstanceBlueGreenDeploymentResult(dict):
         :param _builtins.str active_environment: Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
         :param _builtins.bool delete_old_source_on_destroy: Defaults to false. If true, removing the blue_green_deployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
         :param _builtins.str deployment_name: A unique identifier for the blue-green deployment within the project and region.
+        :param _builtins.str description: User-provided description for the blue-green deployment.
         :param _builtins.str old_source_instance_connection_name: Auth Proxy connection string for the former Blue instance post-switchover.
         :param _builtins.str old_source_instance_name: Renamed GCP identifier of the former Blue (Source) instance post-switchover.
         :param _builtins.str target_database_version: The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
@@ -6725,6 +6754,7 @@ class GetDatabaseInstancesInstanceBlueGreenDeploymentResult(dict):
         pulumi.set(__self__, "active_environment", active_environment)
         pulumi.set(__self__, "delete_old_source_on_destroy", delete_old_source_on_destroy)
         pulumi.set(__self__, "deployment_name", deployment_name)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "old_source_instance_connection_name", old_source_instance_connection_name)
         pulumi.set(__self__, "old_source_instance_name", old_source_instance_name)
         pulumi.set(__self__, "target_database_version", target_database_version)
@@ -6755,6 +6785,14 @@ class GetDatabaseInstancesInstanceBlueGreenDeploymentResult(dict):
         A unique identifier for the blue-green deployment within the project and region.
         """
         return pulumi.get(self, "deployment_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        User-provided description for the blue-green deployment.
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="oldSourceInstanceConnectionName")

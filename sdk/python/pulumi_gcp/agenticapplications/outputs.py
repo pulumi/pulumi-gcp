@@ -60,6 +60,7 @@ __all__ = [
     'AnalystAgentPersonaExternalDataSourceTreasurySecuritiesAuctions',
     'AnalystAgentPersonaExternalDataSourceUsda',
     'AnalystAgentPersonaMcpDataSource',
+    'AnalystAgentPersonaMcpDataSourceRequestHeader',
     'AnalystAgentPersonaResource',
     'AnalystAgentPersonaResourceBigqueryResource',
     'AnalystAgentPersonaResourceF1Resource',
@@ -2621,6 +2622,8 @@ class AnalystAgentPersonaMcpDataSource(dict):
             suggest = "client_secret"
         elif key == "oauthTokenUrl":
             suggest = "oauth_token_url"
+        elif key == "requestHeaders":
+            suggest = "request_headers"
         elif key == "sessionIdHeader":
             suggest = "session_id_header"
         elif key == "taskIdHeader":
@@ -2649,6 +2652,7 @@ class AnalystAgentPersonaMcpDataSource(dict):
                  client_secret: Optional[_builtins.str] = None,
                  oauth_token_url: Optional[_builtins.str] = None,
                  prompt: Optional[_builtins.str] = None,
+                 request_headers: Optional[Sequence['outputs.AnalystAgentPersonaMcpDataSourceRequestHeader']] = None,
                  session_id_header: Optional[_builtins.str] = None,
                  task_id_header: Optional[_builtins.str] = None):
         """
@@ -2664,6 +2668,10 @@ class AnalystAgentPersonaMcpDataSource(dict):
         :param _builtins.str client_secret: Input only. The client secret for authentication.
         :param _builtins.str oauth_token_url: The URL to use for retrieving the OAuth token.
         :param _builtins.str prompt: The custom prompt for the MCP agent.
+        :param Sequence['AnalystAgentPersonaMcpDataSourceRequestHeaderArgs'] request_headers: Additional HTTP headers sent on every request to the MCP server, for
+               example a static header required by an API gateway. Headers managed by the
+               agent take precedence and cannot be set here. When empty, no additional
+               headers are sent.
         :param _builtins.str session_id_header: The HTTP header name used to pass the agent session ID in MCP server
                requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
                header field name (RFC 9110 token).
@@ -2689,6 +2697,8 @@ class AnalystAgentPersonaMcpDataSource(dict):
             pulumi.set(__self__, "oauth_token_url", oauth_token_url)
         if prompt is not None:
             pulumi.set(__self__, "prompt", prompt)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
         if session_id_header is not None:
             pulumi.set(__self__, "session_id_header", session_id_header)
         if task_id_header is not None:
@@ -2784,6 +2794,17 @@ class AnalystAgentPersonaMcpDataSource(dict):
         return pulumi.get(self, "prompt")
 
     @_builtins.property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[Sequence['outputs.AnalystAgentPersonaMcpDataSourceRequestHeader']]:
+        """
+        Additional HTTP headers sent on every request to the MCP server, for
+        example a static header required by an API gateway. Headers managed by the
+        agent take precedence and cannot be set here. When empty, no additional
+        headers are sent.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @_builtins.property
     @pulumi.getter(name="sessionIdHeader")
     def session_id_header(self) -> Optional[_builtins.str]:
         """
@@ -2802,6 +2823,79 @@ class AnalystAgentPersonaMcpDataSource(dict):
         header field name (RFC 9110 token).
         """
         return pulumi.get(self, "task_id_header")
+
+
+@pulumi.output_type
+class AnalystAgentPersonaMcpDataSourceRequestHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+        elif key == "dynamicValue":
+            suggest = "dynamic_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnalystAgentPersonaMcpDataSourceRequestHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnalystAgentPersonaMcpDataSourceRequestHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnalystAgentPersonaMcpDataSourceRequestHeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: _builtins.str,
+                 dynamic_value: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str header_name: The header name. Must be a valid HTTP field name (RFC 9110 token),
+               unique ignoring case within the data source, and not a header managed
+               by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+               or the configured API key, session ID, or task ID headers).
+        :param _builtins.str dynamic_value: A value the agent fills in for each request.
+               Possible values:
+               USER_ID
+        :param _builtins.str value: A static value, sent as-is on every request. The value is stored and
+               returned in plain text, so do not use it for credentials.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+        if dynamic_value is not None:
+            pulumi.set(__self__, "dynamic_value", dynamic_value)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name. Must be a valid HTTP field name (RFC 9110 token),
+        unique ignoring case within the data source, and not a header managed
+        by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+        or the configured API key, session ID, or task ID headers).
+        """
+        return pulumi.get(self, "header_name")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicValue")
+    def dynamic_value(self) -> Optional[_builtins.str]:
+        """
+        A value the agent fills in for each request.
+        Possible values:
+        USER_ID
+        """
+        return pulumi.get(self, "dynamic_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        A static value, sent as-is on every request. The value is stored and
+        returned in plain text, so do not use it for credentials.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

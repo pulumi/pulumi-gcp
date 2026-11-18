@@ -27,6 +27,23 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// If disabled is set, the time at which the rollouts were disabled.
         /// </summary>
         public readonly string? DisabledTime;
+        /// <summary>
+        /// A list of file paths patterns to exclude from triggering a rollout.
+        /// Patterns in this list take precedence over required_paths.
+        /// **Note**: All paths must be in the IgnoredPaths in order for the
+        /// rollout to be skipped. Limited to 100 paths.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppHostingTrafficRolloutPolicyIgnoredPath> IgnoredPaths;
+        /// <summary>
+        /// A list of file paths patterns that trigger a build and rollout
+        /// if at least one of the changed files in the commit are present in
+        /// this list. This field is optional; the rollout policy will default to
+        /// triggering on all paths if both IgnoredPaths and RequiredPaths are
+        /// not populated. Limited to 100 paths.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppHostingTrafficRolloutPolicyRequiredPath> RequiredPaths;
 
         [OutputConstructor]
         private AppHostingTrafficRolloutPolicy(
@@ -34,11 +51,17 @@ namespace Pulumi.Gcp.Firebase.Outputs
 
             bool? disabled,
 
-            string? disabledTime)
+            string? disabledTime,
+
+            ImmutableArray<Outputs.AppHostingTrafficRolloutPolicyIgnoredPath> ignoredPaths,
+
+            ImmutableArray<Outputs.AppHostingTrafficRolloutPolicyRequiredPath> requiredPaths)
         {
             CodebaseBranch = codebaseBranch;
             Disabled = disabled;
             DisabledTime = disabledTime;
+            IgnoredPaths = ignoredPaths;
+            RequiredPaths = requiredPaths;
         }
     }
 }

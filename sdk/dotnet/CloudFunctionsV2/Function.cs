@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloHttp",
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///             {
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloPubSub",
     ///             EnvironmentVariables = 
     ///             {
@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloHttp",
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///             {
@@ -355,7 +355,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "entryPoint",
     ///             EnvironmentVariables = 
     ///             {
@@ -495,7 +495,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "entryPoint",
     ///             EnvironmentVariables = 
     ///             {
@@ -637,7 +637,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloHttp",
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///             {
@@ -724,7 +724,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloHttp",
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///             {
@@ -820,7 +820,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloHttp",
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///             {
@@ -902,7 +902,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloHttp",
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///             {
@@ -1019,7 +1019,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         KmsKeyName = "cmek-key",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloHttp",
     ///             DockerRepository = encoded_ar_repo.Id,
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
@@ -1092,7 +1092,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloPubSub",
     ///             EnvironmentVariables = 
     ///             {
@@ -1180,7 +1180,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloPubSub",
     ///             EnvironmentVariables = 
     ///             {
@@ -1257,7 +1257,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Description = "a new function",
     ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Runtime = "nodejs20",
+    ///             Runtime = "nodejs24",
     ///             EntryPoint = "helloHttp",
     ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///             {

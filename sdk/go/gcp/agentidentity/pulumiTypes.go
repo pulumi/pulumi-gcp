@@ -17,6 +17,9 @@ type AuthProviderAuthProviderTypeParams struct {
 	// Message describing ApiKeyParams object.
 	// Structure is documented below.
 	ApiKey *AuthProviderAuthProviderTypeParamsApiKey `pulumi:"apiKey"`
+	// Parameters for Connector Reference authentication.
+	// Structure is documented below.
+	ConnectorReferenceAuthProvider *AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider `pulumi:"connectorReferenceAuthProvider"`
 	// (Output)
 	// Message describing GeminiEnterpriseAuthProviderParams object.
 	// Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
@@ -27,6 +30,9 @@ type AuthProviderAuthProviderTypeParams struct {
 	// Message describing TwoLeggedOAuth object.
 	// Structure is documented below.
 	TwoLeggedOauth *AuthProviderAuthProviderTypeParamsTwoLeggedOauth `pulumi:"twoLeggedOauth"`
+	// Parameters for Cross-App Access authentication.
+	// Structure is documented below.
+	XaaAuthProvider *AuthProviderAuthProviderTypeParamsXaaAuthProvider `pulumi:"xaaAuthProvider"`
 }
 
 // AuthProviderAuthProviderTypeParamsInput is an input type that accepts AuthProviderAuthProviderTypeParamsArgs and AuthProviderAuthProviderTypeParamsOutput values.
@@ -44,6 +50,9 @@ type AuthProviderAuthProviderTypeParamsArgs struct {
 	// Message describing ApiKeyParams object.
 	// Structure is documented below.
 	ApiKey AuthProviderAuthProviderTypeParamsApiKeyPtrInput `pulumi:"apiKey"`
+	// Parameters for Connector Reference authentication.
+	// Structure is documented below.
+	ConnectorReferenceAuthProvider AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrInput `pulumi:"connectorReferenceAuthProvider"`
 	// (Output)
 	// Message describing GeminiEnterpriseAuthProviderParams object.
 	// Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
@@ -54,6 +63,9 @@ type AuthProviderAuthProviderTypeParamsArgs struct {
 	// Message describing TwoLeggedOAuth object.
 	// Structure is documented below.
 	TwoLeggedOauth AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrInput `pulumi:"twoLeggedOauth"`
+	// Parameters for Cross-App Access authentication.
+	// Structure is documented below.
+	XaaAuthProvider AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrInput `pulumi:"xaaAuthProvider"`
 }
 
 func (AuthProviderAuthProviderTypeParamsArgs) ElementType() reflect.Type {
@@ -139,6 +151,14 @@ func (o AuthProviderAuthProviderTypeParamsOutput) ApiKey() AuthProviderAuthProvi
 	return o.ApplyT(func(v AuthProviderAuthProviderTypeParams) *AuthProviderAuthProviderTypeParamsApiKey { return v.ApiKey }).(AuthProviderAuthProviderTypeParamsApiKeyPtrOutput)
 }
 
+// Parameters for Connector Reference authentication.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsOutput) ConnectorReferenceAuthProvider() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParams) *AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider {
+		return v.ConnectorReferenceAuthProvider
+	}).(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput)
+}
+
 // (Output)
 // Message describing GeminiEnterpriseAuthProviderParams object.
 // Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
@@ -162,6 +182,14 @@ func (o AuthProviderAuthProviderTypeParamsOutput) TwoLeggedOauth() AuthProviderA
 	return o.ApplyT(func(v AuthProviderAuthProviderTypeParams) *AuthProviderAuthProviderTypeParamsTwoLeggedOauth {
 		return v.TwoLeggedOauth
 	}).(AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrOutput)
+}
+
+// Parameters for Cross-App Access authentication.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsOutput) XaaAuthProvider() AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParams) *AuthProviderAuthProviderTypeParamsXaaAuthProvider {
+		return v.XaaAuthProvider
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput)
 }
 
 type AuthProviderAuthProviderTypeParamsPtrOutput struct{ *pulumi.OutputState }
@@ -199,6 +227,17 @@ func (o AuthProviderAuthProviderTypeParamsPtrOutput) ApiKey() AuthProviderAuthPr
 	}).(AuthProviderAuthProviderTypeParamsApiKeyPtrOutput)
 }
 
+// Parameters for Connector Reference authentication.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsPtrOutput) ConnectorReferenceAuthProvider() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParams) *AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorReferenceAuthProvider
+	}).(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput)
+}
+
 // (Output)
 // Message describing GeminiEnterpriseAuthProviderParams object.
 // Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
@@ -231,6 +270,17 @@ func (o AuthProviderAuthProviderTypeParamsPtrOutput) TwoLeggedOauth() AuthProvid
 		}
 		return v.TwoLeggedOauth
 	}).(AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrOutput)
+}
+
+// Parameters for Cross-App Access authentication.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsPtrOutput) XaaAuthProvider() AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParams) *AuthProviderAuthProviderTypeParamsXaaAuthProvider {
+		if v == nil {
+			return nil
+		}
+		return v.XaaAuthProvider
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput)
 }
 
 type AuthProviderAuthProviderTypeParamsApiKey struct {
@@ -371,6 +421,188 @@ func (o AuthProviderAuthProviderTypeParamsApiKeyPtrOutput) ApiKey() pulumi.Strin
 			return nil
 		}
 		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider struct {
+	// Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+	// resources/scopes, formatted as a JSON array of JSON objects.
+	AuthorizationDetails *string `pulumi:"authorizationDetails"`
+	// Required. The name of the referenced connector. For Gemini Enterprise, this
+	// is either a Data Connector name
+	// (`projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector`),
+	// an Authorization name
+	// (`projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}`),
+	// or a connector ID (e.g. `salesforce-connector-prod`).
+	Connector string `pulumi:"connector"`
+}
+
+// AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderInput is an input type that accepts AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs and AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderInput` via:
+//
+//	AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs{...}
+type AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput
+	ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput
+}
+
+type AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs struct {
+	// Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+	// resources/scopes, formatted as a JSON array of JSON objects.
+	AuthorizationDetails pulumi.StringPtrInput `pulumi:"authorizationDetails"`
+	// Required. The name of the referenced connector. For Gemini Enterprise, this
+	// is either a Data Connector name
+	// (`projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector`),
+	// an Authorization name
+	// (`projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}`),
+	// or a connector ID (e.g. `salesforce-connector-prod`).
+	Connector pulumi.StringInput `pulumi:"connector"`
+}
+
+func (AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider)(nil)).Elem()
+}
+
+func (i AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput)
+}
+
+func (i AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput).ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(ctx)
+}
+
+// AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrInput is an input type that accepts AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs, AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtr and AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrInput` via:
+//
+//	        AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput
+	ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput
+}
+
+type authProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrType AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs
+
+func AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtr(v *AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrInput {
+	return (*authProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrType)(v)
+}
+
+func (*authProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider)(nil)).Elem()
+}
+
+func (i *authProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrType) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *authProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrType) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return o.ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider) *AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider {
+		return &v
+	}).(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput)
+}
+
+// Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+// resources/scopes, formatted as a JSON array of JSON objects.
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput) AuthorizationDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider) *string {
+		return v.AuthorizationDetails
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the referenced connector. For Gemini Enterprise, this
+// is either a Data Connector name
+// (`projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector`),
+// an Authorization name
+// (`projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}`),
+// or a connector ID (e.g. `salesforce-connector-prod`).
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput) Connector() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider) string { return v.Connector }).(pulumi.StringOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput) ToAuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput) Elem() AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider) AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider {
+		if v != nil {
+			return *v
+		}
+		var ret AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider
+		return ret
+	}).(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput)
+}
+
+// Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+// resources/scopes, formatted as a JSON array of JSON objects.
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput) AuthorizationDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationDetails
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the referenced connector. For Gemini Enterprise, this
+// is either a Data Connector name
+// (`projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector`),
+// an Authorization name
+// (`projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}`),
+// or a connector ID (e.g. `salesforce-connector-prod`).
+func (o AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput) Connector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Connector
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1040,6 +1272,862 @@ func (o AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrOutput) TokenUrl() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+type AuthProviderAuthProviderTypeParamsXaaAuthProvider struct {
+	// Optional. Additional parameters to be passed to the token endpoint.
+	AdditionalParameters map[string]string `pulumi:"additionalParameters"`
+	// Option 2: Authenticate using a standard `clientId` and a Client Assertion JWT.
+	// Structure is documented below.
+	ClientAssertionJwtAuth *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth `pulumi:"clientAssertionJwtAuth"`
+	// Option 1: Authenticate using a standard `clientId` and `clientSecret`.
+	// Structure is documented below.
+	ClientSecretAuth *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth `pulumi:"clientSecretAuth"`
+	// Configuration for a custom or third-party authorization server issuer.
+	// Structure is documented below.
+	CustomIssuer *AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer `pulumi:"customIssuer"`
+	// Configuration for when the input is an ID token.
+	// Structure is documented below.
+	IdTokenInput *AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput `pulumi:"idTokenInput"`
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs and AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderInput` via:
+//
+//	AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs{...}
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs struct {
+	// Optional. Additional parameters to be passed to the token endpoint.
+	AdditionalParameters pulumi.StringMapInput `pulumi:"additionalParameters"`
+	// Option 2: Authenticate using a standard `clientId` and a Client Assertion JWT.
+	// Structure is documented below.
+	ClientAssertionJwtAuth AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrInput `pulumi:"clientAssertionJwtAuth"`
+	// Option 1: Authenticate using a standard `clientId` and `clientSecret`.
+	// Structure is documented below.
+	ClientSecretAuth AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrInput `pulumi:"clientSecretAuth"`
+	// Configuration for a custom or third-party authorization server issuer.
+	// Structure is documented below.
+	CustomIssuer AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrInput `pulumi:"customIssuer"`
+	// Configuration for when the input is an ID token.
+	// Structure is documented below.
+	IdTokenInput AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrInput `pulumi:"idTokenInput"`
+}
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProvider)(nil)).Elem()
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput)
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput).ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(ctx)
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs, AuthProviderAuthProviderTypeParamsXaaAuthProviderPtr and AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrInput` via:
+//
+//	        AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput
+}
+
+type authProviderAuthProviderTypeParamsXaaAuthProviderPtrType AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs
+
+func AuthProviderAuthProviderTypeParamsXaaAuthProviderPtr(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs) AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrInput {
+	return (*authProviderAuthProviderTypeParamsXaaAuthProviderPtrType)(v)
+}
+
+func (*authProviderAuthProviderTypeParamsXaaAuthProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProvider)(nil)).Elem()
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProvider)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return o.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(context.Background())
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProvider {
+		return &v
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput)
+}
+
+// Optional. Additional parameters to be passed to the token endpoint.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) AdditionalParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProvider) map[string]string {
+		return v.AdditionalParameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Option 2: Authenticate using a standard `clientId` and a Client Assertion JWT.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) ClientAssertionJwtAuth() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth {
+		return v.ClientAssertionJwtAuth
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput)
+}
+
+// Option 1: Authenticate using a standard `clientId` and `clientSecret`.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) ClientSecretAuth() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth {
+		return v.ClientSecretAuth
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput)
+}
+
+// Configuration for a custom or third-party authorization server issuer.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) CustomIssuer() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer {
+		return v.CustomIssuer
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput)
+}
+
+// Configuration for when the input is an ID token.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput) IdTokenInput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput {
+		return v.IdTokenInput
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProvider)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) Elem() AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProvider) AuthProviderAuthProviderTypeParamsXaaAuthProvider {
+		if v != nil {
+			return *v
+		}
+		var ret AuthProviderAuthProviderTypeParamsXaaAuthProvider
+		return ret
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput)
+}
+
+// Optional. Additional parameters to be passed to the token endpoint.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) AdditionalParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProvider) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalParameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Option 2: Authenticate using a standard `clientId` and a Client Assertion JWT.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) ClientAssertionJwtAuth() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth {
+		if v == nil {
+			return nil
+		}
+		return v.ClientAssertionJwtAuth
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput)
+}
+
+// Option 1: Authenticate using a standard `clientId` and `clientSecret`.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) ClientSecretAuth() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecretAuth
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput)
+}
+
+// Configuration for a custom or third-party authorization server issuer.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) CustomIssuer() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer {
+		if v == nil {
+			return nil
+		}
+		return v.CustomIssuer
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput)
+}
+
+// Configuration for when the input is an ID token.
+// Structure is documented below.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput) IdTokenInput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProvider) *AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput {
+		if v == nil {
+			return nil
+		}
+		return v.IdTokenInput
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth struct {
+	// Required. The client identifier.
+	ClientId string `pulumi:"clientId"`
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs and AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthInput` via:
+//
+//	AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs{...}
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs struct {
+	// Required. The client identifier.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+}
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth)(nil)).Elem()
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput)
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput).ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(ctx)
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs, AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtr and AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrInput` via:
+//
+//	        AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput
+}
+
+type authProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrType AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs
+
+func AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtr(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrInput {
+	return (*authProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrType)(v)
+}
+
+func (*authProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth)(nil)).Elem()
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return o.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(context.Background())
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth) *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth {
+		return &v
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput)
+}
+
+// Required. The client identifier.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth) string {
+		return v.ClientId
+	}).(pulumi.StringOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput) Elem() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth {
+		if v != nil {
+			return *v
+		}
+		var ret AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth
+		return ret
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput)
+}
+
+// Required. The client identifier.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth struct {
+	// Required. The client identifier.
+	ClientId string `pulumi:"clientId"`
+	// Required. Input only. The client secret.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret string `pulumi:"clientSecret"`
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs and AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthInput` via:
+//
+//	AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs{...}
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs struct {
+	// Required. The client identifier.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Required. Input only. The client secret.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+}
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth)(nil)).Elem()
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput)
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput).ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(ctx)
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs, AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtr and AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrInput` via:
+//
+//	        AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput
+}
+
+type authProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrType AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs
+
+func AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtr(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrInput {
+	return (*authProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrType)(v)
+}
+
+func (*authProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth)(nil)).Elem()
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return o.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(context.Background())
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth) *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth {
+		return &v
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput)
+}
+
+// Required. The client identifier.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Required. Input only. The client secret.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth) string {
+		return v.ClientSecret
+	}).(pulumi.StringOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput) Elem() AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth) AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth {
+		if v != nil {
+			return *v
+		}
+		var ret AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth
+		return ret
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput)
+}
+
+// Required. The client identifier.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Input only. The client secret.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer struct {
+	// Optional. The issuer identifier of the target Authorization Server.
+	Issuer *string `pulumi:"issuer"`
+	// Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+	TokenUrl string `pulumi:"tokenUrl"`
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs and AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerInput` via:
+//
+//	AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs{...}
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs struct {
+	// Optional. The issuer identifier of the target Authorization Server.
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+	TokenUrl pulumi.StringInput `pulumi:"tokenUrl"`
+}
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer)(nil)).Elem()
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput)
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput).ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(ctx)
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs, AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtr and AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrInput` via:
+//
+//	        AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput
+}
+
+type authProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrType AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs
+
+func AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtr(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrInput {
+	return (*authProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrType)(v)
+}
+
+func (*authProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer)(nil)).Elem()
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(context.Background())
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return o.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(context.Background())
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer) *AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer {
+		return &v
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput)
+}
+
+// Optional. The issuer identifier of the target Authorization Server.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+// Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput) TokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer) string { return v.TokenUrl }).(pulumi.StringOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput) Elem() AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer) AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer {
+		if v != nil {
+			return *v
+		}
+		var ret AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer
+		return ret
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput)
+}
+
+// Optional. The issuer identifier of the target Authorization Server.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Issuer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput struct {
+	// Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string.
+	IdJagAdditionalClaims *string `pulumi:"idJagAdditionalClaims"`
+	// The resource name of the ID-JAG auth provider. Format: `projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}`
+	IdJagAuthProvider *string `pulumi:"idJagAuthProvider"`
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs and AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputInput` via:
+//
+//	AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs{...}
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs struct {
+	// Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string.
+	IdJagAdditionalClaims pulumi.StringPtrInput `pulumi:"idJagAdditionalClaims"`
+	// The resource name of the ID-JAG auth provider. Format: `projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}`
+	IdJagAuthProvider pulumi.StringPtrInput `pulumi:"idJagAuthProvider"`
+}
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput)(nil)).Elem()
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput)
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(context.Background())
+}
+
+func (i AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput).ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(ctx)
+}
+
+// AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrInput is an input type that accepts AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs, AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtr and AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput values.
+// You can construct a concrete instance of `AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrInput` via:
+//
+//	        AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrInput interface {
+	pulumi.Input
+
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput
+	ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput
+}
+
+type authProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrType AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs
+
+func AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtr(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrInput {
+	return (*authProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrType)(v)
+}
+
+func (*authProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput)(nil)).Elem()
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return i.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(context.Background())
+}
+
+func (i *authProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrType) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return o.ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(context.Background())
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput) *AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput {
+		return &v
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput)
+}
+
+// Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput) IdJagAdditionalClaims() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput) *string {
+		return v.IdJagAdditionalClaims
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the ID-JAG auth provider. Format: `projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}`
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput) IdJagAuthProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput) *string {
+		return v.IdJagAuthProvider
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput)(nil)).Elem()
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput) ToAuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutputWithContext(ctx context.Context) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput {
+	return o
+}
+
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput) Elem() AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput) AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput {
+		if v != nil {
+			return *v
+		}
+		var ret AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput
+		return ret
+	}).(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput)
+}
+
+// Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string.
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput) IdJagAdditionalClaims() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdJagAdditionalClaims
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the ID-JAG auth provider. Format: `projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}`
+func (o AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput) IdJagAuthProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdJagAuthProvider
+	}).(pulumi.StringPtrOutput)
+}
+
 type AuthProviderIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1371,12 +2459,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsApiKeyInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsApiKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsApiKeyPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsGeAuthProviderInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsGeAuthProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsGeAuthProviderArrayInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsGeAuthProviderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsThreeLeggedOauthInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsThreeLeggedOauthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsThreeLeggedOauthPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsThreeLeggedOauthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsTwoLeggedOauthInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsTwoLeggedOauthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsTwoLeggedOauthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrInput)(nil)).Elem(), AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderIamBindingConditionInput)(nil)).Elem(), AuthProviderIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderIamBindingConditionPtrInput)(nil)).Elem(), AuthProviderIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthProviderIamMemberConditionInput)(nil)).Elem(), AuthProviderIamMemberConditionArgs{})
@@ -1385,12 +2485,24 @@ func init() {
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsPtrOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsApiKeyOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsApiKeyPtrOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderPtrOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsGeAuthProviderOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsGeAuthProviderArrayOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsThreeLeggedOauthOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsThreeLeggedOauthPtrOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsTwoLeggedOauthOutput{})
 	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsTwoLeggedOauthPtrOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderPtrOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthPtrOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthPtrOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerPtrOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputOutput{})
+	pulumi.RegisterOutputType(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputPtrOutput{})
 	pulumi.RegisterOutputType(AuthProviderIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(AuthProviderIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AuthProviderIamMemberConditionOutput{})

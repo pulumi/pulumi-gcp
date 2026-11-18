@@ -109,6 +109,59 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Firebase App Hosting Traffic Rollout Policy With Paths
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * //## Include these blocks only once per project if you are starting from scratch ###
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
+ *     project: "my-project-name",
+ *     accountId: "firebase-app-hosting-compute",
+ *     displayName: "Firebase App Hosting compute service account",
+ *     createIgnoreAlreadyExists: true,
+ * });
+ * const appHostingSaRunner = new gcp.projects.IAMMember("app_hosting_sa_runner", {
+ *     project: "my-project-name",
+ *     role: "roles/firebaseapphosting.computeRunner",
+ *     member: serviceAccount.member,
+ * });
+ * const fah = new gcp.projects.Service("fah", {
+ *     project: "my-project-name",
+ *     service: "firebaseapphosting.googleapis.com",
+ * });
+ * const exampleAppHostingBackend = new gcp.firebase.AppHostingBackend("example", {
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ *     backendId: "traffic-rpwp",
+ *     appId: "1:0000000000:web:674cde32020e16fbce9dbd",
+ *     servingLocality: "GLOBAL_ACCESS",
+ *     serviceAccount: serviceAccount.email,
+ * }, {
+ *     dependsOn: [
+ *         fah,
+ *         appHostingSaRunner,
+ *     ],
+ * });
+ * const example = new gcp.firebase.AppHostingTraffic("example", {
+ *     project: exampleAppHostingBackend.project,
+ *     location: exampleAppHostingBackend.location,
+ *     backend: exampleAppHostingBackend.backendId,
+ *     rolloutPolicy: {
+ *         codebaseBranch: "main",
+ *         requiredPaths: [{
+ *             pattern: "foo/bar/*",
+ *             type: "GLOB",
+ *         }],
+ *         ignoredPaths: [{
+ *             pattern: "foo/bar/excluded/*",
+ *             type: "GLOB",
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * ### Firebase App Hosting Traffic Rollout Policy Disabled
  *
  * ```typescript

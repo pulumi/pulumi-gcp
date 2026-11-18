@@ -34,8 +34,8 @@ public final class RoutineExternalRuntimeOptionsVolumeMountArgs extends com.pulu
     /**
      * The absolute path of the source to be mounted. Only Google Cloud
      * Storage buckets or folders are currently supported. For example,
-     * `gs://bucket-xxx` for a Cloud Storage bucket, or
-     * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+     * `gs://my-bucket` for a Cloud Storage bucket, or
+     * `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
      * 
      */
     @Import(name="sourcePath", required=true)
@@ -44,8 +44,8 @@ public final class RoutineExternalRuntimeOptionsVolumeMountArgs extends com.pulu
     /**
      * @return The absolute path of the source to be mounted. Only Google Cloud
      * Storage buckets or folders are currently supported. For example,
-     * `gs://bucket-xxx` for a Cloud Storage bucket, or
-     * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+     * `gs://my-bucket` for a Cloud Storage bucket, or
+     * `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
      * 
      */
     public Output<String> sourcePath() {
@@ -103,8 +103,8 @@ public final class RoutineExternalRuntimeOptionsVolumeMountArgs extends com.pulu
         /**
          * @param sourcePath The absolute path of the source to be mounted. Only Google Cloud
          * Storage buckets or folders are currently supported. For example,
-         * `gs://bucket-xxx` for a Cloud Storage bucket, or
-         * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+         * `gs://my-bucket` for a Cloud Storage bucket, or
+         * `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
          * 
          * @return builder
          * 
@@ -117,8 +117,8 @@ public final class RoutineExternalRuntimeOptionsVolumeMountArgs extends com.pulu
         /**
          * @param sourcePath The absolute path of the source to be mounted. Only Google Cloud
          * Storage buckets or folders are currently supported. For example,
-         * `gs://bucket-xxx` for a Cloud Storage bucket, or
-         * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+         * `gs://my-bucket` for a Cloud Storage bucket, or
+         * `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
          * 
          * @return builder
          * 

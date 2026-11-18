@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateNodeSelectorArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateSandboxesArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessArgs;
 import java.lang.Boolean;
@@ -208,6 +209,23 @@ public final class WorkerPoolTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sandboxes")
+    private @Nullable Output<WorkerPoolTemplateSandboxesArgs> sandboxes;
+
+    /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkerPoolTemplateSandboxesArgs>> sandboxes() {
+        return Optional.ofNullable(this.sandboxes);
+    }
+
+    /**
      * Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project&#39;s default service account.
      * 
      */
@@ -270,6 +288,7 @@ public final class WorkerPoolTemplateArgs extends com.pulumi.resources.ResourceA
         this.labels = $.labels;
         this.nodeSelector = $.nodeSelector;
         this.revision = $.revision;
+        this.sandboxes = $.sandboxes;
         this.serviceAccount = $.serviceAccount;
         this.volumes = $.volumes;
         this.vpcAccess = $.vpcAccess;
@@ -553,6 +572,29 @@ public final class WorkerPoolTemplateArgs extends com.pulumi.resources.ResourceA
          */
         public Builder revision(String revision) {
             return revision(Output.of(revision));
+        }
+
+        /**
+         * @param sandboxes Configuration for sandboxes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxes(@Nullable Output<WorkerPoolTemplateSandboxesArgs> sandboxes) {
+            $.sandboxes = sandboxes;
+            return this;
+        }
+
+        /**
+         * @param sandboxes Configuration for sandboxes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxes(WorkerPoolTemplateSandboxesArgs sandboxes) {
+            return sandboxes(Output.of(sandboxes));
         }
 
         /**

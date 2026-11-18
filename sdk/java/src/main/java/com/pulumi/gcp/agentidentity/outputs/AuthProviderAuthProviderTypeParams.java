@@ -5,9 +5,11 @@ package com.pulumi.gcp.agentidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.agentidentity.outputs.AuthProviderAuthProviderTypeParamsApiKey;
+import com.pulumi.gcp.agentidentity.outputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider;
 import com.pulumi.gcp.agentidentity.outputs.AuthProviderAuthProviderTypeParamsGeAuthProvider;
 import com.pulumi.gcp.agentidentity.outputs.AuthProviderAuthProviderTypeParamsThreeLeggedOauth;
 import com.pulumi.gcp.agentidentity.outputs.AuthProviderAuthProviderTypeParamsTwoLeggedOauth;
+import com.pulumi.gcp.agentidentity.outputs.AuthProviderAuthProviderTypeParamsXaaAuthProvider;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +23,12 @@ public final class AuthProviderAuthProviderTypeParams {
      * 
      */
     private @Nullable AuthProviderAuthProviderTypeParamsApiKey apiKey;
+    /**
+     * @return Parameters for Connector Reference authentication.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider connectorReferenceAuthProvider;
     /**
      * @return (Output)
      * Message describing GeminiEnterpriseAuthProviderParams object.
@@ -40,6 +48,12 @@ public final class AuthProviderAuthProviderTypeParams {
      * 
      */
     private @Nullable AuthProviderAuthProviderTypeParamsTwoLeggedOauth twoLeggedOauth;
+    /**
+     * @return Parameters for Cross-App Access authentication.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AuthProviderAuthProviderTypeParamsXaaAuthProvider xaaAuthProvider;
 
     private AuthProviderAuthProviderTypeParams() {}
     /**
@@ -49,6 +63,14 @@ public final class AuthProviderAuthProviderTypeParams {
      */
     public Optional<AuthProviderAuthProviderTypeParamsApiKey> apiKey() {
         return Optional.ofNullable(this.apiKey);
+    }
+    /**
+     * @return Parameters for Connector Reference authentication.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider> connectorReferenceAuthProvider() {
+        return Optional.ofNullable(this.connectorReferenceAuthProvider);
     }
     /**
      * @return (Output)
@@ -75,6 +97,14 @@ public final class AuthProviderAuthProviderTypeParams {
     public Optional<AuthProviderAuthProviderTypeParamsTwoLeggedOauth> twoLeggedOauth() {
         return Optional.ofNullable(this.twoLeggedOauth);
     }
+    /**
+     * @return Parameters for Cross-App Access authentication.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AuthProviderAuthProviderTypeParamsXaaAuthProvider> xaaAuthProvider() {
+        return Optional.ofNullable(this.xaaAuthProvider);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,22 +116,32 @@ public final class AuthProviderAuthProviderTypeParams {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable AuthProviderAuthProviderTypeParamsApiKey apiKey;
+        private @Nullable AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider connectorReferenceAuthProvider;
         private @Nullable List<AuthProviderAuthProviderTypeParamsGeAuthProvider> geAuthProviders;
         private @Nullable AuthProviderAuthProviderTypeParamsThreeLeggedOauth threeLeggedOauth;
         private @Nullable AuthProviderAuthProviderTypeParamsTwoLeggedOauth twoLeggedOauth;
+        private @Nullable AuthProviderAuthProviderTypeParamsXaaAuthProvider xaaAuthProvider;
         public Builder() {}
         public Builder(AuthProviderAuthProviderTypeParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
+    	      this.connectorReferenceAuthProvider = defaults.connectorReferenceAuthProvider;
     	      this.geAuthProviders = defaults.geAuthProviders;
     	      this.threeLeggedOauth = defaults.threeLeggedOauth;
     	      this.twoLeggedOauth = defaults.twoLeggedOauth;
+    	      this.xaaAuthProvider = defaults.xaaAuthProvider;
         }
 
         @CustomType.Setter
         public Builder apiKey(@Nullable AuthProviderAuthProviderTypeParamsApiKey apiKey) {
 
             this.apiKey = apiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectorReferenceAuthProvider(@Nullable AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider connectorReferenceAuthProvider) {
+
+            this.connectorReferenceAuthProvider = connectorReferenceAuthProvider;
             return this;
         }
         @CustomType.Setter
@@ -125,12 +165,20 @@ public final class AuthProviderAuthProviderTypeParams {
             this.twoLeggedOauth = twoLeggedOauth;
             return this;
         }
+        @CustomType.Setter
+        public Builder xaaAuthProvider(@Nullable AuthProviderAuthProviderTypeParamsXaaAuthProvider xaaAuthProvider) {
+
+            this.xaaAuthProvider = xaaAuthProvider;
+            return this;
+        }
         public AuthProviderAuthProviderTypeParams build() {
             final var _resultValue = new AuthProviderAuthProviderTypeParams();
             _resultValue.apiKey = apiKey;
+            _resultValue.connectorReferenceAuthProvider = connectorReferenceAuthProvider;
             _resultValue.geAuthProviders = geAuthProviders;
             _resultValue.threeLeggedOauth = threeLeggedOauth;
             _resultValue.twoLeggedOauth = twoLeggedOauth;
+            _resultValue.xaaAuthProvider = xaaAuthProvider;
             return _resultValue;
         }
     }

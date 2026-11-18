@@ -3845,6 +3845,19 @@ type AppHostingTrafficRolloutPolicy struct {
 	// (Output)
 	// If disabled is set, the time at which the rollouts were disabled.
 	DisabledTime *string `pulumi:"disabledTime"`
+	// A list of file paths patterns to exclude from triggering a rollout.
+	// Patterns in this list take precedence over required_paths.
+	// **Note**: All paths must be in the ignoredPaths in order for the
+	// rollout to be skipped. Limited to 100 paths.
+	// Structure is documented below.
+	IgnoredPaths []AppHostingTrafficRolloutPolicyIgnoredPath `pulumi:"ignoredPaths"`
+	// A list of file paths patterns that trigger a build and rollout
+	// if at least one of the changed files in the commit are present in
+	// this list. This field is optional; the rollout policy will default to
+	// triggering on all paths if both ignoredPaths and requiredPaths are
+	// not populated. Limited to 100 paths.
+	// Structure is documented below.
+	RequiredPaths []AppHostingTrafficRolloutPolicyRequiredPath `pulumi:"requiredPaths"`
 }
 
 // AppHostingTrafficRolloutPolicyInput is an input type that accepts AppHostingTrafficRolloutPolicyArgs and AppHostingTrafficRolloutPolicyOutput values.
@@ -3867,6 +3880,19 @@ type AppHostingTrafficRolloutPolicyArgs struct {
 	// (Output)
 	// If disabled is set, the time at which the rollouts were disabled.
 	DisabledTime pulumi.StringPtrInput `pulumi:"disabledTime"`
+	// A list of file paths patterns to exclude from triggering a rollout.
+	// Patterns in this list take precedence over required_paths.
+	// **Note**: All paths must be in the ignoredPaths in order for the
+	// rollout to be skipped. Limited to 100 paths.
+	// Structure is documented below.
+	IgnoredPaths AppHostingTrafficRolloutPolicyIgnoredPathArrayInput `pulumi:"ignoredPaths"`
+	// A list of file paths patterns that trigger a build and rollout
+	// if at least one of the changed files in the commit are present in
+	// this list. This field is optional; the rollout policy will default to
+	// triggering on all paths if both ignoredPaths and requiredPaths are
+	// not populated. Limited to 100 paths.
+	// Structure is documented below.
+	RequiredPaths AppHostingTrafficRolloutPolicyRequiredPathArrayInput `pulumi:"requiredPaths"`
 }
 
 func (AppHostingTrafficRolloutPolicyArgs) ElementType() reflect.Type {
@@ -3963,6 +3989,29 @@ func (o AppHostingTrafficRolloutPolicyOutput) DisabledTime() pulumi.StringPtrOut
 	return o.ApplyT(func(v AppHostingTrafficRolloutPolicy) *string { return v.DisabledTime }).(pulumi.StringPtrOutput)
 }
 
+// A list of file paths patterns to exclude from triggering a rollout.
+// Patterns in this list take precedence over required_paths.
+// **Note**: All paths must be in the ignoredPaths in order for the
+// rollout to be skipped. Limited to 100 paths.
+// Structure is documented below.
+func (o AppHostingTrafficRolloutPolicyOutput) IgnoredPaths() AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicy) []AppHostingTrafficRolloutPolicyIgnoredPath {
+		return v.IgnoredPaths
+	}).(AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput)
+}
+
+// A list of file paths patterns that trigger a build and rollout
+// if at least one of the changed files in the commit are present in
+// this list. This field is optional; the rollout policy will default to
+// triggering on all paths if both ignoredPaths and requiredPaths are
+// not populated. Limited to 100 paths.
+// Structure is documented below.
+func (o AppHostingTrafficRolloutPolicyOutput) RequiredPaths() AppHostingTrafficRolloutPolicyRequiredPathArrayOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicy) []AppHostingTrafficRolloutPolicyRequiredPath {
+		return v.RequiredPaths
+	}).(AppHostingTrafficRolloutPolicyRequiredPathArrayOutput)
+}
+
 type AppHostingTrafficRolloutPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AppHostingTrafficRolloutPolicyPtrOutput) ElementType() reflect.Type {
@@ -4017,6 +4066,253 @@ func (o AppHostingTrafficRolloutPolicyPtrOutput) DisabledTime() pulumi.StringPtr
 		}
 		return v.DisabledTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// A list of file paths patterns to exclude from triggering a rollout.
+// Patterns in this list take precedence over required_paths.
+// **Note**: All paths must be in the ignoredPaths in order for the
+// rollout to be skipped. Limited to 100 paths.
+// Structure is documented below.
+func (o AppHostingTrafficRolloutPolicyPtrOutput) IgnoredPaths() AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput {
+	return o.ApplyT(func(v *AppHostingTrafficRolloutPolicy) []AppHostingTrafficRolloutPolicyIgnoredPath {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoredPaths
+	}).(AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput)
+}
+
+// A list of file paths patterns that trigger a build and rollout
+// if at least one of the changed files in the commit are present in
+// this list. This field is optional; the rollout policy will default to
+// triggering on all paths if both ignoredPaths and requiredPaths are
+// not populated. Limited to 100 paths.
+// Structure is documented below.
+func (o AppHostingTrafficRolloutPolicyPtrOutput) RequiredPaths() AppHostingTrafficRolloutPolicyRequiredPathArrayOutput {
+	return o.ApplyT(func(v *AppHostingTrafficRolloutPolicy) []AppHostingTrafficRolloutPolicyRequiredPath {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredPaths
+	}).(AppHostingTrafficRolloutPolicyRequiredPathArrayOutput)
+}
+
+type AppHostingTrafficRolloutPolicyIgnoredPath struct {
+	// The pattern to match against.
+	Pattern string `pulumi:"pattern"`
+	// The type of pattern to match against.
+	// Possible values are: `RE2`, `GLOB`, `PREFIX`.
+	Type string `pulumi:"type"`
+}
+
+// AppHostingTrafficRolloutPolicyIgnoredPathInput is an input type that accepts AppHostingTrafficRolloutPolicyIgnoredPathArgs and AppHostingTrafficRolloutPolicyIgnoredPathOutput values.
+// You can construct a concrete instance of `AppHostingTrafficRolloutPolicyIgnoredPathInput` via:
+//
+//	AppHostingTrafficRolloutPolicyIgnoredPathArgs{...}
+type AppHostingTrafficRolloutPolicyIgnoredPathInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficRolloutPolicyIgnoredPathOutput() AppHostingTrafficRolloutPolicyIgnoredPathOutput
+	ToAppHostingTrafficRolloutPolicyIgnoredPathOutputWithContext(context.Context) AppHostingTrafficRolloutPolicyIgnoredPathOutput
+}
+
+type AppHostingTrafficRolloutPolicyIgnoredPathArgs struct {
+	// The pattern to match against.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+	// The type of pattern to match against.
+	// Possible values are: `RE2`, `GLOB`, `PREFIX`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AppHostingTrafficRolloutPolicyIgnoredPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficRolloutPolicyIgnoredPath)(nil)).Elem()
+}
+
+func (i AppHostingTrafficRolloutPolicyIgnoredPathArgs) ToAppHostingTrafficRolloutPolicyIgnoredPathOutput() AppHostingTrafficRolloutPolicyIgnoredPathOutput {
+	return i.ToAppHostingTrafficRolloutPolicyIgnoredPathOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficRolloutPolicyIgnoredPathArgs) ToAppHostingTrafficRolloutPolicyIgnoredPathOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyIgnoredPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficRolloutPolicyIgnoredPathOutput)
+}
+
+// AppHostingTrafficRolloutPolicyIgnoredPathArrayInput is an input type that accepts AppHostingTrafficRolloutPolicyIgnoredPathArray and AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput values.
+// You can construct a concrete instance of `AppHostingTrafficRolloutPolicyIgnoredPathArrayInput` via:
+//
+//	AppHostingTrafficRolloutPolicyIgnoredPathArray{ AppHostingTrafficRolloutPolicyIgnoredPathArgs{...} }
+type AppHostingTrafficRolloutPolicyIgnoredPathArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficRolloutPolicyIgnoredPathArrayOutput() AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput
+	ToAppHostingTrafficRolloutPolicyIgnoredPathArrayOutputWithContext(context.Context) AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput
+}
+
+type AppHostingTrafficRolloutPolicyIgnoredPathArray []AppHostingTrafficRolloutPolicyIgnoredPathInput
+
+func (AppHostingTrafficRolloutPolicyIgnoredPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficRolloutPolicyIgnoredPath)(nil)).Elem()
+}
+
+func (i AppHostingTrafficRolloutPolicyIgnoredPathArray) ToAppHostingTrafficRolloutPolicyIgnoredPathArrayOutput() AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput {
+	return i.ToAppHostingTrafficRolloutPolicyIgnoredPathArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficRolloutPolicyIgnoredPathArray) ToAppHostingTrafficRolloutPolicyIgnoredPathArrayOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput)
+}
+
+type AppHostingTrafficRolloutPolicyIgnoredPathOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficRolloutPolicyIgnoredPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficRolloutPolicyIgnoredPath)(nil)).Elem()
+}
+
+func (o AppHostingTrafficRolloutPolicyIgnoredPathOutput) ToAppHostingTrafficRolloutPolicyIgnoredPathOutput() AppHostingTrafficRolloutPolicyIgnoredPathOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyIgnoredPathOutput) ToAppHostingTrafficRolloutPolicyIgnoredPathOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyIgnoredPathOutput {
+	return o
+}
+
+// The pattern to match against.
+func (o AppHostingTrafficRolloutPolicyIgnoredPathOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicyIgnoredPath) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+// The type of pattern to match against.
+// Possible values are: `RE2`, `GLOB`, `PREFIX`.
+func (o AppHostingTrafficRolloutPolicyIgnoredPathOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicyIgnoredPath) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficRolloutPolicyIgnoredPath)(nil)).Elem()
+}
+
+func (o AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput) ToAppHostingTrafficRolloutPolicyIgnoredPathArrayOutput() AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput) ToAppHostingTrafficRolloutPolicyIgnoredPathArrayOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput) Index(i pulumi.IntInput) AppHostingTrafficRolloutPolicyIgnoredPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingTrafficRolloutPolicyIgnoredPath {
+		return vs[0].([]AppHostingTrafficRolloutPolicyIgnoredPath)[vs[1].(int)]
+	}).(AppHostingTrafficRolloutPolicyIgnoredPathOutput)
+}
+
+type AppHostingTrafficRolloutPolicyRequiredPath struct {
+	// The pattern to match against.
+	Pattern string `pulumi:"pattern"`
+	// The type of pattern to match against.
+	// Possible values are: `RE2`, `GLOB`, `PREFIX`.
+	Type string `pulumi:"type"`
+}
+
+// AppHostingTrafficRolloutPolicyRequiredPathInput is an input type that accepts AppHostingTrafficRolloutPolicyRequiredPathArgs and AppHostingTrafficRolloutPolicyRequiredPathOutput values.
+// You can construct a concrete instance of `AppHostingTrafficRolloutPolicyRequiredPathInput` via:
+//
+//	AppHostingTrafficRolloutPolicyRequiredPathArgs{...}
+type AppHostingTrafficRolloutPolicyRequiredPathInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficRolloutPolicyRequiredPathOutput() AppHostingTrafficRolloutPolicyRequiredPathOutput
+	ToAppHostingTrafficRolloutPolicyRequiredPathOutputWithContext(context.Context) AppHostingTrafficRolloutPolicyRequiredPathOutput
+}
+
+type AppHostingTrafficRolloutPolicyRequiredPathArgs struct {
+	// The pattern to match against.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+	// The type of pattern to match against.
+	// Possible values are: `RE2`, `GLOB`, `PREFIX`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AppHostingTrafficRolloutPolicyRequiredPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficRolloutPolicyRequiredPath)(nil)).Elem()
+}
+
+func (i AppHostingTrafficRolloutPolicyRequiredPathArgs) ToAppHostingTrafficRolloutPolicyRequiredPathOutput() AppHostingTrafficRolloutPolicyRequiredPathOutput {
+	return i.ToAppHostingTrafficRolloutPolicyRequiredPathOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficRolloutPolicyRequiredPathArgs) ToAppHostingTrafficRolloutPolicyRequiredPathOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyRequiredPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficRolloutPolicyRequiredPathOutput)
+}
+
+// AppHostingTrafficRolloutPolicyRequiredPathArrayInput is an input type that accepts AppHostingTrafficRolloutPolicyRequiredPathArray and AppHostingTrafficRolloutPolicyRequiredPathArrayOutput values.
+// You can construct a concrete instance of `AppHostingTrafficRolloutPolicyRequiredPathArrayInput` via:
+//
+//	AppHostingTrafficRolloutPolicyRequiredPathArray{ AppHostingTrafficRolloutPolicyRequiredPathArgs{...} }
+type AppHostingTrafficRolloutPolicyRequiredPathArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingTrafficRolloutPolicyRequiredPathArrayOutput() AppHostingTrafficRolloutPolicyRequiredPathArrayOutput
+	ToAppHostingTrafficRolloutPolicyRequiredPathArrayOutputWithContext(context.Context) AppHostingTrafficRolloutPolicyRequiredPathArrayOutput
+}
+
+type AppHostingTrafficRolloutPolicyRequiredPathArray []AppHostingTrafficRolloutPolicyRequiredPathInput
+
+func (AppHostingTrafficRolloutPolicyRequiredPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficRolloutPolicyRequiredPath)(nil)).Elem()
+}
+
+func (i AppHostingTrafficRolloutPolicyRequiredPathArray) ToAppHostingTrafficRolloutPolicyRequiredPathArrayOutput() AppHostingTrafficRolloutPolicyRequiredPathArrayOutput {
+	return i.ToAppHostingTrafficRolloutPolicyRequiredPathArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingTrafficRolloutPolicyRequiredPathArray) ToAppHostingTrafficRolloutPolicyRequiredPathArrayOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyRequiredPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingTrafficRolloutPolicyRequiredPathArrayOutput)
+}
+
+type AppHostingTrafficRolloutPolicyRequiredPathOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficRolloutPolicyRequiredPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingTrafficRolloutPolicyRequiredPath)(nil)).Elem()
+}
+
+func (o AppHostingTrafficRolloutPolicyRequiredPathOutput) ToAppHostingTrafficRolloutPolicyRequiredPathOutput() AppHostingTrafficRolloutPolicyRequiredPathOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyRequiredPathOutput) ToAppHostingTrafficRolloutPolicyRequiredPathOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyRequiredPathOutput {
+	return o
+}
+
+// The pattern to match against.
+func (o AppHostingTrafficRolloutPolicyRequiredPathOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicyRequiredPath) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+// The type of pattern to match against.
+// Possible values are: `RE2`, `GLOB`, `PREFIX`.
+func (o AppHostingTrafficRolloutPolicyRequiredPathOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AppHostingTrafficRolloutPolicyRequiredPath) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AppHostingTrafficRolloutPolicyRequiredPathArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingTrafficRolloutPolicyRequiredPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingTrafficRolloutPolicyRequiredPath)(nil)).Elem()
+}
+
+func (o AppHostingTrafficRolloutPolicyRequiredPathArrayOutput) ToAppHostingTrafficRolloutPolicyRequiredPathArrayOutput() AppHostingTrafficRolloutPolicyRequiredPathArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyRequiredPathArrayOutput) ToAppHostingTrafficRolloutPolicyRequiredPathArrayOutputWithContext(ctx context.Context) AppHostingTrafficRolloutPolicyRequiredPathArrayOutput {
+	return o
+}
+
+func (o AppHostingTrafficRolloutPolicyRequiredPathArrayOutput) Index(i pulumi.IntInput) AppHostingTrafficRolloutPolicyRequiredPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingTrafficRolloutPolicyRequiredPath {
+		return vs[0].([]AppHostingTrafficRolloutPolicyRequiredPath)[vs[1].(int)]
+	}).(AppHostingTrafficRolloutPolicyRequiredPathOutput)
 }
 
 type AppHostingTrafficTarget struct {
@@ -9492,6 +9788,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficCurrentSplitArrayInput)(nil)).Elem(), AppHostingTrafficCurrentSplitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficRolloutPolicyInput)(nil)).Elem(), AppHostingTrafficRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficRolloutPolicyPtrInput)(nil)).Elem(), AppHostingTrafficRolloutPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficRolloutPolicyIgnoredPathInput)(nil)).Elem(), AppHostingTrafficRolloutPolicyIgnoredPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficRolloutPolicyIgnoredPathArrayInput)(nil)).Elem(), AppHostingTrafficRolloutPolicyIgnoredPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficRolloutPolicyRequiredPathInput)(nil)).Elem(), AppHostingTrafficRolloutPolicyRequiredPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficRolloutPolicyRequiredPathArrayInput)(nil)).Elem(), AppHostingTrafficRolloutPolicyRequiredPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficTargetInput)(nil)).Elem(), AppHostingTrafficTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficTargetPtrInput)(nil)).Elem(), AppHostingTrafficTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingTrafficTargetSplitInput)(nil)).Elem(), AppHostingTrafficTargetSplitArgs{})
@@ -9616,6 +9916,10 @@ func init() {
 	pulumi.RegisterOutputType(AppHostingTrafficCurrentSplitArrayOutput{})
 	pulumi.RegisterOutputType(AppHostingTrafficRolloutPolicyOutput{})
 	pulumi.RegisterOutputType(AppHostingTrafficRolloutPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficRolloutPolicyIgnoredPathOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficRolloutPolicyIgnoredPathArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficRolloutPolicyRequiredPathOutput{})
+	pulumi.RegisterOutputType(AppHostingTrafficRolloutPolicyRequiredPathArrayOutput{})
 	pulumi.RegisterOutputType(AppHostingTrafficTargetOutput{})
 	pulumi.RegisterOutputType(AppHostingTrafficTargetPtrOutput{})
 	pulumi.RegisterOutputType(AppHostingTrafficTargetSplitOutput{})

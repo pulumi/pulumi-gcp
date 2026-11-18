@@ -31,6 +31,95 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Agent Identity Auth Provider Connector Reference
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.agentidentity.AuthProvider("default", {
+ *     location: "us-central1",
+ *     authProviderId: "connref-provider",
+ *     description: "Connector reference auth provider",
+ *     authProviderTypeParams: {
+ *         connectorReferenceAuthProvider: {
+ *             connector: "salesforce-connector-prod",
+ *             authorizationDetails: JSON.stringify([{
+ *                 type: "oauth_authorization",
+ *                 resource: "https://example.com/api",
+ *             }]),
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Agent Identity Auth Provider Xaa
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.agentidentity.AuthProvider("default", {
+ *     location: "us-central1",
+ *     authProviderId: "xaa-provider",
+ *     description: "Cross-App Access auth provider",
+ *     authProviderTypeParams: {
+ *         xaaAuthProvider: {
+ *             additionalParameters: {
+ *                 prompt: "consent",
+ *             },
+ *             clientSecretAuth: {
+ *                 clientId: "test-client-id",
+ *                 clientSecret: "test-client-secret",
+ *             },
+ *             customIssuer: {
+ *                 tokenUrl: "https://auth.example.com/token",
+ *                 issuer: "https://auth.example.com",
+ *             },
+ *             idTokenInput: {
+ *                 idJagAuthProvider: "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+ *                 idJagAdditionalClaims: JSON.stringify({
+ *                     env: "test",
+ *                 }),
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Agent Identity Auth Provider Xaa Jwt
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.agentidentity.AuthProvider("default", {
+ *     location: "us-central1",
+ *     authProviderId: "xaa-jwt-provider",
+ *     description: "Cross-App Access with Client Assertion JWT",
+ *     authProviderTypeParams: {
+ *         xaaAuthProvider: {
+ *             clientAssertionJwtAuth: {
+ *                 clientId: "test-jwt-client-id",
+ *             },
+ *             customIssuer: {
+ *                 tokenUrl: "https://auth.example.com/token",
+ *             },
+ *             idTokenInput: {
+ *                 idJagAuthProvider: "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+ *                 idJagAdditionalClaims: JSON.stringify({
+ *                     env: "test",
+ *                 }),
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Regional Endpoint Policies
+ *
+ * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+ *
  * ## Import
  *
  * AuthProvider can be imported using any of these accepted formats:

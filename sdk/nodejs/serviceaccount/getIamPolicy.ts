@@ -30,7 +30,8 @@ export function getIamPolicy(args: GetIamPolicyArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetIamPolicyArgs {
     /**
-     * The fully-qualified name of the service account to apply policy to.
+     * The fully-qualified name of the service account, in the form
+     * `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
      */
     serviceAccountId: string;
 }
@@ -79,7 +80,8 @@ export function getIamPolicyOutput(args: GetIamPolicyOutputArgs, opts?: pulumi.I
  */
 export interface GetIamPolicyOutputArgs {
     /**
-     * The fully-qualified name of the service account to apply policy to.
+     * The fully-qualified name of the service account, in the form
+     * `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
      */
     serviceAccountId: pulumi.Input<string>;
 }

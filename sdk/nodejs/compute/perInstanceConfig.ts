@@ -146,6 +146,18 @@ export class PerInstanceConfig extends pulumi.CustomResource {
     }
 
     /**
+     * Beta The list of allowed actions to perform on the instance during an update.
+     * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+     * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * Possible values are:
+     * * REPLACE
+     * * RESTART
+     * * RESTART_IN_PLACE
+     * * REFRESH
+     * * NONE
+     */
+    declare public readonly allowedActions: pulumi.Output<string[] | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -219,6 +231,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PerInstanceConfigState | undefined;
+            resourceInputs["allowedActions"] = state?.allowedActions;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["instanceGroupManager"] = state?.instanceGroupManager;
             resourceInputs["minimalAction"] = state?.minimalAction;
@@ -234,6 +247,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             if (args?.instanceGroupManager === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupManager'");
             }
+            resourceInputs["allowedActions"] = args?.allowedActions;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["instanceGroupManager"] = args?.instanceGroupManager;
             resourceInputs["minimalAction"] = args?.minimalAction;
@@ -254,6 +268,18 @@ export class PerInstanceConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PerInstanceConfig resources.
  */
 export interface PerInstanceConfigState {
+    /**
+     * Beta The list of allowed actions to perform on the instance during an update.
+     * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+     * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * Possible values are:
+     * * REPLACE
+     * * RESTART
+     * * RESTART_IN_PLACE
+     * * REFRESH
+     * * NONE
+     */
+    allowedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -320,6 +346,18 @@ export interface PerInstanceConfigState {
  * The set of arguments for constructing a PerInstanceConfig resource.
  */
 export interface PerInstanceConfigArgs {
+    /**
+     * Beta The list of allowed actions to perform on the instance during an update.
+     * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+     * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * Possible values are:
+     * * REPLACE
+     * * RESTART
+     * * RESTART_IN_PLACE
+     * * REFRESH
+     * * NONE
+     */
+    allowedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

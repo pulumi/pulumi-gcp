@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Firebaserules.Outputs
     {
         /// <summary>
         /// `File` set constituting the `Source` bundle.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetSourceFile> Files;
         /// <summary>

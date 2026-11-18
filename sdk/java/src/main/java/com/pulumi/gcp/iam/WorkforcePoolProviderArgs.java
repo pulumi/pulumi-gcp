@@ -371,7 +371,9 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
      * * SCIM_USAGE_UNSPECIFIED: Default behaviour
      * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
      *   attribute mapping for authorization checks
-     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     * * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+     *   attribute mapping for authorization checks
+     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
      * 
      */
     @Import(name="scimUsage")
@@ -387,7 +389,9 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
      * * SCIM_USAGE_UNSPECIFIED: Default behaviour
      * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
      *   attribute mapping for authorization checks
-     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     * * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+     *   attribute mapping for authorization checks
+     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
      * 
      */
     public Optional<Output<String>> scimUsage() {
@@ -880,7 +884,9 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          * * SCIM_USAGE_UNSPECIFIED: Default behaviour
          * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
          *   attribute mapping for authorization checks
-         *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+         * * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+         *   attribute mapping for authorization checks
+         *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
          * 
          * @return builder
          * 
@@ -900,7 +906,9 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          * * SCIM_USAGE_UNSPECIFIED: Default behaviour
          * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
          *   attribute mapping for authorization checks
-         *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+         * * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+         *   attribute mapping for authorization checks
+         *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
          * 
          * @return builder
          * 

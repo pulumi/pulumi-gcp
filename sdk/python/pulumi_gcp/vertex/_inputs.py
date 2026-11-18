@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AiAgentAnomalyDetectionScopeEncryptionSpecArgs',
+    'AiAgentAnomalyDetectionScopeEncryptionSpecArgsDict',
     'AiCustomJobEncryptionSpecArgs',
     'AiCustomJobEncryptionSpecArgsDict',
     'AiCustomJobErrorArgs',
@@ -669,6 +671,37 @@ __all__ = [
     'AiTrainingPipelineModelToUploadExplanationSpecArgsDict',
 ]
 
+class AiAgentAnomalyDetectionScopeEncryptionSpecArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    Resource name of the Cloud KMS key used to protect the resource.
+    Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+    """
+
+@pulumi.input_type
+class AiAgentAnomalyDetectionScopeEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: Resource name of the Cloud KMS key used to protect the resource.
+               Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Resource name of the Cloud KMS key used to protect the resource.
+        Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key_name", value)
+
+
 class AiCustomJobEncryptionSpecArgsDict(TypedDict):
     kms_key_name: pulumi.Input[_builtins.str]
     """
@@ -778,9 +811,37 @@ class AiCustomJobJobSpecArgsDict(TypedDict):
     """
     Whether you want Vertex AI to enable interactive shell access to training containers.
     """
+    experiment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Experiment associated with this job.
+    Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+    """
+    experiment_run: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Experiment Run associated with this job.
+    Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+    """
+    models: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+    Format: `projects/{project}/locations/{location}/models/{model}`
+    In order to retrieve a specific version of the model, also provide the version ID or version alias.
+    Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+    If no version ID or alias is specified, the "default" version will be returned.
+    """
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full name of the Compute Engine network to which the Job should be peered.
+    """
+    persistent_resource_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the PersistentResource in the same Project and Location which to run.
+    If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+    The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+    """
+    protected_artifact_location_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
     """
     psc_interface_config: NotRequired[pulumi.Input[Optional['AiCustomJobJobSpecPscInterfaceConfigArgsDict']]]
     """
@@ -812,7 +873,12 @@ class AiCustomJobJobSpecArgs:
                  base_output_directory: pulumi.Input[Optional['AiCustomJobJobSpecBaseOutputDirectoryArgs']] = None,
                  enable_dashboard_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_web_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 experiment: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_run: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistent_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_artifact_location_id: pulumi.Input[Optional[_builtins.str]] = None,
                  psc_interface_config: pulumi.Input[Optional['AiCustomJobJobSpecPscInterfaceConfigArgs']] = None,
                  reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scheduling: pulumi.Input[Optional['AiCustomJobJobSpecSchedulingArgs']] = None,
@@ -826,7 +892,20 @@ class AiCustomJobJobSpecArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_dashboard_access: Whether you want Vertex AI to enable access to the customized dashboard in training chief container.
         :param pulumi.Input[_builtins.bool] enable_web_access: Whether you want Vertex AI to enable interactive shell access to training containers.
+        :param pulumi.Input[_builtins.str] experiment: The Experiment associated with this job.
+               Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+        :param pulumi.Input[_builtins.str] experiment_run: The Experiment Run associated with this job.
+               Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] models: The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+               Format: `projects/{project}/locations/{location}/models/{model}`
+               In order to retrieve a specific version of the model, also provide the version ID or version alias.
+               Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+               If no version ID or alias is specified, the "default" version will be returned.
         :param pulumi.Input[_builtins.str] network: The full name of the Compute Engine network to which the Job should be peered.
+        :param pulumi.Input[_builtins.str] persistent_resource_id: The ID of the PersistentResource in the same Project and Location which to run.
+               If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+               The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+        :param pulumi.Input[_builtins.str] protected_artifact_location_id: The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
         :param pulumi.Input['AiCustomJobJobSpecPscInterfaceConfigArgs'] psc_interface_config: Configuration for PSC-I for CustomJob.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this job.
@@ -842,8 +921,18 @@ class AiCustomJobJobSpecArgs:
             pulumi.set(__self__, "enable_dashboard_access", enable_dashboard_access)
         if enable_web_access is not None:
             pulumi.set(__self__, "enable_web_access", enable_web_access)
+        if experiment is not None:
+            pulumi.set(__self__, "experiment", experiment)
+        if experiment_run is not None:
+            pulumi.set(__self__, "experiment_run", experiment_run)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if persistent_resource_id is not None:
+            pulumi.set(__self__, "persistent_resource_id", persistent_resource_id)
+        if protected_artifact_location_id is not None:
+            pulumi.set(__self__, "protected_artifact_location_id", protected_artifact_location_id)
         if psc_interface_config is not None:
             pulumi.set(__self__, "psc_interface_config", psc_interface_config)
         if reserved_ip_ranges is not None:
@@ -908,6 +997,48 @@ class AiCustomJobJobSpecArgs:
 
     @_builtins.property
     @pulumi.getter
+    def experiment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Experiment associated with this job.
+        Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+        """
+        return pulumi.get(self, "experiment")
+
+    @experiment.setter
+    def experiment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "experiment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="experimentRun")
+    def experiment_run(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Experiment Run associated with this job.
+        Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+        """
+        return pulumi.get(self, "experiment_run")
+
+    @experiment_run.setter
+    def experiment_run(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "experiment_run", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+        Format: `projects/{project}/locations/{location}/models/{model}`
+        In order to retrieve a specific version of the model, also provide the version ID or version alias.
+        Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+        If no version ID or alias is specified, the "default" version will be returned.
+        """
+        return pulumi.get(self, "models")
+
+    @models.setter
+    def models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "models", value)
+
+    @_builtins.property
+    @pulumi.getter
     def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the Compute Engine network to which the Job should be peered.
@@ -917,6 +1048,32 @@ class AiCustomJobJobSpecArgs:
     @network.setter
     def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="persistentResourceId")
+    def persistent_resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the PersistentResource in the same Project and Location which to run.
+        If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+        The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+        """
+        return pulumi.get(self, "persistent_resource_id")
+
+    @persistent_resource_id.setter
+    def persistent_resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "persistent_resource_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protectedArtifactLocationId")
+    def protected_artifact_location_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+        """
+        return pulumi.get(self, "protected_artifact_location_id")
+
+    @protected_artifact_location_id.setter
+    def protected_artifact_location_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protected_artifact_location_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pscInterfaceConfig")

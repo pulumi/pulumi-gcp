@@ -3498,6 +3498,13 @@ export namespace agenticapplications {
          */
         prompt?: string;
         /**
+         * Additional HTTP headers sent on every request to the MCP server, for
+         * example a static header required by an API gateway. Headers managed by the
+         * agent take precedence and cannot be set here. When empty, no additional
+         * headers are sent.
+         */
+        requestHeaders?: outputs.agenticapplications.AnalystAgentPersonaMcpDataSourceRequestHeader[];
+        /**
          * The URL of the MCP server.
          */
         serverUrl: string;
@@ -3513,6 +3520,27 @@ export namespace agenticapplications {
          * header field name (RFC 9110 token).
          */
         taskIdHeader?: string;
+    }
+
+    export interface AnalystAgentPersonaMcpDataSourceRequestHeader {
+        /**
+         * A value the agent fills in for each request.
+         * Possible values:
+         * USER_ID
+         */
+        dynamicValue?: string;
+        /**
+         * The header name. Must be a valid HTTP field name (RFC 9110 token),
+         * unique ignoring case within the data source, and not a header managed
+         * by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+         * or the configured API key, session ID, or task ID headers).
+         */
+        headerName: string;
+        /**
+         * A static value, sent as-is on every request. The value is stored and
+         * returned in plain text, so do not use it for credentials.
+         */
+        value?: string;
     }
 
     export interface AnalystAgentPersonaResource {
@@ -3724,6 +3752,11 @@ export namespace agentidentity {
          */
         apiKey?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsApiKey;
         /**
+         * Parameters for Connector Reference authentication.
+         * Structure is documented below.
+         */
+        connectorReferenceAuthProvider?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider;
+        /**
          * (Output)
          * Message describing GeminiEnterpriseAuthProviderParams object.
          * Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
@@ -3739,6 +3772,11 @@ export namespace agentidentity {
          * Structure is documented below.
          */
         twoLeggedOauth?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsTwoLeggedOauth;
+        /**
+         * Parameters for Cross-App Access authentication.
+         * Structure is documented below.
+         */
+        xaaAuthProvider?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProvider;
     }
 
     export interface AuthProviderAuthProviderTypeParamsApiKey {
@@ -3747,6 +3785,23 @@ export namespace agentidentity {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         apiKey?: string;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProvider {
+        /**
+         * Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+         * resources/scopes, formatted as a JSON array of JSON objects.
+         */
+        authorizationDetails?: string;
+        /**
+         * Required. The name of the referenced connector. For Gemini Enterprise, this
+         * is either a Data Connector name
+         * (`projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector`),
+         * an Authorization name
+         * (`projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}`),
+         * or a connector ID (e.g. `salesforce-connector-prod`).
+         */
+        connector: string;
     }
 
     export interface AuthProviderAuthProviderTypeParamsGeAuthProvider {
@@ -3831,6 +3886,74 @@ export namespace agentidentity {
          * The token endpoint of the OAuth client.
          */
         tokenUrl?: string;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProvider {
+        /**
+         * Optional. Additional parameters to be passed to the token endpoint.
+         */
+        additionalParameters?: {[key: string]: string};
+        /**
+         * Option 2: Authenticate using a standard `clientId` and a Client Assertion JWT.
+         * Structure is documented below.
+         */
+        clientAssertionJwtAuth?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth;
+        /**
+         * Option 1: Authenticate using a standard `clientId` and `clientSecret`.
+         * Structure is documented below.
+         */
+        clientSecretAuth?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth;
+        /**
+         * Configuration for a custom or third-party authorization server issuer.
+         * Structure is documented below.
+         */
+        customIssuer?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer;
+        /**
+         * Configuration for when the input is an ID token.
+         * Structure is documented below.
+         */
+        idTokenInput?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuth {
+        /**
+         * Required. The client identifier.
+         */
+        clientId: string;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuth {
+        /**
+         * Required. The client identifier.
+         */
+        clientId: string;
+        /**
+         * Required. Input only. The client secret.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret: string;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuer {
+        /**
+         * Optional. The issuer identifier of the target Authorization Server.
+         */
+        issuer?: string;
+        /**
+         * Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+         */
+        tokenUrl: string;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInput {
+        /**
+         * Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string.
+         */
+        idJagAdditionalClaims?: string;
+        /**
+         * The resource name of the ID-JAG auth provider. Format: `projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}`
+         */
+        idJagAuthProvider?: string;
     }
 
     export interface AuthProviderIamBindingCondition {
@@ -6438,6 +6561,114 @@ export namespace apigee {
 }
 
 export namespace apihub {
+    export interface AddonConfig {
+        /**
+         * Configuration for addons which act on all data in the API hub.
+         * Structure is documented below.
+         */
+        allDataAddonConfig?: outputs.apihub.AddonConfigAllDataAddonConfig;
+        /**
+         * Configuration for gateway plugin addons.
+         * Structure is documented below.
+         */
+        gatewayPluginAddonConfig?: outputs.apihub.AddonConfigGatewayPluginAddonConfig;
+    }
+
+    export interface AddonConfigAllDataAddonConfig {
+        /**
+         * If true, the addon is enabled for all data in the API hub.
+         */
+        enabled: boolean;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfig {
+        /**
+         * The list of gateway plugin configs for which the addon is enabled.
+         * Structure is documented below.
+         */
+        gatewayPluginConfigs: outputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfig[];
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfig {
+        /**
+         * Configuration for Apigee Edge gateways.
+         * Structure is documented below.
+         */
+        apigeeEdgeConfig?: outputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig;
+        /**
+         * Configuration for Apigee OPDK gateways.
+         * Structure is documented below.
+         */
+        apigeeOpdkConfig?: outputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig;
+        /**
+         * Configuration for Apigee X and Apigee Hybrid gateways.
+         * Structure is documented below.
+         */
+        apigeeXHybridConfig?: outputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig;
+        /**
+         * The name of the gateway plugin instance for which the config is to be specified.
+         * Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+         */
+        pluginInstance: string;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfig {
+        /**
+         * The filter to apply on the resources managed by the gateway plugin instance.
+         * Structure is documented below.
+         */
+        environmentFilter?: outputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilter {
+        /**
+         * Indicates if this filter should match all environments or only a subset of environments.
+         */
+        allEnvironments?: boolean;
+        /**
+         * If provided, only environments in this list are matched.
+         */
+        environments?: string[];
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfig {
+        /**
+         * The filter to apply on the resources managed by the gateway plugin instance.
+         * Structure is documented below.
+         */
+        environmentFilter?: outputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilter {
+        /**
+         * Indicates if this filter should match all environments or only a subset of environments.
+         */
+        allEnvironments?: boolean;
+        /**
+         * If provided, only environments in this list are matched.
+         */
+        environments?: string[];
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfig {
+        /**
+         * The filter to apply on the resources managed by the gateway plugin instance.
+         * Structure is documented below.
+         */
+        environmentFilter?: outputs.apihub.AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter;
+    }
+
+    export interface AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilter {
+        /**
+         * Indicates if this filter should match all environments or only a subset of environments.
+         */
+        allEnvironments?: boolean;
+        /**
+         * If provided, only environments in this list are matched.
+         */
+        environments?: string[];
+    }
+
     export interface ApiHubInstanceConfig {
         /**
          * Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
@@ -14711,11 +14942,11 @@ export namespace bigquery {
         /**
          * Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
          */
         argumentKind?: string;
         /**
-         * A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+         * A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
          * ~>**NOTE**: Because this field expects a JSON string, any changes to the string
          * will create a diff, even if the JSON itself hasn't changed. If the API returns
          * a different value for the same schema, e.g. it switched the order of values
@@ -14804,7 +15035,8 @@ export namespace bigquery {
         /**
          * List of volume mounts for the Python UDF container that executes the
          * managed function. When volume mounts are set, `runtimeConnection` must
-         * also be set.
+         * also be set. For more information, see [Create a Python UDF with volume
+         * mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
          * Structure is documented below.
          */
         volumeMounts?: outputs.bigquery.RoutineExternalRuntimeOptionsVolumeMount[];
@@ -14819,8 +15051,8 @@ export namespace bigquery {
         /**
          * The absolute path of the source to be mounted. Only Google Cloud
          * Storage buckets or folders are currently supported. For example,
-         * `gs://bucket-xxx` for a Cloud Storage bucket, or
-         * `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+         * `gs://my-bucket` for a Cloud Storage bucket, or
+         * `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
          */
         sourcePath: string;
     }
@@ -15061,8 +15293,7 @@ export namespace bigquery {
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
          *
          * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * table schema must be specified using the top-level `schema` field.
          */
         connectionId?: string;
         /**
@@ -15159,8 +15390,7 @@ export namespace bigquery {
          * `google_bigquery_table.schema`
          *
          * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * table schema must be specified using the top-level `schema` field.
          */
         schema: string;
         /**
@@ -16370,7 +16600,9 @@ export namespace bigtable {
 
     export interface InstanceCluster {
         /**
-         * [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+         * [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+         *
+         * > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
          */
         autoscalingConfig?: outputs.bigtable.InstanceClusterAutoscalingConfig;
         /**
@@ -16392,6 +16624,8 @@ export namespace bigtable {
          * `clusterId`) will cause the provider to delete/recreate the entire
          * `gcp.bigtable.Instance` resource. If these values are changing, use a new
          * `clusterId`.
+         *
+         * ***
          */
         nodeScalingFactor?: string;
         /**
@@ -16431,8 +16665,6 @@ export namespace bigtable {
         minNodes: number;
         /**
          * The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-         *
-         * > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
          */
         storageTarget: number;
     }
@@ -16440,8 +16672,6 @@ export namespace bigtable {
     export interface InstanceIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * For `gcp.bigtable.InstanceIamPolicy` only:
          */
         description?: string;
         /**
@@ -16457,8 +16687,6 @@ export namespace bigtable {
     export interface InstanceIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * For `gcp.bigtable.InstanceIamPolicy` only:
          */
         description?: string;
         /**
@@ -16508,6 +16736,8 @@ export namespace bigtable {
         family: string;
         /**
          * The type of the column family.
+         *
+         * ***
          */
         type?: string;
     }
@@ -20374,6 +20604,11 @@ export namespace ces {
          */
         bargeInConfig?: outputs.ces.AppAudioProcessingConfigBargeInConfig;
         /**
+         * Configures custom voice samples for voice cloning.
+         * Structure is documented below.
+         */
+        customVoiceSamples?: outputs.ces.AppAudioProcessingConfigCustomVoiceSample[];
+        /**
          * The duration of user inactivity (no speech or interaction) before the agent
          * prompts the user for reengagement. If not set, the agent will not prompt
          * the user for reengagement.
@@ -20430,6 +20665,31 @@ export namespace ces {
          * visually.
          */
         bargeInAwareness?: boolean;
+    }
+
+    export interface AppAudioProcessingConfigCustomVoiceSample {
+        /**
+         * Consent audio for voice cloning.
+         */
+        consentAudioGcsUri?: string;
+        /**
+         * The user-defined name for the custom voice sample.
+         */
+        name?: string;
+        /**
+         * Text for synthesizing preview audio for custom voice.
+         */
+        previewText?: string;
+        /**
+         * Natural language instructions for voice style, tone, pacing, or
+         * pronunciation.
+         */
+        voiceInstruction?: string;
+        /**
+         * The Cloud Storage URI to the audio sample for voice cloning. The
+         * audio sample should be a mono-channel, 24kHz WAV file.
+         */
+        voiceSampleGcsUri?: string;
     }
 
     export interface AppAudioProcessingConfigSynthesizeSpeechConfig {
@@ -20828,6 +21088,16 @@ export namespace ces {
          * Structure is documented below.
          */
         redactionConfig?: outputs.ces.AppLoggingSettingsRedactionConfig;
+        /**
+         * Whether the app has to say what may be recorded before anything is kept.
+         * When true, a session starts with recording off and stays off until the
+         * client sends SessionInput.recording_control, which then decides every turn
+         * from that point on. This covers audio recording as well as conversation
+         * history, BigQuery export and Cloud Logging.
+         * When `false`, the default, the settings above decide on their own and the
+         * client does not have to send anything.
+         */
+        requiredRecordingConsent?: boolean;
     }
 
     export interface AppLoggingSettingsAudioRecordingConfig {
@@ -39238,13 +39508,90 @@ export namespace cloudidentity {
         expireTime: string;
     }
 
+    export interface InboundOidcSsoProfileIdpConfig {
+        /**
+         * The **Change Password URL** of the identity provider. Users will be sent to this URL
+         * when changing their passwords at `myaccount.google.com`. This takes precedence over
+         * the change password URL configured at customer-level. Must use `HTTPS`.
+         */
+        changePasswordUri?: string;
+        /**
+         * The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+         * from this as described in Section 4 of the OIDC specification.
+         */
+        issuerUri: string;
+    }
+
+    export interface InboundOidcSsoProfileRpConfig {
+        /**
+         * OAuth2 client ID for OIDC. Must be set together with `clientSecret`.
+         */
+        clientId?: string;
+        /**
+         * Input only. OAuth2 client secret for OIDC. Must be set together with `clientId`.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret?: string;
+        /**
+         * (Output)
+         * The URL(s) that this client may use in authentication requests.
+         */
+        redirectUris: string[];
+    }
+
+    export interface InboundSamlSsoProfileIdpConfig {
+        /**
+         * The **Change Password URL** of the identity provider. Users will be sent to this URL
+         * when changing their passwords at `myaccount.google.com`. This takes precedence over
+         * the change password URL configured at customer-level. Must use `HTTPS`.
+         */
+        changePasswordUri?: string;
+        /**
+         * The SAML **Entity ID** of the identity provider.
+         */
+        entityId: string;
+        /**
+         * The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+         * clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+         * a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+         * supported. Must use `HTTPS`.
+         */
+        logoutRedirectUri?: string;
+        /**
+         * The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+         * This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+         * Assumed to accept the `HTTP-Redirect` binding.
+         */
+        singleSignOnServiceUri: string;
+    }
+
+    export interface InboundSamlSsoProfileSpConfig {
+        /**
+         * (Output)
+         * The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated
+         * login. Assumed to accept response messages via the `HTTP-POST` binding.
+         */
+        assertionConsumerServiceUri: string;
+        /**
+         * (Output)
+         * The SAML **Entity ID** for this service provider.
+         */
+        entityId: string;
+    }
+
     export interface PolicyPolicyQuery {
         /**
          * The group that the query applies to.
          */
         group?: string;
         /**
-         * The OrgUnit the query applies to.
+         * The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+         * `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+         * Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+         * and display names are not resolved and are rejected for most settings.
+         * For detector settings (`settings/detector.*`), the API ignores this value and
+         * always applies the policy to, and returns, the customer's root org unit, so any
+         * other value produces a diff; set it to the root org unit's ID.
          */
         orgUnit: string;
         /**
@@ -41606,6 +41953,10 @@ export namespace cloudrunv2 {
          */
         nodeSelectors: outputs.cloudrunv2.GetJobTemplateTemplateNodeSelector[];
         /**
+         * Configuration for sandboxes.
+         */
+        sandboxes: outputs.cloudrunv2.GetJobTemplateTemplateSandbox[];
+        /**
          * Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
          */
         serviceAccount: string;
@@ -41842,6 +42193,70 @@ export namespace cloudrunv2 {
          * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
          */
         accelerator: string;
+    }
+
+    export interface GetJobTemplateTemplateSandbox {
+        /**
+         * Sandbox templates that can be launched through the 'sandbox' CLI.
+         */
+        templates: outputs.cloudrunv2.GetJobTemplateTemplateSandboxTemplate[];
+    }
+
+    export interface GetJobTemplateTemplateSandboxTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands: string[];
+        /**
+         * List of environment variables to set in the sandbox.
+         */
+        envs: outputs.cloudrunv2.GetJobTemplateTemplateSandboxTemplateEnv[];
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: string;
+        /**
+         * The name of the Cloud Run v2 Job.
+         */
+        name: string;
+        /**
+         * Volume to mount into the container's filesystem.
+         */
+        volumeMounts: outputs.cloudrunv2.GetJobTemplateTemplateSandboxTemplateVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir: string;
+    }
+
+    export interface GetJobTemplateTemplateSandboxTemplateEnv {
+        /**
+         * The name of the Cloud Run v2 Job.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value: string;
+    }
+
+    export interface GetJobTemplateTemplateSandboxTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * The name of the Cloud Run v2 Job.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath: string;
     }
 
     export interface GetJobTemplateTemplateVolume {
@@ -43142,6 +43557,10 @@ export namespace cloudrunv2 {
          */
         revision: string;
         /**
+         * Configuration for sandboxes.
+         */
+        sandboxes: outputs.cloudrunv2.GetWorkerPoolTemplateSandbox[];
+        /**
          * Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
          */
         serviceAccount: string;
@@ -43418,6 +43837,70 @@ export namespace cloudrunv2 {
         accelerator: string;
     }
 
+    export interface GetWorkerPoolTemplateSandbox {
+        /**
+         * Sandbox templates that can be launched through the 'sandbox' CLI.
+         */
+        templates: outputs.cloudrunv2.GetWorkerPoolTemplateSandboxTemplate[];
+    }
+
+    export interface GetWorkerPoolTemplateSandboxTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands: string[];
+        /**
+         * List of environment variables to set in the sandbox.
+         */
+        envs: outputs.cloudrunv2.GetWorkerPoolTemplateSandboxTemplateEnv[];
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: string;
+        /**
+         * The name of the Cloud Run v2 Worker Pool.
+         */
+        name: string;
+        /**
+         * Volume to mount into the container's filesystem.
+         */
+        volumeMounts: outputs.cloudrunv2.GetWorkerPoolTemplateSandboxTemplateVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir: string;
+    }
+
+    export interface GetWorkerPoolTemplateSandboxTemplateEnv {
+        /**
+         * The name of the Cloud Run v2 Worker Pool.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value: string;
+    }
+
+    export interface GetWorkerPoolTemplateSandboxTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * The name of the Cloud Run v2 Worker Pool.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath: string;
+    }
+
     export interface GetWorkerPoolTemplateVolume {
         /**
          * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -43671,6 +44154,10 @@ export namespace cloudrunv2 {
          */
         resources: outputs.cloudrunv2.InstanceContainerResources;
         /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: boolean;
+        /**
          * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
          * Structure is documented below.
          */
@@ -43922,6 +44409,73 @@ export namespace cloudrunv2 {
         description?: string;
         expression: string;
         title: string;
+    }
+
+    export interface InstanceSandboxes {
+        /**
+         * Sandbox templates that can be launched through the `sandbox` CLI.
+         * Structure is documented below.
+         */
+        templates?: outputs.cloudrunv2.InstanceSandboxesTemplate[];
+    }
+
+    export interface InstanceSandboxesTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args?: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands?: string[];
+        /**
+         * List of environment variables to set in the sandbox.
+         * Structure is documented below.
+         */
+        envs?: outputs.cloudrunv2.InstanceSandboxesTemplateEnv[];
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: string;
+        /**
+         * Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+         */
+        name: string;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: outputs.cloudrunv2.InstanceSandboxesTemplateVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: string;
+    }
+
+    export interface InstanceSandboxesTemplateEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: string;
+    }
+
+    export interface InstanceSandboxesTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: string;
     }
 
     export interface InstanceTerminalCondition {
@@ -44231,6 +44785,11 @@ export namespace cloudrunv2 {
          */
         nodeSelector?: outputs.cloudrunv2.JobTemplateTemplateNodeSelector;
         /**
+         * Configuration for sandboxes.
+         * Structure is documented below.
+         */
+        sandboxes?: outputs.cloudrunv2.JobTemplateTemplateSandboxes;
+        /**
          * Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
          */
         serviceAccount: string;
@@ -44319,7 +44878,7 @@ export namespace cloudrunv2 {
 
     export interface JobTemplateTemplateContainerEnv {
         /**
-         * Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
          */
         name: string;
         /**
@@ -44480,6 +45039,73 @@ export namespace cloudrunv2 {
          * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
          */
         accelerator: string;
+    }
+
+    export interface JobTemplateTemplateSandboxes {
+        /**
+         * Sandbox templates that can be launched through the `sandbox` CLI.
+         * Structure is documented below.
+         */
+        templates?: outputs.cloudrunv2.JobTemplateTemplateSandboxesTemplate[];
+    }
+
+    export interface JobTemplateTemplateSandboxesTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args?: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands?: string[];
+        /**
+         * List of environment variables to set in the sandbox.
+         * Structure is documented below.
+         */
+        envs?: outputs.cloudrunv2.JobTemplateTemplateSandboxesTemplateEnv[];
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: string;
+        /**
+         * Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+         */
+        name: string;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: outputs.cloudrunv2.JobTemplateTemplateSandboxesTemplateVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: string;
+    }
+
+    export interface JobTemplateTemplateSandboxesTemplateEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: string;
+    }
+
+    export interface JobTemplateTemplateSandboxesTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: string;
     }
 
     export interface JobTemplateTemplateVolume {
@@ -45905,6 +46531,11 @@ export namespace cloudrunv2 {
          */
         revision?: string;
         /**
+         * Configuration for sandboxes.
+         * Structure is documented below.
+         */
+        sandboxes?: outputs.cloudrunv2.WorkerPoolTemplateSandboxes;
+        /**
          * Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
          */
         serviceAccount: string;
@@ -46196,6 +46827,73 @@ export namespace cloudrunv2 {
          * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
          */
         accelerator: string;
+    }
+
+    export interface WorkerPoolTemplateSandboxes {
+        /**
+         * Sandbox templates that can be launched through the `sandbox` CLI.
+         * Structure is documented below.
+         */
+        templates?: outputs.cloudrunv2.WorkerPoolTemplateSandboxesTemplate[];
+    }
+
+    export interface WorkerPoolTemplateSandboxesTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args?: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands?: string[];
+        /**
+         * List of environment variables to set in the sandbox.
+         * Structure is documented below.
+         */
+        envs?: outputs.cloudrunv2.WorkerPoolTemplateSandboxesTemplateEnv[];
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: string;
+        /**
+         * Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+         */
+        name: string;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: outputs.cloudrunv2.WorkerPoolTemplateSandboxesTemplateVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: string;
+    }
+
+    export interface WorkerPoolTemplateSandboxesTemplateEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: string;
+    }
+
+    export interface WorkerPoolTemplateSandboxesTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: string;
     }
 
     export interface WorkerPoolTemplateVolume {
@@ -54832,6 +55530,10 @@ export namespace compute {
 
     export interface GetInstanceGroupManagerUpdatePolicy {
         /**
+         * Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+         */
+        allowedActions: string[];
+        /**
          * Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
          */
         maxSurgeFixed: number;
@@ -57633,6 +58335,10 @@ export namespace compute {
     }
 
     export interface GetRegionInstanceGroupManagerUpdatePolicy {
+        /**
+         * Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+         */
+        allowedActions: string[];
         /**
          * The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
          */
@@ -61016,26 +61722,31 @@ export namespace compute {
 
     export interface GetStoragePoolTypesDeprecated {
         /**
+         * (Output)
          * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
          * This is only informational and the status will not change unless the client explicitly changes it.
          */
         deleted: string;
         /**
+         * (Output)
          * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
          * This is only informational and the status will not change unless the client explicitly changes it.
          */
         deprecated: string;
         /**
+         * (Output)
          * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
          * This is only informational and the status will not change unless the client explicitly changes it.
          */
         obsolete: string;
         /**
+         * (Output)
          * The URL of the suggested replacement for a deprecated resource.
          * The suggested replacement resource must be the same kind of resource as the deprecated resource.
          */
         replacement: string;
         /**
+         * (Output)
          * The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
          * Operations which communicate the end of life date for an image, can use ACTIVE.
          * Operations which create a new resource using a DEPRECATED resource will return successfully,
@@ -63762,6 +64473,10 @@ export namespace compute {
 
     export interface InstanceGroupManagerUpdatePolicy {
         /**
+         * ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         */
+        allowedActions?: string[];
+        /**
          * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
          */
         maxSurgeFixed: number;
@@ -63782,11 +64497,11 @@ export namespace compute {
          */
         minReadySec?: number;
         /**
-         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
          */
-        minimalAction: string;
+        minimalAction?: string;
         /**
-         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
          */
         mostDisruptiveAllowedAction?: string;
         /**
@@ -69303,6 +70018,10 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerUpdatePolicy {
         /**
+         * ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         */
+        allowedActions?: string[];
+        /**
          * The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
          */
         instanceRedistributionType?: string;
@@ -69327,11 +70046,11 @@ export namespace compute {
          */
         minReadySec?: number;
         /**
-         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
          */
-        minimalAction: string;
+        minimalAction?: string;
         /**
-         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
          */
         mostDisruptiveAllowedAction?: string;
         /**
@@ -82571,8 +83290,7 @@ export namespace container {
 
     export interface ClusterLoggingConfig {
         /**
-         * The GKE components exposing logs. Supported values include:
-         * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+         * The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
          */
         enableComponents: string[];
     }
@@ -102648,6 +103366,13 @@ export namespace dataproc {
          */
         metadata: {[key: string]: string};
         /**
+         * Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+         * Structure defined below.
+         *
+         * ***
+         */
+        multiZoneConfig?: outputs.dataproc.ClusterClusterConfigGceClusterConfigMultiZoneConfig;
+        /**
          * The name or selfLink of the Google Compute Engine
          * network to the cluster will be part of. Conflicts with `subnetwork`.
          * If neither is specified, this defaults to the "default" network.
@@ -102682,8 +103407,6 @@ export namespace dataproc {
         serviceAccountScopes: string[];
         /**
          * Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-         *
-         * ***
          */
         shieldedInstanceConfig: outputs.dataproc.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig;
         /**
@@ -102719,6 +103442,15 @@ export namespace dataproc {
          * @deprecated enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
          */
         enableConfidentialCompute?: boolean;
+    }
+
+    export interface ClusterClusterConfigGceClusterConfigMultiZoneConfig {
+        /**
+         * The distribution shape of the nodes in the multi-zonal cluster. Valid values are `"ANY"`.
+         *
+         * ***
+         */
+        targetShape: string;
     }
 
     export interface ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
@@ -103262,20 +103994,20 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigSecondaryWorkerFlexibleConfig {
         /**
-         * The boot disk size in GB.
-         * Changing this forces a new resource to be created.
+         * The boot disk size in GB. Changing this on an existing
+         * secondary worker group forces a new resource to be created.
          * ***
          */
-        bootDiskSizeGb?: number;
+        bootDiskSizeGb: number;
         /**
          * The number of vCPUs per instance. Must be a power of 2
-         * (2, 4, 8, 16, or 32). Changing this forces a new resource to be created.
+         * (2, 4, 8, 16, or 32). Changing this on an existing secondary worker group forces a new resource to be created.
          */
         coreCount: number;
         /**
          * Controls the hardware class for the flexible instance group.
          * Allowed values are `"STANDARD"` and `"PERFORMANCE"`. Defaults to `"STANDARD"`.
-         * Changing this forces a new resource to be created.
+         * Changing this on an existing secondary worker group forces a new resource to be created.
          */
         hardwareClass?: string;
         /**
@@ -108919,6 +109651,367 @@ export namespace deploymentmanager {
          * configuration.
          */
         name?: string;
+    }
+
+}
+
+export namespace designcenter {
+    export interface ApplicationAppParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: string;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: string;
+    }
+
+    export interface ApplicationAttributes {
+        /**
+         * Business team that ensures user needs are met and value is delivered.
+         * Structure is documented below.
+         */
+        businessOwners?: outputs.designcenter.ApplicationAttributesBusinessOwner[];
+        /**
+         * Criticality of the application.
+         * Structure is documented below.
+         */
+        criticality?: outputs.designcenter.ApplicationAttributesCriticality;
+        /**
+         * Developer team that owns development and coding.
+         * Structure is documented below.
+         */
+        developerOwners?: outputs.designcenter.ApplicationAttributesDeveloperOwner[];
+        /**
+         * Environment of the application.
+         * Structure is documented below.
+         */
+        environment?: outputs.designcenter.ApplicationAttributesEnvironment;
+        /**
+         * Operator team that ensures runtime and operations.
+         * Structure is documented below.
+         */
+        operatorOwners?: outputs.designcenter.ApplicationAttributesOperatorOwner[];
+    }
+
+    export interface ApplicationAttributesBusinessOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Email address of the contact.
+         */
+        email: string;
+    }
+
+    export interface ApplicationAttributesCriticality {
+        /**
+         * Criticality type. Possible values are `MISSION_CRITICAL`, `HIGH`,
+         * `MEDIUM` and `LOW`.
+         */
+        type: string;
+    }
+
+    export interface ApplicationAttributesDeveloperOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Email address of the contact.
+         */
+        email: string;
+    }
+
+    export interface ApplicationAttributesEnvironment {
+        /**
+         * Environment type. Possible values are `PRODUCTION`, `STAGING`,
+         * `TEST` and `DEVELOPMENT`.
+         */
+        type: string;
+    }
+
+    export interface ApplicationAttributesOperatorOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Email address of the contact.
+         */
+        email: string;
+    }
+
+    export interface ApplicationComponentParameter {
+        /**
+         * The URI of the component that the parameters belong to.
+         */
+        component: string;
+        /**
+         * A list of parameters associated with the component.
+         * Structure is documented below.
+         */
+        parameters?: outputs.designcenter.ApplicationComponentParameterParameter[];
+        /**
+         * (Output)
+         * The deployment state of the component.
+         */
+        state: string;
+    }
+
+    export interface ApplicationComponentParameterParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: string;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: string;
+    }
+
+    export interface ApplicationCompositeApplicationParameters {
+        /**
+         * A map from a component URI to the service account that deploys the
+         * component. Keys use the format
+         * `projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/components/{component}`
+         * and values use the format
+         * `projects/{project}/serviceAccounts/{email_address}`.
+         */
+        serviceAccountMap?: {[key: string]: string};
+    }
+
+    export interface ApplicationConnectionConfig {
+        /**
+         * The URI of the connection.
+         */
+        connectionUri: string;
+        /**
+         * The parameters of the connection associated with the destination
+         * component.
+         * Structure is documented below.
+         */
+        destinationComponentParameters?: outputs.designcenter.ApplicationConnectionConfigDestinationComponentParameter[];
+        /**
+         * The parameters of the connection associated with the source
+         * component.
+         * Structure is documented below.
+         */
+        sourceComponentParameters?: outputs.designcenter.ApplicationConnectionConfigSourceComponentParameter[];
+    }
+
+    export interface ApplicationConnectionConfigDestinationComponentParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: string;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: string;
+    }
+
+    export interface ApplicationConnectionConfigSourceComponentParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: string;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value?: string;
+    }
+
+    export interface ApplicationDeploymentMetadata {
+        /**
+         * (Output)
+         * The Cloud Build instance UUID associated with the deployment.
+         */
+        build: string;
+        /**
+         * (Output)
+         * The component output parameters of the deployment.
+         * Structure is documented below.
+         */
+        componentOutputParameters: outputs.designcenter.ApplicationDeploymentMetadataComponentOutputParameter[];
+        /**
+         * (Output)
+         * The error associated with the deployment.
+         * Structure is documented below.
+         */
+        errors: outputs.designcenter.ApplicationDeploymentMetadataError[];
+        /**
+         * (Output)
+         * The number of deployment retries attempted.
+         */
+        retryAttempts: number;
+        /**
+         * (Output)
+         * The revision of the deployment associated with the application.
+         */
+        revision: string;
+        /**
+         * (Output)
+         * The Cloud Build worker pool used to deploy the application.
+         */
+        workerPool: string;
+    }
+
+    export interface ApplicationDeploymentMetadataComponentOutputParameter {
+        /**
+         * (Output)
+         * The name of the component that the output parameters belong to.
+         */
+        component: string;
+        /**
+         * (Output)
+         * The output parameters of the component.
+         * Structure is documented below.
+         */
+        parameters: outputs.designcenter.ApplicationDeploymentMetadataComponentOutputParameterParameter[];
+    }
+
+    export interface ApplicationDeploymentMetadataComponentOutputParameterParameter {
+        /**
+         * The key of the parameter.
+         */
+        key: string;
+        /**
+         * The value of the parameter, as a JSON-encoded string. Use
+         * `jsonencode()` to set it.
+         */
+        value: string;
+    }
+
+    export interface ApplicationDeploymentMetadataError {
+        /**
+         * (Output)
+         * The deployment error code, based on the Infrastructure Manager
+         * error codes.
+         */
+        code: string;
+        /**
+         * (Output)
+         * A human-readable summary of the deployment error.
+         */
+        detail: string;
+        /**
+         * (Output)
+         * The errors generated by Infrastructure Manager, and any
+         * non-internal errors that occurred before the deployment started.
+         */
+        errorMessage: string;
+        /**
+         * (Output)
+         * The error type based on the deployment error code.
+         */
+        type: string;
+    }
+
+    export interface ApplicationDeploymentTarget {
+        /**
+         * The GKE deployment target.
+         * Structure is documented below.
+         */
+        gkeDeploymentTarget?: outputs.designcenter.ApplicationDeploymentTargetGkeDeploymentTarget;
+    }
+
+    export interface ApplicationDeploymentTargetGkeDeploymentTarget {
+        /**
+         * The self link of the cluster where the GKE based application is
+         * deployed.
+         */
+        clusterSelfLink: string;
+        /**
+         * The Kubernetes service account in the namespace, such as
+         * `default`.
+         */
+        kubernetesServiceAccount: string;
+        /**
+         * Whether to create the Kubernetes service account. If `true`, the
+         * service account is created in the namespace. If `false`, the
+         * service account must already exist in the namespace.
+         */
+        kubernetesServiceAccountCreation?: boolean;
+        /**
+         * The namespace where the application is deployed.
+         */
+        namespace: string;
+    }
+
+    export interface ApplicationRolesApisConfig {
+        /**
+         * APIs that must be enabled in this project before the application is
+         * deployed, in the form of `*.googleapis.com`.
+         * Structure is documented below.
+         */
+        apis?: outputs.designcenter.ApplicationRolesApisConfigApi[];
+        /**
+         * The project ID to which these configurations apply.
+         */
+        projectId: string;
+        /**
+         * IAM roles that the deployment service account needs to deploy the
+         * application within this project.
+         * Structure is documented below.
+         */
+        roles?: outputs.designcenter.ApplicationRolesApisConfigRole[];
+    }
+
+    export interface ApplicationRolesApisConfigApi {
+        /**
+         * API name, such as `compute.googleapis.com`.
+         */
+        api: string;
+        /**
+         * (Output)
+         * Whether Application Design Center added the API.
+         */
+        systemProvided: boolean;
+    }
+
+    export interface ApplicationRolesApisConfigRole {
+        /**
+         * IAM role name, such as `roles/editor`.
+         */
+        role: string;
+        /**
+         * (Output)
+         * Whether Application Design Center added the role.
+         */
+        systemProvided: boolean;
+    }
+
+    export interface ApplicationScope {
+        /**
+         * Scope type.
+         */
+        type?: string;
+    }
+
+    export interface ApplicationSource {
+        /**
+         * Application template revision URI.
+         */
+        applicationTemplateRevision?: string;
+    }
+
+    export interface SpaceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface SpaceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
 }
@@ -119813,6 +120906,47 @@ export namespace firebase {
          * If disabled is set, the time at which the rollouts were disabled.
          */
         disabledTime: string;
+        /**
+         * A list of file paths patterns to exclude from triggering a rollout.
+         * Patterns in this list take precedence over required_paths.
+         * **Note**: All paths must be in the ignoredPaths in order for the
+         * rollout to be skipped. Limited to 100 paths.
+         * Structure is documented below.
+         */
+        ignoredPaths?: outputs.firebase.AppHostingTrafficRolloutPolicyIgnoredPath[];
+        /**
+         * A list of file paths patterns that trigger a build and rollout
+         * if at least one of the changed files in the commit are present in
+         * this list. This field is optional; the rollout policy will default to
+         * triggering on all paths if both ignoredPaths and requiredPaths are
+         * not populated. Limited to 100 paths.
+         * Structure is documented below.
+         */
+        requiredPaths?: outputs.firebase.AppHostingTrafficRolloutPolicyRequiredPath[];
+    }
+
+    export interface AppHostingTrafficRolloutPolicyIgnoredPath {
+        /**
+         * The pattern to match against.
+         */
+        pattern: string;
+        /**
+         * The type of pattern to match against.
+         * Possible values are: `RE2`, `GLOB`, `PREFIX`.
+         */
+        type: string;
+    }
+
+    export interface AppHostingTrafficRolloutPolicyRequiredPath {
+        /**
+         * The pattern to match against.
+         */
+        pattern: string;
+        /**
+         * The type of pattern to match against.
+         * Possible values are: `RE2`, `GLOB`, `PREFIX`.
+         */
+        type: string;
     }
 
     export interface AppHostingTrafficTarget {
@@ -120544,6 +121678,7 @@ export namespace firebaserules {
     export interface RulesetSource {
         /**
          * `File` set constituting the `Source` bundle.
+         * Structure is documented below.
          */
         files: outputs.firebaserules.RulesetSourceFile[];
         /**
@@ -120925,18 +122060,18 @@ export namespace folder {
 
     export interface OrganizationPolicyListPolicy {
         /**
-         * or `deny` - (Optional) One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         allow?: outputs.folder.OrganizationPolicyListPolicyAllow;
         /**
-         * One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         deny?: outputs.folder.OrganizationPolicyListPolicyDeny;
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          *
-         * The `allow` or `deny` blocks support:
+         * <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
          */
         inheritFromParent?: boolean;
         /**
@@ -128792,6 +129927,27 @@ export namespace iam {
          */
         allowedAudiences: string[];
         /**
+         * The URL to fetch the OIDC discovery document from, overriding the default URL
+         * derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+         * with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+         * Discovery 1.0 specification.
+         *
+         * If set, 'discovery_uri' must meet the following requirements:
+         *   * Must start with 'https://'.
+         *   * Must not exceed 2000 characters.
+         *   * The scheme, host, and port must match 'issuer_uri'.
+         *   * The path must contain '/.well-known/<suffix>' (where '<suffix>' is not
+         *     empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+         *     topology:
+         *     * The well-known path segment is inserted before the issuer path (for
+         *       example, 'https://example.com/.well-known/openid-configuration/tenant1'
+         *       for issuer 'https://example.com/tenant1'), or
+         *     * The well-known path segment is appended under the issuer path (for
+         *       example, 'https://example.com/tenant1/.well-known/openid-configuration'
+         *       for issuer 'https://example.com/tenant1').
+         */
+        discoveryUri: string;
+        /**
          * The OIDC issuer URL.
          */
         issuerUri: string;
@@ -129777,6 +130933,26 @@ export namespace iam {
          * ```
          */
         allowedAudiences?: string[];
+        /**
+         * The URL to fetch the OIDC discovery document from, overriding the default URL
+         * derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+         * with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+         * Discovery 1.0 specification.
+         * If set, `discoveryUri` must meet the following requirements:
+         * * Must start with `https://`.
+         * * Must not exceed 2000 characters.
+         * * The scheme, host, and port must match `issuerUri`.
+         * * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+         *   empty, such as `openid-configuration`) and conform to the `issuerUri`
+         *   topology:
+         * * The well-known path segment is inserted before the issuer path (for
+         *   example, `https://example.com/.well-known/openid-configuration/tenant1`
+         *   for issuer `https://example.com/tenant1`), or
+         * * The well-known path segment is appended under the issuer path (for
+         *   example, `https://example.com/tenant1/.well-known/openid-configuration`
+         *   for issuer `https://example.com/tenant1`).
+         */
+        discoveryUri?: string;
         /**
          * The OIDC issuer URL.
          */
@@ -131222,6 +132398,17 @@ export namespace identityplatform {
          * The x509 certificate
          */
         x509Certificate: string;
+    }
+
+    export interface TenantOauthIdpConfigResponseType {
+        /**
+         * If true, authorization code is returned from IdP's authorization endpoint.
+         */
+        code?: boolean;
+        /**
+         * If true, ID token is returned from IdP's authorization endpoint.
+         */
+        idToken?: boolean;
     }
 
 }
@@ -134464,6 +135651,11 @@ export namespace memorystore {
 
     export interface GetInstanceDesiredAutoCreatedEndpoint {
         /**
+         * Immutable. The IP version that the consumer endpoint will use.
+         * Default value is 'IPV4'. Possible values: ["IPV4", "IPV6"]
+         */
+        ipVersion: string;
+        /**
          * Required. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
          */
@@ -134536,6 +135728,10 @@ export namespace memorystore {
          * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
          */
         ipAddress: string;
+        /**
+         * The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+         */
+        ipVersion: string;
         /**
          * Output only. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
@@ -134766,6 +135962,10 @@ export namespace memorystore {
          */
         ipAddress: string;
         /**
+         * The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+         */
+        ipVersion: string;
+        /**
          * Output only. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
          */
@@ -134972,6 +136172,13 @@ export namespace memorystore {
 
     export interface InstanceDesiredAutoCreatedEndpoint {
         /**
+         * (Optional, Beta)
+         * Immutable. The IP version that the consumer endpoint will use.
+         * Default value is `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
+         */
+        ipVersion: string;
+        /**
          * Required. The consumer network where the IP address resides, in the form of
          * projects/{project_id}/global/networks/{network_id}.
          */
@@ -135115,6 +136322,11 @@ export namespace memorystore {
          * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
          */
         ipAddress: string;
+        /**
+         * (Output, Beta)
+         * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+         */
+        ipVersion: string;
         /**
          * (Output)
          * Output only. The consumer network where the IP address resides, in the form of
@@ -135373,6 +136585,11 @@ export namespace memorystore {
          * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
          */
         ipAddress: string;
+        /**
+         * (Output, Beta)
+         * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+         */
+        ipVersion: string;
         /**
          * (Output)
          * Output only. The consumer network where the IP address resides, in the form of
@@ -152895,18 +154112,18 @@ export namespace organizations {
 
     export interface PolicyListPolicy {
         /**
-         * or `deny` - (Optional) One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         allow?: outputs.organizations.PolicyListPolicyAllow;
         /**
-         * One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         deny?: outputs.organizations.PolicyListPolicyDeny;
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          *
-         * The `allow` or `deny` blocks support:
+         * <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
          */
         inheritFromParent?: boolean;
         /**
@@ -159622,18 +160839,18 @@ export namespace projects {
 
     export interface OrganizationPolicyListPolicy {
         /**
-         * or `deny` - (Optional) One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         allow?: outputs.projects.OrganizationPolicyListPolicyAllow;
         /**
-         * One or the other must be set.
+         * Exactly one of `allow` or `deny` must be set. Structure is documented below.
          */
         deny?: outputs.projects.OrganizationPolicyListPolicyDeny;
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          *
-         * The `allow` or `deny` blocks support:
+         * <a name="nestedAllowOrDeny"></a>The `allow` or `deny` blocks support:
          */
         inheritFromParent?: boolean;
         /**
@@ -166091,6 +167308,10 @@ export namespace sql {
          */
         deploymentName: string;
         /**
+         * User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+         */
+        description?: string;
+        /**
          * The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
          */
         oldSourceInstanceConnectionName: string;
@@ -167051,6 +168272,10 @@ export namespace sql {
          * A unique identifier for the blue-green deployment within the project and region.
          */
         deploymentName: string;
+        /**
+         * User-provided description for the blue-green deployment.
+         */
+        description: string;
         /**
          * Auth Proxy connection string for the former Blue instance post-switchover.
          */
@@ -168057,6 +169282,10 @@ export namespace sql {
          */
         deploymentName: string;
         /**
+         * User-provided description for the blue-green deployment.
+         */
+        description: string;
+        /**
          * Auth Proxy connection string for the former Blue instance post-switchover.
          */
         oldSourceInstanceConnectionName: string;
@@ -168961,6 +170190,9 @@ export namespace sql {
          * Password expiration duration with one week grace period.
          */
         passwordExpirationDuration?: string;
+        /**
+         * The password status of the user. Structure is documented below.
+         */
         statuses: outputs.sql.UserPasswordPolicyStatus[];
     }
 
@@ -168977,11 +170209,11 @@ export namespace sql {
 
     export interface UserSqlServerUserDetail {
         /**
-         * If the user has been disabled.
+         * (read only) If the user has been disabled.
          */
         disabled: boolean;
         /**
-         * The server roles for this user in the database.
+         * (read only) The server roles for this user in the database.
          */
         serverRoles: string[];
     }
@@ -173149,7 +174381,7 @@ export namespace storage {
 
     export interface TransferJobTransferSpecAzureBlobStorageDataSource {
         /**
-         * ) Credentials used to authenticate API requests to Azure block.
+         * ) Credentials used to authenticate API requests to Azure block. Structure documented below.
          */
         azureCredentials?: outputs.storage.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials;
         /**
@@ -174712,6 +175944,14 @@ export namespace vectorsearch {
 }
 
 export namespace vertex {
+    export interface AiAgentAnomalyDetectionScopeEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource.
+         * Format: projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}.
+         */
+        kmsKeyName: string;
+    }
+
     export interface AiCustomJobEncryptionSpec {
         /**
          * Resource name of the Cloud KMS key used to protect the resource.
@@ -174749,9 +175989,37 @@ export namespace vertex {
          */
         enableWebAccess?: boolean;
         /**
+         * The Experiment associated with this job.
+         * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+         */
+        experiment?: string;
+        /**
+         * The Experiment Run associated with this job.
+         * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+         */
+        experimentRun: string;
+        /**
+         * The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+         * Format: `projects/{project}/locations/{location}/models/{model}`
+         * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+         * Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+         * If no version ID or alias is specified, the "default" version will be returned.
+         */
+        models?: string[];
+        /**
          * The full name of the Compute Engine network to which the Job should be peered.
          */
         network?: string;
+        /**
+         * The ID of the PersistentResource in the same Project and Location which to run.
+         * If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+         * The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+         */
+        persistentResourceId?: string;
+        /**
+         * The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+         */
+        protectedArtifactLocationId?: string;
         /**
          * Configuration for PSC-I for CustomJob.
          * Structure is documented below.

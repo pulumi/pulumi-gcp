@@ -55,6 +55,14 @@ __all__ = [
     'InstanceIamBindingConditionArgsDict',
     'InstanceIamMemberConditionArgs',
     'InstanceIamMemberConditionArgsDict',
+    'InstanceSandboxesArgs',
+    'InstanceSandboxesArgsDict',
+    'InstanceSandboxesTemplateArgs',
+    'InstanceSandboxesTemplateArgsDict',
+    'InstanceSandboxesTemplateEnvArgs',
+    'InstanceSandboxesTemplateEnvArgsDict',
+    'InstanceSandboxesTemplateVolumeMountArgs',
+    'InstanceSandboxesTemplateVolumeMountArgsDict',
     'InstanceTerminalConditionArgs',
     'InstanceTerminalConditionArgsDict',
     'InstanceVolumeArgs',
@@ -111,6 +119,14 @@ __all__ = [
     'JobTemplateTemplateContainerVolumeMountArgsDict',
     'JobTemplateTemplateNodeSelectorArgs',
     'JobTemplateTemplateNodeSelectorArgsDict',
+    'JobTemplateTemplateSandboxesArgs',
+    'JobTemplateTemplateSandboxesArgsDict',
+    'JobTemplateTemplateSandboxesTemplateArgs',
+    'JobTemplateTemplateSandboxesTemplateArgsDict',
+    'JobTemplateTemplateSandboxesTemplateEnvArgs',
+    'JobTemplateTemplateSandboxesTemplateEnvArgsDict',
+    'JobTemplateTemplateSandboxesTemplateVolumeMountArgs',
+    'JobTemplateTemplateSandboxesTemplateVolumeMountArgsDict',
     'JobTemplateTemplateVolumeArgs',
     'JobTemplateTemplateVolumeArgsDict',
     'JobTemplateTemplateVolumeCloudSqlInstanceArgs',
@@ -285,6 +301,14 @@ __all__ = [
     'WorkerPoolTemplateContainerVolumeMountArgsDict',
     'WorkerPoolTemplateNodeSelectorArgs',
     'WorkerPoolTemplateNodeSelectorArgsDict',
+    'WorkerPoolTemplateSandboxesArgs',
+    'WorkerPoolTemplateSandboxesArgsDict',
+    'WorkerPoolTemplateSandboxesTemplateArgs',
+    'WorkerPoolTemplateSandboxesTemplateArgsDict',
+    'WorkerPoolTemplateSandboxesTemplateEnvArgs',
+    'WorkerPoolTemplateSandboxesTemplateEnvArgsDict',
+    'WorkerPoolTemplateSandboxesTemplateVolumeMountArgs',
+    'WorkerPoolTemplateSandboxesTemplateVolumeMountArgsDict',
     'WorkerPoolTemplateVolumeArgs',
     'WorkerPoolTemplateVolumeArgsDict',
     'WorkerPoolTemplateVolumeCloudSqlInstanceArgs',
@@ -518,6 +542,10 @@ class InstanceContainerArgsDict(TypedDict):
     Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
     Structure is documented below.
     """
+    sandbox_launcher: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+    """
     startup_probe: NotRequired[pulumi.Input[Optional['InstanceContainerStartupProbeArgsDict']]]
     """
     Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
@@ -544,6 +572,7 @@ class InstanceContainerArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceContainerPortArgs']]]] = None,
                  resources: pulumi.Input[Optional['InstanceContainerResourcesArgs']] = None,
+                 sandbox_launcher: pulumi.Input[Optional[_builtins.bool]] = None,
                  startup_probe: pulumi.Input[Optional['InstanceContainerStartupProbeArgs']] = None,
                  volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceContainerVolumeMountArgs']]]] = None,
                  working_dir: pulumi.Input[Optional[_builtins.str]] = None):
@@ -561,6 +590,7 @@ class InstanceContainerArgs:
                Structure is documented below.
         :param pulumi.Input['InstanceContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param pulumi.Input['InstanceContainerStartupProbeArgs'] startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceContainerVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
@@ -582,6 +612,8 @@ class InstanceContainerArgs:
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if sandbox_launcher is not None:
+            pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         if startup_probe is not None:
             pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
@@ -689,6 +721,18 @@ class InstanceContainerArgs:
     @resources.setter
     def resources(self, value: pulumi.Input[Optional['InstanceContainerResourcesArgs']]):
         pulumi.set(self, "resources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
+
+    @sandbox_launcher.setter
+    def sandbox_launcher(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "sandbox_launcher", value)
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
@@ -1824,6 +1868,306 @@ class InstanceIamMemberConditionArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class InstanceSandboxesArgsDict(TypedDict):
+    templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateArgsDict']]]]]
+    """
+    Sandbox templates that can be launched through the `sandbox` CLI.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class InstanceSandboxesArgs:
+    def __init__(__self__, *,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSandboxesTemplateArgs']]] templates: Sandbox templates that can be launched through the `sandbox` CLI.
+               Structure is documented below.
+        """
+        if templates is not None:
+            pulumi.set(__self__, "templates", templates)
+
+    @_builtins.property
+    @pulumi.getter
+    def templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateArgs']]]]:
+        """
+        Sandbox templates that can be launched through the `sandbox` CLI.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "templates")
+
+    @templates.setter
+    def templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateArgs']]]]):
+        pulumi.set(self, "templates", value)
+
+
+class InstanceSandboxesTemplateArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+    """
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+    """
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+    """
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateEnvArgsDict']]]]]
+    """
+    List of environment variables to set in the sandbox.
+    Structure is documented below.
+    """
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateVolumeMountArgsDict']]]]]
+    """
+    Volume to mount into the container's filesystem.
+    Structure is documented below.
+    """
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+    """
+
+@pulumi.input_type
+class InstanceSandboxesTemplateArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateEnvArgs']]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+        :param pulumi.Input[_builtins.str] name: Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSandboxesTemplateEnvArgs']]] envs: List of environment variables to set in the sandbox.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSandboxesTemplateVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "name", name)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateEnvArgs']]]]:
+        """
+        List of environment variables to set in the sandbox.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateVolumeMountArgs']]]]:
+        """
+        Volume to mount into the container's filesystem.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @volume_mounts.setter
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSandboxesTemplateVolumeMountArgs']]]]):
+        pulumi.set(self, "volume_mounts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        return pulumi.get(self, "working_dir")
+
+    @working_dir.setter
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "working_dir", value)
+
+
+class InstanceSandboxesTemplateEnvArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+    """
+
+@pulumi.input_type
+class InstanceSandboxesTemplateEnvArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        :param pulumi.Input[_builtins.str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class InstanceSandboxesTemplateVolumeMountArgsDict(TypedDict):
+    mount_path: pulumi.Input[_builtins.str]
+    """
+    Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    This must match the Name of a Volume.
+    """
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Path within the volume from which the container's volume should be mounted.
+    """
+
+@pulumi.input_type
+class InstanceSandboxesTemplateVolumeMountArgs:
+    def __init__(__self__, *,
+                 mount_path: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
+        :param pulumi.Input[_builtins.str] sub_path: Path within the volume from which the container's volume should be mounted.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        """
+        return pulumi.get(self, "mount_path")
+
+    @mount_path.setter
+    def mount_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mount_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        This must match the Name of a Volume.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sub_path", value)
 
 
 class InstanceTerminalConditionArgsDict(TypedDict):
@@ -3117,6 +3461,11 @@ class JobTemplateTemplateArgsDict(TypedDict):
     Node Selector describes the hardware requirements of the resources.
     Structure is documented below.
     """
+    sandboxes: NotRequired[pulumi.Input[Optional['JobTemplateTemplateSandboxesArgsDict']]]
+    """
+    Configuration for sandboxes.
+    Structure is documented below.
+    """
     service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
@@ -3153,6 +3502,7 @@ class JobTemplateTemplateArgs:
                  gpu_zonal_redundancy_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_retries: pulumi.Input[Optional[_builtins.int]] = None,
                  node_selector: pulumi.Input[Optional['JobTemplateTemplateNodeSelectorArgs']] = None,
+                 sandboxes: pulumi.Input[Optional['JobTemplateTemplateSandboxesArgs']] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  volumes: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]] = None,
@@ -3167,6 +3517,8 @@ class JobTemplateTemplateArgs:
         :param pulumi.Input[_builtins.bool] gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this execution.
         :param pulumi.Input[_builtins.int] max_retries: Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         :param pulumi.Input['JobTemplateTemplateNodeSelectorArgs'] node_selector: Node Selector describes the hardware requirements of the resources.
+               Structure is documented below.
+        :param pulumi.Input['JobTemplateTemplateSandboxesArgs'] sandboxes: Configuration for sandboxes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         :param pulumi.Input[_builtins.str] timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -3192,6 +3544,8 @@ class JobTemplateTemplateArgs:
             pulumi.set(__self__, "max_retries", max_retries)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
+        if sandboxes is not None:
+            pulumi.set(__self__, "sandboxes", sandboxes)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if timeout is not None:
@@ -3277,6 +3631,19 @@ class JobTemplateTemplateArgs:
     @node_selector.setter
     def node_selector(self, value: pulumi.Input[Optional['JobTemplateTemplateNodeSelectorArgs']]):
         pulumi.set(self, "node_selector", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sandboxes(self) -> pulumi.Input[Optional['JobTemplateTemplateSandboxesArgs']]:
+        """
+        Configuration for sandboxes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sandboxes")
+
+    @sandboxes.setter
+    def sandboxes(self, value: pulumi.Input[Optional['JobTemplateTemplateSandboxesArgs']]):
+        pulumi.set(self, "sandboxes", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -3620,7 +3987,7 @@ class JobTemplateTemplateContainerArgs:
 class JobTemplateTemplateContainerEnvArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     """
-    Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+    Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
     """
     value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -3639,7 +4006,7 @@ class JobTemplateTemplateContainerEnvArgs:
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  value_source: pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
         :param pulumi.Input[_builtins.str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         :param pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs'] value_source: Source for the environment variable's value.
                Structure is documented below.
@@ -3654,7 +4021,7 @@ class JobTemplateTemplateContainerEnvArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
         """
         return pulumi.get(self, "name")
 
@@ -4327,6 +4694,306 @@ class JobTemplateTemplateNodeSelectorArgs:
     @accelerator.setter
     def accelerator(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "accelerator", value)
+
+
+class JobTemplateTemplateSandboxesArgsDict(TypedDict):
+    templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateArgsDict']]]]]
+    """
+    Sandbox templates that can be launched through the `sandbox` CLI.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class JobTemplateTemplateSandboxesArgs:
+    def __init__(__self__, *,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateArgs']]] templates: Sandbox templates that can be launched through the `sandbox` CLI.
+               Structure is documented below.
+        """
+        if templates is not None:
+            pulumi.set(__self__, "templates", templates)
+
+    @_builtins.property
+    @pulumi.getter
+    def templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateArgs']]]]:
+        """
+        Sandbox templates that can be launched through the `sandbox` CLI.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "templates")
+
+    @templates.setter
+    def templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateArgs']]]]):
+        pulumi.set(self, "templates", value)
+
+
+class JobTemplateTemplateSandboxesTemplateArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+    """
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+    """
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+    """
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateEnvArgsDict']]]]]
+    """
+    List of environment variables to set in the sandbox.
+    Structure is documented below.
+    """
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateVolumeMountArgsDict']]]]]
+    """
+    Volume to mount into the container's filesystem.
+    Structure is documented below.
+    """
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+    """
+
+@pulumi.input_type
+class JobTemplateTemplateSandboxesTemplateArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateEnvArgs']]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+        :param pulumi.Input[_builtins.str] name: Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateEnvArgs']]] envs: List of environment variables to set in the sandbox.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "name", name)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateEnvArgs']]]]:
+        """
+        List of environment variables to set in the sandbox.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateVolumeMountArgs']]]]:
+        """
+        Volume to mount into the container's filesystem.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @volume_mounts.setter
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateSandboxesTemplateVolumeMountArgs']]]]):
+        pulumi.set(self, "volume_mounts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        return pulumi.get(self, "working_dir")
+
+    @working_dir.setter
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "working_dir", value)
+
+
+class JobTemplateTemplateSandboxesTemplateEnvArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+    """
+
+@pulumi.input_type
+class JobTemplateTemplateSandboxesTemplateEnvArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        :param pulumi.Input[_builtins.str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class JobTemplateTemplateSandboxesTemplateVolumeMountArgsDict(TypedDict):
+    mount_path: pulumi.Input[_builtins.str]
+    """
+    Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    This must match the Name of a Volume.
+    """
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Path within the volume from which the container's volume should be mounted.
+    """
+
+@pulumi.input_type
+class JobTemplateTemplateSandboxesTemplateVolumeMountArgs:
+    def __init__(__self__, *,
+                 mount_path: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
+        :param pulumi.Input[_builtins.str] sub_path: Path within the volume from which the container's volume should be mounted.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        """
+        return pulumi.get(self, "mount_path")
+
+    @mount_path.setter
+    def mount_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mount_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        This must match the Name of a Volume.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sub_path", value)
 
 
 class JobTemplateTemplateVolumeArgsDict(TypedDict):
@@ -10537,6 +11204,11 @@ class WorkerPoolTemplateArgsDict(TypedDict):
     """
     The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
     """
+    sandboxes: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateSandboxesArgsDict']]]
+    """
+    Configuration for sandboxes.
+    Structure is documented below.
+    """
     service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -10566,6 +11238,7 @@ class WorkerPoolTemplateArgs:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  node_selector: pulumi.Input[Optional['WorkerPoolTemplateNodeSelectorArgs']] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 sandboxes: pulumi.Input[Optional['WorkerPoolTemplateSandboxesArgs']] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  volumes: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]] = None,
                  vpc_access: pulumi.Input[Optional['WorkerPoolTemplateVpcAccessArgs']] = None):
@@ -10591,6 +11264,8 @@ class WorkerPoolTemplateArgs:
         :param pulumi.Input['WorkerPoolTemplateNodeSelectorArgs'] node_selector: Node Selector describes the hardware requirements of the resources.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
+        :param pulumi.Input['WorkerPoolTemplateSandboxesArgs'] sandboxes: Configuration for sandboxes.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
@@ -10619,6 +11294,8 @@ class WorkerPoolTemplateArgs:
             pulumi.set(__self__, "node_selector", node_selector)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
+        if sandboxes is not None:
+            pulumi.set(__self__, "sandboxes", sandboxes)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if volumes is not None:
@@ -10767,6 +11444,19 @@ class WorkerPoolTemplateArgs:
     @revision.setter
     def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sandboxes(self) -> pulumi.Input[Optional['WorkerPoolTemplateSandboxesArgs']]:
+        """
+        Configuration for sandboxes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sandboxes")
+
+    @sandboxes.setter
+    def sandboxes(self, value: pulumi.Input[Optional['WorkerPoolTemplateSandboxesArgs']]):
+        pulumi.set(self, "sandboxes", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -12055,6 +12745,306 @@ class WorkerPoolTemplateNodeSelectorArgs:
     @accelerator.setter
     def accelerator(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "accelerator", value)
+
+
+class WorkerPoolTemplateSandboxesArgsDict(TypedDict):
+    templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateArgsDict']]]]]
+    """
+    Sandbox templates that can be launched through the `sandbox` CLI.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class WorkerPoolTemplateSandboxesArgs:
+    def __init__(__self__, *,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateArgs']]] templates: Sandbox templates that can be launched through the `sandbox` CLI.
+               Structure is documented below.
+        """
+        if templates is not None:
+            pulumi.set(__self__, "templates", templates)
+
+    @_builtins.property
+    @pulumi.getter
+    def templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateArgs']]]]:
+        """
+        Sandbox templates that can be launched through the `sandbox` CLI.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "templates")
+
+    @templates.setter
+    def templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateArgs']]]]):
+        pulumi.set(self, "templates", value)
+
+
+class WorkerPoolTemplateSandboxesTemplateArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+    """
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+    """
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+    """
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateEnvArgsDict']]]]]
+    """
+    List of environment variables to set in the sandbox.
+    Structure is documented below.
+    """
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateVolumeMountArgsDict']]]]]
+    """
+    Volume to mount into the container's filesystem.
+    Structure is documented below.
+    """
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+    """
+
+@pulumi.input_type
+class WorkerPoolTemplateSandboxesTemplateArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateEnvArgs']]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+        :param pulumi.Input[_builtins.str] name: Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateEnvArgs']]] envs: List of environment variables to set in the sandbox.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "name", name)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateEnvArgs']]]]:
+        """
+        List of environment variables to set in the sandbox.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateVolumeMountArgs']]]]:
+        """
+        Volume to mount into the container's filesystem.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @volume_mounts.setter
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateSandboxesTemplateVolumeMountArgs']]]]):
+        pulumi.set(self, "volume_mounts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        return pulumi.get(self, "working_dir")
+
+    @working_dir.setter
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "working_dir", value)
+
+
+class WorkerPoolTemplateSandboxesTemplateEnvArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+    """
+
+@pulumi.input_type
+class WorkerPoolTemplateSandboxesTemplateEnvArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        :param pulumi.Input[_builtins.str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class WorkerPoolTemplateSandboxesTemplateVolumeMountArgsDict(TypedDict):
+    mount_path: pulumi.Input[_builtins.str]
+    """
+    Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    This must match the Name of a Volume.
+    """
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Path within the volume from which the container's volume should be mounted.
+    """
+
+@pulumi.input_type
+class WorkerPoolTemplateSandboxesTemplateVolumeMountArgs:
+    def __init__(__self__, *,
+                 mount_path: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
+        :param pulumi.Input[_builtins.str] sub_path: Path within the volume from which the container's volume should be mounted.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        """
+        return pulumi.get(self, "mount_path")
+
+    @mount_path.setter
+    def mount_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mount_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        This must match the Name of a Volume.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sub_path", value)
 
 
 class WorkerPoolTemplateVolumeArgsDict(TypedDict):

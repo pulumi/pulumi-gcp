@@ -561,6 +561,48 @@ import (
 //
 // ```
 //
+// ### Cloudrunv2 Instance Sandbox Templates
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewInstance(ctx, "default", &cloudrunv2.InstanceArgs{
+//				Name:        pulumi.String("cloudrun-instance"),
+//				Location:    pulumi.String("us-west4"),
+//				LaunchStage: pulumi.String("BETA"),
+//				Containers: cloudrunv2.InstanceContainerArray{
+//					&cloudrunv2.InstanceContainerArgs{
+//						Image:           pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						SandboxLauncher: pulumi.Bool(true),
+//					},
+//				},
+//				Sandboxes: &cloudrunv2.InstanceSandboxesArgs{
+//					Templates: cloudrunv2.InstanceSandboxesTemplateArray{
+//						&cloudrunv2.InstanceSandboxesTemplateArgs{
+//							Name:  pulumi.String("hello"),
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Instance can be imported using any of these accepted formats:
@@ -668,6 +710,9 @@ type Instance struct {
 	// Restart policy for the Instance. If not provided, the default is ON_FAILURE.
 	// Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
 	RestartPolicy pulumi.StringOutput `pulumi:"restartPolicy"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes InstanceSandboxesPtrOutput `pulumi:"sandboxes"`
 	// Reserved for future use. True if this service satisfies zone separation.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
@@ -816,6 +861,9 @@ type instanceState struct {
 	// Restart policy for the Instance. If not provided, the default is ON_FAILURE.
 	// Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes *InstanceSandboxes `pulumi:"sandboxes"`
 	// Reserved for future use. True if this service satisfies zone separation.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
@@ -924,6 +972,9 @@ type InstanceState struct {
 	// Restart policy for the Instance. If not provided, the default is ON_FAILURE.
 	// Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
 	RestartPolicy pulumi.StringPtrInput
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes InstanceSandboxesPtrInput
 	// Reserved for future use. True if this service satisfies zone separation.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
@@ -1008,6 +1059,9 @@ type instanceArgs struct {
 	// Restart policy for the Instance. If not provided, the default is ON_FAILURE.
 	// Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes *InstanceSandboxes `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// A list of Volumes to make available to containers.
@@ -1072,6 +1126,9 @@ type InstanceArgs struct {
 	// Restart policy for the Instance. If not provided, the default is ON_FAILURE.
 	// Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
 	RestartPolicy pulumi.StringPtrInput
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes InstanceSandboxesPtrInput
 	// Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
 	ServiceAccount pulumi.StringPtrInput
 	// A list of Volumes to make available to containers.
@@ -1350,6 +1407,12 @@ func (o InstanceOutput) Reconciling() pulumi.BoolOutput {
 // Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
 func (o InstanceOutput) RestartPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RestartPolicy }).(pulumi.StringOutput)
+}
+
+// Configuration for sandboxes.
+// Structure is documented below.
+func (o InstanceOutput) Sandboxes() InstanceSandboxesPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceSandboxesPtrOutput { return v.Sandboxes }).(InstanceSandboxesPtrOutput)
 }
 
 // Reserved for future use. True if this service satisfies zone separation.

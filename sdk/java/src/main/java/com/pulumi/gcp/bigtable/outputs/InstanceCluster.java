@@ -15,7 +15,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceCluster {
     /**
-     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+     * 
+     * &gt; **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
      * 
      */
     private @Nullable InstanceClusterAutoscalingConfig autoscalingConfig;
@@ -40,6 +42,8 @@ public final class InstanceCluster {
      * `clusterId`) will cause the provider to delete/recreate the entire
      * `gcp.bigtable.Instance` resource. If these values are changing, use a new
      * `clusterId`.
+     * 
+     * ***
      * 
      */
     private @Nullable String nodeScalingFactor;
@@ -70,7 +74,9 @@ public final class InstanceCluster {
 
     private InstanceCluster() {}
     /**
-     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+     * 
+     * &gt; **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
      * 
      */
     public Optional<InstanceClusterAutoscalingConfig> autoscalingConfig() {
@@ -101,6 +107,8 @@ public final class InstanceCluster {
      * `clusterId`) will cause the provider to delete/recreate the entire
      * `gcp.bigtable.Instance` resource. If these values are changing, use a new
      * `clusterId`.
+     * 
+     * ***
      * 
      */
     public Optional<String> nodeScalingFactor() {

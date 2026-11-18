@@ -67,6 +67,177 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Agent Identity Auth Provider Connector Reference
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.agentidentity.AuthProvider;
+ * import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new AuthProvider("default", AuthProviderArgs.builder()
+ *             .location("us-central1")
+ *             .authProviderId("connref-provider")
+ *             .description("Connector reference auth provider")
+ *             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+ *                 .connectorReferenceAuthProvider(AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs.builder()
+ *                     .connector("salesforce-connector-prod")
+ *                     .authorizationDetails(serializeJson(
+ *                         jsonArray(jsonObject(
+ *                             jsonProperty("type", "oauth_authorization"),
+ *                             jsonProperty("resource", "https://example.com/api")
+ *                         ))))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Agent Identity Auth Provider Xaa
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.agentidentity.AuthProvider;
+ * import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new AuthProvider("default", AuthProviderArgs.builder()
+ *             .location("us-central1")
+ *             .authProviderId("xaa-provider")
+ *             .description("Cross-App Access auth provider")
+ *             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+ *                 .xaaAuthProvider(AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs.builder()
+ *                     .additionalParameters(Map.of("prompt", "consent"))
+ *                     .clientSecretAuth(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs.builder()
+ *                         .clientId("test-client-id")
+ *                         .clientSecret("test-client-secret")
+ *                         .build())
+ *                     .customIssuer(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs.builder()
+ *                         .tokenUrl("https://auth.example.com/token")
+ *                         .issuer("https://auth.example.com")
+ *                         .build())
+ *                     .idTokenInput(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs.builder()
+ *                         .idJagAuthProvider("projects/my-project-name/locations/us-central1/authProviders/idp-provider")
+ *                         .idJagAdditionalClaims(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("env", "test")
+ *                             )))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Agent Identity Auth Provider Xaa Jwt
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.agentidentity.AuthProvider;
+ * import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new AuthProvider("default", AuthProviderArgs.builder()
+ *             .location("us-central1")
+ *             .authProviderId("xaa-jwt-provider")
+ *             .description("Cross-App Access with Client Assertion JWT")
+ *             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+ *                 .xaaAuthProvider(AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs.builder()
+ *                     .clientAssertionJwtAuth(AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs.builder()
+ *                         .clientId("test-jwt-client-id")
+ *                         .build())
+ *                     .customIssuer(AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs.builder()
+ *                         .tokenUrl("https://auth.example.com/token")
+ *                         .build())
+ *                     .idTokenInput(AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs.builder()
+ *                         .idJagAuthProvider("projects/my-project-name/locations/us-central1/authProviders/idp-provider")
+ *                         .idJagAdditionalClaims(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("env", "test")
+ *                             )))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Regional Endpoint Policies
+ * 
+ * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+ * 
  * ## Import
  * 
  * AuthProvider can be imported using any of these accepted formats:

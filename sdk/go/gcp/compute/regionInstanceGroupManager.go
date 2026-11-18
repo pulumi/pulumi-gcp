@@ -259,11 +259,13 @@ type RegionInstanceGroupManager struct {
 	// The region where the managed instance group resides. If not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Resource policies for this managed instance group. Structure is documented below.
-	//
-	// ***
 	ResourcePolicies RegionInstanceGroupManagerResourcePoliciesPtrOutput `pulumi:"resourcePolicies"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+	//
+	// ***
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy RegionInstanceGroupManagerStandbyPolicyOutput `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
@@ -409,11 +411,13 @@ type regionInstanceGroupManagerState struct {
 	// The region where the managed instance group resides. If not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Resource policies for this managed instance group. Structure is documented below.
-	//
-	// ***
 	ResourcePolicies *RegionInstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+	//
+	// ***
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *RegionInstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
@@ -524,11 +528,13 @@ type RegionInstanceGroupManagerState struct {
 	// The region where the managed instance group resides. If not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Resource policies for this managed instance group. Structure is documented below.
-	//
-	// ***
 	ResourcePolicies RegionInstanceGroupManagerResourcePoliciesPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+	//
+	// ***
+	ServiceAccount pulumi.StringPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy RegionInstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
@@ -641,9 +647,11 @@ type regionInstanceGroupManagerArgs struct {
 	// The region where the managed instance group resides. If not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Resource policies for this managed instance group. Structure is documented below.
+	ResourcePolicies *RegionInstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	//
 	// ***
-	ResourcePolicies *RegionInstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *RegionInstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
@@ -745,9 +753,11 @@ type RegionInstanceGroupManagerArgs struct {
 	// The region where the managed instance group resides. If not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Resource policies for this managed instance group. Structure is documented below.
+	ResourcePolicies RegionInstanceGroupManagerResourcePoliciesPtrInput
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	//
 	// ***
-	ResourcePolicies RegionInstanceGroupManagerResourcePoliciesPtrInput
+	ServiceAccount pulumi.StringPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy RegionInstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
@@ -1009,8 +1019,6 @@ func (o RegionInstanceGroupManagerOutput) Region() pulumi.StringOutput {
 }
 
 // Resource policies for this managed instance group. Structure is documented below.
-//
-// ***
 func (o RegionInstanceGroupManagerOutput) ResourcePolicies() RegionInstanceGroupManagerResourcePoliciesPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerResourcePoliciesPtrOutput {
 		return v.ResourcePolicies
@@ -1020,6 +1028,13 @@ func (o RegionInstanceGroupManagerOutput) ResourcePolicies() RegionInstanceGroup
 // The URL of the created resource.
 func (o RegionInstanceGroupManagerOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+//
+// ***
+func (o RegionInstanceGroupManagerOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 // The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).

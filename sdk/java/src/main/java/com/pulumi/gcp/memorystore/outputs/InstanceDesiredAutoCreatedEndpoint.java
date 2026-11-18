@@ -7,9 +7,19 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceDesiredAutoCreatedEndpoint {
+    /**
+     * @return (Optional, Beta)
+     * Immutable. The IP version that the consumer endpoint will use.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    private @Nullable String ipVersion;
     /**
      * @return Required. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
@@ -23,6 +33,16 @@ public final class InstanceDesiredAutoCreatedEndpoint {
     private String projectId;
 
     private InstanceDesiredAutoCreatedEndpoint() {}
+    /**
+     * @return (Optional, Beta)
+     * Immutable. The IP version that the consumer endpoint will use.
+     * Default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Optional<String> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
     /**
      * @return Required. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
@@ -48,15 +68,23 @@ public final class InstanceDesiredAutoCreatedEndpoint {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String ipVersion;
         private String network;
         private String projectId;
         public Builder() {}
         public Builder(InstanceDesiredAutoCreatedEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.ipVersion = defaults.ipVersion;
     	      this.network = defaults.network;
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
+        public Builder ipVersion(@Nullable String ipVersion) {
+
+            this.ipVersion = ipVersion;
+            return this;
+        }
         @CustomType.Setter
         public Builder network(String network) {
             if (network == null) {
@@ -75,6 +103,7 @@ public final class InstanceDesiredAutoCreatedEndpoint {
         }
         public InstanceDesiredAutoCreatedEndpoint build() {
             final var _resultValue = new InstanceDesiredAutoCreatedEndpoint();
+            _resultValue.ipVersion = ipVersion;
             _resultValue.network = network;
             _resultValue.projectId = projectId;
             return _resultValue;

@@ -89,6 +89,12 @@ type GeminiGcpEnablementSetting struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrOutput `pulumi:"enableCustomerDataSharing"`
+	// The Cloud Storage bucket name allocated for this setting.
+	// Note: Please make sure the cloudaicompanion service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+	// has `storage.objects.get` and `storage.objects.create` permission to the
+	// Cloud Storage bucket.
+	GcsBucket pulumi.StringPtrOutput `pulumi:"gcsBucket"`
 	// The Gemini enterprise project for this setting.
 	// Format: projects/{project}
 	// The `{project}` segment can be the project ID or project number.
@@ -187,6 +193,12 @@ type geminiGcpEnablementSettingState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing *bool `pulumi:"enableCustomerDataSharing"`
+	// The Cloud Storage bucket name allocated for this setting.
+	// Note: Please make sure the cloudaicompanion service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+	// has `storage.objects.get` and `storage.objects.create` permission to the
+	// Cloud Storage bucket.
+	GcsBucket *string `pulumi:"gcsBucket"`
 	// The Gemini enterprise project for this setting.
 	// Format: projects/{project}
 	// The `{project}` segment can be the project ID or project number.
@@ -245,6 +257,12 @@ type GeminiGcpEnablementSettingState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrInput
+	// The Cloud Storage bucket name allocated for this setting.
+	// Note: Please make sure the cloudaicompanion service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+	// has `storage.objects.get` and `storage.objects.create` permission to the
+	// Cloud Storage bucket.
+	GcsBucket pulumi.StringPtrInput
 	// The Gemini enterprise project for this setting.
 	// Format: projects/{project}
 	// The `{project}` segment can be the project ID or project number.
@@ -309,6 +327,12 @@ type geminiGcpEnablementSettingArgs struct {
 	DisableWebGrounding *bool `pulumi:"disableWebGrounding"`
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing *bool `pulumi:"enableCustomerDataSharing"`
+	// The Cloud Storage bucket name allocated for this setting.
+	// Note: Please make sure the cloudaicompanion service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+	// has `storage.objects.get` and `storage.objects.create` permission to the
+	// Cloud Storage bucket.
+	GcsBucket *string `pulumi:"gcsBucket"`
 	// The Gemini enterprise project for this setting.
 	// Format: projects/{project}
 	// The `{project}` segment can be the project ID or project number.
@@ -356,6 +380,12 @@ type GeminiGcpEnablementSettingArgs struct {
 	DisableWebGrounding pulumi.BoolPtrInput
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrInput
+	// The Cloud Storage bucket name allocated for this setting.
+	// Note: Please make sure the cloudaicompanion service agent
+	// `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+	// has `storage.objects.get` and `storage.objects.create` permission to the
+	// Cloud Storage bucket.
+	GcsBucket pulumi.StringPtrInput
 	// The Gemini enterprise project for this setting.
 	// Format: projects/{project}
 	// The `{project}` segment can be the project ID or project number.
@@ -505,6 +535,15 @@ func (o GeminiGcpEnablementSettingOutput) EffectiveLabels() pulumi.StringMapOutp
 // Whether customer data sharing should be enabled.
 func (o GeminiGcpEnablementSettingOutput) EnableCustomerDataSharing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.BoolPtrOutput { return v.EnableCustomerDataSharing }).(pulumi.BoolPtrOutput)
+}
+
+// The Cloud Storage bucket name allocated for this setting.
+// Note: Please make sure the cloudaicompanion service agent
+// `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+// has `storage.objects.get` and `storage.objects.create` permission to the
+// Cloud Storage bucket.
+func (o GeminiGcpEnablementSettingOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringPtrOutput { return v.GcsBucket }).(pulumi.StringPtrOutput)
 }
 
 // The Gemini enterprise project for this setting.

@@ -5,6 +5,8 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiAgentAnomalyDetectionScopeEncryptionSpecArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +35,29 @@ public final class AiAgentAnomalyDetectionScopeState extends com.pulumi.resource
      */
     public Optional<Output<String>> agentAnomalyDetectionScopeId() {
         return Optional.ofNullable(this.agentAnomalyDetectionScopeId);
+    }
+
+    /**
+     * When true, newly discovered agents that share log and observability
+     * buckets with this scope are automatically enrolled as ACTIVE monitored
+     * agents, up to the project&#39;s monitored agent quota. When false, newly
+     * discovered agents are added as DISABLED monitored agents and must be
+     * enabled explicitly.
+     * 
+     */
+    @Import(name="autoEnroll")
+    private @Nullable Output<Boolean> autoEnroll;
+
+    /**
+     * @return When true, newly discovered agents that share log and observability
+     * buckets with this scope are automatically enrolled as ACTIVE monitored
+     * agents, up to the project&#39;s monitored agent quota. When false, newly
+     * discovered agents are added as DISABLED monitored agents and must be
+     * enabled explicitly.
+     * 
+     */
+    public Optional<Output<Boolean>> autoEnroll() {
+        return Optional.ofNullable(this.autoEnroll);
     }
 
     /**
@@ -73,6 +98,29 @@ public final class AiAgentAnomalyDetectionScopeState extends com.pulumi.resource
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Customer-managed encryption key spec for the scope. If set, this scope
+     * and all sub-resources are secured by this key. The key must be a Cloud
+     * KMS key co-located with the scope location (for example, `us` for a `us`
+     * scope, `europe` for an `eu` scope, or matching single region).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<AiAgentAnomalyDetectionScopeEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return Customer-managed encryption key spec for the scope. If set, this scope
+     * and all sub-resources are secured by this key. The key must be a Cloud
+     * KMS key co-located with the scope location (for example, `us` for a `us`
+     * scope, `europe` for an `eu` scope, or matching single region).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiAgentAnomalyDetectionScopeEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
     }
 
     /**
@@ -179,8 +227,10 @@ public final class AiAgentAnomalyDetectionScopeState extends com.pulumi.resource
 
     private AiAgentAnomalyDetectionScopeState(AiAgentAnomalyDetectionScopeState $) {
         this.agentAnomalyDetectionScopeId = $.agentAnomalyDetectionScopeId;
+        this.autoEnroll = $.autoEnroll;
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
+        this.encryptionSpec = $.encryptionSpec;
         this.logBuckets = $.logBuckets;
         this.name = $.name;
         this.observabilityBuckets = $.observabilityBuckets;
@@ -233,6 +283,35 @@ public final class AiAgentAnomalyDetectionScopeState extends com.pulumi.resource
         }
 
         /**
+         * @param autoEnroll When true, newly discovered agents that share log and observability
+         * buckets with this scope are automatically enrolled as ACTIVE monitored
+         * agents, up to the project&#39;s monitored agent quota. When false, newly
+         * discovered agents are added as DISABLED monitored agents and must be
+         * enabled explicitly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoEnroll(@Nullable Output<Boolean> autoEnroll) {
+            $.autoEnroll = autoEnroll;
+            return this;
+        }
+
+        /**
+         * @param autoEnroll When true, newly discovered agents that share log and observability
+         * buckets with this scope are automatically enrolled as ACTIVE monitored
+         * agents, up to the project&#39;s monitored agent quota. When false, newly
+         * discovered agents are added as DISABLED monitored agents and must be
+         * enabled explicitly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoEnroll(Boolean autoEnroll) {
+            return autoEnroll(Output.of(autoEnroll));
+        }
+
+        /**
          * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
          * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
          * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
@@ -282,6 +361,35 @@ public final class AiAgentAnomalyDetectionScopeState extends com.pulumi.resource
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param encryptionSpec Customer-managed encryption key spec for the scope. If set, this scope
+         * and all sub-resources are secured by this key. The key must be a Cloud
+         * KMS key co-located with the scope location (for example, `us` for a `us`
+         * scope, `europe` for an `eu` scope, or matching single region).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<AiAgentAnomalyDetectionScopeEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec Customer-managed encryption key spec for the scope. If set, this scope
+         * and all sub-resources are secured by this key. The key must be a Cloud
+         * KMS key co-located with the scope location (for example, `us` for a `us`
+         * scope, `europe` for an `eu` scope, or matching single region).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(AiAgentAnomalyDetectionScopeEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

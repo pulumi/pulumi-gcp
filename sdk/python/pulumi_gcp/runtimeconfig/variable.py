@@ -40,10 +40,8 @@ class VariableArgs:
                names can be hierarchical using slashes (e.g. "prod-variables/hostname").
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] text: or `value` - (Required) The content to associate with the variable.
-               Exactly one of `text` or `variable` must be specified. If `text` is specified,
-               it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-               is specified, it must be base64 encoded and less than 4096 bytes in length.
+        :param pulumi.Input[_builtins.str] text: The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
+        :param pulumi.Input[_builtins.str] value: The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
                
                ***
         """
@@ -119,12 +117,7 @@ class VariableArgs:
     @pulumi.getter
     def text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        or `value` - (Required) The content to associate with the variable.
-        Exactly one of `text` or `variable` must be specified. If `text` is specified,
-        it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-        is specified, it must be base64 encoded and less than 4096 bytes in length.
-
-        ***
+        The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
         """
         return pulumi.get(self, "text")
 
@@ -135,6 +128,11 @@ class VariableArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+
+        ***
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -167,15 +165,13 @@ class _VariableState:
                variable.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] text: or `value` - (Required) The content to associate with the variable.
-               Exactly one of `text` or `variable` must be specified. If `text` is specified,
-               it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-               is specified, it must be base64 encoded and less than 4096 bytes in length.
-               
-               ***
+        :param pulumi.Input[_builtins.str] text: The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
         :param pulumi.Input[_builtins.str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds, representing when the variable was last updated.
                Example: "2016-10-09T12:33:37.578138407Z".
+        :param pulumi.Input[_builtins.str] value: The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+               
+               ***
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -252,12 +248,7 @@ class _VariableState:
     @pulumi.getter
     def text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        or `value` - (Required) The content to associate with the variable.
-        Exactly one of `text` or `variable` must be specified. If `text` is specified,
-        it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-        is specified, it must be base64 encoded and less than 4096 bytes in length.
-
-        ***
+        The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
         """
         return pulumi.get(self, "text")
 
@@ -282,6 +273,11 @@ class _VariableState:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+
+        ***
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -377,10 +373,8 @@ class Variable(pulumi.CustomResource):
                variable.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] text: or `value` - (Required) The content to associate with the variable.
-               Exactly one of `text` or `variable` must be specified. If `text` is specified,
-               it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-               is specified, it must be base64 encoded and less than 4096 bytes in length.
+        :param pulumi.Input[_builtins.str] text: The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
+        :param pulumi.Input[_builtins.str] value: The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
                
                ***
         """
@@ -528,15 +522,13 @@ class Variable(pulumi.CustomResource):
                variable.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] text: or `value` - (Required) The content to associate with the variable.
-               Exactly one of `text` or `variable` must be specified. If `text` is specified,
-               it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-               is specified, it must be base64 encoded and less than 4096 bytes in length.
-               
-               ***
+        :param pulumi.Input[_builtins.str] text: The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
         :param pulumi.Input[_builtins.str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds, representing when the variable was last updated.
                Example: "2016-10-09T12:33:37.578138407Z".
+        :param pulumi.Input[_builtins.str] value: The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+               
+               ***
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -615,12 +607,7 @@ class Variable(pulumi.CustomResource):
     @pulumi.getter
     def text(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        or `value` - (Required) The content to associate with the variable.
-        Exactly one of `text` or `variable` must be specified. If `text` is specified,
-        it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-        is specified, it must be base64 encoded and less than 4096 bytes in length.
-
-        ***
+        The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
         """
         return pulumi.get(self, "text")
 
@@ -637,5 +624,10 @@ class Variable(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+
+        ***
+        """
         return pulumi.get(self, "value")
 

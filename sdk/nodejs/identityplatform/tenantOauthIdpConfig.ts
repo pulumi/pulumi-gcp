@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -28,6 +30,10 @@ import * as utilities from "../utilities";
  *     issuer: "issuer",
  *     enabled: true,
  *     clientSecret: "secret",
+ *     responseType: {
+ *         idToken: true,
+ *         code: false,
+ *     },
  * });
  * ```
  *
@@ -125,6 +131,13 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     */
+    declare public readonly responseType: pulumi.Output<outputs.identityplatform.TenantOauthIdpConfigResponseType>;
+    /**
      * The name of the tenant where this OIDC IDP configuration resource exists
      */
     declare public readonly tenant: pulumi.Output<string>;
@@ -150,6 +163,7 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
             resourceInputs["issuer"] = state?.issuer;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["responseType"] = state?.responseType;
             resourceInputs["tenant"] = state?.tenant;
         } else {
             const args = argsOrState as TenantOauthIdpConfigArgs | undefined;
@@ -173,6 +187,7 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
             resourceInputs["issuer"] = args?.issuer;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
+            resourceInputs["responseType"] = args?.responseType;
             resourceInputs["tenant"] = args?.tenant;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -223,6 +238,13 @@ export interface TenantOauthIdpConfigState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     */
+    responseType?: pulumi.Input<inputs.identityplatform.TenantOauthIdpConfigResponseType | undefined>;
+    /**
      * The name of the tenant where this OIDC IDP configuration resource exists
      */
     tenant?: pulumi.Input<string | undefined>;
@@ -270,6 +292,13 @@ export interface TenantOauthIdpConfigArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     */
+    responseType?: pulumi.Input<inputs.identityplatform.TenantOauthIdpConfigResponseType | undefined>;
     /**
      * The name of the tenant where this OIDC IDP configuration resource exists
      */

@@ -21,8 +21,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// <summary>
         /// The absolute path of the source to be mounted. Only Google Cloud
         /// Storage buckets or folders are currently supported. For example,
-        /// `gs://bucket-xxx` for a Cloud Storage bucket, or
-        /// `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+        /// `gs://my-bucket` for a Cloud Storage bucket, or
+        /// `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
         /// </summary>
         public readonly string SourcePath;
 

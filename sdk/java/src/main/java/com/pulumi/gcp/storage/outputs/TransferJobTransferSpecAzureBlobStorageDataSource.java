@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TransferJobTransferSpecAzureBlobStorageDataSource {
     /**
-     * @return ) Credentials used to authenticate API requests to Azure block.
+     * @return ) Credentials used to authenticate API requests to Azure block. Structure documented below.
      * 
      */
     private @Nullable TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials;
@@ -52,7 +52,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
 
     private TransferJobTransferSpecAzureBlobStorageDataSource() {}
     /**
-     * @return ) Credentials used to authenticate API requests to Azure block.
+     * @return ) Credentials used to authenticate API requests to Azure block. Structure documented below.
      * 
      */
     public Optional<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials> azureCredentials() {

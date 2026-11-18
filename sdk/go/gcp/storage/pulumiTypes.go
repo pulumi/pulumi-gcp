@@ -17046,7 +17046,7 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) SecretAcces
 }
 
 type TransferJobTransferSpecAzureBlobStorageDataSource struct {
-	// ) Credentials used to authenticate API requests to Azure block.
+	// ) Credentials used to authenticate API requests to Azure block. Structure documented below.
 	AzureCredentials *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.`
 	Container string `pulumi:"container"`
@@ -17074,7 +17074,7 @@ type TransferJobTransferSpecAzureBlobStorageDataSourceInput interface {
 }
 
 type TransferJobTransferSpecAzureBlobStorageDataSourceArgs struct {
-	// ) Credentials used to authenticate API requests to Azure block.
+	// ) Credentials used to authenticate API requests to Azure block. Structure documented below.
 	AzureCredentials TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrInput `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.`
 	Container pulumi.StringInput `pulumi:"container"`
@@ -17167,7 +17167,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTr
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput)
 }
 
-// ) Credentials used to authenticate API requests to Azure block.
+// ) Credentials used to authenticate API requests to Azure block. Structure documented below.
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) AzureCredentials() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
 		return v.AzureCredentials
@@ -17230,7 +17230,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Elem() Trans
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourceOutput)
 }
 
-// ) Credentials used to authenticate API requests to Azure block.
+// ) Credentials used to authenticate API requests to Azure block. Structure documented below.
 func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) AzureCredentials() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
 		if v == nil {

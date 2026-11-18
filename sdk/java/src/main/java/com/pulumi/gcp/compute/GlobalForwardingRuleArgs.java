@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleMetadataFilterArgs;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleServiceDirectoryRegistrationsArgs;
 import java.lang.Boolean;
@@ -37,6 +36,25 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> allowPscGlobalAccess() {
         return Optional.ofNullable(this.allowPscGlobalAccess);
+    }
+
+    /**
+     * Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     * 
+     */
+    @Import(name="backendService")
+    private @Nullable Output<String> backendService;
+
+    /**
+     * @return Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     * 
+     */
+    public Optional<Output<String>> backendService() {
+        return Optional.ofNullable(this.backendService);
     }
 
     /**
@@ -217,6 +235,25 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     * 
+     */
+    @Import(name="ipAddresses")
+    private @Nullable Output<List<String>> ipAddresses;
+
+    /**
+     * @return IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     * 
+     */
+    public Optional<Output<List<String>>> ipAddresses() {
+        return Optional.ofNullable(this.ipAddresses);
+    }
+
+    /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
      * options are `TCP`, `UDP`, `ESP`,
@@ -290,7 +327,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -301,7 +338,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -599,8 +636,8 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      * 
      */
-    @Import(name="target", required=true)
-    private Output<String> target;
+    @Import(name="target")
+    private @Nullable Output<String> target;
 
     /**
      * @return The URL of the target resource to receive the matched traffic.  For
@@ -615,19 +652,21 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      * 
      */
-    public Output<String> target() {
-        return this.target;
+    public Optional<Output<String>> target() {
+        return Optional.ofNullable(this.target);
     }
 
     private GlobalForwardingRuleArgs() {}
 
     private GlobalForwardingRuleArgs(GlobalForwardingRuleArgs $) {
         this.allowPscGlobalAccess = $.allowPscGlobalAccess;
+        this.backendService = $.backendService;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.externalManagedBackendBucketMigrationState = $.externalManagedBackendBucketMigrationState;
         this.externalManagedBackendBucketMigrationTestingPercentage = $.externalManagedBackendBucketMigrationTestingPercentage;
         this.ipAddress = $.ipAddress;
+        this.ipAddresses = $.ipAddresses;
         this.ipProtocol = $.ipProtocol;
         this.ipVersion = $.ipVersion;
         this.labels = $.labels;
@@ -684,6 +723,31 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          */
         public Builder allowPscGlobalAccess(Boolean allowPscGlobalAccess) {
             return allowPscGlobalAccess(Output.of(allowPscGlobalAccess));
+        }
+
+        /**
+         * @param backendService Identifies the backend service to which the forwarding rule sends traffic.
+         * Required for Global External Passthrough Network Load Balancing;
+         * must be omitted for all other load balancer types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendService(@Nullable Output<String> backendService) {
+            $.backendService = backendService;
+            return this;
+        }
+
+        /**
+         * @param backendService Identifies the backend service to which the forwarding rule sends traffic.
+         * Required for Global External Passthrough Network Load Balancing;
+         * must be omitted for all other load balancer types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendService(String backendService) {
+            return backendService(Output.of(backendService));
         }
 
         /**
@@ -894,6 +958,43 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param ipAddresses IP addresses for which this forwarding rule accepts traffic, ordered by
+         * Availability Group 0 followed by Availability Group 1. Specify literal
+         * IP addresses (for example, `google_compute_global_address.example.address`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddresses(@Nullable Output<List<String>> ipAddresses) {
+            $.ipAddresses = ipAddresses;
+            return this;
+        }
+
+        /**
+         * @param ipAddresses IP addresses for which this forwarding rule accepts traffic, ordered by
+         * Availability Group 0 followed by Availability Group 1. Specify literal
+         * IP addresses (for example, `google_compute_global_address.example.address`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddresses(List<String> ipAddresses) {
+            return ipAddresses(Output.of(ipAddresses));
+        }
+
+        /**
+         * @param ipAddresses IP addresses for which this forwarding rule accepts traffic, ordered by
+         * Availability Group 0 followed by Availability Group 1. Specify literal
+         * IP addresses (for example, `google_compute_global_address.example.address`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddresses(String... ipAddresses) {
+            return ipAddresses(List.of(ipAddresses));
+        }
+
+        /**
          * @param ipProtocol The IP protocol to which this rule applies.
          * For protocol forwarding, valid
          * options are `TCP`, `UDP`, `ESP`,
@@ -985,7 +1086,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
          * Default value is `EXTERNAL_MANAGED`.
-         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
          * 
          * @return builder
          * 
@@ -1000,7 +1101,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
          * Default value is `EXTERNAL_MANAGED`.
-         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
          * 
          * @return builder
          * 
@@ -1396,7 +1497,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder target(Output<String> target) {
+        public Builder target(@Nullable Output<String> target) {
             $.target = target;
             return this;
         }
@@ -1421,9 +1522,6 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
         }
 
         public GlobalForwardingRuleArgs build() {
-            if ($.target == null) {
-                throw new MissingRequiredPropertyException("GlobalForwardingRuleArgs", "target");
-            }
             return $;
         }
     }

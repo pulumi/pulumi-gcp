@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetInstanceGroupManagerUpdatePolicyResult
     {
         /// <summary>
+        /// Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". AllowedActions is the only way to request RESTART_IN_PLACE. Conflicts with MinimalAction and most_disruptive_allowed_action.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedActions;
+        /// <summary>
         /// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
         /// </summary>
         public readonly int MaxSurgeFixed;
@@ -52,6 +56,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetInstanceGroupManagerUpdatePolicyResult(
+            ImmutableArray<string> allowedActions,
+
             int maxSurgeFixed,
 
             int maxSurgePercent,
@@ -70,6 +76,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string type)
         {
+            AllowedActions = allowedActions;
             MaxSurgeFixed = maxSurgeFixed;
             MaxSurgePercent = maxSurgePercent;
             MaxUnavailableFixed = maxUnavailableFixed;

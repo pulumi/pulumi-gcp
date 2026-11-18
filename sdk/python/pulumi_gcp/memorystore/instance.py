@@ -1893,6 +1893,47 @@ class Instance(pulumi.CustomResource):
                 ]))
         ```
 
+        ### Memorystore Instance Auto Created Endpoints Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="my-network",
+            auto_create_subnetworks=False,
+            enable_ula_internal_ipv6=True)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="my-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="asia-east1",
+            network=producer_net.id,
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="INTERNAL")
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="my-policy",
+            location="asia-east1",
+            service_class="gcp-memorystore",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
+        project = gcp.organizations.get_project()
+        instance_ipv6 = gcp.memorystore.Instance("instance-ipv6",
+            instance_id="ipv6-instance",
+            shard_count=1,
+            desired_auto_created_endpoints=[{
+                "network": producer_net.id,
+                "project_id": project.project_id,
+                "ip_version": "IPV6",
+            }],
+            location="asia-east1",
+            node_type="SHARED_CORE_NANO",
+            deletion_protection_enabled=False,
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+
         ## Import
 
         Instance can be imported using any of these accepted formats:
@@ -2365,6 +2406,47 @@ class Instance(pulumi.CustomResource):
                     default_authority,
                     memorystore_p4sa_requester,
                 ]))
+        ```
+
+        ### Memorystore Instance Auto Created Endpoints Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="my-network",
+            auto_create_subnetworks=False,
+            enable_ula_internal_ipv6=True)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="my-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="asia-east1",
+            network=producer_net.id,
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="INTERNAL")
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="my-policy",
+            location="asia-east1",
+            service_class="gcp-memorystore",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
+        project = gcp.organizations.get_project()
+        instance_ipv6 = gcp.memorystore.Instance("instance-ipv6",
+            instance_id="ipv6-instance",
+            shard_count=1,
+            desired_auto_created_endpoints=[{
+                "network": producer_net.id,
+                "project_id": project.project_id,
+                "ip_version": "IPV6",
+            }],
+            location="asia-east1",
+            node_type="SHARED_CORE_NANO",
+            deletion_protection_enabled=False,
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import

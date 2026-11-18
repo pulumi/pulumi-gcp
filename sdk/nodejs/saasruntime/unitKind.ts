@@ -9,9 +9,6 @@ import * as utilities from "../utilities";
 /**
  * A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * ## Example Usage
  *
  * ### Saas Runtime Unit Kind Basic

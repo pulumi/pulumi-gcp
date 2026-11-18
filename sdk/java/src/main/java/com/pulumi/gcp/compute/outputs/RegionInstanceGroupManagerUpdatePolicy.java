@@ -7,12 +7,18 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionInstanceGroupManagerUpdatePolicy {
+    /**
+     * @return ) - Specifies the allowed actions list for this update. Valid values are: `&#34;NONE&#34;`, `&#34;REFRESH&#34;`, `&#34;RESTART_IN_PLACE&#34;`, `&#34;RESTART&#34;`, `&#34;REPLACE&#34;`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * 
+     */
+    private @Nullable List<String> allowedActions;
     /**
      * @return The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
      * 
@@ -44,12 +50,12 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
      */
     private @Nullable Integer minReadySec;
     /**
-     * @return Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+     * @return Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
      * 
      */
-    private String minimalAction;
+    private @Nullable String minimalAction;
     /**
-     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
      * 
      */
     private @Nullable String mostDisruptiveAllowedAction;
@@ -66,6 +72,13 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
     private String type;
 
     private RegionInstanceGroupManagerUpdatePolicy() {}
+    /**
+     * @return ) - Specifies the allowed actions list for this update. Valid values are: `&#34;NONE&#34;`, `&#34;REFRESH&#34;`, `&#34;RESTART_IN_PLACE&#34;`, `&#34;RESTART&#34;`, `&#34;REPLACE&#34;`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * 
+     */
+    public List<String> allowedActions() {
+        return this.allowedActions == null ? List.of() : this.allowedActions;
+    }
     /**
      * @return The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
      * 
@@ -109,14 +122,14 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
         return Optional.ofNullable(this.minReadySec);
     }
     /**
-     * @return Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+     * @return Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
      * 
      */
-    public String minimalAction() {
-        return this.minimalAction;
+    public Optional<String> minimalAction() {
+        return Optional.ofNullable(this.minimalAction);
     }
     /**
-     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
      * 
      */
     public Optional<String> mostDisruptiveAllowedAction() {
@@ -147,19 +160,21 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> allowedActions;
         private @Nullable String instanceRedistributionType;
         private @Nullable Integer maxSurgeFixed;
         private @Nullable Integer maxSurgePercent;
         private @Nullable Integer maxUnavailableFixed;
         private @Nullable Integer maxUnavailablePercent;
         private @Nullable Integer minReadySec;
-        private String minimalAction;
+        private @Nullable String minimalAction;
         private @Nullable String mostDisruptiveAllowedAction;
         private @Nullable String replacementMethod;
         private String type;
         public Builder() {}
         public Builder(RegionInstanceGroupManagerUpdatePolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedActions = defaults.allowedActions;
     	      this.instanceRedistributionType = defaults.instanceRedistributionType;
     	      this.maxSurgeFixed = defaults.maxSurgeFixed;
     	      this.maxSurgePercent = defaults.maxSurgePercent;
@@ -172,6 +187,15 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder allowedActions(@Nullable List<String> allowedActions) {
+
+            this.allowedActions = allowedActions;
+            return this;
+        }
+        public Builder allowedActions(String... allowedActions) {
+            return allowedActions(List.of(allowedActions));
+        }
         @CustomType.Setter
         public Builder instanceRedistributionType(@Nullable String instanceRedistributionType) {
 
@@ -209,10 +233,8 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder minimalAction(String minimalAction) {
-            if (minimalAction == null) {
-              throw new MissingRequiredPropertyException("RegionInstanceGroupManagerUpdatePolicy", "minimalAction");
-            }
+        public Builder minimalAction(@Nullable String minimalAction) {
+
             this.minimalAction = minimalAction;
             return this;
         }
@@ -238,6 +260,7 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
         }
         public RegionInstanceGroupManagerUpdatePolicy build() {
             final var _resultValue = new RegionInstanceGroupManagerUpdatePolicy();
+            _resultValue.allowedActions = allowedActions;
             _resultValue.instanceRedistributionType = instanceRedistributionType;
             _resultValue.maxSurgeFixed = maxSurgeFixed;
             _resultValue.maxSurgePercent = maxSurgePercent;

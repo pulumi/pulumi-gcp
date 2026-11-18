@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTemplateTemplateContainerEnv {
     /**
-     * @return Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+     * @return Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
      * 
      */
     private String name;
@@ -32,7 +32,7 @@ public final class JobTemplateTemplateContainerEnv {
 
     private JobTemplateTemplateContainerEnv() {}
     /**
-     * @return Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+     * @return Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
      * 
      */
     public String name() {

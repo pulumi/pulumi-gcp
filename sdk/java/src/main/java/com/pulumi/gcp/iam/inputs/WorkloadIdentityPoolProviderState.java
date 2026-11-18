@@ -11,6 +11,7 @@ import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderSamlArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509Args;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +21,37 @@ import javax.annotation.Nullable;
 public final class WorkloadIdentityPoolProviderState extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkloadIdentityPoolProviderState Empty = new WorkloadIdentityPoolProviderState();
+
+    /**
+     * A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+     * that are authorized to issue actor tokens for this provider. An actor token
+     * represents the identity of the acting party to whom authority is delegated. At
+     * most 3 actor providers can be specified. Actor providers are only supported for
+     * OIDC providers.
+     * Each entry must be formatted as
+     * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+     * where `{project}` matches the `project` configured on this resource (for example,
+     * by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+     * 
+     */
+    @Import(name="actorProviders")
+    private @Nullable Output<List<String>> actorProviders;
+
+    /**
+     * @return A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+     * that are authorized to issue actor tokens for this provider. An actor token
+     * represents the identity of the acting party to whom authority is delegated. At
+     * most 3 actor providers can be specified. Actor providers are only supported for
+     * OIDC providers.
+     * Each entry must be formatted as
+     * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+     * where `{project}` matches the `project` configured on this resource (for example,
+     * by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+     * 
+     */
+    public Optional<Output<List<String>>> actorProviders() {
+        return Optional.ofNullable(this.actorProviders);
+    }
 
     /**
      * [A Common Expression Language](https://github.com/google/cel-spec) expression, in
@@ -375,6 +407,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
     private WorkloadIdentityPoolProviderState() {}
 
     private WorkloadIdentityPoolProviderState(WorkloadIdentityPoolProviderState $) {
+        this.actorProviders = $.actorProviders;
         this.attributeCondition = $.attributeCondition;
         this.attributeMapping = $.attributeMapping;
         this.aws = $.aws;
@@ -408,6 +441,61 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
 
         public Builder(WorkloadIdentityPoolProviderState defaults) {
             $ = new WorkloadIdentityPoolProviderState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param actorProviders A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+         * that are authorized to issue actor tokens for this provider. An actor token
+         * represents the identity of the acting party to whom authority is delegated. At
+         * most 3 actor providers can be specified. Actor providers are only supported for
+         * OIDC providers.
+         * Each entry must be formatted as
+         * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+         * where `{project}` matches the `project` configured on this resource (for example,
+         * by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actorProviders(@Nullable Output<List<String>> actorProviders) {
+            $.actorProviders = actorProviders;
+            return this;
+        }
+
+        /**
+         * @param actorProviders A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+         * that are authorized to issue actor tokens for this provider. An actor token
+         * represents the identity of the acting party to whom authority is delegated. At
+         * most 3 actor providers can be specified. Actor providers are only supported for
+         * OIDC providers.
+         * Each entry must be formatted as
+         * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+         * where `{project}` matches the `project` configured on this resource (for example,
+         * by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actorProviders(List<String> actorProviders) {
+            return actorProviders(Output.of(actorProviders));
+        }
+
+        /**
+         * @param actorProviders A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+         * that are authorized to issue actor tokens for this provider. An actor token
+         * represents the identity of the acting party to whom authority is delegated. At
+         * most 3 actor providers can be specified. Actor providers are only supported for
+         * OIDC providers.
+         * Each entry must be formatted as
+         * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+         * where `{project}` matches the `project` configured on this resource (for example,
+         * by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actorProviders(String... actorProviders) {
+            return actorProviders(List.of(actorProviders));
         }
 
         /**

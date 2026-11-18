@@ -85,6 +85,7 @@ export interface GetInstanceGroupManagerResult {
     readonly project?: string;
     readonly resourcePolicies: outputs.compute.GetInstanceGroupManagerResourcePolicy[];
     readonly selfLink?: string;
+    readonly serviceAccount: string;
     readonly standbyPolicies: outputs.compute.GetInstanceGroupManagerStandbyPolicy[];
     readonly statefulDisks: outputs.compute.GetInstanceGroupManagerStatefulDisk[];
     readonly statefulExternalIps: outputs.compute.GetInstanceGroupManagerStatefulExternalIp[];

@@ -50,6 +50,7 @@ export interface GetGlobalForwardingRuleArgs {
  */
 export interface GetGlobalForwardingRuleResult {
     readonly allowPscGlobalAccess: boolean;
+    readonly backendService: string;
     readonly baseForwardingRule: string;
     readonly deletionPolicy: string;
     readonly description: string;
@@ -62,6 +63,7 @@ export interface GetGlobalForwardingRuleResult {
      */
     readonly id: string;
     readonly ipAddress: string;
+    readonly ipAddresses: string[];
     readonly ipProtocol: string;
     readonly ipVersion: string;
     readonly labelFingerprint: string;

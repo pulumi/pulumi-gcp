@@ -14,6 +14,8 @@ from .get_policies import *
 from .get_policy import *
 from .group import *
 from .group_membership import *
+from .inbound_oidc_sso_profile import *
+from .inbound_saml_sso_profile import *
 from .policy import *
 from ._inputs import *
 from . import outputs

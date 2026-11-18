@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string> DeploymentName { get; set; } = null!;
 
         /// <summary>
+        /// User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The connection name of the old source (blue) instance, populated after switchover (`ActiveEnvironment = "TARGET"`).
         /// </summary>
         [Input("oldSourceInstanceConnectionName")]

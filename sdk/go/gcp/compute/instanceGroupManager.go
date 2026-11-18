@@ -340,6 +340,8 @@ type InstanceGroupManager struct {
 	ResourcePolicies InstanceGroupManagerResourcePoliciesPtrOutput `pulumi:"resourcePolicies"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy InstanceGroupManagerStandbyPolicyOutput `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -485,6 +487,8 @@ type instanceGroupManagerState struct {
 	ResourcePolicies *InstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *InstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -595,6 +599,8 @@ type InstanceGroupManagerState struct {
 	ResourcePolicies InstanceGroupManagerResourcePoliciesPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+	ServiceAccount pulumi.StringPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy InstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -704,6 +710,8 @@ type instanceGroupManagerArgs struct {
 	Project *string `pulumi:"project"`
 	// Resource policies for this managed instance group. Structure is documented below.
 	ResourcePolicies *InstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *InstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -802,6 +810,8 @@ type InstanceGroupManagerArgs struct {
 	Project pulumi.StringPtrInput
 	// Resource policies for this managed instance group. Structure is documented below.
 	ResourcePolicies InstanceGroupManagerResourcePoliciesPtrInput
+	// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+	ServiceAccount pulumi.StringPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy InstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -1054,6 +1064,11 @@ func (o InstanceGroupManagerOutput) ResourcePolicies() InstanceGroupManagerResou
 // The URL of the created resource.
 func (o InstanceGroupManagerOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+func (o InstanceGroupManagerOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 // The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).

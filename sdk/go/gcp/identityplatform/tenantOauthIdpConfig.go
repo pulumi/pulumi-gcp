@@ -48,6 +48,10 @@ import (
 //				Issuer:       pulumi.String("issuer"),
 //				Enabled:      pulumi.Bool(true),
 //				ClientSecret: pulumi.String("secret"),
+//				ResponseType: &identityplatform.TenantOauthIdpConfigResponseTypeArgs{
+//					IdToken: pulumi.Bool(true),
+//					Code:    pulumi.Bool(false),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -98,6 +102,11 @@ type TenantOauthIdpConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType TenantOauthIdpConfigResponseTypeOutput `pulumi:"responseType"`
 	// The name of the tenant where this OIDC IDP configuration resource exists
 	Tenant pulumi.StringOutput `pulumi:"tenant"`
 }
@@ -166,6 +175,11 @@ type tenantOauthIdpConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType *TenantOauthIdpConfigResponseType `pulumi:"responseType"`
 	// The name of the tenant where this OIDC IDP configuration resource exists
 	Tenant *string `pulumi:"tenant"`
 }
@@ -193,6 +207,11 @@ type TenantOauthIdpConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType TenantOauthIdpConfigResponseTypePtrInput
 	// The name of the tenant where this OIDC IDP configuration resource exists
 	Tenant pulumi.StringPtrInput
 }
@@ -230,6 +249,11 @@ type tenantOauthIdpConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType *TenantOauthIdpConfigResponseType `pulumi:"responseType"`
 	// The name of the tenant where this OIDC IDP configuration resource exists
 	Tenant string `pulumi:"tenant"`
 }
@@ -258,6 +282,11 @@ type TenantOauthIdpConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType TenantOauthIdpConfigResponseTypePtrInput
 	// The name of the tenant where this OIDC IDP configuration resource exists
 	Tenant pulumi.StringInput
 }
@@ -393,6 +422,14 @@ func (o TenantOauthIdpConfigOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o TenantOauthIdpConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantOauthIdpConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The response type to request for in the OAuth authorization flow.
+// You can set either idToken or code to true, but not both.
+// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+// Structure is documented below.
+func (o TenantOauthIdpConfigOutput) ResponseType() TenantOauthIdpConfigResponseTypeOutput {
+	return o.ApplyT(func(v *TenantOauthIdpConfig) TenantOauthIdpConfigResponseTypeOutput { return v.ResponseType }).(TenantOauthIdpConfigResponseTypeOutput)
 }
 
 // The name of the tenant where this OIDC IDP configuration resource exists

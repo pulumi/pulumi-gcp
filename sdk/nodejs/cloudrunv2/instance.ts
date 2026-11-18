@@ -336,6 +336,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Cloudrunv2 Instance Sandbox Templates
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Instance("default", {
+ *     name: "cloudrun-instance",
+ *     location: "us-west4",
+ *     launchStage: "BETA",
+ *     containers: [{
+ *         image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         sandboxLauncher: true,
+ *     }],
+ *     sandboxes: {
+ *         templates: [{
+ *             name: "hello",
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:
@@ -545,6 +568,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly restartPolicy: pulumi.Output<string>;
     /**
+     * Configuration for sandboxes.
+     * Structure is documented below.
+     */
+    declare public readonly sandboxes: pulumi.Output<outputs.cloudrunv2.InstanceSandboxes | undefined>;
+    /**
      * Reserved for future use. True if this service satisfies zone separation.
      */
     declare public /*out*/ readonly satisfiesPzs: pulumi.Output<boolean>;
@@ -620,6 +648,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["reconciling"] = state?.reconciling;
             resourceInputs["restartPolicy"] = state?.restartPolicy;
+            resourceInputs["sandboxes"] = state?.sandboxes;
             resourceInputs["satisfiesPzs"] = state?.satisfiesPzs;
             resourceInputs["serviceAccount"] = state?.serviceAccount;
             resourceInputs["terminalConditions"] = state?.terminalConditions;
@@ -652,6 +681,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["restartPolicy"] = args?.restartPolicy;
+            resourceInputs["sandboxes"] = args?.sandboxes;
             resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["volumes"] = args?.volumes;
             resourceInputs["conditions"] = undefined /*out*/;
@@ -840,6 +870,11 @@ export interface InstanceState {
      */
     restartPolicy?: pulumi.Input<string | undefined>;
     /**
+     * Configuration for sandboxes.
+     * Structure is documented below.
+     */
+    sandboxes?: pulumi.Input<inputs.cloudrunv2.InstanceSandboxes | undefined>;
+    /**
      * Reserved for future use. True if this service satisfies zone separation.
      */
     satisfiesPzs?: pulumi.Input<boolean | undefined>;
@@ -964,6 +999,11 @@ export interface InstanceArgs {
      * Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
      */
     restartPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for sandboxes.
+     * Structure is documented below.
+     */
+    sandboxes?: pulumi.Input<inputs.cloudrunv2.InstanceSandboxes | undefined>;
     /**
      * Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
      */

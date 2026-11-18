@@ -888,6 +888,58 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Cloudrunv2 Worker Pool Sandbox Templates
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.WorkerPool;
+ * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateSandboxesArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateSandboxesTemplateArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new WorkerPool("default", WorkerPoolArgs.builder()
+ *             .name("cloudrun-example")
+ *             .location("us-west1")
+ *             .deletionProtection(false)
+ *             .launchStage("BETA")
+ *             .template(WorkerPoolTemplateArgs.builder()
+ *                 .containers(WorkerPoolTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .sandboxLauncher(true)
+ *                     .build())
+ *                 .sandboxes(WorkerPoolTemplateSandboxesArgs.builder()
+ *                     .templates(WorkerPoolTemplateSandboxesTemplateArgs.builder()
+ *                         .name("hello")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * WorkerPool can be imported using any of these accepted formats:

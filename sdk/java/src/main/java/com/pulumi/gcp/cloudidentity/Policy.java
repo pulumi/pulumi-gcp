@@ -18,16 +18,11 @@ import javax.annotation.Nullable;
 /**
  * A Cloud Identity Policy binds a Setting to a PolicyQuery for a Google Workspace / Cloud Identity customer.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about Policy, see:
  * 
- * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/policies)
+ * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/policies)
  * * How-to Guides
  *     * [Policy API overview](https://docs.cloud.google.com/identity/docs/concepts/overview-policies)
- * 
- * &gt; **Note:** This is available only in beta
  * 
  * ## Example Usage
  * 
@@ -59,17 +54,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .customer("customers/C01234567")
+ *             .customer("customers/A01b123xz")
  *             .policyQuery(PolicyPolicyQueryArgs.builder()
  *                 .orgUnit("orgUnits/03abcxyz")
- *                 .group("groups/0123456789")
- *                 .query("true")
  *                 .build())
  *             .setting(PolicySettingArgs.builder()
- *                 .type("something.googleapis.com/SettingType")
+ *                 .type("settings/detector.word_list")
  *                 .valueJson(serializeJson(
  *                     jsonObject(
- *                         jsonProperty("enabled", true)
+ *                         jsonProperty("displayName", "Project Sensitive Terms"),
+ *                         jsonProperty("description", "Detector for project-specific confidential keywords."),
+ *                         jsonProperty("wordList", jsonObject(
+ *                             jsonProperty("words", jsonArray(
+ *                                 "confidential", 
+ *                                 "top-secret"
+ *                             ))
+ *                         ))
  *                     )))
  *                 .build())
  *             .build());

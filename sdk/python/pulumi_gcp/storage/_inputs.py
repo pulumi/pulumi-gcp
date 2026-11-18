@@ -6915,7 +6915,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict(TypedDict):
     """
     azure_credentials: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgsDict']]]
     """
-    ) Credentials used to authenticate API requests to Azure block.
+    ) Credentials used to authenticate API requests to Azure block. Structure documented below.
     """
     credentials_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -6947,7 +6947,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
         """
         :param pulumi.Input[_builtins.str] container: The container to transfer from the Azure Storage account.`
         :param pulumi.Input[_builtins.str] storage_account: The name of the Azure Storage account.
-        :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs'] azure_credentials: ) Credentials used to authenticate API requests to Azure block.
+        :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs'] azure_credentials: ) Credentials used to authenticate API requests to Azure block. Structure documented below.
         :param pulumi.Input[_builtins.str] credentials_secret: ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
         :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs'] federated_identity_config: Federated identity config of a user registered Azure application. Structure documented below.
         :param pulumi.Input[_builtins.str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -6994,7 +6994,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
     @pulumi.getter(name="azureCredentials")
     def azure_credentials(self) -> pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']]:
         """
-        ) Credentials used to authenticate API requests to Azure block.
+        ) Credentials used to authenticate API requests to Azure block. Structure documented below.
         """
         return pulumi.get(self, "azure_credentials")
 

@@ -12,16 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterLoggingConfig {
     /**
-     * @return The GKE components exposing logs. Supported values include:
-     * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+     * @return The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
      * 
      */
     private List<String> enableComponents;
 
     private ClusterLoggingConfig() {}
     /**
-     * @return The GKE components exposing logs. Supported values include:
-     * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+     * @return The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
      * 
      */
     public List<String> enableComponents() {

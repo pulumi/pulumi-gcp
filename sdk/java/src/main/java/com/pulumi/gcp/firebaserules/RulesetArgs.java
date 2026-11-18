@@ -59,6 +59,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * `Source` for the `Ruleset`.
+     * Structure is documented below.
      * 
      */
     @Import(name="source", required=true)
@@ -66,6 +67,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return `Source` for the `Ruleset`.
+     * Structure is documented below.
      * 
      */
     public Output<RulesetSourceArgs> source() {
@@ -152,6 +154,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param source `Source` for the `Ruleset`.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -163,6 +166,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param source `Source` for the `Ruleset`.
+         * Structure is documented below.
          * 
          * @return builder
          * 

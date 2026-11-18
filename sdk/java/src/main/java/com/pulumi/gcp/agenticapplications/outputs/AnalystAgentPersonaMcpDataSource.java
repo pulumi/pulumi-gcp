@@ -5,8 +5,10 @@ package com.pulumi.gcp.agenticapplications.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaMcpDataSourceRequestHeader;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -64,6 +66,14 @@ public final class AnalystAgentPersonaMcpDataSource {
      * 
      */
     private @Nullable String prompt;
+    /**
+     * @return Additional HTTP headers sent on every request to the MCP server, for
+     * example a static header required by an API gateway. Headers managed by the
+     * agent take precedence and cannot be set here. When empty, no additional
+     * headers are sent.
+     * 
+     */
+    private @Nullable List<AnalystAgentPersonaMcpDataSourceRequestHeader> requestHeaders;
     /**
      * @return The URL of the MCP server.
      * 
@@ -157,6 +167,16 @@ public final class AnalystAgentPersonaMcpDataSource {
         return Optional.ofNullable(this.prompt);
     }
     /**
+     * @return Additional HTTP headers sent on every request to the MCP server, for
+     * example a static header required by an API gateway. Headers managed by the
+     * agent take precedence and cannot be set here. When empty, no additional
+     * headers are sent.
+     * 
+     */
+    public List<AnalystAgentPersonaMcpDataSourceRequestHeader> requestHeaders() {
+        return this.requestHeaders == null ? List.of() : this.requestHeaders;
+    }
+    /**
      * @return The URL of the MCP server.
      * 
      */
@@ -201,6 +221,7 @@ public final class AnalystAgentPersonaMcpDataSource {
         private Boolean enabled;
         private @Nullable String oauthTokenUrl;
         private @Nullable String prompt;
+        private @Nullable List<AnalystAgentPersonaMcpDataSourceRequestHeader> requestHeaders;
         private String serverUrl;
         private @Nullable String sessionIdHeader;
         private @Nullable String taskIdHeader;
@@ -217,6 +238,7 @@ public final class AnalystAgentPersonaMcpDataSource {
     	      this.enabled = defaults.enabled;
     	      this.oauthTokenUrl = defaults.oauthTokenUrl;
     	      this.prompt = defaults.prompt;
+    	      this.requestHeaders = defaults.requestHeaders;
     	      this.serverUrl = defaults.serverUrl;
     	      this.sessionIdHeader = defaults.sessionIdHeader;
     	      this.taskIdHeader = defaults.taskIdHeader;
@@ -289,6 +311,15 @@ public final class AnalystAgentPersonaMcpDataSource {
             return this;
         }
         @CustomType.Setter
+        public Builder requestHeaders(@Nullable List<AnalystAgentPersonaMcpDataSourceRequestHeader> requestHeaders) {
+
+            this.requestHeaders = requestHeaders;
+            return this;
+        }
+        public Builder requestHeaders(AnalystAgentPersonaMcpDataSourceRequestHeader... requestHeaders) {
+            return requestHeaders(List.of(requestHeaders));
+        }
+        @CustomType.Setter
         public Builder serverUrl(String serverUrl) {
             if (serverUrl == null) {
               throw new MissingRequiredPropertyException("AnalystAgentPersonaMcpDataSource", "serverUrl");
@@ -320,6 +351,7 @@ public final class AnalystAgentPersonaMcpDataSource {
             _resultValue.enabled = enabled;
             _resultValue.oauthTokenUrl = oauthTokenUrl;
             _resultValue.prompt = prompt;
+            _resultValue.requestHeaders = requestHeaders;
             _resultValue.serverUrl = serverUrl;
             _resultValue.sessionIdHeader = sessionIdHeader;
             _resultValue.taskIdHeader = taskIdHeader;

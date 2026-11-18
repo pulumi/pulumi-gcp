@@ -156,6 +156,20 @@ namespace Pulumi.Gcp.Compute
     public partial class RegionPerInstanceConfig : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Beta The list of allowed actions to perform on the instance during an update.
+        /// `AllowedActions` is the only way to request `RESTART_IN_PLACE`.
+        /// Conflicts with `MinimalAction` and `MostDisruptiveAllowedAction`.
+        /// Possible values are:
+        /// * REPLACE
+        /// * RESTART
+        /// * RESTART_IN_PLACE
+        /// * REFRESH
+        /// * NONE
+        /// </summary>
+        [Output("allowedActions")]
+        public Output<ImmutableArray<string>> AllowedActions { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -281,6 +295,26 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RegionPerInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedActions")]
+        private InputList<string>? _allowedActions;
+
+        /// <summary>
+        /// Beta The list of allowed actions to perform on the instance during an update.
+        /// `AllowedActions` is the only way to request `RESTART_IN_PLACE`.
+        /// Conflicts with `MinimalAction` and `MostDisruptiveAllowedAction`.
+        /// Possible values are:
+        /// * REPLACE
+        /// * RESTART
+        /// * RESTART_IN_PLACE
+        /// * REFRESH
+        /// * NONE
+        /// </summary>
+        public InputList<string> AllowedActions
+        {
+            get => _allowedActions ?? (_allowedActions = new InputList<string>());
+            set => _allowedActions = value;
+        }
+
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -369,6 +403,26 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RegionPerInstanceConfigState : global::Pulumi.ResourceArgs
     {
+        [Input("allowedActions")]
+        private InputList<string>? _allowedActions;
+
+        /// <summary>
+        /// Beta The list of allowed actions to perform on the instance during an update.
+        /// `AllowedActions` is the only way to request `RESTART_IN_PLACE`.
+        /// Conflicts with `MinimalAction` and `MostDisruptiveAllowedAction`.
+        /// Possible values are:
+        /// * REPLACE
+        /// * RESTART
+        /// * RESTART_IN_PLACE
+        /// * REFRESH
+        /// * NONE
+        /// </summary>
+        public InputList<string> AllowedActions
+        {
+            get => _allowedActions ?? (_allowedActions = new InputList<string>());
+            set => _allowedActions = value;
+        }
+
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,

@@ -190,6 +190,7 @@ import javax.annotation.Nullable;
  *                 .metricAnalysisSettings(AppLoggingSettingsMetricAnalysisSettingsArgs.builder()
  *                     .llmMetricsOptedOut(false)
  *                     .build())
+ *                 .requiredRecordingConsent(true)
  *                 .build())
  *             .modelSettings(AppModelSettingsArgs.builder()
  *                 .model("gemini-3.0-flash-001")

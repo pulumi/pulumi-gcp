@@ -135,6 +135,7 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 LlmMetricsOptedOut = false,
     ///             },
+    ///             RequiredRecordingConsent = true,
     ///         },
     ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
     ///         {

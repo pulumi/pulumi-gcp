@@ -438,6 +438,53 @@ class AppHostingTraffic(pulumi.CustomResource):
             member=service_account.member)
         ```
 
+        ### Firebase App Hosting Traffic Rollout Policy With Paths
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ### Include these blocks only once per project if you are starting from scratch ###
+        service_account = gcp.serviceaccount.Account("service_account",
+            project="my-project-name",
+            account_id="firebase-app-hosting-compute",
+            display_name="Firebase App Hosting compute service account",
+            create_ignore_already_exists=True)
+        app_hosting_sa_runner = gcp.projects.IAMMember("app_hosting_sa_runner",
+            project="my-project-name",
+            role="roles/firebaseapphosting.computeRunner",
+            member=service_account.member)
+        fah = gcp.projects.Service("fah",
+            project="my-project-name",
+            service="firebaseapphosting.googleapis.com")
+        example_app_hosting_backend = gcp.firebase.AppHostingBackend("example",
+            project="my-project-name",
+            location="us-central1",
+            backend_id="traffic-rpwp",
+            app_id="1:0000000000:web:674cde32020e16fbce9dbd",
+            serving_locality="GLOBAL_ACCESS",
+            service_account=service_account.email,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    fah,
+                    app_hosting_sa_runner,
+                ]))
+        example = gcp.firebase.AppHostingTraffic("example",
+            project=example_app_hosting_backend.project,
+            location=example_app_hosting_backend.location,
+            backend=example_app_hosting_backend.backend_id,
+            rollout_policy={
+                "codebase_branch": "main",
+                "required_paths": [{
+                    "pattern": "foo/bar/*",
+                    "type": "GLOB",
+                }],
+                "ignored_paths": [{
+                    "pattern": "foo/bar/excluded/*",
+                    "type": "GLOB",
+                }],
+            })
+        ```
+
         ### Firebase App Hosting Traffic Rollout Policy Disabled
 
         ```python
@@ -599,6 +646,53 @@ class AppHostingTraffic(pulumi.CustomResource):
             project="my-project-name",
             role="roles/firebaseapphosting.computeRunner",
             member=service_account.member)
+        ```
+
+        ### Firebase App Hosting Traffic Rollout Policy With Paths
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ### Include these blocks only once per project if you are starting from scratch ###
+        service_account = gcp.serviceaccount.Account("service_account",
+            project="my-project-name",
+            account_id="firebase-app-hosting-compute",
+            display_name="Firebase App Hosting compute service account",
+            create_ignore_already_exists=True)
+        app_hosting_sa_runner = gcp.projects.IAMMember("app_hosting_sa_runner",
+            project="my-project-name",
+            role="roles/firebaseapphosting.computeRunner",
+            member=service_account.member)
+        fah = gcp.projects.Service("fah",
+            project="my-project-name",
+            service="firebaseapphosting.googleapis.com")
+        example_app_hosting_backend = gcp.firebase.AppHostingBackend("example",
+            project="my-project-name",
+            location="us-central1",
+            backend_id="traffic-rpwp",
+            app_id="1:0000000000:web:674cde32020e16fbce9dbd",
+            serving_locality="GLOBAL_ACCESS",
+            service_account=service_account.email,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    fah,
+                    app_hosting_sa_runner,
+                ]))
+        example = gcp.firebase.AppHostingTraffic("example",
+            project=example_app_hosting_backend.project,
+            location=example_app_hosting_backend.location,
+            backend=example_app_hosting_backend.backend_id,
+            rollout_policy={
+                "codebase_branch": "main",
+                "required_paths": [{
+                    "pattern": "foo/bar/*",
+                    "type": "GLOB",
+                }],
+                "ignored_paths": [{
+                    "pattern": "foo/bar/excluded/*",
+                    "type": "GLOB",
+                }],
+            })
         ```
 
         ### Firebase App Hosting Traffic Rollout Policy Disabled

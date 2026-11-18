@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.identityplatform.TenantOauthIdpConfigArgs;
 import com.pulumi.gcp.identityplatform.inputs.TenantOauthIdpConfigState;
+import com.pulumi.gcp.identityplatform.outputs.TenantOauthIdpConfigResponseType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -37,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.identityplatform.TenantArgs;
  * import com.pulumi.gcp.identityplatform.TenantOauthIdpConfig;
  * import com.pulumi.gcp.identityplatform.TenantOauthIdpConfigArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.TenantOauthIdpConfigResponseTypeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -62,6 +64,10 @@ import javax.annotation.Nullable;
  *             .issuer("issuer")
  *             .enabled(true)
  *             .clientSecret("secret")
+ *             .responseType(TenantOauthIdpConfigResponseTypeArgs.builder()
+ *                 .idToken(true)
+ *                 .code(false)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -211,6 +217,26 @@ public class TenantOauthIdpConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="responseType", refs={TenantOauthIdpConfigResponseType.class}, tree="[0]")
+    private Output<TenantOauthIdpConfigResponseType> responseType;
+
+    /**
+     * @return The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     * 
+     */
+    public Output<TenantOauthIdpConfigResponseType> responseType() {
+        return this.responseType;
     }
     /**
      * The name of the tenant where this OIDC IDP configuration resource exists

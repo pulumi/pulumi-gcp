@@ -51,7 +51,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// <summary>
         /// List of volume mounts for the Python UDF container that executes the
         /// managed function. When volume mounts are set, `RuntimeConnection` must
-        /// also be set.
+        /// also be set. For more information, see [Create a Python UDF with volume
+        /// mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RoutineExternalRuntimeOptionsVolumeMount> VolumeMounts;

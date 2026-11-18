@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigMultiZoneConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigReservationAffinity;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig;
@@ -38,6 +39,14 @@ public final class ClusterClusterConfigGceClusterConfig {
      * 
      */
     private @Nullable Map<String,String> metadata;
+    /**
+     * @return Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+     * Structure defined below.
+     * 
+     * ***
+     * 
+     */
+    private @Nullable ClusterClusterConfigGceClusterConfigMultiZoneConfig multiZoneConfig;
     /**
      * @return The name or selfLink of the Google Compute Engine
      * network to the cluster will be part of. Conflicts with `subnetwork`.
@@ -79,8 +88,6 @@ public final class ClusterClusterConfigGceClusterConfig {
     private @Nullable List<String> serviceAccountScopes;
     /**
      * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-     * 
-     * ***
      * 
      */
     private @Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -136,6 +143,16 @@ public final class ClusterClusterConfigGceClusterConfig {
         return this.metadata == null ? Map.of() : this.metadata;
     }
     /**
+     * @return Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+     * Structure defined below.
+     * 
+     * ***
+     * 
+     */
+    public Optional<ClusterClusterConfigGceClusterConfigMultiZoneConfig> multiZoneConfig() {
+        return Optional.ofNullable(this.multiZoneConfig);
+    }
+    /**
      * @return The name or selfLink of the Google Compute Engine
      * network to the cluster will be part of. Conflicts with `subnetwork`.
      * If neither is specified, this defaults to the &#34;default&#34; network.
@@ -189,8 +206,6 @@ public final class ClusterClusterConfigGceClusterConfig {
     /**
      * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
      * 
-     * ***
-     * 
      */
     public Optional<ClusterClusterConfigGceClusterConfigShieldedInstanceConfig> shieldedInstanceConfig() {
         return Optional.ofNullable(this.shieldedInstanceConfig);
@@ -237,6 +252,7 @@ public final class ClusterClusterConfigGceClusterConfig {
         private @Nullable ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig confidentialInstanceConfig;
         private @Nullable Boolean internalIpOnly;
         private @Nullable Map<String,String> metadata;
+        private @Nullable ClusterClusterConfigGceClusterConfigMultiZoneConfig multiZoneConfig;
         private @Nullable String network;
         private @Nullable ClusterClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity;
         private @Nullable ClusterClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
@@ -253,6 +269,7 @@ public final class ClusterClusterConfigGceClusterConfig {
     	      this.confidentialInstanceConfig = defaults.confidentialInstanceConfig;
     	      this.internalIpOnly = defaults.internalIpOnly;
     	      this.metadata = defaults.metadata;
+    	      this.multiZoneConfig = defaults.multiZoneConfig;
     	      this.network = defaults.network;
     	      this.nodeGroupAffinity = defaults.nodeGroupAffinity;
     	      this.reservationAffinity = defaults.reservationAffinity;
@@ -281,6 +298,12 @@ public final class ClusterClusterConfigGceClusterConfig {
         public Builder metadata(@Nullable Map<String,String> metadata) {
 
             this.metadata = metadata;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder multiZoneConfig(@Nullable ClusterClusterConfigGceClusterConfigMultiZoneConfig multiZoneConfig) {
+
+            this.multiZoneConfig = multiZoneConfig;
             return this;
         }
         @CustomType.Setter
@@ -354,6 +377,7 @@ public final class ClusterClusterConfigGceClusterConfig {
             _resultValue.confidentialInstanceConfig = confidentialInstanceConfig;
             _resultValue.internalIpOnly = internalIpOnly;
             _resultValue.metadata = metadata;
+            _resultValue.multiZoneConfig = multiZoneConfig;
             _resultValue.network = network;
             _resultValue.nodeGroupAffinity = nodeGroupAffinity;
             _resultValue.reservationAffinity = reservationAffinity;

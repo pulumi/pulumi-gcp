@@ -695,6 +695,24 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowPscGlobalAccess);
     }
     /**
+     * Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     * 
+     */
+    @Export(name="backendService", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> backendService;
+
+    /**
+     * @return Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     * 
+     */
+    public Output<Optional<String>> backendService() {
+        return Codegen.optional(this.backendService);
+    }
+    /**
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      * 
      */
@@ -909,6 +927,24 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
         return this.ipAddress;
     }
     /**
+     * IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     * 
+     */
+    @Export(name="ipAddresses", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> ipAddresses;
+
+    /**
+     * @return IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     * 
+     */
+    public Output<List<String>> ipAddresses() {
+        return this.ipAddresses;
+    }
+    /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
      * options are `TCP`, `UDP`, `ESP`,
@@ -995,7 +1031,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      * 
      */
     @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
@@ -1006,7 +1042,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      * 
      */
     public Output<Optional<String>> loadBalancingScheme() {
@@ -1352,7 +1388,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="target", refs={String.class}, tree="[0]")
-    private Output<String> target;
+    private Output</* @Nullable */ String> target;
 
     /**
      * @return The URL of the target resource to receive the matched traffic.  For
@@ -1367,8 +1403,8 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      * 
      */
-    public Output<String> target() {
-        return this.target;
+    public Output<Optional<String>> target() {
+        return Codegen.optional(this.target);
     }
 
     /**
@@ -1383,7 +1419,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalForwardingRule(java.lang.String name, GlobalForwardingRuleArgs args) {
+    public GlobalForwardingRule(java.lang.String name, @Nullable GlobalForwardingRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -1392,7 +1428,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalForwardingRule(java.lang.String name, GlobalForwardingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public GlobalForwardingRule(java.lang.String name, @Nullable GlobalForwardingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -1400,7 +1436,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
         super("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static GlobalForwardingRuleArgs makeArgs(GlobalForwardingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static GlobalForwardingRuleArgs makeArgs(@Nullable GlobalForwardingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

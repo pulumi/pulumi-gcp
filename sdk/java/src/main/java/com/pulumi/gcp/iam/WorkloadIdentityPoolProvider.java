@@ -16,6 +16,7 @@ import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderSaml;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderX509;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -263,6 +264,15 @@ import javax.annotation.Nullable;
  *             .workloadIdentityPoolId("example-pool")
  *             .build());
  * 
+ *         var actor = new WorkloadIdentityPoolProvider("actor", WorkloadIdentityPoolProviderArgs.builder()
+ *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
+ *             .workloadIdentityPoolProviderId("actor-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
+ *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
+ *                 .issuerUri("https://sts.windows.net/azure-tenant-id")
+ *                 .build())
+ *             .build());
+ * 
  *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
  *             .workloadIdentityPoolProviderId("example-prvdr")
@@ -285,7 +295,9 @@ import javax.annotation.Nullable;
  *                     "https://example.com/gcp-oidc-federation",
  *                     "example.com/gcp-oidc-federation")
  *                 .issuerUri("https://sts.windows.net/azure-tenant-id")
+ *                 .discoveryUri("https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration")
  *                 .build())
+ *             .actorProviders(actor.id())
  *             .build());
  * 
  *     }}{@code
@@ -602,6 +614,36 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider")
 public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomResource {
+    /**
+     * A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+     * that are authorized to issue actor tokens for this provider. An actor token
+     * represents the identity of the acting party to whom authority is delegated. At
+     * most 3 actor providers can be specified. Actor providers are only supported for
+     * OIDC providers.
+     * Each entry must be formatted as
+     * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+     * where `{project}` matches the `project` configured on this resource (for example,
+     * by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+     * 
+     */
+    @Export(name="actorProviders", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> actorProviders;
+
+    /**
+     * @return A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+     * that are authorized to issue actor tokens for this provider. An actor token
+     * represents the identity of the acting party to whom authority is delegated. At
+     * most 3 actor providers can be specified. Actor providers are only supported for
+     * OIDC providers.
+     * Each entry must be formatted as
+     * `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+     * where `{project}` matches the `project` configured on this resource (for example,
+     * by referencing `google_iam_workload_identity_pool_provider.&lt;actor&gt;.id`).
+     * 
+     */
+    public Output<Optional<List<String>>> actorProviders() {
+        return Codegen.optional(this.actorProviders);
+    }
     /**
      * [A Common Expression Language](https://github.com/google/cel-spec) expression, in
      * plain text, to restrict what otherwise valid authentication credentials issued by the

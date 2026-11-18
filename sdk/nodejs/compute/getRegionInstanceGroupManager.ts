@@ -84,6 +84,7 @@ export interface GetRegionInstanceGroupManagerResult {
     readonly region?: string;
     readonly resourcePolicies: outputs.compute.GetRegionInstanceGroupManagerResourcePolicy[];
     readonly selfLink?: string;
+    readonly serviceAccount: string;
     readonly standbyPolicies: outputs.compute.GetRegionInstanceGroupManagerStandbyPolicy[];
     readonly statefulDisks: outputs.compute.GetRegionInstanceGroupManagerStatefulDisk[];
     readonly statefulExternalIps: outputs.compute.GetRegionInstanceGroupManagerStatefulExternalIp[];

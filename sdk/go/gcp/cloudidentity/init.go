@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "gcp:cloudidentity/groupMembership:GroupMembership":
 		r = &GroupMembership{}
+	case "gcp:cloudidentity/inboundOidcSsoProfile:InboundOidcSsoProfile":
+		r = &InboundOidcSsoProfile{}
+	case "gcp:cloudidentity/inboundSamlSsoProfile:InboundSamlSsoProfile":
+		r = &InboundSamlSsoProfile{}
 	case "gcp:cloudidentity/policy:Policy":
 		r = &Policy{}
 	default:
@@ -48,6 +52,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"cloudidentity/groupMembership",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudidentity/inboundOidcSsoProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudidentity/inboundSamlSsoProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

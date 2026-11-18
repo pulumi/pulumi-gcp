@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.SaaSRuntime
     /// <summary>
     /// A Saas resource is the top-level representation of a SaaS service managed by a producer. It contains a list of locations where the service is available, which is used by the Rollout system to generate a rollout plan.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Saas Runtime Saas Basic

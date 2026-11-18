@@ -15,6 +15,26 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AddonConfigArgs',
+    'AddonConfigArgsDict',
+    'AddonConfigAllDataAddonConfigArgs',
+    'AddonConfigAllDataAddonConfigArgsDict',
+    'AddonConfigGatewayPluginAddonConfigArgs',
+    'AddonConfigGatewayPluginAddonConfigArgsDict',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgsDict',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgsDict',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgsDict',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgsDict',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgsDict',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgsDict',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs',
+    'AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgsDict',
     'ApiHubInstanceConfigArgs',
     'ApiHubInstanceConfigArgsDict',
     'CurationEndpointArgs',
@@ -68,6 +88,463 @@ __all__ = [
     'PluginInstanceAuthConfigUserPasswordConfigPasswordArgs',
     'PluginInstanceAuthConfigUserPasswordConfigPasswordArgsDict',
 ]
+
+class AddonConfigArgsDict(TypedDict):
+    all_data_addon_config: NotRequired[pulumi.Input[Optional['AddonConfigAllDataAddonConfigArgsDict']]]
+    """
+    Configuration for addons which act on all data in the API hub.
+    Structure is documented below.
+    """
+    gateway_plugin_addon_config: NotRequired[pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigArgsDict']]]
+    """
+    Configuration for gateway plugin addons.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AddonConfigArgs:
+    def __init__(__self__, *,
+                 all_data_addon_config: pulumi.Input[Optional['AddonConfigAllDataAddonConfigArgs']] = None,
+                 gateway_plugin_addon_config: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigArgs']] = None):
+        """
+        :param pulumi.Input['AddonConfigAllDataAddonConfigArgs'] all_data_addon_config: Configuration for addons which act on all data in the API hub.
+               Structure is documented below.
+        :param pulumi.Input['AddonConfigGatewayPluginAddonConfigArgs'] gateway_plugin_addon_config: Configuration for gateway plugin addons.
+               Structure is documented below.
+        """
+        if all_data_addon_config is not None:
+            pulumi.set(__self__, "all_data_addon_config", all_data_addon_config)
+        if gateway_plugin_addon_config is not None:
+            pulumi.set(__self__, "gateway_plugin_addon_config", gateway_plugin_addon_config)
+
+    @_builtins.property
+    @pulumi.getter(name="allDataAddonConfig")
+    def all_data_addon_config(self) -> pulumi.Input[Optional['AddonConfigAllDataAddonConfigArgs']]:
+        """
+        Configuration for addons which act on all data in the API hub.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "all_data_addon_config")
+
+    @all_data_addon_config.setter
+    def all_data_addon_config(self, value: pulumi.Input[Optional['AddonConfigAllDataAddonConfigArgs']]):
+        pulumi.set(self, "all_data_addon_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayPluginAddonConfig")
+    def gateway_plugin_addon_config(self) -> pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigArgs']]:
+        """
+        Configuration for gateway plugin addons.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_plugin_addon_config")
+
+    @gateway_plugin_addon_config.setter
+    def gateway_plugin_addon_config(self, value: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigArgs']]):
+        pulumi.set(self, "gateway_plugin_addon_config", value)
+
+
+class AddonConfigAllDataAddonConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    If true, the addon is enabled for all data in the API hub.
+    """
+
+@pulumi.input_type
+class AddonConfigAllDataAddonConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: If true, the addon is enabled for all data in the API hub.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        If true, the addon is enabled for all data in the API hub.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+class AddonConfigGatewayPluginAddonConfigArgsDict(TypedDict):
+    gateway_plugin_configs: pulumi.Input[Sequence[pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgsDict']]]
+    """
+    The list of gateway plugin configs for which the addon is enabled.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AddonConfigGatewayPluginAddonConfigArgs:
+    def __init__(__self__, *,
+                 gateway_plugin_configs: pulumi.Input[Sequence[pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs']]] gateway_plugin_configs: The list of gateway plugin configs for which the addon is enabled.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "gateway_plugin_configs", gateway_plugin_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayPluginConfigs")
+    def gateway_plugin_configs(self) -> pulumi.Input[Sequence[pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs']]]:
+        """
+        The list of gateway plugin configs for which the addon is enabled.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_plugin_configs")
+
+    @gateway_plugin_configs.setter
+    def gateway_plugin_configs(self, value: pulumi.Input[Sequence[pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs']]]):
+        pulumi.set(self, "gateway_plugin_configs", value)
+
+
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgsDict(TypedDict):
+    plugin_instance: pulumi.Input[_builtins.str]
+    """
+    The name of the gateway plugin instance for which the config is to be specified.
+    Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+    """
+    apigee_edge_config: NotRequired[pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgsDict']]]
+    """
+    Configuration for Apigee Edge gateways.
+    Structure is documented below.
+    """
+    apigee_opdk_config: NotRequired[pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgsDict']]]
+    """
+    Configuration for Apigee OPDK gateways.
+    Structure is documented below.
+    """
+    apigee_x_hybrid_config: NotRequired[pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgsDict']]]
+    """
+    Configuration for Apigee X and Apigee Hybrid gateways.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigArgs:
+    def __init__(__self__, *,
+                 plugin_instance: pulumi.Input[_builtins.str],
+                 apigee_edge_config: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs']] = None,
+                 apigee_opdk_config: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs']] = None,
+                 apigee_x_hybrid_config: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] plugin_instance: The name of the gateway plugin instance for which the config is to be specified.
+               Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+        :param pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs'] apigee_edge_config: Configuration for Apigee Edge gateways.
+               Structure is documented below.
+        :param pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs'] apigee_opdk_config: Configuration for Apigee OPDK gateways.
+               Structure is documented below.
+        :param pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs'] apigee_x_hybrid_config: Configuration for Apigee X and Apigee Hybrid gateways.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "plugin_instance", plugin_instance)
+        if apigee_edge_config is not None:
+            pulumi.set(__self__, "apigee_edge_config", apigee_edge_config)
+        if apigee_opdk_config is not None:
+            pulumi.set(__self__, "apigee_opdk_config", apigee_opdk_config)
+        if apigee_x_hybrid_config is not None:
+            pulumi.set(__self__, "apigee_x_hybrid_config", apigee_x_hybrid_config)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginInstance")
+    def plugin_instance(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the gateway plugin instance for which the config is to be specified.
+        Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+        """
+        return pulumi.get(self, "plugin_instance")
+
+    @plugin_instance.setter
+    def plugin_instance(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "plugin_instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apigeeEdgeConfig")
+    def apigee_edge_config(self) -> pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs']]:
+        """
+        Configuration for Apigee Edge gateways.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "apigee_edge_config")
+
+    @apigee_edge_config.setter
+    def apigee_edge_config(self, value: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs']]):
+        pulumi.set(self, "apigee_edge_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apigeeOpdkConfig")
+    def apigee_opdk_config(self) -> pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs']]:
+        """
+        Configuration for Apigee OPDK gateways.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "apigee_opdk_config")
+
+    @apigee_opdk_config.setter
+    def apigee_opdk_config(self, value: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs']]):
+        pulumi.set(self, "apigee_opdk_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apigeeXHybridConfig")
+    def apigee_x_hybrid_config(self) -> pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs']]:
+        """
+        Configuration for Apigee X and Apigee Hybrid gateways.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "apigee_x_hybrid_config")
+
+    @apigee_x_hybrid_config.setter
+    def apigee_x_hybrid_config(self, value: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs']]):
+        pulumi.set(self, "apigee_x_hybrid_config", value)
+
+
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgsDict(TypedDict):
+    environment_filter: NotRequired[pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgsDict']]]
+    """
+    The filter to apply on the resources managed by the gateway plugin instance.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigArgs:
+    def __init__(__self__, *,
+                 environment_filter: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs']] = None):
+        """
+        :param pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs'] environment_filter: The filter to apply on the resources managed by the gateway plugin instance.
+               Structure is documented below.
+        """
+        if environment_filter is not None:
+            pulumi.set(__self__, "environment_filter", environment_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentFilter")
+    def environment_filter(self) -> pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs']]:
+        """
+        The filter to apply on the resources managed by the gateway plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "environment_filter")
+
+    @environment_filter.setter
+    def environment_filter(self, value: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs']]):
+        pulumi.set(self, "environment_filter", value)
+
+
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgsDict(TypedDict):
+    all_environments: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates if this filter should match all environments or only a subset of environments.
+    """
+    environments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    If provided, only environments in this list are matched.
+    """
+
+@pulumi.input_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeEdgeConfigEnvironmentFilterArgs:
+    def __init__(__self__, *,
+                 all_environments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] all_environments: Indicates if this filter should match all environments or only a subset of environments.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: If provided, only environments in this list are matched.
+        """
+        if all_environments is not None:
+            pulumi.set(__self__, "all_environments", all_environments)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
+
+    @_builtins.property
+    @pulumi.getter(name="allEnvironments")
+    def all_environments(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if this filter should match all environments or only a subset of environments.
+        """
+        return pulumi.get(self, "all_environments")
+
+    @all_environments.setter
+    def all_environments(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "all_environments", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        If provided, only environments in this list are matched.
+        """
+        return pulumi.get(self, "environments")
+
+    @environments.setter
+    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "environments", value)
+
+
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgsDict(TypedDict):
+    environment_filter: NotRequired[pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgsDict']]]
+    """
+    The filter to apply on the resources managed by the gateway plugin instance.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigArgs:
+    def __init__(__self__, *,
+                 environment_filter: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs']] = None):
+        """
+        :param pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs'] environment_filter: The filter to apply on the resources managed by the gateway plugin instance.
+               Structure is documented below.
+        """
+        if environment_filter is not None:
+            pulumi.set(__self__, "environment_filter", environment_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentFilter")
+    def environment_filter(self) -> pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs']]:
+        """
+        The filter to apply on the resources managed by the gateway plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "environment_filter")
+
+    @environment_filter.setter
+    def environment_filter(self, value: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs']]):
+        pulumi.set(self, "environment_filter", value)
+
+
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgsDict(TypedDict):
+    all_environments: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates if this filter should match all environments or only a subset of environments.
+    """
+    environments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    If provided, only environments in this list are matched.
+    """
+
+@pulumi.input_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeOpdkConfigEnvironmentFilterArgs:
+    def __init__(__self__, *,
+                 all_environments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] all_environments: Indicates if this filter should match all environments or only a subset of environments.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: If provided, only environments in this list are matched.
+        """
+        if all_environments is not None:
+            pulumi.set(__self__, "all_environments", all_environments)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
+
+    @_builtins.property
+    @pulumi.getter(name="allEnvironments")
+    def all_environments(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if this filter should match all environments or only a subset of environments.
+        """
+        return pulumi.get(self, "all_environments")
+
+    @all_environments.setter
+    def all_environments(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "all_environments", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        If provided, only environments in this list are matched.
+        """
+        return pulumi.get(self, "environments")
+
+    @environments.setter
+    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "environments", value)
+
+
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgsDict(TypedDict):
+    environment_filter: NotRequired[pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgsDict']]]
+    """
+    The filter to apply on the resources managed by the gateway plugin instance.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigArgs:
+    def __init__(__self__, *,
+                 environment_filter: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs']] = None):
+        """
+        :param pulumi.Input['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs'] environment_filter: The filter to apply on the resources managed by the gateway plugin instance.
+               Structure is documented below.
+        """
+        if environment_filter is not None:
+            pulumi.set(__self__, "environment_filter", environment_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentFilter")
+    def environment_filter(self) -> pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs']]:
+        """
+        The filter to apply on the resources managed by the gateway plugin instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "environment_filter")
+
+    @environment_filter.setter
+    def environment_filter(self, value: pulumi.Input[Optional['AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs']]):
+        pulumi.set(self, "environment_filter", value)
+
+
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgsDict(TypedDict):
+    all_environments: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates if this filter should match all environments or only a subset of environments.
+    """
+    environments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    If provided, only environments in this list are matched.
+    """
+
+@pulumi.input_type
+class AddonConfigGatewayPluginAddonConfigGatewayPluginConfigApigeeXHybridConfigEnvironmentFilterArgs:
+    def __init__(__self__, *,
+                 all_environments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] all_environments: Indicates if this filter should match all environments or only a subset of environments.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: If provided, only environments in this list are matched.
+        """
+        if all_environments is not None:
+            pulumi.set(__self__, "all_environments", all_environments)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
+
+    @_builtins.property
+    @pulumi.getter(name="allEnvironments")
+    def all_environments(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if this filter should match all environments or only a subset of environments.
+        """
+        return pulumi.get(self, "all_environments")
+
+    @all_environments.setter
+    def all_environments(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "all_environments", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        If provided, only environments in this list are matched.
+        """
+        return pulumi.get(self, "environments")
+
+    @environments.setter
+    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "environments", value)
+
 
 class ApiHubInstanceConfigArgsDict(TypedDict):
     cmek_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]

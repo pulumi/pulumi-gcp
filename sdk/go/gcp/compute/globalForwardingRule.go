@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -674,6 +673,10 @@ type GlobalForwardingRule struct {
 	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess pulumi.BoolPtrOutput `pulumi:"allowPscGlobalAccess"`
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	// Required for Global External Passthrough Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService pulumi.StringPtrOutput `pulumi:"backendService"`
 	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
 	BaseForwardingRule pulumi.StringOutput `pulumi:"baseForwardingRule"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -741,6 +744,10 @@ type GlobalForwardingRule struct {
 	//   When reading an `IPAddress`, the API always returns the IP
 	//   address number.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
+	// IP addresses for which this forwarding rule accepts traffic, ordered by
+	// Availability Group 0 followed by Availability Group 1. Specify literal
+	// IP addresses (for example, `google_compute_global_address.example.address`).
+	IpAddresses pulumi.StringArrayOutput `pulumi:"ipAddresses"`
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
 	// options are `TCP`, `UDP`, `ESP`,
@@ -766,7 +773,7 @@ type GlobalForwardingRule struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -871,19 +878,16 @@ type GlobalForwardingRule struct {
 	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
 	//    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-	Target pulumi.StringOutput `pulumi:"target"`
+	Target pulumi.StringPtrOutput `pulumi:"target"`
 }
 
 // NewGlobalForwardingRule registers a new resource with the given unique name, arguments, and options.
 func NewGlobalForwardingRule(ctx *pulumi.Context,
 	name string, args *GlobalForwardingRuleArgs, opts ...pulumi.ResourceOption) (*GlobalForwardingRule, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GlobalForwardingRuleArgs{}
 	}
 
-	if args.Target == nil {
-		return nil, errors.New("invalid value for required argument 'Target'")
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
 		"pulumiLabels",
@@ -915,6 +919,10 @@ type globalForwardingRuleState struct {
 	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess *bool `pulumi:"allowPscGlobalAccess"`
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	// Required for Global External Passthrough Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService *string `pulumi:"backendService"`
 	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
 	BaseForwardingRule *string `pulumi:"baseForwardingRule"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -982,6 +990,10 @@ type globalForwardingRuleState struct {
 	//   When reading an `IPAddress`, the API always returns the IP
 	//   address number.
 	IpAddress *string `pulumi:"ipAddress"`
+	// IP addresses for which this forwarding rule accepts traffic, ordered by
+	// Availability Group 0 followed by Availability Group 1. Specify literal
+	// IP addresses (for example, `google_compute_global_address.example.address`).
+	IpAddresses []string `pulumi:"ipAddresses"`
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
 	// options are `TCP`, `UDP`, `ESP`,
@@ -1007,7 +1019,7 @@ type globalForwardingRuleState struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -1119,6 +1131,10 @@ type GlobalForwardingRuleState struct {
 	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess pulumi.BoolPtrInput
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	// Required for Global External Passthrough Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService pulumi.StringPtrInput
 	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
 	BaseForwardingRule pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1186,6 +1202,10 @@ type GlobalForwardingRuleState struct {
 	//   When reading an `IPAddress`, the API always returns the IP
 	//   address number.
 	IpAddress pulumi.StringPtrInput
+	// IP addresses for which this forwarding rule accepts traffic, ordered by
+	// Availability Group 0 followed by Availability Group 1. Specify literal
+	// IP addresses (for example, `google_compute_global_address.example.address`).
+	IpAddresses pulumi.StringArrayInput
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
 	// options are `TCP`, `UDP`, `ESP`,
@@ -1211,7 +1231,7 @@ type GlobalForwardingRuleState struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -1333,6 +1353,10 @@ type globalForwardingRuleArgs struct {
 	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess *bool `pulumi:"allowPscGlobalAccess"`
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	// Required for Global External Passthrough Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService *string `pulumi:"backendService"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1394,6 +1418,10 @@ type globalForwardingRuleArgs struct {
 	//   When reading an `IPAddress`, the API always returns the IP
 	//   address number.
 	IpAddress *string `pulumi:"ipAddress"`
+	// IP addresses for which this forwarding rule accepts traffic, ordered by
+	// Availability Group 0 followed by Availability Group 1. Specify literal
+	// IP addresses (for example, `google_compute_global_address.example.address`).
+	IpAddresses []string `pulumi:"ipAddresses"`
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
 	// options are `TCP`, `UDP`, `ESP`,
@@ -1416,7 +1444,7 @@ type globalForwardingRuleArgs struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -1512,7 +1540,7 @@ type globalForwardingRuleArgs struct {
 	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
 	//    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-	Target string `pulumi:"target"`
+	Target *string `pulumi:"target"`
 }
 
 // The set of arguments for constructing a GlobalForwardingRule resource.
@@ -1520,6 +1548,10 @@ type GlobalForwardingRuleArgs struct {
 	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess pulumi.BoolPtrInput
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	// Required for Global External Passthrough Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1581,6 +1613,10 @@ type GlobalForwardingRuleArgs struct {
 	//   When reading an `IPAddress`, the API always returns the IP
 	//   address number.
 	IpAddress pulumi.StringPtrInput
+	// IP addresses for which this forwarding rule accepts traffic, ordered by
+	// Availability Group 0 followed by Availability Group 1. Specify literal
+	// IP addresses (for example, `google_compute_global_address.example.address`).
+	IpAddresses pulumi.StringArrayInput
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
 	// options are `TCP`, `UDP`, `ESP`,
@@ -1603,7 +1639,7 @@ type GlobalForwardingRuleArgs struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL_MANAGED`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -1699,7 +1735,7 @@ type GlobalForwardingRuleArgs struct {
 	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
 	//    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-	Target pulumi.StringInput
+	Target pulumi.StringPtrInput
 }
 
 func (GlobalForwardingRuleArgs) ElementType() reflect.Type {
@@ -1793,6 +1829,13 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx 
 // This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 func (o GlobalForwardingRuleOutput) AllowPscGlobalAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.BoolPtrOutput { return v.AllowPscGlobalAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Identifies the backend service to which the forwarding rule sends traffic.
+// Required for Global External Passthrough Network Load Balancing;
+// must be omitted for all other load balancer types.
+func (o GlobalForwardingRuleOutput) BackendService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.BackendService }).(pulumi.StringPtrOutput)
 }
 
 // [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
@@ -1890,6 +1933,13 @@ func (o GlobalForwardingRuleOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// IP addresses for which this forwarding rule accepts traffic, ordered by
+// Availability Group 0 followed by Availability Group 1. Specify literal
+// IP addresses (for example, `google_compute_global_address.example.address`).
+func (o GlobalForwardingRuleOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringArrayOutput { return v.IpAddresses }).(pulumi.StringArrayOutput)
+}
+
 // The IP protocol to which this rule applies.
 // For protocol forwarding, valid
 // options are `TCP`, `UDP`, `ESP`,
@@ -1927,7 +1977,7 @@ func (o GlobalForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 // For more information about forwarding rules, refer to
 // [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 // Default value is `EXTERNAL_MANAGED`.
-// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
 func (o GlobalForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
@@ -2080,8 +2130,8 @@ func (o GlobalForwardingRuleOutput) Subnetwork() pulumi.StringOutput {
 //   - `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 //   - `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
 //     For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-func (o GlobalForwardingRuleOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
+func (o GlobalForwardingRuleOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 type GlobalForwardingRuleArrayOutput struct{ *pulumi.OutputState }

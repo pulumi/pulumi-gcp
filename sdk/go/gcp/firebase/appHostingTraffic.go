@@ -177,6 +177,90 @@ import (
 //
 // ```
 //
+// ### Firebase App Hosting Traffic Rollout Policy With Paths
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			//## Include these blocks only once per project if you are starting from scratch ###
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
+//				Project:                   pulumi.String("my-project-name"),
+//				AccountId:                 pulumi.String("firebase-app-hosting-compute"),
+//				DisplayName:               pulumi.String("Firebase App Hosting compute service account"),
+//				CreateIgnoreAlreadyExists: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			appHostingSaRunner, err := projects.NewIAMMember(ctx, "app_hosting_sa_runner", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/firebaseapphosting.computeRunner"),
+//				Member:  serviceAccount.Member,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fah, err := projects.NewService(ctx, "fah", &projects.ServiceArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Service: pulumi.String("firebaseapphosting.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAppHostingBackend, err := firebase.NewAppHostingBackend(ctx, "example", &firebase.AppHostingBackendArgs{
+//				Project:         pulumi.String("my-project-name"),
+//				Location:        pulumi.String("us-central1"),
+//				BackendId:       pulumi.String("traffic-rpwp"),
+//				AppId:           pulumi.String("1:0000000000:web:674cde32020e16fbce9dbd"),
+//				ServingLocality: pulumi.String("GLOBAL_ACCESS"),
+//				ServiceAccount:  serviceAccount.Email,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				fah,
+//				appHostingSaRunner,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAppHostingTraffic(ctx, "example", &firebase.AppHostingTrafficArgs{
+//				Project:  exampleAppHostingBackend.Project,
+//				Location: exampleAppHostingBackend.Location,
+//				Backend:  exampleAppHostingBackend.BackendId,
+//				RolloutPolicy: &firebase.AppHostingTrafficRolloutPolicyArgs{
+//					CodebaseBranch: pulumi.String("main"),
+//					RequiredPaths: firebase.AppHostingTrafficRolloutPolicyRequiredPathArray{
+//						&firebase.AppHostingTrafficRolloutPolicyRequiredPathArgs{
+//							Pattern: pulumi.String("foo/bar/*"),
+//							Type:    pulumi.String("GLOB"),
+//						},
+//					},
+//					IgnoredPaths: firebase.AppHostingTrafficRolloutPolicyIgnoredPathArray{
+//						&firebase.AppHostingTrafficRolloutPolicyIgnoredPathArgs{
+//							Pattern: pulumi.String("foo/bar/excluded/*"),
+//							Type:    pulumi.String("GLOB"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Firebase App Hosting Traffic Rollout Policy Disabled
 //
 // ```go

@@ -162,6 +162,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
     }
     /**
      * Output only. The metadata for this ruleset.
+     * Structure is documented below.
      * 
      */
     @Export(name="metadatas", refs={List.class,RulesetMetadata.class}, tree="[0,1]")
@@ -169,6 +170,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Output only. The metadata for this ruleset.
+     * Structure is documented below.
      * 
      */
     public Output<List<RulesetMetadata>> metadatas() {
@@ -204,6 +206,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
     }
     /**
      * `Source` for the `Ruleset`.
+     * Structure is documented below.
      * 
      */
     @Export(name="source", refs={RulesetSource.class}, tree="[0]")
@@ -211,6 +214,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
 
     /**
      * @return `Source` for the `Ruleset`.
+     * Structure is documented below.
      * 
      */
     public Output<RulesetSource> source() {

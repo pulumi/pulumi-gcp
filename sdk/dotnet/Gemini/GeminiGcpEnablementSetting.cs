@@ -101,6 +101,16 @@ namespace Pulumi.Gcp.Gemini
         public Output<bool?> EnableCustomerDataSharing { get; private set; } = null!;
 
         /// <summary>
+        /// The Cloud Storage bucket name allocated for this setting.
+        /// Note: Please make sure the cloudaicompanion service agent
+        /// `service-&lt;PROJECT-NUMBER&gt;@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+        /// has `storage.objects.get` and `storage.objects.create` permission to the
+        /// Cloud Storage bucket.
+        /// </summary>
+        [Output("gcsBucket")]
+        public Output<string?> GcsBucket { get; private set; } = null!;
+
+        /// <summary>
         /// The Gemini enterprise project for this setting.
         /// Format: projects/{project}
         /// The `{project}` segment can be the project ID or project number.
@@ -262,6 +272,16 @@ namespace Pulumi.Gcp.Gemini
         public Input<bool>? EnableCustomerDataSharing { get; set; }
 
         /// <summary>
+        /// The Cloud Storage bucket name allocated for this setting.
+        /// Note: Please make sure the cloudaicompanion service agent
+        /// `service-&lt;PROJECT-NUMBER&gt;@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+        /// has `storage.objects.get` and `storage.objects.create` permission to the
+        /// Cloud Storage bucket.
+        /// </summary>
+        [Input("gcsBucket")]
+        public Input<string>? GcsBucket { get; set; }
+
+        /// <summary>
         /// The Gemini enterprise project for this setting.
         /// Format: projects/{project}
         /// The `{project}` segment can be the project ID or project number.
@@ -386,6 +406,16 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Input("enableCustomerDataSharing")]
         public Input<bool>? EnableCustomerDataSharing { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage bucket name allocated for this setting.
+        /// Note: Please make sure the cloudaicompanion service agent
+        /// `service-&lt;PROJECT-NUMBER&gt;@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+        /// has `storage.objects.get` and `storage.objects.create` permission to the
+        /// Cloud Storage bucket.
+        /// </summary>
+        [Input("gcsBucket")]
+        public Input<string>? GcsBucket { get; set; }
 
         /// <summary>
         /// The Gemini enterprise project for this setting.

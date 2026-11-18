@@ -25,6 +25,27 @@ public final class WorkloadIdentityPoolProviderOidc {
      */
     private @Nullable List<String> allowedAudiences;
     /**
+     * @return The URL to fetch the OIDC discovery document from, overriding the default URL
+     * derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+     * with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+     * Discovery 1.0 specification.
+     * If set, `discoveryUri` must meet the following requirements:
+     * * Must start with `https://`.
+     * * Must not exceed 2000 characters.
+     * * The scheme, host, and port must match `issuerUri`.
+     * * The path must contain `/.well-known/&lt;suffix&gt;` (where `&lt;suffix&gt;` is not
+     *   empty, such as `openid-configuration`) and conform to the `issuerUri`
+     *   topology:
+     * * The well-known path segment is inserted before the issuer path (for
+     *   example, `https://example.com/.well-known/openid-configuration/tenant1`
+     *   for issuer `https://example.com/tenant1`), or
+     * * The well-known path segment is appended under the issuer path (for
+     *   example, `https://example.com/tenant1/.well-known/openid-configuration`
+     *   for issuer `https://example.com/tenant1`).
+     * 
+     */
+    private @Nullable String discoveryUri;
+    /**
      * @return The OIDC issuer URL.
      * 
      */
@@ -53,6 +74,29 @@ public final class WorkloadIdentityPoolProviderOidc {
      */
     public List<String> allowedAudiences() {
         return this.allowedAudiences == null ? List.of() : this.allowedAudiences;
+    }
+    /**
+     * @return The URL to fetch the OIDC discovery document from, overriding the default URL
+     * derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+     * with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+     * Discovery 1.0 specification.
+     * If set, `discoveryUri` must meet the following requirements:
+     * * Must start with `https://`.
+     * * Must not exceed 2000 characters.
+     * * The scheme, host, and port must match `issuerUri`.
+     * * The path must contain `/.well-known/&lt;suffix&gt;` (where `&lt;suffix&gt;` is not
+     *   empty, such as `openid-configuration`) and conform to the `issuerUri`
+     *   topology:
+     * * The well-known path segment is inserted before the issuer path (for
+     *   example, `https://example.com/.well-known/openid-configuration/tenant1`
+     *   for issuer `https://example.com/tenant1`), or
+     * * The well-known path segment is appended under the issuer path (for
+     *   example, `https://example.com/tenant1/.well-known/openid-configuration`
+     *   for issuer `https://example.com/tenant1`).
+     * 
+     */
+    public Optional<String> discoveryUri() {
+        return Optional.ofNullable(this.discoveryUri);
     }
     /**
      * @return The OIDC issuer URL.
@@ -84,12 +128,14 @@ public final class WorkloadIdentityPoolProviderOidc {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedAudiences;
+        private @Nullable String discoveryUri;
         private String issuerUri;
         private @Nullable String jwksJson;
         public Builder() {}
         public Builder(WorkloadIdentityPoolProviderOidc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedAudiences = defaults.allowedAudiences;
+    	      this.discoveryUri = defaults.discoveryUri;
     	      this.issuerUri = defaults.issuerUri;
     	      this.jwksJson = defaults.jwksJson;
         }
@@ -102,6 +148,12 @@ public final class WorkloadIdentityPoolProviderOidc {
         }
         public Builder allowedAudiences(String... allowedAudiences) {
             return allowedAudiences(List.of(allowedAudiences));
+        }
+        @CustomType.Setter
+        public Builder discoveryUri(@Nullable String discoveryUri) {
+
+            this.discoveryUri = discoveryUri;
+            return this;
         }
         @CustomType.Setter
         public Builder issuerUri(String issuerUri) {
@@ -120,6 +172,7 @@ public final class WorkloadIdentityPoolProviderOidc {
         public WorkloadIdentityPoolProviderOidc build() {
             final var _resultValue = new WorkloadIdentityPoolProviderOidc();
             _resultValue.allowedAudiences = allowedAudiences;
+            _resultValue.discoveryUri = discoveryUri;
             _resultValue.issuerUri = issuerUri;
             _resultValue.jwksJson = jwksJson;
             return _resultValue;

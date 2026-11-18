@@ -18,7 +18,13 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         /// </summary>
         public readonly string? Group;
         /// <summary>
-        /// The OrgUnit the query applies to.
+        /// The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+        /// `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+        /// Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+        /// and display names are not resolved and are rejected for most settings.
+        /// For detector settings (`settings/detector.*`), the API ignores this value and
+        /// always applies the policy to, and returns, the customer's root org unit, so any
+        /// other value produces a diff; set it to the root org unit's ID.
         /// </summary>
         public readonly string OrgUnit;
         /// <summary>

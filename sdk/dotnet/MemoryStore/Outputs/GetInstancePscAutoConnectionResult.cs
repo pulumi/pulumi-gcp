@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
+        /// The IP version of the PSC connection. Possible values are 'IPV4' and 'IPV6'.
+        /// </summary>
+        public readonly string IpVersion;
+        /// <summary>
         /// Output only. The consumer network where the IP address resides, in the form of
         /// projects/{project_id}/global/networks/{network_id}.
         /// </summary>
@@ -69,6 +73,8 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
 
             string ipAddress,
 
+            string ipVersion,
+
             string network,
 
             int port,
@@ -84,6 +90,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
             ConnectionType = connectionType;
             ForwardingRule = forwardingRule;
             IpAddress = ipAddress;
+            IpVersion = ipVersion;
             Network = network;
             Port = port;
             ProjectId = projectId;

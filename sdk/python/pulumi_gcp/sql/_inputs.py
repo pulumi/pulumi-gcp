@@ -104,6 +104,10 @@ class DatabaseInstanceBlueGreenDeploymentArgsDict(TypedDict):
     """
     Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`active_environment = "TARGET"`). Defaults to `false`.
     """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+    """
     old_source_instance_connection_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
@@ -135,6 +139,7 @@ class DatabaseInstanceBlueGreenDeploymentArgs:
                  deployment_name: pulumi.Input[_builtins.str],
                  active_environment: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_old_source_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  old_source_instance_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  old_source_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  target_database_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -145,6 +150,7 @@ class DatabaseInstanceBlueGreenDeploymentArgs:
         :param pulumi.Input[_builtins.str] deployment_name: The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
         :param pulumi.Input[_builtins.str] active_environment: Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
         :param pulumi.Input[_builtins.bool] delete_old_source_on_destroy: Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`active_environment = "TARGET"`). Defaults to `false`.
+        :param pulumi.Input[_builtins.str] description: User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
         :param pulumi.Input[_builtins.str] old_source_instance_connection_name: The connection name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
         :param pulumi.Input[_builtins.str] old_source_instance_name: The name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
         :param pulumi.Input[_builtins.str] target_database_version: The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `database_version`. Cannot be changed while the deployment is active.
@@ -157,6 +163,8 @@ class DatabaseInstanceBlueGreenDeploymentArgs:
             pulumi.set(__self__, "active_environment", active_environment)
         if delete_old_source_on_destroy is not None:
             pulumi.set(__self__, "delete_old_source_on_destroy", delete_old_source_on_destroy)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if old_source_instance_connection_name is not None:
             pulumi.set(__self__, "old_source_instance_connection_name", old_source_instance_connection_name)
         if old_source_instance_name is not None:
@@ -205,6 +213,18 @@ class DatabaseInstanceBlueGreenDeploymentArgs:
     @delete_old_source_on_destroy.setter
     def delete_old_source_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_old_source_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="oldSourceInstanceConnectionName")
@@ -4518,6 +4538,9 @@ class UserPasswordPolicyArgsDict(TypedDict):
     Password expiration duration with one week grace period.
     """
     statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserPasswordPolicyStatusArgsDict']]]]]
+    """
+    The password status of the user. Structure is documented below.
+    """
 
 @pulumi.input_type
 class UserPasswordPolicyArgs:
@@ -4532,6 +4555,7 @@ class UserPasswordPolicyArgs:
         :param pulumi.Input[_builtins.bool] enable_failed_attempts_check: If true, the check that will lock user after too many failed login attempts will be enabled.
         :param pulumi.Input[_builtins.bool] enable_password_verification: If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
         :param pulumi.Input[_builtins.str] password_expiration_duration: Password expiration duration with one week grace period.
+        :param pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]] statuses: The password status of the user. Structure is documented below.
         """
         if allowed_failed_attempts is not None:
             pulumi.set(__self__, "allowed_failed_attempts", allowed_failed_attempts)
@@ -4595,6 +4619,9 @@ class UserPasswordPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]:
+        """
+        The password status of the user. Structure is documented below.
+        """
         return pulumi.get(self, "statuses")
 
     @statuses.setter
@@ -4654,11 +4681,11 @@ class UserPasswordPolicyStatusArgs:
 class UserSqlServerUserDetailArgsDict(TypedDict):
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    If the user has been disabled.
+    (read only) If the user has been disabled.
     """
     server_roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    The server roles for this user in the database.
+    (read only) The server roles for this user in the database.
     """
 
 @pulumi.input_type
@@ -4667,8 +4694,8 @@ class UserSqlServerUserDetailArgs:
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  server_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[_builtins.bool] disabled: If the user has been disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] server_roles: The server roles for this user in the database.
+        :param pulumi.Input[_builtins.bool] disabled: (read only) If the user has been disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] server_roles: (read only) The server roles for this user in the database.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -4679,7 +4706,7 @@ class UserSqlServerUserDetailArgs:
     @pulumi.getter
     def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If the user has been disabled.
+        (read only) If the user has been disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -4691,7 +4718,7 @@ class UserSqlServerUserDetailArgs:
     @pulumi.getter(name="serverRoles")
     def server_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The server roles for this user in the database.
+        (read only) The server roles for this user in the database.
         """
         return pulumi.get(self, "server_roles")
 

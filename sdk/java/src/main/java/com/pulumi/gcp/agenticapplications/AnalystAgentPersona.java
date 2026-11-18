@@ -494,6 +494,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.agenticapplications.AnalystAgentPersona;
  * import com.pulumi.gcp.agenticapplications.AnalystAgentPersonaArgs;
  * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaMcpDataSourceArgs;
+ * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaMcpDataSourceRequestHeaderArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -521,10 +522,17 @@ import javax.annotation.Nullable;
  *                 .description("Sample MCP data source description")
  *                 .enabled(true)
  *                 .prompt("Use this server for queries")
- *                 .apiKeyName("x-api-key")
- *                 .apiKeyHeader("x-api-key-header")
  *                 .sessionIdHeader("X-Custom-Session-Id")
  *                 .taskIdHeader("X-Custom-Task-Id")
+ *                 .requestHeaders(                
+ *                     AnalystAgentPersonaMcpDataSourceRequestHeaderArgs.builder()
+ *                         .headerName("X-Custom-Static")
+ *                         .value("initial-static-value")
+ *                         .build(),
+ *                     AnalystAgentPersonaMcpDataSourceRequestHeaderArgs.builder()
+ *                         .headerName("X-Custom-User")
+ *                         .dynamicValue("USER_ID")
+ *                         .build())
  *                 .build())
  *             .build());
  * 
@@ -1142,6 +1150,14 @@ import javax.annotation.Nullable;
  * (Optional)
  * The custom prompt for the MCP agent.
  * 
+ * * `requestHeaders` -
+ * (Optional)
+ * Additional HTTP headers sent on every request to the MCP server, for
+ * example a static header required by an API gateway. Headers managed by the
+ * agent take precedence and cannot be set here. When empty, no additional
+ * headers are sent.
+ * Structure is documented below.
+ * 
  * * `serverUrl` -
  * (Required)
  * The URL of the MCP server.
@@ -1157,6 +1173,26 @@ import javax.annotation.Nullable;
  * The HTTP header name used to pass the agent task ID in MCP server
  * requests (defaults to `X-Task-Id` when unset). Must be a valid HTTP
  * header field name (RFC 9110 token).
+ * 
+ * &lt;a name=&#34;nestedMcpDataSourcesRequestHeaders&#34;&gt;&lt;/a&gt;The `requestHeaders` block supports:
+ * 
+ * * `dynamicValue` -
+ * (Optional)
+ * A value the agent fills in for each request.
+ * Possible values:
+ * USER_ID
+ * 
+ * * `headerName` -
+ * (Required)
+ * The header name. Must be a valid HTTP field name (RFC 9110 token),
+ * unique ignoring case within the data source, and not a header managed
+ * by the agent (such as `Authorization`, `Content-Type`, `mcp-session-id`,
+ * or the configured API key, session ID, or task ID headers).
+ * 
+ * * `value` -
+ * (Optional)
+ * A static value, sent as-is on every request. The value is stored and
+ * returned in plain text, so do not use it for credentials.
  * 
  * &lt;a name=&#34;nestedResources&#34;&gt;&lt;/a&gt;The `resources` block supports:
  * 

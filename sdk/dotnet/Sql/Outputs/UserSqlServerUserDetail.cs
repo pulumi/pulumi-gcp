@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class UserSqlServerUserDetail
     {
         /// <summary>
-        /// If the user has been disabled.
+        /// (read only) If the user has been disabled.
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// The server roles for this user in the database.
+        /// (read only) The server roles for this user in the database.
         /// </summary>
         public readonly ImmutableArray<string> ServerRoles;
 

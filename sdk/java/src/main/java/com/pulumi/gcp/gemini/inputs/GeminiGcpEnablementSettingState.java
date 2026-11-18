@@ -115,6 +115,29 @@ public final class GeminiGcpEnablementSettingState extends com.pulumi.resources.
     }
 
     /**
+     * The Cloud Storage bucket name allocated for this setting.
+     * Note: Please make sure the cloudaicompanion service agent
+     * `service-&lt;PROJECT-NUMBER&gt;{@literal @}gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+     * has `storage.objects.get` and `storage.objects.create` permission to the
+     * Cloud Storage bucket.
+     * 
+     */
+    @Import(name="gcsBucket")
+    private @Nullable Output<String> gcsBucket;
+
+    /**
+     * @return The Cloud Storage bucket name allocated for this setting.
+     * Note: Please make sure the cloudaicompanion service agent
+     * `service-&lt;PROJECT-NUMBER&gt;{@literal @}gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+     * has `storage.objects.get` and `storage.objects.create` permission to the
+     * Cloud Storage bucket.
+     * 
+     */
+    public Optional<Output<String>> gcsBucket() {
+        return Optional.ofNullable(this.gcsBucket);
+    }
+
+    /**
      * The Gemini enterprise project for this setting.
      * Format: projects/{project}
      * The `{project}` segment can be the project ID or project number.
@@ -324,6 +347,7 @@ public final class GeminiGcpEnablementSettingState extends com.pulumi.resources.
         this.disableWebGrounding = $.disableWebGrounding;
         this.effectiveLabels = $.effectiveLabels;
         this.enableCustomerDataSharing = $.enableCustomerDataSharing;
+        this.gcsBucket = $.gcsBucket;
         this.geminiEnterpriseProject = $.geminiEnterpriseProject;
         this.geminiGcpEnablementSettingId = $.geminiGcpEnablementSettingId;
         this.hasCustomInstructions = $.hasCustomInstructions;
@@ -481,6 +505,35 @@ public final class GeminiGcpEnablementSettingState extends com.pulumi.resources.
          */
         public Builder enableCustomerDataSharing(Boolean enableCustomerDataSharing) {
             return enableCustomerDataSharing(Output.of(enableCustomerDataSharing));
+        }
+
+        /**
+         * @param gcsBucket The Cloud Storage bucket name allocated for this setting.
+         * Note: Please make sure the cloudaicompanion service agent
+         * `service-&lt;PROJECT-NUMBER&gt;{@literal @}gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+         * has `storage.objects.get` and `storage.objects.create` permission to the
+         * Cloud Storage bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsBucket(@Nullable Output<String> gcsBucket) {
+            $.gcsBucket = gcsBucket;
+            return this;
+        }
+
+        /**
+         * @param gcsBucket The Cloud Storage bucket name allocated for this setting.
+         * Note: Please make sure the cloudaicompanion service agent
+         * `service-&lt;PROJECT-NUMBER&gt;{@literal @}gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+         * has `storage.objects.get` and `storage.objects.create` permission to the
+         * Cloud Storage bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsBucket(String gcsBucket) {
+            return gcsBucket(Output.of(gcsBucket));
         }
 
         /**

@@ -9461,6 +9461,24 @@ type WorkloadIdentityPoolProviderOidc struct {
 	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 	// For example:
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
+	// The URL to fetch the OIDC discovery document from, overriding the default URL
+	// derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+	// with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+	// Discovery 1.0 specification.
+	// If set, `discoveryUri` must meet the following requirements:
+	// * Must start with `https://`.
+	// * Must not exceed 2000 characters.
+	// * The scheme, host, and port must match `issuerUri`.
+	// * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+	//   empty, such as `openid-configuration`) and conform to the `issuerUri`
+	//   topology:
+	// * The well-known path segment is inserted before the issuer path (for
+	//   example, `https://example.com/.well-known/openid-configuration/tenant1`
+	//   for issuer `https://example.com/tenant1`), or
+	// * The well-known path segment is appended under the issuer path (for
+	//   example, `https://example.com/tenant1/.well-known/openid-configuration`
+	//   for issuer `https://example.com/tenant1`).
+	DiscoveryUri *string `pulumi:"discoveryUri"`
 	// The OIDC issuer URL.
 	IssuerUri string `pulumi:"issuerUri"`
 	// OIDC JWKs in JSON String format. For details on definition of a
@@ -9492,6 +9510,24 @@ type WorkloadIdentityPoolProviderOidcArgs struct {
 	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 	// For example:
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
+	// The URL to fetch the OIDC discovery document from, overriding the default URL
+	// derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+	// with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+	// Discovery 1.0 specification.
+	// If set, `discoveryUri` must meet the following requirements:
+	// * Must start with `https://`.
+	// * Must not exceed 2000 characters.
+	// * The scheme, host, and port must match `issuerUri`.
+	// * The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+	//   empty, such as `openid-configuration`) and conform to the `issuerUri`
+	//   topology:
+	// * The well-known path segment is inserted before the issuer path (for
+	//   example, `https://example.com/.well-known/openid-configuration/tenant1`
+	//   for issuer `https://example.com/tenant1`), or
+	// * The well-known path segment is appended under the issuer path (for
+	//   example, `https://example.com/tenant1/.well-known/openid-configuration`
+	//   for issuer `https://example.com/tenant1`).
+	DiscoveryUri pulumi.StringPtrInput `pulumi:"discoveryUri"`
 	// The OIDC issuer URL.
 	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
 	// OIDC JWKs in JSON String format. For details on definition of a
@@ -9591,6 +9627,27 @@ func (o WorkloadIdentityPoolProviderOidcOutput) AllowedAudiences() pulumi.String
 	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
 }
 
+// The URL to fetch the OIDC discovery document from, overriding the default URL
+// derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+// with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+// Discovery 1.0 specification.
+// If set, `discoveryUri` must meet the following requirements:
+//   - Must start with `https://`.
+//   - Must not exceed 2000 characters.
+//   - The scheme, host, and port must match `issuerUri`.
+//   - The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+//     empty, such as `openid-configuration`) and conform to the `issuerUri`
+//     topology:
+//   - The well-known path segment is inserted before the issuer path (for
+//     example, `https://example.com/.well-known/openid-configuration/tenant1`
+//     for issuer `https://example.com/tenant1`), or
+//   - The well-known path segment is appended under the issuer path (for
+//     example, `https://example.com/tenant1/.well-known/openid-configuration`
+//     for issuer `https://example.com/tenant1`).
+func (o WorkloadIdentityPoolProviderOidcOutput) DiscoveryUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) *string { return v.DiscoveryUri }).(pulumi.StringPtrOutput)
+}
+
 // The OIDC issuer URL.
 func (o WorkloadIdentityPoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
@@ -9644,6 +9701,32 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) AllowedAudiences() pulumi.Str
 		}
 		return v.AllowedAudiences
 	}).(pulumi.StringArrayOutput)
+}
+
+// The URL to fetch the OIDC discovery document from, overriding the default URL
+// derived from `issuerUri`. If not set, `discoveryUri` defaults to `issuerUri`
+// with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+// Discovery 1.0 specification.
+// If set, `discoveryUri` must meet the following requirements:
+//   - Must start with `https://`.
+//   - Must not exceed 2000 characters.
+//   - The scheme, host, and port must match `issuerUri`.
+//   - The path must contain `/.well-known/<suffix>` (where `<suffix>` is not
+//     empty, such as `openid-configuration`) and conform to the `issuerUri`
+//     topology:
+//   - The well-known path segment is inserted before the issuer path (for
+//     example, `https://example.com/.well-known/openid-configuration/tenant1`
+//     for issuer `https://example.com/tenant1`), or
+//   - The well-known path segment is appended under the issuer path (for
+//     example, `https://example.com/tenant1/.well-known/openid-configuration`
+//     for issuer `https://example.com/tenant1`).
+func (o WorkloadIdentityPoolProviderOidcPtrOutput) DiscoveryUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUri
+	}).(pulumi.StringPtrOutput)
 }
 
 // The OIDC issuer URL.
@@ -11550,6 +11633,25 @@ type GetWorkloadIdentityPoolProviderOidc struct {
 	// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
 	// '''
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
+	// The URL to fetch the OIDC discovery document from, overriding the default URL
+	// derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+	// with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+	// Discovery 1.0 specification.
+	//
+	// If set, 'discovery_uri' must meet the following requirements:
+	//   * Must start with 'https://'.
+	//   * Must not exceed 2000 characters.
+	//   * The scheme, host, and port must match 'issuer_uri'.
+	//   * The path must contain '/.well-known/<suffix>' (where '<suffix>' is not
+	//     empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+	//     topology:
+	//     * The well-known path segment is inserted before the issuer path (for
+	//       example, 'https://example.com/.well-known/openid-configuration/tenant1'
+	//       for issuer 'https://example.com/tenant1'), or
+	//     * The well-known path segment is appended under the issuer path (for
+	//       example, 'https://example.com/tenant1/.well-known/openid-configuration'
+	//       for issuer 'https://example.com/tenant1').
+	DiscoveryUri string `pulumi:"discoveryUri"`
 	// The OIDC issuer URL.
 	IssuerUri string `pulumi:"issuerUri"`
 	// OIDC JWKs in JSON String format. For details on definition of a
@@ -11603,6 +11705,25 @@ type GetWorkloadIdentityPoolProviderOidcArgs struct {
 	// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
 	// '''
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
+	// The URL to fetch the OIDC discovery document from, overriding the default URL
+	// derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+	// with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+	// Discovery 1.0 specification.
+	//
+	// If set, 'discovery_uri' must meet the following requirements:
+	//   * Must start with 'https://'.
+	//   * Must not exceed 2000 characters.
+	//   * The scheme, host, and port must match 'issuer_uri'.
+	//   * The path must contain '/.well-known/<suffix>' (where '<suffix>' is not
+	//     empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+	//     topology:
+	//     * The well-known path segment is inserted before the issuer path (for
+	//       example, 'https://example.com/.well-known/openid-configuration/tenant1'
+	//       for issuer 'https://example.com/tenant1'), or
+	//     * The well-known path segment is appended under the issuer path (for
+	//       example, 'https://example.com/tenant1/.well-known/openid-configuration'
+	//       for issuer 'https://example.com/tenant1').
+	DiscoveryUri pulumi.StringInput `pulumi:"discoveryUri"`
 	// The OIDC issuer URL.
 	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
 	// OIDC JWKs in JSON String format. For details on definition of a
@@ -11696,6 +11817,28 @@ func (o GetWorkloadIdentityPoolProviderOidcOutput) ToGetWorkloadIdentityPoolProv
 // ”'
 func (o GetWorkloadIdentityPoolProviderOidcOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderOidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
+}
+
+// The URL to fetch the OIDC discovery document from, overriding the default URL
+// derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+// with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+// Discovery 1.0 specification.
+//
+// If set, 'discovery_uri' must meet the following requirements:
+//   - Must start with 'https://'.
+//   - Must not exceed 2000 characters.
+//   - The scheme, host, and port must match 'issuer_uri'.
+//   - The path must contain '/.well-known/<suffix>' (where '<suffix>' is not
+//     empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+//     topology:
+//   - The well-known path segment is inserted before the issuer path (for
+//     example, 'https://example.com/.well-known/openid-configuration/tenant1'
+//     for issuer 'https://example.com/tenant1'), or
+//   - The well-known path segment is appended under the issuer path (for
+//     example, 'https://example.com/tenant1/.well-known/openid-configuration'
+//     for issuer 'https://example.com/tenant1').
+func (o GetWorkloadIdentityPoolProviderOidcOutput) DiscoveryUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderOidc) string { return v.DiscoveryUri }).(pulumi.StringOutput)
 }
 
 // The OIDC issuer URL.

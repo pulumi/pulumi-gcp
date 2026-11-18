@@ -64,6 +64,7 @@ class UserArgs:
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
                or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
                and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+        :param pulumi.Input['UserPasswordPolicyArgs'] password_policy: The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password for the user. Can be updated. For Postgres
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
@@ -202,6 +203,9 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> pulumi.Input[Optional['UserPasswordPolicyArgs']]:
+        """
+        The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+        """
         return pulumi.get(self, "password_policy")
 
     @password_policy.setter
@@ -319,6 +323,7 @@ class _UserState:
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
                or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
                and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+        :param pulumi.Input['UserPasswordPolicyArgs'] password_policy: The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password for the user. Can be updated. For Postgres
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
@@ -329,6 +334,7 @@ class _UserState:
         :param pulumi.Input[_builtins.int] password_wo_version: An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]] sql_server_user_details: (read only) SQL Server specific user details. Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The user type. It determines the method to authenticate the
                user during login. The default is the database's built-in user type. Flags
                include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_SERVICE_ACCOUNT", "CLOUD_IAM_GROUP",
@@ -474,6 +480,9 @@ class _UserState:
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> pulumi.Input[Optional['UserPasswordPolicyArgs']]:
+        """
+        The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+        """
         return pulumi.get(self, "password_policy")
 
     @password_policy.setter
@@ -526,6 +535,9 @@ class _UserState:
     @_builtins.property
     @pulumi.getter(name="sqlServerUserDetails")
     def sql_server_user_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]:
+        """
+        (read only) SQL Server specific user details. Structure is documented below.
+        """
         return pulumi.get(self, "sql_server_user_details")
 
     @sql_server_user_details.setter
@@ -733,6 +745,7 @@ class User(pulumi.CustomResource):
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
                or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
                and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+        :param pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict', 'outputs.UserPasswordPolicy']] password_policy: The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password for the user. Can be updated. For Postgres
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
@@ -1002,6 +1015,7 @@ class User(pulumi.CustomResource):
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
                or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
                and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+        :param pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict', 'outputs.UserPasswordPolicy']] password_policy: The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password for the user. Can be updated. For Postgres
                instances this is a Required field, unless type is set to either CLOUD_IAM_USER
@@ -1012,6 +1026,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] password_wo_version: An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserSqlServerUserDetailArgs', 'UserSqlServerUserDetailArgsDict', 'outputs.UserSqlServerUserDetail']]]] sql_server_user_details: (read only) SQL Server specific user details. Structure is documented below.
         :param pulumi.Input[_builtins.str] type: The user type. It determines the method to authenticate the
                user during login. The default is the database's built-in user type. Flags
                include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_SERVICE_ACCOUNT", "CLOUD_IAM_GROUP",
@@ -1153,6 +1168,9 @@ class User(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> pulumi.Output[Optional['outputs.UserPasswordPolicy']]:
+        """
+        The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+        """
         return pulumi.get(self, "password_policy")
 
     @_builtins.property
@@ -1189,6 +1207,9 @@ class User(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="sqlServerUserDetails")
     def sql_server_user_details(self) -> pulumi.Output[Sequence['outputs.UserSqlServerUserDetail']]:
+        """
+        (read only) SQL Server specific user details. Structure is documented below.
+        """
         return pulumi.get(self, "sql_server_user_details")
 
     @_builtins.property

@@ -60,6 +60,7 @@ export interface GetWorkloadIdentityPoolProviderArgs {
  * A collection of values returned by getWorkloadIdentityPoolProvider.
  */
 export interface GetWorkloadIdentityPoolProviderResult {
+    readonly actorProviders: string[];
     readonly attributeCondition: string;
     readonly attributeMapping: {[key: string]: string};
     readonly aws: outputs.iam.GetWorkloadIdentityPoolProviderAw[];

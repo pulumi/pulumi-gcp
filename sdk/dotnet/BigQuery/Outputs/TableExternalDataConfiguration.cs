@@ -40,8 +40,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
         /// 
         /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-        /// table schema must be specified using the top-level `Schema` field
-        /// documented above.
+        /// table schema must be specified using the top-level `Schema` field.
         /// </summary>
         public readonly string? ConnectionId;
         /// <summary>
@@ -138,8 +137,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// `google_bigquery_table.schema`
         /// 
         /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-        /// table schema must be specified using the top-level `Schema` field
-        /// documented above.
+        /// table schema must be specified using the top-level `Schema` field.
         /// </summary>
         public readonly string? Schema;
         /// <summary>

@@ -40,6 +40,25 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     * 
+     */
+    @Import(name="backendService")
+    private @Nullable Output<String> backendService;
+
+    /**
+     * @return Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     * 
+     */
+    public Optional<Output<String>> backendService() {
+        return Optional.ofNullable(this.backendService);
+    }
+
+    /**
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      * 
      */
@@ -262,6 +281,25 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
     }
 
     /**
+     * IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     * 
+     */
+    @Import(name="ipAddresses")
+    private @Nullable Output<List<String>> ipAddresses;
+
+    /**
+     * @return IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     * 
+     */
+    public Optional<Output<List<String>>> ipAddresses() {
+        return Optional.ofNullable(this.ipAddresses);
+    }
+
+    /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
      * options are `TCP`, `UDP`, `ESP`,
@@ -352,7 +390,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -363,7 +401,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -747,6 +785,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
 
     private GlobalForwardingRuleState(GlobalForwardingRuleState $) {
         this.allowPscGlobalAccess = $.allowPscGlobalAccess;
+        this.backendService = $.backendService;
         this.baseForwardingRule = $.baseForwardingRule;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
@@ -755,6 +794,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         this.externalManagedBackendBucketMigrationTestingPercentage = $.externalManagedBackendBucketMigrationTestingPercentage;
         this.forwardingRuleId = $.forwardingRuleId;
         this.ipAddress = $.ipAddress;
+        this.ipAddresses = $.ipAddresses;
         this.ipProtocol = $.ipProtocol;
         this.ipVersion = $.ipVersion;
         this.labelFingerprint = $.labelFingerprint;
@@ -816,6 +856,31 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          */
         public Builder allowPscGlobalAccess(Boolean allowPscGlobalAccess) {
             return allowPscGlobalAccess(Output.of(allowPscGlobalAccess));
+        }
+
+        /**
+         * @param backendService Identifies the backend service to which the forwarding rule sends traffic.
+         * Required for Global External Passthrough Network Load Balancing;
+         * must be omitted for all other load balancer types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendService(@Nullable Output<String> backendService) {
+            $.backendService = backendService;
+            return this;
+        }
+
+        /**
+         * @param backendService Identifies the backend service to which the forwarding rule sends traffic.
+         * Required for Global External Passthrough Network Load Balancing;
+         * must be omitted for all other load balancer types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendService(String backendService) {
+            return backendService(Output.of(backendService));
         }
 
         /**
@@ -1089,6 +1154,43 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param ipAddresses IP addresses for which this forwarding rule accepts traffic, ordered by
+         * Availability Group 0 followed by Availability Group 1. Specify literal
+         * IP addresses (for example, `google_compute_global_address.example.address`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddresses(@Nullable Output<List<String>> ipAddresses) {
+            $.ipAddresses = ipAddresses;
+            return this;
+        }
+
+        /**
+         * @param ipAddresses IP addresses for which this forwarding rule accepts traffic, ordered by
+         * Availability Group 0 followed by Availability Group 1. Specify literal
+         * IP addresses (for example, `google_compute_global_address.example.address`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddresses(List<String> ipAddresses) {
+            return ipAddresses(Output.of(ipAddresses));
+        }
+
+        /**
+         * @param ipAddresses IP addresses for which this forwarding rule accepts traffic, ordered by
+         * Availability Group 0 followed by Availability Group 1. Specify literal
+         * IP addresses (for example, `google_compute_global_address.example.address`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddresses(String... ipAddresses) {
+            return ipAddresses(List.of(ipAddresses));
+        }
+
+        /**
          * @param ipProtocol The IP protocol to which this rule applies.
          * For protocol forwarding, valid
          * options are `TCP`, `UDP`, `ESP`,
@@ -1203,7 +1305,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
          * Default value is `EXTERNAL_MANAGED`.
-         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
          * 
          * @return builder
          * 
@@ -1218,7 +1320,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
          * Default value is `EXTERNAL_MANAGED`.
-         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
          * 
          * @return builder
          * 

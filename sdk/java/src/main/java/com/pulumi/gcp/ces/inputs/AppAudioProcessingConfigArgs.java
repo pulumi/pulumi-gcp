@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigAmbientSoundConfigArgs;
 import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigBargeInConfigArgs;
+import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigCustomVoiceSampleArgs;
 import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigSynthesizeSpeechConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -53,6 +54,23 @@ public final class AppAudioProcessingConfigArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<AppAudioProcessingConfigBargeInConfigArgs>> bargeInConfig() {
         return Optional.ofNullable(this.bargeInConfig);
+    }
+
+    /**
+     * Configures custom voice samples for voice cloning.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customVoiceSamples")
+    private @Nullable Output<List<AppAudioProcessingConfigCustomVoiceSampleArgs>> customVoiceSamples;
+
+    /**
+     * @return Configures custom voice samples for voice cloning.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppAudioProcessingConfigCustomVoiceSampleArgs>>> customVoiceSamples() {
+        return Optional.ofNullable(this.customVoiceSamples);
     }
 
     /**
@@ -108,6 +126,7 @@ public final class AppAudioProcessingConfigArgs extends com.pulumi.resources.Res
     private AppAudioProcessingConfigArgs(AppAudioProcessingConfigArgs $) {
         this.ambientSoundConfig = $.ambientSoundConfig;
         this.bargeInConfig = $.bargeInConfig;
+        this.customVoiceSamples = $.customVoiceSamples;
         this.inactivityTimeout = $.inactivityTimeout;
         this.synthesizeSpeechConfigs = $.synthesizeSpeechConfigs;
     }
@@ -176,6 +195,40 @@ public final class AppAudioProcessingConfigArgs extends com.pulumi.resources.Res
          */
         public Builder bargeInConfig(AppAudioProcessingConfigBargeInConfigArgs bargeInConfig) {
             return bargeInConfig(Output.of(bargeInConfig));
+        }
+
+        /**
+         * @param customVoiceSamples Configures custom voice samples for voice cloning.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customVoiceSamples(@Nullable Output<List<AppAudioProcessingConfigCustomVoiceSampleArgs>> customVoiceSamples) {
+            $.customVoiceSamples = customVoiceSamples;
+            return this;
+        }
+
+        /**
+         * @param customVoiceSamples Configures custom voice samples for voice cloning.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customVoiceSamples(List<AppAudioProcessingConfigCustomVoiceSampleArgs> customVoiceSamples) {
+            return customVoiceSamples(Output.of(customVoiceSamples));
+        }
+
+        /**
+         * @param customVoiceSamples Configures custom voice samples for voice cloning.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customVoiceSamples(AppAudioProcessingConfigCustomVoiceSampleArgs... customVoiceSamples) {
+            return customVoiceSamples(List.of(customVoiceSamples));
         }
 
         /**

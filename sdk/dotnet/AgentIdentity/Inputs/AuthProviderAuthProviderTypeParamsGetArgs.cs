@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.AgentIdentity.Inputs
         [Input("apiKey")]
         public Input<Inputs.AuthProviderAuthProviderTypeParamsApiKeyGetArgs>? ApiKey { get; set; }
 
+        /// <summary>
+        /// Parameters for Connector Reference authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectorReferenceAuthProvider")]
+        public Input<Inputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderGetArgs>? ConnectorReferenceAuthProvider { get; set; }
+
         [Input("geAuthProviders")]
         private InputList<Inputs.AuthProviderAuthProviderTypeParamsGeAuthProviderGetArgs>? _geAuthProviders;
 
@@ -46,6 +53,13 @@ namespace Pulumi.Gcp.AgentIdentity.Inputs
         /// </summary>
         [Input("twoLeggedOauth")]
         public Input<Inputs.AuthProviderAuthProviderTypeParamsTwoLeggedOauthGetArgs>? TwoLeggedOauth { get; set; }
+
+        /// <summary>
+        /// Parameters for Cross-App Access authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("xaaAuthProvider")]
+        public Input<Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderGetArgs>? XaaAuthProvider { get; set; }
 
         public AuthProviderAuthProviderTypeParamsGetArgs()
         {

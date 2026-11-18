@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class UserSqlServerUserDetail {
     /**
-     * @return If the user has been disabled.
+     * @return (read only) If the user has been disabled.
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return The server roles for this user in the database.
+     * @return (read only) The server roles for this user in the database.
      * 
      */
     private @Nullable List<String> serverRoles;
 
     private UserSqlServerUserDetail() {}
     /**
-     * @return If the user has been disabled.
+     * @return (read only) If the user has been disabled.
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return The server roles for this user in the database.
+     * @return (read only) The server roles for this user in the database.
      * 
      */
     public List<String> serverRoles() {

@@ -201,6 +201,9 @@ namespace Pulumi.Gcp.ServiceAccount
     /// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// 
+    /// In the import IDs and resource identity below, `ServiceAccountId` may also use the unique ID form. Use the same form as your configuration;
+    /// changing `ServiceAccountId` between forms replaces the resource.
+    /// 
     /// ### Importing with conditions:
     /// 
     /// Here are examples of importing IAM memberships and bindings that include conditions:
@@ -249,7 +252,9 @@ namespace Pulumi.Gcp.ServiceAccount
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// The fully-qualified name of the service account to apply policy to.
+        /// The fully-qualified name of the service account to apply policy to,
+        /// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+        /// Unlike an email, a unique ID never refers to a later account recreated with the same email.
         /// </summary>
         [Output("serviceAccountId")]
         public Output<string> ServiceAccountId { get; private set; } = null!;
@@ -339,7 +344,9 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// The fully-qualified name of the service account to apply policy to.
+        /// The fully-qualified name of the service account to apply policy to,
+        /// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+        /// Unlike an email, a unique ID never refers to a later account recreated with the same email.
         /// </summary>
         [Input("serviceAccountId", required: true)]
         public Input<string> ServiceAccountId { get; set; } = null!;
@@ -393,7 +400,9 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// The fully-qualified name of the service account to apply policy to.
+        /// The fully-qualified name of the service account to apply policy to,
+        /// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+        /// Unlike an email, a unique ID never refers to a later account recreated with the same email.
         /// </summary>
         [Input("serviceAccountId")]
         public Input<string>? ServiceAccountId { get; set; }

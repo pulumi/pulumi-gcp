@@ -12,16 +12,11 @@ namespace Pulumi.Gcp.CloudIdentity
     /// <summary>
     /// A Cloud Identity Policy binds a Setting to a PolicyQuery for a Google Workspace / Cloud Identity customer.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about Policy, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/policies)
+    /// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/policies)
     /// * How-to Guides
     ///     * [Policy API overview](https://docs.cloud.google.com/identity/docs/concepts/overview-policies)
-    /// 
-    /// &gt; **Note:** This is available only in beta
     /// 
     /// ## Example Usage
     /// 
@@ -38,19 +33,26 @@ namespace Pulumi.Gcp.CloudIdentity
     /// {
     ///     var primary = new Gcp.CloudIdentity.Policy("primary", new()
     ///     {
-    ///         Customer = "customers/C01234567",
+    ///         Customer = "customers/A01b123xz",
     ///         PolicyQuery = new Gcp.CloudIdentity.Inputs.PolicyPolicyQueryArgs
     ///         {
     ///             OrgUnit = "orgUnits/03abcxyz",
-    ///             Group = "groups/0123456789",
-    ///             Query = "true",
     ///         },
     ///         Setting = new Gcp.CloudIdentity.Inputs.PolicySettingArgs
     ///         {
-    ///             Type = "something.googleapis.com/SettingType",
+    ///             Type = "settings/detector.word_list",
     ///             ValueJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 ["enabled"] = true,
+    ///                 ["displayName"] = "Project Sensitive Terms",
+    ///                 ["description"] = "Detector for project-specific confidential keywords.",
+    ///                 ["wordList"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["words"] = new[]
+    ///                     {
+    ///                         "confidential",
+    ///                         "top-secret",
+    ///                     },
+    ///                 },
     ///             }),
     ///         },
     ///     });

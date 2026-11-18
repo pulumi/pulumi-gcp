@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,37 @@ import javax.annotation.Nullable;
 public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionPerInstanceConfigArgs Empty = new RegionPerInstanceConfigArgs();
+
+    /**
+     * Beta The list of allowed actions to perform on the instance during an update.
+     * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+     * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * Possible values are:
+     * * REPLACE
+     * * RESTART
+     * * RESTART_IN_PLACE
+     * * REFRESH
+     * * NONE
+     * 
+     */
+    @Import(name="allowedActions")
+    private @Nullable Output<List<String>> allowedActions;
+
+    /**
+     * @return Beta The list of allowed actions to perform on the instance during an update.
+     * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+     * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * Possible values are:
+     * * REPLACE
+     * * RESTART
+     * * RESTART_IN_PLACE
+     * * REFRESH
+     * * NONE
+     * 
+     */
+    public Optional<Output<List<String>>> allowedActions() {
+        return Optional.ofNullable(this.allowedActions);
+    }
 
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -211,6 +243,7 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
     private RegionPerInstanceConfigArgs() {}
 
     private RegionPerInstanceConfigArgs(RegionPerInstanceConfigArgs $) {
+        this.allowedActions = $.allowedActions;
         this.deletionPolicy = $.deletionPolicy;
         this.minimalAction = $.minimalAction;
         this.mostDisruptiveAllowedAction = $.mostDisruptiveAllowedAction;
@@ -239,6 +272,61 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
 
         public Builder(RegionPerInstanceConfigArgs defaults) {
             $ = new RegionPerInstanceConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedActions Beta The list of allowed actions to perform on the instance during an update.
+         * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+         * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         * Possible values are:
+         * * REPLACE
+         * * RESTART
+         * * RESTART_IN_PLACE
+         * * REFRESH
+         * * NONE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedActions(@Nullable Output<List<String>> allowedActions) {
+            $.allowedActions = allowedActions;
+            return this;
+        }
+
+        /**
+         * @param allowedActions Beta The list of allowed actions to perform on the instance during an update.
+         * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+         * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         * Possible values are:
+         * * REPLACE
+         * * RESTART
+         * * RESTART_IN_PLACE
+         * * REFRESH
+         * * NONE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedActions(List<String> allowedActions) {
+            return allowedActions(Output.of(allowedActions));
+        }
+
+        /**
+         * @param allowedActions Beta The list of allowed actions to perform on the instance during an update.
+         * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+         * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         * Possible values are:
+         * * REPLACE
+         * * RESTART
+         * * RESTART_IN_PLACE
+         * * REFRESH
+         * * NONE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedActions(String... allowedActions) {
+            return allowedActions(List.of(allowedActions));
         }
 
         /**

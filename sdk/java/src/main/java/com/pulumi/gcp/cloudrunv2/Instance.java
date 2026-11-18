@@ -13,6 +13,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.InstanceState;
 import com.pulumi.gcp.cloudrunv2.outputs.InstanceCondition;
 import com.pulumi.gcp.cloudrunv2.outputs.InstanceContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.InstanceContainerStatus;
+import com.pulumi.gcp.cloudrunv2.outputs.InstanceSandboxes;
 import com.pulumi.gcp.cloudrunv2.outputs.InstanceTerminalCondition;
 import com.pulumi.gcp.cloudrunv2.outputs.InstanceVolume;
 import java.lang.Boolean;
@@ -627,6 +628,54 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Cloudrunv2 Instance Sandbox Templates
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Instance;
+ * import com.pulumi.gcp.cloudrunv2.InstanceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.InstanceContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.InstanceSandboxesArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.InstanceSandboxesTemplateArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .name("cloudrun-instance")
+ *             .location("us-west4")
+ *             .launchStage("BETA")
+ *             .containers(InstanceContainerArgs.builder()
+ *                 .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                 .sandboxLauncher(true)
+ *                 .build())
+ *             .sandboxes(InstanceSandboxesArgs.builder()
+ *                 .templates(InstanceSandboxesTemplateArgs.builder()
+ *                     .name("hello")
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Instance can be imported using any of these accepted formats:
@@ -1143,6 +1192,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> restartPolicy() {
         return this.restartPolicy;
+    }
+    /**
+     * Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sandboxes", refs={InstanceSandboxes.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceSandboxes> sandboxes;
+
+    /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceSandboxes>> sandboxes() {
+        return Codegen.optional(this.sandboxes);
     }
     /**
      * Reserved for future use. True if this service satisfies zone separation.

@@ -517,6 +517,9 @@ class AiCustomJob(pulumi.CustomResource):
                 "env": "test",
             },
             job_spec={
+                "persistent_resource_id": "example-persistent-resource",
+                "experiment": "example-experiment",
+                "experiment_run": "example-experiment-run",
                 "worker_pool_specs": [{
                     "replica_count": 1,
                     "machine_spec": {
@@ -527,7 +530,7 @@ class AiCustomJob(pulumi.CustomResource):
                         "boot_disk_size_gb": 100,
                     },
                     "container_spec": {
-                        "image_uri": "us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-8.py310:latest",
+                        "image_uri": "us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-12.py310:latest",
                         "commands": [
                             "echo",
                             "test",
@@ -547,6 +550,34 @@ class AiCustomJob(pulumi.CustomResource):
                 "base_output_directory": {
                     "output_uri_prefix": job_bucket.name.apply(lambda name: f"gs://{name}/custom-job-output"),
                 },
+            })
+        ```
+
+        ### Vertex Ai Custom Job Models
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_job = gcp.vertex.AiCustomJob("custom_job",
+            display_name="example-custom-job-models",
+            region="us-central1",
+            job_spec={
+                "protected_artifact_location_id": "us-central1",
+                "models": ["example-model"],
+                "worker_pool_specs": [{
+                    "replica_count": 1,
+                    "machine_spec": {
+                        "machine_type": "n1-standard-4",
+                    },
+                    "disk_spec": {
+                        "boot_disk_type": "pd-ssd",
+                        "boot_disk_size_gb": 100,
+                    },
+                    "container_spec": {
+                        "image_uri": "us-docker.pkg.dev/vertex-ai-restricted/llm/llm-pets-cpu:latest",
+                    },
+                }],
             })
         ```
 
@@ -585,6 +616,7 @@ class AiCustomJob(pulumi.CustomResource):
             job_spec={
                 "service_account": custom_job_sa.email,
                 "tensorboard": tensorboard.id,
+                "experiment": "example-experiment",
                 "enable_web_access": True,
                 "enable_dashboard_access": True,
                 "base_output_directory": {
@@ -777,6 +809,9 @@ class AiCustomJob(pulumi.CustomResource):
                 "env": "test",
             },
             job_spec={
+                "persistent_resource_id": "example-persistent-resource",
+                "experiment": "example-experiment",
+                "experiment_run": "example-experiment-run",
                 "worker_pool_specs": [{
                     "replica_count": 1,
                     "machine_spec": {
@@ -787,7 +822,7 @@ class AiCustomJob(pulumi.CustomResource):
                         "boot_disk_size_gb": 100,
                     },
                     "container_spec": {
-                        "image_uri": "us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-8.py310:latest",
+                        "image_uri": "us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-12.py310:latest",
                         "commands": [
                             "echo",
                             "test",
@@ -807,6 +842,34 @@ class AiCustomJob(pulumi.CustomResource):
                 "base_output_directory": {
                     "output_uri_prefix": job_bucket.name.apply(lambda name: f"gs://{name}/custom-job-output"),
                 },
+            })
+        ```
+
+        ### Vertex Ai Custom Job Models
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_job = gcp.vertex.AiCustomJob("custom_job",
+            display_name="example-custom-job-models",
+            region="us-central1",
+            job_spec={
+                "protected_artifact_location_id": "us-central1",
+                "models": ["example-model"],
+                "worker_pool_specs": [{
+                    "replica_count": 1,
+                    "machine_spec": {
+                        "machine_type": "n1-standard-4",
+                    },
+                    "disk_spec": {
+                        "boot_disk_type": "pd-ssd",
+                        "boot_disk_size_gb": 100,
+                    },
+                    "container_spec": {
+                        "image_uri": "us-docker.pkg.dev/vertex-ai-restricted/llm/llm-pets-cpu:latest",
+                    },
+                }],
             })
         ```
 
@@ -845,6 +908,7 @@ class AiCustomJob(pulumi.CustomResource):
             job_spec={
                 "service_account": custom_job_sa.email,
                 "tensorboard": tensorboard.id,
+                "experiment": "example-experiment",
                 "enable_web_access": True,
                 "enable_dashboard_access": True,
                 "base_output_directory": {

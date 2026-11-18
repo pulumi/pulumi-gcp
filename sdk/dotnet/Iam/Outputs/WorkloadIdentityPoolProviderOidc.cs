@@ -28,6 +28,26 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedAudiences;
         /// <summary>
+        /// The URL to fetch the OIDC discovery document from, overriding the default URL
+        /// derived from `IssuerUri`. If not set, `DiscoveryUri` defaults to `IssuerUri`
+        /// with `/.well-known/openid-configuration` appended, as per the OpenID Connect
+        /// Discovery 1.0 specification.
+        /// If set, `DiscoveryUri` must meet the following requirements:
+        /// * Must start with `https://`.
+        /// * Must not exceed 2000 characters.
+        /// * The scheme, host, and port must match `IssuerUri`.
+        /// * The path must contain `/.well-known/&lt;suffix&gt;` (where `&lt;suffix&gt;` is not
+        ///   empty, such as `openid-configuration`) and conform to the `IssuerUri`
+        ///   topology:
+        /// * The well-known path segment is inserted before the issuer path (for
+        ///   example, `https://example.com/.well-known/openid-configuration/tenant1`
+        ///   for issuer `https://example.com/tenant1`), or
+        /// * The well-known path segment is appended under the issuer path (for
+        ///   example, `https://example.com/tenant1/.well-known/openid-configuration`
+        ///   for issuer `https://example.com/tenant1`).
+        /// </summary>
+        public readonly string? DiscoveryUri;
+        /// <summary>
         /// The OIDC issuer URL.
         /// </summary>
         public readonly string IssuerUri;
@@ -62,11 +82,14 @@ namespace Pulumi.Gcp.Iam.Outputs
         private WorkloadIdentityPoolProviderOidc(
             ImmutableArray<string> allowedAudiences,
 
+            string? discoveryUri,
+
             string issuerUri,
 
             string? jwksJson)
         {
             AllowedAudiences = allowedAudiences;
+            DiscoveryUri = discoveryUri;
             IssuerUri = issuerUri;
             JwksJson = jwksJson;
         }

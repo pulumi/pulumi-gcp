@@ -4,8 +4,11 @@
 package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.firebase.outputs.AppHostingTrafficRolloutPolicyIgnoredPath;
+import com.pulumi.gcp.firebase.outputs.AppHostingTrafficRolloutPolicyRequiredPath;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +32,25 @@ public final class AppHostingTrafficRolloutPolicy {
      * 
      */
     private @Nullable String disabledTime;
+    /**
+     * @return A list of file paths patterns to exclude from triggering a rollout.
+     * Patterns in this list take precedence over required_paths.
+     * **Note**: All paths must be in the ignoredPaths in order for the
+     * rollout to be skipped. Limited to 100 paths.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppHostingTrafficRolloutPolicyIgnoredPath> ignoredPaths;
+    /**
+     * @return A list of file paths patterns that trigger a build and rollout
+     * if at least one of the changed files in the commit are present in
+     * this list. This field is optional; the rollout policy will default to
+     * triggering on all paths if both ignoredPaths and requiredPaths are
+     * not populated. Limited to 100 paths.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AppHostingTrafficRolloutPolicyRequiredPath> requiredPaths;
 
     private AppHostingTrafficRolloutPolicy() {}
     /**
@@ -54,6 +76,29 @@ public final class AppHostingTrafficRolloutPolicy {
     public Optional<String> disabledTime() {
         return Optional.ofNullable(this.disabledTime);
     }
+    /**
+     * @return A list of file paths patterns to exclude from triggering a rollout.
+     * Patterns in this list take precedence over required_paths.
+     * **Note**: All paths must be in the ignoredPaths in order for the
+     * rollout to be skipped. Limited to 100 paths.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppHostingTrafficRolloutPolicyIgnoredPath> ignoredPaths() {
+        return this.ignoredPaths == null ? List.of() : this.ignoredPaths;
+    }
+    /**
+     * @return A list of file paths patterns that trigger a build and rollout
+     * if at least one of the changed files in the commit are present in
+     * this list. This field is optional; the rollout policy will default to
+     * triggering on all paths if both ignoredPaths and requiredPaths are
+     * not populated. Limited to 100 paths.
+     * Structure is documented below.
+     * 
+     */
+    public List<AppHostingTrafficRolloutPolicyRequiredPath> requiredPaths() {
+        return this.requiredPaths == null ? List.of() : this.requiredPaths;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,12 +112,16 @@ public final class AppHostingTrafficRolloutPolicy {
         private @Nullable String codebaseBranch;
         private @Nullable Boolean disabled;
         private @Nullable String disabledTime;
+        private @Nullable List<AppHostingTrafficRolloutPolicyIgnoredPath> ignoredPaths;
+        private @Nullable List<AppHostingTrafficRolloutPolicyRequiredPath> requiredPaths;
         public Builder() {}
         public Builder(AppHostingTrafficRolloutPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.codebaseBranch = defaults.codebaseBranch;
     	      this.disabled = defaults.disabled;
     	      this.disabledTime = defaults.disabledTime;
+    	      this.ignoredPaths = defaults.ignoredPaths;
+    	      this.requiredPaths = defaults.requiredPaths;
         }
 
         @CustomType.Setter
@@ -93,11 +142,31 @@ public final class AppHostingTrafficRolloutPolicy {
             this.disabledTime = disabledTime;
             return this;
         }
+        @CustomType.Setter
+        public Builder ignoredPaths(@Nullable List<AppHostingTrafficRolloutPolicyIgnoredPath> ignoredPaths) {
+
+            this.ignoredPaths = ignoredPaths;
+            return this;
+        }
+        public Builder ignoredPaths(AppHostingTrafficRolloutPolicyIgnoredPath... ignoredPaths) {
+            return ignoredPaths(List.of(ignoredPaths));
+        }
+        @CustomType.Setter
+        public Builder requiredPaths(@Nullable List<AppHostingTrafficRolloutPolicyRequiredPath> requiredPaths) {
+
+            this.requiredPaths = requiredPaths;
+            return this;
+        }
+        public Builder requiredPaths(AppHostingTrafficRolloutPolicyRequiredPath... requiredPaths) {
+            return requiredPaths(List.of(requiredPaths));
+        }
         public AppHostingTrafficRolloutPolicy build() {
             final var _resultValue = new AppHostingTrafficRolloutPolicy();
             _resultValue.codebaseBranch = codebaseBranch;
             _resultValue.disabled = disabled;
             _resultValue.disabledTime = disabledTime;
+            _resultValue.ignoredPaths = ignoredPaths;
+            _resultValue.requiredPaths = requiredPaths;
             return _resultValue;
         }
     }

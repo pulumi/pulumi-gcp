@@ -29,6 +29,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Password expiration duration with one week grace period.
         /// </summary>
         public readonly string? PasswordExpirationDuration;
+        /// <summary>
+        /// The password status of the user. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserPasswordPolicyStatus> Statuses;
 
         [OutputConstructor]

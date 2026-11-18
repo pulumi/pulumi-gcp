@@ -119,22 +119,6 @@ type Table struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced a field data type (`STRUCT` with
-	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-	// the recurring diff this causes. As a workaround, we recommend using the
-	// schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -217,6 +201,20 @@ type Table struct {
 	// for more details.
 	ResourceTags pulumi.StringMapOutput `pulumi:"resourceTags"`
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced a field data type (`STRUCT` with
+	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+	// the recurring diff this causes. As a workaround, we recommend using the
+	// schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
 	Schema pulumi.StringOutput `pulumi:"schema"`
 	// Specifies metadata of the foreign data
 	// type definition in field schema. Structure is documented below.
@@ -229,7 +227,10 @@ type Table struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringOutput `pulumi:"tableId"`
-	// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+	// Specifies the view that determines which
+	// table information is returned. By default, basic table information and
+	// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+	// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
 	TableMetadataView pulumi.StringPtrOutput `pulumi:"tableMetadataView"`
 	// Replication info of a table created
 	// using "AS REPLICA" DDL like:
@@ -304,22 +305,6 @@ type tableState struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced a field data type (`STRUCT` with
-	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-	// the recurring diff this causes. As a workaround, we recommend using the
-	// schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -402,6 +387,20 @@ type tableState struct {
 	// for more details.
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced a field data type (`STRUCT` with
+	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+	// the recurring diff this causes. As a workaround, we recommend using the
+	// schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
 	Schema *string `pulumi:"schema"`
 	// Specifies metadata of the foreign data
 	// type definition in field schema. Structure is documented below.
@@ -414,7 +413,10 @@ type tableState struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId *string `pulumi:"tableId"`
-	// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+	// Specifies the view that determines which
+	// table information is returned. By default, basic table information and
+	// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+	// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
 	TableMetadataView *string `pulumi:"tableMetadataView"`
 	// Replication info of a table created
 	// using "AS REPLICA" DDL like:
@@ -449,22 +451,6 @@ type TableState struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced a field data type (`STRUCT` with
-	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-	// the recurring diff this causes. As a workaround, we recommend using the
-	// schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
 	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -547,6 +533,20 @@ type TableState struct {
 	// for more details.
 	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced a field data type (`STRUCT` with
+	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+	// the recurring diff this causes. As a workaround, we recommend using the
+	// schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
 	Schema pulumi.StringPtrInput
 	// Specifies metadata of the foreign data
 	// type definition in field schema. Structure is documented below.
@@ -559,7 +559,10 @@ type TableState struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringPtrInput
-	// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+	// Specifies the view that determines which
+	// table information is returned. By default, basic table information and
+	// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+	// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
 	TableMetadataView pulumi.StringPtrInput
 	// Replication info of a table created
 	// using "AS REPLICA" DDL like:
@@ -602,22 +605,6 @@ type tableArgs struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced a field data type (`STRUCT` with
-	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-	// the recurring diff this causes. As a workaround, we recommend using the
-	// schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -682,6 +669,20 @@ type tableArgs struct {
 	// for more details.
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced a field data type (`STRUCT` with
+	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+	// the recurring diff this causes. As a workaround, we recommend using the
+	// schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
 	Schema *string `pulumi:"schema"`
 	// Specifies metadata of the foreign data
 	// type definition in field schema. Structure is documented below.
@@ -692,7 +693,10 @@ type tableArgs struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId string `pulumi:"tableId"`
-	// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+	// Specifies the view that determines which
+	// table information is returned. By default, basic table information and
+	// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+	// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
 	TableMetadataView *string `pulumi:"tableMetadataView"`
 	// Replication info of a table created
 	// using "AS REPLICA" DDL like:
@@ -724,22 +728,6 @@ type TableArgs struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-	//
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// If the API returns a different value for the same schema, e.g. it
-	// switched the order of values or replaced a field data type (`STRUCT` with
-	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-	// the recurring diff this causes. As a workaround, we recommend using the
-	// schema as returned by the API.
-	//
-	// ~>**NOTE:**  If you use `externalDataConfiguration`
-	// documented below and do **not** set
-	// `external_data_configuration.connection_id`, schemas must be specified
-	// with `external_data_configuration.schema`. Otherwise, schemas must be
-	// specified with this top-level field.
 	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -804,6 +792,20 @@ type TableArgs struct {
 	// for more details.
 	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced a field data type (`STRUCT` with
+	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+	// the recurring diff this causes. As a workaround, we recommend using the
+	// schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
 	Schema pulumi.StringPtrInput
 	// Specifies metadata of the foreign data
 	// type definition in field schema. Structure is documented below.
@@ -814,7 +816,10 @@ type TableArgs struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringInput
-	// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+	// Specifies the view that determines which
+	// table information is returned. By default, basic table information and
+	// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+	// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
 	TableMetadataView pulumi.StringPtrInput
 	// Replication info of a table created
 	// using "AS REPLICA" DDL like:
@@ -945,22 +950,6 @@ func (o TableOutput) DatasetId() pulumi.StringOutput {
 // When set to "ABANDON", the command will remove the resource from Terraform
 // management without updating or deleting the resource in the API.
 // When set to "DELETE", deleting the resource is allowed.
-//
-// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-//
-// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-// string will create a diff, even if the JSON itself hasn't changed.
-// If the API returns a different value for the same schema, e.g. it
-// switched the order of values or replaced a field data type (`STRUCT` with
-// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-// the recurring diff this causes. As a workaround, we recommend using the
-// schema as returned by the API.
-//
-// ~>**NOTE:**  If you use `externalDataConfiguration`
-// documented below and do **not** set
-// `external_data_configuration.connection_id`, schemas must be specified
-// with `external_data_configuration.schema`. Otherwise, schemas must be
-// specified with this top-level field.
 func (o TableOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
@@ -1121,6 +1110,20 @@ func (o TableOutput) ResourceTags() pulumi.StringMapOutput {
 }
 
 // A JSON schema for the table.
+//
+// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+// string will create a diff, even if the JSON itself hasn't changed.
+// If the API returns a different value for the same schema, e.g. it
+// switched the order of values or replaced a field data type (`STRUCT` with
+// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+// the recurring diff this causes. As a workaround, we recommend using the
+// schema as returned by the API.
+//
+// ~>**NOTE:**  If you use `externalDataConfiguration`
+// documented below and do **not** set
+// `external_data_configuration.connection_id`, schemas must be specified
+// with `external_data_configuration.schema`. Otherwise, schemas must be
+// specified with this top-level field.
 func (o TableOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }
@@ -1148,7 +1151,10 @@ func (o TableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.TableId }).(pulumi.StringOutput)
 }
 
-// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+// Specifies the view that determines which
+// table information is returned. By default, basic table information and
+// storage statistics (`STORAGE_STATS`) are returned. Possible values are
+// `TABLE_METADATA_VIEW_UNSPECIFIED`, `BASIC`, `STORAGE_STATS`, and `FULL`.
 func (o TableOutput) TableMetadataView() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.TableMetadataView }).(pulumi.StringPtrOutput)
 }

@@ -227,6 +227,8 @@ public final class GlobalAddressArgs extends com.pulumi.resources.ResourceArgs {
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
      * 
      */
     @Import(name="purpose")
@@ -236,6 +238,8 @@ public final class GlobalAddressArgs extends com.pulumi.resources.ResourceArgs {
      * @return The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
      * 
      */
     public Optional<Output<String>> purpose() {
@@ -546,6 +550,8 @@ public final class GlobalAddressArgs extends com.pulumi.resources.ResourceArgs {
          * @param purpose The purpose of the resource. Possible values include:
          * * VPC_PEERING - for peer networks
          * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+         * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+         * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
          * 
          * @return builder
          * 
@@ -559,6 +565,8 @@ public final class GlobalAddressArgs extends com.pulumi.resources.ResourceArgs {
          * @param purpose The purpose of the resource. Possible values include:
          * * VPC_PEERING - for peer networks
          * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+         * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+         * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
          * 
          * @return builder
          * 

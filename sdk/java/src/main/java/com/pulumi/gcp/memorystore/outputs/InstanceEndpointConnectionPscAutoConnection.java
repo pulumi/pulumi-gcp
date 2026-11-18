@@ -37,6 +37,12 @@ public final class InstanceEndpointConnectionPscAutoConnection {
      */
     private @Nullable String ipAddress;
     /**
+     * @return (Output, Beta)
+     * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+     * 
+     */
+    private @Nullable String ipVersion;
+    /**
      * @return (Output)
      * Output only. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
@@ -101,6 +107,14 @@ public final class InstanceEndpointConnectionPscAutoConnection {
         return Optional.ofNullable(this.ipAddress);
     }
     /**
+     * @return (Output, Beta)
+     * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+     * 
+     */
+    public Optional<String> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+    /**
      * @return (Output)
      * Output only. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
@@ -155,6 +169,7 @@ public final class InstanceEndpointConnectionPscAutoConnection {
         private @Nullable String connectionType;
         private @Nullable String forwardingRule;
         private @Nullable String ipAddress;
+        private @Nullable String ipVersion;
         private @Nullable String network;
         private @Nullable Integer port;
         private @Nullable String projectId;
@@ -166,6 +181,7 @@ public final class InstanceEndpointConnectionPscAutoConnection {
     	      this.connectionType = defaults.connectionType;
     	      this.forwardingRule = defaults.forwardingRule;
     	      this.ipAddress = defaults.ipAddress;
+    	      this.ipVersion = defaults.ipVersion;
     	      this.network = defaults.network;
     	      this.port = defaults.port;
     	      this.projectId = defaults.projectId;
@@ -189,6 +205,12 @@ public final class InstanceEndpointConnectionPscAutoConnection {
         public Builder ipAddress(@Nullable String ipAddress) {
 
             this.ipAddress = ipAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipVersion(@Nullable String ipVersion) {
+
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
@@ -226,6 +248,7 @@ public final class InstanceEndpointConnectionPscAutoConnection {
             _resultValue.connectionType = connectionType;
             _resultValue.forwardingRule = forwardingRule;
             _resultValue.ipAddress = ipAddress;
+            _resultValue.ipVersion = ipVersion;
             _resultValue.network = network;
             _resultValue.port = port;
             _resultValue.projectId = projectId;

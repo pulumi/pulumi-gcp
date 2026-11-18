@@ -13,6 +13,15 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
     public sealed class InstanceDesiredAutoCreatedEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Immutable. The IP version that the consumer endpoint will use.
+        /// Default value is `IPV4`.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
         /// Required. The consumer network where the IP address resides, in the form of
         /// projects/{project_id}/global/networks/{network_id}.
         /// </summary>

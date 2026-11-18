@@ -23,6 +23,7 @@ class WorkloadIdentityPoolProviderArgs:
     def __init__(__self__, *,
                  workload_identity_pool_id: pulumi.Input[_builtins.str],
                  workload_identity_pool_provider_id: pulumi.Input[_builtins.str],
+                 actor_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  aws: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']] = None,
@@ -43,6 +44,15 @@ class WorkloadIdentityPoolProviderArgs:
         :param pulumi.Input[_builtins.str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actor_providers: A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+               that are authorized to issue actor tokens for this provider. An actor token
+               represents the identity of the acting party to whom authority is delegated. At
+               most 3 actor providers can be specified. Actor providers are only supported for
+               OIDC providers.
+               Each entry must be formatted as
+               `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+               where `{project}` matches the `project` configured on this resource (for example,
+               by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
         :param pulumi.Input[_builtins.str] attribute_condition: [A Common Expression Language](https://github.com/google/cel-spec) expression, in
                plain text, to restrict what otherwise valid authentication credentials issued by the
                provider should not be accepted.
@@ -123,6 +133,8 @@ class WorkloadIdentityPoolProviderArgs:
         """
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
+        if actor_providers is not None:
+            pulumi.set(__self__, "actor_providers", actor_providers)
         if attribute_condition is not None:
             pulumi.set(__self__, "attribute_condition", attribute_condition)
         if attribute_mapping is not None:
@@ -173,6 +185,26 @@ class WorkloadIdentityPoolProviderArgs:
     @workload_identity_pool_provider_id.setter
     def workload_identity_pool_provider_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workload_identity_pool_provider_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="actorProviders")
+    def actor_providers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+        that are authorized to issue actor tokens for this provider. An actor token
+        represents the identity of the acting party to whom authority is delegated. At
+        most 3 actor providers can be specified. Actor providers are only supported for
+        OIDC providers.
+        Each entry must be formatted as
+        `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+        where `{project}` matches the `project` configured on this resource (for example,
+        by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+        """
+        return pulumi.get(self, "actor_providers")
+
+    @actor_providers.setter
+    def actor_providers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "actor_providers", value)
 
     @_builtins.property
     @pulumi.getter(name="attributeCondition")
@@ -376,6 +408,7 @@ class WorkloadIdentityPoolProviderArgs:
 @pulumi.input_type
 class _WorkloadIdentityPoolProviderState:
     def __init__(__self__, *,
+                 actor_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  aws: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']] = None,
@@ -394,6 +427,15 @@ class _WorkloadIdentityPoolProviderState:
         """
         Input properties used for looking up and filtering WorkloadIdentityPoolProvider resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actor_providers: A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+               that are authorized to issue actor tokens for this provider. An actor token
+               represents the identity of the acting party to whom authority is delegated. At
+               most 3 actor providers can be specified. Actor providers are only supported for
+               OIDC providers.
+               Each entry must be formatted as
+               `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+               where `{project}` matches the `project` configured on this resource (for example,
+               by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
         :param pulumi.Input[_builtins.str] attribute_condition: [A Common Expression Language](https://github.com/google/cel-spec) expression, in
                plain text, to restrict what otherwise valid authentication credentials issued by the
                provider should not be accepted.
@@ -487,6 +529,8 @@ class _WorkloadIdentityPoolProviderState:
                client identity if the client has a certificate that chains up to this CA.
                Structure is documented below.
         """
+        if actor_providers is not None:
+            pulumi.set(__self__, "actor_providers", actor_providers)
         if attribute_condition is not None:
             pulumi.set(__self__, "attribute_condition", attribute_condition)
         if attribute_mapping is not None:
@@ -517,6 +561,26 @@ class _WorkloadIdentityPoolProviderState:
             pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
         if x509 is not None:
             pulumi.set(__self__, "x509", x509)
+
+    @_builtins.property
+    @pulumi.getter(name="actorProviders")
+    def actor_providers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+        that are authorized to issue actor tokens for this provider. An actor token
+        represents the identity of the acting party to whom authority is delegated. At
+        most 3 actor providers can be specified. Actor providers are only supported for
+        OIDC providers.
+        Each entry must be formatted as
+        `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+        where `{project}` matches the `project` configured on this resource (for example,
+        by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+        """
+        return pulumi.get(self, "actor_providers")
+
+    @actor_providers.setter
+    def actor_providers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "actor_providers", value)
 
     @_builtins.property
     @pulumi.getter(name="attributeCondition")
@@ -782,6 +846,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 actor_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']]] = None,
@@ -900,6 +965,15 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        actor = gcp.iam.WorkloadIdentityPoolProvider("actor",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="actor-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://sts.windows.net/azure-tenant-id",
+            })
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
@@ -922,7 +996,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                     "example.com/gcp-oidc-federation",
                 ],
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
-            })
+                "discovery_uri": "https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration",
+            },
+            actor_providers=[actor.id])
         ```
 
         ### Iam Workload Identity Pool Provider Saml Basic
@@ -1074,6 +1150,15 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actor_providers: A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+               that are authorized to issue actor tokens for this provider. An actor token
+               represents the identity of the acting party to whom authority is delegated. At
+               most 3 actor providers can be specified. Actor providers are only supported for
+               OIDC providers.
+               Each entry must be formatted as
+               `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+               where `{project}` matches the `project` configured on this resource (for example,
+               by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
         :param pulumi.Input[_builtins.str] attribute_condition: [A Common Expression Language](https://github.com/google/cel-spec) expression, in
                plain text, to restrict what otherwise valid authentication credentials issued by the
                provider should not be accepted.
@@ -1268,6 +1353,15 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        actor = gcp.iam.WorkloadIdentityPoolProvider("actor",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="actor-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://sts.windows.net/azure-tenant-id",
+            })
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
@@ -1290,7 +1384,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                     "example.com/gcp-oidc-federation",
                 ],
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
-            })
+                "discovery_uri": "https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration",
+            },
+            actor_providers=[actor.id])
         ```
 
         ### Iam Workload Identity Pool Provider Saml Basic
@@ -1455,6 +1551,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 actor_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']]] = None,
@@ -1477,6 +1574,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkloadIdentityPoolProviderArgs.__new__(WorkloadIdentityPoolProviderArgs)
 
+            __props__.__dict__["actor_providers"] = actor_providers
             __props__.__dict__["attribute_condition"] = attribute_condition
             __props__.__dict__["attribute_mapping"] = attribute_mapping
             __props__.__dict__["aws"] = aws
@@ -1506,6 +1604,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            actor_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
             attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']]] = None,
@@ -1528,6 +1627,15 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actor_providers: A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+               that are authorized to issue actor tokens for this provider. An actor token
+               represents the identity of the acting party to whom authority is delegated. At
+               most 3 actor providers can be specified. Actor providers are only supported for
+               OIDC providers.
+               Each entry must be formatted as
+               `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+               where `{project}` matches the `project` configured on this resource (for example,
+               by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
         :param pulumi.Input[_builtins.str] attribute_condition: [A Common Expression Language](https://github.com/google/cel-spec) expression, in
                plain text, to restrict what otherwise valid authentication credentials issued by the
                provider should not be accepted.
@@ -1625,6 +1733,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
         __props__ = _WorkloadIdentityPoolProviderState.__new__(_WorkloadIdentityPoolProviderState)
 
+        __props__.__dict__["actor_providers"] = actor_providers
         __props__.__dict__["attribute_condition"] = attribute_condition
         __props__.__dict__["attribute_mapping"] = attribute_mapping
         __props__.__dict__["aws"] = aws
@@ -1645,6 +1754,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            actor_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
             attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict', 'outputs.WorkloadIdentityPoolProviderAws']]] = None,
@@ -1661,6 +1771,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
             x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict', 'outputs.WorkloadIdentityPoolProviderX509']]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["actorProviders"] = actor_providers
         __props__["attributeCondition"] = attribute_condition
         __props__["attributeMapping"] = attribute_mapping
         __props__["aws"] = aws
@@ -1677,6 +1788,22 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         __props__["workloadIdentityPoolProviderId"] = workload_identity_pool_provider_id
         __props__["x509"] = x509
         return pulumi.runtime.exists_resource(None, 'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter(name="actorProviders")
+    def actor_providers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+        that are authorized to issue actor tokens for this provider. An actor token
+        represents the identity of the acting party to whom authority is delegated. At
+        most 3 actor providers can be specified. Actor providers are only supported for
+        OIDC providers.
+        Each entry must be formatted as
+        `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+        where `{project}` matches the `project` configured on this resource (for example,
+        by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+        """
+        return pulumi.get(self, "actor_providers")
 
     @_builtins.property
     @pulumi.getter(name="attributeCondition")

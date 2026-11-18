@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.Iam
     [OutputType]
     public sealed class GetWorkloadIdentityPoolProviderResult
     {
+        public readonly ImmutableArray<string> ActorProviders;
         public readonly string AttributeCondition;
         public readonly ImmutableDictionary<string, string> AttributeMapping;
         public readonly ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderAwResult> Aws;
@@ -185,6 +186,8 @@ namespace Pulumi.Gcp.Iam
 
         [OutputConstructor]
         private GetWorkloadIdentityPoolProviderResult(
+            ImmutableArray<string> actorProviders,
+
             string attributeCondition,
 
             ImmutableDictionary<string, string> attributeMapping,
@@ -217,6 +220,7 @@ namespace Pulumi.Gcp.Iam
 
             ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderX509Result> x509s)
         {
+            ActorProviders = actorProviders;
             AttributeCondition = attributeCondition;
             AttributeMapping = attributeMapping;
             Aws = aws;

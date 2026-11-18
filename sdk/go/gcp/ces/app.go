@@ -201,6 +201,7 @@ import (
 //					MetricAnalysisSettings: &ces.AppLoggingSettingsMetricAnalysisSettingsArgs{
 //						LlmMetricsOptedOut: pulumi.Bool(false),
 //					},
+//					RequiredRecordingConsent: pulumi.Bool(true),
 //				},
 //				ModelSettings: &ces.AppModelSettingsArgs{
 //					Model:         pulumi.String("gemini-3.0-flash-001"),

@@ -52,6 +52,7 @@ namespace Pulumi.Gcp.Vertex
     ///         Region = "us",
     ///         AgentAnomalyDetectionScopeId = "agent-anomaly-detection-scope",
     ///         DisplayName = "Basic AAD scope",
+    ///         AutoEnroll = true,
     ///         LogBuckets = new[]
     ///         {
     ///             aad_log_bucket.Id,
@@ -59,6 +60,10 @@ namespace Pulumi.Gcp.Vertex
     ///         ObservabilityBuckets = new[]
     ///         {
     ///             $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us/buckets/_Trace/datasets/Spans",
+    ///         },
+    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiAgentAnomalyDetectionScopeEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         },
     ///     });
     /// 
@@ -95,6 +100,16 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> AgentAnomalyDetectionScopeId { get; private set; } = null!;
 
         /// <summary>
+        /// When true, newly discovered agents that share log and observability
+        /// buckets with this scope are automatically enrolled as ACTIVE monitored
+        /// agents, up to the project's monitored agent quota. When false, newly
+        /// discovered agents are added as DISABLED monitored agents and must be
+        /// enabled explicitly.
+        /// </summary>
+        [Output("autoEnroll")]
+        public Output<bool?> AutoEnroll { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -110,6 +125,16 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Customer-managed encryption key spec for the scope. If set, this scope
+        /// and all sub-resources are secured by this key. The key must be a Cloud
+        /// KMS key co-located with the scope location (for example, `Us` for a `Us`
+        /// scope, `Europe` for an `Eu` scope, or matching single region).
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionSpec")]
+        public Output<Outputs.AiAgentAnomalyDetectionScopeEncryptionSpec?> EncryptionSpec { get; private set; } = null!;
 
         /// <summary>
         /// Customer owned Cloud Logging bucket resource names attached to this scope.
@@ -207,6 +232,16 @@ namespace Pulumi.Gcp.Vertex
         public Input<string> AgentAnomalyDetectionScopeId { get; set; } = null!;
 
         /// <summary>
+        /// When true, newly discovered agents that share log and observability
+        /// buckets with this scope are automatically enrolled as ACTIVE monitored
+        /// agents, up to the project's monitored agent quota. When false, newly
+        /// discovered agents are added as DISABLED monitored agents and must be
+        /// enabled explicitly.
+        /// </summary>
+        [Input("autoEnroll")]
+        public Input<bool>? AutoEnroll { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -222,6 +257,16 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Customer-managed encryption key spec for the scope. If set, this scope
+        /// and all sub-resources are secured by this key. The key must be a Cloud
+        /// KMS key co-located with the scope location (for example, `Us` for a `Us`
+        /// scope, `Europe` for an `Eu` scope, or matching single region).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiAgentAnomalyDetectionScopeEncryptionSpecArgs>? EncryptionSpec { get; set; }
 
         [Input("logBuckets", required: true)]
         private InputList<string>? _logBuckets;
@@ -280,6 +325,16 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? AgentAnomalyDetectionScopeId { get; set; }
 
         /// <summary>
+        /// When true, newly discovered agents that share log and observability
+        /// buckets with this scope are automatically enrolled as ACTIVE monitored
+        /// agents, up to the project's monitored agent quota. When false, newly
+        /// discovered agents are added as DISABLED monitored agents and must be
+        /// enabled explicitly.
+        /// </summary>
+        [Input("autoEnroll")]
+        public Input<bool>? AutoEnroll { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -295,6 +350,16 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Customer-managed encryption key spec for the scope. If set, this scope
+        /// and all sub-resources are secured by this key. The key must be a Cloud
+        /// KMS key co-located with the scope location (for example, `Us` for a `Us`
+        /// scope, `Europe` for an `Eu` scope, or matching single region).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiAgentAnomalyDetectionScopeEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
 
         [Input("logBuckets")]
         private InputList<string>? _logBuckets;

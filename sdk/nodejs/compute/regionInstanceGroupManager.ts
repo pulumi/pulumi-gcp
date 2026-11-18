@@ -274,14 +274,18 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     declare public readonly region: pulumi.Output<string>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
-     *
-     * ***
      */
     declare public readonly resourcePolicies: pulumi.Output<outputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
     /**
      * The URL of the created resource.
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
+    /**
+     * ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+     *
+     * ***
+     */
+    declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
@@ -385,6 +389,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["resourcePolicies"] = state?.resourcePolicies;
             resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
             resourceInputs["standbyPolicy"] = state?.standbyPolicy;
             resourceInputs["statefulDisks"] = state?.statefulDisks;
             resourceInputs["statefulExternalIps"] = state?.statefulExternalIps;
@@ -423,6 +428,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["resourcePolicies"] = args?.resourcePolicies;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["standbyPolicy"] = args?.standbyPolicy;
             resourceInputs["statefulDisks"] = args?.statefulDisks;
             resourceInputs["statefulExternalIps"] = args?.statefulExternalIps;
@@ -558,14 +564,18 @@ export interface RegionInstanceGroupManagerState {
     region?: pulumi.Input<string | undefined>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
-     *
-     * ***
      */
     resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
     /**
      * The URL of the created resource.
      */
     selfLink?: pulumi.Input<string | undefined>;
+    /**
+     * ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+     *
+     * ***
+     */
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
@@ -730,10 +740,14 @@ export interface RegionInstanceGroupManagerArgs {
     region?: pulumi.Input<string | undefined>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
+     */
+    resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
+    /**
+     * ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
      *
      * ***
      */
-    resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */

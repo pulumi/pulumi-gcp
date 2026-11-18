@@ -97,7 +97,8 @@ def get_iam_policy(service_account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str service_account_id: The fully-qualified name of the service account to apply policy to.
+    :param _builtins.str service_account_id: The fully-qualified name of the service account, in the form
+           `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
     """
     __args__ = dict()
     __args__['serviceAccountId'] = service_account_id
@@ -124,7 +125,8 @@ def get_iam_policy_output(service_account_id: pulumi.Input[Optional[_builtins.st
     ```
 
 
-    :param _builtins.str service_account_id: The fully-qualified name of the service account to apply policy to.
+    :param _builtins.str service_account_id: The fully-qualified name of the service account, in the form
+           `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
     """
     __args__ = dict()
     __args__['serviceAccountId'] = service_account_id

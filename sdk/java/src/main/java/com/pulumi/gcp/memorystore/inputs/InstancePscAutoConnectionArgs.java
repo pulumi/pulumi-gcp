@@ -80,6 +80,23 @@ public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * (Output, Beta)
+     * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return (Output, Beta)
+     * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+
+    /**
      * (Output)
      * Output only. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
@@ -197,6 +214,7 @@ public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.Re
         this.connectionType = $.connectionType;
         this.forwardingRule = $.forwardingRule;
         this.ipAddress = $.ipAddress;
+        this.ipVersion = $.ipVersion;
         this.network = $.network;
         this.port = $.port;
         this.projectId = $.projectId;
@@ -302,6 +320,29 @@ public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.Re
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param ipVersion (Output, Beta)
+         * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion (Output, Beta)
+         * The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
         }
 
         /**

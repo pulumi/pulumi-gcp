@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:apihub/addon:Addon":
+		r = &Addon{}
 	case "gcp:apihub/apiHubInstance:ApiHubInstance":
 		r = &ApiHubInstance{}
 	case "gcp:apihub/curation:Curation":
@@ -46,6 +48,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apihub/addon",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apihub/apiHubInstance",

@@ -25,6 +25,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly Outputs.AppAudioProcessingConfigBargeInConfig? BargeInConfig;
         /// <summary>
+        /// Configures custom voice samples for voice cloning.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppAudioProcessingConfigCustomVoiceSample> CustomVoiceSamples;
+        /// <summary>
         /// The duration of user inactivity (no speech or interaction) before the agent
         /// prompts the user for reengagement. If not set, the agent will not prompt
         /// the user for reengagement.
@@ -48,12 +53,15 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             Outputs.AppAudioProcessingConfigBargeInConfig? bargeInConfig,
 
+            ImmutableArray<Outputs.AppAudioProcessingConfigCustomVoiceSample> customVoiceSamples,
+
             string? inactivityTimeout,
 
             ImmutableArray<Outputs.AppAudioProcessingConfigSynthesizeSpeechConfig> synthesizeSpeechConfigs)
         {
             AmbientSoundConfig = ambientSoundConfig;
             BargeInConfig = bargeInConfig;
+            CustomVoiceSamples = customVoiceSamples;
             InactivityTimeout = inactivityTimeout;
             SynthesizeSpeechConfigs = synthesizeSpeechConfigs;
         }

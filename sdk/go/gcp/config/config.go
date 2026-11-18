@@ -266,6 +266,9 @@ func GetDeletionPolicy(ctx *pulumi.Context) string {
 func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")
 }
+func GetDesignCenterCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:designCenterCustomEndpoint")
+}
 func GetDeveloperConnectCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:developerConnectCustomEndpoint")
 }

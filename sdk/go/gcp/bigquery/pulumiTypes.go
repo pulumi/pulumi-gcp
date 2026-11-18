@@ -14625,9 +14625,9 @@ func (o ReservationSchedulingPolicyPtrOutput) MaxSlots() pulumi.IntPtrOutput {
 type RoutineArgument struct {
 	// Defaults to FIXED_TYPE.
 	// Default value is `FIXED_TYPE`.
-	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
 	ArgumentKind *string `pulumi:"argumentKind"`
-	// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+	// A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
 	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
 	// will create a diff, even if the JSON itself hasn't changed. If the API returns
 	// a different value for the same schema, e.g. it switched the order of values
@@ -14659,9 +14659,9 @@ type RoutineArgumentInput interface {
 type RoutineArgumentArgs struct {
 	// Defaults to FIXED_TYPE.
 	// Default value is `FIXED_TYPE`.
-	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
 	ArgumentKind pulumi.StringPtrInput `pulumi:"argumentKind"`
-	// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+	// A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
 	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
 	// will create a diff, even if the JSON itself hasn't changed. If the API returns
 	// a different value for the same schema, e.g. it switched the order of values
@@ -14732,12 +14732,12 @@ func (o RoutineArgumentOutput) ToRoutineArgumentOutputWithContext(ctx context.Co
 
 // Defaults to FIXED_TYPE.
 // Default value is `FIXED_TYPE`.
-// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
 func (o RoutineArgumentOutput) ArgumentKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutineArgument) *string { return v.ArgumentKind }).(pulumi.StringPtrOutput)
 }
 
-// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+// A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
 // ~>**NOTE**: Because this field expects a JSON string, any changes to the string
 // will create a diff, even if the JSON itself hasn't changed. If the API returns
 // a different value for the same schema, e.g. it switched the order of values
@@ -15076,7 +15076,8 @@ type RoutineExternalRuntimeOptions struct {
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
 	// List of volume mounts for the Python UDF container that executes the
 	// managed function. When volume mounts are set, `runtimeConnection` must
-	// also be set.
+	// also be set. For more information, see [Create a Python UDF with volume
+	// mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
 	// Structure is documented below.
 	VolumeMounts []RoutineExternalRuntimeOptionsVolumeMount `pulumi:"volumeMounts"`
 }
@@ -15118,7 +15119,8 @@ type RoutineExternalRuntimeOptionsArgs struct {
 	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
 	// List of volume mounts for the Python UDF container that executes the
 	// managed function. When volume mounts are set, `runtimeConnection` must
-	// also be set.
+	// also be set. For more information, see [Create a Python UDF with volume
+	// mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
 	// Structure is documented below.
 	VolumeMounts RoutineExternalRuntimeOptionsVolumeMountArrayInput `pulumi:"volumeMounts"`
 }
@@ -15243,7 +15245,8 @@ func (o RoutineExternalRuntimeOptionsOutput) RuntimeVersion() pulumi.StringPtrOu
 
 // List of volume mounts for the Python UDF container that executes the
 // managed function. When volume mounts are set, `runtimeConnection` must
-// also be set.
+// also be set. For more information, see [Create a Python UDF with volume
+// mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
 // Structure is documented below.
 func (o RoutineExternalRuntimeOptionsOutput) VolumeMounts() RoutineExternalRuntimeOptionsVolumeMountArrayOutput {
 	return o.ApplyT(func(v RoutineExternalRuntimeOptions) []RoutineExternalRuntimeOptionsVolumeMount {
@@ -15348,7 +15351,8 @@ func (o RoutineExternalRuntimeOptionsPtrOutput) RuntimeVersion() pulumi.StringPt
 
 // List of volume mounts for the Python UDF container that executes the
 // managed function. When volume mounts are set, `runtimeConnection` must
-// also be set.
+// also be set. For more information, see [Create a Python UDF with volume
+// mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
 // Structure is documented below.
 func (o RoutineExternalRuntimeOptionsPtrOutput) VolumeMounts() RoutineExternalRuntimeOptionsVolumeMountArrayOutput {
 	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) []RoutineExternalRuntimeOptionsVolumeMount {
@@ -15365,8 +15369,8 @@ type RoutineExternalRuntimeOptionsVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// The absolute path of the source to be mounted. Only Google Cloud
 	// Storage buckets or folders are currently supported. For example,
-	// `gs://bucket-xxx` for a Cloud Storage bucket, or
-	// `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+	// `gs://my-bucket` for a Cloud Storage bucket, or
+	// `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
 	SourcePath string `pulumi:"sourcePath"`
 }
 
@@ -15387,8 +15391,8 @@ type RoutineExternalRuntimeOptionsVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// The absolute path of the source to be mounted. Only Google Cloud
 	// Storage buckets or folders are currently supported. For example,
-	// `gs://bucket-xxx` for a Cloud Storage bucket, or
-	// `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+	// `gs://my-bucket` for a Cloud Storage bucket, or
+	// `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
 	SourcePath pulumi.StringInput `pulumi:"sourcePath"`
 }
 
@@ -15451,8 +15455,8 @@ func (o RoutineExternalRuntimeOptionsVolumeMountOutput) MountPath() pulumi.Strin
 
 // The absolute path of the source to be mounted. Only Google Cloud
 // Storage buckets or folders are currently supported. For example,
-// `gs://bucket-xxx` for a Cloud Storage bucket, or
-// `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+// `gs://my-bucket` for a Cloud Storage bucket, or
+// `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
 func (o RoutineExternalRuntimeOptionsVolumeMountOutput) SourcePath() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutineExternalRuntimeOptionsVolumeMount) string { return v.SourcePath }).(pulumi.StringOutput)
 }
@@ -17558,8 +17562,7 @@ type TableExternalDataConfiguration struct {
 	// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
 	//
 	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// table schema must be specified using the top-level `schema` field.
 	ConnectionId *string `pulumi:"connectionId"`
 	// Additional properties to set if
 	// `sourceFormat` is set to "CSV". Structure is documented below.
@@ -17628,8 +17631,7 @@ type TableExternalDataConfiguration struct {
 	// `google_bigquery_table.schema`
 	//
 	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// table schema must be specified using the top-level `schema` field.
 	Schema *string `pulumi:"schema"`
 	// The data format. Please see sourceFormat under
 	// [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
@@ -17671,8 +17673,7 @@ type TableExternalDataConfigurationArgs struct {
 	// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
 	//
 	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// table schema must be specified using the top-level `schema` field.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// Additional properties to set if
 	// `sourceFormat` is set to "CSV". Structure is documented below.
@@ -17741,8 +17742,7 @@ type TableExternalDataConfigurationArgs struct {
 	// `google_bigquery_table.schema`
 	//
 	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-	// table schema must be specified using the top-level `schema` field
-	// documented above.
+	// table schema must be specified using the top-level `schema` field.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The data format. Please see sourceFormat under
 	// [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
@@ -17865,8 +17865,7 @@ func (o TableExternalDataConfigurationOutput) Compression() pulumi.StringPtrOutp
 // or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
 //
 // ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-// table schema must be specified using the top-level `schema` field
-// documented above.
+// table schema must be specified using the top-level `schema` field.
 func (o TableExternalDataConfigurationOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
@@ -17985,8 +17984,7 @@ func (o TableExternalDataConfigurationOutput) ReferenceFileSchemaUri() pulumi.St
 // `google_bigquery_table.schema`
 //
 // ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-// table schema must be specified using the top-level `schema` field
-// documented above.
+// table schema must be specified using the top-level `schema` field.
 func (o TableExternalDataConfigurationOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.Schema }).(pulumi.StringPtrOutput)
 }
@@ -18079,8 +18077,7 @@ func (o TableExternalDataConfigurationPtrOutput) Compression() pulumi.StringPtrO
 // or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
 //
 // ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-// table schema must be specified using the top-level `schema` field
-// documented above.
+// table schema must be specified using the top-level `schema` field.
 func (o TableExternalDataConfigurationPtrOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
 		if v == nil {
@@ -18261,8 +18258,7 @@ func (o TableExternalDataConfigurationPtrOutput) ReferenceFileSchemaUri() pulumi
 // `google_bigquery_table.schema`
 //
 // ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-// table schema must be specified using the top-level `schema` field
-// documented above.
+// table schema must be specified using the top-level `schema` field.
 func (o TableExternalDataConfigurationPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
 		if v == nil {

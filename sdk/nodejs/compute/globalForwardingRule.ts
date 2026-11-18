@@ -461,6 +461,12 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     declare public readonly allowPscGlobalAccess: pulumi.Output<boolean | undefined>;
     /**
+     * Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     */
+    declare public readonly backendService: pulumi.Output<string | undefined>;
+    /**
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      */
     declare public /*out*/ readonly baseForwardingRule: pulumi.Output<string>;
@@ -544,6 +550,12 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     declare public readonly ipAddress: pulumi.Output<string>;
     /**
+     * IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     */
+    declare public readonly ipAddresses: pulumi.Output<string[]>;
+    /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
      * options are `TCP`, `UDP`, `ESP`,
@@ -577,7 +589,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      */
     declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
@@ -713,7 +725,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      */
-    declare public readonly target: pulumi.Output<string>;
+    declare public readonly target: pulumi.Output<string | undefined>;
 
     /**
      * Create a GlobalForwardingRule resource with the given unique name, arguments, and options.
@@ -722,13 +734,14 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: GlobalForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: GlobalForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalForwardingRuleArgs | GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalForwardingRuleState | undefined;
             resourceInputs["allowPscGlobalAccess"] = state?.allowPscGlobalAccess;
+            resourceInputs["backendService"] = state?.backendService;
             resourceInputs["baseForwardingRule"] = state?.baseForwardingRule;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
@@ -737,6 +750,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = state?.externalManagedBackendBucketMigrationTestingPercentage;
             resourceInputs["forwardingRuleId"] = state?.forwardingRuleId;
             resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["ipAddresses"] = state?.ipAddresses;
             resourceInputs["ipProtocol"] = state?.ipProtocol;
             resourceInputs["ipVersion"] = state?.ipVersion;
             resourceInputs["labelFingerprint"] = state?.labelFingerprint;
@@ -759,15 +773,14 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["target"] = state?.target;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
-            if (args?.target === undefined && !opts.urn) {
-                throw new Error("Missing required property 'target'");
-            }
             resourceInputs["allowPscGlobalAccess"] = args?.allowPscGlobalAccess;
+            resourceInputs["backendService"] = args?.backendService;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["externalManagedBackendBucketMigrationState"] = args?.externalManagedBackendBucketMigrationState;
             resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = args?.externalManagedBackendBucketMigrationTestingPercentage;
             resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["ipAddresses"] = args?.ipAddresses;
             resourceInputs["ipProtocol"] = args?.ipProtocol;
             resourceInputs["ipVersion"] = args?.ipVersion;
             resourceInputs["labels"] = args?.labels;
@@ -808,6 +821,12 @@ export interface GlobalForwardingRuleState {
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
     allowPscGlobalAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     */
+    backendService?: pulumi.Input<string | undefined>;
     /**
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      */
@@ -892,6 +911,12 @@ export interface GlobalForwardingRuleState {
      */
     ipAddress?: pulumi.Input<string | undefined>;
     /**
+     * IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     */
+    ipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
      * options are `TCP`, `UDP`, `ESP`,
@@ -925,7 +950,7 @@ export interface GlobalForwardingRuleState {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
@@ -1074,6 +1099,12 @@ export interface GlobalForwardingRuleArgs {
      */
     allowPscGlobalAccess?: pulumi.Input<boolean | undefined>;
     /**
+     * Identifies the backend service to which the forwarding rule sends traffic.
+     * Required for Global External Passthrough Network Load Balancing;
+     * must be omitted for all other load balancer types.
+     */
+    backendService?: pulumi.Input<string | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1145,6 +1176,12 @@ export interface GlobalForwardingRuleArgs {
      */
     ipAddress?: pulumi.Input<string | undefined>;
     /**
+     * IP addresses for which this forwarding rule accepts traffic, ordered by
+     * Availability Group 0 followed by Availability Group 1. Specify literal
+     * IP addresses (for example, `google_compute_global_address.example.address`).
+     */
+    ipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
      * options are `TCP`, `UDP`, `ESP`,
@@ -1173,7 +1210,7 @@ export interface GlobalForwardingRuleArgs {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
@@ -1292,5 +1329,5 @@ export interface GlobalForwardingRuleArgs {
      * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      */
-    target: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
 }

@@ -56,6 +56,7 @@ public final class GetRegionInstanceGroupManagerResult {
     private @Nullable String region;
     private List<GetRegionInstanceGroupManagerResourcePolicy> resourcePolicies;
     private @Nullable String selfLink;
+    private String serviceAccount;
     private List<GetRegionInstanceGroupManagerStandbyPolicy> standbyPolicies;
     private List<GetRegionInstanceGroupManagerStatefulDisk> statefulDisks;
     private List<GetRegionInstanceGroupManagerStatefulExternalIp> statefulExternalIps;
@@ -142,6 +143,9 @@ public final class GetRegionInstanceGroupManagerResult {
     public Optional<String> selfLink() {
         return Optional.ofNullable(this.selfLink);
     }
+    public String serviceAccount() {
+        return this.serviceAccount;
+    }
     public List<GetRegionInstanceGroupManagerStandbyPolicy> standbyPolicies() {
         return this.standbyPolicies;
     }
@@ -216,6 +220,7 @@ public final class GetRegionInstanceGroupManagerResult {
         private @Nullable String region;
         private List<GetRegionInstanceGroupManagerResourcePolicy> resourcePolicies;
         private @Nullable String selfLink;
+        private String serviceAccount;
         private List<GetRegionInstanceGroupManagerStandbyPolicy> standbyPolicies;
         private List<GetRegionInstanceGroupManagerStatefulDisk> statefulDisks;
         private List<GetRegionInstanceGroupManagerStatefulExternalIp> statefulExternalIps;
@@ -255,6 +260,7 @@ public final class GetRegionInstanceGroupManagerResult {
     	      this.region = defaults.region;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.selfLink = defaults.selfLink;
+    	      this.serviceAccount = defaults.serviceAccount;
     	      this.standbyPolicies = defaults.standbyPolicies;
     	      this.statefulDisks = defaults.statefulDisks;
     	      this.statefulExternalIps = defaults.statefulExternalIps;
@@ -464,6 +470,14 @@ public final class GetRegionInstanceGroupManagerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccount(String serviceAccount) {
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerResult", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder standbyPolicies(List<GetRegionInstanceGroupManagerStandbyPolicy> standbyPolicies) {
             if (standbyPolicies == null) {
               throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerResult", "standbyPolicies");
@@ -626,6 +640,7 @@ public final class GetRegionInstanceGroupManagerResult {
             _resultValue.region = region;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.selfLink = selfLink;
+            _resultValue.serviceAccount = serviceAccount;
             _resultValue.standbyPolicies = standbyPolicies;
             _resultValue.statefulDisks = statefulDisks;
             _resultValue.statefulExternalIps = statefulExternalIps;

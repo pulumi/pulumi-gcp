@@ -6798,11 +6798,11 @@ class RoutineArgumentArgsDict(TypedDict):
     """
     Defaults to FIXED_TYPE.
     Default value is `FIXED_TYPE`.
-    Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+    Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
     """
     data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+    A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
     ~>**NOTE**: Because this field expects a JSON string, any changes to the string
     will create a diff, even if the JSON itself hasn't changed. If the API returns
     a different value for the same schema, e.g. it switched the order of values
@@ -6836,8 +6836,8 @@ class RoutineArgumentArgs:
         """
         :param pulumi.Input[_builtins.str] argument_kind: Defaults to FIXED_TYPE.
                Default value is `FIXED_TYPE`.
-               Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
-        :param pulumi.Input[_builtins.str] data_type: A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+               Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
+        :param pulumi.Input[_builtins.str] data_type: A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
                ~>**NOTE**: Because this field expects a JSON string, any changes to the string
                will create a diff, even if the JSON itself hasn't changed. If the API returns
                a different value for the same schema, e.g. it switched the order of values
@@ -6867,7 +6867,7 @@ class RoutineArgumentArgs:
         """
         Defaults to FIXED_TYPE.
         Default value is `FIXED_TYPE`.
-        Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+        Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
         """
         return pulumi.get(self, "argument_kind")
 
@@ -6879,7 +6879,7 @@ class RoutineArgumentArgs:
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+        A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
         ~>**NOTE**: Because this field expects a JSON string, any changes to the string
         will create a diff, even if the JSON itself hasn't changed. If the API returns
         a different value for the same schema, e.g. it switched the order of values
@@ -7071,7 +7071,8 @@ class RoutineExternalRuntimeOptionsArgsDict(TypedDict):
     """
     List of volume mounts for the Python UDF container that executes the
     managed function. When volume mounts are set, `runtime_connection` must
-    also be set.
+    also be set. For more information, see [Create a Python UDF with volume
+    mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
     Structure is documented below.
     """
 
@@ -7105,7 +7106,8 @@ class RoutineExternalRuntimeOptionsArgs:
         :param pulumi.Input[_builtins.str] runtime_version: Language runtime version. Example: `python-3.11`.
         :param pulumi.Input[Sequence[pulumi.Input['RoutineExternalRuntimeOptionsVolumeMountArgs']]] volume_mounts: List of volume mounts for the Python UDF container that executes the
                managed function. When volume mounts are set, `runtime_connection` must
-               also be set.
+               also be set. For more information, see [Create a Python UDF with volume
+               mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
                Structure is documented below.
         """
         if container_cpu is not None:
@@ -7212,7 +7214,8 @@ class RoutineExternalRuntimeOptionsArgs:
         """
         List of volume mounts for the Python UDF container that executes the
         managed function. When volume mounts are set, `runtime_connection` must
-        also be set.
+        also be set. For more information, see [Create a Python UDF with volume
+        mounts](https://cloud.google.com/bigquery/docs/user-defined-functions-python#volume-mounts).
         Structure is documented below.
         """
         return pulumi.get(self, "volume_mounts")
@@ -7232,8 +7235,8 @@ class RoutineExternalRuntimeOptionsVolumeMountArgsDict(TypedDict):
     """
     The absolute path of the source to be mounted. Only Google Cloud
     Storage buckets or folders are currently supported. For example,
-    `gs://bucket-xxx` for a Cloud Storage bucket, or
-    `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+    `gs://my-bucket` for a Cloud Storage bucket, or
+    `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
     """
 
 @pulumi.input_type
@@ -7246,8 +7249,8 @@ class RoutineExternalRuntimeOptionsVolumeMountArgs:
                mounted. For example, `/mnt/data`.
         :param pulumi.Input[_builtins.str] source_path: The absolute path of the source to be mounted. Only Google Cloud
                Storage buckets or folders are currently supported. For example,
-               `gs://bucket-xxx` for a Cloud Storage bucket, or
-               `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+               `gs://my-bucket` for a Cloud Storage bucket, or
+               `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "source_path", source_path)
@@ -7271,8 +7274,8 @@ class RoutineExternalRuntimeOptionsVolumeMountArgs:
         """
         The absolute path of the source to be mounted. Only Google Cloud
         Storage buckets or folders are currently supported. For example,
-        `gs://bucket-xxx` for a Cloud Storage bucket, or
-        `gs://bucket-xxx/folder1/folder2` for a Cloud Storage folder.
+        `gs://my-bucket` for a Cloud Storage bucket, or
+        `gs://my-bucket/folder1/folder2` for a Cloud Storage folder.
         """
         return pulumi.get(self, "source_path")
 
@@ -8240,8 +8243,7 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
 
     ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-    table schema must be specified using the top-level `schema` field
-    documented above.
+    table schema must be specified using the top-level `schema` field.
     """
     csv_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationCsvOptionsArgsDict']]]
     """
@@ -8338,8 +8340,7 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     `google_bigquery_table.schema`
 
     ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-    table schema must be specified using the top-level `schema` field
-    documented above.
+    table schema must be specified using the top-level `schema` field.
     """
     source_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8390,8 +8391,7 @@ class TableExternalDataConfigurationArgs:
                or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
                
                ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-               table schema must be specified using the top-level `schema` field
-               documented above.
+               table schema must be specified using the top-level `schema` field.
         :param pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs'] csv_options: Additional properties to set if
                `source_format` is set to "CSV". Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] decimal_target_types: Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
@@ -8446,8 +8446,7 @@ class TableExternalDataConfigurationArgs:
                `google_bigquery_table.schema`
                
                ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-               table schema must be specified using the top-level `schema` field
-               documented above.
+               table schema must be specified using the top-level `schema` field.
         :param pulumi.Input[_builtins.str] source_format: The data format. Please see sourceFormat under
                [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
                in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
@@ -8569,8 +8568,7 @@ class TableExternalDataConfigurationArgs:
         or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
 
         ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-        table schema must be specified using the top-level `schema` field
-        documented above.
+        table schema must be specified using the top-level `schema` field.
         """
         return pulumi.get(self, "connection_id")
 
@@ -8779,8 +8777,7 @@ class TableExternalDataConfigurationArgs:
         `google_bigquery_table.schema`
 
         ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-        table schema must be specified using the top-level `schema` field
-        documented above.
+        table schema must be specified using the top-level `schema` field.
         """
         return pulumi.get(self, "schema")
 

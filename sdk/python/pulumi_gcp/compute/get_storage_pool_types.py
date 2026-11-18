@@ -86,61 +86,99 @@ class GetStoragePoolTypesResult:
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> _builtins.str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
         return pulumi.get(self, "creation_timestamp")
 
     @_builtins.property
     @pulumi.getter
     def deprecateds(self) -> Sequence['outputs.GetStoragePoolTypesDeprecatedResult']:
+        """
+        (Output)
+        An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+        This is only informational and the status will not change unless the client explicitly changes it.
+        """
         return pulumi.get(self, "deprecateds")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        An optional description of this resource.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.int:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def kind(self) -> _builtins.str:
+        """
+        Type of the resource. Always compute#storagePoolType for storage pool types.
+        """
         return pulumi.get(self, "kind")
 
     @_builtins.property
     @pulumi.getter(name="maxPoolProvisionedCapacityGb")
     def max_pool_provisioned_capacity_gb(self) -> _builtins.int:
+        """
+        Maximum storage pool size in GB.
+        """
         return pulumi.get(self, "max_pool_provisioned_capacity_gb")
 
     @_builtins.property
     @pulumi.getter(name="maxPoolProvisionedIops")
     def max_pool_provisioned_iops(self) -> _builtins.int:
+        """
+        Maximum provisioned IOPS.
+        """
         return pulumi.get(self, "max_pool_provisioned_iops")
 
     @_builtins.property
     @pulumi.getter(name="maxPoolProvisionedThroughput")
     def max_pool_provisioned_throughput(self) -> _builtins.int:
+        """
+        Maximum provisioned throughput.
+        """
         return pulumi.get(self, "max_pool_provisioned_throughput")
 
     @_builtins.property
     @pulumi.getter(name="minPoolProvisionedCapacityGb")
     def min_pool_provisioned_capacity_gb(self) -> _builtins.int:
+        """
+        Minimum storage pool size in GB.
+        """
         return pulumi.get(self, "min_pool_provisioned_capacity_gb")
 
     @_builtins.property
     @pulumi.getter(name="minPoolProvisionedIops")
     def min_pool_provisioned_iops(self) -> _builtins.int:
+        """
+        Minimum provisioned IOPS.
+        """
         return pulumi.get(self, "min_pool_provisioned_iops")
 
     @_builtins.property
     @pulumi.getter(name="minPoolProvisionedThroughput")
     def min_pool_provisioned_throughput(self) -> _builtins.int:
+        """
+        Minimum provisioned throughput.
+        """
         return pulumi.get(self, "min_pool_provisioned_throughput")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -151,11 +189,17 @@ class GetStoragePoolTypesResult:
     @_builtins.property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> _builtins.str:
+        """
+        Server-defined URL for the resource.
+        """
         return pulumi.get(self, "self_link")
 
     @_builtins.property
     @pulumi.getter(name="selfLinkWithId")
     def self_link_with_id(self) -> _builtins.str:
+        """
+        Server-defined URL for this resource with the resource id.
+        """
         return pulumi.get(self, "self_link_with_id")
 
     @_builtins.property
@@ -166,6 +210,9 @@ class GetStoragePoolTypesResult:
     @_builtins.property
     @pulumi.getter(name="supportedDiskTypes")
     def supported_disk_types(self) -> Sequence[_builtins.str]:
+        """
+        The list of disk types supported in this storage pool type.
+        """
         return pulumi.get(self, "supported_disk_types")
 
     @_builtins.property
@@ -205,7 +252,22 @@ def get_storage_pool_types(project: Optional[_builtins.str] = None,
                            zone: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStoragePoolTypesResult:
     """
-    Use this data source to access information about an existing resource.
+    Represents a StoragePoolType data source.
+    The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+
+    To get more information about StoragePoolType, see:
+
+    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+    * How-to Guides
+        * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+
+
+    :param _builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    :param _builtins.str storage_pool_type: Name of the storage pool type.
+           
+           ***
+    :param _builtins.str zone: The name of the zone.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -238,7 +300,22 @@ def get_storage_pool_types_output(project: pulumi.Input[Optional[Optional[_built
                                   zone: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStoragePoolTypesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Represents a StoragePoolType data source.
+    The type of Hyperdisk Storage Pool that you create determines the type of disks that you can create in the storage pool.
+
+    To get more information about StoragePoolType, see:
+
+    * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/storagePoolTypes)
+    * How-to Guides
+        * [Types of Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools#sp-types)
+
+
+    :param _builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    :param _builtins.str storage_pool_type: Name of the storage pool type.
+           
+           ***
+    :param _builtins.str zone: The name of the zone.
     """
     __args__ = dict()
     __args__['project'] = project

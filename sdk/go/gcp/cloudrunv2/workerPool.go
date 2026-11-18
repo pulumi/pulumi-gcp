@@ -791,6 +791,51 @@ import (
 //
 // ```
 //
+// ### Cloudrunv2 Worker Pool Sandbox Templates
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewWorkerPool(ctx, "default", &cloudrunv2.WorkerPoolArgs{
+//				Name:               pulumi.String("cloudrun-example"),
+//				Location:           pulumi.String("us-west1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("BETA"),
+//				Template: &cloudrunv2.WorkerPoolTemplateArgs{
+//					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
+//						&cloudrunv2.WorkerPoolTemplateContainerArgs{
+//							Image:           pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							SandboxLauncher: pulumi.Bool(true),
+//						},
+//					},
+//					Sandboxes: &cloudrunv2.WorkerPoolTemplateSandboxesArgs{
+//						Templates: cloudrunv2.WorkerPoolTemplateSandboxesTemplateArray{
+//							&cloudrunv2.WorkerPoolTemplateSandboxesTemplateArgs{
+//								Name:  pulumi.String("hello"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // WorkerPool can be imported using any of these accepted formats:

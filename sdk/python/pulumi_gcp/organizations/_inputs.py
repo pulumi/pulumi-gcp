@@ -379,18 +379,18 @@ class PolicyBooleanPolicyArgs:
 class PolicyListPolicyArgsDict(TypedDict):
     allow: NotRequired[pulumi.Input[Optional['PolicyListPolicyAllowArgsDict']]]
     """
-    or `deny` - (Optional) One or the other must be set.
+    Exactly one of `allow` or `deny` must be set. Structure is documented below.
     """
     deny: NotRequired[pulumi.Input[Optional['PolicyListPolicyDenyArgsDict']]]
     """
-    One or the other must be set.
+    Exactly one of `allow` or `deny` must be set. Structure is documented below.
     """
     inherit_from_parent: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, the values from the effective Policy of the parent resource
     are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 
-    The `allow` or `deny` blocks support:
+    <a name="nested_allow_or_deny"></a>The `allow` or `deny` blocks support:
     """
     suggested_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -405,12 +405,12 @@ class PolicyListPolicyArgs:
                  inherit_from_parent: pulumi.Input[Optional[_builtins.bool]] = None,
                  suggested_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input['PolicyListPolicyAllowArgs'] allow: or `deny` - (Optional) One or the other must be set.
-        :param pulumi.Input['PolicyListPolicyDenyArgs'] deny: One or the other must be set.
+        :param pulumi.Input['PolicyListPolicyAllowArgs'] allow: Exactly one of `allow` or `deny` must be set. Structure is documented below.
+        :param pulumi.Input['PolicyListPolicyDenyArgs'] deny: Exactly one of `allow` or `deny` must be set. Structure is documented below.
         :param pulumi.Input[_builtins.bool] inherit_from_parent: If set to true, the values from the effective Policy of the parent resource
                are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
                
-               The `allow` or `deny` blocks support:
+               <a name="nested_allow_or_deny"></a>The `allow` or `deny` blocks support:
         :param pulumi.Input[_builtins.str] suggested_value: The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
         """
         if allow is not None:
@@ -426,7 +426,7 @@ class PolicyListPolicyArgs:
     @pulumi.getter
     def allow(self) -> pulumi.Input[Optional['PolicyListPolicyAllowArgs']]:
         """
-        or `deny` - (Optional) One or the other must be set.
+        Exactly one of `allow` or `deny` must be set. Structure is documented below.
         """
         return pulumi.get(self, "allow")
 
@@ -438,7 +438,7 @@ class PolicyListPolicyArgs:
     @pulumi.getter
     def deny(self) -> pulumi.Input[Optional['PolicyListPolicyDenyArgs']]:
         """
-        One or the other must be set.
+        Exactly one of `allow` or `deny` must be set. Structure is documented below.
         """
         return pulumi.get(self, "deny")
 
@@ -453,7 +453,7 @@ class PolicyListPolicyArgs:
         If set to true, the values from the effective Policy of the parent resource
         are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 
-        The `allow` or `deny` blocks support:
+        <a name="nested_allow_or_deny"></a>The `allow` or `deny` blocks support:
         """
         return pulumi.get(self, "inherit_from_parent")
 

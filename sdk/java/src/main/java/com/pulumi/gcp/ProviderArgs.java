@@ -616,6 +616,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deploymentManagerCustomEndpoint);
     }
 
+    @Import(name="designCenterCustomEndpoint")
+    private @Nullable Output<String> designCenterCustomEndpoint;
+
+    public Optional<Output<String>> designCenterCustomEndpoint() {
+        return Optional.ofNullable(this.designCenterCustomEndpoint);
+    }
+
     @Import(name="developerConnectCustomEndpoint")
     private @Nullable Output<String> developerConnectCustomEndpoint;
 
@@ -1663,6 +1670,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultLabels = $.defaultLabels;
         this.deletionPolicy = $.deletionPolicy;
         this.deploymentManagerCustomEndpoint = $.deploymentManagerCustomEndpoint;
+        this.designCenterCustomEndpoint = $.designCenterCustomEndpoint;
         this.developerConnectCustomEndpoint = $.developerConnectCustomEndpoint;
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
         this.dialogflowCxCustomEndpoint = $.dialogflowCxCustomEndpoint;
@@ -2583,6 +2591,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder deploymentManagerCustomEndpoint(String deploymentManagerCustomEndpoint) {
             return deploymentManagerCustomEndpoint(Output.of(deploymentManagerCustomEndpoint));
+        }
+
+        public Builder designCenterCustomEndpoint(@Nullable Output<String> designCenterCustomEndpoint) {
+            $.designCenterCustomEndpoint = designCenterCustomEndpoint;
+            return this;
+        }
+
+        public Builder designCenterCustomEndpoint(String designCenterCustomEndpoint) {
+            return designCenterCustomEndpoint(Output.of(designCenterCustomEndpoint));
         }
 
         public Builder developerConnectCustomEndpoint(@Nullable Output<String> developerConnectCustomEndpoint) {

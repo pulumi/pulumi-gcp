@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.identityplatform.inputs.TenantOauthIdpConfigResponseTypeArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -149,6 +150,27 @@ public final class TenantOauthIdpConfigState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="responseType")
+    private @Nullable Output<TenantOauthIdpConfigResponseTypeArgs> responseType;
+
+    /**
+     * @return The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TenantOauthIdpConfigResponseTypeArgs>> responseType() {
+        return Optional.ofNullable(this.responseType);
+    }
+
+    /**
      * The name of the tenant where this OIDC IDP configuration resource exists
      * 
      */
@@ -174,6 +196,7 @@ public final class TenantOauthIdpConfigState extends com.pulumi.resources.Resour
         this.issuer = $.issuer;
         this.name = $.name;
         this.project = $.project;
+        this.responseType = $.responseType;
         this.tenant = $.tenant;
     }
 
@@ -373,6 +396,33 @@ public final class TenantOauthIdpConfigState extends com.pulumi.resources.Resour
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param responseType The response type to request for in the OAuth authorization flow.
+         * You can set either idToken or code to true, but not both.
+         * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseType(@Nullable Output<TenantOauthIdpConfigResponseTypeArgs> responseType) {
+            $.responseType = responseType;
+            return this;
+        }
+
+        /**
+         * @param responseType The response type to request for in the OAuth authorization flow.
+         * You can set either idToken or code to true, but not both.
+         * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseType(TenantOauthIdpConfigResponseTypeArgs responseType) {
+            return responseType(Output.of(responseType));
         }
 
         /**

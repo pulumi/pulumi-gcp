@@ -5,8 +5,11 @@ package com.pulumi.gcp.firebase.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.firebase.inputs.AppHostingTrafficRolloutPolicyIgnoredPathArgs;
+import com.pulumi.gcp.firebase.inputs.AppHostingTrafficRolloutPolicyRequiredPathArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -65,12 +68,62 @@ public final class AppHostingTrafficRolloutPolicyArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.disabledTime);
     }
 
+    /**
+     * A list of file paths patterns to exclude from triggering a rollout.
+     * Patterns in this list take precedence over required_paths.
+     * **Note**: All paths must be in the ignoredPaths in order for the
+     * rollout to be skipped. Limited to 100 paths.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ignoredPaths")
+    private @Nullable Output<List<AppHostingTrafficRolloutPolicyIgnoredPathArgs>> ignoredPaths;
+
+    /**
+     * @return A list of file paths patterns to exclude from triggering a rollout.
+     * Patterns in this list take precedence over required_paths.
+     * **Note**: All paths must be in the ignoredPaths in order for the
+     * rollout to be skipped. Limited to 100 paths.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppHostingTrafficRolloutPolicyIgnoredPathArgs>>> ignoredPaths() {
+        return Optional.ofNullable(this.ignoredPaths);
+    }
+
+    /**
+     * A list of file paths patterns that trigger a build and rollout
+     * if at least one of the changed files in the commit are present in
+     * this list. This field is optional; the rollout policy will default to
+     * triggering on all paths if both ignoredPaths and requiredPaths are
+     * not populated. Limited to 100 paths.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="requiredPaths")
+    private @Nullable Output<List<AppHostingTrafficRolloutPolicyRequiredPathArgs>> requiredPaths;
+
+    /**
+     * @return A list of file paths patterns that trigger a build and rollout
+     * if at least one of the changed files in the commit are present in
+     * this list. This field is optional; the rollout policy will default to
+     * triggering on all paths if both ignoredPaths and requiredPaths are
+     * not populated. Limited to 100 paths.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppHostingTrafficRolloutPolicyRequiredPathArgs>>> requiredPaths() {
+        return Optional.ofNullable(this.requiredPaths);
+    }
+
     private AppHostingTrafficRolloutPolicyArgs() {}
 
     private AppHostingTrafficRolloutPolicyArgs(AppHostingTrafficRolloutPolicyArgs $) {
         this.codebaseBranch = $.codebaseBranch;
         this.disabled = $.disabled;
         this.disabledTime = $.disabledTime;
+        this.ignoredPaths = $.ignoredPaths;
+        this.requiredPaths = $.requiredPaths;
     }
 
     public static Builder builder() {
@@ -156,6 +209,95 @@ public final class AppHostingTrafficRolloutPolicyArgs extends com.pulumi.resourc
          */
         public Builder disabledTime(String disabledTime) {
             return disabledTime(Output.of(disabledTime));
+        }
+
+        /**
+         * @param ignoredPaths A list of file paths patterns to exclude from triggering a rollout.
+         * Patterns in this list take precedence over required_paths.
+         * **Note**: All paths must be in the ignoredPaths in order for the
+         * rollout to be skipped. Limited to 100 paths.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoredPaths(@Nullable Output<List<AppHostingTrafficRolloutPolicyIgnoredPathArgs>> ignoredPaths) {
+            $.ignoredPaths = ignoredPaths;
+            return this;
+        }
+
+        /**
+         * @param ignoredPaths A list of file paths patterns to exclude from triggering a rollout.
+         * Patterns in this list take precedence over required_paths.
+         * **Note**: All paths must be in the ignoredPaths in order for the
+         * rollout to be skipped. Limited to 100 paths.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoredPaths(List<AppHostingTrafficRolloutPolicyIgnoredPathArgs> ignoredPaths) {
+            return ignoredPaths(Output.of(ignoredPaths));
+        }
+
+        /**
+         * @param ignoredPaths A list of file paths patterns to exclude from triggering a rollout.
+         * Patterns in this list take precedence over required_paths.
+         * **Note**: All paths must be in the ignoredPaths in order for the
+         * rollout to be skipped. Limited to 100 paths.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoredPaths(AppHostingTrafficRolloutPolicyIgnoredPathArgs... ignoredPaths) {
+            return ignoredPaths(List.of(ignoredPaths));
+        }
+
+        /**
+         * @param requiredPaths A list of file paths patterns that trigger a build and rollout
+         * if at least one of the changed files in the commit are present in
+         * this list. This field is optional; the rollout policy will default to
+         * triggering on all paths if both ignoredPaths and requiredPaths are
+         * not populated. Limited to 100 paths.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredPaths(@Nullable Output<List<AppHostingTrafficRolloutPolicyRequiredPathArgs>> requiredPaths) {
+            $.requiredPaths = requiredPaths;
+            return this;
+        }
+
+        /**
+         * @param requiredPaths A list of file paths patterns that trigger a build and rollout
+         * if at least one of the changed files in the commit are present in
+         * this list. This field is optional; the rollout policy will default to
+         * triggering on all paths if both ignoredPaths and requiredPaths are
+         * not populated. Limited to 100 paths.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredPaths(List<AppHostingTrafficRolloutPolicyRequiredPathArgs> requiredPaths) {
+            return requiredPaths(Output.of(requiredPaths));
+        }
+
+        /**
+         * @param requiredPaths A list of file paths patterns that trigger a build and rollout
+         * if at least one of the changed files in the commit are present in
+         * this list. This field is optional; the rollout policy will default to
+         * triggering on all paths if both ignoredPaths and requiredPaths are
+         * not populated. Limited to 100 paths.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredPaths(AppHostingTrafficRolloutPolicyRequiredPathArgs... requiredPaths) {
+            return requiredPaths(List.of(requiredPaths));
         }
 
         public AppHostingTrafficRolloutPolicyArgs build() {

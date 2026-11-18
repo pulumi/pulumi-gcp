@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string DeploymentName;
         /// <summary>
+        /// User-provided description for the blue-green deployment.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// Auth Proxy connection string for the former Blue instance post-switchover.
         /// </summary>
         public readonly string OldSourceInstanceConnectionName;
@@ -58,6 +62,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string deploymentName,
 
+            string description,
+
             string oldSourceInstanceConnectionName,
 
             string oldSourceInstanceName,
@@ -73,6 +79,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             ActiveEnvironment = activeEnvironment;
             DeleteOldSourceOnDestroy = deleteOldSourceOnDestroy;
             DeploymentName = deploymentName;
+            Description = description;
             OldSourceInstanceConnectionName = oldSourceInstanceConnectionName;
             OldSourceInstanceName = oldSourceInstanceName;
             TargetDatabaseVersion = targetDatabaseVersion;

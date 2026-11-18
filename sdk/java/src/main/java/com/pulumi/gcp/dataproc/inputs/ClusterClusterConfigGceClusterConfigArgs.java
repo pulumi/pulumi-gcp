@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigReservationAffinityArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs;
@@ -75,6 +76,27 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
      */
     public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
+    }
+
+    /**
+     * Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+     * Structure defined below.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="multiZoneConfig")
+    private @Nullable Output<ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs> multiZoneConfig;
+
+    /**
+     * @return Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+     * Structure defined below.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs>> multiZoneConfig() {
+        return Optional.ofNullable(this.multiZoneConfig);
     }
 
     /**
@@ -188,16 +210,12 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
     /**
      * Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
      * 
-     * ***
-     * 
      */
     @Import(name="shieldedInstanceConfig")
     private @Nullable Output<ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs> shieldedInstanceConfig;
 
     /**
      * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-     * 
-     * ***
      * 
      */
     public Optional<Output<ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
@@ -271,6 +289,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.internalIpOnly = $.internalIpOnly;
         this.metadata = $.metadata;
+        this.multiZoneConfig = $.multiZoneConfig;
         this.network = $.network;
         this.nodeGroupAffinity = $.nodeGroupAffinity;
         this.reservationAffinity = $.reservationAffinity;
@@ -372,6 +391,33 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
          */
         public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
+        }
+
+        /**
+         * @param multiZoneConfig Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+         * Structure defined below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiZoneConfig(@Nullable Output<ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs> multiZoneConfig) {
+            $.multiZoneConfig = multiZoneConfig;
+            return this;
+        }
+
+        /**
+         * @param multiZoneConfig Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+         * Structure defined below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiZoneConfig(ClusterClusterConfigGceClusterConfigMultiZoneConfigArgs multiZoneConfig) {
+            return multiZoneConfig(Output.of(multiZoneConfig));
         }
 
         /**
@@ -535,8 +581,6 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         /**
          * @param shieldedInstanceConfig Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -547,8 +591,6 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
 
         /**
          * @param shieldedInstanceConfig Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-         * 
-         * ***
          * 
          * @return builder
          * 

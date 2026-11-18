@@ -38,6 +38,10 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         [Input("statuses")]
         private InputList<Inputs.UserPasswordPolicyStatusArgs>? _statuses;
+
+        /// <summary>
+        /// The password status of the user. Structure is documented below.
+        /// </summary>
         public InputList<Inputs.UserPasswordPolicyStatusArgs> Statuses
         {
             get => _statuses ?? (_statuses = new InputList<Inputs.UserPasswordPolicyStatusArgs>());

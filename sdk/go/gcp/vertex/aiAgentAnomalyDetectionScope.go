@@ -62,11 +62,15 @@ import (
 //				Region:                       pulumi.String("us"),
 //				AgentAnomalyDetectionScopeId: pulumi.String("agent-anomaly-detection-scope"),
 //				DisplayName:                  pulumi.String("Basic AAD scope"),
+//				AutoEnroll:                   pulumi.Bool(true),
 //				LogBuckets: pulumi.StringArray{
 //					aad_log_bucket.ID(),
 //				},
 //				ObservabilityBuckets: pulumi.StringArray{
 //					pulumi.Sprintf("projects/%v/locations/us/buckets/_Trace/datasets/Spans", project.ProjectId),
+//				},
+//				EncryptionSpec: &vertex.AiAgentAnomalyDetectionScopeEncryptionSpecArgs{
+//					KmsKeyName: pulumi.String("projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				},
 //			})
 //			if err != nil {
@@ -102,6 +106,12 @@ type AiAgentAnomalyDetectionScope struct {
 	// final component of the scope's resource name. This value should be 1-63
 	// characters and valid characters are /[a-z][0-9]-/.
 	AgentAnomalyDetectionScopeId pulumi.StringOutput `pulumi:"agentAnomalyDetectionScopeId"`
+	// When true, newly discovered agents that share log and observability
+	// buckets with this scope are automatically enrolled as ACTIVE monitored
+	// agents, up to the project's monitored agent quota. When false, newly
+	// discovered agents are added as DISABLED monitored agents and must be
+	// enabled explicitly.
+	AutoEnroll pulumi.BoolPtrOutput `pulumi:"autoEnroll"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -111,6 +121,12 @@ type AiAgentAnomalyDetectionScope struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User provided display name of the AgentAnomalyDetectionScope.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Customer-managed encryption key spec for the scope. If set, this scope
+	// and all sub-resources are secured by this key. The key must be a Cloud
+	// KMS key co-located with the scope location (for example, `us` for a `us`
+	// scope, `europe` for an `eu` scope, or matching single region).
+	// Structure is documented below.
+	EncryptionSpec AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// Customer owned Cloud Logging bucket resource names attached to this scope.
 	// Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
 	LogBuckets pulumi.StringArrayOutput `pulumi:"logBuckets"`
@@ -176,6 +192,12 @@ type aiAgentAnomalyDetectionScopeState struct {
 	// final component of the scope's resource name. This value should be 1-63
 	// characters and valid characters are /[a-z][0-9]-/.
 	AgentAnomalyDetectionScopeId *string `pulumi:"agentAnomalyDetectionScopeId"`
+	// When true, newly discovered agents that share log and observability
+	// buckets with this scope are automatically enrolled as ACTIVE monitored
+	// agents, up to the project's monitored agent quota. When false, newly
+	// discovered agents are added as DISABLED monitored agents and must be
+	// enabled explicitly.
+	AutoEnroll *bool `pulumi:"autoEnroll"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -185,6 +207,12 @@ type aiAgentAnomalyDetectionScopeState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User provided display name of the AgentAnomalyDetectionScope.
 	DisplayName *string `pulumi:"displayName"`
+	// Customer-managed encryption key spec for the scope. If set, this scope
+	// and all sub-resources are secured by this key. The key must be a Cloud
+	// KMS key co-located with the scope location (for example, `us` for a `us`
+	// scope, `europe` for an `eu` scope, or matching single region).
+	// Structure is documented below.
+	EncryptionSpec *AiAgentAnomalyDetectionScopeEncryptionSpec `pulumi:"encryptionSpec"`
 	// Customer owned Cloud Logging bucket resource names attached to this scope.
 	// Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
 	LogBuckets []string `pulumi:"logBuckets"`
@@ -209,6 +237,12 @@ type AiAgentAnomalyDetectionScopeState struct {
 	// final component of the scope's resource name. This value should be 1-63
 	// characters and valid characters are /[a-z][0-9]-/.
 	AgentAnomalyDetectionScopeId pulumi.StringPtrInput
+	// When true, newly discovered agents that share log and observability
+	// buckets with this scope are automatically enrolled as ACTIVE monitored
+	// agents, up to the project's monitored agent quota. When false, newly
+	// discovered agents are added as DISABLED monitored agents and must be
+	// enabled explicitly.
+	AutoEnroll pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -218,6 +252,12 @@ type AiAgentAnomalyDetectionScopeState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// User provided display name of the AgentAnomalyDetectionScope.
 	DisplayName pulumi.StringPtrInput
+	// Customer-managed encryption key spec for the scope. If set, this scope
+	// and all sub-resources are secured by this key. The key must be a Cloud
+	// KMS key co-located with the scope location (for example, `us` for a `us`
+	// scope, `europe` for an `eu` scope, or matching single region).
+	// Structure is documented below.
+	EncryptionSpec AiAgentAnomalyDetectionScopeEncryptionSpecPtrInput
 	// Customer owned Cloud Logging bucket resource names attached to this scope.
 	// Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
 	LogBuckets pulumi.StringArrayInput
@@ -252,6 +292,12 @@ type aiAgentAnomalyDetectionScopeArgs struct {
 	// final component of the scope's resource name. This value should be 1-63
 	// characters and valid characters are /[a-z][0-9]-/.
 	AgentAnomalyDetectionScopeId string `pulumi:"agentAnomalyDetectionScopeId"`
+	// When true, newly discovered agents that share log and observability
+	// buckets with this scope are automatically enrolled as ACTIVE monitored
+	// agents, up to the project's monitored agent quota. When false, newly
+	// discovered agents are added as DISABLED monitored agents and must be
+	// enabled explicitly.
+	AutoEnroll *bool `pulumi:"autoEnroll"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -261,6 +307,12 @@ type aiAgentAnomalyDetectionScopeArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User provided display name of the AgentAnomalyDetectionScope.
 	DisplayName *string `pulumi:"displayName"`
+	// Customer-managed encryption key spec for the scope. If set, this scope
+	// and all sub-resources are secured by this key. The key must be a Cloud
+	// KMS key co-located with the scope location (for example, `us` for a `us`
+	// scope, `europe` for an `eu` scope, or matching single region).
+	// Structure is documented below.
+	EncryptionSpec *AiAgentAnomalyDetectionScopeEncryptionSpec `pulumi:"encryptionSpec"`
 	// Customer owned Cloud Logging bucket resource names attached to this scope.
 	// Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
 	LogBuckets []string `pulumi:"logBuckets"`
@@ -281,6 +333,12 @@ type AiAgentAnomalyDetectionScopeArgs struct {
 	// final component of the scope's resource name. This value should be 1-63
 	// characters and valid characters are /[a-z][0-9]-/.
 	AgentAnomalyDetectionScopeId pulumi.StringInput
+	// When true, newly discovered agents that share log and observability
+	// buckets with this scope are automatically enrolled as ACTIVE monitored
+	// agents, up to the project's monitored agent quota. When false, newly
+	// discovered agents are added as DISABLED monitored agents and must be
+	// enabled explicitly.
+	AutoEnroll pulumi.BoolPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -290,6 +348,12 @@ type AiAgentAnomalyDetectionScopeArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// User provided display name of the AgentAnomalyDetectionScope.
 	DisplayName pulumi.StringPtrInput
+	// Customer-managed encryption key spec for the scope. If set, this scope
+	// and all sub-resources are secured by this key. The key must be a Cloud
+	// KMS key co-located with the scope location (for example, `us` for a `us`
+	// scope, `europe` for an `eu` scope, or matching single region).
+	// Structure is documented below.
+	EncryptionSpec AiAgentAnomalyDetectionScopeEncryptionSpecPtrInput
 	// Customer owned Cloud Logging bucket resource names attached to this scope.
 	// Format: projects/{{project}}/locations/{{location}}/buckets/{{bucket}}.
 	LogBuckets pulumi.StringArrayInput
@@ -398,6 +462,15 @@ func (o AiAgentAnomalyDetectionScopeOutput) AgentAnomalyDetectionScopeId() pulum
 	return o.ApplyT(func(v *AiAgentAnomalyDetectionScope) pulumi.StringOutput { return v.AgentAnomalyDetectionScopeId }).(pulumi.StringOutput)
 }
 
+// When true, newly discovered agents that share log and observability
+// buckets with this scope are automatically enrolled as ACTIVE monitored
+// agents, up to the project's monitored agent quota. When false, newly
+// discovered agents are added as DISABLED monitored agents and must be
+// enabled explicitly.
+func (o AiAgentAnomalyDetectionScopeOutput) AutoEnroll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiAgentAnomalyDetectionScope) pulumi.BoolPtrOutput { return v.AutoEnroll }).(pulumi.BoolPtrOutput)
+}
+
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 // When a 'terraform destroy' or 'pulumi up' would delete the resource,
 // the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -411,6 +484,17 @@ func (o AiAgentAnomalyDetectionScopeOutput) DeletionPolicy() pulumi.StringOutput
 // User provided display name of the AgentAnomalyDetectionScope.
 func (o AiAgentAnomalyDetectionScopeOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiAgentAnomalyDetectionScope) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Customer-managed encryption key spec for the scope. If set, this scope
+// and all sub-resources are secured by this key. The key must be a Cloud
+// KMS key co-located with the scope location (for example, `us` for a `us`
+// scope, `europe` for an `eu` scope, or matching single region).
+// Structure is documented below.
+func (o AiAgentAnomalyDetectionScopeOutput) EncryptionSpec() AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *AiAgentAnomalyDetectionScope) AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput {
+		return v.EncryptionSpec
+	}).(AiAgentAnomalyDetectionScopeEncryptionSpecPtrOutput)
 }
 
 // Customer owned Cloud Logging bucket resource names attached to this scope.

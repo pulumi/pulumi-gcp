@@ -134,12 +134,7 @@ export class Variable extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * or `value` - (Required) The content to associate with the variable.
-     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-     * is specified, it must be base64 encoded and less than 4096 bytes in length.
-     *
-     * ***
+     * The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
      */
     declare public readonly text: pulumi.Output<string | undefined>;
     /**
@@ -148,6 +143,11 @@ export class Variable extends pulumi.CustomResource {
      * Example: "2016-10-09T12:33:37.578138407Z".
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+     *
+     * ***
+     */
     declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
@@ -219,12 +219,7 @@ export interface VariableState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * or `value` - (Required) The content to associate with the variable.
-     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-     * is specified, it must be base64 encoded and less than 4096 bytes in length.
-     *
-     * ***
+     * The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
      */
     text?: pulumi.Input<string | undefined>;
     /**
@@ -233,6 +228,11 @@ export interface VariableState {
      * Example: "2016-10-09T12:33:37.578138407Z".
      */
     updateTime?: pulumi.Input<string | undefined>;
+    /**
+     * The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
+     *
+     * ***
+     */
     value?: pulumi.Input<string | undefined>;
 }
 
@@ -265,13 +265,13 @@ export interface VariableArgs {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * or `value` - (Required) The content to associate with the variable.
-     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
-     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
-     * is specified, it must be base64 encoded and less than 4096 bytes in length.
+     * The string content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be a valid UTF-8 string and less than 4096 bytes in length.
+     */
+    text?: pulumi.Input<string | undefined>;
+    /**
+     * The base64-encoded binary content to associate with the variable. Exactly one of `text` or `value` must be specified. Must be base64 encoded and less than 4096 bytes in length.
      *
      * ***
      */
-    text?: pulumi.Input<string | undefined>;
     value?: pulumi.Input<string | undefined>;
 }

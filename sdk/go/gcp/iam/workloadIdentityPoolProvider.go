@@ -208,6 +208,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			actor, err := iam.NewWorkloadIdentityPoolProvider(ctx, "actor", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("actor-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.sub"),
+//				},
+//				Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
+//					IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
 //				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
 //				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
@@ -225,7 +238,11 @@ import (
 //						pulumi.String("https://example.com/gcp-oidc-federation"),
 //						pulumi.String("example.com/gcp-oidc-federation"),
 //					},
-//					IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
+//					IssuerUri:    pulumi.String("https://sts.windows.net/azure-tenant-id"),
+//					DiscoveryUri: pulumi.String("https://sts.windows.net/azure-tenant-id/.well-known/openid-configuration"),
+//				},
+//				ActorProviders: pulumi.StringArray{
+//					actor.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -522,6 +539,16 @@ import (
 type WorkloadIdentityPoolProvider struct {
 	pulumi.CustomResourceState
 
+	// A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+	// that are authorized to issue actor tokens for this provider. An actor token
+	// represents the identity of the acting party to whom authority is delegated. At
+	// most 3 actor providers can be specified. Actor providers are only supported for
+	// OIDC providers.
+	// Each entry must be formatted as
+	// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+	// where `{project}` matches the `project` configured on this resource (for example,
+	// by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+	ActorProviders pulumi.StringArrayOutput `pulumi:"actorProviders"`
 	// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
 	// plain text, to restrict what otherwise valid authentication credentials issued by the
 	// provider should not be accepted.
@@ -653,6 +680,16 @@ func GetWorkloadIdentityPoolProvider(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkloadIdentityPoolProvider resources.
 type workloadIdentityPoolProviderState struct {
+	// A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+	// that are authorized to issue actor tokens for this provider. An actor token
+	// represents the identity of the acting party to whom authority is delegated. At
+	// most 3 actor providers can be specified. Actor providers are only supported for
+	// OIDC providers.
+	// Each entry must be formatted as
+	// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+	// where `{project}` matches the `project` configured on this resource (for example,
+	// by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+	ActorProviders []string `pulumi:"actorProviders"`
 	// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
 	// plain text, to restrict what otherwise valid authentication credentials issued by the
 	// provider should not be accepted.
@@ -749,6 +786,16 @@ type workloadIdentityPoolProviderState struct {
 }
 
 type WorkloadIdentityPoolProviderState struct {
+	// A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+	// that are authorized to issue actor tokens for this provider. An actor token
+	// represents the identity of the acting party to whom authority is delegated. At
+	// most 3 actor providers can be specified. Actor providers are only supported for
+	// OIDC providers.
+	// Each entry must be formatted as
+	// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+	// where `{project}` matches the `project` configured on this resource (for example,
+	// by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+	ActorProviders pulumi.StringArrayInput
 	// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
 	// plain text, to restrict what otherwise valid authentication credentials issued by the
 	// provider should not be accepted.
@@ -855,6 +902,16 @@ func WorkloadIdentityPoolProviderExists(ctx *pulumi.Context,
 }
 
 type workloadIdentityPoolProviderArgs struct {
+	// A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+	// that are authorized to issue actor tokens for this provider. An actor token
+	// represents the identity of the acting party to whom authority is delegated. At
+	// most 3 actor providers can be specified. Actor providers are only supported for
+	// OIDC providers.
+	// Each entry must be formatted as
+	// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+	// where `{project}` matches the `project` configured on this resource (for example,
+	// by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+	ActorProviders []string `pulumi:"actorProviders"`
 	// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
 	// plain text, to restrict what otherwise valid authentication credentials issued by the
 	// provider should not be accepted.
@@ -941,6 +998,16 @@ type workloadIdentityPoolProviderArgs struct {
 
 // The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
 type WorkloadIdentityPoolProviderArgs struct {
+	// A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+	// that are authorized to issue actor tokens for this provider. An actor token
+	// represents the identity of the acting party to whom authority is delegated. At
+	// most 3 actor providers can be specified. Actor providers are only supported for
+	// OIDC providers.
+	// Each entry must be formatted as
+	// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+	// where `{project}` matches the `project` configured on this resource (for example,
+	// by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+	ActorProviders pulumi.StringArrayInput
 	// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
 	// plain text, to restrict what otherwise valid authentication credentials issued by the
 	// provider should not be accepted.
@@ -1110,6 +1177,19 @@ func (o WorkloadIdentityPoolProviderOutput) ToWorkloadIdentityPoolProviderOutput
 
 func (o WorkloadIdentityPoolProviderOutput) ToWorkloadIdentityPoolProviderOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOutput {
 	return o
+}
+
+// A list of the resource names of `WorkloadIdentityPoolProvider`s in the same pool
+// that are authorized to issue actor tokens for this provider. An actor token
+// represents the identity of the acting party to whom authority is delegated. At
+// most 3 actor providers can be specified. Actor providers are only supported for
+// OIDC providers.
+// Each entry must be formatted as
+// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`,
+// where `{project}` matches the `project` configured on this resource (for example,
+// by referencing `google_iam_workload_identity_pool_provider.<actor>.id`).
+func (o WorkloadIdentityPoolProviderOutput) ActorProviders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringArrayOutput { return v.ActorProviders }).(pulumi.StringArrayOutput)
 }
 
 // [A Common Expression Language](https://github.com/google/cel-spec) expression, in

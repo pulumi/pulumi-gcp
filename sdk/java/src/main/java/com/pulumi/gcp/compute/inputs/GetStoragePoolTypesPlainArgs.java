@@ -15,23 +15,53 @@ public final class GetStoragePoolTypesPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetStoragePoolTypesPlainArgs Empty = new GetStoragePoolTypesPlainArgs();
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Name of the storage pool type.
+     * 
+     * ***
+     * 
+     */
     @Import(name="storagePoolType", required=true)
     private String storagePoolType;
 
+    /**
+     * @return Name of the storage pool type.
+     * 
+     * ***
+     * 
+     */
     public String storagePoolType() {
         return this.storagePoolType;
     }
 
+    /**
+     * The name of the zone.
+     * 
+     */
     @Import(name="zone", required=true)
     private String zone;
 
+    /**
+     * @return The name of the zone.
+     * 
+     */
     public String zone() {
         return this.zone;
     }
@@ -62,16 +92,37 @@ public final class GetStoragePoolTypesPlainArgs extends com.pulumi.resources.Inv
             $ = new GetStoragePoolTypesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param storagePoolType Name of the storage pool type.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder storagePoolType(String storagePoolType) {
             $.storagePoolType = storagePoolType;
             return this;
         }
 
+        /**
+         * @param zone The name of the zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(String zone) {
             $.zone = zone;
             return this;

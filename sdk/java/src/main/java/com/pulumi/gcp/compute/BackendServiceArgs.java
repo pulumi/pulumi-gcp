@@ -447,7 +447,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -459,7 +459,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -1568,7 +1568,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          * load balancing cannot be used with the other. For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
          * Default value is `EXTERNAL_MANAGED`.
-         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
          * 
          * @return builder
          * 
@@ -1584,7 +1584,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          * load balancing cannot be used with the other. For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
          * Default value is `EXTERNAL_MANAGED`.
-         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
          * 
          * @return builder
          * 

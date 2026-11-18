@@ -19,14 +19,18 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
     public static final InstanceClusterArgs Empty = new InstanceClusterArgs();
 
     /**
-     * [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+     * [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+     * 
+     * &gt; **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
      * 
      */
     @Import(name="autoscalingConfig")
     private @Nullable Output<InstanceClusterAutoscalingConfigArgs> autoscalingConfig;
 
     /**
-     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+     * 
+     * &gt; **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
      * 
      */
     public Optional<Output<InstanceClusterAutoscalingConfigArgs>> autoscalingConfig() {
@@ -75,6 +79,8 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
      * `gcp.bigtable.Instance` resource. If these values are changing, use a new
      * `clusterId`.
      * 
+     * ***
+     * 
      */
     @Import(name="nodeScalingFactor")
     private @Nullable Output<String> nodeScalingFactor;
@@ -90,6 +96,8 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
      * `clusterId`) will cause the provider to delete/recreate the entire
      * `gcp.bigtable.Instance` resource. If these values are changing, use a new
      * `clusterId`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> nodeScalingFactor() {
@@ -196,7 +204,9 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoscalingConfig [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+         * @param autoscalingConfig [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+         * 
+         * &gt; **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
          * 
          * @return builder
          * 
@@ -207,7 +217,9 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoscalingConfig [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+         * @param autoscalingConfig [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+         * 
+         * &gt; **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
          * 
          * @return builder
          * 
@@ -270,6 +282,8 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
          * `gcp.bigtable.Instance` resource. If these values are changing, use a new
          * `clusterId`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -289,6 +303,8 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
          * `clusterId`) will cause the provider to delete/recreate the entire
          * `gcp.bigtable.Instance` resource. If these values are changing, use a new
          * `clusterId`.
+         * 
+         * ***
          * 
          * @return builder
          * 

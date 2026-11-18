@@ -99,6 +99,7 @@ import * as dataplex from "./dataplex";
 import * as dataproc from "./dataproc";
 import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
+import * as designcenter from "./designcenter";
 import * as developerconnect from "./developerconnect";
 import * as diagflow from "./diagflow";
 import * as discoveryengine from "./discoveryengine";
@@ -246,6 +247,7 @@ export {
     dataproc,
     datastream,
     deploymentmanager,
+    designcenter,
     developerconnect,
     diagflow,
     discoveryengine,

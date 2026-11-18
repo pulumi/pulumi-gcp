@@ -7,10 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetRegionInstanceGroupManagerUpdatePolicy {
+    /**
+     * @return Specifies the allowed actions list for this update. Valid values are: &#34;NONE&#34;, &#34;REFRESH&#34;, &#34;RESTART_IN_PLACE&#34;, &#34;RESTART&#34;, &#34;REPLACE&#34;. allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+     * 
+     */
+    private List<String> allowedActions;
     /**
      * @return The instance redistribution policy for regional managed instance groups. Valid values are: &#34;PROACTIVE&#34;, &#34;NONE&#34;. If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
      * 
@@ -63,6 +69,13 @@ public final class GetRegionInstanceGroupManagerUpdatePolicy {
     private String type;
 
     private GetRegionInstanceGroupManagerUpdatePolicy() {}
+    /**
+     * @return Specifies the allowed actions list for this update. Valid values are: &#34;NONE&#34;, &#34;REFRESH&#34;, &#34;RESTART_IN_PLACE&#34;, &#34;RESTART&#34;, &#34;REPLACE&#34;. allowedActions is the only way to request RESTART_IN_PLACE. Conflicts with minimalAction and most_disruptive_allowed_action.
+     * 
+     */
+    public List<String> allowedActions() {
+        return this.allowedActions;
+    }
     /**
      * @return The instance redistribution policy for regional managed instance groups. Valid values are: &#34;PROACTIVE&#34;, &#34;NONE&#34;. If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
      * 
@@ -143,6 +156,7 @@ public final class GetRegionInstanceGroupManagerUpdatePolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> allowedActions;
         private String instanceRedistributionType;
         private Integer maxSurgeFixed;
         private Integer maxSurgePercent;
@@ -156,6 +170,7 @@ public final class GetRegionInstanceGroupManagerUpdatePolicy {
         public Builder() {}
         public Builder(GetRegionInstanceGroupManagerUpdatePolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedActions = defaults.allowedActions;
     	      this.instanceRedistributionType = defaults.instanceRedistributionType;
     	      this.maxSurgeFixed = defaults.maxSurgeFixed;
     	      this.maxSurgePercent = defaults.maxSurgePercent;
@@ -168,6 +183,17 @@ public final class GetRegionInstanceGroupManagerUpdatePolicy {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder allowedActions(List<String> allowedActions) {
+            if (allowedActions == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerUpdatePolicy", "allowedActions");
+            }
+            this.allowedActions = allowedActions;
+            return this;
+        }
+        public Builder allowedActions(String... allowedActions) {
+            return allowedActions(List.of(allowedActions));
+        }
         @CustomType.Setter
         public Builder instanceRedistributionType(String instanceRedistributionType) {
             if (instanceRedistributionType == null) {
@@ -250,6 +276,7 @@ public final class GetRegionInstanceGroupManagerUpdatePolicy {
         }
         public GetRegionInstanceGroupManagerUpdatePolicy build() {
             final var _resultValue = new GetRegionInstanceGroupManagerUpdatePolicy();
+            _resultValue.allowedActions = allowedActions;
             _resultValue.instanceRedistributionType = instanceRedistributionType;
             _resultValue.maxSurgeFixed = maxSurgeFixed;
             _resultValue.maxSurgePercent = maxSurgePercent;

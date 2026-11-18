@@ -101,8 +101,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
      * 
      * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * table schema must be specified using the top-level `schema` field.
      * 
      */
     @Import(name="connectionId")
@@ -115,8 +114,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
      * 
      * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * table schema must be specified using the top-level `schema` field.
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -388,8 +386,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * `google_bigquery_table.schema`
      * 
      * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * table schema must be specified using the top-level `schema` field.
      * 
      */
     @Import(name="schema")
@@ -409,8 +406,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * `google_bigquery_table.schema`
      * 
      * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * table schema must be specified using the top-level `schema` field.
      * 
      */
     public Optional<Output<String>> schema() {
@@ -598,8 +594,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
          * 
          * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * table schema must be specified using the top-level `schema` field.
          * 
          * @return builder
          * 
@@ -616,8 +611,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
          * 
          * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * table schema must be specified using the top-level `schema` field.
          * 
          * @return builder
          * 
@@ -991,8 +985,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * `google_bigquery_table.schema`
          * 
          * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * table schema must be specified using the top-level `schema` field.
          * 
          * @return builder
          * 
@@ -1016,8 +1009,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * `google_bigquery_table.schema`
          * 
          * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-         * table schema must be specified using the top-level `schema` field
-         * documented above.
+         * table schema must be specified using the top-level `schema` field.
          * 
          * @return builder
          * 

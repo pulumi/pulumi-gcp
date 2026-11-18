@@ -543,6 +543,45 @@ namespace Pulumi.Gcp.CloudRunV2
     /// });
     /// ```
     /// 
+    /// ### Cloudrunv2 Instance Sandbox Templates
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Instance("default", new()
+    ///     {
+    ///         Name = "cloudrun-instance",
+    ///         Location = "us-west4",
+    ///         LaunchStage = "BETA",
+    ///         Containers = new[]
+    ///         {
+    ///             new Gcp.CloudRunV2.Inputs.InstanceContainerArgs
+    ///             {
+    ///                 Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 SandboxLauncher = true,
+    ///             },
+    ///         },
+    ///         Sandboxes = new Gcp.CloudRunV2.Inputs.InstanceSandboxesArgs
+    ///         {
+    ///             Templates = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.InstanceSandboxesTemplateArgs
+    ///                 {
+    ///                     Name = "hello",
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instance can be imported using any of these accepted formats:
@@ -780,6 +819,13 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> RestartPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for sandboxes.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sandboxes")]
+        public Output<Outputs.InstanceSandboxes?> Sandboxes { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use. True if this service satisfies zone separation.
         /// </summary>
         [Output("satisfiesPzs")]
@@ -1014,6 +1060,13 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("restartPolicy")]
         public Input<string>? RestartPolicy { get; set; }
+
+        /// <summary>
+        /// Configuration for sandboxes.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sandboxes")]
+        public Input<Inputs.InstanceSandboxesArgs>? Sandboxes { get; set; }
 
         /// <summary>
         /// Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
@@ -1314,6 +1367,13 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("restartPolicy")]
         public Input<string>? RestartPolicy { get; set; }
+
+        /// <summary>
+        /// Configuration for sandboxes.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sandboxes")]
+        public Input<Inputs.InstanceSandboxesGetArgs>? Sandboxes { get; set; }
 
         /// <summary>
         /// Reserved for future use. True if this service satisfies zone separation.

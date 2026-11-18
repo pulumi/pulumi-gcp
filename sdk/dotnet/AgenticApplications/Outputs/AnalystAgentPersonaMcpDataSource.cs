@@ -55,6 +55,13 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
         /// </summary>
         public readonly string? Prompt;
         /// <summary>
+        /// Additional HTTP headers sent on every request to the MCP server, for
+        /// example a static header required by an API gateway. Headers managed by the
+        /// agent take precedence and cannot be set here. When empty, no additional
+        /// headers are sent.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AnalystAgentPersonaMcpDataSourceRequestHeader> RequestHeaders;
+        /// <summary>
         /// The URL of the MCP server.
         /// </summary>
         public readonly string ServerUrl;
@@ -93,6 +100,8 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
 
             string? prompt,
 
+            ImmutableArray<Outputs.AnalystAgentPersonaMcpDataSourceRequestHeader> requestHeaders,
+
             string serverUrl,
 
             string? sessionIdHeader,
@@ -109,6 +118,7 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
             Enabled = enabled;
             OauthTokenUrl = oauthTokenUrl;
             Prompt = prompt;
+            RequestHeaders = requestHeaders;
             ServerUrl = serverUrl;
             SessionIdHeader = sessionIdHeader;
             TaskIdHeader = taskIdHeader;

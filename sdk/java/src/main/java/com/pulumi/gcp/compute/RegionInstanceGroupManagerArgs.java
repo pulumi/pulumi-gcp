@@ -317,8 +317,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<RegionInstanceGroupManagerResourcePoliciesArgs> resourcePolicies;
@@ -326,11 +324,28 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     /**
      * @return Resource policies for this managed instance group. Structure is documented below.
      * 
-     * ***
-     * 
      */
     public Optional<Output<RegionInstanceGroupManagerResourcePoliciesArgs>> resourcePolicies() {
         return Optional.ofNullable(this.resourcePolicies);
+    }
+
+    /**
+     * ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
     }
 
     /**
@@ -571,6 +586,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         this.project = $.project;
         this.region = $.region;
         this.resourcePolicies = $.resourcePolicies;
+        this.serviceAccount = $.serviceAccount;
         this.standbyPolicy = $.standbyPolicy;
         this.statefulDisks = $.statefulDisks;
         this.statefulExternalIps = $.statefulExternalIps;
@@ -1000,8 +1016,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         /**
          * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1013,13 +1027,36 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         /**
          * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder resourcePolicies(RegionInstanceGroupManagerResourcePoliciesArgs resourcePolicies) {
             return resourcePolicies(Output.of(resourcePolicies));
+        }
+
+        /**
+         * @param serviceAccount ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount ) The service account to be used as credentials for all operations performed by the managed instance group on instances. The service account needs all permissions required to create and delete instances. By default, the service account {projectNumber}{@literal @}cloudservices.gserviceaccount.com is used.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**

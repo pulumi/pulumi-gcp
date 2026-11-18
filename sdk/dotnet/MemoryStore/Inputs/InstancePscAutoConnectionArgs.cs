@@ -40,6 +40,13 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
+        /// (Output, Beta)
+        /// The IP version of the PSC connection. Possible values are `IPV4` and `IPV6`.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
         /// (Output)
         /// Output only. The consumer network where the IP address resides, in the form of
         /// projects/{project_id}/global/networks/{network_id}.

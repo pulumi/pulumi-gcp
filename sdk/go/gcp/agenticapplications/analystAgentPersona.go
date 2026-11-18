@@ -466,10 +466,18 @@ import (
 //						Description:     pulumi.String("Sample MCP data source description"),
 //						Enabled:         pulumi.Bool(true),
 //						Prompt:          pulumi.String("Use this server for queries"),
-//						ApiKeyName:      pulumi.String("x-api-key"),
-//						ApiKeyHeader:    pulumi.String("x-api-key-header"),
 //						SessionIdHeader: pulumi.String("X-Custom-Session-Id"),
 //						TaskIdHeader:    pulumi.String("X-Custom-Task-Id"),
+//						RequestHeaders: agenticapplications.AnalystAgentPersonaMcpDataSourceRequestHeaderArray{
+//							&agenticapplications.AnalystAgentPersonaMcpDataSourceRequestHeaderArgs{
+//								HeaderName: pulumi.String("X-Custom-Static"),
+//								Value:      pulumi.String("initial-static-value"),
+//							},
+//							&agenticapplications.AnalystAgentPersonaMcpDataSourceRequestHeaderArgs{
+//								HeaderName:   pulumi.String("X-Custom-User"),
+//								DynamicValue: pulumi.String("USER_ID"),
+//							},
+//						},
 //					},
 //				},
 //			})
@@ -1094,6 +1102,14 @@ import (
 // (Optional)
 // The custom prompt for the MCP agent.
 //
+// * `requestHeaders` -
+// (Optional)
+// Additional HTTP headers sent on every request to the MCP server, for
+// example a static header required by an API gateway. Headers managed by the
+// agent take precedence and cannot be set here. When empty, no additional
+// headers are sent.
+// Structure is documented below.
+//
 // * `serverUrl` -
 // (Required)
 // The URL of the MCP server.
@@ -1109,6 +1125,26 @@ import (
 // The HTTP header name used to pass the agent task ID in MCP server
 // requests (defaults to `X-Task-Id` when unset). Must be a valid HTTP
 // header field name (RFC 9110 token).
+//
+// <a name="nestedMcpDataSourcesRequestHeaders"></a>The `requestHeaders` block supports:
+//
+// * `dynamicValue` -
+// (Optional)
+// A value the agent fills in for each request.
+// Possible values:
+// USER_ID
+//
+// * `headerName` -
+// (Required)
+// The header name. Must be a valid HTTP field name (RFC 9110 token),
+// unique ignoring case within the data source, and not a header managed
+// by the agent (such as `Authorization`, `Content-Type`, `mcp-session-id`,
+// or the configured API key, session ID, or task ID headers).
+//
+// * `value` -
+// (Optional)
+// A static value, sent as-is on every request. The value is stored and
+// returned in plain text, so do not use it for credentials.
 //
 // <a name="nestedResources"></a>The `resources` block supports:
 //

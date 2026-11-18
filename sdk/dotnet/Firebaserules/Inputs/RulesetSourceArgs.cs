@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Firebaserules.Inputs
 
         /// <summary>
         /// `File` set constituting the `Source` bundle.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RulesetSourceFileArgs> Files
         {

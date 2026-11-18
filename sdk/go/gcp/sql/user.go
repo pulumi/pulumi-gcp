@@ -297,7 +297,8 @@ type User struct {
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-	Password       pulumi.StringPtrOutput      `pulumi:"password"`
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
 	PasswordPolicy UserPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// The password for the user. Can be updated. For Postgres
@@ -311,7 +312,8 @@ type User struct {
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project              pulumi.StringOutput                `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// (read only) SQL Server specific user details. Structure is documented below.
 	SqlServerUserDetails UserSqlServerUserDetailArrayOutput `pulumi:"sqlServerUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
@@ -403,7 +405,8 @@ type userState struct {
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-	Password       *string             `pulumi:"password"`
+	Password *string `pulumi:"password"`
+	// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
 	PasswordPolicy *UserPasswordPolicy `pulumi:"passwordPolicy"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// The password for the user. Can be updated. For Postgres
@@ -417,7 +420,8 @@ type userState struct {
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project              *string                   `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// (read only) SQL Server specific user details. Structure is documented below.
 	SqlServerUserDetails []UserSqlServerUserDetail `pulumi:"sqlServerUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
@@ -466,7 +470,8 @@ type UserState struct {
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-	Password       pulumi.StringPtrInput
+	Password pulumi.StringPtrInput
+	// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
 	PasswordPolicy UserPasswordPolicyPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// The password for the user. Can be updated. For Postgres
@@ -480,7 +485,8 @@ type UserState struct {
 	PasswordWoVersion pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project              pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// (read only) SQL Server specific user details. Structure is documented below.
 	SqlServerUserDetails UserSqlServerUserDetailArrayInput
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
@@ -537,7 +543,8 @@ type userArgs struct {
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-	Password       *string             `pulumi:"password"`
+	Password *string `pulumi:"password"`
+	// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
 	PasswordPolicy *UserPasswordPolicy `pulumi:"passwordPolicy"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// The password for the user. Can be updated. For Postgres
@@ -598,7 +605,8 @@ type UserArgs struct {
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
 	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-	Password       pulumi.StringPtrInput
+	Password pulumi.StringPtrInput
+	// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
 	PasswordPolicy UserPasswordPolicyPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// The password for the user. Can be updated. For Postgres
@@ -768,6 +776,7 @@ func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
 func (o UserOutput) PasswordPolicy() UserPasswordPolicyPtrOutput {
 	return o.ApplyT(func(v *User) UserPasswordPolicyPtrOutput { return v.PasswordPolicy }).(UserPasswordPolicyPtrOutput)
 }
@@ -794,6 +803,7 @@ func (o UserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// (read only) SQL Server specific user details. Structure is documented below.
 func (o UserOutput) SqlServerUserDetails() UserSqlServerUserDetailArrayOutput {
 	return o.ApplyT(func(v *User) UserSqlServerUserDetailArrayOutput { return v.SqlServerUserDetails }).(UserSqlServerUserDetailArrayOutput)
 }

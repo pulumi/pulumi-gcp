@@ -122,6 +122,25 @@ import * as utilities from "../utilities";
  *
  * > **Note:** If you omit the `controlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
  *
+ * ### GKE Cluster With KCP_HPA Logging
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "gke-logging-cluster",
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     loggingConfig: {
+ *         enableComponents: [
+ *             "SYSTEM_COMPONENTS",
+ *             "KCP_HPA",
+ *         ],
+ *     },
+ * });
+ * ```
+ *
  * ### Autopilot
  *
  * ```typescript

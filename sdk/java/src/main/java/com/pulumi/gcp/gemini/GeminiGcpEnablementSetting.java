@@ -171,6 +171,28 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.enableCustomerDataSharing);
     }
     /**
+     * The Cloud Storage bucket name allocated for this setting.
+     * Note: Please make sure the cloudaicompanion service agent
+     * `service-&lt;PROJECT-NUMBER&gt;{@literal @}gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+     * has `storage.objects.get` and `storage.objects.create` permission to the
+     * Cloud Storage bucket.
+     * 
+     */
+    @Export(name="gcsBucket", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gcsBucket;
+
+    /**
+     * @return The Cloud Storage bucket name allocated for this setting.
+     * Note: Please make sure the cloudaicompanion service agent
+     * `service-&lt;PROJECT-NUMBER&gt;{@literal @}gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+     * has `storage.objects.get` and `storage.objects.create` permission to the
+     * Cloud Storage bucket.
+     * 
+     */
+    public Output<Optional<String>> gcsBucket() {
+        return Codegen.optional(this.gcsBucket);
+    }
+    /**
      * The Gemini enterprise project for this setting.
      * Format: projects/{project}
      * The `{project}` segment can be the project ID or project number.

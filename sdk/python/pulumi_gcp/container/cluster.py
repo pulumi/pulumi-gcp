@@ -4067,6 +4067,24 @@ class Cluster(pulumi.CustomResource):
 
         > **Note:** If you omit the `control_plane_soak_duration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
 
+        ### GKE Cluster With KCP_HPA Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="gke-logging-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            logging_config={
+                "enable_components": [
+                    "SYSTEM_COMPONENTS",
+                    "KCP_HPA",
+                ],
+            })
+        ```
+
         ### Autopilot
 
         ```python
@@ -4484,6 +4502,24 @@ class Cluster(pulumi.CustomResource):
         ```
 
         > **Note:** If you omit the `control_plane_soak_duration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
+
+        ### GKE Cluster With KCP_HPA Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="gke-logging-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            logging_config={
+                "enable_components": [
+                    "SYSTEM_COMPONENTS",
+                    "KCP_HPA",
+                ],
+            })
+        ```
 
         ### Autopilot
 

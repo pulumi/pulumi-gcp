@@ -19,7 +19,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
      * 
      */
     @Import(name="argumentKind")
@@ -28,7 +28,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
      * 
      */
     public Optional<Output<String>> argumentKind() {
@@ -36,7 +36,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+     * A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
      * ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
      * will create a diff, even if the JSON itself hasn&#39;t changed. If the API returns
      * a different value for the same schema, e.g. it switched the order of values
@@ -49,7 +49,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> dataType;
 
     /**
-     * @return A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+     * @return A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
      * ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
      * will create a diff, even if the JSON itself hasn&#39;t changed. If the API returns
      * a different value for the same schema, e.g. it switched the order of values
@@ -142,7 +142,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param argumentKind Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param argumentKind Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataType A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+         * @param dataType A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
          * ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
          * will create a diff, even if the JSON itself hasn&#39;t changed. If the API returns
          * a different value for the same schema, e.g. it switched the order of values
@@ -182,7 +182,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataType A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+         * @param dataType A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
          * ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
          * will create a diff, even if the JSON itself hasn&#39;t changed. If the API returns
          * a different value for the same schema, e.g. it switched the order of values

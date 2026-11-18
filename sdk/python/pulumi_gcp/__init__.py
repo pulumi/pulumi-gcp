@@ -145,6 +145,8 @@ if typing.TYPE_CHECKING:
     datastream = __datastream
     import pulumi_gcp.deploymentmanager as __deploymentmanager
     deploymentmanager = __deploymentmanager
+    import pulumi_gcp.designcenter as __designcenter
+    designcenter = __designcenter
     import pulumi_gcp.developerconnect as __developerconnect
     developerconnect = __developerconnect
     import pulumi_gcp.diagflow as __diagflow
@@ -370,6 +372,7 @@ else:
     dataproc = _utilities.lazy_import('pulumi_gcp.dataproc')
     datastream = _utilities.lazy_import('pulumi_gcp.datastream')
     deploymentmanager = _utilities.lazy_import('pulumi_gcp.deploymentmanager')
+    designcenter = _utilities.lazy_import('pulumi_gcp.designcenter')
     developerconnect = _utilities.lazy_import('pulumi_gcp.developerconnect')
     diagflow = _utilities.lazy_import('pulumi_gcp.diagflow')
     discoveryengine = _utilities.lazy_import('pulumi_gcp.discoveryengine')
@@ -1148,6 +1151,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/targetServer:TargetServer": "TargetServer"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apihub/addon",
+  "fqn": "pulumi_gcp.apihub",
+  "classes": {
+   "gcp:apihub/addon:Addon": "Addon"
   }
  },
  {
@@ -3020,6 +3031,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudidentity",
   "classes": {
    "gcp:cloudidentity/groupMembership:GroupMembership": "GroupMembership"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudidentity/inboundOidcSsoProfile",
+  "fqn": "pulumi_gcp.cloudidentity",
+  "classes": {
+   "gcp:cloudidentity/inboundOidcSsoProfile:InboundOidcSsoProfile": "InboundOidcSsoProfile"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudidentity/inboundSamlSsoProfile",
+  "fqn": "pulumi_gcp.cloudidentity",
+  "classes": {
+   "gcp:cloudidentity/inboundSamlSsoProfile:InboundSamlSsoProfile": "InboundSamlSsoProfile"
   }
  },
  {
@@ -6156,6 +6183,46 @@ _utilities.register(
   "fqn": "pulumi_gcp.deploymentmanager",
   "classes": {
    "gcp:deploymentmanager/deployment:Deployment": "Deployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "designcenter/application",
+  "fqn": "pulumi_gcp.designcenter",
+  "classes": {
+   "gcp:designcenter/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "designcenter/space",
+  "fqn": "pulumi_gcp.designcenter",
+  "classes": {
+   "gcp:designcenter/space:Space": "Space"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "designcenter/spaceIamBinding",
+  "fqn": "pulumi_gcp.designcenter",
+  "classes": {
+   "gcp:designcenter/spaceIamBinding:SpaceIamBinding": "SpaceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "designcenter/spaceIamMember",
+  "fqn": "pulumi_gcp.designcenter",
+  "classes": {
+   "gcp:designcenter/spaceIamMember:SpaceIamMember": "SpaceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "designcenter/spaceIamPolicy",
+  "fqn": "pulumi_gcp.designcenter",
+  "classes": {
+   "gcp:designcenter/spaceIamPolicy:SpaceIamPolicy": "SpaceIamPolicy"
   }
  },
  {

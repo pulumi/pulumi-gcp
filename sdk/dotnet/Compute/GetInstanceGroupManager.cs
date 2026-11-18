@@ -199,6 +199,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerResourcePolicyResult> ResourcePolicies;
         public readonly string? SelfLink;
+        public readonly string ServiceAccount;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStandbyPolicyResult> StandbyPolicies;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatefulDiskResult> StatefulDisks;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatefulExternalIpResult> StatefulExternalIps;
@@ -255,6 +256,8 @@ namespace Pulumi.Gcp.Compute
 
             string? selfLink,
 
+            string serviceAccount,
+
             ImmutableArray<Outputs.GetInstanceGroupManagerStandbyPolicyResult> standbyPolicies,
 
             ImmutableArray<Outputs.GetInstanceGroupManagerStatefulDiskResult> statefulDisks,
@@ -304,6 +307,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             ResourcePolicies = resourcePolicies;
             SelfLink = selfLink;
+            ServiceAccount = serviceAccount;
             StandbyPolicies = standbyPolicies;
             StatefulDisks = statefulDisks;
             StatefulExternalIps = statefulExternalIps;

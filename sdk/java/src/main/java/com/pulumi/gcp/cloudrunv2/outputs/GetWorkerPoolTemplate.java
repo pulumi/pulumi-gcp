@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateNodeSelector;
+import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateSandbox;
 import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateVpcAccess;
 import java.lang.Boolean;
@@ -83,6 +84,11 @@ public final class GetWorkerPoolTemplate {
      * 
      */
     private String revision;
+    /**
+     * @return Configuration for sandboxes.
+     * 
+     */
+    private List<GetWorkerPoolTemplateSandbox> sandboxes;
     /**
      * @return Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project&#39;s default service account.
      * 
@@ -189,6 +195,13 @@ public final class GetWorkerPoolTemplate {
         return this.revision;
     }
     /**
+     * @return Configuration for sandboxes.
+     * 
+     */
+    public List<GetWorkerPoolTemplateSandbox> sandboxes() {
+        return this.sandboxes;
+    }
+    /**
      * @return Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project&#39;s default service account.
      * 
      */
@@ -230,6 +243,7 @@ public final class GetWorkerPoolTemplate {
         private Map<String,String> labels;
         private List<GetWorkerPoolTemplateNodeSelector> nodeSelectors;
         private String revision;
+        private List<GetWorkerPoolTemplateSandbox> sandboxes;
         private String serviceAccount;
         private List<GetWorkerPoolTemplateVolume> volumes;
         private List<GetWorkerPoolTemplateVpcAccess> vpcAccesses;
@@ -247,6 +261,7 @@ public final class GetWorkerPoolTemplate {
     	      this.labels = defaults.labels;
     	      this.nodeSelectors = defaults.nodeSelectors;
     	      this.revision = defaults.revision;
+    	      this.sandboxes = defaults.sandboxes;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.volumes = defaults.volumes;
     	      this.vpcAccesses = defaults.vpcAccesses;
@@ -347,6 +362,17 @@ public final class GetWorkerPoolTemplate {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxes(List<GetWorkerPoolTemplateSandbox> sandboxes) {
+            if (sandboxes == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolTemplate", "sandboxes");
+            }
+            this.sandboxes = sandboxes;
+            return this;
+        }
+        public Builder sandboxes(GetWorkerPoolTemplateSandbox... sandboxes) {
+            return sandboxes(List.of(sandboxes));
+        }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             if (serviceAccount == null) {
               throw new MissingRequiredPropertyException("GetWorkerPoolTemplate", "serviceAccount");
@@ -389,6 +415,7 @@ public final class GetWorkerPoolTemplate {
             _resultValue.labels = labels;
             _resultValue.nodeSelectors = nodeSelectors;
             _resultValue.revision = revision;
+            _resultValue.sandboxes = sandboxes;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.volumes = volumes;
             _resultValue.vpcAccesses = vpcAccesses;

@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.PerInstanceConfigState;
 import com.pulumi.gcp.compute.outputs.PerInstanceConfigPreservedState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -157,6 +158,36 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/perInstanceConfig:PerInstanceConfig")
 public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
+    /**
+     * Beta The list of allowed actions to perform on the instance during an update.
+     * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+     * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * Possible values are:
+     * * REPLACE
+     * * RESTART
+     * * RESTART_IN_PLACE
+     * * REFRESH
+     * * NONE
+     * 
+     */
+    @Export(name="allowedActions", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> allowedActions;
+
+    /**
+     * @return Beta The list of allowed actions to perform on the instance during an update.
+     * `allowedActions` is the only way to request `RESTART_IN_PLACE`.
+     * Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * Possible values are:
+     * * REPLACE
+     * * RESTART
+     * * RESTART_IN_PLACE
+     * * REFRESH
+     * * NONE
+     * 
+     */
+    public Output<Optional<List<String>>> allowedActions() {
+        return Codegen.optional(this.allowedActions);
+    }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,

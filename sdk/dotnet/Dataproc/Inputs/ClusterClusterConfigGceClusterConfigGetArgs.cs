@@ -42,6 +42,15 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
+        /// Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+        /// Structure defined below.
+        /// 
+        /// ***
+        /// </summary>
+        [Input("multiZoneConfig")]
+        public Input<Inputs.ClusterClusterConfigGceClusterConfigMultiZoneConfigGetArgs>? MultiZoneConfig { get; set; }
+
+        /// <summary>
         /// The name or SelfLink of the Google Compute Engine
         /// network to the cluster will be part of. Conflicts with `Subnetwork`.
         /// If neither is specified, this defaults to the "default" network.
@@ -100,8 +109,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-        /// 
-        /// ***
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }

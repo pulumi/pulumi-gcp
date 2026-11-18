@@ -171,6 +171,34 @@ namespace Pulumi.Gcp.Container
     /// 
     /// &gt; **Note:** If you omit the `ControlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
     /// 
+    /// ### GKE Cluster With KCP_HPA Logging
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "gke-logging-cluster",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         LoggingConfig = new Gcp.Container.Inputs.ClusterLoggingConfigArgs
+    ///         {
+    ///             EnableComponents = new[]
+    ///             {
+    ///                 "SYSTEM_COMPONENTS",
+    ///                 "KCP_HPA",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Autopilot
     /// 
     /// ```csharp

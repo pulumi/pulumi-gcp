@@ -189,6 +189,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
      */
     declare public readonly purpose: pulumi.Output<string | undefined>;
     /**
@@ -345,6 +347,8 @@ export interface GlobalAddressState {
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
      */
     purpose?: pulumi.Input<string | undefined>;
     /**
@@ -429,6 +433,8 @@ export interface GlobalAddressArgs {
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
      */
     purpose?: pulumi.Input<string | undefined>;
 }

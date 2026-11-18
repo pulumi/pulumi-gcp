@@ -43,6 +43,138 @@ namespace Pulumi.Gcp.AgentIdentity
     /// });
     /// ```
     /// 
+    /// ### Agent Identity Auth Provider Connector Reference
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.AgentIdentity.AuthProvider("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AuthProviderId = "connref-provider",
+    ///         Description = "Connector reference auth provider",
+    ///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
+    ///         {
+    ///             ConnectorReferenceAuthProvider = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsConnectorReferenceAuthProviderArgs
+    ///             {
+    ///                 Connector = "salesforce-connector-prod",
+    ///                 AuthorizationDetails = JsonSerializer.Serialize(new[]
+    ///                 {
+    ///                     new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "oauth_authorization",
+    ///                         ["resource"] = "https://example.com/api",
+    ///                     },
+    ///                 }),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Agent Identity Auth Provider Xaa
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.AgentIdentity.AuthProvider("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AuthProviderId = "xaa-provider",
+    ///         Description = "Cross-App Access auth provider",
+    ///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
+    ///         {
+    ///             XaaAuthProvider = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs
+    ///             {
+    ///                 AdditionalParameters = 
+    ///                 {
+    ///                     { "prompt", "consent" },
+    ///                 },
+    ///                 ClientSecretAuth = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientSecretAuthArgs
+    ///                 {
+    ///                     ClientId = "test-client-id",
+    ///                     ClientSecret = "test-client-secret",
+    ///                 },
+    ///                 CustomIssuer = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs
+    ///                 {
+    ///                     TokenUrl = "https://auth.example.com/token",
+    ///                     Issuer = "https://auth.example.com",
+    ///                 },
+    ///                 IdTokenInput = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs
+    ///                 {
+    ///                     IdJagAuthProvider = "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+    ///                     IdJagAdditionalClaims = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["env"] = "test",
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Agent Identity Auth Provider Xaa Jwt
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.AgentIdentity.AuthProvider("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AuthProviderId = "xaa-jwt-provider",
+    ///         Description = "Cross-App Access with Client Assertion JWT",
+    ///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
+    ///         {
+    ///             XaaAuthProvider = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderArgs
+    ///             {
+    ///                 ClientAssertionJwtAuth = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderClientAssertionJwtAuthArgs
+    ///                 {
+    ///                     ClientId = "test-jwt-client-id",
+    ///                 },
+    ///                 CustomIssuer = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderCustomIssuerArgs
+    ///                 {
+    ///                     TokenUrl = "https://auth.example.com/token",
+    ///                 },
+    ///                 IdTokenInput = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsXaaAuthProviderIdTokenInputArgs
+    ///                 {
+    ///                     IdJagAuthProvider = "projects/my-project-name/locations/us-central1/authProviders/idp-provider",
+    ///                     IdJagAdditionalClaims = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["env"] = "test",
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Regional Endpoint Policies
+    /// 
+    /// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+    /// 
     /// ## Import
     /// 
     /// AuthProvider can be imported using any of these accepted formats:

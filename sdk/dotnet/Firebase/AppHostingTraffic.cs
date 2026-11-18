@@ -160,6 +160,85 @@ namespace Pulumi.Gcp.Firebase
     /// });
     /// ```
     /// 
+    /// ### Firebase App Hosting Traffic Rollout Policy With Paths
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     //## Include these blocks only once per project if you are starting from scratch ###
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         AccountId = "firebase-app-hosting-compute",
+    ///         DisplayName = "Firebase App Hosting compute service account",
+    ///         CreateIgnoreAlreadyExists = true,
+    ///     });
+    /// 
+    ///     var appHostingSaRunner = new Gcp.Projects.IAMMember("app_hosting_sa_runner", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/firebaseapphosting.computeRunner",
+    ///         Member = serviceAccount.Member,
+    ///     });
+    /// 
+    ///     var fah = new Gcp.Projects.Service("fah", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         ServiceName = "firebaseapphosting.googleapis.com",
+    ///     });
+    /// 
+    ///     var exampleAppHostingBackend = new Gcp.Firebase.AppHostingBackend("example", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-central1",
+    ///         BackendId = "traffic-rpwp",
+    ///         AppId = "1:0000000000:web:674cde32020e16fbce9dbd",
+    ///         ServingLocality = "GLOBAL_ACCESS",
+    ///         ServiceAccount = serviceAccount.Email,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             fah,
+    ///             appHostingSaRunner,
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Gcp.Firebase.AppHostingTraffic("example", new()
+    ///     {
+    ///         Project = exampleAppHostingBackend.Project,
+    ///         Location = exampleAppHostingBackend.Location,
+    ///         Backend = exampleAppHostingBackend.BackendId,
+    ///         RolloutPolicy = new Gcp.Firebase.Inputs.AppHostingTrafficRolloutPolicyArgs
+    ///         {
+    ///             CodebaseBranch = "main",
+    ///             RequiredPaths = new[]
+    ///             {
+    ///                 new Gcp.Firebase.Inputs.AppHostingTrafficRolloutPolicyRequiredPathArgs
+    ///                 {
+    ///                     Pattern = "foo/bar/*",
+    ///                     Type = "GLOB",
+    ///                 },
+    ///             },
+    ///             IgnoredPaths = new[]
+    ///             {
+    ///                 new Gcp.Firebase.Inputs.AppHostingTrafficRolloutPolicyIgnoredPathArgs
+    ///                 {
+    ///                     Pattern = "foo/bar/excluded/*",
+    ///                     Type = "GLOB",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Firebase App Hosting Traffic Rollout Policy Disabled
     /// 
     /// ```csharp

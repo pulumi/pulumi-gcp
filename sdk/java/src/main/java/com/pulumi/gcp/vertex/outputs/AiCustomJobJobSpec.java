@@ -35,10 +35,43 @@ public final class AiCustomJobJobSpec {
      */
     private @Nullable Boolean enableWebAccess;
     /**
+     * @return The Experiment associated with this job.
+     * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+     * 
+     */
+    private @Nullable String experiment;
+    /**
+     * @return The Experiment Run associated with this job.
+     * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+     * 
+     */
+    private @Nullable String experimentRun;
+    /**
+     * @return The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+     * Format: `projects/{project}/locations/{location}/models/{model}`
+     * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+     * Example: `projects/{project}/locations/{location}/models/{model}{@literal @}2` or `projects/{project}/locations/{location}/models/{model}{@literal @}golden`
+     * If no version ID or alias is specified, the &#34;default&#34; version will be returned.
+     * 
+     */
+    private @Nullable List<String> models;
+    /**
      * @return The full name of the Compute Engine network to which the Job should be peered.
      * 
      */
     private @Nullable String network;
+    /**
+     * @return The ID of the PersistentResource in the same Project and Location which to run.
+     * If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+     * The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+     * 
+     */
+    private @Nullable String persistentResourceId;
+    /**
+     * @return The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+     * 
+     */
+    private @Nullable String protectedArtifactLocationId;
     /**
      * @return Configuration for PSC-I for CustomJob.
      * Structure is documented below.
@@ -98,11 +131,54 @@ public final class AiCustomJobJobSpec {
         return Optional.ofNullable(this.enableWebAccess);
     }
     /**
+     * @return The Experiment associated with this job.
+     * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+     * 
+     */
+    public Optional<String> experiment() {
+        return Optional.ofNullable(this.experiment);
+    }
+    /**
+     * @return The Experiment Run associated with this job.
+     * Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+     * 
+     */
+    public Optional<String> experimentRun() {
+        return Optional.ofNullable(this.experimentRun);
+    }
+    /**
+     * @return The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+     * Format: `projects/{project}/locations/{location}/models/{model}`
+     * In order to retrieve a specific version of the model, also provide the version ID or version alias.
+     * Example: `projects/{project}/locations/{location}/models/{model}{@literal @}2` or `projects/{project}/locations/{location}/models/{model}{@literal @}golden`
+     * If no version ID or alias is specified, the &#34;default&#34; version will be returned.
+     * 
+     */
+    public List<String> models() {
+        return this.models == null ? List.of() : this.models;
+    }
+    /**
      * @return The full name of the Compute Engine network to which the Job should be peered.
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
+    }
+    /**
+     * @return The ID of the PersistentResource in the same Project and Location which to run.
+     * If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+     * The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+     * 
+     */
+    public Optional<String> persistentResourceId() {
+        return Optional.ofNullable(this.persistentResourceId);
+    }
+    /**
+     * @return The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+     * 
+     */
+    public Optional<String> protectedArtifactLocationId() {
+        return Optional.ofNullable(this.protectedArtifactLocationId);
     }
     /**
      * @return Configuration for PSC-I for CustomJob.
@@ -163,7 +239,12 @@ public final class AiCustomJobJobSpec {
         private @Nullable AiCustomJobJobSpecBaseOutputDirectory baseOutputDirectory;
         private @Nullable Boolean enableDashboardAccess;
         private @Nullable Boolean enableWebAccess;
+        private @Nullable String experiment;
+        private @Nullable String experimentRun;
+        private @Nullable List<String> models;
         private @Nullable String network;
+        private @Nullable String persistentResourceId;
+        private @Nullable String protectedArtifactLocationId;
         private @Nullable AiCustomJobJobSpecPscInterfaceConfig pscInterfaceConfig;
         private @Nullable List<String> reservedIpRanges;
         private @Nullable AiCustomJobJobSpecScheduling scheduling;
@@ -176,7 +257,12 @@ public final class AiCustomJobJobSpec {
     	      this.baseOutputDirectory = defaults.baseOutputDirectory;
     	      this.enableDashboardAccess = defaults.enableDashboardAccess;
     	      this.enableWebAccess = defaults.enableWebAccess;
+    	      this.experiment = defaults.experiment;
+    	      this.experimentRun = defaults.experimentRun;
+    	      this.models = defaults.models;
     	      this.network = defaults.network;
+    	      this.persistentResourceId = defaults.persistentResourceId;
+    	      this.protectedArtifactLocationId = defaults.protectedArtifactLocationId;
     	      this.pscInterfaceConfig = defaults.pscInterfaceConfig;
     	      this.reservedIpRanges = defaults.reservedIpRanges;
     	      this.scheduling = defaults.scheduling;
@@ -204,9 +290,42 @@ public final class AiCustomJobJobSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder experiment(@Nullable String experiment) {
+
+            this.experiment = experiment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder experimentRun(@Nullable String experimentRun) {
+
+            this.experimentRun = experimentRun;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder models(@Nullable List<String> models) {
+
+            this.models = models;
+            return this;
+        }
+        public Builder models(String... models) {
+            return models(List.of(models));
+        }
+        @CustomType.Setter
         public Builder network(@Nullable String network) {
 
             this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder persistentResourceId(@Nullable String persistentResourceId) {
+
+            this.persistentResourceId = persistentResourceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder protectedArtifactLocationId(@Nullable String protectedArtifactLocationId) {
+
+            this.protectedArtifactLocationId = protectedArtifactLocationId;
             return this;
         }
         @CustomType.Setter
@@ -258,7 +377,12 @@ public final class AiCustomJobJobSpec {
             _resultValue.baseOutputDirectory = baseOutputDirectory;
             _resultValue.enableDashboardAccess = enableDashboardAccess;
             _resultValue.enableWebAccess = enableWebAccess;
+            _resultValue.experiment = experiment;
+            _resultValue.experimentRun = experimentRun;
+            _resultValue.models = models;
             _resultValue.network = network;
+            _resultValue.persistentResourceId = persistentResourceId;
+            _resultValue.protectedArtifactLocationId = protectedArtifactLocationId;
             _resultValue.pscInterfaceConfig = pscInterfaceConfig;
             _resultValue.reservedIpRanges = reservedIpRanges;
             _resultValue.scheduling = scheduling;

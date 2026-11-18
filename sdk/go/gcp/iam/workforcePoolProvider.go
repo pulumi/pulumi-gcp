@@ -813,7 +813,9 @@ type WorkforcePoolProvider struct {
 	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
 	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
 	//   attribute mapping for authorization checks
-	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
 	ScimUsage pulumi.StringPtrOutput `pulumi:"scimUsage"`
 	// The current state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
@@ -977,7 +979,9 @@ type workforcePoolProviderState struct {
 	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
 	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
 	//   attribute mapping for authorization checks
-	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
 	ScimUsage *string `pulumi:"scimUsage"`
 	// The current state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
@@ -1103,7 +1107,9 @@ type WorkforcePoolProviderState struct {
 	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
 	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
 	//   attribute mapping for authorization checks
-	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
 	ScimUsage pulumi.StringPtrInput
 	// The current state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
@@ -1236,7 +1242,9 @@ type workforcePoolProviderArgs struct {
 	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
 	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
 	//   attribute mapping for authorization checks
-	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
 	ScimUsage *string `pulumi:"scimUsage"`
 	// The ID to use for the pool, which becomes the final component of the resource name.
 	// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
@@ -1353,7 +1361,9 @@ type WorkforcePoolProviderArgs struct {
 	// * SCIM_USAGE_UNSPECIFIED: Default behaviour
 	// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
 	//   attribute mapping for authorization checks
-	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+	// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+	//   attribute mapping for authorization checks
+	//   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
 	ScimUsage pulumi.StringPtrInput
 	// The ID to use for the pool, which becomes the final component of the resource name.
 	// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
@@ -1604,7 +1614,9 @@ func (o WorkforcePoolProviderOutput) Saml() WorkforcePoolProviderSamlPtrOutput {
 //   - SCIM_USAGE_UNSPECIFIED: Default behaviour
 //   - ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
 //     attribute mapping for authorization checks
-//     Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+//   - ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+//     attribute mapping for authorization checks
+//     Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
 func (o WorkforcePoolProviderOutput) ScimUsage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringPtrOutput { return v.ScimUsage }).(pulumi.StringPtrOutput)
 }

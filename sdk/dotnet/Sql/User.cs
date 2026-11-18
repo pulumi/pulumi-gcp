@@ -290,6 +290,9 @@ namespace Pulumi.Gcp.Sql
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
+        /// <summary>
+        /// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+        /// </summary>
         [Output("passwordPolicy")]
         public Output<Outputs.UserPasswordPolicy?> PasswordPolicy { get; private set; } = null!;
 
@@ -318,6 +321,9 @@ namespace Pulumi.Gcp.Sql
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// (read only) SQL Server specific user details. Structure is documented below.
+        /// </summary>
         [Output("sqlServerUserDetails")]
         public Output<ImmutableArray<Outputs.UserSqlServerUserDetail>> SqlServerUserDetails { get; private set; } = null!;
 
@@ -459,6 +465,9 @@ namespace Pulumi.Gcp.Sql
             }
         }
 
+        /// <summary>
+        /// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+        /// </summary>
         [Input("passwordPolicy")]
         public Input<Inputs.UserPasswordPolicyArgs>? PasswordPolicy { get; set; }
 
@@ -598,6 +607,9 @@ namespace Pulumi.Gcp.Sql
             }
         }
 
+        /// <summary>
+        /// The password policy for the user. Only supported for creating MySQL and Postgres users. Structure is documented below.
+        /// </summary>
         [Input("passwordPolicy")]
         public Input<Inputs.UserPasswordPolicyGetArgs>? PasswordPolicy { get; set; }
 
@@ -638,6 +650,10 @@ namespace Pulumi.Gcp.Sql
 
         [Input("sqlServerUserDetails")]
         private InputList<Inputs.UserSqlServerUserDetailGetArgs>? _sqlServerUserDetails;
+
+        /// <summary>
+        /// (read only) SQL Server specific user details. Structure is documented below.
+        /// </summary>
         public InputList<Inputs.UserSqlServerUserDetailGetArgs> SqlServerUserDetails
         {
             get => _sqlServerUserDetails ?? (_sqlServerUserDetails = new InputList<Inputs.UserSqlServerUserDetailGetArgs>());

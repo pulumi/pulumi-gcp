@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceGroupManagerUpdatePolicy
     {
         /// <summary>
+        /// ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `AllowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `MinimalAction` and `MostDisruptiveAllowedAction`.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedActions;
+        /// <summary>
         /// , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `MaxSurgePercent`. Both cannot be 0.
         /// </summary>
         public readonly int? MaxSurgeFixed;
@@ -34,11 +38,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? MinReadySec;
         /// <summary>
-        /// Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        /// Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `Google` provider; optional in `google-beta` when `AllowedActions` is set (conflicts with `AllowedActions`).
         /// </summary>
-        public readonly string MinimalAction;
+        public readonly string? MinimalAction;
         /// <summary>
-        /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `AllowedActions`.
         /// </summary>
         public readonly string? MostDisruptiveAllowedAction;
         /// <summary>
@@ -53,6 +57,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private InstanceGroupManagerUpdatePolicy(
+            ImmutableArray<string> allowedActions,
+
             int? maxSurgeFixed,
 
             int? maxSurgePercent,
@@ -63,7 +69,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? minReadySec,
 
-            string minimalAction,
+            string? minimalAction,
 
             string? mostDisruptiveAllowedAction,
 
@@ -71,6 +77,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string type)
         {
+            AllowedActions = allowedActions;
             MaxSurgeFixed = maxSurgeFixed;
             MaxSurgePercent = maxSurgePercent;
             MaxUnavailableFixed = maxUnavailableFixed;

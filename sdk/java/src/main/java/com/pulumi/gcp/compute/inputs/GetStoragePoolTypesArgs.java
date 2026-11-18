@@ -16,23 +16,53 @@ public final class GetStoragePoolTypesArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetStoragePoolTypesArgs Empty = new GetStoragePoolTypesArgs();
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Name of the storage pool type.
+     * 
+     * ***
+     * 
+     */
     @Import(name="storagePoolType", required=true)
     private Output<String> storagePoolType;
 
+    /**
+     * @return Name of the storage pool type.
+     * 
+     * ***
+     * 
+     */
     public Output<String> storagePoolType() {
         return this.storagePoolType;
     }
 
+    /**
+     * The name of the zone.
+     * 
+     */
     @Import(name="zone", required=true)
     private Output<String> zone;
 
+    /**
+     * @return The name of the zone.
+     * 
+     */
     public Output<String> zone() {
         return this.zone;
     }
@@ -63,29 +93,71 @@ public final class GetStoragePoolTypesArgs extends com.pulumi.resources.InvokeAr
             $ = new GetStoragePoolTypesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param storagePoolType Name of the storage pool type.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder storagePoolType(Output<String> storagePoolType) {
             $.storagePoolType = storagePoolType;
             return this;
         }
 
+        /**
+         * @param storagePoolType Name of the storage pool type.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder storagePoolType(String storagePoolType) {
             return storagePoolType(Output.of(storagePoolType));
         }
 
+        /**
+         * @param zone The name of the zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(Output<String> zone) {
             $.zone = zone;
             return this;
         }
 
+        /**
+         * @param zone The name of the zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(String zone) {
             return zone(Output.of(zone));
         }

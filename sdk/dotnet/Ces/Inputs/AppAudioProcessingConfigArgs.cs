@@ -27,6 +27,19 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("bargeInConfig")]
         public Input<Inputs.AppAudioProcessingConfigBargeInConfigArgs>? BargeInConfig { get; set; }
 
+        [Input("customVoiceSamples")]
+        private InputList<Inputs.AppAudioProcessingConfigCustomVoiceSampleArgs>? _customVoiceSamples;
+
+        /// <summary>
+        /// Configures custom voice samples for voice cloning.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppAudioProcessingConfigCustomVoiceSampleArgs> CustomVoiceSamples
+        {
+            get => _customVoiceSamples ?? (_customVoiceSamples = new InputList<Inputs.AppAudioProcessingConfigCustomVoiceSampleArgs>());
+            set => _customVoiceSamples = value;
+        }
+
         /// <summary>
         /// The duration of user inactivity (no speech or interaction) before the agent
         /// prompts the user for reengagement. If not set, the agent will not prompt

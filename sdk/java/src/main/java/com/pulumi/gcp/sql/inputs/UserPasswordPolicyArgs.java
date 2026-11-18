@@ -79,9 +79,17 @@ public final class UserPasswordPolicyArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.passwordExpirationDuration);
     }
 
+    /**
+     * The password status of the user. Structure is documented below.
+     * 
+     */
     @Import(name="statuses")
     private @Nullable Output<List<UserPasswordPolicyStatusArgs>> statuses;
 
+    /**
+     * @return The password status of the user. Structure is documented below.
+     * 
+     */
     public Optional<Output<List<UserPasswordPolicyStatusArgs>>> statuses() {
         return Optional.ofNullable(this.statuses);
     }
@@ -198,15 +206,33 @@ public final class UserPasswordPolicyArgs extends com.pulumi.resources.ResourceA
             return passwordExpirationDuration(Output.of(passwordExpirationDuration));
         }
 
+        /**
+         * @param statuses The password status of the user. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statuses(@Nullable Output<List<UserPasswordPolicyStatusArgs>> statuses) {
             $.statuses = statuses;
             return this;
         }
 
+        /**
+         * @param statuses The password status of the user. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statuses(List<UserPasswordPolicyStatusArgs> statuses) {
             return statuses(Output.of(statuses));
         }
 
+        /**
+         * @param statuses The password status of the user. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statuses(UserPasswordPolicyStatusArgs... statuses) {
             return statuses(List.of(statuses));
         }

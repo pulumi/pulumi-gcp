@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.SaaSRuntime
     /// <summary>
     /// The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Saas Runtime Tenant Basic

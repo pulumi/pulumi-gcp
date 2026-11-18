@@ -32,10 +32,54 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<bool>? EnableWebAccess { get; set; }
 
         /// <summary>
+        /// The Experiment associated with this job.
+        /// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
+        /// </summary>
+        [Input("experiment")]
+        public Input<string>? Experiment { get; set; }
+
+        /// <summary>
+        /// The Experiment Run associated with this job.
+        /// Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+        /// </summary>
+        [Input("experimentRun")]
+        public Input<string>? ExperimentRun { get; set; }
+
+        [Input("models")]
+        private InputList<string>? _models;
+
+        /// <summary>
+        /// The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+        /// Format: `projects/{project}/locations/{location}/models/{model}`
+        /// In order to retrieve a specific version of the model, also provide the version ID or version alias.
+        /// Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden`
+        /// If no version ID or alias is specified, the "default" version will be returned.
+        /// </summary>
+        public InputList<string> Models
+        {
+            get => _models ?? (_models = new InputList<string>());
+            set => _models = value;
+        }
+
+        /// <summary>
         /// The full name of the Compute Engine network to which the Job should be peered.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The ID of the PersistentResource in the same Project and Location which to run.
+        /// If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+        /// The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+        /// </summary>
+        [Input("persistentResourceId")]
+        public Input<string>? PersistentResourceId { get; set; }
+
+        /// <summary>
+        /// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location.
+        /// </summary>
+        [Input("protectedArtifactLocationId")]
+        public Input<string>? ProtectedArtifactLocationId { get; set; }
 
         /// <summary>
         /// Configuration for PSC-I for CustomJob.

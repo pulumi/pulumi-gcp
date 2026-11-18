@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateNodeSelectorArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateSandboxesArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVpcAccessArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateWorkloadIdentityConfigArgs;
@@ -120,6 +121,23 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sandboxes")
+    private @Nullable Output<JobTemplateTemplateSandboxesArgs> sandboxes;
+
+    /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<JobTemplateTemplateSandboxesArgs>> sandboxes() {
+        return Optional.ofNullable(this.sandboxes);
+    }
+
+    /**
      * Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
      * 
      */
@@ -215,6 +233,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
         this.gpuZonalRedundancyDisabled = $.gpuZonalRedundancyDisabled;
         this.maxRetries = $.maxRetries;
         this.nodeSelector = $.nodeSelector;
+        this.sandboxes = $.sandboxes;
         this.serviceAccount = $.serviceAccount;
         this.timeout = $.timeout;
         this.volumes = $.volumes;
@@ -381,6 +400,29 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
          */
         public Builder nodeSelector(JobTemplateTemplateNodeSelectorArgs nodeSelector) {
             return nodeSelector(Output.of(nodeSelector));
+        }
+
+        /**
+         * @param sandboxes Configuration for sandboxes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxes(@Nullable Output<JobTemplateTemplateSandboxesArgs> sandboxes) {
+            $.sandboxes = sandboxes;
+            return this;
+        }
+
+        /**
+         * @param sandboxes Configuration for sandboxes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxes(JobTemplateTemplateSandboxesArgs sandboxes) {
+            return sandboxes(Output.of(sandboxes));
         }
 
         /**

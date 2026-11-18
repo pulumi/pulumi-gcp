@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloHttp",
  *         source: {
  *             storageSource: {
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloPubSub",
  *         environmentVariables: {
  *             BUILD_CONFIG_TEST: "build_test",
@@ -143,7 +143,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloHttp",
  *         source: {
  *             storageSource: {
@@ -250,7 +250,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "entryPoint",
  *         environmentVariables: {
  *             BUILD_CONFIG_TEST: "build_test",
@@ -348,7 +348,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "entryPoint",
  *         environmentVariables: {
  *             BUILD_CONFIG_TEST: "build_test",
@@ -451,7 +451,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloHttp",
  *         source: {
  *             storageSource: {
@@ -508,7 +508,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloHttp",
  *         source: {
  *             storageSource: {
@@ -570,7 +570,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloHttp",
  *         source: {
  *             storageSource: {
@@ -625,7 +625,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloHttp",
  *         source: {
  *             storageSource: {
@@ -703,7 +703,7 @@ import * as utilities from "../utilities";
  *     description: "CMEK function",
  *     kmsKeyName: "cmek-key",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloHttp",
  *         dockerRepository: encoded_ar_repo.id,
  *         source: {
@@ -750,7 +750,7 @@ import * as utilities from "../utilities";
  *     location: "europe-west6",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloPubSub",
  *         environmentVariables: {
  *             BUILD_CONFIG_TEST: "build_test",
@@ -813,7 +813,7 @@ import * as utilities from "../utilities";
  *     location: "europe-west6",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloPubSub",
  *         environmentVariables: {
  *             BUILD_CONFIG_TEST: "build_test",
@@ -871,7 +871,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs20",
+ *         runtime: "nodejs24",
  *         entryPoint: "helloHttp",
  *         source: {
  *             storageSource: {

@@ -679,7 +679,9 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * * SCIM_USAGE_UNSPECIFIED: Default behaviour
      * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
      *   attribute mapping for authorization checks
-     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     * * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+     *   attribute mapping for authorization checks
+     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
      */
     declare public readonly scimUsage: pulumi.Output<string | undefined>;
     /**
@@ -908,7 +910,9 @@ export interface WorkforcePoolProviderState {
      * * SCIM_USAGE_UNSPECIFIED: Default behaviour
      * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
      *   attribute mapping for authorization checks
-     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     * * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+     *   attribute mapping for authorization checks
+     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
      */
     scimUsage?: pulumi.Input<string | undefined>;
     /**
@@ -1069,7 +1073,9 @@ export interface WorkforcePoolProviderArgs {
      * * SCIM_USAGE_UNSPECIFIED: Default behaviour
      * * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
      *   attribute mapping for authorization checks
-     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+     * * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+     *   attribute mapping for authorization checks
+     *   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
      */
     scimUsage?: pulumi.Input<string | undefined>;
     /**

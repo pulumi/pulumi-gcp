@@ -210,6 +210,8 @@ type InstanceContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *InstanceContainerResources `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher *bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	// Structure is documented below.
 	StartupProbe *InstanceContainerStartupProbe `pulumi:"startupProbe"`
@@ -253,6 +255,8 @@ type InstanceContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources InstanceContainerResourcesPtrInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolPtrInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	// Structure is documented below.
 	StartupProbe InstanceContainerStartupProbePtrInput `pulumi:"startupProbe"`
@@ -357,6 +361,11 @@ func (o InstanceContainerOutput) Ports() InstanceContainerPortArrayOutput {
 // Structure is documented below.
 func (o InstanceContainerOutput) Resources() InstanceContainerResourcesPtrOutput {
 	return o.ApplyT(func(v InstanceContainer) *InstanceContainerResources { return v.Resources }).(InstanceContainerResourcesPtrOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o InstanceContainerOutput) SandboxLauncher() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceContainer) *bool { return v.SandboxLauncher }).(pulumi.BoolPtrOutput)
 }
 
 // Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
@@ -3132,6 +3141,525 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceSandboxes struct {
+	// Sandbox templates that can be launched through the `sandbox` CLI.
+	// Structure is documented below.
+	Templates []InstanceSandboxesTemplate `pulumi:"templates"`
+}
+
+// InstanceSandboxesInput is an input type that accepts InstanceSandboxesArgs and InstanceSandboxesOutput values.
+// You can construct a concrete instance of `InstanceSandboxesInput` via:
+//
+//	InstanceSandboxesArgs{...}
+type InstanceSandboxesInput interface {
+	pulumi.Input
+
+	ToInstanceSandboxesOutput() InstanceSandboxesOutput
+	ToInstanceSandboxesOutputWithContext(context.Context) InstanceSandboxesOutput
+}
+
+type InstanceSandboxesArgs struct {
+	// Sandbox templates that can be launched through the `sandbox` CLI.
+	// Structure is documented below.
+	Templates InstanceSandboxesTemplateArrayInput `pulumi:"templates"`
+}
+
+func (InstanceSandboxesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSandboxes)(nil)).Elem()
+}
+
+func (i InstanceSandboxesArgs) ToInstanceSandboxesOutput() InstanceSandboxesOutput {
+	return i.ToInstanceSandboxesOutputWithContext(context.Background())
+}
+
+func (i InstanceSandboxesArgs) ToInstanceSandboxesOutputWithContext(ctx context.Context) InstanceSandboxesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesOutput)
+}
+
+func (i InstanceSandboxesArgs) ToInstanceSandboxesPtrOutput() InstanceSandboxesPtrOutput {
+	return i.ToInstanceSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceSandboxesArgs) ToInstanceSandboxesPtrOutputWithContext(ctx context.Context) InstanceSandboxesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesOutput).ToInstanceSandboxesPtrOutputWithContext(ctx)
+}
+
+// InstanceSandboxesPtrInput is an input type that accepts InstanceSandboxesArgs, InstanceSandboxesPtr and InstanceSandboxesPtrOutput values.
+// You can construct a concrete instance of `InstanceSandboxesPtrInput` via:
+//
+//	        InstanceSandboxesArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceSandboxesPtrInput interface {
+	pulumi.Input
+
+	ToInstanceSandboxesPtrOutput() InstanceSandboxesPtrOutput
+	ToInstanceSandboxesPtrOutputWithContext(context.Context) InstanceSandboxesPtrOutput
+}
+
+type instanceSandboxesPtrType InstanceSandboxesArgs
+
+func InstanceSandboxesPtr(v *InstanceSandboxesArgs) InstanceSandboxesPtrInput {
+	return (*instanceSandboxesPtrType)(v)
+}
+
+func (*instanceSandboxesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSandboxes)(nil)).Elem()
+}
+
+func (i *instanceSandboxesPtrType) ToInstanceSandboxesPtrOutput() InstanceSandboxesPtrOutput {
+	return i.ToInstanceSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceSandboxesPtrType) ToInstanceSandboxesPtrOutputWithContext(ctx context.Context) InstanceSandboxesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesPtrOutput)
+}
+
+type InstanceSandboxesOutput struct{ *pulumi.OutputState }
+
+func (InstanceSandboxesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSandboxes)(nil)).Elem()
+}
+
+func (o InstanceSandboxesOutput) ToInstanceSandboxesOutput() InstanceSandboxesOutput {
+	return o
+}
+
+func (o InstanceSandboxesOutput) ToInstanceSandboxesOutputWithContext(ctx context.Context) InstanceSandboxesOutput {
+	return o
+}
+
+func (o InstanceSandboxesOutput) ToInstanceSandboxesPtrOutput() InstanceSandboxesPtrOutput {
+	return o.ToInstanceSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSandboxesOutput) ToInstanceSandboxesPtrOutputWithContext(ctx context.Context) InstanceSandboxesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSandboxes) *InstanceSandboxes {
+		return &v
+	}).(InstanceSandboxesPtrOutput)
+}
+
+// Sandbox templates that can be launched through the `sandbox` CLI.
+// Structure is documented below.
+func (o InstanceSandboxesOutput) Templates() InstanceSandboxesTemplateArrayOutput {
+	return o.ApplyT(func(v InstanceSandboxes) []InstanceSandboxesTemplate { return v.Templates }).(InstanceSandboxesTemplateArrayOutput)
+}
+
+type InstanceSandboxesPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSandboxesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSandboxes)(nil)).Elem()
+}
+
+func (o InstanceSandboxesPtrOutput) ToInstanceSandboxesPtrOutput() InstanceSandboxesPtrOutput {
+	return o
+}
+
+func (o InstanceSandboxesPtrOutput) ToInstanceSandboxesPtrOutputWithContext(ctx context.Context) InstanceSandboxesPtrOutput {
+	return o
+}
+
+func (o InstanceSandboxesPtrOutput) Elem() InstanceSandboxesOutput {
+	return o.ApplyT(func(v *InstanceSandboxes) InstanceSandboxes {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSandboxes
+		return ret
+	}).(InstanceSandboxesOutput)
+}
+
+// Sandbox templates that can be launched through the `sandbox` CLI.
+// Structure is documented below.
+func (o InstanceSandboxesPtrOutput) Templates() InstanceSandboxesTemplateArrayOutput {
+	return o.ApplyT(func(v *InstanceSandboxes) []InstanceSandboxesTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.Templates
+	}).(InstanceSandboxesTemplateArrayOutput)
+}
+
+type InstanceSandboxesTemplate struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	// Structure is documented below.
+	Envs []InstanceSandboxesTemplateEnv `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image string `pulumi:"image"`
+	// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+	Name string `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts []InstanceSandboxesTemplateVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// InstanceSandboxesTemplateInput is an input type that accepts InstanceSandboxesTemplateArgs and InstanceSandboxesTemplateOutput values.
+// You can construct a concrete instance of `InstanceSandboxesTemplateInput` via:
+//
+//	InstanceSandboxesTemplateArgs{...}
+type InstanceSandboxesTemplateInput interface {
+	pulumi.Input
+
+	ToInstanceSandboxesTemplateOutput() InstanceSandboxesTemplateOutput
+	ToInstanceSandboxesTemplateOutputWithContext(context.Context) InstanceSandboxesTemplateOutput
+}
+
+type InstanceSandboxesTemplateArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	// Structure is documented below.
+	Envs InstanceSandboxesTemplateEnvArrayInput `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image pulumi.StringInput `pulumi:"image"`
+	// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts InstanceSandboxesTemplateVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (InstanceSandboxesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSandboxesTemplate)(nil)).Elem()
+}
+
+func (i InstanceSandboxesTemplateArgs) ToInstanceSandboxesTemplateOutput() InstanceSandboxesTemplateOutput {
+	return i.ToInstanceSandboxesTemplateOutputWithContext(context.Background())
+}
+
+func (i InstanceSandboxesTemplateArgs) ToInstanceSandboxesTemplateOutputWithContext(ctx context.Context) InstanceSandboxesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesTemplateOutput)
+}
+
+// InstanceSandboxesTemplateArrayInput is an input type that accepts InstanceSandboxesTemplateArray and InstanceSandboxesTemplateArrayOutput values.
+// You can construct a concrete instance of `InstanceSandboxesTemplateArrayInput` via:
+//
+//	InstanceSandboxesTemplateArray{ InstanceSandboxesTemplateArgs{...} }
+type InstanceSandboxesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToInstanceSandboxesTemplateArrayOutput() InstanceSandboxesTemplateArrayOutput
+	ToInstanceSandboxesTemplateArrayOutputWithContext(context.Context) InstanceSandboxesTemplateArrayOutput
+}
+
+type InstanceSandboxesTemplateArray []InstanceSandboxesTemplateInput
+
+func (InstanceSandboxesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSandboxesTemplate)(nil)).Elem()
+}
+
+func (i InstanceSandboxesTemplateArray) ToInstanceSandboxesTemplateArrayOutput() InstanceSandboxesTemplateArrayOutput {
+	return i.ToInstanceSandboxesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceSandboxesTemplateArray) ToInstanceSandboxesTemplateArrayOutputWithContext(ctx context.Context) InstanceSandboxesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesTemplateArrayOutput)
+}
+
+type InstanceSandboxesTemplateOutput struct{ *pulumi.OutputState }
+
+func (InstanceSandboxesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSandboxesTemplate)(nil)).Elem()
+}
+
+func (o InstanceSandboxesTemplateOutput) ToInstanceSandboxesTemplateOutput() InstanceSandboxesTemplateOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateOutput) ToInstanceSandboxesTemplateOutputWithContext(ctx context.Context) InstanceSandboxesTemplateOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o InstanceSandboxesTemplateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o InstanceSandboxesTemplateOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplate) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of environment variables to set in the sandbox.
+// Structure is documented below.
+func (o InstanceSandboxesTemplateOutput) Envs() InstanceSandboxesTemplateEnvArrayOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplate) []InstanceSandboxesTemplateEnv { return v.Envs }).(InstanceSandboxesTemplateEnvArrayOutput)
+}
+
+// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+func (o InstanceSandboxesTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+func (o InstanceSandboxesTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume to mount into the container's filesystem.
+// Structure is documented below.
+func (o InstanceSandboxesTemplateOutput) VolumeMounts() InstanceSandboxesTemplateVolumeMountArrayOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplate) []InstanceSandboxesTemplateVolumeMount { return v.VolumeMounts }).(InstanceSandboxesTemplateVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o InstanceSandboxesTemplateOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplate) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type InstanceSandboxesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSandboxesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSandboxesTemplate)(nil)).Elem()
+}
+
+func (o InstanceSandboxesTemplateArrayOutput) ToInstanceSandboxesTemplateArrayOutput() InstanceSandboxesTemplateArrayOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateArrayOutput) ToInstanceSandboxesTemplateArrayOutputWithContext(ctx context.Context) InstanceSandboxesTemplateArrayOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateArrayOutput) Index(i pulumi.IntInput) InstanceSandboxesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSandboxesTemplate {
+		return vs[0].([]InstanceSandboxesTemplate)[vs[1].(int)]
+	}).(InstanceSandboxesTemplateOutput)
+}
+
+type InstanceSandboxesTemplateEnv struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name string `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value *string `pulumi:"value"`
+}
+
+// InstanceSandboxesTemplateEnvInput is an input type that accepts InstanceSandboxesTemplateEnvArgs and InstanceSandboxesTemplateEnvOutput values.
+// You can construct a concrete instance of `InstanceSandboxesTemplateEnvInput` via:
+//
+//	InstanceSandboxesTemplateEnvArgs{...}
+type InstanceSandboxesTemplateEnvInput interface {
+	pulumi.Input
+
+	ToInstanceSandboxesTemplateEnvOutput() InstanceSandboxesTemplateEnvOutput
+	ToInstanceSandboxesTemplateEnvOutputWithContext(context.Context) InstanceSandboxesTemplateEnvOutput
+}
+
+type InstanceSandboxesTemplateEnvArgs struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (InstanceSandboxesTemplateEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (i InstanceSandboxesTemplateEnvArgs) ToInstanceSandboxesTemplateEnvOutput() InstanceSandboxesTemplateEnvOutput {
+	return i.ToInstanceSandboxesTemplateEnvOutputWithContext(context.Background())
+}
+
+func (i InstanceSandboxesTemplateEnvArgs) ToInstanceSandboxesTemplateEnvOutputWithContext(ctx context.Context) InstanceSandboxesTemplateEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesTemplateEnvOutput)
+}
+
+// InstanceSandboxesTemplateEnvArrayInput is an input type that accepts InstanceSandboxesTemplateEnvArray and InstanceSandboxesTemplateEnvArrayOutput values.
+// You can construct a concrete instance of `InstanceSandboxesTemplateEnvArrayInput` via:
+//
+//	InstanceSandboxesTemplateEnvArray{ InstanceSandboxesTemplateEnvArgs{...} }
+type InstanceSandboxesTemplateEnvArrayInput interface {
+	pulumi.Input
+
+	ToInstanceSandboxesTemplateEnvArrayOutput() InstanceSandboxesTemplateEnvArrayOutput
+	ToInstanceSandboxesTemplateEnvArrayOutputWithContext(context.Context) InstanceSandboxesTemplateEnvArrayOutput
+}
+
+type InstanceSandboxesTemplateEnvArray []InstanceSandboxesTemplateEnvInput
+
+func (InstanceSandboxesTemplateEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (i InstanceSandboxesTemplateEnvArray) ToInstanceSandboxesTemplateEnvArrayOutput() InstanceSandboxesTemplateEnvArrayOutput {
+	return i.ToInstanceSandboxesTemplateEnvArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceSandboxesTemplateEnvArray) ToInstanceSandboxesTemplateEnvArrayOutputWithContext(ctx context.Context) InstanceSandboxesTemplateEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesTemplateEnvArrayOutput)
+}
+
+type InstanceSandboxesTemplateEnvOutput struct{ *pulumi.OutputState }
+
+func (InstanceSandboxesTemplateEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (o InstanceSandboxesTemplateEnvOutput) ToInstanceSandboxesTemplateEnvOutput() InstanceSandboxesTemplateEnvOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateEnvOutput) ToInstanceSandboxesTemplateEnvOutputWithContext(ctx context.Context) InstanceSandboxesTemplateEnvOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+func (o InstanceSandboxesTemplateEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplateEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+func (o InstanceSandboxesTemplateEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplateEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type InstanceSandboxesTemplateEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSandboxesTemplateEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (o InstanceSandboxesTemplateEnvArrayOutput) ToInstanceSandboxesTemplateEnvArrayOutput() InstanceSandboxesTemplateEnvArrayOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateEnvArrayOutput) ToInstanceSandboxesTemplateEnvArrayOutputWithContext(ctx context.Context) InstanceSandboxesTemplateEnvArrayOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateEnvArrayOutput) Index(i pulumi.IntInput) InstanceSandboxesTemplateEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSandboxesTemplateEnv {
+		return vs[0].([]InstanceSandboxesTemplateEnv)[vs[1].(int)]
+	}).(InstanceSandboxesTemplateEnvOutput)
+}
+
+type InstanceSandboxesTemplateVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath string `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
+}
+
+// InstanceSandboxesTemplateVolumeMountInput is an input type that accepts InstanceSandboxesTemplateVolumeMountArgs and InstanceSandboxesTemplateVolumeMountOutput values.
+// You can construct a concrete instance of `InstanceSandboxesTemplateVolumeMountInput` via:
+//
+//	InstanceSandboxesTemplateVolumeMountArgs{...}
+type InstanceSandboxesTemplateVolumeMountInput interface {
+	pulumi.Input
+
+	ToInstanceSandboxesTemplateVolumeMountOutput() InstanceSandboxesTemplateVolumeMountOutput
+	ToInstanceSandboxesTemplateVolumeMountOutputWithContext(context.Context) InstanceSandboxesTemplateVolumeMountOutput
+}
+
+type InstanceSandboxesTemplateVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
+}
+
+func (InstanceSandboxesTemplateVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i InstanceSandboxesTemplateVolumeMountArgs) ToInstanceSandboxesTemplateVolumeMountOutput() InstanceSandboxesTemplateVolumeMountOutput {
+	return i.ToInstanceSandboxesTemplateVolumeMountOutputWithContext(context.Background())
+}
+
+func (i InstanceSandboxesTemplateVolumeMountArgs) ToInstanceSandboxesTemplateVolumeMountOutputWithContext(ctx context.Context) InstanceSandboxesTemplateVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesTemplateVolumeMountOutput)
+}
+
+// InstanceSandboxesTemplateVolumeMountArrayInput is an input type that accepts InstanceSandboxesTemplateVolumeMountArray and InstanceSandboxesTemplateVolumeMountArrayOutput values.
+// You can construct a concrete instance of `InstanceSandboxesTemplateVolumeMountArrayInput` via:
+//
+//	InstanceSandboxesTemplateVolumeMountArray{ InstanceSandboxesTemplateVolumeMountArgs{...} }
+type InstanceSandboxesTemplateVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToInstanceSandboxesTemplateVolumeMountArrayOutput() InstanceSandboxesTemplateVolumeMountArrayOutput
+	ToInstanceSandboxesTemplateVolumeMountArrayOutputWithContext(context.Context) InstanceSandboxesTemplateVolumeMountArrayOutput
+}
+
+type InstanceSandboxesTemplateVolumeMountArray []InstanceSandboxesTemplateVolumeMountInput
+
+func (InstanceSandboxesTemplateVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i InstanceSandboxesTemplateVolumeMountArray) ToInstanceSandboxesTemplateVolumeMountArrayOutput() InstanceSandboxesTemplateVolumeMountArrayOutput {
+	return i.ToInstanceSandboxesTemplateVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceSandboxesTemplateVolumeMountArray) ToInstanceSandboxesTemplateVolumeMountArrayOutputWithContext(ctx context.Context) InstanceSandboxesTemplateVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSandboxesTemplateVolumeMountArrayOutput)
+}
+
+type InstanceSandboxesTemplateVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (InstanceSandboxesTemplateVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o InstanceSandboxesTemplateVolumeMountOutput) ToInstanceSandboxesTemplateVolumeMountOutput() InstanceSandboxesTemplateVolumeMountOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateVolumeMountOutput) ToInstanceSandboxesTemplateVolumeMountOutputWithContext(ctx context.Context) InstanceSandboxesTemplateVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+func (o InstanceSandboxesTemplateVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplateVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// This must match the Name of a Volume.
+func (o InstanceSandboxesTemplateVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplateVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o InstanceSandboxesTemplateVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSandboxesTemplateVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
+}
+
+type InstanceSandboxesTemplateVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSandboxesTemplateVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o InstanceSandboxesTemplateVolumeMountArrayOutput) ToInstanceSandboxesTemplateVolumeMountArrayOutput() InstanceSandboxesTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateVolumeMountArrayOutput) ToInstanceSandboxesTemplateVolumeMountArrayOutputWithContext(ctx context.Context) InstanceSandboxesTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o InstanceSandboxesTemplateVolumeMountArrayOutput) Index(i pulumi.IntInput) InstanceSandboxesTemplateVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSandboxesTemplateVolumeMount {
+		return vs[0].([]InstanceSandboxesTemplateVolumeMount)[vs[1].(int)]
+	}).(InstanceSandboxesTemplateVolumeMountOutput)
+}
+
 type InstanceTerminalCondition struct {
 	// (Output)
 	// A reason for the instance condition.
@@ -5508,6 +6036,9 @@ type JobTemplateTemplate struct {
 	// Node Selector describes the hardware requirements of the resources.
 	// Structure is documented below.
 	NodeSelector *JobTemplateTemplateNodeSelector `pulumi:"nodeSelector"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes *JobTemplateTemplateSandboxes `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -5553,6 +6084,9 @@ type JobTemplateTemplateArgs struct {
 	// Node Selector describes the hardware requirements of the resources.
 	// Structure is documented below.
 	NodeSelector JobTemplateTemplateNodeSelectorPtrInput `pulumi:"nodeSelector"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes JobTemplateTemplateSandboxesPtrInput `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -5681,6 +6215,12 @@ func (o JobTemplateTemplateOutput) NodeSelector() JobTemplateTemplateNodeSelecto
 	return o.ApplyT(func(v JobTemplateTemplate) *JobTemplateTemplateNodeSelector { return v.NodeSelector }).(JobTemplateTemplateNodeSelectorPtrOutput)
 }
 
+// Configuration for sandboxes.
+// Structure is documented below.
+func (o JobTemplateTemplateOutput) Sandboxes() JobTemplateTemplateSandboxesPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplate) *JobTemplateTemplateSandboxes { return v.Sandboxes }).(JobTemplateTemplateSandboxesPtrOutput)
+}
+
 // Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 func (o JobTemplateTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
@@ -5799,6 +6339,17 @@ func (o JobTemplateTemplatePtrOutput) NodeSelector() JobTemplateTemplateNodeSele
 		}
 		return v.NodeSelector
 	}).(JobTemplateTemplateNodeSelectorPtrOutput)
+}
+
+// Configuration for sandboxes.
+// Structure is documented below.
+func (o JobTemplateTemplatePtrOutput) Sandboxes() JobTemplateTemplateSandboxesPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplate) *JobTemplateTemplateSandboxes {
+		if v == nil {
+			return nil
+		}
+		return v.Sandboxes
+	}).(JobTemplateTemplateSandboxesPtrOutput)
 }
 
 // Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
@@ -6078,7 +6629,7 @@ func (o JobTemplateTemplateContainerArrayOutput) Index(i pulumi.IntInput) JobTem
 }
 
 type JobTemplateTemplateContainerEnv struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
 	Name string `pulumi:"name"`
 	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value *string `pulumi:"value"`
@@ -6099,7 +6650,7 @@ type JobTemplateTemplateContainerEnvInput interface {
 }
 
 type JobTemplateTemplateContainerEnvArgs struct {
-	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -6159,7 +6710,7 @@ func (o JobTemplateTemplateContainerEnvOutput) ToJobTemplateTemplateContainerEnv
 	return o
 }
 
-// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
 func (o JobTemplateTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7882,6 +8433,527 @@ func (o JobTemplateTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtr
 		}
 		return &v.Accelerator
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateSandboxes struct {
+	// Sandbox templates that can be launched through the `sandbox` CLI.
+	// Structure is documented below.
+	Templates []JobTemplateTemplateSandboxesTemplate `pulumi:"templates"`
+}
+
+// JobTemplateTemplateSandboxesInput is an input type that accepts JobTemplateTemplateSandboxesArgs and JobTemplateTemplateSandboxesOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateSandboxesInput` via:
+//
+//	JobTemplateTemplateSandboxesArgs{...}
+type JobTemplateTemplateSandboxesInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateSandboxesOutput() JobTemplateTemplateSandboxesOutput
+	ToJobTemplateTemplateSandboxesOutputWithContext(context.Context) JobTemplateTemplateSandboxesOutput
+}
+
+type JobTemplateTemplateSandboxesArgs struct {
+	// Sandbox templates that can be launched through the `sandbox` CLI.
+	// Structure is documented below.
+	Templates JobTemplateTemplateSandboxesTemplateArrayInput `pulumi:"templates"`
+}
+
+func (JobTemplateTemplateSandboxesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateSandboxes)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateSandboxesArgs) ToJobTemplateTemplateSandboxesOutput() JobTemplateTemplateSandboxesOutput {
+	return i.ToJobTemplateTemplateSandboxesOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateSandboxesArgs) ToJobTemplateTemplateSandboxesOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesOutput)
+}
+
+func (i JobTemplateTemplateSandboxesArgs) ToJobTemplateTemplateSandboxesPtrOutput() JobTemplateTemplateSandboxesPtrOutput {
+	return i.ToJobTemplateTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateSandboxesArgs) ToJobTemplateTemplateSandboxesPtrOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesOutput).ToJobTemplateTemplateSandboxesPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateSandboxesPtrInput is an input type that accepts JobTemplateTemplateSandboxesArgs, JobTemplateTemplateSandboxesPtr and JobTemplateTemplateSandboxesPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateSandboxesPtrInput` via:
+//
+//	        JobTemplateTemplateSandboxesArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateSandboxesPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateSandboxesPtrOutput() JobTemplateTemplateSandboxesPtrOutput
+	ToJobTemplateTemplateSandboxesPtrOutputWithContext(context.Context) JobTemplateTemplateSandboxesPtrOutput
+}
+
+type jobTemplateTemplateSandboxesPtrType JobTemplateTemplateSandboxesArgs
+
+func JobTemplateTemplateSandboxesPtr(v *JobTemplateTemplateSandboxesArgs) JobTemplateTemplateSandboxesPtrInput {
+	return (*jobTemplateTemplateSandboxesPtrType)(v)
+}
+
+func (*jobTemplateTemplateSandboxesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateSandboxes)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateSandboxesPtrType) ToJobTemplateTemplateSandboxesPtrOutput() JobTemplateTemplateSandboxesPtrOutput {
+	return i.ToJobTemplateTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateSandboxesPtrType) ToJobTemplateTemplateSandboxesPtrOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesPtrOutput)
+}
+
+type JobTemplateTemplateSandboxesOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateSandboxesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateSandboxes)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateSandboxesOutput) ToJobTemplateTemplateSandboxesOutput() JobTemplateTemplateSandboxesOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesOutput) ToJobTemplateTemplateSandboxesOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesOutput) ToJobTemplateTemplateSandboxesPtrOutput() JobTemplateTemplateSandboxesPtrOutput {
+	return o.ToJobTemplateTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateSandboxesOutput) ToJobTemplateTemplateSandboxesPtrOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateSandboxes) *JobTemplateTemplateSandboxes {
+		return &v
+	}).(JobTemplateTemplateSandboxesPtrOutput)
+}
+
+// Sandbox templates that can be launched through the `sandbox` CLI.
+// Structure is documented below.
+func (o JobTemplateTemplateSandboxesOutput) Templates() JobTemplateTemplateSandboxesTemplateArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxes) []JobTemplateTemplateSandboxesTemplate { return v.Templates }).(JobTemplateTemplateSandboxesTemplateArrayOutput)
+}
+
+type JobTemplateTemplateSandboxesPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateSandboxesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateSandboxes)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateSandboxesPtrOutput) ToJobTemplateTemplateSandboxesPtrOutput() JobTemplateTemplateSandboxesPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesPtrOutput) ToJobTemplateTemplateSandboxesPtrOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesPtrOutput) Elem() JobTemplateTemplateSandboxesOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateSandboxes) JobTemplateTemplateSandboxes {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateSandboxes
+		return ret
+	}).(JobTemplateTemplateSandboxesOutput)
+}
+
+// Sandbox templates that can be launched through the `sandbox` CLI.
+// Structure is documented below.
+func (o JobTemplateTemplateSandboxesPtrOutput) Templates() JobTemplateTemplateSandboxesTemplateArrayOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateSandboxes) []JobTemplateTemplateSandboxesTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.Templates
+	}).(JobTemplateTemplateSandboxesTemplateArrayOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplate struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	// Structure is documented below.
+	Envs []JobTemplateTemplateSandboxesTemplateEnv `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image string `pulumi:"image"`
+	// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+	Name string `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts []JobTemplateTemplateSandboxesTemplateVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// JobTemplateTemplateSandboxesTemplateInput is an input type that accepts JobTemplateTemplateSandboxesTemplateArgs and JobTemplateTemplateSandboxesTemplateOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateSandboxesTemplateInput` via:
+//
+//	JobTemplateTemplateSandboxesTemplateArgs{...}
+type JobTemplateTemplateSandboxesTemplateInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateSandboxesTemplateOutput() JobTemplateTemplateSandboxesTemplateOutput
+	ToJobTemplateTemplateSandboxesTemplateOutputWithContext(context.Context) JobTemplateTemplateSandboxesTemplateOutput
+}
+
+type JobTemplateTemplateSandboxesTemplateArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	// Structure is documented below.
+	Envs JobTemplateTemplateSandboxesTemplateEnvArrayInput `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image pulumi.StringInput `pulumi:"image"`
+	// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts JobTemplateTemplateSandboxesTemplateVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (JobTemplateTemplateSandboxesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateSandboxesTemplateArgs) ToJobTemplateTemplateSandboxesTemplateOutput() JobTemplateTemplateSandboxesTemplateOutput {
+	return i.ToJobTemplateTemplateSandboxesTemplateOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateSandboxesTemplateArgs) ToJobTemplateTemplateSandboxesTemplateOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesTemplateOutput)
+}
+
+// JobTemplateTemplateSandboxesTemplateArrayInput is an input type that accepts JobTemplateTemplateSandboxesTemplateArray and JobTemplateTemplateSandboxesTemplateArrayOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateSandboxesTemplateArrayInput` via:
+//
+//	JobTemplateTemplateSandboxesTemplateArray{ JobTemplateTemplateSandboxesTemplateArgs{...} }
+type JobTemplateTemplateSandboxesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateSandboxesTemplateArrayOutput() JobTemplateTemplateSandboxesTemplateArrayOutput
+	ToJobTemplateTemplateSandboxesTemplateArrayOutputWithContext(context.Context) JobTemplateTemplateSandboxesTemplateArrayOutput
+}
+
+type JobTemplateTemplateSandboxesTemplateArray []JobTemplateTemplateSandboxesTemplateInput
+
+func (JobTemplateTemplateSandboxesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateSandboxesTemplateArray) ToJobTemplateTemplateSandboxesTemplateArrayOutput() JobTemplateTemplateSandboxesTemplateArrayOutput {
+	return i.ToJobTemplateTemplateSandboxesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateSandboxesTemplateArray) ToJobTemplateTemplateSandboxesTemplateArrayOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesTemplateArrayOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplateOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateSandboxesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateSandboxesTemplateOutput) ToJobTemplateTemplateSandboxesTemplateOutput() JobTemplateTemplateSandboxesTemplateOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateOutput) ToJobTemplateTemplateSandboxesTemplateOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o JobTemplateTemplateSandboxesTemplateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o JobTemplateTemplateSandboxesTemplateOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplate) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of environment variables to set in the sandbox.
+// Structure is documented below.
+func (o JobTemplateTemplateSandboxesTemplateOutput) Envs() JobTemplateTemplateSandboxesTemplateEnvArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplate) []JobTemplateTemplateSandboxesTemplateEnv { return v.Envs }).(JobTemplateTemplateSandboxesTemplateEnvArrayOutput)
+}
+
+// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+func (o JobTemplateTemplateSandboxesTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+func (o JobTemplateTemplateSandboxesTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume to mount into the container's filesystem.
+// Structure is documented below.
+func (o JobTemplateTemplateSandboxesTemplateOutput) VolumeMounts() JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplate) []JobTemplateTemplateSandboxesTemplateVolumeMount {
+		return v.VolumeMounts
+	}).(JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o JobTemplateTemplateSandboxesTemplateOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplate) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateSandboxesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateSandboxesTemplateArrayOutput) ToJobTemplateTemplateSandboxesTemplateArrayOutput() JobTemplateTemplateSandboxesTemplateArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateArrayOutput) ToJobTemplateTemplateSandboxesTemplateArrayOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateSandboxesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateSandboxesTemplate {
+		return vs[0].([]JobTemplateTemplateSandboxesTemplate)[vs[1].(int)]
+	}).(JobTemplateTemplateSandboxesTemplateOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplateEnv struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name string `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value *string `pulumi:"value"`
+}
+
+// JobTemplateTemplateSandboxesTemplateEnvInput is an input type that accepts JobTemplateTemplateSandboxesTemplateEnvArgs and JobTemplateTemplateSandboxesTemplateEnvOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateSandboxesTemplateEnvInput` via:
+//
+//	JobTemplateTemplateSandboxesTemplateEnvArgs{...}
+type JobTemplateTemplateSandboxesTemplateEnvInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateSandboxesTemplateEnvOutput() JobTemplateTemplateSandboxesTemplateEnvOutput
+	ToJobTemplateTemplateSandboxesTemplateEnvOutputWithContext(context.Context) JobTemplateTemplateSandboxesTemplateEnvOutput
+}
+
+type JobTemplateTemplateSandboxesTemplateEnvArgs struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (JobTemplateTemplateSandboxesTemplateEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateSandboxesTemplateEnvArgs) ToJobTemplateTemplateSandboxesTemplateEnvOutput() JobTemplateTemplateSandboxesTemplateEnvOutput {
+	return i.ToJobTemplateTemplateSandboxesTemplateEnvOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateSandboxesTemplateEnvArgs) ToJobTemplateTemplateSandboxesTemplateEnvOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesTemplateEnvOutput)
+}
+
+// JobTemplateTemplateSandboxesTemplateEnvArrayInput is an input type that accepts JobTemplateTemplateSandboxesTemplateEnvArray and JobTemplateTemplateSandboxesTemplateEnvArrayOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateSandboxesTemplateEnvArrayInput` via:
+//
+//	JobTemplateTemplateSandboxesTemplateEnvArray{ JobTemplateTemplateSandboxesTemplateEnvArgs{...} }
+type JobTemplateTemplateSandboxesTemplateEnvArrayInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateSandboxesTemplateEnvArrayOutput() JobTemplateTemplateSandboxesTemplateEnvArrayOutput
+	ToJobTemplateTemplateSandboxesTemplateEnvArrayOutputWithContext(context.Context) JobTemplateTemplateSandboxesTemplateEnvArrayOutput
+}
+
+type JobTemplateTemplateSandboxesTemplateEnvArray []JobTemplateTemplateSandboxesTemplateEnvInput
+
+func (JobTemplateTemplateSandboxesTemplateEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateSandboxesTemplateEnvArray) ToJobTemplateTemplateSandboxesTemplateEnvArrayOutput() JobTemplateTemplateSandboxesTemplateEnvArrayOutput {
+	return i.ToJobTemplateTemplateSandboxesTemplateEnvArrayOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateSandboxesTemplateEnvArray) ToJobTemplateTemplateSandboxesTemplateEnvArrayOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesTemplateEnvArrayOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplateEnvOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateSandboxesTemplateEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateSandboxesTemplateEnvOutput) ToJobTemplateTemplateSandboxesTemplateEnvOutput() JobTemplateTemplateSandboxesTemplateEnvOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateEnvOutput) ToJobTemplateTemplateSandboxesTemplateEnvOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateEnvOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+func (o JobTemplateTemplateSandboxesTemplateEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplateEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+func (o JobTemplateTemplateSandboxesTemplateEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplateEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplateEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateSandboxesTemplateEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateSandboxesTemplateEnvArrayOutput) ToJobTemplateTemplateSandboxesTemplateEnvArrayOutput() JobTemplateTemplateSandboxesTemplateEnvArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateEnvArrayOutput) ToJobTemplateTemplateSandboxesTemplateEnvArrayOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateEnvArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateEnvArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateSandboxesTemplateEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateSandboxesTemplateEnv {
+		return vs[0].([]JobTemplateTemplateSandboxesTemplateEnv)[vs[1].(int)]
+	}).(JobTemplateTemplateSandboxesTemplateEnvOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplateVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath string `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
+}
+
+// JobTemplateTemplateSandboxesTemplateVolumeMountInput is an input type that accepts JobTemplateTemplateSandboxesTemplateVolumeMountArgs and JobTemplateTemplateSandboxesTemplateVolumeMountOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateSandboxesTemplateVolumeMountInput` via:
+//
+//	JobTemplateTemplateSandboxesTemplateVolumeMountArgs{...}
+type JobTemplateTemplateSandboxesTemplateVolumeMountInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateSandboxesTemplateVolumeMountOutput() JobTemplateTemplateSandboxesTemplateVolumeMountOutput
+	ToJobTemplateTemplateSandboxesTemplateVolumeMountOutputWithContext(context.Context) JobTemplateTemplateSandboxesTemplateVolumeMountOutput
+}
+
+type JobTemplateTemplateSandboxesTemplateVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
+}
+
+func (JobTemplateTemplateSandboxesTemplateVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateSandboxesTemplateVolumeMountArgs) ToJobTemplateTemplateSandboxesTemplateVolumeMountOutput() JobTemplateTemplateSandboxesTemplateVolumeMountOutput {
+	return i.ToJobTemplateTemplateSandboxesTemplateVolumeMountOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateSandboxesTemplateVolumeMountArgs) ToJobTemplateTemplateSandboxesTemplateVolumeMountOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesTemplateVolumeMountOutput)
+}
+
+// JobTemplateTemplateSandboxesTemplateVolumeMountArrayInput is an input type that accepts JobTemplateTemplateSandboxesTemplateVolumeMountArray and JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateSandboxesTemplateVolumeMountArrayInput` via:
+//
+//	JobTemplateTemplateSandboxesTemplateVolumeMountArray{ JobTemplateTemplateSandboxesTemplateVolumeMountArgs{...} }
+type JobTemplateTemplateSandboxesTemplateVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput() JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput
+	ToJobTemplateTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(context.Context) JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput
+}
+
+type JobTemplateTemplateSandboxesTemplateVolumeMountArray []JobTemplateTemplateSandboxesTemplateVolumeMountInput
+
+func (JobTemplateTemplateSandboxesTemplateVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateSandboxesTemplateVolumeMountArray) ToJobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput() JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return i.ToJobTemplateTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateSandboxesTemplateVolumeMountArray) ToJobTemplateTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplateVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateSandboxesTemplateVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateSandboxesTemplateVolumeMountOutput) ToJobTemplateTemplateSandboxesTemplateVolumeMountOutput() JobTemplateTemplateSandboxesTemplateVolumeMountOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateVolumeMountOutput) ToJobTemplateTemplateSandboxesTemplateVolumeMountOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+func (o JobTemplateTemplateSandboxesTemplateVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplateVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// This must match the Name of a Volume.
+func (o JobTemplateTemplateSandboxesTemplateVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplateVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o JobTemplateTemplateSandboxesTemplateVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateSandboxesTemplateVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput) ToJobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput() JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput) ToJobTemplateTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(ctx context.Context) JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateSandboxesTemplateVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateSandboxesTemplateVolumeMount {
+		return vs[0].([]JobTemplateTemplateSandboxesTemplateVolumeMount)[vs[1].(int)]
+	}).(JobTemplateTemplateSandboxesTemplateVolumeMountOutput)
 }
 
 type JobTemplateTemplateVolume struct {
@@ -19713,6 +20785,9 @@ type WorkerPoolTemplate struct {
 	NodeSelector *WorkerPoolTemplateNodeSelector `pulumi:"nodeSelector"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
 	Revision *string `pulumi:"revision"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes *WorkerPoolTemplateSandboxes `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// A list of Volumes to make available to containers.
@@ -19767,6 +20842,9 @@ type WorkerPoolTemplateArgs struct {
 	NodeSelector WorkerPoolTemplateNodeSelectorPtrInput `pulumi:"nodeSelector"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes WorkerPoolTemplateSandboxesPtrInput `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// A list of Volumes to make available to containers.
@@ -19917,6 +20995,12 @@ func (o WorkerPoolTemplateOutput) NodeSelector() WorkerPoolTemplateNodeSelectorP
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
 func (o WorkerPoolTemplateOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerPoolTemplate) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for sandboxes.
+// Structure is documented below.
+func (o WorkerPoolTemplateOutput) Sandboxes() WorkerPoolTemplateSandboxesPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplate) *WorkerPoolTemplateSandboxes { return v.Sandboxes }).(WorkerPoolTemplateSandboxesPtrOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -20078,6 +21162,17 @@ func (o WorkerPoolTemplatePtrOutput) Revision() pulumi.StringPtrOutput {
 		}
 		return v.Revision
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for sandboxes.
+// Structure is documented below.
+func (o WorkerPoolTemplatePtrOutput) Sandboxes() WorkerPoolTemplateSandboxesPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplate) *WorkerPoolTemplateSandboxes {
+		if v == nil {
+			return nil
+		}
+		return v.Sandboxes
+	}).(WorkerPoolTemplateSandboxesPtrOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -22829,6 +23924,527 @@ func (o WorkerPoolTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkerPoolTemplateSandboxes struct {
+	// Sandbox templates that can be launched through the `sandbox` CLI.
+	// Structure is documented below.
+	Templates []WorkerPoolTemplateSandboxesTemplate `pulumi:"templates"`
+}
+
+// WorkerPoolTemplateSandboxesInput is an input type that accepts WorkerPoolTemplateSandboxesArgs and WorkerPoolTemplateSandboxesOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateSandboxesInput` via:
+//
+//	WorkerPoolTemplateSandboxesArgs{...}
+type WorkerPoolTemplateSandboxesInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateSandboxesOutput() WorkerPoolTemplateSandboxesOutput
+	ToWorkerPoolTemplateSandboxesOutputWithContext(context.Context) WorkerPoolTemplateSandboxesOutput
+}
+
+type WorkerPoolTemplateSandboxesArgs struct {
+	// Sandbox templates that can be launched through the `sandbox` CLI.
+	// Structure is documented below.
+	Templates WorkerPoolTemplateSandboxesTemplateArrayInput `pulumi:"templates"`
+}
+
+func (WorkerPoolTemplateSandboxesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateSandboxes)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateSandboxesArgs) ToWorkerPoolTemplateSandboxesOutput() WorkerPoolTemplateSandboxesOutput {
+	return i.ToWorkerPoolTemplateSandboxesOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateSandboxesArgs) ToWorkerPoolTemplateSandboxesOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesOutput)
+}
+
+func (i WorkerPoolTemplateSandboxesArgs) ToWorkerPoolTemplateSandboxesPtrOutput() WorkerPoolTemplateSandboxesPtrOutput {
+	return i.ToWorkerPoolTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateSandboxesArgs) ToWorkerPoolTemplateSandboxesPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesOutput).ToWorkerPoolTemplateSandboxesPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateSandboxesPtrInput is an input type that accepts WorkerPoolTemplateSandboxesArgs, WorkerPoolTemplateSandboxesPtr and WorkerPoolTemplateSandboxesPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateSandboxesPtrInput` via:
+//
+//	        WorkerPoolTemplateSandboxesArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateSandboxesPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateSandboxesPtrOutput() WorkerPoolTemplateSandboxesPtrOutput
+	ToWorkerPoolTemplateSandboxesPtrOutputWithContext(context.Context) WorkerPoolTemplateSandboxesPtrOutput
+}
+
+type workerPoolTemplateSandboxesPtrType WorkerPoolTemplateSandboxesArgs
+
+func WorkerPoolTemplateSandboxesPtr(v *WorkerPoolTemplateSandboxesArgs) WorkerPoolTemplateSandboxesPtrInput {
+	return (*workerPoolTemplateSandboxesPtrType)(v)
+}
+
+func (*workerPoolTemplateSandboxesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateSandboxes)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateSandboxesPtrType) ToWorkerPoolTemplateSandboxesPtrOutput() WorkerPoolTemplateSandboxesPtrOutput {
+	return i.ToWorkerPoolTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateSandboxesPtrType) ToWorkerPoolTemplateSandboxesPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesPtrOutput)
+}
+
+type WorkerPoolTemplateSandboxesOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateSandboxesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateSandboxes)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateSandboxesOutput) ToWorkerPoolTemplateSandboxesOutput() WorkerPoolTemplateSandboxesOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesOutput) ToWorkerPoolTemplateSandboxesOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesOutput) ToWorkerPoolTemplateSandboxesPtrOutput() WorkerPoolTemplateSandboxesPtrOutput {
+	return o.ToWorkerPoolTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateSandboxesOutput) ToWorkerPoolTemplateSandboxesPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateSandboxes) *WorkerPoolTemplateSandboxes {
+		return &v
+	}).(WorkerPoolTemplateSandboxesPtrOutput)
+}
+
+// Sandbox templates that can be launched through the `sandbox` CLI.
+// Structure is documented below.
+func (o WorkerPoolTemplateSandboxesOutput) Templates() WorkerPoolTemplateSandboxesTemplateArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxes) []WorkerPoolTemplateSandboxesTemplate { return v.Templates }).(WorkerPoolTemplateSandboxesTemplateArrayOutput)
+}
+
+type WorkerPoolTemplateSandboxesPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateSandboxesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateSandboxes)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateSandboxesPtrOutput) ToWorkerPoolTemplateSandboxesPtrOutput() WorkerPoolTemplateSandboxesPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesPtrOutput) ToWorkerPoolTemplateSandboxesPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesPtrOutput) Elem() WorkerPoolTemplateSandboxesOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateSandboxes) WorkerPoolTemplateSandboxes {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateSandboxes
+		return ret
+	}).(WorkerPoolTemplateSandboxesOutput)
+}
+
+// Sandbox templates that can be launched through the `sandbox` CLI.
+// Structure is documented below.
+func (o WorkerPoolTemplateSandboxesPtrOutput) Templates() WorkerPoolTemplateSandboxesTemplateArrayOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateSandboxes) []WorkerPoolTemplateSandboxesTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.Templates
+	}).(WorkerPoolTemplateSandboxesTemplateArrayOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplate struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	// Structure is documented below.
+	Envs []WorkerPoolTemplateSandboxesTemplateEnv `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image string `pulumi:"image"`
+	// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+	Name string `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts []WorkerPoolTemplateSandboxesTemplateVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// WorkerPoolTemplateSandboxesTemplateInput is an input type that accepts WorkerPoolTemplateSandboxesTemplateArgs and WorkerPoolTemplateSandboxesTemplateOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateSandboxesTemplateInput` via:
+//
+//	WorkerPoolTemplateSandboxesTemplateArgs{...}
+type WorkerPoolTemplateSandboxesTemplateInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateSandboxesTemplateOutput() WorkerPoolTemplateSandboxesTemplateOutput
+	ToWorkerPoolTemplateSandboxesTemplateOutputWithContext(context.Context) WorkerPoolTemplateSandboxesTemplateOutput
+}
+
+type WorkerPoolTemplateSandboxesTemplateArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	// Structure is documented below.
+	Envs WorkerPoolTemplateSandboxesTemplateEnvArrayInput `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image pulumi.StringInput `pulumi:"image"`
+	// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts WorkerPoolTemplateSandboxesTemplateVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (WorkerPoolTemplateSandboxesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateArgs) ToWorkerPoolTemplateSandboxesTemplateOutput() WorkerPoolTemplateSandboxesTemplateOutput {
+	return i.ToWorkerPoolTemplateSandboxesTemplateOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateArgs) ToWorkerPoolTemplateSandboxesTemplateOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesTemplateOutput)
+}
+
+// WorkerPoolTemplateSandboxesTemplateArrayInput is an input type that accepts WorkerPoolTemplateSandboxesTemplateArray and WorkerPoolTemplateSandboxesTemplateArrayOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateSandboxesTemplateArrayInput` via:
+//
+//	WorkerPoolTemplateSandboxesTemplateArray{ WorkerPoolTemplateSandboxesTemplateArgs{...} }
+type WorkerPoolTemplateSandboxesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateSandboxesTemplateArrayOutput() WorkerPoolTemplateSandboxesTemplateArrayOutput
+	ToWorkerPoolTemplateSandboxesTemplateArrayOutputWithContext(context.Context) WorkerPoolTemplateSandboxesTemplateArrayOutput
+}
+
+type WorkerPoolTemplateSandboxesTemplateArray []WorkerPoolTemplateSandboxesTemplateInput
+
+func (WorkerPoolTemplateSandboxesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateArray) ToWorkerPoolTemplateSandboxesTemplateArrayOutput() WorkerPoolTemplateSandboxesTemplateArrayOutput {
+	return i.ToWorkerPoolTemplateSandboxesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateArray) ToWorkerPoolTemplateSandboxesTemplateArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesTemplateArrayOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplateOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateSandboxesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateOutput) ToWorkerPoolTemplateSandboxesTemplateOutput() WorkerPoolTemplateSandboxesTemplateOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateOutput) ToWorkerPoolTemplateSandboxesTemplateOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o WorkerPoolTemplateSandboxesTemplateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o WorkerPoolTemplateSandboxesTemplateOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplate) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of environment variables to set in the sandbox.
+// Structure is documented below.
+func (o WorkerPoolTemplateSandboxesTemplateOutput) Envs() WorkerPoolTemplateSandboxesTemplateEnvArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplate) []WorkerPoolTemplateSandboxesTemplateEnv { return v.Envs }).(WorkerPoolTemplateSandboxesTemplateEnvArrayOutput)
+}
+
+// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+func (o WorkerPoolTemplateSandboxesTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+func (o WorkerPoolTemplateSandboxesTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume to mount into the container's filesystem.
+// Structure is documented below.
+func (o WorkerPoolTemplateSandboxesTemplateOutput) VolumeMounts() WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplate) []WorkerPoolTemplateSandboxesTemplateVolumeMount {
+		return v.VolumeMounts
+	}).(WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o WorkerPoolTemplateSandboxesTemplateOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplate) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateSandboxesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateArrayOutput) ToWorkerPoolTemplateSandboxesTemplateArrayOutput() WorkerPoolTemplateSandboxesTemplateArrayOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateArrayOutput) ToWorkerPoolTemplateSandboxesTemplateArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateArrayOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateArrayOutput) Index(i pulumi.IntInput) WorkerPoolTemplateSandboxesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolTemplateSandboxesTemplate {
+		return vs[0].([]WorkerPoolTemplateSandboxesTemplate)[vs[1].(int)]
+	}).(WorkerPoolTemplateSandboxesTemplateOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplateEnv struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name string `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value *string `pulumi:"value"`
+}
+
+// WorkerPoolTemplateSandboxesTemplateEnvInput is an input type that accepts WorkerPoolTemplateSandboxesTemplateEnvArgs and WorkerPoolTemplateSandboxesTemplateEnvOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateSandboxesTemplateEnvInput` via:
+//
+//	WorkerPoolTemplateSandboxesTemplateEnvArgs{...}
+type WorkerPoolTemplateSandboxesTemplateEnvInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateSandboxesTemplateEnvOutput() WorkerPoolTemplateSandboxesTemplateEnvOutput
+	ToWorkerPoolTemplateSandboxesTemplateEnvOutputWithContext(context.Context) WorkerPoolTemplateSandboxesTemplateEnvOutput
+}
+
+type WorkerPoolTemplateSandboxesTemplateEnvArgs struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WorkerPoolTemplateSandboxesTemplateEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateEnvArgs) ToWorkerPoolTemplateSandboxesTemplateEnvOutput() WorkerPoolTemplateSandboxesTemplateEnvOutput {
+	return i.ToWorkerPoolTemplateSandboxesTemplateEnvOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateEnvArgs) ToWorkerPoolTemplateSandboxesTemplateEnvOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesTemplateEnvOutput)
+}
+
+// WorkerPoolTemplateSandboxesTemplateEnvArrayInput is an input type that accepts WorkerPoolTemplateSandboxesTemplateEnvArray and WorkerPoolTemplateSandboxesTemplateEnvArrayOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateSandboxesTemplateEnvArrayInput` via:
+//
+//	WorkerPoolTemplateSandboxesTemplateEnvArray{ WorkerPoolTemplateSandboxesTemplateEnvArgs{...} }
+type WorkerPoolTemplateSandboxesTemplateEnvArrayInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateSandboxesTemplateEnvArrayOutput() WorkerPoolTemplateSandboxesTemplateEnvArrayOutput
+	ToWorkerPoolTemplateSandboxesTemplateEnvArrayOutputWithContext(context.Context) WorkerPoolTemplateSandboxesTemplateEnvArrayOutput
+}
+
+type WorkerPoolTemplateSandboxesTemplateEnvArray []WorkerPoolTemplateSandboxesTemplateEnvInput
+
+func (WorkerPoolTemplateSandboxesTemplateEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateEnvArray) ToWorkerPoolTemplateSandboxesTemplateEnvArrayOutput() WorkerPoolTemplateSandboxesTemplateEnvArrayOutput {
+	return i.ToWorkerPoolTemplateSandboxesTemplateEnvArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateEnvArray) ToWorkerPoolTemplateSandboxesTemplateEnvArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesTemplateEnvArrayOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplateEnvOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateSandboxesTemplateEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateEnvOutput) ToWorkerPoolTemplateSandboxesTemplateEnvOutput() WorkerPoolTemplateSandboxesTemplateEnvOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateEnvOutput) ToWorkerPoolTemplateSandboxesTemplateEnvOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateEnvOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+func (o WorkerPoolTemplateSandboxesTemplateEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplateEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+func (o WorkerPoolTemplateSandboxesTemplateEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplateEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplateEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateSandboxesTemplateEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateEnvArrayOutput) ToWorkerPoolTemplateSandboxesTemplateEnvArrayOutput() WorkerPoolTemplateSandboxesTemplateEnvArrayOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateEnvArrayOutput) ToWorkerPoolTemplateSandboxesTemplateEnvArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateEnvArrayOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateEnvArrayOutput) Index(i pulumi.IntInput) WorkerPoolTemplateSandboxesTemplateEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolTemplateSandboxesTemplateEnv {
+		return vs[0].([]WorkerPoolTemplateSandboxesTemplateEnv)[vs[1].(int)]
+	}).(WorkerPoolTemplateSandboxesTemplateEnvOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplateVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath string `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
+}
+
+// WorkerPoolTemplateSandboxesTemplateVolumeMountInput is an input type that accepts WorkerPoolTemplateSandboxesTemplateVolumeMountArgs and WorkerPoolTemplateSandboxesTemplateVolumeMountOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateSandboxesTemplateVolumeMountInput` via:
+//
+//	WorkerPoolTemplateSandboxesTemplateVolumeMountArgs{...}
+type WorkerPoolTemplateSandboxesTemplateVolumeMountInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateSandboxesTemplateVolumeMountOutput() WorkerPoolTemplateSandboxesTemplateVolumeMountOutput
+	ToWorkerPoolTemplateSandboxesTemplateVolumeMountOutputWithContext(context.Context) WorkerPoolTemplateSandboxesTemplateVolumeMountOutput
+}
+
+type WorkerPoolTemplateSandboxesTemplateVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
+}
+
+func (WorkerPoolTemplateSandboxesTemplateVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateVolumeMountArgs) ToWorkerPoolTemplateSandboxesTemplateVolumeMountOutput() WorkerPoolTemplateSandboxesTemplateVolumeMountOutput {
+	return i.ToWorkerPoolTemplateSandboxesTemplateVolumeMountOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateVolumeMountArgs) ToWorkerPoolTemplateSandboxesTemplateVolumeMountOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesTemplateVolumeMountOutput)
+}
+
+// WorkerPoolTemplateSandboxesTemplateVolumeMountArrayInput is an input type that accepts WorkerPoolTemplateSandboxesTemplateVolumeMountArray and WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateSandboxesTemplateVolumeMountArrayInput` via:
+//
+//	WorkerPoolTemplateSandboxesTemplateVolumeMountArray{ WorkerPoolTemplateSandboxesTemplateVolumeMountArgs{...} }
+type WorkerPoolTemplateSandboxesTemplateVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput() WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput
+	ToWorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(context.Context) WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput
+}
+
+type WorkerPoolTemplateSandboxesTemplateVolumeMountArray []WorkerPoolTemplateSandboxesTemplateVolumeMountInput
+
+func (WorkerPoolTemplateSandboxesTemplateVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateVolumeMountArray) ToWorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput() WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return i.ToWorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateSandboxesTemplateVolumeMountArray) ToWorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplateVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateSandboxesTemplateVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateVolumeMountOutput) ToWorkerPoolTemplateSandboxesTemplateVolumeMountOutput() WorkerPoolTemplateSandboxesTemplateVolumeMountOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateVolumeMountOutput) ToWorkerPoolTemplateSandboxesTemplateVolumeMountOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+func (o WorkerPoolTemplateSandboxesTemplateVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplateVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// This must match the Name of a Volume.
+func (o WorkerPoolTemplateSandboxesTemplateVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplateVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o WorkerPoolTemplateSandboxesTemplateVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateSandboxesTemplateVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput) ToWorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput() WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput) ToWorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput) Index(i pulumi.IntInput) WorkerPoolTemplateSandboxesTemplateVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolTemplateSandboxesTemplateVolumeMount {
+		return vs[0].([]WorkerPoolTemplateSandboxesTemplateVolumeMount)[vs[1].(int)]
+	}).(WorkerPoolTemplateSandboxesTemplateVolumeMountOutput)
+}
+
 type WorkerPoolTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
@@ -25027,6 +26643,8 @@ type GetJobTemplateTemplate struct {
 	MaxRetries int `pulumi:"maxRetries"`
 	// Node Selector describes the hardware requirements of the resources.
 	NodeSelectors []GetJobTemplateTemplateNodeSelector `pulumi:"nodeSelectors"`
+	// Configuration for sandboxes.
+	Sandboxes []GetJobTemplateTemplateSandbox `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -25066,6 +26684,8 @@ type GetJobTemplateTemplateArgs struct {
 	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
 	// Node Selector describes the hardware requirements of the resources.
 	NodeSelectors GetJobTemplateTemplateNodeSelectorArrayInput `pulumi:"nodeSelectors"`
+	// Configuration for sandboxes.
+	Sandboxes GetJobTemplateTemplateSandboxArrayInput `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -25160,6 +26780,11 @@ func (o GetJobTemplateTemplateOutput) MaxRetries() pulumi.IntOutput {
 // Node Selector describes the hardware requirements of the resources.
 func (o GetJobTemplateTemplateOutput) NodeSelectors() GetJobTemplateTemplateNodeSelectorArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateNodeSelector { return v.NodeSelectors }).(GetJobTemplateTemplateNodeSelectorArrayOutput)
+}
+
+// Configuration for sandboxes.
+func (o GetJobTemplateTemplateOutput) Sandboxes() GetJobTemplateTemplateSandboxArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateSandbox { return v.Sandboxes }).(GetJobTemplateTemplateSandboxArrayOutput)
 }
 
 // Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
@@ -26775,6 +28400,479 @@ func (o GetJobTemplateTemplateNodeSelectorArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateNodeSelector {
 		return vs[0].([]GetJobTemplateTemplateNodeSelector)[vs[1].(int)]
 	}).(GetJobTemplateTemplateNodeSelectorOutput)
+}
+
+type GetJobTemplateTemplateSandbox struct {
+	// Sandbox templates that can be launched through the 'sandbox' CLI.
+	Templates []GetJobTemplateTemplateSandboxTemplate `pulumi:"templates"`
+}
+
+// GetJobTemplateTemplateSandboxInput is an input type that accepts GetJobTemplateTemplateSandboxArgs and GetJobTemplateTemplateSandboxOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateSandboxInput` via:
+//
+//	GetJobTemplateTemplateSandboxArgs{...}
+type GetJobTemplateTemplateSandboxInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateSandboxOutput() GetJobTemplateTemplateSandboxOutput
+	ToGetJobTemplateTemplateSandboxOutputWithContext(context.Context) GetJobTemplateTemplateSandboxOutput
+}
+
+type GetJobTemplateTemplateSandboxArgs struct {
+	// Sandbox templates that can be launched through the 'sandbox' CLI.
+	Templates GetJobTemplateTemplateSandboxTemplateArrayInput `pulumi:"templates"`
+}
+
+func (GetJobTemplateTemplateSandboxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateSandbox)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateSandboxArgs) ToGetJobTemplateTemplateSandboxOutput() GetJobTemplateTemplateSandboxOutput {
+	return i.ToGetJobTemplateTemplateSandboxOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateSandboxArgs) ToGetJobTemplateTemplateSandboxOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateSandboxOutput)
+}
+
+// GetJobTemplateTemplateSandboxArrayInput is an input type that accepts GetJobTemplateTemplateSandboxArray and GetJobTemplateTemplateSandboxArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateSandboxArrayInput` via:
+//
+//	GetJobTemplateTemplateSandboxArray{ GetJobTemplateTemplateSandboxArgs{...} }
+type GetJobTemplateTemplateSandboxArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateSandboxArrayOutput() GetJobTemplateTemplateSandboxArrayOutput
+	ToGetJobTemplateTemplateSandboxArrayOutputWithContext(context.Context) GetJobTemplateTemplateSandboxArrayOutput
+}
+
+type GetJobTemplateTemplateSandboxArray []GetJobTemplateTemplateSandboxInput
+
+func (GetJobTemplateTemplateSandboxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateSandbox)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateSandboxArray) ToGetJobTemplateTemplateSandboxArrayOutput() GetJobTemplateTemplateSandboxArrayOutput {
+	return i.ToGetJobTemplateTemplateSandboxArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateSandboxArray) ToGetJobTemplateTemplateSandboxArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateSandboxArrayOutput)
+}
+
+type GetJobTemplateTemplateSandboxOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateSandboxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateSandbox)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateSandboxOutput) ToGetJobTemplateTemplateSandboxOutput() GetJobTemplateTemplateSandboxOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxOutput) ToGetJobTemplateTemplateSandboxOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxOutput {
+	return o
+}
+
+// Sandbox templates that can be launched through the 'sandbox' CLI.
+func (o GetJobTemplateTemplateSandboxOutput) Templates() GetJobTemplateTemplateSandboxTemplateArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandbox) []GetJobTemplateTemplateSandboxTemplate { return v.Templates }).(GetJobTemplateTemplateSandboxTemplateArrayOutput)
+}
+
+type GetJobTemplateTemplateSandboxArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateSandboxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateSandbox)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateSandboxArrayOutput) ToGetJobTemplateTemplateSandboxArrayOutput() GetJobTemplateTemplateSandboxArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxArrayOutput) ToGetJobTemplateTemplateSandboxArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateSandboxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateSandbox {
+		return vs[0].([]GetJobTemplateTemplateSandbox)[vs[1].(int)]
+	}).(GetJobTemplateTemplateSandboxOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplate struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	Envs []GetJobTemplateTemplateSandboxTemplateEnv `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image string `pulumi:"image"`
+	// The name of the Cloud Run v2 Job.
+	Name string `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	VolumeMounts []GetJobTemplateTemplateSandboxTemplateVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir string `pulumi:"workingDir"`
+}
+
+// GetJobTemplateTemplateSandboxTemplateInput is an input type that accepts GetJobTemplateTemplateSandboxTemplateArgs and GetJobTemplateTemplateSandboxTemplateOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateSandboxTemplateInput` via:
+//
+//	GetJobTemplateTemplateSandboxTemplateArgs{...}
+type GetJobTemplateTemplateSandboxTemplateInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateSandboxTemplateOutput() GetJobTemplateTemplateSandboxTemplateOutput
+	ToGetJobTemplateTemplateSandboxTemplateOutputWithContext(context.Context) GetJobTemplateTemplateSandboxTemplateOutput
+}
+
+type GetJobTemplateTemplateSandboxTemplateArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	Envs GetJobTemplateTemplateSandboxTemplateEnvArrayInput `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image pulumi.StringInput `pulumi:"image"`
+	// The name of the Cloud Run v2 Job.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	VolumeMounts GetJobTemplateTemplateSandboxTemplateVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
+}
+
+func (GetJobTemplateTemplateSandboxTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateArgs) ToGetJobTemplateTemplateSandboxTemplateOutput() GetJobTemplateTemplateSandboxTemplateOutput {
+	return i.ToGetJobTemplateTemplateSandboxTemplateOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateArgs) ToGetJobTemplateTemplateSandboxTemplateOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateSandboxTemplateOutput)
+}
+
+// GetJobTemplateTemplateSandboxTemplateArrayInput is an input type that accepts GetJobTemplateTemplateSandboxTemplateArray and GetJobTemplateTemplateSandboxTemplateArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateSandboxTemplateArrayInput` via:
+//
+//	GetJobTemplateTemplateSandboxTemplateArray{ GetJobTemplateTemplateSandboxTemplateArgs{...} }
+type GetJobTemplateTemplateSandboxTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateSandboxTemplateArrayOutput() GetJobTemplateTemplateSandboxTemplateArrayOutput
+	ToGetJobTemplateTemplateSandboxTemplateArrayOutputWithContext(context.Context) GetJobTemplateTemplateSandboxTemplateArrayOutput
+}
+
+type GetJobTemplateTemplateSandboxTemplateArray []GetJobTemplateTemplateSandboxTemplateInput
+
+func (GetJobTemplateTemplateSandboxTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateArray) ToGetJobTemplateTemplateSandboxTemplateArrayOutput() GetJobTemplateTemplateSandboxTemplateArrayOutput {
+	return i.ToGetJobTemplateTemplateSandboxTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateArray) ToGetJobTemplateTemplateSandboxTemplateArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateSandboxTemplateArrayOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateSandboxTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateOutput) ToGetJobTemplateTemplateSandboxTemplateOutput() GetJobTemplateTemplateSandboxTemplateOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateOutput) ToGetJobTemplateTemplateSandboxTemplateOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o GetJobTemplateTemplateSandboxTemplateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o GetJobTemplateTemplateSandboxTemplateOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplate) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of environment variables to set in the sandbox.
+func (o GetJobTemplateTemplateSandboxTemplateOutput) Envs() GetJobTemplateTemplateSandboxTemplateEnvArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplate) []GetJobTemplateTemplateSandboxTemplateEnv {
+		return v.Envs
+	}).(GetJobTemplateTemplateSandboxTemplateEnvArrayOutput)
+}
+
+// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+func (o GetJobTemplateTemplateSandboxTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateSandboxTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume to mount into the container's filesystem.
+func (o GetJobTemplateTemplateSandboxTemplateOutput) VolumeMounts() GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplate) []GetJobTemplateTemplateSandboxTemplateVolumeMount {
+		return v.VolumeMounts
+	}).(GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o GetJobTemplateTemplateSandboxTemplateOutput) WorkingDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplate) string { return v.WorkingDir }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateSandboxTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateArrayOutput) ToGetJobTemplateTemplateSandboxTemplateArrayOutput() GetJobTemplateTemplateSandboxTemplateArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateArrayOutput) ToGetJobTemplateTemplateSandboxTemplateArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateSandboxTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateSandboxTemplate {
+		return vs[0].([]GetJobTemplateTemplateSandboxTemplate)[vs[1].(int)]
+	}).(GetJobTemplateTemplateSandboxTemplateOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplateEnv struct {
+	// The name of the Cloud Run v2 Job.
+	Name string `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value string `pulumi:"value"`
+}
+
+// GetJobTemplateTemplateSandboxTemplateEnvInput is an input type that accepts GetJobTemplateTemplateSandboxTemplateEnvArgs and GetJobTemplateTemplateSandboxTemplateEnvOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateSandboxTemplateEnvInput` via:
+//
+//	GetJobTemplateTemplateSandboxTemplateEnvArgs{...}
+type GetJobTemplateTemplateSandboxTemplateEnvInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateSandboxTemplateEnvOutput() GetJobTemplateTemplateSandboxTemplateEnvOutput
+	ToGetJobTemplateTemplateSandboxTemplateEnvOutputWithContext(context.Context) GetJobTemplateTemplateSandboxTemplateEnvOutput
+}
+
+type GetJobTemplateTemplateSandboxTemplateEnvArgs struct {
+	// The name of the Cloud Run v2 Job.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetJobTemplateTemplateSandboxTemplateEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateEnvArgs) ToGetJobTemplateTemplateSandboxTemplateEnvOutput() GetJobTemplateTemplateSandboxTemplateEnvOutput {
+	return i.ToGetJobTemplateTemplateSandboxTemplateEnvOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateEnvArgs) ToGetJobTemplateTemplateSandboxTemplateEnvOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateSandboxTemplateEnvOutput)
+}
+
+// GetJobTemplateTemplateSandboxTemplateEnvArrayInput is an input type that accepts GetJobTemplateTemplateSandboxTemplateEnvArray and GetJobTemplateTemplateSandboxTemplateEnvArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateSandboxTemplateEnvArrayInput` via:
+//
+//	GetJobTemplateTemplateSandboxTemplateEnvArray{ GetJobTemplateTemplateSandboxTemplateEnvArgs{...} }
+type GetJobTemplateTemplateSandboxTemplateEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateSandboxTemplateEnvArrayOutput() GetJobTemplateTemplateSandboxTemplateEnvArrayOutput
+	ToGetJobTemplateTemplateSandboxTemplateEnvArrayOutputWithContext(context.Context) GetJobTemplateTemplateSandboxTemplateEnvArrayOutput
+}
+
+type GetJobTemplateTemplateSandboxTemplateEnvArray []GetJobTemplateTemplateSandboxTemplateEnvInput
+
+func (GetJobTemplateTemplateSandboxTemplateEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateEnvArray) ToGetJobTemplateTemplateSandboxTemplateEnvArrayOutput() GetJobTemplateTemplateSandboxTemplateEnvArrayOutput {
+	return i.ToGetJobTemplateTemplateSandboxTemplateEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateEnvArray) ToGetJobTemplateTemplateSandboxTemplateEnvArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateSandboxTemplateEnvArrayOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplateEnvOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateSandboxTemplateEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateEnvOutput) ToGetJobTemplateTemplateSandboxTemplateEnvOutput() GetJobTemplateTemplateSandboxTemplateEnvOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateEnvOutput) ToGetJobTemplateTemplateSandboxTemplateEnvOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateEnvOutput {
+	return o
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateSandboxTemplateEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplateEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+func (o GetJobTemplateTemplateSandboxTemplateEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplateEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplateEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateSandboxTemplateEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateEnvArrayOutput) ToGetJobTemplateTemplateSandboxTemplateEnvArrayOutput() GetJobTemplateTemplateSandboxTemplateEnvArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateEnvArrayOutput) ToGetJobTemplateTemplateSandboxTemplateEnvArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateEnvArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateEnvArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateSandboxTemplateEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateSandboxTemplateEnv {
+		return vs[0].([]GetJobTemplateTemplateSandboxTemplateEnv)[vs[1].(int)]
+	}).(GetJobTemplateTemplateSandboxTemplateEnvOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplateVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath string `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Job.
+	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath string `pulumi:"subPath"`
+}
+
+// GetJobTemplateTemplateSandboxTemplateVolumeMountInput is an input type that accepts GetJobTemplateTemplateSandboxTemplateVolumeMountArgs and GetJobTemplateTemplateSandboxTemplateVolumeMountOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateSandboxTemplateVolumeMountInput` via:
+//
+//	GetJobTemplateTemplateSandboxTemplateVolumeMountArgs{...}
+type GetJobTemplateTemplateSandboxTemplateVolumeMountInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateSandboxTemplateVolumeMountOutput() GetJobTemplateTemplateSandboxTemplateVolumeMountOutput
+	ToGetJobTemplateTemplateSandboxTemplateVolumeMountOutputWithContext(context.Context) GetJobTemplateTemplateSandboxTemplateVolumeMountOutput
+}
+
+type GetJobTemplateTemplateSandboxTemplateVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Job.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringInput `pulumi:"subPath"`
+}
+
+func (GetJobTemplateTemplateSandboxTemplateVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateVolumeMountArgs) ToGetJobTemplateTemplateSandboxTemplateVolumeMountOutput() GetJobTemplateTemplateSandboxTemplateVolumeMountOutput {
+	return i.ToGetJobTemplateTemplateSandboxTemplateVolumeMountOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateVolumeMountArgs) ToGetJobTemplateTemplateSandboxTemplateVolumeMountOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateSandboxTemplateVolumeMountOutput)
+}
+
+// GetJobTemplateTemplateSandboxTemplateVolumeMountArrayInput is an input type that accepts GetJobTemplateTemplateSandboxTemplateVolumeMountArray and GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateSandboxTemplateVolumeMountArrayInput` via:
+//
+//	GetJobTemplateTemplateSandboxTemplateVolumeMountArray{ GetJobTemplateTemplateSandboxTemplateVolumeMountArgs{...} }
+type GetJobTemplateTemplateSandboxTemplateVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput() GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput
+	ToGetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutputWithContext(context.Context) GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput
+}
+
+type GetJobTemplateTemplateSandboxTemplateVolumeMountArray []GetJobTemplateTemplateSandboxTemplateVolumeMountInput
+
+func (GetJobTemplateTemplateSandboxTemplateVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateVolumeMountArray) ToGetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput() GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput {
+	return i.ToGetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateSandboxTemplateVolumeMountArray) ToGetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplateVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateSandboxTemplateVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateVolumeMountOutput) ToGetJobTemplateTemplateSandboxTemplateVolumeMountOutput() GetJobTemplateTemplateSandboxTemplateVolumeMountOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateVolumeMountOutput) ToGetJobTemplateTemplateSandboxTemplateVolumeMountOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+func (o GetJobTemplateTemplateSandboxTemplateVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplateVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateSandboxTemplateVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplateVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o GetJobTemplateTemplateSandboxTemplateVolumeMountOutput) SubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateSandboxTemplateVolumeMount) string { return v.SubPath }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput) ToGetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput() GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput) ToGetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateSandboxTemplateVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateSandboxTemplateVolumeMount {
+		return vs[0].([]GetJobTemplateTemplateSandboxTemplateVolumeMount)[vs[1].(int)]
+	}).(GetJobTemplateTemplateSandboxTemplateVolumeMountOutput)
 }
 
 type GetJobTemplateTemplateVolume struct {
@@ -34970,6 +37068,8 @@ type GetWorkerPoolTemplate struct {
 	NodeSelectors []GetWorkerPoolTemplateNodeSelector `pulumi:"nodeSelectors"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
 	Revision string `pulumi:"revision"`
+	// Configuration for sandboxes.
+	Sandboxes []GetWorkerPoolTemplateSandbox `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// A list of Volumes to make available to containers.
@@ -35023,6 +37123,8 @@ type GetWorkerPoolTemplateArgs struct {
 	NodeSelectors GetWorkerPoolTemplateNodeSelectorArrayInput `pulumi:"nodeSelectors"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
 	Revision pulumi.StringInput `pulumi:"revision"`
+	// Configuration for sandboxes.
+	Sandboxes GetWorkerPoolTemplateSandboxArrayInput `pulumi:"sandboxes"`
 	// Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// A list of Volumes to make available to containers.
@@ -35146,6 +37248,11 @@ func (o GetWorkerPoolTemplateOutput) NodeSelectors() GetWorkerPoolTemplateNodeSe
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
 func (o GetWorkerPoolTemplateOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplate) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+// Configuration for sandboxes.
+func (o GetWorkerPoolTemplateOutput) Sandboxes() GetWorkerPoolTemplateSandboxArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplate) []GetWorkerPoolTemplateSandbox { return v.Sandboxes }).(GetWorkerPoolTemplateSandboxArrayOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -37182,6 +39289,477 @@ func (o GetWorkerPoolTemplateNodeSelectorArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetWorkerPoolTemplateNodeSelectorOutput)
 }
 
+type GetWorkerPoolTemplateSandbox struct {
+	// Sandbox templates that can be launched through the 'sandbox' CLI.
+	Templates []GetWorkerPoolTemplateSandboxTemplate `pulumi:"templates"`
+}
+
+// GetWorkerPoolTemplateSandboxInput is an input type that accepts GetWorkerPoolTemplateSandboxArgs and GetWorkerPoolTemplateSandboxOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateSandboxInput` via:
+//
+//	GetWorkerPoolTemplateSandboxArgs{...}
+type GetWorkerPoolTemplateSandboxInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateSandboxOutput() GetWorkerPoolTemplateSandboxOutput
+	ToGetWorkerPoolTemplateSandboxOutputWithContext(context.Context) GetWorkerPoolTemplateSandboxOutput
+}
+
+type GetWorkerPoolTemplateSandboxArgs struct {
+	// Sandbox templates that can be launched through the 'sandbox' CLI.
+	Templates GetWorkerPoolTemplateSandboxTemplateArrayInput `pulumi:"templates"`
+}
+
+func (GetWorkerPoolTemplateSandboxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateSandbox)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateSandboxArgs) ToGetWorkerPoolTemplateSandboxOutput() GetWorkerPoolTemplateSandboxOutput {
+	return i.ToGetWorkerPoolTemplateSandboxOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateSandboxArgs) ToGetWorkerPoolTemplateSandboxOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateSandboxOutput)
+}
+
+// GetWorkerPoolTemplateSandboxArrayInput is an input type that accepts GetWorkerPoolTemplateSandboxArray and GetWorkerPoolTemplateSandboxArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateSandboxArrayInput` via:
+//
+//	GetWorkerPoolTemplateSandboxArray{ GetWorkerPoolTemplateSandboxArgs{...} }
+type GetWorkerPoolTemplateSandboxArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateSandboxArrayOutput() GetWorkerPoolTemplateSandboxArrayOutput
+	ToGetWorkerPoolTemplateSandboxArrayOutputWithContext(context.Context) GetWorkerPoolTemplateSandboxArrayOutput
+}
+
+type GetWorkerPoolTemplateSandboxArray []GetWorkerPoolTemplateSandboxInput
+
+func (GetWorkerPoolTemplateSandboxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateSandbox)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateSandboxArray) ToGetWorkerPoolTemplateSandboxArrayOutput() GetWorkerPoolTemplateSandboxArrayOutput {
+	return i.ToGetWorkerPoolTemplateSandboxArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateSandboxArray) ToGetWorkerPoolTemplateSandboxArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateSandboxArrayOutput)
+}
+
+type GetWorkerPoolTemplateSandboxOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateSandboxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateSandbox)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateSandboxOutput) ToGetWorkerPoolTemplateSandboxOutput() GetWorkerPoolTemplateSandboxOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxOutput) ToGetWorkerPoolTemplateSandboxOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxOutput {
+	return o
+}
+
+// Sandbox templates that can be launched through the 'sandbox' CLI.
+func (o GetWorkerPoolTemplateSandboxOutput) Templates() GetWorkerPoolTemplateSandboxTemplateArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandbox) []GetWorkerPoolTemplateSandboxTemplate { return v.Templates }).(GetWorkerPoolTemplateSandboxTemplateArrayOutput)
+}
+
+type GetWorkerPoolTemplateSandboxArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateSandboxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateSandbox)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateSandboxArrayOutput) ToGetWorkerPoolTemplateSandboxArrayOutput() GetWorkerPoolTemplateSandboxArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxArrayOutput) ToGetWorkerPoolTemplateSandboxArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateSandboxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateSandbox {
+		return vs[0].([]GetWorkerPoolTemplateSandbox)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateSandboxOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplate struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	Envs []GetWorkerPoolTemplateSandboxTemplateEnv `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image string `pulumi:"image"`
+	// The name of the Cloud Run v2 Worker Pool.
+	Name string `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	VolumeMounts []GetWorkerPoolTemplateSandboxTemplateVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir string `pulumi:"workingDir"`
+}
+
+// GetWorkerPoolTemplateSandboxTemplateInput is an input type that accepts GetWorkerPoolTemplateSandboxTemplateArgs and GetWorkerPoolTemplateSandboxTemplateOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateSandboxTemplateInput` via:
+//
+//	GetWorkerPoolTemplateSandboxTemplateArgs{...}
+type GetWorkerPoolTemplateSandboxTemplateInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateSandboxTemplateOutput() GetWorkerPoolTemplateSandboxTemplateOutput
+	ToGetWorkerPoolTemplateSandboxTemplateOutputWithContext(context.Context) GetWorkerPoolTemplateSandboxTemplateOutput
+}
+
+type GetWorkerPoolTemplateSandboxTemplateArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	Envs GetWorkerPoolTemplateSandboxTemplateEnvArrayInput `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image pulumi.StringInput `pulumi:"image"`
+	// The name of the Cloud Run v2 Worker Pool.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	VolumeMounts GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
+}
+
+func (GetWorkerPoolTemplateSandboxTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateArgs) ToGetWorkerPoolTemplateSandboxTemplateOutput() GetWorkerPoolTemplateSandboxTemplateOutput {
+	return i.ToGetWorkerPoolTemplateSandboxTemplateOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateArgs) ToGetWorkerPoolTemplateSandboxTemplateOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateSandboxTemplateOutput)
+}
+
+// GetWorkerPoolTemplateSandboxTemplateArrayInput is an input type that accepts GetWorkerPoolTemplateSandboxTemplateArray and GetWorkerPoolTemplateSandboxTemplateArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateSandboxTemplateArrayInput` via:
+//
+//	GetWorkerPoolTemplateSandboxTemplateArray{ GetWorkerPoolTemplateSandboxTemplateArgs{...} }
+type GetWorkerPoolTemplateSandboxTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateSandboxTemplateArrayOutput() GetWorkerPoolTemplateSandboxTemplateArrayOutput
+	ToGetWorkerPoolTemplateSandboxTemplateArrayOutputWithContext(context.Context) GetWorkerPoolTemplateSandboxTemplateArrayOutput
+}
+
+type GetWorkerPoolTemplateSandboxTemplateArray []GetWorkerPoolTemplateSandboxTemplateInput
+
+func (GetWorkerPoolTemplateSandboxTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateArray) ToGetWorkerPoolTemplateSandboxTemplateArrayOutput() GetWorkerPoolTemplateSandboxTemplateArrayOutput {
+	return i.ToGetWorkerPoolTemplateSandboxTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateArray) ToGetWorkerPoolTemplateSandboxTemplateArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateSandboxTemplateArrayOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateSandboxTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) ToGetWorkerPoolTemplateSandboxTemplateOutput() GetWorkerPoolTemplateSandboxTemplateOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) ToGetWorkerPoolTemplateSandboxTemplateOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplate) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of environment variables to set in the sandbox.
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) Envs() GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplate) []GetWorkerPoolTemplateSandboxTemplateEnv { return v.Envs }).(GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput)
+}
+
+// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Worker Pool.
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume to mount into the container's filesystem.
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) VolumeMounts() GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplate) []GetWorkerPoolTemplateSandboxTemplateVolumeMount {
+		return v.VolumeMounts
+	}).(GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o GetWorkerPoolTemplateSandboxTemplateOutput) WorkingDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplate) string { return v.WorkingDir }).(pulumi.StringOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateSandboxTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateArrayOutput) ToGetWorkerPoolTemplateSandboxTemplateArrayOutput() GetWorkerPoolTemplateSandboxTemplateArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateArrayOutput) ToGetWorkerPoolTemplateSandboxTemplateArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateSandboxTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateSandboxTemplate {
+		return vs[0].([]GetWorkerPoolTemplateSandboxTemplate)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateSandboxTemplateOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplateEnv struct {
+	// The name of the Cloud Run v2 Worker Pool.
+	Name string `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value string `pulumi:"value"`
+}
+
+// GetWorkerPoolTemplateSandboxTemplateEnvInput is an input type that accepts GetWorkerPoolTemplateSandboxTemplateEnvArgs and GetWorkerPoolTemplateSandboxTemplateEnvOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateSandboxTemplateEnvInput` via:
+//
+//	GetWorkerPoolTemplateSandboxTemplateEnvArgs{...}
+type GetWorkerPoolTemplateSandboxTemplateEnvInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateSandboxTemplateEnvOutput() GetWorkerPoolTemplateSandboxTemplateEnvOutput
+	ToGetWorkerPoolTemplateSandboxTemplateEnvOutputWithContext(context.Context) GetWorkerPoolTemplateSandboxTemplateEnvOutput
+}
+
+type GetWorkerPoolTemplateSandboxTemplateEnvArgs struct {
+	// The name of the Cloud Run v2 Worker Pool.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetWorkerPoolTemplateSandboxTemplateEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateEnvArgs) ToGetWorkerPoolTemplateSandboxTemplateEnvOutput() GetWorkerPoolTemplateSandboxTemplateEnvOutput {
+	return i.ToGetWorkerPoolTemplateSandboxTemplateEnvOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateEnvArgs) ToGetWorkerPoolTemplateSandboxTemplateEnvOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateSandboxTemplateEnvOutput)
+}
+
+// GetWorkerPoolTemplateSandboxTemplateEnvArrayInput is an input type that accepts GetWorkerPoolTemplateSandboxTemplateEnvArray and GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateSandboxTemplateEnvArrayInput` via:
+//
+//	GetWorkerPoolTemplateSandboxTemplateEnvArray{ GetWorkerPoolTemplateSandboxTemplateEnvArgs{...} }
+type GetWorkerPoolTemplateSandboxTemplateEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateSandboxTemplateEnvArrayOutput() GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput
+	ToGetWorkerPoolTemplateSandboxTemplateEnvArrayOutputWithContext(context.Context) GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput
+}
+
+type GetWorkerPoolTemplateSandboxTemplateEnvArray []GetWorkerPoolTemplateSandboxTemplateEnvInput
+
+func (GetWorkerPoolTemplateSandboxTemplateEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateEnvArray) ToGetWorkerPoolTemplateSandboxTemplateEnvArrayOutput() GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput {
+	return i.ToGetWorkerPoolTemplateSandboxTemplateEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateEnvArray) ToGetWorkerPoolTemplateSandboxTemplateEnvArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplateEnvOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateSandboxTemplateEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateEnvOutput) ToGetWorkerPoolTemplateSandboxTemplateEnvOutput() GetWorkerPoolTemplateSandboxTemplateEnvOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateEnvOutput) ToGetWorkerPoolTemplateSandboxTemplateEnvOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateEnvOutput {
+	return o
+}
+
+// The name of the Cloud Run v2 Worker Pool.
+func (o GetWorkerPoolTemplateSandboxTemplateEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplateEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+func (o GetWorkerPoolTemplateSandboxTemplateEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplateEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput) ToGetWorkerPoolTemplateSandboxTemplateEnvArrayOutput() GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput) ToGetWorkerPoolTemplateSandboxTemplateEnvArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateSandboxTemplateEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateSandboxTemplateEnv {
+		return vs[0].([]GetWorkerPoolTemplateSandboxTemplateEnv)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateSandboxTemplateEnvOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplateVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath string `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Worker Pool.
+	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath string `pulumi:"subPath"`
+}
+
+// GetWorkerPoolTemplateSandboxTemplateVolumeMountInput is an input type that accepts GetWorkerPoolTemplateSandboxTemplateVolumeMountArgs and GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateSandboxTemplateVolumeMountInput` via:
+//
+//	GetWorkerPoolTemplateSandboxTemplateVolumeMountArgs{...}
+type GetWorkerPoolTemplateSandboxTemplateVolumeMountInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateSandboxTemplateVolumeMountOutput() GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput
+	ToGetWorkerPoolTemplateSandboxTemplateVolumeMountOutputWithContext(context.Context) GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput
+}
+
+type GetWorkerPoolTemplateSandboxTemplateVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Worker Pool.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringInput `pulumi:"subPath"`
+}
+
+func (GetWorkerPoolTemplateSandboxTemplateVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateVolumeMountArgs) ToGetWorkerPoolTemplateSandboxTemplateVolumeMountOutput() GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput {
+	return i.ToGetWorkerPoolTemplateSandboxTemplateVolumeMountOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateVolumeMountArgs) ToGetWorkerPoolTemplateSandboxTemplateVolumeMountOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput)
+}
+
+// GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayInput is an input type that accepts GetWorkerPoolTemplateSandboxTemplateVolumeMountArray and GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayInput` via:
+//
+//	GetWorkerPoolTemplateSandboxTemplateVolumeMountArray{ GetWorkerPoolTemplateSandboxTemplateVolumeMountArgs{...} }
+type GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput() GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput
+	ToGetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutputWithContext(context.Context) GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput
+}
+
+type GetWorkerPoolTemplateSandboxTemplateVolumeMountArray []GetWorkerPoolTemplateSandboxTemplateVolumeMountInput
+
+func (GetWorkerPoolTemplateSandboxTemplateVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateVolumeMountArray) ToGetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput() GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput {
+	return i.ToGetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateSandboxTemplateVolumeMountArray) ToGetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput) ToGetWorkerPoolTemplateSandboxTemplateVolumeMountOutput() GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput) ToGetWorkerPoolTemplateSandboxTemplateVolumeMountOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+func (o GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplateVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Worker Pool.
+func (o GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplateVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput) SubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateSandboxTemplateVolumeMount) string { return v.SubPath }).(pulumi.StringOutput)
+}
+
+type GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput) ToGetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput() GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput) ToGetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateSandboxTemplateVolumeMount {
+		return vs[0].([]GetWorkerPoolTemplateSandboxTemplateVolumeMount)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput)
+}
+
 type GetWorkerPoolTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstances []GetWorkerPoolTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
@@ -38437,6 +41015,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionPtrInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSandboxesInput)(nil)).Elem(), InstanceSandboxesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSandboxesPtrInput)(nil)).Elem(), InstanceSandboxesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSandboxesTemplateInput)(nil)).Elem(), InstanceSandboxesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSandboxesTemplateArrayInput)(nil)).Elem(), InstanceSandboxesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSandboxesTemplateEnvInput)(nil)).Elem(), InstanceSandboxesTemplateEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSandboxesTemplateEnvArrayInput)(nil)).Elem(), InstanceSandboxesTemplateEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSandboxesTemplateVolumeMountInput)(nil)).Elem(), InstanceSandboxesTemplateVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSandboxesTemplateVolumeMountArrayInput)(nil)).Elem(), InstanceSandboxesTemplateVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTerminalConditionInput)(nil)).Elem(), InstanceTerminalConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTerminalConditionArrayInput)(nil)).Elem(), InstanceTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeInput)(nil)).Elem(), InstanceVolumeArgs{})
@@ -38493,6 +41079,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateContainerVolumeMountArrayInput)(nil)).Elem(), JobTemplateTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateNodeSelectorInput)(nil)).Elem(), JobTemplateTemplateNodeSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateNodeSelectorPtrInput)(nil)).Elem(), JobTemplateTemplateNodeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateSandboxesInput)(nil)).Elem(), JobTemplateTemplateSandboxesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateSandboxesPtrInput)(nil)).Elem(), JobTemplateTemplateSandboxesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateInput)(nil)).Elem(), JobTemplateTemplateSandboxesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateArrayInput)(nil)).Elem(), JobTemplateTemplateSandboxesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateEnvInput)(nil)).Elem(), JobTemplateTemplateSandboxesTemplateEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateEnvArrayInput)(nil)).Elem(), JobTemplateTemplateSandboxesTemplateEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateVolumeMountInput)(nil)).Elem(), JobTemplateTemplateSandboxesTemplateVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateSandboxesTemplateVolumeMountArrayInput)(nil)).Elem(), JobTemplateTemplateSandboxesTemplateVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeInput)(nil)).Elem(), JobTemplateTemplateVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeArrayInput)(nil)).Elem(), JobTemplateTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), JobTemplateTemplateVolumeCloudSqlInstanceArgs{})
@@ -38667,6 +41261,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerVolumeMountArrayInput)(nil)).Elem(), WorkerPoolTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateNodeSelectorInput)(nil)).Elem(), WorkerPoolTemplateNodeSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateNodeSelectorPtrInput)(nil)).Elem(), WorkerPoolTemplateNodeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateSandboxesInput)(nil)).Elem(), WorkerPoolTemplateSandboxesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateSandboxesPtrInput)(nil)).Elem(), WorkerPoolTemplateSandboxesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateInput)(nil)).Elem(), WorkerPoolTemplateSandboxesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateArrayInput)(nil)).Elem(), WorkerPoolTemplateSandboxesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateEnvInput)(nil)).Elem(), WorkerPoolTemplateSandboxesTemplateEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateEnvArrayInput)(nil)).Elem(), WorkerPoolTemplateSandboxesTemplateEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateVolumeMountInput)(nil)).Elem(), WorkerPoolTemplateSandboxesTemplateVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateSandboxesTemplateVolumeMountArrayInput)(nil)).Elem(), WorkerPoolTemplateSandboxesTemplateVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateVolumeInput)(nil)).Elem(), WorkerPoolTemplateVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateVolumeArrayInput)(nil)).Elem(), WorkerPoolTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), WorkerPoolTemplateVolumeCloudSqlInstanceArgs{})
@@ -38723,6 +41325,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateNodeSelectorInput)(nil)).Elem(), GetJobTemplateTemplateNodeSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateNodeSelectorArrayInput)(nil)).Elem(), GetJobTemplateTemplateNodeSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateSandboxInput)(nil)).Elem(), GetJobTemplateTemplateSandboxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateSandboxArrayInput)(nil)).Elem(), GetJobTemplateTemplateSandboxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateInput)(nil)).Elem(), GetJobTemplateTemplateSandboxTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateArrayInput)(nil)).Elem(), GetJobTemplateTemplateSandboxTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateEnvInput)(nil)).Elem(), GetJobTemplateTemplateSandboxTemplateEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateEnvArrayInput)(nil)).Elem(), GetJobTemplateTemplateSandboxTemplateEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateVolumeMountInput)(nil)).Elem(), GetJobTemplateTemplateSandboxTemplateVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateSandboxTemplateVolumeMountArrayInput)(nil)).Elem(), GetJobTemplateTemplateSandboxTemplateVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeInput)(nil)).Elem(), GetJobTemplateTemplateVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), GetJobTemplateTemplateVolumeCloudSqlInstanceArgs{})
@@ -38889,6 +41499,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateNodeSelectorInput)(nil)).Elem(), GetWorkerPoolTemplateNodeSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateNodeSelectorArrayInput)(nil)).Elem(), GetWorkerPoolTemplateNodeSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateSandboxInput)(nil)).Elem(), GetWorkerPoolTemplateSandboxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateSandboxArrayInput)(nil)).Elem(), GetWorkerPoolTemplateSandboxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateInput)(nil)).Elem(), GetWorkerPoolTemplateSandboxTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateArrayInput)(nil)).Elem(), GetWorkerPoolTemplateSandboxTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateEnvInput)(nil)).Elem(), GetWorkerPoolTemplateSandboxTemplateEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateEnvArrayInput)(nil)).Elem(), GetWorkerPoolTemplateSandboxTemplateEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateVolumeMountInput)(nil)).Elem(), GetWorkerPoolTemplateSandboxTemplateVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayInput)(nil)).Elem(), GetWorkerPoolTemplateSandboxTemplateVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateVolumeInput)(nil)).Elem(), GetWorkerPoolTemplateVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateVolumeArrayInput)(nil)).Elem(), GetWorkerPoolTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), GetWorkerPoolTemplateVolumeCloudSqlInstanceArgs{})
@@ -38949,6 +41567,14 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSandboxesOutput{})
+	pulumi.RegisterOutputType(InstanceSandboxesPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSandboxesTemplateOutput{})
+	pulumi.RegisterOutputType(InstanceSandboxesTemplateArrayOutput{})
+	pulumi.RegisterOutputType(InstanceSandboxesTemplateEnvOutput{})
+	pulumi.RegisterOutputType(InstanceSandboxesTemplateEnvArrayOutput{})
+	pulumi.RegisterOutputType(InstanceSandboxesTemplateVolumeMountOutput{})
+	pulumi.RegisterOutputType(InstanceSandboxesTemplateVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(InstanceTerminalConditionOutput{})
 	pulumi.RegisterOutputType(InstanceTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceVolumeOutput{})
@@ -39005,6 +41631,14 @@ func init() {
 	pulumi.RegisterOutputType(JobTemplateTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateNodeSelectorOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateNodeSelectorPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateSandboxesOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateSandboxesPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateSandboxesTemplateOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateSandboxesTemplateArrayOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateSandboxesTemplateEnvOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateSandboxesTemplateEnvArrayOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateSandboxesTemplateVolumeMountOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateSandboxesTemplateVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeCloudSqlInstanceOutput{})
@@ -39179,6 +41813,14 @@ func init() {
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateNodeSelectorOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateNodeSelectorPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateSandboxesOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateSandboxesPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateSandboxesTemplateOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateSandboxesTemplateArrayOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateSandboxesTemplateEnvOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateSandboxesTemplateEnvArrayOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateSandboxesTemplateVolumeMountOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateSandboxesTemplateVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateVolumeOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateVolumeCloudSqlInstanceOutput{})
@@ -39235,6 +41877,14 @@ func init() {
 	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateNodeSelectorOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateNodeSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateSandboxOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateSandboxArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateSandboxTemplateOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateSandboxTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateSandboxTemplateEnvOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateSandboxTemplateEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateSandboxTemplateVolumeMountOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateSandboxTemplateVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeCloudSqlInstanceOutput{})
@@ -39401,6 +42051,14 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateNodeSelectorOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateNodeSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateSandboxOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateSandboxArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateSandboxTemplateOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateSandboxTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateSandboxTemplateEnvOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateSandboxTemplateEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateSandboxTemplateVolumeMountOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateSandboxTemplateVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateVolumeOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateVolumeCloudSqlInstanceOutput{})

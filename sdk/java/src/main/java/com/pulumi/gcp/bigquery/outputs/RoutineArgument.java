@@ -15,12 +15,12 @@ public final class RoutineArgument {
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
      * 
      */
     private @Nullable String argumentKind;
     /**
-     * @return A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+     * @return A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
      * ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
      * will create a diff, even if the JSON itself hasn&#39;t changed. If the API returns
      * a different value for the same schema, e.g. it switched the order of values
@@ -52,14 +52,14 @@ public final class RoutineArgument {
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`, `ANY_TABLE`.
      * 
      */
     public Optional<String> argumentKind() {
         return Optional.ofNullable(this.argumentKind);
     }
     /**
-     * @return A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+     * @return A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
      * ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
      * will create a diff, even if the JSON itself hasn&#39;t changed. If the API returns
      * a different value for the same schema, e.g. it switched the order of values

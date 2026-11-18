@@ -1157,7 +1157,9 @@ func (o GCPolicyMaxVersionArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxVersi
 }
 
 type InstanceCluster struct {
-	// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+	// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+	//
+	// > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 	AutoscalingConfig *InstanceClusterAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId string `pulumi:"clusterId"`
@@ -1173,6 +1175,8 @@ type InstanceCluster struct {
 	// `clusterId`) will cause the provider to delete/recreate the entire
 	// `bigtable.Instance` resource. If these values are changing, use a new
 	// `clusterId`.
+	//
+	// ***
 	NodeScalingFactor *string `pulumi:"nodeScalingFactor"`
 	// The number of nodes in the cluster.
 	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -1200,7 +1204,9 @@ type InstanceClusterInput interface {
 }
 
 type InstanceClusterArgs struct {
-	// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+	// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+	//
+	// > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 	AutoscalingConfig InstanceClusterAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
@@ -1216,6 +1222,8 @@ type InstanceClusterArgs struct {
 	// `clusterId`) will cause the provider to delete/recreate the entire
 	// `bigtable.Instance` resource. If these values are changing, use a new
 	// `clusterId`.
+	//
+	// ***
 	NodeScalingFactor pulumi.StringPtrInput `pulumi:"nodeScalingFactor"`
 	// The number of nodes in the cluster.
 	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -1282,7 +1290,9 @@ func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+//
+// > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 func (o InstanceClusterOutput) AutoscalingConfig() InstanceClusterAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *InstanceClusterAutoscalingConfig { return v.AutoscalingConfig }).(InstanceClusterAutoscalingConfigPtrOutput)
 }
@@ -1307,6 +1317,8 @@ func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
 // `clusterId`) will cause the provider to delete/recreate the entire
 // `bigtable.Instance` resource. If these values are changing, use a new
 // `clusterId`.
+//
+// ***
 func (o InstanceClusterOutput) NodeScalingFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *string { return v.NodeScalingFactor }).(pulumi.StringPtrOutput)
 }
@@ -1363,8 +1375,6 @@ type InstanceClusterAutoscalingConfig struct {
 	// The minimum number of nodes for autoscaling.
 	MinNodes int `pulumi:"minNodes"`
 	// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-	//
-	// > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 	StorageTarget *int `pulumi:"storageTarget"`
 }
 
@@ -1387,8 +1397,6 @@ type InstanceClusterAutoscalingConfigArgs struct {
 	// The minimum number of nodes for autoscaling.
 	MinNodes pulumi.IntInput `pulumi:"minNodes"`
 	// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-	//
-	// > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 	StorageTarget pulumi.IntPtrInput `pulumi:"storageTarget"`
 }
 
@@ -1485,8 +1493,6 @@ func (o InstanceClusterAutoscalingConfigOutput) MinNodes() pulumi.IntOutput {
 }
 
 // The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-//
-// > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 func (o InstanceClusterAutoscalingConfigOutput) StorageTarget() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceClusterAutoscalingConfig) *int { return v.StorageTarget }).(pulumi.IntPtrOutput)
 }
@@ -1546,8 +1552,6 @@ func (o InstanceClusterAutoscalingConfigPtrOutput) MinNodes() pulumi.IntPtrOutpu
 }
 
 // The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-//
-// > **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 func (o InstanceClusterAutoscalingConfigPtrOutput) StorageTarget() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceClusterAutoscalingConfig) *int {
 		if v == nil {
@@ -1559,8 +1563,6 @@ func (o InstanceClusterAutoscalingConfigPtrOutput) StorageTarget() pulumi.IntPtr
 
 type InstanceIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// For `bigtable.InstanceIamPolicy` only:
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1581,8 +1583,6 @@ type InstanceIamBindingConditionInput interface {
 
 type InstanceIamBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// For `bigtable.InstanceIamPolicy` only:
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1668,8 +1668,6 @@ func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutpu
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1709,8 +1707,6 @@ func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingCondition
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
 		if v == nil {
@@ -1742,8 +1738,6 @@ func (o InstanceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type InstanceIamMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// For `bigtable.InstanceIamPolicy` only:
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1764,8 +1758,6 @@ type InstanceIamMemberConditionInput interface {
 
 type InstanceIamMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// For `bigtable.InstanceIamPolicy` only:
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1851,8 +1843,6 @@ func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputW
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1892,8 +1882,6 @@ func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOu
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
 		if v == nil {
@@ -2339,6 +2327,8 @@ type TableColumnFamily struct {
 	// The name of the column family.
 	Family string `pulumi:"family"`
 	// The type of the column family.
+	//
+	// ***
 	Type *string `pulumi:"type"`
 }
 
@@ -2357,6 +2347,8 @@ type TableColumnFamilyArgs struct {
 	// The name of the column family.
 	Family pulumi.StringInput `pulumi:"family"`
 	// The type of the column family.
+	//
+	// ***
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -2417,6 +2409,8 @@ func (o TableColumnFamilyOutput) Family() pulumi.StringOutput {
 }
 
 // The type of the column family.
+//
+// ***
 func (o TableColumnFamilyOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableColumnFamily) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetGlobalForwardingRuleResult
     {
         public readonly bool AllowPscGlobalAccess;
+        public readonly string BackendService;
         public readonly string BaseForwardingRule;
         public readonly string DeletionPolicy;
         public readonly string Description;
@@ -148,6 +149,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Id;
         public readonly string IpAddress;
+        public readonly ImmutableArray<string> IpAddresses;
         public readonly string IpProtocol;
         public readonly string IpVersion;
         public readonly string LabelFingerprint;
@@ -173,6 +175,8 @@ namespace Pulumi.Gcp.Compute
         private GetGlobalForwardingRuleResult(
             bool allowPscGlobalAccess,
 
+            string backendService,
+
             string baseForwardingRule,
 
             string deletionPolicy,
@@ -190,6 +194,8 @@ namespace Pulumi.Gcp.Compute
             string id,
 
             string ipAddress,
+
+            ImmutableArray<string> ipAddresses,
 
             string ipProtocol,
 
@@ -232,6 +238,7 @@ namespace Pulumi.Gcp.Compute
             string target)
         {
             AllowPscGlobalAccess = allowPscGlobalAccess;
+            BackendService = backendService;
             BaseForwardingRule = baseForwardingRule;
             DeletionPolicy = deletionPolicy;
             Description = description;
@@ -241,6 +248,7 @@ namespace Pulumi.Gcp.Compute
             ForwardingRuleId = forwardingRuleId;
             Id = id;
             IpAddress = ipAddress;
+            IpAddresses = ipAddresses;
             IpProtocol = ipProtocol;
             IpVersion = ipVersion;
             LabelFingerprint = labelFingerprint;

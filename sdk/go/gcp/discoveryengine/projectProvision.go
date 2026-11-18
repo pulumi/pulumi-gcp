@@ -161,6 +161,16 @@ type ProjectProvision struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The Gemini Enterprise experience that the project is provisioned for.
+	// `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+	// experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+	// Gemini Enterprise experience. If unset, the API chooses the experience.
+	// Changing this field forces a new resource, which calls the provisioning API
+	// again with the new value. Provisioning doesn't remove an experience that the
+	// project was already provisioned for, and the API may reject provisioning a
+	// project that uses the classic experience for the new experience.
+	// Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+	ProvisionIntent pulumi.StringPtrOutput `pulumi:"provisionIntent"`
 	// Parameters for Gemini Enterprise (Agentspace) provisioning.
 	// Structure is documented below.
 	SaasParams ProjectProvisionSaasParamsPtrOutput `pulumi:"saasParams"`
@@ -209,6 +219,16 @@ type projectProvisionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The Gemini Enterprise experience that the project is provisioned for.
+	// `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+	// experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+	// Gemini Enterprise experience. If unset, the API chooses the experience.
+	// Changing this field forces a new resource, which calls the provisioning API
+	// again with the new value. Provisioning doesn't remove an experience that the
+	// project was already provisioned for, and the API may reject provisioning a
+	// project that uses the classic experience for the new experience.
+	// Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+	ProvisionIntent *string `pulumi:"provisionIntent"`
 	// Parameters for Gemini Enterprise (Agentspace) provisioning.
 	// Structure is documented below.
 	SaasParams *ProjectProvisionSaasParams `pulumi:"saasParams"`
@@ -228,6 +248,16 @@ type ProjectProvisionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The Gemini Enterprise experience that the project is provisioned for.
+	// `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+	// experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+	// Gemini Enterprise experience. If unset, the API chooses the experience.
+	// Changing this field forces a new resource, which calls the provisioning API
+	// again with the new value. Provisioning doesn't remove an experience that the
+	// project was already provisioned for, and the API may reject provisioning a
+	// project that uses the classic experience for the new experience.
+	// Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+	ProvisionIntent pulumi.StringPtrInput
 	// Parameters for Gemini Enterprise (Agentspace) provisioning.
 	// Structure is documented below.
 	SaasParams ProjectProvisionSaasParamsPtrInput
@@ -257,6 +287,16 @@ type projectProvisionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The Gemini Enterprise experience that the project is provisioned for.
+	// `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+	// experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+	// Gemini Enterprise experience. If unset, the API chooses the experience.
+	// Changing this field forces a new resource, which calls the provisioning API
+	// again with the new value. Provisioning doesn't remove an experience that the
+	// project was already provisioned for, and the API may reject provisioning a
+	// project that uses the classic experience for the new experience.
+	// Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+	ProvisionIntent *string `pulumi:"provisionIntent"`
 	// Parameters for Gemini Enterprise (Agentspace) provisioning.
 	// Structure is documented below.
 	SaasParams *ProjectProvisionSaasParams `pulumi:"saasParams"`
@@ -277,6 +317,16 @@ type ProjectProvisionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The Gemini Enterprise experience that the project is provisioned for.
+	// `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+	// experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+	// Gemini Enterprise experience. If unset, the API chooses the experience.
+	// Changing this field forces a new resource, which calls the provisioning API
+	// again with the new value. Provisioning doesn't remove an experience that the
+	// project was already provisioned for, and the API may reject provisioning a
+	// project that uses the classic experience for the new experience.
+	// Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+	ProvisionIntent pulumi.StringPtrInput
 	// Parameters for Gemini Enterprise (Agentspace) provisioning.
 	// Structure is documented below.
 	SaasParams ProjectProvisionSaasParamsPtrInput
@@ -392,6 +442,19 @@ func (o ProjectProvisionOutput) Location() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o ProjectProvisionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectProvision) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The Gemini Enterprise experience that the project is provisioned for.
+// `PROVISION_INTENT_SOBI` provisions the project for the new Gemini Enterprise
+// experience, and `PROVISION_INTENT_LEGACY` provisions it for the classic
+// Gemini Enterprise experience. If unset, the API chooses the experience.
+// Changing this field forces a new resource, which calls the provisioning API
+// again with the new value. Provisioning doesn't remove an experience that the
+// project was already provisioned for, and the API may reject provisioning a
+// project that uses the classic experience for the new experience.
+// Possible values are: `PROVISION_INTENT_SOBI`, `PROVISION_INTENT_LEGACY`.
+func (o ProjectProvisionOutput) ProvisionIntent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectProvision) pulumi.StringPtrOutput { return v.ProvisionIntent }).(pulumi.StringPtrOutput)
 }
 
 // Parameters for Gemini Enterprise (Agentspace) provisioning.

@@ -31,6 +31,11 @@ public final class DatabaseInstanceBlueGreenDeployment {
      */
     private String deploymentName;
     /**
+     * @return User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+     * 
+     */
+    private @Nullable String description;
+    /**
      * @return The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = &#34;TARGET&#34;`).
      * 
      */
@@ -82,6 +87,13 @@ public final class DatabaseInstanceBlueGreenDeployment {
      */
     public String deploymentName() {
         return this.deploymentName;
+    }
+    /**
+     * @return User-provided description for the Blue-Green Deployment. Cannot be changed while the deployment is active.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
     /**
      * @return The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = &#34;TARGET&#34;`).
@@ -138,6 +150,7 @@ public final class DatabaseInstanceBlueGreenDeployment {
         private @Nullable String activeEnvironment;
         private @Nullable Boolean deleteOldSourceOnDestroy;
         private String deploymentName;
+        private @Nullable String description;
         private @Nullable String oldSourceInstanceConnectionName;
         private @Nullable String oldSourceInstanceName;
         private @Nullable String targetDatabaseVersion;
@@ -150,6 +163,7 @@ public final class DatabaseInstanceBlueGreenDeployment {
     	      this.activeEnvironment = defaults.activeEnvironment;
     	      this.deleteOldSourceOnDestroy = defaults.deleteOldSourceOnDestroy;
     	      this.deploymentName = defaults.deploymentName;
+    	      this.description = defaults.description;
     	      this.oldSourceInstanceConnectionName = defaults.oldSourceInstanceConnectionName;
     	      this.oldSourceInstanceName = defaults.oldSourceInstanceName;
     	      this.targetDatabaseVersion = defaults.targetDatabaseVersion;
@@ -176,6 +190,12 @@ public final class DatabaseInstanceBlueGreenDeployment {
               throw new MissingRequiredPropertyException("DatabaseInstanceBlueGreenDeployment", "deploymentName");
             }
             this.deploymentName = deploymentName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -222,6 +242,7 @@ public final class DatabaseInstanceBlueGreenDeployment {
             _resultValue.activeEnvironment = activeEnvironment;
             _resultValue.deleteOldSourceOnDestroy = deleteOldSourceOnDestroy;
             _resultValue.deploymentName = deploymentName;
+            _resultValue.description = description;
             _resultValue.oldSourceInstanceConnectionName = oldSourceInstanceConnectionName;
             _resultValue.oldSourceInstanceName = oldSourceInstanceName;
             _resultValue.targetDatabaseVersion = targetDatabaseVersion;

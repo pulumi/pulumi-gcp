@@ -37,6 +37,9 @@ import * as utilities from "../utilities";
  *         env: "test",
  *     },
  *     jobSpec: {
+ *         persistentResourceId: "example-persistent-resource",
+ *         experiment: "example-experiment",
+ *         experimentRun: "example-experiment-run",
  *         workerPoolSpecs: [{
  *             replicaCount: 1,
  *             machineSpec: {
@@ -47,7 +50,7 @@ import * as utilities from "../utilities";
  *                 bootDiskSizeGb: 100,
  *             },
  *             containerSpec: {
- *                 imageUri: "us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-8.py310:latest",
+ *                 imageUri: "us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-12.py310:latest",
  *                 commands: [
  *                     "echo",
  *                     "test",
@@ -67,6 +70,35 @@ import * as utilities from "../utilities";
  *         baseOutputDirectory: {
  *             outputUriPrefix: pulumi.interpolate`gs://${jobBucket.name}/custom-job-output`,
  *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Vertex Ai Custom Job Models
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customJob = new gcp.vertex.AiCustomJob("custom_job", {
+ *     displayName: "example-custom-job-models",
+ *     region: "us-central1",
+ *     jobSpec: {
+ *         protectedArtifactLocationId: "us-central1",
+ *         models: ["example-model"],
+ *         workerPoolSpecs: [{
+ *             replicaCount: 1,
+ *             machineSpec: {
+ *                 machineType: "n1-standard-4",
+ *             },
+ *             diskSpec: {
+ *                 bootDiskType: "pd-ssd",
+ *                 bootDiskSizeGb: 100,
+ *             },
+ *             containerSpec: {
+ *                 imageUri: "us-docker.pkg.dev/vertex-ai-restricted/llm/llm-pets-cpu:latest",
+ *             },
+ *         }],
  *     },
  * });
  * ```
@@ -111,6 +143,7 @@ import * as utilities from "../utilities";
  *     jobSpec: {
  *         serviceAccount: customJobSa.email,
  *         tensorboard: tensorboard.id,
+ *         experiment: "example-experiment",
  *         enableWebAccess: true,
  *         enableDashboardAccess: true,
  *         baseOutputDirectory: {

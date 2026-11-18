@@ -55,6 +55,18 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("redactionConfig")]
         public Input<Inputs.AppLoggingSettingsRedactionConfigGetArgs>? RedactionConfig { get; set; }
 
+        /// <summary>
+        /// Whether the app has to say what may be recorded before anything is kept.
+        /// When true, a session starts with recording off and stays off until the
+        /// client sends SessionInput.recording_control, which then decides every turn
+        /// from that point on. This covers audio recording as well as conversation
+        /// history, BigQuery export and Cloud Logging.
+        /// When `False`, the default, the settings above decide on their own and the
+        /// client does not have to send anything.
+        /// </summary>
+        [Input("requiredRecordingConsent")]
+        public Input<bool>? RequiredRecordingConsent { get; set; }
+
         public AppLoggingSettingsGetArgs()
         {
         }

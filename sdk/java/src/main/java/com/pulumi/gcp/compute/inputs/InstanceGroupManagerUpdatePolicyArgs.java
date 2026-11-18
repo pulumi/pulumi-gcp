@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceGroupManagerUpdatePolicyArgs Empty = new InstanceGroupManagerUpdatePolicyArgs();
+
+    /**
+     * ) - Specifies the allowed actions list for this update. Valid values are: `&#34;NONE&#34;`, `&#34;REFRESH&#34;`, `&#34;RESTART_IN_PLACE&#34;`, `&#34;RESTART&#34;`, `&#34;REPLACE&#34;`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * 
+     */
+    @Import(name="allowedActions")
+    private @Nullable Output<List<String>> allowedActions;
+
+    /**
+     * @return ) - Specifies the allowed actions list for this update. Valid values are: `&#34;NONE&#34;`, `&#34;REFRESH&#34;`, `&#34;RESTART_IN_PLACE&#34;`, `&#34;RESTART&#34;`, `&#34;REPLACE&#34;`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedActions() {
+        return Optional.ofNullable(this.allowedActions);
+    }
 
     /**
      * , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `maxSurgePercent`. Both cannot be 0.
@@ -93,29 +109,29 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+     * Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
      * 
      */
-    @Import(name="minimalAction", required=true)
-    private Output<String> minimalAction;
+    @Import(name="minimalAction")
+    private @Nullable Output<String> minimalAction;
 
     /**
-     * @return Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+     * @return Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
      * 
      */
-    public Output<String> minimalAction() {
-        return this.minimalAction;
+    public Optional<Output<String>> minimalAction() {
+        return Optional.ofNullable(this.minimalAction);
     }
 
     /**
-     * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+     * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
      * 
      */
     @Import(name="mostDisruptiveAllowedAction")
     private @Nullable Output<String> mostDisruptiveAllowedAction;
 
     /**
-     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
      * 
      */
     public Optional<Output<String>> mostDisruptiveAllowedAction() {
@@ -157,6 +173,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     private InstanceGroupManagerUpdatePolicyArgs() {}
 
     private InstanceGroupManagerUpdatePolicyArgs(InstanceGroupManagerUpdatePolicyArgs $) {
+        this.allowedActions = $.allowedActions;
         this.maxSurgeFixed = $.maxSurgeFixed;
         this.maxSurgePercent = $.maxSurgePercent;
         this.maxUnavailableFixed = $.maxUnavailableFixed;
@@ -184,6 +201,37 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
 
         public Builder(InstanceGroupManagerUpdatePolicyArgs defaults) {
             $ = new InstanceGroupManagerUpdatePolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedActions ) - Specifies the allowed actions list for this update. Valid values are: `&#34;NONE&#34;`, `&#34;REFRESH&#34;`, `&#34;RESTART_IN_PLACE&#34;`, `&#34;RESTART&#34;`, `&#34;REPLACE&#34;`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedActions(@Nullable Output<List<String>> allowedActions) {
+            $.allowedActions = allowedActions;
+            return this;
+        }
+
+        /**
+         * @param allowedActions ) - Specifies the allowed actions list for this update. Valid values are: `&#34;NONE&#34;`, `&#34;REFRESH&#34;`, `&#34;RESTART_IN_PLACE&#34;`, `&#34;RESTART&#34;`, `&#34;REPLACE&#34;`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedActions(List<String> allowedActions) {
+            return allowedActions(Output.of(allowedActions));
+        }
+
+        /**
+         * @param allowedActions ) - Specifies the allowed actions list for this update. Valid values are: `&#34;NONE&#34;`, `&#34;REFRESH&#34;`, `&#34;RESTART_IN_PLACE&#34;`, `&#34;RESTART&#34;`, `&#34;REPLACE&#34;`. `allowedActions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimalAction` and `mostDisruptiveAllowedAction`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedActions(String... allowedActions) {
+            return allowedActions(List.of(allowedActions));
         }
 
         /**
@@ -292,18 +340,18 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param minimalAction Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * @param minimalAction Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
          * 
          * @return builder
          * 
          */
-        public Builder minimalAction(Output<String> minimalAction) {
+        public Builder minimalAction(@Nullable Output<String> minimalAction) {
             $.minimalAction = minimalAction;
             return this;
         }
 
         /**
-         * @param minimalAction Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * @param minimalAction Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowedActions` is set (conflicts with `allowedActions`).
          * 
          * @return builder
          * 
@@ -313,7 +361,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param mostDisruptiveAllowedAction Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         * @param mostDisruptiveAllowedAction Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
          * 
          * @return builder
          * 
@@ -324,7 +372,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param mostDisruptiveAllowedAction Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         * @param mostDisruptiveAllowedAction Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowedActions`.
          * 
          * @return builder
          * 
@@ -378,9 +426,6 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         public InstanceGroupManagerUpdatePolicyArgs build() {
-            if ($.minimalAction == null) {
-                throw new MissingRequiredPropertyException("InstanceGroupManagerUpdatePolicyArgs", "minimalAction");
-            }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("InstanceGroupManagerUpdatePolicyArgs", "type");
             }

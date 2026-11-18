@@ -55,18 +55,22 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The list of quota safety checks to be ignored.
-     * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-     * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+     * A comma-separated list of quota safety checks to be ignored, for example
+     * `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+     * values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+     * `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+     * be combined with other values.
      * 
      */
     @Import(name="ignoreSafetyChecks")
     private @Nullable Output<String> ignoreSafetyChecks;
 
     /**
-     * @return The list of quota safety checks to be ignored.
-     * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-     * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+     * @return A comma-separated list of quota safety checks to be ignored, for example
+     * `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+     * values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+     * `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+     * be combined with other values.
      * 
      */
     public Optional<Output<String>> ignoreSafetyChecks() {
@@ -248,9 +252,11 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ignoreSafetyChecks The list of quota safety checks to be ignored.
-         * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-         * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+         * @param ignoreSafetyChecks A comma-separated list of quota safety checks to be ignored, for example
+         * `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+         * values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+         * `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+         * be combined with other values.
          * 
          * @return builder
          * 
@@ -261,9 +267,11 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ignoreSafetyChecks The list of quota safety checks to be ignored.
-         * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-         * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+         * @param ignoreSafetyChecks A comma-separated list of quota safety checks to be ignored, for example
+         * `QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. Possible
+         * values are `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE` and
+         * `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`. `QUOTA_SAFETY_CHECK_UNSPECIFIED` cannot
+         * be combined with other values.
          * 
          * @return builder
          * 

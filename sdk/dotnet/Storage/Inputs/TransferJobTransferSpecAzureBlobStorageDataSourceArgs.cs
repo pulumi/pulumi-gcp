@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class TransferJobTransferSpecAzureBlobStorageDataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) Credentials used to authenticate API requests to Azure block.
+        /// ) Credentials used to authenticate API requests to Azure block. Structure documented below.
         /// </summary>
         [Input("azureCredentials")]
         public Input<Inputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs>? AzureCredentials { get; set; }

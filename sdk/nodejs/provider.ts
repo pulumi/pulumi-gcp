@@ -109,6 +109,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly datastreamCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     declare public readonly deploymentManagerCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly designCenterCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly developerConnectCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly dialogflowCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly dialogflowCxCustomEndpoint: pulumi.Output<string | undefined>;
@@ -336,6 +337,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["defaultLabels"] = pulumi.output(args?.defaultLabels).apply(JSON.stringify);
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deploymentManagerCustomEndpoint"] = args?.deploymentManagerCustomEndpoint;
+            resourceInputs["designCenterCustomEndpoint"] = args?.designCenterCustomEndpoint;
             resourceInputs["developerConnectCustomEndpoint"] = args?.developerConnectCustomEndpoint;
             resourceInputs["dialogflowCustomEndpoint"] = args?.dialogflowCustomEndpoint;
             resourceInputs["dialogflowCxCustomEndpoint"] = args?.dialogflowCxCustomEndpoint;
@@ -579,6 +581,7 @@ export interface ProviderArgs {
     defaultLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     deletionPolicy?: pulumi.Input<string | undefined>;
     deploymentManagerCustomEndpoint?: pulumi.Input<string | undefined>;
+    designCenterCustomEndpoint?: pulumi.Input<string | undefined>;
     developerConnectCustomEndpoint?: pulumi.Input<string | undefined>;
     dialogflowCustomEndpoint?: pulumi.Input<string | undefined>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string | undefined>;

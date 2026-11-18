@@ -851,7 +851,9 @@ namespace Pulumi.Gcp.Iam
         /// * SCIM_USAGE_UNSPECIFIED: Default behaviour
         /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
         ///   attribute mapping for authorization checks
-        ///   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        /// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+        ///   attribute mapping for authorization checks
+        ///   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
         /// </summary>
         [Output("scimUsage")]
         public Output<string?> ScimUsage { get; private set; } = null!;
@@ -1089,7 +1091,9 @@ namespace Pulumi.Gcp.Iam
         /// * SCIM_USAGE_UNSPECIFIED: Default behaviour
         /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
         ///   attribute mapping for authorization checks
-        ///   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        /// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+        ///   attribute mapping for authorization checks
+        ///   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
         /// </summary>
         [Input("scimUsage")]
         public Input<string>? ScimUsage { get; set; }
@@ -1285,7 +1289,9 @@ namespace Pulumi.Gcp.Iam
         /// * SCIM_USAGE_UNSPECIFIED: Default behaviour
         /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
         ///   attribute mapping for authorization checks
-        ///   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
+        /// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the `google.groups`
+        ///   attribute mapping for authorization checks
+        ///   Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`, `ENABLED_FOR_USERS_GROUPS`.
         /// </summary>
         [Input("scimUsage")]
         public Input<string>? ScimUsage { get; set; }

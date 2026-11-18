@@ -8207,8 +8207,7 @@ class ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs:
 class ClusterLoggingConfigArgsDict(TypedDict):
     enable_components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    The GKE components exposing logs. Supported values include:
-    `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+    The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
     """
 
 @pulumi.input_type
@@ -8216,8 +8215,7 @@ class ClusterLoggingConfigArgs:
     def __init__(__self__, *,
                  enable_components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enable_components: The GKE components exposing logs. Supported values include:
-               `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enable_components: The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -8225,8 +8223,7 @@ class ClusterLoggingConfigArgs:
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The GKE components exposing logs. Supported values include:
-        `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+        The GKE components exposing logs. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, `WORKLOADS`, `KCP_VPA`, `KCP_CONNECTION`, `KCP_SSHD`, and `KCP_HPA`.
         """
         return pulumi.get(self, "enable_components")
 

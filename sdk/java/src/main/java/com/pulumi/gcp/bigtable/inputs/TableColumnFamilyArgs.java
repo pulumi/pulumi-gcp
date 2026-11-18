@@ -34,12 +34,16 @@ public final class TableColumnFamilyArgs extends com.pulumi.resources.ResourceAr
     /**
      * The type of the column family.
      * 
+     * ***
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The type of the column family.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -95,6 +99,8 @@ public final class TableColumnFamilyArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param type The type of the column family.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -105,6 +111,8 @@ public final class TableColumnFamilyArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The type of the column family.
+         * 
+         * ***
          * 
          * @return builder
          * 

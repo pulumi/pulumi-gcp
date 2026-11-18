@@ -264,6 +264,9 @@ namespace Pulumi.Gcp
         [Output("deploymentManagerCustomEndpoint")]
         public Output<string?> DeploymentManagerCustomEndpoint { get; private set; } = null!;
 
+        [Output("designCenterCustomEndpoint")]
+        public Output<string?> DesignCenterCustomEndpoint { get; private set; } = null!;
+
         [Output("developerConnectCustomEndpoint")]
         public Output<string?> DeveloperConnectCustomEndpoint { get; private set; } = null!;
 
@@ -960,6 +963,9 @@ namespace Pulumi.Gcp
 
         [Input("deploymentManagerCustomEndpoint")]
         public Input<string>? DeploymentManagerCustomEndpoint { get; set; }
+
+        [Input("designCenterCustomEndpoint")]
+        public Input<string>? DesignCenterCustomEndpoint { get; set; }
 
         [Input("developerConnectCustomEndpoint")]
         public Input<string>? DeveloperConnectCustomEndpoint { get; set; }

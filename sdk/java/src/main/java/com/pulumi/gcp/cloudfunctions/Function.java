@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-test")
  *             .description("My function")
- *             .runtime("nodejs20")
+ *             .runtime("nodejs22")
  *             .availableMemoryMb(128)
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(archive.name())
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  *         var function = new Function("function", FunctionArgs.builder()
  *             .name("function-test")
  *             .description("My function")
- *             .runtime("nodejs20")
+ *             .runtime("nodejs22")
  *             .availableMemoryMb(128)
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(archive.name())
@@ -570,7 +570,7 @@ public class Function extends com.pulumi.resources.CustomResource {
     }
     /**
      * The runtime in which the function is going to run.
-     * Eg. `&#34;nodejs20&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * Eg. `&#34;nodejs22&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      * 
      * ***
      * 
@@ -580,7 +580,7 @@ public class Function extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The runtime in which the function is going to run.
-     * Eg. `&#34;nodejs20&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * Eg. `&#34;nodejs22&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      * 
      * ***
      * 

@@ -131,6 +131,9 @@ import * as utilities from "../utilities";
  * > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  *
+ * In the import IDs and resource identity below, `serviceAccountId` may also use the unique ID form. Use the same form as your configuration;
+ * changing `serviceAccountId` between forms replaces the resource.
+ *
  * ### Importing with conditions:
  *
  * Here are examples of importing IAM memberships and bindings that include conditions:
@@ -190,7 +193,9 @@ export class IAMPolicy extends pulumi.CustomResource {
      */
     declare public readonly policyData: pulumi.Output<string>;
     /**
-     * The fully-qualified name of the service account to apply policy to.
+     * The fully-qualified name of the service account to apply policy to,
+     * in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+     * Unlike an email, a unique ID never refers to a later account recreated with the same email.
      */
     declare public readonly serviceAccountId: pulumi.Output<string>;
 
@@ -243,7 +248,9 @@ export interface IAMPolicyState {
      */
     policyData?: pulumi.Input<string | undefined>;
     /**
-     * The fully-qualified name of the service account to apply policy to.
+     * The fully-qualified name of the service account to apply policy to,
+     * in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+     * Unlike an email, a unique ID never refers to a later account recreated with the same email.
      */
     serviceAccountId?: pulumi.Input<string | undefined>;
 }
@@ -258,7 +265,9 @@ export interface IAMPolicyArgs {
      */
     policyData: pulumi.Input<string>;
     /**
-     * The fully-qualified name of the service account to apply policy to.
+     * The fully-qualified name of the service account to apply policy to,
+     * in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+     * Unlike an email, a unique ID never refers to a later account recreated with the same email.
      */
     serviceAccountId: pulumi.Input<string>;
 }

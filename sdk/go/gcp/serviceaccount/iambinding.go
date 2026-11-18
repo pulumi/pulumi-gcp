@@ -251,6 +251,9 @@ import (
 // > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 //
+// In the import IDs and resource identity below, `serviceAccountId` may also use the unique ID form. Use the same form as your configuration;
+// changing `serviceAccountId` between forms replaces the resource.
+//
 // ### Importing with conditions:
 //
 // Here are examples of importing IAM memberships and bindings that include conditions:
@@ -281,7 +284,9 @@ type IAMBinding struct {
 	// `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
-	// The fully-qualified name of the service account to apply policy to.
+	// The fully-qualified name of the service account to apply policy to,
+	// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+	// Unlike an email, a unique ID never refers to a later account recreated with the same email.
 	ServiceAccountId pulumi.StringOutput `pulumi:"serviceAccountId"`
 }
 
@@ -348,7 +353,9 @@ type iambindingState struct {
 	// `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
-	// The fully-qualified name of the service account to apply policy to.
+	// The fully-qualified name of the service account to apply policy to,
+	// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+	// Unlike an email, a unique ID never refers to a later account recreated with the same email.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
 
@@ -371,7 +378,9 @@ type IAMBindingState struct {
 	// `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
-	// The fully-qualified name of the service account to apply policy to.
+	// The fully-qualified name of the service account to apply policy to,
+	// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+	// Unlike an email, a unique ID never refers to a later account recreated with the same email.
 	ServiceAccountId pulumi.StringPtrInput
 }
 
@@ -402,7 +411,9 @@ type iambindingArgs struct {
 	// `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
-	// The fully-qualified name of the service account to apply policy to.
+	// The fully-qualified name of the service account to apply policy to,
+	// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+	// Unlike an email, a unique ID never refers to a later account recreated with the same email.
 	ServiceAccountId string `pulumi:"serviceAccountId"`
 }
 
@@ -424,7 +435,9 @@ type IAMBindingArgs struct {
 	// `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
-	// The fully-qualified name of the service account to apply policy to.
+	// The fully-qualified name of the service account to apply policy to,
+	// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+	// Unlike an email, a unique ID never refers to a later account recreated with the same email.
 	ServiceAccountId pulumi.StringInput
 }
 
@@ -545,7 +558,9 @@ func (o IAMBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-// The fully-qualified name of the service account to apply policy to.
+// The fully-qualified name of the service account to apply policy to,
+// in the form `projects/{project}/serviceAccounts/{email}` or `projects/{project}/serviceAccounts/{unique_id}`.
+// Unlike an email, a unique ID never refers to a later account recreated with the same email.
 func (o IAMBindingOutput) ServiceAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.ServiceAccountId }).(pulumi.StringOutput)
 }

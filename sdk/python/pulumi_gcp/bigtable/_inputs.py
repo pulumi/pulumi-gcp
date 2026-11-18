@@ -427,7 +427,9 @@ class InstanceClusterArgsDict(TypedDict):
     """
     autoscaling_config: NotRequired[pulumi.Input[Optional['InstanceClusterAutoscalingConfigArgsDict']]]
     """
-    [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+    [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+
+    > **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
     """
     kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -445,6 +447,8 @@ class InstanceClusterArgsDict(TypedDict):
     `cluster_id`) will cause the provider to delete/recreate the entire
     `bigtable.Instance` resource. If these values are changing, use a new
     `cluster_id`.
+
+    ***
     """
     num_nodes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -480,7 +484,9 @@ class InstanceClusterArgs:
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
-        :param pulumi.Input['InstanceClusterAutoscalingConfigArgs'] autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+        :param pulumi.Input['InstanceClusterAutoscalingConfigArgs'] autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+               
+               > **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         :param pulumi.Input[_builtins.str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
         :param pulumi.Input[_builtins.str] node_scaling_factor: The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
                
@@ -492,6 +498,8 @@ class InstanceClusterArgs:
                `cluster_id`) will cause the provider to delete/recreate the entire
                `bigtable.Instance` resource. If these values are changing, use a new
                `cluster_id`.
+               
+               ***
         :param pulumi.Input[_builtins.int] num_nodes: The number of nodes in the cluster.
                If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         :param pulumi.Input[_builtins.str] state: describes the current state of the cluster.
@@ -533,7 +541,9 @@ class InstanceClusterArgs:
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> pulumi.Input[Optional['InstanceClusterAutoscalingConfigArgs']]:
         """
-        [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+        [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster. Structure is documented below.
+
+        > **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         """
         return pulumi.get(self, "autoscaling_config")
 
@@ -567,6 +577,8 @@ class InstanceClusterArgs:
         `cluster_id`) will cause the provider to delete/recreate the entire
         `bigtable.Instance` resource. If these values are changing, use a new
         `cluster_id`.
+
+        ***
         """
         return pulumi.get(self, "node_scaling_factor")
 
@@ -643,8 +655,6 @@ class InstanceClusterAutoscalingConfigArgsDict(TypedDict):
     storage_target: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-
-    > **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
     """
 
 @pulumi.input_type
@@ -659,8 +669,6 @@ class InstanceClusterAutoscalingConfigArgs:
         :param pulumi.Input[_builtins.int] max_nodes: The maximum number of nodes for autoscaling.
         :param pulumi.Input[_builtins.int] min_nodes: The minimum number of nodes for autoscaling.
         :param pulumi.Input[_builtins.int] storage_target: The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-               
-               > **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         """
         pulumi.set(__self__, "cpu_target", cpu_target)
         pulumi.set(__self__, "max_nodes", max_nodes)
@@ -709,8 +717,6 @@ class InstanceClusterAutoscalingConfigArgs:
     def storage_target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
-
-        > **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         """
         return pulumi.get(self, "storage_target")
 
@@ -731,8 +737,6 @@ class InstanceIamBindingConditionArgsDict(TypedDict):
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-    For `bigtable.InstanceIamPolicy` only:
     """
 
 @pulumi.input_type
@@ -745,8 +749,6 @@ class InstanceIamBindingConditionArgs:
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               For `bigtable.InstanceIamPolicy` only:
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -782,8 +784,6 @@ class InstanceIamBindingConditionArgs:
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        For `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "description")
 
@@ -804,8 +804,6 @@ class InstanceIamMemberConditionArgsDict(TypedDict):
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-    For `bigtable.InstanceIamPolicy` only:
     """
 
 @pulumi.input_type
@@ -818,8 +816,6 @@ class InstanceIamMemberConditionArgs:
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               For `bigtable.InstanceIamPolicy` only:
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -855,8 +851,6 @@ class InstanceIamMemberConditionArgs:
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        For `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "description")
 
@@ -1002,6 +996,8 @@ class TableColumnFamilyArgsDict(TypedDict):
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the column family.
+
+    ***
     """
 
 @pulumi.input_type
@@ -1012,6 +1008,8 @@ class TableColumnFamilyArgs:
         """
         :param pulumi.Input[_builtins.str] family: The name of the column family.
         :param pulumi.Input[_builtins.str] type: The type of the column family.
+               
+               ***
         """
         pulumi.set(__self__, "family", family)
         if type is not None:
@@ -1034,6 +1032,8 @@ class TableColumnFamilyArgs:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the column family.
+
+        ***
         """
         return pulumi.get(self, "type")
 

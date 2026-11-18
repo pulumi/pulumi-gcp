@@ -19390,8 +19390,8 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "minimalAction":
-            suggest = "minimal_action"
+        if key == "allowedActions":
+            suggest = "allowed_actions"
         elif key == "maxSurgeFixed":
             suggest = "max_surge_fixed"
         elif key == "maxSurgePercent":
@@ -19402,6 +19402,8 @@ class InstanceGroupManagerUpdatePolicy(dict):
             suggest = "max_unavailable_percent"
         elif key == "minReadySec":
             suggest = "min_ready_sec"
+        elif key == "minimalAction":
+            suggest = "minimal_action"
         elif key == "mostDisruptiveAllowedAction":
             suggest = "most_disruptive_allowed_action"
         elif key == "replacementMethod":
@@ -19419,29 +19421,32 @@ class InstanceGroupManagerUpdatePolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 minimal_action: _builtins.str,
                  type: _builtins.str,
+                 allowed_actions: Optional[Sequence[_builtins.str]] = None,
                  max_surge_fixed: Optional[_builtins.int] = None,
                  max_surge_percent: Optional[_builtins.int] = None,
                  max_unavailable_fixed: Optional[_builtins.int] = None,
                  max_unavailable_percent: Optional[_builtins.int] = None,
                  min_ready_sec: Optional[_builtins.int] = None,
+                 minimal_action: Optional[_builtins.str] = None,
                  most_disruptive_allowed_action: Optional[_builtins.str] = None,
                  replacement_method: Optional[_builtins.str] = None):
         """
-        :param _builtins.str minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param _builtins.str type: The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        :param Sequence[_builtins.str] allowed_actions: ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
         :param _builtins.int max_surge_fixed: , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         :param _builtins.int max_surge_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         :param _builtins.int max_unavailable_fixed: , Specifies a fixed number of VM instances. This must be a positive integer.
         :param _builtins.int max_unavailable_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         :param _builtins.int min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        :param _builtins.str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        :param _builtins.str minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+        :param _builtins.str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
         :param _builtins.str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                ***
         """
-        pulumi.set(__self__, "minimal_action", minimal_action)
         pulumi.set(__self__, "type", type)
+        if allowed_actions is not None:
+            pulumi.set(__self__, "allowed_actions", allowed_actions)
         if max_surge_fixed is not None:
             pulumi.set(__self__, "max_surge_fixed", max_surge_fixed)
         if max_surge_percent is not None:
@@ -19452,18 +19457,12 @@ class InstanceGroupManagerUpdatePolicy(dict):
             pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
         if min_ready_sec is not None:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        if minimal_action is not None:
+            pulumi.set(__self__, "minimal_action", minimal_action)
         if most_disruptive_allowed_action is not None:
             pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
         if replacement_method is not None:
             pulumi.set(__self__, "replacement_method", replacement_method)
-
-    @_builtins.property
-    @pulumi.getter(name="minimalAction")
-    def minimal_action(self) -> _builtins.str:
-        """
-        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-        """
-        return pulumi.get(self, "minimal_action")
 
     @_builtins.property
     @pulumi.getter
@@ -19472,6 +19471,14 @@ class InstanceGroupManagerUpdatePolicy(dict):
         The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+        """
+        return pulumi.get(self, "allowed_actions")
 
     @_builtins.property
     @pulumi.getter(name="maxSurgeFixed")
@@ -19514,10 +19521,18 @@ class InstanceGroupManagerUpdatePolicy(dict):
         return pulumi.get(self, "min_ready_sec")
 
     @_builtins.property
+    @pulumi.getter(name="minimalAction")
+    def minimal_action(self) -> Optional[_builtins.str]:
+        """
+        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+        """
+        return pulumi.get(self, "minimal_action")
+
+    @_builtins.property
     @pulumi.getter(name="mostDisruptiveAllowedAction")
     def most_disruptive_allowed_action(self) -> Optional[_builtins.str]:
         """
-        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
         """
         return pulumi.get(self, "most_disruptive_allowed_action")
 
@@ -37502,8 +37517,8 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "minimalAction":
-            suggest = "minimal_action"
+        if key == "allowedActions":
+            suggest = "allowed_actions"
         elif key == "instanceRedistributionType":
             suggest = "instance_redistribution_type"
         elif key == "maxSurgeFixed":
@@ -37516,6 +37531,8 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
             suggest = "max_unavailable_percent"
         elif key == "minReadySec":
             suggest = "min_ready_sec"
+        elif key == "minimalAction":
+            suggest = "minimal_action"
         elif key == "mostDisruptiveAllowedAction":
             suggest = "most_disruptive_allowed_action"
         elif key == "replacementMethod":
@@ -37533,31 +37550,34 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 minimal_action: _builtins.str,
                  type: _builtins.str,
+                 allowed_actions: Optional[Sequence[_builtins.str]] = None,
                  instance_redistribution_type: Optional[_builtins.str] = None,
                  max_surge_fixed: Optional[_builtins.int] = None,
                  max_surge_percent: Optional[_builtins.int] = None,
                  max_unavailable_fixed: Optional[_builtins.int] = None,
                  max_unavailable_percent: Optional[_builtins.int] = None,
                  min_ready_sec: Optional[_builtins.int] = None,
+                 minimal_action: Optional[_builtins.str] = None,
                  most_disruptive_allowed_action: Optional[_builtins.str] = None,
                  replacement_method: Optional[_builtins.str] = None):
         """
-        :param _builtins.str minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param _builtins.str type: The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        :param Sequence[_builtins.str] allowed_actions: ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
         :param _builtins.str instance_redistribution_type: The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
         :param _builtins.int max_surge_fixed: , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
         :param _builtins.int max_surge_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         :param _builtins.int max_unavailable_fixed: , Specifies a fixed number of VM instances. This must be a positive integer.
         :param _builtins.int max_unavailable_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
         :param _builtins.int min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        :param _builtins.str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        :param _builtins.str minimal_action: Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+        :param _builtins.str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
         :param _builtins.str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                ***
         """
-        pulumi.set(__self__, "minimal_action", minimal_action)
         pulumi.set(__self__, "type", type)
+        if allowed_actions is not None:
+            pulumi.set(__self__, "allowed_actions", allowed_actions)
         if instance_redistribution_type is not None:
             pulumi.set(__self__, "instance_redistribution_type", instance_redistribution_type)
         if max_surge_fixed is not None:
@@ -37570,18 +37590,12 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
             pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
         if min_ready_sec is not None:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        if minimal_action is not None:
+            pulumi.set(__self__, "minimal_action", minimal_action)
         if most_disruptive_allowed_action is not None:
             pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
         if replacement_method is not None:
             pulumi.set(__self__, "replacement_method", replacement_method)
-
-    @_builtins.property
-    @pulumi.getter(name="minimalAction")
-    def minimal_action(self) -> _builtins.str:
-        """
-        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-        """
-        return pulumi.get(self, "minimal_action")
 
     @_builtins.property
     @pulumi.getter
@@ -37590,6 +37604,14 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        ) - Specifies the allowed actions list for this update. Valid values are: `"NONE"`, `"REFRESH"`, `"RESTART_IN_PLACE"`, `"RESTART"`, `"REPLACE"`. `allowed_actions` is the only way to request `RESTART_IN_PLACE`. Conflicts with `minimal_action` and `most_disruptive_allowed_action`.
+        """
+        return pulumi.get(self, "allowed_actions")
 
     @_builtins.property
     @pulumi.getter(name="instanceRedistributionType")
@@ -37640,10 +37662,18 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         return pulumi.get(self, "min_ready_sec")
 
     @_builtins.property
+    @pulumi.getter(name="minimalAction")
+    def minimal_action(self) -> Optional[_builtins.str]:
+        """
+        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action. Required in the `google` provider; optional in `google-beta` when `allowed_actions` is set (conflicts with `allowed_actions`).
+        """
+        return pulumi.get(self, "minimal_action")
+
+    @_builtins.property
     @pulumi.getter(name="mostDisruptiveAllowedAction")
     def most_disruptive_allowed_action(self) -> Optional[_builtins.str]:
         """
-        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all. Conflicts with `allowed_actions`.
         """
         return pulumi.get(self, "most_disruptive_allowed_action")
 
@@ -79543,6 +79573,7 @@ class GetInstanceGroupManagerTargetSizePolicyResult(dict):
 @pulumi.output_type
 class GetInstanceGroupManagerUpdatePolicyResult(dict):
     def __init__(__self__, *,
+                 allowed_actions: Sequence[_builtins.str],
                  max_surge_fixed: _builtins.int,
                  max_surge_percent: _builtins.int,
                  max_unavailable_fixed: _builtins.int,
@@ -79553,6 +79584,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
                  replacement_method: _builtins.str,
                  type: _builtins.str):
         """
+        :param Sequence[_builtins.str] allowed_actions: Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowed_actions is the only way to request RESTART_IN_PLACE. Conflicts with minimal_action and most_disruptive_allowed_action.
         :param _builtins.int max_surge_fixed: Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
         :param _builtins.int max_surge_percent: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
         :param _builtins.int max_unavailable_fixed: Specifies a fixed number of VM instances. This must be a positive integer.
@@ -79563,6 +79595,7 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
         :param _builtins.str replacement_method: The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
         :param _builtins.str type: The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         """
+        pulumi.set(__self__, "allowed_actions", allowed_actions)
         pulumi.set(__self__, "max_surge_fixed", max_surge_fixed)
         pulumi.set(__self__, "max_surge_percent", max_surge_percent)
         pulumi.set(__self__, "max_unavailable_fixed", max_unavailable_fixed)
@@ -79572,6 +79605,14 @@ class GetInstanceGroupManagerUpdatePolicyResult(dict):
         pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
         pulumi.set(__self__, "replacement_method", replacement_method)
         pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> Sequence[_builtins.str]:
+        """
+        Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowed_actions is the only way to request RESTART_IN_PLACE. Conflicts with minimal_action and most_disruptive_allowed_action.
+        """
+        return pulumi.get(self, "allowed_actions")
 
     @_builtins.property
     @pulumi.getter(name="maxSurgeFixed")
@@ -86796,6 +86837,7 @@ class GetRegionInstanceGroupManagerTargetSizePolicyResult(dict):
 @pulumi.output_type
 class GetRegionInstanceGroupManagerUpdatePolicyResult(dict):
     def __init__(__self__, *,
+                 allowed_actions: Sequence[_builtins.str],
                  instance_redistribution_type: _builtins.str,
                  max_surge_fixed: _builtins.int,
                  max_surge_percent: _builtins.int,
@@ -86807,6 +86849,7 @@ class GetRegionInstanceGroupManagerUpdatePolicyResult(dict):
                  replacement_method: _builtins.str,
                  type: _builtins.str):
         """
+        :param Sequence[_builtins.str] allowed_actions: Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowed_actions is the only way to request RESTART_IN_PLACE. Conflicts with minimal_action and most_disruptive_allowed_action.
         :param _builtins.str instance_redistribution_type: The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
         :param _builtins.int max_surge_fixed: Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
         :param _builtins.int max_surge_percent: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
@@ -86818,6 +86861,7 @@ class GetRegionInstanceGroupManagerUpdatePolicyResult(dict):
         :param _builtins.str replacement_method: The instance replacement method for regional managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
         :param _builtins.str type: The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         """
+        pulumi.set(__self__, "allowed_actions", allowed_actions)
         pulumi.set(__self__, "instance_redistribution_type", instance_redistribution_type)
         pulumi.set(__self__, "max_surge_fixed", max_surge_fixed)
         pulumi.set(__self__, "max_surge_percent", max_surge_percent)
@@ -86828,6 +86872,14 @@ class GetRegionInstanceGroupManagerUpdatePolicyResult(dict):
         pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
         pulumi.set(__self__, "replacement_method", replacement_method)
         pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedActions")
+    def allowed_actions(self) -> Sequence[_builtins.str]:
+        """
+        Specifies the allowed actions list for this update. Valid values are: "NONE", "REFRESH", "RESTART_IN_PLACE", "RESTART", "REPLACE". allowed_actions is the only way to request RESTART_IN_PLACE. Conflicts with minimal_action and most_disruptive_allowed_action.
+        """
+        return pulumi.get(self, "allowed_actions")
 
     @_builtins.property
     @pulumi.getter(name="instanceRedistributionType")
@@ -95753,15 +95805,20 @@ class GetStoragePoolTypesDeprecatedResult(dict):
                  replacement: _builtins.str,
                  state: _builtins.str):
         """
-        :param _builtins.str deleted: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
+        :param _builtins.str deleted: (Output)
+               An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
                This is only informational and the status will not change unless the client explicitly changes it.
-        :param _builtins.str deprecated: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+        :param _builtins.str deprecated: (Output)
+               An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
                This is only informational and the status will not change unless the client explicitly changes it.
-        :param _builtins.str obsolete: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
+        :param _builtins.str obsolete: (Output)
+               An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
                This is only informational and the status will not change unless the client explicitly changes it.
-        :param _builtins.str replacement: The URL of the suggested replacement for a deprecated resource.
+        :param _builtins.str replacement: (Output)
+               The URL of the suggested replacement for a deprecated resource.
                The suggested replacement resource must be the same kind of resource as the deprecated resource.
-        :param _builtins.str state: The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
+        :param _builtins.str state: (Output)
+               The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
                Operations which communicate the end of life date for an image, can use ACTIVE.
                Operations which create a new resource using a DEPRECATED resource will return successfully,
                but with a warning indicating the deprecated resource and recommending its replacement.
@@ -95777,6 +95834,7 @@ class GetStoragePoolTypesDeprecatedResult(dict):
     @pulumi.getter
     def deleted(self) -> _builtins.str:
         """
+        (Output)
         An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
         This is only informational and the status will not change unless the client explicitly changes it.
         """
@@ -95786,6 +95844,7 @@ class GetStoragePoolTypesDeprecatedResult(dict):
     @pulumi.getter
     def deprecated(self) -> _builtins.str:
         """
+        (Output)
         An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
         This is only informational and the status will not change unless the client explicitly changes it.
         """
@@ -95795,6 +95854,7 @@ class GetStoragePoolTypesDeprecatedResult(dict):
     @pulumi.getter
     def obsolete(self) -> _builtins.str:
         """
+        (Output)
         An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
         This is only informational and the status will not change unless the client explicitly changes it.
         """
@@ -95804,6 +95864,7 @@ class GetStoragePoolTypesDeprecatedResult(dict):
     @pulumi.getter
     def replacement(self) -> _builtins.str:
         """
+        (Output)
         The URL of the suggested replacement for a deprecated resource.
         The suggested replacement resource must be the same kind of resource as the deprecated resource.
         """
@@ -95813,6 +95874,7 @@ class GetStoragePoolTypesDeprecatedResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
+        (Output)
         The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
         Operations which communicate the end of life date for an image, can use ACTIVE.
         Operations which create a new resource using a DEPRECATED resource will return successfully,

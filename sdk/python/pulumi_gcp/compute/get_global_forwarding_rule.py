@@ -27,10 +27,13 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, deletion_policy=None, description=None, effective_labels=None, external_managed_backend_bucket_migration_state=None, external_managed_backend_bucket_migration_testing_percentage=None, forwarding_rule_id=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, deletion_policy=None, description=None, effective_labels=None, external_managed_backend_bucket_migration_state=None, external_managed_backend_bucket_migration_testing_percentage=None, forwarding_rule_id=None, id=None, ip_address=None, ip_addresses=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
         if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
             raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
         pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+        if backend_service and not isinstance(backend_service, str):
+            raise TypeError("Expected argument 'backend_service' to be a str")
+        pulumi.set(__self__, "backend_service", backend_service)
         if base_forwarding_rule and not isinstance(base_forwarding_rule, str):
             raise TypeError("Expected argument 'base_forwarding_rule' to be a str")
         pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
@@ -58,6 +61,9 @@ class GetGlobalForwardingRuleResult:
         if ip_address and not isinstance(ip_address, str):
             raise TypeError("Expected argument 'ip_address' to be a str")
         pulumi.set(__self__, "ip_address", ip_address)
+        if ip_addresses and not isinstance(ip_addresses, list):
+            raise TypeError("Expected argument 'ip_addresses' to be a list")
+        pulumi.set(__self__, "ip_addresses", ip_addresses)
         if ip_protocol and not isinstance(ip_protocol, str):
             raise TypeError("Expected argument 'ip_protocol' to be a str")
         pulumi.set(__self__, "ip_protocol", ip_protocol)
@@ -125,6 +131,11 @@ class GetGlobalForwardingRuleResult:
         return pulumi.get(self, "allow_psc_global_access")
 
     @_builtins.property
+    @pulumi.getter(name="backendService")
+    def backend_service(self) -> _builtins.str:
+        return pulumi.get(self, "backend_service")
+
+    @_builtins.property
     @pulumi.getter(name="baseForwardingRule")
     def base_forwarding_rule(self) -> _builtins.str:
         return pulumi.get(self, "base_forwarding_rule")
@@ -171,6 +182,11 @@ class GetGlobalForwardingRuleResult:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> _builtins.str:
         return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "ip_addresses")
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
@@ -280,6 +296,7 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             yield self
         return GetGlobalForwardingRuleResult(
             allow_psc_global_access=self.allow_psc_global_access,
+            backend_service=self.backend_service,
             base_forwarding_rule=self.base_forwarding_rule,
             deletion_policy=self.deletion_policy,
             description=self.description,
@@ -289,6 +306,7 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             forwarding_rule_id=self.forwarding_rule_id,
             id=self.id,
             ip_address=self.ip_address,
+            ip_addresses=self.ip_addresses,
             ip_protocol=self.ip_protocol,
             ip_version=self.ip_version,
             label_fingerprint=self.label_fingerprint,
@@ -341,6 +359,7 @@ def get_global_forwarding_rule(name: Optional[_builtins.str] = None,
 
     return AwaitableGetGlobalForwardingRuleResult(
         allow_psc_global_access=pulumi.get(__ret__, 'allow_psc_global_access'),
+        backend_service=pulumi.get(__ret__, 'backend_service'),
         base_forwarding_rule=pulumi.get(__ret__, 'base_forwarding_rule'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
@@ -350,6 +369,7 @@ def get_global_forwarding_rule(name: Optional[_builtins.str] = None,
         forwarding_rule_id=pulumi.get(__ret__, 'forwarding_rule_id'),
         id=pulumi.get(__ret__, 'id'),
         ip_address=pulumi.get(__ret__, 'ip_address'),
+        ip_addresses=pulumi.get(__ret__, 'ip_addresses'),
         ip_protocol=pulumi.get(__ret__, 'ip_protocol'),
         ip_version=pulumi.get(__ret__, 'ip_version'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
@@ -399,6 +419,7 @@ def get_global_forwarding_rule_output(name: pulumi.Input[Optional[_builtins.str]
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule', __args__, opts=opts, typ=GetGlobalForwardingRuleResult)
     return __ret__.apply(lambda __response__: GetGlobalForwardingRuleResult(
         allow_psc_global_access=pulumi.get(__response__, 'allow_psc_global_access'),
+        backend_service=pulumi.get(__response__, 'backend_service'),
         base_forwarding_rule=pulumi.get(__response__, 'base_forwarding_rule'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
@@ -408,6 +429,7 @@ def get_global_forwarding_rule_output(name: pulumi.Input[Optional[_builtins.str]
         forwarding_rule_id=pulumi.get(__response__, 'forwarding_rule_id'),
         id=pulumi.get(__response__, 'id'),
         ip_address=pulumi.get(__response__, 'ip_address'),
+        ip_addresses=pulumi.get(__response__, 'ip_addresses'),
         ip_protocol=pulumi.get(__response__, 'ip_protocol'),
         ip_version=pulumi.get(__response__, 'ip_version'),
         label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),

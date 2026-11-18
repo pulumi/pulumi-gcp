@@ -385,6 +385,8 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
      * 
      */
     @Export(name="purpose", refs={String.class}, tree="[0]")
@@ -394,6 +396,8 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
      * @return The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+     * * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
      * 
      */
     public Output<Optional<String>> purpose() {

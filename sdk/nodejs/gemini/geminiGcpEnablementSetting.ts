@@ -115,6 +115,14 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
      */
     declare public readonly enableCustomerDataSharing: pulumi.Output<boolean | undefined>;
     /**
+     * The Cloud Storage bucket name allocated for this setting.
+     * Note: Please make sure the cloudaicompanion service agent
+     * `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+     * has `storage.objects.get` and `storage.objects.create` permission to the
+     * Cloud Storage bucket.
+     */
+    declare public readonly gcsBucket: pulumi.Output<string | undefined>;
+    /**
      * The Gemini enterprise project for this setting.
      * Format: projects/{project}
      * The `{project}` segment can be the project ID or project number.
@@ -192,6 +200,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["disableWebGrounding"] = state?.disableWebGrounding;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableCustomerDataSharing"] = state?.enableCustomerDataSharing;
+            resourceInputs["gcsBucket"] = state?.gcsBucket;
             resourceInputs["geminiEnterpriseProject"] = state?.geminiEnterpriseProject;
             resourceInputs["geminiGcpEnablementSettingId"] = state?.geminiGcpEnablementSettingId;
             resourceInputs["hasCustomInstructions"] = state?.hasCustomInstructions;
@@ -215,6 +224,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disableWebGrounding"] = args?.disableWebGrounding;
             resourceInputs["enableCustomerDataSharing"] = args?.enableCustomerDataSharing;
+            resourceInputs["gcsBucket"] = args?.gcsBucket;
             resourceInputs["geminiEnterpriseProject"] = args?.geminiEnterpriseProject;
             resourceInputs["geminiGcpEnablementSettingId"] = args?.geminiGcpEnablementSettingId;
             resourceInputs["hasCustomInstructions"] = args?.hasCustomInstructions;
@@ -271,6 +281,14 @@ export interface GeminiGcpEnablementSettingState {
      * Whether customer data sharing should be enabled.
      */
     enableCustomerDataSharing?: pulumi.Input<boolean | undefined>;
+    /**
+     * The Cloud Storage bucket name allocated for this setting.
+     * Note: Please make sure the cloudaicompanion service agent
+     * `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+     * has `storage.objects.get` and `storage.objects.create` permission to the
+     * Cloud Storage bucket.
+     */
+    gcsBucket?: pulumi.Input<string | undefined>;
     /**
      * The Gemini enterprise project for this setting.
      * Format: projects/{project}
@@ -358,6 +376,14 @@ export interface GeminiGcpEnablementSettingArgs {
      * Whether customer data sharing should be enabled.
      */
     enableCustomerDataSharing?: pulumi.Input<boolean | undefined>;
+    /**
+     * The Cloud Storage bucket name allocated for this setting.
+     * Note: Please make sure the cloudaicompanion service agent
+     * `service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com`
+     * has `storage.objects.get` and `storage.objects.create` permission to the
+     * Cloud Storage bucket.
+     */
+    gcsBucket?: pulumi.Input<string | undefined>;
     /**
      * The Gemini enterprise project for this setting.
      * Format: projects/{project}

@@ -6,8 +6,10 @@ package com.pulumi.gcp.agenticapplications.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaMcpDataSourceRequestHeaderArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -170,6 +172,27 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
     }
 
     /**
+     * Additional HTTP headers sent on every request to the MCP server, for
+     * example a static header required by an API gateway. Headers managed by the
+     * agent take precedence and cannot be set here. When empty, no additional
+     * headers are sent.
+     * 
+     */
+    @Import(name="requestHeaders")
+    private @Nullable Output<List<AnalystAgentPersonaMcpDataSourceRequestHeaderArgs>> requestHeaders;
+
+    /**
+     * @return Additional HTTP headers sent on every request to the MCP server, for
+     * example a static header required by an API gateway. Headers managed by the
+     * agent take precedence and cannot be set here. When empty, no additional
+     * headers are sent.
+     * 
+     */
+    public Optional<Output<List<AnalystAgentPersonaMcpDataSourceRequestHeaderArgs>>> requestHeaders() {
+        return Optional.ofNullable(this.requestHeaders);
+    }
+
+    /**
      * The URL of the MCP server.
      * 
      */
@@ -235,6 +258,7 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
         this.enabled = $.enabled;
         this.oauthTokenUrl = $.oauthTokenUrl;
         this.prompt = $.prompt;
+        this.requestHeaders = $.requestHeaders;
         this.serverUrl = $.serverUrl;
         this.sessionIdHeader = $.sessionIdHeader;
         this.taskIdHeader = $.taskIdHeader;
@@ -468,6 +492,46 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
          */
         public Builder prompt(String prompt) {
             return prompt(Output.of(prompt));
+        }
+
+        /**
+         * @param requestHeaders Additional HTTP headers sent on every request to the MCP server, for
+         * example a static header required by an API gateway. Headers managed by the
+         * agent take precedence and cannot be set here. When empty, no additional
+         * headers are sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestHeaders(@Nullable Output<List<AnalystAgentPersonaMcpDataSourceRequestHeaderArgs>> requestHeaders) {
+            $.requestHeaders = requestHeaders;
+            return this;
+        }
+
+        /**
+         * @param requestHeaders Additional HTTP headers sent on every request to the MCP server, for
+         * example a static header required by an API gateway. Headers managed by the
+         * agent take precedence and cannot be set here. When empty, no additional
+         * headers are sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestHeaders(List<AnalystAgentPersonaMcpDataSourceRequestHeaderArgs> requestHeaders) {
+            return requestHeaders(Output.of(requestHeaders));
+        }
+
+        /**
+         * @param requestHeaders Additional HTTP headers sent on every request to the MCP server, for
+         * example a static header required by an API gateway. Headers managed by the
+         * agent take precedence and cannot be set here. When empty, no additional
+         * headers are sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestHeaders(AnalystAgentPersonaMcpDataSourceRequestHeaderArgs... requestHeaders) {
+            return requestHeaders(List.of(requestHeaders));
         }
 
         /**

@@ -164,6 +164,8 @@ type GlobalAddress struct {
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
 	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -265,6 +267,8 @@ type globalAddressState struct {
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
 	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
 	Purpose *string `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -332,6 +336,8 @@ type GlobalAddressState struct {
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
 	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
 	Purpose pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -399,6 +405,8 @@ type globalAddressArgs struct {
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
 	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
 	Purpose *string `pulumi:"purpose"`
 }
 
@@ -455,6 +463,8 @@ type GlobalAddressArgs struct {
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
 	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+	// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
 	Purpose pulumi.StringPtrInput
 }
 
@@ -649,6 +659,8 @@ func (o GlobalAddressOutput) PulumiLabels() pulumi.StringMapOutput {
 // The purpose of the resource. Possible values include:
 // * VPC_PEERING - for peer networks
 // * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
+// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+// * PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
 func (o GlobalAddressOutput) Purpose() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.Purpose }).(pulumi.StringPtrOutput)
 }

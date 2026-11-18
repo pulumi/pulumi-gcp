@@ -11,31 +11,36 @@ import java.util.Objects;
 @CustomType
 public final class GetStoragePoolTypesDeprecated {
     /**
-     * @return An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
+     * @return (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
      * This is only informational and the status will not change unless the client explicitly changes it.
      * 
      */
     private String deleted;
     /**
-     * @return An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+     * @return (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
      * This is only informational and the status will not change unless the client explicitly changes it.
      * 
      */
     private String deprecated;
     /**
-     * @return An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
+     * @return (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
      * This is only informational and the status will not change unless the client explicitly changes it.
      * 
      */
     private String obsolete;
     /**
-     * @return The URL of the suggested replacement for a deprecated resource.
+     * @return (Output)
+     * The URL of the suggested replacement for a deprecated resource.
      * The suggested replacement resource must be the same kind of resource as the deprecated resource.
      * 
      */
     private String replacement;
     /**
-     * @return The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
+     * @return (Output)
+     * The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
      * Operations which communicate the end of life date for an image, can use ACTIVE.
      * Operations which create a new resource using a DEPRECATED resource will return successfully,
      * but with a warning indicating the deprecated resource and recommending its replacement.
@@ -46,7 +51,8 @@ public final class GetStoragePoolTypesDeprecated {
 
     private GetStoragePoolTypesDeprecated() {}
     /**
-     * @return An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
+     * @return (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
      * This is only informational and the status will not change unless the client explicitly changes it.
      * 
      */
@@ -54,7 +60,8 @@ public final class GetStoragePoolTypesDeprecated {
         return this.deleted;
     }
     /**
-     * @return An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
+     * @return (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED.
      * This is only informational and the status will not change unless the client explicitly changes it.
      * 
      */
@@ -62,7 +69,8 @@ public final class GetStoragePoolTypesDeprecated {
         return this.deprecated;
     }
     /**
-     * @return An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
+     * @return (Output)
+     * An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
      * This is only informational and the status will not change unless the client explicitly changes it.
      * 
      */
@@ -70,7 +78,8 @@ public final class GetStoragePoolTypesDeprecated {
         return this.obsolete;
     }
     /**
-     * @return The URL of the suggested replacement for a deprecated resource.
+     * @return (Output)
+     * The URL of the suggested replacement for a deprecated resource.
      * The suggested replacement resource must be the same kind of resource as the deprecated resource.
      * 
      */
@@ -78,7 +87,8 @@ public final class GetStoragePoolTypesDeprecated {
         return this.replacement;
     }
     /**
-     * @return The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
+     * @return (Output)
+     * The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
      * Operations which communicate the end of life date for an image, can use ACTIVE.
      * Operations which create a new resource using a DEPRECATED resource will return successfully,
      * but with a warning indicating the deprecated resource and recommending its replacement.

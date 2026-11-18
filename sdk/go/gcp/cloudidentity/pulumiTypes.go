@@ -1007,10 +1007,704 @@ func (o GroupMembershipRoleExpiryDetailPtrOutput) ExpireTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type InboundOidcSsoProfileIdpConfig struct {
+	// The **Change Password URL** of the identity provider. Users will be sent to this URL
+	// when changing their passwords at `myaccount.google.com`. This takes precedence over
+	// the change password URL configured at customer-level. Must use `HTTPS`.
+	ChangePasswordUri *string `pulumi:"changePasswordUri"`
+	// The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+	// from this as described in Section 4 of the OIDC specification.
+	IssuerUri string `pulumi:"issuerUri"`
+}
+
+// InboundOidcSsoProfileIdpConfigInput is an input type that accepts InboundOidcSsoProfileIdpConfigArgs and InboundOidcSsoProfileIdpConfigOutput values.
+// You can construct a concrete instance of `InboundOidcSsoProfileIdpConfigInput` via:
+//
+//	InboundOidcSsoProfileIdpConfigArgs{...}
+type InboundOidcSsoProfileIdpConfigInput interface {
+	pulumi.Input
+
+	ToInboundOidcSsoProfileIdpConfigOutput() InboundOidcSsoProfileIdpConfigOutput
+	ToInboundOidcSsoProfileIdpConfigOutputWithContext(context.Context) InboundOidcSsoProfileIdpConfigOutput
+}
+
+type InboundOidcSsoProfileIdpConfigArgs struct {
+	// The **Change Password URL** of the identity provider. Users will be sent to this URL
+	// when changing their passwords at `myaccount.google.com`. This takes precedence over
+	// the change password URL configured at customer-level. Must use `HTTPS`.
+	ChangePasswordUri pulumi.StringPtrInput `pulumi:"changePasswordUri"`
+	// The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+	// from this as described in Section 4 of the OIDC specification.
+	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+}
+
+func (InboundOidcSsoProfileIdpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundOidcSsoProfileIdpConfig)(nil)).Elem()
+}
+
+func (i InboundOidcSsoProfileIdpConfigArgs) ToInboundOidcSsoProfileIdpConfigOutput() InboundOidcSsoProfileIdpConfigOutput {
+	return i.ToInboundOidcSsoProfileIdpConfigOutputWithContext(context.Background())
+}
+
+func (i InboundOidcSsoProfileIdpConfigArgs) ToInboundOidcSsoProfileIdpConfigOutputWithContext(ctx context.Context) InboundOidcSsoProfileIdpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundOidcSsoProfileIdpConfigOutput)
+}
+
+func (i InboundOidcSsoProfileIdpConfigArgs) ToInboundOidcSsoProfileIdpConfigPtrOutput() InboundOidcSsoProfileIdpConfigPtrOutput {
+	return i.ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InboundOidcSsoProfileIdpConfigArgs) ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(ctx context.Context) InboundOidcSsoProfileIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundOidcSsoProfileIdpConfigOutput).ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(ctx)
+}
+
+// InboundOidcSsoProfileIdpConfigPtrInput is an input type that accepts InboundOidcSsoProfileIdpConfigArgs, InboundOidcSsoProfileIdpConfigPtr and InboundOidcSsoProfileIdpConfigPtrOutput values.
+// You can construct a concrete instance of `InboundOidcSsoProfileIdpConfigPtrInput` via:
+//
+//	        InboundOidcSsoProfileIdpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InboundOidcSsoProfileIdpConfigPtrInput interface {
+	pulumi.Input
+
+	ToInboundOidcSsoProfileIdpConfigPtrOutput() InboundOidcSsoProfileIdpConfigPtrOutput
+	ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(context.Context) InboundOidcSsoProfileIdpConfigPtrOutput
+}
+
+type inboundOidcSsoProfileIdpConfigPtrType InboundOidcSsoProfileIdpConfigArgs
+
+func InboundOidcSsoProfileIdpConfigPtr(v *InboundOidcSsoProfileIdpConfigArgs) InboundOidcSsoProfileIdpConfigPtrInput {
+	return (*inboundOidcSsoProfileIdpConfigPtrType)(v)
+}
+
+func (*inboundOidcSsoProfileIdpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InboundOidcSsoProfileIdpConfig)(nil)).Elem()
+}
+
+func (i *inboundOidcSsoProfileIdpConfigPtrType) ToInboundOidcSsoProfileIdpConfigPtrOutput() InboundOidcSsoProfileIdpConfigPtrOutput {
+	return i.ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *inboundOidcSsoProfileIdpConfigPtrType) ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(ctx context.Context) InboundOidcSsoProfileIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundOidcSsoProfileIdpConfigPtrOutput)
+}
+
+type InboundOidcSsoProfileIdpConfigOutput struct{ *pulumi.OutputState }
+
+func (InboundOidcSsoProfileIdpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundOidcSsoProfileIdpConfig)(nil)).Elem()
+}
+
+func (o InboundOidcSsoProfileIdpConfigOutput) ToInboundOidcSsoProfileIdpConfigOutput() InboundOidcSsoProfileIdpConfigOutput {
+	return o
+}
+
+func (o InboundOidcSsoProfileIdpConfigOutput) ToInboundOidcSsoProfileIdpConfigOutputWithContext(ctx context.Context) InboundOidcSsoProfileIdpConfigOutput {
+	return o
+}
+
+func (o InboundOidcSsoProfileIdpConfigOutput) ToInboundOidcSsoProfileIdpConfigPtrOutput() InboundOidcSsoProfileIdpConfigPtrOutput {
+	return o.ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InboundOidcSsoProfileIdpConfigOutput) ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(ctx context.Context) InboundOidcSsoProfileIdpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundOidcSsoProfileIdpConfig) *InboundOidcSsoProfileIdpConfig {
+		return &v
+	}).(InboundOidcSsoProfileIdpConfigPtrOutput)
+}
+
+// The **Change Password URL** of the identity provider. Users will be sent to this URL
+// when changing their passwords at `myaccount.google.com`. This takes precedence over
+// the change password URL configured at customer-level. Must use `HTTPS`.
+func (o InboundOidcSsoProfileIdpConfigOutput) ChangePasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundOidcSsoProfileIdpConfig) *string { return v.ChangePasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+// from this as described in Section 4 of the OIDC specification.
+func (o InboundOidcSsoProfileIdpConfigOutput) IssuerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v InboundOidcSsoProfileIdpConfig) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+type InboundOidcSsoProfileIdpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InboundOidcSsoProfileIdpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InboundOidcSsoProfileIdpConfig)(nil)).Elem()
+}
+
+func (o InboundOidcSsoProfileIdpConfigPtrOutput) ToInboundOidcSsoProfileIdpConfigPtrOutput() InboundOidcSsoProfileIdpConfigPtrOutput {
+	return o
+}
+
+func (o InboundOidcSsoProfileIdpConfigPtrOutput) ToInboundOidcSsoProfileIdpConfigPtrOutputWithContext(ctx context.Context) InboundOidcSsoProfileIdpConfigPtrOutput {
+	return o
+}
+
+func (o InboundOidcSsoProfileIdpConfigPtrOutput) Elem() InboundOidcSsoProfileIdpConfigOutput {
+	return o.ApplyT(func(v *InboundOidcSsoProfileIdpConfig) InboundOidcSsoProfileIdpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InboundOidcSsoProfileIdpConfig
+		return ret
+	}).(InboundOidcSsoProfileIdpConfigOutput)
+}
+
+// The **Change Password URL** of the identity provider. Users will be sent to this URL
+// when changing their passwords at `myaccount.google.com`. This takes precedence over
+// the change password URL configured at customer-level. Must use `HTTPS`.
+func (o InboundOidcSsoProfileIdpConfigPtrOutput) ChangePasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundOidcSsoProfileIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChangePasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+// from this as described in Section 4 of the OIDC specification.
+func (o InboundOidcSsoProfileIdpConfigPtrOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundOidcSsoProfileIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type InboundOidcSsoProfileRpConfig struct {
+	// OAuth2 client ID for OIDC. Must be set together with `clientSecret`.
+	ClientId *string `pulumi:"clientId"`
+	// Input only. OAuth2 client secret for OIDC. Must be set together with `clientId`.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// (Output)
+	// The URL(s) that this client may use in authentication requests.
+	RedirectUris []string `pulumi:"redirectUris"`
+}
+
+// InboundOidcSsoProfileRpConfigInput is an input type that accepts InboundOidcSsoProfileRpConfigArgs and InboundOidcSsoProfileRpConfigOutput values.
+// You can construct a concrete instance of `InboundOidcSsoProfileRpConfigInput` via:
+//
+//	InboundOidcSsoProfileRpConfigArgs{...}
+type InboundOidcSsoProfileRpConfigInput interface {
+	pulumi.Input
+
+	ToInboundOidcSsoProfileRpConfigOutput() InboundOidcSsoProfileRpConfigOutput
+	ToInboundOidcSsoProfileRpConfigOutputWithContext(context.Context) InboundOidcSsoProfileRpConfigOutput
+}
+
+type InboundOidcSsoProfileRpConfigArgs struct {
+	// OAuth2 client ID for OIDC. Must be set together with `clientSecret`.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Input only. OAuth2 client secret for OIDC. Must be set together with `clientId`.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// (Output)
+	// The URL(s) that this client may use in authentication requests.
+	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
+}
+
+func (InboundOidcSsoProfileRpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundOidcSsoProfileRpConfig)(nil)).Elem()
+}
+
+func (i InboundOidcSsoProfileRpConfigArgs) ToInboundOidcSsoProfileRpConfigOutput() InboundOidcSsoProfileRpConfigOutput {
+	return i.ToInboundOidcSsoProfileRpConfigOutputWithContext(context.Background())
+}
+
+func (i InboundOidcSsoProfileRpConfigArgs) ToInboundOidcSsoProfileRpConfigOutputWithContext(ctx context.Context) InboundOidcSsoProfileRpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundOidcSsoProfileRpConfigOutput)
+}
+
+func (i InboundOidcSsoProfileRpConfigArgs) ToInboundOidcSsoProfileRpConfigPtrOutput() InboundOidcSsoProfileRpConfigPtrOutput {
+	return i.ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InboundOidcSsoProfileRpConfigArgs) ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(ctx context.Context) InboundOidcSsoProfileRpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundOidcSsoProfileRpConfigOutput).ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(ctx)
+}
+
+// InboundOidcSsoProfileRpConfigPtrInput is an input type that accepts InboundOidcSsoProfileRpConfigArgs, InboundOidcSsoProfileRpConfigPtr and InboundOidcSsoProfileRpConfigPtrOutput values.
+// You can construct a concrete instance of `InboundOidcSsoProfileRpConfigPtrInput` via:
+//
+//	        InboundOidcSsoProfileRpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InboundOidcSsoProfileRpConfigPtrInput interface {
+	pulumi.Input
+
+	ToInboundOidcSsoProfileRpConfigPtrOutput() InboundOidcSsoProfileRpConfigPtrOutput
+	ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(context.Context) InboundOidcSsoProfileRpConfigPtrOutput
+}
+
+type inboundOidcSsoProfileRpConfigPtrType InboundOidcSsoProfileRpConfigArgs
+
+func InboundOidcSsoProfileRpConfigPtr(v *InboundOidcSsoProfileRpConfigArgs) InboundOidcSsoProfileRpConfigPtrInput {
+	return (*inboundOidcSsoProfileRpConfigPtrType)(v)
+}
+
+func (*inboundOidcSsoProfileRpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InboundOidcSsoProfileRpConfig)(nil)).Elem()
+}
+
+func (i *inboundOidcSsoProfileRpConfigPtrType) ToInboundOidcSsoProfileRpConfigPtrOutput() InboundOidcSsoProfileRpConfigPtrOutput {
+	return i.ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *inboundOidcSsoProfileRpConfigPtrType) ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(ctx context.Context) InboundOidcSsoProfileRpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundOidcSsoProfileRpConfigPtrOutput)
+}
+
+type InboundOidcSsoProfileRpConfigOutput struct{ *pulumi.OutputState }
+
+func (InboundOidcSsoProfileRpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundOidcSsoProfileRpConfig)(nil)).Elem()
+}
+
+func (o InboundOidcSsoProfileRpConfigOutput) ToInboundOidcSsoProfileRpConfigOutput() InboundOidcSsoProfileRpConfigOutput {
+	return o
+}
+
+func (o InboundOidcSsoProfileRpConfigOutput) ToInboundOidcSsoProfileRpConfigOutputWithContext(ctx context.Context) InboundOidcSsoProfileRpConfigOutput {
+	return o
+}
+
+func (o InboundOidcSsoProfileRpConfigOutput) ToInboundOidcSsoProfileRpConfigPtrOutput() InboundOidcSsoProfileRpConfigPtrOutput {
+	return o.ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InboundOidcSsoProfileRpConfigOutput) ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(ctx context.Context) InboundOidcSsoProfileRpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundOidcSsoProfileRpConfig) *InboundOidcSsoProfileRpConfig {
+		return &v
+	}).(InboundOidcSsoProfileRpConfigPtrOutput)
+}
+
+// OAuth2 client ID for OIDC. Must be set together with `clientSecret`.
+func (o InboundOidcSsoProfileRpConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundOidcSsoProfileRpConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Input only. OAuth2 client secret for OIDC. Must be set together with `clientId`.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o InboundOidcSsoProfileRpConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundOidcSsoProfileRpConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The URL(s) that this client may use in authentication requests.
+func (o InboundOidcSsoProfileRpConfigOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InboundOidcSsoProfileRpConfig) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+type InboundOidcSsoProfileRpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InboundOidcSsoProfileRpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InboundOidcSsoProfileRpConfig)(nil)).Elem()
+}
+
+func (o InboundOidcSsoProfileRpConfigPtrOutput) ToInboundOidcSsoProfileRpConfigPtrOutput() InboundOidcSsoProfileRpConfigPtrOutput {
+	return o
+}
+
+func (o InboundOidcSsoProfileRpConfigPtrOutput) ToInboundOidcSsoProfileRpConfigPtrOutputWithContext(ctx context.Context) InboundOidcSsoProfileRpConfigPtrOutput {
+	return o
+}
+
+func (o InboundOidcSsoProfileRpConfigPtrOutput) Elem() InboundOidcSsoProfileRpConfigOutput {
+	return o.ApplyT(func(v *InboundOidcSsoProfileRpConfig) InboundOidcSsoProfileRpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InboundOidcSsoProfileRpConfig
+		return ret
+	}).(InboundOidcSsoProfileRpConfigOutput)
+}
+
+// OAuth2 client ID for OIDC. Must be set together with `clientSecret`.
+func (o InboundOidcSsoProfileRpConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundOidcSsoProfileRpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. OAuth2 client secret for OIDC. Must be set together with `clientId`.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o InboundOidcSsoProfileRpConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundOidcSsoProfileRpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The URL(s) that this client may use in authentication requests.
+func (o InboundOidcSsoProfileRpConfigPtrOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InboundOidcSsoProfileRpConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUris
+	}).(pulumi.StringArrayOutput)
+}
+
+type InboundSamlSsoProfileIdpConfig struct {
+	// The **Change Password URL** of the identity provider. Users will be sent to this URL
+	// when changing their passwords at `myaccount.google.com`. This takes precedence over
+	// the change password URL configured at customer-level. Must use `HTTPS`.
+	ChangePasswordUri *string `pulumi:"changePasswordUri"`
+	// The SAML **Entity ID** of the identity provider.
+	EntityId string `pulumi:"entityId"`
+	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+	// clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+	// a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+	// supported. Must use `HTTPS`.
+	LogoutRedirectUri *string `pulumi:"logoutRedirectUri"`
+	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+	// This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+	// Assumed to accept the `HTTP-Redirect` binding.
+	SingleSignOnServiceUri string `pulumi:"singleSignOnServiceUri"`
+}
+
+// InboundSamlSsoProfileIdpConfigInput is an input type that accepts InboundSamlSsoProfileIdpConfigArgs and InboundSamlSsoProfileIdpConfigOutput values.
+// You can construct a concrete instance of `InboundSamlSsoProfileIdpConfigInput` via:
+//
+//	InboundSamlSsoProfileIdpConfigArgs{...}
+type InboundSamlSsoProfileIdpConfigInput interface {
+	pulumi.Input
+
+	ToInboundSamlSsoProfileIdpConfigOutput() InboundSamlSsoProfileIdpConfigOutput
+	ToInboundSamlSsoProfileIdpConfigOutputWithContext(context.Context) InboundSamlSsoProfileIdpConfigOutput
+}
+
+type InboundSamlSsoProfileIdpConfigArgs struct {
+	// The **Change Password URL** of the identity provider. Users will be sent to this URL
+	// when changing their passwords at `myaccount.google.com`. This takes precedence over
+	// the change password URL configured at customer-level. Must use `HTTPS`.
+	ChangePasswordUri pulumi.StringPtrInput `pulumi:"changePasswordUri"`
+	// The SAML **Entity ID** of the identity provider.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+	// clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+	// a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+	// supported. Must use `HTTPS`.
+	LogoutRedirectUri pulumi.StringPtrInput `pulumi:"logoutRedirectUri"`
+	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+	// This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+	// Assumed to accept the `HTTP-Redirect` binding.
+	SingleSignOnServiceUri pulumi.StringInput `pulumi:"singleSignOnServiceUri"`
+}
+
+func (InboundSamlSsoProfileIdpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundSamlSsoProfileIdpConfig)(nil)).Elem()
+}
+
+func (i InboundSamlSsoProfileIdpConfigArgs) ToInboundSamlSsoProfileIdpConfigOutput() InboundSamlSsoProfileIdpConfigOutput {
+	return i.ToInboundSamlSsoProfileIdpConfigOutputWithContext(context.Background())
+}
+
+func (i InboundSamlSsoProfileIdpConfigArgs) ToInboundSamlSsoProfileIdpConfigOutputWithContext(ctx context.Context) InboundSamlSsoProfileIdpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlSsoProfileIdpConfigOutput)
+}
+
+func (i InboundSamlSsoProfileIdpConfigArgs) ToInboundSamlSsoProfileIdpConfigPtrOutput() InboundSamlSsoProfileIdpConfigPtrOutput {
+	return i.ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InboundSamlSsoProfileIdpConfigArgs) ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlSsoProfileIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlSsoProfileIdpConfigOutput).ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(ctx)
+}
+
+// InboundSamlSsoProfileIdpConfigPtrInput is an input type that accepts InboundSamlSsoProfileIdpConfigArgs, InboundSamlSsoProfileIdpConfigPtr and InboundSamlSsoProfileIdpConfigPtrOutput values.
+// You can construct a concrete instance of `InboundSamlSsoProfileIdpConfigPtrInput` via:
+//
+//	        InboundSamlSsoProfileIdpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InboundSamlSsoProfileIdpConfigPtrInput interface {
+	pulumi.Input
+
+	ToInboundSamlSsoProfileIdpConfigPtrOutput() InboundSamlSsoProfileIdpConfigPtrOutput
+	ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(context.Context) InboundSamlSsoProfileIdpConfigPtrOutput
+}
+
+type inboundSamlSsoProfileIdpConfigPtrType InboundSamlSsoProfileIdpConfigArgs
+
+func InboundSamlSsoProfileIdpConfigPtr(v *InboundSamlSsoProfileIdpConfigArgs) InboundSamlSsoProfileIdpConfigPtrInput {
+	return (*inboundSamlSsoProfileIdpConfigPtrType)(v)
+}
+
+func (*inboundSamlSsoProfileIdpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InboundSamlSsoProfileIdpConfig)(nil)).Elem()
+}
+
+func (i *inboundSamlSsoProfileIdpConfigPtrType) ToInboundSamlSsoProfileIdpConfigPtrOutput() InboundSamlSsoProfileIdpConfigPtrOutput {
+	return i.ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *inboundSamlSsoProfileIdpConfigPtrType) ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlSsoProfileIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlSsoProfileIdpConfigPtrOutput)
+}
+
+type InboundSamlSsoProfileIdpConfigOutput struct{ *pulumi.OutputState }
+
+func (InboundSamlSsoProfileIdpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundSamlSsoProfileIdpConfig)(nil)).Elem()
+}
+
+func (o InboundSamlSsoProfileIdpConfigOutput) ToInboundSamlSsoProfileIdpConfigOutput() InboundSamlSsoProfileIdpConfigOutput {
+	return o
+}
+
+func (o InboundSamlSsoProfileIdpConfigOutput) ToInboundSamlSsoProfileIdpConfigOutputWithContext(ctx context.Context) InboundSamlSsoProfileIdpConfigOutput {
+	return o
+}
+
+func (o InboundSamlSsoProfileIdpConfigOutput) ToInboundSamlSsoProfileIdpConfigPtrOutput() InboundSamlSsoProfileIdpConfigPtrOutput {
+	return o.ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InboundSamlSsoProfileIdpConfigOutput) ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlSsoProfileIdpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSamlSsoProfileIdpConfig) *InboundSamlSsoProfileIdpConfig {
+		return &v
+	}).(InboundSamlSsoProfileIdpConfigPtrOutput)
+}
+
+// The **Change Password URL** of the identity provider. Users will be sent to this URL
+// when changing their passwords at `myaccount.google.com`. This takes precedence over
+// the change password URL configured at customer-level. Must use `HTTPS`.
+func (o InboundSamlSsoProfileIdpConfigOutput) ChangePasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundSamlSsoProfileIdpConfig) *string { return v.ChangePasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// The SAML **Entity ID** of the identity provider.
+func (o InboundSamlSsoProfileIdpConfigOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v InboundSamlSsoProfileIdpConfig) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+// clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+// a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+// supported. Must use `HTTPS`.
+func (o InboundSamlSsoProfileIdpConfigOutput) LogoutRedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundSamlSsoProfileIdpConfig) *string { return v.LogoutRedirectUri }).(pulumi.StringPtrOutput)
+}
+
+// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+// This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+// Assumed to accept the `HTTP-Redirect` binding.
+func (o InboundSamlSsoProfileIdpConfigOutput) SingleSignOnServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v InboundSamlSsoProfileIdpConfig) string { return v.SingleSignOnServiceUri }).(pulumi.StringOutput)
+}
+
+type InboundSamlSsoProfileIdpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InboundSamlSsoProfileIdpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InboundSamlSsoProfileIdpConfig)(nil)).Elem()
+}
+
+func (o InboundSamlSsoProfileIdpConfigPtrOutput) ToInboundSamlSsoProfileIdpConfigPtrOutput() InboundSamlSsoProfileIdpConfigPtrOutput {
+	return o
+}
+
+func (o InboundSamlSsoProfileIdpConfigPtrOutput) ToInboundSamlSsoProfileIdpConfigPtrOutputWithContext(ctx context.Context) InboundSamlSsoProfileIdpConfigPtrOutput {
+	return o
+}
+
+func (o InboundSamlSsoProfileIdpConfigPtrOutput) Elem() InboundSamlSsoProfileIdpConfigOutput {
+	return o.ApplyT(func(v *InboundSamlSsoProfileIdpConfig) InboundSamlSsoProfileIdpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InboundSamlSsoProfileIdpConfig
+		return ret
+	}).(InboundSamlSsoProfileIdpConfigOutput)
+}
+
+// The **Change Password URL** of the identity provider. Users will be sent to this URL
+// when changing their passwords at `myaccount.google.com`. This takes precedence over
+// the change password URL configured at customer-level. Must use `HTTPS`.
+func (o InboundSamlSsoProfileIdpConfigPtrOutput) ChangePasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundSamlSsoProfileIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChangePasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAML **Entity ID** of the identity provider.
+func (o InboundSamlSsoProfileIdpConfigPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundSamlSsoProfileIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+// clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+// a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not
+// supported. Must use `HTTPS`.
+func (o InboundSamlSsoProfileIdpConfigPtrOutput) LogoutRedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundSamlSsoProfileIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogoutRedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider.
+// This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+// Assumed to accept the `HTTP-Redirect` binding.
+func (o InboundSamlSsoProfileIdpConfigPtrOutput) SingleSignOnServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundSamlSsoProfileIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SingleSignOnServiceUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type InboundSamlSsoProfileSpConfig struct {
+	// (Output)
+	// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated
+	// login. Assumed to accept response messages via the `HTTP-POST` binding.
+	AssertionConsumerServiceUri *string `pulumi:"assertionConsumerServiceUri"`
+	// (Output)
+	// The SAML **Entity ID** for this service provider.
+	EntityId *string `pulumi:"entityId"`
+}
+
+// InboundSamlSsoProfileSpConfigInput is an input type that accepts InboundSamlSsoProfileSpConfigArgs and InboundSamlSsoProfileSpConfigOutput values.
+// You can construct a concrete instance of `InboundSamlSsoProfileSpConfigInput` via:
+//
+//	InboundSamlSsoProfileSpConfigArgs{...}
+type InboundSamlSsoProfileSpConfigInput interface {
+	pulumi.Input
+
+	ToInboundSamlSsoProfileSpConfigOutput() InboundSamlSsoProfileSpConfigOutput
+	ToInboundSamlSsoProfileSpConfigOutputWithContext(context.Context) InboundSamlSsoProfileSpConfigOutput
+}
+
+type InboundSamlSsoProfileSpConfigArgs struct {
+	// (Output)
+	// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated
+	// login. Assumed to accept response messages via the `HTTP-POST` binding.
+	AssertionConsumerServiceUri pulumi.StringPtrInput `pulumi:"assertionConsumerServiceUri"`
+	// (Output)
+	// The SAML **Entity ID** for this service provider.
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+}
+
+func (InboundSamlSsoProfileSpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundSamlSsoProfileSpConfig)(nil)).Elem()
+}
+
+func (i InboundSamlSsoProfileSpConfigArgs) ToInboundSamlSsoProfileSpConfigOutput() InboundSamlSsoProfileSpConfigOutput {
+	return i.ToInboundSamlSsoProfileSpConfigOutputWithContext(context.Background())
+}
+
+func (i InboundSamlSsoProfileSpConfigArgs) ToInboundSamlSsoProfileSpConfigOutputWithContext(ctx context.Context) InboundSamlSsoProfileSpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlSsoProfileSpConfigOutput)
+}
+
+// InboundSamlSsoProfileSpConfigArrayInput is an input type that accepts InboundSamlSsoProfileSpConfigArray and InboundSamlSsoProfileSpConfigArrayOutput values.
+// You can construct a concrete instance of `InboundSamlSsoProfileSpConfigArrayInput` via:
+//
+//	InboundSamlSsoProfileSpConfigArray{ InboundSamlSsoProfileSpConfigArgs{...} }
+type InboundSamlSsoProfileSpConfigArrayInput interface {
+	pulumi.Input
+
+	ToInboundSamlSsoProfileSpConfigArrayOutput() InboundSamlSsoProfileSpConfigArrayOutput
+	ToInboundSamlSsoProfileSpConfigArrayOutputWithContext(context.Context) InboundSamlSsoProfileSpConfigArrayOutput
+}
+
+type InboundSamlSsoProfileSpConfigArray []InboundSamlSsoProfileSpConfigInput
+
+func (InboundSamlSsoProfileSpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InboundSamlSsoProfileSpConfig)(nil)).Elem()
+}
+
+func (i InboundSamlSsoProfileSpConfigArray) ToInboundSamlSsoProfileSpConfigArrayOutput() InboundSamlSsoProfileSpConfigArrayOutput {
+	return i.ToInboundSamlSsoProfileSpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InboundSamlSsoProfileSpConfigArray) ToInboundSamlSsoProfileSpConfigArrayOutputWithContext(ctx context.Context) InboundSamlSsoProfileSpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlSsoProfileSpConfigArrayOutput)
+}
+
+type InboundSamlSsoProfileSpConfigOutput struct{ *pulumi.OutputState }
+
+func (InboundSamlSsoProfileSpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundSamlSsoProfileSpConfig)(nil)).Elem()
+}
+
+func (o InboundSamlSsoProfileSpConfigOutput) ToInboundSamlSsoProfileSpConfigOutput() InboundSamlSsoProfileSpConfigOutput {
+	return o
+}
+
+func (o InboundSamlSsoProfileSpConfigOutput) ToInboundSamlSsoProfileSpConfigOutputWithContext(ctx context.Context) InboundSamlSsoProfileSpConfigOutput {
+	return o
+}
+
+// (Output)
+// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated
+// login. Assumed to accept response messages via the `HTTP-POST` binding.
+func (o InboundSamlSsoProfileSpConfigOutput) AssertionConsumerServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundSamlSsoProfileSpConfig) *string { return v.AssertionConsumerServiceUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The SAML **Entity ID** for this service provider.
+func (o InboundSamlSsoProfileSpConfigOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InboundSamlSsoProfileSpConfig) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+type InboundSamlSsoProfileSpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InboundSamlSsoProfileSpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InboundSamlSsoProfileSpConfig)(nil)).Elem()
+}
+
+func (o InboundSamlSsoProfileSpConfigArrayOutput) ToInboundSamlSsoProfileSpConfigArrayOutput() InboundSamlSsoProfileSpConfigArrayOutput {
+	return o
+}
+
+func (o InboundSamlSsoProfileSpConfigArrayOutput) ToInboundSamlSsoProfileSpConfigArrayOutputWithContext(ctx context.Context) InboundSamlSsoProfileSpConfigArrayOutput {
+	return o
+}
+
+func (o InboundSamlSsoProfileSpConfigArrayOutput) Index(i pulumi.IntInput) InboundSamlSsoProfileSpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InboundSamlSsoProfileSpConfig {
+		return vs[0].([]InboundSamlSsoProfileSpConfig)[vs[1].(int)]
+	}).(InboundSamlSsoProfileSpConfigOutput)
+}
+
 type PolicyPolicyQuery struct {
 	// The group that the query applies to.
 	Group *string `pulumi:"group"`
-	// The OrgUnit the query applies to.
+	// The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+	// `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+	// Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+	// and display names are not resolved and are rejected for most settings.
+	// For detector settings (`settings/detector.*`), the API ignores this value and
+	// always applies the policy to, and returns, the customer's root org unit, so any
+	// other value produces a diff; set it to the root org unit's ID.
 	OrgUnit string `pulumi:"orgUnit"`
 	// The CEL query that defines which entities the Policy applies to.
 	Query *string `pulumi:"query"`
@@ -1033,7 +1727,13 @@ type PolicyPolicyQueryInput interface {
 type PolicyPolicyQueryArgs struct {
 	// The group that the query applies to.
 	Group pulumi.StringPtrInput `pulumi:"group"`
-	// The OrgUnit the query applies to.
+	// The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+	// `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+	// Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+	// and display names are not resolved and are rejected for most settings.
+	// For detector settings (`settings/detector.*`), the API ignores this value and
+	// always applies the policy to, and returns, the customer's root org unit, so any
+	// other value produces a diff; set it to the root org unit's ID.
 	OrgUnit pulumi.StringInput `pulumi:"orgUnit"`
 	// The CEL query that defines which entities the Policy applies to.
 	Query pulumi.StringPtrInput `pulumi:"query"`
@@ -1124,7 +1824,13 @@ func (o PolicyPolicyQueryOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyPolicyQuery) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// The OrgUnit the query applies to.
+// The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+// `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+// Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+// and display names are not resolved and are rejected for most settings.
+// For detector settings (`settings/detector.*`), the API ignores this value and
+// always applies the policy to, and returns, the customer's root org unit, so any
+// other value produces a diff; set it to the root org unit's ID.
 func (o PolicyPolicyQueryOutput) OrgUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyPolicyQuery) string { return v.OrgUnit }).(pulumi.StringOutput)
 }
@@ -1174,7 +1880,13 @@ func (o PolicyPolicyQueryPtrOutput) Group() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The OrgUnit the query applies to.
+// The OrgUnit the query applies to, in the format `orgUnits/{org_unit_id}`.
+// `{org_unit_id}` is the obfuscated org unit ID, the same value the Admin SDK
+// Directory API returns as `orgUnitId` without its `id:` prefix. Org unit paths
+// and display names are not resolved and are rejected for most settings.
+// For detector settings (`settings/detector.*`), the API ignores this value and
+// always applies the policy to, and returns, the customer's root org unit, so any
+// other value produces a diff; set it to the root org unit's ID.
 func (o PolicyPolicyQueryPtrOutput) OrgUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyPolicyQuery) *string {
 		if v == nil {
@@ -3326,6 +4038,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleArrayInput)(nil)).Elem(), GroupMembershipRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleExpiryDetailInput)(nil)).Elem(), GroupMembershipRoleExpiryDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleExpiryDetailPtrInput)(nil)).Elem(), GroupMembershipRoleExpiryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundOidcSsoProfileIdpConfigInput)(nil)).Elem(), InboundOidcSsoProfileIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundOidcSsoProfileIdpConfigPtrInput)(nil)).Elem(), InboundOidcSsoProfileIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundOidcSsoProfileRpConfigInput)(nil)).Elem(), InboundOidcSsoProfileRpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundOidcSsoProfileRpConfigPtrInput)(nil)).Elem(), InboundOidcSsoProfileRpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlSsoProfileIdpConfigInput)(nil)).Elem(), InboundSamlSsoProfileIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlSsoProfileIdpConfigPtrInput)(nil)).Elem(), InboundSamlSsoProfileIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlSsoProfileSpConfigInput)(nil)).Elem(), InboundSamlSsoProfileSpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlSsoProfileSpConfigArrayInput)(nil)).Elem(), InboundSamlSsoProfileSpConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPolicyQueryInput)(nil)).Elem(), PolicyPolicyQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPolicyQueryPtrInput)(nil)).Elem(), PolicyPolicyQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySettingInput)(nil)).Elem(), PolicySettingArgs{})
@@ -3371,6 +4091,14 @@ func init() {
 	pulumi.RegisterOutputType(GroupMembershipRoleArrayOutput{})
 	pulumi.RegisterOutputType(GroupMembershipRoleExpiryDetailOutput{})
 	pulumi.RegisterOutputType(GroupMembershipRoleExpiryDetailPtrOutput{})
+	pulumi.RegisterOutputType(InboundOidcSsoProfileIdpConfigOutput{})
+	pulumi.RegisterOutputType(InboundOidcSsoProfileIdpConfigPtrOutput{})
+	pulumi.RegisterOutputType(InboundOidcSsoProfileRpConfigOutput{})
+	pulumi.RegisterOutputType(InboundOidcSsoProfileRpConfigPtrOutput{})
+	pulumi.RegisterOutputType(InboundSamlSsoProfileIdpConfigOutput{})
+	pulumi.RegisterOutputType(InboundSamlSsoProfileIdpConfigPtrOutput{})
+	pulumi.RegisterOutputType(InboundSamlSsoProfileSpConfigOutput{})
+	pulumi.RegisterOutputType(InboundSamlSsoProfileSpConfigArrayOutput{})
 	pulumi.RegisterOutputType(PolicyPolicyQueryOutput{})
 	pulumi.RegisterOutputType(PolicyPolicyQueryPtrOutput{})
 	pulumi.RegisterOutputType(PolicySettingOutput{})

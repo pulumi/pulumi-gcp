@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         var functionNegFunction = new Function("functionNegFunction", FunctionArgs.builder()
  *             .name("function-neg")
  *             .description("My function")
- *             .runtime("nodejs20")
+ *             .runtime("nodejs22")
  *             .availableMemoryMb(128)
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(archive.name())

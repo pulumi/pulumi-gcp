@@ -35,7 +35,7 @@ public final class InstanceIamMemberArgs extends com.pulumi.resources.ResourceAr
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      * 
-     * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+     * For `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
     @Import(name="instance", required=true)
@@ -44,7 +44,7 @@ public final class InstanceIamMemberArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return The name or relative resource id of the instance to manage IAM policies for.
      * 
-     * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+     * For `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
     public Output<String> instance() {
@@ -168,7 +168,7 @@ public final class InstanceIamMemberArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param instance The name or relative resource id of the instance to manage IAM policies for.
          * 
-         * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+         * For `gcp.bigtable.InstanceIamPolicy` only:
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class InstanceIamMemberArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param instance The name or relative resource id of the instance to manage IAM policies for.
          * 
-         * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
+         * For `gcp.bigtable.InstanceIamPolicy` only:
          * 
          * @return builder
          * 

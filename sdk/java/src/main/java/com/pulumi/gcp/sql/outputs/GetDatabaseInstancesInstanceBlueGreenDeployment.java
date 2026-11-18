@@ -29,6 +29,11 @@ public final class GetDatabaseInstancesInstanceBlueGreenDeployment {
      */
     private String deploymentName;
     /**
+     * @return User-provided description for the blue-green deployment.
+     * 
+     */
+    private String description;
+    /**
      * @return Auth Proxy connection string for the former Blue instance post-switchover.
      * 
      */
@@ -80,6 +85,13 @@ public final class GetDatabaseInstancesInstanceBlueGreenDeployment {
      */
     public String deploymentName() {
         return this.deploymentName;
+    }
+    /**
+     * @return User-provided description for the blue-green deployment.
+     * 
+     */
+    public String description() {
+        return this.description;
     }
     /**
      * @return Auth Proxy connection string for the former Blue instance post-switchover.
@@ -136,6 +148,7 @@ public final class GetDatabaseInstancesInstanceBlueGreenDeployment {
         private String activeEnvironment;
         private Boolean deleteOldSourceOnDestroy;
         private String deploymentName;
+        private String description;
         private String oldSourceInstanceConnectionName;
         private String oldSourceInstanceName;
         private String targetDatabaseVersion;
@@ -148,6 +161,7 @@ public final class GetDatabaseInstancesInstanceBlueGreenDeployment {
     	      this.activeEnvironment = defaults.activeEnvironment;
     	      this.deleteOldSourceOnDestroy = defaults.deleteOldSourceOnDestroy;
     	      this.deploymentName = defaults.deploymentName;
+    	      this.description = defaults.description;
     	      this.oldSourceInstanceConnectionName = defaults.oldSourceInstanceConnectionName;
     	      this.oldSourceInstanceName = defaults.oldSourceInstanceName;
     	      this.targetDatabaseVersion = defaults.targetDatabaseVersion;
@@ -178,6 +192,14 @@ public final class GetDatabaseInstancesInstanceBlueGreenDeployment {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceBlueGreenDeployment", "deploymentName");
             }
             this.deploymentName = deploymentName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceBlueGreenDeployment", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -236,6 +258,7 @@ public final class GetDatabaseInstancesInstanceBlueGreenDeployment {
             _resultValue.activeEnvironment = activeEnvironment;
             _resultValue.deleteOldSourceOnDestroy = deleteOldSourceOnDestroy;
             _resultValue.deploymentName = deploymentName;
+            _resultValue.description = description;
             _resultValue.oldSourceInstanceConnectionName = oldSourceInstanceConnectionName;
             _resultValue.oldSourceInstanceName = oldSourceInstanceName;
             _resultValue.targetDatabaseVersion = targetDatabaseVersion;

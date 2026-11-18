@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .addon import *
 from .api_hub_instance import *
 from .curation import *
 from .host_project_registration import *

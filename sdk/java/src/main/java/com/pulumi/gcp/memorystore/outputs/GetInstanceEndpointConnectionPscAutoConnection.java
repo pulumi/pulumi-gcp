@@ -33,6 +33,11 @@ public final class GetInstanceEndpointConnectionPscAutoConnection {
      */
     private String ipAddress;
     /**
+     * @return The IP version of the PSC connection. Possible values are &#39;IPV4&#39; and &#39;IPV6&#39;.
+     * 
+     */
+    private String ipVersion;
+    /**
      * @return Output only. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
      * 
@@ -89,6 +94,13 @@ public final class GetInstanceEndpointConnectionPscAutoConnection {
         return this.ipAddress;
     }
     /**
+     * @return The IP version of the PSC connection. Possible values are &#39;IPV4&#39; and &#39;IPV6&#39;.
+     * 
+     */
+    public String ipVersion() {
+        return this.ipVersion;
+    }
+    /**
      * @return Output only. The consumer network where the IP address resides, in the form of
      * projects/{project_id}/global/networks/{network_id}.
      * 
@@ -138,6 +150,7 @@ public final class GetInstanceEndpointConnectionPscAutoConnection {
         private String connectionType;
         private String forwardingRule;
         private String ipAddress;
+        private String ipVersion;
         private String network;
         private Integer port;
         private String projectId;
@@ -149,6 +162,7 @@ public final class GetInstanceEndpointConnectionPscAutoConnection {
     	      this.connectionType = defaults.connectionType;
     	      this.forwardingRule = defaults.forwardingRule;
     	      this.ipAddress = defaults.ipAddress;
+    	      this.ipVersion = defaults.ipVersion;
     	      this.network = defaults.network;
     	      this.port = defaults.port;
     	      this.projectId = defaults.projectId;
@@ -178,6 +192,14 @@ public final class GetInstanceEndpointConnectionPscAutoConnection {
               throw new MissingRequiredPropertyException("GetInstanceEndpointConnectionPscAutoConnection", "ipAddress");
             }
             this.ipAddress = ipAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipVersion(String ipVersion) {
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceEndpointConnectionPscAutoConnection", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
@@ -225,6 +247,7 @@ public final class GetInstanceEndpointConnectionPscAutoConnection {
             _resultValue.connectionType = connectionType;
             _resultValue.forwardingRule = forwardingRule;
             _resultValue.ipAddress = ipAddress;
+            _resultValue.ipVersion = ipVersion;
             _resultValue.network = network;
             _resultValue.port = port;
             _resultValue.projectId = projectId;

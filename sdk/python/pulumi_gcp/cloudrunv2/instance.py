@@ -38,6 +38,7 @@ class InstanceArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sandboxes: pulumi.Input[Optional['InstanceSandboxesArgs']] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  volumes: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceVolumeArgs']]]] = None):
         """
@@ -81,6 +82,8 @@ class InstanceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] restart_policy: Restart policy for the Instance. If not provided, the default is ON_FAILURE.
                Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
+        :param pulumi.Input['InstanceSandboxesArgs'] sandboxes: Configuration for sandboxes.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
@@ -117,6 +120,8 @@ class InstanceArgs:
             pulumi.set(__self__, "project", project)
         if restart_policy is not None:
             pulumi.set(__self__, "restart_policy", restart_policy)
+        if sandboxes is not None:
+            pulumi.set(__self__, "sandboxes", sandboxes)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if volumes is not None:
@@ -348,6 +353,19 @@ class InstanceArgs:
         pulumi.set(self, "restart_policy", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sandboxes(self) -> pulumi.Input[Optional['InstanceSandboxesArgs']]:
+        """
+        Configuration for sandboxes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sandboxes")
+
+    @sandboxes.setter
+    def sandboxes(self, value: pulumi.Input[Optional['InstanceSandboxesArgs']]):
+        pulumi.set(self, "sandboxes", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -408,6 +426,7 @@ class _InstanceState:
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
                  restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sandboxes: pulumi.Input[Optional['InstanceSandboxesArgs']] = None,
                  satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTerminalConditionArgs']]]] = None,
@@ -475,6 +494,8 @@ class _InstanceState:
                When a new Instance is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Instance to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration will have a transient value that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Instance, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
         :param pulumi.Input[_builtins.str] restart_policy: Restart policy for the Instance. If not provided, the default is ON_FAILURE.
                Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
+        :param pulumi.Input['InstanceSandboxesArgs'] sandboxes: Configuration for sandboxes.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] satisfies_pzs: Reserved for future use. True if this service satisfies zone separation.
         :param pulumi.Input[_builtins.str] service_account: Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTerminalConditionArgs']]] terminal_conditions: The Condition of this Instance, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -549,6 +570,8 @@ class _InstanceState:
             pulumi.set(__self__, "reconciling", reconciling)
         if restart_policy is not None:
             pulumi.set(__self__, "restart_policy", restart_policy)
+        if sandboxes is not None:
+            pulumi.set(__self__, "sandboxes", sandboxes)
         if satisfies_pzs is not None:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if service_account is not None:
@@ -974,6 +997,19 @@ class _InstanceState:
         pulumi.set(self, "restart_policy", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sandboxes(self) -> pulumi.Input[Optional['InstanceSandboxesArgs']]:
+        """
+        Configuration for sandboxes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sandboxes")
+
+    @sandboxes.setter
+    def sandboxes(self, value: pulumi.Input[Optional['InstanceSandboxesArgs']]):
+        pulumi.set(self, "sandboxes", value)
+
+    @_builtins.property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1083,6 +1119,7 @@ class Instance(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sandboxes: pulumi.Input[Optional[Union['InstanceSandboxesArgs', 'InstanceSandboxesArgsDict', 'outputs.InstanceSandboxes']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceVolumeArgs', 'InstanceVolumeArgsDict', 'outputs.InstanceVolume']]]]] = None,
                  __props__=None):
@@ -1399,6 +1436,28 @@ class Instance(pulumi.CustomResource):
             }])
         ```
 
+        ### Cloudrunv2 Instance Sandbox Templates
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Instance("default",
+            name="cloudrun-instance",
+            location="us-west4",
+            launch_stage="BETA",
+            containers=[{
+                "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                "sandbox_launcher": True,
+            }],
+            sandboxes={
+                "templates": [{
+                    "name": "hello",
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
+
         ## Import
 
         Instance can be imported using any of these accepted formats:
@@ -1456,6 +1515,8 @@ class Instance(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] restart_policy: Restart policy for the Instance. If not provided, the default is ON_FAILURE.
                Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
+        :param pulumi.Input[Union['InstanceSandboxesArgs', 'InstanceSandboxesArgsDict', 'outputs.InstanceSandboxes']] sandboxes: Configuration for sandboxes.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceVolumeArgs', 'InstanceVolumeArgsDict', 'outputs.InstanceVolume']]]] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
@@ -1779,6 +1840,28 @@ class Instance(pulumi.CustomResource):
             }])
         ```
 
+        ### Cloudrunv2 Instance Sandbox Templates
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Instance("default",
+            name="cloudrun-instance",
+            location="us-west4",
+            launch_stage="BETA",
+            containers=[{
+                "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                "sandbox_launcher": True,
+            }],
+            sandboxes={
+                "templates": [{
+                    "name": "hello",
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
+
         ## Import
 
         Instance can be imported using any of these accepted formats:
@@ -1828,6 +1911,7 @@ class Instance(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sandboxes: pulumi.Input[Optional[Union['InstanceSandboxesArgs', 'InstanceSandboxesArgsDict', 'outputs.InstanceSandboxes']]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceVolumeArgs', 'InstanceVolumeArgsDict', 'outputs.InstanceVolume']]]]] = None,
                  __props__=None):
@@ -1860,6 +1944,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["restart_policy"] = restart_policy
+            __props__.__dict__["sandboxes"] = sandboxes
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["volumes"] = volumes
             __props__.__dict__["conditions"] = None
@@ -1926,6 +2011,7 @@ class Instance(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sandboxes: pulumi.Input[Optional[Union['InstanceSandboxesArgs', 'InstanceSandboxesArgsDict', 'outputs.InstanceSandboxes']]] = None,
             satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTerminalConditionArgs', 'InstanceTerminalConditionArgsDict', 'outputs.InstanceTerminalCondition']]]]] = None,
@@ -1997,6 +2083,8 @@ class Instance(pulumi.CustomResource):
                When a new Instance is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Instance to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration will have a transient value that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Instance, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
         :param pulumi.Input[_builtins.str] restart_policy: Restart policy for the Instance. If not provided, the default is ON_FAILURE.
                Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
+        :param pulumi.Input[Union['InstanceSandboxesArgs', 'InstanceSandboxesArgsDict', 'outputs.InstanceSandboxes']] sandboxes: Configuration for sandboxes.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] satisfies_pzs: Reserved for future use. True if this service satisfies zone separation.
         :param pulumi.Input[_builtins.str] service_account: Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceTerminalConditionArgs', 'InstanceTerminalConditionArgsDict', 'outputs.InstanceTerminalCondition']]]] terminal_conditions: The Condition of this Instance, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -2043,6 +2131,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["restart_policy"] = restart_policy
+        __props__.__dict__["sandboxes"] = sandboxes
         __props__.__dict__["satisfies_pzs"] = satisfies_pzs
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["terminal_conditions"] = terminal_conditions
@@ -2087,6 +2176,7 @@ class Instance(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sandboxes: pulumi.Input[Optional[Union['InstanceSandboxesArgs', 'InstanceSandboxesArgsDict', 'outputs.InstanceSandboxes']]] = None,
             satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTerminalConditionArgs', 'InstanceTerminalConditionArgsDict', 'outputs.InstanceTerminalCondition']]]]] = None,
@@ -2127,6 +2217,7 @@ class Instance(pulumi.CustomResource):
         __props__["pulumiLabels"] = pulumi_labels
         __props__["reconciling"] = reconciling
         __props__["restartPolicy"] = restart_policy
+        __props__["sandboxes"] = sandboxes
         __props__["satisfiesPzs"] = satisfies_pzs
         __props__["serviceAccount"] = service_account
         __props__["terminalConditions"] = terminal_conditions
@@ -2416,6 +2507,15 @@ class Instance(pulumi.CustomResource):
         Possible values are: `ALWAYS`, `ON_FAILURE`, `NEVER`.
         """
         return pulumi.get(self, "restart_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def sandboxes(self) -> pulumi.Output[Optional['outputs.InstanceSandboxes']]:
+        """
+        Configuration for sandboxes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sandboxes")
 
     @_builtins.property
     @pulumi.getter(name="satisfiesPzs")

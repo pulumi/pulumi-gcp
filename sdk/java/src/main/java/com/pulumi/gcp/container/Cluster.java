@@ -286,6 +286,47 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** If you omit the `controlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
  * 
+ * ### GKE Cluster With KCP_HPA Logging
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterLoggingConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .name("gke-logging-cluster")
+ *             .location("us-central1-a")
+ *             .initialNodeCount(1)
+ *             .loggingConfig(ClusterLoggingConfigArgs.builder()
+ *                 .enableComponents(                
+ *                     "SYSTEM_COMPONENTS",
+ *                     "KCP_HPA")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Autopilot
  * 
  * <pre>

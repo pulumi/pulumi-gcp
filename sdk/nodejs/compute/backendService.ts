@@ -817,7 +817,7 @@ export class BackendService extends pulumi.CustomResource {
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      */
     declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
@@ -1257,7 +1257,7 @@ export interface BackendServiceState {
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
@@ -1578,7 +1578,7 @@ export interface BackendServiceArgs {
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL_MANAGED`.
-     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `EXTERNAL_PASSTHROUGH`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
