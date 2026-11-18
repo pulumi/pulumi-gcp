@@ -5,10 +5,10 @@ Subject: [PATCH] Remove duplicative resource token
 
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index c814fd9eafce..6f70bf37c0b1 100644
+index 4ab4eec0db85..b5dd18148d70 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
-@@ -1213,7 +1213,7 @@ func Provider() *schema.Provider {
+@@ -1218,7 +1218,7 @@ func Provider() *schema.Provider {
  			},
  		},
  
@@ -17,7 +17,7 @@ index c814fd9eafce..6f70bf37c0b1 100644
  		ResourcesMap:   registry.ResourceMap(),
  	}
  
-@@ -1223,14 +1223,23 @@ func Provider() *schema.Provider {
+@@ -1228,14 +1228,23 @@ func Provider() *schema.Provider {
  	return provider
  }
  
