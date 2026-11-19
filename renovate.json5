@@ -103,6 +103,7 @@
       customType: "regex",
       managerFilePatterns: [
         "/^examples/.+\\.(ts|js|py|go|cs|java|ya?ml)$/",
+        // TODO(#4284): re-assess; live GCP tests belong in examples/ (provider tests should run offline).
         "provider/test-programs/compute-instance-description-update-multiple-boot-disk-resource-policies/Pulumi.yaml",
       ],
       matchStrings: [
