@@ -18,19 +18,6 @@ javascript removed
 --->
 {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
 
-{{% choosable language javascript %}}
-
-```javascript
-const gcp = require("@pulumi/gcp");
-
-const bucket = new gcp.storage.Bucket("my-bucket", {
-    location: "US",
-});
-
-exports.bucketName = bucket.name;
-```
-
-{{% /choosable %}}
 {{% choosable language typescript %}}
 
 ```typescript
