@@ -74,6 +74,9 @@
     // The upgrade-bridge workflow bumps pulumi/pkg and pulumi/sdk in
     // provider/go.mod together with the bridge, so Renovate leaves them alone
     // there. Other go.mod files (examples, sdk) still get Renovate updates.
+    // providertest is held back too: each release requires the latest
+    // pulumi/sdk, so bumping it makes go mod tidy pull sdk ahead of pkg, and
+    // the provider stops compiling (#4286).
     // TODO: move upgrade-bridge itself onto Renovate.
     {
       matchManagers: ["gomod"],
@@ -81,6 +84,7 @@
       matchPackageNames: [
         "github.com/pulumi/pulumi/pkg/v3",
         "github.com/pulumi/pulumi/sdk/v3",
+        "github.com/pulumi/providertest",
       ],
       enabled: false,
     },
