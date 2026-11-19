@@ -7,7 +7,7 @@ Always reference these instructions first and fallback to search or bash command
 ## Working Effectively
 
 ### Prerequisites and Environment Setup
-- All required dependencies are automatically installed via the `.github/workflows/copilot-setup-steps.yml` workflow
+- All required dependencies are automatically installed via the `.openinspect/` setup scripts (`make prepare_local_workspace`)
 - This includes Go, Node.js, Python, .NET, Gradle, and all necessary Pulumi tools
 
 ### Initial Repository Setup
@@ -57,7 +57,7 @@ Always reference these instructions first and fallback to search or bash command
 ### Important Files:
 - `Makefile` -- Primary build orchestration with all available targets
 - `provider/go.mod` -- Provider dependencies
-- `.github/workflows/copilot-setup-steps.yml` -- Environment setup for AI coding agents
+- `.openinspect/` -- Environment setup for AI coding agents
 - `.github/workflows/` -- CI/CD pipelines
 
 ## Development Workflow
