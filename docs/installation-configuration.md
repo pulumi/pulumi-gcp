@@ -51,17 +51,19 @@ values:
   gcp:
     login:
       fn::open::gcp-login:
-        project: <your-project-id>
+        project: <your-project-number>
         oidc:
           workloadPoolId: <your-pool-id>
           providerId: <your-provider-id>
           serviceAccount: <your-service-account>
   environmentVariables:
     GOOGLE_OAUTH_ACCESS_TOKEN: ${gcp.login.accessToken}
-    GOOGLE_PROJECT: ${gcp.login.project}
+    GOOGLE_PROJECT: <your-project-id>
     GOOGLE_REGION: <your-region>
     GOOGLE_ZONE: <your-zone>
 ```
+
+The `project` input of `gcp-login` takes the numeric project number, but `GOOGLE_PROJECT` takes the project ID (e.g. `my-project-12345`). Don't set `GOOGLE_PROJECT` to the `project` output of `gcp-login`, because that output is the numeric project number, which some Google Cloud APIs, such as Artifact Registry, reject.
 
 #### Import your environment
 
