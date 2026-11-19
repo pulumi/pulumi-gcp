@@ -71,6 +71,19 @@
       matchFileNames: [".config/mise.toml", ".config/mise.test.toml"],
       enabled: false,
     },
+    // The upgrade-bridge workflow bumps pulumi/pkg and pulumi/sdk in
+    // provider/go.mod together with the bridge, so Renovate leaves them alone
+    // there. Other go.mod files (examples, sdk) still get Renovate updates.
+    // TODO: move upgrade-bridge itself onto Renovate.
+    {
+      matchManagers: ["gomod"],
+      matchFileNames: ["provider/go.mod"],
+      matchPackageNames: [
+        "github.com/pulumi/pulumi/pkg/v3",
+        "github.com/pulumi/pulumi/sdk/v3",
+      ],
+      enabled: false,
+    },
   ],
   // Vulnerability-fix PRs inherit this as a forced override, which re-enables
   // the packages the v9 rule above disables. Same as Renovate's
