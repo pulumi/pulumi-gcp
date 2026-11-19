@@ -91,16 +91,20 @@
 
   customManagers: [
     // Debian image families on Compute Engine (debian-cloud/debian-<major>)
-    // used by the live example tests. GCE image families have no Renovate
+    // used by the live tests. GCE image families have no Renovate
     // datasource, but each family tracks one Debian major release, so follow
     // Debian's release cycles from endoflife.date instead:
     // https://docs.renovatebot.com/modules/datasource/endoflife-date/
-    // Limited to examples/: test programs under provider/test-programs are
-    // replayed against recorded gRPC traffic and must keep their pinned image,
-    // and sdk/ and upstream/ are generated or vendored.
+    // Limited to examples/ plus the live test programs listed by name: the
+    // other provider/test-programs are replayed by the upgrade tests against
+    // recorded gRPC traffic and must keep their pinned image, and sdk/ and
+    // upstream/ are generated or vendored.
     {
       customType: "regex",
-      managerFilePatterns: ["/^examples/.+\\.(ts|js|py|go|cs|java|ya?ml)$/"],
+      managerFilePatterns: [
+        "/^examples/.+\\.(ts|js|py|go|cs|java|ya?ml)$/",
+        "provider/test-programs/compute-instance-description-update-multiple-boot-disk-resource-policies/Pulumi.yaml",
+      ],
       matchStrings: [
         // The trailing [^-\\w] rejects dated images such as debian-11-bullseye-v20220719.
         "debian-cloud/(?:global/images/family/)?debian-(?<currentValue>\\d+)[^-\\w]",
