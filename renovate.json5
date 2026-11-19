@@ -71,6 +71,16 @@
       matchFileNames: [".config/mise.toml", ".config/mise.test.toml"],
       enabled: false,
     },
+    // Compute Engine publishes a new debian-<major> image family some days
+    // after the Debian release itself; wait before proposing the bump so the
+    // family exists when the example tests run.
+    {
+      matchManagers: ["custom.regex"],
+      matchDatasources: ["endoflife-date"],
+      matchPackageNames: ["debian"],
+      commitMessageTopic: "Debian Compute Engine image family",
+      minimumReleaseAge: "30 days",
+    },
   ],
   // Vulnerability-fix PRs inherit this as a forced override, which re-enables
   // the packages the v9 rule above disables. Same as Renovate's
@@ -78,4 +88,34 @@
   vulnerabilityAlerts: {
     enabled: true,
   },
+
+  customManagers: [
+    // Debian image families on Compute Engine (debian-cloud/debian-<major>)
+    // used by the live tests. GCE image families have no Renovate
+    // datasource, but each family tracks one Debian major release, so follow
+    // Debian's release cycles from endoflife.date instead:
+    // https://docs.renovatebot.com/modules/datasource/endoflife-date/
+    // Limited to examples/ plus the live test programs listed by name: the
+    // other provider/test-programs are replayed by the upgrade tests against
+    // recorded gRPC traffic and must keep their pinned image, and sdk/ and
+    // upstream/ are generated or vendored.
+    {
+      customType: "regex",
+      managerFilePatterns: [
+        "/^examples/.+\\.(ts|js|py|go|cs|java|ya?ml)$/",
+        // TODO(#4284): re-assess; live GCP tests belong in examples/ (provider tests should run offline).
+        "provider/test-programs/compute-instance-description-update-multiple-boot-disk-resource-policies/Pulumi.yaml",
+      ],
+      matchStrings: [
+        // The trailing [^-\\w] rejects dated images such as debian-11-bullseye-v20220719.
+        "debian-cloud/(?:global/images/family/)?debian-(?<currentValue>\\d+)[^-\\w]",
+      ],
+      depNameTemplate: "debian",
+      datasourceTemplate: "endoflife-date",
+      versioningTemplate: "loose",
+      // The datasource reports each cycle's latest point release (13.7); the
+      // image family only carries the major.
+      extractVersionTemplate: "^(?<version>\\d+)",
+    },
+  ],
 }
