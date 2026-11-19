@@ -84,6 +84,12 @@ Always reference these instructions first and fallback to search or bash command
 - Go SDK: Use `make build_go`
 - Java SDK: Use `make build_java`
 
+## Pull Request Guidelines
+
+- Keep PR descriptions short and to the point - a one or two sentence summary of what changed and why is enough
+- Use a few short bullets only when a PR bundles multiple distinct changes - skip narrative explanations, alternatives considered, or restating what's already visible in the diff
+- Reference a related issue (e.g. `Fixes #1234`) instead of re-explaining it
+
 ## Validation Scenarios
 
 ### Code Quality Validation:
@@ -141,3 +147,4 @@ Set timeouts of 300+ seconds for build operations and NEVER CANCEL running build
 - **NEVER** work directly in `sdk/` folders - use `make` targets for all SDK operations  
 - **DO NOT** run tests in `examples/` - they require cloud credentials
 - **FOCUS** on `make` targets for all development, building, and validation tasks
+- **KEEP** pull request descriptions short and to the point - summarize the change, don't narrate it
