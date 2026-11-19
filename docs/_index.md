@@ -16,7 +16,7 @@ The GCP provider must be configured with credentials to deploy and update resour
 <!---
 javascript removed
 --->
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 
 {{% choosable language typescript %}}
 
@@ -128,6 +128,28 @@ resources:
 
 outputs:
   bucketName: ${my-bucket.name}
+```
+
+{{% /choosable %}}
+
+{{% choosable language hcl %}}
+
+```hcl
+terraform {
+  required_providers {
+    gcp = {
+      source = "pulumi/gcp"
+    }
+  }
+}
+
+resource "gcp_storage_bucket" "my-bucket" {
+  location = "US"
+}
+
+output "bucketName" {
+  value = gcp_storage_bucket.my-bucket.name
+}
 ```
 
 {{% /choosable %}}
