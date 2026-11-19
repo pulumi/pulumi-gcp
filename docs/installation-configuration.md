@@ -38,13 +38,13 @@ If you are using Pulumi in a non-interactive setting (such as a CI/CD system) yo
 
 ### Authenticate with dynamically generated credentials
 
-In addition to configuring the GCP provider locally, you also have the option to centralize your configurations using [Pulumi ESC (Environments, Secrets, and Configuration)](/docs/pulumi-cloud/esc/). Using this service will enable you to run Pulumi CLI commands with dynamically generated credentials, removing the need to configure and manage your credentials locally.
+In addition to configuring the GCP provider locally, you also have the option to centralize your configurations using [Pulumi ESC (Environments, Secrets, and Configuration)](/docs/esc/). Using this service will enable you to run Pulumi CLI commands with dynamically generated credentials, removing the need to configure and manage your credentials locally.
 
 To do this, you will need to complete the following steps:
 
 #### Configure OIDC between Pulumi and GCP
 
-Refer to the [Configuring OpenID Connect for GCP Guide](/docs/pulumi-cloud/oidc/gcp/) for the step-by-step process on how to do this. Once you have completed these steps, you can define and expose environment variables as shown below:
+Refer to the [`gcp-login` provider guide](/docs/esc/providers/login/gcp-login/) for the step-by-step process on how to do this. Once you have completed these steps, you can define and expose environment variables as shown below:
 
 ```yaml
 values:
@@ -82,7 +82,7 @@ You can test that your configuration is working by running the `pulumi preview` 
 Make sure that your local environment does not have GCP credentials configured before running this command. You can logout by running the `gcloud auth revoke` command.
 {{< /notes >}}
 
-To learn more about projecting environment variables in Pulumi ESC, refer to the [relevant Pulumi ESC documentation](/docs/pulumi-cloud/esc/environments/#projecting-environment-variables).
+To learn more about projecting environment variables in Pulumi ESC, refer to the [relevant Pulumi ESC documentation](/docs/esc/concepts/outputs/#environmentvariables).
 
 ## Configuration options
 

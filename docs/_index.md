@@ -8,7 +8,7 @@ The Google Cloud Platform (GCP) provider for Pulumi can provision many of the cl
 
 The GCP provider must be configured with credentials to deploy and update resources in Google Cloud; see [Installation & Configuration](./installation-configuration) for instructions.
 
-**New to Pulumi and Google Cloud?** [Get started with Google Cloud using our tutorial](/docs/get-started/gcp)
+**New to Pulumi and Google Cloud?** [Get started with Google Cloud using our tutorial](/up/?cloud=gcp)
 
 
 ## Example
@@ -21,9 +21,13 @@ javascript removed
 {{% choosable language javascript %}}
 
 ```javascript
-const gcp = require("@pulumi/gcp")
+const gcp = require("@pulumi/gcp");
 
-const bucket = new gcp.storage.Bucket("my-bucket");
+const bucket = new gcp.storage.Bucket("my-bucket", {
+    location: "US",
+});
+
+exports.bucketName = bucket.name;
 ```
 
 {{% /choosable %}}
@@ -32,34 +36,46 @@ const bucket = new gcp.storage.Bucket("my-bucket");
 ```typescript
 import * as gcp from "@pulumi/gcp";
 
-const bucket = new gcp.storage.Bucket("my-bucket");
+const bucket = new gcp.storage.Bucket("my-bucket", {
+    location: "US",
+});
+
+export const bucketName = bucket.name;
 ```
 
 {{% /choosable %}}
 {{% choosable language python %}}
 
 ```python
+import pulumi
 from pulumi_gcp import storage
 
-bucket = storage.Bucket('my-bucket')
+bucket = storage.Bucket("my-bucket", location="US")
+
+pulumi.export("bucket_name", bucket.name)
 ```
 
 {{% /choosable %}}
 {{% choosable language go %}}
 
 ```go
+package main
+
 import (
-    "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-    "github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		bucket, err := storage.NewBucket(ctx, "my-bucket", nil)
+		bucket, err := storage.NewBucket(ctx, "my-bucket", &storage.BucketArgs{
+			Location: pulumi.String("US"),
+		})
 		if err != nil {
 			return err
 		}
 
+		ctx.Export("bucketName", bucket.Name)
 		return nil
 	})
 }
@@ -69,12 +85,21 @@ func main() {
 {{% choosable language csharp %}}
 
 ```csharp
+using System.Collections.Generic;
 using Pulumi;
 using Gcp = Pulumi.Gcp;
 
-await Deployment.RunAsync(() =>
+return await Deployment.RunAsync(() =>
 {
-    var bucket = new Gcp.Storage.Bucket("my-bucket");
+    var bucket = new Gcp.Storage.Bucket("my-bucket", new()
+    {
+        Location = "US",
+    });
+
+    return new Dictionary<string, object?>
+    {
+        ["bucketName"] = bucket.Name,
+    };
 });
 ```
 
@@ -86,6 +111,7 @@ await Deployment.RunAsync(() =>
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.gcp.storage.Bucket;
+import com.pulumi.gcp.storage.BucketArgs;
 
 public class App {
     public static void main(String[] args) {
@@ -93,9 +119,12 @@ public class App {
     }
 
     private static void stack(Context ctx) {
-        final var bucket = new Bucket("my-bucket");
-		ctx.export("bucketName", bucket.name());
-	}
+        final var bucket = new Bucket("my-bucket", BucketArgs.builder()
+            .location("US")
+            .build());
+
+        ctx.export("bucketName", bucket.name());
+    }
 }
 ```
 
@@ -107,10 +136,15 @@ public class App {
 resources:
   my-bucket:
     type: gcp:storage:Bucket
+    properties:
+      location: US
+
+outputs:
+  bucketName: ${my-bucket.name}
 ```
 
 {{% /choosable %}}
 
 {{< /chooser >}}
 
-Visit the [How-to Guides](./how-to-guides) to find step-by-step guides for specific scenarios like creating a serverless application using Google Cloud Functions or setting up a Google Kubernetes Engine (GKE) cluster.
+Visit the [Guides](./guides/) for major-version migration guides, and the [examples](https://www.pulumi.com/dev/examples/) for scenarios like Cloud Functions and GKE.
