@@ -1,0 +1,37 @@
+name: webserver-yaml
+description: Basic example of a compute instance with a network and firewall on Google Cloud Platform (in YAML!)
+runtime: yaml
+
+# The project, zone and region come from the gcp:project, gcp:zone and
+# gcp:region provider config, which the test supplies.
+resources:
+  network:
+    type: gcp:compute:Network
+    properties:
+      autoCreateSubnetworks: true
+
+  firewall:
+    type: gcp:compute:Firewall
+    properties:
+      network: ${network.selfLink}
+      sourceTags:
+        - foo
+      allows:
+        - protocol: icmp
+        - protocol: tcp
+          ports:
+            - "22"
+            - "80"
+
+  instance:
+    type: gcp:compute:Instance
+    properties:
+      machineType: f1-micro
+      bootDisk:
+        initializeParams:
+          image: debian-cloud/debian-13
+      networkInterfaces:
+        - network: ${firewall.network}
+      serviceAccount:
+        scopes:
+          - https://www.googleapis.com/auth/cloud-platform

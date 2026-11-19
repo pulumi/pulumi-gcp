@@ -1,3 +1,0 @@
-name: webserver
-runtime: nodejs
-description: Basic example of a web server on a compute instance running on Google Cloud Platform
