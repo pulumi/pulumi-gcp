@@ -413,8 +413,7 @@ const escHintMessage = "Pulumi ESC can give your stacks short-lived Google Cloud
 func credentialsFailure(err error) tfbridge.CheckFailureError {
 	failure := tfbridge.CheckFailureErrorElement{Reason: fmt.Sprintf(noCredentialsErr, err)}
 	if strings.Contains(err.Error(), "could not find default credentials") {
-		failure.Hint = pulumirpc.Hint_HINT_DYNAMIC_CREDENTIALS
-		failure.HintMessage = escHintMessage
+		failure.Hint = &pulumirpc.Hint{Kind: pulumirpc.Hint_DYNAMIC_CREDENTIALS, Message: escHintMessage}
 	}
 	return tfbridge.CheckFailureError{Failures: []tfbridge.CheckFailureErrorElement{failure}}
 }

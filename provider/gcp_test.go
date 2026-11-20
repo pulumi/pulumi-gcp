@@ -305,10 +305,10 @@ func TestPreConfigureCallbackCredentialsHint(t *testing.T) {
 	tests := []struct {
 		name        string
 		credentials string
-		wantHint    pulumirpc.Hint
+		wantHint    bool
 	}{
-		{"no credentials", "", pulumirpc.Hint_HINT_DYNAMIC_CREDENTIALS},
-		{"malformed credentials", `{"type": `, pulumirpc.Hint_HINT_UNSPECIFIED},
+		{"no credentials", "", true},
+		{"malformed credentials", `{"type": `, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -332,11 +332,12 @@ func TestPreConfigureCallbackCredentialsHint(t *testing.T) {
 			require.Len(t, failure.Failures, 1)
 			assert.Contains(t, failure.Failures[0].Reason, "failed to load application credentials.")
 			assert.NotContains(t, failure.Failures[0].Reason, "pulumi env setup")
-			assert.Equal(t, tt.wantHint, failure.Failures[0].Hint)
-			if tt.wantHint == pulumirpc.Hint_HINT_UNSPECIFIED {
-				assert.Empty(t, failure.Failures[0].HintMessage)
+			hint := failure.Failures[0].Hint
+			if !tt.wantHint {
+				assert.Nil(t, hint)
 			} else {
-				assert.Contains(t, failure.Failures[0].HintMessage, "`pulumi env setup gcp`")
+				assert.Equal(t, pulumirpc.Hint_DYNAMIC_CREDENTIALS, hint.GetKind())
+				assert.Contains(t, hint.GetMessage(), "`pulumi env setup gcp`")
 			}
 		})
 	}

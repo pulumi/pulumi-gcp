@@ -7,10 +7,10 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.3.1
-	github.com/pulumi/providertest v0.7.1-0.20261116121058-a604e7c3acc3
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.1-0.20261117112411-c4f823a2c483
+	github.com/pulumi/providertest v0.8.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.1-0.20261120145651-9d7299f89a29
 	github.com/pulumi/pulumi/pkg/v3 v3.277.0
-	github.com/pulumi/pulumi/sdk/v3 v3.277.0
+	github.com/pulumi/pulumi/sdk/v3 v3.278.0
 	github.com/stretchr/testify v1.12.1
 	google.golang.org/api v0.305.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -288,6 +288,6 @@ require (
 	mvdan.cc/gofumpt v0.9.2 // indirect
 )
 
-replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.276.1-0.20261117110451-4e643b74288b
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.277.1-0.20261120144801-e23f6bad085e
 
-replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.276.1-0.20261117110451-4e643b74288b
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.277.1-0.20261120144801-e23f6bad085e
