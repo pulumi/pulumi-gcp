@@ -1,0 +1,131 @@
+name: loadbalancer-yaml
+description: Basic example of a Load Balancer accessible over HTTP running on Google Cloud Platform (in YAML!)
+runtime: yaml
+
+# The project, zone and region come from the gcp:project, gcp:zone and
+# gcp:region provider config, which the test supplies.
+resources:
+  default-network:
+    type: gcp:compute:Network
+    properties:
+      autoCreateSubnetworks: true
+
+  external-address:
+    type: gcp:compute:GlobalAddress
+
+  health-check:
+    type: gcp:compute:HealthCheck
+    properties:
+      httpHealthCheck:
+        port: 80
+
+  # Web resources: instance, instance group and backend service
+  www-compute:
+    type: gcp:compute:Instance
+    properties:
+      machineType: f1-micro
+      tags:
+        - http-tag
+      bootDisk:
+        initializeParams:
+          image: debian-cloud/debian-13
+      networkInterfaces:
+        - network: ${default-network.selfLink}
+      metadataStartupScript: ./scripts/install-www.sh
+      serviceAccount:
+        scopes:
+          - https://www.googleapis.com/auth/compute.readonly
+
+  www-resources:
+    type: gcp:compute:InstanceGroup
+    properties:
+      instances:
+        - ${www-compute.selfLink}
+      namedPorts:
+        - name: http
+          port: 80
+
+  www-service:
+    type: gcp:compute:BackendService
+    properties:
+      protocol: HTTP
+      healthChecks: ${health-check.selfLink}
+      backends:
+        - group: ${www-resources.selfLink}
+
+  # Video resources: instance, instance group and backend service
+  video-compute:
+    type: gcp:compute:Instance
+    properties:
+      machineType: f1-micro
+      tags:
+        - http-tag
+      bootDisk:
+        initializeParams:
+          image: debian-cloud/debian-13
+      networkInterfaces:
+        - network: ${default-network.selfLink}
+      metadataStartupScript: ./scripts/install-video.sh
+      serviceAccount:
+        scopes:
+          - https://www.googleapis.com/auth/compute.readonly
+
+  video-resources:
+    type: gcp:compute:InstanceGroup
+    properties:
+      instances:
+        - ${video-compute.selfLink}
+      namedPorts:
+        - name: http
+          port: 80
+
+  video-service:
+    type: gcp:compute:BackendService
+    properties:
+      protocol: HTTP
+      healthChecks: ${health-check.selfLink}
+      backends:
+        - group: ${video-resources.selfLink}
+
+  web-map:
+    type: gcp:compute:URLMap
+    properties:
+      defaultService: ${www-service.selfLink}
+      hostRules:
+        - hosts:
+            - "*"
+          pathMatcher: allpaths
+      pathMatchers:
+        - name: allpaths
+          defaultService: ${www-service.selfLink}
+          pathRules:
+            - paths:
+                - /video
+                - /video/*
+              service: ${video-service.selfLink}
+
+  http-lb-proxy:
+    type: gcp:compute:TargetHttpProxy
+    properties:
+      urlMap: ${web-map.selfLink}
+
+  default-rule:
+    type: gcp:compute:GlobalForwardingRule
+    properties:
+      target: ${http-lb-proxy.selfLink}
+      ipAddress: ${external-address.address}
+      portRange: "80"
+
+  internal-only:
+    type: gcp:compute:Firewall
+    properties:
+      network: ${default-network.selfLink}
+      allows:
+        - protocol: tcp
+          ports:
+            - "80"
+      sourceRanges:
+        - 130.211.0.0/22
+        - 35.191.0.0/16
+      targetTags:
+        - http-tag

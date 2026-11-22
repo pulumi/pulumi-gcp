@@ -92,6 +92,16 @@ func TestAccWebserverYAML(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+func TestAccLoadbalancerYAML(t *testing.T) {
+	skipIfShort(t)
+	test := getBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "loadbalancer-yaml"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestPulumiLabelsSecretYAML(t *testing.T) {
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join(getCwd(t), "test-pulumi-labels-secret", "yaml"),
