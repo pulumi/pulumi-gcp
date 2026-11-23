@@ -8,7 +8,7 @@ require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.3.1
 	github.com/pulumi/providertest v0.8.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.1-0.20261120145651-9d7299f89a29
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.1-0.20261123155643-b0b1823dbb02
 	github.com/pulumi/pulumi/pkg/v3 v3.277.0
 	github.com/pulumi/pulumi/sdk/v3 v3.278.0
 	github.com/stretchr/testify v1.12.1
@@ -288,6 +288,6 @@ require (
 	mvdan.cc/gofumpt v0.9.2 // indirect
 )
 
-replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.277.1-0.20261120144801-e23f6bad085e
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.277.1-0.20261123123113-d64b997cbb6b
 
-replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.277.1-0.20261120144801-e23f6bad085e
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.277.1-0.20261123123113-d64b997cbb6b
