@@ -12,7 +12,7 @@ resources:
     properties:
       project: ${gcpProj}
       zone: ${gcpZone}
-      image: projects/ubuntu-os-cloud/global/images/family/ubuntu-minimal-2404-lts-amd64
+      image: projects/debian-cloud/global/images/family/debian-13
       size: 10
       type: projects/${gcpProj}/zones/${gcpZone}/diskTypes/pd-balanced
 
