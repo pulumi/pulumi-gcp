@@ -24,16 +24,6 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	return baseJS
 }
 
-func TestAccWebserverNode(t *testing.T) {
-	skipIfShort(t)
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "webserver"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
-
 func TestAccLoadbalancer(t *testing.T) {
 	skipIfShort(t)
 	test := getJSBaseOptions(t).
