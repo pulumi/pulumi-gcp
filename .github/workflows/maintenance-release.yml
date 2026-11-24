@@ -54,6 +54,7 @@ jobs:
         if: steps.support.outputs.supported == 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
           title="${MAINTENANCE_BRANCH} is end of life"
@@ -69,6 +70,7 @@ jobs:
         if: steps.support.outputs.supported == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
           search="Security patch release: ${MAINTENANCE_BRANCH}"
