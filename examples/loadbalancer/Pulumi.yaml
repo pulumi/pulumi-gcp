@@ -1,3 +1,0 @@
-name: loadbalancer
-runtime: nodejs
-description: Basic example of a Load Balancer accessible over HTTP running on Google Gloud Platform
