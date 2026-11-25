@@ -7,10 +7,10 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.3.1
-	github.com/pulumi/providertest v0.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.0
-	github.com/pulumi/pulumi/pkg/v3 v3.276.0
-	github.com/pulumi/pulumi/sdk/v3 v3.276.0
+	github.com/pulumi/providertest v0.8.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.1-0.20261124170342-7f8afdddeb60
+	github.com/pulumi/pulumi/pkg/v3 v3.278.0
+	github.com/pulumi/pulumi/sdk/v3 v3.278.0
 	github.com/stretchr/testify v1.12.1
 	google.golang.org/api v0.310.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -195,10 +195,10 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-cloud-sdk/go v1.20261117.1636 // indirect
-	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.120.0 // indirect
-	github.com/pulumi/pulumi-hcl v0.20.1 // indirect
-	github.com/pulumi/pulumi-java v1.40.2 // indirect
+	github.com/pulumi/pulumi-cloud-sdk/go v1.20261124.0 // indirect
+	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.121.0 // indirect
+	github.com/pulumi/pulumi-hcl v0.20.4 // indirect
+	github.com/pulumi/pulumi-java v1.40.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.39.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
